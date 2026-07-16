@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Optimization -->
+    <title>VidyaSetu — Free Smart Classroom Education for Village Schools</title>
+    <meta name="description" content="VidyaSetu provides high-quality visual content, presentation slides, classroom activities, and quizzes for Classes 6th to 12th, tailored for government school smart classrooms. 100% Free." />
+    <meta name="keywords" content="smart classroom, village schools, free education, visual content, ncert syllabus, science activities, classroom ppt, study material, classes 6-12" />
+    <meta name="author" content="VidyaSetu Open Education Initiative" />
+    <meta name="theme-color" content="#ff6b35" />
+
+    <!-- OpenGraph Social Sharing Metadata -->
+    <meta property="og:title" content="VidyaSetu — Free Smart Classroom Lessons for Government Schools" />
+    <meta property="og:description" content="Engaging visual slides, science experiments, and mock tests for grades 6 to 12. Designed to run offline in rural classrooms." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vidyasetu.org" />
+    <meta property="og:image" content="/assets/og-image.jpg" />
+
+    <!-- Google Fonts Preconnect for Speed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <style>
+      /* Initial Skeleton Loader */
+      #initial-loader {
+        position: fixed;
+        inset: 0;
+        background: #0f172a;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+      }
+      .loader-logo {
+        font-family: 'Outfit', sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #ff6b35, #f97316);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+        animation: pulseLogo 2s infinite alternate;
+      }
+      .loader-spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid rgba(255, 107, 53, 0.2);
+        border-top-color: #ff6b35;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      .loader-text {
+        margin-top: 1.5rem;
+        color: #94a3b8;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      @keyframes pulseLogo {
+        0% { transform: scale(0.95); opacity: 0.8; }
+        100% { transform: scale(1.05); opacity: 1; }
+      }
+      body.loaded #initial-loader {
+        opacity: 0;
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Premium Loader -->
+    <div id="initial-loader">
+      <div class="loader-logo">VidyaSetu</div>
+      <div class="loader-spinner"></div>
+      <div class="loader-text">Loading Smart Classroom...</div>
+    </div>
+    
+    <!-- Main SPA Mounting Container -->
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
