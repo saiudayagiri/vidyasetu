@@ -59,6 +59,7 @@ const appScaffold = `
             An open-source, offline-ready education platform designed specifically for government village schools.
           </p>
           <div class="footer-credits">Created in support of Education for All. Free of cost.</div>
+          <div class="footer-credits" style="margin-top: 0.35rem;">Made with ❤️ from ZPHS Pedanindrakolanu</div>
         </div>
       </footer>
     </div>
