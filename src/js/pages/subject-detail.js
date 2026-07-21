@@ -82,6 +82,7 @@ export function renderSubjectDetail(classId, subjectId) {
             <span class="chapter-arrow">▼</span>
           </div>
           <div class="chapter-content">
+            <a href="#/class/${classId}/subject/${subjectId}/chapter/${chapter.id}/textbook" class="chapter-textbook-link">📄 View Chapter Textbook (PDF)</a>
             <div class="topic-list">
               ${topicsHtml}
             </div>

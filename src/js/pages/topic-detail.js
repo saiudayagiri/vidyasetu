@@ -171,21 +171,38 @@ function getInlineLabHtml(type) {
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="corrosion-canvas" width="600" height="300"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Watch iron nails corrode over time in different environments.</span></div>
+          <div class="canvas-instruction-bar" id="oxidation-hint"><span>💡 Watch iron nails corrode over time in different environments.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Environment Conditions</h3>
-            <select id="sel-corrosion-env" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:1rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="air-water">Air + Water (Rusting)</option>
-              <option value="oil-coated">Oil-Coated Nail (Prevention)</option>
-              <option value="galvanized">Galvanized Nail (Zinc Coating)</option>
-              <option value="painted">Painted Nail (Prevention)</option>
+            <h3>Explore</h3>
+            <select id="sel-oxidation-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="corrosion">Corrosion (Metals)</option>
+              <option value="rancidity">Rancidity (Fats &amp; Oils)</option>
             </select>
-            <button id="btn-run-corrosion" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Start Time-Lapse ⏩</button>
+            <div id="corrosion-controls">
+              <h3>Environment Conditions</h3>
+              <select id="sel-corrosion-env" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:1rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="air-water">Air + Water (Rusting)</option>
+                <option value="oil-coated">Oil-Coated Nail (Prevention)</option>
+                <option value="galvanized">Galvanized Nail (Zinc Coating)</option>
+                <option value="painted">Painted Nail (Prevention)</option>
+              </select>
+              <button id="btn-run-corrosion" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Start Time-Lapse ⏩</button>
+            </div>
+            <div id="rancidity-controls" style="display:none;">
+              <h3>Storage Condition</h3>
+              <select id="sel-rancidity-env" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:1rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="open">Open Air (No Protection)</option>
+                <option value="airtight">Airtight Container</option>
+                <option value="antioxidant">Antioxidant Added</option>
+                <option value="nitrogen">Nitrogen-Flushed Packaging</option>
+              </select>
+              <button id="btn-run-rancidity" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Start Time-Lapse ⏩</button>
+            </div>
           </div>
           <div class="sim-calculator">
-            <h3>Observations</h3>
+            <h3 id="oxidation-obs-title">Observations</h3>
             <div id="corrosion-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Select an environment and start the time-lapse.</div>
           </div>
         </div>
@@ -195,17 +212,42 @@ function getInlineLabHtml(type) {
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="photosynthesis-canvas" width="600" height="340"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Adjust light intensity to control the rate of photosynthesis.</span></div>
+          <div class="canvas-instruction-bar" id="nutrition-hint"><span>💡 Adjust light intensity to control the rate of photosynthesis.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Light Intensity</h3>
-            <input type="range" id="light-intensity" min="0" max="100" value="50" style="width:100%;margin-bottom:0.5rem;">
-            <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-muted);"><span>Dark</span><span>Bright</span></div>
-            <button id="btn-toggle-co2" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;margin-top:0.5rem;">CO₂ Supply: ON ✅</button>
+            <h3>Explore</h3>
+            <select id="sel-nutrition-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="photosynthesis">Photosynthesis (Autotrophic)</option>
+              <option value="digestion">Human Digestion (Heterotrophic)</option>
+              <option value="microbe">Amoeba &amp; Paramoecium Feeding</option>
+            </select>
+            <div id="photosynthesis-controls">
+              <h3>Light Intensity</h3>
+              <input type="range" id="light-intensity" min="0" max="100" value="50" style="width:100%;margin-bottom:0.5rem;">
+              <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-muted);"><span>Dark</span><span>Bright</span></div>
+              <button id="btn-toggle-co2" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;margin-top:0.5rem;">CO₂ Supply: ON ✅</button>
+            </div>
+            <div id="digestion-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Food Type</label>
+              <select id="sel-food-type" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="carb">Bread (Carbohydrate / Starch)</option>
+                <option value="protein">Meat (Protein)</option>
+                <option value="fat">Butter (Fat)</option>
+              </select>
+              <button id="btn-send-food" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Swallow Food ⬇️</button>
+            </div>
+            <div id="microbe-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Organism</label>
+              <select id="sel-microbe-type" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="amoeba">Amoeba (pseudopodia)</option>
+                <option value="paramoecium">Paramoecium (cilia)</option>
+              </select>
+              <button id="btn-feed-microbe" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Offer Food Particle 🍽️</button>
+            </div>
           </div>
           <div class="sim-calculator">
-            <h3>Process Monitor</h3>
+            <h3 id="nutrition-obs-title">Process Monitor</h3>
             <div id="photo-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Adjust light and observe O₂ bubble production.</div>
           </div>
         </div>
@@ -215,17 +257,912 @@ function getInlineLabHtml(type) {
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="heart-canvas" width="600" height="340"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Watch blood flow through the four chambers of the heart.</span></div>
+          <div class="canvas-instruction-bar" id="heart-hint"><span>💡 Watch blood flow through the four chambers of the heart.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Heart Rate</h3>
-            <input type="range" id="heart-rate" min="40" max="120" value="72" style="width:100%;margin-bottom:0.5rem;">
-            <div id="heart-bpm" style="text-align:center;font-weight:700;color:var(--accent-color);">72 BPM</div>
+            <h3>Explore</h3>
+            <select id="sel-lifeprocess-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="heart">Blood Circulation (Heart)</option>
+              <option value="vessels">Blood Vessels, Platelets &amp; Lymph</option>
+              <option value="breathing">Breathing &amp; Respiration</option>
+              <option value="limewater">Lime Water CO₂ Test</option>
+              <option value="fishgill">Fish Gill Breathing</option>
+              <option value="planttransport">Plant Transport (Xylem &amp; Phloem)</option>
+              <option value="excretion">Excretion (Nephron)</option>
+            </select>
+            <div id="heart-controls">
+              <h3>Heart Rate</h3>
+              <input type="range" id="heart-rate" min="40" max="120" value="72" style="width:100%;margin-bottom:0.5rem;">
+              <div id="heart-bpm" style="text-align:center;font-weight:700;color:var(--accent-color);">72 BPM</div>
+            </div>
+            <div id="vessels-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Focus</label>
+              <select id="sel-vessel-focus" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="vessels">Artery vs Vein vs Capillary</option>
+                <option value="platelets">Platelets Sealing a Cut</option>
+                <option value="lymph">Lymph Drainage</option>
+              </select>
+            </div>
+            <div id="breathing-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Breathing Rate</label>
+              <input type="range" id="rng-breathing-rate" min="8" max="40" value="15" style="width:100%;margin-bottom:0.5rem;">
+              <div id="breathing-rate-val" style="text-align:center;font-weight:700;color:var(--accent-color);margin-bottom:0.5rem;">15 breaths/min</div>
+              <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.85rem;color:var(--text-muted);">
+                <input type="checkbox" id="chk-anaerobic"> No oxygen available (anaerobic — muscle cramp)
+              </label>
+            </div>
+            <div id="limewater-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Test</label>
+              <select id="sel-limewater-test" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="breath">Exhaled Breath vs Atmospheric Air</option>
+                <option value="yeast">Yeast Fermentation</option>
+              </select>
+              <button id="btn-run-limewater" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Start Test ⏱️</button>
+            </div>
+            <div id="fishgill-controls" style="display:none;">
+              <p style="font-size:0.9rem;color:var(--text-muted);">Watch the fish's mouth and gill covers open and close, and compare the rate to human breathing.</p>
+            </div>
+            <div id="planttransport-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Transpiration Rate (stomata opening)</label>
+              <input type="range" id="rng-transpiration" min="0" max="100" value="60" style="width:100%;margin-bottom:0.5rem;">
+              <div id="transpiration-val" style="text-align:center;font-weight:700;color:var(--accent-color);">60%</div>
+            </div>
+            <div id="excretion-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Body Water Level</label>
+              <input type="range" id="rng-water-level" min="0" max="100" value="50" style="width:100%;margin-bottom:0.5rem;">
+              <div id="water-level-val" style="text-align:center;font-weight:700;color:var(--accent-color);">Normal hydration</div>
+            </div>
           </div>
           <div class="sim-calculator">
-            <h3>Chamber Activity</h3>
+            <h3 id="heart-obs-title">Chamber Activity</h3>
             <div id="heart-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Watch the cardiac cycle animation.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const scientificMethodLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="scimethod-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a everyday mystery and click "Investigate!" to walk through the scientific method step-by-step.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Mystery</h3>
+            <select id="sel-scimethod-mystery" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:1rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="pen">Why did my pen stop writing?</option>
+              <option value="plant">Why is my plant wilting?</option>
+              <option value="bulb">Why isn't the bulb glowing?</option>
+            </select>
+            <button id="btn-scimethod-investigate" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Investigate! 🔍</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Investigation Log</h3>
+            <div id="scimethod-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a mystery and click Investigate to begin.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const plantGroupingLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="plantgroup-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Switch between Monocot and Dicot to see how seed, root and venation are all connected.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Plant Type</h3>
+            <select id="sel-plantgroup-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="monocot">Monocot (e.g. Maize)</option>
+              <option value="dicot">Dicot (e.g. Chickpea)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What You're Seeing</h3>
+            <div id="plantgroup-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Select a plant type to compare its seed, venation and root.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const camelAdaptationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="camel-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Switch between the hot-desert and cold-desert camel to compare their adaptations.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Camel</h3>
+            <select id="sel-camel-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="hot">Hot Desert Camel (Rajasthan)</option>
+              <option value="cold">Cold Desert Camel (Ladakh)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Adaptations</h3>
+            <div id="camel-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Select a camel to see its adaptations.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const foodTestLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="foodtest-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a food item and a test, then click "Run Test" to see the result.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Food Item</h3>
+            <select id="sel-foodtest-item" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="potato">Potato</option>
+              <option value="cucumber">Cucumber</option>
+              <option value="rice">Boiled Rice</option>
+              <option value="peanuts">Peanuts</option>
+              <option value="butter">Butter</option>
+              <option value="gram">Boiled Gram (Chickpea)</option>
+              <option value="coconut">Coconut</option>
+            </select>
+            <h3>Choose Test</h3>
+            <select id="sel-foodtest-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="starch">Starch Test (Iodine)</option>
+              <option value="fat">Fat Test (Paper Patch)</option>
+              <option value="protein">Protein Test (Copper Sulfate)</option>
+            </select>
+            <button id="btn-foodtest-run" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Run Test 🧪</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="foodtest-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a food and test, then click Run Test.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const magnetExplorerLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="magnet-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar" id="magnet-hint"><span>💡 Choose an object and bring the magnet closer to test if it's magnetic.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Explore</h3>
+            <select id="sel-magnet-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="materials">Magnetic vs Non-magnetic Materials</option>
+              <option value="poles">Attraction &amp; Repulsion</option>
+            </select>
+            <div id="magnet-materials-controls">
+              <h3>Choose an Object</h3>
+              <select id="sel-magnet-object" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="pin">Iron Safety Pin</option>
+                <option value="spoon">Steel Spoon</option>
+                <option value="pencil">Wooden Pencil</option>
+                <option value="scale">Plastic Scale</option>
+                <option value="glass">Glass Piece</option>
+              </select>
+              <button id="btn-magnet-bring" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Bring Magnet Closer 🧲</button>
+            </div>
+            <div id="magnet-poles-controls" style="display:none;">
+              <h3>Magnet B's Facing Pole</h3>
+              <select id="sel-magnet-pole" style="width:100%;padding:0.4rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="S">South (facing Magnet A's North)</option>
+                <option value="N">North (facing Magnet A's North)</option>
+              </select>
+            </div>
+          </div>
+          <div class="sim-calculator">
+            <h3>Observation</h3>
+            <div id="magnet-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an object and click the button to test it.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const rulerMeasureLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="ruler-canvas" width="600" height="220"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Adjust the object's length and toggle the broken-end ruler to practice correct measurement.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Object Length</h3>
+            <input type="range" id="rng-ruler-length" min="30" max="140" value="80" style="width:100%;margin-bottom:0.5rem;">
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-normal);cursor:pointer;">
+              <input type="checkbox" id="chk-ruler-broken"> Use a broken-end ruler (starts at a random mark, not 0)
+            </label>
+          </div>
+          <div class="sim-calculator">
+            <h3>Reading</h3>
+            <div id="ruler-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Adjust the slider to change the object's length.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const motionTypeLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="motiontype-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Select a type of motion and watch it animate.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Motion Type</h3>
+            <select id="sel-motiontype" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="linear">Linear Motion (falling box)</option>
+              <option value="circular">Circular Motion (whirled stone)</option>
+              <option value="oscillatory">Oscillatory Motion (swing)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What You're Seeing</h3>
+            <div id="motiontype-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Select a motion type to watch its animation.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const materialExplorerLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="matexp-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar" id="matexp-hint"><span>💡 Choose a material to see how well you can see through it.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Explore</h3>
+            <select id="sel-matexp-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="transparency">Transparency Test</option>
+              <option value="solubility">Solubility Test</option>
+            </select>
+            <div id="matexp-transparency-controls">
+              <h3>Choose a Material</h3>
+              <select id="sel-matexp-material" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="glass">Glass (window)</option>
+                <option value="frosted">Frosted Glass</option>
+                <option value="wood">Wooden Board</option>
+              </select>
+            </div>
+            <div id="matexp-solubility-controls" style="display:none;">
+              <h3>Choose a Substance</h3>
+              <select id="sel-matexp-substance" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="sugar">Sugar</option>
+                <option value="salt">Salt</option>
+                <option value="chalk">Chalk Powder</option>
+                <option value="sand">Sand</option>
+                <option value="sawdust">Sawdust</option>
+              </select>
+              <button id="btn-matexp-stir" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Stir the Water 🥄</button>
+            </div>
+          </div>
+          <div class="sim-calculator">
+            <h3>Observation</h3>
+            <div id="matexp-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an option to begin.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const thermometerReaderLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="thermo-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar" id="thermo-hint"><span>💡 Drag the slider to change the temperature and see it converted between scales.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Explore</h3>
+            <select id="sel-thermo-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="convert">Convert Temperature Scales</option>
+              <option value="leastcount">Find the Least Count</option>
+            </select>
+            <div id="thermo-convert-controls">
+              <h3>Temperature (°C)</h3>
+              <input type="range" id="rng-thermo-celsius" min="-10" max="110" value="37" style="width:100%;margin-bottom:0.5rem;">
+              <div id="thermo-celsius-val" style="text-align:center;font-weight:700;color:var(--accent-color);">37 °C</div>
+            </div>
+            <div id="thermo-leastcount-controls" style="display:none;">
+              <h3>Divisions Between Big Marks</h3>
+              <select id="sel-thermo-divisions" style="width:100%;padding:0.4rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="10">10 small divisions</option>
+                <option value="5">5 small divisions</option>
+                <option value="20">20 small divisions</option>
+              </select>
+            </div>
+          </div>
+          <div class="sim-calculator">
+            <h3>Reading</h3>
+            <div id="thermo-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Adjust the slider to see the temperature conversion.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const waterStateChangeLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="waterstate-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Drag the temperature slider to heat or cool the water and watch it change state.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Temperature</h3>
+            <input type="range" id="rng-waterstate-temp" min="-20" max="120" value="25" style="width:100%;margin-bottom:0.5rem;">
+            <div id="waterstate-temp-val" style="text-align:center;font-weight:700;color:var(--accent-color);">25 °C</div>
+          </div>
+          <div class="sim-calculator">
+            <h3>State</h3>
+            <div id="waterstate-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Adjust the temperature to see water change state.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const separationMethodLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="separation-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar" id="separation-hint"><span>💡 Choose a separation method and click "Run" to watch it happen.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Method</h3>
+            <select id="sel-separation-method" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="winnowing">Winnowing (grain + husk)</option>
+              <option value="sieving">Sieving (flour + bran)</option>
+              <option value="filtration">Filtration (muddy water)</option>
+              <option value="evaporation">Evaporation (salt solution)</option>
+              <option value="magnetic">Magnetic Separation (nails + sawdust)</option>
+            </select>
+            <button id="btn-separation-run" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Run ▶️</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>What's Happening</h3>
+            <div id="separation-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a method and click Run.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const germinationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="germination-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a pot's conditions and see if the bean seeds germinate after 15 days.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Pot</h3>
+            <select id="sel-germination-pot" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="A">Pot A: No water, sunlight</option>
+              <option value="B">Pot B: Excess water, sunlight</option>
+              <option value="C">Pot C: Moist soil, darkness</option>
+              <option value="D">Pot D: Moist soil, sunlight</option>
+            </select>
+            <button id="btn-germination-run" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Wait 15 Days ⏱️</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="germination-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a pot and click the button to see if it germinates.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const animalLifeCycleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="lifecycle-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an animal and step through its life cycle stages.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Animal</h3>
+            <select id="sel-lifecycle-animal" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="mosquito">Mosquito</option>
+              <option value="frog">Frog</option>
+            </select>
+            <button id="btn-lifecycle-next" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Next Stage ▶️</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Current Stage</h3>
+            <div id="lifecycle-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an animal and click Next Stage to begin.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const resourceSorterLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="resource-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a resource, then decide: is it renewable or non-renewable?</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Resource</h3>
+            <select id="sel-resource-item" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="air">Air</option>
+              <option value="water">Water</option>
+              <option value="forest">Forest</option>
+              <option value="sunlight">Sunlight</option>
+              <option value="coal">Coal</option>
+              <option value="petroleum">Petroleum</option>
+              <option value="naturalgas">Natural Gas</option>
+              <option value="minerals">Minerals</option>
+              <option value="soil">Soil</option>
+            </select>
+            <div style="display:flex; gap:0.5rem;">
+              <button id="btn-resource-renewable" class="nav-topic-btn next" style="flex:1;justify-content:center;background:#16a34a;color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Renewable ♻️</button>
+              <button id="btn-resource-nonrenewable" class="nav-topic-btn next" style="flex:1;justify-content:center;background:#b45309;color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Non-renewable ⏳</button>
+            </div>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="resource-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a resource and pick which category it belongs to.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const constellationViewerLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="constellation-canvas" width="600" height="320" style="background:#0a0e1f;"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a constellation to see its stars connected into a pattern.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Constellation</h3>
+            <select id="sel-constellation" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="orion">Orion (the Hunter)</option>
+              <option value="canismajor">Canis Major (the Dog, with Sirius)</option>
+              <option value="taurus">Taurus (the Bull)</option>
+              <option value="ursamajor">Ursa Major (the Big Dipper)</option>
+              <option value="ursaminor">Ursa Minor (the Little Dipper & Pole Star)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>About this Constellation</h3>
+            <div id="constellation-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a constellation from the dropdown to see its star pattern.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const solarSystemExplorerLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="solarsystem-canvas" width="600" height="320" style="background:#05070f;"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a planet and click "Show Facts" to locate it and reveal what makes it special.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Planet</h3>
+            <select id="sel-planet" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="mercury">Mercury</option>
+              <option value="venus">Venus</option>
+              <option value="earth">Earth</option>
+              <option value="mars">Mars</option>
+              <option value="jupiter">Jupiter</option>
+              <option value="saturn">Saturn</option>
+              <option value="uranus">Uranus</option>
+              <option value="neptune">Neptune</option>
+            </select>
+            <button id="btn-planet-show" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Show Facts 🔭</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Planet Facts</h3>
+            <div id="planet-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a planet and click "Show Facts" to begin.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const rectAreaPerimeterLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="rect-area-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose the shape and its dimensions, then calculate its perimeter and area.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Shape & Size</h3>
+            <select id="sel-rect-shape" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="rectangle">Rectangle</option>
+              <option value="square">Square</option>
+            </select>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Length (cm)</label>
+              <select id="sel-rect-length" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[3,4,5,6,7,8,9,10,11,12].map(n => `<option value="${n}">${n} cm</option>`).join('')}
+              </select>
+            </div>
+            <div id="rect-breadth-row" style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Breadth (cm)</label>
+              <select id="sel-rect-breadth" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[3,4,5,6,7,8,9,10,11,12].map(n => `<option value="${n}">${n} cm</option>`).join('')}
+              </select>
+            </div>
+            <button id="btn-rect-calculate" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Calculate 📐</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Perimeter & Area</h3>
+            <div id="rect-area-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose dimensions and click Calculate.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const triangleHalfRectangleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="triangle-half-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a base and height, then split the rectangle along its diagonal to see the triangle's area.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Rectangle Size</h3>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Base (cm)</label>
+              <select id="sel-tri-base" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[4,5,6,7,8,9,10].map(n => `<option value="${n}">${n} cm</option>`).join('')}
+              </select>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Height (cm)</label>
+              <select id="sel-tri-height" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[3,4,5,6,7,8].map(n => `<option value="${n}">${n} cm</option>`).join('')}
+              </select>
+            </div>
+            <button id="btn-tri-split" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Show Diagonal Split ✂️</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="triangle-half-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose base and height, then click the button.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const fractionStripLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="fraction-strip-canvas" width="600" height="220"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a fractional unit and how many of them to shade, then see the fraction.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Build a Fraction</h3>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Fractional unit (denominator)</label>
+              <select id="sel-frac-denom" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[2,3,4,5,6,7,8,9,10].map(n => `<option value="${n}">1/${n}</option>`).join('')}
+              </select>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">How many fractional units? (numerator)</label>
+              <select id="sel-frac-num" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);"></select>
+            </div>
+            <button id="btn-frac-show" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Show Fraction 🍫</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="fraction-strip-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a fractional unit and quantity, then click Show.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const fractionAdditionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="fraction-add-canvas" width="600" height="260"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose two fractions and an operation to see Brahmagupta's method in action.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Two Fractions</h3>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">First fraction</label>
+              <select id="sel-fracA" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="1/4">1/4</option><option value="1/3">1/3</option><option value="2/3">2/3</option><option value="3/4">3/4</option><option value="1/2">1/2</option><option value="1/6">1/6</option><option value="2/5">2/5</option><option value="3/5">3/5</option><option value="1/5">1/5</option><option value="5/6">5/6</option>
+              </select>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Operation</label>
+              <select id="sel-frac-op" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="add">+ Add</option>
+                <option value="sub">− Subtract</option>
+              </select>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Second fraction</label>
+              <select id="sel-fracB" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="1/3">1/3</option><option value="1/4">1/4</option><option value="2/3">2/3</option><option value="3/4">3/4</option><option value="1/2">1/2</option><option value="1/6">1/6</option><option value="2/5">2/5</option><option value="3/5">3/5</option><option value="1/5">1/5</option><option value="5/6">5/6</option>
+              </select>
+            </div>
+            <button id="btn-frac-calc" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Calculate</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Brahmagupta's Method</h3>
+            <div id="fraction-add-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose two fractions and an operation, then click Calculate.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const compassCircleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="compass-circle-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a radius and draw a circle around the fixed centre point P.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Radius</h3>
+            <select id="sel-circle-radius" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[2,3,4,5,6,7,8].map(n => `<option value="${n}">${n} cm</option>`).join('')}
+            </select>
+            <button id="btn-circle-draw" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Draw Circle ⭕</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="circle-radius-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a radius and click Draw Circle.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const equidistantArcsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="equidistant-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose the distance between B and C and a radius, then find the point equidistant from both.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Distance & Radius</h3>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Distance between B and C</label>
+              <select id="sel-arc-distance" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[4,5,6,7].map(n => `<option value="${n}">${n} cm</option>`).join('')}
+              </select>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Radius from B and from C</label>
+              <select id="sel-arc-radius" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[2,3,4,5,6,7,8].map(n => `<option value="${n}">${n} cm</option>`).join('')}
+              </select>
+            </div>
+            <button id="btn-arc-find" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Find Point A</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="equidistant-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a distance and radius, then click Find Point A.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const punchHoleSymmetryLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="punch-hole-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a fold line and a hole position, then unfold to reveal the mirrored hole.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Fold & Hole Position</h3>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Fold line</label>
+              <select id="sel-fold-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="vertical">Vertical Fold</option>
+                <option value="horizontal">Horizontal Fold</option>
+                <option value="diagonal-main">Diagonal Fold (↘)</option>
+                <option value="diagonal-anti">Diagonal Fold (↙)</option>
+              </select>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Hole position (while folded)</label>
+              <select id="sel-hole-pos" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="A">Position A (upper-left)</option>
+                <option value="B">Position B (upper-right)</option>
+                <option value="C">Position C (lower-left)</option>
+                <option value="D">Position D (lower-right)</option>
+              </select>
+            </div>
+            <button id="btn-punch-unfold" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Unfold & Reveal 🕳️</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="punch-hole-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a fold line and hole position, then click Unfold & Reveal.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const rotationalSymmetryLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="rotational-symmetry-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a number of arms, then rotate step by step through its angles of symmetry.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Radial Arms</h3>
+            <select id="sel-rot-arms" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="2">2 arms</option>
+              <option value="3">3 arms</option>
+              <option value="4">4 arms (windmill)</option>
+              <option value="5">5 arms</option>
+              <option value="6">6 arms</option>
+              <option value="8">8 arms</option>
+            </select>
+            <button id="btn-rot-step" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Rotate to Next Angle 🔄</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Angles of Symmetry</h3>
+            <div id="rotational-symmetry-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose the number of arms to see its angles of symmetry.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const integerLiftLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="integer-lift-canvas" width="600" height="360"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a button press and watch the lift move between floors.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Press a Button</h3>
+            <select id="sel-lift-move" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="5">+5</option>
+              <option value="4">+4</option>
+              <option value="3">+3</option>
+              <option value="2">+2</option>
+              <option value="1">+1</option>
+              <option value="-1">−1</option>
+              <option value="-2">−2</option>
+              <option value="-3">−3</option>
+              <option value="-4">−4</option>
+              <option value="-5">−5</option>
+            </select>
+            <button id="btn-lift-press" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;margin-bottom:0.5rem;">Press Button 🛗</button>
+            <button id="btn-lift-reset" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--bg-primary);color:var(--text-normal);border:1px solid var(--border-color);padding:0.6rem;border-radius:var(--radius-sm);font-weight:600;cursor:pointer;">Reset to Floor 0</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Movement</h3>
+            <div id="integer-lift-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">You start at Floor 0 (Welcome Hall). Choose a button press.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const tokenZeroPairLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="token-zero-pair-canvas" width="600" height="260"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose how many positive and negative tokens to combine, then cancel the zero pairs.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Tokens</h3>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Positive tokens (+)</label>
+              <select id="sel-token-a" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[0,1,2,3,4,5,6,7,8].map(n => `<option value="${n}"${n===5?' selected':''}>${n}</option>`).join('')}
+              </select>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Negative tokens (−)</label>
+              <select id="sel-token-b" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[0,1,2,3,4,5,6,7,8].map(n => `<option value="${n}"${n===8?' selected':''}>${n}</option>`).join('')}
+              </select>
+            </div>
+            <button id="btn-token-cancel" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Cancel Zero Pairs</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="token-zero-pair-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose tokens, then click Cancel Zero Pairs.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const matchstickPatternLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="matchstick-canvas" width="600" height="260"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a pattern type and how many shapes to build, then see the matchstick formula.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Pattern</h3>
+            <select id="sel-matchstick-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="L">L-Shapes (Parthiv's Pattern)</option>
+              <option value="square">Squares in a Row</option>
+            </select>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Number of shapes (n)</label>
+              <select id="sel-matchstick-n" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[1,2,3,4,5,6,7,8].map(n => `<option value="${n}"${n===4?' selected':''}>${n}</option>`).join('')}
+              </select>
+            </div>
+          </div>
+          <div class="sim-calculator">
+            <h3>Formula & Count</h3>
+            <div id="matchstick-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a pattern and number of shapes.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const formulaMachineLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="formula-machine-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose two inputs and a formula, then run the number machine.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Inputs & Formula</h3>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">First number (a)</label>
+              <select id="sel-machine-a" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[1,2,3,4,5,6,7,8,9,10,11,12].map(n => `<option value="${n}"${n===5?' selected':''}>${n}</option>`).join('')}
+              </select>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Second number (b)</label>
+              <select id="sel-machine-b" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[0,1,2,3,4,5,6,7,8,9,10,11].map(n => `<option value="${n}"${n===2?' selected':''}>${n}</option>`).join('')}
+              </select>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Formula</label>
+              <select id="sel-machine-formula" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="2a-b">2a − b</option>
+                <option value="a+b-2">a + b − 2</option>
+                <option value="ab+1">a × b + 1</option>
+              </select>
+            </div>
+            <button id="btn-machine-run" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Run Machine ⚙️</button>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="formula-machine-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose inputs and a formula, then click Run Machine.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const intersectingLinesAngleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="intersecting-lines-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose angle a and see how the other three angles are determined.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Angle a</h3>
+            <select id="sel-angle-a" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[20,30,40,50,60,70,80,90,100,110,120,130,140,150,160].map(n => `<option value="${n}"${n===60?' selected':''}>${n}°</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>All Four Angles</h3>
+            <div id="intersecting-lines-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose angle a to see the rest.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const transversalAngleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="transversal-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose whether the lines are parallel and the transversal's angle to compare corresponding angles.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Setup</h3>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Lines l and m</label>
+              <select id="sel-trans-parallel" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="parallel">Parallel Lines</option>
+                <option value="notparallel">Non-Parallel Lines</option>
+              </select>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Transversal angle at l</label>
+              <select id="sel-trans-angle" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[30,40,50,60,70,80,90,100,110,120,130,140,150].map(n => `<option value="${n}"${n===50?' selected':''}>${n}°</option>`).join('')}
+              </select>
+            </div>
+          </div>
+          <div class="sim-calculator">
+            <h3>Corresponding Angles</h3>
+            <div id="transversal-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a setup to compare the corresponding angles.</div>
           </div>
         </div>
       </div>`;
@@ -252,16 +1189,37 @@ function getInlineLabHtml(type) {
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="hormone-canvas" width="600" height="300"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Adjust the blood sugar slider and watch the feedback loop respond.</span></div>
+          <div class="canvas-instruction-bar" id="hormone-hint"><span>💡 Adjust the blood sugar slider and watch the feedback loop respond.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Blood Sugar Level</h3>
-            <input type="range" id="blood-sugar" min="40" max="200" value="100" style="width:100%;margin-bottom:0.5rem;">
-            <div id="sugar-val" style="text-align:center;font-weight:700;color:var(--accent-color);">100 mg/dL (Normal)</div>
+            <h3>Explore</h3>
+            <select id="sel-hormone-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="animal">Animal Hormones: Blood Sugar Feedback</option>
+              <option value="phototropism">Plant Hormones: Phototropism (Auxin)</option>
+              <option value="geotropism">Plant Hormones: Geotropism (Gravity)</option>
+            </select>
+            <div id="hormone-animal-controls">
+              <h3>Blood Sugar Level</h3>
+              <input type="range" id="blood-sugar" min="40" max="200" value="100" style="width:100%;margin-bottom:0.5rem;">
+              <div id="sugar-val" style="text-align:center;font-weight:700;color:var(--accent-color);">100 mg/dL (Normal)</div>
+            </div>
+            <div id="hormone-photo-controls" style="display:none;">
+              <h3>Light Direction</h3>
+              <input type="range" id="light-position" min="0" max="100" value="50" style="width:100%;margin-bottom:0.5rem;">
+              <div id="light-position-val" style="text-align:center;font-weight:700;color:var(--accent-color);">Overhead (no bending)</div>
+            </div>
+            <div id="hormone-geo-controls" style="display:none;">
+              <h3>Pot Orientation</h3>
+              <select id="sel-pot-orientation" style="width:100%;padding:0.4rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="upright">Upright</option>
+                <option value="tilted">Tilted on its side</option>
+                <option value="upside-down">Turned upside down</option>
+              </select>
+            </div>
           </div>
           <div class="sim-calculator">
-            <h3>Hormonal Response</h3>
+            <h3 id="hormone-obs-title">Hormonal Response</h3>
             <div id="hormone-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Adjust blood sugar to see insulin/glucagon feedback.</div>
           </div>
         </div>
@@ -301,16 +1259,48 @@ function getInlineLabHtml(type) {
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="prism-canvas" width="600" height="300"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Drag the light ray to adjust the angle of incidence on the prism.</span></div>
+          <div class="canvas-instruction-bar" id="prism-hint"><span>💡 Drag the light ray to adjust the angle of incidence on the prism.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Angle of Incidence</h3>
-            <input type="range" id="prism-angle" min="20" max="70" value="45" style="width:100%;margin-bottom:0.5rem;">
-            <div id="prism-angle-val" style="text-align:center;font-weight:700;color:var(--accent-color);">45°</div>
+            <h3>Explore</h3>
+            <select id="sel-prism-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="dispersion">Prism Dispersion</option>
+              <option value="atmospheric">Atmospheric Phenomena</option>
+            </select>
+            <div id="prism-dispersion-controls">
+              <h3>Angle of Incidence</h3>
+              <input type="range" id="prism-angle" min="20" max="70" value="45" style="width:100%;margin-bottom:0.5rem;">
+              <div id="prism-angle-val" style="text-align:center;font-weight:700;color:var(--accent-color);margin-bottom:0.5rem;">45°</div>
+              <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.85rem;color:var(--text-muted);margin-bottom:0.4rem;">
+                <input type="checkbox" id="chk-prism-angles"> Show refraction angles (∠i, ∠r, ∠e, ∠A, ∠D)
+              </label>
+              <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.85rem;color:var(--text-muted);">
+                <input type="checkbox" id="chk-prism-recombine"> Add 2nd inverted prism (recombine spectrum)
+              </label>
+            </div>
+            <div id="prism-atmospheric-controls" style="display:none;">
+              <select id="sel-atmos-submode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="sky">Blue Sky &amp; Red Sunset</option>
+                <option value="twinkle">Twinkling Stars vs Planets</option>
+                <option value="rainbow">Rainbow Formation</option>
+                <option value="sunrise">Advance Sunrise / Delayed Sunset</option>
+                <option value="tyndall">Tyndall Effect</option>
+              </select>
+              <div id="atmos-sky-controls">
+                <h3>Sun Position</h3>
+                <input type="range" id="rng-sun-position" min="0" max="100" value="0" style="width:100%;margin-bottom:0.5rem;">
+                <div id="sun-position-val" style="text-align:center;font-weight:700;color:var(--accent-color);">Noon (overhead)</div>
+              </div>
+              <div id="atmos-tyndall-controls" style="display:none;">
+                <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;color:var(--text-muted);">
+                  <input type="checkbox" id="chk-tyndall-particles" checked> Colloidal particles present (smoke/mist/dust)
+                </label>
+              </div>
+            </div>
           </div>
           <div class="sim-calculator">
-            <h3>Dispersion</h3>
+            <h3 id="prism-obs-title">Dispersion</h3>
             <div id="prism-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Adjust angle to see white light disperse through the prism.</div>
           </div>
         </div>
@@ -320,17 +1310,55 @@ function getInlineLabHtml(type) {
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="ohms-canvas" width="600" height="340"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Adjust voltage and resistance to observe Ohm's Law: V = IR.</span></div>
+          <div class="canvas-instruction-bar"><span>💡 Adjust voltage and resistance to observe Ohm's Law: V = IR. Switch circuit type to explore series and parallel combinations.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Circuit Parameters</h3>
-            <label style="font-size:0.85rem;color:var(--text-muted);">Voltage (V)</label>
-            <input type="range" id="ohms-voltage" min="0" max="12" value="6" step="0.5" style="width:100%;margin-bottom:0.25rem;">
-            <div id="ohms-v-val" style="text-align:center;font-weight:700;color:var(--accent-color);margin-bottom:0.5rem;">6.0 V</div>
-            <label style="font-size:0.85rem;color:var(--text-muted);">Resistance (Ω)</label>
-            <input type="range" id="ohms-resistance" min="1" max="100" value="10" style="width:100%;margin-bottom:0.25rem;">
-            <div id="ohms-r-val" style="text-align:center;font-weight:700;color:var(--accent-color);">10 Ω</div>
+            <h3>Circuit Type</h3>
+            <select id="ohms-mode" style="width:100%;padding:0.4rem;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="single">Single Resistor</option>
+              <option value="series">Series Combination (R1 + R2 + R3)</option>
+              <option value="parallel">Parallel Combination (R1, R2, R3)</option>
+              <option value="resistivity">Factors Affecting Resistance (R = ρl/A)</option>
+            </select>
+            <div id="ohms-basic-controls">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Voltage (V)</label>
+              <input type="range" id="ohms-voltage" min="0" max="12" value="6" step="0.5" style="width:100%;margin-bottom:0.25rem;">
+              <div id="ohms-v-val" style="text-align:center;font-weight:700;color:var(--accent-color);margin-bottom:0.5rem;">6.0 V</div>
+              <label id="ohms-r-label" style="font-size:0.85rem;color:var(--text-muted);">Resistance (Ω)</label>
+              <input type="range" id="ohms-resistance" min="1" max="100" value="10" style="width:100%;margin-bottom:0.25rem;">
+              <div id="ohms-r-val" style="text-align:center;font-weight:700;color:var(--accent-color);margin-bottom:0.5rem;">10 Ω</div>
+              <div id="ohms-r2-row" style="display:none;">
+                <label style="font-size:0.85rem;color:var(--text-muted);">R2 (Ω)</label>
+                <input type="range" id="ohms-resistance2" min="1" max="100" value="20" style="width:100%;margin-bottom:0.25rem;">
+                <div id="ohms-r2-val" style="text-align:center;font-weight:700;color:var(--accent-color);margin-bottom:0.5rem;">20 Ω</div>
+              </div>
+              <div id="ohms-r3-row" style="display:none;">
+                <label style="font-size:0.85rem;color:var(--text-muted);">R3 (Ω)</label>
+                <input type="range" id="ohms-resistance3" min="1" max="100" value="30" style="width:100%;margin-bottom:0.25rem;">
+                <div id="ohms-r3-val" style="text-align:center;font-weight:700;color:var(--accent-color);">30 Ω</div>
+              </div>
+            </div>
+            <div id="ohms-resistivity-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Material</label>
+              <select id="sel-wire-material" style="width:100%;padding:0.4rem;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="silver">Silver (1.60×10⁻⁸ Ωm)</option>
+                <option value="copper" selected>Copper (1.62×10⁻⁸ Ωm)</option>
+                <option value="aluminium">Aluminium (2.63×10⁻⁸ Ωm)</option>
+                <option value="tungsten">Tungsten (5.20×10⁻⁸ Ωm)</option>
+                <option value="iron">Iron (10.0×10⁻⁸ Ωm)</option>
+                <option value="mercury">Mercury (94.0×10⁻⁸ Ωm)</option>
+                <option value="manganin">Manganin — alloy (44×10⁻⁶ Ωm)</option>
+                <option value="constantan">Constantan — alloy (49×10⁻⁶ Ωm)</option>
+                <option value="nichrome">Nichrome — alloy (100×10⁻⁶ Ωm)</option>
+              </select>
+              <label style="font-size:0.85rem;color:var(--text-muted);">Length (l)</label>
+              <input type="range" id="rng-wire-length" min="1" max="10" value="1" step="0.5" style="width:100%;margin-bottom:0.25rem;">
+              <div id="wire-length-val" style="text-align:center;font-weight:700;color:var(--accent-color);margin-bottom:0.5rem;">1.0 m</div>
+              <label style="font-size:0.85rem;color:var(--text-muted);">Cross-sectional Area (A)</label>
+              <input type="range" id="rng-wire-area" min="1" max="10" value="5" step="0.5" style="width:100%;margin-bottom:0.25rem;">
+              <div id="wire-area-val" style="text-align:center;font-weight:700;color:var(--accent-color);">0.5 mm²</div>
+            </div>
           </div>
           <div class="sim-calculator">
             <h3>Measurements</h3>
@@ -343,18 +1371,46 @@ function getInlineLabHtml(type) {
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="magnetic-canvas" width="600" height="340"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Drag the compass around the magnet to see how it responds to the magnetic field.</span></div>
+          <div class="canvas-instruction-bar" id="magnetic-hint"><span>💡 Drag the compass around the magnet to see how it responds to the magnetic field.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Magnet Type</h3>
-            <select id="sel-magnet-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:1rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="bar">Bar Magnet</option>
-              <option value="horseshoe">Horseshoe Magnet</option>
+            <h3>Explore</h3>
+            <select id="sel-magnet-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="bar">Bar Magnet Field Lines</option>
+              <option value="wire">Straight Wire (Right-Hand Thumb Rule)</option>
+              <option value="loop">Circular Loop / Solenoid</option>
+              <option value="force">Force on a Conductor (Fleming's Left-Hand Rule)</option>
+              <option value="motor">Electric Motor (Continuous Rotation)</option>
             </select>
+            <div id="mag-wire-controls" style="display:none;margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Current Direction</label>
+              <select id="sel-wire-current" style="width:100%;padding:0.4rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="out">Out of the page (towards you)</option>
+                <option value="in">Into the page (away from you)</option>
+              </select>
+            </div>
+            <div id="mag-loop-controls" style="display:none;margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Turns</label>
+              <input type="range" id="rng-loop-turns" min="1" max="6" value="1" style="width:100%;margin-bottom:0.25rem;">
+              <div id="loop-turns-val" style="text-align:center;font-size:0.85rem;color:var(--accent-color);margin-bottom:0.4rem;">1 turn (single loop)</div>
+              <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.85rem;color:var(--text-muted);"><input type="checkbox" id="chk-iron-core"> Insert soft-iron core (electromagnet)</label>
+            </div>
+            <div id="mag-force-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Current in Rod</label>
+              <select id="sel-force-current" style="width:100%;padding:0.4rem;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="b_to_a">B to A</option>
+                <option value="a_to_b">A to B</option>
+              </select>
+              <label style="font-size:0.85rem;color:var(--text-muted);">Magnetic Field</label>
+              <select id="sel-force-field" style="width:100%;padding:0.4rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="up">Upward (N below, S above)</option>
+                <option value="down">Downward (S below, N above)</option>
+              </select>
+            </div>
           </div>
           <div class="sim-calculator">
-            <h3>Field Direction</h3>
+            <h3>Observation</h3>
             <div id="magnetic-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Drag the compass to explore the magnetic field pattern.</div>
           </div>
         </div>
@@ -364,15 +1420,29 @@ function getInlineLabHtml(type) {
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="faraday-canvas" width="600" height="300"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Drag the magnet in and out of the coil to induce current.</span></div>
+          <div class="canvas-instruction-bar" id="faraday-hint"><span>💡 Drag the magnet in and out of the coil to induce current.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Controls</h3>
-            <p style="font-size:0.9rem;color:var(--text-muted);">Click and drag the magnet left/right through the coil. Faster motion = more EMF!</p>
+            <h3>Explore</h3>
+            <select id="sel-faraday-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="induction">Electromagnetic Induction</option>
+              <option value="generator">AC Generator</option>
+              <option value="domestic">Domestic Circuit &amp; Fuse</option>
+            </select>
+            <p id="faraday-induction-controls" style="font-size:0.9rem;color:var(--text-muted);">Click and drag the magnet left/right through the coil. Faster motion = more EMF!</p>
+            <div id="faraday-generator-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Rotation Speed</label>
+              <input type="range" id="rng-generator-speed" min="1" max="10" value="4" style="width:100%;margin-bottom:0.25rem;">
+              <div id="generator-speed-val" style="text-align:center;font-size:0.85rem;color:var(--accent-color);">Speed 4</div>
+            </div>
+            <div id="faraday-domestic-controls" style="display:none;">
+              <button id="btn-short-circuit" class="nav-topic-btn next" style="width:100%;justify-content:center;background:#ef4444;color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;margin-bottom:0.5rem;">⚡ Simulate Short Circuit</button>
+              <button id="btn-reset-circuit" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--secondary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">🔄 Reset Circuit</button>
+            </div>
           </div>
           <div class="sim-calculator">
-            <h3>Galvanometer</h3>
+            <h3 id="faraday-obs-title">Galvanometer</h3>
             <div id="faraday-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Move the magnet to induce an EMF.</div>
           </div>
         </div>
@@ -382,18 +1452,28 @@ function getInlineLabHtml(type) {
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="foodweb-canvas" width="600" height="340"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Click organisms to highlight their food chain and energy flow.</span></div>
+          <div class="canvas-instruction-bar" id="foodweb-hint"><span>💡 Click organisms to highlight their food chain and energy flow.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Ecosystem</h3>
-            <select id="sel-ecosystem" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:1rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="grassland">Grassland Ecosystem</option>
-              <option value="pond">Pond Ecosystem</option>
+            <h3>Explore</h3>
+            <select id="sel-env-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="foodweb">Food Web &amp; Energy Flow</option>
+              <option value="ozone">Ozone Layer Depletion</option>
+              <option value="waste">Waste Sorting Game</option>
             </select>
+            <div id="ozone-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">CFC Pollution Level</label>
+              <input type="range" id="rng-cfc-level" min="0" max="100" value="0" style="width:100%;margin-bottom:0.25rem;">
+              <div id="cfc-level-val" style="text-align:center;font-weight:700;color:var(--accent-color);">0% (Ozone layer intact)</div>
+            </div>
+            <div id="waste-controls" style="display:none;">
+              <p style="font-size:0.9rem;color:var(--text-muted);">Sort each item: is it biodegradable or non-biodegradable?</p>
+              <div id="waste-score" style="text-align:center;font-weight:700;color:var(--accent-color);">Score: 0 / 0</div>
+            </div>
           </div>
           <div class="sim-calculator">
-            <h3>Energy Flow</h3>
+            <h3 id="foodweb-obs-title">Energy Flow</h3>
             <div id="foodweb-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Click on organisms to trace their food chain.</div>
           </div>
         </div>
@@ -453,8 +1533,12 @@ function getInlineLabHtml(type) {
             <h3>Select Organism</h3>
             <select id="sel-organism" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:1rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
               <option value="amoeba">Amoeba (Binary Fission)</option>
+              <option value="plasmodium">Plasmodium (Multiple Fission)</option>
               <option value="yeast">Yeast (Budding)</option>
               <option value="spirogyra">Spirogyra (Fragmentation)</option>
+              <option value="planaria">Planaria (Regeneration)</option>
+              <option value="potato">Potato (Vegetative Propagation)</option>
+              <option value="rhizopus">Rhizopus (Spore Formation)</option>
             </select>
             <button id="btn-reproduce" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Start Reproduction 🔬</button>
           </div>
@@ -606,7 +1690,7 @@ function getInlineLabHtml(type) {
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="probability-canvas" width="600" height="340"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Roll dice or flip coins and watch experimental probability converge to theoretical.</span></div>
+          <div class="canvas-instruction-bar"><span>💡 Roll dice, flip coins, or draw cards and watch experimental probability converge to theoretical.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
@@ -614,6 +1698,7 @@ function getInlineLabHtml(type) {
             <select id="sel-prob-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
               <option value="coin">Coin Toss</option>
               <option value="dice">Dice Roll</option>
+              <option value="card">Card Draw (Ace?)</option>
             </select>
             <button id="btn-roll" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;margin-bottom:0.5rem;">Roll / Flip ×1 🎲</button>
             <button id="btn-roll-100" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--secondary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Roll / Flip ×100 ⚡</button>
@@ -719,7 +1804,7 @@ function getInlineLabHtml(type) {
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="stats-canvas" width="600" height="340"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Select a preset dataset or enter your own to see Mean, Mode, and Median on the histogram.</span></div>
+          <div class="canvas-instruction-bar"><span>💡 Select a preset dataset or enter your own to see Mean, Mode, and Median on the histogram — or switch to the ogive to read the median graphically.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
@@ -729,7 +1814,8 @@ function getInlineLabHtml(type) {
               <option value="income">Family Income Distribution</option>
               <option value="height">Heights of Students</option>
             </select>
-            <button id="btn-plot-stats" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Plot Histogram 📊</button>
+            <button id="btn-plot-stats" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;margin-bottom:0.5rem;">Plot Histogram 📊</button>
+            <button id="btn-toggle-ogive" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--secondary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Show Ogive (Cumulative Frequency) 📈</button>
           </div>
           <div class="sim-calculator">
             <h3>Central Tendencies</h3>
@@ -747,16 +1833,74 @@ function getInlineLabHtml(type) {
         <div class="sim-settings-pane">
           <div class="settings-group-card">
             <h3>Parameters</h3>
-            <label style="font-size:0.85rem;color:var(--text-muted);">Distance from base (m)</label>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Scenario</label>
+            <select id="hd-mode" style="width:100%;padding:0.4rem;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="elevation">Angle of Elevation (observer on ground)</option>
+              <option value="depression">Angle of Depression (observer on tower)</option>
+            </select>
+            <label id="hd-dist-label" style="font-size:0.85rem;color:var(--text-muted);">Distance from base (m)</label>
             <input type="range" id="hd-dist" min="10" max="100" value="50" style="width:100%;margin-bottom:0.25rem;">
             <div id="hd-dist-val" style="text-align:center;font-size:0.85rem;color:var(--accent-color);margin-bottom:0.3rem;">d = 50 m</div>
-            <label style="font-size:0.85rem;color:var(--text-muted);">Angle of Elevation (°)</label>
+            <label id="hd-angle-label" style="font-size:0.85rem;color:var(--text-muted);">Angle of Elevation (°)</label>
             <input type="range" id="hd-angle" min="10" max="80" value="30" style="width:100%;margin-bottom:0.25rem;">
             <div id="hd-angle-val" style="text-align:center;font-size:0.85rem;color:var(--accent-color);">θ = 30°</div>
           </div>
           <div class="sim-calculator">
             <h3>Calculation</h3>
             <div id="hd-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Adjust parameters to calculate the height.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const solidsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="solids-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a combination of solids and adjust dimensions to see surface area and volume update live.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Solid Combination</h3>
+            <select id="sel-solid-shape" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="toy">Cone + Hemisphere (Toy)</option>
+              <option value="capsule">Cylinder + 2 Hemispheres (Capsule)</option>
+              <option value="tent">Cylinder + Cone (Tent / Rocket)</option>
+              <option value="block">Cube + Hemisphere (Decorative Block)</option>
+            </select>
+            <label id="solid-r-label" style="font-size:0.85rem;color:var(--text-muted);">Radius (r)</label>
+            <input type="range" id="solid-r" min="1" max="6" value="3" step="0.5" style="width:100%;margin-bottom:0.25rem;">
+            <div id="solid-r-val" style="text-align:center;font-size:0.85rem;color:var(--accent-color);margin-bottom:0.5rem;">r = 3</div>
+            <label id="solid-h1-label" style="font-size:0.85rem;color:var(--text-muted);">Cone Height (h)</label>
+            <input type="range" id="solid-h1" min="1" max="12" value="6" step="0.5" style="width:100%;margin-bottom:0.25rem;">
+            <div id="solid-h1-val" style="text-align:center;font-size:0.85rem;color:var(--accent-color);margin-bottom:0.5rem;">h = 6</div>
+            <div id="solid-h2-row" style="display:none;">
+              <label id="solid-h2-label" style="font-size:0.85rem;color:var(--text-muted);">Cone Height (h₂)</label>
+              <input type="range" id="solid-h2" min="1" max="8" value="4" step="0.5" style="width:100%;margin-bottom:0.25rem;">
+              <div id="solid-h2-val" style="text-align:center;font-size:0.85rem;color:var(--accent-color);">h₂ = 4</div>
+            </div>
+          </div>
+          <div class="sim-calculator">
+            <h3>Surface Area &amp; Volume</h3>
+            <div id="solid-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a shape and adjust the sliders.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const triangleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="triangle-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Slide point D along AB. DE is constructed parallel to BC — watch the Basic Proportionality Theorem hold true.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Position of D on AB</h3>
+            <input type="range" id="tri-t" min="10" max="90" value="50" style="width:100%;margin-bottom:0.25rem;">
+            <div id="tri-t-val" style="text-align:center;font-weight:700;color:var(--accent-color);">AD : DB = 1.00 : 1.00</div>
+          </div>
+          <div class="sim-calculator">
+            <h3>Basic Proportionality Theorem</h3>
+            <div id="tri-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Drag the slider — since DE is parallel to BC, AD/DB always equals AE/EC.</div>
           </div>
         </div>
       </div>`;
@@ -931,33 +2075,57 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         <div class="sim-canvas-wrapper">
           <canvas id="ph-canvas" width="600" height="340"></canvas>
           <div class="canvas-instruction-bar">
-            <span>💡 Click and drag the indicator test paper into the beaker, or toggle solutions.</span>
+            <span id="ph-hint">💡 Click and drag the indicator test paper into the beaker, or toggle solutions.</span>
           </div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Test Solution Beaker</h3>
-            <select id="sel-ph-substance" class="sim-toggle-btn" style="text-align: left; padding: 0.5rem; width:100%; margin-bottom: 1rem; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-normal);">
-              <option value="hcl">1M Hydrochloric Acid (Strong Acid)</option>
-              <option value="gastric">Gastric Juice (Acidic)</option>
-              <option value="lemon">Lemon Juice (Acidic)</option>
-              <option value="tomato">Tomato Juice (Weak Acid)</option>
-              <option value="water" selected>Pure Water / Saliva (Neutral)</option>
-              <option value="magnesia">Milk of Magnesia (Weak Base)</option>
-              <option value="naoh">1M Sodium Hydroxide (Strong Base)</option>
+            <h3>Mode</h3>
+            <select id="sel-ph-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="indicator">Indicator Testing</option>
+              <option value="metal">Metal + Acid → H₂ Gas</option>
+              <option value="carbonate">Carbonate + Acid → CO₂ + Limewater</option>
             </select>
-            
-            <h3>Indicator Probe</h3>
-            <div style="display: flex; flex-direction: column; gap: 0.6rem; color: var(--text-normal);">
-              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="radio" name="ph-probe" value="universal" checked> Universal pH Paper</label>
-              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="radio" name="ph-probe" value="litmus-blue"> Blue Litmus Paper</label>
-              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="radio" name="ph-probe" value="litmus-red"> Red Litmus Paper</label>
-              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="radio" name="ph-probe" value="phenolphthalein"> Phenolphthalein Drops</label>
+            <div id="ph-indicator-controls">
+              <h3>Test Solution Beaker</h3>
+              <select id="sel-ph-substance" class="sim-toggle-btn" style="text-align: left; padding: 0.5rem; width:100%; margin-bottom: 1rem; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-normal);">
+                <option value="hcl">1M Hydrochloric Acid (Strong Acid)</option>
+                <option value="gastric">Gastric Juice (Acidic)</option>
+                <option value="lemon">Lemon Juice (Acidic)</option>
+                <option value="tomato">Tomato Juice (Weak Acid)</option>
+                <option value="water" selected>Pure Water / Saliva (Neutral)</option>
+                <option value="magnesia">Milk of Magnesia (Weak Base)</option>
+                <option value="naoh">1M Sodium Hydroxide (Strong Base)</option>
+              </select>
+
+              <h3>Indicator Probe</h3>
+              <div style="display: flex; flex-direction: column; gap: 0.6rem; color: var(--text-normal);">
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="radio" name="ph-probe" value="universal" checked> Universal pH Paper</label>
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="radio" name="ph-probe" value="litmus-blue"> Blue Litmus Paper</label>
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="radio" name="ph-probe" value="litmus-red"> Red Litmus Paper</label>
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"><input type="radio" name="ph-probe" value="phenolphthalein"> Phenolphthalein Drops</label>
+              </div>
+            </div>
+            <div id="ph-metal-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Metal</label>
+              <select id="sel-ph-metal" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="zn">Zinc granules</option>
+                <option value="mg">Magnesium ribbon</option>
+              </select>
+              <button id="btn-run-metal-acid" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Add to Dilute Acid ⚗️</button>
+            </div>
+            <div id="ph-carbonate-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Metal Carbonate</label>
+              <select id="sel-ph-carbonate" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="na2co3">Sodium Carbonate (Na₂CO₃)</option>
+                <option value="nahco3">Sodium Hydrogencarbonate (NaHCO₃)</option>
+              </select>
+              <button id="btn-run-carbonate-acid" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Add Dilute HCl ⚗️</button>
             </div>
           </div>
           <div class="sim-calculator">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-              <h3 style="margin-bottom:0; color: var(--secondary-color); font-size: 1.1rem;">Analytical pH Log</h3>
+              <h3 id="ph-log-title" style="margin-bottom:0; color: var(--secondary-color); font-size: 1.1rem;">Analytical pH Log</h3>
               <button id="btn-export-ph" class="btn-export-csv" title="Save this experiment data to CSV">📥 Save Report</button>
             </div>
             <div id="ph-log-panel" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-normal); background: var(--bg-primary); padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
@@ -1011,29 +2179,176 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       </div>
     `;
 
+    const metalElementalReactionsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="metalox-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar" id="metalox-hint"><span>💡 Choose a reagent and a metal to see how vigorously they react.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Reagent</h3>
+            <select id="sel-metalox-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="oxygen">Metal + Oxygen (Burning)</option>
+              <option value="water">Metal + Water / Steam</option>
+              <option value="acid">Metal + Dilute Acid</option>
+            </select>
+            <h3>Metal</h3>
+            <select id="sel-metalox-metal" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="na">Sodium (Na)</option>
+              <option value="mg">Magnesium (Mg)</option>
+              <option value="al">Aluminium (Al)</option>
+              <option value="zn">Zinc (Zn)</option>
+              <option value="fe">Iron (Fe)</option>
+              <option value="cu">Copper (Cu)</option>
+              <option value="ag">Silver (Ag)</option>
+            </select>
+            <button id="btn-run-metalox" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">React ⚗️</button>
+          </div>
+          <div class="sim-calculator">
+            <h3 id="metalox-obs-title">Reaction Observations</h3>
+            <div id="metalox-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Select a metal and click React to see what happens.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const metallurgyCorrosionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="metallurgy-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar" id="metallurgy-hint"><span>💡 Pick a metal and see how it would be extracted from its ore.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Explore</h3>
+            <select id="sel-metallurgy-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="extraction">Extraction by Reactivity</option>
+              <option value="thermit">Thermit Reaction</option>
+              <option value="refining">Electrolytic Refining</option>
+              <option value="corrosion">Corrosion &amp; Prevention</option>
+            </select>
+            <div id="metallurgy-extraction-controls">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Metal</label>
+              <select id="sel-extraction-metal" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="na">Sodium (Na) — high reactivity</option>
+                <option value="zn">Zinc (Zn) — medium reactivity</option>
+                <option value="hg">Mercury (Hg) — low reactivity</option>
+              </select>
+            </div>
+            <div id="metallurgy-thermit-controls" style="display:none;">
+              <button id="btn-run-thermit" class="nav-topic-btn next" style="width:100%;justify-content:center;background:#ef4444;color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Ignite Thermit Mixture 🔥</button>
+            </div>
+            <div id="metallurgy-refining-controls" style="display:none;">
+              <button id="btn-run-refining" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Pass Current ⚡</button>
+            </div>
+            <div id="metallurgy-corrosion-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Metal</label>
+              <select id="sel-corrosion-metal2" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="iron">Iron (rusts)</option>
+                <option value="silver">Silver (tarnishes)</option>
+                <option value="copper">Copper (patinas)</option>
+              </select>
+              <label style="font-size:0.85rem;color:var(--text-muted);">Prevention</label>
+              <select id="sel-corrosion-prevention" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="none">None</option>
+                <option value="galvanizing">Galvanising (Zinc coat)</option>
+                <option value="alloying">Alloying (Stainless Steel)</option>
+              </select>
+              <button id="btn-run-corrosion2" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Expose to Moist Air ⏩</button>
+            </div>
+          </div>
+          <div class="sim-calculator">
+            <h3 id="metallurgy-obs-title">Extraction Pathway</h3>
+            <div id="metallurgy-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Select a metal to see how it's extracted.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const saltChemicalsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="saltchem-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar" id="saltchem-hint"><span>💡 Explore how common salt (NaCl) is transformed into everyday chemicals.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Process</h3>
+            <select id="sel-saltchem-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="chloralkali">Chlor-Alkali Process</option>
+              <option value="bakingsoda">Baking Soda (NaHCO₃)</option>
+              <option value="washingsoda">Washing Soda (Water of Crystallisation)</option>
+              <option value="pop">Plaster of Paris</option>
+            </select>
+            <div id="saltchem-chloralkali-controls">
+              <button id="btn-run-chloralkali" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Start Electrolysis ⚡</button>
+            </div>
+            <div id="saltchem-bakingsoda-controls" style="display:none;">
+              <button id="btn-heat-bakingsoda" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Heat NaHCO₃ 🔥</button>
+            </div>
+            <div id="saltchem-washingsoda-controls" style="display:none;">
+              <button id="btn-hydrate-soda" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Recrystallise with 10H₂O 💧</button>
+            </div>
+            <div id="saltchem-pop-controls" style="display:none;">
+              <button id="btn-mix-pop" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Mix POP with Water 💧</button>
+            </div>
+          </div>
+          <div class="sim-calculator">
+            <h3 id="saltchem-obs-title">Chlor-Alkali Process</h3>
+            <div id="saltchem-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Select a process and run it to see the reaction.</div>
+          </div>
+        </div>
+      </div>`;
+
     const neutralizationTitrationLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="neutralization-canvas" width="600" height="340"></canvas>
           <div class="canvas-instruction-bar" style="display: flex; justify-content: space-between; align-items: center;">
-            <span>💡 Dilution Safety: Click 'Add Acid' or 'Add Water' to observe the exothermic reaction.</span>
+            <span id="neutralization-hint">💡 Dilution Safety: Click 'Add Acid' or 'Add Water' to observe the exothermic reaction.</span>
             <span id="neutralization-danger-badge" class="live-badge" style="background: var(--bg-primary); color: var(--text-normal); padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700; border: 1px solid var(--border-color);">SAFE</span>
           </div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Dilution Procedure</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
-              Always add acid slowly to water with continuous stirring.
-            </p>
-            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-              <button id="btn-add-acid" class="nav-topic-btn next" style="width: 100%; justify-content: center; background: #3b82f6; color: white; border: none; padding: 0.75rem; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer;">Add Acid to Water 💧 (Safe)</button>
-              <button id="btn-add-water" class="nav-topic-btn next" style="width: 100%; justify-content: center; background: #ef4444; color: white; border: none; padding: 0.75rem; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer;">Add Water to Acid ⚠️ (Danger)</button>
-              <button id="btn-reset-neutralization" class="sim-toggle-btn" style="width: 100%; justify-content: center; margin-top: 0.5rem;">Reset Beakers</button>
+            <h3>Mode</h3>
+            <select id="sel-neutralization-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="dilution">Dilution Safety</option>
+              <option value="conductivity">Ionic Conductivity</option>
+              <option value="neutralize">Neutralization Reaction</option>
+            </select>
+            <div id="dilution-controls">
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Always add acid slowly to water with continuous stirring.
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <button id="btn-add-acid" class="nav-topic-btn next" style="width: 100%; justify-content: center; background: #3b82f6; color: white; border: none; padding: 0.75rem; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer;">Add Acid to Water 💧 (Safe)</button>
+                <button id="btn-add-water" class="nav-topic-btn next" style="width: 100%; justify-content: center; background: #ef4444; color: white; border: none; padding: 0.75rem; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer;">Add Water to Acid ⚠️ (Danger)</button>
+                <button id="btn-reset-neutralization" class="sim-toggle-btn" style="width: 100%; justify-content: center; margin-top: 0.5rem;">Reset Beakers</button>
+              </div>
+            </div>
+            <div id="conductivity-controls" style="display:none;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Test Solution</label>
+              <select id="sel-conductivity-solution" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="hcl">Dilute HCl</option>
+                <option value="h2so4">Dilute H₂SO₄</option>
+                <option value="naoh">Dilute NaOH</option>
+                <option value="glucose">Glucose Solution</option>
+                <option value="alcohol">Alcohol Solution</option>
+              </select>
+              <button id="btn-switch-circuit" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Switch On Circuit 🔌</button>
+            </div>
+            <div id="neutralize-controls" style="display:none;">
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+                NaOH + phenolphthalein starts pink. Add drops of HCl to neutralise it.
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <button id="btn-add-drop-acid" class="nav-topic-btn next" style="width: 100%; justify-content: center; background: var(--primary-color); color: white; border: none; padding: 0.75rem; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer;">Add Drop of Acid 💧</button>
+                <button id="btn-reset-neutralize" class="sim-toggle-btn" style="width: 100%; justify-content: center;">Reset</button>
+              </div>
             </div>
           </div>
           <div class="sim-calculator">
-            <h3 style="margin-bottom:0; color: var(--secondary-color); font-size: 1.1rem; padding-bottom: 0.5rem;">Reaction Log</h3>
+            <h3 id="neutralization-obs-title" style="margin-bottom:0; color: var(--secondary-color); font-size: 1.1rem; padding-bottom: 0.5rem;">Reaction Log</h3>
             <div id="neutralization-log-panel" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-normal); background: var(--bg-primary); padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
               Waiting to start dilution...
             </div>
@@ -1082,47 +2397,81 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         <div class="sim-canvas-wrapper">
           <canvas id="refraction-canvas" width="600" height="340"></canvas>
           <div class="canvas-instruction-bar">
-            <span>💡 Drag the laser pointer on the canvas or use the angle slider to see bending.</span>
+            <span id="refraction-hint">💡 Drag the laser pointer on the canvas or use the angle slider to see bending.</span>
             <span class="live-badge tir-alert" id="tir-badge" style="display:none;">⚠️ TOTAL INTERNAL REFLECTION</span>
           </div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Simulation Controls</h3>
-            <div class="control-item">
-              <div class="control-label-row">
-                <span>Medium 1 (Top):</span>
-                <span id="lbl-n1" class="control-val-badge">n₁ = 1.0</span>
+            <h3>Mode</h3>
+            <select id="sel-refraction-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="snell">Refraction Through Media (Snell's Law)</option>
+              <option value="lens">Spherical Lenses (Ray Diagram)</option>
+            </select>
+            <div id="refraction-snell-controls">
+              <h3>Simulation Controls</h3>
+              <div class="control-item">
+                <div class="control-label-row">
+                  <span>Medium 1 (Top):</span>
+                  <span id="lbl-n1" class="control-val-badge">n₁ = 1.0</span>
+                </div>
+                <select id="sel-n1" class="sim-toggle-btn" style="text-align: left; padding: 0.5rem; width:100%;">
+                  <option value="1.0" selected>Air (n = 1.0)</option>
+                  <option value="1.33">Water (n = 1.33)</option>
+                  <option value="1.5">Glass (n = 1.5)</option>
+                  <option value="2.42">Diamond (n = 2.42)</option>
+                </select>
               </div>
-              <select id="sel-n1" class="sim-toggle-btn" style="text-align: left; padding: 0.5rem; width:100%;">
-                <option value="1.0" selected>Air (n = 1.0)</option>
-                <option value="1.33">Water (n = 1.33)</option>
-                <option value="1.5">Glass (n = 1.5)</option>
-                <option value="2.42">Diamond (n = 2.42)</option>
-              </select>
+              <div class="control-item">
+                <div class="control-label-row">
+                  <span>Medium 2 (Bottom):</span>
+                  <span id="lbl-n2" class="control-val-badge">n₂ = 1.5</span>
+                </div>
+                <select id="sel-n2" class="sim-toggle-btn" style="text-align: left; padding: 0.5rem; width:100%;">
+                  <option value="1.0">Air (n = 1.0)</option>
+                  <option value="1.33">Water (n = 1.33)</option>
+                  <option value="1.5" selected>Glass (n = 1.5)</option>
+                  <option value="2.42">Diamond (n = 2.42)</option>
+                </select>
+              </div>
+              <div class="control-item">
+                <div class="control-label-row">
+                  <span>Incident Angle (θ₁):</span>
+                  <span id="lbl-theta1" class="control-val-badge">45°</span>
+                </div>
+                <input type="range" id="rng-theta1" min="0" max="89" value="45" class="sim-range-input">
+              </div>
             </div>
-            <div class="control-item">
-              <div class="control-label-row">
-                <span>Medium 2 (Bottom):</span>
-                <span id="lbl-n2" class="control-val-badge">n₂ = 1.5</span>
+            <div id="refraction-lens-controls" style="display:none;">
+              <div class="sim-btn-row" style="margin-bottom: 1.25rem;">
+                <button class="sim-toggle-btn active" id="btn-reflens-convex">Convex Lens</button>
+                <button class="sim-toggle-btn" id="btn-reflens-concave">Concave Lens</button>
               </div>
-              <select id="sel-n2" class="sim-toggle-btn" style="text-align: left; padding: 0.5rem; width:100%;">
-                <option value="1.0">Air (n = 1.0)</option>
-                <option value="1.33">Water (n = 1.33)</option>
-                <option value="1.5" selected>Glass (n = 1.5)</option>
-                <option value="2.42">Diamond (n = 2.42)</option>
-              </select>
-            </div>
-            <div class="control-item">
-              <div class="control-label-row">
-                <span>Incident Angle (θ₁):</span>
-                <span id="lbl-theta1" class="control-val-badge">45°</span>
+              <div class="control-item">
+                <div class="control-label-row">
+                  <span>Object Distance (u):</span>
+                  <span id="lbl-reflens-u" class="control-val-badge">-30 cm</span>
+                </div>
+                <input type="range" id="rng-reflens-u" min="-60" max="-8" value="-30" class="sim-range-input">
               </div>
-              <input type="range" id="rng-theta1" min="0" max="89" value="45" class="sim-range-input">
+              <div class="control-item">
+                <div class="control-label-row">
+                  <span>Focal Length (f):</span>
+                  <span id="lbl-reflens-f" class="control-val-badge">15 cm</span>
+                </div>
+                <input type="range" id="rng-reflens-f" min="5" max="30" value="15" class="sim-range-input">
+              </div>
+              <div class="control-item">
+                <div class="control-label-row">
+                  <span>Object Height (hₒ):</span>
+                  <span id="lbl-reflens-ho" class="control-val-badge">10 cm</span>
+                </div>
+                <input type="range" id="rng-reflens-ho" min="4" max="20" value="10" class="sim-range-input">
+              </div>
             </div>
           </div>
           <div class="sim-calculator">
-            <h3>Live Conceptual Solver</h3>
+            <h3 id="refraction-solver-title">Live Conceptual Solver</h3>
             <div class="calc-step-list" id="refraction-solver-steps">
               <!-- Calculated live -->
             </div>
@@ -1217,41 +2566,60 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         <div class="sim-canvas-wrapper">
           <canvas id="lens-canvas" width="600" height="340"></canvas>
           <div class="canvas-instruction-bar">
-            <span>💡 Drag the green object (arrow) or use the sliders to analyze.</span>
+            <span id="lens-hint">💡 Drag the green object (arrow) or use the sliders to analyze.</span>
             <span id="lens-badge-holder"></span>
           </div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Lens Configurations</h3>
-            <div class="sim-btn-row" style="margin-bottom: 1.25rem;">
-              <button class="sim-toggle-btn active" id="btn-lens-convex">Convex Lens</button>
-              <button class="sim-toggle-btn" id="btn-lens-concave">Concave Lens</button>
-            </div>
-            <div class="control-item">
-              <div class="control-label-row">
-                <span>Object Distance (u):</span>
-                <span id="lbl-lens-u" class="control-val-badge">-150 cm</span>
+            <h3>Mode</h3>
+            <select id="sel-lens-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+              <option value="raydiagram">General Lens Ray Diagram</option>
+              <option value="eyedefect">Eye Defects &amp; Correction</option>
+            </select>
+            <div id="lens-ray-controls">
+              <h3 style="margin-top:0;">Lens Configurations</h3>
+              <div class="sim-btn-row" style="margin-bottom: 1.25rem;">
+                <button class="sim-toggle-btn active" id="btn-lens-convex">Convex Lens</button>
+                <button class="sim-toggle-btn" id="btn-lens-concave">Concave Lens</button>
               </div>
-              <input type="range" id="rng-lens-u" min="-300" max="-20" value="-150" class="sim-range-input">
-            </div>
-            <div class="control-item">
-              <div class="control-label-row">
-                <span>Focal Length (f):</span>
-                <span id="lbl-lens-f" class="control-val-badge">100 cm</span>
+              <div class="control-item">
+                <div class="control-label-row">
+                  <span>Object Distance (u):</span>
+                  <span id="lbl-lens-u" class="control-val-badge">-150 cm</span>
+                </div>
+                <input type="range" id="rng-lens-u" min="-300" max="-20" value="-150" class="sim-range-input">
               </div>
-              <input type="range" id="rng-lens-f" min="50" max="150" value="100" class="sim-range-input">
-            </div>
-            <div class="control-item">
-              <div class="control-label-row">
-                <span>Object Height (hₒ):</span>
-                <span id="lbl-lens-ho" class="control-val-badge">40 cm</span>
+              <div class="control-item">
+                <div class="control-label-row">
+                  <span>Focal Length (f):</span>
+                  <span id="lbl-lens-f" class="control-val-badge">100 cm</span>
+                </div>
+                <input type="range" id="rng-lens-f" min="50" max="150" value="100" class="sim-range-input">
               </div>
-              <input type="range" id="rng-lens-ho" min="10" max="80" value="40" class="sim-range-input">
+              <div class="control-item">
+                <div class="control-label-row">
+                  <span>Object Height (hₒ):</span>
+                  <span id="lbl-lens-ho" class="control-val-badge">40 cm</span>
+                </div>
+                <input type="range" id="rng-lens-ho" min="10" max="80" value="40" class="sim-range-input">
+              </div>
+            </div>
+            <div id="lens-eye-controls" style="display:none;">
+              <h3 style="margin-top:0;">Eye Condition</h3>
+              <select id="sel-eye-defect" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
+                <option value="normal">Normal Eye</option>
+                <option value="myopia">Myopia (Near-sightedness)</option>
+                <option value="hypermetropia">Hypermetropia (Far-sightedness)</option>
+                <option value="presbyopia">Presbyopia (Old-age sight)</option>
+              </select>
+              <label id="lbl-eye-correction" style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;color:var(--text-muted);">
+                <input type="checkbox" id="chk-eye-correction"> Wear corrective lens
+              </label>
             </div>
           </div>
           <div class="sim-calculator">
-            <h3>Lens Formula Solver</h3>
+            <h3 id="lens-calc-title">Lens Formula Solver</h3>
             <div class="calc-step-list" id="lens-solver-steps">
               <!-- Rendered dynamically -->
             </div>
@@ -1328,6 +2696,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'neutralization-titration') {
               labHtml = neutralizationTitrationLabHtml;
               labDesc = 'Interact with this live dilution lab. Observe the exothermic nature of mixing acid with water and the consequences of incorrect procedures.';
+            } else if (topicObj.lab.type === 'salt-chemicals') {
+              labHtml = saltChemicalsLabHtml;
+              labDesc = 'Explore the chlor-alkali process, baking soda, washing soda and Plaster of Paris — all made from common salt.';
+            } else if (topicObj.lab.type === 'metal-elemental-reactions') {
+              labHtml = metalElementalReactionsLabHtml;
+              labDesc = 'React metals with oxygen, water/steam and dilute acid to see how reactivity governs the outcome.';
+            } else if (topicObj.lab.type === 'metallurgy-corrosion') {
+              labHtml = metallurgyCorrosionLabHtml;
+              labDesc = "Explore how a metal's position in the reactivity series determines its extraction method, the thermit reaction, electrolytic refining, and corrosion prevention.";
             } else if (topicObj.lab.type === 'conductivity-circuit') {
               labHtml = conductivityCircuitLabHtml;
               labDesc = 'Interact with this live electrical circuit lab. Test various metals and non-metals to determine their electrical conductivity.';
@@ -1340,12 +2717,102 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'heart-circulation') {
               labHtml = heartLabHtml;
               labDesc = 'Watch blood flow through the four chambers of the heart and understand the cardiac cycle.';
+            } else if (topicObj.lab.type === 'scientific-method-sim') {
+              labHtml = scientificMethodLabHtml;
+              labDesc = 'Pick an everyday mystery and walk through the 5 steps of the scientific method — observe, question, guess, test, and analyse.';
+            } else if (topicObj.lab.type === 'plant-grouping-sim') {
+              labHtml = plantGroupingLabHtml;
+              labDesc = 'Compare a monocot and a dicot plant to see how seed cotyledons, leaf venation, and root type are all connected.';
+            } else if (topicObj.lab.type === 'camel-adaptation-sim') {
+              labHtml = camelAdaptationLabHtml;
+              labDesc = 'Compare the hot-desert and cold-desert camel to see how each is adapted to survive its environment.';
+            } else if (topicObj.lab.type === 'food-test-sim') {
+              labHtml = foodTestLabHtml;
+              labDesc = 'Test different food items for starch, fat and protein — just like the real classroom activities.';
+            } else if (topicObj.lab.type === 'magnet-explorer-sim') {
+              labHtml = magnetExplorerLabHtml;
+              labDesc = 'Test objects for magnetism, or explore how two magnets attract and repel each other.';
+            } else if (topicObj.lab.type === 'ruler-measure-sim') {
+              labHtml = rulerMeasureLabHtml;
+              labDesc = 'Practice reading a scale correctly, including the broken-end ruler subtraction method.';
+            } else if (topicObj.lab.type === 'motion-type-sim') {
+              labHtml = motionTypeLabHtml;
+              labDesc = 'Watch and compare linear, circular and oscillatory motion side by side.';
+            } else if (topicObj.lab.type === 'material-explorer-sim') {
+              labHtml = materialExplorerLabHtml;
+              labDesc = 'Test materials for transparency, or drop substances into water to test solubility.';
+            } else if (topicObj.lab.type === 'thermometer-reader-sim') {
+              labHtml = thermometerReaderLabHtml;
+              labDesc = 'Convert between Celsius, Fahrenheit and Kelvin, or practice finding a thermometer’s least count.';
+            } else if (topicObj.lab.type === 'water-state-change-sim') {
+              labHtml = waterStateChangeLabHtml;
+              labDesc = 'Heat or cool water and watch it melt, freeze, evaporate and condense between ice, water and vapour.';
+            } else if (topicObj.lab.type === 'separation-method-sim') {
+              labHtml = separationMethodLabHtml;
+              labDesc = 'Watch winnowing, sieving, filtration, evaporation and magnetic separation in action.';
+            } else if (topicObj.lab.type === 'germination-conditions-sim') {
+              labHtml = germinationLabHtml;
+              labDesc = "Choose a pot's water and light conditions and see whether bean seeds germinate.";
+            } else if (topicObj.lab.type === 'animal-life-cycle-sim') {
+              labHtml = animalLifeCycleLabHtml;
+              labDesc = 'Step through the four life-cycle stages of a mosquito or a frog.';
+            } else if (topicObj.lab.type === 'resource-sorter-sim') {
+              labHtml = resourceSorterLabHtml;
+              labDesc = 'Sort natural resources into renewable and non-renewable categories.';
+            } else if (topicObj.lab.type === 'constellation-viewer-sim') {
+              labHtml = constellationViewerLabHtml;
+              labDesc = 'Explore star patterns and see how the stars of famous constellations connect.';
+            } else if (topicObj.lab.type === 'solar-system-explorer-sim') {
+              labHtml = solarSystemExplorerLabHtml;
+              labDesc = 'Locate each planet in order from the Sun and reveal what makes it unique.';
+            } else if (topicObj.lab.type === 'rectangle-perimeter-area-sim') {
+              labHtml = rectAreaPerimeterLabHtml;
+              labDesc = 'Choose a rectangle or square’s dimensions and calculate its perimeter and area.';
+            } else if (topicObj.lab.type === 'triangle-half-rectangle-sim') {
+              labHtml = triangleHalfRectangleLabHtml;
+              labDesc = 'Split a rectangle along its diagonal to see why a triangle’s area is half the rectangle’s.';
+            } else if (topicObj.lab.type === 'fraction-strip-sim') {
+              labHtml = fractionStripLabHtml;
+              labDesc = 'Build a fraction by shading fractional units on a strip.';
+            } else if (topicObj.lab.type === 'fraction-addition-sim') {
+              labHtml = fractionAdditionLabHtml;
+              labDesc = "Add or subtract two fractions using Brahmagupta's method.";
+            } else if (topicObj.lab.type === 'compass-circle-sim') {
+              labHtml = compassCircleLabHtml;
+              labDesc = 'Draw a circle of a chosen radius around a fixed centre point using a compass.';
+            } else if (topicObj.lab.type === 'equidistant-arcs-sim') {
+              labHtml = equidistantArcsLabHtml;
+              labDesc = 'Use two arcs to find a point equidistant from two given points.';
+            } else if (topicObj.lab.type === 'punch-hole-symmetry-sim') {
+              labHtml = punchHoleSymmetryLabHtml;
+              labDesc = 'Punch a hole through folded paper and unfold it to reveal its mirror image.';
+            } else if (topicObj.lab.type === 'rotational-symmetry-sim') {
+              labHtml = rotationalSymmetryLabHtml;
+              labDesc = 'Step through a radial-arm figure’s angles of rotational symmetry.';
+            } else if (topicObj.lab.type === 'integer-lift-sim') {
+              labHtml = integerLiftLabHtml;
+              labDesc = 'Press + and − buttons to move Bela’s lift between floors above and below ground.';
+            } else if (topicObj.lab.type === 'token-zero-pair-sim') {
+              labHtml = tokenZeroPairLabHtml;
+              labDesc = 'Combine positive and negative tokens and cancel zero pairs to add integers.';
+            } else if (topicObj.lab.type === 'matchstick-pattern-sim') {
+              labHtml = matchstickPatternLabHtml;
+              labDesc = 'Build a repeating matchstick pattern and discover its algebraic formula.';
+            } else if (topicObj.lab.type === 'formula-machine-sim') {
+              labHtml = formulaMachineLabHtml;
+              labDesc = 'Run two numbers through a number machine and reveal its hidden formula.';
+            } else if (topicObj.lab.type === 'intersecting-lines-angle-sim') {
+              labHtml = intersectingLinesAngleLabHtml;
+              labDesc = 'Choose one angle and discover the other three formed by two intersecting lines.';
+            } else if (topicObj.lab.type === 'transversal-angle-sim') {
+              labHtml = transversalAngleLabHtml;
+              labDesc = 'Compare corresponding angles formed by a transversal on parallel vs non-parallel lines.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
             } else if (topicObj.lab.type === 'hormone-feedback') {
               labHtml = hormoneLabHtml;
-              labDesc = 'Adjust blood sugar levels and observe the insulin-glucagon feedback mechanism.';
+              labDesc = 'Explore animal hormone feedback (insulin/glucagon) and plant tropisms (phototropism, geotropism) driven by auxin.';
             } else if (topicObj.lab.type === 'punnett-square') {
               labHtml = punnettLabHtml;
               labDesc = 'Select parent genotypes and generate Punnett squares to predict offspring ratios.';
@@ -1375,7 +2842,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
               labDesc = 'Add soap to an oil-water mixture and watch micelle formation step-by-step.';
             } else if (topicObj.lab.type === 'cell-division') {
               labHtml = cellDivisionLabHtml;
-              labDesc = 'Watch binary fission, budding, and fragmentation in different organisms.';
+              labDesc = 'Watch all six asexual reproduction modes step-by-step: fission, budding, fragmentation, regeneration, vegetative propagation, and spore formation.';
             } else if (topicObj.lab.type === 'menstrual-cycle') {
               labHtml = menstrualCycleLabHtml;
               labDesc = 'Explore the 28-day menstrual cycle with hormone level graphs and phase information.';
@@ -1412,6 +2879,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'heights-distances') {
               labHtml = heightDistLabHtml;
               labDesc = 'Adjust observer position and angle to calculate heights using trigonometry.';
+            } else if (topicObj.lab.type === 'solid-combination') {
+              labHtml = solidsLabHtml;
+              labDesc = 'Combine cones, cylinders, hemispheres and cubes and watch surface area and volume compute live.';
+            } else if (topicObj.lab.type === 'triangle-similarity') {
+              labHtml = triangleLabHtml;
+              labDesc = 'Slide point D along AB and see the Basic Proportionality Theorem and AA similarity verified live.';
             }
             
             sectionsHtml += `
@@ -1561,6 +3034,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initPhScaleLab();
         } else if (topicObj.lab.type === 'neutralization-titration') {
           initNeutralizationTitrationLab();
+        } else if (topicObj.lab.type === 'salt-chemicals') {
+          initSaltChemicalsLab();
+        } else if (topicObj.lab.type === 'metal-elemental-reactions') {
+          initMetalElementalReactionsLab();
+        } else if (topicObj.lab.type === 'metallurgy-corrosion') {
+          initMetallurgyCorrosionLab();
         } else if (topicObj.lab.type === 'conductivity-circuit') {
           initConductivityCircuitLab();
         } else if (topicObj.lab.type === 'corrosion') {
@@ -1569,6 +3048,66 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initPhotosynthesisLab();
         } else if (topicObj.lab.type === 'heart-circulation') {
           initHeartLab();
+        } else if (topicObj.lab.type === 'scientific-method-sim') {
+          initScientificMethodLab();
+        } else if (topicObj.lab.type === 'plant-grouping-sim') {
+          initPlantGroupingLab();
+        } else if (topicObj.lab.type === 'camel-adaptation-sim') {
+          initCamelAdaptationLab();
+        } else if (topicObj.lab.type === 'food-test-sim') {
+          initFoodTestLab();
+        } else if (topicObj.lab.type === 'magnet-explorer-sim') {
+          initMagnetExplorerLab();
+        } else if (topicObj.lab.type === 'ruler-measure-sim') {
+          initRulerMeasureLab();
+        } else if (topicObj.lab.type === 'motion-type-sim') {
+          initMotionTypeLab();
+        } else if (topicObj.lab.type === 'material-explorer-sim') {
+          initMaterialExplorerLab();
+        } else if (topicObj.lab.type === 'thermometer-reader-sim') {
+          initThermometerReaderLab();
+        } else if (topicObj.lab.type === 'water-state-change-sim') {
+          initWaterStateChangeLab();
+        } else if (topicObj.lab.type === 'separation-method-sim') {
+          initSeparationMethodLab();
+        } else if (topicObj.lab.type === 'germination-conditions-sim') {
+          initGerminationLab();
+        } else if (topicObj.lab.type === 'animal-life-cycle-sim') {
+          initAnimalLifeCycleLab();
+        } else if (topicObj.lab.type === 'resource-sorter-sim') {
+          initResourceSorterLab();
+        } else if (topicObj.lab.type === 'constellation-viewer-sim') {
+          initConstellationViewerLab();
+        } else if (topicObj.lab.type === 'solar-system-explorer-sim') {
+          initSolarSystemExplorerLab();
+        } else if (topicObj.lab.type === 'rectangle-perimeter-area-sim') {
+          initRectAreaPerimeterLab();
+        } else if (topicObj.lab.type === 'triangle-half-rectangle-sim') {
+          initTriangleHalfRectangleLab();
+        } else if (topicObj.lab.type === 'fraction-strip-sim') {
+          initFractionStripLab();
+        } else if (topicObj.lab.type === 'fraction-addition-sim') {
+          initFractionAdditionLab();
+        } else if (topicObj.lab.type === 'compass-circle-sim') {
+          initCompassCircleLab();
+        } else if (topicObj.lab.type === 'equidistant-arcs-sim') {
+          initEquidistantArcsLab();
+        } else if (topicObj.lab.type === 'punch-hole-symmetry-sim') {
+          initPunchHoleSymmetryLab();
+        } else if (topicObj.lab.type === 'rotational-symmetry-sim') {
+          initRotationalSymmetryLab();
+        } else if (topicObj.lab.type === 'integer-lift-sim') {
+          initIntegerLiftLab();
+        } else if (topicObj.lab.type === 'token-zero-pair-sim') {
+          initTokenZeroPairLab();
+        } else if (topicObj.lab.type === 'matchstick-pattern-sim') {
+          initMatchstickPatternLab();
+        } else if (topicObj.lab.type === 'formula-machine-sim') {
+          initFormulaMachineLab();
+        } else if (topicObj.lab.type === 'intersecting-lines-angle-sim') {
+          initIntersectingLinesAngleLab();
+        } else if (topicObj.lab.type === 'transversal-angle-sim') {
+          initTransversalAngleLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -1617,6 +3156,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initStatsLab();
         } else if (topicObj.lab.type === 'heights-distances') {
           initHeightsDistancesLab();
+        } else if (topicObj.lab.type === 'solid-combination') {
+          initSolidsLab();
+        } else if (topicObj.lab.type === 'triangle-similarity') {
+          initTriangleLab();
         }
       }
       
@@ -3830,18 +5373,29 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const btnWater = document.getElementById('btn-add-water');
       const btnReset = document.getElementById('btn-reset-neutralization');
       const logPanel = document.getElementById('neutralization-log-panel');
+      const obsTitle = document.getElementById('neutralization-obs-title');
+      const hint = document.getElementById('neutralization-hint');
       const badge = document.getElementById('neutralization-danger-badge');
+      const modeSel = document.getElementById('sel-neutralization-mode');
+      const dilutionControls = document.getElementById('dilution-controls');
+      const conductivityControls = document.getElementById('conductivity-controls');
+      const neutralizeControls = document.getElementById('neutralize-controls');
+      const conductivitySolSel = document.getElementById('sel-conductivity-solution');
+      const btnSwitchCircuit = document.getElementById('btn-switch-circuit');
+      const btnAddDropAcid = document.getElementById('btn-add-drop-acid');
+      const btnResetNeutralize = document.getElementById('btn-reset-neutralize');
 
-      let mode = 'idle'; // 'idle', 'acid_to_water', 'water_to_acid'
+      let dilutionMode = 'idle'; // 'idle', 'acid_to_water', 'water_to_acid'
       let frame = 0;
       let timerId = null;
+      let circuitOn = false;
+      let neutralizeDrops = 0;
 
       function drawBase(baseLiquid, addedLiquid) {
         const W = canvas.width;
         const H = canvas.height;
         ctx.clearRect(0, 0, W, H);
-        
-        // Beaker
+
         ctx.strokeStyle = '#cbd5e1';
         ctx.lineWidth = 4;
         ctx.beginPath();
@@ -3851,15 +5405,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.lineTo(W/2 + 60, 150);
         ctx.stroke();
 
-        // Base Liquid
         if (baseLiquid === 'water') {
           ctx.fillStyle = 'rgba(59, 130, 246, 0.3)';
         } else {
-          ctx.fillStyle = 'rgba(250, 204, 21, 0.5)'; // yellowish for conc acid
+          ctx.fillStyle = 'rgba(250, 204, 21, 0.5)';
         }
         ctx.fillRect(W/2 - 58, 200, 116, 78);
 
-        // Thermometer
         ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
         ctx.fillRect(W/2 + 30, 120, 12, 160);
         ctx.beginPath();
@@ -3871,16 +5423,16 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         let tempVal = 25;
         let isExploding = false;
-        
-        if (mode === 'acid_to_water') {
+
+        if (dilutionMode === 'acid_to_water') {
           tempVal = Math.min(85, 25 + frame * 0.6);
-        } else if (mode === 'water_to_acid') {
-          tempVal = Math.min(120, 25 + frame * 4); // shoots up instantly
+        } else if (dilutionMode === 'water_to_acid') {
+          tempVal = Math.min(120, 25 + frame * 4);
           if (frame > 15) isExploding = true;
         }
 
         const mercuryH = Math.min(145, ((tempVal - 25) / 95) * 145);
-        
+
         ctx.fillStyle = '#ef4444';
         ctx.fillRect(W/2 + 33, 270 - mercuryH, 6, mercuryH + 5);
         ctx.beginPath();
@@ -3891,12 +5443,11 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.font = 'bold 12px system-ui';
         ctx.fillText(tempVal > 100 ? "MAX" : tempVal.toFixed(0) + "°C", W/2 + 48, 270 - mercuryH);
 
-        // Dropper / Test tube
         ctx.save();
         ctx.translate(W/2 - 20, 100);
-        const tilt = (mode !== 'idle' && frame < 50) ? Math.min(45, frame * 3) : 0;
+        const tilt = (dilutionMode !== 'idle' && frame < 50) ? Math.min(45, frame * 3) : 0;
         ctx.rotate((tilt * Math.PI)/180);
-        
+
         ctx.strokeStyle = '#cbd5e1';
         ctx.lineWidth = 2;
         ctx.beginPath();
@@ -3906,7 +5457,6 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.lineTo(10, -60);
         ctx.stroke();
 
-        // Liquid in dropper
         ctx.fillStyle = (addedLiquid === 'acid') ? 'rgba(250, 204, 21, 0.7)' : 'rgba(59, 130, 246, 0.5)';
         ctx.beginPath();
         ctx.moveTo(-8, -20);
@@ -3916,10 +5466,9 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fill();
         ctx.restore();
 
-        // Drops falling
-        if (mode !== 'idle' && frame > 15 && frame < 60) {
+        if (dilutionMode !== 'idle' && frame > 15 && frame < 60) {
           ctx.fillStyle = (addedLiquid === 'acid') ? 'rgba(250, 204, 21, 0.8)' : 'rgba(59, 130, 246, 0.8)';
-          for(let i=0; i<3; i++) {
+          for (let i = 0; i < 3; i++) {
             const dropY = 130 + ((frame * 5 + i * 20) % 70);
             ctx.beginPath();
             ctx.arc(W/2 - 40 + i*5, dropY, 3, 0, 2*Math.PI);
@@ -3927,15 +5476,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
         }
 
-        // Explosion Splashes (Water to Acid)
         if (isExploding) {
-          ctx.fillStyle = 'rgba(239, 68, 68, 0.7)'; // Red hot flashes
+          ctx.fillStyle = 'rgba(239, 68, 68, 0.7)';
           ctx.beginPath();
           ctx.arc(W/2, 240, 40 + Math.random()*20, 0, 2*Math.PI);
           ctx.fill();
 
-          ctx.fillStyle = 'rgba(250, 204, 21, 0.9)'; // Splashing acid
-          for(let i=0; i<8; i++) {
+          ctx.fillStyle = 'rgba(250, 204, 21, 0.9)';
+          for (let i = 0; i < 8; i++) {
             const sX = W/2 + (Math.random() - 0.5) * 150;
             const sY = 200 - Math.random() * 100;
             ctx.beginPath();
@@ -3943,13 +5491,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.fill();
           }
         }
+        obsTitle.textContent = 'Reaction Log';
       }
 
       function runAnim(type) {
-        if(timerId) clearInterval(timerId);
+        if (timerId) clearInterval(timerId);
         frame = 0;
-        mode = type;
-        
+        dilutionMode = type;
+
         btnAcid.disabled = true;
         btnWater.disabled = true;
 
@@ -3969,14 +5518,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           frame++;
           if (type === 'acid_to_water') {
             drawBase('water', 'acid');
-            if(frame > 120) {
+            if (frame > 120) {
               clearInterval(timerId);
               btnAcid.disabled = false;
               btnWater.disabled = false;
             }
           } else {
             drawBase('acid', 'water');
-            if(frame > 60) {
+            if (frame > 60) {
               clearInterval(timerId);
               btnAcid.disabled = false;
               btnWater.disabled = false;
@@ -3985,11 +5534,94 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         }, 30);
       }
 
+      const conductivitySolutions = {
+        hcl: {label: 'Dilute HCl', conducts: true, ionText: 'H⁺ and Cl⁻'},
+        h2so4: {label: 'Dilute H₂SO₄', conducts: true, ionText: 'H⁺ and SO₄²⁻'},
+        naoh: {label: 'Dilute NaOH', conducts: true, ionText: 'Na⁺ and OH⁻'},
+        glucose: {label: 'Glucose Solution', conducts: false, ionText: ''},
+        alcohol: {label: 'Alcohol Solution', conducts: false, ionText: ''}
+      };
+
+      function drawConductivity() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const sol = conductivitySolutions[conductivitySolSel.value];
+        const glow = circuitOn && sol.conducts;
+
+        const bx = W/2, by = 200;
+        ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(bx - 70, 120); ctx.lineTo(bx - 70, 260); ctx.lineTo(bx + 70, 260); ctx.lineTo(bx + 70, 120); ctx.stroke();
+        ctx.fillStyle = 'rgba(59,130,246,0.15)'; ctx.fillRect(bx - 68, 180, 136, 78);
+
+        ctx.fillStyle = '#94a3b8';
+        ctx.fillRect(bx - 30, 140, 6, 110);
+        ctx.fillRect(bx + 24, 140, 6, 110);
+
+        ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(bx - 27, 140); ctx.lineTo(bx - 27, 80); ctx.lineTo(bx - 90, 80); ctx.lineTo(bx - 90, 70); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(bx + 27, 140); ctx.lineTo(bx + 27, 80); ctx.lineTo(bx + 60, 80); ctx.lineTo(bx + 60, 60); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(bx - 80, 70); ctx.lineTo(bx + 50, 70); ctx.stroke();
+
+        ctx.fillStyle = '#1e293b'; ctx.fillRect(bx - 100, 60, 20, 20);
+        ctx.fillStyle = 'white'; ctx.font = '8px system-ui'; ctx.fillText('6V', bx - 98, 73);
+
+        const bulbX = bx + 55, bulbY = 55;
+        if (glow) {
+          const grad = ctx.createRadialGradient(bulbX, bulbY, 0, bulbX, bulbY, 30);
+          grad.addColorStop(0, 'rgba(251,191,36,0.9)'); grad.addColorStop(1, 'transparent');
+          ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(bulbX, bulbY, 30, 0, 2*Math.PI); ctx.fill();
+        }
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(bulbX, bulbY, 15, 0, 2*Math.PI); ctx.stroke();
+
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+        ctx.fillText(sol.label, bx - 40, 290);
+
+        obsTitle.textContent = 'Ionic Conductivity';
+        logPanel.innerHTML = !circuitOn
+          ? `Select a solution and click "Switch On Circuit" to test whether it conducts electricity.`
+          : (sol.conducts
+            ? `<strong>Bulb glows! ✅</strong><br>• ${sol.label} ionises in water, releasing ${sol.ionText} ions that carry the current.<br>• This confirms it's an <strong>acid/base</strong> — ionic solutions conduct electricity.`
+            : `<strong>Bulb does NOT glow. ❌</strong><br>• ${sol.label} contains hydrogen atoms but does <strong>not ionise</strong> in water — there are no free ions to carry current.<br>• This proves that hydrogen alone doesn't make a compound acidic; it must release H⁺ ions in solution.`);
+      }
+
+      function drawNeutralize() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const bx = W/2;
+        const pH = Math.max(1, 13 - neutralizeDrops * 0.5);
+        const isPink = pH > 8.2;
+
+        ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(bx - 60, 150); ctx.lineTo(bx - 60, 280); ctx.lineTo(bx + 60, 280); ctx.lineTo(bx + 60, 150); ctx.stroke();
+        ctx.fillStyle = isPink ? 'rgba(236,72,153,0.5)' : 'rgba(203,213,225,0.3)';
+        ctx.fillRect(bx - 58, 200, 116, 78);
+
+        ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(bx - 10, 100); ctx.lineTo(bx - 10, 140); ctx.arc(bx, 140, 10, Math.PI, 0, true); ctx.lineTo(bx + 10, 100); ctx.stroke();
+        ctx.fillStyle = 'rgba(250,204,21,0.6)';
+        ctx.beginPath(); ctx.moveTo(bx - 8, 120); ctx.lineTo(bx - 8, 138); ctx.arc(bx, 138, 8, Math.PI, 0, true); ctx.lineTo(bx + 8, 120); ctx.fill();
+
+        const gaugeX = bx + 100, gaugeY = 150, gaugeH = 120;
+        ctx.strokeStyle = '#94a3b8'; ctx.strokeRect(gaugeX, gaugeY, 20, gaugeH);
+        const fillH = (pH/14) * gaugeH;
+        ctx.fillStyle = pH < 6.5 ? '#ef4444' : (pH >= 6.5 && pH <= 7.5) ? '#22c55e' : '#3b82f6';
+        ctx.fillRect(gaugeX, gaugeY + gaugeH - fillH, 20, fillH);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillText('pH ' + pH.toFixed(1), gaugeX - 12, gaugeY - 8);
+
+        obsTitle.textContent = 'Neutralization Reaction';
+        logPanel.innerHTML = `<strong>NaOH(aq) + HCl(aq) → NaCl(aq) + H₂O(l)</strong><br>
+          • Drops of acid added: <strong>${neutralizeDrops}</strong>, estimated pH: <strong>${pH.toFixed(1)}</strong><br>
+          • ${isPink ? 'Solution is still <strong>pink</strong> — phenolphthalein shows it is still basic.' : pH < 6.5 ? 'Solution has turned <strong>colorless</strong> and is now slightly acidic — you have added excess acid.' : 'Solution has just turned <strong>colorless</strong> — phenolphthalein turns colorless right around neutral pH, exactly where the base has been fully neutralised!'}<br>
+          • H⁺(aq) + OH⁻(aq) → H₂O(l) — this ionic reaction is the essence of every neutralisation.`;
+      }
+
       btnAcid.addEventListener('click', () => runAnim('acid_to_water'));
       btnWater.addEventListener('click', () => runAnim('water_to_acid'));
       btnReset.addEventListener('click', () => {
-        if(timerId) clearInterval(timerId);
-        mode = 'idle';
+        if (timerId) clearInterval(timerId);
+        dilutionMode = 'idle';
         frame = 0;
         btnAcid.disabled = false;
         btnWater.disabled = false;
@@ -4000,8 +5632,241 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         drawBase('water', 'acid');
       });
 
-      // Initial Draw
+      btnSwitchCircuit.addEventListener('click', () => {
+        circuitOn = !circuitOn;
+        btnSwitchCircuit.textContent = circuitOn ? 'Switch Off Circuit 🔌' : 'Switch On Circuit 🔌';
+        drawConductivity();
+      });
+      conductivitySolSel.addEventListener('change', drawConductivity);
+
+      btnAddDropAcid.addEventListener('click', () => {
+        neutralizeDrops = Math.min(30, neutralizeDrops + 1);
+        drawNeutralize();
+      });
+      btnResetNeutralize.addEventListener('click', () => {
+        neutralizeDrops = 0;
+        drawNeutralize();
+      });
+
+      modeSel.addEventListener('change', () => {
+        const mode = modeSel.value;
+        dilutionControls.style.display = mode === 'dilution' ? 'block' : 'none';
+        conductivityControls.style.display = mode === 'conductivity' ? 'block' : 'none';
+        neutralizeControls.style.display = mode === 'neutralize' ? 'block' : 'none';
+        badge.style.display = mode === 'dilution' ? 'inline-flex' : 'none';
+        hint.textContent = mode === 'dilution'
+          ? "💡 Dilution Safety: Click 'Add Acid' or 'Add Water' to observe the exothermic reaction."
+          : mode === 'conductivity'
+          ? '💡 Switch on the circuit and see which solutions make the bulb glow.'
+          : '💡 Add drops of acid to a basic solution and watch it neutralise.';
+        if (mode === 'dilution') drawBase('water', 'acid');
+        else if (mode === 'conductivity') drawConductivity();
+        else drawNeutralize();
+      });
+
       drawBase('water', 'acid');
+    }
+
+    function initSaltChemicalsLab() {
+      const canvas = document.getElementById('saltchem-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const modeSel = document.getElementById('sel-saltchem-mode');
+      const hint = document.getElementById('saltchem-hint');
+      const obsTitle = document.getElementById('saltchem-obs-title');
+      const obs = document.getElementById('saltchem-obs');
+      const chloralkaliControls = document.getElementById('saltchem-chloralkali-controls');
+      const bakingsodaControls = document.getElementById('saltchem-bakingsoda-controls');
+      const washingsodaControls = document.getElementById('saltchem-washingsoda-controls');
+      const popControls = document.getElementById('saltchem-pop-controls');
+      const btnChloralkali = document.getElementById('btn-run-chloralkali');
+      const btnBakingsoda = document.getElementById('btn-heat-bakingsoda');
+      const btnWashingsoda = document.getElementById('btn-hydrate-soda');
+      const btnPop = document.getElementById('btn-mix-pop');
+
+      let frame = 0, timerId = null;
+
+      function clearTimerIfAny() { if (timerId) { clearInterval(timerId); timerId = null; } }
+
+      function drawChlorAlkali() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cellX = 100, cellY = 60, cellW = 400, cellH = 200;
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+        ctx.strokeRect(cellX, cellY, cellW, cellH);
+        ctx.fillStyle = 'rgba(59,130,246,0.15)'; ctx.fillRect(cellX, cellY, cellW, cellH);
+        ctx.strokeStyle = '#94a3b8'; ctx.setLineDash([5,5]); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cellX + cellW/2, cellY); ctx.lineTo(cellX + cellW/2, cellY + cellH); ctx.stroke();
+        ctx.setLineDash([]);
+        const anodeX = cellX + cellW*0.28, cathodeX = cellX + cellW*0.72;
+        ctx.fillStyle = '#374151'; ctx.fillRect(anodeX - 10, cellY + 20, 20, cellH - 40);
+        ctx.fillRect(cathodeX - 10, cellY + 20, 20, cellH - 40);
+        ctx.fillStyle = 'white'; ctx.font = 'bold 12px system-ui';
+        ctx.fillText('+', anodeX - 4, cellY + 15); ctx.fillText('−', cathodeX - 4, cellY + 15);
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+        ctx.fillText('Anode (Cl₂↑)', anodeX - 35, cellY + cellH + 18);
+        ctx.fillText('Cathode (H₂↑, NaOH)', cathodeX - 45, cellY + cellH + 18);
+
+        if (frame > 0) {
+          ctx.fillStyle = 'rgba(163,230,53,0.7)';
+          for (let i = 0; i < 5; i++) {
+            const y = cellY + cellH - 20 - ((frame*3 + i*20) % (cellH - 30));
+            ctx.beginPath(); ctx.arc(anodeX + (i%2===0 ? -15 : 15), y, 3, 0, 2*Math.PI); ctx.fill();
+          }
+          ctx.fillStyle = 'rgba(96,165,250,0.7)';
+          for (let i = 0; i < 5; i++) {
+            const y = cellY + cellH - 20 - ((frame*3.5 + i*20) % (cellH - 30));
+            ctx.beginPath(); ctx.arc(cathodeX + (i%2===0 ? -15 : 15), y, 3, 0, 2*Math.PI); ctx.fill();
+          }
+          const naohLevel = Math.min(30, frame*0.3);
+          ctx.fillStyle = 'rgba(250,204,21,0.4)';
+          ctx.fillRect(cellX + cellW/2, cellY + cellH - naohLevel, cellW/2, naohLevel);
+        }
+
+        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 12px system-ui';
+        ctx.fillText(frame === 0 ? 'Brine (NaCl solution)' : 'Electrolysing...', cellX + cellW/2 - 70, cellY - 10);
+
+        obsTitle.textContent = 'Chlor-Alkali Process';
+        obs.innerHTML = frame === 0
+          ? `Click "Start Electrolysis" to pass current through brine (aqueous NaCl).`
+          : `<strong>2NaCl(aq) + 2H₂O(l) → 2NaOH(aq) + Cl₂(g)↑ + H₂(g)↑</strong><br>
+            • <span style="color:#84cc16">Chlorine gas</span> at the anode → used for PVC, disinfectants, CFCs.<br>
+            • <span style="color:#60a5fa">Hydrogen gas</span> at the cathode → used as fuel, in margarine, ammonia.<br>
+            • <span style="color:#eab308">NaOH</span> accumulates near the cathode → soaps, detergents, paper industry.<br>
+            • Named the "chlor-alkali" process for its two main products: chlorine + alkali (NaOH).`;
+      }
+
+      function drawBakingSoda() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const tubeX = W/2;
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(tubeX - 25, 60); ctx.lineTo(tubeX - 25, 220);
+        ctx.arc(tubeX, 220, 25, Math.PI, 0, true); ctx.lineTo(tubeX + 25, 60); ctx.stroke();
+
+        ctx.fillStyle = 'rgba(241,245,249,0.9)';
+        ctx.fillRect(tubeX - 23, 170, 46, 48);
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('NaHCO₃', tubeX - 18, 195);
+
+        if (frame > 0) {
+          ctx.fillStyle = 'rgba(249,115,22,0.6)';
+          ctx.beginPath(); ctx.moveTo(tubeX - 10, 250); ctx.quadraticCurveTo(tubeX, 230 - Math.random()*10, tubeX + 10, 250); ctx.fill();
+          ctx.fillStyle = 'rgba(148,163,184,0.7)'; ctx.font = '9px system-ui';
+          for (let i = 0; i < 4; i++) {
+            const y = 160 - ((frame*3 + i*25) % 140);
+            if (y > 30) ctx.fillText('CO₂', tubeX - 30 + i*10, y);
+          }
+          if (frame > 15) {
+            ctx.fillStyle = 'rgba(96,165,250,0.6)';
+            ctx.beginPath(); ctx.arc(tubeX - 20, 100, 3, 0, 2*Math.PI); ctx.fill();
+            ctx.beginPath(); ctx.arc(tubeX + 18, 110, 3, 0, 2*Math.PI); ctx.fill();
+          }
+        }
+
+        obsTitle.textContent = 'Baking Soda (NaHCO₃)';
+        obs.innerHTML = frame === 0
+          ? `Click "Heat NaHCO₃" to see what happens when baking soda is heated during cooking.`
+          : `<strong>2NaHCO₃ --Heat--> Na₂CO₃ + H₂O + CO₂↑</strong><br>
+            • CO₂ gas bubbles escape — this is exactly what makes bread and cakes rise and turn soft and spongy!<br>
+            • Baking soda is also used in <strong>antacids</strong> (neutralises excess stomach acid) and <strong>soda-acid fire extinguishers</strong>.<br>
+            • Made industrially from NaCl: NaCl + H₂O + CO₂ + NH₃ → NH₄Cl + NaHCO₃.`;
+      }
+
+      function drawWashingSoda() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const hydrated = frame > 0;
+        const cx = W/2, cy = 190;
+        ctx.fillStyle = 'rgba(147,197,253,0.4)'; ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.rect(cx - 30, cy - 30, 60, 60); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillText('Na₂CO₃', cx - 25, cy + 5);
+
+        if (hydrated) {
+          for (let i = 0; i < 10; i++) {
+            const a = (i/10) * 2 * Math.PI;
+            const r = 75;
+            const x = cx + Math.cos(a)*r, y = cy + Math.sin(a)*r;
+            ctx.strokeStyle = 'rgba(96,165,250,0.4)'; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x, y); ctx.stroke();
+            ctx.fillStyle = 'rgba(96,165,250,0.85)';
+            ctx.beginPath(); ctx.arc(x, y, 9, 0, 2*Math.PI); ctx.fill();
+            ctx.fillStyle = 'white'; ctx.font = '7px system-ui'; ctx.fillText('H₂O', x - 9, y + 3);
+          }
+        }
+
+        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillText(hydrated ? 'Na₂CO₃ · 10H₂O (Washing Soda)' : 'Na₂CO₃ (anhydrous)', cx - 100, 40);
+
+        obsTitle.textContent = 'Washing Soda';
+        obs.innerHTML = !hydrated
+          ? `Sodium carbonate (Na₂CO₃) is obtained by heating baking soda. Click "Recrystallise" to add its 10 water molecules of crystallisation.`
+          : `<strong>Na₂CO₃ + 10H₂O → Na₂CO₃·10H₂O</strong><br>
+            • These 10 water molecules are called <strong>water of crystallisation</strong> — a fixed number of water molecules chemically bound in one formula unit of the salt.<br>
+            • Even though the crystal looks dry, it is chemically "wet" with these bound water molecules — the same idea explains why heated copper sulphate crystals (CuSO₄·5H₂O) turn white and release water.<br>
+            • Washing soda is used in glass, soap and paper industries, and to remove permanent hardness of water.`;
+      }
+
+      function drawPop() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mixed = frame > 0;
+        const cx = W/2, cy = 170;
+
+        if (!mixed) {
+          ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(cx - 60, cy + 40); ctx.quadraticCurveTo(cx, cy - 20, cx + 60, cy + 40); ctx.closePath(); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '10px system-ui'; ctx.fillText('Plaster of Paris (powder)', cx - 70, cy + 65);
+        } else {
+          const hardness = Math.min(1, frame*0.02);
+          ctx.fillStyle = `rgba(226,232,240,${0.6 + hardness*0.4})`;
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.rect(cx - 50, cy - 30, 100, 70); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = '10px system-ui';
+          ctx.fillText(hardness < 1 ? 'Setting...' : 'Hardened Gypsum block', cx - 55, cy + 60);
+        }
+
+        obsTitle.textContent = 'Plaster of Paris';
+        obs.innerHTML = !mixed
+          ? `Plaster of Paris (CaSO₄·½H₂O) is made by heating gypsum at 373K. Click "Mix with Water" to see it set.`
+          : `<strong>CaSO₄·½H₂O + 1½H₂O → CaSO₄·2H₂O (Gypsum)</strong><br>
+            • Mixing POP with water causes it to <strong>reabsorb water</strong> and re-form hard, solid gypsum crystals within minutes.<br>
+            • This is why doctors use it to support fractured bones, and why it's used for moulds, toys and smooth decorative surfaces.<br>
+            • It must be stored in an airtight, moisture-proof container — otherwise moisture in the air will set it prematurely!`;
+      }
+
+      function draw() {
+        const mode = modeSel.value;
+        if (mode === 'chloralkali') drawChlorAlkali();
+        else if (mode === 'bakingsoda') drawBakingSoda();
+        else if (mode === 'washingsoda') drawWashingSoda();
+        else drawPop();
+      }
+
+      function startTimeLapse() {
+        clearTimerIfAny();
+        frame = 1;
+        timerId = setInterval(() => { frame++; draw(); if (frame > 150) clearTimerIfAny(); }, 50);
+      }
+
+      btnChloralkali.addEventListener('click', startTimeLapse);
+      btnBakingsoda.addEventListener('click', startTimeLapse);
+      btnWashingsoda.addEventListener('click', () => { frame = frame > 0 ? 0 : 1; draw(); });
+      btnPop.addEventListener('click', startTimeLapse);
+
+      modeSel.addEventListener('change', () => {
+        clearTimerIfAny();
+        frame = 0;
+        const mode = modeSel.value;
+        chloralkaliControls.style.display = mode === 'chloralkali' ? 'block' : 'none';
+        bakingsodaControls.style.display = mode === 'bakingsoda' ? 'block' : 'none';
+        washingsodaControls.style.display = mode === 'washingsoda' ? 'block' : 'none';
+        popControls.style.display = mode === 'pop' ? 'block' : 'none';
+        obsTitle.textContent = mode === 'chloralkali' ? 'Chlor-Alkali Process' : mode === 'bakingsoda' ? 'Baking Soda' : mode === 'washingsoda' ? 'Washing Soda' : 'Plaster of Paris';
+        draw();
+      });
+
+      draw();
     }
 
     function initConductivityCircuitLab() {
@@ -4205,6 +6070,16 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const ctx = canvas.getContext('2d');
       const selSubstance = document.getElementById('sel-ph-substance');
       const logPanel = document.getElementById('ph-log-panel');
+      const logTitle = document.getElementById('ph-log-title');
+      const hint = document.getElementById('ph-hint');
+      const modeSel = document.getElementById('sel-ph-mode');
+      const indicatorControls = document.getElementById('ph-indicator-controls');
+      const metalControls = document.getElementById('ph-metal-controls');
+      const carbonateControls = document.getElementById('ph-carbonate-controls');
+      const metalSel = document.getElementById('sel-ph-metal');
+      const carbonateSel = document.getElementById('sel-ph-carbonate');
+      const btnRunMetalAcid = document.getElementById('btn-run-metal-acid');
+      const btnRunCarbonateAcid = document.getElementById('btn-run-carbonate-acid');
 
       const substances = {
         hcl: { name: '1M Hydrochloric Acid', pH: 0.0, color: '#dc2626', type: 'Strong Acid' },
@@ -4220,17 +6095,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let activeProbe = 'universal';
       let paperY = 80;
       let isDraggingPaper = false;
+      let reactionFrame = 0, reactionRunning = false, reactionTimerId = null;
 
-
-
-      function draw() {
+      function drawIndicator() {
         const W = canvas.width;
         const H = canvas.height;
         ctx.clearRect(0, 0, W, H);
 
         const sub = substances[currentSubstanceKey];
 
-        // Draw pH Scale Reference Bar (Universal Indicator Color Chart)
         const scaleX = 40;
         const scaleY = 30;
         const scaleW = 520;
@@ -4239,22 +6112,21 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           '#dc2626', '#ea580c', '#f59e0b', '#eab308', '#84cc16', '#22c55e', '#10b981',
           '#06b6d4', '#3b82f6', '#2563eb', '#1d4ed8', '#4f46e5', '#6366f1', '#7c3aed', '#6b21a8'
         ];
-        
+
         ctx.fillStyle = 'var(--text-normal)';
         ctx.font = 'bold 10px system-ui';
         ctx.fillText("Universal pH Color Reference Scale:", scaleX, scaleY - 8);
-        
+
         const blockW = scaleW / 15;
         for (let i = 0; i <= 14; i++) {
           ctx.fillStyle = pHColors[i];
           ctx.fillRect(scaleX + i * blockW, scaleY, blockW, scaleH);
-          
+
           ctx.fillStyle = 'var(--text-muted)';
           ctx.font = '8px system-ui';
           ctx.fillText(i.toString(), scaleX + i * blockW + (blockW / 2) - 3, scaleY + scaleH + 11);
         }
 
-        // Draw Beaker
         ctx.strokeStyle = 'var(--border-color)';
         ctx.lineWidth = 4;
         ctx.beginPath();
@@ -4284,7 +6156,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         ctx.save();
         ctx.translate(W/2 - 15, paperY);
-        
+
         let stripColor = '#fef08a';
         if (activeProbe === 'litmus-blue') stripColor = '#60a5fa';
         else if (activeProbe === 'litmus-red') stripColor = '#fca5a5';
@@ -4307,13 +6179,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           } else if (activeProbe === 'phenolphthalein') {
             dippedColor = sub.pH > 7 ? '#ec4899' : 'rgba(255,255,255,0.7)';
           }
-          
+
           const dippedHeight = Math.min(30, paperY + 80 - 170);
           ctx.fillStyle = dippedColor;
           ctx.fillRect(0, 80 - dippedHeight, 30, dippedHeight);
         }
         ctx.restore();
 
+        logTitle.textContent = 'Analytical pH Log';
         if (isDipped) {
           logPanel.innerHTML = `<strong>Dipped Probe Analysis:</strong><br>
             • Solution: <strong>${sub.name}</strong><br>
@@ -4327,7 +6200,114 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         }
       }
 
+      function clearReactionTimer() { if (reactionTimerId) { clearInterval(reactionTimerId); reactionTimerId = null; } }
+
+      function drawTube(x, topY, botY) {
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(x - 20, topY); ctx.lineTo(x - 20, botY);
+        ctx.arc(x, botY, 20, Math.PI, 0, true); ctx.lineTo(x + 20, topY); ctx.stroke();
+      }
+
+      function drawMetalAcid() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const tubeX = 150, topY = 60, botY = 220;
+        drawTube(tubeX, topY, botY);
+        ctx.fillStyle = 'rgba(59,130,246,0.2)'; ctx.fillRect(tubeX - 18, 150, 36, 68);
+
+        const metal = metalSel.value;
+        ctx.fillStyle = '#94a3b8';
+        if (metal === 'zn') {
+          for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.arc(tubeX - 8 + i*5, 185 + ((i%2)*10), 4, 0, 2*Math.PI); ctx.fill(); }
+        } else {
+          ctx.fillRect(tubeX - 3, 160, 6, 50);
+        }
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+        ctx.fillText('Dilute acid', tubeX - 30, 245);
+
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(tubeX, topY); ctx.lineTo(tubeX, topY - 20); ctx.lineTo(350, topY - 20); ctx.lineTo(350, 240); ctx.stroke();
+
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2;
+        ctx.strokeRect(300, 240, 120, 40);
+        ctx.fillStyle = 'rgba(34,197,94,0.15)'; ctx.fillRect(302, 242, 116, 36);
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Soap solution', 310, 295);
+
+        if (reactionRunning) {
+          ctx.fillStyle = 'rgba(226,232,240,0.85)';
+          for (let i = 0; i < 4; i++) {
+            const y = 200 - ((reactionFrame*3 + i*15) % 110);
+            if (y > 100) { ctx.beginPath(); ctx.arc(tubeX - 5 + i*3, y, 2, 0, 2*Math.PI); ctx.fill(); }
+          }
+          ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 1;
+          for (let i = 0; i < 3; i++) {
+            const bx = 320 + i*30, by = 262 - ((reactionFrame*2 + i*10) % 30);
+            ctx.beginPath(); ctx.arc(bx, by, 5, 0, 2*Math.PI); ctx.stroke();
+          }
+          if (reactionFrame > 60) {
+            ctx.font = '20px system-ui'; ctx.fillText('💥', 420, 255);
+            ctx.fillStyle = '#ef4444'; ctx.font = 'bold 10px system-ui'; ctx.fillText('"Pop" sound!', 400, 235);
+          }
+        }
+
+        logTitle.textContent = 'Metal + Acid Reaction';
+        logPanel.innerHTML = !reactionRunning
+          ? `Click "Add to Dilute Acid" to react ${metal === 'zn' ? 'zinc granules' : 'magnesium ribbon'} with dilute acid.`
+          : `<strong>${metal === 'zn' ? 'Zn(s) + H₂SO₄(aq) → ZnSO₄(aq) + H₂(g)↑' : 'Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g)↑'}</strong><br>
+            • Gas bubbles form on the metal surface and rise through the delivery tube into the soap solution.<br>
+            • ${reactionFrame > 60 ? 'A burning candle brought near a gas-filled bubble makes it burst with a characteristic <strong>"pop" sound</strong> — confirming <strong>hydrogen gas</strong>.' : 'Watch the soap bubbles fill with gas...'}<br>
+            • General rule: <strong>Acid + Metal → Salt + Hydrogen gas↑</strong>`;
+      }
+
+      function drawCarbonateAcid() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const tubeAX = 150, tubeBX = 420, topY = 60, botY = 220;
+        drawTube(tubeAX, topY, botY);
+        drawTube(tubeBX, topY, botY);
+
+        ctx.fillStyle = 'rgba(59,130,246,0.2)'; ctx.fillRect(tubeAX - 18, 150, 36, 68);
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui';
+        ctx.fillText(carbonateSel.value === 'na2co3' ? 'Na₂CO₃' : 'NaHCO₃', tubeAX - 18, 190);
+
+        const milky = reactionRunning && reactionFrame > 20;
+        ctx.fillStyle = milky ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.25)';
+        ctx.fillRect(tubeBX - 18, 150, 36, 68);
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui';
+        ctx.fillText('Lime water', tubeBX - 25, 235);
+
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(tubeAX, topY); ctx.lineTo(tubeAX, topY - 20); ctx.lineTo(tubeBX, topY - 20); ctx.lineTo(tubeBX, 140); ctx.stroke();
+
+        if (reactionRunning) {
+          ctx.fillStyle = 'rgba(226,232,240,0.85)';
+          for (let i = 0; i < 4; i++) {
+            const y = 200 - ((reactionFrame*3 + i*15) % 110);
+            if (y > 100) { ctx.beginPath(); ctx.arc(tubeAX - 5 + i*3, y, 2, 0, 2*Math.PI); ctx.fill(); }
+          }
+        }
+
+        logTitle.textContent = 'Carbonate + Acid Reaction';
+        const eq = carbonateSel.value === 'na2co3'
+          ? 'Na₂CO₃(s) + 2HCl(aq) → 2NaCl(aq) + H₂O(l) + CO₂(g)↑'
+          : 'NaHCO₃(s) + HCl(aq) → NaCl(aq) + H₂O(l) + CO₂(g)↑';
+        logPanel.innerHTML = !reactionRunning
+          ? `Click "Add Dilute HCl" to react with the carbonate and pass the CO₂ produced through lime water.`
+          : `<strong>${eq}</strong><br>
+            • CO₂ gas passes through the delivery tube into the lime water [Ca(OH)₂].<br>
+            • ${milky ? 'The lime water has turned <strong>milky</strong> — <strong>Ca(OH)₂(aq) + CO₂(g) → CaCO₃(s)↓ + H₂O(l)</strong>.' : 'Watch the lime water for the classic milky-white precipitate...'}<br>
+            • If CO₂ is passed in excess, the milkiness would disappear again as soluble Ca(HCO₃)₂ forms.`;
+      }
+
+      function render() {
+        const mode = modeSel.value;
+        if (mode === 'indicator') drawIndicator();
+        else if (mode === 'metal') drawMetalAcid();
+        else drawCarbonateAcid();
+      }
+
       canvas.addEventListener('mousedown', (e) => {
+        if (modeSel.value !== 'indicator') return;
         const rect = canvas.getBoundingClientRect();
         const scaleX = canvas.width / rect.width;
         const scaleY = canvas.height / rect.height;
@@ -4344,7 +6324,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           const scaleY = canvas.height / rect.height;
           const mouseY = (e.clientY - rect.top) * scaleY;
           paperY = Math.max(30, Math.min(180, mouseY - 40));
-          draw();
+          drawIndicator();
         }
       });
 
@@ -4353,6 +6333,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       });
 
       canvas.addEventListener('touchstart', (e) => {
+        if (modeSel.value !== 'indicator') return;
         if (e.touches.length === 0) return;
         const t = e.touches[0];
         const rect = canvas.getBoundingClientRect();
@@ -4372,7 +6353,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           const scaleY = canvas.height / rect.height;
           const mouseY = (e.touches[0].clientY - rect.top) * scaleY;
           paperY = Math.max(30, Math.min(180, mouseY - 40));
-          draw();
+          drawIndicator();
           e.preventDefault();
         }
       });
@@ -4383,13 +6364,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       selSubstance.addEventListener('change', () => {
         currentSubstanceKey = selSubstance.value;
-        draw();
+        drawIndicator();
       });
 
       document.querySelectorAll('input[name="ph-probe"]').forEach(r => {
         r.addEventListener('change', () => {
           activeProbe = r.value;
-          draw();
+          drawIndicator();
         });
       });
 
@@ -4408,6 +6389,488 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           link.click();
         });
       }
+
+      function startReaction() {
+        clearReactionTimer();
+        reactionFrame = 1; reactionRunning = true;
+        reactionTimerId = setInterval(() => {
+          reactionFrame++;
+          render();
+          if (reactionFrame > 120) clearReactionTimer();
+        }, 40);
+      }
+
+      btnRunMetalAcid.addEventListener('click', startReaction);
+      btnRunCarbonateAcid.addEventListener('click', startReaction);
+      metalSel.addEventListener('change', () => { if (!reactionRunning) render(); });
+      carbonateSel.addEventListener('change', () => { if (!reactionRunning) render(); });
+
+      modeSel.addEventListener('change', () => {
+        clearReactionTimer();
+        reactionFrame = 0; reactionRunning = false;
+        const mode = modeSel.value;
+        indicatorControls.style.display = mode === 'indicator' ? 'block' : 'none';
+        metalControls.style.display = mode === 'metal' ? 'block' : 'none';
+        carbonateControls.style.display = mode === 'carbonate' ? 'block' : 'none';
+        hint.textContent = mode === 'indicator'
+          ? '💡 Click and drag the indicator test paper into the beaker, or toggle solutions.'
+          : mode === 'metal'
+          ? '💡 React a metal with dilute acid and test the gas with a burning candle.'
+          : '💡 React a carbonate with acid and pass the gas through lime water.';
+        render();
+      });
+
+      drawIndicator();
+    }
+
+    function initMetalElementalReactionsLab() {
+      const canvas = document.getElementById('metalox-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const modeSel = document.getElementById('sel-metalox-mode');
+      const metalSel = document.getElementById('sel-metalox-metal');
+      const btnRun = document.getElementById('btn-run-metalox');
+      const obsTitle = document.getElementById('metalox-obs-title');
+      const obs = document.getElementById('metalox-obs');
+      const hint = document.getElementById('metalox-hint');
+
+      let frame = 0, running = false, timerId = null;
+      const metalNames = { na: 'Sodium', mg: 'Magnesium', al: 'Aluminium', zn: 'Zinc', fe: 'Iron', cu: 'Copper', ag: 'Silver' };
+
+      function clearTimer() { if (timerId) { clearInterval(timerId); timerId = null; } }
+
+      function reactionTextOxygen(metal) {
+        switch (metal) {
+          case 'na': return `<strong>Sodium burns violently!</strong><br>It reacts so vigorously with oxygen that it must be stored in kerosene oil to prevent accidental fires.`;
+          case 'mg': return `<strong>2Mg + O₂ → 2MgO</strong><br>Magnesium burns with a dazzling white flame — the classic "magnesium ribbon" reaction.`;
+          case 'al': return `<strong>4Al + 3O₂ → 2Al₂O₃</strong><br>A thin, tough protective oxide layer forms at ordinary temperature (no visible flame) — this Al₂O₃ layer is <strong>amphoteric</strong> and shields the metal beneath from further oxidation.`;
+          case 'zn': return `<strong>2Zn + O₂ → 2ZnO</strong><br>Zinc forms a thin protective oxide layer at ordinary temperature — ZnO is also amphoteric.`;
+          case 'fe': return `<strong>3Fe + 2O₂ → Fe₃O₄</strong><br>Bulk iron doesn't burn, but iron filings sprinkled into a flame burn vigorously, throwing off sparks!`;
+          case 'cu': return `<strong>2Cu + O₂ → 2CuO</strong><br>Copper doesn't burn, but the hot metal becomes coated with a black layer of copper(II) oxide.`;
+          default: return `<strong>No reaction.</strong><br>Silver (and gold) do not react with oxygen even at high temperatures — that's why they stay shiny.`;
+        }
+      }
+
+      function drawOxygen() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const metal = metalSel.value;
+        const cx = W/2, cy = 200;
+
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx - 10, cy - 100); ctx.lineTo(cx - 10, cy - 20); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx + 10, cy - 100); ctx.lineTo(cx + 10, cy - 20); ctx.stroke();
+
+        ctx.fillStyle = 'rgba(249,115,22,0.7)';
+        ctx.beginPath(); ctx.moveTo(cx - 15, cy + 40); ctx.quadraticCurveTo(cx, cy - 10 - Math.random()*10, cx + 15, cy + 40); ctx.fill();
+
+        let stripColor = '#94a3b8';
+        if (running) {
+          if (metal === 'na') {
+            ctx.fillStyle = `rgba(255,193,7,${0.6 + Math.random()*0.3})`;
+            ctx.beginPath(); ctx.arc(cx, cy - 40, 25 + Math.random()*15, 0, 2*Math.PI); ctx.fill();
+            ctx.fillStyle = 'rgba(255,255,255,0.6)';
+            for (let i = 0; i < 8; i++) { const a = Math.random()*2*Math.PI; ctx.beginPath(); ctx.arc(cx + Math.cos(a)*30, cy - 40 + Math.sin(a)*30, 2, 0, 2*Math.PI); ctx.fill(); }
+          } else if (metal === 'mg') {
+            ctx.fillStyle = `rgba(255,255,255,${0.7 + Math.random()*0.3})`;
+            ctx.beginPath(); ctx.arc(cx, cy - 40, 20 + Math.random()*8, 0, 2*Math.PI); ctx.fill();
+          } else if (metal === 'al' || metal === 'zn') {
+            stripColor = '#cbd5e1';
+          } else if (metal === 'fe') {
+            stripColor = '#57534e';
+            ctx.fillStyle = 'rgba(251,191,36,0.8)';
+            for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.arc(cx + (Math.random()-0.5)*20, cy - 40 + (Math.random()-0.5)*20, 1.5, 0, 2*Math.PI); ctx.fill(); }
+          } else if (metal === 'cu') {
+            stripColor = '#1c1917';
+          } else if (metal === 'ag') {
+            stripColor = '#e5e7eb';
+          }
+        }
+
+        ctx.fillStyle = stripColor;
+        ctx.fillRect(cx - 8, cy - 100, 16, 80);
+
+        obsTitle.textContent = 'Metal + Oxygen (Burning)';
+        obs.innerHTML = !running ? `Click "React" to hold ${metalNames[metal]} over a flame.` : reactionTextOxygen(metal);
+      }
+
+      function reactionTextWater(metal) {
+        switch (metal) {
+          case 'na': return `<strong>2Na + 2H₂O → 2NaOH + H₂↑ + heat</strong><br>Violent reaction! So exothermic that the hydrogen produced catches fire immediately.`;
+          case 'mg': return `<strong>Mg + 2H₂O → Mg(OH)₂ + H₂↑</strong><br>No reaction with cold water, but reacts with hot water — bubbles of H₂ stick to it, making it float.`;
+          case 'al': return `<strong>2Al + 3H₂O(g) → Al₂O₃ + 3H₂↑</strong><br>No reaction with cold or hot water — aluminium only reacts with steam.`;
+          case 'zn': return `<strong>No reaction with cold or hot water.</strong><br>Zinc only reacts with steam, forming ZnO and H₂.`;
+          case 'fe': return `<strong>3Fe + 4H₂O(g) → Fe₃O₄ + 4H₂↑</strong><br>No reaction with cold or hot water — iron only reacts with steam.`;
+          default: return `<strong>No reaction at all.</strong><br>Copper and silver don't react with water, hot water, or even steam.`;
+        }
+      }
+
+      function drawWater() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const metal = metalSel.value;
+        const cx = W/2;
+
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx - 80, 100); ctx.lineTo(cx - 80, 260); ctx.lineTo(cx + 80, 260); ctx.lineTo(cx + 80, 100); ctx.stroke();
+        ctx.fillStyle = 'rgba(59,130,246,0.2)'; ctx.fillRect(cx - 78, 150, 156, 108);
+
+        const reactsHotWater = metal === 'mg';
+        let metalY = 200;
+        if (running) {
+          if (metal === 'na') {
+            metalY = 160;
+            ctx.fillStyle = 'rgba(251,191,36,0.7)';
+            for (let i = 0; i < 5; i++) { const bx = cx + (Math.random()-0.5)*40, by = metalY + (Math.random()-0.5)*20; ctx.beginPath(); ctx.arc(bx, by, 2, 0, 2*Math.PI); ctx.fill(); }
+            ctx.fillStyle = 'rgba(255,150,50,0.6)';
+            ctx.beginPath(); ctx.arc(cx, metalY - 15, 12, 0, 2*Math.PI); ctx.fill();
+          } else if (reactsHotWater) {
+            metalY = 175;
+            ctx.fillStyle = 'rgba(255,255,255,0.6)';
+            for (let i = 0; i < 4; i++) { const bx = cx + (Math.random()-0.5)*30, by = metalY + 10 + Math.random()*20; ctx.beginPath(); ctx.arc(bx, by, 2, 0, 2*Math.PI); ctx.fill(); }
+          }
+        }
+
+        ctx.fillStyle = (metal === 'na' || reactsHotWater) ? '#94a3b8' : '#64748b';
+        ctx.fillRect(cx - 10, metalY, 20, 20);
+
+        obsTitle.textContent = 'Metal + Water / Steam';
+        obs.innerHTML = !running ? `Click "React" to put ${metalNames[metal]} in water.` : reactionTextWater(metal);
+      }
+
+      function drawAcid() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const metal = metalSel.value;
+        const cx = W/2;
+
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx - 20, 60); ctx.lineTo(cx - 20, 220); ctx.arc(cx, 220, 20, Math.PI, 0, true); ctx.lineTo(cx + 20, 60); ctx.stroke();
+        ctx.fillStyle = 'rgba(250,204,21,0.2)'; ctx.fillRect(cx - 18, 140, 36, 78);
+
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx + 40, 80); ctx.lineTo(cx + 40, 220); ctx.stroke();
+
+        obsTitle.textContent = 'Metal + Dilute Acid';
+        if (metal === 'na') {
+          obs.innerHTML = `⚠️ Sodium is too dangerously reactive to safely test with dilute acid directly in the lab — its violent reaction with water would take over. This activity is normally done only with Mg, Al, Zn, Fe and Cu.`;
+          return;
+        }
+
+        const bubbleRates = { mg: 5, al: 4, zn: 3, fe: 2, cu: 0, ag: 0 };
+        const rate = bubbleRates[metal];
+
+        if (running && rate > 0) {
+          ctx.fillStyle = 'rgba(226,232,240,0.85)';
+          for (let i = 0; i < rate; i++) {
+            const y = 200 - ((frame*3 + i*20) % 150);
+            if (y > 90) { ctx.beginPath(); ctx.arc(cx - 10 + i*4, y, 2, 0, 2*Math.PI); ctx.fill(); }
+          }
+          const mercuryH = Math.min(100, rate*15 + frame*0.3);
+          ctx.fillStyle = '#ef4444'; ctx.fillRect(cx + 37, 220 - mercuryH, 6, mercuryH);
+        }
+
+        if (!running) { obs.innerHTML = `Click "React" to add ${metalNames[metal]} to dilute acid.`; return; }
+        if (rate === 0) {
+          obs.innerHTML = `<strong>No reaction.</strong><br>Copper (and silver) lie below hydrogen in the reactivity series, so they cannot displace H⁺ from the acid.`;
+        } else {
+          const eq = metal === 'mg' ? 'Mg + 2HCl → MgCl₂ + H₂↑' : metal === 'al' ? '2Al + 6HCl → 2AlCl₃ + 3H₂↑' : metal === 'zn' ? 'Zn + 2HCl → ZnCl₂ + H₂↑' : 'Fe + 2HCl → FeCl₂ + H₂↑';
+          obs.innerHTML = `<strong>${eq}</strong><br>
+            Bubble rate: <strong>${rate >= 5 ? 'Very fast (most exothermic)' : rate >= 4 ? 'Fast' : rate >= 3 ? 'Moderate' : 'Slow'}</strong><br>
+            Reactivity order: <strong>Mg &gt; Al &gt; Zn &gt; Fe &gt; (Cu — no reaction)</strong>`;
+        }
+      }
+
+      function draw() {
+        const mode = modeSel.value;
+        if (mode === 'oxygen') drawOxygen();
+        else if (mode === 'water') drawWater();
+        else drawAcid();
+      }
+
+      function startRun() {
+        clearTimer();
+        frame = 1; running = true;
+        timerId = setInterval(() => { frame++; draw(); if (frame > 100) clearTimer(); }, 50);
+      }
+
+      btnRun.addEventListener('click', startRun);
+      metalSel.addEventListener('change', () => { running = false; frame = 0; clearTimer(); draw(); });
+      modeSel.addEventListener('change', () => {
+        running = false; frame = 0; clearTimer();
+        const mode = modeSel.value;
+        hint.querySelector('span').textContent = mode === 'oxygen' ? '💡 Burn different metals and compare their reactivity with oxygen.'
+          : mode === 'water' ? '💡 Try metals in water and see which ones need steam instead.'
+          : '💡 Compare bubble rates to find the reactivity order.';
+        draw();
+      });
+
+      draw();
+    }
+
+    function initMetallurgyCorrosionLab() {
+      const canvas = document.getElementById('metallurgy-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const modeSel = document.getElementById('sel-metallurgy-mode');
+      const hint = document.getElementById('metallurgy-hint');
+      const obsTitle = document.getElementById('metallurgy-obs-title');
+      const obs = document.getElementById('metallurgy-obs');
+      const extractionControls = document.getElementById('metallurgy-extraction-controls');
+      const thermitControls = document.getElementById('metallurgy-thermit-controls');
+      const refiningControls = document.getElementById('metallurgy-refining-controls');
+      const corrosionControls = document.getElementById('metallurgy-corrosion-controls');
+      const extractionMetalSel = document.getElementById('sel-extraction-metal');
+      const btnThermit = document.getElementById('btn-run-thermit');
+      const btnRefining = document.getElementById('btn-run-refining');
+      const corrosionMetalSel = document.getElementById('sel-corrosion-metal2');
+      const corrosionPreventionSel = document.getElementById('sel-corrosion-prevention');
+      const btnCorrosion = document.getElementById('btn-run-corrosion2');
+
+      let frame = 0, timerId = null;
+      function clearTimer() { if (timerId) { clearInterval(timerId); timerId = null; } }
+
+      function drawExtraction() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const metal = extractionMetalSel.value;
+
+        if (metal === 'na') {
+          const cellX = 150, cellY = 80, cellW = 300, cellH = 160;
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3; ctx.strokeRect(cellX, cellY, cellW, cellH);
+          ctx.fillStyle = 'rgba(239,68,68,0.15)'; ctx.fillRect(cellX, cellY, cellW, cellH);
+          ctx.fillStyle = '#374151'; ctx.fillRect(cellX + 60, cellY + 10, 16, cellH - 20);
+          ctx.fillRect(cellX + cellW - 76, cellY + 10, 16, cellH - 20);
+          ctx.fillStyle = 'white'; ctx.font = 'bold 11px system-ui';
+          ctx.fillText('−', cellX + 63, cellY + 5); ctx.fillText('+', cellX + cellW - 73, cellY + 5);
+          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+          ctx.fillText('Cathode: Na⁺ + e⁻ → Na', cellX + 20, cellY + cellH + 18);
+          ctx.fillText('Anode: 2Cl⁻ → Cl₂ + 2e⁻', cellX + cellW - 140, cellY + cellH + 18);
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillText('Molten NaCl (electrolysis)', cellX + 60, cellY - 10);
+
+          obsTitle.textContent = 'Extraction: Sodium (high reactivity)';
+          obs.innerHTML = `<strong>Electrolytic Reduction</strong><br>
+            • Na, Mg, Ca and Al are so reactive they have a greater affinity for oxygen than carbon does — carbon cannot reduce their oxides.<br>
+            • They are extracted by <strong>electrolysis of their molten chlorides</strong>.<br>
+            • Metal deposits at the cathode; chlorine gas is released at the anode.`;
+        } else if (metal === 'zn') {
+          const y = 150;
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
+          ctx.fillText('ZnS (ore)', 40, y);
+          ctx.fillText('→ Roasting →', 150, y);
+          ctx.fillText('ZnO', 290, y);
+          ctx.fillText('→ Reduction (+C) →', 340, y);
+          ctx.fillText('Zn (metal)', 500, y);
+          ctx.strokeStyle = '#f97316'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(40, y + 20); ctx.lineTo(560, y + 20); ctx.stroke();
+
+          obsTitle.textContent = 'Extraction: Zinc (medium reactivity)';
+          obs.innerHTML = `<strong>Roasting/Calcination then Carbon Reduction</strong><br>
+            • Zn, Fe, Pb and Cu are moderately reactive and usually found as sulphides or carbonates.<br>
+            • <strong>Roasting</strong> (sulphide ores, excess air): 2ZnS + 3O₂ → 2ZnO + 2SO₂<br>
+            • <strong>Calcination</strong> (carbonate ores, limited air): ZnCO₃ → ZnO + CO₂<br>
+            • The oxide is then reduced with carbon: <strong>ZnO + C → Zn + CO</strong>`;
+        } else {
+          const y = 150;
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
+          ctx.fillText('HgS (cinnabar)', 60, y);
+          ctx.fillText('→ Heat in air →', 220, y);
+          ctx.fillText('HgO', 360, y);
+          ctx.fillText('→ Heat →', 420, y);
+          ctx.fillText('Hg (liquid metal)', 480, y);
+          ctx.strokeStyle = '#f97316'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(40, y + 20); ctx.lineTo(560, y + 20); ctx.stroke();
+
+          obsTitle.textContent = 'Extraction: Mercury (low reactivity)';
+          obs.innerHTML = `<strong>Heating Alone</strong><br>
+            • Metals low in the activity series are very unreactive, so their oxides reduce to metal just by heating.<br>
+            • 2HgS + 3O₂ → 2HgO + 2SO₂<br>
+            • 2HgO → 2Hg(l) + O₂ (further heating)<br>
+            • Gold, silver, platinum and copper are often found in a free (native) state and need little processing.`;
+        }
+      }
+
+      function drawThermit() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cx = W/2, cy = 180;
+
+        ctx.fillStyle = 'rgba(148,163,184,0.3)'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx - 50, cy); ctx.lineTo(cx - 40, cy + 60); ctx.lineTo(cx + 40, cy + 60); ctx.lineTo(cx + 50, cy); ctx.closePath(); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Fe₂O₃ + Al mixture', cx - 55, cy - 10);
+
+        if (frame > 0) {
+          const glow = Math.min(1, frame/40);
+          const grad = ctx.createRadialGradient(cx, cy + 30, 0, cx, cy + 30, 60 + glow*20);
+          grad.addColorStop(0, `rgba(255,255,255,${glow})`);
+          grad.addColorStop(0.4, `rgba(251,191,36,${glow*0.9})`);
+          grad.addColorStop(1, 'transparent');
+          ctx.fillStyle = grad;
+          ctx.beginPath(); ctx.arc(cx, cy + 30, 60 + glow*20, 0, 2*Math.PI); ctx.fill();
+
+          if (frame > 10) {
+            ctx.fillStyle = `rgba(255,180,50,${Math.min(1, (frame-10)/30)})`;
+            ctx.beginPath(); ctx.ellipse(cx, cy + 55, 35, 12, 0, 0, 2*Math.PI); ctx.fill();
+            ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 10px system-ui'; ctx.fillText('Molten Iron', cx - 30, cy + 90);
+          }
+          for (let i = 0; i < 6; i++) {
+            const a = Math.random()*2*Math.PI, r = 40 + Math.random()*40;
+            ctx.fillStyle = 'rgba(255,220,100,0.9)';
+            ctx.beginPath(); ctx.arc(cx + Math.cos(a)*r, cy + 20 + Math.sin(a)*r, 1.5, 0, 2*Math.PI); ctx.fill();
+          }
+        }
+
+        obsTitle.textContent = 'Thermit Reaction';
+        obs.innerHTML = frame === 0
+          ? `Click "Ignite" to trigger the thermit reaction.`
+          : `<strong>Fe₂O₃(s) + 2Al(s) → 2Fe(l) + Al₂O₃(s) + Heat</strong><br>
+            • Aluminium (highly reactive) displaces iron from its oxide in a violently exothermic displacement reaction.<br>
+            • So much heat is released that the iron produced is <strong>molten</strong>.<br>
+            • Used in industry to weld railway tracks and repair cracked machine parts on-site.`;
+      }
+
+      function drawRefining() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cx = W/2, cy = 170;
+        const anodeX = cx - 60, cathodeX = cx + 60;
+
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.strokeRect(cx - 130, 90, 260, 160);
+        ctx.fillStyle = 'rgba(59,130,246,0.15)'; ctx.fillRect(cx - 128, 92, 256, 156);
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Acidified CuSO₄ solution', cx - 70, 80);
+
+        const dissolveAmt = Math.min(20, frame*0.15);
+        ctx.fillStyle = '#b45309';
+        ctx.fillRect(anodeX - 8, 100 + dissolveAmt, 16, 140 - dissolveAmt);
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Impure Cu (Anode +)', anodeX - 45, 260);
+
+        const growAmt = Math.min(20, frame*0.15);
+        ctx.fillStyle = '#f97316';
+        ctx.fillRect(cathodeX - 8, 240 - 140 - growAmt, 16, 140 + growAmt);
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Pure Cu (Cathode −)', cathodeX - 40, 260);
+
+        if (frame > 20) {
+          ctx.fillStyle = 'rgba(87,83,78,0.6)';
+          ctx.beginPath(); ctx.ellipse(anodeX, 246, 14, 5, 0, 0, 2*Math.PI); ctx.fill();
+          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui'; ctx.fillText('Anode mud', anodeX - 20, 260 + 12);
+        }
+
+        if (frame > 0) {
+          ctx.fillStyle = 'rgba(37,99,235,0.7)'; ctx.font = '8px system-ui';
+          for (let i = 0; i < 3; i++) {
+            const t = ((frame*2 + i*30) % 120) / 120;
+            const x = anodeX + (cathodeX - anodeX)*t;
+            ctx.beginPath(); ctx.arc(x, 170, 2, 0, 2*Math.PI); ctx.fill();
+          }
+        }
+
+        obsTitle.textContent = 'Electrolytic Refining';
+        obs.innerHTML = frame === 0
+          ? `Click "Pass Current" to start refining impure copper.`
+          : `<strong>Electrolytic Refining of Copper:</strong><br>
+            • The impure copper anode <strong>dissolves</strong> into the electrolyte as Cu²⁺ ions.<br>
+            • An equivalent amount of <strong>pure copper deposits</strong> on the cathode.<br>
+            • Soluble impurities stay in solution; insoluble impurities settle below the anode as <strong>anode mud</strong> (often containing silver and gold!).`;
+      }
+
+      function drawCorrosion() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const metal = corrosionMetalSel.value;
+        const prevention = metal === 'iron' ? corrosionPreventionSel.value : 'none';
+        const cx = W/2, cy = 170;
+
+        const rustLevel = Math.min(1, frame*0.01);
+        const protectedByPrevention = prevention !== 'none';
+
+        let color;
+        if (metal === 'iron') {
+          if (prevention === 'galvanizing') {
+            color = '#94a3b8';
+          } else if (prevention === 'alloying') {
+            color = '#cbd5e1';
+          } else {
+            const fresh = [148, 163, 184], rusted = [146, 64, 14];
+            color = `rgb(${Math.round(fresh[0] + (rusted[0]-fresh[0])*rustLevel)},${Math.round(fresh[1] + (rusted[1]-fresh[1])*rustLevel)},${Math.round(fresh[2] + (rusted[2]-fresh[2])*rustLevel)})`;
+          }
+        } else if (metal === 'silver') {
+          const fresh = [226, 232, 240], tarnished = [30, 27, 24];
+          color = `rgb(${Math.round(fresh[0] + (tarnished[0]-fresh[0])*rustLevel)},${Math.round(fresh[1] + (tarnished[1]-fresh[1])*rustLevel)},${Math.round(fresh[2] + (tarnished[2]-fresh[2])*rustLevel)})`;
+        } else {
+          const fresh = [217, 119, 6], patina = [34, 197, 94];
+          color = `rgb(${Math.round(fresh[0] + (patina[0]-fresh[0])*rustLevel)},${Math.round(fresh[1] + (patina[1]-fresh[1])*rustLevel)},${Math.round(fresh[2] + (patina[2]-fresh[2])*rustLevel)})`;
+        }
+
+        ctx.fillStyle = color;
+        ctx.fillRect(cx - 60, cy - 15, 120, 30);
+        ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 2; ctx.strokeRect(cx - 60, cy - 15, 120, 30);
+
+        const day = Math.min(60, Math.floor(frame/2));
+        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 12px system-ui';
+        ctx.fillText('Day ' + day, cx - 25, 100);
+
+        obsTitle.textContent = 'Corrosion & Prevention';
+        if (frame === 0) {
+          obs.innerHTML = `Click "Expose to Moist Air" to start the time-lapse.`;
+          return;
+        }
+        if (metal === 'iron') {
+          if (prevention === 'galvanizing') {
+            obs.innerHTML = `<strong>Galvanising protects the iron!</strong><br>
+              • A thin coating of <strong>zinc</strong> keeps oxygen and moisture away.<br>
+              • Even if the coating gets scratched, zinc corrodes preferentially (sacrificial protection), so the iron underneath stays safe.`;
+          } else if (prevention === 'alloying') {
+            obs.innerHTML = `<strong>Stainless steel doesn't rust!</strong><br>
+              • Alloying iron with <strong>nickel and chromium</strong> produces stainless steel — hard, and highly rust-resistant.`;
+          } else {
+            obs.innerHTML = `<strong>Rusting: 4Fe + 3O₂ + xH₂O → 2Fe₂O₃·xH₂O</strong><br>
+              • Iron exposed to <strong>both</strong> moist air rusts, forming a brown flaky coating.<br>
+              • Rusting needs both oxygen and water — dry air alone, or air-free water alone, won't rust iron (Activity 3.14).`;
+          }
+        } else if (metal === 'silver') {
+          obs.innerHTML = `<strong>Silver tarnishes:</strong> reacts with sulphur compounds in the air to form a black coating of <strong>silver sulphide (Ag₂S)</strong>.`;
+        } else {
+          obs.innerHTML = `<strong>Copper patinas green:</strong> reacts with moist carbon dioxide in the air to form <strong>basic copper carbonate</strong> [CuCO₃·Cu(OH)₂] — the green coating seen on old copper statues and vessels.`;
+        }
+      }
+
+      function draw() {
+        const mode = modeSel.value;
+        if (mode === 'extraction') drawExtraction();
+        else if (mode === 'thermit') drawThermit();
+        else if (mode === 'refining') drawRefining();
+        else drawCorrosion();
+      }
+
+      function startAnim() {
+        clearTimer();
+        frame = 1;
+        timerId = setInterval(() => { frame++; draw(); if (frame > 150) clearTimer(); }, 40);
+      }
+
+      extractionMetalSel.addEventListener('change', draw);
+      btnThermit.addEventListener('click', startAnim);
+      btnRefining.addEventListener('click', startAnim);
+      btnCorrosion.addEventListener('click', startAnim);
+      corrosionMetalSel.addEventListener('change', () => { clearTimer(); frame = 0; draw(); });
+      corrosionPreventionSel.addEventListener('change', () => { clearTimer(); frame = 0; draw(); });
+
+      modeSel.addEventListener('change', () => {
+        clearTimer(); frame = 0;
+        const mode = modeSel.value;
+        extractionControls.style.display = mode === 'extraction' ? 'block' : 'none';
+        thermitControls.style.display = mode === 'thermit' ? 'block' : 'none';
+        refiningControls.style.display = mode === 'refining' ? 'block' : 'none';
+        corrosionControls.style.display = mode === 'corrosion' ? 'block' : 'none';
+        obsTitle.textContent = mode === 'extraction' ? 'Extraction Pathway' : mode === 'thermit' ? 'Thermit Reaction' : mode === 'refining' ? 'Electrolytic Refining' : 'Corrosion & Prevention';
+        hint.querySelector('span').textContent = mode === 'extraction' ? '💡 Pick a metal and see how it would be extracted from its ore.'
+          : mode === 'thermit' ? '💡 Ignite the thermit mixture and watch molten iron form.'
+          : mode === 'refining' ? '💡 Pass current and watch pure copper migrate from anode to cathode.'
+          : '💡 Choose a metal and prevention method, then watch corrosion over time.';
+        draw();
+      });
 
       draw();
     }
@@ -4642,17 +7105,28 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const rngTheta1 = document.getElementById('rng-theta1');
       const selN1 = document.getElementById('sel-n1');
       const selN2 = document.getElementById('sel-n2');
-      
+      const modeSel = document.getElementById('sel-refraction-mode');
+      const snellControls = document.getElementById('refraction-snell-controls');
+      const lensControls = document.getElementById('refraction-lens-controls');
+      const hint = document.getElementById('refraction-hint');
+      const solverTitle = document.getElementById('refraction-solver-title');
+      const btnReflensConvex = document.getElementById('btn-reflens-convex');
+      const btnReflensConcave = document.getElementById('btn-reflens-concave');
+      const rngReflensU = document.getElementById('rng-reflens-u');
+      const rngReflensF = document.getElementById('rng-reflens-f');
+      const rngReflensHo = document.getElementById('rng-reflens-ho');
+
       let theta1 = 45;
       let n1 = 1.0;
       let n2 = 1.5;
       let isDragging = false;
+      let isConvexLens = true;
 
       function updateSimulation() {
         n1 = parseFloat(selN1.value);
         n2 = parseFloat(selN2.value);
         theta1 = parseInt(rngTheta1.value);
-        
+
         document.getElementById('lbl-n1').textContent = `n₁ = ${n1.toFixed(2)}`;
         document.getElementById('lbl-n2').textContent = `n₂ = ${n2.toFixed(2)}`;
         document.getElementById('lbl-theta1').textContent = `${theta1}°`;
@@ -4717,7 +7191,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         const sinTheta1 = Math.sin(rTheta1);
         const sinTheta2 = (n1 * sinTheta1) / n2;
-        
+
         const solverSteps = document.getElementById('refraction-solver-steps');
         const tirBadge = document.getElementById('tir-badge');
 
@@ -4827,9 +7301,152 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(n2 === 1.0 ? "Medium 2: Air" : n2 === 1.33 ? "Medium 2: Water" : n2 === 1.5 ? "Medium 2: Glass" : "Medium 2: Diamond", 15, cy + 30);
       }
 
-      rngTheta1.addEventListener('input', updateSimulation);
-      selN1.addEventListener('change', updateSimulation);
-      selN2.addEventListener('change', updateSimulation);
+      function drawLensMode() {
+        let u = parseInt(rngReflensU.value);
+        let fVal = parseInt(rngReflensF.value);
+        let ho = parseInt(rngReflensHo.value);
+        let f = isConvexLens ? fVal : -fVal;
+
+        document.getElementById('lbl-reflens-u').textContent = `${u} cm`;
+        document.getElementById('lbl-reflens-f').textContent = `${fVal} cm (${isConvexLens ? 'Convex' : 'Concave'})`;
+        document.getElementById('lbl-reflens-ho').textContent = `${ho} cm`;
+
+        const W = canvas.width, H = canvas.height;
+        const cx = W / 2, cy = H / 2;
+        ctx.clearRect(0, 0, W, H);
+
+        ctx.strokeStyle = 'var(--text-light, #94a3b8)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(10, cy); ctx.lineTo(W - 10, cy); ctx.stroke();
+
+        ctx.strokeStyle = '#3b82f6'; ctx.fillStyle = 'rgba(59, 130, 246, 0.1)'; ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        if (isConvexLens) {
+          ctx.moveTo(cx, cy - 90); ctx.quadraticCurveTo(cx + 20, cy, cx, cy + 90); ctx.quadraticCurveTo(cx - 20, cy, cx, cy - 90);
+        } else {
+          ctx.moveTo(cx - 15, cy - 90); ctx.lineTo(cx + 15, cy - 90);
+          ctx.quadraticCurveTo(cx, cy, cx + 15, cy + 90); ctx.lineTo(cx - 15, cy + 90);
+          ctx.quadraticCurveTo(cx, cy, cx - 15, cy - 90);
+        }
+        ctx.fill(); ctx.stroke();
+
+        const f1x = cx - fVal, f2x = cx + fVal;
+        ctx.fillStyle = '#f59e0b'; ctx.font = '11px sans-serif';
+        ctx.beginPath(); ctx.arc(f1x, cy, 3.5, 0, 2*Math.PI); ctx.fill();
+        ctx.fillText(isConvexLens ? "F₁" : "F₂", f1x - 5, cy - 8);
+        ctx.beginPath(); ctx.arc(f2x, cy, 3.5, 0, 2*Math.PI); ctx.fill();
+        ctx.fillText(isConvexLens ? "F₂" : "F₁", f2x - 5, cy - 8);
+
+        let v = 0, isInfinity = false, m = 0, hi = 0;
+        if (Math.abs(u + f) < 0.1) { isInfinity = true; }
+        else { v = (u * f) / (u + f); m = v / u; hi = m * ho; }
+
+        const objX = cx + u, objY = cy - ho;
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3.5;
+        ctx.beginPath(); ctx.moveTo(objX, cy); ctx.lineTo(objX, objY); ctx.stroke();
+        ctx.fillStyle = '#22c55e';
+        ctx.beginPath(); ctx.moveTo(objX - 6, objY + 8); ctx.lineTo(objX, objY); ctx.lineTo(objX + 6, objY + 8); ctx.fill();
+        ctx.font = 'bold 11px sans-serif'; ctx.fillText("Object", objX - 18, objY - 8);
+
+        const solverDiv = document.getElementById('refraction-solver-steps');
+        solverTitle.textContent = 'Lens Formula Solver';
+
+        if (isInfinity) {
+          ctx.strokeStyle = '#eab308'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(objX, objY); ctx.lineTo(cx, objY); ctx.lineTo(cx + fVal*2, cy + ho); ctx.stroke();
+          ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(objX, objY); ctx.lineTo(cx, cy); ctx.lineTo(cx + 200, cy - (200/u)*ho); ctx.stroke();
+          solverDiv.innerHTML = `
+            <div class="calc-step">
+              <strong>Object at focus F₁</strong>
+              <div class="calc-formula">1/v = 1/f + 1/u = 1/(${f}) + 1/(${u}) = 0</div>
+              <div style="font-weight:700; color:#eab308; margin-top:0.25rem;">v = ±∞ — refracted rays are perfectly parallel. Image forms at infinity.</div>
+            </div>`;
+        } else {
+          const imgX = cx + v, imgY = cy - hi;
+          const isReal = v > 0;
+          ctx.strokeStyle = isReal ? '#3b82f6' : '#d946ef'; ctx.lineWidth = 3.5;
+          ctx.beginPath(); ctx.moveTo(imgX, cy); ctx.lineTo(imgX, imgY); ctx.stroke();
+          ctx.fillStyle = isReal ? '#3b82f6' : '#d946ef';
+          ctx.beginPath();
+          if (hi >= 0) { ctx.moveTo(imgX - 6, imgY + 8); ctx.lineTo(imgX, imgY); ctx.lineTo(imgX + 6, imgY + 8); }
+          else { ctx.moveTo(imgX - 6, imgY - 8); ctx.lineTo(imgX, imgY); ctx.lineTo(imgX + 6, imgY - 8); }
+          ctx.fill();
+          ctx.font = 'bold 11px sans-serif';
+          ctx.fillText(`Image (v:${v.toFixed(1)})`, imgX - 35, imgY + (hi >= 0 ? -8 : 14));
+
+          ctx.strokeStyle = '#eab308'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(objX, objY); ctx.lineTo(cx, objY); ctx.lineTo(imgX, imgY); ctx.stroke();
+          if (!isReal) {
+            ctx.strokeStyle = '#eab308'; ctx.setLineDash([4,4]);
+            ctx.beginPath(); ctx.moveTo(cx, objY); ctx.lineTo(imgX, imgY); ctx.stroke();
+            ctx.setLineDash([]);
+          }
+          ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(objX, objY); ctx.lineTo(cx, cy); ctx.lineTo(isReal ? imgX : cx + 200, cy - (200/u)*ho); ctx.stroke();
+          if (!isReal) {
+            ctx.strokeStyle = '#3b82f6'; ctx.setLineDash([4,4]);
+            ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(imgX, imgY); ctx.stroke();
+            ctx.setLineDash([]);
+          }
+
+          const P = (fVal !== 0) ? (100 / (isConvexLens ? fVal : -fVal)) : 0;
+          solverDiv.innerHTML = `
+            <div class="calc-step">
+              <strong>Step 1: Lens Formula</strong>
+              <div class="calc-formula">1/v = 1/f + 1/u = 1/(${f}) + 1/(${u})</div>
+              1/v = ${(1/f).toFixed(4)} + (${(1/u).toFixed(4)}) = <span class="calc-var-highlight blue">${(1/v).toFixed(5)}</span>
+            </div>
+            <div class="calc-step" style="border-left-color: ${isReal ? '#3b82f6' : '#d946ef'};">
+              <strong>Step 2: Image Distance &amp; Magnification</strong>
+              <div>v = <span class="calc-var-highlight">${v.toFixed(1)} cm</span> (${isReal ? 'real, right of lens' : 'virtual, same side as object'})</div>
+              <div class="calc-formula">m = v/u = ${m.toFixed(2)}</div>
+              <div>Image is <span class="calc-var-highlight green">${Math.abs(m) > 1 ? 'magnified' : 'diminished'}</span> and <span class="calc-var-highlight green">${m > 0 ? 'virtual & erect' : 'real & inverted'}</span>.</div>
+            </div>
+            <div class="calc-step">
+              <strong>Step 3: Power of the Lens</strong>
+              <div class="calc-formula">P = 1/f (in metres) = 1/(${(f/100).toFixed(2)} m)</div>
+              P = <span class="calc-var-highlight">${P.toFixed(2)} D</span> (${isConvexLens ? 'positive — converging' : 'negative — diverging'})
+            </div>`;
+        }
+
+        ctx.fillStyle = '#94a3b8'; ctx.font = '11px Outfit, sans-serif';
+        ctx.fillText("Incident Side (Left)", 30, cy + 140);
+        ctx.fillText("Transmission Side (Right)", cx + 30, cy + 140);
+      }
+
+      function render() {
+        if (modeSel.value === 'lens') drawLensMode();
+        else updateSimulation();
+      }
+
+      rngTheta1.addEventListener('input', render);
+      selN1.addEventListener('change', render);
+      selN2.addEventListener('change', render);
+      rngReflensU.addEventListener('input', render);
+      rngReflensF.addEventListener('input', render);
+      rngReflensHo.addEventListener('input', render);
+      btnReflensConvex.addEventListener('click', () => {
+        isConvexLens = true;
+        btnReflensConvex.classList.add('active');
+        btnReflensConcave.classList.remove('active');
+        render();
+      });
+      btnReflensConcave.addEventListener('click', () => {
+        isConvexLens = false;
+        btnReflensConcave.classList.add('active');
+        btnReflensConvex.classList.remove('active');
+        render();
+      });
+      modeSel.addEventListener('change', () => {
+        const isLens = modeSel.value === 'lens';
+        snellControls.style.display = isLens ? 'none' : 'block';
+        lensControls.style.display = isLens ? 'block' : 'none';
+        document.getElementById('tir-badge').style.display = 'none';
+        hint.textContent = isLens
+          ? '💡 Adjust the sliders and toggle convex/concave to see how lenses form images.'
+          : '💡 Drag the laser pointer on the canvas or use the angle slider to see bending.';
+        render();
+      });
 
       function handleCanvasDrag(e) {
         const rect = canvas.getBoundingClientRect();
@@ -4849,16 +7466,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           let dragAngle = Math.atan2(dx, dy) * (180 / Math.PI);
           dragAngle = Math.max(0, Math.min(89, Math.round(dragAngle)));
           rngTheta1.value = dragAngle;
-          updateSimulation();
+          render();
         }
       }
 
       canvas.addEventListener('mousedown', (e) => {
+        if (modeSel.value === 'lens') return;
         isDragging = true;
         handleCanvasDrag(e);
       });
 
       canvas.addEventListener('mousemove', (e) => {
+        if (modeSel.value === 'lens') return;
         if (isDragging) handleCanvasDrag(e);
       });
 
@@ -4867,10 +7486,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       });
 
       canvas.addEventListener('touchstart', (e) => {
+        if (modeSel.value === 'lens') return;
         isDragging = true;
         if (e.touches.length > 0) handleCanvasDrag(e.touches[0]);
       });
       canvas.addEventListener('touchmove', (e) => {
+        if (modeSel.value === 'lens') return;
         if (isDragging && e.touches.length > 0) {
           handleCanvasDrag(e.touches[0]);
         }
@@ -4879,7 +7500,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         isDragging = false;
       });
 
-      updateSimulation();
+      render();
     }
 
     function initPlaneMirrorLab() {
@@ -5612,10 +8233,150 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const btnConvex = document.getElementById('btn-lens-convex');
       const btnConcave = document.getElementById('btn-lens-concave');
       const badgeHolder = document.getElementById('lens-badge-holder');
+      const modeSel = document.getElementById('sel-lens-mode');
+      const rayControls = document.getElementById('lens-ray-controls');
+      const eyeControls = document.getElementById('lens-eye-controls');
+      const eyeDefectSel = document.getElementById('sel-eye-defect');
+      const eyeCorrectionChk = document.getElementById('chk-eye-correction');
+      const lblEyeCorrection = document.getElementById('lbl-eye-correction');
+      const lensHint = document.getElementById('lens-hint');
+      const lensCalcTitle = document.getElementById('lens-calc-title');
 
       let isConvex = true;
       let isDragging = false;
       let dragMode = null;
+
+      function render() {
+        if (modeSel.value === 'eyedefect') drawEyeMode();
+        else updateSimulation();
+      }
+
+      function drawEyeMode() {
+        const W = canvas.width, H = canvas.height;
+        const cy = H / 2;
+        const eyeCenterX = 420, eyeRadius = 95;
+        const lensX = eyeCenterX - eyeRadius + 22;
+        const retinaX = eyeCenterX + eyeRadius;
+        const correctionX = lensX - 100;
+        const defect = eyeDefectSel.value;
+        const showCorrection = defect !== 'normal' && eyeCorrectionChk.checked;
+        lblEyeCorrection.style.opacity = defect === 'normal' ? '0.4' : '1';
+        eyeCorrectionChk.disabled = defect === 'normal';
+        if (defect === 'normal') eyeCorrectionChk.checked = false;
+
+        ctx.clearRect(0, 0, W, H);
+
+        // Eyeball
+        ctx.beginPath(); ctx.arc(eyeCenterX, cy, eyeRadius, 0, 2*Math.PI);
+        ctx.fillStyle = 'rgba(147, 197, 253, 0.12)'; ctx.fill();
+        ctx.strokeStyle = 'var(--text-muted)'; ctx.lineWidth = 2; ctx.stroke();
+        // Retina (highlighted arc on the inner-right edge)
+        ctx.beginPath(); ctx.arc(eyeCenterX, cy, eyeRadius, -Math.PI/2.6, Math.PI/2.6);
+        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 4; ctx.stroke();
+        ctx.fillStyle = '#ef4444'; ctx.font = 'bold 10px system-ui'; ctx.fillText('Retina', retinaX - 20, cy - eyeRadius - 8);
+        // Eye lens (biconvex, fixed)
+        ctx.beginPath();
+        ctx.moveTo(lensX, cy - 60);
+        ctx.quadraticCurveTo(lensX + 12, cy, lensX, cy + 60);
+        ctx.quadraticCurveTo(lensX - 12, cy, lensX, cy - 60);
+        ctx.fillStyle = 'rgba(59,130,246,0.25)'; ctx.fill();
+        ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = '#3b82f6'; ctx.font = '9px system-ui'; ctx.fillText('Eye lens', lensX - 20, cy + 78);
+
+        // Determine defect shift (how far the natural focal point is from the retina) and bend point
+        let defectShift = 0;
+        if (defect === 'myopia') defectShift = -45;
+        else if (defect === 'hypermetropia' || defect === 'presbyopia') defectShift = 45;
+
+        const bendX = showCorrection ? correctionX : lensX;
+        const convX = showCorrection ? retinaX : (retinaX + defectShift);
+
+        // Corrective spectacle lens
+        if (showCorrection) {
+          ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.5; ctx.fillStyle = 'rgba(245,158,11,0.15)';
+          ctx.beginPath();
+          if (defect === 'myopia') {
+            ctx.moveTo(correctionX - 10, cy - 55); ctx.lineTo(correctionX - 10, cy + 55);
+            ctx.quadraticCurveTo(correctionX, cy, correctionX - 10, cy - 55);
+            ctx.moveTo(correctionX + 10, cy - 55); ctx.lineTo(correctionX + 10, cy + 55);
+            ctx.quadraticCurveTo(correctionX, cy, correctionX + 10, cy - 55);
+            ctx.stroke();
+          } else if (defect === 'presbyopia') {
+            // Bifocal: flat/plain upper half (distance), convex lower half (near)
+            ctx.beginPath();
+            ctx.moveTo(correctionX - 10, cy); ctx.lineTo(correctionX - 10, cy - 55);
+            ctx.lineTo(correctionX + 10, cy - 55); ctx.lineTo(correctionX + 10, cy);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(correctionX, cy);
+            ctx.quadraticCurveTo(correctionX + 14, cy + 27, correctionX, cy + 55);
+            ctx.quadraticCurveTo(correctionX - 14, cy + 27, correctionX, cy);
+            ctx.fill(); ctx.stroke();
+            ctx.strokeStyle = 'rgba(245,158,11,0.5)'; ctx.setLineDash([2,2]);
+            ctx.beginPath(); ctx.moveTo(correctionX - 14, cy); ctx.lineTo(correctionX + 14, cy); ctx.stroke();
+            ctx.setLineDash([]);
+          } else {
+            ctx.moveTo(correctionX, cy - 55);
+            ctx.quadraticCurveTo(correctionX + 14, cy, correctionX, cy + 55);
+            ctx.quadraticCurveTo(correctionX - 14, cy, correctionX, cy - 55);
+            ctx.fill(); ctx.stroke();
+          }
+          ctx.fillStyle = '#f59e0b'; ctx.font = 'bold 9px system-ui';
+          ctx.fillText(defect === 'myopia' ? 'Concave lens' : defect === 'presbyopia' ? 'Bifocal lens' : 'Convex lens', correctionX - 30, cy - 68);
+        }
+
+        // Rays
+        [-30, 0, 30].forEach(dy0 => {
+          const slope = (0 - dy0) / (convX - bendX);
+          const yAtRetina = dy0 + slope * (retinaX - bendX);
+          ctx.strokeStyle = 'rgba(239,68,68,0.6)'; ctx.lineWidth = 1.3;
+          ctx.beginPath();
+          ctx.moveTo(20, cy + dy0);
+          ctx.lineTo(bendX, cy + dy0);
+          ctx.lineTo(retinaX, cy + yAtRetina);
+          ctx.stroke();
+        });
+
+        // Mark the natural convergence point if it's off the retina
+        if (convX !== retinaX) {
+          ctx.fillStyle = '#eab308';
+          ctx.beginPath(); ctx.arc(convX, cy, 4, 0, 2*Math.PI); ctx.fill();
+          ctx.font = '9px system-ui';
+          ctx.fillText(convX < retinaX ? 'Image forms here (in front of retina)' : 'Image would form here (behind retina)', convX - 60, cy - 20);
+          ctx.strokeStyle = 'rgba(234,179,8,0.5)'; ctx.setLineDash([2,2]);
+          ctx.beginPath(); ctx.moveTo(convX, cy - 15); ctx.lineTo(convX, cy + 15); ctx.stroke();
+          ctx.setLineDash([]);
+        }
+
+        lensCalcTitle.textContent = 'Diagnosis';
+        const solverDiv = document.getElementById('lens-solver-steps');
+        if (defect === 'normal') {
+          solverDiv.innerHTML = `<p><strong>Normal Eye:</strong> Parallel light rays are refracted by the cornea and eye lens to converge exactly on the retina. The image is sharp for objects between the near point (25 cm) and infinity.</p>`;
+        } else if (defect === 'myopia') {
+          solverDiv.innerHTML = `<p><strong>Myopia (Near-sightedness):</strong> The eyeball's lens is too curved (or the eyeball too long), so distant objects focus <strong>in front of</strong> the retina. Distant objects look blurred; near objects are still clear.</p>
+            <p>${showCorrection ? '<strong>Corrected:</strong> A <strong>concave (diverging) lens</strong> spreads the rays out slightly before they enter the eye, pushing the focus back exactly onto the retina.' : 'Try checking "Wear corrective lens" to see how a concave lens fixes this.'}</p>`;
+        } else if (defect === 'hypermetropia') {
+          solverDiv.innerHTML = `<p><strong>Hypermetropia (Far-sightedness):</strong> The eyeball's lens is too flat (or the eyeball too short), so near objects would focus <strong>behind</strong> the retina. Nearby objects look blurred; distant objects are still clear.</p>
+            <p>${showCorrection ? '<strong>Corrected:</strong> A <strong>convex (converging) lens</strong> pre-converges the rays before they enter the eye, pulling the focus forward exactly onto the retina.' : 'Try checking "Wear corrective lens" to see how a convex lens fixes this.'}</p>`;
+        } else {
+          solverDiv.innerHTML = `<p><strong>Presbyopia (Old-age sight):</strong> With age, the ciliary muscles weaken and the eye lens loses its flexibility, so its <strong>power of accommodation decreases</strong>. The near point recedes well beyond 25 cm — reading becomes difficult, and sometimes distant vision is affected too.</p>
+            <p>${showCorrection ? '<strong>Corrected:</strong> A <strong>bifocal lens</strong> is used — the upper part (concave or plain) is for distant vision, and the lower part (convex) is for near vision, so the wearer can focus at both ranges just by looking through a different part of the lens.' : 'Try checking "Wear corrective lens" to see the bifocal correction.'}</p>`;
+        }
+      }
+
+      modeSel.addEventListener('change', () => {
+        const isEye = modeSel.value === 'eyedefect';
+        rayControls.style.display = isEye ? 'none' : 'block';
+        eyeControls.style.display = isEye ? 'block' : 'none';
+        badgeHolder.style.display = isEye ? 'none' : 'inline';
+        lensHint.textContent = isEye
+          ? '💡 Choose an eye condition and try adding a corrective lens.'
+          : '💡 Drag the green object (arrow) or use the sliders to analyze.';
+        lensCalcTitle.textContent = isEye ? 'Diagnosis' : 'Lens Formula Solver';
+        render();
+      });
+      eyeDefectSel.addEventListener('change', render);
+      eyeCorrectionChk.addEventListener('change', render);
 
       btnConvex.addEventListener('click', () => {
         isConvex = true;
@@ -5918,6 +8679,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       canvas.addEventListener('mousedown', (e) => {
+        if (modeSel.value === 'eyedefect') return;
         const rect = canvas.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
@@ -5941,6 +8703,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       });
 
       canvas.addEventListener('mousemove', (e) => {
+        if (modeSel.value === 'eyedefect') return;
         const rect = canvas.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
@@ -5973,6 +8736,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       });
 
       canvas.addEventListener('touchstart', (e) => {
+        if (modeSel.value === 'eyedefect') return;
         if (e.touches.length === 0) return;
         const t = e.touches[0];
         const rect = canvas.getBoundingClientRect();
@@ -6009,9 +8773,9 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         dragMode = null;
       });
 
-      updateSimulation();
+      render();
     }
-    
+
 
 
   return `
@@ -6042,12 +8806,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         <!-- Sidebar Navigation Tabs -->
         <aside class="topic-sidebar">
           <h3 class="sidebar-title">Lesson Workspace</h3>
-          
+
           <button class="nav-tab-btn active" data-tab="lesson">
             <span class="nav-tab-icon">📖</span>
             <span>Interactive Lesson</span>
           </button>
-          
+
           <button class="nav-tab-btn" data-tab="quiz">
             <span class="nav-tab-icon">📝</span>
             <span>Lesson Quiz</span>
@@ -6092,27 +8856,29 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const sel = document.getElementById('sel-corrosion-env');
       const btn = document.getElementById('btn-run-corrosion');
       const obs = document.getElementById('corrosion-obs');
-      let timerId = null, frame = 0, env = sel.value;
+      const obsTitle = document.getElementById('oxidation-obs-title');
+      const hint = document.getElementById('oxidation-hint');
+      const modeSel = document.getElementById('sel-oxidation-mode');
+      const corrosionControls = document.getElementById('corrosion-controls');
+      const rancidityControls = document.getElementById('rancidity-controls');
+      const rancidityEnvSel = document.getElementById('sel-rancidity-env');
+      const btnRancidity = document.getElementById('btn-run-rancidity');
+      let timerId = null, frame = 0;
+      let rancidTimerId = null, rancidFrame = 0;
 
-      function draw() {
+      function drawCorrosion() {
         const W = canvas.width, H = canvas.height;
-        ctx.clearRect(0, 0, W, H);
-        // Draw 4 test tubes
         const tubes = [{x: 80, label: 'Air+Water'}, {x: 210, label: 'Oil Coated'}, {x: 340, label: 'Galvanized'}, {x: 470, label: 'Painted'}];
         tubes.forEach((t, idx) => {
-          // Test tube
           ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
           ctx.beginPath(); ctx.moveTo(t.x - 15, 60); ctx.lineTo(t.x - 15, 220);
           ctx.arc(t.x, 220, 15, Math.PI, 0, true); ctx.lineTo(t.x + 15, 60); ctx.stroke();
-          // Water in tube 0
           if (idx === 0) { ctx.fillStyle = 'rgba(59, 130, 246, 0.2)'; ctx.fillRect(t.x - 13, 120, 26, 102); }
-          // Nail
           const rustProgress = (idx === 0) ? Math.min(1, frame * 0.015) : 0;
           const nailColor = idx === 1 ? '#fbbf24' : idx === 2 ? '#94a3b8' : idx === 3 ? '#3b82f6' : `rgb(${100 + rustProgress*80}, ${116 - rustProgress*80}, ${139 - rustProgress*100})`;
           ctx.fillStyle = nailColor;
           ctx.fillRect(t.x - 3, 100, 6, 80);
           ctx.fillRect(t.x - 8, 100, 16, 4);
-          // Rust flakes for tube 0
           if (idx === 0 && frame > 20) {
             ctx.fillStyle = `rgba(180, 83, 9, ${rustProgress})`;
             for (let j = 0; j < Math.min(10, frame/5); j++) {
@@ -6121,14 +8887,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
               ctx.fill();
             }
           }
-          // Label
           ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
           ctx.fillText(t.label, t.x - 20, 250);
         });
-        // Day counter
         const day = Math.min(30, Math.floor(frame / 4));
         ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 14px system-ui';
         ctx.fillText('Day ' + day, 270, 30);
+        obsTitle.textContent = 'Corrosion';
       }
 
       btn.addEventListener('click', () => {
@@ -6136,18 +8901,95 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         frame = 0; btn.textContent = 'Stop ⏹';
         timerId = setInterval(() => {
           frame++;
-          draw();
+          drawCorrosion();
           const day = Math.min(30, Math.floor(frame / 4));
           obs.innerHTML = `<strong>Day ${day}:</strong><br>
-            • <strong>Air+Water tube:</strong> Iron nail shows ${day > 5 ? 'visible rust (Fe\u2082O\u2083·xH\u2082O)' : 'no change yet'}.<br>
+            • <strong>Air+Water tube:</strong> Iron nail shows ${day > 5 ? 'visible rust (Fe₂O₃·xH₂O)' : 'no change yet'}.<br>
             • <strong>Oil-coated:</strong> No rust — oil prevents contact with air/moisture.<br>
             • <strong>Galvanized:</strong> No rust — zinc coating sacrificially protects iron.<br>
             • <strong>Painted:</strong> No rust — paint acts as barrier.<br>
-            <code>4Fe + 3O\u2082 + xH\u2082O \u2192 2Fe\u2082O\u2083·xH\u2082O (Rust)</code>`;
+            <code>4Fe + 3O₂ + xH₂O → 2Fe₂O₃·xH₂O (Rust)</code>`;
           if (frame > 120) { clearInterval(timerId); timerId = null; btn.textContent = 'Restart ⏩'; }
         }, 50);
       });
-      draw();
+
+      function drawRancidity() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const envRates = {open: 1, airtight: 0.4, antioxidant: 0.15, nitrogen: 0.08};
+        const rate = envRates[rancidityEnvSel.value];
+        const rancidLevel = Math.min(1, rancidFrame * 0.01 * rate);
+
+        const bowlX = 300, bowlY = 190;
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.ellipse(bowlX, bowlY, 100, 40, 0, 0, Math.PI); ctx.stroke();
+
+        const fresh = [250, 204, 21], rancid = [92, 64, 20];
+        const rC = Math.round(fresh[0] + (rancid[0]-fresh[0])*rancidLevel);
+        const gC = Math.round(fresh[1] + (rancid[1]-fresh[1])*rancidLevel);
+        const bC = Math.round(fresh[2] + (rancid[2]-fresh[2])*rancidLevel);
+        ctx.fillStyle = `rgb(${rC},${gC},${bC})`;
+        ctx.beginPath(); ctx.ellipse(bowlX, bowlY - 15, 95, 30, 0, 0, 2*Math.PI); ctx.fill();
+        ctx.strokeStyle = '#78350f'; ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+        ctx.fillText('Oil / fatty food', bowlX - 35, bowlY + 60);
+
+        if (rancidLevel > 0.5) {
+          ctx.strokeStyle = 'rgba(101,163,13,0.6)'; ctx.lineWidth = 1.5;
+          for (let i = 0; i < 3; i++) {
+            const x = bowlX - 40 + i*40;
+            ctx.beginPath();
+            for (let yy = 0; yy < 60; yy += 5) {
+              const px = x + Math.sin(yy/8 + Date.now()/300 + i) * 8;
+              const py = bowlY - 60 - yy;
+              yy === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+            }
+            ctx.stroke();
+          }
+          ctx.font = '22px system-ui'; ctx.fillText('🤢', bowlX + 95, bowlY - 60);
+        }
+
+        ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 1; ctx.strokeRect(150, 250, 300, 20);
+        ctx.fillStyle = rancidLevel < 0.3 ? '#22c55e' : rancidLevel < 0.7 ? '#f59e0b' : '#ef4444';
+        ctx.fillRect(150, 250, 300 * (1 - rancidLevel), 20);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '10px system-ui'; ctx.fillText('Freshness', 150, 245);
+
+        const day = Math.min(60, Math.floor(rancidFrame/2));
+        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 14px system-ui'; ctx.fillText('Day ' + day, 270, 30);
+
+        obsTitle.textContent = 'Rancidity';
+        const envLabel = rancidityEnvSel.options[rancidityEnvSel.selectedIndex].text;
+        obs.innerHTML = `<strong>Day ${day} — ${envLabel}:</strong><br>
+          • Freshness: <strong>${Math.round((1 - rancidLevel)*100)}%</strong><br>
+          • ${rancidLevel > 0.6 ? 'The fat/oil has become <strong>rancid</strong> — oxidation has changed its smell and taste.' : 'Still fresh — oxidation hasn’t significantly changed the food yet.'}<br>
+          • <strong>Rancidity</strong> happens when fats and oils are oxidised by atmospheric O₂, producing bad-smelling, bad-tasting compounds.<br>
+          • Antioxidants, airtight containers, and nitrogen flushing all slow oxidation down by keeping oxygen away from the food.`;
+      }
+
+      btnRancidity.addEventListener('click', () => {
+        if (rancidTimerId) { clearInterval(rancidTimerId); rancidTimerId = null; btnRancidity.textContent = 'Start Time-Lapse ⏩'; return; }
+        rancidFrame = 0; btnRancidity.textContent = 'Stop ⏹';
+        rancidTimerId = setInterval(() => {
+          rancidFrame++;
+          drawRancidity();
+          if (rancidFrame > 120) { clearInterval(rancidTimerId); rancidTimerId = null; btnRancidity.textContent = 'Restart ⏩'; }
+        }, 50);
+      });
+
+      modeSel.addEventListener('change', () => {
+        const isRancidity = modeSel.value === 'rancidity';
+        corrosionControls.style.display = isRancidity ? 'none' : 'block';
+        rancidityControls.style.display = isRancidity ? 'block' : 'none';
+        hint.querySelector('span').textContent = isRancidity
+          ? '💡 Watch fats and oils turn rancid over time under different storage conditions.'
+          : '💡 Watch iron nails corrode over time in different environments.';
+        obsTitle.textContent = isRancidity ? 'Rancidity' : 'Corrosion';
+        if (isRancidity) { rancidFrame = 0; drawRancidity(); }
+        else { drawCorrosion(); }
+      });
+      rancidityEnvSel.addEventListener('change', () => { if (!rancidTimerId) { rancidFrame = 0; drawRancidity(); } });
+
+      drawCorrosion();
     }
 
     function initPhotosynthesisLab() {
@@ -6157,55 +8999,60 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const lightSlider = document.getElementById('light-intensity');
       const co2Btn = document.getElementById('btn-toggle-co2');
       const obs = document.getElementById('photo-obs');
+      const obsTitle = document.getElementById('nutrition-obs-title');
+      const hint = document.getElementById('nutrition-hint');
+      const modeSel = document.getElementById('sel-nutrition-mode');
+      const photoControls = document.getElementById('photosynthesis-controls');
+      const digestionControls = document.getElementById('digestion-controls');
+      const foodTypeSel = document.getElementById('sel-food-type');
+      const btnSendFood = document.getElementById('btn-send-food');
+      const microbeControls = document.getElementById('microbe-controls');
+      const microbeSel = document.getElementById('sel-microbe-type');
+      const btnFeedMicrobe = document.getElementById('btn-feed-microbe');
       let co2On = true, animId = null;
+      let foodProgress = null;
+      let microbeProgress = null;
 
       co2Btn.addEventListener('click', () => {
         co2On = !co2On;
-        co2Btn.textContent = co2On ? 'CO\u2082 Supply: ON \u2705' : 'CO\u2082 Supply: OFF \u274C';
+        co2Btn.textContent = co2On ? 'CO₂ Supply: ON ✅' : 'CO₂ Supply: OFF ❌';
       });
 
-      function draw() {
+      function drawPhotosynthesis() {
         const W = canvas.width, H = canvas.height;
         const light = parseInt(lightSlider.value);
         ctx.clearRect(0, 0, W, H);
-        // Sky background
         const skyBright = Math.floor(30 + light * 2);
         ctx.fillStyle = `rgb(${skyBright}, ${skyBright + 50}, ${skyBright + 100})`;
         ctx.fillRect(0, 0, W, H);
-        // Sun
         if (light > 20) {
           ctx.fillStyle = `rgba(251, 191, 36, ${light / 100})`;
           ctx.beginPath(); ctx.arc(500, 60, 20 + light/5, 0, 2*Math.PI); ctx.fill();
         }
-        // Leaf (large cross-section)
         ctx.fillStyle = '#22c55e';
         ctx.beginPath();
         ctx.ellipse(W/2, H/2, 180, 80, 0, 0, 2*Math.PI);
         ctx.fill();
         ctx.strokeStyle = '#15803d'; ctx.lineWidth = 2; ctx.stroke();
-        // Chloroplasts
         ctx.fillStyle = '#166534';
         for (let i = 0; i < 12; i++) {
           ctx.beginPath();
           ctx.ellipse(W/2 - 120 + i*22, H/2 - 20 + (i%3)*20, 8, 5, 0, 0, 2*Math.PI);
           ctx.fill();
         }
-        // Stomata at bottom
         ctx.fillStyle = '#15803d';
         ctx.beginPath();
         ctx.ellipse(W/2, H/2 + 70, 12, 5, 0, 0, 2*Math.PI);
         ctx.fill();
-        // CO2 arrows entering stomata
         if (co2On) {
           ctx.fillStyle = 'rgba(148, 163, 184, 0.7)';
           ctx.font = 'bold 10px system-ui';
           const tick = Date.now() / 200;
           for (let i = 0; i < 3; i++) {
             const y = H/2 + 90 - ((tick + i*20) % 40);
-            ctx.fillText('CO\u2082\u2191', W/2 - 30 + i*25, y);
+            ctx.fillText('CO₂↑', W/2 - 30 + i*25, y);
           }
         }
-        // O2 bubbles rising
         const rate = co2On ? light / 10 : 0;
         ctx.fillStyle = 'rgba(59, 130, 246, 0.6)';
         const tick2 = Date.now() / 300;
@@ -6215,21 +9062,204 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.beginPath(); ctx.arc(bx, by, 3, 0, 2*Math.PI); ctx.fill();
         }
         ctx.fillStyle = '#3b82f6'; ctx.font = 'bold 10px system-ui';
-        if (rate > 0) ctx.fillText('O\u2082 \u2191', W/2 + 50, H/2 - 60);
-        // Glucose forming
+        if (rate > 0) ctx.fillText('O₂ ↑', W/2 + 50, H/2 - 60);
         if (rate > 3) {
           ctx.fillStyle = 'rgba(251, 191, 36, 0.8)'; ctx.font = 'bold 10px system-ui';
-          ctx.fillText('Glucose \u2728', W/2 - 30, H/2 + 5);
+          ctx.fillText('Glucose ✨', W/2 - 30, H/2 + 5);
         }
-        // Observations
+        obsTitle.textContent = 'Process Monitor';
         obs.innerHTML = `<strong>Photosynthesis Monitor:</strong><br>
           • Light Intensity: <strong>${light}%</strong><br>
-          • CO\u2082 Supply: <strong>${co2On ? 'Available' : 'Blocked'}</strong><br>
-          • O\u2082 Production Rate: <strong>${rate.toFixed(1)} bubbles/sec</strong><br>
-          • ${rate > 3 ? 'Glucose is being synthesized! \u2728' : rate > 0 ? 'Low rate — increase light or ensure CO\u2082.' : 'No photosynthesis — needs light AND CO\u2082.'}<br>
-          <code>6CO\u2082 + 6H\u2082O + Light \u2192 C\u2086H\u2081\u2082O\u2086 + 6O\u2082</code>`;
+          • CO₂ Supply: <strong>${co2On ? 'Available' : 'Blocked'}</strong><br>
+          • O₂ Production Rate: <strong>${rate.toFixed(1)} bubbles/sec</strong><br>
+          • ${rate > 3 ? 'Glucose is being synthesized! ✨' : rate > 0 ? 'Low rate — increase light or ensure CO₂.' : 'No photosynthesis — needs light AND CO₂.'}<br>
+          <code>6CO₂ + 6H₂O + Light → C₆H₁₂O₆ + 6O₂</code>`;
+      }
+
+      const canalPath = [
+        {t: 0.00, x: 80, y: 40},
+        {t: 0.15, x: 80, y: 115},
+        {t: 0.25, x: 105, y: 160},
+        {t: 0.50, x: 160, y: 195},
+        {t: 0.65, x: 280, y: 240},
+        {t: 0.75, x: 380, y: 195},
+        {t: 0.85, x: 470, y: 240},
+        {t: 1.00, x: 530, y: 300}
+      ];
+
+      function pointOnCanal(t) {
+        for (let i = 0; i < canalPath.length - 1; i++) {
+          const a = canalPath[i], b = canalPath[i+1];
+          if (t >= a.t && t <= b.t) {
+            const localT = (t - a.t) / (b.t - a.t);
+            return { x: a.x + (b.x - a.x) * localT, y: a.y + (b.y - a.y) * localT };
+          }
+        }
+        return canalPath[canalPath.length - 1];
+      }
+
+      function zoneAt(t) {
+        if (t < 0.15) return 'mouth';
+        if (t < 0.25) return 'esophagus';
+        if (t < 0.50) return 'stomach';
+        if (t < 0.85) return 'small-intestine';
+        return 'large-intestine';
+      }
+
+      function zoneMessage(zone, food) {
+        const foodLabel = food === 'carb' ? 'starch' : food === 'protein' ? 'protein' : 'fat';
+        if (zone === 'mouth') {
+          return `<strong>Mouth:</strong> Teeth crush the food (mastication) and mix it with saliva. <strong>Salivary amylase</strong> begins breaking down starch into maltose.${food === 'carb' ? ' <em>Carbohydrate digestion starts here!</em>' : ' (No effect yet on ' + foodLabel + '.)'}`;
+        } else if (zone === 'esophagus') {
+          return `<strong>Oesophagus:</strong> Rhythmic muscle contractions called <strong>peristalsis</strong> push the food down towards the stomach — no digestion happens here.`;
+        } else if (zone === 'stomach') {
+          return `<strong>Stomach:</strong> Gastric glands release <strong>HCl</strong> (kills bacteria, activates pepsin), <strong>pepsin</strong> (digests proteins → peptides), and <strong>mucus</strong> (protects the stomach lining).${food === 'protein' ? ' <em>Protein digestion starts here!</em>' : food === 'carb' ? ' The acid stops salivary amylase — starch digestion pauses.' : ' Fat passes through largely undigested.'}`;
+        } else if (zone === 'small-intestine') {
+          return `<strong>Small Intestine:</strong> Bile from the liver <strong>emulsifies fats</strong> into tiny droplets. Pancreatic juice (trypsin, lipase, amylase) and intestinal juice complete digestion. Villi absorb the nutrients into the bloodstream.${food === 'fat' ? ' <em>Fat digestion starts here, thanks to bile + lipase!</em>' : food === 'protein' ? ' Trypsin finishes breaking proteins into amino acids.' : ' Pancreatic amylase finishes converting starch into glucose.'}`;
+        } else {
+          return `<strong>Large Intestine:</strong> Water and remaining minerals are absorbed from the leftover undigested material. The compacted waste is eliminated via the anus.`;
+        }
+      }
+
+      function drawDigestion() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = 'rgba(147,197,253,0.06)'; ctx.fillRect(0, 0, W, H);
+
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 14; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+        ctx.beginPath();
+        canalPath.forEach((p, i) => { i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y); });
+        ctx.stroke();
+        ctx.lineCap = 'butt';
+
+        const labels = [
+          {t: 0.0, text: 'Mouth'}, {t: 0.18, text: 'Oesophagus'}, {t: 0.30, text: 'Stomach'},
+          {t: 0.60, text: 'Small Intestine'}, {t: 0.90, text: 'Large Intestine'}
+        ];
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 10px system-ui';
+        labels.forEach(l => {
+          const p = pointOnCanal(l.t);
+          ctx.fillText(l.text, p.x + 14, p.y - 10);
+        });
+
+        if (foodProgress !== null) {
+          const food = foodTypeSel.value;
+          const p = pointOnCanal(foodProgress);
+          const emoji = food === 'carb' ? '🍞' : food === 'protein' ? '🍖' : '🧈';
+          ctx.font = '22px system-ui';
+          ctx.fillText(emoji, p.x - 11, p.y + 8);
+
+          const zone = zoneAt(foodProgress);
+          obsTitle.textContent = 'Digestion Monitor';
+          obs.innerHTML = zoneMessage(zone, food);
+
+          foodProgress += 0.0035;
+          if (foodProgress > 1) foodProgress = null;
+        } else {
+          obsTitle.textContent = 'Digestion Monitor';
+          obs.innerHTML = `Select a food type and click <strong>"Swallow Food"</strong> to watch it travel through the alimentary canal and see which enzymes act on it at each stage.`;
+        }
+      }
+
+      function drawMicrobe() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = 'rgba(59,130,246,0.06)'; ctx.fillRect(0, 0, W, H);
+        const organism = microbeSel.value;
+        const cx = W/2, cy = H/2;
+
+        if (organism === 'amoeba') {
+          const wobble = Date.now()/1000;
+          ctx.fillStyle = 'rgba(217,119,6,0.35)'; ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2;
+          ctx.beginPath();
+          for (let i = 0; i <= 20; i++) {
+            const a = (i/20)*2*Math.PI;
+            const r = 55 + Math.sin(a*3 + wobble)*8 + Math.sin(a*5 - wobble*0.7)*4;
+            const x = cx + Math.cos(a)*r, y = cy + Math.sin(a)*r;
+            i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+          }
+          ctx.closePath(); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = 'rgba(180,83,9,0.6)'; ctx.beginPath(); ctx.arc(cx - 10, cy, 12, 0, 2*Math.PI); ctx.fill();
+          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Nucleus', cx - 30, cy + 25);
+
+          obsTitle.textContent = 'Nutrition in Amoeba';
+          if (microbeProgress === null) {
+            obs.innerHTML = `Click "Offer Food Particle" to see how Amoeba engulfs its food.`;
+          } else {
+            const t = microbeProgress;
+            const engulf = Math.min(1, t*2);
+            ctx.fillStyle = '#22c55e';
+            ctx.beginPath(); ctx.arc(cx + 70*(1 - engulf*0.7), cy - 30, 8, 0, 2*Math.PI); ctx.fill();
+
+            if (t < 0.5) {
+              ctx.strokeStyle = '#d97706'; ctx.lineWidth = 3;
+              ctx.beginPath(); ctx.moveTo(cx + 40, cy - 40); ctx.quadraticCurveTo(cx + 70, cy - 60, cx + 85, cy - 35); ctx.stroke();
+              ctx.beginPath(); ctx.moveTo(cx + 40, cy - 20); ctx.quadraticCurveTo(cx + 70, cy - 10, cx + 85, cy - 25); ctx.stroke();
+              obs.innerHTML = `Amoeba extends temporary finger-like <strong>pseudopodia</strong> that reach out and begin to surround the food particle (phagocytosis).`;
+            } else {
+              ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
+              ctx.beginPath(); ctx.arc(cx + 20, cy - 25, 14, 0, 2*Math.PI); ctx.stroke();
+              obs.innerHTML = `The pseudopodia have fused around the food, trapping it inside a <strong>food vacuole</strong>. Enzymes inside break the complex food down into simpler substances, which diffuse into the cytoplasm — undigested material is later moved to the surface and expelled.`;
+            }
+            microbeProgress += 0.006;
+            if (microbeProgress > 1) microbeProgress = null;
+          }
+        } else {
+          ctx.fillStyle = 'rgba(59,130,246,0.25)'; ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.ellipse(cx, cy, 80, 40, 0, 0, 2*Math.PI); ctx.fill(); ctx.stroke();
+          ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 1;
+          for (let i = 0; i < 24; i++) {
+            const a = (i/24)*2*Math.PI;
+            const x1 = cx + Math.cos(a)*80, y1 = cy + Math.sin(a)*36;
+            const x2 = x1 + Math.cos(a)*8, y2 = y1 + Math.sin(a)*8;
+            ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+          }
+          ctx.fillStyle = 'rgba(29,78,216,0.4)';
+          ctx.beginPath(); ctx.ellipse(cx - 20, cy + 10, 15, 8, 0.3, 0, 2*Math.PI); ctx.fill();
+          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui'; ctx.fillText('Oral groove', cx - 45, cy + 42);
+
+          obsTitle.textContent = 'Nutrition in Paramoecium';
+          if (microbeProgress === null) {
+            obs.innerHTML = `Click "Offer Food Particle" to see how Paramoecium sweeps food to its oral groove.`;
+          } else {
+            const t = microbeProgress;
+            const foodX = cx + 70 - t*90;
+            ctx.fillStyle = '#22c55e'; ctx.beginPath(); ctx.arc(foodX, cy + 8, 6, 0, 2*Math.PI); ctx.fill();
+            obs.innerHTML = t < 0.95
+              ? `Paramoecium has a fixed shape. The <strong>cilia</strong> covering its surface beat in coordinated waves, sweeping the food particle toward a specific spot — the <strong>oral groove</strong>.`
+              : `The food particle has reached the oral groove, where it will be taken into the cell for digestion.`;
+            microbeProgress += 0.008;
+            if (microbeProgress > 1) microbeProgress = null;
+          }
+        }
+      }
+
+      function draw() {
+        const mode = modeSel.value;
+        if (mode === 'digestion') drawDigestion();
+        else if (mode === 'microbe') drawMicrobe();
+        else drawPhotosynthesis();
         animId = requestAnimationFrame(draw);
       }
+
+      modeSel.addEventListener('change', () => {
+        const mode = modeSel.value;
+        photoControls.style.display = mode === 'photosynthesis' ? 'block' : 'none';
+        digestionControls.style.display = mode === 'digestion' ? 'block' : 'none';
+        microbeControls.style.display = mode === 'microbe' ? 'block' : 'none';
+        hint.querySelector('span').textContent = mode === 'digestion'
+          ? '💡 Pick a food type and watch it travel through the digestive system.'
+          : mode === 'microbe'
+          ? '💡 Offer food to a microbe and watch how it feeds.'
+          : '💡 Adjust light intensity to control the rate of photosynthesis.';
+        obsTitle.textContent = mode === 'digestion' ? 'Digestion Monitor' : mode === 'microbe' ? 'Microbe Feeding' : 'Process Monitor';
+        foodProgress = null;
+        microbeProgress = null;
+      });
+      btnSendFood.addEventListener('click', () => { foodProgress = 0; });
+      btnFeedMicrobe.addEventListener('click', () => { microbeProgress = 0; });
+      microbeSel.addEventListener('change', () => { microbeProgress = null; });
+
       draw();
     }
 
@@ -6240,61 +9270,2895 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const rateSlider = document.getElementById('heart-rate');
       const bpmLabel = document.getElementById('heart-bpm');
       const obs = document.getElementById('heart-obs');
+      const obsTitle = document.getElementById('heart-obs-title');
+      const hint = document.getElementById('heart-hint');
+      const modeSel = document.getElementById('sel-lifeprocess-mode');
+      const heartControls = document.getElementById('heart-controls');
+      const vesselsControls = document.getElementById('vessels-controls');
+      const vesselFocusSel = document.getElementById('sel-vessel-focus');
+      const breathingControls = document.getElementById('breathing-controls');
+      const limewaterControls = document.getElementById('limewater-controls');
+      const limewaterTestSel = document.getElementById('sel-limewater-test');
+      const btnRunLimewater = document.getElementById('btn-run-limewater');
+      const fishgillControls = document.getElementById('fishgill-controls');
+      const plantControls = document.getElementById('planttransport-controls');
+      const excretionControls = document.getElementById('excretion-controls');
+      const breathingRateSlider = document.getElementById('rng-breathing-rate');
+      const breathingRateVal = document.getElementById('breathing-rate-val');
+      const anaerobicChk = document.getElementById('chk-anaerobic');
+      const transpirationSlider = document.getElementById('rng-transpiration');
+      const transpirationVal = document.getElementById('transpiration-val');
+      const waterLevelSlider = document.getElementById('rng-water-level');
+      const waterLevelVal = document.getElementById('water-level-val');
+      let limewaterFrame = 0, limewaterRunning = false, limewaterTimerId = null;
 
-      function draw() {
+      function drawHeart() {
         const W = canvas.width, H = canvas.height;
         const bpm = parseInt(rateSlider.value);
         bpmLabel.textContent = bpm + ' BPM';
-        ctx.clearRect(0, 0, W, H);
         const t = Date.now() / (60000 / bpm);
-        const phase = t % 1; // 0-1 cardiac cycle
+        const phase = t % 1;
         const cx = W/2, cy = H/2;
-        // Heart outline
         ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3;
         ctx.beginPath();
         ctx.moveTo(cx, cy + 60);
         ctx.bezierCurveTo(cx - 80, cy - 20, cx - 80, cy - 60, cx, cy - 30);
         ctx.bezierCurveTo(cx + 80, cy - 60, cx + 80, cy - 20, cx, cy + 60);
         ctx.stroke();
-        // Four chambers
         const expand = phase < 0.3 ? phase/0.3 : phase < 0.5 ? 1 : 1 - (phase-0.5)/0.5;
-        // Right atrium (deoxygenated - blue)
         ctx.fillStyle = `rgba(59, 130, 246, ${0.3 + expand * 0.4})`;
         ctx.fillRect(cx + 5, cy - 25, 30 + expand*5, 25);
-        // Left atrium (oxygenated - red)
         ctx.fillStyle = `rgba(239, 68, 68, ${0.3 + expand * 0.4})`;
         ctx.fillRect(cx - 35 - expand*5, cy - 25, 30 + expand*5, 25);
-        // Right ventricle (blue)
         ctx.fillStyle = `rgba(59, 130, 246, ${0.3 + (1-expand) * 0.4})`;
         ctx.fillRect(cx + 5, cy + 5, 30 + (1-expand)*5, 35);
-        // Left ventricle (red)
         ctx.fillStyle = `rgba(239, 68, 68, ${0.3 + (1-expand) * 0.4})`;
         ctx.fillRect(cx - 35 - (1-expand)*5, cy + 5, 30 + (1-expand)*5, 35);
-        // Labels
         ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 9px system-ui';
         ctx.fillText('RA', cx + 12, cy - 8);
         ctx.fillText('LA', cx - 28, cy - 8);
         ctx.fillText('RV', cx + 12, cy + 28);
         ctx.fillText('LV', cx - 28, cy + 28);
-        // Vessels
         ctx.fillStyle = '#3b82f6'; ctx.font = '8px system-ui';
-        ctx.fillText('Pulmonary Artery \u2192', cx + 45, cy - 15);
-        ctx.fillText('\u2190 Vena Cava', cx + 45, cy + 20);
+        ctx.fillText('Pulmonary Artery →', cx + 45, cy - 15);
+        ctx.fillText('← Vena Cava', cx + 45, cy + 20);
         ctx.fillStyle = '#ef4444';
-        ctx.fillText('\u2190 Pulmonary Vein', cx - 120, cy - 15);
-        ctx.fillText('Aorta \u2192', cx - 80, cy + 20);
-        // Phase label
+        ctx.fillText('← Pulmonary Vein', cx - 120, cy - 15);
+        ctx.fillText('Aorta →', cx - 80, cy + 20);
         const phaseName = phase < 0.3 ? 'Atrial Systole (Atria contract)' : phase < 0.5 ? 'Ventricular Systole (Ventricles contract)' : 'Diastole (All relax)';
         ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 12px system-ui';
         ctx.fillText(phaseName, cx - 80, cy + 80);
+        obsTitle.textContent = 'Chamber Activity';
         obs.innerHTML = `<strong>Cardiac Cycle:</strong><br>
           • Heart Rate: <strong>${bpm} BPM</strong><br>
           • Phase: <strong>${phaseName}</strong><br>
           • Right side pumps <span style="color:#3b82f6">deoxygenated blood</span> to lungs.<br>
           • Left side pumps <span style="color:#ef4444">oxygenated blood</span> to body.`;
+      }
+
+      function drawBreathing() {
+        const W = canvas.width, H = canvas.height;
+        const bpm = parseInt(breathingRateSlider.value);
+        breathingRateVal.textContent = bpm + ' breaths/min';
+        const anaerobic = anaerobicChk.checked;
+        const t = Date.now() / (60000 / bpm);
+        const phase = t % 1;
+        const inhale = Math.sin(phase * 2 * Math.PI) * 0.5 + 0.5;
+
+        const cx = 150;
+        const diaphragmY = 260 - inhale * 20;
+
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+        for (let i = 0; i < 5; i++) {
+          const ribY = 80 + i*30;
+          const ribW = 90 + inhale*10;
+          ctx.beginPath(); ctx.ellipse(cx, ribY, ribW, 12, 0, 0, Math.PI); ctx.stroke();
+        }
+
+        const lungScale = 0.8 + inhale*0.3;
+        ctx.fillStyle = `rgba(236,72,153,${0.25 + inhale*0.2})`;
+        ctx.beginPath(); ctx.ellipse(cx - 40, 170, 35*lungScale, 70*lungScale, 0, 0, 2*Math.PI); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(cx + 40, 170, 35*lungScale, 70*lungScale, 0, 0, 2*Math.PI); ctx.fill();
+        ctx.strokeStyle = '#ec4899'; ctx.lineWidth = 2; ctx.stroke();
+
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 8;
+        ctx.beginPath(); ctx.moveTo(cx, 40); ctx.lineTo(cx, 110); ctx.stroke();
+
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(cx - 100, diaphragmY);
+        ctx.quadraticCurveTo(cx, diaphragmY + (inhale > 0.5 ? 10 : -10), cx + 100, diaphragmY);
+        ctx.stroke();
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Diaphragm', cx - 30, diaphragmY + 20);
+
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillText(inhale > 0.5 ? 'INHALING (ribs up, diaphragm flat)' : 'EXHALING (ribs down, diaphragm domes up)', cx - 100, 300);
+
+        const insetX = 400, insetY = 90;
+        ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 1;
+        ctx.strokeRect(insetX - 20, insetY - 20, 190, 190);
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Alveolus (gas exchange)', insetX - 15, insetY - 26);
+
+        ctx.strokeStyle = '#f87171'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.ellipse(insetX + 75, insetY + 75, 60, 50, 0, 0, 2*Math.PI); ctx.stroke();
+        ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(insetX + 75, insetY + 75, 70, 0.3, Math.PI*1.7); ctx.stroke();
+
+        const tick = Date.now()/400;
+        ctx.fillStyle = '#60a5fa'; ctx.font = 'bold 9px system-ui';
+        for (let i = 0; i < 3; i++) {
+          const prog = (tick + i*0.33) % 1;
+          const x = insetX + 145 - prog*70;
+          ctx.beginPath(); ctx.arc(x, insetY + 55 + i*20, 3, 0, 2*Math.PI); ctx.fill();
+        }
+        ctx.fillText('O₂ → blood', insetX + 90, insetY + 145);
+        ctx.fillStyle = '#94a3b8';
+        for (let i = 0; i < 3; i++) {
+          const prog = (tick + i*0.33) % 1;
+          const x = insetX + 5 + prog*70;
+          ctx.beginPath(); ctx.arc(x, insetY + 90 - i*15, 3, 0, 2*Math.PI); ctx.fill();
+        }
+        ctx.fillText('CO₂ → alveolus', insetX - 10, insetY - 5);
+
+        obsTitle.textContent = 'Breathing & Respiration';
+        if (anaerobic) {
+          obs.innerHTML = `<strong>⚠️ Anaerobic Respiration (no oxygen):</strong><br>
+            • Glucose → Pyruvate (glycolysis, in cytoplasm) → <strong>Lactic acid</strong> + only 2 ATP.<br>
+            • Lactic acid build-up in muscles causes <strong>cramps</strong> during intense exercise.<br>
+            • Compare: yeast under anaerobic conditions instead produces Ethanol + CO₂ (fermentation).<br>
+            • Untick the box to restore normal aerobic breathing.`;
+        } else {
+          obs.innerHTML = `<strong>Breathing Cycle (${bpm} breaths/min):</strong><br>
+            • ${inhale > 0.5 ? 'Inhaling' : 'Exhaling'}: ribs and diaphragm ${inhale > 0.5 ? 'expand the chest cavity, sucking air in' : 'relax, pushing air out'}.<br>
+            • In the alveoli, <strong>O₂ diffuses into the blood</strong> (binds haemoglobin) and <strong>CO₂ diffuses out</strong> to be exhaled.<br>
+            • <strong>Aerobic respiration:</strong> Glucose + O₂ → CO₂ + H₂O + ~38 ATP (in mitochondria) — far more energy than the anaerobic pathway.`;
+        }
+      }
+
+      function drawPlantTransport() {
+        const W = canvas.width, H = canvas.height;
+        const transpRate = parseInt(transpirationSlider.value) / 100;
+        transpirationVal.textContent = Math.round(transpRate*100) + '%';
+
+        ctx.fillStyle = '#78350f'; ctx.fillRect(0, 280, W, 60);
+        ctx.strokeStyle = '#92400e'; ctx.lineWidth = 2;
+        for (let i = -2; i <= 2; i++) {
+          ctx.beginPath(); ctx.moveTo(300, 280); ctx.lineTo(300 + i*30, 330 + Math.abs(i)*10); ctx.stroke();
+        }
+        ctx.strokeStyle = '#a3703a'; ctx.lineWidth = 16;
+        ctx.beginPath(); ctx.moveTo(300, 280); ctx.lineTo(300, 80); ctx.stroke();
+        ctx.fillStyle = 'white'; ctx.font = '8px system-ui';
+        ctx.save(); ctx.translate(292, 190); ctx.rotate(-Math.PI/2); ctx.fillText('XYLEM', -18, 0); ctx.restore();
+        ctx.save(); ctx.translate(308, 190); ctx.rotate(-Math.PI/2); ctx.fillText('PHLOEM', -20, 0); ctx.restore();
+
+        ctx.fillStyle = '#22c55e';
+        ctx.beginPath(); ctx.ellipse(240, 70, 70, 40, 0.3, 0, 2*Math.PI); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(360, 70, 70, 40, -0.3, 0, 2*Math.PI); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(300, 50, 60, 35, 0, 0, 2*Math.PI); ctx.fill();
+
+        const tick = Date.now()/300;
+        const speed = 0.3 + transpRate*2;
+        ctx.fillStyle = '#3b82f6';
+        for (let i = 0; i < 8; i++) {
+          const y = 280 - ((tick*speed*20 + i*30) % 210);
+          ctx.beginPath(); ctx.arc(294, y, 3, 0, 2*Math.PI); ctx.fill();
+        }
+        ctx.fillStyle = '#22c55e';
+        for (let i = 0; i < 5; i++) {
+          const y = 80 + ((tick*10 + i*40) % 200);
+          ctx.beginPath(); ctx.arc(308, y, 3, 0, 2*Math.PI); ctx.fill();
+        }
+
+        if (transpRate > 0.05) {
+          ctx.fillStyle = 'rgba(148,163,184,0.7)'; ctx.font = '10px system-ui';
+          const numArrows = Math.round(transpRate*6);
+          for (let i = 0; i < numArrows; i++) {
+            const x = 200 + i*35;
+            const y = 50 - ((tick*speed*15 + i*15) % 40);
+            ctx.fillText('↑', x, y);
+          }
+          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+          ctx.fillText('Water vapour (transpiration)', 175, 20);
+        }
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '9px system-ui';
+        ctx.fillText('Roots absorb water & minerals', 150, 320);
+
+        obsTitle.textContent = 'Plant Transport';
+        obs.innerHTML = `<strong>Xylem (water, upward):</strong><br>
+          • Transpiration rate: <strong>${Math.round(transpRate*100)}%</strong> (stomata opening)<br>
+          • Water evaporating from leaf stomata creates a <strong>transpiration pull</strong> that draws water up through the xylem, all the way from the roots.<br>
+          • Root pressure also pushes water up, but is much weaker — it matters more at night when stomata are closed.<br><br>
+          <strong>Phloem (food, bidirectional):</strong><br>
+          • Sugars made in the leaves (source) are actively loaded into phloem using ATP, and flow to roots, fruits and growing buds (sink) — this is <strong>translocation</strong>.<br>
+          • Unlike xylem's one-way flow, phloem transport direction depends on where the plant needs the sugar.`;
+      }
+
+      const tubulePath = [
+        {x: 130, y: 120}, {x: 180, y: 130}, {x: 220, y: 200},
+        {x: 220, y: 260}, {x: 180, y: 290}, {x: 220, y: 260},
+        {x: 280, y: 200}, {x: 320, y: 130}, {x: 380, y: 110}, {x: 420, y: 200}, {x: 420, y: 280}
+      ];
+
+      function drawExcretion() {
+        const W = canvas.width, H = canvas.height;
+        const waterLevel = parseInt(waterLevelSlider.value);
+        waterLevelVal.textContent = waterLevel < 30 ? 'Dehydrated' : waterLevel > 70 ? 'Overhydrated' : 'Normal hydration';
+
+        const capX = 100, capY = 100;
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(capX, capY, 40, Math.PI*0.2, Math.PI*1.8); ctx.stroke();
+        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (let i = 0; i < 20; i++) {
+          const a = i*0.9;
+          ctx.lineTo(capX + Math.sin(a)*20, capY + Math.cos(a*1.3)*20);
+        }
+        ctx.stroke();
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui';
+        ctx.fillText('Glomerulus', capX - 25, capY - 50);
+        ctx.fillText('Bowman’s capsule', capX - 40, capY + 55);
+
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 6;
+        ctx.beginPath();
+        tubulePath.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+        ctx.stroke();
+
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '8px system-ui';
+        ctx.fillText('PCT', 160, 120);
+        ctx.fillText('Loop of Henle', 190, 250);
+        ctx.fillText('DCT', 330, 120);
+        ctx.fillText('Collecting Duct', 400, 240);
+
+        const reabsorptionRate = 1 - waterLevel/100;
+        ctx.fillStyle = 'rgba(59,130,246,0.7)';
+        const tick = Date.now()/300;
+        const numDrops = Math.round(2 + reabsorptionRate*6);
+        for (let i = 0; i < numDrops; i++) {
+          const idx = Math.floor((tick*0.3 + i) % tubulePath.length);
+          const p = tubulePath[idx];
+          if (p) { ctx.beginPath(); ctx.arc(p.x, p.y - 15, 2, 0, 2*Math.PI); ctx.fill(); }
+        }
+
+        const urineConc = reabsorptionRate;
+        ctx.fillStyle = `rgba(234,179,8,${0.3 + urineConc*0.5})`;
+        ctx.beginPath(); ctx.ellipse(420, 300, 20, 15, 0, 0, 2*Math.PI); ctx.fill();
+        ctx.strokeStyle = '#eab308'; ctx.stroke();
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui';
+        ctx.fillText('Urine', 405, 320);
+
+        obsTitle.textContent = 'Excretion (Nephron)';
+        obs.innerHTML = `<strong>Nephron Filtration:</strong><br>
+          • Blood enters the <strong>glomerulus</strong> under high pressure; water, glucose, salts and urea are filtered into the <strong>Bowman's capsule</strong>. Proteins and blood cells are too big to pass through.<br>
+          • Body water level: <strong>${waterLevel < 30 ? 'Low (dehydrated)' : waterLevel > 70 ? 'High (overhydrated)' : 'Normal'}</strong><br>
+          • Along the tubule (PCT → Loop of Henle → DCT), useful substances and <strong>${(reabsorptionRate*100).toFixed(0)}%</strong> of the filtered water are reabsorbed back into the blood.<br>
+          • Result: urine is <strong>${urineConc > 0.6 ? 'concentrated (the body is conserving water)' : urineConc < 0.4 ? 'dilute (excess water is being excreted)' : 'moderately concentrated'}</strong>.<br>
+          • Roughly 180 L of fluid is filtered daily, but only 1–2 L actually leaves the body as urine — the rest is reabsorbed.`;
+      }
+
+      function drawVessels() {
+        const W = canvas.width, H = canvas.height;
+        const focus = vesselFocusSel.value;
+        const y = 170;
+        if (focus === 'vessels') {
+          ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 14;
+          ctx.beginPath(); ctx.arc(130, y, 30, 0, 2*Math.PI); ctx.stroke();
+          ctx.fillStyle = 'rgba(239,68,68,0.3)'; ctx.beginPath(); ctx.arc(130, y, 23, 0, 2*Math.PI); ctx.fill();
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.fillText('Artery', 105, y + 60);
+          ctx.font = '9px system-ui'; ctx.fillText('Thick, elastic wall', 75, y + 75); ctx.fillText('High pressure', 82, y + 88);
+
+          ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 6;
+          ctx.beginPath(); ctx.arc(310, y, 30, 0, 2*Math.PI); ctx.stroke();
+          ctx.fillStyle = 'rgba(59,130,246,0.3)'; ctx.beginPath(); ctx.arc(310, y, 27, 0, 2*Math.PI); ctx.fill();
+          ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(295, y - 10); ctx.lineTo(310, y); ctx.lineTo(295, y + 10); ctx.stroke();
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.fillText('Vein', 297, y + 60);
+          ctx.font = '9px system-ui'; ctx.fillText('Thin wall + valves', 265, y + 75); ctx.fillText('Low pressure', 278, y + 88);
+
+          ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.arc(470, y, 10, 0, 2*Math.PI); ctx.stroke();
+          ctx.fillStyle = 'rgba(34,197,94,0.3)'; ctx.beginPath(); ctx.arc(470, y, 9, 0, 2*Math.PI); ctx.fill();
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.fillText('Capillary', 435, y + 60);
+          ctx.font = '9px system-ui'; ctx.fillText('One-cell-thick wall', 410, y + 75); ctx.fillText('Exchange site', 425, y + 88);
+
+          obsTitle.textContent = 'Blood Vessels';
+          obs.innerHTML = `<strong>Three vessel types:</strong><br>
+            • <span style="color:#ef4444">Arteries</span> carry blood away from the heart under high pressure — thick, elastic walls withstand this.<br>
+            • <span style="color:#3b82f6">Veins</span> carry blood back to the heart at low pressure — thinner walls, with <strong>valves</strong> to stop backflow.<br>
+            • <span style="color:#22c55e">Capillaries</span> are just one cell thick, letting materials diffuse directly between blood and surrounding cells.`;
+        } else if (focus === 'platelets') {
+          ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 8;
+          ctx.beginPath(); ctx.moveTo(120, y); ctx.lineTo(480, y); ctx.stroke();
+          const clot = Math.min(1, (Date.now() % 4000) / 3000);
+          if (clot < 1) {
+            ctx.strokeStyle = '#fca5a5'; ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.moveTo(300, y - 12*(1-clot)); ctx.lineTo(300, y + 12*(1-clot)); ctx.stroke();
+          }
+          ctx.fillStyle = '#fbbf24';
+          const numPlatelets = Math.floor(clot * 12);
+          for (let i = 0; i < numPlatelets; i++) {
+            const a = (i / 12) * Math.PI * 2;
+            ctx.beginPath(); ctx.arc(300 + Math.cos(a)*10, y + Math.sin(a)*10, 2.5, 0, 2*Math.PI); ctx.fill();
+          }
+          obsTitle.textContent = 'Platelets';
+          obs.innerHTML = `<strong>Platelets clot the blood:</strong><br>
+            • Platelet cells circulate around the body and rush to plug leaks caused by injury.<br>
+            • This clotting minimises blood loss and prevents a drop in blood pressure that would otherwise reduce the efficiency of the whole circulatory system.`;
+        } else {
+          ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(220, y, 10, 0, 2*Math.PI); ctx.stroke();
+          ctx.fillStyle = 'rgba(34,197,94,0.2)'; ctx.beginPath(); ctx.arc(220, y, 9, 0, 2*Math.PI); ctx.fill();
+          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Capillary', 195, y - 20);
+
+          const tick = Date.now()/500;
+          ctx.fillStyle = 'rgba(250,204,21,0.7)';
+          for (let i = 0; i < 4; i++) {
+            const prog = (tick + i*0.25) % 1;
+            const x = 226 + prog*140, yy = y + Math.sin(prog*Math.PI)*20;
+            ctx.beginPath(); ctx.arc(x, yy, 2.5, 0, 2*Math.PI); ctx.fill();
+          }
+          ctx.strokeStyle = '#eab308'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(380, y); ctx.lineTo(460, y); ctx.stroke();
+          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Lymph vessel → large vein', 355, y + 25);
+
+          obsTitle.textContent = 'Lymph';
+          obs.innerHTML = `<strong>Lymph (tissue fluid):</strong><br>
+            • Plasma, proteins and some cells leak through pores in capillary walls into the spaces between cells, forming lymph.<br>
+            • Lymph drains into lymphatic capillaries, which join into larger lymph vessels that finally empty into large veins.<br>
+            • Lymph carries digested and absorbed fat from the intestine, and drains excess fluid from tissue spaces back into the blood.`;
+        }
+      }
+
+      function drawLimewater() {
+        const W = canvas.width, H = canvas.height;
+        const test = limewaterTestSel.value;
+
+        if (test === 'breath') {
+          const tubes = [{x: 180, label: 'Exhaled Breath'}, {x: 420, label: 'Atmospheric Air (pichkari)'}];
+          tubes.forEach((t, idx) => {
+            ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(t.x - 25, 60); ctx.lineTo(t.x - 25, 220); ctx.arc(t.x, 220, 25, Math.PI, 0, true); ctx.lineTo(t.x + 25, 60); ctx.stroke();
+            const milkiness = limewaterRunning ? Math.min(1, limewaterFrame * (idx === 0 ? 0.02 : 0.006)) : 0;
+            ctx.fillStyle = `rgba(255,255,255,${0.2 + milkiness*0.7})`;
+            ctx.fillRect(t.x - 23, 140, 46, 78);
+            ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText(t.label, t.x - 45, 240);
+          });
+
+          obsTitle.textContent = 'Lime Water CO₂ Test';
+          obs.innerHTML = !limewaterRunning
+            ? `Click "Start Test" to blow exhaled breath through one lime-water tube, and push atmospheric air (with a syringe/pichkari) through the other.`
+            : `<strong>Ca(OH)₂ + CO₂ → CaCO₃↓ + H₂O</strong><br>
+              • The <strong>exhaled breath</strong> tube turns milky much faster.<br>
+              • This shows that the air we breathe <strong>out</strong> contains far more CO₂ than the atmospheric air we breathe <strong>in</strong> — confirming that respiration produces CO₂.`;
+        } else {
+          const tubeAX = 180, tubeBX = 420, topY = 60, botY = 220;
+          drawTube2(tubeAX, topY, botY); drawTube2(tubeBX, topY, botY);
+          ctx.fillStyle = 'rgba(250,204,21,0.3)'; ctx.fillRect(tubeAX - 18, 150, 36, 68);
+          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui'; ctx.fillText('Yeast + Sugar', tubeAX - 25, 240);
+
+          const milky = limewaterRunning && limewaterFrame > 20;
+          ctx.fillStyle = milky ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.25)';
+          ctx.fillRect(tubeBX - 18, 150, 36, 68);
+          ctx.fillText('Lime water', tubeBX - 25, 240);
+
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(tubeAX, topY); ctx.lineTo(tubeAX, topY - 20); ctx.lineTo(tubeBX, topY - 20); ctx.lineTo(tubeBX, 140); ctx.stroke();
+
+          if (limewaterRunning) {
+            ctx.fillStyle = 'rgba(226,232,240,0.85)';
+            for (let i = 0; i < 4; i++) {
+              const y2 = 200 - ((limewaterFrame*3 + i*15) % 110);
+              if (y2 > 100) { ctx.beginPath(); ctx.arc(tubeAX - 5 + i*3, y2, 2, 0, 2*Math.PI); ctx.fill(); }
+            }
+          }
+
+          obsTitle.textContent = 'Yeast Fermentation';
+          obs.innerHTML = !limewaterRunning
+            ? `Click "Start Test" to let yeast ferment sugar and pass the gas produced through lime water.`
+            : `<strong>Fermentation (anaerobic respiration in yeast):</strong><br>
+              • Glucose → Ethanol + CO₂ + Energy<br>
+              • ${milky ? 'The lime water has turned <strong>milky</strong>, confirming CO₂ is a product of fermentation.' : 'Watch the lime water for the classic milky precipitate...'}`;
+        }
+      }
+      function drawTube2(x, topY, botY) {
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(x - 20, topY); ctx.lineTo(x - 20, botY); ctx.arc(x, botY, 20, Math.PI, 0, true); ctx.lineTo(x + 20, topY); ctx.stroke();
+      }
+
+      function drawFishGill() {
+        const W = canvas.width, H = canvas.height;
+        ctx.fillStyle = 'rgba(59,130,246,0.08)'; ctx.fillRect(0, 0, W, H);
+
+        const fishBpm = 70;
+        const t = Date.now() / (60000 / fishBpm);
+        const phase = t % 1;
+        const mouthOpen = Math.sin(phase*2*Math.PI)*0.5 + 0.5;
+
+        const cx = 220, cy = 170;
+        ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.ellipse(cx, cy, 70, 35, 0, 0, 2*Math.PI); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(cx + 70, cy); ctx.lineTo(cx + 110, cy - 25); ctx.lineTo(cx + 110, cy + 25); ctx.closePath(); ctx.fill();
+        ctx.fillStyle = '#1e293b';
+        ctx.beginPath(); ctx.ellipse(cx - 68, cy, 6 + mouthOpen*6, 4 + mouthOpen*4, 0, 0, 2*Math.PI); ctx.fill();
+        const gillOpen = 1 - mouthOpen;
+        ctx.strokeStyle = '#1e40af'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx - 30, cy, 15 + gillOpen*8, -0.4, 0.4); ctx.stroke();
+
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
+        ctx.fillText('Fish: ~' + fishBpm + ' mouth/gill cycles per minute', 60, 260);
+        ctx.fillText('Human: ~15–18 breaths per minute', 60, 280);
+
+        obsTitle.textContent = 'Fish Gill Breathing';
+        obs.innerHTML = `<strong>Aquatic vs Terrestrial Breathing:</strong><br>
+          • A fish's mouth and gill covers (operculum) open and close in a coordinated rhythm — water is taken in through the mouth and forced out past the gills, where dissolved O₂ is absorbed into the blood.<br>
+          • Since the amount of oxygen <strong>dissolved</strong> in water is much lower than in air, fish must breathe much faster (~${fishBpm}/min) than terrestrial animals (~15–18/min) to get enough oxygen.`;
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mode = modeSel.value;
+        if (mode === 'heart') drawHeart();
+        else if (mode === 'vessels') drawVessels();
+        else if (mode === 'breathing') drawBreathing();
+        else if (mode === 'limewater') drawLimewater();
+        else if (mode === 'fishgill') drawFishGill();
+        else if (mode === 'planttransport') drawPlantTransport();
+        else drawExcretion();
         requestAnimationFrame(draw);
       }
+
+      modeSel.addEventListener('change', () => {
+        const mode = modeSel.value;
+        heartControls.style.display = mode === 'heart' ? 'block' : 'none';
+        vesselsControls.style.display = mode === 'vessels' ? 'block' : 'none';
+        breathingControls.style.display = mode === 'breathing' ? 'block' : 'none';
+        limewaterControls.style.display = mode === 'limewater' ? 'block' : 'none';
+        fishgillControls.style.display = mode === 'fishgill' ? 'block' : 'none';
+        plantControls.style.display = mode === 'planttransport' ? 'block' : 'none';
+        excretionControls.style.display = mode === 'excretion' ? 'block' : 'none';
+        const titles = { heart: 'Chamber Activity', vessels: 'Blood Vessels', breathing: 'Breathing & Respiration', limewater: 'Lime Water CO₂ Test', fishgill: 'Fish Gill Breathing', planttransport: 'Plant Transport', excretion: 'Excretion (Nephron)' };
+        obsTitle.textContent = titles[mode];
+        const hints = {
+          heart: '💡 Watch blood flow through the four chambers of the heart.',
+          vessels: '💡 Compare artery, vein and capillary structure, or explore platelets and lymph.',
+          breathing: '💡 Adjust breathing rate and try the anaerobic toggle to see what causes cramps.',
+          limewater: '💡 Compare how fast exhaled breath vs atmospheric air (or yeast fermentation) turns lime water milky.',
+          fishgill: '💡 Compare a fish\'s breathing rate to a human\'s.',
+          planttransport: '💡 Adjust transpiration rate and watch water rise through the xylem.',
+          excretion: '💡 Adjust body water level and see how the nephron changes urine concentration.'
+        };
+        hint.querySelector('span').textContent = hints[mode];
+        limewaterFrame = 0; limewaterRunning = false;
+        if (limewaterTimerId) { clearInterval(limewaterTimerId); limewaterTimerId = null; }
+      });
       rateSlider.addEventListener('input', () => {});
+      vesselFocusSel.addEventListener('change', () => {});
+      breathingRateSlider.addEventListener('input', () => {});
+      anaerobicChk.addEventListener('change', () => {});
+      limewaterTestSel.addEventListener('change', () => {
+        limewaterFrame = 0; limewaterRunning = false;
+        if (limewaterTimerId) { clearInterval(limewaterTimerId); limewaterTimerId = null; }
+      });
+      btnRunLimewater.addEventListener('click', () => {
+        if (limewaterTimerId) clearInterval(limewaterTimerId);
+        limewaterFrame = 1; limewaterRunning = true;
+        limewaterTimerId = setInterval(() => {
+          limewaterFrame++;
+          if (limewaterFrame > 150) { clearInterval(limewaterTimerId); limewaterTimerId = null; }
+        }, 40);
+      });
+      transpirationSlider.addEventListener('input', () => {});
+      waterLevelSlider.addEventListener('input', () => {});
+      draw();
+    }
+
+    function initScientificMethodLab() {
+      const canvas = document.getElementById('scimethod-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-scimethod-mystery');
+      const btn = document.getElementById('btn-scimethod-investigate');
+      const obs = document.getElementById('scimethod-obs');
+      let step = -1;
+
+      const nodes = [
+        { x: 70, y: 150, label: 'Observe' },
+        { x: 195, y: 90, label: 'Question' },
+        { x: 320, y: 150, label: 'Guess' },
+        { x: 445, y: 90, label: 'Test' },
+        { x: 550, y: 150, label: 'Analyse' }
+      ];
+
+      const scenarios = {
+        pen: {
+          title: 'Why did my pen stop writing?',
+          steps: [
+            'Observation: The pen suddenly stopped writing on the page.',
+            'Question: Why did my pen stop writing?',
+            'Guess (Hypothesis): Maybe the ink has finished.',
+            'Test: Open the pen and check the ink refill.',
+            'Analyse: The refill is empty — the guess was correct! (If it wasn’t empty, you’d guess again — maybe the ink dried up — and test that instead.)'
+          ]
+        },
+        plant: {
+          title: 'Why is my plant wilting?',
+          steps: [
+            'Observation: The plant’s leaves are drooping and turning yellow.',
+            'Question: Why is my plant wilting?',
+            'Guess (Hypothesis): Maybe it isn’t getting enough water.',
+            'Test: Check if the soil feels completely dry, and water it properly for a few days.',
+            'Analyse: The plant perks up after watering — the guess was correct! (If not, you’d guess again — maybe too much sun, or not enough — and test that instead.)'
+          ]
+        },
+        bulb: {
+          title: 'Why isn’t the bulb glowing?',
+          steps: [
+            'Observation: The light bulb doesn’t glow when the switch is turned on.',
+            'Question: Why isn’t the bulb glowing?',
+            'Guess (Hypothesis): Maybe the bulb has fused (burnt out).',
+            'Test: Replace the bulb with a new one that you know works.',
+            'Analyse: The new bulb glows — the guess was correct! (If it still doesn’t glow, you’d guess again — maybe the switch or wiring — and test that instead.)'
+          ]
+        }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+        for (let i = 0; i < nodes.length - 1; i++) {
+          ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[i + 1].x, nodes[i + 1].y); ctx.stroke();
+        }
+        nodes.forEach((n, i) => {
+          const active = step >= i;
+          ctx.fillStyle = active ? '#3b82f6' : '#e2e8f0';
+          ctx.beginPath(); ctx.arc(n.x, n.y, 26, 0, 2 * Math.PI); ctx.fill();
+          ctx.strokeStyle = active ? '#1e293b' : '#94a3b8'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.fillStyle = active ? 'white' : '#64748b'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(String(i + 1), n.x, n.y + 4);
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
+          ctx.fillText(n.label, n.x, n.y + 45);
+          if (step === i) {
+            ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.arc(n.x, n.y, 30 + Math.sin(Date.now() / 100) * 3, 0, 2 * Math.PI); ctx.stroke();
+          }
+        });
+        ctx.textAlign = 'left';
+        const scenario = scenarios[sel.value];
+        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 13px system-ui';
+        ctx.fillText(scenario.title, 20, 25);
+      }
+
+      btn.addEventListener('click', () => {
+        const scenario = scenarios[sel.value];
+        step = 0;
+        let s = 0;
+        const timer = setInterval(() => {
+          step = s;
+          draw();
+          obs.innerHTML = `<strong>Step ${s + 1}/5:</strong><br>${scenario.steps[s]}`;
+          s++;
+          if (s > 4) { clearInterval(timer); }
+        }, 900);
+      });
+      sel.addEventListener('change', () => { step = -1; draw(); obs.innerHTML = 'Choose a mystery and click Investigate to begin.'; });
+      draw();
+    }
+
+    function initPlantGroupingLab() {
+      const canvas = document.getElementById('plantgroup-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-plantgroup-type');
+      const obs = document.getElementById('plantgroup-obs');
+
+      function drawSeed(cx, cy, isDicot) {
+        ctx.fillStyle = '#d97706';
+        if (isDicot) {
+          ctx.beginPath(); ctx.ellipse(cx - 12, cy, 16, 22, 0, 0, 2 * Math.PI); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(cx + 12, cy, 16, 22, 0, 0, 2 * Math.PI); ctx.fill();
+          ctx.strokeStyle = '#78350f'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(cx, cy - 22); ctx.lineTo(cx, cy + 22); ctx.stroke();
+        } else {
+          ctx.beginPath(); ctx.ellipse(cx, cy, 16, 24, 0, 0, 2 * Math.PI); ctx.fill();
+        }
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(isDicot ? '2 cotyledons' : '1 cotyledon', cx, cy + 45);
+      }
+
+      function drawLeaf(cx, cy, isDicot) {
+        ctx.fillStyle = 'rgba(34,197,94,0.3)';
+        ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2;
+        if (isDicot) {
+          ctx.beginPath(); ctx.ellipse(cx, cy, 30, 40, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx, cy - 38); ctx.lineTo(cx, cy + 38); ctx.stroke();
+          for (let i = -30; i <= 30; i += 15) {
+            ctx.beginPath(); ctx.moveTo(cx, cy + i); ctx.lineTo(cx - 22, cy + i - 10); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(cx, cy + i); ctx.lineTo(cx + 22, cy + i - 10); ctx.stroke();
+          }
+        } else {
+          ctx.beginPath(); ctx.ellipse(cx, cy, 14, 42, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+          for (let i = -8; i <= 8; i += 8) {
+            ctx.beginPath(); ctx.moveTo(cx + i, cy - 40); ctx.lineTo(cx + i, cy + 40); ctx.stroke();
+          }
+        }
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(isDicot ? 'Reticulate venation' : 'Parallel venation', cx, cy + 60);
+      }
+
+      function drawRoot(cx, cy, isDicot) {
+        ctx.strokeStyle = '#a16207'; ctx.lineWidth = 2;
+        if (isDicot) {
+          ctx.lineWidth = 5;
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx, cy + 55); ctx.stroke();
+          ctx.lineWidth = 2;
+          for (let i = 10; i <= 45; i += 12) {
+            ctx.beginPath(); ctx.moveTo(cx, cy + i); ctx.lineTo(cx - 15, cy + i + 10); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(cx, cy + i); ctx.lineTo(cx + 15, cy + i + 10); ctx.stroke();
+          }
+        } else {
+          for (let i = -3; i <= 3; i++) {
+            ctx.beginPath(); ctx.moveTo(cx, cy);
+            ctx.quadraticCurveTo(cx + i * 8, cy + 30, cx + i * 12, cy + 55);
+            ctx.stroke();
+          }
+        }
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(isDicot ? 'Taproot' : 'Fibrous root', cx, cy + 75);
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const isDicot = sel.value === 'dicot';
+        drawSeed(100, 70, isDicot);
+        drawLeaf(300, 100, isDicot);
+        drawRoot(500, 60, isDicot);
+        ctx.textAlign = 'left';
+        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 13px system-ui';
+        ctx.fillText(isDicot ? 'Dicot (e.g. Chickpea)' : 'Monocot (e.g. Maize)', 20, 25);
+
+        obs.innerHTML = isDicot
+          ? `<strong>Dicot plant (e.g. Chickpea):</strong><br>• Seed splits into <strong>2 cotyledons</strong><br>• Leaves show <strong>reticulate</strong> (net-like) venation<br>• Root system is a <strong>taproot</strong> (one main root)<br>• Other examples: mustard, hibiscus, kidney beans`
+          : `<strong>Monocot plant (e.g. Maize):</strong><br>• Seed has just <strong>1 cotyledon</strong><br>• Leaves show <strong>parallel</strong> venation<br>• Root system is <strong>fibrous</strong> (many similar thin roots)<br>• Other examples: wheat, grass, lemongrass`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCamelAdaptationLab() {
+      const canvas = document.getElementById('camel-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-camel-type');
+      const obs = document.getElementById('camel-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const isHot = sel.value === 'hot';
+        // Ground
+        ctx.fillStyle = isHot ? '#fde68a' : '#e2e8f0';
+        ctx.fillRect(0, 230, W, 70);
+
+        const bodyX = W / 2, bodyY = 160;
+        const legLen = isHot ? 75 : 45;
+
+        // Legs
+        ctx.strokeStyle = '#a16207'; ctx.lineWidth = 8; ctx.lineCap = 'round';
+        [-40, -10, 20, 50].forEach(dx => {
+          ctx.beginPath(); ctx.moveTo(bodyX + dx, bodyY + 30); ctx.lineTo(bodyX + dx, bodyY + 30 + legLen); ctx.stroke();
+        });
+        // Hooves (wide for hot desert)
+        ctx.fillStyle = '#78350f';
+        const hoofW = isHot ? 22 : 12;
+        [-40, -10, 20, 50].forEach(dx => {
+          ctx.beginPath(); ctx.ellipse(bodyX + dx, bodyY + 30 + legLen, hoofW / 2, 5, 0, 0, 2 * Math.PI); ctx.fill();
+        });
+
+        // Body
+        ctx.fillStyle = '#d2a679';
+        ctx.beginPath(); ctx.ellipse(bodyX, bodyY + 30, 70, 30, 0, 0, 2 * Math.PI); ctx.fill();
+
+        // Humps
+        ctx.fillStyle = '#c68a52';
+        if (isHot) {
+          ctx.beginPath(); ctx.ellipse(bodyX, bodyY - 10, 28, 28, 0, 0, 2 * Math.PI); ctx.fill();
+        } else {
+          ctx.beginPath(); ctx.ellipse(bodyX - 25, bodyY - 5, 20, 20, 0, 0, 2 * Math.PI); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(bodyX + 25, bodyY - 5, 20, 20, 0, 0, 2 * Math.PI); ctx.fill();
+        }
+
+        // Neck + head
+        ctx.fillStyle = '#d2a679';
+        ctx.beginPath(); ctx.moveTo(bodyX + 60, bodyY + 10); ctx.lineTo(bodyX + 95, bodyY - 55); ctx.lineTo(bodyX + 110, bodyY - 55); ctx.lineTo(bodyX + 80, bodyY + 25); ctx.closePath(); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(bodyX + 100, bodyY - 60, 16, 12, 0, 0, 2 * Math.PI); ctx.fill();
+
+        // Long hair for cold desert camel
+        if (!isHot) {
+          ctx.strokeStyle = '#8b5e34'; ctx.lineWidth = 2;
+          for (let i = 0; i < 8; i++) {
+            const t = i / 7;
+            const nx = bodyX + 60 + t * 40, ny = bodyY + 10 - t * 65;
+            ctx.beginPath(); ctx.moveTo(nx, ny); ctx.lineTo(nx - 8, ny + 10); ctx.stroke();
+          }
+        }
+
+        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText(isHot ? 'Hot Desert Camel (Rajasthan)' : 'Cold Desert Camel (Ladakh)', 20, 25);
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '11px system-ui';
+        ctx.fillText(isHot ? '1 hump • long legs • wide hooves' : '2 humps • shorter legs • long hair', 20, 45);
+
+        obs.innerHTML = isHot
+          ? `<strong>Hot Desert Camel Adaptations:</strong><br>• <strong>Long legs & wide hooves</strong> — walk on sand without sinking<br>• <strong>One hump</strong> — stores food for scarce times<br>• Excretes very little water, doesn't sweat — survives days without drinking`
+          : `<strong>Cold Desert Camel Adaptations:</strong><br>• <strong>Shorter legs</strong> — more stable on rocky mountain terrain<br>• <strong>Two humps</strong> — shrink in winter as stored food is used<br>• <strong>Long hair</strong> from head to neck — survives cold winters`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initFoodTestLab() {
+      const canvas = document.getElementById('foodtest-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const selItem = document.getElementById('sel-foodtest-item');
+      const selTest = document.getElementById('sel-foodtest-type');
+      const btn = document.getElementById('btn-foodtest-run');
+      const obs = document.getElementById('foodtest-obs');
+
+      const foods = {
+        potato: { label: 'Potato', color: '#e5c9a6', starch: true, fat: false, protein: false },
+        cucumber: { label: 'Cucumber', color: '#86efac', starch: false, fat: false, protein: false },
+        rice: { label: 'Boiled Rice', color: '#f5f5f4', starch: true, fat: false, protein: false },
+        peanuts: { label: 'Peanuts', color: '#d4a373', starch: false, fat: true, protein: true },
+        butter: { label: 'Butter', color: '#fde68a', starch: false, fat: true, protein: false },
+        gram: { label: 'Boiled Gram (Chickpea)', color: '#ca8a04', starch: true, fat: false, protein: true },
+        coconut: { label: 'Coconut', color: '#fafaf9', starch: false, fat: true, protein: false }
+      };
+
+      let tested = false;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const food = foods[selItem.value];
+        const test = selTest.value;
+
+        // Food item on the left
+        ctx.fillStyle = food.color;
+        ctx.beginPath(); ctx.ellipse(100, 150, 40, 30, 0, 0, 2 * Math.PI); ctx.fill();
+        ctx.strokeStyle = '#78350f'; ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(food.label, 100, 200);
+
+        if (test === 'starch') {
+          // Dish + iodine drops
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.ellipse(320, 160, 70, 40, 0, 0, 2 * Math.PI); ctx.stroke();
+          if (tested) {
+            ctx.fillStyle = food.starch ? '#1e293b' : food.color;
+            ctx.beginPath(); ctx.ellipse(320, 160, 60, 32, 0, 0, 2 * Math.PI); ctx.fill();
+            if (food.starch) {
+              ctx.fillStyle = '#3730a3'; ctx.font = 'bold 11px system-ui';
+              ctx.fillText('Blue-black!', 320, 165);
+            }
+          }
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = '11px system-ui';
+          ctx.fillText('+ Iodine solution', 320, 220);
+        } else if (test === 'fat') {
+          // Paper wrap
+          ctx.fillStyle = '#fefce8'; ctx.strokeStyle = '#a8a29e'; ctx.lineWidth = 2;
+          ctx.fillRect(270, 110, 100, 90); ctx.strokeRect(270, 110, 100, 90);
+          if (tested && food.fat) {
+            ctx.fillStyle = 'rgba(217, 119, 6, 0.35)';
+            ctx.beginPath(); ctx.ellipse(320, 155, 35, 30, 0, 0, 2 * Math.PI); ctx.fill();
+            ctx.fillStyle = '#92400e'; ctx.font = 'bold 11px system-ui';
+            ctx.fillText('Oily patch!', 320, 220);
+          } else if (tested) {
+            ctx.fillStyle = 'var(--text-muted)'; ctx.font = '11px system-ui';
+            ctx.fillText('No oily patch', 320, 220);
+          }
+        } else if (test === 'protein') {
+          // Test tube
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(295, 110); ctx.lineTo(295, 190); ctx.arc(320, 190, 25, Math.PI, 0); ctx.lineTo(345, 110);
+          ctx.stroke();
+          ctx.fillStyle = tested ? (food.protein ? '#7c3aed' : '#bfdbfe') : '#e0f2fe';
+          ctx.beginPath();
+          ctx.moveTo(298, 140); ctx.lineTo(298, 188); ctx.arc(320, 188, 22, Math.PI, 0); ctx.lineTo(342, 140);
+          ctx.closePath(); ctx.fill();
+          if (tested) {
+            ctx.fillStyle = food.protein ? '#5b21b6' : 'var(--text-muted)'; ctx.font = 'bold 11px system-ui';
+            ctx.fillText(food.protein ? 'Turns violet!' : 'No colour change', 320, 220);
+          }
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = '10px system-ui';
+          ctx.fillText('+ CuSO₄ + caustic soda', 320, 240);
+        }
+        ctx.textAlign = 'left';
+      }
+
+      btn.addEventListener('click', () => {
+        tested = true;
+        draw();
+        const food = foods[selItem.value];
+        const test = selTest.value;
+        let result, nutrient, colorDesc;
+        if (test === 'starch') { result = food.starch; nutrient = 'starch'; colorDesc = 'turns blue-black'; }
+        else if (test === 'fat') { result = food.fat; nutrient = 'fat'; colorDesc = 'leaves an oily, translucent patch on paper'; }
+        else { result = food.protein; nutrient = 'protein'; colorDesc = 'turns violet'; }
+        obs.innerHTML = `<strong>${food.label} — ${nutrient} test:</strong><br>${result
+          ? `✅ Positive! The food ${colorDesc}, confirming the presence of <strong>${nutrient}</strong>.`
+          : `❌ Negative. No visible change — this food does not show a significant amount of <strong>${nutrient}</strong>.`}`;
+      });
+      selItem.addEventListener('change', () => { tested = false; draw(); obs.innerHTML = 'Choose a food and test, then click Run Test.'; });
+      selTest.addEventListener('change', () => { tested = false; draw(); obs.innerHTML = 'Choose a food and test, then click Run Test.'; });
+      draw();
+    }
+
+    function initMagnetExplorerLab() {
+      const canvas = document.getElementById('magnet-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const modeSel = document.getElementById('sel-magnet-mode');
+      const hint = document.getElementById('magnet-hint').querySelector('span');
+      const materialsControls = document.getElementById('magnet-materials-controls');
+      const polesControls = document.getElementById('magnet-poles-controls');
+      const objSel = document.getElementById('sel-magnet-object');
+      const poleSel = document.getElementById('sel-magnet-pole');
+      const btn = document.getElementById('btn-magnet-bring');
+      const obs = document.getElementById('magnet-obs');
+
+      const objects = {
+        pin: { label: 'Iron Safety Pin', magnetic: true, color: '#94a3b8' },
+        spoon: { label: 'Steel Spoon', magnetic: true, color: '#cbd5e1' },
+        pencil: { label: 'Wooden Pencil', magnetic: false, color: '#d97706' },
+        scale: { label: 'Plastic Scale', magnetic: false, color: '#60a5fa' },
+        glass: { label: 'Glass Piece', magnetic: false, color: '#a5f3fc' }
+      };
+
+      let magnetX = 100, objX = 450, animId = null;
+      let magBX = 450, magBTargetX = 450;
+
+      function drawBarMagnet(x, y, leftIsNorth) {
+        const w = 90, h = 30;
+        ctx.fillStyle = leftIsNorth ? '#ef4444' : '#3b82f6';
+        ctx.fillRect(x, y - h / 2, w / 2, h);
+        ctx.fillStyle = leftIsNorth ? '#3b82f6' : '#ef4444';
+        ctx.fillRect(x + w / 2, y - h / 2, w / 2, h);
+        ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2; ctx.strokeRect(x, y - h / 2, w, h);
+        ctx.fillStyle = 'white'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(leftIsNorth ? 'N' : 'S', x + w / 4, y + 5);
+        ctx.fillText(leftIsNorth ? 'S' : 'N', x + 3 * w / 4, y + 5);
+        ctx.textAlign = 'left';
+        return w;
+      }
+
+      function drawMaterialsMode() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        drawBarMagnet(magnetX, 150, true);
+        const obj = objects[objSel.value];
+        ctx.fillStyle = obj.color;
+        ctx.beginPath(); ctx.arc(objX, 150, 22, 0, 2 * Math.PI); ctx.fill();
+        ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(obj.label, objX, 195);
+        ctx.fillText('Magnet', magnetX + 45, 195);
+        ctx.textAlign = 'left';
+      }
+
+      function drawPolesMode() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        drawBarMagnet(150, 150, false); // Magnet A: left=S, right=N (N faces right, toward B)
+        const bLeftIsNorth = poleSel.value === 'N';
+        drawBarMagnet(magBX, 150, bLeftIsNorth);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Magnet A (fixed)', 195, 195);
+        ctx.fillText('Magnet B', magBX + 45, 195);
+        ctx.textAlign = 'left';
+      }
+
+      function draw() {
+        if (modeSel.value === 'materials') drawMaterialsMode();
+        else drawPolesMode();
+      }
+
+      btn.addEventListener('click', () => {
+        if (animId) clearInterval(animId);
+        magnetX = 100;
+        const obj = objects[objSel.value];
+        const targetX = obj.magnetic ? objX - 95 : 300;
+        let frame = 0;
+        animId = setInterval(() => {
+          frame++;
+          magnetX += (targetX - magnetX) * 0.25;
+          drawMaterialsMode();
+          if (frame > 20) {
+            clearInterval(animId);
+            obs.innerHTML = obj.magnetic
+              ? `<strong>${obj.label}:</strong><br>✅ Attracted! It sticks to the magnet — this is a <strong>magnetic material</strong> (contains iron/steel).`
+              : `<strong>${obj.label}:</strong><br>❌ Not attracted. The magnet has no effect — this is a <strong>non-magnetic material</strong>.`;
+          }
+        }, 30);
+      });
+
+      poleSel.addEventListener('change', () => {
+        if (animId) clearInterval(animId);
+        const bLeftIsNorth = poleSel.value === 'N';
+        // Magnet A's right end (facing B) is North. B's left end (facing A) is North if bLeftIsNorth.
+        const attract = !bLeftIsNorth; // unlike poles (A:N, B:S) attract
+        magBTargetX = attract ? 300 : 480;
+        let frame = 0;
+        animId = setInterval(() => {
+          frame++;
+          magBX += (magBTargetX - magBX) * 0.25;
+          drawPolesMode();
+          if (frame > 20) {
+            clearInterval(animId);
+            obs.innerHTML = attract
+              ? `<strong>Unlike poles facing (N-S):</strong><br>✅ Magnet B is <strong>attracted</strong> towards Magnet A and moves closer.`
+              : `<strong>Like poles facing (N-N):</strong><br>❌ Magnet B is <strong>repelled</strong> by Magnet A and moves away.`;
+          }
+        }, 30);
+      });
+
+      modeSel.addEventListener('change', () => {
+        const mode = modeSel.value;
+        materialsControls.style.display = mode === 'materials' ? 'block' : 'none';
+        polesControls.style.display = mode === 'poles' ? 'block' : 'none';
+        hint.textContent = mode === 'materials'
+          ? 'Choose an object and bring the magnet closer to test if it is magnetic.'
+          : "Choose Magnet B's facing pole to see if the magnets attract or repel.";
+        magnetX = 100; magBX = 450;
+        obs.innerHTML = mode === 'materials' ? 'Choose an object and click the button to test it.' : 'Choose a pole orientation to see the interaction.';
+        draw();
+      });
+      objSel.addEventListener('change', () => { magnetX = 100; draw(); obs.innerHTML = 'Choose an object and click the button to test it.'; });
+      draw();
+    }
+
+    function initRulerMeasureLab() {
+      const canvas = document.getElementById('ruler-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const slider = document.getElementById('rng-ruler-length');
+      const chkBroken = document.getElementById('chk-ruler-broken');
+      const obs = document.getElementById('ruler-obs');
+      let brokenStartCm = 1;
+
+      const pxPerCm = 34, rulerLeftPx = 30, rulerTopPx = 150;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const lengthCm = parseInt(slider.value) / 10;
+        const broken = chkBroken.checked;
+        const startCm = broken ? brokenStartCm : 0;
+        const endCm = startCm + lengthCm;
+
+        // Ruler body
+        ctx.fillStyle = '#fef3c7'; ctx.fillRect(rulerLeftPx, rulerTopPx, 15 * pxPerCm, 40);
+        ctx.strokeStyle = '#92400e'; ctx.lineWidth = 2; ctx.strokeRect(rulerLeftPx, rulerTopPx, 15 * pxPerCm, 40);
+
+        // Ticks
+        for (let cm = 0; cm <= 15; cm++) {
+          if (broken && cm < startCm) continue; // worn-off part not shown
+          const x = rulerLeftPx + cm * pxPerCm;
+          const tickH = cm % 5 === 0 ? 22 : (cm % 1 === 0 ? 14 : 8);
+          ctx.strokeStyle = '#78350f'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(x, rulerTopPx); ctx.lineTo(x, rulerTopPx + tickH); ctx.stroke();
+          if (cm % 1 === 0) {
+            ctx.fillStyle = '#78350f'; ctx.font = '10px system-ui'; ctx.textAlign = 'center';
+            ctx.fillText(String(cm), x, rulerTopPx + 34);
+          }
+        }
+        // Jagged broken edge
+        if (broken) {
+          const bx = rulerLeftPx + startCm * pxPerCm;
+          ctx.fillStyle = '#fef3c7'; ctx.strokeStyle = '#92400e'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(rulerLeftPx, rulerTopPx);
+          for (let i = 0; i < 6; i++) {
+            const zx = rulerLeftPx + (bx - rulerLeftPx) * (i / 6);
+            ctx.lineTo(zx + 4, rulerTopPx + (i % 2 === 0 ? 8 : 0));
+          }
+          ctx.lineTo(bx, rulerTopPx + 40); ctx.lineTo(rulerLeftPx, rulerTopPx + 40); ctx.closePath();
+          ctx.fillStyle = '#78716c'; ctx.fill();
+          ctx.fillStyle = 'white'; ctx.font = 'bold 9px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('broken', rulerLeftPx + (bx - rulerLeftPx) / 2, rulerTopPx + 25);
+        }
+
+        // Object bar above the ruler, aligned to startCm..endCm
+        const objX1 = rulerLeftPx + startCm * pxPerCm, objX2 = rulerLeftPx + endCm * pxPerCm;
+        ctx.fillStyle = 'rgba(59,130,246,0.5)'; ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 2;
+        ctx.fillRect(objX1, rulerTopPx - 30, objX2 - objX1, 20);
+        ctx.strokeRect(objX1, rulerTopPx - 30, objX2 - objX1, 20);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Object', (objX1 + objX2) / 2, rulerTopPx - 36);
+
+        // Reading markers
+        ctx.fillStyle = '#dc2626'; ctx.font = 'bold 10px system-ui';
+        ctx.fillText('↓ ' + startCm.toFixed(1), objX1, rulerTopPx - 4);
+        ctx.fillText('↓ ' + endCm.toFixed(1), objX2, rulerTopPx - 4);
+        ctx.textAlign = 'left';
+
+        obs.innerHTML = broken
+          ? `<strong>Broken-end ruler:</strong><br>Start reading = ${startCm.toFixed(1)} cm<br>End reading = ${endCm.toFixed(1)} cm<br>Length = ${endCm.toFixed(1)} − ${startCm.toFixed(1)} = <strong>${lengthCm.toFixed(1)} cm</strong>`
+          : `<strong>Normal ruler (starts at 0):</strong><br>End reading = ${endCm.toFixed(1)} cm<br>Since the ruler starts at 0, the length is simply <strong>${lengthCm.toFixed(1)} cm</strong>`;
+      }
+
+      slider.addEventListener('input', draw);
+      chkBroken.addEventListener('change', () => {
+        brokenStartCm = Math.floor(Math.random() * 3) + 1;
+        draw();
+      });
+      draw();
+    }
+
+    function initMotionTypeLab() {
+      const canvas = document.getElementById('motiontype-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-motiontype');
+      const obs = document.getElementById('motiontype-obs');
+      let animId = null, t = 0;
+
+      function drawLinear() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(300, 30); ctx.lineTo(300, 270); ctx.stroke();
+        const y = 30 + (t % 100) * 2.2;
+        ctx.fillStyle = '#3b82f6';
+        ctx.fillRect(280, y, 40, 30);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Linear Motion — moves along a straight line', 300, 25);
+        ctx.textAlign = 'left';
+      }
+      function drawCircular() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cx = 300, cy = 160, r = 90;
+        ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.stroke();
+        const ang = (t / 30);
+        const bx = cx + r * Math.cos(ang), by = cy + r * Math.sin(ang);
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(bx, by); ctx.stroke();
+        ctx.fillStyle = '#f59e0b';
+        ctx.beginPath(); ctx.arc(bx, by, 14, 0, 2 * Math.PI); ctx.fill();
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Circular Motion — moves along a circular path', cx, 25);
+        ctx.textAlign = 'left';
+      }
+      function drawOscillatory() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const pivotX = 300, pivotY = 40, len = 160;
+        const ang = Math.sin(t / 25) * 0.6;
+        const bx = pivotX + len * Math.sin(ang), by = pivotY + len * Math.cos(ang);
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(pivotX, pivotY); ctx.lineTo(bx, by); ctx.stroke();
+        ctx.fillStyle = '#1e293b'; ctx.beginPath(); ctx.arc(pivotX, pivotY, 5, 0, 2 * Math.PI); ctx.fill();
+        ctx.fillStyle = '#10b981';
+        ctx.beginPath(); ctx.arc(bx, by, 16, 0, 2 * Math.PI); ctx.fill();
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Oscillatory Motion — moves to and fro about a fixed position', pivotX, 25);
+        ctx.textAlign = 'left';
+      }
+
+      function loop() {
+        t++;
+        if (sel.value === 'linear') drawLinear();
+        else if (sel.value === 'circular') drawCircular();
+        else drawOscillatory();
+        animId = requestAnimationFrame(loop);
+      }
+
+      function updateObs() {
+        if (sel.value === 'linear') {
+          obs.innerHTML = `<strong>Linear Motion:</strong><br>The object moves back and forth along a single straight line — like a dropped object falling, or a pushed box sliding.`;
+        } else if (sel.value === 'circular') {
+          obs.innerHTML = `<strong>Circular Motion:</strong><br>The object moves along a circular path around a fixed centre — like a stone whirled on a string, or a merry-go-round. This is a type of <strong>periodic motion</strong> (it repeats the same path again and again).`;
+        } else {
+          obs.innerHTML = `<strong>Oscillatory Motion:</strong><br>The object moves to and fro about a fixed position — like a swing, or a plucked ruler vibrating. This is also a type of <strong>periodic motion</strong>.`;
+        }
+      }
+
+      sel.addEventListener('change', updateObs);
+      updateObs();
+      if (animId) cancelAnimationFrame(animId);
+      loop();
+    }
+
+    function initMaterialExplorerLab() {
+      const canvas = document.getElementById('matexp-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const modeSel = document.getElementById('sel-matexp-mode');
+      const hint = document.getElementById('matexp-hint').querySelector('span');
+      const transparencyControls = document.getElementById('matexp-transparency-controls');
+      const solubilityControls = document.getElementById('matexp-solubility-controls');
+      const matSel = document.getElementById('sel-matexp-material');
+      const subSel = document.getElementById('sel-matexp-substance');
+      const stirBtn = document.getElementById('btn-matexp-stir');
+      const obs = document.getElementById('matexp-obs');
+
+      const materials = {
+        glass: { label: 'Glass (window)', kind: 'transparent', panelAlpha: 0.12, panelColor: '#7dd3fc' },
+        frosted: { label: 'Frosted Glass', kind: 'translucent', panelAlpha: 0.65, panelColor: '#e2e8f0' },
+        wood: { label: 'Wooden Board', kind: 'opaque', panelAlpha: 1, panelColor: '#92400e' }
+      };
+      const substances = {
+        sugar: { label: 'Sugar', soluble: true, color: '#f8fafc' },
+        salt: { label: 'Salt', soluble: true, color: '#f1f5f9' },
+        chalk: { label: 'Chalk Powder', soluble: false, color: '#e5e7eb' },
+        sand: { label: 'Sand', soluble: false, color: '#d4a373' },
+        sawdust: { label: 'Sawdust', soluble: false, color: '#b45309' }
+      };
+
+      let stirProgress = 0, stirAnim = null;
+
+      function drawStar(x, y, alpha) {
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = '#f59e0b';
+        ctx.beginPath();
+        for (let i = 0; i < 5; i++) {
+          const ang = (i * 2 * Math.PI / 5) - Math.PI / 2;
+          const ang2 = ang + Math.PI / 5;
+          ctx.lineTo(x + Math.cos(ang) * 22, y + Math.sin(ang) * 22);
+          ctx.lineTo(x + Math.cos(ang2) * 9, y + Math.sin(ang2) * 9);
+        }
+        ctx.closePath(); ctx.fill();
+        ctx.restore();
+      }
+
+      function drawTransparency() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mat = materials[matSel.value];
+        drawStar(130, 150, 1);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Object', 130, 195);
+
+        ctx.save();
+        ctx.globalAlpha = mat.panelAlpha;
+        ctx.fillStyle = mat.panelColor;
+        ctx.fillRect(260, 50, 90, 200);
+        ctx.restore();
+        ctx.strokeStyle = '#475569'; ctx.lineWidth = 2; ctx.strokeRect(260, 50, 90, 200);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillText(mat.label, 305, 270);
+
+        // What the viewer sees on the far side
+        if (mat.kind === 'transparent') { drawStar(470, 150, 1); }
+        else if (mat.kind === 'translucent') {
+          drawStar(465, 150, 0.25); drawStar(475, 152, 0.25); drawStar(470, 148, 0.25);
+        }
+        // opaque: nothing drawn
+        ctx.fillStyle = '#334155'; ctx.font = 'bold 24px system-ui';
+        ctx.fillText('👁️', 470, 220);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillText('Viewer', 470, 240);
+        ctx.textAlign = 'left';
+
+        obs.innerHTML = mat.kind === 'transparent'
+          ? `<strong>${mat.label} — Transparent:</strong><br>The viewer sees the object clearly. Light passes straight through.`
+          : mat.kind === 'translucent'
+          ? `<strong>${mat.label} — Translucent:</strong><br>The viewer sees only a hazy, unclear shape. Some light passes through, but it gets scattered.`
+          : `<strong>${mat.label} — Opaque:</strong><br>The viewer sees nothing at all. No light passes through this material.`;
+      }
+
+      function drawSolubility() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const sub = substances[subSel.value];
+        // Glass/beaker
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(220, 60); ctx.lineTo(220, 240); ctx.lineTo(380, 240); ctx.lineTo(380, 60); ctx.stroke();
+        // Water
+        ctx.fillStyle = 'rgba(56,189,248,0.35)';
+        ctx.fillRect(222, 100, 156, 138);
+
+        const dissolved = sub.soluble ? Math.min(1, stirProgress / 20) : 0;
+        const settle = !sub.soluble ? Math.min(1, stirProgress / 20) : 0;
+
+        // Particles
+        ctx.fillStyle = sub.color;
+        const particleCount = 14;
+        for (let i = 0; i < particleCount; i++) {
+          const baseX = 240 + (i % 7) * 16;
+          const baseY = sub.soluble ? (200 - dissolved * 40) : (215 + settle * 15);
+          const alpha = sub.soluble ? Math.max(0, 1 - dissolved) : 0.9;
+          ctx.save();
+          ctx.globalAlpha = alpha;
+          ctx.beginPath(); ctx.arc(baseX, baseY + Math.floor(i / 7) * 10, 4, 0, 2 * Math.PI); ctx.fill();
+          ctx.restore();
+        }
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(sub.label + ' in water', 300, 270);
+        ctx.textAlign = 'left';
+
+        if (stirProgress === 0) {
+          obs.innerHTML = `<strong>${sub.label}:</strong><br>Click "Stir the Water" to see what happens.`;
+        } else if (stirProgress < 20) {
+          obs.innerHTML = `<strong>${sub.label}:</strong><br>Stirring...`;
+        } else {
+          obs.innerHTML = sub.soluble
+            ? `<strong>${sub.label} — Soluble:</strong><br>✅ It completely dissolved and disappeared into the water!`
+            : `<strong>${sub.label} — Insoluble:</strong><br>❌ It did not dissolve — it remains visible, settled in the water.`;
+        }
+      }
+
+      function draw() {
+        if (modeSel.value === 'transparency') drawTransparency();
+        else drawSolubility();
+      }
+
+      stirBtn.addEventListener('click', () => {
+        if (stirAnim) clearInterval(stirAnim);
+        stirProgress = 1;
+        stirAnim = setInterval(() => {
+          stirProgress++;
+          drawSolubility();
+          if (stirProgress > 20) clearInterval(stirAnim);
+        }, 40);
+      });
+
+      modeSel.addEventListener('change', () => {
+        const mode = modeSel.value;
+        transparencyControls.style.display = mode === 'transparency' ? 'block' : 'none';
+        solubilityControls.style.display = mode === 'solubility' ? 'block' : 'none';
+        hint.textContent = mode === 'transparency'
+          ? 'Choose a material to see how well you can see through it.'
+          : 'Choose a substance and stir it into water to test solubility.';
+        stirProgress = 0;
+        draw();
+      });
+      matSel.addEventListener('change', draw);
+      subSel.addEventListener('change', () => { stirProgress = 0; draw(); });
+      draw();
+    }
+
+    function initThermometerReaderLab() {
+      const canvas = document.getElementById('thermo-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const modeSel = document.getElementById('sel-thermo-mode');
+      const hint = document.getElementById('thermo-hint').querySelector('span');
+      const convertControls = document.getElementById('thermo-convert-controls');
+      const leastCountControls = document.getElementById('thermo-leastcount-controls');
+      const celsiusSlider = document.getElementById('rng-thermo-celsius');
+      const celsiusValLabel = document.getElementById('thermo-celsius-val');
+      const divisionsSel = document.getElementById('sel-thermo-divisions');
+      const obs = document.getElementById('thermo-obs');
+
+      function drawConvert() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const c = parseInt(celsiusSlider.value);
+        const f = (c * 9 / 5) + 32;
+        const k = c + 273.15;
+        celsiusValLabel.textContent = c + ' °C';
+
+        // Thermometer tube
+        const tubeX = 150, tubeTop = 40, tubeBottom = 230, bulbY = 250;
+        ctx.strokeStyle = '#475569'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(tubeX - 12, tubeTop); ctx.lineTo(tubeX - 12, tubeBottom); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(tubeX + 12, tubeTop); ctx.lineTo(tubeX + 12, tubeBottom); ctx.stroke();
+        ctx.beginPath(); ctx.arc(tubeX, bulbY, 24, 0, 2 * Math.PI); ctx.stroke();
+
+        // Liquid column: map -10..110 to bulbY..tubeTop
+        const frac = (c - (-10)) / (110 - (-10));
+        const colY = bulbY - 20 - frac * (bulbY - 20 - tubeTop - 10);
+        ctx.fillStyle = c > 60 ? '#ef4444' : c > 20 ? '#f97316' : '#3b82f6';
+        ctx.fillRect(tubeX - 8, colY, 16, bulbY - colY);
+        ctx.beginPath(); ctx.arc(tubeX, bulbY, 20, 0, 2 * Math.PI); ctx.fill();
+
+        // Scale ticks every 10 degrees
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.fillStyle = 'var(--text-normal)'; ctx.font = '9px system-ui'; ctx.textAlign = 'left';
+        for (let t = -10; t <= 110; t += 10) {
+          const y = bulbY - 20 - ((t - (-10)) / 120) * (bulbY - 20 - tubeTop - 10);
+          ctx.beginPath(); ctx.moveTo(tubeX + 14, y); ctx.lineTo(tubeX + 20, y); ctx.stroke();
+          if (t % 20 === 0) ctx.fillText(String(t), tubeX + 22, y + 3);
+        }
+
+        // Readouts
+        ctx.font = 'bold 16px system-ui';
+        ctx.fillStyle = '#ef4444'; ctx.fillText(c.toFixed(1) + ' °C', 320, 90);
+        ctx.fillStyle = '#f97316'; ctx.fillText(f.toFixed(1) + ' °F', 320, 130);
+        ctx.fillStyle = '#3b82f6'; ctx.fillText(k.toFixed(2) + ' K', 320, 170);
+        ctx.textAlign = 'left';
+
+        obs.innerHTML = `<strong>${c} °C converts to:</strong><br>• Fahrenheit: ${c} × 9/5 + 32 = <strong>${f.toFixed(1)} °F</strong><br>• Kelvin: ${c} + 273.15 = <strong>${k.toFixed(2)} K</strong>`;
+      }
+
+      function drawLeastCount() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const divisions = parseInt(divisionsSel.value);
+        const leastCount = (10 / divisions);
+
+        const x1 = 100, x2 = 500, y = 150;
+        ctx.strokeStyle = '#475569'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(x2, y); ctx.stroke();
+
+        // Big marks at 0 and 10
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        [x1, x2].forEach((x, i) => {
+          ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(x, y - 30); ctx.lineTo(x, y + 10); ctx.stroke();
+          ctx.fillText(i === 0 ? '0°C' : '10°C', x, y - 40);
+        });
+
+        // Small divisions
+        for (let i = 1; i < divisions; i++) {
+          const x = x1 + (i / divisions) * (x2 - x1);
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(x, y - 15); ctx.lineTo(x, y + 5); ctx.stroke();
+        }
+        ctx.fillStyle = 'var(--accent-color)'; ctx.font = '11px system-ui';
+        ctx.fillText(divisions + ' small divisions between the two big marks', (x1 + x2) / 2, y + 40);
+        ctx.textAlign = 'left';
+
+        obs.innerHTML = `<strong>Finding the Least Count:</strong><br>• Difference between big marks = 10°C<br>• Number of small divisions = ${divisions}<br>• Least count = 10°C ÷ ${divisions} = <strong>${leastCount.toFixed(2)}°C per division</strong>`;
+      }
+
+      function draw() {
+        if (modeSel.value === 'convert') drawConvert();
+        else drawLeastCount();
+      }
+
+      celsiusSlider.addEventListener('input', drawConvert);
+      divisionsSel.addEventListener('change', drawLeastCount);
+      modeSel.addEventListener('change', () => {
+        const mode = modeSel.value;
+        convertControls.style.display = mode === 'convert' ? 'block' : 'none';
+        leastCountControls.style.display = mode === 'leastcount' ? 'block' : 'none';
+        hint.textContent = mode === 'convert'
+          ? 'Drag the slider to change the temperature and see it converted between scales.'
+          : 'Choose how many small divisions the thermometer has, and see the least count calculated.';
+        draw();
+      });
+      draw();
+    }
+
+    function initWaterStateChangeLab() {
+      const canvas = document.getElementById('waterstate-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const slider = document.getElementById('rng-waterstate-temp');
+      const tempValLabel = document.getElementById('waterstate-temp-val');
+      const obs = document.getElementById('waterstate-obs');
+      let animT = 0, rafId = null;
+
+      function draw() {
+        animT++;
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const temp = parseInt(slider.value);
+        tempValLabel.textContent = temp + ' °C';
+
+        const beakerX1 = 220, beakerX2 = 380, beakerBottom = 260, beakerTop = 100;
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(beakerX1, beakerTop); ctx.lineTo(beakerX1, beakerBottom); ctx.lineTo(beakerX2, beakerBottom); ctx.lineTo(beakerX2, beakerTop); ctx.stroke();
+
+        let stateLabel, processLabel;
+        if (temp < 0) {
+          stateLabel = 'Solid (Ice)'; processLabel = 'Below freezing point — water stays solid as ice.';
+          // Ice cubes
+          ctx.fillStyle = 'rgba(191,219,254,0.85)'; ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = 2;
+          for (let i = 0; i < 4; i++) {
+            const ix = beakerX1 + 15 + (i % 2) * 75, iy = beakerBottom - 40 - Math.floor(i / 2) * 45;
+            ctx.fillRect(ix, iy, 60, 40); ctx.strokeRect(ix, iy, 60, 40);
+          }
+        } else if (temp === 0) {
+          stateLabel = 'Melting / Freezing Point'; processLabel = '0°C is the melting point of ice AND the freezing point of water — both ice and water can exist together here.';
+          ctx.fillStyle = 'rgba(96,165,250,0.35)'; ctx.fillRect(beakerX1 + 2, beakerBottom - 90, beakerX2 - beakerX1 - 4, 90);
+          ctx.fillStyle = 'rgba(191,219,254,0.85)'; ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = 2;
+          ctx.fillRect(beakerX1 + 15, beakerBottom - 70, 55, 35); ctx.strokeRect(beakerX1 + 15, beakerBottom - 70, 55, 35);
+          ctx.fillRect(beakerX2 - 75, beakerBottom - 55, 55, 30); ctx.strokeRect(beakerX2 - 75, beakerBottom - 55, 55, 30);
+        } else if (temp < 100) {
+          stateLabel = 'Liquid (Water)'; processLabel = 'Between 0°C and 100°C, water stays liquid.';
+          ctx.fillStyle = 'rgba(56,189,248,0.4)';
+          const wobble = Math.sin(animT / 20) * 2;
+          ctx.fillRect(beakerX1 + 2, beakerBottom - 130 + wobble, beakerX2 - beakerX1 - 4, 130);
+        } else if (temp === 100) {
+          stateLabel = 'Boiling / Condensation Point'; processLabel = '100°C is the boiling point of water AND the condensation point of steam.';
+          ctx.fillStyle = 'rgba(56,189,248,0.4)';
+          ctx.fillRect(beakerX1 + 2, beakerBottom - 100, beakerX2 - beakerX1 - 4, 100);
+          // A few rising bubbles/steam wisps
+          ctx.strokeStyle = 'rgba(226,232,240,0.8)'; ctx.lineWidth = 2;
+          for (let i = 0; i < 3; i++) {
+            const sx = beakerX1 + 40 + i * 50;
+            const sy = beakerTop - 10 - ((animT + i * 20) % 60);
+            ctx.beginPath(); ctx.arc(sx, sy, 6, 0, 2 * Math.PI); ctx.stroke();
+          }
+        } else {
+          stateLabel = 'Gas (Water Vapour)'; processLabel = 'Above 100°C, liquid water evaporates/boils away into invisible water vapour (steam shown here for visibility).';
+          const remaining = Math.max(10, 100 - (temp - 100) * 0.6);
+          ctx.fillStyle = 'rgba(56,189,248,0.4)';
+          ctx.fillRect(beakerX1 + 2, beakerBottom - remaining, beakerX2 - beakerX1 - 4, remaining);
+          ctx.strokeStyle = 'rgba(226,232,240,0.8)'; ctx.lineWidth = 2;
+          for (let i = 0; i < 5; i++) {
+            const sx = beakerX1 + 20 + i * 35;
+            const sy = beakerTop - 20 - ((animT * 1.5 + i * 15) % 80);
+            ctx.beginPath(); ctx.arc(sx, sy, 7, 0, 2 * Math.PI); ctx.stroke();
+          }
+        }
+
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(stateLabel, 300, 60);
+        ctx.textAlign = 'left';
+
+        obs.innerHTML = `<strong>${temp} °C — ${stateLabel}:</strong><br>${processLabel}`;
+
+        rafId = requestAnimationFrame(draw);
+      }
+
+      slider.addEventListener('input', () => {});
+      if (rafId) cancelAnimationFrame(rafId);
+      draw();
+    }
+
+    function initSeparationMethodLab() {
+      const canvas = document.getElementById('separation-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const methodSel = document.getElementById('sel-separation-method');
+      const runBtn = document.getElementById('btn-separation-run');
+      const obs = document.getElementById('separation-obs');
+      let progress = 0, animId = null;
+      let magneticCollected = new Array(10).fill(false);
+
+      const descriptions = {
+        winnowing: 'Grain and husk are tossed into the wind from a bamboo tray (soop). The lighter husk is blown away, while the heavier grain falls straight down.',
+        sieving: 'The mixture is shaken over a sieve. Fine flour particles pass through the holes, while bigger bran/stone particles stay on top.',
+        filtration: 'Muddy water is poured through a filter paper cone. Mud particles are too big to pass through and stay as residue; clear water (filtrate) drips through.',
+        evaporation: 'The salt solution is heated. Water boils away as vapour, leaving solid salt crystals behind in the dish.',
+        magnetic: 'A magnet is moved through the mixture. Iron nails (magnetic) jump up and stick to the magnet, while sawdust (non-magnetic) is left behind.'
+      };
+
+      function drawWinnowing(p) {
+        const W = canvas.width, H = canvas.height;
+        // Wind arrow
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(480, 60); ctx.lineTo(540, 60); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(535, 55); ctx.lineTo(540, 60); ctx.lineTo(535, 65); ctx.stroke();
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '11px system-ui'; ctx.fillText('wind', 490, 45);
+        // Tray
+        ctx.strokeStyle = '#a16207'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(200, 220); ctx.lineTo(300, 220); ctx.lineTo(280, 235); ctx.lineTo(220, 235); ctx.closePath(); ctx.stroke();
+        for (let i = 0; i < 14; i++) {
+          const isGrain = i % 2 === 0;
+          const baseX = 220 + (i % 7) * 10, baseY = 215;
+          const t = p;
+          let x, y;
+          if (isGrain) { x = baseX; y = baseY - t * 20 + t * t * 30; }
+          else { x = baseX - t * 120; y = baseY - t * 60; }
+          ctx.fillStyle = isGrain ? '#b45309' : '#fde68a';
+          ctx.beginPath(); ctx.arc(x, Math.min(y, 250), isGrain ? 4 : 3, 0, 2 * Math.PI); ctx.fill();
+        }
+      }
+
+      function drawSieving(p) {
+        const sieveY = 150;
+        ctx.strokeStyle = '#78716c'; ctx.lineWidth = 3;
+        ctx.strokeRect(180, sieveY, 240, 10);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '11px system-ui'; ctx.fillText('Sieve', 400, sieveY + 8);
+        for (let i = 0; i < 6; i++) {
+          const hx = 195 + i * 38;
+          ctx.clearRect(hx, sieveY + 2, 10, 6);
+        }
+        for (let i = 0; i < 10; i++) {
+          const isFine = i % 2 === 0;
+          const baseX = 200 + (i % 5) * 45;
+          const startY = sieveY - 40 - Math.floor(i / 5) * 15;
+          let y;
+          if (isFine) { y = startY + p * (250 - startY); }
+          else { y = startY + Math.min(p * 3, 1) * (sieveY - 6 - startY); }
+          ctx.fillStyle = isFine ? '#fde68a' : '#78350f';
+          ctx.beginPath(); ctx.arc(baseX, y, isFine ? 3 : 7, 0, 2 * Math.PI); ctx.fill();
+        }
+      }
+
+      function drawFiltration(p) {
+        const W = canvas.width;
+        // Funnel
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(250, 100); ctx.lineTo(350, 100); ctx.lineTo(300, 170); ctx.closePath(); ctx.stroke();
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '11px system-ui'; ctx.fillText('Filter paper cone', 240, 90);
+        // Flask
+        ctx.beginPath(); ctx.moveTo(270, 210); ctx.lineTo(270, 250); ctx.lineTo(330, 250); ctx.lineTo(330, 210); ctx.stroke();
+        // Muddy water shrinking in funnel, clear water growing in flask
+        const muddyLevel = Math.max(0, 60 * (1 - p));
+        ctx.fillStyle = 'rgba(120,83,45,0.5)';
+        ctx.fillRect(260 + (100 - muddyLevel) / 2 * 0, 105, 80 * (1 - p * 0.3), muddyLevel);
+        // Mud residue staying in cone
+        ctx.fillStyle = '#78350f';
+        for (let i = 0; i < 8; i++) {
+          ctx.beginPath(); ctx.arc(280 + (i % 4) * 12, 130 + Math.floor(i / 4) * 10, 3, 0, 2 * Math.PI); ctx.fill();
+        }
+        // Clear water dripping/collecting
+        const waterLevel = Math.min(35, p * 40);
+        ctx.fillStyle = 'rgba(56,189,248,0.4)';
+        ctx.fillRect(271, 249 - waterLevel, 58, waterLevel);
+        if (p > 0.1 && p < 0.95) {
+          ctx.fillStyle = '#38bdf8';
+          ctx.beginPath(); ctx.arc(300, 170 + (p * 400 % 40), 3, 0, 2 * Math.PI); ctx.fill();
+        }
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '11px system-ui';
+        ctx.fillText('Residue', 270, 190); ctx.fillText('Filtrate', 340, 235);
+      }
+
+      function drawEvaporation(p) {
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.ellipse(300, 200, 90, 30, 0, 0, Math.PI, false); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(210, 200); ctx.lineTo(220, 160); ctx.lineTo(380, 160); ctx.lineTo(390, 200); ctx.stroke();
+        const liquidLevel = Math.max(4, 40 * (1 - p));
+        ctx.fillStyle = 'rgba(56,189,248,0.4)';
+        ctx.fillRect(222, 195 - liquidLevel, 156, liquidLevel);
+        // Salt crystals forming at bottom as liquid shrinks
+        if (p > 0.3) {
+          ctx.fillStyle = 'white';
+          const count = Math.floor((p - 0.3) * 20);
+          for (let i = 0; i < count; i++) {
+            ctx.fillRect(230 + (i % 10) * 14, 188 - (i % 3) * 4, 5, 5);
+          }
+        }
+        // Steam wisps
+        if (p > 0.1 && p < 1) {
+          ctx.strokeStyle = 'rgba(226,232,240,0.7)'; ctx.lineWidth = 2;
+          for (let i = 0; i < 3; i++) {
+            const sx = 250 + i * 50, sy = 155 - ((p * 300 + i * 20) % 50);
+            ctx.beginPath(); ctx.arc(sx, sy, 5, 0, 2 * Math.PI); ctx.stroke();
+          }
+        }
+        ctx.fillStyle = '#f97316'; ctx.fillRect(260, 235, 80, 8); // burner
+      }
+
+      function drawMagnetic(p) {
+        const magnetX = 150 + p * 300;
+        let collectedCount = 0;
+        for (let i = 0; i < 10; i++) {
+          const isNail = i % 2 === 0;
+          const baseX = 180 + (i % 5) * 55, baseY = 220;
+          if (isNail) {
+            // Once the magnet has swept past this nail's position, it stays stuck
+            // to the magnet from then on (rather than dropping back down).
+            if (!magneticCollected[i]) {
+              magneticCollected[i] = magnetX >= baseX;
+            }
+            let x, y;
+            if (magneticCollected[i]) {
+              x = magnetX - 12 + collectedCount * 8; y = 152;
+              collectedCount++;
+            } else {
+              x = baseX; y = baseY;
+            }
+            ctx.fillStyle = '#94a3b8'; ctx.fillRect(x - 2, y - 12, 4, 24);
+          } else {
+            ctx.fillStyle = '#d4a373'; ctx.beginPath(); ctx.arc(baseX, baseY, 3, 0, 2 * Math.PI); ctx.fill();
+          }
+        }
+        // Magnet
+        ctx.fillStyle = '#ef4444'; ctx.fillRect(magnetX - 20, 130, 20, 20);
+        ctx.fillStyle = '#3b82f6'; ctx.fillRect(magnetX, 130, 20, 20);
+        ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2; ctx.strokeRect(magnetX - 20, 130, 40, 20);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '11px system-ui'; ctx.fillText('Magnet', magnetX - 15, 125);
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const method = methodSel.value;
+        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 13px system-ui';
+        ctx.fillText(methodSel.options[methodSel.selectedIndex].text, 20, 25);
+        if (method === 'winnowing') drawWinnowing(progress);
+        else if (method === 'sieving') drawSieving(progress);
+        else if (method === 'filtration') drawFiltration(progress);
+        else if (method === 'evaporation') drawEvaporation(progress);
+        else drawMagnetic(progress);
+      }
+
+      runBtn.addEventListener('click', () => {
+        if (animId) clearInterval(animId);
+        progress = 0;
+        magneticCollected = new Array(10).fill(false);
+        obs.innerHTML = `<strong>${methodSel.options[methodSel.selectedIndex].text}:</strong><br>${descriptions[methodSel.value]}`;
+        animId = setInterval(() => {
+          progress += 0.02;
+          draw();
+          if (progress >= 1) { progress = 1; draw(); clearInterval(animId); }
+        }, 30);
+      });
+      methodSel.addEventListener('change', () => {
+        progress = 0;
+        magneticCollected = new Array(10).fill(false);
+        if (animId) clearInterval(animId);
+        obs.innerHTML = 'Choose a method and click Run.';
+        draw();
+      });
+      draw();
+    }
+
+    function initGerminationLab() {
+      const canvas = document.getElementById('germination-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const potSel = document.getElementById('sel-germination-pot');
+      const btn = document.getElementById('btn-germination-run');
+      const obs = document.getElementById('germination-obs');
+
+      const pots = {
+        A: { water: 'none', light: 'sun', germinates: false, reason: 'No water at all — seeds cannot carry out the processes needed for germination without water.' },
+        B: { water: 'excess', light: 'sun', germinates: false, reason: 'Excess waterlogging blocks the air in the soil — seeds need air (found between soil particles) as well as water.' },
+        C: { water: 'moist', light: 'dark', germinates: true, reason: 'Moist soil gives just the right water and air. Light is not necessary for bean seeds to germinate.' },
+        D: { water: 'moist', light: 'sun', germinates: true, reason: 'Moist soil with adequate water and air, plus sunlight — ideal conditions for germination and later growth.' }
+      };
+      let grown = false;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const pot = pots[potSel.value];
+
+        // Background: sun or dark
+        if (pot.light === 'sun') {
+          ctx.fillStyle = '#fde68a';
+          ctx.beginPath(); ctx.arc(530, 50, 24, 0, 2 * Math.PI); ctx.fill();
+          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '11px system-ui'; ctx.fillText('Sunlight', 500, 90);
+        } else {
+          ctx.fillStyle = 'rgba(30,41,59,0.6)'; ctx.fillRect(460, 20, 120, 80);
+          ctx.fillStyle = '#e2e8f0'; ctx.font = '11px system-ui'; ctx.fillText('Dark location', 480, 60);
+        }
+
+        // Pot
+        ctx.fillStyle = '#b45309';
+        ctx.beginPath(); ctx.moveTo(230, 260); ctx.lineTo(370, 260); ctx.lineTo(350, 200); ctx.lineTo(250, 200); ctx.closePath(); ctx.fill();
+        // Soil
+        ctx.fillStyle = '#78350f'; ctx.fillRect(250, 195, 100, 12);
+        // Water indication
+        if (pot.water === 'excess') {
+          ctx.fillStyle = 'rgba(56,189,248,0.5)'; ctx.fillRect(248, 190, 104, 8);
+          ctx.fillStyle = '#0284c7'; ctx.font = '10px system-ui'; ctx.fillText('waterlogged', 255, 185);
+        } else if (pot.water === 'moist') {
+          ctx.fillStyle = '#78350f'; ctx.font = '10px system-ui'; ctx.fillText('moist soil', 265, 185);
+        } else {
+          ctx.fillStyle = '#a16207'; ctx.font = '10px system-ui'; ctx.fillText('dry soil', 270, 185);
+        }
+
+        // Seed or sprout
+        if (grown && pot.germinates) {
+          ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(300, 195); ctx.lineTo(300, 130); ctx.stroke();
+          ctx.fillStyle = '#22c55e';
+          ctx.beginPath(); ctx.ellipse(285, 140, 16, 8, 0.4, 0, 2 * Math.PI); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(315, 140, 16, 8, -0.4, 0, 2 * Math.PI); ctx.fill();
+          ctx.strokeStyle = '#a16207'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(300, 207); ctx.lineTo(295, 225); ctx.stroke();
+        } else if (grown && !pot.germinates) {
+          ctx.fillStyle = '#78350f';
+          ctx.beginPath(); ctx.ellipse(300, 198, 8, 6, 0, 0, 2 * Math.PI); ctx.fill();
+          ctx.fillStyle = '#ef4444'; ctx.font = 'bold 16px system-ui'; ctx.fillText('✕', 292, 180);
+        } else {
+          ctx.fillStyle = '#a16207';
+          ctx.beginPath(); ctx.ellipse(300, 198, 8, 6, 0, 0, 2 * Math.PI); ctx.fill();
+        }
+
+        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 13px system-ui';
+        ctx.fillText('Pot ' + potSel.value, 20, 25);
+      }
+
+      btn.addEventListener('click', () => {
+        grown = true;
+        draw();
+        const pot = pots[potSel.value];
+        obs.innerHTML = pot.germinates
+          ? `<strong>Pot ${potSel.value} — after 15 days:</strong><br>✅ The seeds germinated! ${pot.reason}`
+          : `<strong>Pot ${potSel.value} — after 15 days:</strong><br>❌ The seeds did NOT germinate. ${pot.reason}`;
+      });
+      potSel.addEventListener('change', () => { grown = false; draw(); obs.innerHTML = 'Choose a pot and click the button to see if it germinates.'; });
+      draw();
+    }
+
+    function initAnimalLifeCycleLab() {
+      const canvas = document.getElementById('lifecycle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const animalSel = document.getElementById('sel-lifecycle-animal');
+      const btn = document.getElementById('btn-lifecycle-next');
+      const obs = document.getElementById('lifecycle-obs');
+      let stage = 0;
+
+      const cycles = {
+        mosquito: [
+          { name: 'Egg', desc: 'Female mosquitoes lay eggs directly on or near stagnant water.' },
+          { name: 'Larva', desc: 'The egg develops into a worm-like larva that lives in water and rises to the surface to breathe air.' },
+          { name: 'Pupa', desc: 'The larva grows into a comma-shaped pupa — still living in water, still needing air.' },
+          { name: 'Adult', desc: 'The pupa transforms into an adult mosquito, which rests briefly on the water then flies away. It survives 10-15 days and lays new eggs.' }
+        ],
+        frog: [
+          { name: 'Spawn (Egg)', desc: 'Frog eggs are laid in a jelly-like cluster called spawn, floating near pond edges.' },
+          { name: 'Tadpole', desc: 'The spawn develops into a tadpole with a tail and no legs, swimming like a fish. Hind legs appear later.' },
+          { name: 'Froglet', desc: 'The tadpole becomes a froglet — legs develop fully, the tail shortens, and it starts spending time on land too.' },
+          { name: 'Adult Frog', desc: 'The froglet becomes a fully developed adult frog — no tail, strong legs for jumping, living both in water and on land.' }
+        ]
+      };
+
+      function drawMosquitoStage(s) {
+        const cx = 300, cy = 150;
+        ctx.fillStyle = 'rgba(56,189,248,0.25)'; ctx.fillRect(0, 200, 600, 100);
+        if (s === 0) {
+          ctx.fillStyle = '#e2e8f0';
+          for (let i = 0; i < 5; i++) { ctx.beginPath(); ctx.ellipse(260 + i * 20, 205, 6, 3, 0, 0, 2 * Math.PI); ctx.fill(); }
+        } else if (s === 1) {
+          ctx.strokeStyle = '#78350f'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(cx - 30, cy + 60); ctx.quadraticCurveTo(cx, cy + 30, cx + 30, cy + 60); ctx.stroke();
+        } else if (s === 2) {
+          ctx.fillStyle = '#92400e';
+          ctx.beginPath(); ctx.ellipse(cx, cy + 55, 20, 14, 0.3, 0, 2 * Math.PI); ctx.fill();
+        } else {
+          ctx.fillStyle = '#1e293b';
+          ctx.beginPath(); ctx.ellipse(cx, cy - 20, 18, 6, 0, 0, 2 * Math.PI); ctx.fill();
+          ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.ellipse(cx - 10, cy - 35, 16, 6, 0.5, 0, 2 * Math.PI); ctx.stroke();
+          ctx.beginPath(); ctx.ellipse(cx + 10, cy - 35, 16, 6, -0.5, 0, 2 * Math.PI); ctx.stroke();
+        }
+      }
+
+      function drawFrogStage(s) {
+        const cx = 300, cy = 150;
+        ctx.fillStyle = 'rgba(56,189,248,0.25)'; ctx.fillRect(0, 200, 600, 100);
+        if (s === 0) {
+          ctx.fillStyle = '#f8fafc';
+          for (let i = 0; i < 6; i++) { ctx.beginPath(); ctx.arc(260 + (i % 3) * 25, 210 + Math.floor(i / 3) * 15, 8, 0, 2 * Math.PI); ctx.fill(); }
+        } else if (s === 1) {
+          ctx.fillStyle = '#4d7c0f';
+          ctx.beginPath(); ctx.ellipse(cx, cy + 50, 18, 14, 0, 0, 2 * Math.PI); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(cx + 15, cy + 50); ctx.lineTo(cx + 55, cy + 45); ctx.lineTo(cx + 15, cy + 60); ctx.closePath(); ctx.fill();
+        } else if (s === 2) {
+          ctx.fillStyle = '#4d7c0f';
+          ctx.beginPath(); ctx.ellipse(cx, cy + 50, 20, 15, 0, 0, 2 * Math.PI); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(cx + 18, cy + 50); ctx.lineTo(cx + 38, cy + 47); ctx.lineTo(cx + 18, cy + 58); ctx.closePath(); ctx.fill();
+          ctx.strokeStyle = '#4d7c0f'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(cx - 12, cy + 62); ctx.lineTo(cx - 22, cy + 78); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx + 12, cy + 62); ctx.lineTo(cx + 22, cy + 78); ctx.stroke();
+        } else {
+          ctx.fillStyle = '#16a34a';
+          ctx.beginPath(); ctx.ellipse(cx, cy + 40, 24, 18, 0, 0, 2 * Math.PI); ctx.fill();
+          ctx.beginPath(); ctx.arc(cx - 10, cy + 22, 5, 0, 2 * Math.PI); ctx.fill();
+          ctx.beginPath(); ctx.arc(cx + 10, cy + 22, 5, 0, 2 * Math.PI); ctx.fill();
+          ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 6; ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(cx - 18, cy + 55); ctx.lineTo(cx - 35, cy + 80); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx + 18, cy + 55); ctx.lineTo(cx + 35, cy + 80); ctx.stroke();
+        }
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const animal = animalSel.value;
+        const cycle = cycles[animal];
+        if (animal === 'mosquito') drawMosquitoStage(stage); else drawFrogStage(stage);
+
+        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`Stage ${stage + 1}/4: ${cycle[stage].name}`, 300, 25);
+        ctx.textAlign = 'left';
+
+        obs.innerHTML = `<strong>${animal === 'mosquito' ? 'Mosquito' : 'Frog'} — Stage ${stage + 1}/4: ${cycle[stage].name}</strong><br>${cycle[stage].desc}`;
+      }
+
+      btn.addEventListener('click', () => {
+        stage = (stage + 1) % 4;
+        draw();
+      });
+      animalSel.addEventListener('change', () => { stage = 0; draw(); });
+      draw();
+    }
+
+    function initResourceSorterLab() {
+      const canvas = document.getElementById('resource-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const itemSel = document.getElementById('sel-resource-item');
+      const btnRenewable = document.getElementById('btn-resource-renewable');
+      const btnNonRenewable = document.getElementById('btn-resource-nonrenewable');
+      const obs = document.getElementById('resource-obs');
+
+      const resources = {
+        air: { label: 'Air', icon: '💨', renewable: true, reason: 'Air is naturally replenished continuously — it never runs out on a human timescale.' },
+        water: { label: 'Water', icon: '💧', renewable: true, reason: 'Water cycles continuously through evaporation, condensation and rain — nature keeps renewing it.' },
+        forest: { label: 'Forest', icon: '🌳', renewable: true, reason: 'Forests can regrow and regenerate over time (though we must use them responsibly and not cut faster than they regrow).' },
+        sunlight: { label: 'Sunlight', icon: '☀️', renewable: true, reason: 'The Sun continuously provides energy — it is a renewable source of energy for us.' },
+        coal: { label: 'Coal', icon: '⚫', renewable: false, reason: 'Coal is a fossil fuel that takes millions of years to form and cannot be replenished once used.' },
+        petroleum: { label: 'Petroleum', icon: '🛢️', renewable: false, reason: 'Petroleum is a fossil fuel, formed over millions of years from buried remains — a limited, non-renewable resource.' },
+        naturalgas: { label: 'Natural Gas', icon: '🔥', renewable: false, reason: 'Natural gas is a fossil fuel, formed over millions of years — non-renewable.' },
+        minerals: { label: 'Minerals', icon: '💎', renewable: false, reason: 'Minerals take an extremely long time to form within rocks and cannot be replenished once extracted and used up.' },
+        soil: { label: 'Soil', icon: '🟫', renewable: false, reason: 'Soil forms from rock disintegration over thousands of years — far too slow to be renewed on a human timescale.' }
+      };
+
+      let itemX = 300, itemTargetX = 300, animId = null;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        // Bins
+        ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2;
+        ctx.strokeRect(40, 100, 160, 160);
+        ctx.fillStyle = '#16a34a'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Renewable ♻️', 120, 90);
+
+        ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2;
+        ctx.strokeRect(400, 100, 160, 160);
+        ctx.fillStyle = '#b45309'; ctx.font = 'bold 13px system-ui';
+        ctx.fillText('Non-renewable ⏳', 480, 90);
+
+        // Resource item
+        const item = resources[itemSel.value];
+        ctx.font = '40px system-ui';
+        ctx.fillText(item.icon, itemX, 190);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui';
+        ctx.fillText(item.label, itemX, 230);
+        ctx.textAlign = 'left';
+      }
+
+      function checkAnswer(userSaidRenewable) {
+        const item = resources[itemSel.value];
+        itemTargetX = item.renewable ? 120 : 480;
+        let frame = 0;
+        if (animId) clearInterval(animId);
+        animId = setInterval(() => {
+          frame++;
+          itemX += (itemTargetX - itemX) * 0.3;
+          draw();
+          if (frame > 15) clearInterval(animId);
+        }, 30);
+
+        const correct = userSaidRenewable === item.renewable;
+        obs.innerHTML = `<strong>${item.label}:</strong><br>${correct ? '✅ Correct!' : '❌ Not quite.'} ${item.label} is <strong>${item.renewable ? 'renewable' : 'non-renewable'}</strong>.<br>${item.reason}`;
+      }
+
+      btnRenewable.addEventListener('click', () => checkAnswer(true));
+      btnNonRenewable.addEventListener('click', () => checkAnswer(false));
+      itemSel.addEventListener('change', () => {
+        itemX = 300; itemTargetX = 300;
+        if (animId) clearInterval(animId);
+        obs.innerHTML = 'Choose a resource and pick which category it belongs to.';
+        draw();
+      });
+      draw();
+    }
+
+    function initConstellationViewerLab() {
+      const canvas = document.getElementById('constellation-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-constellation');
+      const obs = document.getElementById('constellation-obs');
+
+      const constellations = {
+        orion: {
+          stars: [
+            { name: 'Bellatrix', x: 200, y: 80 },
+            { name: 'Betelgeuse', x: 380, y: 90, color: '#ff8c69' },
+            { name: 'Mintaka', x: 230, y: 170 },
+            { name: 'Alnilam', x: 270, y: 180, label: false },
+            { name: 'Alnitak', x: 310, y: 190 },
+            { name: 'Rigel', x: 210, y: 270 },
+            { name: 'Saiph', x: 350, y: 280 }
+          ],
+          lines: [['Bellatrix', 'Mintaka'], ['Betelgeuse', 'Alnitak'], ['Mintaka', 'Alnilam'], ['Alnilam', 'Alnitak'], ['Mintaka', 'Rigel'], ['Alnitak', 'Saiph']],
+          highlight: null,
+          info: "Orion is pictured as a hunter. The three stars in the middle — Mintaka, Alnilam and Alnitak — form his belt, the easiest way to identify this constellation. In Indian astronomy, Betelgeuse is called Ārdrā."
+        },
+        canismajor: {
+          stars: [
+            { name: 'Mirzam', x: 200, y: 120 },
+            { name: 'Sirius', x: 300, y: 160, big: true, color: '#dff6ff' },
+            { name: 'Adhara', x: 250, y: 230 },
+            { name: 'Wezen', x: 350, y: 235 },
+            { name: 'Aludra', x: 400, y: 200 }
+          ],
+          lines: [['Mirzam', 'Sirius'], ['Sirius', 'Adhara'], ['Sirius', 'Wezen'], ['Wezen', 'Aludra']],
+          highlight: 'Sirius',
+          info: "Canis Major is imagined as Orion's hunting dog, following him as he battles Taurus the Bull. It contains Sirius — the brightest star in the entire night sky."
+        },
+        taurus: {
+          stars: [
+            { name: 'Aldebaran', x: 300, y: 190, big: true, color: '#ffb366' },
+            { name: 'Left Horn', x: 190, y: 100 },
+            { name: 'Right Horn', x: 410, y: 100 },
+            { name: 'Hyades-1', x: 250, y: 170, label: false },
+            { name: 'Hyades-2', x: 350, y: 170, label: false },
+            { name: 'Pleiades-1', x: 130, y: 70, label: false },
+            { name: 'Pleiades-2', x: 150, y: 60, label: false },
+            { name: 'Pleiades-3', x: 160, y: 80, label: false },
+            { name: 'Pleiades-4', x: 140, y: 90, label: false },
+            { name: 'Pleiades-5', x: 120, y: 85, label: false }
+          ],
+          lines: [['Left Horn', 'Hyades-1'], ['Hyades-1', 'Aldebaran'], ['Aldebaran', 'Hyades-2'], ['Hyades-2', 'Right Horn']],
+          highlight: 'Aldebaran',
+          info: "Taurus, the Bull, includes the bright orange star Aldebaran — known as Rohiṇī in India. Nearby lies the Pleiades star cluster (small dots, top-left), called Kṛittikā in India.",
+          extraLabel: { text: 'Pleiades (Kṛittikā)', x: 60, y: 45 }
+        },
+        ursamajor: {
+          stars: [
+            { name: 'Dubhe', x: 160, y: 110 },
+            { name: 'Merak', x: 160, y: 190 },
+            { name: 'Phecda', x: 230, y: 200 },
+            { name: 'Megrez', x: 235, y: 125 },
+            { name: 'Alioth', x: 300, y: 110 },
+            { name: 'Mizar', x: 360, y: 95 },
+            { name: 'Alkaid', x: 420, y: 85 }
+          ],
+          lines: [['Dubhe', 'Merak'], ['Merak', 'Phecda'], ['Phecda', 'Megrez'], ['Megrez', 'Dubhe'], ['Megrez', 'Alioth'], ['Alioth', 'Mizar'], ['Mizar', 'Alkaid']],
+          highlight: null,
+          info: "The Big Dipper lies within the constellation Ursa Major, known as Saptaṛiṣhi in India. Its two 'pointer stars', Dubhe and Merak, can be used to find the Pole Star."
+        },
+        ursaminor: {
+          stars: [
+            { name: 'Polaris', x: 470, y: 70, big: true, color: '#fff4b8' },
+            { name: 'Handle-2', x: 430, y: 105, label: false },
+            { name: 'Handle-3', x: 395, y: 140, label: false },
+            { name: 'Bowl-1', x: 355, y: 150, label: false },
+            { name: 'Bowl-2', x: 330, y: 120, label: false },
+            { name: 'Bowl-3', x: 315, y: 170, label: false },
+            { name: 'Bowl-4', x: 350, y: 195, label: false }
+          ],
+          lines: [['Polaris', 'Handle-2'], ['Handle-2', 'Handle-3'], ['Handle-3', 'Bowl-1'], ['Bowl-1', 'Bowl-2'], ['Bowl-2', 'Bowl-4'], ['Bowl-4', 'Bowl-3'], ['Bowl-3', 'Bowl-1']],
+          highlight: 'Polaris',
+          info: "The Little Dipper lies within Ursa Minor. At the tip of its handle is the Pole Star (Polaris, or Dhruva tārā) — it appears nearly stationary in the North, helping travellers find direction."
+        }
+      };
+
+      const bgStars = [];
+      for (let i = 0; i < 60; i++) {
+        bgStars.push({ x: (i * 37 + 13) % 600, y: (i * 53 + 29) % 320, r: (i % 3 === 0) ? 1.5 : 1 });
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        bgStars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill(); });
+
+        const data = constellations[sel.value];
+        const starMap = {};
+        data.stars.forEach(s => { starMap[s.name] = s; });
+
+        ctx.strokeStyle = 'rgba(120,170,255,0.6)'; ctx.lineWidth = 1.5;
+        data.lines.forEach(([a, b]) => {
+          const sa = starMap[a], sb = starMap[b];
+          ctx.beginPath(); ctx.moveTo(sa.x, sa.y); ctx.lineTo(sb.x, sb.y); ctx.stroke();
+        });
+
+        data.stars.forEach(s => {
+          const r = s.big ? 7 : 4;
+          ctx.beginPath();
+          ctx.fillStyle = s.color || '#ffffff';
+          if (s.name === data.highlight) { ctx.shadowColor = s.color || '#ffffff'; ctx.shadowBlur = 18; }
+          ctx.arc(s.x, s.y, r, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          if (s.label !== false) {
+            ctx.fillStyle = 'rgba(220,230,255,0.9)'; ctx.font = '11px system-ui';
+            ctx.fillText(s.name, s.x + 8, s.y - 8);
+          }
+        });
+
+        if (data.extraLabel) {
+          ctx.fillStyle = 'rgba(220,230,255,0.9)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillText(data.extraLabel.text, data.extraLabel.x, data.extraLabel.y);
+        }
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}</strong><br>${data.info}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSolarSystemExplorerLab() {
+      const canvas = document.getElementById('solarsystem-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-planet');
+      const btn = document.getElementById('btn-planet-show');
+      const obs = document.getElementById('planet-obs');
+
+      const planetOrder = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'];
+      const planets = {
+        mercury: { order: 1, color: '#b1adad', size: 5, facts: "Mercury is the closest planet to the Sun and one of the four small, rocky inner planets. In India, it is called Budha." },
+        venus: { order: 2, color: '#e8c39e', size: 8, facts: "Venus is the brightest planet in our sky (after the Sun and Moon) and is called the Morning Star or Evening Star. Its thick atmosphere traps heat, making it hotter than Mercury even though it is farther from the Sun. In India, it is called Śhukra." },
+        earth: { order: 3, color: '#4a90d9', size: 8, facts: "Our home planet! Earth is called the Blue Planet because much of its surface is covered in water. It takes about 24 hours to rotate once (a day) and about 1 year to revolve around the Sun. In India, it is called Pṛithvī." },
+        mars: { order: 4, color: '#c1440e', size: 6, facts: "Mars is called the Red Planet because its soil is reddish in colour. It is one of the four small, rocky inner planets. In India, it is called Mangala." },
+        jupiter: { order: 5, color: '#d8ac6f', size: 16, facts: "Jupiter is the largest planet in the Solar System — one of the four giant outer planets, made mostly of gas and ice, with ring structures around it. In India, it is called Bṛihaspati or Guru." },
+        saturn: { order: 6, color: '#e3c88f', size: 14, facts: "Saturn is famous for its large, flat rings made of dust and rocky material. It is one of the four giant gas-and-ice outer planets. In India, it is called Śhani." },
+        uranus: { order: 7, color: '#9fe3e3', size: 11, facts: "Uranus is one of the four giant outer planets, made mostly of gas and ice, with faint rings around it. It lies far beyond Saturn." },
+        neptune: { order: 8, color: '#3b5bdb', size: 11, facts: "Neptune is the farthest planet from the Sun, another giant outer world made mostly of gas and ice with faint rings." }
+      };
+
+      const startX = 90, spacing = 62, baseY = 170;
+      planetOrder.forEach((key, i) => { planets[key].x = startX + i * spacing; planets[key].y = baseY; });
+
+      let highlighted = null;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = 'rgba(255,255,255,0.4)';
+        for (let i = 0; i < 40; i++) { const x = (i * 53 + 7) % 600, y = (i * 31 + 11) % 100; ctx.beginPath(); ctx.arc(x, y, 1, 0, Math.PI * 2); ctx.fill(); }
+
+        ctx.beginPath(); ctx.fillStyle = '#ffcc33'; ctx.shadowColor = '#ffcc33'; ctx.shadowBlur = 25;
+        ctx.arc(30, baseY, 20, 0, Math.PI * 2); ctx.fill(); ctx.shadowBlur = 0;
+        ctx.fillStyle = '#ffe9a8'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Sun', 30, baseY + 38);
+
+        ctx.strokeStyle = 'rgba(255,255,255,0.15)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(55, baseY); ctx.lineTo(570, baseY); ctx.stroke();
+
+        planetOrder.forEach(key => {
+          const p = planets[key];
+          ctx.beginPath();
+          ctx.fillStyle = p.color;
+          if (key === highlighted) { ctx.shadowColor = p.color; ctx.shadowBlur = 20; }
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          if (key === 'saturn') {
+            ctx.strokeStyle = 'rgba(230,210,160,0.8)'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.ellipse(p.x, p.y, p.size + 8, p.size * 0.4, 0, 0, Math.PI * 2); ctx.stroke();
+          }
+
+          ctx.fillStyle = key === highlighted ? '#ffffff' : 'rgba(220,230,255,0.7)';
+          ctx.font = key === highlighted ? 'bold 11px system-ui' : '10px system-ui';
+          ctx.fillText(key.charAt(0).toUpperCase() + key.slice(1), p.x, p.y + p.size + 16);
+          ctx.fillText(`#${p.order}`, p.x, p.y - p.size - 8);
+        });
+        ctx.textAlign = 'left';
+      }
+
+      btn.addEventListener('click', () => {
+        const key = sel.value;
+        highlighted = key;
+        draw();
+        const p = planets[key];
+        const name = key.charAt(0).toUpperCase() + key.slice(1);
+        obs.innerHTML = `<strong>${name} — Planet #${p.order} from the Sun</strong><br>${p.facts}`;
+      });
+      sel.addEventListener('change', () => {
+        highlighted = null;
+        draw();
+        obs.innerHTML = 'Choose a planet and click "Show Facts" to begin.';
+      });
+
+      draw();
+    }
+
+    function initRectAreaPerimeterLab() {
+      const canvas = document.getElementById('rect-area-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const shapeSel = document.getElementById('sel-rect-shape');
+      const lengthSel = document.getElementById('sel-rect-length');
+      const breadthRow = document.getElementById('rect-breadth-row');
+      const breadthSel = document.getElementById('sel-rect-breadth');
+      const btn = document.getElementById('btn-rect-calculate');
+      const obs = document.getElementById('rect-area-obs');
+
+      function draw(l, b) {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const scale = 18;
+        const rw = l * scale, rh = b * scale;
+        const x0 = (W - rw) / 2, y0 = (H - rh) / 2;
+        ctx.fillStyle = 'rgba(99,102,241,0.15)'; ctx.fillRect(x0, y0, rw, rh);
+        ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 3;
+        ctx.strokeRect(x0, y0, rw, rh);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`${l} cm`, x0 + rw / 2, y0 - 12);
+        ctx.save(); ctx.translate(x0 - 16, y0 + rh / 2); ctx.rotate(-Math.PI / 2); ctx.fillText(`${b} cm`, 0, 0); ctx.restore();
+        ctx.textAlign = 'left';
+      }
+
+      function readValues() {
+        const shape = shapeSel.value;
+        breadthRow.style.display = shape === 'square' ? 'none' : 'block';
+        const l = parseInt(lengthSel.value);
+        const b = shape === 'square' ? l : parseInt(breadthSel.value);
+        draw(l, b);
+        return { l, b, shape };
+      }
+
+      btn.addEventListener('click', () => {
+        const { l, b, shape } = readValues();
+        const perimeter = 2 * (l + b);
+        const area = l * b;
+        if (shape === 'square') {
+          obs.innerHTML = `<strong>Perimeter = 4 × side = 4 × ${l} = ${perimeter} cm</strong><br><strong>Area = side × side = ${l} × ${l} = ${area} sq cm</strong>`;
+        } else {
+          obs.innerHTML = `<strong>Perimeter = 2 × (length + breadth) = 2 × (${l} + ${b}) = ${perimeter} cm</strong><br><strong>Area = length × breadth = ${l} × ${b} = ${area} sq cm</strong>`;
+        }
+      });
+      shapeSel.addEventListener('change', () => { readValues(); obs.innerHTML = 'Choose dimensions and click Calculate.'; });
+      lengthSel.addEventListener('change', () => { readValues(); });
+      breadthSel.addEventListener('change', () => { readValues(); });
+
+      readValues();
+    }
+
+    function initTriangleHalfRectangleLab() {
+      const canvas = document.getElementById('triangle-half-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const baseSel = document.getElementById('sel-tri-base');
+      const heightSel = document.getElementById('sel-tri-height');
+      const btn = document.getElementById('btn-tri-split');
+      const obs = document.getElementById('triangle-half-obs');
+      let split = false;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const base = parseInt(baseSel.value), height = parseInt(heightSel.value);
+        const scale = 28;
+        const rw = base * scale, rh = height * scale;
+        const x0 = (W - rw) / 2, y0 = (H - rh) / 2;
+
+        if (split) {
+          ctx.beginPath();
+          ctx.moveTo(x0, y0); ctx.lineTo(x0, y0 + rh); ctx.lineTo(x0 + rw, y0 + rh); ctx.closePath();
+          ctx.fillStyle = 'rgba(99,102,241,0.35)'; ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(x0, y0); ctx.lineTo(x0 + rw, y0); ctx.lineTo(x0 + rw, y0 + rh); ctx.closePath();
+          ctx.fillStyle = 'rgba(250,204,21,0.35)'; ctx.fill();
+          ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + rw, y0 + rh); ctx.stroke();
+        } else {
+          ctx.fillStyle = 'rgba(99,102,241,0.15)';
+          ctx.fillRect(x0, y0, rw, rh);
+        }
+        ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 2;
+        ctx.strokeRect(x0, y0, rw, rh);
+
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`base = ${base} cm`, x0 + rw / 2, y0 + rh + 20);
+        ctx.save(); ctx.translate(x0 - 18, y0 + rh / 2); ctx.rotate(-Math.PI / 2); ctx.fillText(`height = ${height} cm`, 0, 0); ctx.restore();
+        ctx.textAlign = 'left';
+      }
+
+      btn.addEventListener('click', () => {
+        split = true;
+        draw();
+        const base = parseInt(baseSel.value), height = parseInt(heightSel.value);
+        const rectArea = base * height;
+        const triArea = rectArea / 2;
+        obs.innerHTML = `<strong>Rectangle area = ${base} × ${height} = ${rectArea} sq cm</strong><br>The diagonal splits it into two equal triangles.<br><strong>Each triangle's area = ${rectArea} ÷ 2 = ${triArea} sq cm</strong> — exactly half the rectangle!`;
+      });
+      baseSel.addEventListener('change', () => { split = false; draw(); obs.innerHTML = 'Choose base and height, then click the button.'; });
+      heightSel.addEventListener('change', () => { split = false; draw(); obs.innerHTML = 'Choose base and height, then click the button.'; });
+
+      draw();
+    }
+
+    function initFractionStripLab() {
+      const canvas = document.getElementById('fraction-strip-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const denomSel = document.getElementById('sel-frac-denom');
+      const numSel = document.getElementById('sel-frac-num');
+      const btn = document.getElementById('btn-frac-show');
+      const obs = document.getElementById('fraction-strip-obs');
+
+      function populateNumerator() {
+        const denom = parseInt(denomSel.value);
+        const current = numSel.value;
+        numSel.innerHTML = '';
+        for (let i = 1; i <= denom; i++) {
+          const opt = document.createElement('option');
+          opt.value = i; opt.textContent = i;
+          numSel.appendChild(opt);
+        }
+        if (current && parseInt(current) <= denom) numSel.value = current;
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const denom = parseInt(denomSel.value), num = parseInt(numSel.value);
+        const stripX = 40, stripY = 80, stripW = 520, stripH = 60;
+        const partW = stripW / denom;
+        for (let i = 0; i < denom; i++) {
+          ctx.fillStyle = i < num ? 'rgba(99,102,241,0.6)' : 'rgba(150,150,150,0.15)';
+          ctx.fillRect(stripX + i * partW, stripY, partW, stripH);
+          ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 1.5;
+          ctx.strokeRect(stripX + i * partW, stripY, partW, stripH);
+        }
+        ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 3;
+        ctx.strokeRect(stripX, stripY, stripW, stripH);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('1 whole', stripX + stripW / 2, stripY - 15);
+        ctx.textAlign = 'left';
+      }
+
+      btn.addEventListener('click', () => {
+        draw();
+        const denom = parseInt(denomSel.value), num = parseInt(numSel.value);
+        obs.innerHTML = `<strong>${num} times 1/${denom} = ${num}/${denom}</strong><br>Each fractional unit is 1/${denom} of the whole. Shading ${num} of the ${denom} equal parts gives the fraction ${num}/${denom}.`;
+      });
+      denomSel.addEventListener('change', () => { populateNumerator(); draw(); obs.innerHTML = 'Choose a fractional unit and quantity, then click Show.'; });
+      numSel.addEventListener('change', () => { draw(); });
+
+      populateNumerator();
+      draw();
+    }
+
+    function initFractionAdditionLab() {
+      const canvas = document.getElementById('fraction-add-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const aSel = document.getElementById('sel-fracA');
+      const bSel = document.getElementById('sel-fracB');
+      const opSel = document.getElementById('sel-frac-op');
+      const btn = document.getElementById('btn-frac-calc');
+      const obs = document.getElementById('fraction-add-obs');
+
+      function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
+      function parseFrac(s) { const [n, d] = s.split('/').map(Number); return { n, d }; }
+
+      function drawBar(y, denom, num, color, label) {
+        const barX = 40, barW = 520, barH = 40;
+        const partW = barW / denom;
+        for (let i = 0; i < denom; i++) {
+          ctx.fillStyle = i < num ? color : 'rgba(150,150,150,0.12)';
+          ctx.fillRect(barX + i * partW, y, partW, barH);
+          ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 1;
+          ctx.strokeRect(barX + i * partW, y, partW, barH);
+        }
+        ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 2;
+        ctx.strokeRect(barX, y, barW, barH);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText(label, barX, y - 6);
+      }
+
+      function draw(commonDenom, numA, numB, a, b) {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        drawBar(50, commonDenom, numA, 'rgba(99,102,241,0.6)', `${a.n}/${a.d} = ${numA}/${commonDenom}`);
+        drawBar(140, commonDenom, numB, 'rgba(250,204,21,0.6)', `${b.n}/${b.d} = ${numB}/${commonDenom}`);
+      }
+
+      function initialDraw() {
+        const a = parseFrac(aSel.value), b = parseFrac(bSel.value);
+        const commonDenom = a.d * b.d;
+        draw(commonDenom, a.n * b.d, b.n * a.d, a, b);
+      }
+
+      btn.addEventListener('click', () => {
+        const a = parseFrac(aSel.value), b = parseFrac(bSel.value);
+        const op = opSel.value;
+        const commonDenom = a.d * b.d;
+        const numA = a.n * b.d;
+        const numB = b.n * a.d;
+        draw(commonDenom, numA, numB, a, b);
+
+        let resultNum = op === 'add' ? numA + numB : numA - numB;
+        let sign = '';
+        if (resultNum < 0) { sign = '-'; resultNum = Math.abs(resultNum); }
+        const g = gcd(resultNum, commonDenom) || 1;
+        const simpNum = resultNum / g, simpDenom = commonDenom / g;
+        const opSymbol = op === 'add' ? '+' : '-';
+        const opWord = op === 'add' ? 'Add' : 'Subtract';
+
+        let resultText = `${sign}${resultNum}/${commonDenom}`;
+        if (g > 1) resultText += ` = ${sign}${simpNum}/${simpDenom}`;
+
+        obs.innerHTML = `<strong>Step 1:</strong> Common denominator = ${a.d} × ${b.d} = ${commonDenom}<br>` +
+          `<strong>Step 2:</strong> ${a.n}/${a.d} = ${numA}/${commonDenom}, and ${b.n}/${b.d} = ${numB}/${commonDenom}<br>` +
+          `<strong>Step 3 (${opWord}):</strong> ${numA}/${commonDenom} ${opSymbol} ${numB}/${commonDenom} = ${resultText}`;
+      });
+
+      initialDraw();
+    }
+
+    function initCompassCircleLab() {
+      const canvas = document.getElementById('compass-circle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const radSel = document.getElementById('sel-circle-radius');
+      const btn = document.getElementById('btn-circle-draw');
+      const obs = document.getElementById('circle-radius-obs');
+      const cx = 300, cy = 170, scale = 24;
+
+      function draw(showCircle) {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const radius = parseInt(radSel.value) * scale;
+
+        if (showCircle) {
+          ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.stroke();
+          ctx.strokeStyle = 'rgba(99,102,241,0.6)'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + radius, cy); ctx.stroke();
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(`${radSel.value} cm`, cx + radius / 2, cy - 10);
+        }
+
+        ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+        ctx.fillStyle = 'var(--accent-color)'; ctx.fill();
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('P (centre)', cx, cy - 14);
+        ctx.textAlign = 'left';
+      }
+
+      btn.addEventListener('click', () => {
+        draw(true);
+        const r = radSel.value;
+        obs.innerHTML = `<strong>Radius = ${r} cm.</strong> Every single point on this circle is exactly ${r} cm away from the centre, P — that is the defining property of a circle.`;
+      });
+      radSel.addEventListener('change', () => { draw(false); obs.innerHTML = 'Choose a radius and click Draw Circle.'; });
+
+      draw(false);
+    }
+
+    function initEquidistantArcsLab() {
+      const canvas = document.getElementById('equidistant-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const bcSel = document.getElementById('sel-arc-distance');
+      const radSel = document.getElementById('sel-arc-radius');
+      const btn = document.getElementById('btn-arc-find');
+      const obs = document.getElementById('equidistant-obs');
+      const scale = 30, By = 230;
+
+      function draw(showResult) {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const bc = parseInt(bcSel.value), radius = parseInt(radSel.value);
+        const Bx = (W - bc * scale) / 2, Cx = Bx + bc * scale;
+
+        ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(Bx, By); ctx.lineTo(Cx, By); ctx.stroke();
+
+        [[Bx, 'B'], [Cx, 'C']].forEach(([x, label]) => {
+          ctx.beginPath(); ctx.arc(x, By, 4, 0, Math.PI * 2);
+          ctx.fillStyle = 'var(--accent-color)'; ctx.fill();
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(label, x, By + 20);
+        });
+        ctx.fillText(`${bc} cm`, (Bx + Cx) / 2, By + 20);
+
+        const canReach = radius * 2 >= bc;
+        ctx.strokeStyle = canReach ? 'rgba(99,102,241,0.5)' : 'rgba(239,68,68,0.6)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(Bx, By, radius * scale, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.arc(Cx, By, radius * scale, 0, Math.PI * 2); ctx.stroke();
+
+        if (!canReach) return null;
+
+        const half = bc / 2;
+        const height = Math.sqrt(radius * radius - half * half);
+        const Ax = (Bx + Cx) / 2, Ay = By - height * scale;
+
+        if (showResult) {
+          ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(Ax, Ay); ctx.lineTo(Bx, By); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(Ax, Ay); ctx.lineTo(Cx, By); ctx.stroke();
+          ctx.beginPath(); ctx.arc(Ax, Ay, 5, 0, Math.PI * 2);
+          ctx.fillStyle = '#22c55e'; ctx.fill();
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('A', Ax, Ay - 12);
+        }
+        ctx.textAlign = 'left';
+        return { Ax, Ay };
+      }
+
+      btn.addEventListener('click', () => {
+        const bc = parseInt(bcSel.value), radius = parseInt(radSel.value);
+        const result = draw(true);
+        if (!result) {
+          obs.innerHTML = `<strong>The arcs don't meet!</strong> With B and C only ${bc} cm apart, a radius of ${radius} cm is too small for the two arcs to intersect. Try a radius of at least ${Math.ceil(bc / 2)} cm.`;
+        } else {
+          obs.innerHTML = `<strong>Point A found!</strong> Since A lies on the arc centred at B (radius ${radius} cm) AND on the arc centred at C (radius ${radius} cm), point A is exactly ${radius} cm from BOTH B and C — located precisely, without any trial and error.`;
+        }
+      });
+      bcSel.addEventListener('change', () => { draw(false); obs.innerHTML = 'Choose a distance and radius, then click Find Point A.'; });
+      radSel.addEventListener('change', () => { draw(false); });
+
+      draw(false);
+    }
+
+    function initPunchHoleSymmetryLab() {
+      const canvas = document.getElementById('punch-hole-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const foldSel = document.getElementById('sel-fold-type');
+      const posSel = document.getElementById('sel-hole-pos');
+      const btn = document.getElementById('btn-punch-unfold');
+      const obs = document.getElementById('punch-hole-obs');
+      const x0 = 160, y0 = 20, side = 280;
+      const positions = { A: [0.25, 0.25], B: [0.75, 0.25], C: [0.25, 0.75], D: [0.75, 0.75] };
+
+      function reflect(u, v, fold) {
+        if (fold === 'vertical') return [1 - u, v];
+        if (fold === 'horizontal') return [u, 1 - v];
+        if (fold === 'diagonal-main') return [v, u];
+        return [1 - v, 1 - u];
+      }
+
+      function drawSquareAndFold() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 2;
+        ctx.strokeRect(x0, y0, side, side);
+        ctx.setLineDash([6, 4]); ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        const fold = foldSel.value;
+        if (fold === 'vertical') { ctx.moveTo(x0 + side / 2, y0); ctx.lineTo(x0 + side / 2, y0 + side); }
+        else if (fold === 'horizontal') { ctx.moveTo(x0, y0 + side / 2); ctx.lineTo(x0 + side, y0 + side / 2); }
+        else if (fold === 'diagonal-main') { ctx.moveTo(x0, y0); ctx.lineTo(x0 + side, y0 + side); }
+        else { ctx.moveTo(x0 + side, y0); ctx.lineTo(x0, y0 + side); }
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+
+      function draw(showReflection) {
+        drawSquareAndFold();
+        const fold = foldSel.value;
+        const [u, v] = positions[posSel.value];
+        const px = x0 + u * side, py = y0 + v * side;
+        ctx.beginPath(); ctx.arc(px, py, 7, 0, Math.PI * 2);
+        ctx.fillStyle = '#ef4444'; ctx.fill();
+        ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 1; ctx.stroke();
+
+        if (showReflection) {
+          const [ru, rv] = reflect(u, v, fold);
+          const rx = x0 + ru * side, ry = y0 + rv * side;
+          ctx.beginPath(); ctx.arc(rx, ry, 7, 0, Math.PI * 2);
+          ctx.fillStyle = '#3b82f6'; ctx.fill();
+          ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 1; ctx.stroke();
+        }
+      }
+
+      btn.addEventListener('click', () => {
+        draw(true);
+        obs.innerHTML = `<strong>Unfolded!</strong> The punched hole (red) and its mirror image (blue) sit symmetrically across the fold line. Together, they form a pattern whose line of symmetry is exactly that fold.`;
+      });
+      foldSel.addEventListener('change', () => { draw(false); obs.innerHTML = 'Choose a fold line and hole position, then click Unfold & Reveal.'; });
+      posSel.addEventListener('change', () => { draw(false); });
+
+      draw(false);
+    }
+
+    function initRotationalSymmetryLab() {
+      const canvas = document.getElementById('rotational-symmetry-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const armsSel = document.getElementById('sel-rot-arms');
+      const btn = document.getElementById('btn-rot-step');
+      const obs = document.getElementById('rotational-symmetry-obs');
+      const cx = 300, cy = 160, armLen = 110;
+      const colors = ['#6366f1', '#f59e0b', '#22c55e', '#ec4899', '#06b6d4', '#a855f7', '#ef4444', '#84cc16'];
+      let step = 0;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = parseInt(armsSel.value);
+        const baseAngle = (360 / n) * step;
+        ctx.save(); ctx.translate(cx, cy); ctx.rotate(baseAngle * Math.PI / 180);
+        for (let i = 0; i < n; i++) {
+          ctx.save(); ctx.rotate((360 / n) * i * Math.PI / 180);
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.quadraticCurveTo(armLen * 0.3, -20, armLen, 0);
+          ctx.quadraticCurveTo(armLen * 0.3, 20, 0, 0);
+          ctx.fillStyle = colors[i % colors.length]; ctx.globalAlpha = 0.75; ctx.fill(); ctx.globalAlpha = 1;
+          ctx.restore();
+        }
+        ctx.restore();
+        ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.fill();
+      }
+
+      function angleList(n) {
+        return Array.from({ length: n }, (_, i) => `${Math.round((i + 1) * (360 / n))}°`).join(', ');
+      }
+
+      btn.addEventListener('click', () => {
+        const n = parseInt(armsSel.value);
+        step = (step % n) + 1;
+        draw();
+        const angle = Math.round(step * (360 / n));
+        obs.innerHTML = `<strong>Rotated by ${angle}°</strong> — the figure looks exactly the same as at the start! This confirms ${angle}° is one of its angles of symmetry.<br><strong>All ${n} angles of symmetry:</strong> ${angleList(n)}`;
+      });
+      armsSel.addEventListener('change', () => {
+        step = 0; draw();
+        const n = parseInt(armsSel.value);
+        obs.innerHTML = `This figure has ${n} evenly-spaced arms, so it has ${n} angles of symmetry: ${angleList(n)}.`;
+      });
+
+      step = 0; draw();
+    }
+
+    function initIntegerLiftLab() {
+      const canvas = document.getElementById('integer-lift-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const moveSel = document.getElementById('sel-lift-move');
+      const pressBtn = document.getElementById('btn-lift-press');
+      const resetBtn = document.getElementById('btn-lift-reset');
+      const obs = document.getElementById('integer-lift-obs');
+
+      const minFloor = -6, maxFloor = 7;
+      const totalFloors = maxFloor - minFloor + 1;
+      let currentFloor = 0;
+      let animId = null;
+
+      function formatSigned(n) { return n === 0 ? '0' : (n > 0 ? `+${n}` : `${n}`); }
+
+      function floorToY(floor) {
+        const H = canvas.height;
+        const floorH = (H - 20) / totalFloors;
+        const index = maxFloor - floor;
+        return 10 + index * floorH + floorH / 2;
+      }
+
+      function draw(carY) {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const floorH = (H - 20) / totalFloors;
+        for (let floor = maxFloor; floor >= minFloor; floor--) {
+          const index = maxFloor - floor;
+          const y = 10 + index * floorH;
+          ctx.fillStyle = floor === 0 ? 'rgba(250,204,21,0.18)' : 'rgba(150,150,150,0.06)';
+          ctx.fillRect(60, y, 260, floorH);
+          ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 1;
+          ctx.strokeRect(60, y, 260, floorH);
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'right';
+          ctx.fillText(floor === 0 ? '0 (Ground)' : formatSigned(floor), 50, y + floorH / 2 + 4);
+        }
+        ctx.textAlign = 'left';
+
+        const carX = 340, carW = 60, carH = Math.min(floorH - 6, 34);
+        const cy = carY !== undefined ? carY : floorToY(currentFloor);
+        ctx.fillStyle = 'var(--accent-color)';
+        ctx.fillRect(carX, cy - carH / 2, carW, carH);
+        ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 1.5;
+        ctx.strokeRect(carX, cy - carH / 2, carW, carH);
+        ctx.fillStyle = 'white'; ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('🛗', carX + carW / 2, cy + 6);
+        ctx.textAlign = 'left';
+      }
+
+      function animateTo(targetFloor, onDone) {
+        const startY = floorToY(currentFloor);
+        const endY = floorToY(targetFloor);
+        let frame = 0;
+        const frames = 20;
+        if (animId) clearInterval(animId);
+        animId = setInterval(() => {
+          frame++;
+          const t = frame / frames;
+          draw(startY + (endY - startY) * t);
+          if (frame >= frames) {
+            clearInterval(animId);
+            currentFloor = targetFloor;
+            draw();
+            if (onDone) onDone();
+          }
+        }, 25);
+      }
+
+      pressBtn.addEventListener('click', () => {
+        const movement = parseInt(moveSel.value);
+        const startFloor = currentFloor;
+        let target = startFloor + movement;
+        if (target > maxFloor) target = maxFloor;
+        if (target < minFloor) target = minFloor;
+        animateTo(target, () => {
+          obs.innerHTML = `<strong>(${formatSigned(startFloor)}) + (${formatSigned(movement)}) = ${formatSigned(currentFloor)}</strong><br>Starting Floor + Movement = Target Floor. You are now on Floor ${formatSigned(currentFloor)}.`;
+        });
+      });
+
+      resetBtn.addEventListener('click', () => {
+        animateTo(0, () => {
+          obs.innerHTML = 'Back at Floor 0 (Welcome Hall). Choose a button press.';
+        });
+      });
+
+      draw();
+    }
+
+    function initTokenZeroPairLab() {
+      const canvas = document.getElementById('token-zero-pair-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const aSel = document.getElementById('sel-token-a');
+      const bSel = document.getElementById('sel-token-b');
+      const btn = document.getElementById('btn-token-cancel');
+      const obs = document.getElementById('token-zero-pair-obs');
+
+      function drawToken(x, y, positive, crossed) {
+        ctx.beginPath(); ctx.arc(x, y, 16, 0, Math.PI * 2);
+        ctx.fillStyle = positive ? '#22c55e' : '#ef4444';
+        ctx.fill();
+        ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 1; ctx.stroke();
+        ctx.fillStyle = 'white'; ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(positive ? '+' : '−', x, y);
+        if (crossed) {
+          ctx.strokeStyle = 'rgba(0,0,0,0.75)'; ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.moveTo(x - 16, y - 16); ctx.lineTo(x + 16, y + 16); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x + 16, y - 16); ctx.lineTo(x - 16, y + 16); ctx.stroke();
+        }
+      }
+
+      function draw(cancelled) {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const a = parseInt(aSel.value), b = parseInt(bSel.value);
+        const pairs = Math.min(a, b);
+        const startX = 50, gap = 42;
+        for (let i = 0; i < a; i++) drawToken(startX + i * gap, 80, true, cancelled && i < pairs);
+        for (let i = 0; i < b; i++) drawToken(startX + i * gap, 170, false, cancelled && i < pairs);
+        ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+      }
+
+      btn.addEventListener('click', () => {
+        draw(true);
+        const a = parseInt(aSel.value), b = parseInt(bSel.value);
+        const result = a - b;
+        const resultStr = result === 0 ? '0' : (result > 0 ? `+${result}` : `${result}`);
+        const pairs = Math.min(a, b);
+        obs.innerHTML = `<strong>(+${a}) + (−${b}) = ${resultStr}</strong><br>${pairs} zero pair${pairs === 1 ? '' : 's'} cancel out, leaving ${Math.abs(result)} ${result >= 0 ? 'positive' : 'negative'} token${Math.abs(result) === 1 ? '' : 's'}.`;
+      });
+      aSel.addEventListener('change', () => { draw(false); obs.innerHTML = 'Choose tokens, then click Cancel Zero Pairs.'; });
+      bSel.addEventListener('change', () => { draw(false); obs.innerHTML = 'Choose tokens, then click Cancel Zero Pairs.'; });
+
+      draw(false);
+    }
+
+    function initMatchstickPatternLab() {
+      const canvas = document.getElementById('matchstick-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const typeSel = document.getElementById('sel-matchstick-type');
+      const nSel = document.getElementById('sel-matchstick-n');
+      const obs = document.getElementById('matchstick-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const type = typeSel.value;
+        const n = parseInt(nSel.value);
+        ctx.strokeStyle = '#b45309'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+
+        if (type === 'L') {
+          const startX = 40, gap = 65, yTop = 80, yBottom = 180, armLen = 40;
+          for (let i = 0; i < n; i++) {
+            const x = startX + i * gap;
+            ctx.beginPath(); ctx.moveTo(x, yTop); ctx.lineTo(x, yBottom); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(x, yBottom); ctx.lineTo(x + armLen, yBottom); ctx.stroke();
+          }
+        } else {
+          const startX = 40, size = 55, yTop = 90, yBottom = 170;
+          for (let i = 0; i <= n; i++) {
+            const x = startX + i * size;
+            ctx.beginPath(); ctx.moveTo(x, yTop); ctx.lineTo(x, yBottom); ctx.stroke();
+          }
+          for (let i = 0; i < n; i++) {
+            const x0 = startX + i * size, x1 = startX + (i + 1) * size;
+            ctx.beginPath(); ctx.moveTo(x0, yTop); ctx.lineTo(x1, yTop); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(x0, yBottom); ctx.lineTo(x1, yBottom); ctx.stroke();
+          }
+        }
+
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`${n} ${type === 'L' ? ('L-shape' + (n === 1 ? '' : 's')) : ('square' + (n === 1 ? '' : 's'))}`, W / 2, 230);
+        ctx.textAlign = 'left';
+
+        const count = type === 'L' ? 2 * n : 3 * n + 1;
+        const formulaText = type === 'L' ? '2 × n' : '3 × n + 1';
+        const substituted = type === 'L' ? `2 × ${n}` : `3 × ${n} + 1`;
+        obs.innerHTML = `<strong>Formula: ${formulaText}</strong><br>For n = ${n}: ${substituted} = <strong>${count} matchsticks</strong>.`;
+      }
+
+      typeSel.addEventListener('change', draw);
+      nSel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initFormulaMachineLab() {
+      const canvas = document.getElementById('formula-machine-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const aSel = document.getElementById('sel-machine-a');
+      const bSel = document.getElementById('sel-machine-b');
+      const formulaSel = document.getElementById('sel-machine-formula');
+      const btn = document.getElementById('btn-machine-run');
+      const obs = document.getElementById('formula-machine-obs');
+
+      function compute(a, b, formula) {
+        if (formula === '2a-b') return 2 * a - b;
+        if (formula === 'a+b-2') return a + b - 2;
+        return a * b + 1;
+      }
+      function formulaLabel(formula) {
+        if (formula === '2a-b') return '2a − b';
+        if (formula === 'a+b-2') return 'a + b − 2';
+        return 'a × b + 1';
+      }
+      function substitutedLabel(formula, a, b) {
+        if (formula === '2a-b') return `2×${a} − ${b}`;
+        if (formula === 'a+b-2') return `${a} + ${b} − 2`;
+        return `${a} × ${b} + 1`;
+      }
+
+      function draw(result) {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const a = parseInt(aSel.value), b = parseInt(bSel.value);
+        const cx = W / 2, topY = 40, machineY = 140, outY = 230;
+
+        ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(cx - 90, topY); ctx.lineTo(cx, machineY); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx + 90, topY); ctx.lineTo(cx, machineY); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx, machineY); ctx.lineTo(cx, outY); ctx.stroke();
+
+        ctx.fillStyle = 'var(--bg-primary)'; ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 2;
+        ctx.fillRect(cx - 45, machineY - 30, 90, 60);
+        ctx.strokeRect(cx - 45, machineY - 30, 90, 60);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '26px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('⚙️', cx, machineY + 10);
+
+        ctx.font = 'bold 16px system-ui';
+        ctx.fillText(a, cx - 90, topY - 10);
+        ctx.fillText(b, cx + 90, topY - 10);
+
+        if (result !== undefined) {
+          ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 20px system-ui';
+          ctx.fillText(result, cx, outY + 30);
+        }
+        ctx.textAlign = 'left';
+      }
+
+      btn.addEventListener('click', () => {
+        const a = parseInt(aSel.value), b = parseInt(bSel.value);
+        const formula = formulaSel.value;
+        const result = compute(a, b, formula);
+        draw(result);
+        obs.innerHTML = `<strong>Formula: ${formulaLabel(formula)}</strong><br>${substitutedLabel(formula, a, b)} = <strong>${result}</strong>`;
+      });
+      aSel.addEventListener('change', () => { draw(); obs.innerHTML = 'Choose inputs and a formula, then click Run Machine.'; });
+      bSel.addEventListener('change', () => { draw(); obs.innerHTML = 'Choose inputs and a formula, then click Run Machine.'; });
+      formulaSel.addEventListener('change', () => { draw(); obs.innerHTML = 'Choose inputs and a formula, then click Run Machine.'; });
+
+      draw();
+    }
+
+    function initIntersectingLinesAngleLab() {
+      const canvas = document.getElementById('intersecting-lines-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const aSel = document.getElementById('sel-angle-a');
+      const obs = document.getElementById('intersecting-lines-obs');
+      const cx = 300, cy = 150, r = 130;
+
+      function labelPoint(deg, radius) {
+        const rad = deg * Math.PI / 180;
+        return { x: cx + radius * Math.cos(rad), y: cy - radius * Math.sin(rad) };
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const a = parseInt(aSel.value);
+        const b = 180 - a, c = a, d = 180 - a;
+
+        const p1 = labelPoint(0, r), p2 = labelPoint(180, r);
+        const p3 = labelPoint(a, r), p4 = labelPoint(a + 180, r);
+
+        ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+        ctx.strokeStyle = 'var(--accent-color)';
+        ctx.beginPath(); ctx.moveTo(p3.x, p3.y); ctx.lineTo(p4.x, p4.y); ctx.stroke();
+
+        ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2); ctx.fillStyle = 'var(--text-normal)'; ctx.fill();
+
+        const labels = [
+          { deg: a / 2, text: `a=${a}°`, color: '#ef4444' },
+          { deg: (a + 180) / 2, text: `b=${b}°`, color: '#3b82f6' },
+          { deg: 180 + a / 2, text: `c=${c}°`, color: '#ef4444' },
+          { deg: 270 + a / 2, text: `d=${d}°`, color: '#3b82f6' }
+        ];
+        ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        labels.forEach(l => {
+          const p = labelPoint(l.deg, 70);
+          ctx.fillStyle = l.color;
+          ctx.fillText(l.text, p.x, p.y);
+        });
+        ctx.textAlign = 'left';
+
+        obs.innerHTML = `<strong>∠a = ${a}°, ∠b = ${b}°, ∠c = ${c}°, ∠d = ${d}°</strong><br>∠a and ∠b are a linear pair (add to 180°). ∠a = ∠c and ∠b = ∠d, since vertically opposite angles are always equal.`;
+      }
+
+      aSel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initTransversalAngleLab() {
+      const canvas = document.getElementById('transversal-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const parallelSel = document.getElementById('sel-trans-parallel');
+      const angleSel = document.getElementById('sel-trans-angle');
+      const obs = document.getElementById('transversal-obs');
+
+      function intersect(p1, d1, p2, d2) {
+        const denom = d1.x * d2.y - d1.y * d2.x;
+        if (Math.abs(denom) < 1e-6) return null;
+        const t = ((p2.x - p1.x) * d2.y - (p2.y - p1.y) * d2.x) / denom;
+        return { x: p1.x + t * d1.x, y: p1.y + t * d1.y };
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cx = 300, y1 = 90, y2 = 230;
+        const thetaDeg = parseInt(angleSel.value);
+        const theta = thetaDeg * Math.PI / 180;
+        const isParallel = parallelSel.value === 'parallel';
+        const phiDeg = isParallel ? 0 : 20;
+        const phi = phiDeg * Math.PI / 180;
+
+        const dM = { x: Math.cos(phi), y: Math.sin(phi) };
+        const dT = { x: Math.cos(theta), y: Math.sin(theta) };
+
+        ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(30, y1); ctx.lineTo(W - 30, y1); ctx.stroke();
+
+        const mp1 = { x: cx - 400 * dM.x, y: y2 - 400 * dM.y };
+        const mp2 = { x: cx + 400 * dM.x, y: y2 + 400 * dM.y };
+        ctx.beginPath(); ctx.moveTo(mp1.x, mp1.y); ctx.lineTo(mp2.x, mp2.y); ctx.stroke();
+
+        const X = { x: cx, y: y1 };
+        const tp1 = { x: X.x - 300 * dT.x, y: X.y - 300 * dT.y };
+        const tp2 = { x: X.x + 300 * dT.x, y: X.y + 300 * dT.y };
+        ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.moveTo(tp1.x, tp1.y); ctx.lineTo(tp2.x, tp2.y); ctx.stroke();
+
+        const Y = intersect(X, dT, { x: cx, y: y2 }, dM);
+
+        ctx.fillStyle = 'var(--text-normal)';
+        [X, Y].forEach(p => { if (p) { ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI * 2); ctx.fill(); } });
+
+        const angleAtY = thetaDeg - phiDeg;
+        const equal = isParallel;
+
+        ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'left';
+        ctx.fillStyle = equal ? '#22c55e' : '#ef4444';
+        ctx.fillText(`∠ at X = ${thetaDeg}°`, X.x + 12, X.y - 12);
+        if (Y) ctx.fillText(`∠ at Y = ${angleAtY}°`, Y.x + 12, Y.y - 12);
+
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '12px system-ui';
+        ctx.fillText('l', 34, y1 - 10);
+        ctx.fillText('m', 34, mp1.y - 10);
+        ctx.fillText('t', tp2.x - 15, tp2.y - 10);
+
+        obs.innerHTML = equal
+          ? `<strong>Lines l and m are parallel.</strong><br>The corresponding angles are EQUAL: both measure ${thetaDeg}°. This confirms — when a transversal crosses parallel lines, corresponding angles are always equal.`
+          : `<strong>Lines l and m are NOT parallel.</strong><br>The corresponding angle at X is ${thetaDeg}°, but at Y it is ${angleAtY}° — NOT equal. This confirms — when lines are not parallel, corresponding angles formed by a transversal can never be equal.`;
+      }
+
+      parallelSel.addEventListener('change', draw);
+      angleSel.addEventListener('change', draw);
       draw();
     }
 
@@ -6372,8 +12236,17 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const slider = document.getElementById('blood-sugar');
       const valLabel = document.getElementById('sugar-val');
       const obs = document.getElementById('hormone-obs');
+      const modeSel = document.getElementById('sel-hormone-mode');
+      const hint = document.getElementById('hormone-hint').querySelector('span');
+      const obsTitle = document.getElementById('hormone-obs-title');
+      const animalControls = document.getElementById('hormone-animal-controls');
+      const photoControls = document.getElementById('hormone-photo-controls');
+      const geoControls = document.getElementById('hormone-geo-controls');
+      const lightSlider = document.getElementById('light-position');
+      const lightValLabel = document.getElementById('light-position-val');
+      const potSel = document.getElementById('sel-pot-orientation');
 
-      function draw() {
+      function drawAnimal() {
         const W = canvas.width, H = canvas.height;
         const sugar = parseInt(slider.value);
         ctx.clearRect(0, 0, W, H);
@@ -6395,7 +12268,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         // Hormone arrows
         if (sugar > 140) {
           ctx.fillStyle = '#3b82f6'; ctx.font = 'bold 11px system-ui';
-          ctx.fillText('Insulin \u2192', W/2 + 70, H/2 - 10);
+          ctx.fillText('Insulin →', W/2 + 70, H/2 - 10);
           ctx.fillText('(Lowers sugar)', W/2 + 70, H/2 + 10);
           // Arrow to liver
           ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
@@ -6407,7 +12280,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillText('stores glucose', W - 90, H/2 + 30);
         } else if (sugar < 70) {
           ctx.fillStyle = '#ef4444'; ctx.font = 'bold 11px system-ui';
-          ctx.fillText('Glucagon \u2192', W/2 + 70, H/2 - 10);
+          ctx.fillText('Glucagon →', W/2 + 70, H/2 - 10);
           ctx.fillText('(Raises sugar)', W/2 + 70, H/2 + 10);
           ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2;
           ctx.beginPath(); ctx.moveTo(W/2 + 60, H/2); ctx.lineTo(W - 80, H/2); ctx.stroke();
@@ -6418,10 +12291,155 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         }
         obs.innerHTML = `<strong>Feedback Loop:</strong><br>
           • Blood Sugar: <strong>${sugar} mg/dL (${status})</strong><br>
-          • ${sugar > 140 ? 'Pancreas releases <strong>Insulin</strong> \u2192 Liver stores glucose \u2192 Sugar drops.' : sugar < 70 ? 'Pancreas releases <strong>Glucagon</strong> \u2192 Liver releases glucose \u2192 Sugar rises.' : 'Blood sugar is <strong>normal</strong>. No hormonal action needed.'}<br>
+          • ${sugar > 140 ? 'Pancreas releases <strong>Insulin</strong> → Liver stores glucose → Sugar drops.' : sugar < 70 ? 'Pancreas releases <strong>Glucagon</strong> → Liver releases glucose → Sugar rises.' : 'Blood sugar is <strong>normal</strong>. No hormonal action needed.'}<br>
           • This is <strong>negative feedback</strong> — the response opposes the change.`;
       }
+
+      function drawPhototropism() {
+        const W = canvas.width, H = canvas.height;
+        const pos = parseInt(lightSlider.value); // 0 = light from left, 100 = light from right, 50 = overhead
+        ctx.clearRect(0, 0, W, H);
+        const tilt = (pos - 50) / 50; // -1 (left) .. 0 (overhead) .. +1 (right)
+        lightValLabel.textContent = pos === 50 ? 'Overhead (no bending)' : (pos < 50 ? 'Light from the left' : 'Light from the right');
+        // Sun
+        const sunX = 60 + (pos/100) * (W - 120), sunY = 40;
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath(); ctx.arc(sunX, sunY, 18, 0, 2*Math.PI); ctx.fill();
+        for (let a = 0; a < 8; a++) {
+          const ang = a * Math.PI / 4;
+          ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(sunX + Math.cos(ang)*22, sunY + Math.sin(ang)*22);
+          ctx.lineTo(sunX + Math.cos(ang)*30, sunY + Math.sin(ang)*30);
+          ctx.stroke();
+        }
+        // Light rays to shoot tip
+        const baseX = W/2, tipBendX = baseX + tilt*70, tipY = 100;
+        ctx.strokeStyle = 'rgba(251,191,36,0.5)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(sunX, sunY + 20); ctx.lineTo(tipBendX, tipY); ctx.stroke();
+        // Pot
+        ctx.fillStyle = '#b45309';
+        ctx.fillRect(baseX - 35, 260, 70, 30);
+        // Stem as a bending curve toward light; more auxin on the shaded side elongates more
+        ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 8; ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(baseX, 260);
+        ctx.quadraticCurveTo(baseX + tilt*35, 180, tipBendX, tipY);
+        ctx.stroke();
+        // Leaves
+        ctx.fillStyle = '#22c55e';
+        ctx.beginPath(); ctx.ellipse(baseX + tilt*15, 210, 18, 8, tilt*0.6, 0, 2*Math.PI); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(tipBendX - tilt*5, tipY + 25, 16, 7, tilt*0.6, 0, 2*Math.PI); ctx.fill();
+        // Auxin concentration label on shaded side
+        if (pos !== 50) {
+          const shadedSideX = tilt > 0 ? tipBendX - 55 : tipBendX + 20;
+          ctx.fillStyle = '#7c3aed'; ctx.font = 'bold 10px system-ui';
+          ctx.fillText('More auxin', shadedSideX, tipY - 10);
+          ctx.fillText('(shaded side)', shadedSideX, tipY + 2);
+          ctx.fillText('→ cells elongate more here', shadedSideX - 10, tipY + 14);
+        }
+        obs.innerHTML = `<strong>Phototropism:</strong><br>
+          ${pos === 50 ? 'Light is directly overhead, so auxin spreads evenly and the shoot grows straight up.' :
+            `Light comes from the <strong>${pos < 50 ? 'left' : 'right'}</strong>. Auxin (made at the shoot tip) diffuses towards the <strong>shaded side</strong> and makes those cells elongate more.`}<br>
+          • Unequal cell elongation makes the shoot <strong>bend towards the light</strong>.<br>
+          • This is a <strong>growth-dependent</strong> movement (slow), unlike the sensitive plant's touch response.`;
+      }
+
+      function drawGeotropism() {
+        const W = canvas.width, H = canvas.height;
+        const orient = potSel.value;
+        ctx.clearRect(0, 0, W, H);
+        const cx = W/2, cy = H/2;
+        const angle = orient === 'tilted' ? Math.PI/3 : orient === 'upside-down' ? Math.PI : 0;
+        function rotatePoint(x, y, ang) {
+          const dx = x - cx, dy = y - cy;
+          return { x: cx + dx*Math.cos(ang) - dy*Math.sin(ang), y: cy + dx*Math.sin(ang) + dy*Math.cos(ang) };
+        }
+        // Pot drawn rotated to its own orientation, with an orange rim marker that always
+        // stays on the pot's original "planting side" so the flip/tilt is visually obvious
+        // even though a plain rectangle looks identical when rotated 180 degrees.
+        ctx.save();
+        ctx.translate(cx, cy); ctx.rotate(angle); ctx.translate(-cx, -cy);
+        ctx.fillStyle = '#b45309';
+        ctx.fillRect(cx - 35, cy, 70, 30);
+        ctx.fillStyle = '#78350f';
+        ctx.fillRect(cx - 35, cy - 5, 70, 8);
+        ctx.fillStyle = '#fbbf24';
+        ctx.beginPath(); ctx.arc(cx - 30, cy - 1, 4, 0, 2*Math.PI); ctx.fill();
+        // Arrow marking the pot's own "this side used to face up" — offset to the side so
+        // the plant drawing never overlaps and hides it. An arrow (unlike a plain
+        // rectangle) is not symmetric under 180-degree rotation, so it stays a reliable
+        // visual cue for orientation even when the pot silhouette looks unchanged.
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(cx + 48, cy + 10); ctx.lineTo(cx + 48, cy - 15); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(cx + 42, cy - 9); ctx.lineTo(cx + 48, cy - 19); ctx.lineTo(cx + 54, cy - 9);
+        ctx.stroke();
+        ctx.fillStyle = '#fbbf24'; ctx.font = 'bold 9px system-ui';
+        ctx.fillText('pot’s original top', cx + 15, cy + 24);
+        ctx.restore();
+        // Anchor = soil surface of the (rotated) pot, in true screen coordinates
+        const anchor = rotatePoint(cx, cy - 3, angle);
+        // The direction the stem originally grew in, before gravity corrected it, is the
+        // pot's own "up" axis rotated along with the pot.
+        const oldUp = { x: Math.sin(angle), y: -Math.cos(angle) };
+        const stubLen = orient === 'upright' ? 0 : 34;
+        const shootStub = { x: anchor.x + oldUp.x * stubLen, y: anchor.y + oldUp.y * stubLen };
+        const rootStub = { x: anchor.x - oldUp.x * stubLen, y: anchor.y - oldUp.y * stubLen };
+        // Old growth stub (grew in the pot's original direction before reorientation)
+        if (stubLen > 0) {
+          ctx.strokeStyle = 'rgba(22,163,74,0.45)'; ctx.lineWidth = 6; ctx.lineCap = 'round';
+          ctx.setLineDash([4, 4]);
+          ctx.beginPath(); ctx.moveTo(anchor.x, anchor.y); ctx.lineTo(shootStub.x, shootStub.y); ctx.stroke();
+          ctx.strokeStyle = 'rgba(161,98,7,0.45)';
+          ctx.beginPath(); ctx.moveTo(anchor.x, anchor.y); ctx.lineTo(rootStub.x, rootStub.y); ctx.stroke();
+          ctx.setLineDash([]);
+        }
+        // Shoot bends from the old-growth stub back to true vertical (negative geotropism)
+        ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 8; ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(shootStub.x, shootStub.y);
+        ctx.quadraticCurveTo(anchor.x, anchor.y - 60, anchor.x, anchor.y - 110);
+        ctx.stroke();
+        ctx.fillStyle = '#22c55e';
+        ctx.beginPath(); ctx.ellipse(anchor.x + 14, anchor.y - 90, 16, 7, -0.4, 0, 2*Math.PI); ctx.fill();
+        // Root bends from the old-growth stub back to true vertical downward (positive geotropism)
+        ctx.strokeStyle = '#a16207'; ctx.lineWidth = 6; ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(rootStub.x, rootStub.y);
+        ctx.quadraticCurveTo(anchor.x, anchor.y + 50, anchor.x, anchor.y + 90);
+        ctx.stroke();
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillText('Shoot (negatively geotropic)', 20, 30);
+        ctx.fillText('Root (positively geotropic)', 20, H - 15);
+        obs.innerHTML = `<strong>Geotropism:</strong><br>
+          Pot orientation: <strong>${orient === 'upright' ? 'Upright' : orient === 'tilted' ? 'Tilted on its side' : 'Upside down'}</strong><br>
+          • The <strong>shoot</strong> always bends to grow <strong>upward</strong>, away from gravity (negatively geotropic).<br>
+          • The <strong>root</strong> always bends to grow <strong>downward</strong>, towards gravity (positively geotropic).<br>
+          ${orient === 'upright' ? '• The pot is upright, so the original growth direction already matches gravity — no visible bend.' : '• The faint dashed stub shows growth from <em>before</em> reorientation; the solid curve shows how gravity redirects new growth back to true vertical.'}`;
+      }
+
+      function draw() {
+        const mode = modeSel.value;
+        if (mode === 'animal') drawAnimal();
+        else if (mode === 'phototropism') drawPhototropism();
+        else if (mode === 'geotropism') drawGeotropism();
+      }
+
+      modeSel.addEventListener('change', () => {
+        const mode = modeSel.value;
+        animalControls.style.display = mode === 'animal' ? 'block' : 'none';
+        photoControls.style.display = mode === 'phototropism' ? 'block' : 'none';
+        geoControls.style.display = mode === 'geotropism' ? 'block' : 'none';
+        obsTitle.textContent = mode === 'animal' ? 'Hormonal Response' : mode === 'phototropism' ? 'Auxin & Bending' : 'Gravity Response';
+        hint.textContent = mode === 'animal' ? 'Adjust the blood sugar slider and watch the feedback loop respond.' :
+          mode === 'phototropism' ? 'Move the light source and watch the shoot bend as auxin redistributes.' :
+          'Change the pot orientation and watch shoot/root re-orient to gravity.';
+        draw();
+      });
       slider.addEventListener('input', draw);
+      lightSlider.addEventListener('input', draw);
+      potSel.addEventListener('change', draw);
       draw();
     }
 
@@ -6488,132 +12506,592 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const slider = document.getElementById('prism-angle');
       const angleLabel = document.getElementById('prism-angle-val');
       const obs = document.getElementById('prism-obs');
+      const obsTitle = document.getElementById('prism-obs-title');
+      const hint = document.getElementById('prism-hint');
+      const modeSel = document.getElementById('sel-prism-mode');
+      const dispersionControls = document.getElementById('prism-dispersion-controls');
+      const atmosphericControls = document.getElementById('prism-atmospheric-controls');
+      const atmosSubmodeSel = document.getElementById('sel-atmos-submode');
+      const skyControls = document.getElementById('atmos-sky-controls');
+      const tyndallControls = document.getElementById('atmos-tyndall-controls');
+      const sunSlider = document.getElementById('rng-sun-position');
+      const sunPositionVal = document.getElementById('sun-position-val');
+      const anglesChk = document.getElementById('chk-prism-angles');
+      const recombineChk = document.getElementById('chk-prism-recombine');
+      const tyndallChk = document.getElementById('chk-tyndall-particles');
+      let rafId = null;
 
-      function draw() {
+      function lerp(a, b, t) { return a + (b - a) * t; }
+      function lerpColor(c1, c2, t) {
+        return [Math.round(lerp(c1[0], c2[0], t)), Math.round(lerp(c1[1], c2[1], t)), Math.round(lerp(c1[2], c2[2], t))];
+      }
+      function rgbStr(c) { return `rgb(${c[0]},${c[1]},${c[2]})`; }
+      function toDeg(r) { return r * 180 / Math.PI; }
+      function toRad(d) { return d * Math.PI / 180; }
+
+      function drawDispersion() {
         const W = canvas.width, H = canvas.height;
-        const angle = parseInt(slider.value);
-        angleLabel.textContent = angle + '°';
+        const iAngle = parseInt(slider.value);
+        angleLabel.textContent = iAngle + '°';
         ctx.clearRect(0, 0, W, H);
-        // Dark background for visibility
         ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
-        // Glass prism (triangle)
+
         const px = W/2, py = H/2;
+        const A = 40; // prism apex angle, matches the drawn triangle geometry below
+        const apex = {x: px, y: py - 80};
+        const baseLeft = {x: px - 47, y: py + 50};
+        const baseRight = {x: px + 47, y: py + 50};
+
         ctx.fillStyle = 'rgba(147, 197, 253, 0.15)';
         ctx.strokeStyle = 'rgba(147, 197, 253, 0.6)'; ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.moveTo(px, py - 80); ctx.lineTo(px - 70, py + 50); ctx.lineTo(px + 70, py + 50);
+        ctx.moveTo(apex.x, apex.y); ctx.lineTo(baseLeft.x, baseLeft.y); ctx.lineTo(baseRight.x, baseRight.y);
         ctx.closePath(); ctx.fill(); ctx.stroke();
         ctx.fillStyle = 'rgba(147, 197, 253, 0.8)'; ctx.font = '10px system-ui';
         ctx.fillText('Glass Prism', px - 25, py + 10);
-        // Incoming white light ray
-        const incidentY = py - 10;
+
+        const E = {x: (apex.x + baseLeft.x)/2, y: (apex.y + baseLeft.y)/2};
+        const F = {x: (apex.x + baseRight.x)/2, y: (apex.y + baseRight.y)/2};
+        const n1 = {x: -0.940, y: -0.340};
+        const n2 = {x: 0.940, y: -0.340};
+
         ctx.strokeStyle = '#f8fafc'; ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.moveTo(30, incidentY); ctx.lineTo(px - 40, incidentY); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(30, E.y); ctx.lineTo(E.x, E.y); ctx.stroke();
         ctx.fillStyle = '#f8fafc'; ctx.font = 'bold 10px system-ui';
-        ctx.fillText('White Light', 30, incidentY - 10);
-        // VIBGYOR spectrum on exit
+        ctx.fillText('White Light', 30, E.y - 10);
+
+        ctx.strokeStyle = 'rgba(248,250,252,0.7)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(E.x, E.y); ctx.lineTo(F.x, F.y); ctx.stroke();
+
+        const nGlass = 1.5;
+        const r1 = toDeg(Math.asin(Math.sin(toRad(iAngle)) / nGlass));
+        const r2 = A - r1;
+        const e = toDeg(Math.asin(Math.min(1, nGlass * Math.sin(toRad(r2)))));
+        const D = iAngle + e - A;
+
         const colors = ['#8b5cf6','#6366f1','#3b82f6','#22c55e','#eab308','#f97316','#ef4444'];
         const labels = ['V','I','B','G','Y','O','R'];
-        const spread = (angle - 20) / 50 * 25;
-        colors.forEach((c, i) => {
-          ctx.strokeStyle = c; ctx.lineWidth = 2;
-          const exitY = py - 10 + (i - 3) * spread;
-          ctx.beginPath(); ctx.moveTo(px + 40, py); ctx.lineTo(W - 40, exitY); ctx.stroke();
-          ctx.fillStyle = c; ctx.font = 'bold 10px system-ui';
-          ctx.fillText(labels[i], W - 30, exitY + 4);
-        });
-        obs.innerHTML = `<strong>Prism Dispersion:</strong><br>
-          • Angle of Incidence: <strong>${angle}°</strong><br>
-          • White light splits into <strong>7 colors</strong> (VIBGYOR).<br>
-          • Violet bends most (shortest wavelength), Red bends least.<br>
-          • Dispersion = ${spread.toFixed(1)}° spread`;
+        const spread = (iAngle - 20) / 50 * 25;
+        const recombine = recombineChk.checked;
+
+        if (recombine) {
+          const joinX = W - 110;
+          colors.forEach((c) => {
+            ctx.strokeStyle = c; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(F.x, F.y); ctx.lineTo(joinX, py); ctx.stroke();
+          });
+          ctx.fillStyle = 'rgba(147,197,253,0.15)'; ctx.strokeStyle = 'rgba(147,197,253,0.6)'; ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(joinX, py + 42); ctx.lineTo(joinX - 32, py - 28); ctx.lineTo(joinX + 32, py - 28);
+          ctx.closePath(); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = 'rgba(147,197,253,0.8)'; ctx.font = '9px system-ui';
+          ctx.fillText('2nd Prism (inverted)', joinX - 40, py - 34);
+          ctx.strokeStyle = '#f8fafc'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(joinX, py); ctx.lineTo(W - 15, py); ctx.stroke();
+          ctx.fillStyle = '#f8fafc'; ctx.font = 'bold 9px system-ui';
+          ctx.fillText('White light (recombined)', joinX - 15, py + 20);
+        } else {
+          colors.forEach((c, idx) => {
+            ctx.strokeStyle = c; ctx.lineWidth = 2;
+            const exitY = F.y + (idx - 3) * spread;
+            ctx.beginPath(); ctx.moveTo(F.x, F.y); ctx.lineTo(W - 40, exitY); ctx.stroke();
+            ctx.fillStyle = c; ctx.font = 'bold 10px system-ui';
+            ctx.fillText(labels[idx], W - 30, exitY + 4);
+          });
+        }
+
+        if (anglesChk.checked) {
+          ctx.strokeStyle = 'rgba(255,255,255,0.4)'; ctx.lineWidth = 1; ctx.setLineDash([3,3]);
+          ctx.beginPath(); ctx.moveTo(E.x - n1.x*45, E.y - n1.y*45); ctx.lineTo(E.x + n1.x*45, E.y + n1.y*45); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(F.x - n2.x*45, F.y - n2.y*45); ctx.lineTo(F.x + n2.x*45, F.y + n2.y*45); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = '#fbbf24'; ctx.font = 'bold 10px system-ui';
+          ctx.fillText('∠i=' + iAngle.toFixed(0) + '°', E.x - 78, E.y - 22);
+          ctx.fillText('∠r=' + r1.toFixed(0) + '°', E.x + 6, E.y + 24);
+          ctx.fillText('∠r\'=' + r2.toFixed(0) + '°', F.x - 55, F.y + 24);
+          ctx.fillText('∠e=' + e.toFixed(0) + '°', F.x + 6, F.y - 22);
+          ctx.fillStyle = '#a855f7'; ctx.fillText('∠A=' + A + '°', px - 18, py - 65);
+          ctx.fillStyle = '#22c55e'; ctx.fillText('∠D=' + D.toFixed(0) + '° (deviation)', px - 40, py + 88);
+        }
+
+        obsTitle.textContent = 'Dispersion';
+        obs.innerHTML = recombine
+          ? `<strong>Recombination of White Light:</strong><br>
+            • The dispersed VIBGYOR colours enter a second, <strong>inverted</strong> prism.<br>
+            • Each colour is bent back by the same amount it was split — Newton showed this recombines them into <strong>white light</strong> again.<br>
+            • This proved white light is made of the seven colours all along, not "coloured" by the prism itself.`
+          : `<strong>Prism Dispersion:</strong><br>
+            • ∠i = <strong>${iAngle}°</strong>, ∠r = ${r1.toFixed(1)}°, ∠r' = ${r2.toFixed(1)}°, ∠e = ${e.toFixed(1)}°<br>
+            • Angle of prism ∠A = ${A}°, Angle of deviation ∠D = i + e − A = <strong>${D.toFixed(1)}°</strong><br>
+            • White light splits into <strong>7 colours</strong> (VIBGYOR) — violet bends most (shortest wavelength), red bends least.<br>
+            ${anglesChk.checked ? '' : 'Tick "Show refraction angles" to see ∠i, ∠r, ∠e, ∠A and ∠D labelled.'}`;
       }
-      slider.addEventListener('input', draw);
-      draw();
+
+      function drawSky() {
+        const W = canvas.width, H = canvas.height;
+        const t = parseInt(sunSlider.value) / 100;
+        sunPositionVal.textContent = t < 0.15 ? 'Noon (overhead)' : t > 0.85 ? 'Sunset (at the horizon)' : 'Afternoon';
+        ctx.clearRect(0, 0, W, H);
+        const skyTopC = lerpColor([56,132,255], [255,140,60], t);
+        const skyBotC = lerpColor([173,216,255], [255,110,70], t);
+        const grad = ctx.createLinearGradient(0, 0, 0, H*0.72);
+        grad.addColorStop(0, rgbStr(skyTopC));
+        grad.addColorStop(1, rgbStr(skyBotC));
+        ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H*0.72);
+        ctx.fillStyle = '#166534'; ctx.fillRect(0, H*0.72, W, H*0.28);
+
+        const sunX = 60 + t*480;
+        const sunY = 35 + t*160;
+        const sunC = lerpColor([255,250,200], [255,70,40], t);
+        ctx.fillStyle = rgbStr(sunC);
+        ctx.beginPath(); ctx.arc(sunX, sunY, 24, 0, 2*Math.PI); ctx.fill();
+
+        const barX = 30, barY = H - 55, barW = W - 60, barH = 18;
+        ctx.fillStyle = 'rgba(15,23,42,0.55)'; ctx.fillRect(barX - 10, barY - 22, barW + 20, 60);
+        ctx.fillStyle = 'white'; ctx.font = 'bold 10px system-ui';
+        ctx.fillText('Path of sunlight through the atmosphere to your eye:', barX, barY - 8);
+        const pathLen = lerp(barW*0.18, barW, t);
+        const pathGrad = ctx.createLinearGradient(barX, 0, barX + pathLen, 0);
+        pathGrad.addColorStop(0, '#3b82f6'); pathGrad.addColorStop(1, rgbStr(lerpColor([59,130,246],[239,68,68], t)));
+        ctx.fillStyle = pathGrad; ctx.fillRect(barX, barY, pathLen, barH);
+        ctx.strokeStyle = 'rgba(255,255,255,0.4)'; ctx.strokeRect(barX, barY, barW, barH);
+        ctx.fillStyle = 'white'; ctx.font = '9px system-ui';
+        ctx.fillText(t < 0.5 ? 'Short path — mostly blue scattered to your eye' : 'Long path — blue scattered away, only red/orange left', barX, barY + barH + 14);
+
+        obsTitle.textContent = 'Why the Sky Changes Colour';
+        obs.innerHTML = `<strong>Rayleigh Scattering:</strong><br>
+          • Air molecules scatter shorter wavelengths (blue) far more than longer ones (red) — scattering ∝ 1/λ⁴.<br>
+          • <strong>${t < 0.15 ? 'At noon' : t > 0.85 ? 'At sunset' : 'In the afternoon'}:</strong> sunlight travels through ${t < 0.5 ? 'a short' : 'a long'} stretch of atmosphere.<br>
+          • ${t < 0.5 ? 'Blue is scattered from all directions and reaches your eyes — the sky looks blue.' : 'Almost all the blue has been scattered away by the time light reaches you — only red/orange survives, so the Sun and sky near it look red.'}<br>
+          • This is also why an astronaut in space (no atmosphere to scatter light) sees a <strong>black sky</strong>, even in daylight.`;
+      }
+
+      const starDots = Array.from({length: 25}, () => ({ x: Math.random()*600, y: Math.random()*180, r: Math.random()*1.2 + 0.4 }));
+
+      function drawTwinkle(time) {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        starDots.forEach(d => { ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 2*Math.PI); ctx.fill(); });
+
+        const starX = 180, starY = 130;
+        const flicker = 0.55 + 0.3*Math.sin(time/140) + 0.15*Math.sin(time/53);
+        const starBrightness = Math.max(0.15, Math.min(1, flicker));
+        ctx.fillStyle = `rgba(255,255,255,${starBrightness})`;
+        ctx.beginPath(); ctx.arc(starX, starY, 3 + starBrightness*4, 0, 2*Math.PI); ctx.fill();
+        for (let i = 0; i < 4; i++) {
+          const a = i * Math.PI/2 + time/900;
+          ctx.strokeStyle = `rgba(255,255,255,${starBrightness*0.5})`; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(starX, starY); ctx.lineTo(starX + Math.cos(a)*(8+starBrightness*6), starY + Math.sin(a)*(8+starBrightness*6)); ctx.stroke();
+        }
+        ctx.fillStyle = 'var(--text-muted, #94a3b8)'; ctx.font = 'bold 10px system-ui';
+        ctx.fillText('Star (point source) — twinkles', starX - 65, starY + 45);
+
+        const planetX = 420, planetY = 130;
+        const pg = ctx.createRadialGradient(planetX, planetY, 0, planetX, planetY, 16);
+        pg.addColorStop(0, 'rgba(251,191,36,1)'); pg.addColorStop(1, 'rgba(251,191,36,0.85)');
+        ctx.fillStyle = pg;
+        ctx.beginPath(); ctx.arc(planetX, planetY, 13, 0, 2*Math.PI); ctx.fill();
+        ctx.fillStyle = 'var(--text-muted, #94a3b8)'; ctx.font = 'bold 10px system-ui';
+        ctx.fillText('Planet (extended source) — steady', planetX - 85, planetY + 45);
+
+        obsTitle.textContent = 'Why Stars Twinkle but Planets Don’t';
+        obs.innerHTML = `<strong>Atmospheric Refraction:</strong><br>
+          • Starlight bends continuously through the ever-shifting layers of the atmosphere, so its apparent position and brightness fluctuate rapidly — this is <strong>twinkling</strong>.<br>
+          • Stars are so far away they act as <strong>point sources</strong>, so this flicker is very noticeable.<br>
+          • Planets are much closer and appear as <strong>extended sources</strong> (a disc of many points). Fluctuations from different points average out, cancelling the twinkle.`;
+        rafId = requestAnimationFrame(drawTwinkle);
+      }
+
+      function drawRainbow() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const grad = ctx.createLinearGradient(0, 0, 0, H*0.8);
+        grad.addColorStop(0, '#38bdf8'); grad.addColorStop(1, '#e0f2fe');
+        ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H*0.8);
+        ctx.fillStyle = '#166534'; ctx.fillRect(0, H*0.8, W, H*0.2);
+
+        const dropX = 360, dropY = 130, dropR = 55;
+        const entryAngle = -Math.PI*0.75, backAngle = 0.1, exitAngle = Math.PI*0.75;
+        const E = {x: dropX + dropR*Math.cos(entryAngle), y: dropY + dropR*Math.sin(entryAngle)};
+        const Bp = {x: dropX + dropR*Math.cos(backAngle), y: dropY + dropR*Math.sin(backAngle)};
+        const F = {x: dropX + dropR*Math.cos(exitAngle), y: dropY + dropR*Math.sin(exitAngle)};
+
+        ctx.beginPath(); ctx.arc(dropX, dropY, dropR, 0, 2*Math.PI);
+        ctx.fillStyle = 'rgba(147,197,253,0.35)'; ctx.fill();
+        ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = '#1e293b'; ctx.font = '10px system-ui'; ctx.fillText('Water droplet', dropX - 35, dropY - dropR - 10);
+
+        ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.moveTo(E.x - 140, E.y - 70); ctx.lineTo(E.x, E.y); ctx.stroke();
+        ctx.fillStyle = '#78350f'; ctx.font = '10px system-ui'; ctx.fillText('Sunlight', E.x - 140, E.y - 78);
+        ctx.fillStyle = '#78350f'; ctx.font = '8px system-ui'; ctx.fillText('1. Refracts in', E.x - 60, E.y + 12);
+
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(E.x, E.y); ctx.lineTo(Bp.x, Bp.y); ctx.stroke();
+        ctx.fillStyle = '#fbbf24'; ctx.font = '8px system-ui'; ctx.fillText('2. Reflects', Bp.x - 40, Bp.y - 8);
+
+        ctx.beginPath(); ctx.moveTo(Bp.x, Bp.y); ctx.lineTo(F.x, F.y); ctx.stroke();
+        ctx.fillStyle = '#fbbf24'; ctx.font = '8px system-ui'; ctx.fillText('3. Refracts out', F.x - 50, F.y - 8);
+
+        const colors = ['#8b5cf6','#3b82f6','#22c55e','#eab308','#ef4444'];
+        colors.forEach((c, idx) => {
+          const a = exitAngle + (idx - 2)*0.05;
+          ctx.strokeStyle = c; ctx.lineWidth = 1.8;
+          ctx.beginPath(); ctx.moveTo(F.x, F.y); ctx.lineTo(F.x + Math.cos(a)*150, F.y + Math.sin(a)*150); ctx.stroke();
+        });
+
+        ctx.font = '24px system-ui'; ctx.fillText('🧍', 55, H - 40);
+        ctx.fillStyle = '#1e293b'; ctx.font = '10px system-ui'; ctx.fillText('Observer', 40, H - 15);
+
+        obsTitle.textContent = 'Rainbow Formation';
+        obs.innerHTML = `<strong>How a Rainbow Forms:</strong><br>
+          • Sunlight enters a spherical water droplet and <strong>refracts</strong> (bends).<br>
+          • It <strong>internally reflects</strong> once off the back inner surface of the droplet.<br>
+          • It <strong>refracts again</strong> on the way out, separating into VIBGYOR colours — different colours bend by slightly different amounts.<br>
+          • Millions of droplets in the sky each send one colour to your eye at a precise angle — together they form the rainbow's arc.<br>
+          • A rainbow always appears in the sky <strong>opposite the Sun</strong>.`;
+      }
+
+      function drawSunrise() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const horizonY = H*0.72;
+        ctx.fillStyle = '#1e3a5f'; ctx.fillRect(0, 0, W, horizonY);
+        ctx.fillStyle = '#166534'; ctx.fillRect(0, horizonY, W, H - horizonY);
+        ctx.strokeStyle = 'rgba(255,255,255,0.3)'; ctx.beginPath(); ctx.moveTo(0, horizonY); ctx.lineTo(W, horizonY); ctx.stroke();
+        ctx.fillStyle = 'white'; ctx.font = '9px system-ui'; ctx.fillText('Horizon', 10, horizonY - 6);
+
+        const observerX = 100, observerY = horizonY;
+        ctx.font = '22px system-ui'; ctx.fillText('🧍', observerX - 11, observerY + 5);
+
+        const actualX = 450, actualY = horizonY + 35;
+        ctx.fillStyle = 'rgba(251,191,36,0.4)';
+        ctx.beginPath(); ctx.arc(actualX, actualY, 20, 0, 2*Math.PI); ctx.fill();
+        ctx.strokeStyle = 'rgba(251,191,36,0.7)'; ctx.setLineDash([3,3]); ctx.stroke(); ctx.setLineDash([]);
+        ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.font = '9px system-ui'; ctx.fillText('Actual position (below horizon)', actualX - 55, actualY + 38);
+
+        const apparentX = 380, apparentY = horizonY - 55;
+        ctx.fillStyle = '#fde047';
+        ctx.beginPath(); ctx.arc(apparentX, apparentY, 22, 0, 2*Math.PI); ctx.fill();
+        ctx.fillStyle = '#78350f'; ctx.font = 'bold 9px system-ui'; ctx.fillText('Apparent position (what you see)', apparentX - 75, apparentY - 32);
+
+        const bendX = 260, bendY = horizonY - 12;
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.moveTo(actualX, actualY); ctx.lineTo(bendX, bendY); ctx.lineTo(observerX, observerY); ctx.stroke();
+        ctx.strokeStyle = 'rgba(253,224,71,0.6)'; ctx.lineWidth = 1.5; ctx.setLineDash([4,4]);
+        ctx.beginPath(); ctx.moveTo(observerX, observerY); ctx.lineTo(apparentX, apparentY); ctx.stroke();
+        ctx.setLineDash([]);
+
+        obsTitle.textContent = 'Advance Sunrise / Delayed Sunset';
+        obs.innerHTML = `<strong>Atmospheric Refraction near the Horizon:</strong><br>
+          • Light from the Sun bends as it passes through the atmosphere's changing density layers (denser air lower down bends light more).<br>
+          • This bending is strong enough that we see the Sun about <strong>2 minutes before</strong> it actually crosses the horizon at sunrise, and for <strong>2 minutes after</strong> it has actually set.<br>
+          • The dashed line shows where the Sun <em>appears</em> to be; the solid bent path traces the <em>real</em> route the light took from the Sun's true position below the horizon.<br>
+          • The same effect slightly flattens the Sun's disc near the horizon — its lower edge is refracted more than its upper edge.`;
+      }
+
+      function drawTyndall() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+        const hasParticles = tyndallChk.checked;
+
+        ctx.strokeStyle = 'rgba(148,163,184,0.4)'; ctx.lineWidth = 1;
+        ctx.strokeRect(40, 40, W - 80, H - 80);
+        ctx.fillStyle = 'rgba(226,232,240,0.8)'; ctx.font = '9px system-ui';
+        ctx.fillText(hasParticles ? 'Smoke-filled room' : 'Clear air / true solution', 45, 34);
+
+        ctx.fillStyle = '#94a3b8'; ctx.fillRect(20, H/2 - 15, 40, 30);
+        ctx.fillStyle = 'var(--text-normal, #e2e8f0)'; ctx.font = '9px system-ui'; ctx.fillText('Torch', 22, H/2 + 42);
+
+        const beamY = H/2;
+        if (hasParticles) {
+          const grad = ctx.createLinearGradient(60, beamY, W - 60, beamY);
+          grad.addColorStop(0, 'rgba(253,224,71,0.9)'); grad.addColorStop(1, 'rgba(253,224,71,0.15)');
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.moveTo(60, beamY - 6); ctx.lineTo(W - 60, beamY - 18); ctx.lineTo(W - 60, beamY + 18); ctx.lineTo(60, beamY + 6);
+          ctx.closePath(); ctx.fill();
+          for (let i = 0; i < 40; i++) {
+            const px = 70 + Math.random()*(W - 140), py = beamY + (Math.random() - 0.5)*30;
+            ctx.fillStyle = 'rgba(255,255,255,0.6)';
+            ctx.beginPath(); ctx.arc(px, py, 1.3, 0, 2*Math.PI); ctx.fill();
+          }
+          obs.innerHTML = `<strong>Tyndall Effect — Path IS Visible:</strong><br>
+            • The beam passes through relatively large colloidal particles (smoke, dust, fine water droplets).<br>
+            • These particles are big enough to <strong>scatter light in all directions</strong>, so the path of the beam becomes visible from the side.<br>
+            • This is the same effect you see when sunlight streams through a dusty room, or headlights cut through fog.`;
+        } else {
+          ctx.strokeStyle = 'rgba(253,224,71,0.25)'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(60, beamY); ctx.lineTo(W - 60, beamY); ctx.stroke();
+          obs.innerHTML = `<strong>Tyndall Effect — Path NOT Visible:</strong><br>
+            • In clear air or a true solution, the particles (individual molecules) are far <strong>smaller than the wavelength of light</strong>.<br>
+            • They scatter very little light sideways, so the beam's path is barely visible — you only see where it lands.<br>
+            • Tick "Colloidal particles present" to add smoke/dust and see the path become visible.`;
+        }
+        obsTitle.textContent = 'Tyndall Effect';
+      }
+
+      function render() {
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        const mode = modeSel.value;
+        if (mode === 'dispersion') {
+          drawDispersion();
+          return;
+        }
+        const sub = atmosSubmodeSel.value;
+        skyControls.style.display = sub === 'sky' ? 'block' : 'none';
+        tyndallControls.style.display = sub === 'tyndall' ? 'block' : 'none';
+        if (sub === 'sky') drawSky();
+        else if (sub === 'twinkle') drawTwinkle(0);
+        else if (sub === 'rainbow') drawRainbow();
+        else if (sub === 'sunrise') drawSunrise();
+        else drawTyndall();
+      }
+
+      modeSel.addEventListener('change', () => {
+        const isAtmos = modeSel.value === 'atmospheric';
+        dispersionControls.style.display = isAtmos ? 'none' : 'block';
+        atmosphericControls.style.display = isAtmos ? 'block' : 'none';
+        hint.querySelector('span').textContent = isAtmos
+          ? '💡 Explore how the atmosphere scatters and bends light.'
+          : '💡 Drag the light ray to adjust the angle of incidence on the prism.';
+        obsTitle.textContent = isAtmos ? 'Atmospheric Phenomena' : 'Dispersion';
+        render();
+      });
+      atmosSubmodeSel.addEventListener('change', render);
+      sunSlider.addEventListener('input', render);
+      slider.addEventListener('input', render);
+      anglesChk.addEventListener('change', render);
+      recombineChk.addEventListener('change', render);
+      tyndallChk.addEventListener('change', render);
+      render();
     }
 
     function initOhmsLawLab() {
       const canvas = document.getElementById('ohms-canvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
+      const modeSel = document.getElementById('ohms-mode');
+      const basicControls = document.getElementById('ohms-basic-controls');
+      const resistivityControls = document.getElementById('ohms-resistivity-controls');
       const vSlider = document.getElementById('ohms-voltage');
       const rSlider = document.getElementById('ohms-resistance');
+      const r2Slider = document.getElementById('ohms-resistance2');
+      const r3Slider = document.getElementById('ohms-resistance3');
       const vLabel = document.getElementById('ohms-v-val');
       const rLabel = document.getElementById('ohms-r-val');
+      const r2Label = document.getElementById('ohms-r2-val');
+      const r3Label = document.getElementById('ohms-r3-val');
+      const rHeaderLabel = document.getElementById('ohms-r-label');
+      const r2Row = document.getElementById('ohms-r2-row');
+      const r3Row = document.getElementById('ohms-r3-row');
+      const materialSel = document.getElementById('sel-wire-material');
+      const lengthSlider = document.getElementById('rng-wire-length');
+      const areaSlider = document.getElementById('rng-wire-area');
+      const lengthLabel = document.getElementById('wire-length-val');
+      const areaLabel = document.getElementById('wire-area-val');
       const obs = document.getElementById('ohms-obs');
-      let dataPoints = [];
 
-      function draw() {
-        const W = canvas.width, H = canvas.height;
-        const V = parseFloat(vSlider.value);
-        const R = parseInt(rSlider.value);
-        const I = V / R;
-        vLabel.textContent = V.toFixed(1) + ' V';
-        rLabel.textContent = R + ' \u03A9';
-        ctx.clearRect(0, 0, W, H);
-        // Circuit diagram (left half)
-        const cx = 150, cy = H/2;
-        // Battery
-        ctx.fillStyle = '#94a3b8'; ctx.fillRect(cx - 40, cy - 80, 80, 20);
-        ctx.fillStyle = '#1e293b'; ctx.font = 'bold 10px system-ui'; ctx.fillText(V.toFixed(1)+'V', cx - 10, cy - 65);
-        // Wires
-        ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(cx, cy - 60); ctx.lineTo(cx, cy - 30);
-        ctx.moveTo(cx, cy + 30); ctx.lineTo(cx, cy + 60);
-        ctx.moveTo(cx - 40, cy - 80); ctx.lineTo(cx - 40, cy + 80);
-        ctx.lineTo(cx + 40, cy + 80); ctx.lineTo(cx + 40, cy - 80);
-        ctx.stroke();
-        // Resistor
+      const resistivities = {
+        silver: {rho: 1.60e-8, label: 'Silver'},
+        copper: {rho: 1.62e-8, label: 'Copper'},
+        aluminium: {rho: 2.63e-8, label: 'Aluminium'},
+        tungsten: {rho: 5.20e-8, label: 'Tungsten'},
+        iron: {rho: 10.0e-8, label: 'Iron'},
+        mercury: {rho: 94.0e-8, label: 'Mercury'},
+        manganin: {rho: 44e-6, label: 'Manganin (alloy)'},
+        constantan: {rho: 49e-6, label: 'Constantan (alloy)'},
+        nichrome: {rho: 100e-6, label: 'Nichrome (alloy)'}
+      };
+
+      function resistorBox(cx, cy, label) {
         ctx.fillStyle = 'rgba(251, 191, 36, 0.3)';
         ctx.fillRect(cx - 15, cy - 15, 30, 30);
         ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
         ctx.strokeRect(cx - 15, cy - 15, 30, 30);
         ctx.fillStyle = '#1e293b'; ctx.font = 'bold 9px system-ui';
-        ctx.fillText(R+'\u03A9', cx - 8, cy + 5);
-        // Ammeter reading
-        ctx.fillStyle = '#ef4444'; ctx.font = 'bold 12px system-ui';
-        ctx.fillText('I = ' + I.toFixed(3) + ' A', cx - 30, cy + 100);
-        // V-I Graph (right half)
+        ctx.fillText(label, cx - 12, cy + 4);
+      }
+
+      function drawResistivity() {
+        const W = canvas.width, H = canvas.height;
+        const mat = resistivities[materialSel.value];
+        const l = parseFloat(lengthSlider.value);
+        const areaMM2 = parseFloat(areaSlider.value);
+        lengthLabel.textContent = l.toFixed(1) + ' m';
+        areaLabel.textContent = areaMM2.toFixed(1) + ' mm²';
+        const areaM2 = areaMM2 * 1e-6;
+        const R = mat.rho * l / areaM2;
+
+        const cx = W/2, cy = H/2;
+        const wireLenPx = 60 + l*45;
+        const wireThickPx = Math.max(6, Math.min(70, areaMM2*7));
+        const wireX = cx - wireLenPx/2, wireY = cy - wireThickPx/2;
+
+        ctx.fillStyle = 'rgba(180,83,9,0.5)';
+        ctx.fillRect(wireX, wireY, wireLenPx, wireThickPx);
+        ctx.strokeStyle = '#92400e'; ctx.lineWidth = 2;
+        ctx.strokeRect(wireX, wireY, wireLenPx, wireThickPx);
+
+        ctx.strokeStyle = '#92400e'; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.ellipse(wireX + wireLenPx, cy, Math.max(3, wireThickPx/6), wireThickPx/2, 0, 0, 2*Math.PI); ctx.stroke();
+        ctx.fillStyle = 'rgba(180,83,9,0.7)';
+        ctx.beginPath(); ctx.ellipse(wireX + wireLenPx, cy, Math.max(3, wireThickPx/6), wireThickPx/2, 0, 0, 2*Math.PI); ctx.fill();
+
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillText('l = ' + l.toFixed(1) + ' m', cx - 20, wireY - 15);
+        ctx.font = '10px system-ui';
+        ctx.fillText('Area A', wireX + wireLenPx + 12, cy - wireThickPx/2 - 8);
+        ctx.beginPath(); ctx.moveTo(wireX + wireLenPx + 8, cy - wireThickPx/2); ctx.lineTo(wireX + wireLenPx + 8, cy + wireThickPx/2); ctx.stroke();
+
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '10px system-ui';
+        ctx.fillText(mat.label + ' wire', cx - 30, cy + wireThickPx/2 + 25);
+
+        obs.innerHTML = `<strong>R = ρl/A</strong><br>
+          • Material: <strong>${mat.label}</strong>, resistivity ρ = ${mat.rho.toExponential(2)} Ω·m<br>
+          • Length l = ${l.toFixed(1)} m, Area A = ${areaMM2.toFixed(1)} mm² = ${areaM2.toExponential(2)} m²<br>
+          • R = (${mat.rho.toExponential(2)} × ${l.toFixed(1)}) / ${areaM2.toExponential(2)} = <strong>${R.toFixed(3)} Ω</strong><br>
+          • Doubling the length doubles R. Doubling the area halves R. Higher resistivity (e.g. Nichrome) means higher R for the same size.`;
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        const mode = modeSel.value;
+        basicControls.style.display = mode === 'resistivity' ? 'none' : 'block';
+        resistivityControls.style.display = mode === 'resistivity' ? 'block' : 'none';
+        ctx.clearRect(0, 0, W, H);
+
+        if (mode === 'resistivity') {
+          drawResistivity();
+          return;
+        }
+
+        const V = parseFloat(vSlider.value);
+        const R1 = parseInt(rSlider.value);
+        const R2 = parseInt(r2Slider.value);
+        const R3 = parseInt(r3Slider.value);
+        vLabel.textContent = V.toFixed(1) + ' V';
+        rLabel.textContent = R1 + ' Ω';
+        r2Label.textContent = R2 + ' Ω';
+        r3Label.textContent = R3 + ' Ω';
+        rHeaderLabel.textContent = mode === 'single' ? 'Resistance (Ω)' : 'R1 (Ω)';
+        r2Row.style.display = mode === 'single' ? 'none' : 'block';
+        r3Row.style.display = mode === 'single' ? 'none' : 'block';
+
+        let Rtotal, I;
+        const cx = 150, cy = H/2;
+
+        if (mode === 'single') {
+          Rtotal = R1;
+          I = V / Rtotal;
+          ctx.fillStyle = '#94a3b8'; ctx.fillRect(cx - 40, cy - 80, 80, 20);
+          ctx.fillStyle = '#1e293b'; ctx.font = 'bold 10px system-ui'; ctx.fillText(V.toFixed(1)+'V', cx - 10, cy - 65);
+          ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - 60); ctx.lineTo(cx, cy - 30);
+          ctx.moveTo(cx, cy + 30); ctx.lineTo(cx, cy + 60);
+          ctx.moveTo(cx - 40, cy - 80); ctx.lineTo(cx - 40, cy + 80);
+          ctx.lineTo(cx + 40, cy + 80); ctx.lineTo(cx + 40, cy - 80);
+          ctx.stroke();
+          resistorBox(cx, cy, R1 + 'Ω');
+          ctx.fillStyle = '#ef4444'; ctx.font = 'bold 12px system-ui';
+          ctx.fillText('I = ' + I.toFixed(3) + ' A', cx - 30, cy + 100);
+          obs.innerHTML = `<strong>Ohm's Law: V = IR</strong><br>
+            • Voltage: <strong>${V.toFixed(1)} V</strong><br>
+            • Resistance: <strong>${R1} Ω</strong><br>
+            • Current: <strong>${I.toFixed(4)} A</strong> = <strong>${(I*1000).toFixed(1)} mA</strong><br>
+            • Power: <strong>${(V*I).toFixed(2)} W</strong>`;
+
+        } else if (mode === 'series') {
+          Rtotal = R1 + R2 + R3;
+          I = V / Rtotal;
+          const V1 = I*R1, V2 = I*R2, V3 = I*R3;
+          const bx = 30, by1 = cy - 70, by2 = cy + 70;
+          ctx.fillStyle = '#94a3b8'; ctx.fillRect(bx - 15, cy - 15, 20, 30);
+          ctx.fillStyle = '#1e293b'; ctx.font = 'bold 9px system-ui'; ctx.fillText(V.toFixed(1)+'V', bx - 25, cy + 35);
+          ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(bx, cy - 15); ctx.lineTo(bx, by1); ctx.lineTo(280, by1);
+          ctx.moveTo(bx, cy + 15); ctx.lineTo(bx, by2); ctx.lineTo(280, by2);
+          ctx.moveTo(280, by1); ctx.lineTo(280, by2);
+          ctx.stroke();
+          resistorBox(110, by1, R1+'Ω');
+          resistorBox(180, by1, R2+'Ω');
+          resistorBox(250, by1, R3+'Ω');
+          ctx.fillStyle = '#ef4444'; ctx.font = 'bold 11px system-ui';
+          ctx.fillText('I = ' + I.toFixed(3) + ' A (same everywhere)', 30, by2 + 25);
+          obs.innerHTML = `<strong>Series Combination:</strong><br>
+            • Rs = R1 + R2 + R3 = ${R1} + ${R2} + ${R3} = <strong>${Rtotal} Ω</strong><br>
+            • Current (same in all): I = V/Rs = <strong>${I.toFixed(4)} A</strong><br>
+            • V1 = ${V1.toFixed(2)} V, V2 = ${V2.toFixed(2)} V, V3 = ${V3.toFixed(2)} V<br>
+            • Check: V1+V2+V3 = <strong>${(V1+V2+V3).toFixed(2)} V</strong> = supply voltage ✓`;
+
+        } else { // parallel
+          Rtotal = 1 / (1/R1 + 1/R2 + 1/R3);
+          const I1 = V/R1, I2 = V/R2, I3 = V/R3;
+          I = I1 + I2 + I3;
+          const xRail = 90, yRail = 260;
+          ctx.fillStyle = '#94a3b8'; ctx.fillRect(30 - 15, cy - 15, 20, 30);
+          ctx.fillStyle = '#1e293b'; ctx.font = 'bold 9px system-ui'; ctx.fillText(V.toFixed(1)+'V', 5, cy + 35);
+          ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(30, cy - 15); ctx.lineTo(30, 60); ctx.lineTo(xRail, 60); ctx.lineTo(xRail, 260);
+          ctx.moveTo(30, cy + 15); ctx.lineTo(30, 260); ctx.lineTo(xRail, 260);
+          ctx.moveTo(xRail, 90); ctx.lineTo(yRail, 90);
+          ctx.moveTo(xRail, 160); ctx.lineTo(yRail, 160);
+          ctx.moveTo(xRail, 230); ctx.lineTo(yRail, 230);
+          ctx.moveTo(yRail, 60); ctx.lineTo(yRail, 90);
+          ctx.moveTo(yRail, 90); ctx.lineTo(yRail, 160);
+          ctx.moveTo(yRail, 160); ctx.lineTo(yRail, 230);
+          ctx.moveTo(yRail, 60); ctx.lineTo(xRail, 60);
+          ctx.stroke();
+          resistorBox((xRail+yRail)/2, 90, R1+'Ω');
+          resistorBox((xRail+yRail)/2, 160, R2+'Ω');
+          resistorBox((xRail+yRail)/2, 230, R3+'Ω');
+          ctx.fillStyle = '#ef4444'; ctx.font = 'bold 10px system-ui';
+          ctx.fillText('I = ' + I.toFixed(2) + ' A total', 10, 50);
+          obs.innerHTML = `<strong>Parallel Combination:</strong><br>
+            • 1/Rp = 1/R1 + 1/R2 + 1/R3 = 1/${R1} + 1/${R2} + 1/${R3}<br>
+            • Rp = <strong>${Rtotal.toFixed(2)} Ω</strong> (always less than the smallest resistor)<br>
+            • Same V across each: I1 = ${I1.toFixed(3)} A, I2 = ${I2.toFixed(3)} A, I3 = ${I3.toFixed(3)} A<br>
+            • Total current I = I1+I2+I3 = <strong>${I.toFixed(3)} A</strong>`;
+        }
+
         const gx = 340, gy = 40, gw = 220, gh = 220;
         ctx.strokeStyle = '#475569'; ctx.lineWidth = 1;
         ctx.strokeRect(gx, gy, gw, gh);
-        // Axes labels
         ctx.fillStyle = 'var(--text-muted)'; ctx.font = '10px system-ui';
         ctx.fillText('V (Volts)', gx + gw/2 - 20, gy + gh + 25);
         ctx.save(); ctx.translate(gx - 15, gy + gh/2); ctx.rotate(-Math.PI/2);
         ctx.fillText('I (Amps)', -20, 0); ctx.restore();
-        // Plot current data point
-        dataPoints.push({v: V, i: I});
-        if (dataPoints.length > 50) dataPoints.shift();
-        // Grid lines
         ctx.strokeStyle = 'rgba(148, 163, 184, 0.2)'; ctx.lineWidth = 0.5;
         for (let i = 0; i <= 6; i++) {
           ctx.beginPath(); ctx.moveTo(gx, gy + i*gh/6); ctx.lineTo(gx+gw, gy + i*gh/6); ctx.stroke();
           ctx.beginPath(); ctx.moveTo(gx + i*gw/6, gy); ctx.lineTo(gx + i*gw/6, gy+gh); ctx.stroke();
         }
-        // Plot points
-        ctx.fillStyle = '#3b82f6';
-        dataPoints.forEach(p => {
-          const px = gx + (p.v / 12) * gw;
-          const py = gy + gh - (p.i / 1.2) * gh;
-          ctx.beginPath(); ctx.arc(px, py, 3, 0, 2*Math.PI); ctx.fill();
-        });
-        // Ideal line for current R
+        const maxI = Math.max(0.2, V / Math.max(1, Rtotal) * 1.3);
         ctx.strokeStyle = 'rgba(239, 68, 68, 0.5)'; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
         ctx.beginPath(); ctx.moveTo(gx, gy + gh);
-        ctx.lineTo(gx + gw, gy + gh - (12/R/1.2)*gh); ctx.stroke();
+        ctx.lineTo(gx + gw, gy + gh - ((12/Rtotal)/maxI)*gh); ctx.stroke();
         ctx.setLineDash([]);
         ctx.fillStyle = '#ef4444'; ctx.font = '9px system-ui';
-        ctx.fillText('R='+R+'\u03A9 line', gx + gw - 60, gy + 15);
-        obs.innerHTML = `<strong>Ohm's Law: V = IR</strong><br>
-          • Voltage: <strong>${V.toFixed(1)} V</strong><br>
-          • Resistance: <strong>${R} \u03A9</strong><br>
-          • Current: <strong>${I.toFixed(4)} A</strong> = <strong>${(I*1000).toFixed(1)} mA</strong><br>
-          • Power: <strong>${(V*I).toFixed(2)} W</strong>`;
+        ctx.fillText('R=' + Rtotal.toFixed(1) + 'Ω line', gx + gw - 65, gy + 15);
+        const px = gx + (V / 12) * gw;
+        const py = gy + gh - (I / maxI) * gh;
+        ctx.fillStyle = '#3b82f6';
+        ctx.beginPath(); ctx.arc(Math.min(gx+gw, px), Math.max(gy, py), 4, 0, 2*Math.PI); ctx.fill();
       }
+      modeSel.addEventListener('change', draw);
       vSlider.addEventListener('input', draw);
       rSlider.addEventListener('input', draw);
+      r2Slider.addEventListener('input', draw);
+      r3Slider.addEventListener('input', draw);
+      materialSel.addEventListener('change', draw);
+      lengthSlider.addEventListener('input', draw);
+      areaSlider.addEventListener('input', draw);
       draw();
     }
 
@@ -6670,19 +13148,51 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       const obs = document.getElementById('magnetic-obs');
+      const modeSel = document.getElementById('sel-magnet-type');
+      const hint = document.getElementById('magnetic-hint');
+      const wireControls = document.getElementById('mag-wire-controls');
+      const loopControls = document.getElementById('mag-loop-controls');
+      const forceControls = document.getElementById('mag-force-controls');
+      const wireCurrentSel = document.getElementById('sel-wire-current');
+      const loopTurnsSlider = document.getElementById('rng-loop-turns');
+      const loopTurnsVal = document.getElementById('loop-turns-val');
+      const ironCoreChk = document.getElementById('chk-iron-core');
+      const forceCurrentSel = document.getElementById('sel-force-current');
+      const forceFieldSel = document.getElementById('sel-force-field');
       let compassX = 400, compassY = 170;
       let isDragging = false;
 
-      function draw() {
+      function drawArrowhead(x, y, angle, color) {
+        ctx.save(); ctx.translate(x, y); ctx.rotate(angle);
+        ctx.fillStyle = color;
+        ctx.beginPath(); ctx.moveTo(6, 0); ctx.lineTo(-4, -4); ctx.lineTo(-4, 4); ctx.closePath(); ctx.fill();
+        ctx.restore();
+      }
+
+      function drawArrowLine(x1, y1, x2, y2, color) {
+        ctx.strokeStyle = color; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+        drawArrowhead(x2, y2, Math.atan2(y2 - y1, x2 - x1), color);
+      }
+
+      function drawCompassNeedle(x, y, Dx, Dy) {
+        const theta = Math.atan2(Dx, -Dy);
+        ctx.save(); ctx.translate(x, y);
+        ctx.beginPath(); ctx.arc(0, 0, 18, 0, 2 * Math.PI);
+        ctx.fillStyle = '#f8fafc'; ctx.fill(); ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2; ctx.stroke();
+        ctx.rotate(theta);
+        ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.moveTo(0, -12); ctx.lineTo(-4, 4); ctx.lineTo(4, 4); ctx.closePath(); ctx.fill();
+        ctx.fillStyle = '#f8fafc'; ctx.beginPath(); ctx.moveTo(0, 12); ctx.lineTo(-4, -4); ctx.lineTo(4, -4); ctx.closePath(); ctx.fill();
+        ctx.restore();
+      }
+
+      function drawBarMagnet() {
         const W = canvas.width, H = canvas.height;
-        ctx.clearRect(0, 0, W, H);
         const mx = W/2, my = H/2;
-        // Bar magnet
         ctx.fillStyle = '#ef4444'; ctx.fillRect(mx - 60, my - 15, 60, 30);
         ctx.fillStyle = '#3b82f6'; ctx.fillRect(mx, my - 15, 60, 30);
         ctx.fillStyle = 'white'; ctx.font = 'bold 14px system-ui';
         ctx.fillText('N', mx - 40, my + 6); ctx.fillText('S', mx + 20, my + 6);
-        // Field lines
         ctx.strokeStyle = 'rgba(148, 163, 184, 0.4)'; ctx.lineWidth = 1;
         for (let i = -2; i <= 2; i++) {
           ctx.beginPath();
@@ -6693,9 +13203,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
           ctx.stroke();
         }
-        // Compass
         const dx = compassX - mx, dy = compassY - my;
-        const angle = Math.atan2(dy, dx) + Math.PI; // Points toward N pole
+        const angle = Math.atan2(dy, dx) + Math.PI;
         ctx.save(); ctx.translate(compassX, compassY);
         ctx.beginPath(); ctx.arc(0, 0, 18, 0, 2*Math.PI);
         ctx.fillStyle = '#f8fafc'; ctx.fill(); ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2; ctx.stroke();
@@ -6710,7 +13219,207 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           • Field lines go from <span style="color:#ef4444">North</span> to <span style="color:#3b82f6">South</span> outside the magnet.<br>
           • Closer to magnet = stronger field = more aligned compass.`;
       }
+
+      function drawWireMode() {
+        const W = canvas.width, H = canvas.height;
+        const cx = W/2, cy = H/2;
+        const outward = wireCurrentSel.value === 'out';
+        [40, 80, 120].forEach(r => {
+          ctx.strokeStyle = 'rgba(59,130,246,0.5)'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2*Math.PI); ctx.stroke();
+          for (let k = 0; k < 4; k++) {
+            const baseAngle = k * Math.PI/2 + Math.PI/8;
+            const ax = cx + r*Math.cos(baseAngle), ay = cy + r*Math.sin(baseAngle);
+            const tangentAngle = baseAngle + (outward ? Math.PI/2 : -Math.PI/2);
+            drawArrowhead(ax, ay, tangentAngle, 'rgba(59,130,246,0.8)');
+          }
+        });
+        ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, 12, 0, 2*Math.PI); ctx.stroke();
+        if (outward) {
+          ctx.fillStyle = '#1e293b'; ctx.beginPath(); ctx.arc(cx, cy, 4, 0, 2*Math.PI); ctx.fill();
+        } else {
+          ctx.beginPath(); ctx.moveTo(cx-6, cy-6); ctx.lineTo(cx+6, cy+6);
+          ctx.moveTo(cx-6, cy+6); ctx.lineTo(cx+6, cy-6); ctx.stroke();
+        }
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '10px system-ui';
+        ctx.fillText(outward ? 'Current out of the page (⊙)' : 'Current into the page (⊗)', cx - 90, cy + 160);
+        const radialAngle = Math.atan2(compassY - cy, compassX - cx);
+        const tangentAngle = radialAngle + (outward ? Math.PI/2 : -Math.PI/2);
+        drawCompassNeedle(compassX, compassY, Math.cos(tangentAngle), Math.sin(tangentAngle));
+        const dist = Math.hypot(compassX - cx, compassY - cy);
+        obs.innerHTML = `<strong>Right-Hand Thumb Rule:</strong><br>
+          • Point your right thumb ${outward ? 'towards you (out of the page)' : 'into the page'} along the current.<br>
+          • Your curled fingers show the field direction: <strong>${outward ? 'counter-clockwise' : 'clockwise'}</strong>.<br>
+          • Drag the compass — its needle always turns to lie tangent to the field circle around the wire.<br>
+          • Distance from wire: ${dist.toFixed(0)} px — closer to the wire, the field (and deflection) is stronger.`;
+      }
+
+      function drawLoopMode() {
+        const W = canvas.width, H = canvas.height;
+        const cx = W/2, cy = H/2;
+        const turns = parseInt(loopTurnsSlider.value);
+        loopTurnsVal.textContent = turns === 1 ? '1 turn (single loop)' : turns + ' turns (solenoid)';
+        const hasCore = ironCoreChk.checked;
+        const loopRx = 18, loopRy = 65, spacing = 13;
+        const totalWidth = (turns - 1) * spacing;
+        const startX = cx - totalWidth/2;
+        const scale = (totalWidth/2 + loopRx + 55);
+
+        ctx.strokeStyle = 'rgba(239,68,68,0.4)'; ctx.lineWidth = 1;
+        for (let i = -2; i <= 2; i++) {
+          ctx.beginPath();
+          for (let t = -1.4; t <= 1.4; t += 0.1) {
+            const fx = cx + t * scale;
+            const fy = cy + i * 22 + Math.sin(t*1.6) * (i === 0 ? 0 : Math.abs(i)*12);
+            if (t === -1.4) ctx.moveTo(fx, fy); else ctx.lineTo(fx, fy);
+          }
+          ctx.stroke();
+        }
+
+        if (hasCore) {
+          ctx.fillStyle = 'rgba(148,163,184,0.5)';
+          ctx.fillRect(startX - loopRx, cy - 7, totalWidth + 2*loopRx, 14);
+        }
+        for (let k = 0; k < turns; k++) {
+          const x = startX + k * spacing;
+          ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.ellipse(x, cy, loopRx, loopRy, 0, 0, 2*Math.PI); ctx.stroke();
+        }
+        ctx.fillStyle = '#ef4444'; ctx.font = 'bold 16px system-ui';
+        ctx.fillText('N', startX - loopRx - 25, cy + 6);
+        ctx.fillStyle = '#3b82f6';
+        ctx.fillText('S', startX + totalWidth + loopRx + 12, cy + 6);
+
+        obs.innerHTML = `<strong>${turns === 1 ? 'Circular Loop' : 'Solenoid (' + turns + ' turns)'}:</strong><br>
+          • Field lines inside are straight and parallel — the field is uniform inside${turns > 1 ? ' the solenoid' : ' the loop'}.<br>
+          • One end behaves like a <span style="color:#ef4444">North pole</span>, the other like a <span style="color:#3b82f6">South pole</span> — just like a bar magnet.<br>
+          ${turns > 1 ? '• More turns ⇒ a stronger field (field strength ∝ turns × current).<br>' : ''}
+          ${hasCore ? '• <strong>Soft-iron core inserted — this is now an electromagnet!</strong> The core strongly concentrates the field.' : '• Try increasing the turns or inserting a soft-iron core to see the field strengthen.'}`;
+      }
+
+      function drawForceMode() {
+        const W = canvas.width, H = canvas.height;
+        const cx = W/2, cy = H/2;
+        const currentDir = forceCurrentSel.value;
+        const fieldUp = forceFieldSel.value === 'up';
+        for (let x = cx - 120; x <= cx + 120; x += 40) {
+          if (fieldUp) drawArrowLine(x, cy + 75, x, cy - 75, '#22c55e');
+          else drawArrowLine(x, cy - 75, x, cy + 75, '#22c55e');
+        }
+        ctx.fillStyle = '#22c55e'; ctx.font = 'bold 10px system-ui';
+        ctx.fillText('Magnetic Field (B) — ' + (fieldUp ? 'upward' : 'downward'), cx - 90, fieldUp ? cy + 95 : cy - 85);
+
+        const sign = (currentDir === 'b_to_a' ? 1 : -1) * (fieldUp ? 1 : -1);
+        const forceDx = sign === 1 ? -1 : 1;
+        const displacement = forceDx * 25;
+        const rodY = cy;
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 8; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(cx - 80 + displacement, rodY); ctx.lineTo(cx + 80 + displacement, rodY); ctx.stroke();
+        ctx.lineCap = 'butt';
+        ctx.fillStyle = '#1e293b'; ctx.font = 'bold 12px system-ui';
+        ctx.fillText('A', cx - 98 + displacement, rodY + 5);
+        ctx.fillText('B', cx + 88 + displacement, rodY + 5);
+
+        const currentDx = currentDir === 'b_to_a' ? -1 : 1;
+        drawArrowLine(cx - 30 + displacement, rodY - 15, cx - 30 + displacement + currentDx*60, rodY - 15, '#ef4444');
+        ctx.fillStyle = '#ef4444'; ctx.font = '9px system-ui'; ctx.fillText('Current', cx - 50 + displacement, rodY - 20);
+
+        drawArrowLine(cx + displacement, rodY + 40, cx + displacement + forceDx*70, rodY + 40, '#f97316');
+        ctx.fillStyle = '#f97316'; ctx.font = 'bold 12px system-ui';
+        ctx.fillText('Force', cx + displacement + (forceDx > 0 ? 10 : -60), rodY + 60);
+
+        obs.innerHTML = `<strong>Fleming's Left-Hand Rule:</strong><br>
+          • Forefinger → Field (${fieldUp ? 'upward' : 'downward'}), Middle finger → Current (${currentDir === 'b_to_a' ? 'B to A' : 'A to B'}), Thumb → Force.<br>
+          • The rod is pushed towards the <strong>${forceDx < 0 ? 'LEFT' : 'RIGHT'}</strong>.<br>
+          • Reversing either the current or the field direction reverses the force — try it!`;
+      }
+
+      let motorRafId = null;
+      let motorAngle = 0;
+
+      function drawMotor() {
+        const W = canvas.width, H = canvas.height;
+        const cx = W/2, cy = H/2 - 10;
+        ctx.clearRect(0, 0, W, H);
+
+        ctx.fillStyle = '#ef4444'; ctx.fillRect(cx - 165, cy - 15, 55, 30);
+        ctx.fillStyle = '#3b82f6'; ctx.fillRect(cx + 110, cy - 15, 55, 30);
+        ctx.fillStyle = 'white'; ctx.font = 'bold 12px system-ui';
+        ctx.fillText('N', cx - 143, cy + 6); ctx.fillText('S', cx + 133, cy + 6);
+
+        for (let fy = cy - 45; fy <= cy + 45; fy += 22) {
+          drawArrowLine(cx - 108, fy, cx + 108, fy, 'rgba(34,197,94,0.35)');
+        }
+        ctx.fillStyle = '#22c55e'; ctx.font = '9px system-ui'; ctx.fillText('Magnetic Field (N → S)', cx - 55, cy - 60);
+
+        motorAngle += 0.045;
+        const cosA = Math.cos(motorAngle);
+        const coilHalfWidth = Math.max(4, 68 * Math.abs(cosA));
+        const coilHalfHeight = 42;
+
+        ctx.save(); ctx.translate(cx, cy);
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.ellipse(0, 0, coilHalfWidth, coilHalfHeight, 0, 0, 2*Math.PI); ctx.stroke();
+        ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(0, -coilHalfHeight - 25); ctx.lineTo(0, coilHalfHeight + 90); ctx.stroke();
+        ctx.restore();
+
+        const leftX = cx - coilHalfWidth, rightX = cx + coilHalfWidth;
+        const intoPageOnRight = Math.sin(motorAngle) > 0;
+        function drawTerminal(x, into) {
+          ctx.strokeStyle = '#1e293b'; ctx.fillStyle = '#1e293b'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.arc(x, cy, 6, 0, 2*Math.PI); ctx.stroke();
+          if (into) {
+            ctx.beginPath(); ctx.moveTo(x - 3.5, cy - 3.5); ctx.lineTo(x + 3.5, cy + 3.5);
+            ctx.moveTo(x - 3.5, cy + 3.5); ctx.lineTo(x + 3.5, cy - 3.5); ctx.stroke();
+          } else {
+            ctx.beginPath(); ctx.arc(x, cy, 2, 0, 2*Math.PI); ctx.fill();
+          }
+        }
+        drawTerminal(rightX, intoPageOnRight);
+        drawTerminal(leftX, !intoPageOnRight);
+
+        const axleBottomY = cy + coilHalfHeight + 90;
+        ctx.fillStyle = '#94a3b8'; ctx.fillRect(cx - 20, axleBottomY - 10, 40, 14);
+        ctx.fillStyle = '#1e293b'; ctx.font = '8px system-ui'; ctx.fillText('Split-ring commutator', cx - 55, axleBottomY + 20);
+        ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx - 20, axleBottomY - 3); ctx.lineTo(cx - 60, axleBottomY - 3); ctx.lineTo(cx - 60, axleBottomY + 40); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx + 20, axleBottomY - 3); ctx.lineTo(cx + 60, axleBottomY - 3); ctx.lineTo(cx + 60, axleBottomY + 40); ctx.stroke();
+        ctx.fillStyle = '#94a3b8'; ctx.fillRect(cx - 65, axleBottomY + 40, 130, 18);
+        ctx.fillStyle = '#1e293b'; ctx.font = 'bold 9px system-ui'; ctx.fillText('Battery', cx - 20, axleBottomY + 53);
+
+        obs.innerHTML = `<strong>Electric Motor:</strong><br>
+          • The current-carrying coil sits between the magnet's poles. Force on each side of the coil (Fleming's Left-Hand Rule) creates a <strong>torque</strong> that spins it.<br>
+          • The <strong>split-ring commutator</strong> reverses the current in the coil every half rotation, so the torque always acts in the same rotational sense — keeping the coil spinning continuously in one direction.<br>
+          • This converts <strong>electrical energy → mechanical energy</strong>. Real motors use many turns and a stronger electromagnet to produce useful torque.`;
+
+        motorRafId = requestAnimationFrame(drawMotor);
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        const mode = modeSel.value;
+        if (motorRafId) { cancelAnimationFrame(motorRafId); motorRafId = null; }
+        wireControls.style.display = mode === 'wire' ? 'block' : 'none';
+        loopControls.style.display = mode === 'loop' ? 'block' : 'none';
+        forceControls.style.display = mode === 'force' ? 'block' : 'none';
+        const hintSpan = hint.querySelector('span');
+        hintSpan.textContent = mode === 'bar' ? '💡 Drag the compass around the magnet to see how it responds to the magnetic field.'
+          : mode === 'wire' ? '💡 Drag the compass around the wire — notice how it always points along the field circle.'
+          : mode === 'loop' ? '💡 Adjust the number of turns and try inserting an iron core.'
+          : mode === 'force' ? '💡 Change the current or field direction and watch the force flip sides.'
+          : '💡 Watch how the split-ring commutator keeps the coil spinning in one direction.';
+        ctx.clearRect(0, 0, W, H);
+        if (mode === 'bar') drawBarMagnet();
+        else if (mode === 'wire') drawWireMode();
+        else if (mode === 'loop') drawLoopMode();
+        else if (mode === 'force') drawForceMode();
+        else drawMotor();
+      }
+
       canvas.addEventListener('mousedown', (e) => {
+        if (modeSel.value !== 'bar' && modeSel.value !== 'wire') return;
         const rect = canvas.getBoundingClientRect();
         const x = (e.clientX - rect.left) * (canvas.width / rect.width);
         const y = (e.clientY - rect.top) * (canvas.height / rect.height);
@@ -6725,6 +13434,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       });
       canvas.addEventListener('mouseup', () => isDragging = false);
       canvas.addEventListener('mouseleave', () => isDragging = false);
+      modeSel.addEventListener('change', draw);
+      wireCurrentSel.addEventListener('change', draw);
+      loopTurnsSlider.addEventListener('input', draw);
+      ironCoreChk.addEventListener('change', draw);
+      forceCurrentSel.addEventListener('change', draw);
+      forceFieldSel.addEventListener('change', draw);
       draw();
     }
 
@@ -6733,26 +13448,35 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       const obs = document.getElementById('faraday-obs');
+      const obsTitle = document.getElementById('faraday-obs-title');
+      const hint = document.getElementById('faraday-hint');
+      const modeSel = document.getElementById('sel-faraday-mode');
+      const inductionControls = document.getElementById('faraday-induction-controls');
+      const generatorControls = document.getElementById('faraday-generator-controls');
+      const domesticControls = document.getElementById('faraday-domestic-controls');
+      const btnShort = document.getElementById('btn-short-circuit');
+      const btnReset = document.getElementById('btn-reset-circuit');
+      const generatorSpeedSlider = document.getElementById('rng-generator-speed');
+      const generatorSpeedVal = document.getElementById('generator-speed-val');
       let magnetX = 150, isDragging = false, lastX = 150, emf = 0;
+      let shortCircuited = false, fuseBlown = false, blowTimer = null;
+      let generatorAngle = 0;
+      const emfHistory = [];
 
-      function draw() {
+      function drawInduction() {
         const W = canvas.width, H = canvas.height;
-        ctx.clearRect(0, 0, W, H);
         const speed = magnetX - lastX;
         emf = speed * 0.5;
         lastX = magnetX;
-        // Coil
         ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
         for (let i = 0; i < 8; i++) {
           ctx.beginPath(); ctx.ellipse(W/2, H/2, 25, 50, 0, 0, Math.PI); ctx.stroke();
           ctx.beginPath(); ctx.ellipse(W/2 + i*4, H/2, 25, 50, 0, Math.PI, 2*Math.PI); ctx.stroke();
         }
-        // Magnet
         ctx.fillStyle = '#ef4444'; ctx.fillRect(magnetX - 30, H/2 - 12, 30, 24);
         ctx.fillStyle = '#3b82f6'; ctx.fillRect(magnetX, H/2 - 12, 30, 24);
         ctx.fillStyle = 'white'; ctx.font = 'bold 10px system-ui';
         ctx.fillText('N', magnetX - 20, H/2 + 5); ctx.fillText('S', magnetX + 8, H/2 + 5);
-        // Galvanometer
         ctx.beginPath(); ctx.arc(W/2, H - 50, 30, Math.PI, 0); ctx.stroke();
         ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2;
         const needleAngle = Math.PI + Math.min(Math.PI/3, Math.max(-Math.PI/3, emf * 0.1));
@@ -6767,10 +13491,159 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           • Magnet speed: <strong>${Math.abs(speed).toFixed(1)}</strong><br>
           • Induced EMF: <strong>${Math.abs(emf).toFixed(2)}</strong> (proportional to speed)<br>
           • Direction: ${emf > 0.1 ? 'Clockwise' : emf < -0.1 ? 'Counter-clockwise' : 'No deflection'}<br>
-          • <strong>Lenz\u2019s Law:</strong> Induced current opposes the change causing it.`;
+          • <strong>Lenz’s Law:</strong> Induced current opposes the change causing it.`;
+      }
+
+      function drawWire(x1, y1, x2, y2, color) {
+        ctx.strokeStyle = color; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+      }
+
+      function drawGenerator() {
+        const W = canvas.width, H = canvas.height;
+        const speed = parseInt(generatorSpeedSlider.value);
+        generatorSpeedVal.textContent = 'Speed ' + speed;
+        generatorAngle += 0.02 * speed;
+
+        const cx = 140, cy = 90;
+        ctx.fillStyle = '#ef4444'; ctx.fillRect(cx - 95, cy - 15, 40, 30);
+        ctx.fillStyle = '#3b82f6'; ctx.fillRect(cx + 55, cy - 15, 40, 30);
+        ctx.fillStyle = 'white'; ctx.font = 'bold 10px system-ui';
+        ctx.fillText('N', cx - 80, cy + 5); ctx.fillText('S', cx + 70, cy + 5);
+
+        const cosA = Math.cos(generatorAngle);
+        const coilHalfWidth = Math.max(3, 40 * Math.abs(cosA));
+        ctx.save(); ctx.translate(cx, cy);
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.ellipse(0, 0, coilHalfWidth, 26, 0, 0, 2*Math.PI); ctx.stroke();
+        ctx.restore();
+
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx, cy + 26); ctx.lineTo(cx, cy + 55); ctx.stroke();
+        ctx.beginPath(); ctx.ellipse(cx, cy + 62, 16, 6, 0, 0, 2*Math.PI); ctx.stroke();
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui'; ctx.fillText('Slip rings + brushes', cx - 42, cy + 82);
+
+        const emfNow = Math.sin(generatorAngle);
+        emfHistory.push(emfNow);
+        if (emfHistory.length > 150) emfHistory.shift();
+
+        const gx = 280, gy = 25, gw = 300, gh = 130;
+        ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.strokeRect(gx, gy, gw, gh);
+        ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.beginPath(); ctx.moveTo(gx, gy + gh/2); ctx.lineTo(gx + gw, gy + gh/2); ctx.stroke();
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('EMF vs Time (AC output)', gx, gy - 8);
+        ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        emfHistory.forEach((v, idx) => {
+          const px = gx + (idx/150)*gw, py = gy + gh/2 - v*(gh/2 - 10);
+          if (idx === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        });
+        ctx.stroke();
+
+        const bulbX = cx, bulbY = 220;
+        const glow = Math.abs(emfNow);
+        if (glow > 0.08) {
+          const grad = ctx.createRadialGradient(bulbX, bulbY, 0, bulbX, bulbY, 30);
+          grad.addColorStop(0, `rgba(251,191,36,${glow})`); grad.addColorStop(1, 'transparent');
+          ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(bulbX, bulbY, 30, 0, 2*Math.PI); ctx.fill();
+        }
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(bulbX, bulbY, 16, 0, 2*Math.PI); ctx.stroke();
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Bulb (lit by AC)', bulbX - 32, bulbY + 35);
+
+        obsTitle.textContent = 'AC Generator';
+        obs.innerHTML = `<strong>AC Generator:</strong><br>
+          • As the coil rotates in the magnetic field, the flux through it keeps changing, inducing an EMF (Faraday's Law).<br>
+          • <strong>Fleming's Right-Hand Rule</strong> gives the direction of the induced current: Thumb = motion, Forefinger = field, Middle finger = current.<br>
+          • Because the coil's orientation to the field reverses every half turn, the induced EMF alternates direction — this is <strong>Alternating Current (AC)</strong>, tracing a sine wave.<br>
+          • <strong>Slip rings</strong> (continuous rings, unlike a motor's split-ring commutator) keep the coil connected to the external circuit as it spins. India's AC mains alternates at <strong>50 Hz</strong>.`;
+      }
+
+      function drawDomestic() {
+        const W = canvas.width, H = canvas.height;
+        const liveY = 60, neutralY = 110, earthY = 155;
+        const fuseX1 = 130, fuseX2 = 170;
+        const bulbX = 420;
+
+        drawWire(20, liveY, fuseX1, liveY, '#ef4444');
+        drawWire(20, neutralY, 500, neutralY, '#1e293b');
+        drawWire(20, earthY, 500, earthY, '#22c55e');
+        ctx.fillStyle = '#ef4444'; ctx.font = '10px system-ui'; ctx.fillText('Live', 20, liveY - 8);
+        ctx.fillStyle = '#1e293b'; ctx.fillText('Neutral', 20, neutralY - 8);
+        ctx.fillStyle = '#22c55e'; ctx.fillText('Earth', 20, earthY - 8);
+
+        if (!fuseBlown) {
+          drawWire(fuseX1, liveY, fuseX2, liveY, '#f59e0b');
+          drawWire(fuseX2, liveY, 500, liveY, '#ef4444');
+        } else {
+          drawWire(fuseX1, liveY, fuseX1 + 15, liveY, '#ef4444');
+          drawWire(fuseX2 - 15, liveY, fuseX2, liveY, '#ef4444');
+          ctx.fillStyle = '#ef4444'; ctx.font = '16px system-ui'; ctx.fillText('✗', fuseX1 + 15, liveY + 6);
+        }
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Fuse', fuseX1 - 5, liveY - 18);
+
+        if (shortCircuited && !fuseBlown) {
+          const flicker = Math.sin(Date.now() / 60) > 0;
+          ctx.strokeStyle = '#f97316'; ctx.lineWidth = 2; ctx.setLineDash([3,3]);
+          ctx.beginPath(); ctx.moveTo(300, liveY); ctx.lineTo(300, neutralY); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = flicker ? '#f97316' : '#fbbf24'; ctx.font = 'bold 22px system-ui';
+          ctx.fillText('⚡', 288, (liveY + neutralY)/2 + 8);
+          ctx.fillStyle = '#f97316'; ctx.font = 'bold 10px system-ui';
+          ctx.fillText('Short circuit!', 250, neutralY + 18);
+        }
+
+        const applianceLive = !fuseBlown;
+        drawWire(bulbX, applianceLive ? liveY : fuseX1, bulbX, neutralY - 25, applianceLive ? '#ef4444' : 'rgba(148,163,184,0.4)');
+        drawWire(bulbX, neutralY, bulbX, neutralY - 25, '#1e293b');
+        const glow = applianceLive && !shortCircuited;
+        if (glow) {
+          const grad = ctx.createRadialGradient(bulbX, neutralY - 45, 0, bulbX, neutralY - 45, 30);
+          grad.addColorStop(0, 'rgba(251,191,36,0.9)'); grad.addColorStop(1, 'transparent');
+          ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(bulbX, neutralY - 45, 30, 0, 2*Math.PI); ctx.fill();
+        }
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(bulbX, neutralY - 45, 18, 0, 2*Math.PI); ctx.stroke();
+        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Bulb', bulbX - 12, neutralY - 68);
+
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(500, earthY); ctx.lineTo(500, earthY + 30); ctx.stroke();
+        for (let i = 0; i < 3; i++) {
+          ctx.beginPath(); ctx.moveTo(485 + i*5, earthY + 30 + i*5); ctx.lineTo(515 - i*5, earthY + 30 + i*5); ctx.stroke();
+        }
+        ctx.fillStyle = '#22c55e'; ctx.font = '9px system-ui'; ctx.fillText('Ground', 478, earthY + 55);
+
+        obsTitle.textContent = 'Circuit Status';
+        let current = fuseBlown ? 0 : (shortCircuited ? 42.5 : 0.9);
+        if (fuseBlown) {
+          obs.innerHTML = `<strong>⚠️ Fuse Blown!</strong><br>
+            • The short circuit caused a huge surge of current.<br>
+            • Joule heating (H = I²Rt) melted the fuse wire, breaking the circuit.<br>
+            • All appliances are now safely disconnected — the bulb has gone dark.<br>
+            • Click <strong>Reset Circuit</strong> to repair the wiring and try again.`;
+        } else if (shortCircuited) {
+          obs.innerHTML = `<strong>⚡ Short Circuit in Progress!</strong><br>
+            • The live wire has touched the neutral wire directly, bypassing the appliance's resistance.<br>
+            • Current has spiked to roughly <strong>${current} A</strong> — dangerously high.<br>
+            • The fuse is about to melt and break the circuit...`;
+        } else {
+          obs.innerHTML = `<strong>Normal Operation:</strong><br>
+            • <span style="color:#ef4444">Live</span> (~220 V), <span style="color:#1e293b">Neutral</span> (~0 V), <span style="color:#22c55e">Earth</span> (safety ground to a metal plate).<br>
+            • Current through the bulb: <strong>${current} A</strong>. Fuse intact, bulb glowing.<br>
+            • Click <strong>Simulate Short Circuit</strong> to see what protects the house.`;
+        }
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        if (modeSel.value === 'induction') drawInduction();
+        else if (modeSel.value === 'generator') drawGenerator();
+        else drawDomestic();
         requestAnimationFrame(draw);
       }
+
       canvas.addEventListener('mousedown', (e) => {
+        if (modeSel.value !== 'induction') return;
         const rect = canvas.getBoundingClientRect();
         const x = (e.clientX - rect.left) * (canvas.width / rect.width);
         const y = (e.clientY - rect.top) * (canvas.height / rect.height);
@@ -6782,6 +13655,30 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         magnetX = (e.clientX - rect.left) * (canvas.width / rect.width);
       });
       canvas.addEventListener('mouseup', () => isDragging = false);
+
+      modeSel.addEventListener('change', () => {
+        const mode = modeSel.value;
+        inductionControls.style.display = mode === 'induction' ? 'block' : 'none';
+        generatorControls.style.display = mode === 'generator' ? 'block' : 'none';
+        domesticControls.style.display = mode === 'domestic' ? 'block' : 'none';
+        obsTitle.textContent = mode === 'induction' ? 'Galvanometer' : mode === 'generator' ? 'AC Generator' : 'Circuit Status';
+        hint.querySelector('span').textContent = mode === 'induction'
+          ? '💡 Drag the magnet in and out of the coil to induce current.'
+          : mode === 'generator'
+          ? '💡 Adjust the rotation speed and watch the AC output trace a sine wave.'
+          : '💡 Trigger a short circuit and watch the fuse protect the house.';
+      });
+      btnShort.addEventListener('click', () => {
+        if (fuseBlown) return;
+        shortCircuited = true;
+        clearTimeout(blowTimer);
+        blowTimer = setTimeout(() => { fuseBlown = true; shortCircuited = false; }, 1500);
+      });
+      btnReset.addEventListener('click', () => {
+        clearTimeout(blowTimer);
+        shortCircuited = false;
+        fuseBlown = false;
+      });
       draw();
     }
 
@@ -6790,24 +13687,31 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       const obs = document.getElementById('foodweb-obs');
+      const obsTitle = document.getElementById('foodweb-obs-title');
+      const hint = document.getElementById('foodweb-hint');
+      const modeSel = document.getElementById('sel-env-mode');
+      const ozoneControls = document.getElementById('ozone-controls');
+      const wasteControls = document.getElementById('waste-controls');
+      const cfcSlider = document.getElementById('rng-cfc-level');
+      const cfcLevelVal = document.getElementById('cfc-level-val');
+      const wasteScoreDiv = document.getElementById('waste-score');
+
       const organisms = [
-        {name: 'Grass', emoji: '\ud83c\udf3e', x: 100, y: 280, level: 0, energy: 10000},
-        {name: 'Trees', emoji: '\ud83c\udf33', x: 220, y: 280, level: 0, energy: 10000},
-        {name: 'Grasshopper', emoji: '\ud83e\udeb3', x: 80, y: 190, level: 1, energy: 1000},
-        {name: 'Rabbit', emoji: '\ud83d\udc07', x: 200, y: 190, level: 1, energy: 1000},
-        {name: 'Deer', emoji: '\ud83e\udd8c', x: 320, y: 190, level: 1, energy: 1000},
-        {name: 'Frog', emoji: '\ud83d\udc38', x: 120, y: 110, level: 2, energy: 100},
-        {name: 'Snake', emoji: '\ud83d\udc0d', x: 260, y: 110, level: 2, energy: 100},
-        {name: 'Eagle', emoji: '\ud83e\udd85', x: 200, y: 30, level: 3, energy: 10},
-        {name: 'Lion', emoji: '\ud83e\udd81', x: 380, y: 110, level: 3, energy: 10}
+        {name: 'Grass', emoji: '🌾', x: 100, y: 280, level: 0, energy: 10000},
+        {name: 'Trees', emoji: '🌳', x: 220, y: 280, level: 0, energy: 10000},
+        {name: 'Grasshopper', emoji: '🦗', x: 80, y: 190, level: 1, energy: 1000},
+        {name: 'Rabbit', emoji: '🐇', x: 200, y: 190, level: 1, energy: 1000},
+        {name: 'Deer', emoji: '🦌', x: 320, y: 190, level: 1, energy: 1000},
+        {name: 'Frog', emoji: '🐸', x: 120, y: 110, level: 2, energy: 100},
+        {name: 'Snake', emoji: '🐍', x: 260, y: 110, level: 2, energy: 100},
+        {name: 'Eagle', emoji: '🦅', x: 200, y: 30, level: 3, energy: 10},
+        {name: 'Lion', emoji: '🦁', x: 380, y: 110, level: 3, energy: 10}
       ];
       const links = [[0,2],[0,3],[1,4],[2,5],[3,6],[4,8],[5,6],[6,7],[5,7]];
       let selected = -1;
 
-      function draw() {
+      function drawFoodWeb() {
         const W = canvas.width, H = canvas.height;
-        ctx.clearRect(0, 0, W, H);
-        // Trophic level bars
         const levels = ['Producers', 'Primary Consumers', 'Secondary Consumers', 'Tertiary Consumers'];
         const barWidths = [500, 350, 200, 80];
         levels.forEach((l, i) => {
@@ -6818,20 +13722,17 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui';
           ctx.fillText(l + ' (10^' + (4-i) + ' J)', bx, by - 3);
         });
-        // Links
         links.forEach(([a,b]) => {
           const from = organisms[a], to = organisms[b];
           const isHighlighted = selected === a || selected === b;
           ctx.strokeStyle = isHighlighted ? '#ef4444' : 'rgba(148, 163, 184, 0.3)';
           ctx.lineWidth = isHighlighted ? 2 : 1;
           ctx.beginPath(); ctx.moveTo(from.x, from.y); ctx.lineTo(to.x, to.y); ctx.stroke();
-          // Arrow
           if (isHighlighted) {
             const mx = (from.x + to.x)/2, my = (from.y + to.y)/2;
-            ctx.fillStyle = '#ef4444'; ctx.font = '10px system-ui'; ctx.fillText('\u2192', mx, my);
+            ctx.fillStyle = '#ef4444'; ctx.font = '10px system-ui'; ctx.fillText('→', mx, my);
           }
         });
-        // Organisms
         organisms.forEach((o, i) => {
           ctx.font = '24px system-ui';
           ctx.fillText(o.emoji, o.x - 12, o.y + 8);
@@ -6839,21 +13740,159 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.font = 'bold 9px system-ui';
           ctx.fillText(o.name, o.x - 15, o.y + 25);
         });
+        obsTitle.textContent = 'Energy Flow';
+        if (selected < 0) obs.innerHTML = 'Click on organisms to trace their food chain.';
       }
+
+      function lerp(a, b, t) { return a + (b - a) * t; }
+
+      function drawOzone() {
+        const W = canvas.width, H = canvas.height;
+        const cfc = parseInt(cfcSlider.value) / 100;
+        cfcLevelVal.textContent = cfc === 0 ? '0% (Ozone layer intact)' : Math.round(cfc*100) + '% CFCs — ' + (cfc < 0.3 ? 'minor damage' : cfc < 0.7 ? 'significant depletion' : 'severe ozone hole');
+        const skyGrad = ctx.createLinearGradient(0, 0, 0, H);
+        skyGrad.addColorStop(0, '#0ea5e9'); skyGrad.addColorStop(1, '#e0f2fe');
+        ctx.fillStyle = skyGrad; ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(60, 50, 28, 0, 2*Math.PI); ctx.fill();
+        ctx.fillStyle = '#78350f'; ctx.font = '9px system-ui'; ctx.fillText('Sun (UV rays)', 25, 92);
+
+        const bandY = 115, bandH = 26, numSeg = 24, segW = W/numSeg;
+        const holes = [];
+        for (let i = 0; i < numSeg; i++) {
+          const noise = Math.abs(Math.sin(i*12.9898)*43758.5453) % 1;
+          if (noise < cfc*0.85) { holes.push(i); continue; }
+          ctx.fillStyle = 'rgba(96,165,250,0.75)';
+          ctx.fillRect(i*segW, bandY, segW-1, bandH);
+        }
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 10px system-ui';
+        ctx.fillText('Ozone Layer (Stratosphere)', 10, bandY - 6);
+
+        ctx.fillStyle = '#166534'; ctx.fillRect(0, H - 40, W, 40);
+        ctx.font = '26px system-ui'; ctx.fillText('🧍', W/2 - 13, H - 15);
+
+        for (let i = 0; i < numSeg; i += 2) {
+          const x = i*segW + segW/2;
+          const throughHole = holes.includes(i);
+          ctx.strokeStyle = throughHole ? 'rgba(239,68,68,0.7)' : 'rgba(250,204,21,0.35)';
+          ctx.lineWidth = 1.5; ctx.setLineDash(throughHole ? [] : [3,3]);
+          ctx.beginPath(); ctx.moveTo(x, 20); ctx.lineTo(x, throughHole ? H - 40 : bandY + bandH); ctx.stroke();
+        }
+        ctx.setLineDash([]);
+
+        obsTitle.textContent = 'Ozone Status';
+        obs.innerHTML = `<strong>CFC Level: ${Math.round(cfc*100)}%</strong><br>
+          • ${holes.length} of ${numSeg} ozone "patches" have been destroyed by chlorine released from CFCs.<br>
+          • Each chlorine atom can destroy roughly <strong>100,000 ozone molecules</strong> in a chain reaction.<br>
+          • ${cfc < 0.05 ? 'The intact ozone layer blocks nearly all harmful UV radiation from reaching the ground.' : 'Harmful UV radiation (red rays) now reaches the ground through the gaps — raising the risk of skin cancer and crop damage.'}<br>
+          • <strong>Montreal Protocol (1987):</strong> a global agreement to phase out CFCs — the real ozone layer is slowly recovering because of it.`;
+      }
+
+      const wasteItems = [
+        {name: 'Banana Peel', emoji: '🍌', bio: true},
+        {name: 'Plastic Bottle', emoji: '🧴', bio: false},
+        {name: 'Newspaper', emoji: '📰', bio: true},
+        {name: 'Glass Bottle', emoji: '🍾', bio: false},
+        {name: 'Cotton Cloth', emoji: '👕', bio: true},
+        {name: 'Polythene Bag', emoji: '🛍️', bio: false},
+        {name: 'Cattle Dung', emoji: '💩', bio: true},
+        {name: 'Aluminium Can', emoji: '🥫', bio: false},
+        {name: 'Apple Core', emoji: '🍎', bio: true},
+        {name: 'Styrofoam Cup', emoji: '🥤', bio: false},
+        {name: 'Wood', emoji: '🪵', bio: true},
+        {name: 'Rubber Tyre', emoji: '🛞', bio: false}
+      ];
+      const wasteShuffled = [...wasteItems].sort(() => Math.random() - 0.5);
+      let wasteIdx = 0;
+      const wasteScore = {correct: 0, total: 0};
+      let wasteFeedback = null;
+
+      function drawWaste() {
+        const W = canvas.width, H = canvas.height;
+        const item = wasteShuffled[wasteIdx % wasteShuffled.length];
+        const binY = H/2 + 20, binR = 70;
+
+        ctx.fillStyle = 'rgba(34,197,94,0.15)'; ctx.beginPath(); ctx.arc(120, binY, binR, 0, 2*Math.PI); ctx.fill();
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3; ctx.stroke();
+        ctx.font = '36px system-ui'; ctx.fillText('♻️', 100, binY + 12);
+        ctx.fillStyle = '#22c55e'; ctx.font = 'bold 12px system-ui'; ctx.fillText('Biodegradable', 62, binY + binR + 20);
+
+        ctx.fillStyle = 'rgba(239,68,68,0.15)'; ctx.beginPath(); ctx.arc(480, binY, binR, 0, 2*Math.PI); ctx.fill();
+        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3; ctx.stroke();
+        ctx.font = '36px system-ui'; ctx.fillText('🚯', 460, binY + 12);
+        ctx.fillStyle = '#ef4444'; ctx.font = 'bold 12px system-ui'; ctx.fillText('Non-Biodegradable', 398, binY + binR + 20);
+
+        ctx.font = '48px system-ui'; ctx.fillText(item.emoji, W/2 - 24, 90);
+        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 14px system-ui'; ctx.fillText(item.name, W/2 - (item.name.length*3.5), 120);
+        ctx.font = '11px system-ui'; ctx.fillStyle = 'var(--text-muted)'; ctx.fillText('Click a bin to sort this item', W/2 - 70, 145);
+
+        if (wasteFeedback) {
+          ctx.fillStyle = wasteFeedback.correct ? '#22c55e' : '#ef4444';
+          ctx.font = 'bold 16px system-ui';
+          ctx.fillText(wasteFeedback.correct ? '✓ Correct!' : '✗ Not quite!', W/2 - 45, 175);
+        }
+
+        wasteScoreDiv.textContent = `Score: ${wasteScore.correct} / ${wasteScore.total}`;
+        obsTitle.textContent = 'Waste Sorting';
+        obs.innerHTML = wasteFeedback
+          ? `<strong>${item.name}</strong> is <strong>${item.bio ? 'Biodegradable' : 'Non-Biodegradable'}</strong>.<br>${item.bio ? 'It can be broken down by bacteria and fungi — compost it or let it decompose naturally.' : 'It persists in the environment for decades and cannot be broken down by decomposers — reduce, reuse or recycle it instead.'}`
+          : `Look at the ${item.name} ${item.emoji} — is it biodegradable or not? Click the correct bin.`;
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mode = modeSel.value;
+        if (mode === 'foodweb') drawFoodWeb();
+        else if (mode === 'ozone') drawOzone();
+        else drawWaste();
+      }
+
       canvas.addEventListener('click', (e) => {
         const rect = canvas.getBoundingClientRect();
         const x = (e.clientX - rect.left) * (canvas.width / rect.width);
         const y = (e.clientY - rect.top) * (canvas.height / rect.height);
-        selected = organisms.findIndex(o => Math.hypot(x - o.x, y - o.y) < 25);
-        draw();
-        if (selected >= 0) {
-          const o = organisms[selected];
-          obs.innerHTML = `<strong>${o.emoji} ${o.name}:</strong><br>
-            • Trophic Level: <strong>${o.level}</strong> (${['Producer','Primary Consumer','Secondary Consumer','Tertiary Consumer'][o.level]})<br>
-            • Energy Available: <strong>${o.energy.toLocaleString()} J</strong><br>
-            • <strong>10% Rule:</strong> Only 10% of energy transfers to the next level.`;
+        const mode = modeSel.value;
+        if (mode === 'foodweb') {
+          selected = organisms.findIndex(o => Math.hypot(x - o.x, y - o.y) < 25);
+          draw();
+          if (selected >= 0) {
+            const o = organisms[selected];
+            obs.innerHTML = `<strong>${o.emoji} ${o.name}:</strong><br>
+              • Trophic Level: <strong>${o.level}</strong> (${['Producer','Primary Consumer','Secondary Consumer','Tertiary Consumer'][o.level]})<br>
+              • Energy Available: <strong>${o.energy.toLocaleString()} J</strong><br>
+              • <strong>10% Rule:</strong> Only 10% of energy transfers to the next level.`;
+          }
+        } else if (mode === 'waste') {
+          if (wasteFeedback) return;
+          const H = canvas.height;
+          const binY = H/2 + 20;
+          const distLeft = Math.hypot(x - 120, y - binY);
+          const distRight = Math.hypot(x - 480, y - binY);
+          if (distLeft < 70 || distRight < 70) {
+            const guessedBio = distLeft < 70;
+            const item = wasteShuffled[wasteIdx % wasteShuffled.length];
+            const correct = guessedBio === item.bio;
+            wasteScore.total++; if (correct) wasteScore.correct++;
+            wasteFeedback = {correct};
+            draw();
+            setTimeout(() => { wasteFeedback = null; wasteIdx++; draw(); }, 1200);
+          }
         }
       });
+
+      modeSel.addEventListener('change', () => {
+        const mode = modeSel.value;
+        ozoneControls.style.display = mode === 'ozone' ? 'block' : 'none';
+        wasteControls.style.display = mode === 'waste' ? 'block' : 'none';
+        hint.querySelector('span').textContent = mode === 'foodweb'
+          ? '💡 Click organisms to highlight their food chain and energy flow.'
+          : mode === 'ozone'
+          ? '💡 Drag the CFC slider and watch the ozone layer develop holes.'
+          : '💡 Click a bin to sort each item as biodegradable or not.';
+        obsTitle.textContent = mode === 'foodweb' ? 'Energy Flow' : mode === 'ozone' ? 'Ozone Status' : 'Waste Sorting';
+        draw();
+      });
+      cfcSlider.addEventListener('input', draw);
       draw();
     }
 
@@ -6992,6 +14031,25 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           if (progress > 0.5) { ctx.beginPath(); ctx.arc(W/2 + stretch, H/2, 8, 0, 2*Math.PI); ctx.fill(); }
           ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
           ctx.fillText('Amoeba - Binary Fission', W/2 - 60, 30);
+        } else if (type === 'plasmodium') {
+          // Multiple fission: one nucleus splits into many simultaneously, then each
+          // gets its own membrane — unlike binary fission's single even split.
+          const nucleusCount = 6;
+          ctx.strokeStyle = 'rgba(139, 92, 246, 0.6)'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(W/2, H/2, 60, 0, 2*Math.PI); ctx.stroke();
+          for (let i = 0; i < nucleusCount; i++) {
+            const ang = (i / nucleusCount) * 2 * Math.PI;
+            const dist = progress * 45;
+            const nx = W/2 + Math.cos(ang) * dist, ny = H/2 + Math.sin(ang) * dist;
+            ctx.fillStyle = '#1e293b';
+            ctx.beginPath(); ctx.arc(nx, ny, 6, 0, 2*Math.PI); ctx.fill();
+            if (progress > 0.6) {
+              ctx.strokeStyle = 'rgba(139, 92, 246, 0.8)'; ctx.lineWidth = 1.5;
+              ctx.beginPath(); ctx.arc(nx, ny, 14, 0, 2*Math.PI); ctx.stroke();
+            }
+          }
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillText('Plasmodium - Multiple Fission', W/2 - 75, 30);
         } else if (type === 'yeast') {
           // Budding
           ctx.fillStyle = 'rgba(251, 191, 36, 0.5)';
@@ -7005,7 +14063,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
           ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
           ctx.fillText('Yeast - Budding', W/2 - 40, 30);
-        } else {
+        } else if (type === 'spirogyra') {
           // Fragmentation
           const segments = 5;
           const gap = progress * 15;
@@ -7016,8 +14074,95 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
           ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
           ctx.fillText('Spirogyra - Fragmentation', W/2 - 60, 30);
+        } else if (type === 'planaria') {
+          // Regeneration: the worm is cut into two small pieces, each of which
+          // regrows (via specialised cells) into a complete, fully-tapered organism.
+          const gap = 20 + progress * 70;
+          const regrow = Math.max(0, (progress - 0.25) / 0.75); // 0 = just-cut stub, 1 = fully regrown
+          const bodyLen = 20 + regrow * 65, bodyH = 8 + regrow * 8;
+          ctx.fillStyle = 'rgba(244, 114, 182, 0.7)';
+          // Left piece — a tapered (ellipse) body that grows longer as it regenerates
+          ctx.beginPath(); ctx.ellipse(W/2 - gap/2 - bodyLen/2, H/2, bodyLen, bodyH, 0, 0, 2*Math.PI); ctx.fill();
+          // Right piece
+          ctx.beginPath(); ctx.ellipse(W/2 + gap/2 + bodyLen/2, H/2, bodyLen, bodyH, 0, 0, 2*Math.PI); ctx.fill();
+          // Eye-spots appear once each piece has regrown a head
+          if (regrow > 0.5) {
+            ctx.fillStyle = '#1e293b';
+            const leftHeadX = W/2 - gap/2 - bodyLen*1.3, rightHeadX = W/2 + gap/2 + bodyLen*1.3;
+            ctx.beginPath(); ctx.arc(leftHeadX, H/2 - 3, 2, 0, 2*Math.PI); ctx.fill();
+            ctx.beginPath(); ctx.arc(leftHeadX, H/2 + 3, 2, 0, 2*Math.PI); ctx.fill();
+            ctx.beginPath(); ctx.arc(rightHeadX, H/2 - 3, 2, 0, 2*Math.PI); ctx.fill();
+            ctx.beginPath(); ctx.arc(rightHeadX, H/2 + 3, 2, 0, 2*Math.PI); ctx.fill();
+          }
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillText('Planaria - Regeneration', W/2 - 65, 30);
+        } else if (type === 'potato') {
+          // Vegetative propagation: a potato piece carrying an "eye" (bud/notch)
+          // sprouts a new shoot and root, growing into an independent plant.
+          ctx.fillStyle = '#a16207';
+          ctx.beginPath(); ctx.ellipse(W/2, H/2 + 30, 55, 32, 0, 0, 2*Math.PI); ctx.fill();
+          ctx.fillStyle = '#78350f';
+          ctx.beginPath(); ctx.arc(W/2 - 10, H/2 + 15, 4, 0, 2*Math.PI); ctx.fill(); // the "eye"/bud
+          if (progress > 0.15) {
+            const shootLen = (progress - 0.15) / 0.85 * 90;
+            ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 6; ctx.lineCap = 'round';
+            ctx.beginPath(); ctx.moveTo(W/2 - 10, H/2 + 15); ctx.lineTo(W/2 - 10, H/2 + 15 - shootLen); ctx.stroke();
+            if (progress > 0.5) {
+              ctx.fillStyle = '#22c55e';
+              ctx.beginPath(); ctx.ellipse(W/2 - 24, H/2 + 15 - shootLen*0.7, 14, 6, 0.5, 0, 2*Math.PI); ctx.fill();
+              ctx.beginPath(); ctx.ellipse(W/2 + 4, H/2 + 15 - shootLen*0.7, 14, 6, -0.5, 0, 2*Math.PI); ctx.fill();
+            }
+            const rootLen = shootLen * 0.5;
+            ctx.strokeStyle = '#78350f'; ctx.lineWidth = 3;
+            ctx.beginPath(); ctx.moveTo(W/2 - 10, H/2 + 45); ctx.lineTo(W/2 - 10, H/2 + 45 + rootLen); ctx.stroke();
+          }
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillText('Potato - Vegetative Propagation', W/2 - 85, 30);
+        } else {
+          // Spore formation: hyphae bear a sporangium that swells with spores,
+          // then ruptures and scatters them onto a moist surface.
+          ctx.strokeStyle = '#a16207'; ctx.lineWidth = 3;
+          for (let i = -2; i <= 2; i++) {
+            ctx.beginPath(); ctx.moveTo(W/2 + i*18, H/2 + 60); ctx.lineTo(W/2 + i*10, H/2 - 20); ctx.stroke();
+          }
+          const sporangiumR = 14 + progress * 16;
+          const burst = Math.max(0, (progress - 0.75) / 0.25);
+          if (burst <= 0) {
+            ctx.fillStyle = 'rgba(180, 83, 9, 0.7)';
+            ctx.beginPath(); ctx.arc(W/2, H/2 - 30, sporangiumR, 0, 2*Math.PI); ctx.fill();
+            if (progress > 0.35) {
+              ctx.fillStyle = '#1e293b';
+              const dots = 8;
+              for (let i = 0; i < dots; i++) {
+                const ang = (i / dots) * 2 * Math.PI;
+                const r = sporangiumR * 0.55;
+                ctx.beginPath(); ctx.arc(W/2 + Math.cos(ang)*r, H/2 - 30 + Math.sin(ang)*r, 2, 0, 2*Math.PI); ctx.fill();
+              }
+            }
+          } else {
+            // Burst: spores scatter outward from the rupture point
+            ctx.fillStyle = '#1e293b';
+            const dots = 10;
+            for (let i = 0; i < dots; i++) {
+              const ang = (i / dots) * 2 * Math.PI;
+              const r = sporangiumR + burst * 40;
+              ctx.beginPath(); ctx.arc(W/2 + Math.cos(ang)*r, H/2 - 30 + Math.sin(ang)*r, 2, 0, 2*Math.PI); ctx.fill();
+            }
+          }
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillText('Rhizopus - Spore Formation', W/2 - 75, 30);
         }
-        const stage = progress < 0.3 ? 'Stage 1: Growth' : progress < 0.6 ? 'Stage 2: Division begins' : 'Stage 3: Separation complete';
+        const stageMap = {
+          amoeba: ['Stage 1: Growth', 'Stage 2: DNA/cell splits into two', 'Stage 3: Two independent Amoebae'],
+          plasmodium: ['Stage 1: Nucleus prepares to divide', 'Stage 2: Nucleus splits into many simultaneously', 'Stage 3: Each nucleus gets its own membrane'],
+          yeast: ['Stage 1: Growth', 'Stage 2: Bud outgrowth begins', 'Stage 3: Bud matures and detaches'],
+          spirogyra: ['Stage 1: Filament matures', 'Stage 2: Breaks at weak points', 'Stage 3: Fragments grow into new filaments'],
+          planaria: ['Stage 1: Body is cut into pieces', 'Stage 2: Specialised cells proliferate', 'Stage 3: Each piece regenerates a complete organism'],
+          potato: ['Stage 1: Potato piece with an eye (bud)', 'Stage 2: Shoot and root begin sprouting', 'Stage 3: Independent new plant established'],
+          rhizopus: ['Stage 1: Sporangium forms on hyphae', 'Stage 2: Spores develop inside', 'Stage 3: Sporangium ruptures, spores disperse']
+        };
+        const stages = stageMap[type] || stageMap.amoeba;
+        const stage = progress < 0.3 ? stages[0] : progress < 0.75 ? stages[1] : stages[2];
         obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong><br>• Progress: ${(progress*100).toFixed(0)}%<br>• ${stage}`;
       }
 
@@ -7356,7 +14501,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const btn1 = document.getElementById('btn-roll');
       const btn100 = document.getElementById('btn-roll-100');
       const obs = document.getElementById('prob-obs');
-      let results = {coin: {heads:0, tails:0}, dice: {1:0,2:0,3:0,4:0,5:0,6:0}};
+      let results = {coin: {heads:0, tails:0}, dice: {1:0,2:0,3:0,4:0,5:0,6:0}, card: {ace:0, other:0}};
 
       function draw() {
         const W = canvas.width, H = canvas.height;
@@ -7365,16 +14510,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         if (type === 'coin') {
           const total = results.coin.heads + results.coin.tails;
           const barW = 80, maxH = 200;
-          // Heads bar
           const hH = total > 0 ? (results.coin.heads / total) * maxH : 0;
           ctx.fillStyle = '#3b82f6'; ctx.fillRect(150, H - 40 - hH, barW, hH);
           ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 10px system-ui';
           ctx.fillText('Heads: ' + results.coin.heads, 155, H - 45 - hH);
-          // Tails bar
           const tH = total > 0 ? (results.coin.tails / total) * maxH : 0;
           ctx.fillStyle = '#ef4444'; ctx.fillRect(350, H - 40 - tH, barW, tH);
           ctx.fillText('Tails: ' + results.coin.tails, 355, H - 45 - tH);
-          // Theoretical line at 50%
           if (total > 0) {
             ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
             ctx.beginPath(); ctx.moveTo(130, H - 40 - maxH/2); ctx.lineTo(450, H - 40 - maxH/2); ctx.stroke();
@@ -7382,7 +14524,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
           ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
           ctx.fillText('Total Flips: ' + total, 220, 30);
-        } else {
+        } else if (type === 'dice') {
           const total = Object.values(results.dice).reduce((s,v)=>s+v, 0);
           const barW = 60, maxH = 180;
           for (let face = 1; face <= 6; face++) {
@@ -7400,6 +14542,24 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
           ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
           ctx.fillText('Total Rolls: ' + total, 230, 25);
+        } else {
+          const total = results.card.ace + results.card.other;
+          const barW = 100, maxH = 200;
+          const aH = total > 0 ? (results.card.ace / total) * maxH : 0;
+          ctx.fillStyle = '#f97316'; ctx.fillRect(150, H - 40 - aH, barW, aH);
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 10px system-ui';
+          ctx.fillText('Ace: ' + results.card.ace, 175, H - 45 - aH);
+          const oH = total > 0 ? (results.card.other / total) * maxH : 0;
+          ctx.fillStyle = '#64748b'; ctx.fillRect(350, H - 40 - oH, barW, oH);
+          ctx.fillText('Not Ace: ' + results.card.other, 355, H - 45 - oH);
+          if (total > 0) {
+            const theoY = H - 40 - maxH * (4/52);
+            ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
+            ctx.beginPath(); ctx.moveTo(130, theoY); ctx.lineTo(470, theoY); ctx.stroke();
+            ctx.setLineDash([]); ctx.fillStyle = '#22c55e'; ctx.font = '9px system-ui'; ctx.fillText('1/13 ≈ 7.7% (Theoretical, Ace bar)', 130, theoY - 8);
+          }
+          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
+          ctx.fillText('Total Draws: ' + total, 220, 30);
         }
       }
 
@@ -7408,26 +14568,36 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         for (let i = 0; i < n; i++) {
           if (type === 'coin') {
             Math.random() < 0.5 ? results.coin.heads++ : results.coin.tails++;
-          } else {
+          } else if (type === 'dice') {
             results.dice[Math.floor(Math.random()*6)+1]++;
+          } else {
+            const rank = Math.floor(Math.random()*13) + 1; // 1 = Ace .. 13 = King, well-shuffled deck of 52 (with replacement)
+            rank === 1 ? results.card.ace++ : results.card.other++;
           }
         }
         draw();
-        const total = type === 'coin' ? results.coin.heads + results.coin.tails : Object.values(results.dice).reduce((s,v)=>s+v,0);
         if (type === 'coin') {
+          const total = results.coin.heads + results.coin.tails;
           obs.innerHTML = `<strong>Coin Toss (${total} trials):</strong><br>
             • P(Heads) experimental = ${(results.coin.heads/total).toFixed(4)}<br>
             • P(Heads) theoretical = 0.5000<br>
             • ${total > 50 ? 'Notice how experimental approaches theoretical!' : 'Try more flips to see convergence.'}`;
-        } else {
+        } else if (type === 'dice') {
+          const total = Object.values(results.dice).reduce((s,v)=>s+v,0);
           obs.innerHTML = `<strong>Dice Roll (${total} trials):</strong><br>
             • P(each face) theoretical = 1/6 = 0.1667<br>
             • ${total > 100 ? 'Frequencies are converging to 1/6 each!' : 'Roll more to see the law of large numbers.'}`;
+        } else {
+          const total = results.card.ace + results.card.other;
+          obs.innerHTML = `<strong>Card Draw from a 52-card deck (${total} trials, drawn with replacement):</strong><br>
+            • P(Ace) experimental = ${(results.card.ace/total).toFixed(4)}<br>
+            • P(Ace) theoretical = 4/52 = 1/13 ≈ 0.0769<br>
+            • ${total > 200 ? 'Frequencies are converging to 1/13!' : 'Draw more cards to see the convergence — rare events need more trials.'}`;
         }
       }
       btn1.addEventListener('click', () => doTrial(1));
       btn100.addEventListener('click', () => doTrial(100));
-      sel.addEventListener('change', () => { results = {coin:{heads:0,tails:0}, dice:{1:0,2:0,3:0,4:0,5:0,6:0}}; draw(); });
+      sel.addEventListener('change', () => { results = {coin:{heads:0,tails:0}, dice:{1:0,2:0,3:0,4:0,5:0,6:0}, card:{ace:0,other:0}}; draw(); });
       draw();
     }
 
@@ -7677,7 +14847,9 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const ctx = canvas.getContext('2d');
       const sel = document.getElementById('sel-stats-data');
       const btn = document.getElementById('btn-plot-stats');
+      const ogiveBtn = document.getElementById('btn-toggle-ogive');
       const obs = document.getElementById('stats-obs');
+      let showOgive = false;
 
       const datasets = {
         marks: {classes: ['0-10','10-20','20-30','30-40','40-50'], freq: [5, 8, 15, 16, 6]},
@@ -7685,7 +14857,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         height: {classes: ['140-150','150-160','160-170','170-180','180-190'], freq: [3, 10, 22, 12, 3]}
       };
 
-      function draw() {
+      function drawHistogram() {
         const data = datasets[sel.value];
         const W = canvas.width, H = canvas.height;
         ctx.clearRect(0, 0, W, H);
@@ -7693,7 +14865,6 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const barW = (W - 120) / n;
         const maxF = Math.max(...data.freq);
         const totalF = data.freq.reduce((s,v)=>s+v, 0);
-        // Bars
         data.freq.forEach((f, i) => {
           const h = (f / maxF) * 230;
           const x = 60 + i * barW;
@@ -7703,32 +14874,91 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillText(f, x + barW/2 - 5, 265 - h);
           ctx.font = '8px system-ui'; ctx.fillText(data.classes[i], x, 285);
         });
-        // Mean
         let sumFX = 0;
         data.freq.forEach((f, i) => {
           const mid = parseFloat(data.classes[i].split('-')[0]) + 5;
           sumFX += f * mid;
         });
         const mean = sumFX / totalF;
-        // Mode (class with highest freq)
         const modeIdx = data.freq.indexOf(maxF);
         const modeClass = data.classes[modeIdx];
-        // Median
         let cumF = 0, medianClass = '';
         for (let i = 0; i < n; i++) { cumF += data.freq[i]; if (cumF >= totalF/2) { medianClass = data.classes[i]; break; } }
-        // Mean line
         const meanX = 60 + ((mean - parseFloat(data.classes[0].split('-')[0])) / (parseFloat(data.classes[n-1].split('-')[1]) - parseFloat(data.classes[0].split('-')[0]))) * (barW * n);
         ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2; ctx.setLineDash([4,2]);
         ctx.beginPath(); ctx.moveTo(meanX, 40); ctx.lineTo(meanX, 270); ctx.stroke();
         ctx.setLineDash([]); ctx.fillStyle = '#ef4444'; ctx.font = 'bold 9px system-ui';
         ctx.fillText('Mean=' + mean.toFixed(1), meanX - 15, 30);
         obs.innerHTML = `<strong>Central Tendencies:</strong><br>
-          • <span style="color:#ef4444">Mean</span> = \u03A3(f\u00D7x) / \u03A3f = <strong>${mean.toFixed(2)}</strong><br>
+          • <span style="color:#ef4444">Mean</span> = Σ(f×x) / Σf = <strong>${mean.toFixed(2)}</strong><br>
           • <span style="color:#22c55e">Mode Class</span> = <strong>${modeClass}</strong> (frequency = ${maxF})<br>
           • <span style="color:#3b82f6">Median Class</span> = <strong>${medianClass}</strong><br>
           • Total frequency: ${totalF}`;
       }
-      btn.addEventListener('click', draw);
+
+      function drawOgive() {
+        const data = datasets[sel.value];
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = data.classes.length;
+        const bounds = data.classes.map(c => c.split('-').map(Number));
+        const h = bounds[0][1] - bounds[0][0];
+        const totalF = data.freq.reduce((s,v)=>s+v, 0);
+        // cumulative frequency ("less than" type) at each upper boundary
+        let cum = 0;
+        const points = [{x: bounds[0][0], y: 0}];
+        for (let i = 0; i < n; i++) {
+          cum += data.freq[i];
+          points.push({x: bounds[i][1], y: cum});
+        }
+        const x0 = bounds[0][0], x1 = bounds[n-1][1];
+        const plotX = v => 60 + ((v - x0) / (x1 - x0)) * (W - 120);
+        const plotY = v => 270 - (v / totalF) * 220;
+        // axes
+        ctx.strokeStyle = 'var(--text-muted, #94a3b8)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(60, 40); ctx.lineTo(60, 270); ctx.lineTo(W - 40, 270); ctx.stroke();
+        ctx.font = '8px system-ui'; ctx.fillStyle = 'var(--text-normal)';
+        points.forEach(p => ctx.fillText(p.x, plotX(p.x) - 8, 285));
+        // ogive curve
+        ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        points.forEach((p, i) => { const px = plotX(p.x), py = plotY(p.y); i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py); });
+        ctx.stroke();
+        points.forEach(p => { ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(plotX(p.x), plotY(p.y), 3, 0, 2*Math.PI); ctx.fill(); });
+
+        // median class via cumulative frequency >= n/2
+        const half = totalF / 2;
+        let cf = 0, l = bounds[0][0], f = 0;
+        for (let i = 0; i < n; i++) {
+          if (cf + data.freq[i] >= half) { l = bounds[i][0]; f = data.freq[i]; break; }
+          cf += data.freq[i];
+        }
+        const median = l + ((half - cf) / f) * h;
+
+        // dashed guide lines at (median, half)
+        const my = plotY(half), mx = plotX(median);
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5; ctx.setLineDash([4,3]);
+        ctx.beginPath(); ctx.moveTo(60, my); ctx.lineTo(mx, my); ctx.lineTo(mx, 270); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#f59e0b'; ctx.font = 'bold 9px system-ui';
+        ctx.fillText('n/2 = ' + half.toFixed(1), 65, my - 5);
+        ctx.fillText('Median ' + median.toFixed(1), mx - 25, 282 + 10);
+
+        obs.innerHTML = `<strong>Ogive (Cumulative Frequency Curve):</strong><br>
+          • n = ${totalF}, so n/2 = <strong>${half.toFixed(1)}</strong><br>
+          • Median class (cf just ≥ n/2): <strong>${l}-${l + h}</strong>, cf before = ${cf}, f = ${f}<br>
+          • Median = l + [(n/2 − cf) / f] × h = ${l} + [(${half.toFixed(1)} − ${cf}) / ${f}] × ${h}<br>
+          • <strong>Median ≈ ${median.toFixed(2)}</strong> (matches where the dashed line meets the curve)`;
+      }
+
+      function draw() { showOgive ? drawOgive() : drawHistogram(); }
+
+      btn.addEventListener('click', () => { showOgive = false; draw(); });
+      ogiveBtn.addEventListener('click', () => {
+        showOgive = !showOgive;
+        ogiveBtn.textContent = showOgive ? 'Show Histogram 📊' : 'Show Ogive (Cumulative Frequency) 📈';
+        draw();
+      });
       sel.addEventListener('change', draw);
       draw();
     }
@@ -7737,62 +14967,317 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('heightdist-canvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
+      const modeSel = document.getElementById('hd-mode');
       const distSlider = document.getElementById('hd-dist');
       const angleSlider = document.getElementById('hd-angle');
       const distLabel = document.getElementById('hd-dist-val');
       const angleLabel = document.getElementById('hd-angle-val');
+      const distLabelHeader = document.getElementById('hd-dist-label');
+      const angleLabelHeader = document.getElementById('hd-angle-label');
       const obs = document.getElementById('hd-obs');
 
       function draw() {
         const W = canvas.width, H = canvas.height;
+        const mode = modeSel.value;
         const d = parseInt(distSlider.value);
         const theta = parseInt(angleSlider.value);
         distLabel.textContent = 'd = ' + d + ' m';
-        angleLabel.textContent = '\u03B8 = ' + theta + '°';
+        angleLabel.textContent = 'θ = ' + theta + '°';
+        angleLabelHeader.textContent = mode === 'depression' ? 'Angle of Depression (°)' : 'Angle of Elevation (°)';
+        distLabelHeader.textContent = mode === 'depression' ? 'Horizontal distance to object (m)' : 'Distance from base (m)';
         ctx.clearRect(0, 0, W, H);
         const height = d * Math.tan(theta * Math.PI / 180);
         // Ground
         ctx.fillStyle = '#22c55e'; ctx.fillRect(0, H - 40, W, 40);
-        // Building
-        const bx = 420, bw = 50;
-        const maxBH = 220;
-        const bh = Math.min(maxBH, height * 2);
-        ctx.fillStyle = '#94a3b8'; ctx.fillRect(bx, H - 40 - bh, bw, bh);
-        // Windows
-        for (let row = 0; row < Math.floor(bh/30); row++) {
-          for (let col = 0; col < 2; col++) {
-            ctx.fillStyle = '#fbbf24'; ctx.fillRect(bx + 10 + col*20, H - 60 - row*30, 12, 15);
+
+        if (mode === 'elevation') {
+          const bx = 420, bw = 50;
+          const maxBH = 220;
+          const bh = Math.min(maxBH, height * 2);
+          ctx.fillStyle = '#94a3b8'; ctx.fillRect(bx, H - 40 - bh, bw, bh);
+          for (let row = 0; row < Math.floor(bh/30); row++) {
+            for (let col = 0; col < 2; col++) {
+              ctx.fillStyle = '#fbbf24'; ctx.fillRect(bx + 10 + col*20, H - 60 - row*30, 12, 15);
+            }
           }
+          ctx.fillStyle = '#1e293b'; ctx.font = '24px system-ui'; ctx.fillText('🧍', 80, H - 42);
+          ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2; ctx.setLineDash([6,4]);
+          ctx.beginPath(); ctx.moveTo(100, H - 50); ctx.lineTo(bx, H - 40 - bh); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(100, H - 35); ctx.lineTo(bx, H - 35); ctx.stroke();
+          ctx.fillStyle = '#3b82f6'; ctx.font = 'bold 10px system-ui';
+          ctx.fillText(d + ' m', 250, H - 20);
+          ctx.fillStyle = '#ef4444'; ctx.font = 'bold 10px system-ui';
+          ctx.fillText('h = ' + height.toFixed(1) + ' m', bx + 55, H - 40 - bh/2);
+          ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(100, H - 50, 30, -theta*Math.PI/180, 0); ctx.stroke();
+          ctx.fillStyle = '#f59e0b'; ctx.font = '10px system-ui'; ctx.fillText(theta + '°', 135, H - 55);
+        } else {
+          const towerX = 100, towerW = 40;
+          const maxTH = 220;
+          const towerH = Math.min(maxTH, height * 2);
+          const eyeY = H - 40 - towerH;
+          ctx.fillStyle = '#94a3b8'; ctx.fillRect(towerX, eyeY, towerW, towerH);
+          ctx.fillStyle = '#1e293b'; ctx.font = '20px system-ui'; ctx.fillText('🧍', towerX + towerW/2 - 10, eyeY + 6);
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5; ctx.setLineDash([4,4]);
+          ctx.beginPath(); ctx.moveTo(towerX, eyeY); ctx.lineTo(W - 60, eyeY); ctx.stroke();
+          ctx.setLineDash([]);
+          const objX = towerX + Math.min(d * 3, W - towerX - 100);
+          ctx.fillStyle = '#ef4444'; ctx.font = '22px system-ui'; ctx.fillText('📍', objX, H - 44);
+          ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2; ctx.setLineDash([6,4]);
+          ctx.beginPath(); ctx.moveTo(towerX + towerW/2, eyeY); ctx.lineTo(objX + 8, H - 40); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(towerX - 15, eyeY); ctx.lineTo(towerX - 15, H - 40); ctx.stroke();
+          ctx.fillStyle = '#3b82f6'; ctx.font = 'bold 10px system-ui';
+          ctx.fillText('h = ' + height.toFixed(1) + ' m', towerX - 65, (eyeY + H - 40)/2);
+          ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 10px system-ui';
+          ctx.fillText(d + ' m', (towerX + objX)/2, H - 20);
+          ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(towerX + towerW/2, eyeY, 30, 0, theta*Math.PI/180); ctx.stroke();
+          ctx.fillStyle = '#f59e0b'; ctx.font = '10px system-ui'; ctx.fillText(theta + '°', towerX + towerW/2 + 35, eyeY + 20);
         }
-        // Observer
-        ctx.fillStyle = '#1e293b'; ctx.font = '24px system-ui'; ctx.fillText('\ud83e\uddcd', 80, H - 42);
-        // Line of sight
-        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2; ctx.setLineDash([6,4]);
-        ctx.beginPath(); ctx.moveTo(100, H - 50); ctx.lineTo(bx, H - 40 - bh); ctx.stroke();
-        ctx.setLineDash([]);
-        // Ground distance
-        ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.moveTo(100, H - 35); ctx.lineTo(bx, H - 35); ctx.stroke();
-        ctx.fillStyle = '#3b82f6'; ctx.font = 'bold 10px system-ui';
-        ctx.fillText(d + ' m', 250, H - 20);
-        // Height label
-        ctx.fillStyle = '#ef4444'; ctx.font = 'bold 10px system-ui';
-        ctx.fillText('h = ' + height.toFixed(1) + ' m', bx + 55, H - 40 - bh/2);
-        // Angle arc
-        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.arc(100, H - 50, 30, -theta*Math.PI/180, 0); ctx.stroke();
-        ctx.fillStyle = '#f59e0b'; ctx.font = '10px system-ui'; ctx.fillText(theta + '°', 135, H - 55);
-        obs.innerHTML = `<strong>Height Calculation:</strong><br>
-          • Distance from base: <strong>${d} m</strong><br>
-          • Angle of elevation: <strong>${theta}°</strong><br>
-          • h = d \u00D7 tan(\u03B8) = ${d} \u00D7 tan(${theta}°) = ${d} \u00D7 ${Math.tan(theta*Math.PI/180).toFixed(4)}<br>
-          • <strong>Height = ${height.toFixed(2)} m</strong>`;
+
+        if (mode === 'elevation') {
+          obs.innerHTML = '<strong>Height Calculation (Angle of Elevation):</strong><br>' +
+            '• Distance from base: <strong>' + d + ' m</strong><br>' +
+            '• Angle of elevation: <strong>' + theta + '°</strong><br>' +
+            '• h = d × tan(θ) = ' + d + ' × tan(' + theta + '°) = ' + d + ' × ' + Math.tan(theta*Math.PI/180).toFixed(4) + '<br>' +
+            '• <strong>Height = ' + height.toFixed(2) + ' m</strong>';
+        } else {
+          obs.innerHTML = '<strong>Height Calculation (Angle of Depression):</strong><br>' +
+            '• Horizontal distance to object: <strong>' + d + ' m</strong><br>' +
+            '• Angle of depression: <strong>' + theta + '°</strong> (alternate angle to the angle of elevation from the object, since the horizontal line and the ground are parallel)<br>' +
+            '• h = d × tan(θ) = ' + d + ' × tan(' + theta + '°) = ' + d + ' × ' + Math.tan(theta*Math.PI/180).toFixed(4) + '<br>' +
+            '• <strong>Tower height = ' + height.toFixed(2) + ' m</strong>';
+        }
       }
+      modeSel.addEventListener('change', draw);
       distSlider.addEventListener('input', draw);
       angleSlider.addEventListener('input', draw);
       draw();
     }
 
+    function initSolidsLab() {
+      const canvas = document.getElementById('solids-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const shapeSel = document.getElementById('sel-solid-shape');
+      const rSlider = document.getElementById('solid-r');
+      const h1Slider = document.getElementById('solid-h1');
+      const h2Slider = document.getElementById('solid-h2');
+      const rLabel = document.getElementById('solid-r-label');
+      const rVal = document.getElementById('solid-r-val');
+      const h1Label = document.getElementById('solid-h1-label');
+      const h1Val = document.getElementById('solid-h1-val');
+      const h2Row = document.getElementById('solid-h2-row');
+      const h2Val = document.getElementById('solid-h2-val');
+      const obs = document.getElementById('solid-obs');
+      const PI = Math.PI;
+
+      function updateLabels() {
+        const shape = shapeSel.value;
+        if (shape === 'toy') {
+          rLabel.textContent = 'Radius (r)'; h1Label.textContent = 'Cone Height (h)';
+          h2Row.style.display = 'none';
+        } else if (shape === 'capsule') {
+          rLabel.textContent = 'Radius (r)'; h1Label.textContent = 'Cylinder Length (h)';
+          h2Row.style.display = 'none';
+        } else if (shape === 'tent') {
+          rLabel.textContent = 'Radius (r)'; h1Label.textContent = 'Cylinder Height (h₁)';
+          h2Row.style.display = 'block';
+        } else if (shape === 'block') {
+          rLabel.textContent = 'Cube Edge (a)'; h1Label.textContent = 'Hemisphere Radius';
+          h2Row.style.display = 'none';
+        }
+      }
+
+      function clampScale(s) { return Math.max(8, Math.min(s, 45)); }
+
+      function draw() {
+        updateLabels();
+        const W = canvas.width, H = canvas.height;
+        const shape = shapeSel.value;
+        const r = parseFloat(rSlider.value);
+        const h1 = parseFloat(h1Slider.value);
+        const h2 = parseFloat(h2Slider.value);
+        rVal.textContent = (shape === 'block' ? 'a = ' : 'r = ') + r;
+        h1Val.textContent = (shape === 'block' ? 'radius = ' : (shape === 'tent' ? 'h₁ = ' : 'h = ')) + h1;
+        h2Val.textContent = 'h₂ = ' + h2;
+        ctx.clearRect(0, 0, W, H);
+        const groundY = H - 40;
+        const cx = W / 2;
+        let tsa = 0, vol = 0, obsHtml = '';
+
+        if (shape === 'toy') {
+          const scale = clampScale(Math.min((H - 80) / (h1 + r), (W - 160) / (2 * r)));
+          const Rpx = r * scale, Hpx = h1 * scale;
+          ctx.fillStyle = 'rgba(59,130,246,0.35)'; ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(cx, groundY, Rpx, 0, PI); ctx.closePath(); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = 'rgba(249,115,22,0.35)'; ctx.strokeStyle = '#f97316';
+          ctx.beginPath(); ctx.moveTo(cx - Rpx, groundY); ctx.lineTo(cx, groundY - Hpx); ctx.lineTo(cx + Rpx, groundY); ctx.closePath(); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = '#64748b'; ctx.font = 'bold 11px system-ui';
+          ctx.fillText('r = ' + r, cx + Rpx + 6, groundY - 4);
+          ctx.fillText('h = ' + h1, cx + 8, groundY - Hpx / 2);
+
+          const l = Math.sqrt(r * r + h1 * h1);
+          const csaHemi = 2 * PI * r * r;
+          const csaCone = PI * r * l;
+          tsa = csaHemi + csaCone;
+          vol = (1 / 3) * PI * r * r * h1 + (2 / 3) * PI * r * r * r;
+          obsHtml = `<strong>Cone + Hemisphere (r = ${r}, h = ${h1}):</strong><br>
+            • Slant height l = √(r² + h²) = <strong>${l.toFixed(2)}</strong><br>
+            • <span style="color:#3b82f6">CSA of hemisphere</span> = 2πr² = <strong>${csaHemi.toFixed(2)}</strong><br>
+            • <span style="color:#f97316">CSA of cone</span> = πrl = <strong>${csaCone.toFixed(2)}</strong><br>
+            • Total Surface Area = <strong>${tsa.toFixed(2)}</strong> sq units<br>
+            • Volume = ⅓πr²h + ⅔πr³ = <strong>${vol.toFixed(2)}</strong> cubic units`;
+
+        } else if (shape === 'capsule') {
+          const scale = clampScale(Math.min((H - 140) / (2 * r), (W - 160) / (h1 + 2 * r)));
+          const Rpx = r * scale, Lpx = h1 * scale;
+          const cy = H / 2 + 10;
+          ctx.fillStyle = 'rgba(34,197,94,0.3)'; ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2;
+          ctx.fillRect(cx - Lpx / 2, cy - Rpx, Lpx, 2 * Rpx); ctx.strokeRect(cx - Lpx / 2, cy - Rpx, Lpx, 2 * Rpx);
+          ctx.beginPath(); ctx.arc(cx - Lpx / 2, cy, Rpx, PI / 2, 3 * PI / 2); ctx.closePath(); ctx.fill(); ctx.stroke();
+          ctx.beginPath(); ctx.arc(cx + Lpx / 2, cy, Rpx, -PI / 2, PI / 2); ctx.closePath(); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = '#64748b'; ctx.font = 'bold 11px system-ui';
+          ctx.fillText('h = ' + h1, cx - 12, cy - Rpx - 10);
+          ctx.fillText('r = ' + r, cx + Lpx / 2 + Rpx + 4, cy);
+
+          const csaCyl = 2 * PI * r * h1;
+          const csaHemis = 4 * PI * r * r;
+          tsa = csaCyl + csaHemis;
+          vol = PI * r * r * h1 + (4 / 3) * PI * r * r * r;
+          obsHtml = `<strong>Cylinder + 2 Hemispheres (r = ${r}, h = ${h1}):</strong><br>
+            • <span style="color:#22c55e">CSA of cylinder</span> = 2πrh = <strong>${csaCyl.toFixed(2)}</strong><br>
+            • CSA of 2 hemispheres = 2×2πr² = <strong>${csaHemis.toFixed(2)}</strong><br>
+            • Total Surface Area = <strong>${tsa.toFixed(2)}</strong> sq units<br>
+            • Volume = πr²h + (4/3)πr³ = <strong>${vol.toFixed(2)}</strong> cubic units`;
+
+        } else if (shape === 'tent') {
+          const scale = clampScale(Math.min((H - 80) / (h1 + h2), (W - 160) / (2 * r)));
+          const Rpx = r * scale, H1px = h1 * scale, H2px = h2 * scale;
+          ctx.fillStyle = 'rgba(168,85,247,0.3)'; ctx.strokeStyle = '#a855f7'; ctx.lineWidth = 2;
+          ctx.fillRect(cx - Rpx, groundY - H1px, 2 * Rpx, H1px); ctx.strokeRect(cx - Rpx, groundY - H1px, 2 * Rpx, H1px);
+          ctx.fillStyle = 'rgba(249,115,22,0.35)'; ctx.strokeStyle = '#f97316';
+          ctx.beginPath(); ctx.moveTo(cx - Rpx, groundY - H1px); ctx.lineTo(cx, groundY - H1px - H2px); ctx.lineTo(cx + Rpx, groundY - H1px); ctx.closePath(); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = '#64748b'; ctx.font = 'bold 11px system-ui';
+          ctx.fillText('r = ' + r, cx + Rpx + 6, groundY - 4);
+          ctx.fillText('h₁ = ' + h1, cx + Rpx + 6, groundY - H1px / 2);
+          ctx.fillText('h₂ = ' + h2, cx + 8, groundY - H1px - H2px / 2);
+
+          const l = Math.sqrt(r * r + h2 * h2);
+          const csaCyl = 2 * PI * r * h1;
+          const csaCone = PI * r * l;
+          tsa = csaCyl + csaCone;
+          vol = PI * r * r * h1 + (1 / 3) * PI * r * r * h2;
+          obsHtml = `<strong>Cylinder + Cone (r = ${r}, h₁ = ${h1}, h₂ = ${h2}):</strong><br>
+            • Slant height of cone l = √(r² + h₂²) = <strong>${l.toFixed(2)}</strong><br>
+            • <span style="color:#a855f7">CSA of cylinder</span> = 2πrh₁ = <strong>${csaCyl.toFixed(2)}</strong><br>
+            • <span style="color:#f97316">CSA of cone</span> = πrl = <strong>${csaCone.toFixed(2)}</strong><br>
+            • Canvas area (open base, like a tent) = <strong>${tsa.toFixed(2)}</strong> sq units<br>
+            • Volume = πr²h₁ + ⅓πr²h₂ = <strong>${vol.toFixed(2)}</strong> cubic units`;
+
+        } else { // block
+          const hr = Math.min(h1, r / 2);
+          const scale = clampScale(Math.min((H - 80) / (r + hr), (W - 160) / r));
+          const Apx = r * scale, HRpx = hr * scale;
+          ctx.fillStyle = 'rgba(234,179,8,0.3)'; ctx.strokeStyle = '#eab308'; ctx.lineWidth = 2;
+          ctx.fillRect(cx - Apx / 2, groundY - Apx, Apx, Apx); ctx.strokeRect(cx - Apx / 2, groundY - Apx, Apx, Apx);
+          ctx.fillStyle = 'rgba(59,130,246,0.35)'; ctx.strokeStyle = '#3b82f6';
+          ctx.beginPath(); ctx.arc(cx, groundY - Apx, HRpx, PI, 2 * PI); ctx.closePath(); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = '#64748b'; ctx.font = 'bold 11px system-ui';
+          ctx.fillText('a = ' + r, cx + Apx / 2 + 6, groundY - 4);
+          if (h1 > r / 2) {
+            ctx.fillStyle = '#ef4444'; ctx.font = '10px system-ui';
+            ctx.fillText('(clamped to a/2 = ' + (r/2).toFixed(2) + ')', cx - Apx/2, groundY - Apx - HRpx - 10);
+          }
+
+          tsa = 6 * r * r + PI * hr * hr;
+          vol = r * r * r + (2 / 3) * PI * hr * hr * hr;
+          obsHtml = `<strong>Cube + Hemisphere (edge a = ${r}, hemisphere radius = ${hr.toFixed(2)}):</strong><br>
+            • TSA of cube alone = 6a² = <strong>${(6 * r * r).toFixed(2)}</strong><br>
+            • Surface Area = TSA(cube) − πr² (base circle removed) + 2πr² (curved surface added) = 6a² + πr² = <strong>${tsa.toFixed(2)}</strong> sq units<br>
+            • Volume = a³ + ⅔πr³ = <strong>${vol.toFixed(2)}</strong> cubic units`;
+        }
+
+        ctx.strokeStyle = 'rgba(148,163,184,0.5)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(20, groundY); ctx.lineTo(W - 20, groundY); ctx.stroke();
+
+        obs.innerHTML = obsHtml;
+      }
+
+      shapeSel.addEventListener('change', draw);
+      rSlider.addEventListener('input', draw);
+      h1Slider.addEventListener('input', draw);
+      h2Slider.addEventListener('input', draw);
+      draw();
+    }
+
+    function initTriangleLab() {
+      const canvas = document.getElementById('triangle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const tSlider = document.getElementById('tri-t');
+      const tLabel = document.getElementById('tri-t-val');
+      const obs = document.getElementById('tri-obs');
+
+      const A = { x: 300, y: 50 };
+      const B = { x: 110, y: 300 };
+      const C = { x: 500, y: 300 };
+      const AB_LEN = 10, AC_LEN = 8, BC_LEN = 9;
+
+      function lerp(P, Q, t) { return { x: P.x + (Q.x - P.x) * t, y: P.y + (Q.y - P.y) * t }; }
+
+      function dot(P, label, color, dx, dy) {
+        ctx.fillStyle = color;
+        ctx.beginPath(); ctx.arc(P.x, P.y, 5, 0, 2 * Math.PI); ctx.fill();
+        ctx.fillStyle = '#1e293b'; ctx.font = 'bold 13px system-ui';
+        ctx.fillText(label, P.x + dx, P.y + dy);
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        const t = parseInt(tSlider.value) / 100;
+        tLabel.textContent = `AD : DB = ${t.toFixed(2)} : ${(1 - t).toFixed(2)}`;
+        ctx.clearRect(0, 0, W, H);
+
+        const D = lerp(A, B, t);
+        const E = lerp(A, C, t);
+
+        ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.lineTo(C.x, C.y); ctx.closePath(); ctx.stroke();
+
+        ctx.fillStyle = 'rgba(249, 115, 22, 0.25)';
+        ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(D.x, D.y); ctx.lineTo(E.x, E.y); ctx.closePath(); ctx.fill();
+
+        ctx.strokeStyle = '#f97316'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(D.x, D.y); ctx.lineTo(E.x, E.y); ctx.stroke();
+
+        dot(A, 'A', '#3b82f6', -6, -12);
+        dot(B, 'B', '#3b82f6', -16, 20);
+        dot(C, 'C', '#3b82f6', 8, 20);
+        dot(D, 'D', '#f97316', -20, 4);
+        dot(E, 'E', '#f97316', 10, 4);
+
+        const AD = t * AB_LEN, DB = (1 - t) * AB_LEN;
+        const AE = t * AC_LEN, EC = (1 - t) * AC_LEN;
+        const DE = t * BC_LEN;
+        const areaRatio = t * t;
+
+        obs.innerHTML = `<strong>Since DE is drawn parallel to BC:</strong><br>
+          • AD = ${AD.toFixed(2)} cm, DB = ${DB.toFixed(2)} cm → AD/DB = <strong>${(AD / DB).toFixed(2)}</strong><br>
+          • AE = ${AE.toFixed(2)} cm, EC = ${EC.toFixed(2)} cm → AE/EC = <strong>${(AE / EC).toFixed(2)}</strong><br>
+          • <span style="color:#f97316">Basic Proportionality Theorem verified:</span> AD/DB = AE/EC ✓<br>
+          • By AA similarity (∠A common, ∠ADE = ∠ABC as DE∥BC), <strong>△ADE ~ △ABC</strong><br>
+          • DE/BC = AD/AB = <strong>${t.toFixed(2)}</strong>, so DE ≈ <strong>${DE.toFixed(2)} cm</strong><br>
+          • Area(△ADE) / Area(△ABC) = (AD/AB)² = <strong>${areaRatio.toFixed(2)}</strong>`;
+      }
+
+      tSlider.addEventListener('input', draw);
+      draw();
+    }
 
     function initInlineLabs() {
       initMetalReactivityLab();

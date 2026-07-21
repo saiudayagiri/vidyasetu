@@ -38,7 +38,16 @@ export function parseHash() {
           params: { classId, subjectId, topicId }
         };
       }
-      
+
+      // e.g., #/class/10/subject/science/chapter/10s-1/textbook
+      if (segments[4] === 'chapter' && segments[5] && segments[6] === 'textbook') {
+        const chapterId = segments[5];
+        return {
+          route: 'chapter-textbook',
+          params: { classId, subjectId, chapterId }
+        };
+      }
+
       return {
         route: 'subject-detail',
         params: { classId, subjectId }
