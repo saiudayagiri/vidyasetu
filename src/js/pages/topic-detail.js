@@ -1,5 +1,25 @@
 import { curriculumData } from '../data.js';
 
+// Lab canvases always sit on a hardcoded dark surface (.sim-canvas-wrapper canvas,
+// see style.css) regardless of the site's light/dark theme, so canvas drawing colors
+// must be fixed for a dark background rather than following the theme CSS variables
+// (which flip to dark text/colors in light theme and would be invisible here).
+const CANVAS_COLORS = {
+  '--text-normal': '#e2e8f0',
+  '--text-main': '#e2e8f0',
+  '--text-muted': '#94a3b8',
+  '--text-light': '#64748b',
+  '--accent-color': '#10b981',
+  '--secondary-color': '#60a5fa',
+  '--secondary-hover': '#93c5fd',
+  '--border-color': '#334155',
+  '--bg-primary': '#1e293b',
+};
+
+function cssVar(name, fallback) {
+  return CANVAS_COLORS[name] || fallback || '#e2e8f0';
+}
+
 function parseMarkdown(text) {
   if (!text) return '';
 
@@ -1163,6 +1183,161 @@ function getInlineLabHtml(type) {
           <div class="sim-calculator">
             <h3>Corresponding Angles</h3>
             <div id="transversal-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a setup to compare the corresponding angles.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const paritySumLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="parity-sum-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose how many even and odd numbers to add, then see the resulting parity.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Numbers to Add</h3>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Number of even numbers</label>
+              <select id="sel-parity-evens" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[0,1,2,3,4,5,6].map(n => `<option value="${n}"${n===2?' selected':''}>${n}</option>`).join('')}
+              </select>
+            </div>
+            <div style="margin-bottom:0.5rem;">
+              <label style="font-size:0.85rem;color:var(--text-muted);">Number of odd numbers</label>
+              <select id="sel-parity-odds" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                ${[0,1,2,3,4,5,6].map(n => `<option value="${n}"${n===3?' selected':''}>${n}</option>`).join('')}
+              </select>
+            </div>
+          </div>
+          <div class="sim-calculator">
+            <h3>Resulting Parity</h3>
+            <div id="parity-sum-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose how many even and odd numbers to add.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const magicSquareBuilderLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="magic-square-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a centre number and see the generalised magic square build itself.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Centre Number (m)</h3>
+            <select id="sel-magic-centre" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[5,10,15,20,25,30,40,50].map(n => `<option value="${n}"${n===5?' selected':''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Magic Sum</h3>
+            <div id="magic-square-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a centre number to build the square.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const triangleInequalityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="triangle-inequality-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick three sidelengths and see if a triangle can be constructed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Three Sidelengths (cm)</h3>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Side a</label>
+            <select id="sel-tri-a" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[2,3,4,5,6,7,8,9,10].map(n => `<option value="${n}"${n===4?' selected':''}>${n} cm</option>`).join('')}
+            </select>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Side b</label>
+            <select id="sel-tri-b" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[2,3,4,5,6,7,8,9,10].map(n => `<option value="${n}"${n===5?' selected':''}>${n} cm</option>`).join('')}
+            </select>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Side c</label>
+            <select id="sel-tri-c" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[2,3,4,5,6,7,8,9,10].map(n => `<option value="${n}"${n===6?' selected':''}>${n} cm</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Triangle Inequality Check</h3>
+            <div id="tri-inequality-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose three sidelengths above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const angleSumPropertyLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="angle-sum-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick angles B and C and watch angle A and the exterior angle update.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Base Angles</h3>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Angle B</label>
+            <select id="sel-angsum-b" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[30,40,50,60,70,80,90,100,110,120].map(n => `<option value="${n}"${n===50?' selected':''}>${n}°</option>`).join('')}
+            </select>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Angle C</label>
+            <select id="sel-angsum-c" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[30,40,50,60,70,80,90,100,110,120].map(n => `<option value="${n}"${n===70?' selected':''}>${n}°</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Angle Sum Property</h3>
+            <div id="angsum-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose angles B and C above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const FRACTION_LAB_OPTIONS = [[1,2],[1,3],[2,3],[1,4],[3,4],[1,5],[2,5],[3,5],[4,5]];
+
+    const fractionAreaModelLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="fraction-area-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick two fractions and watch the unit-square grid shade their product.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Two Fractions</h3>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Fraction 1</label>
+            <select id="sel-frac-area-1" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${FRACTION_LAB_OPTIONS.map(([n,d]) => `<option value="${n},${d}"${n===3&&d===4?' selected':''}>${n}/${d}</option>`).join('')}
+            </select>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Fraction 2</label>
+            <select id="sel-frac-area-2" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${FRACTION_LAB_OPTIONS.map(([n,d]) => `<option value="${n},${d}"${n===2&&d===5?' selected':''}>${n}/${d}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Product</h3>
+            <div id="frac-area-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose two fractions above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const fractionDivisionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="fraction-division-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a dividend and divisor and watch the divisor flip into its reciprocal.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Dividend ÷ Divisor</h3>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Dividend</label>
+            <select id="sel-frac-div-1" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${FRACTION_LAB_OPTIONS.map(([n,d]) => `<option value="${n},${d}"${n===3&&d===4?' selected':''}>${n}/${d}</option>`).join('')}
+            </select>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Divisor</label>
+            <select id="sel-frac-div-2" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${FRACTION_LAB_OPTIONS.map(([n,d]) => `<option value="${n},${d}"${n===2&&d===5?' selected':''}>${n}/${d}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Quotient</h3>
+            <div id="frac-div-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a dividend and divisor above.</div>
           </div>
         </div>
       </div>`;
@@ -2807,6 +2982,24 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'transversal-angle-sim') {
               labHtml = transversalAngleLabHtml;
               labDesc = 'Compare corresponding angles formed by a transversal on parallel vs non-parallel lines.';
+            } else if (topicObj.lab.type === 'parity-sum-sim') {
+              labHtml = paritySumLabHtml;
+              labDesc = 'Add even and odd numbers together and see the resulting parity.';
+            } else if (topicObj.lab.type === 'magic-square-builder-sim') {
+              labHtml = magicSquareBuilderLabHtml;
+              labDesc = 'Build a magic square from any centre number using the generalised algebraic pattern.';
+            } else if (topicObj.lab.type === 'triangle-inequality-sim') {
+              labHtml = triangleInequalityLabHtml;
+              labDesc = 'Pick three sidelengths and check whether the triangle inequality allows a triangle to exist.';
+            } else if (topicObj.lab.type === 'angle-sum-property-sim') {
+              labHtml = angleSumPropertyLabHtml;
+              labDesc = 'Pick two base angles and see the third angle and exterior angle computed using the angle sum property.';
+            } else if (topicObj.lab.type === 'fraction-area-model-sim') {
+              labHtml = fractionAreaModelLabHtml;
+              labDesc = 'Pick two fractions and see their product as a shaded rectangle inside a unit-square grid.';
+            } else if (topicObj.lab.type === 'fraction-division-sim') {
+              labHtml = fractionDivisionLabHtml;
+              labDesc = 'Pick a dividend and divisor, and watch the divisor flip into its reciprocal to find the quotient.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -3108,6 +3301,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initIntersectingLinesAngleLab();
         } else if (topicObj.lab.type === 'transversal-angle-sim') {
           initTransversalAngleLab();
+        } else if (topicObj.lab.type === 'parity-sum-sim') {
+          initParitySumLab();
+        } else if (topicObj.lab.type === 'magic-square-builder-sim') {
+          initMagicSquareBuilderLab();
+        } else if (topicObj.lab.type === 'triangle-inequality-sim') {
+          initTriangleInequalityLab();
+        } else if (topicObj.lab.type === 'angle-sum-property-sim') {
+          initAngleSumPropertyLab();
+        } else if (topicObj.lab.type === 'fraction-area-model-sim') {
+          initFractionAreaModelLab();
+        } else if (topicObj.lab.type === 'fraction-division-sim') {
+          initFractionDivisionLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -4172,7 +4377,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const H = canvas.height;
         ctx.clearRect(0, 0, W, H);
 
-        ctx.strokeStyle = 'var(--border-color)';
+        ctx.strokeStyle = cssVar('--border-color', '#000000');
         ctx.lineWidth = 4;
         ctx.beginPath();
         ctx.moveTo(W/2, H - 40);
@@ -4207,13 +4412,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.translate(W/2, 100);
         ctx.rotate((tilt * Math.PI) / 180);
 
-        ctx.strokeStyle = 'var(--accent-color)';
+        ctx.strokeStyle = cssVar('--accent-color', '#000000');
         ctx.beginPath();
         ctx.moveTo(-160, 0);
         ctx.lineTo(160, 0);
         ctx.stroke();
 
-        ctx.strokeStyle = 'var(--text-muted)';
+        ctx.strokeStyle = cssVar('--text-muted', '#000000');
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(-160, 0);
@@ -4450,7 +4655,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.clearRect(0, 0, W, H);
         
         if (currentReaction !== 'copper-oxidation' && currentReaction !== 'lead-nitrate') {
-          ctx.strokeStyle = 'var(--border-color)';
+          ctx.strokeStyle = cssVar('--border-color', '#000000');
           ctx.lineWidth = 3;
           ctx.beginPath();
           ctx.moveTo(W/2 - 60, 100);
@@ -4531,7 +4736,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillRect(W/2 - 25, 140, 10, 100);
           ctx.fillRect(W/2 + 15, 140, 10, 100);
           
-          ctx.fillStyle = 'var(--text-muted)';
+          ctx.fillStyle = cssVar('--text-muted', '#000000');
           ctx.font = 'bold 9px system-ui';
           ctx.fillText("Cathode (-)", W/2 - 48, 130);
           ctx.fillText("Anode (+)", W/2 + 10, 130);
@@ -4555,7 +4760,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillStyle = '#0f172a';
           ctx.fillRect(W/2 - 40, 50, 5, 20); // Negative
           ctx.fillRect(W/2, 56, 4, 8); // Positive
-          ctx.fillStyle = 'var(--text-muted)';
+          ctx.fillStyle = cssVar('--text-muted', '#000000');
           ctx.font = '10px system-ui';
           ctx.fillText("Battery", W/2 - 35, 45);
 
@@ -4589,7 +4794,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
           ctx.fillRect(W/2 - 58, 150 + waterDrop, 116, 88 - waterDrop);
 
-          ctx.strokeStyle = 'var(--text-muted)';
+          ctx.strokeStyle = cssVar('--text-muted', '#000000');
           ctx.lineWidth = 2;
           ctx.strokeRect(W/2 - 32, 100, 24, 130);
           ctx.strokeRect(W/2 + 8, 100, 24, 130);
@@ -4601,7 +4806,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.save();
           ctx.translate(W/2, H/2);
           ctx.rotate((-30 * Math.PI) / 180);
-          ctx.strokeStyle = 'var(--border-color)';
+          ctx.strokeStyle = cssVar('--border-color', '#000000');
           ctx.beginPath();
           ctx.moveTo(-15, -60);
           ctx.lineTo(-15, 60);
@@ -4678,7 +4883,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
         } else if (currentReaction === 'feso4-thermal') {
           // Test tube with green FeSO4 crystals on a stand
-          ctx.strokeStyle = 'var(--border-color)';
+          ctx.strokeStyle = cssVar('--border-color', '#000000');
           ctx.lineWidth = 3;
           ctx.beginPath();
           ctx.moveTo(W/2 - 12, 60); ctx.lineTo(W/2 - 12, 180);
@@ -4715,17 +4920,17 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.lineTo(W/2 + Math.cos(a)*34, 60 + Math.sin(a)*34);
             ctx.stroke();
           }
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = 'bold 11px system-ui';
           ctx.fillText('AgCl (White)', W/2 - 30, 185);
         } else if (currentReaction === 'redox-cuo') {
-          ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 3;
+          ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 3;
           ctx.beginPath();
           ctx.moveTo(W/2 - 80, 130); ctx.lineTo(W/2 + 80, 130);
           ctx.lineTo(W/2 + 80, 150); ctx.lineTo(W/2 - 80, 150);
           ctx.closePath(); ctx.stroke();
           ctx.fillStyle = '#1e293b';
           ctx.fillRect(W/2 - 20, 132, 40, 16);
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = 'bold 10px system-ui';
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = 'bold 10px system-ui';
           ctx.fillText('H\u2082 gas \u2192', W/2 - 120, 144);
           ctx.fillStyle = '#475569';
           ctx.fillRect(W/2 - 10, 160, 20, 40);
@@ -4734,7 +4939,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.beginPath();
           ctx.moveTo(W/2 + 80, 140); ctx.lineTo(W/2 + 110, 160);
           ctx.lineTo(W/2 + 110, 220); ctx.stroke();
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
           ctx.fillText('Water drops', W/2 + 90, 235);
         } else if (currentReaction === 'mg-combustion') {
           ctx.fillStyle = '#64748b';
@@ -4746,7 +4951,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
           ctx.fillRect(W/2 - 10, 115, 4, 25);
           ctx.strokeRect(W/2 - 10, 115, 4, 25);
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = 'bold 10px system-ui';
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = 'bold 10px system-ui';
           ctx.fillText('Mg Ribbon', W/2 + 5, 110);
           ctx.fillStyle = '#475569';
           ctx.fillRect(W/2 - 15, 155, 30, 50);
@@ -4879,10 +5084,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             const hGasHeight = Math.min(125, frame * 0.1);
             const oGasHeight = hGasHeight / 2;
 
-            ctx.fillStyle = 'var(--bg-primary)';
+            ctx.fillStyle = cssVar('--bg-primary', '#000000');
             ctx.fillRect(W/2 - 31, 101, 22, hGasHeight);
             
-            ctx.fillStyle = 'var(--bg-primary)';
+            ctx.fillStyle = cssVar('--bg-primary', '#000000');
             ctx.fillRect(W/2 + 9, 101, 22, oGasHeight);
 
             // Larger bubbles
@@ -4905,7 +5110,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
               }
             }
 
-            ctx.fillStyle = 'var(--accent-color)';
+            ctx.fillStyle = cssVar('--accent-color', '#000000');
             ctx.font = 'bold 10px system-ui';
             ctx.fillText(`H₂ (${(hGasHeight * 0.15).toFixed(1)}ml)`, W/2 - 40, 95);
             ctx.fillText(`O₂ (${(oGasHeight * 0.15).toFixed(1)}ml)`, W/2 + 5, 95);
@@ -4940,7 +5145,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.translate(W/2, H/2);
             ctx.rotate((-30 * Math.PI) / 180);
             
-            ctx.strokeStyle = 'var(--border-color)';
+            ctx.strokeStyle = cssVar('--border-color', '#000000');
             ctx.lineWidth = 3;
             ctx.beginPath();
             ctx.moveTo(-15, -60);
@@ -5574,7 +5779,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.arc(bulbX, bulbY, 15, 0, 2*Math.PI); ctx.stroke();
 
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
         ctx.fillText(sol.label, bx - 40, 290);
 
         obsTitle.textContent = 'Ionic Conductivity';
@@ -5607,7 +5812,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const fillH = (pH/14) * gaugeH;
         ctx.fillStyle = pH < 6.5 ? '#ef4444' : (pH >= 6.5 && pH <= 7.5) ? '#22c55e' : '#3b82f6';
         ctx.fillRect(gaugeX, gaugeY + gaugeH - fillH, 20, fillH);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
         ctx.fillText('pH ' + pH.toFixed(1), gaugeX - 12, gaugeY - 8);
 
         obsTitle.textContent = 'Neutralization Reaction';
@@ -5703,7 +5908,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillRect(cathodeX - 10, cellY + 20, 20, cellH - 40);
         ctx.fillStyle = 'white'; ctx.font = 'bold 12px system-ui';
         ctx.fillText('+', anodeX - 4, cellY + 15); ctx.fillText('−', cathodeX - 4, cellY + 15);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
         ctx.fillText('Anode (Cl₂↑)', anodeX - 35, cellY + cellH + 18);
         ctx.fillText('Cathode (H₂↑, NaOH)', cathodeX - 45, cellY + cellH + 18);
 
@@ -5723,7 +5928,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillRect(cellX + cellW/2, cellY + cellH - naohLevel, cellW/2, naohLevel);
         }
 
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 12px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 12px system-ui';
         ctx.fillText(frame === 0 ? 'Brine (NaCl solution)' : 'Electrolysing...', cellX + cellW/2 - 70, cellY - 10);
 
         obsTitle.textContent = 'Chlor-Alkali Process';
@@ -5746,7 +5951,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         ctx.fillStyle = 'rgba(241,245,249,0.9)';
         ctx.fillRect(tubeX - 23, 170, 46, 48);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('NaHCO₃', tubeX - 18, 195);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('NaHCO₃', tubeX - 18, 195);
 
         if (frame > 0) {
           ctx.fillStyle = 'rgba(249,115,22,0.6)';
@@ -5779,7 +5984,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const cx = W/2, cy = 190;
         ctx.fillStyle = 'rgba(147,197,253,0.4)'; ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.rect(cx - 30, cy - 30, 60, 60); ctx.fill(); ctx.stroke();
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
         ctx.fillText('Na₂CO₃', cx - 25, cy + 5);
 
         if (hydrated) {
@@ -5795,7 +6000,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
         }
 
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 11px system-ui';
         ctx.fillText(hydrated ? 'Na₂CO₃ · 10H₂O (Washing Soda)' : 'Na₂CO₃ (anhydrous)', cx - 100, 40);
 
         obsTitle.textContent = 'Washing Soda';
@@ -5816,13 +6021,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         if (!mixed) {
           ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
           ctx.beginPath(); ctx.moveTo(cx - 60, cy + 40); ctx.quadraticCurveTo(cx, cy - 20, cx + 60, cy + 40); ctx.closePath(); ctx.fill(); ctx.stroke();
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '10px system-ui'; ctx.fillText('Plaster of Paris (powder)', cx - 70, cy + 65);
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '10px system-ui'; ctx.fillText('Plaster of Paris (powder)', cx - 70, cy + 65);
         } else {
           const hardness = Math.min(1, frame*0.02);
           ctx.fillStyle = `rgba(226,232,240,${0.6 + hardness*0.4})`;
           ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
           ctx.beginPath(); ctx.rect(cx - 50, cy - 30, 100, 70); ctx.fill(); ctx.stroke();
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = '10px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '10px system-ui';
           ctx.fillText(hardness < 1 ? 'Setting...' : 'Hardened Gypsum block', cx - 55, cy + 60);
         }
 
@@ -6113,7 +6318,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           '#06b6d4', '#3b82f6', '#2563eb', '#1d4ed8', '#4f46e5', '#6366f1', '#7c3aed', '#6b21a8'
         ];
 
-        ctx.fillStyle = 'var(--text-normal)';
+        ctx.fillStyle = cssVar('--text-normal', '#000000');
         ctx.font = 'bold 10px system-ui';
         ctx.fillText("Universal pH Color Reference Scale:", scaleX, scaleY - 8);
 
@@ -6122,12 +6327,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillStyle = pHColors[i];
           ctx.fillRect(scaleX + i * blockW, scaleY, blockW, scaleH);
 
-          ctx.fillStyle = 'var(--text-muted)';
+          ctx.fillStyle = cssVar('--text-muted', '#000000');
           ctx.font = '8px system-ui';
           ctx.fillText(i.toString(), scaleX + i * blockW + (blockW / 2) - 3, scaleY + scaleH + 11);
         }
 
-        ctx.strokeStyle = 'var(--border-color)';
+        ctx.strokeStyle = cssVar('--border-color', '#000000');
         ctx.lineWidth = 4;
         ctx.beginPath();
         ctx.moveTo(W/2 - 80, 120);
@@ -6148,7 +6353,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         }
         ctx.fillRect(W/2 - 76, 170, 152, 88);
 
-        ctx.fillStyle = 'var(--text-normal)';
+        ctx.fillStyle = cssVar('--text-normal', '#000000');
         ctx.font = 'bold 12px system-ui';
         ctx.fillText(sub.name, W/2 - 60, 220);
 
@@ -6164,7 +6369,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         ctx.fillStyle = stripColor;
         ctx.fillRect(0, 0, 30, 80);
-        ctx.strokeStyle = 'var(--text-muted)';
+        ctx.strokeStyle = cssVar('--text-muted', '#000000');
         ctx.lineWidth = 1;
         ctx.strokeRect(0, 0, 30, 80);
 
@@ -6222,7 +6427,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         } else {
           ctx.fillRect(tubeX - 3, 160, 6, 50);
         }
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
         ctx.fillText('Dilute acid', tubeX - 30, 245);
 
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
@@ -6231,7 +6436,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2;
         ctx.strokeRect(300, 240, 120, 40);
         ctx.fillStyle = 'rgba(34,197,94,0.15)'; ctx.fillRect(302, 242, 116, 36);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Soap solution', 310, 295);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Soap solution', 310, 295);
 
         if (reactionRunning) {
           ctx.fillStyle = 'rgba(226,232,240,0.85)';
@@ -6267,13 +6472,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         drawTube(tubeBX, topY, botY);
 
         ctx.fillStyle = 'rgba(59,130,246,0.2)'; ctx.fillRect(tubeAX - 18, 150, 36, 68);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui';
         ctx.fillText(carbonateSel.value === 'na2co3' ? 'Na₂CO₃' : 'NaHCO₃', tubeAX - 18, 190);
 
         const milky = reactionRunning && reactionFrame > 20;
         ctx.fillStyle = milky ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.25)';
         ctx.fillRect(tubeBX - 18, 150, 36, 68);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui';
         ctx.fillText('Lime water', tubeBX - 25, 235);
 
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
@@ -6643,10 +6848,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillRect(cellX + cellW - 76, cellY + 10, 16, cellH - 20);
           ctx.fillStyle = 'white'; ctx.font = 'bold 11px system-ui';
           ctx.fillText('−', cellX + 63, cellY + 5); ctx.fillText('+', cellX + cellW - 73, cellY + 5);
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
           ctx.fillText('Cathode: Na⁺ + e⁻ → Na', cellX + 20, cellY + cellH + 18);
           ctx.fillText('Anode: 2Cl⁻ → Cl₂ + 2e⁻', cellX + cellW - 140, cellY + cellH + 18);
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
           ctx.fillText('Molten NaCl (electrolysis)', cellX + 60, cellY - 10);
 
           obsTitle.textContent = 'Extraction: Sodium (high reactivity)';
@@ -6656,7 +6861,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             • Metal deposits at the cathode; chlorine gas is released at the anode.`;
         } else if (metal === 'zn') {
           const y = 150;
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui';
           ctx.fillText('ZnS (ore)', 40, y);
           ctx.fillText('→ Roasting →', 150, y);
           ctx.fillText('ZnO', 290, y);
@@ -6673,7 +6878,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             • The oxide is then reduced with carbon: <strong>ZnO + C → Zn + CO</strong>`;
         } else {
           const y = 150;
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui';
           ctx.fillText('HgS (cinnabar)', 60, y);
           ctx.fillText('→ Heat in air →', 220, y);
           ctx.fillText('HgO', 360, y);
@@ -6698,7 +6903,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         ctx.fillStyle = 'rgba(148,163,184,0.3)'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(cx - 50, cy); ctx.lineTo(cx - 40, cy + 60); ctx.lineTo(cx + 40, cy + 60); ctx.lineTo(cx + 50, cy); ctx.closePath(); ctx.fill(); ctx.stroke();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Fe₂O₃ + Al mixture', cx - 55, cy - 10);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Fe₂O₃ + Al mixture', cx - 55, cy - 10);
 
         if (frame > 0) {
           const glow = Math.min(1, frame/40);
@@ -6712,7 +6917,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           if (frame > 10) {
             ctx.fillStyle = `rgba(255,180,50,${Math.min(1, (frame-10)/30)})`;
             ctx.beginPath(); ctx.ellipse(cx, cy + 55, 35, 12, 0, 0, 2*Math.PI); ctx.fill();
-            ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 10px system-ui'; ctx.fillText('Molten Iron', cx - 30, cy + 90);
+            ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 10px system-ui'; ctx.fillText('Molten Iron', cx - 30, cy + 90);
           }
           for (let i = 0; i < 6; i++) {
             const a = Math.random()*2*Math.PI, r = 40 + Math.random()*40;
@@ -6739,22 +6944,22 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
         ctx.strokeRect(cx - 130, 90, 260, 160);
         ctx.fillStyle = 'rgba(59,130,246,0.15)'; ctx.fillRect(cx - 128, 92, 256, 156);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Acidified CuSO₄ solution', cx - 70, 80);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Acidified CuSO₄ solution', cx - 70, 80);
 
         const dissolveAmt = Math.min(20, frame*0.15);
         ctx.fillStyle = '#b45309';
         ctx.fillRect(anodeX - 8, 100 + dissolveAmt, 16, 140 - dissolveAmt);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Impure Cu (Anode +)', anodeX - 45, 260);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Impure Cu (Anode +)', anodeX - 45, 260);
 
         const growAmt = Math.min(20, frame*0.15);
         ctx.fillStyle = '#f97316';
         ctx.fillRect(cathodeX - 8, 240 - 140 - growAmt, 16, 140 + growAmt);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Pure Cu (Cathode −)', cathodeX - 40, 260);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Pure Cu (Cathode −)', cathodeX - 40, 260);
 
         if (frame > 20) {
           ctx.fillStyle = 'rgba(87,83,78,0.6)';
           ctx.beginPath(); ctx.ellipse(anodeX, 246, 14, 5, 0, 0, 2*Math.PI); ctx.fill();
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui'; ctx.fillText('Anode mud', anodeX - 20, 260 + 12);
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui'; ctx.fillText('Anode mud', anodeX - 20, 260 + 12);
         }
 
         if (frame > 0) {
@@ -6805,10 +7010,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         ctx.fillStyle = color;
         ctx.fillRect(cx - 60, cy - 15, 120, 30);
-        ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 2; ctx.strokeRect(cx - 60, cy - 15, 120, 30);
+        ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 2; ctx.strokeRect(cx - 60, cy - 15, 120, 30);
 
         const day = Math.min(60, Math.floor(frame/2));
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 12px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 12px system-ui';
         ctx.fillText('Day ' + day, cx - 25, 100);
 
         obsTitle.textContent = 'Corrosion & Prevention';
@@ -6959,13 +7164,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.stroke();
 
           // Label on tube
-          ctx.fillStyle = 'var(--text-normal)';
+          ctx.fillStyle = cssVar('--text-normal', '#000000');
           ctx.font = 'bold 9px system-ui';
           ctx.fillText(t.name, t.x - 16, 185);
 
           if (currentSalt === t.salt) {
             // Selected active tube arrow
-            ctx.fillStyle = 'var(--secondary-color)';
+            ctx.fillStyle = cssVar('--secondary-color', '#000000');
             ctx.beginPath();
             ctx.moveTo(t.x, 75);
             ctx.lineTo(t.x - 6, 65);
@@ -7150,7 +7355,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         }
         ctx.fillRect(0, cy, W, H - cy);
 
-        ctx.strokeStyle = 'var(--border-color)';
+        ctx.strokeStyle = cssVar('--border-color', '#000000');
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(0, cy);
@@ -7315,7 +7520,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const cx = W / 2, cy = H / 2;
         ctx.clearRect(0, 0, W, H);
 
-        ctx.strokeStyle = 'var(--text-light, #94a3b8)'; ctx.lineWidth = 1;
+        ctx.strokeStyle = cssVar('--text-light', '#94a3b8'); ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(10, cy); ctx.lineTo(W - 10, cy); ctx.stroke();
 
         ctx.strokeStyle = '#3b82f6'; ctx.fillStyle = 'rgba(59, 130, 246, 0.1)'; ctx.lineWidth = 2.5;
@@ -7548,7 +7753,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         if (isSmooth) {
           // Draw Plane Mirror line (vertical line in the middle)
-          ctx.strokeStyle = 'var(--accent-color)';
+          ctx.strokeStyle = cssVar('--accent-color', '#000000');
           ctx.lineWidth = 6;
           ctx.beginPath();
           ctx.moveTo(cx, 20);
@@ -7556,7 +7761,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.stroke();
 
           // Mirror backing shading
-          ctx.strokeStyle = 'var(--border-color)';
+          ctx.strokeStyle = cssVar('--border-color', '#000000');
           ctx.lineWidth = 1;
           for (let y = 30; y < H - 20; y += 8) {
             ctx.beginPath();
@@ -7638,7 +7843,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillText(`r = ${theta}°`, cx - 75, cy + 20);
 
           // Labels
-          ctx.fillStyle = 'var(--text-muted)';
+          ctx.fillStyle = cssVar('--text-muted', '#000000');
           ctx.font = '12px sans-serif';
           ctx.fillText("Incident Ray", rx + 15, ry + (ry < cy ? 25 : -15));
           ctx.fillText("Reflected Ray", rx2 + 15, ry2 + (ry2 < cy ? 25 : -15));
@@ -7665,7 +7870,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         } else {
           // ROUGH SURFACE REFLECTION
           // Draw wavy mirror line
-          ctx.strokeStyle = 'var(--accent-color)';
+          ctx.strokeStyle = cssVar('--accent-color', '#000000');
           ctx.lineWidth = 4;
           ctx.beginPath();
           ctx.moveTo(cx, 20);
@@ -7872,14 +8077,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         ctx.clearRect(0, 0, W, H);
 
-        ctx.strokeStyle = 'var(--text-light)';
+        ctx.strokeStyle = cssVar('--text-light', '#000000');
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(10, cy);
         ctx.lineTo(W - 10, cy);
         ctx.stroke();
 
-        ctx.strokeStyle = 'var(--text-muted)';
+        ctx.strokeStyle = cssVar('--text-muted', '#000000');
         ctx.lineWidth = 4;
         ctx.beginPath();
         if (isConcave) {
@@ -7899,7 +8104,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.stroke();
         }
 
-        ctx.fillStyle = 'var(--text-main)';
+        ctx.fillStyle = cssVar('--text-main', '#000000');
         ctx.font = '11px sans-serif';
         
         ctx.beginPath(); ctx.arc(cx, cy, 4, 0, 2*Math.PI); ctx.fill();
@@ -8269,7 +8474,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         // Eyeball
         ctx.beginPath(); ctx.arc(eyeCenterX, cy, eyeRadius, 0, 2*Math.PI);
         ctx.fillStyle = 'rgba(147, 197, 253, 0.12)'; ctx.fill();
-        ctx.strokeStyle = 'var(--text-muted)'; ctx.lineWidth = 2; ctx.stroke();
+        ctx.strokeStyle = cssVar('--text-muted', '#000000'); ctx.lineWidth = 2; ctx.stroke();
         // Retina (highlighted arc on the inner-right edge)
         ctx.beginPath(); ctx.arc(eyeCenterX, cy, eyeRadius, -Math.PI/2.6, Math.PI/2.6);
         ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 4; ctx.stroke();
@@ -8410,14 +8615,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         ctx.clearRect(0, 0, W, H);
 
-        ctx.strokeStyle = 'var(--text-light)';
+        ctx.strokeStyle = cssVar('--text-light', '#000000');
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(10, cy);
         ctx.lineTo(W - 10, cy);
         ctx.stroke();
 
-        ctx.strokeStyle = 'var(--secondary-hover)';
+        ctx.strokeStyle = cssVar('--secondary-hover', '#000000');
         ctx.fillStyle = 'rgba(59, 130, 246, 0.1)';
         ctx.lineWidth = 2.5;
         
@@ -8456,7 +8661,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.beginPath(); ctx.arc(f2x, cy, 3.5, 0, 2*Math.PI); ctx.fill();
         ctx.fillText(isConvex ? "F₂" : "F₁", f2x - 5, cy - 8);
 
-        ctx.fillStyle = 'var(--text-muted)';
+        ctx.fillStyle = cssVar('--text-muted', '#000000');
         ctx.beginPath(); ctx.arc(twof1x, cy, 3.5, 0, 2*Math.PI); ctx.fill();
         ctx.fillText(isConvex ? "2F₁" : "2F₂", twof1x - 8, cy - 8);
 
@@ -8887,11 +9092,11 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
               ctx.fill();
             }
           }
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
           ctx.fillText(t.label, t.x - 20, 250);
         });
         const day = Math.min(30, Math.floor(frame / 4));
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 14px system-ui';
         ctx.fillText('Day ' + day, 270, 30);
         obsTitle.textContent = 'Corrosion';
       }
@@ -8931,7 +9136,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillStyle = `rgb(${rC},${gC},${bC})`;
         ctx.beginPath(); ctx.ellipse(bowlX, bowlY - 15, 95, 30, 0, 0, 2*Math.PI); ctx.fill();
         ctx.strokeStyle = '#78350f'; ctx.lineWidth = 2; ctx.stroke();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
         ctx.fillText('Oil / fatty food', bowlX - 35, bowlY + 60);
 
         if (rancidLevel > 0.5) {
@@ -8949,13 +9154,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.font = '22px system-ui'; ctx.fillText('🤢', bowlX + 95, bowlY - 60);
         }
 
-        ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 1; ctx.strokeRect(150, 250, 300, 20);
+        ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 1; ctx.strokeRect(150, 250, 300, 20);
         ctx.fillStyle = rancidLevel < 0.3 ? '#22c55e' : rancidLevel < 0.7 ? '#f59e0b' : '#ef4444';
         ctx.fillRect(150, 250, 300 * (1 - rancidLevel), 20);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '10px system-ui'; ctx.fillText('Freshness', 150, 245);
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '10px system-ui'; ctx.fillText('Freshness', 150, 245);
 
         const day = Math.min(60, Math.floor(rancidFrame/2));
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 14px system-ui'; ctx.fillText('Day ' + day, 270, 30);
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 14px system-ui'; ctx.fillText('Day ' + day, 270, 30);
 
         obsTitle.textContent = 'Rancidity';
         const envLabel = rancidityEnvSel.options[rancidityEnvSel.selectedIndex].text;
@@ -9136,7 +9341,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           {t: 0.0, text: 'Mouth'}, {t: 0.18, text: 'Oesophagus'}, {t: 0.30, text: 'Stomach'},
           {t: 0.60, text: 'Small Intestine'}, {t: 0.90, text: 'Large Intestine'}
         ];
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 10px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 10px system-ui';
         labels.forEach(l => {
           const p = pointOnCanal(l.t);
           ctx.fillText(l.text, p.x + 14, p.y - 10);
@@ -9180,7 +9385,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
           ctx.closePath(); ctx.fill(); ctx.stroke();
           ctx.fillStyle = 'rgba(180,83,9,0.6)'; ctx.beginPath(); ctx.arc(cx - 10, cy, 12, 0, 2*Math.PI); ctx.fill();
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Nucleus', cx - 30, cy + 25);
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Nucleus', cx - 30, cy + 25);
 
           obsTitle.textContent = 'Nutrition in Amoeba';
           if (microbeProgress === null) {
@@ -9216,7 +9421,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
           ctx.fillStyle = 'rgba(29,78,216,0.4)';
           ctx.beginPath(); ctx.ellipse(cx - 20, cy + 10, 15, 8, 0.3, 0, 2*Math.PI); ctx.fill();
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui'; ctx.fillText('Oral groove', cx - 45, cy + 42);
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui'; ctx.fillText('Oral groove', cx - 45, cy + 42);
 
           obsTitle.textContent = 'Nutrition in Paramoecium';
           if (microbeProgress === null) {
@@ -9314,7 +9519,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillRect(cx + 5, cy + 5, 30 + (1-expand)*5, 35);
         ctx.fillStyle = `rgba(239, 68, 68, ${0.3 + (1-expand) * 0.4})`;
         ctx.fillRect(cx - 35 - (1-expand)*5, cy + 5, 30 + (1-expand)*5, 35);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 9px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 9px system-ui';
         ctx.fillText('RA', cx + 12, cy - 8);
         ctx.fillText('LA', cx - 28, cy - 8);
         ctx.fillText('RV', cx + 12, cy + 28);
@@ -9326,7 +9531,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText('← Pulmonary Vein', cx - 120, cy - 15);
         ctx.fillText('Aorta →', cx - 80, cy + 20);
         const phaseName = phase < 0.3 ? 'Atrial Systole (Atria contract)' : phase < 0.5 ? 'Ventricular Systole (Ventricles contract)' : 'Diastole (All relax)';
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 12px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 12px system-ui';
         ctx.fillText(phaseName, cx - 80, cy + 80);
         obsTitle.textContent = 'Chamber Activity';
         obs.innerHTML = `<strong>Cardiac Cycle:</strong><br>
@@ -9369,15 +9574,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.moveTo(cx - 100, diaphragmY);
         ctx.quadraticCurveTo(cx, diaphragmY + (inhale > 0.5 ? 10 : -10), cx + 100, diaphragmY);
         ctx.stroke();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Diaphragm', cx - 30, diaphragmY + 20);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Diaphragm', cx - 30, diaphragmY + 20);
 
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
         ctx.fillText(inhale > 0.5 ? 'INHALING (ribs up, diaphragm flat)' : 'EXHALING (ribs down, diaphragm domes up)', cx - 100, 300);
 
         const insetX = 400, insetY = 90;
-        ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 1;
+        ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 1;
         ctx.strokeRect(insetX - 20, insetY - 20, 190, 190);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Alveolus (gas exchange)', insetX - 15, insetY - 26);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Alveolus (gas exchange)', insetX - 15, insetY - 26);
 
         ctx.strokeStyle = '#f87171'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.ellipse(insetX + 75, insetY + 75, 60, 50, 0, 0, 2*Math.PI); ctx.stroke();
@@ -9457,10 +9662,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             const y = 50 - ((tick*speed*15 + i*15) % 40);
             ctx.fillText('↑', x, y);
           }
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
           ctx.fillText('Water vapour (transpiration)', 175, 20);
         }
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '9px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '9px system-ui';
         ctx.fillText('Roots absorb water & minerals', 150, 320);
 
         obsTitle.textContent = 'Plant Transport';
@@ -9494,7 +9699,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.lineTo(capX + Math.sin(a)*20, capY + Math.cos(a*1.3)*20);
         }
         ctx.stroke();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui';
         ctx.fillText('Glomerulus', capX - 25, capY - 50);
         ctx.fillText('Bowman’s capsule', capX - 40, capY + 55);
 
@@ -9503,7 +9708,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         tubulePath.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
         ctx.stroke();
 
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '8px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '8px system-ui';
         ctx.fillText('PCT', 160, 120);
         ctx.fillText('Loop of Henle', 190, 250);
         ctx.fillText('DCT', 330, 120);
@@ -9523,7 +9728,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillStyle = `rgba(234,179,8,${0.3 + urineConc*0.5})`;
         ctx.beginPath(); ctx.ellipse(420, 300, 20, 15, 0, 0, 2*Math.PI); ctx.fill();
         ctx.strokeStyle = '#eab308'; ctx.stroke();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui';
         ctx.fillText('Urine', 405, 320);
 
         obsTitle.textContent = 'Excretion (Nephron)';
@@ -9543,7 +9748,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 14;
           ctx.beginPath(); ctx.arc(130, y, 30, 0, 2*Math.PI); ctx.stroke();
           ctx.fillStyle = 'rgba(239,68,68,0.3)'; ctx.beginPath(); ctx.arc(130, y, 23, 0, 2*Math.PI); ctx.fill();
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.fillText('Artery', 105, y + 60);
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.fillText('Artery', 105, y + 60);
           ctx.font = '9px system-ui'; ctx.fillText('Thick, elastic wall', 75, y + 75); ctx.fillText('High pressure', 82, y + 88);
 
           ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 6;
@@ -9551,13 +9756,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillStyle = 'rgba(59,130,246,0.3)'; ctx.beginPath(); ctx.arc(310, y, 27, 0, 2*Math.PI); ctx.fill();
           ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2;
           ctx.beginPath(); ctx.moveTo(295, y - 10); ctx.lineTo(310, y); ctx.lineTo(295, y + 10); ctx.stroke();
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.fillText('Vein', 297, y + 60);
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.fillText('Vein', 297, y + 60);
           ctx.font = '9px system-ui'; ctx.fillText('Thin wall + valves', 265, y + 75); ctx.fillText('Low pressure', 278, y + 88);
 
           ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 1.5;
           ctx.beginPath(); ctx.arc(470, y, 10, 0, 2*Math.PI); ctx.stroke();
           ctx.fillStyle = 'rgba(34,197,94,0.3)'; ctx.beginPath(); ctx.arc(470, y, 9, 0, 2*Math.PI); ctx.fill();
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.fillText('Capillary', 435, y + 60);
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.fillText('Capillary', 435, y + 60);
           ctx.font = '9px system-ui'; ctx.fillText('One-cell-thick wall', 410, y + 75); ctx.fillText('Exchange site', 425, y + 88);
 
           obsTitle.textContent = 'Blood Vessels';
@@ -9587,7 +9792,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2;
           ctx.beginPath(); ctx.arc(220, y, 10, 0, 2*Math.PI); ctx.stroke();
           ctx.fillStyle = 'rgba(34,197,94,0.2)'; ctx.beginPath(); ctx.arc(220, y, 9, 0, 2*Math.PI); ctx.fill();
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Capillary', 195, y - 20);
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Capillary', 195, y - 20);
 
           const tick = Date.now()/500;
           ctx.fillStyle = 'rgba(250,204,21,0.7)';
@@ -9598,7 +9803,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
           ctx.strokeStyle = '#eab308'; ctx.lineWidth = 3;
           ctx.beginPath(); ctx.moveTo(380, y); ctx.lineTo(460, y); ctx.stroke();
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Lymph vessel → large vein', 355, y + 25);
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Lymph vessel → large vein', 355, y + 25);
 
           obsTitle.textContent = 'Lymph';
           obs.innerHTML = `<strong>Lymph (tissue fluid):</strong><br>
@@ -9620,7 +9825,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             const milkiness = limewaterRunning ? Math.min(1, limewaterFrame * (idx === 0 ? 0.02 : 0.006)) : 0;
             ctx.fillStyle = `rgba(255,255,255,${0.2 + milkiness*0.7})`;
             ctx.fillRect(t.x - 23, 140, 46, 78);
-            ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText(t.label, t.x - 45, 240);
+            ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText(t.label, t.x - 45, 240);
           });
 
           obsTitle.textContent = 'Lime Water CO₂ Test';
@@ -9633,7 +9838,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           const tubeAX = 180, tubeBX = 420, topY = 60, botY = 220;
           drawTube2(tubeAX, topY, botY); drawTube2(tubeBX, topY, botY);
           ctx.fillStyle = 'rgba(250,204,21,0.3)'; ctx.fillRect(tubeAX - 18, 150, 36, 68);
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui'; ctx.fillText('Yeast + Sugar', tubeAX - 25, 240);
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui'; ctx.fillText('Yeast + Sugar', tubeAX - 25, 240);
 
           const milky = limewaterRunning && limewaterFrame > 20;
           ctx.fillStyle = milky ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.25)';
@@ -9682,7 +9887,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.strokeStyle = '#1e40af'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.arc(cx - 30, cy, 15 + gillOpen*8, -0.4, 0.4); ctx.stroke();
 
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui';
         ctx.fillText('Fish: ~' + fishBpm + ' mouth/gill cycles per minute', 60, 260);
         ctx.fillText('Human: ~15–18 breaths per minute', 60, 280);
 
@@ -9816,7 +10021,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.strokeStyle = active ? '#1e293b' : '#94a3b8'; ctx.lineWidth = 2; ctx.stroke();
           ctx.fillStyle = active ? 'white' : '#64748b'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
           ctx.fillText(String(i + 1), n.x, n.y + 4);
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui';
           ctx.fillText(n.label, n.x, n.y + 45);
           if (step === i) {
             ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 3;
@@ -9825,7 +10030,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         });
         ctx.textAlign = 'left';
         const scenario = scenarios[sel.value];
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 13px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 13px system-ui';
         ctx.fillText(scenario.title, 20, 25);
       }
 
@@ -9862,7 +10067,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         } else {
           ctx.beginPath(); ctx.ellipse(cx, cy, 16, 24, 0, 0, 2 * Math.PI); ctx.fill();
         }
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
         ctx.fillText(isDicot ? '2 cotyledons' : '1 cotyledon', cx, cy + 45);
       }
 
@@ -9882,7 +10087,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.beginPath(); ctx.moveTo(cx + i, cy - 40); ctx.lineTo(cx + i, cy + 40); ctx.stroke();
           }
         }
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
         ctx.fillText(isDicot ? 'Reticulate venation' : 'Parallel venation', cx, cy + 60);
       }
 
@@ -9903,7 +10108,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.stroke();
           }
         }
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
         ctx.fillText(isDicot ? 'Taproot' : 'Fibrous root', cx, cy + 75);
       }
 
@@ -9915,7 +10120,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         drawLeaf(300, 100, isDicot);
         drawRoot(500, 60, isDicot);
         ctx.textAlign = 'left';
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 13px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 13px system-ui';
         ctx.fillText(isDicot ? 'Dicot (e.g. Chickpea)' : 'Monocot (e.g. Maize)', 20, 25);
 
         obs.innerHTML = isDicot
@@ -9985,9 +10190,9 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
         }
 
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'left';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'left';
         ctx.fillText(isHot ? 'Hot Desert Camel (Rajasthan)' : 'Cold Desert Camel (Ladakh)', 20, 25);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '11px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '11px system-ui';
         ctx.fillText(isHot ? '1 hump • long legs • wide hooves' : '2 humps • shorter legs • long hair', 20, 45);
 
         obs.innerHTML = isHot
@@ -10030,7 +10235,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillStyle = food.color;
         ctx.beginPath(); ctx.ellipse(100, 150, 40, 30, 0, 0, 2 * Math.PI); ctx.fill();
         ctx.strokeStyle = '#78350f'; ctx.lineWidth = 2; ctx.stroke();
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
         ctx.fillText(food.label, 100, 200);
 
         if (test === 'starch') {
@@ -10045,7 +10250,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
               ctx.fillText('Blue-black!', 320, 165);
             }
           }
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = '11px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '11px system-ui';
           ctx.fillText('+ Iodine solution', 320, 220);
         } else if (test === 'fat') {
           // Paper wrap
@@ -10057,7 +10262,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.fillStyle = '#92400e'; ctx.font = 'bold 11px system-ui';
             ctx.fillText('Oily patch!', 320, 220);
           } else if (tested) {
-            ctx.fillStyle = 'var(--text-muted)'; ctx.font = '11px system-ui';
+            ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '11px system-ui';
             ctx.fillText('No oily patch', 320, 220);
           }
         } else if (test === 'protein') {
@@ -10074,7 +10279,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.fillStyle = food.protein ? '#5b21b6' : 'var(--text-muted)'; ctx.font = 'bold 11px system-ui';
             ctx.fillText(food.protein ? 'Turns violet!' : 'No colour change', 320, 220);
           }
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = '10px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '10px system-ui';
           ctx.fillText('+ CuSO₄ + caustic soda', 320, 240);
         }
         ctx.textAlign = 'left';
@@ -10144,7 +10349,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillStyle = obj.color;
         ctx.beginPath(); ctx.arc(objX, 150, 22, 0, 2 * Math.PI); ctx.fill();
         ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.stroke();
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
         ctx.fillText(obj.label, objX, 195);
         ctx.fillText('Magnet', magnetX + 45, 195);
         ctx.textAlign = 'left';
@@ -10156,7 +10361,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         drawBarMagnet(150, 150, false); // Magnet A: left=S, right=N (N faces right, toward B)
         const bLeftIsNorth = poleSel.value === 'N';
         drawBarMagnet(magBX, 150, bLeftIsNorth);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
         ctx.fillText('Magnet A (fixed)', 195, 195);
         ctx.fillText('Magnet B', magBX + 45, 195);
         ctx.textAlign = 'left';
@@ -10276,7 +10481,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillStyle = 'rgba(59,130,246,0.5)'; ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 2;
         ctx.fillRect(objX1, rulerTopPx - 30, objX2 - objX1, 20);
         ctx.strokeRect(objX1, rulerTopPx - 30, objX2 - objX1, 20);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
         ctx.fillText('Object', (objX1 + objX2) / 2, rulerTopPx - 36);
 
         // Reading markers
@@ -10314,7 +10519,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const y = 30 + (t % 100) * 2.2;
         ctx.fillStyle = '#3b82f6';
         ctx.fillRect(280, y, 40, 30);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
         ctx.fillText('Linear Motion — moves along a straight line', 300, 25);
         ctx.textAlign = 'left';
       }
@@ -10330,7 +10535,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(bx, by); ctx.stroke();
         ctx.fillStyle = '#f59e0b';
         ctx.beginPath(); ctx.arc(bx, by, 14, 0, 2 * Math.PI); ctx.fill();
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
         ctx.fillText('Circular Motion — moves along a circular path', cx, 25);
         ctx.textAlign = 'left';
       }
@@ -10345,7 +10550,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillStyle = '#1e293b'; ctx.beginPath(); ctx.arc(pivotX, pivotY, 5, 0, 2 * Math.PI); ctx.fill();
         ctx.fillStyle = '#10b981';
         ctx.beginPath(); ctx.arc(bx, by, 16, 0, 2 * Math.PI); ctx.fill();
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
         ctx.fillText('Oscillatory Motion — moves to and fro about a fixed position', pivotX, 25);
         ctx.textAlign = 'left';
       }
@@ -10422,7 +10627,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.clearRect(0, 0, W, H);
         const mat = materials[matSel.value];
         drawStar(130, 150, 1);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
         ctx.fillText('Object', 130, 195);
 
         ctx.save();
@@ -10431,7 +10636,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillRect(260, 50, 90, 200);
         ctx.restore();
         ctx.strokeStyle = '#475569'; ctx.lineWidth = 2; ctx.strokeRect(260, 50, 90, 200);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
         ctx.fillText(mat.label, 305, 270);
 
         // What the viewer sees on the far side
@@ -10442,7 +10647,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         // opaque: nothing drawn
         ctx.fillStyle = '#334155'; ctx.font = 'bold 24px system-ui';
         ctx.fillText('👁️', 470, 220);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
         ctx.fillText('Viewer', 470, 240);
         ctx.textAlign = 'left';
 
@@ -10479,7 +10684,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.beginPath(); ctx.arc(baseX, baseY + Math.floor(i / 7) * 10, 4, 0, 2 * Math.PI); ctx.fill();
           ctx.restore();
         }
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
         ctx.fillText(sub.label + ' in water', 300, 270);
         ctx.textAlign = 'left';
 
@@ -10560,7 +10765,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.beginPath(); ctx.arc(tubeX, bulbY, 20, 0, 2 * Math.PI); ctx.fill();
 
         // Scale ticks every 10 degrees
-        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.fillStyle = 'var(--text-normal)'; ctx.font = '9px system-ui'; ctx.textAlign = 'left';
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '9px system-ui'; ctx.textAlign = 'left';
         for (let t = -10; t <= 110; t += 10) {
           const y = bulbY - 20 - ((t - (-10)) / 120) * (bulbY - 20 - tubeTop - 10);
           ctx.beginPath(); ctx.moveTo(tubeX + 14, y); ctx.lineTo(tubeX + 20, y); ctx.stroke();
@@ -10588,7 +10793,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(x2, y); ctx.stroke();
 
         // Big marks at 0 and 10
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
         [x1, x2].forEach((x, i) => {
           ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3;
           ctx.beginPath(); ctx.moveTo(x, y - 30); ctx.lineTo(x, y + 10); ctx.stroke();
@@ -10601,7 +10806,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
           ctx.beginPath(); ctx.moveTo(x, y - 15); ctx.lineTo(x, y + 5); ctx.stroke();
         }
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = '11px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = '11px system-ui';
         ctx.fillText(divisions + ' small divisions between the two big marks', (x1 + x2) / 2, y + 40);
         ctx.textAlign = 'left';
 
@@ -10691,7 +10896,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
         }
 
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
         ctx.fillText(stateLabel, 300, 60);
         ctx.textAlign = 'left';
 
@@ -10729,7 +10934,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(480, 60); ctx.lineTo(540, 60); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(535, 55); ctx.lineTo(540, 60); ctx.lineTo(535, 65); ctx.stroke();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '11px system-ui'; ctx.fillText('wind', 490, 45);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '11px system-ui'; ctx.fillText('wind', 490, 45);
         // Tray
         ctx.strokeStyle = '#a16207'; ctx.lineWidth = 3;
         ctx.beginPath(); ctx.moveTo(200, 220); ctx.lineTo(300, 220); ctx.lineTo(280, 235); ctx.lineTo(220, 235); ctx.closePath(); ctx.stroke();
@@ -10749,7 +10954,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const sieveY = 150;
         ctx.strokeStyle = '#78716c'; ctx.lineWidth = 3;
         ctx.strokeRect(180, sieveY, 240, 10);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '11px system-ui'; ctx.fillText('Sieve', 400, sieveY + 8);
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '11px system-ui'; ctx.fillText('Sieve', 400, sieveY + 8);
         for (let i = 0; i < 6; i++) {
           const hx = 195 + i * 38;
           ctx.clearRect(hx, sieveY + 2, 10, 6);
@@ -10771,7 +10976,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         // Funnel
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(250, 100); ctx.lineTo(350, 100); ctx.lineTo(300, 170); ctx.closePath(); ctx.stroke();
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '11px system-ui'; ctx.fillText('Filter paper cone', 240, 90);
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '11px system-ui'; ctx.fillText('Filter paper cone', 240, 90);
         // Flask
         ctx.beginPath(); ctx.moveTo(270, 210); ctx.lineTo(270, 250); ctx.lineTo(330, 250); ctx.lineTo(330, 210); ctx.stroke();
         // Muddy water shrinking in funnel, clear water growing in flask
@@ -10791,7 +10996,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillStyle = '#38bdf8';
           ctx.beginPath(); ctx.arc(300, 170 + (p * 400 % 40), 3, 0, 2 * Math.PI); ctx.fill();
         }
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '11px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '11px system-ui';
         ctx.fillText('Residue', 270, 190); ctx.fillText('Filtrate', 340, 235);
       }
 
@@ -10849,14 +11054,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillStyle = '#ef4444'; ctx.fillRect(magnetX - 20, 130, 20, 20);
         ctx.fillStyle = '#3b82f6'; ctx.fillRect(magnetX, 130, 20, 20);
         ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2; ctx.strokeRect(magnetX - 20, 130, 40, 20);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '11px system-ui'; ctx.fillText('Magnet', magnetX - 15, 125);
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '11px system-ui'; ctx.fillText('Magnet', magnetX - 15, 125);
       }
 
       function draw() {
         const W = canvas.width, H = canvas.height;
         ctx.clearRect(0, 0, W, H);
         const method = methodSel.value;
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 13px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 13px system-ui';
         ctx.fillText(methodSel.options[methodSel.selectedIndex].text, 20, 25);
         if (method === 'winnowing') drawWinnowing(progress);
         else if (method === 'sieving') drawSieving(progress);
@@ -10911,7 +11116,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         if (pot.light === 'sun') {
           ctx.fillStyle = '#fde68a';
           ctx.beginPath(); ctx.arc(530, 50, 24, 0, 2 * Math.PI); ctx.fill();
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '11px system-ui'; ctx.fillText('Sunlight', 500, 90);
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '11px system-ui'; ctx.fillText('Sunlight', 500, 90);
         } else {
           ctx.fillStyle = 'rgba(30,41,59,0.6)'; ctx.fillRect(460, 20, 120, 80);
           ctx.fillStyle = '#e2e8f0'; ctx.font = '11px system-ui'; ctx.fillText('Dark location', 480, 60);
@@ -10950,7 +11155,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.beginPath(); ctx.ellipse(300, 198, 8, 6, 0, 0, 2 * Math.PI); ctx.fill();
         }
 
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 13px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 13px system-ui';
         ctx.fillText('Pot ' + potSel.value, 20, 25);
       }
 
@@ -11046,7 +11251,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const cycle = cycles[animal];
         if (animal === 'mosquito') drawMosquitoStage(stage); else drawFrogStage(stage);
 
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
         ctx.fillText(`Stage ${stage + 1}/4: ${cycle[stage].name}`, 300, 25);
         ctx.textAlign = 'left';
 
@@ -11102,7 +11307,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const item = resources[itemSel.value];
         ctx.font = '40px system-ui';
         ctx.fillText(item.icon, itemX, 190);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 13px system-ui';
         ctx.fillText(item.label, itemX, 230);
         ctx.textAlign = 'left';
       }
@@ -11360,9 +11565,9 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const rw = l * scale, rh = b * scale;
         const x0 = (W - rw) / 2, y0 = (H - rh) / 2;
         ctx.fillStyle = 'rgba(99,102,241,0.15)'; ctx.fillRect(x0, y0, rw, rh);
-        ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 3;
+        ctx.strokeStyle = cssVar('--accent-color', '#000000'); ctx.lineWidth = 3;
         ctx.strokeRect(x0, y0, rw, rh);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
         ctx.fillText(`${l} cm`, x0 + rw / 2, y0 - 12);
         ctx.save(); ctx.translate(x0 - 16, y0 + rh / 2); ctx.rotate(-Math.PI / 2); ctx.fillText(`${b} cm`, 0, 0); ctx.restore();
         ctx.textAlign = 'left';
@@ -11419,16 +11624,16 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.beginPath();
           ctx.moveTo(x0, y0); ctx.lineTo(x0 + rw, y0); ctx.lineTo(x0 + rw, y0 + rh); ctx.closePath();
           ctx.fillStyle = 'rgba(250,204,21,0.35)'; ctx.fill();
-          ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 2;
+          ctx.strokeStyle = cssVar('--accent-color', '#000000'); ctx.lineWidth = 2;
           ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + rw, y0 + rh); ctx.stroke();
         } else {
           ctx.fillStyle = 'rgba(99,102,241,0.15)';
           ctx.fillRect(x0, y0, rw, rh);
         }
-        ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 2;
+        ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 2;
         ctx.strokeRect(x0, y0, rw, rh);
 
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
         ctx.fillText(`base = ${base} cm`, x0 + rw / 2, y0 + rh + 20);
         ctx.save(); ctx.translate(x0 - 18, y0 + rh / 2); ctx.rotate(-Math.PI / 2); ctx.fillText(`height = ${height} cm`, 0, 0); ctx.restore();
         ctx.textAlign = 'left';
@@ -11478,12 +11683,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         for (let i = 0; i < denom; i++) {
           ctx.fillStyle = i < num ? 'rgba(99,102,241,0.6)' : 'rgba(150,150,150,0.15)';
           ctx.fillRect(stripX + i * partW, stripY, partW, stripH);
-          ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 1.5;
+          ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 1.5;
           ctx.strokeRect(stripX + i * partW, stripY, partW, stripH);
         }
-        ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 3;
+        ctx.strokeStyle = cssVar('--accent-color', '#000000'); ctx.lineWidth = 3;
         ctx.strokeRect(stripX, stripY, stripW, stripH);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
         ctx.fillText('1 whole', stripX + stripW / 2, stripY - 15);
         ctx.textAlign = 'left';
       }
@@ -11519,12 +11724,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         for (let i = 0; i < denom; i++) {
           ctx.fillStyle = i < num ? color : 'rgba(150,150,150,0.12)';
           ctx.fillRect(barX + i * partW, y, partW, barH);
-          ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 1;
+          ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 1;
           ctx.strokeRect(barX + i * partW, y, partW, barH);
         }
-        ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 2;
+        ctx.strokeStyle = cssVar('--accent-color', '#000000'); ctx.lineWidth = 2;
         ctx.strokeRect(barX, y, barW, barH);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'left';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'left';
         ctx.fillText(label, barX, y - 6);
       }
 
@@ -11583,17 +11788,17 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const radius = parseInt(radSel.value) * scale;
 
         if (showCircle) {
-          ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 3;
+          ctx.strokeStyle = cssVar('--accent-color', '#000000'); ctx.lineWidth = 3;
           ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.stroke();
           ctx.strokeStyle = 'rgba(99,102,241,0.6)'; ctx.lineWidth = 2;
           ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + radius, cy); ctx.stroke();
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
           ctx.fillText(`${radSel.value} cm`, cx + radius / 2, cy - 10);
         }
 
         ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2);
-        ctx.fillStyle = 'var(--accent-color)'; ctx.fill();
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.fill();
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
         ctx.fillText('P (centre)', cx, cy - 14);
         ctx.textAlign = 'left';
       }
@@ -11624,13 +11829,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const bc = parseInt(bcSel.value), radius = parseInt(radSel.value);
         const Bx = (W - bc * scale) / 2, Cx = Bx + bc * scale;
 
-        ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 2;
+        ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(Bx, By); ctx.lineTo(Cx, By); ctx.stroke();
 
         [[Bx, 'B'], [Cx, 'C']].forEach(([x, label]) => {
           ctx.beginPath(); ctx.arc(x, By, 4, 0, Math.PI * 2);
-          ctx.fillStyle = 'var(--accent-color)'; ctx.fill();
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+          ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.fill();
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
           ctx.fillText(label, x, By + 20);
         });
         ctx.fillText(`${bc} cm`, (Bx + Cx) / 2, By + 20);
@@ -11648,12 +11853,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const Ax = (Bx + Cx) / 2, Ay = By - height * scale;
 
         if (showResult) {
-          ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 3;
+          ctx.strokeStyle = cssVar('--accent-color', '#000000'); ctx.lineWidth = 3;
           ctx.beginPath(); ctx.moveTo(Ax, Ay); ctx.lineTo(Bx, By); ctx.stroke();
           ctx.beginPath(); ctx.moveTo(Ax, Ay); ctx.lineTo(Cx, By); ctx.stroke();
           ctx.beginPath(); ctx.arc(Ax, Ay, 5, 0, Math.PI * 2);
           ctx.fillStyle = '#22c55e'; ctx.fill();
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
           ctx.fillText('A', Ax, Ay - 12);
         }
         ctx.textAlign = 'left';
@@ -11696,9 +11901,9 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       function drawSquareAndFold() {
         const W = canvas.width, H = canvas.height;
         ctx.clearRect(0, 0, W, H);
-        ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 2;
+        ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 2;
         ctx.strokeRect(x0, y0, side, side);
-        ctx.setLineDash([6, 4]); ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 2;
+        ctx.setLineDash([6, 4]); ctx.strokeStyle = cssVar('--accent-color', '#000000'); ctx.lineWidth = 2;
         ctx.beginPath();
         const fold = foldSel.value;
         if (fold === 'vertical') { ctx.moveTo(x0 + side / 2, y0); ctx.lineTo(x0 + side / 2, y0 + side); }
@@ -11716,14 +11921,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const px = x0 + u * side, py = y0 + v * side;
         ctx.beginPath(); ctx.arc(px, py, 7, 0, Math.PI * 2);
         ctx.fillStyle = '#ef4444'; ctx.fill();
-        ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 1; ctx.stroke();
+        ctx.strokeStyle = cssVar('--text-normal', '#000000'); ctx.lineWidth = 1; ctx.stroke();
 
         if (showReflection) {
           const [ru, rv] = reflect(u, v, fold);
           const rx = x0 + ru * side, ry = y0 + rv * side;
           ctx.beginPath(); ctx.arc(rx, ry, 7, 0, Math.PI * 2);
           ctx.fillStyle = '#3b82f6'; ctx.fill();
-          ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 1; ctx.stroke();
+          ctx.strokeStyle = cssVar('--text-normal', '#000000'); ctx.lineWidth = 1; ctx.stroke();
         }
       }
 
@@ -11765,7 +11970,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         }
         ctx.restore();
         ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.fill();
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.fill();
       }
 
       function angleList(n) {
@@ -11820,18 +12025,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           const y = 10 + index * floorH;
           ctx.fillStyle = floor === 0 ? 'rgba(250,204,21,0.18)' : 'rgba(150,150,150,0.06)';
           ctx.fillRect(60, y, 260, floorH);
-          ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 1;
+          ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 1;
           ctx.strokeRect(60, y, 260, floorH);
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'right';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'right';
           ctx.fillText(floor === 0 ? '0 (Ground)' : formatSigned(floor), 50, y + floorH / 2 + 4);
         }
         ctx.textAlign = 'left';
 
         const carX = 340, carW = 60, carH = Math.min(floorH - 6, 34);
         const cy = carY !== undefined ? carY : floorToY(currentFloor);
-        ctx.fillStyle = 'var(--accent-color)';
+        ctx.fillStyle = cssVar('--accent-color', '#000000');
         ctx.fillRect(carX, cy - carH / 2, carW, carH);
-        ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 1.5;
+        ctx.strokeStyle = cssVar('--text-normal', '#000000'); ctx.lineWidth = 1.5;
         ctx.strokeRect(carX, cy - carH / 2, carW, carH);
         ctx.fillStyle = 'white'; ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center';
         ctx.fillText('🛗', carX + carW / 2, cy + 6);
@@ -11890,7 +12095,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.beginPath(); ctx.arc(x, y, 16, 0, Math.PI * 2);
         ctx.fillStyle = positive ? '#22c55e' : '#ef4444';
         ctx.fill();
-        ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 1; ctx.stroke();
+        ctx.strokeStyle = cssVar('--text-normal', '#000000'); ctx.lineWidth = 1; ctx.stroke();
         ctx.fillStyle = 'white'; ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         ctx.fillText(positive ? '+' : '−', x, y);
         if (crossed) {
@@ -11960,7 +12165,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
         }
 
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
         ctx.fillText(`${n} ${type === 'L' ? ('L-shape' + (n === 1 ? '' : 's')) : ('square' + (n === 1 ? '' : 's'))}`, W / 2, 230);
         ctx.textAlign = 'left';
 
@@ -12007,15 +12212,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const a = parseInt(aSel.value), b = parseInt(bSel.value);
         const cx = W / 2, topY = 40, machineY = 140, outY = 230;
 
-        ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+        ctx.strokeStyle = cssVar('--accent-color', '#000000'); ctx.lineWidth = 5; ctx.lineCap = 'round';
         ctx.beginPath(); ctx.moveTo(cx - 90, topY); ctx.lineTo(cx, machineY); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(cx + 90, topY); ctx.lineTo(cx, machineY); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(cx, machineY); ctx.lineTo(cx, outY); ctx.stroke();
 
-        ctx.fillStyle = 'var(--bg-primary)'; ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 2;
+        ctx.fillStyle = cssVar('--bg-primary', '#000000'); ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 2;
         ctx.fillRect(cx - 45, machineY - 30, 90, 60);
         ctx.strokeRect(cx - 45, machineY - 30, 90, 60);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '26px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '26px system-ui'; ctx.textAlign = 'center';
         ctx.fillText('⚙️', cx, machineY + 10);
 
         ctx.font = 'bold 16px system-ui';
@@ -12023,7 +12228,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(b, cx + 90, topY - 10);
 
         if (result !== undefined) {
-          ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 20px system-ui';
+          ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 20px system-ui';
           ctx.fillText(result, cx, outY + 30);
         }
         ctx.textAlign = 'left';
@@ -12065,12 +12270,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const p1 = labelPoint(0, r), p2 = labelPoint(180, r);
         const p3 = labelPoint(a, r), p4 = labelPoint(a + 180, r);
 
-        ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 2.5;
+        ctx.strokeStyle = cssVar('--text-normal', '#000000'); ctx.lineWidth = 2.5;
         ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
-        ctx.strokeStyle = 'var(--accent-color)';
+        ctx.strokeStyle = cssVar('--accent-color', '#000000');
         ctx.beginPath(); ctx.moveTo(p3.x, p3.y); ctx.lineTo(p4.x, p4.y); ctx.stroke();
 
-        ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2); ctx.fillStyle = 'var(--text-normal)'; ctx.fill();
+        ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2); ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.fill();
 
         const labels = [
           { deg: a / 2, text: `a=${a}°`, color: '#ef4444' },
@@ -12121,7 +12326,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const dM = { x: Math.cos(phi), y: Math.sin(phi) };
         const dT = { x: Math.cos(theta), y: Math.sin(theta) };
 
-        ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 2;
+        ctx.strokeStyle = cssVar('--text-normal', '#000000'); ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(30, y1); ctx.lineTo(W - 30, y1); ctx.stroke();
 
         const mp1 = { x: cx - 400 * dM.x, y: y2 - 400 * dM.y };
@@ -12131,12 +12336,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const X = { x: cx, y: y1 };
         const tp1 = { x: X.x - 300 * dT.x, y: X.y - 300 * dT.y };
         const tp2 = { x: X.x + 300 * dT.x, y: X.y + 300 * dT.y };
-        ctx.strokeStyle = 'var(--accent-color)'; ctx.lineWidth = 2.5;
+        ctx.strokeStyle = cssVar('--accent-color', '#000000'); ctx.lineWidth = 2.5;
         ctx.beginPath(); ctx.moveTo(tp1.x, tp1.y); ctx.lineTo(tp2.x, tp2.y); ctx.stroke();
 
         const Y = intersect(X, dT, { x: cx, y: y2 }, dM);
 
-        ctx.fillStyle = 'var(--text-normal)';
+        ctx.fillStyle = cssVar('--text-normal', '#000000');
         [X, Y].forEach(p => { if (p) { ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI * 2); ctx.fill(); } });
 
         const angleAtY = thetaDeg - phiDeg;
@@ -12147,7 +12352,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(`∠ at X = ${thetaDeg}°`, X.x + 12, X.y - 12);
         if (Y) ctx.fillText(`∠ at Y = ${angleAtY}°`, Y.x + 12, Y.y - 12);
 
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = '12px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '12px system-ui';
         ctx.fillText('l', 34, y1 - 10);
         ctx.fillText('m', 34, mp1.y - 10);
         ctx.fillText('t', tp2.x - 15, tp2.y - 10);
@@ -12159,6 +12364,383 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       parallelSel.addEventListener('change', draw);
       angleSel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initParitySumLab() {
+      const canvas = document.getElementById('parity-sum-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const evensSel = document.getElementById('sel-parity-evens');
+      const oddsSel = document.getElementById('sel-parity-odds');
+      const obs = document.getElementById('parity-sum-obs');
+
+      function drawIcon(x, y, isOdd) {
+        ctx.fillStyle = '#3b82f6';
+        ctx.beginPath(); ctx.arc(x, y - 8, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(x, y + 8, 6, 0, Math.PI * 2); ctx.fill();
+        if (isOdd) {
+          ctx.fillStyle = '#f59e0b';
+          ctx.beginPath(); ctx.arc(x + 20, y, 6, 0, Math.PI * 2); ctx.fill();
+        }
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const nEvens = parseInt(evensSel.value), nOdds = parseInt(oddsSel.value);
+
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText('Even numbers:', 30, 40);
+        for (let i = 0; i < nEvens; i++) drawIcon(60 + i * 55, 80, false);
+
+        ctx.fillText('Odd numbers:', 30, 140);
+        for (let i = 0; i < nOdds; i++) drawIcon(60 + i * 55, 180, true);
+
+        ctx.fillText('Leftover dots paired up:', 30, 230);
+        const leftoverX = 260;
+        const py = 250;
+        const pairCount = Math.floor(nOdds / 2);
+        for (let i = 0; i < pairCount; i++) {
+          ctx.fillStyle = '#f59e0b';
+          ctx.beginPath(); ctx.arc(leftoverX + i * 30, py, 6, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(leftoverX + i * 30 + 12, py, 6, 0, Math.PI * 2); ctx.fill();
+        }
+        if (nOdds % 2 === 1) {
+          ctx.fillStyle = '#ef4444';
+          ctx.beginPath(); ctx.arc(leftoverX + pairCount * 30 + 20, py, 7, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.textAlign = 'left';
+
+        const isEven = (nOdds % 2 === 0);
+        const parityWord = isEven ? 'even' : 'odd';
+        obs.innerHTML = `<strong>${nEvens} even number${nEvens === 1 ? '' : 's'} + ${nOdds} odd number${nOdds === 1 ? '' : 's'} → sum is ${parityWord.toUpperCase()}</strong><br>The even numbers never leave a leftover. Each odd number leaves one leftover dot — with ${nOdds} leftover${nOdds === 1 ? '' : 's'}, ${pairCount} pair${pairCount === 1 ? '' : 's'} up completely${nOdds % 2 === 1 ? ', and exactly one remains unpaired (shown in red) — making the total sum odd.' : ', leaving nothing over — making the total sum even.'}`;
+      }
+
+      evensSel.addEventListener('change', draw);
+      oddsSel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMagicSquareBuilderLab() {
+      const canvas = document.getElementById('magic-square-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const centreSel = document.getElementById('sel-magic-centre');
+      const obs = document.getElementById('magic-square-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const m = parseInt(centreSel.value);
+        const grid = [
+          [m + 3, m - 4, m + 1],
+          [m - 2, m, m + 2],
+          [m - 1, m + 4, m - 3]
+        ];
+        const size = 65, startX = 140, startY = 30;
+
+        for (let r = 0; r < 3; r++) {
+          for (let c = 0; c < 3; c++) {
+            const x = startX + c * size, y = startY + r * size;
+            ctx.fillStyle = 'rgba(99,102,241,0.08)'; ctx.fillRect(x, y, size, size);
+            ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 2;
+            ctx.strokeRect(x, y, size, size);
+            ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center';
+            ctx.fillText(grid[r][c], x + size / 2, y + size / 2 + 6);
+          }
+        }
+
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--accent-color', '#000000');
+        for (let r = 0; r < 3; r++) {
+          const sum = grid[r][0] + grid[r][1] + grid[r][2];
+          ctx.textAlign = 'left';
+          ctx.fillText(`= ${sum}`, startX + 3 * size + 15, startY + r * size + size / 2 + 6);
+        }
+        for (let c = 0; c < 3; c++) {
+          const sum = grid[0][c] + grid[1][c] + grid[2][c];
+          ctx.textAlign = 'center';
+          ctx.fillText(`${sum}`, startX + c * size + size / 2, startY + 3 * size + 25);
+        }
+
+        const diag1 = grid[0][0] + grid[1][1] + grid[2][2];
+        const diag2 = grid[0][2] + grid[1][1] + grid[2][0];
+        ctx.textAlign = 'left';
+        ctx.fillText(`Diagonal ↘ = ${diag1}`, 20, 20);
+        ctx.fillText(`Diagonal ↙ = ${diag2}`, 20, 300);
+
+        obs.innerHTML = `<strong>Centre m = ${m} → Magic sum = 3m = ${3 * m}</strong><br>Every row, column, and diagonal adds up to exactly ${3 * m} — confirmed above. This works for ANY centre number, not just those from 1–9.`;
+      }
+
+      centreSel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initTriangleInequalityLab() {
+      const canvas = document.getElementById('triangle-inequality-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const selA = document.getElementById('sel-tri-a');
+      const selB = document.getElementById('sel-tri-b');
+      const selC = document.getElementById('sel-tri-c');
+      const obs = document.getElementById('tri-inequality-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const a = parseInt(selA.value), b = parseInt(selB.value), c = parseInt(selC.value);
+        const scale = 22;
+        const baseY = 230;
+        const cx = W / 2;
+        const p1 = { x: cx - (a * scale) / 2, y: baseY };
+        const p2 = { x: cx + (a * scale) / 2, y: baseY };
+
+        const validAB = a < b + c;
+        const validBC = b < a + c;
+        const validCA = c < a + b;
+        const isValid = validAB && validBC && validCA;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`${a} cm`, cx, baseY + 22);
+
+        if (isValid) {
+          const cosA = (b * b + a * a - c * c) / (2 * a * b);
+          const angleA = Math.acos(Math.max(-1, Math.min(1, cosA)));
+          const p3 = { x: p1.x + b * scale * Math.cos(angleA), y: p1.y - b * scale * Math.sin(angleA) };
+
+          ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p3.x, p3.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+
+          ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 13px system-ui';
+          ctx.fillText(`${b} cm`, (p1.x + p3.x) / 2 - 18, (p1.y + p3.y) / 2 - 2);
+          ctx.fillText(`${c} cm`, (p2.x + p3.x) / 2 + 18, (p2.y + p3.y) / 2 - 2);
+        } else {
+          ctx.setLineDash([6, 4]);
+          ctx.strokeStyle = cssVar('--text-light'); ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.arc(p1.x, p1.y, b * scale, Math.PI, 2 * Math.PI); ctx.stroke();
+          ctx.beginPath(); ctx.arc(p2.x, p2.y, c * scale, Math.PI, 2 * Math.PI); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = '#ef4444'; ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('✕ No triangle possible', cx, 60);
+        }
+
+        const longest = Math.max(a, b, c);
+        const failing = longest === a ? `a (${a}) ≥ b + c (${b + c})` : longest === b ? `b (${b}) ≥ a + c (${a + c})` : `c (${c}) ≥ a + b (${a + b})`;
+        obs.innerHTML = isValid
+          ? `<strong>✓ Triangle exists!</strong><br>${a} &lt; ${b}+${c} (=${b + c}), ${b} &lt; ${a}+${c} (=${a + c}), ${c} &lt; ${a}+${b} (=${a + b}) — every length is smaller than the sum of the other two, so the triangle inequality is satisfied.`
+          : `<strong>✕ No triangle possible.</strong><br>The direct path ${failing} — one length is not smaller than the sum of the other two, so the triangle inequality fails and no triangle can be constructed.`;
+      }
+
+      selA.addEventListener('change', draw);
+      selB.addEventListener('change', draw);
+      selC.addEventListener('change', draw);
+      draw();
+    }
+
+    function initAngleSumPropertyLab() {
+      const canvas = document.getElementById('angle-sum-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const selB = document.getElementById('sel-angsum-b');
+      const selC = document.getElementById('sel-angsum-c');
+      const obs = document.getElementById('angsum-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const angB = parseInt(selB.value), angC = parseInt(selC.value);
+        const baseY = 250, cx = W / 2;
+        let L = 300;
+        const bRad = angB * Math.PI / 180, cRad = angC * Math.PI / 180;
+        const sumBC = angB + angC;
+
+        if (sumBC >= 180) {
+          const Bx = cx - L / 2, Cx = cx + L / 2, len = 240;
+          ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(Bx, baseY); ctx.lineTo(Cx, baseY); ctx.stroke();
+          ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('B', Bx - 15, baseY + 5);
+          ctx.fillText('C', Cx + 15, baseY + 5);
+
+          ctx.strokeStyle = cssVar('--text-light'); ctx.setLineDash([6, 4]); ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(Bx, baseY); ctx.lineTo(Bx + len * Math.cos(bRad), baseY - len * Math.sin(bRad)); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(Cx, baseY); ctx.lineTo(Cx - len * Math.cos(cRad), baseY - len * Math.sin(cRad)); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = '#ef4444'; ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('✕ Rays never meet — no triangle', cx, 50);
+
+          obs.innerHTML = `<strong>✕ No triangle possible.</strong><br>∠B + ∠C = ${angB}° + ${angC}° = ${sumBC}°, which is ≥ 180°. The two rays drawn from B and C tilt away from (or run parallel to) each other and never meet, so no third vertex A exists.`;
+        } else {
+          const angA = 180 - sumBC;
+          const aRad = angA * Math.PI / 180;
+
+          let t = L * Math.sin(cRad) / Math.sin(aRad);
+          let height = t * Math.sin(bRad);
+          const maxHeight = 190;
+          if (height > maxHeight) {
+            const shrink = maxHeight / height;
+            L *= shrink;
+            t = L * Math.sin(cRad) / Math.sin(aRad);
+          }
+
+          const Bx = cx - L / 2, Cx = cx + L / 2;
+          const Ax = Bx + t * Math.cos(bRad), Ay = baseY - t * Math.sin(bRad);
+
+          ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(Bx, baseY); ctx.lineTo(Cx, baseY); ctx.stroke();
+
+          ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(Bx, baseY); ctx.lineTo(Ax, Ay); ctx.lineTo(Cx, baseY); ctx.stroke();
+
+          ctx.strokeStyle = cssVar('--text-light'); ctx.setLineDash([5, 4]); ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(Ax - 110, Ay); ctx.lineTo(Ax + 110, Ay); ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('A', Ax, Ay - 12);
+          ctx.fillText('B', Bx - 15, baseY + 5);
+          ctx.fillText('C', Cx + 15, baseY + 5);
+          ctx.font = '12px system-ui';
+          ctx.fillText(`${angB}°`, Bx + 26, baseY - 10);
+          ctx.fillText(`${angC}°`, Cx - 26, baseY - 10);
+          ctx.fillStyle = cssVar('--accent-color'); ctx.font = 'bold 13px system-ui';
+          ctx.fillText(`∠A = ${angA}°`, Ax, Ay - 28);
+
+          ctx.strokeStyle = cssVar('--border-color'); ctx.setLineDash([4, 3]); ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(Bx, baseY); ctx.lineTo(Cx + 70, baseY); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = cssVar('--text-muted'); ctx.font = '12px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText(`Exterior ∠ at C = ∠A + ∠B = ${angA + angB}°`, Cx + 10, baseY + 22);
+
+          obs.innerHTML = `<strong>∠A = 180° − ${angB}° − ${angC}° = ${angA}°</strong><br>∠A + ∠B + ∠C = ${angA}° + ${angB}° + ${angC}° = 180° — confirmed by the angle sum property. The exterior angle at C equals ∠A + ∠B = ${angA + angB}°, the sum of the two remote interior angles.`;
+        }
+      }
+
+      selB.addEventListener('change', draw);
+      selC.addEventListener('change', draw);
+      draw();
+    }
+
+    function initFractionAreaModelLab() {
+      const canvas = document.getElementById('fraction-area-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel1 = document.getElementById('sel-frac-area-1');
+      const sel2 = document.getElementById('sel-frac-area-2');
+      const obs = document.getElementById('frac-area-obs');
+
+      function gcd(x, y) { return y === 0 ? x : gcd(y, x % y); }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [n1, d1] = sel1.value.split(',').map(Number);
+        const [n2, d2] = sel2.value.split(',').map(Number);
+
+        const size = 220, startX = 50, startY = 30;
+        const cellW = size / d2, cellH = size / d1;
+
+        ctx.fillStyle = 'rgba(16,185,129,0.35)';
+        ctx.fillRect(startX, startY, cellW * n2, cellH * n1);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        for (let r = 0; r <= d1; r++) {
+          ctx.beginPath(); ctx.moveTo(startX, startY + r * cellH); ctx.lineTo(startX + size, startY + r * cellH); ctx.stroke();
+        }
+        for (let c = 0; c <= d2; c++) {
+          ctx.beginPath(); ctx.moveTo(startX + c * cellW, startY); ctx.lineTo(startX + c * cellW, startY + size); ctx.stroke();
+        }
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        ctx.strokeRect(startX, startY, size, size);
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`Whole = ${d1} rows × ${d2} cols = ${d1 * d2} parts`, startX + size / 2, startY + size + 24);
+
+        const num = n1 * n2, den = d1 * d2;
+        const g = gcd(num, den);
+        const simN = num / g, simD = den / g;
+
+        ctx.font = 'bold 20px system-ui'; ctx.textAlign = 'left';
+        ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(`${n1}/${d1} × ${n2}/${d2}`, 320, 110);
+        ctx.fillText(`= ${num}/${den}`, 320, 150);
+        if (g > 1) {
+          ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillText(`= ${simN}/${simD}`, 320, 190);
+        }
+
+        obs.innerHTML = `<strong>${n1}/${d1} × ${n2}/${d2} = ${num}/${den}${g > 1 ? ` = ${simN}/${simD} (simplified)` : ''}</strong><br>The whole is split into ${d1} rows × ${d2} columns = ${den} equal parts. Shading ${n1} rows' worth by ${n2} columns' worth marks exactly ${n1} × ${n2} = ${num} shaded parts — matching numerator × numerator over denominator × denominator.`;
+      }
+
+      sel1.addEventListener('change', draw);
+      sel2.addEventListener('change', draw);
+      draw();
+    }
+
+    function initFractionDivisionLab() {
+      const canvas = document.getElementById('fraction-division-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel1 = document.getElementById('sel-frac-div-1');
+      const sel2 = document.getElementById('sel-frac-div-2');
+      const obs = document.getElementById('frac-div-obs');
+
+      function gcd(x, y) { return y === 0 ? x : gcd(y, x % y); }
+
+      function drawFraction(x, y, num, den, color, fontSize) {
+        ctx.fillStyle = color; ctx.font = `bold ${fontSize}px system-ui`; ctx.textAlign = 'center';
+        ctx.fillText(String(num), x, y - 6);
+        ctx.fillText(String(den), x, y + fontSize + 4);
+        ctx.strokeStyle = color; ctx.lineWidth = 2;
+        const halfW = Math.max(String(num).length, String(den).length) * fontSize * 0.35;
+        ctx.beginPath(); ctx.moveTo(x - halfW, y + 6); ctx.lineTo(x + halfW, y + 6); ctx.stroke();
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [n1, d1] = sel1.value.split(',').map(Number);
+        const [n2, d2] = sel2.value.split(',').map(Number);
+
+        const midY = 90, flipY = 240;
+        drawFraction(90, midY, n1, d1, cssVar('--text-normal'), 22);
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 26px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('÷', 170, midY + 8);
+        drawFraction(240, midY, n2, d2, cssVar('--text-muted'), 22);
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(240, midY + 45);
+        ctx.quadraticCurveTo(240, (midY + flipY) / 2, 240, flipY - 40);
+        ctx.stroke();
+        ctx.fillStyle = cssVar('--accent-color'); ctx.font = '12px system-ui';
+        ctx.fillText('flip (reciprocal)', 240, (midY + flipY) / 2 + 5);
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 26px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('×', 170, flipY + 8);
+        drawFraction(90, flipY, n1, d1, cssVar('--text-normal'), 22);
+        drawFraction(240, flipY, d2, n2, cssVar('--accent-color'), 22);
+
+        const num = n1 * d2, den = d1 * n2;
+        const g = gcd(num, den);
+        const simN = num / g, simD = den / g;
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 22px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('=', 340, flipY + 8);
+        drawFraction(410, flipY, simN, simD, cssVar('--accent-color'), 26);
+
+        const dividendVal = n1 / d1, divisorVal = n2 / d2;
+        const quotientVal = simN / simD;
+        const comparison = quotientVal > dividendVal ? 'greater than' : (quotientVal < dividendVal ? 'smaller than' : 'equal to');
+        const growShrink = divisorVal < 1 ? 'grow' : 'shrink';
+
+        obs.innerHTML = `<strong>${n1}/${d1} ÷ ${n2}/${d2} = ${n1}/${d1} × ${d2}/${n2} = ${num}/${den}${g > 1 ? ` = ${simN}/${simD} (simplified)` : ''}</strong><br>The divisor ${n2}/${d2} is flipped into its reciprocal ${d2}/${n2}, then multiplied by the dividend. The quotient is ${comparison} the dividend, since dividing by a fraction ${divisorVal < 1 ? 'smaller' : 'larger'} than 1 makes the result ${growShrink}.`;
+      }
+
+      sel1.addEventListener('change', draw);
+      sel2.addEventListener('change', draw);
       draw();
     }
 
@@ -12194,7 +12776,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillStyle = active ? (i <= 2 ? '#3b82f6' : i === 3 ? '#8b5cf6' : '#ef4444') : '#e2e8f0';
           ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, 2*Math.PI); ctx.fill();
           ctx.strokeStyle = active ? '#1e293b' : '#94a3b8'; ctx.lineWidth = 2; ctx.stroke();
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = '9px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '9px system-ui';
           ctx.fillText(n.label, n.x - 25, n.y + n.r + 15);
           // Signal pulse
           if (signal === i) {
@@ -12204,7 +12786,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         });
         // Time display
         if (signal >= 0) {
-          ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 12px system-ui';
+          ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 12px system-ui';
           ctx.fillText('Signal at: ' + nodes[Math.min(signal, 5)].label, 200, 30);
         }
         // Hand pulling animation
@@ -12263,7 +12845,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillStyle = status === 'NORMAL' ? '#22c55e' : '#ef4444';
         ctx.fillRect(50, 250 - barH, 30, barH);
         ctx.strokeStyle = '#94a3b8'; ctx.strokeRect(50, 50, 30, 200);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
         ctx.fillText('Blood', 48, 270); ctx.fillText('Sugar', 48, 280);
         // Hormone arrows
         if (sugar > 140) {
@@ -12409,7 +12991,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.moveTo(rootStub.x, rootStub.y);
         ctx.quadraticCurveTo(anchor.x, anchor.y + 50, anchor.x, anchor.y + 90);
         ctx.stroke();
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
         ctx.fillText('Shoot (negatively geotropic)', 20, 30);
         ctx.fillText('Root (positively geotropic)', 20, H - 15);
         obs.innerHTML = `<strong>Geotropism:</strong><br>
@@ -12460,7 +13042,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.clearRect(0, 0, W, H);
         const sx = 180, sy = 60, cellW = 90, cellH = 60;
         // Header
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 16px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 16px system-ui';
         ctx.fillText('Punnett Square', sx + 20, 35);
         // Parent labels
         ctx.fillStyle = '#3b82f6'; ctx.font = 'bold 14px system-ui';
@@ -12478,7 +13060,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.fillStyle = isTall ? 'rgba(34, 197, 94, 0.2)' : 'rgba(239, 68, 68, 0.2)';
             ctx.fillRect(x, y, cellW, cellH);
             ctx.strokeRect(x, y, cellW, cellH);
-            ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 18px system-ui';
+            ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 18px system-ui';
             ctx.fillText(geno, x + cellW/2 - 10, y + cellH/2 + 7);
             // Plant icon
             ctx.font = '20px system-ui';
@@ -12685,7 +13267,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.strokeStyle = `rgba(255,255,255,${starBrightness*0.5})`; ctx.lineWidth = 1;
           ctx.beginPath(); ctx.moveTo(starX, starY); ctx.lineTo(starX + Math.cos(a)*(8+starBrightness*6), starY + Math.sin(a)*(8+starBrightness*6)); ctx.stroke();
         }
-        ctx.fillStyle = 'var(--text-muted, #94a3b8)'; ctx.font = 'bold 10px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = 'bold 10px system-ui';
         ctx.fillText('Star (point source) — twinkles', starX - 65, starY + 45);
 
         const planetX = 420, planetY = 130;
@@ -12693,7 +13275,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         pg.addColorStop(0, 'rgba(251,191,36,1)'); pg.addColorStop(1, 'rgba(251,191,36,0.85)');
         ctx.fillStyle = pg;
         ctx.beginPath(); ctx.arc(planetX, planetY, 13, 0, 2*Math.PI); ctx.fill();
-        ctx.fillStyle = 'var(--text-muted, #94a3b8)'; ctx.font = 'bold 10px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = 'bold 10px system-ui';
         ctx.fillText('Planet (extended source) — steady', planetX - 85, planetY + 45);
 
         obsTitle.textContent = 'Why Stars Twinkle but Planets Don’t';
@@ -12804,7 +13386,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(hasParticles ? 'Smoke-filled room' : 'Clear air / true solution', 45, 34);
 
         ctx.fillStyle = '#94a3b8'; ctx.fillRect(20, H/2 - 15, 40, 30);
-        ctx.fillStyle = 'var(--text-normal, #e2e8f0)'; ctx.font = '9px system-ui'; ctx.fillText('Torch', 22, H/2 + 42);
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = '9px system-ui'; ctx.fillText('Torch', 22, H/2 + 42);
 
         const beamY = H/2;
         if (hasParticles) {
@@ -12941,13 +13523,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillStyle = 'rgba(180,83,9,0.7)';
         ctx.beginPath(); ctx.ellipse(wireX + wireLenPx, cy, Math.max(3, wireThickPx/6), wireThickPx/2, 0, 0, 2*Math.PI); ctx.fill();
 
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
         ctx.fillText('l = ' + l.toFixed(1) + ' m', cx - 20, wireY - 15);
         ctx.font = '10px system-ui';
         ctx.fillText('Area A', wireX + wireLenPx + 12, cy - wireThickPx/2 - 8);
         ctx.beginPath(); ctx.moveTo(wireX + wireLenPx + 8, cy - wireThickPx/2); ctx.lineTo(wireX + wireLenPx + 8, cy + wireThickPx/2); ctx.stroke();
 
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '10px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '10px system-ui';
         ctx.fillText(mat.label + ' wire', cx - 30, cy + wireThickPx/2 + 25);
 
         obs.innerHTML = `<strong>R = ρl/A</strong><br>
@@ -13063,7 +13645,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const gx = 340, gy = 40, gw = 220, gh = 220;
         ctx.strokeStyle = '#475569'; ctx.lineWidth = 1;
         ctx.strokeRect(gx, gy, gw, gh);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '10px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '10px system-ui';
         ctx.fillText('V (Volts)', gx + gw/2 - 20, gy + gh + 25);
         ctx.save(); ctx.translate(gx - 15, gy + gh/2); ctx.rotate(-Math.PI/2);
         ctx.fillText('I (Amps)', -20, 0); ctx.restore();
@@ -13130,7 +13712,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.beginPath(); ctx.moveTo(W/2 - 8, H/2 + 15); ctx.lineTo(W/2 - 5, H/2 - 15);
         ctx.lineTo(W/2 + 5, H/2 + 5); ctx.lineTo(W/2 + 8, H/2 - 20); ctx.stroke();
         // Power display
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 16px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 16px system-ui';
         ctx.fillText('P = ' + P.toFixed(0) + ' W', W/2 - 30, H - 30);
         obs.innerHTML = `<strong>Electric Power:</strong><br>
           • P = V \u00D7 I = ${V} \u00D7 ${I.toFixed(1)} = <strong>${P.toFixed(1)} W</strong><br>
@@ -13212,7 +13794,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.moveTo(0, -12); ctx.lineTo(-4, 4); ctx.lineTo(4, 4); ctx.closePath(); ctx.fill();
         ctx.fillStyle = '#f8fafc'; ctx.beginPath(); ctx.moveTo(0, 12); ctx.lineTo(-4, -4); ctx.lineTo(4, -4); ctx.closePath(); ctx.fill();
         ctx.restore();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
         ctx.fillText('Compass', compassX - 18, compassY + 30);
         obs.innerHTML = `<strong>Magnetic Field:</strong><br>
           • Compass needle aligns with the field direction.<br>
@@ -13242,7 +13824,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.beginPath(); ctx.moveTo(cx-6, cy-6); ctx.lineTo(cx+6, cy+6);
           ctx.moveTo(cx-6, cy+6); ctx.lineTo(cx+6, cy-6); ctx.stroke();
         }
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '10px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '10px system-ui';
         ctx.fillText(outward ? 'Current out of the page (⊙)' : 'Current into the page (⊗)', cx - 90, cy + 160);
         const radialAngle = Math.atan2(compassY - cy, compassX - cx);
         const tangentAngle = radialAngle + (outward ? Math.PI/2 : -Math.PI/2);
@@ -13484,7 +14066,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.moveTo(W/2, H - 50);
         ctx.lineTo(W/2 + Math.cos(needleAngle)*25, H - 50 + Math.sin(needleAngle)*25);
         ctx.stroke();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
         ctx.fillText('Galvanometer', W/2 - 30, H - 10);
         ctx.fillText('EMF: ' + Math.abs(emf).toFixed(1) + ' (arb.)', W/2 - 30, H - 70);
         obs.innerHTML = `<strong>Electromagnetic Induction:</strong><br>
@@ -13521,7 +14103,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(cx, cy + 26); ctx.lineTo(cx, cy + 55); ctx.stroke();
         ctx.beginPath(); ctx.ellipse(cx, cy + 62, 16, 6, 0, 0, 2*Math.PI); ctx.stroke();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui'; ctx.fillText('Slip rings + brushes', cx - 42, cy + 82);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui'; ctx.fillText('Slip rings + brushes', cx - 42, cy + 82);
 
         const emfNow = Math.sin(generatorAngle);
         emfHistory.push(emfNow);
@@ -13530,7 +14112,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const gx = 280, gy = 25, gw = 300, gh = 130;
         ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.strokeRect(gx, gy, gw, gh);
         ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.beginPath(); ctx.moveTo(gx, gy + gh/2); ctx.lineTo(gx + gw, gy + gh/2); ctx.stroke();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('EMF vs Time (AC output)', gx, gy - 8);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('EMF vs Time (AC output)', gx, gy - 8);
         ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
         ctx.beginPath();
         emfHistory.forEach((v, idx) => {
@@ -13548,7 +14130,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         }
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.arc(bulbX, bulbY, 16, 0, 2*Math.PI); ctx.stroke();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Bulb (lit by AC)', bulbX - 32, bulbY + 35);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Bulb (lit by AC)', bulbX - 32, bulbY + 35);
 
         obsTitle.textContent = 'AC Generator';
         obs.innerHTML = `<strong>AC Generator:</strong><br>
@@ -13579,7 +14161,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           drawWire(fuseX2 - 15, liveY, fuseX2, liveY, '#ef4444');
           ctx.fillStyle = '#ef4444'; ctx.font = '16px system-ui'; ctx.fillText('✗', fuseX1 + 15, liveY + 6);
         }
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Fuse', fuseX1 - 5, liveY - 18);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Fuse', fuseX1 - 5, liveY - 18);
 
         if (shortCircuited && !fuseBlown) {
           const flicker = Math.sin(Date.now() / 60) > 0;
@@ -13603,7 +14185,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         }
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.arc(bulbX, neutralY - 45, 18, 0, 2*Math.PI); ctx.stroke();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('Bulb', bulbX - 12, neutralY - 68);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Bulb', bulbX - 12, neutralY - 68);
 
         ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(500, earthY); ctx.lineTo(500, earthY + 30); ctx.stroke();
@@ -13719,7 +14301,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           const bx = W - 50 - bw, by = 275 - i*85;
           ctx.fillStyle = `rgba(34, 197, 94, ${0.15 + i*0.05})`;
           ctx.fillRect(bx, by, bw, bh);
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui';
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui';
           ctx.fillText(l + ' (10^' + (4-i) + ' J)', bx, by - 3);
         });
         links.forEach(([a,b]) => {
@@ -13764,7 +14346,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillStyle = 'rgba(96,165,250,0.75)';
           ctx.fillRect(i*segW, bandY, segW-1, bandH);
         }
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 10px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 10px system-ui';
         ctx.fillText('Ozone Layer (Stratosphere)', 10, bandY - 6);
 
         ctx.fillStyle = '#166534'; ctx.fillRect(0, H - 40, W, 40);
@@ -13822,8 +14404,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillStyle = '#ef4444'; ctx.font = 'bold 12px system-ui'; ctx.fillText('Non-Biodegradable', 398, binY + binR + 20);
 
         ctx.font = '48px system-ui'; ctx.fillText(item.emoji, W/2 - 24, 90);
-        ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 14px system-ui'; ctx.fillText(item.name, W/2 - (item.name.length*3.5), 120);
-        ctx.font = '11px system-ui'; ctx.fillStyle = 'var(--text-muted)'; ctx.fillText('Click a bin to sort this item', W/2 - 70, 145);
+        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 14px system-ui'; ctx.fillText(item.name, W/2 - (item.name.length*3.5), 120);
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.fillText('Click a bin to sort this item', W/2 - 70, 145);
 
         if (wasteFeedback) {
           ctx.fillStyle = wasteFeedback.correct ? '#22c55e' : '#ef4444';
@@ -13916,7 +14498,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const mol = molecules[sel.value];
         const W = canvas.width, H = canvas.height;
         ctx.clearRect(0, 0, W, H);
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 14px system-ui';
         ctx.fillText(mol.name, 20, 30);
         // Bonds
         mol.bonds.forEach(b => {
@@ -13983,7 +14565,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
         }
         // Labels
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '10px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '10px system-ui';
         ctx.fillText('Water', 20, 20);
         if (soapCount > 0) {
           ctx.fillStyle = '#3b82f6'; ctx.font = 'bold 9px system-ui';
@@ -14029,7 +14611,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillStyle = '#1e293b';
           ctx.beginPath(); ctx.arc(W/2 - stretch, H/2, 8, 0, 2*Math.PI); ctx.fill();
           if (progress > 0.5) { ctx.beginPath(); ctx.arc(W/2 + stretch, H/2, 8, 0, 2*Math.PI); ctx.fill(); }
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
           ctx.fillText('Amoeba - Binary Fission', W/2 - 60, 30);
         } else if (type === 'plasmodium') {
           // Multiple fission: one nucleus splits into many simultaneously, then each
@@ -14048,7 +14630,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
               ctx.beginPath(); ctx.arc(nx, ny, 14, 0, 2*Math.PI); ctx.stroke();
             }
           }
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
           ctx.fillText('Plasmodium - Multiple Fission', W/2 - 75, 30);
         } else if (type === 'yeast') {
           // Budding
@@ -14061,7 +14643,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.beginPath(); ctx.arc(W/2 + 30 + budR, H/2 - 10, budR, 0, 2*Math.PI); ctx.fill();
             if (progress > 0.5) { ctx.fillStyle = '#92400e'; ctx.beginPath(); ctx.arc(W/2 + 30 + budR, H/2 - 10, 5, 0, 2*Math.PI); ctx.fill(); }
           }
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
           ctx.fillText('Yeast - Budding', W/2 - 40, 30);
         } else if (type === 'spirogyra') {
           // Fragmentation
@@ -14072,7 +14654,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             const sx = W/2 - 100 + i * (40 + gap);
             ctx.beginPath(); ctx.ellipse(sx, H/2, 18, 10, 0, 0, 2*Math.PI); ctx.fill();
           }
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
           ctx.fillText('Spirogyra - Fragmentation', W/2 - 60, 30);
         } else if (type === 'planaria') {
           // Regeneration: the worm is cut into two small pieces, each of which
@@ -14094,7 +14676,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.beginPath(); ctx.arc(rightHeadX, H/2 - 3, 2, 0, 2*Math.PI); ctx.fill();
             ctx.beginPath(); ctx.arc(rightHeadX, H/2 + 3, 2, 0, 2*Math.PI); ctx.fill();
           }
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
           ctx.fillText('Planaria - Regeneration', W/2 - 65, 30);
         } else if (type === 'potato') {
           // Vegetative propagation: a potato piece carrying an "eye" (bud/notch)
@@ -14116,7 +14698,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.strokeStyle = '#78350f'; ctx.lineWidth = 3;
             ctx.beginPath(); ctx.moveTo(W/2 - 10, H/2 + 45); ctx.lineTo(W/2 - 10, H/2 + 45 + rootLen); ctx.stroke();
           }
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
           ctx.fillText('Potato - Vegetative Propagation', W/2 - 85, 30);
         } else {
           // Spore formation: hyphae bear a sporangium that swells with spores,
@@ -14149,7 +14731,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
               ctx.beginPath(); ctx.arc(W/2 + Math.cos(ang)*r, H/2 - 30 + Math.sin(ang)*r, 2, 0, 2*Math.PI); ctx.fill();
             }
           }
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
           ctx.fillText('Rhizopus - Spore Formation', W/2 - 75, 30);
         }
         const stageMap = {
@@ -14224,7 +14806,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         hormones.forEach((h, i) => { ctx.fillStyle = h.color; ctx.font = 'bold 9px system-ui'; ctx.fillText(h.name, gx + i * 100, gy + gh + 20); });
         // Phase label
         const phase = day <= 5 ? 'Menstrual Phase' : day <= 13 ? 'Follicular Phase' : day === 14 ? 'Ovulation' : 'Luteal Phase';
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 14px system-ui';
         ctx.fillText(phase, gx, gy + gh + 45);
         // Uterine wall
         const wallY = gy + gh + 55, wallH = 30;
@@ -14232,7 +14814,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillStyle = 'rgba(239, 68, 68, 0.3)';
         ctx.fillRect(gx, wallY, gw, wallH * thickness);
         ctx.strokeStyle = '#94a3b8'; ctx.strokeRect(gx, wallY, gw, wallH);
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '8px system-ui'; ctx.fillText('Uterine Wall', gx, wallY + wallH + 12);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui'; ctx.fillText('Uterine Wall', gx, wallY + wallH + 12);
         obs.innerHTML = `<strong>Day ${day} — ${phase}:</strong><br>
           • ${day <= 5 ? 'Uterine lining breaks down. Menstrual bleeding occurs.' : day <= 13 ? 'FSH stimulates follicle growth. Estrogen rises, rebuilding uterine wall.' : day === 14 ? 'LH surge triggers ovulation! Egg released from ovary.' : 'Progesterone maintains thick uterine wall for potential implantation.'}`;
       }
@@ -14262,7 +14844,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.clearRect(0, 0, W, H);
         const factors = factorize(num);
         // Draw tree
-        ctx.fillStyle = 'var(--accent-color)'; ctx.font = 'bold 18px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 18px system-ui';
         ctx.fillText(num, W/2 - 10, 30);
         // Factor nodes
         const levels = [];
@@ -14280,7 +14862,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillStyle = 'white'; ctx.font = 'bold 12px system-ui'; ctx.fillText(l.factor, x1 - 5, y + 20);
           // Quotient
           ctx.fillStyle = 'rgba(148, 163, 184, 0.3)'; ctx.beginPath(); ctx.arc(x2, y + 15, 15, 0, 2*Math.PI); ctx.fill();
-          ctx.fillStyle = 'var(--text-normal)'; ctx.fillText(l.quotient, x2 - 8, y + 20);
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.fillText(l.quotient, x2 - 8, y + 20);
         });
         // Result
         const primeStr = factors.join(' \u00D7 ');
@@ -14418,7 +15000,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           const sy = (a1*c2 - a2*c1) / det;
           ctx.fillStyle = '#22c55e';
           ctx.beginPath(); ctx.arc(ox + sx*scale, oy - sy*scale, 6, 0, 2*Math.PI); ctx.fill();
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 11px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
           ctx.fillText(`(${sx.toFixed(1)}, ${sy.toFixed(1)})`, ox + sx*scale + 10, oy - sy*scale - 10);
           obs.innerHTML = `<strong>Consistent System:</strong><br>
             • <span style="color:#3b82f6">Line 1:</span> ${a1}x + ${b1}y = ${c1}<br>
@@ -14459,7 +15041,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const px = cx + R * Math.cos(rad);
         const py = cy - R * Math.sin(rad);
         // Hypotenuse
-        ctx.strokeStyle = 'var(--text-normal)'; ctx.lineWidth = 2;
+        ctx.strokeStyle = cssVar('--text-normal', '#000000'); ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(px, py); ctx.stroke();
         // Adjacent (cos line)
         ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 3;
@@ -14512,7 +15094,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           const barW = 80, maxH = 200;
           const hH = total > 0 ? (results.coin.heads / total) * maxH : 0;
           ctx.fillStyle = '#3b82f6'; ctx.fillRect(150, H - 40 - hH, barW, hH);
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 10px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 10px system-ui';
           ctx.fillText('Heads: ' + results.coin.heads, 155, H - 45 - hH);
           const tH = total > 0 ? (results.coin.tails / total) * maxH : 0;
           ctx.fillStyle = '#ef4444'; ctx.fillRect(350, H - 40 - tH, barW, tH);
@@ -14522,7 +15104,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.beginPath(); ctx.moveTo(130, H - 40 - maxH/2); ctx.lineTo(450, H - 40 - maxH/2); ctx.stroke();
             ctx.setLineDash([]); ctx.fillStyle = '#22c55e'; ctx.font = '9px system-ui'; ctx.fillText('50% (Theoretical)', 455, H - 40 - maxH/2);
           }
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui';
           ctx.fillText('Total Flips: ' + total, 220, 30);
         } else if (type === 'dice') {
           const total = Object.values(results.dice).reduce((s,v)=>s+v, 0);
@@ -14532,7 +15114,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             const h = total > 0 ? (results.dice[face] / total) * maxH : 0;
             ctx.fillStyle = `hsl(${face * 50}, 70%, 60%)`;
             ctx.fillRect(x, H - 50 - h, barW, h);
-            ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 10px system-ui';
+            ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 10px system-ui';
             ctx.fillText(face + ': ' + results.dice[face], x + 10, H - 30);
           }
           if (total > 0) {
@@ -14540,14 +15122,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.beginPath(); ctx.moveTo(30, H - 50 - maxH/6); ctx.lineTo(W - 30, H - 50 - maxH/6); ctx.stroke();
             ctx.setLineDash([]); ctx.fillStyle = '#22c55e'; ctx.font = '9px system-ui'; ctx.fillText('16.67% each (Theoretical)', W - 150, H - 50 - maxH/6 - 5);
           }
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui';
           ctx.fillText('Total Rolls: ' + total, 230, 25);
         } else {
           const total = results.card.ace + results.card.other;
           const barW = 100, maxH = 200;
           const aH = total > 0 ? (results.card.ace / total) * maxH : 0;
           ctx.fillStyle = '#f97316'; ctx.fillRect(150, H - 40 - aH, barW, aH);
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 10px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 10px system-ui';
           ctx.fillText('Ace: ' + results.card.ace, 175, H - 45 - aH);
           const oH = total > 0 ? (results.card.other / total) * maxH : 0;
           ctx.fillStyle = '#64748b'; ctx.fillRect(350, H - 40 - oH, barW, oH);
@@ -14558,7 +15140,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.beginPath(); ctx.moveTo(130, theoY); ctx.lineTo(470, theoY); ctx.stroke();
             ctx.setLineDash([]); ctx.fillStyle = '#22c55e'; ctx.font = '9px system-ui'; ctx.fillText('1/13 ≈ 7.7% (Theoretical, Ace bar)', 130, theoY - 8);
           }
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 12px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui';
           ctx.fillText('Total Draws: ' + total, 220, 30);
         }
       }
@@ -14700,7 +15282,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           const y = t >= 0 ? 260 - barH : 260;
           ctx.fillStyle = colors[i % colors.length];
           ctx.fillRect(x, y, barW, barH);
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 9px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 9px system-ui';
           ctx.fillText('a' + (i+1), x + barW/2 - 5, 280);
           ctx.fillText(t, x + barW/2 - 5, t >= 0 ? y - 5 : y + barH + 12);
         });
@@ -14739,7 +15321,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2*Math.PI); ctx.stroke();
         ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(cx, cy, 3, 0, 2*Math.PI); ctx.fill();
-        ctx.fillStyle = 'var(--text-muted)'; ctx.font = '9px system-ui'; ctx.fillText('O', cx - 10, cy + 15);
+        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('O', cx - 10, cy + 15);
         // External point
         const dist = Math.hypot(px - cx, py - cy);
         ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.arc(px, py, 5, 0, 2*Math.PI); ctx.fill();
@@ -14870,7 +15452,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           const x = 60 + i * barW;
           ctx.fillStyle = `hsl(${200 + i*30}, 70%, 60%)`;
           ctx.fillRect(x, 270 - h, barW - 5, h);
-          ctx.fillStyle = 'var(--text-normal)'; ctx.font = 'bold 10px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 10px system-ui';
           ctx.fillText(f, x + barW/2 - 5, 265 - h);
           ctx.font = '8px system-ui'; ctx.fillText(data.classes[i], x, 285);
         });
@@ -14915,9 +15497,9 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const plotX = v => 60 + ((v - x0) / (x1 - x0)) * (W - 120);
         const plotY = v => 270 - (v / totalF) * 220;
         // axes
-        ctx.strokeStyle = 'var(--text-muted, #94a3b8)'; ctx.lineWidth = 1;
+        ctx.strokeStyle = cssVar('--text-muted', '#94a3b8'); ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(60, 40); ctx.lineTo(60, 270); ctx.lineTo(W - 40, 270); ctx.stroke();
-        ctx.font = '8px system-ui'; ctx.fillStyle = 'var(--text-normal)';
+        ctx.font = '8px system-ui'; ctx.fillStyle = cssVar('--text-normal', '#000000');
         points.forEach(p => ctx.fillText(p.x, plotX(p.x) - 8, 285));
         // ogive curve
         ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
@@ -15293,7 +15875,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         function drawSetup() {
           const W = slakingCanvas.width; const H = slakingCanvas.height;
           ctx.clearRect(0,0,W,H);
-          ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 3;
+          ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 3;
           ctx.beginPath(); ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240);
           ctx.lineTo(W/2 + 60, 240); ctx.lineTo(W/2 + 60, 100); ctx.stroke();
           
@@ -15386,7 +15968,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.beginPath(); ctx.moveTo(W/2 + 25, 32); ctx.lineTo(W/2 + 40, 32); ctx.lineTo(W/2 + 40, 245); ctx.lineTo(W/2 + 20, 245); ctx.stroke();
           
           // Beaker
-          ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 3; ctx.beginPath();
+          ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 3; ctx.beginPath();
           ctx.moveTo(W/2 - 60, 120); ctx.lineTo(W/2 - 60, 240); ctx.lineTo(W/2 + 60, 240); ctx.lineTo(W/2 + 60, 120); ctx.stroke();
           
           // Water in Beaker (Drops as it evaporates)
@@ -15410,7 +15992,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.beginPath(); ctx.moveTo(W/2 + 8, 230); ctx.lineTo(W/2 + 8, 85); ctx.arc(W/2 + 20, 85, 12, Math.PI, 0); ctx.lineTo(W/2 + 32, 230); ctx.stroke();
           
           // Labels
-          ctx.fillStyle = 'var(--text-muted)'; ctx.font = 'bold 10px system-ui';
+          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = 'bold 10px system-ui';
           ctx.fillText("Cathode", W/2 - 58, 260); ctx.fillText("Anode", W/2 + 18, 260);
         }
         
@@ -15496,7 +16078,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           const W = leadCanvas.width; const H = leadCanvas.height; ctx.clearRect(0,0,W,H);
           ctx.fillStyle = '#475569'; ctx.fillRect(W/2 + 15, H/2 + 75, 40, 15); ctx.fillRect(W/2 + 30, H/2 + 50, 10, 25);
           ctx.save(); ctx.translate(W/2, H/2); ctx.rotate((-30 * Math.PI) / 180);
-          ctx.strokeStyle = 'var(--border-color)'; ctx.beginPath(); ctx.moveTo(-15, -60); ctx.lineTo(-15, 60); ctx.arc(0, 60, 15, Math.PI, 0, true); ctx.lineTo(15, -60); ctx.stroke();
+          ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.beginPath(); ctx.moveTo(-15, -60); ctx.lineTo(-15, 60); ctx.arc(0, 60, 15, Math.PI, 0, true); ctx.lineTo(15, -60); ctx.stroke();
           ctx.fillStyle = '#f8fafc'; ctx.beginPath(); ctx.arc(-5, 55, 6, 0, 2*Math.PI); ctx.arc(4, 57, 7, 0, 2*Math.PI); ctx.fill(); ctx.restore();
         }
         btn.addEventListener('click', () => {
@@ -15536,7 +16118,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         let timerId = null; let frame = 0;
         function drawSetup() {
           const W = feCanvas.width; const H = feCanvas.height; ctx.clearRect(0,0,W,H);
-          ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 3; ctx.beginPath();
+          ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 3; ctx.beginPath();
           ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240); ctx.lineTo(W/2 + 60, 240); ctx.lineTo(W/2 + 60, 100); ctx.stroke();
           ctx.fillStyle = 'rgba(59, 130, 246, 0.4)'; ctx.fillRect(W/2 - 58, 150, 116, 88);
           ctx.fillStyle = '#64748b'; ctx.fillRect(W/2 - 5, 80, 10, 150); ctx.fillRect(W/2 - 12, 80, 24, 6);
@@ -15546,7 +16128,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           if(timerId) clearInterval(timerId); frame = 0;
           timerId = setInterval(() => {
             frame++; const W = feCanvas.width; const H = feCanvas.height; ctx.clearRect(0,0,W,H);
-            ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 3; ctx.beginPath();
+            ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 3; ctx.beginPath();
             ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240); ctx.lineTo(W/2 + 60, 240); ctx.lineTo(W/2 + 60, 100); ctx.stroke();
             const blueAlpha = Math.max(0.05, 0.4 - frame * 0.005); const greenAlpha = Math.min(0.35, frame * 0.005);
             ctx.fillStyle = `rgba(59, 130, 246, ${blueAlpha})`; ctx.fillRect(W/2 - 58, 150, 116, 88);
@@ -15575,7 +16157,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         
         function drawSetup() {
           const W = baso4Canvas.width; const H = baso4Canvas.height; ctx.clearRect(0,0,W,H);
-          ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 3; ctx.beginPath();
+          ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 3; ctx.beginPath();
           ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240); ctx.lineTo(W/2 + 60, 240); ctx.lineTo(W/2 + 60, 100); ctx.stroke();
           
           ctx.save(); ctx.translate(W/2 - 70, 70); ctx.rotate(Math.PI/4); 
@@ -15597,7 +16179,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             frame++; const W = baso4Canvas.width; const H = baso4Canvas.height; ctx.clearRect(0,0,W,H);
             
             // Draw beaker
-            ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 3; ctx.beginPath();
+            ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 3; ctx.beginPath();
             ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240); ctx.lineTo(W/2 + 60, 240); ctx.lineTo(W/2 + 60, 100); ctx.stroke();
             
             // Pouring streams (curved clear liquid)

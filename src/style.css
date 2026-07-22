@@ -20,6 +20,7 @@
   --accent-glow: rgba(16, 185, 129, 0.15);
   
   --text-main: #0f172a; /* Slate 900 */
+  --text-normal: #0f172a; /* Alias for --text-main, used across canvas/SVG labs */
   --text-muted: #475569; /* Slate 600 */
   --text-light: #94a3b8; /* Slate 400 */
   --text-on-primary: #ffffff;
@@ -57,6 +58,7 @@
   --secondary-hover: #60a5fa;
   
   --text-main: #f3f4f6; /* Gray 100 */
+  --text-normal: #f3f4f6; /* Alias for --text-main, used across canvas/SVG labs */
   --text-muted: #9ca3af; /* Gray 400 */
   --text-light: #6b7280; /* Gray 500 */
   

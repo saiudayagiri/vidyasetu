@@ -3923,6 +3923,878 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "7m-6",
+              title: "Number Play",
+              topics: [
+                {
+                  id: "7m-6-1",
+                  title: "1. Height Sequences & Picking Parity",
+                  lab: { type: "parity-sum-sim" },
+                  theory: {
+                    intro: "Numbers can carry hidden information beyond their value. A simple rule — like counting how many taller children stand ahead of you in a line — turns a row of children into a sequence of numbers. And every number, no matter how large, carries one more piece of information: whether it's even or odd.",
+                    sections: [
+                      {
+                        heading: "Numbers That Tell Us Things",
+                        text: "In a line of children, each child calls out the number of children in front of them who are taller. Changing the arrangement changes every number called out, even though the rule stays exactly the same — the numbers encode the entire height arrangement, without revealing anyone's actual height."
+                      },
+                      {
+                        heading: "Picking Parity",
+                        text: "We use the word parity to describe whether a number is even or odd. Any even number can be arranged into pairs with nothing left over; any odd number is always one more than a whole number of pairs, leaving a single leftover."
+                      },
+                      {
+                        heading: "Adding Even and Odd Numbers",
+                        text: "Adding any collection of even numbers together always gives an even number — since each one contributes only complete pairs, and pairs combined with pairs stay paired. Adding two odd numbers gives an even number too — each odd number leaves one leftover, but the two leftovers pair up with each other, leaving nothing over. Adding an even number and an odd number always gives an odd number, since the even number contributes no leftover, and the odd number's single leftover has nothing to pair with."
+                      },
+                      {
+                        heading: "Kishor's Puzzle and Consecutive Numbers",
+                        text: "Kishor tried to fill 5 boxes with odd number cards adding up to 30 (an even number) — but adding 5 odd numbers always leaves one final unpaired leftover (since pairs of odd numbers cancel out two at a time, and 5 is odd, one is left over), so the sum must be odd, making 30 impossible. Similarly, two people born exactly one year apart always have consecutive ages — and any two consecutive numbers are always one even and one odd, so their sum is always odd, never an even number like 112."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Kishor's Card Puzzle",
+                      objective: "To verify, using the parity rules for sums of odd numbers, why certain number-card puzzles are impossible to solve.",
+                      materials: ["Paper and pencil", "A set of number cards (odd numbers only)"],
+                      steps: [
+                        "Kishor has number cards that are all odd numbers, and 5 empty boxes to fill so the numbers add up to 30.",
+                        "Recall the rule: adding two odd numbers always gives an even number, since their two leftover 'ones' pair up.",
+                        "Now consider adding 5 odd numbers: pair them up as (odd+odd) + (odd+odd) + odd — the first two pairs each give an even number, but one odd number is left over unpaired.",
+                        "Conclude that the sum of 5 odd numbers must always be odd (even + even + odd = odd), so it can never equal an even number like 30.",
+                        "Try picking 5 different odd number cards yourself and confirm the sum is always odd, no matter which cards you choose."
+                      ],
+                      observation: "Since 5 is an odd count of odd numbers, one always remains unpaired — so any sum of 5 odd numbers is odd, meaning Kishor's puzzle (targeting 30) has no solution no matter which cards are chosen."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does the word 'parity' refer to, in mathematics?",
+                      options: ["The size of a number", "Whether a number is even or odd", "Whether a number is positive or negative", "How many digits a number has"],
+                      answer: 1,
+                      explanation: "Parity refers to whether a number is even (can be arranged in pairs with nothing left over) or odd (always one more than a whole number of pairs)."
+                    },
+                    {
+                      question: "Why does adding two odd numbers always give an even result?",
+                      options: ["Odd numbers can't be added together", "Each odd number's single leftover pairs up with the other's leftover, leaving nothing over", "It doesn't always give an even result", "Because odd + odd is defined to be even"],
+                      answer: 1,
+                      explanation: "Each odd number contributes one unpaired 'leftover' unit; when two odd numbers are added, their two leftovers pair up with each other, leaving no leftover — making the sum even."
+                    },
+                    {
+                      question: "Kishor tries to fill 5 boxes with odd-numbered cards that add up to 30. Why is this impossible?",
+                      options: ["30 is too large a number", "The sum of 5 odd numbers is always odd, and 30 is even, so it can never be reached", "Odd numbers cannot be added more than twice", "It is actually possible, just difficult"],
+                      answer: 1,
+                      explanation: "With an odd count (5) of odd numbers, one always remains unpaired after pairing up the rest, making the total sum always odd — never equal to an even number like 30."
+                    },
+                    {
+                      question: "Martin and Maria were born exactly one year apart. Why can their ages never add up to 112?",
+                      options: ["Their ages must always be equal", "Two consecutive numbers are always one even and one odd, and even+odd is always odd, never 112 (an even number)", "112 is not a valid age total", "Consecutive numbers cannot be added"],
+                      answer: 1,
+                      explanation: "Being born one year apart means their ages are consecutive numbers — always one even, one odd. Since even + odd is always odd, their sum can never equal an even number like 112."
+                    },
+                    {
+                      question: "What is the parity of the sum of any collection of only even numbers, no matter how many are added?",
+                      options: ["Always odd", "Always even", "Depends on how many numbers are added", "Cannot be determined"],
+                      answer: 1,
+                      explanation: "Every even number contributes only complete pairs with no leftover, so combining any number of even numbers always results in an even sum."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-6-2",
+                  title: "2. Parity of Products, Grids & Expressions",
+                  theory: {
+                    intro: "Parity reasoning extends beyond simple addition — it tells us instantly whether a grid has an odd or even number of squares, and lets us build algebraic expressions that are guaranteed to always produce even numbers, always odd numbers, or either.",
+                    sections: [
+                      {
+                        heading: "Small Squares in Grids",
+                        text: "A grid with m rows and n columns has m × n small squares. Without calculating the product, we can find its parity: if either m or n is even, the total is even; if both m and n are odd, the total is odd. For example, a 3 × 3 grid (9 squares) is odd, while a 3 × 4 grid (12 squares) is even, since 4 is even."
+                      },
+                      {
+                        heading: "Parity of Algebraic Expressions",
+                        text: "An expression like 3n + 4 can be even or odd depending on the value of n substituted into it — so its parity isn't fixed. But some expressions always have a fixed parity: 100p is always even (100 is even, and even × anything is even), while an expression like 8a + 3 is always odd (8a is always even, and even + odd is always odd)."
+                      },
+                      {
+                        heading: "Formulas for Every Even and Every Odd Number",
+                        text: "The expression 2n generates every even number as n takes the values 1, 2, 3, ... (2, 4, 6, ...) — since every even number has a factor of 2. Comparing the even and odd number sequences term-by-term shows that each odd number is exactly one less than the even number at the same position, giving 2n − 1 as the formula for the nth odd number. For example, the 100th odd number is 2(100) − 1 = 199."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding Grid Parity Without Multiplying",
+                      objective: "To determine the parity of the number of squares in a grid using only the parity of its dimensions, without calculating the full product.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Consider a grid with dimensions 27 × 13. Check the parity of each dimension: 27 is odd, 13 is odd.",
+                        "Since both dimensions are odd, conclude the total number of squares (27 × 13) is odd — without multiplying it out.",
+                        "Now consider a grid with dimensions 42 × 78. Since 42 is even (and 78 is also even), the total is even.",
+                        "Finally, consider 135 × 654. Since 654 is even, the total is even, regardless of 135 being odd.",
+                        "Verify at least one of these by actually multiplying the numbers out and checking the parity of the result matches your prediction."
+                      ],
+                      observation: "A grid's total square count is odd only when BOTH dimensions are odd; if even one dimension is even, the total is guaranteed even — this can be determined instantly, without ever computing the full product."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "A grid has dimensions 42 × 78. What is the parity of its total number of small squares, and how do you know without multiplying?",
+                      options: ["Odd, since 42 and 78 are both large numbers", "Even, since at least one of the dimensions (in fact both) is even", "Cannot be determined without multiplying", "Odd, since 42 + 78 is even"],
+                      answer: 1,
+                      explanation: "Since 42 (and also 78) is even, the total number of squares (42 × 78) must be even, regardless of the other dimension's parity."
+                    },
+                    {
+                      question: "Which expression below always produces an EVEN number, no matter what whole number is substituted for the letter?",
+                      options: ["8a + 3", "2n − 1", "100p", "3n + 4"],
+                      answer: 2,
+                      explanation: "100p is always even because 100 is even, and an even number times any whole number is always even."
+                    },
+                    {
+                      question: "Which expression generates every possible EVEN number as n takes the values 1, 2, 3, ...?",
+                      options: ["2n − 1", "2n", "n + 2", "3n"],
+                      answer: 1,
+                      explanation: "The expression 2n produces 2, 4, 6, 8, ... as n = 1, 2, 3, 4, ... — exactly the sequence of all even numbers."
+                    },
+                    {
+                      question: "Using the formula 2n − 1, what is the 100th odd number?",
+                      options: ["100", "199", "200", "201"],
+                      answer: 1,
+                      explanation: "2n − 1 at n = 100: 2(100) − 1 = 200 − 1 = 199."
+                    },
+                    {
+                      question: "For a grid with dimensions m × n, when is the total number of squares guaranteed to be ODD?",
+                      options: ["When m is odd, regardless of n", "Only when BOTH m and n are odd", "When m + n is even", "It is never guaranteed to be odd"],
+                      answer: 1,
+                      explanation: "The product m × n is odd only when both m and n are odd; if either one is even, the product is even."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-6-3",
+                  title: "3. Magic Squares: Explorations & Generalisation",
+                  lab: { type: "magic-square-builder-sim" },
+                  theory: {
+                    intro: "A magic square is a grid of numbers where every row, column, and diagonal adds up to the same total — a pattern found in ancient Chinese legend, Indian temple carvings, and centuries of mathematical study, and one that algebra lets us fully explain and construct.",
+                    sections: [
+                      {
+                        heading: "What Is a Magic Square?",
+                        text: "A square grid of numbers is called a magic square if every row, every column, and both diagonals add up to the same number, called the magic sum. Using the numbers 1 to 9 with no repeats, the total of all numbers 1+2+...+9 = 45; since a 3×3 magic square has 3 equal row sums adding to 45, the magic sum must be 45 ÷ 3 = 15."
+                      },
+                      {
+                        heading: "The Centre Must Be 5",
+                        text: "Testing shows that 9 cannot occupy the centre (since 9 plus any two other numbers 1-9 that must sum to 15 forces impossible values), and neither can 1. Through this reasoning for every number 1-9, only 5 can occupy the centre of a magic square built from 1-9."
+                      },
+                      {
+                        heading: "1 and 9 Cannot Occupy a Corner",
+                        text: "Similarly, checking each corner position shows that 1 and 9 can never be placed in a corner of a 1-9 magic square — they must always occupy one of the four 'middle-of-edge' positions instead, which narrows down the construction significantly."
+                      },
+                      {
+                        heading: "Generalising the Magic Square with Algebra",
+                        text: "Using a letter-number m for the centre value, the rest of a magic square built from 9 consecutive numbers can be expressed in terms of m: the corners and edges are m+3, m−4, m+1, m−2, m+2, m−1, m+4, m−3 in a fixed pattern around the centre. Adding any full row, column, or diagonal always simplifies to exactly 3m — proving algebraically that the magic sum is always 3 times the centre number, for ANY set of 9 consecutive numbers, not just 1-9."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Constructing a Magic Square from Any Centre Number",
+                      objective: "To build a working magic square for a freely chosen centre number, using the generalised algebraic pattern, and verify all sums match.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Choose any centre number, for example m = 25.",
+                        "Fill in the surrounding 8 cells using the generalised pattern: corners and edges are m+3, m−4, m+1, m−2 (left), m+2 (right), m−1, m+4, m−3, arranged the same way as in a 1-9 magic square.",
+                        "For m = 25, this gives the grid: 28, 21, 26 / 23, 25, 27 / 24, 29, 22.",
+                        "Add up each row, each column, and both diagonals, and confirm every single one equals 3 × 25 = 75.",
+                        "Repeat with a different centre number of your choice and confirm the magic sum always equals 3 times your chosen centre."
+                      ],
+                      observation: "No matter which centre number is chosen, following the generalised pattern always produces a valid magic square whose magic sum is exactly 3 times the centre number — algebra guarantees this works every time, without needing to guess-and-check."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In a magic square built from the numbers 1 to 9 (no repeats), what must the magic sum be?",
+                      options: ["9", "15", "45", "5"],
+                      answer: 1,
+                      explanation: "The numbers 1 to 9 add up to 45. Since the 3 row sums are equal and together total 45, each row sum (the magic sum) must be 45 ÷ 3 = 15."
+                    },
+                    {
+                      question: "In a magic square built from the numbers 1 to 9, which number MUST occupy the centre?",
+                      options: ["1", "5", "9", "Any number can occupy the centre"],
+                      answer: 1,
+                      explanation: "Testing shows only 5 can occupy the centre of a 1-9 magic square — both 1 and 9 lead to impossible combinations elsewhere in the grid."
+                    },
+                    {
+                      question: "In a magic square built from the numbers 1 to 9, where must the numbers 1 and 9 be placed?",
+                      options: ["In opposite corners", "In one of the four middle-of-edge positions, never in a corner", "Anywhere except the centre", "They must be adjacent to each other"],
+                      answer: 1,
+                      explanation: "Checking all possibilities shows 1 and 9 can never occupy a corner position in a 1-9 magic square — they must be placed in one of the four edge-middle positions."
+                    },
+                    {
+                      question: "Using the generalised algebraic pattern with centre value m, what does the magic sum of any row, column, or diagonal always equal?",
+                      options: ["m", "2m", "3m", "9m"],
+                      answer: 2,
+                      explanation: "Adding any full row, column, or diagonal of the generalised pattern (using offsets like m+3, m−4, etc.) always simplifies to exactly 3m."
+                    },
+                    {
+                      question: "If a magic square's centre number is 25, what is its magic sum?",
+                      options: ["25", "50", "75", "225"],
+                      answer: 2,
+                      explanation: "The magic sum always equals 3 times the centre number: 3 × 25 = 75."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-6-4",
+                  title: "4. The Virahānka–Fibonacci Sequence & Cryptarithms",
+                  theory: {
+                    intro: "One of mathematics' most celebrated number sequences was first discovered not in a science lab, but in the study of Sanskrit and Prakrit poetry — and this chapter closes with a completely different kind of puzzle, where digits hide behind letters.",
+                    sections: [
+                      {
+                        heading: "Counting Poetic Rhythms",
+                        text: "In Prakrit and Sanskrit poetry, each syllable is short (1 beat) or long (2 beats). Ancient poet-mathematicians asked: in how many ways can a rhythm of a given number of beats be built from short and long syllables? For n=1 there is 1 way, n=2 has 2 ways, n=3 has 3 ways, n=4 has 5 ways, and n=5 has 8 ways — every rhythm of n beats either starts with a short syllable (leaving an (n−1)-beat rhythm to fill) or a long syllable (leaving an (n−2)-beat rhythm), so the count for n is always the sum of the counts for n−1 and n−2."
+                      },
+                      {
+                        heading: "The Virahānka Sequence",
+                        text: "This method for counting rhythms was first given by the Prakrit scholar Virahāṅka around 700 CE, as a poem, building on earlier work by Piṅgala (c. 300 BCE); it was later also studied by Gopala (c. 1135 CE) and Hemachandra (c. 1150 CE) — all centuries before the Italian mathematician Fibonacci wrote about the same numbers in 1202 CE. The sequence 1, 2, 3, 5, 8, 13, 21, 34, 55, ... is therefore known as the Virahāṅka–Fibonacci sequence, with each number equal to the sum of the two before it (e.g., 34 + 55 = 89 is the next term)."
+                      },
+                      {
+                        heading: "The Sequence in Nature",
+                        text: "These numbers appear throughout art, architecture, and — most strikingly — nature: the number of petals on many flowers, such as daisies, is very often a Virahāṅka number (13, 21, or 34 petals, for example)."
+                      },
+                      {
+                        heading: "Cryptarithms: Digits in Disguise",
+                        text: "In a cryptarithm (or alphametic), letters stand in for digits (0-9) in an arithmetic sum, and the puzzle is to figure out which digit each letter represents. For example, in T + T + T = UT, exploring possible values shows T must be 5, giving 5+5+5=15, so U=1 and T=5."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building the Virahānka Sequence by Counting Rhythms",
+                      objective: "To discover the Virahānka–Fibonacci pattern firsthand by systematically listing all short/long rhythms for small numbers of beats.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "For 1 beat, list all ways to fill it with short (1-beat) and long (2-beat) syllables: only '1' way (a single short syllable).",
+                        "For 2 beats, list all ways: '1+1' or '2' — 2 ways total.",
+                        "For 3 beats, list all ways: '1+1+1', '1+2', '2+1' — 3 ways total.",
+                        "For 4 beats, systematically list all ways by starting with either a short syllable (followed by all 3-beat rhythms) or a long syllable (followed by all 2-beat rhythms) — this should give 3 + 2 = 5 ways total.",
+                        "Confirm the pattern: the count for any number of beats is always the sum of the counts for the previous two numbers of beats."
+                      ],
+                      observation: "Systematically building each rhythm count from the two before it reproduces the sequence 1, 2, 3, 5, 8, ... exactly — confirming the Virahānka rule discovered over 1,300 years ago."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Who first gave the method for counting poetic rhythms that produces the sequence 1, 2, 3, 5, 8, 13, ..., and around what year?",
+                      options: ["Fibonacci, in 1202 CE", "Virahāṅka, around 700 CE", "Piṅgala, around 300 BCE", "Hemachandra, around 1150 CE"],
+                      answer: 1,
+                      explanation: "Virahāṅka gave this method around 700 CE, in the form of a Prakrit poem — about 500 years before Fibonacci wrote about the same numbers in Europe."
+                    },
+                    {
+                      question: "In the Virahānka–Fibonacci sequence 1, 2, 3, 5, 8, 13, 21, 34, ..., what is the rule for generating the next number?",
+                      options: ["Multiply the previous number by 2", "Add the two previous numbers together", "Add 1 to the previous number", "Square the previous number"],
+                      answer: 1,
+                      explanation: "Each number in the sequence is the sum of the two numbers immediately before it, e.g., 21 + 34 = 55."
+                    },
+                    {
+                      question: "Where do Virahāṅka numbers famously appear in nature?",
+                      options: ["The number of legs on insects", "The number of petals on many flowers, like daisies (commonly 13, 21, or 34)", "The number of days in a lunar month", "The number of colours in a rainbow"],
+                      answer: 1,
+                      explanation: "The number of petals on many flowers, including daisies, is very often one of the Virahāṅka numbers, such as 13, 21, or 34."
+                    },
+                    {
+                      question: "What is a 'cryptarithm' (or alphametic)?",
+                      options: ["A secret code using only numbers", "A puzzle where letters stand in for digits (0-9) in an arithmetic sum, to be figured out", "A type of magic square", "A sequence like the Virahānka numbers"],
+                      answer: 1,
+                      explanation: "A cryptarithm is a puzzle where each letter represents a specific digit, and the goal is to determine which digit each letter stands for, based on the arithmetic shown."
+                    },
+                    {
+                      question: "In the cryptarithm T + T + T = UT, what digit does T represent?",
+                      options: ["3", "5", "1", "9"],
+                      answer: 1,
+                      explanation: "T = 5 gives 5 + 5 + 5 = 15, which fits the pattern UT with U = 1 and T = 5 — the units digit of the sum (5) matches T."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "7m-7",
+              title: "A Tale of Three Intersecting Lines",
+              topics: [
+                {
+                  id: "7m-7-1",
+                  title: "1. Constructing Triangles (SSS) & the Triangle Inequality",
+                  lab: { type: "triangle-inequality-sim" },
+                  theory: {
+                    intro: "A triangle is the most basic closed shape — three vertices joined by three sides, giving rise to three angles. But not every set of three lengths can form a triangle. This lesson builds triangles using just a compass, and discovers exactly which sets of lengths succeed.",
+                    sections: [
+                      {
+                        heading: "Constructing an Equilateral Triangle",
+                        text: "To construct a triangle with all sides 4 cm using only a ruler would take many trials to get every side exactly right. Using a compass instead: draw the base AB = 4 cm, then draw an arc of radius 4 cm centred at A, and another arc of radius 4 cm centred at B. The two arcs cross at a point C that is simultaneously 4 cm from A and 4 cm from B — exactly the vertex needed, found without any guesswork."
+                      },
+                      {
+                        heading: "Constructing a Triangle with Three Given Sides (SSS)",
+                        text: "The same compass idea builds any triangle from three given sidelengths. To construct a triangle with sides 4 cm, 5 cm and 6 cm: draw the base AB = 4 cm. Draw an arc of radius 5 cm from A (all points 5 cm from A). Draw an arc of radius 6 cm from B (all points 6 cm from B). The point C where the two arcs intersect is 5 cm from A and 6 cm from B simultaneously — the required third vertex."
+                      },
+                      {
+                        heading: "The Direct Path is Always Shortest",
+                        text: "Imagine a tent, a tree, and a pole on a plot of land. The direct straight-line path between any two of them is always shorter than the roundabout path via the third point. This simple fact about straight lines turns out to decide whether a triangle can exist at all."
+                      },
+                      {
+                        heading: "Discovering the Triangle Inequality",
+                        text: "Can a triangle have sides 10 cm, 15 cm and 30 cm? Suppose it could, with vertices A, B, C where BC = 10, AB = 15, AC = 30. Check the direct-vs-roundabout rule between C and A: the direct path CA is 30 cm, but the roundabout path via B is CB + BA = 10 + 15 = 25 cm — the roundabout path is shorter than the direct path, which is impossible for straight lines. So no such triangle can exist. In general, when each of the three lengths is smaller than the sum of the other two, the lengths satisfy the triangle inequality, and a triangle CAN be constructed. If even one length is greater than or equal to the sum of the other two, the triangle inequality fails and no triangle exists — for example, 3 cm, 4 cm and 8 cm fails because 8 ≥ 3 + 4."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Compass Construction of a Scalene Triangle",
+                      objective: "To construct a triangle with three given, unequal sidelengths using only a ruler and compass, and understand why the arc-intersection method works.",
+                      materials: ["Ruler", "Compass", "Pencil", "Plain paper"],
+                      steps: [
+                        "Draw a base line segment AB of length 6 cm using the ruler.",
+                        "Open the compass to a radius of 5 cm, place the point on A, and draw a wide arc above the line.",
+                        "Open the compass to a radius of 4 cm, place the point on B, and draw another arc crossing the first one.",
+                        "Label the intersection point of the two arcs as C, and join AC and BC with the ruler.",
+                        "Measure AC and BC with the ruler to confirm they are exactly 5 cm and 4 cm as intended."
+                      ],
+                      observation: "The two arcs intersect at exactly one usable point above the base, and the triangle ABC formed has all three sidelengths matching the original targets — because C is, by construction, simultaneously the correct distance from both A and B."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does drawing two arcs (instead of just guessing a point) correctly locate the third vertex of a triangle with given sidelengths?",
+                      options: ["It doesn't — arcs are just a drawing style", "Each arc marks every point at the required distance from one base vertex; their intersection is the one point satisfying both distances at once", "Arcs are only used to make the diagram look neater", "The arcs must always be the same radius"],
+                      answer: 1,
+                      explanation: "An arc of radius r centred at a point marks every point exactly r away from it. The intersection of two such arcs (from A and from B) is a point at the exact required distance from both — precisely the third vertex needed."
+                    },
+                    {
+                      question: "Does a triangle exist with sidelengths 10 cm, 15 cm and 30 cm?",
+                      options: ["Yes, all triangles are possible", "No — the direct path of 30 cm is longer than the roundabout path via the third vertex (10 + 15 = 25 cm), which is impossible", "Yes, since 30 = 10 + 15 + 5", "Cannot be determined without construction"],
+                      answer: 1,
+                      explanation: "Checking the largest length (30) against the sum of the other two (10 + 15 = 25): since 30 > 25, the triangle inequality fails, so no such triangle can exist."
+                    },
+                    {
+                      question: "What does it mean for three lengths to 'satisfy the triangle inequality'?",
+                      options: ["All three lengths must be equal", "Each length must be smaller than the sum of the other two", "The largest length must equal the sum of the other two", "The lengths must all be even numbers"],
+                      answer: 1,
+                      explanation: "The triangle inequality requires that each of the three lengths be strictly smaller than the sum of the remaining two — if this holds for all three comparisons, a triangle can be constructed."
+                    },
+                    {
+                      question: "Do the sidelengths 3 cm, 4 cm and 8 cm satisfy the triangle inequality?",
+                      options: ["Yes, since 3 + 4 = 7 is close to 8", "No — 8 is greater than 3 + 4 (=7), so the triangle inequality fails and no triangle exists", "Yes, all positive lengths form a triangle", "Cannot be determined"],
+                      answer: 1,
+                      explanation: "Comparing the largest length (8) to the sum of the other two (3 + 4 = 7): since 8 ≥ 7, the triangle inequality fails, so a triangle with these sidelengths is impossible."
+                    },
+                    {
+                      question: "In constructing a triangle with sides 4 cm, 5 cm and 6 cm by drawing base AB = 4 cm, what should the two compass arcs be centred on and set to?",
+                      options: ["Both arcs centred at A with any radius", "An arc of radius 5 cm from A, and an arc of radius 6 cm from B (or vice versa)", "One arc of radius 4 cm from the midpoint of AB", "Arcs are not needed if a protractor is used"],
+                      answer: 1,
+                      explanation: "Since AC must be 5 cm and BC must be 6 cm, drawing a 5 cm arc from A and a 6 cm arc from B pinpoints their intersection as the correct third vertex C."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-7-2",
+                  title: "2. Constructing Triangles: SAS and ASA",
+                  theory: {
+                    intro: "Sidelengths aren't the only measurements that can define a triangle. Sometimes we know two sides and the angle between them, or two angles and the side between them — and either combination is enough to construct the whole triangle.",
+                    sections: [
+                      {
+                        heading: "Two Sides and the Included Angle (SAS)",
+                        text: "To construct triangle ABC with AB = 5 cm, AC = 4 cm and the included angle ∠A = 45°: Step 1 — draw side AB of length 5 cm. Step 2 — at vertex A, construct an angle of 45° using a protractor, drawing the other arm of the angle. Step 3 — mark point C on this new arm at a distance of exactly 4 cm from A. Step 4 — join B and C to complete the triangle. Since both sides and the angle between them are fixed from the start, there is exactly one triangle that can be formed this way."
+                      },
+                      {
+                        heading: "Two Angles and the Included Side (ASA)",
+                        text: "To construct triangle ABC where AB = 5 cm, ∠A = 45° and ∠B = 80°: Step 1 — draw the base AB of length 5 cm. Step 2 — at A, draw a ray making 45° with AB; at B, draw a ray making 80° with AB (both on the same side of AB). Step 3 — the point where these two rays cross is the third vertex, C. Unlike the SAS case, here the two angles are fixed at the base, and their two arms are extended until they meet."
+                      },
+                      {
+                        heading: "When Can a Triangle Not Be Constructed?",
+                        text: "For SAS, a triangle can always be constructed as long as the given angle is strictly between 0° and 180° — since the two given sides simply meet at the fixed angle to form C, regardless of the angle's exact size. For ASA, however, the two arms drawn from A and B must eventually cross: if the two given angles add up to 180° or more, the arms tilt away from each other (or become parallel) and never meet, so no triangle is possible. A triangle exists for ASA exactly when the two given angles add up to less than 180°."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Constructing a Triangle from Two Angles and the Included Side (ASA)",
+                      objective: "To construct a triangle given two angles and the side between them, and check that the third angle matches what the angle sum property predicts.",
+                      materials: ["Ruler", "Protractor", "Pencil", "Plain paper"],
+                      steps: [
+                        "Draw a base AB of length 6 cm.",
+                        "At A, use the protractor to draw a ray making an angle of 50° with AB.",
+                        "At B, use the protractor to draw a ray making an angle of 60° with AB, on the same side as the first ray.",
+                        "Extend both rays until they meet at a point; label this point C.",
+                        "Measure ∠C with the protractor and check that ∠A + ∠B + ∠C adds up to 180°."
+                      ],
+                      observation: "The two rays meet at exactly one point C, forming a unique triangle, and the measured ∠C comes out to 70° — confirming ∠A + ∠B + ∠C = 50° + 60° + 70° = 180°."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "To construct a triangle ABC with AB = 5 cm, AC = 4 cm, and ∠A = 45° (SAS), what is the correct construction order?",
+                      options: ["Draw AB, then draw a 45° angle at A, then mark C at 4 cm along the new arm, then join BC", "Draw AC first, then guess where B should go", "Draw all three sides first without any angle", "Measure ∠B and ∠C before drawing anything"],
+                      answer: 0,
+                      explanation: "SAS construction draws the base side (AB), constructs the given included angle at one endpoint (A), marks the second given side's length (AC = 4 cm) along that new arm to fix C, then joins B and C."
+                    },
+                    {
+                      question: "In an ASA construction, why must the two given angles add up to less than 180°?",
+                      options: ["It's just a rule with no reason", "If the two angles at the base sum to 180° or more, the two rays drawn from A and B never meet, so no triangle can form", "Angles greater than 90° are not allowed in triangles", "This is only a requirement for SAS, not ASA"],
+                      answer: 1,
+                      explanation: "The two rays from A and B must converge to form the third vertex. If their angles sum to 180° or more, they tilt away from each other (or run parallel) and never intersect — no triangle can exist."
+                    },
+                    {
+                      question: "In the SAS method, which piece of information is drawn SECOND, right after the base side?",
+                      options: ["The third side", "The included angle at one of the base vertices", "The third vertex, guessed directly", "The perimeter of the triangle"],
+                      answer: 1,
+                      explanation: "After drawing the base side, SAS construction next constructs the given angle at one of its endpoints, since the second side must be drawn along this angle's new arm."
+                    },
+                    {
+                      question: "For an ASA construction with AB = 5 cm, ∠A = 75° and ∠B = 75°, is a triangle possible?",
+                      options: ["No, angles can't both be 75°", "Yes — 75° + 75° = 150°, which is less than 180°, so the two rays will meet", "Only if AB is changed", "Yes, but only if ∠A and ∠B are unequal"],
+                      answer: 1,
+                      explanation: "Since 75° + 75° = 150° is less than 180°, the two rays from A and B are guaranteed to converge, forming a valid (in fact isosceles) triangle."
+                    },
+                    {
+                      question: "What is the key difference between how SAS and ASA constructions locate the third vertex?",
+                      options: ["There is no difference, both use compass arcs only", "SAS marks C at a fixed distance along one new arm; ASA finds C as the intersection point of two rays drawn from both base vertices", "ASA never needs a protractor", "SAS always produces more than one possible triangle"],
+                      answer: 1,
+                      explanation: "In SAS, C is marked directly by measuring the second given side's length along the arm of the constructed angle. In ASA, C only emerges where the two rays — one from each base vertex — happen to cross."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-7-3",
+                  title: "3. The Angle Sum Property & Exterior Angles",
+                  lab: { type: "angle-sum-property-sim" },
+                  theory: {
+                    intro: "Every triangle, no matter its shape or size, hides the same surprising fact about its three angles. A single clever construction — drawing one extra line — reveals it completely.",
+                    sections: [
+                      {
+                        heading: "Finding the Third Angle Using a Parallel Line",
+                        text: "In triangle ABC with ∠B = 50° and ∠C = 70°, construct a line XY through A parallel to BC. Because XY ∥ BC, ∠XAB and ∠B are alternate angles (equal) across transversal AB, so ∠XAB = 50°. Similarly, ∠YAC and ∠C are alternate angles across transversal AC, so ∠YAC = 70°. Since ∠XAB, ∠BAC and ∠YAC together lie along the straight line XY, they sum to 180°: 50° + ∠BAC + 70° = 180°, giving ∠BAC = 60°."
+                      },
+                      {
+                        heading: "The Angle Sum Property",
+                        text: "The same reasoning works for ANY triangle: draw a line through the top vertex parallel to the base, and the two new angles formed there exactly equal the triangle's two base angles (by the alternate-angles rule). Since these two angles plus the top angle always form a straight line (180°), the three angles of the triangle — however they're labelled — always add up to 180°. This is the angle sum property of triangles, first proved this way in Euclid's 'Elements' around 300 BCE. It can also be verified by folding a paper triangle's three corners inward to meet at one point along a straight edge."
+                      },
+                      {
+                        heading: "Exterior Angles",
+                        text: "Extending a side of a triangle past a vertex creates an exterior angle — the angle between the extension and the other side at that vertex. If ∠A = 50° and ∠B = 60° in triangle ABC, then by the angle sum property, ∠ACB = 180° − 50° − 60° = 70°. The exterior angle ∠ACD (formed by extending BC to D) and ∠ACB together form a straight line, so ∠ACD = 180° − 70° = 110°. Notice that 110° = 50° + 60° — the exterior angle always equals the sum of the two angles NOT adjacent to it (the two 'remote interior angles')."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying the Angle Sum Property by Paper Folding",
+                      objective: "To physically confirm that the three angles of any triangle add up to a straight angle (180°).",
+                      materials: ["A triangular paper cut-out (any shape)", "Pencil"],
+                      steps: [
+                        "Cut out a triangle of any shape from paper and label its three corners A, B and C.",
+                        "Fold vertex A down so it touches a point on the opposite side BC, creasing along a line parallel to BC.",
+                        "Fold vertices B and C inward so they also meet at that same point on the crease.",
+                        "Observe that all three corners now meet at one point, lying flat along a single straight line.",
+                        "Since a straight line measures 180°, and the three corners exactly fill it with no gaps or overlaps, conclude that ∠A + ∠B + ∠C = 180°."
+                      ],
+                      observation: "Regardless of the triangle's original shape, all three folded corners always meet edge-to-edge along a straight line — direct physical proof that the three angles sum to 180° every time."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In triangle ABC, ∠B = 50° and ∠C = 70°. Using a line through A parallel to BC, what is ∠A?",
+                      options: ["120°", "60°", "180°", "20°"],
+                      answer: 1,
+                      explanation: "The alternate angles formed equal 50° and 70°; since these plus ∠A form a straight line (180°), ∠A = 180° − 50° − 70° = 60°."
+                    },
+                    {
+                      question: "Why does drawing a line through a triangle's vertex, parallel to the opposite side, prove the angle sum property?",
+                      options: ["It doesn't prove anything, it's just a diagram", "It creates alternate angles equal to the triangle's two base angles, and these plus the vertex angle form a straight line (180°) together", "Parallel lines always add up to 180° by definition", "It only works for equilateral triangles"],
+                      answer: 1,
+                      explanation: "The parallel line creates two alternate angles exactly equal to the triangle's base angles. Since these two angles plus the vertex's own angle lie along a straight line, their sum must be 180°, proving the angle sum property for any triangle."
+                    },
+                    {
+                      question: "If a triangle has ∠A = 50° and ∠B = 60°, what is the exterior angle at C (formed by extending side BC)?",
+                      options: ["70°", "110°", "180°", "50°"],
+                      answer: 1,
+                      explanation: "First ∠ACB = 180° − 50° − 60° = 70° by the angle sum property. The exterior angle and ∠ACB form a straight line, so the exterior angle = 180° − 70° = 110°."
+                    },
+                    {
+                      question: "What is the relationship between a triangle's exterior angle and its two remote interior angles?",
+                      options: ["The exterior angle is always 90°", "The exterior angle equals the sum of the two angles not adjacent to it", "The exterior angle equals the difference of the two remote angles", "There is no fixed relationship"],
+                      answer: 1,
+                      explanation: "Since the exterior angle and the adjacent interior angle sum to 180°, and all three interior angles sum to 180°, the exterior angle must equal the sum of the other two (remote) interior angles."
+                    },
+                    {
+                      question: "A triangle has two angles measuring 90° and 30°. What is the third angle, and what does this tell us about the triangle?",
+                      options: ["120° — an obtuse triangle", "60° — and since one angle is already 90°, this is a right-angled triangle", "90° — an equilateral triangle", "It cannot be determined"],
+                      answer: 1,
+                      explanation: "By the angle sum property, the third angle is 180° − 90° − 30° = 60°. Since one of the three angles is exactly 90°, this is a right-angled triangle."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-7-4",
+                  title: "4. Altitudes and Types of Triangles",
+                  theory: {
+                    intro: "A triangle has one more important measurement beyond its sides and angles — its height. And once we've built and measured enough triangles, they naturally sort themselves into families based on their sides and their angles.",
+                    sections: [
+                      {
+                        heading: "What is an Altitude?",
+                        text: "The 'height' of vertex A above the opposite side BC is measured along the perpendicular line segment dropped from A to BC. This perpendicular segment, AD, is called an altitude of the triangle. Every triangle has exactly three altitudes — one from each vertex to its opposite side (or the opposite side's extension)."
+                      },
+                      {
+                        heading: "Constructing an Altitude with a Set Square",
+                        text: "A ruler alone can't reliably draw an exact 90° angle, so a set square is placed against the ruler (which is aligned with the base) with one edge of its right angle touching the ruler. Sliding the set square along the ruler until its vertical edge touches the opposite vertex, then drawing along that vertical edge, gives a precise perpendicular — the altitude."
+                      },
+                      {
+                        heading: "Altitudes Outside the Triangle",
+                        text: "In an obtuse-angled triangle, the foot of an altitude from certain vertices does not land on the opposite side itself — the base must be extended beyond the triangle for the perpendicular to meet it. A triangle where one side IS also an altitude occurs exactly in right-angled triangles: triangles having one right angle (90°)."
+                      },
+                      {
+                        heading: "Classifying Triangles by Sides and by Angles",
+                        text: "By sidelengths: an equilateral triangle has all three sides equal; an isosceles triangle has exactly two sides equal; a scalene triangle has all three sides of different lengths. By angle measures: a right-angled triangle has one 90° angle; an obtuse-angled triangle has one angle greater than 90°; an acute-angled triangle has ALL THREE angles less than 90° — having just one acute angle is not enough to qualify, since every triangle must have at least two acute angles regardless of type."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding an Altitude by Paper Folding",
+                      objective: "To construct an altitude of a triangle using only paper folding, and justify why the resulting crease is perpendicular to the base.",
+                      materials: ["A triangular paper cut-out", "Pencil"],
+                      steps: [
+                        "Cut out a triangle and choose one side to be the base.",
+                        "Fold the paper so that the base lies on top of itself (folding the base edge onto itself), with the crease passing through the opposite vertex.",
+                        "Press the fold flat and observe the crease line from the vertex down to the base.",
+                        "Unfold and check with a protractor that the crease meets the base at exactly 90°.",
+                        "Repeat by choosing a different side as the base, to find a second altitude of the same triangle."
+                      ],
+                      observation: "Folding the base onto itself forces the crease to bisect the angle between the two overlapping halves of the base line — which is a straight angle (180°) — so the crease must meet the base at exactly 90°, confirming it is a true altitude."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the altitude of a triangle from vertex A to side BC?",
+                      options: ["Any line segment from A to a point on BC", "The perpendicular line segment from A to BC (or its extension)", "The line segment that bisects angle A", "The longest side of the triangle"],
+                      answer: 1,
+                      explanation: "An altitude is specifically the perpendicular (90°) line segment from a vertex to the line containing its opposite side — not just any connecting segment."
+                    },
+                    {
+                      question: "In what type of triangle can one of the sides itself also be an altitude?",
+                      options: ["Equilateral triangle", "Right-angled triangle", "Obtuse-angled triangle", "This never happens in any triangle"],
+                      answer: 1,
+                      explanation: "In a right-angled triangle, the two sides forming the 90° angle are perpendicular to each other, so each one also serves as the altitude with respect to the other as base."
+                    },
+                    {
+                      question: "A triangle has sides of length 5 cm, 5 cm and 8 cm. How is it classified by its sides?",
+                      options: ["Equilateral", "Scalene", "Isosceles (exactly two sides equal)", "Cannot be classified"],
+                      answer: 2,
+                      explanation: "Since exactly two of the three sides (5 cm and 5 cm) are equal while the third (8 cm) differs, this is an isosceles triangle."
+                    },
+                    {
+                      question: "Why is 'having one acute angle' NOT a valid definition of an acute-angled triangle?",
+                      options: ["Because acute angles don't exist in triangles", "Because every triangle already has at least two acute angles regardless of type, so the defining feature of an acute triangle is that ALL THREE angles are acute", "Because acute-angled triangles don't exist", "Because acute means exactly 90°"],
+                      answer: 1,
+                      explanation: "Any triangle — right, obtuse, or acute — always has at least two acute angles (since the three angles sum to only 180°). What distinguishes an acute-angled triangle is that its THIRD angle is also acute, making all three less than 90°."
+                    },
+                    {
+                      question: "For an obtuse-angled triangle, why might the altitude from a vertex land outside the triangle's base segment?",
+                      options: ["Altitudes never exist for obtuse triangles", "Because the perpendicular foot can fall beyond the endpoint of the base, requiring the base to be extended to meet it", "Obtuse triangles have no vertices", "The altitude is always equal to a side in this case"],
+                      answer: 1,
+                      explanation: "In an obtuse triangle, the perpendicular dropped from certain vertices meets the line containing the opposite side only beyond the triangle itself, so the base line must be extended for the altitude's foot to be marked."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "7m-8",
+              title: "Working with Fractions",
+              topics: [
+                {
+                  id: "7m-8-1",
+                  title: "1. Multiplying Fractions by Whole Numbers",
+                  theory: {
+                    intro: "Aaron walks 3 kilometres every hour — to find how far he walks in 5 hours, we multiply 5 × 3. What changes when the speed itself is a fraction, or the time itself is a fraction? Multiplication still gives the answer, but the fractions bring a few new ideas along with them.",
+                    sections: [
+                      {
+                        heading: "Repeated Addition with a Fractional Rate",
+                        text: "Aaron's pet tortoise walks only ¼ km every hour. In 3 hours it walks 3 × ¼ km = ¼ + ¼ + ¼ = ¾ km. The multiplication works exactly the same way as with whole numbers — repeated addition — even though one of the numbers is now a fraction."
+                      },
+                      {
+                        heading: "A Fractional Amount of Time",
+                        text: "Now suppose Aaron (walking at 3 km/hour) walks for only ⅕ of an hour. Distance = ⅕ × 3 km. Since 3 km covered in a full hour, in ⅕ of an hour he covers ⅕ of that distance — dividing 3 km into 5 equal parts, giving ⅗ km. So ⅕ × 3 = ⅗. To find the distance in ⅖ of an hour, we simply double this: 2 × ⅗ = 6/5 km."
+                      },
+                      {
+                        heading: "The General Rule: Fraction Times a Whole Number",
+                        text: "To multiply a fraction by a whole number (or a whole number by a fraction), such as ⅖ × 3: first divide the multiplicand (3) by the denominator of the fraction (5), giving ⅗; then multiply this by the numerator of the fraction (2), giving 6/5. In general, (a/b) × c = (a × c)/b. This also works in the other order — 5 × ⅔ (a farmer sharing ⅔ acre of land with each of 5 grandchildren) is repeated addition: ⅔+⅔+⅔+⅔+⅔ = 10/3 acres in all."
+                      },
+                      {
+                        heading: "Multiplying with Mixed Fractions",
+                        text: "If 1 hour of internet time costs ₹8, the cost of 1¼ hours is found by first converting 1¼ into the improper fraction 5/4, then multiplying: 5/4 × 8 = 5 × 8/4 = 5 × 2 = ₹10. Converting a mixed fraction into an improper fraction first makes the multiplication straightforward."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying Fraction-Times-Whole-Number by Repeated Addition",
+                      objective: "To confirm the general multiplication rule (a/b) × c = (a×c)/b by comparing it against direct repeated addition.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Pick a fraction, say ⅗, and a whole number, say 4.",
+                        "Compute ⅗ × 4 using the rule: multiply the numerator (3) by the whole number (4) to get 12, keep the denominator (5), giving 12/5.",
+                        "Now verify by repeated addition: ⅗ + ⅗ + ⅗ + ⅗ = (3+3+3+3)/5 = 12/5.",
+                        "Confirm both methods give the exact same answer, 12/5 (or the mixed fraction 2⅖).",
+                        "Repeat with a different fraction and whole number of your choice."
+                      ],
+                      observation: "Repeated addition and the multiplication rule always agree, because multiplying the numerator by the whole number is exactly what repeated addition of the fraction does — the rule is just a shortcut for the same repeated addition."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Aaron's tortoise walks ¼ km every hour. How far does it walk in 3 hours?",
+                      options: ["¾ km", "3/4 hours", "¼ km", "1 km"],
+                      answer: 0,
+                      explanation: "3 × ¼ = ¼ + ¼ + ¼ = ¾ km, found by repeated addition of the fractional rate."
+                    },
+                    {
+                      question: "What is the general rule for multiplying a fraction a/b by a whole number c?",
+                      options: ["(a/b) × c = a/(b×c)", "(a/b) × c = (a×c)/b", "(a/b) × c = (a+c)/b", "(a/b) × c = c/(a×b)"],
+                      answer: 1,
+                      explanation: "To multiply a fraction by a whole number, multiply the numerator by the whole number and keep the denominator unchanged: (a/b) × c = (a×c)/b."
+                    },
+                    {
+                      question: "1 hour of internet costs ₹8. What does 1¼ hours cost?",
+                      options: ["₹8", "₹9", "₹10", "₹12"],
+                      answer: 2,
+                      explanation: "1¼ hours = 5/4 hours. Cost = 5/4 × 8 = (5 × 8)/4 = 40/4 = ₹10."
+                    },
+                    {
+                      question: "A farmer distributes ⅔ acre of land to each of her 5 grandchildren. How much land did she give in total?",
+                      options: ["2/3 acre", "5/3 acre", "10/3 acre", "15/3 acre"],
+                      answer: 2,
+                      explanation: "5 × ⅔ = ⅔+⅔+⅔+⅔+⅔ = (2+2+2+2+2)/3 = 10/3 acre, using repeated addition of ⅔ five times."
+                    },
+                    {
+                      question: "Why must a mixed fraction like 1¼ be converted to an improper fraction (5/4) before multiplying?",
+                      options: ["It doesn't need to be converted", "So the multiplication rule (multiply numerator, keep denominator) can be applied directly and cleanly to a single fraction", "Mixed fractions cannot be multiplied at all", "Only whole numbers can be converted this way"],
+                      answer: 1,
+                      explanation: "The multiplication rule works on a single fraction's numerator and denominator. Converting the mixed number into one improper fraction (5/4) lets the rule apply directly, without separately handling a whole-number part and a fractional part."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-8-2",
+                  title: "2. Multiplying Two Fractions Using the Area Model",
+                  lab: { type: "fraction-area-model-sim" },
+                  theory: {
+                    intro: "What happens when BOTH numbers being multiplied are fractions? A picture — dividing a unit square into a grid — makes the answer visible instead of just calculable.",
+                    sections: [
+                      {
+                        heading: "A Fraction of a Fraction",
+                        text: "The tortoise walks ¼ km in 1 hour. How far does it walk in half an hour? We need ½ × ¼. Taking a unit square as 'the whole', ¼ of it is shaded. Dividing that ¼ into 2 equal parts (for the ½) splits the WHOLE square into 8 equal parts overall, with 1 of those 8 parts shaded. So ½ × ¼ = ⅛."
+                      },
+                      {
+                        heading: "The Grid Method for Any Two Fractions",
+                        text: "To find ¾ × ⅖: draw a unit square divided into 5 rows and 4 columns, creating 5 × 4 = 20 equal small parts. Shade a region that is 2 rows tall (representing ⅖) and 4 columns wide out of... more precisely, shading the rectangle formed by 2 of the 5 row-divisions and 3 of the 4 column-divisions gives 2 × 3 = 6 shaded parts out of 20 total, so ¾ × ⅖ = 6/20 = 3/10."
+                      },
+                      {
+                        heading: "Connecting Area to Fraction Multiplication",
+                        text: "A rectangle with length ½ unit and breadth ¼ unit has area ⅛ square units — exactly matching ½ × ¼ = ⅛ found earlier. In general, the area of a rectangle with fractional sides equals the product of those fractions. This gives a visual, geometric meaning to multiplying any two fractions: it's simply the area of the rectangle they form."
+                      },
+                      {
+                        heading: "The General Rule: Multiply Numerators, Multiply Denominators",
+                        text: "The grid method always gives the same shortcut: (a/b) × (c/d) = (a×c)/(b×d) — multiply the two numerators together, and multiply the two denominators together. This matches the grid picture exactly: the denominators multiply to give the total number of small parts (rows × columns), and the numerators multiply to give the number of shaded parts."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Drawing the Area Model for a Fraction Product",
+                      objective: "To use a hand-drawn unit-square grid to visually compute the product of two fractions.",
+                      materials: ["Graph paper or plain paper with a ruler", "Two different coloured pencils"],
+                      steps: [
+                        "Draw a square and label it as 'the whole' (representing the number 1).",
+                        "Divide the square into 3 equal horizontal rows (for a fraction with denominator 3) and 5 equal vertical columns (for a fraction with denominator 5) — creating 15 small equal parts.",
+                        "To find ⅔ × ⅗, shade the top-left rectangle formed by the first 2 rows and the first 3 columns using one colour.",
+                        "Count the shaded small parts: 2 rows × 3 columns = 6 parts, out of 15 total parts.",
+                        "Conclude ⅔ × ⅗ = 6/15 = ⅖ (after simplifying), and verify this matches multiplying numerators (2×3=6) and denominators (3×5=15)."
+                      ],
+                      observation: "The shaded rectangle's small-part count (numerator × numerator) out of the grid's total parts (denominator × denominator) always matches the product rule (a/b) × (c/d) = (a×c)/(b×d), giving a visual proof of the multiplication rule."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Using the unit square area model, what is ½ × ¼?",
+                      options: ["¼", "⅛", "½", "2/4"],
+                      answer: 1,
+                      explanation: "Shading ¼ of the whole and then dividing that region into 2 equal parts (for the ½) splits the WHOLE into 8 equal parts, with 1 part shaded — so ½ × ¼ = ⅛."
+                    },
+                    {
+                      question: "In the grid method for ¾ × ⅖, the unit square is divided into 5 rows and 4 columns. How many total small parts are created, and how many are shaded?",
+                      options: ["9 total parts, 5 shaded", "20 total parts, 6 shaded", "20 total parts, 8 shaded", "15 total parts, 6 shaded"],
+                      answer: 1,
+                      explanation: "5 rows × 4 columns = 20 total small parts. Shading 2 row-divisions and 3 column-divisions gives 2 × 3 = 6 shaded parts, so ¾ × ⅖ = 6/20 = 3/10."
+                    },
+                    {
+                      question: "What is the general rule for multiplying two fractions a/b and c/d?",
+                      options: ["(a/b) × (c/d) = (a+c)/(b+d)", "(a/b) × (c/d) = (a×c)/(b×d)", "(a/b) × (c/d) = (a×d)/(b×c)", "(a/b) × (c/d) = (a×b)/(c×d)"],
+                      answer: 1,
+                      explanation: "Multiplying two fractions means multiplying their numerators together and multiplying their denominators together: (a/b) × (c/d) = (a×c)/(b×d)."
+                    },
+                    {
+                      question: "A rectangle has length ⅔ unit and breadth ¾ unit. What is its area?",
+                      options: ["5/7 sq units", "6/12 = ½ sq units", "6/7 sq units", "8/12 sq units"],
+                      answer: 1,
+                      explanation: "Area = length × breadth = ⅔ × ¾ = (2×3)/(3×4) = 6/12 = ½ square units — the area of a rectangle with fractional sides equals the product of the fractions."
+                    },
+                    {
+                      question: "Why does dividing the unit square into (denominator1 × denominator2) small parts correctly represent the product of two fractions?",
+                      options: ["It doesn't, this is just a coincidence", "Because dividing rows by one denominator and columns by the other creates exactly that many equal small parts, and shading numerator1 × numerator2 of them gives the product region", "Because all grids automatically show fraction products", "Because the whole must always be split into exactly 100 parts"],
+                      answer: 1,
+                      explanation: "Splitting the square into rows (by one denominator) and columns (by the other) creates denominator1 × denominator2 equal parts. Shading numerator1 rows' worth by numerator2 columns' worth marks exactly numerator1 × numerator2 of those parts — matching the multiplication rule."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-8-3",
+                  title: "3. Division of Fractions & Reciprocals",
+                  lab: { type: "fraction-division-sim" },
+                  theory: {
+                    intro: "Division problems can always be rewritten as multiplication problems in disguise. For fractions, this disguise reveals a strikingly simple technique: flip the divisor upside down, then multiply.",
+                    sections: [
+                      {
+                        heading: "Turning Division into Multiplication",
+                        text: "12 ÷ 4 asks: what must be multiplied by 4 to get 12? (Answer: 3.) The same idea works for fractions. To find 1 ÷ ⅔, ask: what must be multiplied by ⅔ to get 1? Since (⅔) × (3/2) = 1, cancelling the 2s and 3s, the answer is 3/2. So 1 ÷ ⅔ = 3/2."
+                      },
+                      {
+                        heading: "The Reciprocal",
+                        text: "The number that, multiplied by a fraction, gives 1 is called its reciprocal — found by swapping the numerator and denominator. The reciprocal of ⅔ is 3/2. Multiplying any fraction by its own reciprocal always gives exactly 1."
+                      },
+                      {
+                        heading: "Brahmagupta's General Division Rule",
+                        text: "To divide two fractions a/b ÷ c/d: find the reciprocal of the divisor (d/c), then multiply it by the dividend: a/b ÷ c/d = a/b × d/c = (a×d)/(b×c). This general rule for dividing fractions was first explicitly stated by the mathematician Brahmagupta in his Brāhmasphuṭasiddhānta, written in 628 CE. For example, ⅔ ÷ ⅗ = ⅔ × 5/3 = 10/9."
+                      },
+                      {
+                        heading: "Does the Quotient Grow or Shrink?",
+                        text: "Dividing 6 by 3 gives 2 — a quotient smaller than the dividend. But dividing 6 by ¼ gives 24 — a quotient LARGER than the dividend! Dividing by a fraction smaller than 1 makes the answer bigger than the dividend, while dividing by a number greater than 1 makes the answer smaller. This mirrors what happens with multiplication: multiplying by a fraction less than 1 shrinks a number, so dividing by that same fraction (its reciprocal effect) grows it instead."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Confirming the Reciprocal Rule",
+                      objective: "To verify, using multiplication, that Brahmagupta's rule for dividing fractions (flip the divisor, then multiply) gives the correct quotient.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Choose two fractions, say ¾ ÷ ⅖.",
+                        "Find the reciprocal of the divisor (⅖): swap numerator and denominator to get 5/2.",
+                        "Multiply the dividend by this reciprocal: ¾ × 5/2 = (3×5)/(4×2) = 15/8.",
+                        "Check the answer by multiplying the quotient (15/8) by the original divisor (⅖): (15/8) × (⅖) = 30/40 = ¾, which matches the original dividend.",
+                        "Conclude that the division was performed correctly, since quotient × divisor = dividend, exactly as with whole-number division."
+                      ],
+                      observation: "Multiplying the computed quotient back by the divisor always returns the original dividend — confirming that 'flip and multiply' is a valid way to divide fractions, just as repeated subtraction confirms whole-number division."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the reciprocal of the fraction ⅗?",
+                      options: ["⅗", "5/3", "3/5 × -1", "1"],
+                      answer: 1,
+                      explanation: "The reciprocal of a fraction is found by swapping its numerator and denominator: the reciprocal of ⅗ is 5/3, and ⅗ × 5/3 = 1."
+                    },
+                    {
+                      question: "According to Brahmagupta's rule, what is a/b ÷ c/d?",
+                      options: ["(a×c)/(b×d)", "(a×d)/(b×c)", "(a+d)/(b+c)", "(a-c)/(b-d)"],
+                      answer: 1,
+                      explanation: "To divide fractions, multiply the dividend by the reciprocal of the divisor: a/b ÷ c/d = a/b × d/c = (a×d)/(b×c)."
+                    },
+                    {
+                      question: "What is 6 ÷ ¼, and how does the quotient compare to the dividend (6)?",
+                      options: ["1.5, smaller than 6", "24, larger than 6", "6, equal to 6", "2/3, much smaller than 6"],
+                      answer: 1,
+                      explanation: "6 ÷ ¼ = 6 × 4 = 24, which is larger than the dividend (6) — dividing by a fraction smaller than 1 always produces a quotient bigger than the original dividend."
+                    },
+                    {
+                      question: "Why does asking '4 × ? = 12' help solve the division problem 12 ÷ 4?",
+                      options: ["It doesn't relate to division at all", "Because division and multiplication are inverse operations — the missing factor that completes the multiplication IS the quotient", "Because 4 and 12 must always be equal", "This trick only works for fractions, not whole numbers"],
+                      answer: 1,
+                      explanation: "Since multiplication and division are inverse operations, finding what number multiplied by the divisor (4) gives the dividend (12) is exactly the same as computing the quotient of the division."
+                    },
+                    {
+                      question: "Who first explicitly stated the general rule for dividing fractions (flip the divisor and multiply), and in which text?",
+                      options: ["Euclid, in 'The Elements'", "Brahmagupta, in the Brāhmasphuṭasiddhānta (628 CE)", "Fibonacci, in Liber Abaci", "Baudhāyana, in the Śhulbasūtra"],
+                      answer: 1,
+                      explanation: "The general division-of-fractions rule, a/b ÷ c/d = a/b × d/c, was first explicitly stated by Brahmagupta in his 628 CE work, the Brāhmasphuṭasiddhānta."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-8-4",
+                  title: "4. Word Problems: Ancient Fraction Puzzles",
+                  theory: {
+                    intro: "Fractions have been used to solve real, practical problems for thousands of years — from an Indian tea-seller sharing milk equally, to ancient altar-builders covering an area with bricks, to a mathematician's puzzle about four fountains filling a cistern together.",
+                    sections: [
+                      {
+                        heading: "Sharing Milk Equally: Dividing a Fraction by a Whole Number",
+                        text: "Leena made 5 cups of tea using ¼ litre of milk in total. How much milk is in each cup? This is ¼ ÷ 5. Rewriting as multiplication (5 × milk-per-cup = ¼), the reciprocal of 5 is ⅕, so milk-per-cup = ⅕ × ¼ = 1/20 litre per cup."
+                      },
+                      {
+                        heading: "Baudhāyana's Brick Problem (c. 800 BCE)",
+                        text: "One of the oldest known fraction problems comes from Baudhāyana's Śhulbasūtra, an ancient geometry text used for constructing altars. Question: how many square bricks, each with side ⅕ unit, are needed to cover an area of 7½ square units? Each brick has area ⅕ × ⅕ = 1/25 sq units. Number of bricks = total area ÷ area per brick = 15/2 ÷ 1/25 = 15/2 × 25 = 375/2 — found using exactly the same reciprocal-and-multiply technique used for any fraction division."
+                      },
+                      {
+                        heading: "The Four Fountains Puzzle (c. 860 CE)",
+                        text: "This puzzle, posed by the mathematician Chaturveda Pṛithūdakasvāmī, asks: four fountains fill a cistern — the first alone takes a full day, the second takes half a day, the third a quarter of a day, and the fourth a fifth of a day. Flowing together, how long do they take? In one day, fountain 1 fills the cistern 1 ÷ 1 = 1 time; fountain 2 fills it 1 ÷ ½ = 2 times; fountain 3 fills it 1 ÷ ¼ = 4 times; fountain 4 fills it 1 ÷ ⅕ = 5 times. Together, they fill the cistern 1+2+4+5 = 12 times in a day, so flowing together they fill it in 1/12 of a day."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Solving a Combined-Rate Word Problem",
+                      objective: "To apply fraction division to a real combined-work word problem, following the same reasoning as the Four Fountains puzzle.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Suppose Pipe A alone fills a tank in 1 day, and Pipe B alone fills it in ⅓ of a day.",
+                        "Find how many times each pipe fills the tank in one full day: Pipe A fills it 1 ÷ 1 = 1 time; Pipe B fills it 1 ÷ ⅓ = 3 times.",
+                        "Add these together: 1 + 3 = 4 — the two pipes together fill the tank 4 times over in one day.",
+                        "Since they together fill it 4 times in a day, conclude that flowing together they take 1/4 of a day to fill it once.",
+                        "Check the answer: in ¼ of a day, Pipe A fills ¼ of the tank, and Pipe B (3× as fast) fills ¾ of the tank; ¼ + ¾ = 1 whole tank — confirmed."
+                      ],
+                      observation: "Converting each rate into 'number of fills per day' and adding them together (using fraction division) correctly predicts the combined time — the same reasoning that solves the historical Four Fountains puzzle."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Leena used ¼ litre of milk in total for 5 cups of tea. How much milk is in each cup?",
+                      options: ["1/20 litre", "1/4 litre", "5/4 litre", "1/5 litre"],
+                      answer: 0,
+                      explanation: "Milk per cup = ¼ ÷ 5 = ¼ × ⅕ = 1/20 litre, using the reciprocal-and-multiply rule for dividing a fraction by a whole number."
+                    },
+                    {
+                      question: "In Baudhāyana's brick problem, each square brick has side ⅕ unit. What is the area of one brick?",
+                      options: ["⅕ sq units", "1/25 sq units", "2/5 sq units", "1/10 sq units"],
+                      answer: 1,
+                      explanation: "Area of a square brick = ⅕ × ⅕ = 1/25 square units, using the fraction multiplication rule (multiply numerators, multiply denominators)."
+                    },
+                    {
+                      question: "In the Four Fountains puzzle, the fourth fountain alone fills the cistern in ⅕ of a day. How many times does it fill the cistern in one full day?",
+                      options: ["1/5 times", "5 times", "4 times", "1 time"],
+                      answer: 1,
+                      explanation: "Number of times filled in a day = 1 ÷ ⅕ = 1 × 5 = 5 times, using the reciprocal-and-multiply rule for division."
+                    },
+                    {
+                      question: "In the Four Fountains puzzle, the four fountains together fill the cistern 1+2+4+5 = 12 times in a day. How long does it take them to fill it once, flowing together?",
+                      options: ["12 days", "1/12 of a day", "1 day", "4 days"],
+                      answer: 1,
+                      explanation: "If together they fill the cistern 12 times in a full day, then filling it just once takes 1/12 of a day."
+                    },
+                    {
+                      question: "What mathematical operation is common to solving Leena's milk problem, Baudhāyana's brick problem, and the Four Fountains puzzle?",
+                      options: ["Only addition of whole numbers", "Dividing a quantity by a fraction (or a whole number), using the reciprocal-and-multiply technique", "Squaring numbers", "Averaging several numbers together"],
+                      answer: 1,
+                      explanation: "All three problems require dividing a total quantity (milk, area, or a full day) by a rate or share expressed as a fraction — solved in every case using the reciprocal-and-multiply division rule."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
