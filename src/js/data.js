@@ -2094,6 +2094,1394 @@ export const curriculumData = {
           icon: "📐",
           chapters: [
             {
+              id: "6m-1",
+              title: "Patterns in Mathematics",
+              topics: [
+                {
+                  id: "6m-1-1",
+                  title: "1. What is Mathematics? Patterns in Numbers",
+                  theory: {
+                    intro: "Mathematics is, in large part, the search for patterns — and for the explanations as to why those patterns exist. Patterns exist all around us: in nature, in our homes and schools, in shopping, cooking, games, weather, and technology. Understanding WHY a pattern exists can lead to powerful applications far beyond where it was first noticed — the study of patterns in planetary motion led to the theory of gravitation and space travel.",
+                    sections: [
+                      {
+                        heading: "Mathematics as the Search for Patterns",
+                        text: "Mathematics aims not just to find what patterns exist, but to explain why they exist. This is why mathematicians think of mathematics as both an art and a science — the search for patterns can be a creative, fun endeavour, and the explanations discovered often turn out to be useful in completely different fields later on."
+                      },
+                      {
+                        heading: "Number Theory: Patterns in Whole Numbers",
+                        text: "The most basic patterns in mathematics are patterns of numbers, especially of whole numbers (0, 1, 2, 3, 4, ...). The branch of mathematics that studies patterns in whole numbers is called number theory. Number sequences are among the most fascinating patterns studied — for example: All 1's (1,1,1,1,...), Counting numbers (1,2,3,4,...), Odd numbers (1,3,5,7,...), Even numbers (2,4,6,8,...), Triangular numbers (1,3,6,10,15,...), Squares (1,4,9,16,25,...), Cubes (1,8,27,64,125,...), Virahānka numbers (1,2,3,5,8,13,...), and Powers of 2 (1,2,4,8,16,...)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Spotting Patterns in Everyday Life",
+                      objective: "To recognise that mathematical patterns are not confined to a textbook, but appear throughout daily life, technology, and nature.",
+                      materials: ["Notebook", "Pencil"],
+                      steps: [
+                        "Walk around your home, school, or village and list five objects, activities, or arrangements that show a repeating or predictable pattern (examples: floor tiles, a woven basket, the days of the week, a cropping cycle).",
+                        "For each example, write down what exactly repeats or changes in a predictable way.",
+                        "Pick one example and try to state the 'rule' that generates the pattern, in your own words.",
+                        "Discuss with a classmate: is this pattern something humans designed on purpose, or something that occurs naturally?",
+                        "Reflect on how noticing such a pattern could be useful — for prediction, for design, or for solving a problem."
+                      ],
+                      observation: "Patterns turn out to be everywhere once you start looking for them — in nature, design, technology and daily routines — confirming that mathematics as 'the search for patterns' is closely tied to the real world, not just abstract numbers."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "According to this chapter, what is mathematics 'in large part' the search for?",
+                      options: ["The search for the biggest possible number", "The search for patterns, and the explanations for why they exist", "The search for the most complicated formulas", "The search for calculation shortcuts only"],
+                      answer: 1,
+                      explanation: "Mathematics is described as, in large part, the search for patterns — and importantly, also the search for explanations of why those patterns exist."
+                    },
+                    {
+                      question: "Why do mathematicians think of mathematics as both an art and a science?",
+                      options: ["Because mathematics involves drawing pictures only", "Because the search for patterns and their explanations can be a fun, creative endeavour, much like art, while also being rigorous like science", "Because mathematics has no real rules", "Because art and science are actually the same subject"],
+                      answer: 1,
+                      explanation: "The creative, exploratory process of discovering and understanding patterns gives mathematics an artistic quality, while the rigorous search for explanations gives it a scientific quality."
+                    },
+                    {
+                      question: "What is 'number theory'?",
+                      options: ["The theory that numbers do not really exist", "The branch of mathematics that studies patterns in whole numbers", "A theory about how to count faster", "The study of shapes only"],
+                      answer: 1,
+                      explanation: "Number theory is defined as the branch of mathematics that studies patterns in whole numbers (0, 1, 2, 3, ...)."
+                    },
+                    {
+                      question: "Which of these is the sequence of 'triangular numbers'?",
+                      options: ["1, 2, 3, 4, 5, ...", "1, 4, 9, 16, 25, ...", "1, 3, 6, 10, 15, ...", "1, 8, 27, 64, 125, ..."],
+                      answer: 2,
+                      explanation: "The triangular numbers are 1, 3, 6, 10, 15, 21, 28, ... — each one obtained by adding the next counting number to the previous total."
+                    },
+                    {
+                      question: "The text mentions that understanding patterns in planetary motion led to which major scientific development?",
+                      options: ["The theory of evolution", "The theory of gravitation, which enabled launching satellites and sending rockets to the Moon and Mars", "The invention of the telescope", "The discovery of electricity"],
+                      answer: 1,
+                      explanation: "The chapter notes that understanding patterns in the motion of stars, planets, and satellites led humankind to develop the theory of gravitation, enabling space travel."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-1-2",
+                  title: "2. Visualising Number Sequences",
+                  lab: { type: "number-sequence-visualizer-sim" },
+                  theory: {
+                    intro: "Many number sequences can be visualised using pictures made of dots — turning an abstract list of numbers into a shape you can literally see grow. This picture-based thinking is a powerful tool throughout mathematics, not just for these particular sequences.",
+                    sections: [
+                      {
+                        heading: "Dot Pictures for Number Sequences",
+                        text: "Counting numbers (1,2,3,4,...) can be shown as a growing single row of dots. Odd numbers can be shown as growing L-shapes. Triangular numbers form actual triangular arrangements of dots — 1, then 3 (a small triangle), then 6, then 10, each one adding a new row. Square numbers form n×n square grids of dots — 1, 4, 9, 16, 25. Cube numbers can be visualised as 3D stacks of unit cubes."
+                      },
+                      {
+                        heading: "Hexagonal Numbers",
+                        text: "The sequence 1, 7, 19, 37, ... is called the hexagonal numbers — each number in the sequence can be arranged as dots forming a hexagon (six-sided shape) that grows outward, ring by ring, from a central dot."
+                      },
+                      {
+                        heading: "Visualising Powers of 2",
+                        text: "The sequence of powers of 2 (1, 2, 4, 8, 16, ...) can be visualised as a sequence of squares (or blocks) that each double in either their number or their size compared to the one before — one common way is to picture a single square, then two squares side by side, then a 2×2 block of 4, and so on, doubling the total count of unit squares each time."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Drawing Dot Pictures for Triangular and Square Numbers",
+                      objective: "To visually confirm why the triangular and square number sequences are named the way they are, using dot diagrams.",
+                      materials: ["Dot grid paper or plain paper", "Pencil"],
+                      steps: [
+                        "Draw a single dot — this represents the first triangular number, 1.",
+                        "Below it, draw a row of 2 dots to form a small triangle — this represents the second triangular number, 1+2=3.",
+                        "Add a row of 3 dots below that to get the third triangular number, 1+2+3=6, and continue for the fourth (10) and fifth (15).",
+                        "On a separate part of the page, draw a 1×1 square dot, then a 2×2 grid of dots (4 total), then a 3×3 grid (9 total), continuing to a 5×5 grid (25 total) for the square numbers.",
+                        "Compare the two families of pictures and note how each new row (for triangles) or each new square 'shell' (for squares) is added to get the next number in the sequence."
+                      ],
+                      observation: "The dot pictures make visible why the names 'triangular' and 'square' numbers were chosen — the dots can literally be arranged into those exact shapes, with each new number in the sequence adding a predictable new layer to the picture."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why are 1, 3, 6, 10, 15, ... called 'triangular numbers'?",
+                      options: ["Because they are related to angles", "Because that many dots can be arranged perfectly into a triangular shape", "Because they always appear in groups of three", "There is no real reason, it is just a name"],
+                      answer: 1,
+                      explanation: "Each triangular number corresponds to the total number of dots needed to build a triangular arrangement — 1 dot, then a triangle of 3, then of 6, and so on, each with one more row than the last."
+                    },
+                    {
+                      question: "What shape do the hexagonal numbers (1, 7, 19, 37, ...) form when visualised as dots?",
+                      options: ["A straight line", "A hexagon that grows outward ring by ring from a central dot", "A cube", "A random scatter of dots"],
+                      answer: 1,
+                      explanation: "The hexagonal numbers can be arranged as dots forming a six-sided hexagon shape, growing outward in successive rings from a central point."
+                    },
+                    {
+                      question: "How can square numbers (1, 4, 9, 16, 25, ...) be visualised with dots?",
+                      options: ["As a single growing row", "As n×n square grids of dots (1×1, 2×2, 3×3, and so on)", "As random clusters", "As triangles only"],
+                      answer: 1,
+                      explanation: "Square numbers can be pictured as n×n grids of dots: a 1×1 grid has 1 dot, a 2×2 grid has 4 dots, a 3×3 grid has 9 dots, and so on — matching the sequence exactly."
+                    },
+                    {
+                      question: "36 is both a triangular number and a square number. What does this show?",
+                      options: ["That 36 is a special, unique number with no explanation", "That the same number can be represented differently, and play different roles, depending on the context", "That triangular and square numbers are actually the same sequence", "That this is a coincidence with no mathematical meaning"],
+                      answer: 1,
+                      explanation: "The fact that 36 dots can be arranged perfectly into both a triangle and a square illustrates that a single number can be understood or represented in more than one valid way, depending on the pattern being studied."
+                    },
+                    {
+                      question: "Visualising number sequences with pictures is described in the chapter as being useful for what purpose?",
+                      options: ["Only for making the notebook look nice", "Helping to understand mathematical patterns and the relationships between different sequences", "Replacing the need to know the actual numbers", "It has no real mathematical use"],
+                      answer: 1,
+                      explanation: "Pictures make abstract number patterns concrete and visible, which helps in understanding both the sequences themselves and the surprising relationships between different sequences."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-1-3",
+                  title: "3. Relations Among Number Sequences",
+                  lab: { type: "odd-sum-square-sim" },
+                  theory: {
+                    intro: "Number sequences that look completely different can turn out to be secretly connected. Adding up odd numbers, one by one, produces the square numbers — a beautiful and surprising relationship that a simple picture can fully explain.",
+                    sections: [
+                      {
+                        heading: "Adding Up Odd Numbers Gives Squares",
+                        text: "Look at the pattern: 1 = 1; 1+3 = 4; 1+3+5 = 9; 1+3+5+7 = 16; 1+3+5+7+9 = 25. Each time, the sum of the first few odd numbers turns out to be a perfect square! This isn't a coincidence for just a few small cases — it happens forever, for any number of odd numbers added."
+                      },
+                      {
+                        heading: "A Picture Explains Why",
+                        text: "A square grid of dots (say, 6×6 = 36 dots) can be partitioned into nested L-shaped bands: a single dot in the corner, then an L-shaped band of 3 dots around it, then a band of 5, then 7, then 9, then 11 — precisely the odd numbers, adding up to 36. Because such an L-shaped partition can be drawn for a square grid of ANY size, this picture explains why adding consecutive odd numbers starting from 1 always produces a square number."
+                      },
+                      {
+                        heading: "Adding Counting Numbers Up and Down",
+                        text: "A different but related pattern: 1 = 1; 1+2+1 = 4; 1+2+3+2+1 = 9; 1+2+3+4+3+2+1 = 16. Adding the counting numbers up to some point and then back down again ALSO always gives a square number — yet another route to the same square-number sequence, explainable with its own dot picture."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building a Square from Odd-Number L-Shapes",
+                      objective: "To physically verify, using coloured dot bands, that the sum of the first n odd numbers always equals a perfect square.",
+                      materials: ["Dot grid or graph paper", "Coloured pencils"],
+                      steps: [
+                        "On graph paper, mark out a 5×5 square grid of dots or cells (25 total).",
+                        "Colour a single dot in one corner — label this band '1'.",
+                        "Colour an L-shaped band of 3 more cells wrapping around that first dot — label this band '3'.",
+                        "Continue adding L-shaped bands of 5, then 7, then 9 cells, wrapping successively around the previous bands, until the whole 5×5 grid is filled.",
+                        "Add up the band sizes: 1+3+5+7+9, and confirm the total equals 25 — matching the full 5×5 square."
+                      ],
+                      observation: "The nested L-shaped odd-number bands exactly fill up a perfect square grid every time, visually proving that the sum of the first n odd numbers equals n² (the nth square number)."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What do you get when you add up the first 5 odd numbers: 1+3+5+7+9?",
+                      options: ["15", "20", "25", "30"],
+                      answer: 2,
+                      explanation: "1+3+5+7+9 = 25, which is a perfect square (5²) — matching the pattern that the sum of the first n odd numbers is always n²."
+                    },
+                    {
+                      question: "How does the L-shaped dot picture explain why adding odd numbers gives squares?",
+                      options: ["It doesn't explain anything, it's just a coincidence", "Because nested L-shaped bands of 1, 3, 5, 7, ... dots can always be arranged to exactly fill a square grid of any size", "Because L-shapes are a type of square", "The picture only works for small numbers"],
+                      answer: 1,
+                      explanation: "Wrapping successive L-shaped bands (of size 1, 3, 5, 7, ...) around each other always builds up a complete square grid, for a square of ANY size — which is why the pattern holds true forever, not just for a few small examples."
+                    },
+                    {
+                      question: "What do you get when you add the counting numbers up and then back down, e.g., 1+2+3+2+1?",
+                      options: ["6", "9", "12", "It's always an odd number, but not fixed"],
+                      answer: 1,
+                      explanation: "1+2+3+2+1 = 9, which is a perfect square (3²) — this 'up and down' addition pattern also always produces a square number."
+                    },
+                    {
+                      question: "Why is it mathematically important that the odd-number-sum pattern 'happens forever', not just for the first few cases checked?",
+                      options: ["It isn't important, checking a few cases is always enough", "Because a pattern that only works for small numbers might be a coincidence — an explanation (like the L-shaped picture) proves it holds for every case, however large", "Because larger numbers are more important than smaller ones", "Patterns in mathematics never need to be explained"],
+                      answer: 1,
+                      explanation: "Checking a handful of cases can never prove a pattern holds universally — only a general explanation, like the picture that works for a square grid of ANY size, guarantees the pattern is true forever."
+                    },
+                    {
+                      question: "What is the sum of the first 10 odd numbers (1+3+5+7+9+11+13+15+17+19)?",
+                      options: ["55", "90", "100", "110"],
+                      answer: 2,
+                      explanation: "The sum of the first n odd numbers is always n². For n=10, this is 10² = 100."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-1-4",
+                  title: "4. Patterns in Shapes",
+                  theory: {
+                    intro: "Patterns aren't only about numbers — shapes have their own beautiful sequences too. The branch of mathematics that studies patterns in shapes is called geometry, and shape sequences often turn out to be secretly connected to number sequences.",
+                    sections: [
+                      {
+                        heading: "Shape Sequences: Regular Polygons",
+                        text: "A regular polygon is a shape with equal-length sides and equal angles. The sequence of regular polygons — triangle, quadrilateral (square), pentagon, hexagon, heptagon, octagon, nonagon, decagon — has a number of sides given exactly by the counting numbers starting at 3: 3, 4, 5, 6, 7, 8, 9, 10, ... This is precisely why these shapes are named the way they are."
+                      },
+                      {
+                        heading: "Complete Graphs, Stacked Shapes, and the Koch Snowflake",
+                        text: "Other important shape sequences include Complete Graphs (K2, K3, K4, K5, ... — shapes where every point is connected to every other point by a line), Stacked Squares and Stacked Triangles (shapes built by stacking rows of smaller squares or triangles), and the Koch Snowflake (a shape where, at each step, every straight line segment is replaced by a 'speed bump' zigzag, making the boundary more and more jagged and detailed)."
+                      },
+                      {
+                        heading: "Connecting Shapes Back to Numbers",
+                        text: "Counting features of these shapes reveals hidden number sequences: counting the sides OR corners of the Regular Polygons sequence gives the counting numbers from 3 onward. Counting the connecting lines in the Complete Graphs sequence gives the triangular numbers. Counting the total line segments in each stage of the Koch Snowflake gives 3, 12, 48, ... — which is 3 times the powers of 4."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Counting Lines in Complete Graphs",
+                      objective: "To discover, by direct counting, that the number of connecting lines in the Complete Graph sequence (K2, K3, K4, K5, ...) matches the triangular numbers.",
+                      materials: ["Paper", "Pencil", "Ruler"],
+                      steps: [
+                        "Draw 2 dots and connect them with a single line — this is K2. Count the lines: 1.",
+                        "Draw 3 dots, positioned as a triangle, and connect every pair of dots with a line — this is K3. Count the lines: 3.",
+                        "Draw 4 dots and connect every possible pair — this is K4. Carefully count every line without missing or repeating any: 6 lines.",
+                        "If you're confident, try K5 (5 dots, every pair connected) and count the lines.",
+                        "Compare your line counts (1, 3, 6, ...) to the triangular number sequence from earlier in the chapter."
+                      ],
+                      observation: "The number of lines needed to connect every pair of dots exactly matches the triangular numbers (1, 3, 6, 10, ...) — because connecting n points pairwise is mathematically the same process as counting up 1+2+3+...+(n-1)."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 'geometry' as defined in this chapter?",
+                      options: ["The study of numbers only", "The branch of mathematics that studies patterns in shapes", "A tool for measuring time", "A synonym for algebra"],
+                      answer: 1,
+                      explanation: "Geometry is described as the branch of mathematics that studies patterns in shapes — in one, two, three, or more dimensions."
+                    },
+                    {
+                      question: "What does 'regular' mean when describing a regular polygon like a regular hexagon?",
+                      options: ["It means the shape is common or ordinary", "It means all the sides are equal in length AND all the angles are equal", "It means the shape has an even number of sides", "It means the shape can only be drawn with a ruler"],
+                      answer: 1,
+                      explanation: "A 'regular' polygon is one where all sides have equal length and all angles (corners) look the same — this equal-sides-and-angles property is what 'regular' refers to."
+                    },
+                    {
+                      question: "The sequence of regular polygons (triangle, quadrilateral, pentagon, hexagon, ...) has how many sides in each shape, following which number sequence?",
+                      options: ["The odd numbers: 1, 3, 5, 7, ...", "The counting numbers starting at 3: 3, 4, 5, 6, 7, ...", "The square numbers: 1, 4, 9, 16, ...", "The powers of 2: 2, 4, 8, 16, ..."],
+                      answer: 1,
+                      explanation: "The number of sides in the regular polygon sequence follows the counting numbers starting at 3 (a triangle has 3 sides, a quadrilateral 4, a pentagon 5, and so on)."
+                    },
+                    {
+                      question: "In the Koch Snowflake sequence, what happens to each straight line segment as you move to the next shape?",
+                      options: ["It disappears", "It is replaced by a 'speed bump' zigzag, making the shape more jagged and detailed each time", "It doubles in length only, staying straight", "It turns into a circle"],
+                      answer: 1,
+                      explanation: "At each step of the Koch Snowflake construction, every straight line segment is replaced with a small zigzag ('speed bump'), so the boundary grows more intricate with each iteration."
+                    },
+                    {
+                      question: "Counting the connecting lines in the Complete Graphs sequence (K2, K3, K4, K5, ...) gives which number sequence?",
+                      options: ["Even numbers", "Square numbers", "Triangular numbers", "Powers of 3"],
+                      answer: 2,
+                      explanation: "The number of lines connecting every pair of points in K2, K3, K4, K5, ... follows the triangular number sequence (1, 3, 6, 10, ...), since connecting n points pairwise requires 1+2+...+(n-1) lines."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "6m-2",
+              title: "Lines and Angles",
+              topics: [
+                {
+                  id: "6m-2-1",
+                  title: "1. Points, Lines, Line Segments and Rays",
+                  theory: {
+                    intro: "Points, lines, rays and line segments are the most basic building blocks of geometry — every shape, however complex, is ultimately built from these simple ideas.",
+                    sections: [
+                      {
+                        heading: "Point",
+                        text: "A sharp pencil tip makes a tiny dot that models a point. A point determines a precise location but has no length, breadth, or height. Points are named using single capital letters, like Point Z, Point P, or Point T."
+                      },
+                      {
+                        heading: "Line Segment",
+                        text: "The shortest path connecting two points A and B (including A and B themselves) is called the line segment from A to B, written AB or BA. Points A and B are its end points — a crease made by folding paper models a line segment."
+                      },
+                      {
+                        heading: "Line",
+                        text: "Extending a line segment AB endlessly in both directions (beyond A and beyond B) gives a line, written as line AB, or sometimes just a letter like l or m. A line extends forever in both directions and can never be fully drawn. Any two points determine exactly one unique line passing through both of them."
+                      },
+                      {
+                        heading: "Ray",
+                        text: "A ray is a portion of a line that starts at one point (its starting or initial point) and goes on endlessly in one direction only — modelled by a beam of light from a lighthouse or torch. A ray starting at A and passing through point P is written as ray AP. Unlike AB (a line), the order of letters matters for a ray: AP and PA name different rays, since they have different starting points."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Distinguishing Lines, Rays, and Segments by Folding and Drawing",
+                      objective: "To physically model a point, line segment, line, and ray, and to understand how they differ in extent and direction.",
+                      materials: ["Paper", "Pencil", "Ruler"],
+                      steps: [
+                        "Fold a piece of paper once and unfold it — observe the crease, which models a line segment with two end points.",
+                        "Mark two points A and B on paper and draw the shortest straight path between them using a ruler — label this line segment AB.",
+                        "Now extend that same segment with the ruler well past both A and B, off both edges of the paper if possible — this models a line, which truly has no end in either direction.",
+                        "On a fresh area of the paper, mark a single starting point A and draw an arrow extending in only ONE direction through a second point P — this models ray AP.",
+                        "Discuss with a partner: why can ray AP and ray PA not be the same ray, even though they lie along the same line?"
+                      ],
+                      observation: "A line segment has two fixed ends, a line has no ends in either direction, and a ray has exactly one fixed starting point but extends endlessly in only one direction — three distinct geometric objects built from the same underlying idea of a straight path."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does a point represent in geometry?",
+                      options: ["A shape with length but no width", "A precise location with no length, breadth, or height", "A path between two locations", "A curved path"],
+                      answer: 1,
+                      explanation: "A point marks a precise, exact location and has no length, breadth, or height — it is often modelled by an infinitely thin dot."
+                    },
+                    {
+                      question: "What is the line segment AB?",
+                      options: ["Any curved path between A and B", "The shortest path from A to B, including the points A and B themselves", "A path that extends endlessly beyond both A and B", "A path that only extends beyond B"],
+                      answer: 1,
+                      explanation: "The line segment AB is defined as the shortest route connecting points A and B, including the two end points A and B."
+                    },
+                    {
+                      question: "How is a line different from a line segment?",
+                      options: ["A line is shorter than a line segment", "A line extends endlessly in both directions, while a line segment has two fixed end points", "They are exactly the same thing", "A line can only be drawn with a compass"],
+                      answer: 1,
+                      explanation: "A line segment has two definite end points, while a line is that same segment extended forever in both directions, with no end points at all."
+                    },
+                    {
+                      question: "Why are ray AP and ray PA considered different rays, even though they lie on the same line through A and P?",
+                      options: ["They are not actually different, this is a trick question", "Because a ray's starting point matters — AP starts at A and goes through P, while PA starts at P and goes through A, extending in opposite directions", "Because rays cannot be named with two letters", "Because A and P are always different distances apart in each case"],
+                      answer: 1,
+                      explanation: "A ray is defined by its starting point and direction. AP starts at A and extends endlessly through and beyond P, while PA starts at P and extends endlessly through and beyond A — opposite directions, hence different rays."
+                    },
+                    {
+                      question: "How many unique lines pass through any two distinct points, such as A and B?",
+                      options: ["Infinitely many", "Exactly one", "Exactly two", "Zero, unless a ruler is used"],
+                      answer: 1,
+                      explanation: "Any two distinct points determine exactly one unique straight line that passes through both of them."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-2-2",
+                  title: "2. Angles: Formation and Comparison",
+                  theory: {
+                    intro: "Whenever two rays share a common starting point, an angle is formed — and just like the length of a line, the 'size' of an angle can be compared, based on how much rotation separates its two arms.",
+                    sections: [
+                      {
+                        heading: "What is an Angle?",
+                        text: "An angle is formed by two rays having a common starting point. If rays BD and BE share starting point B, they form an angle with vertex B and arms BD, BE — named ∠DBE or ∠EBD (the vertex is always the middle letter). The symbol ∠ replaces the word 'angle'. A small curve drawn at the vertex is used to indicate the angle in a figure."
+                      },
+                      {
+                        heading: "The Size of an Angle is the Amount of Rotation",
+                        text: "Just as the size of a line is its length, the size of an angle is the amount of rotation or turn needed about the vertex to move one ray (arm) to the other. Opening a book cover wider and wider creates larger and larger angles — more rotation means a bigger angle, regardless of how long the arms are drawn."
+                      },
+                      {
+                        heading: "Angles All Around Us",
+                        text: "A compass or divider forms an angle at the point where its two arms are joined and turned. A pair of scissors forms an angle between its two blades when opened. Spectacles, wallets, and many everyday hinged objects form angles wherever one part rotates relative to another."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding and Comparing Angles in Everyday Hinged Objects",
+                      objective: "To identify the vertex and arms of angles formed by common rotating objects, and to compare their sizes by the amount of turning involved.",
+                      materials: ["A pair of scissors (or a picture of one)", "A compass or divider", "A book"],
+                      steps: [
+                        "Open a pair of scissors partway and identify the vertex (the pivot/hinge) and the two arms (the blades) of the angle formed.",
+                        "Open the scissors wider and observe how the angle grows — mark in your notebook whether the amount of 'turn' has increased.",
+                        "Open a book cover through a few different amounts — a small crack, a quarter open, fully flat — and rank these three angles from smallest to largest based on rotation.",
+                        "Do the same with a compass or divider, opening its two arms by different amounts.",
+                        "Compare all the angles you found (scissors, book, compass) purely by estimating the amount of rotation, without measuring in degrees yet."
+                      ],
+                      observation: "In every hinged object, the angle grows exactly in proportion to how far one arm has been rotated away from the other around the shared vertex — confirming that rotation amount, not arm length, is what determines an angle's size."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "An angle is formed by two rays that share what?",
+                      options: ["The same length", "A common starting point (the vertex)", "The same colour", "Being drawn with a ruler"],
+                      answer: 1,
+                      explanation: "An angle is formed whenever two rays have a common starting point, called the vertex of the angle."
+                    },
+                    {
+                      question: "In naming an angle like ∠DBE, which letter must always be written in the middle?",
+                      options: ["Whichever letter comes first alphabetically", "The vertex of the angle", "The longer arm's endpoint", "It doesn't matter which is in the middle"],
+                      answer: 1,
+                      explanation: "When naming an angle using three letters, the vertex is always written as the middle letter — so ∠DBE has vertex B, since B is in the middle."
+                    },
+                    {
+                      question: "What determines the SIZE of an angle?",
+                      options: ["The length of the two arms drawn", "The amount of rotation or turn needed to move one ray onto the other, about the vertex", "The colour of the angle", "The distance between the two arms' endpoints only"],
+                      answer: 1,
+                      explanation: "An angle's size depends only on the amount of rotation between its two arms around the vertex — not on how long the arms happen to be drawn."
+                    },
+                    {
+                      question: "If you open a book cover wider (more rotation) compared to a smaller opening, what happens to the angle?",
+                      options: ["The angle becomes smaller", "The angle becomes larger", "The angle stays exactly the same", "There is no angle formed at all"],
+                      answer: 1,
+                      explanation: "More rotation of one arm (the book cover) relative to the other (the book's base) always means a larger angle — angle size directly corresponds to rotation amount."
+                    },
+                    {
+                      question: "In a pair of scissors, what represents the vertex of the angle formed by the blades?",
+                      options: ["The sharp tips of the blades", "The pivot point (hinge) where the two blades are joined", "The handles", "There is no vertex in a pair of scissors"],
+                      answer: 1,
+                      explanation: "The vertex of the angle formed by scissors is the pivot or hinge point where the two blades are joined and rotate relative to one another."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-2-3",
+                  title: "3. Measuring Angles in Degrees",
+                  lab: { type: "protractor-angle-sim" },
+                  theory: {
+                    intro: "Comparing angles by eye only goes so far — to give an angle a precise, universal size, mathematicians divide a full turn into exactly 360 equal parts, called degrees.",
+                    sections: [
+                      {
+                        heading: "The Degree: Dividing a Circle into 360 Parts",
+                        text: "Mathematicians divide the angle at the centre of a circle into 360 equal parts; the angle measure of each tiny part is 1 degree, written 1°. The measure of any angle is simply the number of these 1° unit parts it contains. A full turn (all the way around) measures 360°. A straight angle (half of a full turn) measures 180°. A right angle (half of a straight angle) measures 90°."
+                      },
+                      {
+                        heading: "Why 360 Degrees?",
+                        text: "The exact historical origin of 360° isn't fully known, but ancient texts like the Rigveda mention a wheel with 360 spokes, and many ancient calendars (India, Persia, Babylon, Egypt) used 360-day years. Practically, 360 is the smallest number evenly divisible by every number from 1 to 10 except 7 — letting a circle be split into 2, 3, 4, 5, 6, 8, 9, or 10 equal parts with a whole number of degrees each. It's also divisible by 12 (months) and 24 (hours), making it especially convenient."
+                      },
+                      {
+                        heading: "The Protractor",
+                        text: "A protractor is a tool for measuring angles in degrees — either a full circle divided into 360 equal parts, or (more commonly) a half-circle divided into 180 equal parts. On a protractor, there's a long mark every 10°, with a medium mark at every 5° in between, allowing angles to be read off precisely by placing the vertex at the protractor's centre point."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Measuring Real Angles with a Protractor",
+                      objective: "To practice using a protractor accurately to measure the degree value of hand-drawn angles.",
+                      materials: ["Protractor", "Ruler", "Pencil", "Paper"],
+                      steps: [
+                        "Draw three different angles of your own choosing on paper, using a ruler, making sure they are visibly different sizes.",
+                        "Place the centre point (origin) of the protractor exactly on the vertex of the first angle, with the protractor's baseline lying along one of the angle's arms.",
+                        "Read off the degree mark where the second arm of the angle crosses the protractor's scale — this is the angle's measure.",
+                        "Repeat for the other two angles, recording each measurement.",
+                        "Compare your three measured values to your earlier visual estimate of which angle looked biggest — check if your estimate matched the actual degree measures."
+                      ],
+                      observation: "A protractor gives an exact, repeatable degree measurement for any angle, replacing rough visual comparison with a precise numerical value that any two people can independently verify."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "A full circle (complete angle) is divided into how many equal degree parts?",
+                      options: ["100", "180", "360", "90"],
+                      answer: 2,
+                      explanation: "A full turn is divided into exactly 360 equal parts, each measuring 1 degree (1°) — this is the standard unit for measuring angles."
+                    },
+                    {
+                      question: "What is the degree measure of a straight angle?",
+                      options: ["90°", "180°", "270°", "360°"],
+                      answer: 1,
+                      explanation: "A straight angle is exactly half of a full turn (360°), so it measures 180°."
+                    },
+                    {
+                      question: "Why is 360 considered a practically convenient number of degrees to divide a circle into?",
+                      options: ["It has no particular reason, it's arbitrary", "Because 360 is the smallest number evenly divisible by every number from 1 to 10 except 7, allowing many equal whole-degree divisions", "Because 360 is an odd number", "Because ancient people could only count to 360"],
+                      answer: 1,
+                      explanation: "360 can be evenly divided by 2, 3, 4, 5, 6, 8, 9, and 10 (all except 7), plus 12 and 24 — making it possible to split a circle into many different equal whole-number-of-degrees parts."
+                    },
+                    {
+                      question: "What is a protractor used for?",
+                      options: ["Drawing straight lines only", "Measuring the degree value of an angle", "Measuring the length of a line segment", "Drawing perfect circles"],
+                      answer: 1,
+                      explanation: "A protractor — a circle or half-circle divided into 360 or 180 equal degree parts — is the standard tool for measuring the size of an angle in degrees."
+                    },
+                    {
+                      question: "If two right angles together form a straight angle, and a straight angle is 180°, what is the measure of one right angle?",
+                      options: ["45°", "90°", "180°", "360°"],
+                      answer: 1,
+                      explanation: "Since two right angles together make a straight angle (180°), each right angle measures half of that: 180° ÷ 2 = 90°."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-2-4",
+                  title: "4. Types of Angles: Acute, Right, Obtuse, Straight and Reflex",
+                  lab: { type: "angle-classifier-sim" },
+                  theory: {
+                    intro: "Once angles can be measured precisely in degrees, they naturally sort into named families, based on exactly how their degree measure compares to a right angle (90°) and a straight angle (180°).",
+                    sections: [
+                      {
+                        heading: "Acute and Obtuse Angles",
+                        text: "An acute angle is smaller than a right angle: greater than 0° and less than 90°. An obtuse angle is greater than a right angle but less than a straight angle: greater than 90° and less than 180°. The words come from Latin — 'acute' means sharp, and 'obtuse' means blunt, matching how these angles visually look."
+                      },
+                      {
+                        heading: "Right and Straight Angles",
+                        text: "A right angle measures exactly 90° — it resembles the shape of an 'L', and two lines meeting at a right angle are called perpendicular lines. A straight angle measures exactly 180° — its two arms lie along the same straight line, pointing in opposite directions from the vertex."
+                      },
+                      {
+                        heading: "Reflex Angles",
+                        text: "A reflex angle is greater than a straight angle but less than a full turn: greater than 180° and less than 360°. Reflex angles cover the 'outside' or larger turn between two rays — for the same pair of arms, if the angle measured one way is acute, obtuse, right, or straight, the angle measured the other way around is a reflex angle (except when both angles are exactly 180°)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Sorting Hand-Drawn Angles into the Five Types",
+                      objective: "To practice classifying a variety of angles as acute, right, obtuse, straight, or reflex, based on measuring them with a protractor.",
+                      materials: ["Protractor", "Ruler", "Paper", "Pencil"],
+                      steps: [
+                        "Draw six angles of clearly different sizes on a sheet of paper, without worrying about their exact measures yet.",
+                        "Measure each angle carefully with a protractor and write its degree value next to it.",
+                        "Sort the six angles into the categories acute (<90°), right (=90°), obtuse (90°-180°), straight (=180°), based on their measured values.",
+                        "For at least one pair of rays, try to also measure and mark the reflex angle on the OTHER side of the same two arms, and confirm it is greater than 180°.",
+                        "Check that for that same pair of arms, the acute/obtuse/right angle measure plus the reflex angle measure adds up to exactly 360°."
+                      ],
+                      observation: "Every angle you draw falls into exactly one of the five categories once measured — and for any pair of rays, the 'inner' angle and its corresponding reflex angle (measured the other way around) always add up to a full 360° turn."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the degree range for an acute angle?",
+                      options: ["Greater than 90° and less than 180°", "Greater than 0° and less than 90°", "Exactly 90°", "Greater than 180° and less than 360°"],
+                      answer: 1,
+                      explanation: "An acute angle is any angle greater than 0° and less than 90° — smaller than a right angle."
+                    },
+                    {
+                      question: "What is the degree range for an obtuse angle?",
+                      options: ["Greater than 90° and less than 180°", "Less than 90°", "Exactly 180°", "Greater than 360°"],
+                      answer: 0,
+                      explanation: "An obtuse angle is greater than a right angle (90°) but less than a straight angle (180°)."
+                    },
+                    {
+                      question: "What is a reflex angle?",
+                      options: ["An angle less than 90°", "An angle exactly equal to 90°", "An angle greater than 180° and less than 360°", "An angle exactly equal to 180°"],
+                      answer: 2,
+                      explanation: "A reflex angle is greater than a straight angle (180°) but less than a full turn (360°)."
+                    },
+                    {
+                      question: "If the acute angle between two rays measures 40°, what is the measure of the reflex angle on the other side of the same two rays?",
+                      options: ["140°", "220°", "320°", "360°"],
+                      answer: 2,
+                      explanation: "The acute angle and its corresponding reflex angle together make a full turn: 360° − 40° = 320°."
+                    },
+                    {
+                      question: "Two lines that meet at a right angle (90°) are given a special name. What is it?",
+                      options: ["Parallel lines", "Perpendicular lines", "Intersecting curves", "Reflex lines"],
+                      answer: 1,
+                      explanation: "Lines that meet at exactly a right angle (90°) are called perpendicular lines."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "6m-3",
+              title: "Number Play",
+              topics: [
+                {
+                  id: "6m-3-1",
+                  title: "1. What Numbers Tell Us & Supercells",
+                  theory: {
+                    intro: "Numbers can carry hidden meaning depending on the rule used to create them, and simple rules applied to a grid of numbers can reveal an entirely new pattern layered on top of the numbers themselves.",
+                    sections: [
+                      {
+                        heading: "Numbers That Encode a Rule",
+                        text: "Children standing in a line, each calling out how many of their two immediate neighbours are taller than them, turns an arrangement of heights into a sequence of numbers (0s, 1s, and 2s). Changing the arrangement of children changes every number called out — the same simple counting rule can produce many different number sequences depending on the underlying arrangement."
+                      },
+                      {
+                        heading: "Supercells",
+                        text: "In a grid or row of numbers, a cell is called a supercell if the number inside it is greater than ALL of its adjacent (neighbouring) cells — left, right, top, and bottom, whichever exist. For example, in a table, 626 is a supercell if it's larger than both its left and right neighbours (577 and 345); a number at the edge of the grid only needs to beat the neighbours it actually has."
+                      },
+                      {
+                        heading: "Strategies with Supercells",
+                        text: "The cell with the very largest number in a grid is ALWAYS a supercell, since nothing can be bigger than it. But the cell with the smallest number can never be a supercell, since it can never be bigger than any of its neighbours. Arranging numbers cleverly (for example, alternating small and large values) can maximise the number of supercells in a grid."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding and Maximising Supercells",
+                      objective: "To identify supercells in a number grid and explore how rearranging numbers changes how many supercells appear.",
+                      materials: ["Paper", "Pencil"],
+                      steps: [
+                        "Draw a 2×4 grid and fill it with any 8 different numbers of your choice.",
+                        "For each cell, compare it to its immediate left/right (and top/bottom, if any) neighbours, and mark it as a supercell if it is bigger than all of them.",
+                        "Count how many supercells you found, then try rearranging the same 8 numbers to get MORE supercells than before.",
+                        "Check whether the cell holding the overall largest number is always a supercell in every arrangement you try.",
+                        "Check whether the cell holding the overall smallest number can ever become a supercell in any arrangement."
+                      ],
+                      observation: "The number of supercells changes depending on arrangement, but the single largest number in the grid is always a supercell, and the single smallest number is never a supercell — no matter how the numbers are rearranged."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the height-line rule, what number does a child call out?",
+                      options: ["Their own height", "The number of their immediate neighbours who are taller than them", "Their position in the line", "A completely random number"],
+                      answer: 1,
+                      explanation: "Each child calls out how many of their immediate neighbours (at most two — one on each side) are taller than themselves."
+                    },
+                    {
+                      question: "What makes a cell in a number grid a 'supercell'?",
+                      options: ["It contains the number 100", "Its number is greater than ALL of its adjacent (neighbouring) cells", "It is located in the exact centre of the grid", "It contains an even number"],
+                      answer: 1,
+                      explanation: "A supercell is defined as a cell whose number is strictly greater than every one of its immediate neighbouring cells (left, right, top, bottom, as applicable)."
+                    },
+                    {
+                      question: "Is the cell containing the single LARGEST number in a grid always a supercell?",
+                      options: ["No, never", "Yes, always — since nothing in the grid can be bigger than the largest number", "Only if it's in a corner", "Only if all numbers are even"],
+                      answer: 1,
+                      explanation: "Since the largest number in the entire grid is, by definition, bigger than every other number (including all its neighbours), it is always a supercell."
+                    },
+                    {
+                      question: "Can the cell containing the single SMALLEST number in a grid ever be a supercell?",
+                      options: ["Yes, always", "No, never — since it can never be greater than any of its neighbours", "Only if it's in a corner", "Only if there is just one cell in the grid"],
+                      answer: 1,
+                      explanation: "The smallest number in the grid is, by definition, smaller than (or equal to) every other number, so it can never be strictly greater than all its neighbours — it can never be a supercell."
+                    },
+                    {
+                      question: "Changing the arrangement of the same set of numbers in a grid can change what?",
+                      options: ["The numbers themselves", "Which cells become supercells, and how many supercells there are", "Nothing changes when numbers are rearranged", "Only the colour of the grid"],
+                      answer: 1,
+                      explanation: "Since being a supercell depends entirely on comparison with neighbours, rearranging the same numbers into different positions changes which (and how many) cells qualify as supercells."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-3-2",
+                  title: "2. Palindromes and Kaprekar's Constant",
+                  lab: { type: "kaprekar-routine-sim" },
+                  theory: {
+                    intro: "Some numbers read identically forwards and backwards — and an astonishing discovery by an Indian schoolteacher shows that a simple repeated arithmetic process on ANY 4-digit number always ends up at exactly the same magic number.",
+                    sections: [
+                      {
+                        heading: "Palindromic Numbers",
+                        text: "Numbers like 66, 848, 575, 797, and 1111 read the same from left to right as from right to left — these are called palindromes. A fun exploration: starting with any 2-digit number, repeatedly add it to its own digit-reversed version; this process always eventually produces a palindrome (though for some starting numbers it can take many repetitions)."
+                      },
+                      {
+                        heading: "D.R. Kaprekar and the Magic Number 6174",
+                        text: "D.R. Kaprekar, a mathematics teacher in a government school in Devlali, Maharashtra, discovered a remarkable pattern in 1949 while playing with 4-digit numbers. Take any 4-digit number with at least two different digits. Arrange its digits to form the largest possible number (A) and the smallest possible number (B), then compute C = A − B. Repeat this process using C's digits. No matter which starting number you pick, you will always eventually reach 6174 — now called the Kaprekar constant."
+                      },
+                      {
+                        heading: "Why This Is Remarkable",
+                        text: "Once a sequence following Kaprekar's process reaches 6174, it stays there forever: the largest arrangement of 6174's digits is 7641, the smallest is 1467, and 7641 − 1467 = 6174 again! Different starting numbers take different numbers of steps (rounds) to reach 6174, but every valid 4-digit starting number (with at least two different digits) always gets there."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying Kaprekar's Constant by Hand",
+                      objective: "To perform Kaprekar's routine manually on a chosen 4-digit number and confirm it reaches the constant 6174.",
+                      materials: ["Paper", "Pencil", "Calculator (optional, for checking subtraction)"],
+                      steps: [
+                        "Choose any 4-digit number with at least two different digits — for example, 3524.",
+                        "Arrange its digits in descending order to form the largest number (A) and in ascending order to form the smallest number (B).",
+                        "Compute C = A − B, and write down the result.",
+                        "Repeat the same process using C's own digits, and continue repeating until you reach 6174.",
+                        "Count how many rounds (subtractions) it took to reach 6174, and compare your count with a classmate who started with a different number."
+                      ],
+                      observation: "Regardless of the starting 4-digit number chosen (as long as it has at least two different digits), the process always eventually reaches 6174 — though the number of rounds needed varies from number to number."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a palindromic number?",
+                      options: ["A number that is always even", "A number that reads the same from left to right as from right to left", "A number with exactly 4 digits", "A number that is always prime"],
+                      answer: 1,
+                      explanation: "A palindrome (palindromic number) is one that reads identically in both directions, such as 575 or 1111."
+                    },
+                    {
+                      question: "Who discovered the Kaprekar constant, and in what year?",
+                      options: ["Euclid, around 300 BCE", "D.R. Kaprekar, a schoolteacher in Devlali, Maharashtra, in 1949", "Brahmagupta, in 628 CE", "Fibonacci, in 1202 CE"],
+                      answer: 1,
+                      explanation: "D.R. Kaprekar, a mathematics teacher in Devlali, Maharashtra, discovered this pattern in 1949 while experimenting with 4-digit numbers."
+                    },
+                    {
+                      question: "In Kaprekar's routine, what are A and B for a chosen 4-digit number?",
+                      options: ["A is the number doubled, B is the number halved", "A is the largest number formed from the digits, B is the smallest number formed from the digits", "A and B are both random guesses", "A is the sum of digits, B is the product of digits"],
+                      answer: 1,
+                      explanation: "A is formed by arranging the four digits in descending order (largest possible number), and B is formed by arranging them in ascending order (smallest possible number)."
+                    },
+                    {
+                      question: "What is the Kaprekar constant that any valid 4-digit number's routine always eventually reaches?",
+                      options: ["1234", "9999", "6174", "1000"],
+                      answer: 2,
+                      explanation: "No matter which 4-digit number (with at least two different digits) you start with, repeatedly applying Kaprekar's routine always eventually reaches 6174."
+                    },
+                    {
+                      question: "What happens if you apply Kaprekar's routine to the number 6174 itself?",
+                      options: ["It produces a different number entirely", "It produces 6174 again (7641 − 1467 = 6174), so the process stays there forever", "The process cannot be applied to 6174", "It always returns to the original starting number"],
+                      answer: 1,
+                      explanation: "For 6174, the largest digit arrangement is 7641 and the smallest is 1467; their difference, 7641 − 1467, equals 6174 again — so once reached, the routine stays fixed at 6174 forever."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-3-3",
+                  title: "3. Clock/Calendar Numbers & Mental Math",
+                  theory: {
+                    intro: "Numbers on a clock face and a calendar hide their own small puzzles and patterns, and simple mental arithmetic tricks — using round numbers cleverly — can make big calculations easy to do in your head.",
+                    sections: [
+                      {
+                        heading: "Patterns in Clocks and Calendars",
+                        text: "A 12-hour clock can show many interesting timing patterns, such as repeated-digit times (4:44, 10:10) or palindromic times. Dates can also show patterns — for example, 20/12/2012 has its digits '2','0','1','2' repeating in that exact order, while 11/02/2011 reads the same forwards and backwards (a palindromic date). Since a calendar depends on the exact arrangement of days and dates in a year, calendars do NOT repeat every year identically — but with careful reasoning about weekdays and leap years, some future year's calendar WILL eventually match a past one."
+                      },
+                      {
+                        heading: "Mental Math with Round Numbers",
+                        text: "Splitting a target number into round, easy-to-combine pieces makes big sums manageable mentally. For example, using building-block numbers like 25,000, 400, 13,000, and 1,500, one can mentally construct 38,800 as 25,000 + 400×2 + 13,000 — adding large round numbers is far easier than adding arbitrary ones, and this same 'building block' idea works for subtraction too."
+                      },
+                      {
+                        heading: "Always, Sometimes, or Never True?",
+                        text: "A powerful mathematical habit is asking whether a pattern noticed in a few examples is ALWAYS true, only SOMETIMES true, or NEVER true — and then trying to justify the answer with reasoning, not just more examples. This habit of questioning turns an observed pattern into real mathematical understanding."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding Patterned Times and Dates",
+                      objective: "To search for and record clock-time and calendar-date patterns, strengthening number sense around digits and place value.",
+                      materials: ["A clock or watch", "A calendar", "Notebook"],
+                      steps: [
+                        "Over the course of a day, note down any clock times you notice with a repeated-digit pattern (like 5:55) or a palindromic pattern (like 12:21).",
+                        "Look through a calendar and find at least two dates in the DD/MM/YYYY format whose digits form a palindrome or a clear repeating pattern.",
+                        "Pick your own birth date and check whether it has any interesting digit pattern.",
+                        "Discuss with a classmate: how many total repeated-digit clock times exist on a 12-hour clock in a full day?",
+                        "Reflect on why exactly the same calendar (matching all dates to the same weekdays) does not repeat every single year."
+                      ],
+                      observation: "Patterned times and dates are surprisingly common once you start looking systematically — and reasoning about WHY calendars shift from year to year (due to 365 not dividing evenly into 7-day weeks, plus leap years) explains why identical calendars only repeat after several years, not every year."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What made Manish's birthday, 20/12/2012, a notable date pattern?",
+                      options: ["It falls on a leap year", "Its digits '2', '0', '1', '2' repeat in that exact order", "It is the last day of the year", "It has no pattern at all"],
+                      answer: 1,
+                      explanation: "The date 20/12/2012 is notable because its digit pattern ('2','0','1','2') repeats consistently across the day, month, and year parts of the date."
+                    },
+                    {
+                      question: "Why doesn't a calendar repeat identically every single year?",
+                      options: ["Because calendars are randomly generated", "Because a year does not contain a whole number of weeks (365 or 366 days doesn't divide evenly by 7), so the weekday each date falls on shifts from year to year", "Because months have different names each year", "Calendars actually DO repeat exactly every year"],
+                      answer: 1,
+                      explanation: "Since 365 (or 366 in a leap year) is not evenly divisible by 7, the day of the week for any given date shifts from one year to the next, so an identical calendar only recurs after several years, not annually."
+                    },
+                    {
+                      question: "In the mental math example, how is 38,800 built mentally from 25,000, 400, and 13,000?",
+                      options: ["38,800 = 25,000 − 400 − 13,000", "38,800 = 25,000 + 400 × 2 + 13,000", "38,800 = 25,000 × 400 ÷ 13,000", "There is no way to combine these numbers"],
+                      answer: 1,
+                      explanation: "38,800 = 25,000 + 400 + 400 + 13,000 = 25,000 + 400×2 + 13,000 — built by mentally combining round numbers rather than doing the full arithmetic on 38,800 directly."
+                    },
+                    {
+                      question: "What does it mean to ask whether a mathematical statement is 'Always, Sometimes, or Never' true?",
+                      options: ["It means guessing randomly which option sounds best", "It means checking whether a pattern noticed in a few examples holds in every case, some cases, or no cases, and justifying the answer with reasoning", "It only applies to questions about clocks", "It means the statement must always be true by definition"],
+                      answer: 1,
+                      explanation: "This habit pushes beyond just noticing a pattern in a few examples, to rigorously checking and justifying whether that pattern is universally true, true in some cases, or never true."
+                    },
+                    {
+                      question: "Why is splitting a large target number into round 'building block' numbers useful for mental math?",
+                      options: ["It makes the problem harder on purpose", "Round numbers (like thousands) are much easier to add or subtract mentally than arbitrary numbers", "It only works for even numbers", "It changes the actual value of the target number"],
+                      answer: 1,
+                      explanation: "Round numbers like 25,000 or 13,000 are far easier to combine mentally than arbitrary numbers, so breaking a target into such round pieces makes big mental calculations manageable."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-3-4",
+                  title: "4. The Collatz Conjecture, Estimation and Games",
+                  lab: { type: "collatz-sequence-sim" },
+                  theory: {
+                    intro: "This section closes the chapter with one of mathematics' most famous unsolved mysteries, a practical skill for handling numbers we don't need to know exactly, and games where the right number strategy guarantees a win.",
+                    sections: [
+                      {
+                        heading: "The Collatz Conjecture",
+                        text: "Starting with any whole number, apply this rule repeatedly: if the number is even, take half of it; if the number is odd, multiply it by 3 and add 1. For example, starting at 12: 12, 6, 3, 10, 5, 16, 8, 4, 2, 1. In 1937, German mathematician Lothar Collatz conjectured that this process ALWAYS eventually reaches 1, no matter which whole number you start with. Despite enormous effort by mathematicians for nearly a century, no one has ever proven this — nor found a counterexample — making it one of the most famous unsolved problems in all of mathematics."
+                      },
+                      {
+                        heading: "Simple Estimation",
+                        text: "Sometimes an exact count isn't needed — a good estimate is enough. For example, if one class section has 32 students and two others have 29 and 35, a reasonable estimate for the whole class year (say, 3 similar sections) is about 100 students, without needing the exact total. Estimation is a genuine mathematical skill, useful whenever getting an exact answer would be slow, difficult, or unnecessary."
+                      },
+                      {
+                        heading: "Number Games and Winning Strategies",
+                        text: "In the classic 'Game of 21', two players take turns adding 1, 2, or 3 to a running total (starting from 0); whoever says '21' first wins. With correct strategy, one player can ALWAYS force a win, by making sure they are always the one to say a number in the pattern ...,1,5,9,13,17,21 (each 4 more than the last) — landing on 17 guarantees reaching 21 no matter what the opponent adds next (1, 2, or 3), since 17+1 to 17+3 covers 18-20, always leaving the winner able to reach 21."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Exploring Collatz Sequences and the Game of 21",
+                      objective: "To generate Collatz sequences for different starting numbers, and to discover the winning strategy for the Game of 21 through repeated play.",
+                      materials: ["Paper and pencil", "A classmate or family member to play against"],
+                      steps: [
+                        "Pick three different whole numbers of your choice and generate their Collatz sequences by hand, applying the halve-if-even / triple-plus-one-if-odd rule until you reach 1.",
+                        "Compare how many steps each of your three numbers took to reach 1 — is there an obvious pattern in which numbers take longer?",
+                        "Play the Game of 21 with a partner several times, alternating who goes first.",
+                        "After several rounds, try to identify: is there a sequence of numbers (like 1, 5, 9, 13, 17, 21) that, if you always land on them, guarantees you win?",
+                        "Once you find the pattern, test it deliberately in a few more games to confirm it always works."
+                      ],
+                      observation: "Every Collatz sequence tried eventually reaches 1, though the number of steps varies unpredictably between starting numbers — and in the Game of 21, always landing on numbers 4 apart (1, 5, 9, 13, 17, 21) guarantees a win, since it forces the opponent into a position where any of their three possible moves still lets you reach the next target number."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the rule in the Collatz Conjecture's sequence?",
+                      options: ["Always add 1 to the number", "If the number is even, halve it; if odd, multiply by 3 and add 1", "Always multiply the number by 2", "Subtract 1 from the number each time"],
+                      answer: 1,
+                      explanation: "The Collatz rule is: halve the number if it's even, or triple it and add 1 if it's odd — then repeat with the result."
+                    },
+                    {
+                      question: "According to the Collatz Conjecture, what does the sequence always eventually reach, no matter the starting whole number?",
+                      options: ["0", "1", "100", "It depends on the starting number and is never predictable"],
+                      answer: 1,
+                      explanation: "The Collatz Conjecture states that the sequence always eventually reaches 1, regardless of the starting whole number — though this has never been formally proven for ALL numbers."
+                    },
+                    {
+                      question: "Why is the Collatz Conjecture famous among mathematicians?",
+                      options: ["Because it was proven false in 1937", "Because despite huge effort, it remains unproven — no one has proven it always works, nor found a number that breaks it", "Because it only applies to even numbers", "Because it was solved immediately after being proposed"],
+                      answer: 1,
+                      explanation: "Even though the pattern has been checked for enormous numbers of starting values, mathematicians have never been able to PROVE it holds for every whole number — making it a famous unsolved problem."
+                    },
+                    {
+                      question: "In the Game of 21 (adding 1, 2, or 3 each turn, first to reach 21 wins), which sequence of numbers should the winning player aim to say?",
+                      options: ["Any random numbers", "1, 5, 9, 13, 17, 21 — numbers spaced exactly 4 apart", "Only even numbers", "2, 4, 6, 8, ..., 20"],
+                      answer: 1,
+                      explanation: "Landing on numbers spaced 4 apart (1, 5, 9, 13, 17, 21) guarantees a win, because whatever the opponent adds next (1, 2, or 3), the winning player can always add the remaining amount to land on the next number in that sequence."
+                    },
+                    {
+                      question: "Why is estimation considered a genuine mathematical skill, rather than just guessing?",
+                      options: ["It isn't a real skill, exact answers are always required", "Because reasonable estimates use logical reasoning (like extrapolating from a known smaller count) to get a useful answer when an exact count isn't necessary or practical", "Because estimates are always exactly correct", "Because it replaces the need for any other mathematics"],
+                      answer: 1,
+                      explanation: "Good estimation uses logical reasoning — such as scaling up from a known smaller sample — to arrive at a reasonably accurate figure, which is often all that's needed, saving the effort of finding an exact count."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "6m-4",
+              title: "Data Handling and Presentation",
+              topics: [
+                {
+                  id: "6m-4-1",
+                  title: "1. Collecting and Organising Data",
+                  theory: {
+                    intro: "Any collection of facts, numbers, measures, observations, or descriptions that convey information is called data. We live in an age of information — data surrounds us, and knowing how to collect, organise, and present it clearly is an essential skill.",
+                    sections: [
+                      {
+                        heading: "Collecting Data to Answer a Question",
+                        text: "To find the most popular game among classmates, simply asking one or two people isn't enough — every student's preference needs to be collected and organised into a list before an answer becomes clear. Some questions (like 'What is the most popular TV show?') genuinely require collecting data, while others (like 'What is the capital of India?') have a fixed, known answer and need no data collection at all."
+                      },
+                      {
+                        heading: "Tally Marks",
+                        text: "Tally marks are a simple way to organise data while counting: a single mark '|' is made for each response, and when the count reaches 5, a line is drawn through the previous four marks (||||) to make groups of 5 easy to count quickly. A teacher collecting sweet preferences from a class can tally each student's choice, then simply count the tally groups to get the total for each option — turning a messy list of individual responses into an organised, easy-to-read table."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Collecting and Tallying Classmates' Preferences",
+                      objective: "To practice the full process of collecting raw data and organising it using tally marks into a readable summary table.",
+                      materials: ["Paper", "Pencil"],
+                      steps: [
+                        "Choose a simple question with 4-5 possible answers, such as favourite fruit, favourite subject, or favourite season.",
+                        "Ask at least 20 classmates or family members for their answer, and record a tally mark for each response as you go, grouping every 5th mark with a line through the previous four.",
+                        "Once data collection is done, count up each group of tally marks to find the total for each category.",
+                        "Organise your final counts into a simple table with two columns: category name and count.",
+                        "Identify which category has the most responses and which has the fewest, directly from your table."
+                      ],
+                      observation: "Using tally marks while collecting data — rather than trying to count and remember responses afterward — makes it far easier to keep an accurate running count, especially as the number of responses grows large."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 'data', as defined in this chapter?",
+                      options: ["Only numbers used in mathematics class", "Any collection of facts, numbers, measures, observations, or descriptions that convey information about things", "A type of graph", "Information that is always false"],
+                      answer: 1,
+                      explanation: "Data is broadly defined as any collection of facts, numbers, measures, observations, or descriptions of things that convey information about those things."
+                    },
+                    {
+                      question: "Why can't Navya simply declare cricket the most popular game just from her own opinion?",
+                      options: ["Because opinions are always wrong", "Because determining the actual most popular game requires collecting data from everyone, not just relying on one person's guess or opinion", "Because cricket cannot ever be popular", "Because Navya is not allowed to have an opinion"],
+                      answer: 1,
+                      explanation: "To reliably know what's most popular among a whole class, data must be collected from everyone — a single person's opinion or guess isn't a substitute for actual collected data."
+                    },
+                    {
+                      question: "In tally marks, what happens once a count reaches 5?",
+                      options: ["The count restarts from zero", "A line is drawn through the previous four marks to form a group of 5 (||||), making groups easy to count", "Tally marks stop being used", "The number 5 is written down and tallying continues separately"],
+                      answer: 1,
+                      explanation: "When a count reaches 5, the fifth tally mark is drawn as a diagonal line through the previous four (||||), creating an easily-countable group of 5."
+                    },
+                    {
+                      question: "Which of these questions would require Pari to actually collect data (rather than just look up a known fact)?",
+                      options: ["When did India get independence?", "What is the capital of India?", "What is the most popular TV show among her classmates?", "None of these require data collection"],
+                      answer: 2,
+                      explanation: "Finding the most popular TV show among classmates requires actually asking and collecting responses, unlike questions with a single fixed factual answer (like a historical date or a capital city)."
+                    },
+                    {
+                      question: "Why are tally marks grouped in sets of 5 (with a line through four marks)?",
+                      options: ["Because 5 is a lucky number", "Because groups of 5 are much faster and easier to count up at a glance than counting many individual marks one by one", "Because only 5 responses are ever allowed", "There is no particular reason"],
+                      answer: 1,
+                      explanation: "Grouping tally marks in 5s allows the final count to be found quickly by counting in fives (5, 10, 15, ...) plus any leftover single marks, rather than counting every individual mark one at a time."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-4-2",
+                  title: "2. Pictographs",
+                  lab: { type: "pictograph-builder-sim" },
+                  theory: {
+                    intro: "A pictograph represents data using pictures of objects instead of numbers, letting anyone understand and compare data values at just a glance.",
+                    sections: [
+                      {
+                        heading: "Reading a Pictograph",
+                        text: "In a pictograph, one picture or symbol represents a fixed number of things — this is stated as a key, such as '☺ = 1 Student' or '☺ = 10 Children'. To read the data value for any row, count the number of symbols and multiply by the key's value. A half-symbol represents half of the key's value — for example, if one symbol = 10 children, two full symbols and one half symbol represent 2×10 + 5 = 25 children."
+                      },
+                      {
+                        heading: "Choosing a Scale for a Pictograph",
+                        text: "When data values are small (like 0-7 students absent), using 1 symbol = 1 unit works well and keeps the pictograph easy to draw. But when data values are large (like 20-35 students), using 1 symbol per unit would require drawing far too many symbols — so a larger scale (like 1 symbol = 5 students) is chosen instead, keeping the pictograph compact while still representing the data accurately, using partial symbols where needed for values that aren't exact multiples of the scale."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building a Pictograph from a Data Table",
+                      objective: "To convert a table of numeric data into a pictograph, choosing an appropriate scale (key) for the symbols used.",
+                      materials: ["Paper", "Pencil", "Ruler"],
+                      steps: [
+                        "Collect or use a small dataset with 4-5 categories and numeric values, for example: number of pets owned by 5 different classmates.",
+                        "Decide on a symbol to represent your data (like a small circle or star) and choose a sensible scale — if all values are small (under 10), use 1 symbol = 1 unit.",
+                        "Draw a row of symbols for each category, matching the count of your data (drawing a half-symbol if a value falls exactly halfway between multiples of your scale).",
+                        "Add a clear key at the top of your pictograph stating what one symbol represents.",
+                        "Check your pictograph by asking a classmate to read off two of the values just from your picture, without seeing the original table."
+                      ],
+                      observation: "A well-made pictograph with a clear key lets someone read off approximate data values correctly at a glance, without needing to consult the original numeric table at all."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In a pictograph where the key states '☺ = 10 Children', what does a row with 3 full symbols represent?",
+                      options: ["3 children", "13 children", "30 children", "10 children"],
+                      answer: 2,
+                      explanation: "Each symbol represents 10 children, so 3 full symbols represent 3 × 10 = 30 children."
+                    },
+                    {
+                      question: "In the same pictograph (☺ = 10 Children), what does a row with 2 full symbols and 1 half symbol represent?",
+                      options: ["20 children", "25 children", "21 children", "15 children"],
+                      answer: 1,
+                      explanation: "2 full symbols = 2 × 10 = 20 children, plus a half symbol = half of 10 = 5 children, giving a total of 20 + 5 = 25 children."
+                    },
+                    {
+                      question: "Why might a pictograph maker choose a scale of '1 symbol = 5 students' instead of '1 symbol = 1 student'?",
+                      options: ["To make the data harder to understand", "Because with larger data values, using 1 symbol per unit would require drawing too many symbols, making the pictograph too large and time-consuming", "Because symbols can only represent multiples of 5", "There is never a reason to change the scale"],
+                      answer: 1,
+                      explanation: "When actual data values are large, a bigger scale per symbol (like 1 symbol = 5 units) keeps the pictograph compact and quick to draw, while still representing the data accurately using partial symbols where needed."
+                    },
+                    {
+                      question: "What is the main advantage of a pictograph over a plain table of numbers?",
+                      options: ["Pictographs are always more accurate than numbers", "Pictographs let someone understand and compare data values at a quick glance, without reading exact numbers", "Pictographs take up less space than any other method always", "There is no real advantage"],
+                      answer: 1,
+                      explanation: "A pictograph's visual symbols make it easy to instantly see which category has more or less, and roughly by how much, without needing to carefully read and compare numeric values."
+                    },
+                    {
+                      question: "What must ALWAYS be included with a pictograph for it to be read correctly?",
+                      options: ["A title in red text", "A key stating what value one symbol represents", "Exactly 10 rows of data", "A picture of a person"],
+                      answer: 1,
+                      explanation: "Without a key stating the value of one symbol, a pictograph's symbols are meaningless — the key is essential for correctly interpreting the data shown."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-4-3",
+                  title: "3. Bar Graphs and Column Graphs",
+                  lab: { type: "bar-graph-builder-sim" },
+                  theory: {
+                    intro: "When there's too much data to comfortably draw as a pictograph, a bar graph — using the length or height of bars instead of counted symbols — presents the same information more efficiently, especially for larger numbers.",
+                    sections: [
+                      {
+                        heading: "What is a Bar Graph?",
+                        text: "A bar graph represents data using bars (rectangles) of uniform width, drawn with equal spacing between them — the length or height of each bar represents its data value. Bars can be drawn horizontally or vertically. Reading a bar graph means comparing bar lengths: the longest bar shows the highest value, and the shortest bar shows the lowest value."
+                      },
+                      {
+                        heading: "Column Graphs",
+                        text: "A bar graph with VERTICAL bars, growing upward from a baseline, is specifically called a column graph — named after the columns (pillars) that hold up a building's roof. Column graphs are often preferred for values like heights or amounts, since bars growing upward visually match the idea of 'more' being 'taller', just like real mountains or buildings."
+                      },
+                      {
+                        heading: "Using a Scale for Large Values",
+                        text: "Just like pictographs, bar graphs can use a scale when data values are large — for example, '1 unit of length = 100 vehicles' lets a graph represent values in the thousands using a reasonably-sized bar. Reading the graph then means measuring the bar's length in scale-units and multiplying by the scale value to get the actual data value."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Drawing a Column Graph from Real Data",
+                      objective: "To construct a column (vertical bar) graph from a numeric dataset, choosing an appropriate scale for the y-axis.",
+                      materials: ["Graph paper or plain paper with a ruler", "Pencil"],
+                      steps: [
+                        "Use this real dataset of the tallest mountain on each continent (height in metres): Everest (Asia) 8848, Aconcagua (South America) 6962, Denali (North America) 6194, Kilimanjaro (Africa) 5895, Elbrus (Europe) 5642, Vinson Massif (Antarctica) 4892, Kosciuszko (Australia) 2228.",
+                        "Draw a horizontal axis with 7 equally-spaced positions, one for each mountain, and a vertical axis marked in steps of 1000m up to 9000m.",
+                        "Draw a vertical bar (column) above each mountain's position, with height matching its metre value on your scale.",
+                        "Label each bar with the mountain's name, and add a title to your graph.",
+                        "Using your finished column graph, answer: which mountain is tallest? Which two mountains are closest in height?"
+                      ],
+                      observation: "Once drawn, the column graph makes it immediately visually obvious which mountains are much taller than others (like Everest towering over the rest) and which are close in height — a comparison that would take careful reading to spot in the original numeric table."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In a bar graph, what does the length or height of each bar represent?",
+                      options: ["The colour of the category", "The data value for that category", "The alphabetical order of categories", "Nothing meaningful"],
+                      answer: 1,
+                      explanation: "Each bar's length (or height) is drawn proportional to its data value — longer or taller bars represent larger values."
+                    },
+                    {
+                      question: "What is a bar graph with vertical bars specifically called?",
+                      options: ["A row graph", "A column graph", "A pictograph", "A pie graph"],
+                      answer: 1,
+                      explanation: "A bar graph drawn with vertical bars, growing upward from a baseline, is specifically called a column graph."
+                    },
+                    {
+                      question: "In a bar graph where '1 unit of length = 100 vehicles', a bar measuring 12 units long represents how many vehicles?",
+                      options: ["12 vehicles", "112 vehicles", "1200 vehicles", "100 vehicles"],
+                      answer: 2,
+                      explanation: "Each unit of bar length represents 100 vehicles, so a bar of 12 units represents 12 × 100 = 1200 vehicles."
+                    },
+                    {
+                      question: "Why might someone prefer a bar graph over a pictograph when there is a large amount of data?",
+                      options: ["Bar graphs are always more colourful", "Drawing a bar of the right length is quicker and cleaner than drawing and counting many repeated picture symbols for large values", "Pictographs cannot use a scale at all", "There is no difference between the two methods"],
+                      answer: 1,
+                      explanation: "For large values, drawing a single appropriately-sized bar is far more practical than drawing (and having a reader count) many repeated picture symbols."
+                    },
+                    {
+                      question: "In a bar graph, what must be true about the bars for the graph to be read correctly?",
+                      options: ["They can be any random width", "They should have uniform width and equal spacing between them, so only their length/height varies meaningfully", "They must all be the exact same colour as the background", "They must be drawn in alphabetical order only"],
+                      answer: 1,
+                      explanation: "Uniform bar width and equal spacing ensure that ONLY the length or height of each bar (representing the data value) varies — making fair, accurate visual comparisons possible."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-4-4",
+                  title: "4. Presenting Data Effectively",
+                  theory: {
+                    intro: "Beyond just getting the numbers right, a good data presentation also considers how clearly and attractively the information comes across to the people viewing it.",
+                    sections: [
+                      {
+                        heading: "Choosing the Right Scale to Fit the Space",
+                        text: "When preparing a pictograph or bar graph, the scale (how much one symbol or one unit of bar length represents) should be chosen so the finished graph fits comfortably in the intended space — neither so large that it overflows the page, nor so small that small differences between values become impossible to see."
+                      },
+                      {
+                        heading: "Why Column Graphs Feel More Natural for Heights",
+                        text: "Comparing the heights of the tallest mountains on each continent is hard to do from a table of numbers alone. Converting the data to a bar graph makes comparison easier — but rotating the bars to grow vertically (making it a column graph) makes the comparison feel even more natural, since taller bars growing upward visually mirror the real idea of mountains being tall."
+                      },
+                      {
+                        heading: "Making Data Visually Appealing",
+                        text: "A good data presentation should be easy to understand at a glance, accurately represent the underlying numbers, and be visually appealing enough that the intended audience actually wants to look at and engage with it — clear titles, labelled axes, a visible key/scale, and tidy, evenly-spaced bars or symbols all contribute to this."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Critiquing and Improving a Data Presentation",
+                      objective: "To evaluate an existing graph or pictograph (self-made or found in print/online) for clarity, accuracy, and visual appeal, and to identify concrete improvements.",
+                      materials: ["A printed graph, chart, or pictograph (from a newspaper, textbook, or one you made earlier)", "Paper and pencil for notes"],
+                      steps: [
+                        "Find a bar graph or pictograph from a newspaper, magazine, textbook, or one you drew in an earlier activity.",
+                        "Check whether it has a clear title, labelled axes (or a key, for a pictograph), and evenly spaced bars or symbols.",
+                        "Try to read off two specific values from the graph without help, and note how easy or difficult this was.",
+                        "List at least two things that could be improved about the graph's clarity or visual appeal (for example: bigger labels, a clearer key, better spacing, or a more suitable scale).",
+                        "If possible, redraw a small portion of the graph incorporating your suggested improvements."
+                      ],
+                      observation: "Even a technically correct graph can be hard to read if it lacks a clear title, key, or labels — small presentation choices make a big difference in how quickly and accurately someone can extract the actual information."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why is choosing an appropriate scale important when making a pictograph or bar graph?",
+                      options: ["It isn't important at all", "So the finished graph fits comfortably in the available space while still clearly showing differences between values", "Because the scale must always be exactly 1", "Because larger scales are always better regardless of the data"],
+                      answer: 1,
+                      explanation: "A well-chosen scale keeps the graph a reasonable, readable size while still allowing meaningful differences between data values to be visible."
+                    },
+                    {
+                      question: "Why does rotating a bar graph so the bars grow vertically (making it a column graph) feel more natural for representing mountain heights?",
+                      options: ["It doesn't make any difference at all", "Because vertical bars growing upward visually mirror the real-world idea of mountains being tall, matching our intuition", "Because vertical graphs are always mathematically more accurate", "Because horizontal bars cannot show numeric values"],
+                      answer: 1,
+                      explanation: "Since height is naturally an 'upward' concept, column graphs (vertical bars) visually match our intuitive sense of tallness better than horizontal bars do, for this kind of data."
+                    },
+                    {
+                      question: "According to the chapter, what makes a data presentation effective, beyond just being numerically correct?",
+                      options: ["Using as many colours as possible, regardless of clarity", "Being easy to understand at a glance, accurately representing the data, and being visually appealing to the intended audience", "Including as much text as possible", "Avoiding titles and labels to keep it simple"],
+                      answer: 1,
+                      explanation: "An effective presentation combines accuracy with clarity and visual appeal — clear titles, labelled axes or keys, and tidy spacing all help the audience quickly and correctly understand the data."
+                    },
+                    {
+                      question: "What should you check for when evaluating whether an existing graph is well-made?",
+                      options: ["Only whether it uses the colour blue", "Whether it has a clear title, labelled axes or key, and evenly spaced bars or symbols", "Whether it is printed on glossy paper", "Nothing needs to be checked, all graphs are equally good"],
+                      answer: 1,
+                      explanation: "A well-made graph should have a clear title, properly labelled axes (or a key, for pictographs), and consistent, evenly-spaced bars or symbols so it can be read accurately."
+                    },
+                    {
+                      question: "If a bar graph's scale is chosen too small (each unit represents a very large number), what problem can occur?",
+                      options: ["The graph becomes too large to fit on a page", "Small but real differences between data values may become difficult or impossible to see on the graph", "The graph becomes more accurate", "There is no possible downside"],
+                      answer: 1,
+                      explanation: "If the scale is too coarse, bars representing genuinely different values may end up looking almost the same length, hiding meaningful differences in the data."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "6m-5",
+              title: "Prime Time",
+              topics: [
+                {
+                  id: "6m-5-1",
+                  title: "1. Common Multiples and Common Factors",
+                  theory: {
+                    intro: "Two playful games — one about calling out numbers in a circle, another about jumping along a number line to find hidden treasure — reveal two of the most fundamental ideas in number theory: common multiples and common factors.",
+                    sections: [
+                      {
+                        heading: "The Idli-Vada Game: Common Multiples",
+                        text: "Children sit in a circle counting up from 1, but say 'idli' instead of any multiple of 3, 'vada' instead of any multiple of 5, and 'idli-vada' for any number that is BOTH a multiple of 3 and a multiple of 5. The first idli-vada number is 15 — these shared multiples (15, 30, 45, ...) are called common multiples of 3 and 5."
+                      },
+                      {
+                        heading: "Jump Jackpot: Common Factors",
+                        text: "In this game, Jumpy starts at 0 and jumps in fixed-size steps along a number line, trying to land exactly on a hidden treasure number. Any jump size that evenly divides the treasure number will work — these successful jump sizes are exactly the factors (or divisors) of that number. If treasures are placed on TWO different numbers, only a jump size that divides BOTH numbers will reach both treasures — such a jump size is called a common factor of the two numbers."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Playing the Idli-Vada Game with Different Number Pairs",
+                      objective: "To discover common multiples experimentally by playing a counting game with different pairs of numbers.",
+                      materials: ["A group of classmates or family members", "Paper to record numbers"],
+                      steps: [
+                        "Choose two numbers, such as 4 and 6, and count aloud from 1, saying 'idli' for multiples of 4, 'vada' for multiples of 6, and 'idli-vada' for numbers that are multiples of both.",
+                        "Write down every number where 'idli-vada' was said, up to at least 48.",
+                        "Compare this list to the list of common multiples of 4 and 6 found by simply listing multiples of each number and spotting matches.",
+                        "Repeat with a different pair of numbers, such as 3 and 8, and see how the pattern of 'idli-vada' numbers changes.",
+                        "Discuss: is the first 'idli-vada' number always the product of the two chosen numbers? Find a pair where it isn't."
+                      ],
+                      observation: "The numbers where 'idli-vada' is said are exactly the common multiples of the two chosen numbers — and the first such number (the smallest common multiple) is sometimes, but not always, equal to the product of the two numbers."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the idli-vada game with 3 and 5, what does a player say for the number 15?",
+                      options: ["Idli", "Vada", "Idli-vada, since 15 is a multiple of both 3 and 5", "Nothing, 15 is skipped"],
+                      answer: 2,
+                      explanation: "15 is a multiple of both 3 (3×5=15) and 5 (5×3=15), so it is a common multiple — the player says 'idli-vada'."
+                    },
+                    {
+                      question: "What are 'common multiples' of two numbers?",
+                      options: ["Numbers that divide both numbers evenly", "Numbers that are multiples of BOTH given numbers at once", "Any two numbers that are equal", "Numbers that are never multiples of anything"],
+                      answer: 1,
+                      explanation: "A common multiple of two numbers is a number that appears in the multiplication table (multiples list) of both numbers simultaneously."
+                    },
+                    {
+                      question: "In the Jump Jackpot game, if a treasure is placed on 24, which jump sizes will successfully reach it?",
+                      options: ["Only the jump size 24", "Any jump size that is a factor of 24: 1, 2, 3, 4, 6, 8, 12, 24", "Any jump size at all", "Only even jump sizes"],
+                      answer: 1,
+                      explanation: "Jumpy lands exactly on 24 only with jump sizes that evenly divide 24 — these are precisely the factors of 24."
+                    },
+                    {
+                      question: "If treasures are placed on 14 and 36, which jump size would reach BOTH treasures?",
+                      options: ["Any jump size at all", "A jump size that is a common factor of both 14 and 36, such as 2", "Only a jump size of 1", "It is impossible to reach both with any jump size"],
+                      answer: 1,
+                      explanation: "To reach both 14 and 36, the jump size must be a common factor of both numbers — a size (like 2) that evenly divides both 14 and 36."
+                    },
+                    {
+                      question: "What does it mean for one number to be a 'factor' of another number?",
+                      options: ["It means the two numbers are equal", "It means the factor divides the other number exactly, with no remainder", "It means the factor is always bigger than the other number", "It means the numbers cannot be multiplied together"],
+                      answer: 1,
+                      explanation: "A factor (or divisor) of a number is a number that divides it exactly, leaving no remainder — for example, 4 is a factor of 12 because 12 ÷ 4 = 3 exactly."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-5-2",
+                  title: "2. Prime Numbers & the Sieve of Eratosthenes",
+                  lab: { type: "sieve-of-eratosthenes-sim" },
+                  theory: {
+                    intro: "Some numbers can only be arranged into a rectangle in exactly one way — these special numbers, called primes, are the fundamental building blocks that every other whole number is built from.",
+                    sections: [
+                      {
+                        heading: "Prime and Composite Numbers",
+                        text: "12 figs can be arranged into a rectangle in several ways (1×12, 2×6, 3×4), since 12 has many factors. But 7 figs can ONLY be arranged as 1×7 or 7×1, since 7 has just two factors: 1 and itself. Numbers with exactly two factors are called prime numbers (2, 3, 5, 7, 11, 13, ...). Numbers with more than two factors are called composite numbers (4, 6, 8, 9, 10, ...). The number 1 has only ONE factor, so it is neither prime nor composite."
+                      },
+                      {
+                        heading: "The Sieve of Eratosthenes",
+                        text: "This ancient method, developed by the Greek mathematician Eratosthenes around 2200 years ago, systematically finds all primes up to a given number. Starting from a grid of numbers: cross out 1. Circle 2, then cross out every multiple of 2 after it. The next un-crossed number (3) is prime — circle it, then cross out every multiple of 3 after it. Repeat with each next un-crossed number. Every circled number is prime; every crossed-out number (besides 1) is composite."
+                      },
+                      {
+                        heading: "Open Questions About Primes",
+                        text: "Prime numbers have fascinated mathematicians since ancient Greece, and questions about them remain difficult even today. Twin primes are pairs of primes exactly 2 apart, like 3 and 5, or 17 and 19 — mathematicians still don't know if infinitely many twin prime pairs exist. Euclid proved over 2000 years ago that the list of primes never ends — there is no single largest prime."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building the Sieve of Eratosthenes by Hand",
+                      objective: "To construct a table of primes from 1 to 100 using the Sieve of Eratosthenes method, and understand why it correctly identifies every prime.",
+                      materials: ["A 10×10 grid of numbers 1-100 (draw or print one)", "Pencil or coloured markers"],
+                      steps: [
+                        "Cross out the number 1, since it is neither prime nor composite.",
+                        "Circle 2 (the first prime), then cross out every multiple of 2 after it (4, 6, 8, 10, ...).",
+                        "Find the next un-crossed number (3), circle it, then cross out every multiple of 3 after it (6, 9, 12, ...) — some may already be crossed out.",
+                        "Continue this process with each next un-crossed number (5, then 7, and so on) until every number from 1 to 100 is either circled or crossed out.",
+                        "List all the circled (prime) numbers, and compare your list against the known primes below 100 to check your work."
+                      ],
+                      observation: "Every number that survives without being crossed out is prime, because it was never found to be a multiple of any smaller number besides 1 — which is exactly the definition of having no factors besides 1 and itself."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does the number 7 have only one possible rectangular arrangement (1×7)?",
+                      options: ["Because 7 is an odd number", "Because 7 has only two factors, 1 and 7 itself, so no other pair of whole numbers multiplies to give 7", "Because 7 is too small to arrange", "Because rectangles cannot be made with prime numbers"],
+                      answer: 1,
+                      explanation: "Since 7's only factors are 1 and 7, the only way to arrange 7 objects in a rectangle is 1 row of 7 (or 7 rows of 1) — no other whole-number arrangement is possible."
+                    },
+                    {
+                      question: "What defines a prime number?",
+                      options: ["A number that is always odd", "A number with exactly two factors: 1 and itself", "A number with more than two factors", "A number that cannot be divided by anything"],
+                      answer: 1,
+                      explanation: "A prime number is defined as a number having exactly two factors — 1 and the number itself — no more, no less."
+                    },
+                    {
+                      question: "Why is the number 1 neither prime nor composite?",
+                      options: ["Because 1 is too small", "Because 1 has only ONE factor (itself), not the two factors required for prime, nor the more-than-two required for composite", "Because 1 is an even number", "There is no real reason, it's just a rule"],
+                      answer: 1,
+                      explanation: "1 has exactly one factor (1 itself), which fits neither the 'exactly two factors' definition of prime nor the 'more than two factors' definition of composite."
+                    },
+                    {
+                      question: "In the Sieve of Eratosthenes, after crossing out multiples of 2 and 3, why is the next un-crossed number (5) guaranteed to be prime?",
+                      options: ["It's not guaranteed, it's just a guess", "Because if 5 had any smaller factor besides 1, it would have already been crossed out as a multiple of that smaller number", "Because 5 is an odd number", "Because the sieve only works up to 5"],
+                      answer: 1,
+                      explanation: "Any number that survives without being crossed out has no smaller factors (since all their multiples were already eliminated) — meaning its only factors are 1 and itself, which is exactly what makes it prime."
+                    },
+                    {
+                      question: "What are 'twin primes'?",
+                      options: ["Any two prime numbers", "Pairs of prime numbers that differ by exactly 2, like 17 and 19", "Prime numbers that are identical", "Prime numbers greater than 100"],
+                      answer: 1,
+                      explanation: "Twin primes are pairs of prime numbers with a difference of exactly 2, such as (3,5), (11,13), or (17,19)."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-5-3",
+                  title: "3. Co-prime Numbers & Prime Factorisation",
+                  theory: {
+                    intro: "Some pairs of numbers share no common factor at all besides 1 — these special pairs, called co-prime, turn out to be exactly the 'safe' choices in the treasure-jumping game, and breaking any number down into its prime building blocks makes checking for shared factors easy and certain.",
+                    sections: [
+                      {
+                        heading: "Co-prime Numbers",
+                        text: "In the treasure game, a jump size of 1 always reaches every number — so it's excluded as 'too easy'. A pair of treasure numbers is 'safe' from Jumpy exactly when they share NO common factor other than 1. Such pairs — like 4 and 9 — are called co-prime. In contrast, 15 and 39 are NOT co-prime, since they share the common factor 3."
+                      },
+                      {
+                        heading: "Co-prime Thread Art",
+                        text: "A striking way to see co-primality: arrange pegs in a circle and tie thread from each peg to the one a fixed number of steps ahead (the 'thread-gap'). If the number of pegs and the thread-gap are co-prime, the thread eventually visits EVERY peg, forming one continuous star pattern. If they are NOT co-prime, the thread returns to its starting point early, visiting only some of the pegs and leaving a simpler, incomplete pattern."
+                      },
+                      {
+                        heading: "Prime Factorisation",
+                        text: "Every composite number can be broken down into a unique product of prime numbers — this is called its prime factorisation. For example, 56 = 2 × 2 × 2 × 7, and 63 = 3 × 3 × 7. Comparing prime factorisations gives a fool-proof way to check for co-primality: two numbers are co-prime exactly when their prime factorisations share NO prime factor in common. Since 56 and 63 both contain the prime factor 7, they are NOT co-prime — even though at first glance (using other factor pairs) it might look otherwise."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Co-primality with Prime Factorisation",
+                      objective: "To determine whether pairs of numbers are co-prime by comparing their complete prime factorisations, avoiding the risk of missing a shared factor.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Choose a pair of numbers, such as 56 and 63.",
+                        "Find the COMPLETE prime factorisation of each number by repeatedly dividing by the smallest possible prime until only 1 remains (56 = 2×2×2×7; 63 = 3×3×7).",
+                        "Compare the two lists of prime factors and check whether any prime appears in both lists.",
+                        "If a prime factor is shared (like 7 in this example), conclude the numbers are NOT co-prime; if no prime is shared, they ARE co-prime.",
+                        "Repeat with a pair you believe might be co-prime, such as 25 and 42, and verify your prediction using prime factorisation."
+                      ],
+                      observation: "Checking factor pairs informally can accidentally miss a shared factor (as happened when only checking 14×4 and 21×3 for 56 and 63) — but comparing COMPLETE prime factorisations always correctly reveals whether any common factor exists."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does it mean for two numbers to be 'co-prime'?",
+                      options: ["Both numbers must themselves be prime", "The two numbers share no common factor other than 1", "The two numbers must be consecutive", "The two numbers must both be even"],
+                      answer: 1,
+                      explanation: "Two numbers are co-prime if the only factor they have in common is 1 — they need not be prime themselves (like 4 and 9, both composite, but co-prime)."
+                    },
+                    {
+                      question: "Are 4 and 9 co-prime?",
+                      options: ["No, because both are composite numbers", "Yes, because their only common factor is 1", "No, because they are both even", "Cannot be determined"],
+                      answer: 1,
+                      explanation: "The factors of 4 are 1, 2, 4; the factors of 9 are 1, 3, 9 — the only number common to both lists is 1, so 4 and 9 are co-prime."
+                    },
+                    {
+                      question: "In the co-prime thread art, what happens if the number of pegs and the thread-gap are co-prime?",
+                      options: ["The thread immediately returns to the start after one step", "The thread eventually visits every single peg, forming one continuous pattern", "No pattern can be drawn at all", "The thread only visits even-numbered pegs"],
+                      answer: 1,
+                      explanation: "When the peg count and thread-gap share no common factor, the thread path visits every peg exactly once before returning to the start, forming a complete star pattern."
+                    },
+                    {
+                      question: "What is the prime factorisation of 56?",
+                      options: ["7 × 8", "2 × 2 × 2 × 7", "4 × 14", "2 × 28"],
+                      answer: 1,
+                      explanation: "Breaking 56 down completely into primes: 56 = 2 × 28 = 2 × 2 × 14 = 2 × 2 × 2 × 7 — all factors are prime, giving the complete prime factorisation."
+                    },
+                    {
+                      question: "Why is comparing complete prime factorisations a more reliable way to check co-primality than just checking one pair of factors?",
+                      options: ["It isn't more reliable, both methods are identical", "Because checking just one factor pair (like 56=14×4) can miss a shared factor that only shows up in a DIFFERENT factor pair (like 56=7×8) — prime factorisation captures ALL factors at once", "Because prime factorisation is always faster to compute", "Because only prime factorisation works for numbers under 100"],
+                      answer: 1,
+                      explanation: "As seen with 56 and 63, checking only one arbitrary factor pair can miss a genuinely shared factor (7) that becomes visible only in a different pairing — the complete prime factorisation guarantees every shared factor is caught."
+                    }
+                  ]
+                },
+                {
+                  id: "6m-5-4",
+                  title: "4. Divisibility Tests",
+                  lab: { type: "divisibility-tester-sim" },
+                  theory: {
+                    intro: "Finding the factors of a large number by long division is slow — but for several small numbers, a simple glance at just the last one, two, or three digits is all it takes to check for divisibility.",
+                    sections: [
+                      {
+                        heading: "Divisibility by 10, 5, and 2",
+                        text: "A number is divisible by 10 exactly when it ends in 0 (since multiples of 10 are 10, 20, 30, ...). A number is divisible by 5 exactly when it ends in 0 or 5 (multiples of 5: 5, 10, 15, 20, 25, ...). A number is divisible by 2 exactly when it ends in 0, 2, 4, 6, or 8 — that is, when its last digit is even."
+                      },
+                      {
+                        heading: "Divisibility by 4 and 8",
+                        text: "Checking just the LAST digit does NOT work for divisibility by 4 — for example, 12 and 22 share the same last digit, but 12 is divisible by 4 while 22 is not. Instead, only the LAST TWO digits matter: a number is divisible by 4 exactly when the 2-digit number formed by its last two digits is divisible by 4. Similarly, for divisibility by 8, only the LAST THREE digits matter — if the 3-digit number formed by the last three digits is divisible by 8, so is the whole number."
+                      },
+                      {
+                        heading: "Why These Shortcuts Work",
+                        text: "These tests work because 10, 100, and 1000 are themselves divisible by 2, 4, and 8 respectively — so any 'higher place value' part of a number (beyond the last 1, 2, or 3 digits) automatically contributes a multiple of 2, 4, or 8, leaving only the last few digits to actually determine the remainder."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Speed-Testing Divisibility Without Long Division",
+                      objective: "To practice applying the shortcut divisibility rules for 2, 4, 5, 8, and 10 quickly, and verify them against actual division.",
+                      materials: ["Paper and pencil", "Calculator (for verification only)"],
+                      steps: [
+                        "Write down five 4-digit numbers of your choice.",
+                        "For each number, quickly determine (using ONLY the divisibility shortcuts, no division) whether it is divisible by 2, 5, and 10.",
+                        "For the same numbers, check divisibility by 4 (using the last two digits) and by 8 (using the last three digits).",
+                        "Verify at least three of your quick answers using actual division or a calculator, to confirm the shortcuts gave the correct result.",
+                        "Find one number from your list that is divisible by ALL of 2, 4, 5, 8, and 10 at once — or explain why none of your numbers qualify."
+                      ],
+                      observation: "The shortcut divisibility rules always match the results of actual division, but take a fraction of the time — checking a few digits is far quicker than performing full long division, especially for very large numbers."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the divisibility rule for 10?",
+                      options: ["The number must be even", "The number must end in 0", "The number must end in 0 or 5", "The sum of digits must be divisible by 10"],
+                      answer: 1,
+                      explanation: "A number is divisible by 10 exactly when its last digit is 0, since all multiples of 10 end in 0."
+                    },
+                    {
+                      question: "Is 8560 divisible by 4? (Hint: check only the last two digits, 60)",
+                      options: ["No, because 60 is not divisible by 4", "Yes, because 60 is divisible by 4 (60 ÷ 4 = 15)", "Cannot be determined without long division", "Only numbers ending in 0 are divisible by 4"],
+                      answer: 1,
+                      explanation: "Since only the last two digits matter for divisibility by 4, and 60 ÷ 4 = 15 exactly, 8560 is divisible by 4."
+                    },
+                    {
+                      question: "Why doesn't checking only the LAST digit work for testing divisibility by 4?",
+                      options: ["It actually does work perfectly", "Because numbers can share the same last digit while one is divisible by 4 and the other isn't (like 12 and 22)", "Because 4 is an even number", "Because divisibility by 4 doesn't really exist"],
+                      answer: 1,
+                      explanation: "12 and 22 both end in 2, yet 12 is divisible by 4 (12÷4=3) while 22 is not (22÷4=5.5) — proving the last digit alone cannot determine divisibility by 4."
+                    },
+                    {
+                      question: "For divisibility by 8, how many of the number's digits actually need to be checked?",
+                      options: ["All of the digits", "Only the last digit", "Only the last three digits", "Only the first digit"],
+                      answer: 2,
+                      explanation: "Divisibility by 8 depends only on the number formed by the LAST THREE digits — if that 3-digit number is divisible by 8, the whole number is too."
+                    },
+                    {
+                      question: "A number ends in the digit 5. Which of the following is it definitely divisible by?",
+                      options: ["2", "4", "5", "8"],
+                      answer: 2,
+                      explanation: "Any number ending in 0 or 5 is divisible by 5 — but ending in 5 (an odd digit) means it is NOT divisible by 2, 4, or 8."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               id: "6m-6",
               title: "Perimeter and Area",
               topics: [

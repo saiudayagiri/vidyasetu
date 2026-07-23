@@ -1342,6 +1342,242 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const numberSequenceVisualizerLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="number-sequence-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a sequence and a step to see its dot picture grow.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Sequence</h3>
+            <select id="sel-seq-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="counting">Counting Numbers</option>
+              <option value="odd">Odd Numbers</option>
+              <option value="even">Even Numbers</option>
+              <option value="triangular" selected>Triangular Numbers</option>
+              <option value="square">Square Numbers</option>
+              <option value="cube">Cube Numbers</option>
+              <option value="powers2">Powers of 2</option>
+            </select>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Step (term number)</label>
+            <select id="sel-seq-step" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[1,2,3,4,5,6].map(n => `<option value="${n}"${n===4?' selected':''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Value</h3>
+            <div id="seq-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a sequence and step above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const oddSumSquareLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="odd-sum-square-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick how many odd-number bands to add, and watch them fill a perfect square.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Number of Bands (n)</h3>
+            <select id="sel-oddsum-n" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[1,2,3,4,5,6].map(n => `<option value="${n}"${n===4?' selected':''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Sum of Odd Numbers</h3>
+            <div id="oddsum-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose the number of bands above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const protractorAngleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="protractor-angle-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a degree value and see it marked on a protractor scale.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Angle</h3>
+            <select id="sel-protractor-angle" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[0,15,30,45,60,75,90,105,120,135,150,165,180].map(n => `<option value="${n}"${n===60?' selected':''}>${n}°</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Reading the Protractor</h3>
+            <div id="protractor-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an angle above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const angleClassifierLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="angle-classifier-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick any angle from 0° to 360° and see it classified.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Angle</h3>
+            <select id="sel-angletype" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[15,30,45,60,75,90,105,120,135,150,165,180,195,210,225,240,255,270,285,300,315,330,345].map(n => `<option value="${n}"${n===120?' selected':''}>${n}°</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Classification</h3>
+            <div id="angletype-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an angle above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const kaprekarRoutineLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="kaprekar-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a 4-digit number and watch it reach the Kaprekar constant 6174.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Starting Number</h3>
+            <select id="sel-kaprekar-n" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[3524,6382,1234,5000,7742,9990].map(n => `<option value="${n}"${n===6382?' selected':''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Kaprekar's Routine</h3>
+            <div id="kaprekar-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a starting number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const collatzSequenceLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="collatz-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a starting number and watch its Collatz sequence descend to 1.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Starting Number</h3>
+            <select id="sel-collatz-n" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[6,7,9,11,17,27].map(n => `<option value="${n}"${n===11?' selected':''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Collatz Sequence</h3>
+            <div id="collatz-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a starting number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const PICTO_DATASETS = {
+      absent: { label: 'Students Absent per Class', categories: ['Class I', 'Class II', 'Class III', 'Class IV', 'Class V', 'Class VI'], values: [3, 5, 4, 2, 0, 1] },
+      sweets: { label: 'Sweet Preferences', categories: ['Jalebi', 'Gulab Jamun', 'Gujiya', 'Barfi', 'Rasgulla'], values: [6, 9, 12, 3, 7] },
+      sleep: { label: 'Slept ≥9 Hours', categories: ['Always', 'Sometimes', 'Never'], values: [50, 25, 40] }
+    };
+
+    const pictographBuilderLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="pictograph-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a dataset and a scale, and watch the pictograph build itself.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Dataset</h3>
+            <select id="sel-picto-dataset" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="absent">Students Absent per Class</option>
+              <option value="sweets" selected>Sweet Preferences</option>
+              <option value="sleep">Slept ≥9 Hours</option>
+            </select>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Scale (1 symbol =)</label>
+            <select id="sel-picto-scale" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="1">1</option>
+              <option value="5" selected>5</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Reading the Pictograph</h3>
+            <div id="picto-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a dataset and scale above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const BAR_DATASETS = {
+      mountains: { label: 'Tallest Mountain per Continent (m)', categories: ['Everest', 'Aconcagua', 'Denali', 'Kilimanjaro', 'Elbrus', 'Vinson Massif', 'Kosciuszko'], values: [8848, 6962, 6194, 5895, 5642, 4892, 2228] },
+      absent: { label: 'Students Absent per Class', categories: ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'], values: [3, 5, 4, 2, 0, 1, 5, 7] },
+      traffic: { label: 'Vehicles per Hour (6am-12pm)', categories: ['6-7', '7-8', '8-9', '9-10', '10-11', '11-12'], values: [150, 1200, 1000, 800, 700, 600] }
+    };
+
+    const barGraphBuilderLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="bar-graph-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a dataset and watch its column graph build itself.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Dataset</h3>
+            <select id="sel-bargraph-dataset" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="mountains" selected>Tallest Mountain per Continent</option>
+              <option value="absent">Students Absent per Class</option>
+              <option value="traffic">Vehicles per Hour</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Reading the Column Graph</h3>
+            <div id="bargraph-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a dataset above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const sieveOfEratosthenesLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="sieve-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Step through the Sieve of Eratosthenes to find every prime up to 100.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Sieve Progress</h3>
+            <select id="sel-sieve-stage" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0">Step 1: Start (nothing marked)</option>
+              <option value="1">Step 2: After marking 2</option>
+              <option value="2">Step 3: After marking 3</option>
+              <option value="3">Step 4: After marking 5</option>
+              <option value="4" selected>Step 5: After marking 7 (Complete)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What's Happening</h3>
+            <div id="sieve-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a step above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const divisibilityTesterLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="divisibility-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number and see it tested for divisibility by 2, 4, 5, 8, and 10.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Number</h3>
+            <select id="sel-divisibility-n" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[8560,14560,2352,5683,9999,7000].map(n => `<option value="${n}"${n===8560?' selected':''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Test Results</h3>
+            <div id="divisibility-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -3000,6 +3236,36 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'fraction-division-sim') {
               labHtml = fractionDivisionLabHtml;
               labDesc = 'Pick a dividend and divisor, and watch the divisor flip into its reciprocal to find the quotient.';
+            } else if (topicObj.lab.type === 'number-sequence-visualizer-sim') {
+              labHtml = numberSequenceVisualizerLabHtml;
+              labDesc = 'Pick a number sequence and a step, and watch its dot picture grow.';
+            } else if (topicObj.lab.type === 'odd-sum-square-sim') {
+              labHtml = oddSumSquareLabHtml;
+              labDesc = 'Add up consecutive odd numbers as nested L-shaped bands and watch them build a perfect square.';
+            } else if (topicObj.lab.type === 'protractor-angle-sim') {
+              labHtml = protractorAngleLabHtml;
+              labDesc = 'Pick a degree value and see exactly where it falls on a protractor scale.';
+            } else if (topicObj.lab.type === 'angle-classifier-sim') {
+              labHtml = angleClassifierLabHtml;
+              labDesc = 'Pick any angle from 0° to 360° and see it classified as acute, right, obtuse, straight, or reflex.';
+            } else if (topicObj.lab.type === 'kaprekar-routine-sim') {
+              labHtml = kaprekarRoutineLabHtml;
+              labDesc = "Pick a 4-digit number and watch Kaprekar's routine reach the constant 6174.";
+            } else if (topicObj.lab.type === 'collatz-sequence-sim') {
+              labHtml = collatzSequenceLabHtml;
+              labDesc = 'Pick a starting number and watch its Collatz sequence eventually descend to 1.';
+            } else if (topicObj.lab.type === 'pictograph-builder-sim') {
+              labHtml = pictographBuilderLabHtml;
+              labDesc = 'Pick a dataset and a scale, and watch the pictograph build itself with full and half symbols.';
+            } else if (topicObj.lab.type === 'bar-graph-builder-sim') {
+              labHtml = barGraphBuilderLabHtml;
+              labDesc = 'Pick a dataset and watch its values become a column graph, scaled automatically to fit.';
+            } else if (topicObj.lab.type === 'sieve-of-eratosthenes-sim') {
+              labHtml = sieveOfEratosthenesLabHtml;
+              labDesc = 'Step through the Sieve of Eratosthenes and watch primes get circled and composites crossed out.';
+            } else if (topicObj.lab.type === 'divisibility-tester-sim') {
+              labHtml = divisibilityTesterLabHtml;
+              labDesc = 'Pick a number and see it tested for divisibility by 2, 4, 5, 8, and 10 using only its last digits.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -3313,6 +3579,26 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initFractionAreaModelLab();
         } else if (topicObj.lab.type === 'fraction-division-sim') {
           initFractionDivisionLab();
+        } else if (topicObj.lab.type === 'number-sequence-visualizer-sim') {
+          initNumberSequenceVisualizerLab();
+        } else if (topicObj.lab.type === 'odd-sum-square-sim') {
+          initOddSumSquareLab();
+        } else if (topicObj.lab.type === 'protractor-angle-sim') {
+          initProtractorAngleLab();
+        } else if (topicObj.lab.type === 'angle-classifier-sim') {
+          initAngleClassifierLab();
+        } else if (topicObj.lab.type === 'kaprekar-routine-sim') {
+          initKaprekarRoutineLab();
+        } else if (topicObj.lab.type === 'collatz-sequence-sim') {
+          initCollatzSequenceLab();
+        } else if (topicObj.lab.type === 'pictograph-builder-sim') {
+          initPictographBuilderLab();
+        } else if (topicObj.lab.type === 'bar-graph-builder-sim') {
+          initBarGraphBuilderLab();
+        } else if (topicObj.lab.type === 'sieve-of-eratosthenes-sim') {
+          initSieveOfEratosthenesLab();
+        } else if (topicObj.lab.type === 'divisibility-tester-sim') {
+          initDivisibilityTesterLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -12741,6 +13027,591 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       sel1.addEventListener('change', draw);
       sel2.addEventListener('change', draw);
+      draw();
+    }
+
+    function initNumberSequenceVisualizerLab() {
+      const canvas = document.getElementById('number-sequence-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const typeSel = document.getElementById('sel-seq-type');
+      const stepSel = document.getElementById('sel-seq-step');
+      const obs = document.getElementById('seq-obs');
+
+      function drawDot(x, y, r) {
+        ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fillStyle = cssVar('--accent-color'); ctx.fill();
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const type = typeSel.value;
+        const step = parseInt(stepSel.value);
+        let value, label;
+
+        if (type === 'counting' || type === 'odd' || type === 'even') {
+          value = type === 'counting' ? step : (type === 'odd' ? 2 * step - 1 : 2 * step);
+          const r = 9, gap = Math.min(38, 460 / Math.max(value, 1)), startX = W / 2 - (value - 1) * gap / 2, y = H / 2;
+          for (let i = 0; i < value; i++) drawDot(startX + i * gap, y, r);
+          const name = type === 'counting' ? 'Counting numbers' : (type === 'odd' ? 'Odd numbers' : 'Even numbers');
+          label = `${name}: term ${step} = ${value}`;
+        } else if (type === 'triangular') {
+          value = step * (step + 1) / 2;
+          const r = 9, gapX = 32, gapY = 28, startY = 55;
+          for (let row = 0; row < step; row++) {
+            const count = row + 1;
+            const startX = W / 2 - (count - 1) * gapX / 2;
+            for (let i = 0; i < count; i++) drawDot(startX + i * gapX, startY + row * gapY, r);
+          }
+          label = `Triangular numbers: term ${step} = ${value}`;
+        } else if (type === 'square') {
+          value = step * step;
+          const r = 9, gap = 30, size = (step - 1) * gap, startX = W / 2 - size / 2, startY = 55;
+          for (let row = 0; row < step; row++) for (let col = 0; col < step; col++) drawDot(startX + col * gap, startY + row * gap, r);
+          label = `Square numbers: term ${step} = ${value}`;
+        } else if (type === 'cube') {
+          value = step * step * step;
+          const r = 8, gap = 26, size = (step - 1) * gap, startX = W / 2 - size / 2 - 20, startY = 65;
+          for (let row = 0; row < step; row++) for (let col = 0; col < step; col++) drawDot(startX + col * gap, startY + row * gap, r);
+          ctx.globalAlpha = 0.35;
+          for (let d = 1; d <= 2; d++) {
+            for (let row = 0; row < step; row++) for (let col = 0; col < step; col++) drawDot(startX + col * gap + d * 14, startY + row * gap - d * 10, r * 0.8);
+          }
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = cssVar('--text-muted'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(`(front face shown — the full cube has ${step} such layers deep)`, W / 2, startY + size + 35);
+          label = `Cube numbers: term ${step} = ${step}³ = ${value}`;
+        } else if (type === 'powers2') {
+          value = Math.pow(2, step - 1);
+          const barH = 24, startX = 60, startY = 45, unit = 5.5;
+          for (let i = 1; i <= step; i++) {
+            const v = Math.pow(2, i - 1);
+            const w = Math.min(v * unit, 460);
+            ctx.fillStyle = i === step ? cssVar('--accent-color') : 'rgba(16,185,129,0.35)';
+            ctx.fillRect(startX, startY + (i - 1) * (barH + 8), w, barH);
+            ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'left';
+            ctx.fillText(`${v}`, startX + w + 8, startY + (i - 1) * (barH + 8) + barH * 0.7);
+          }
+          label = `Powers of 2: term ${step} = ${value}`;
+        }
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(label, W / 2, H - 18);
+
+        obs.innerHTML = `<strong>${label}</strong><br>Choose a different sequence or step to see how the dot picture grows.`;
+      }
+
+      typeSel.addEventListener('change', draw);
+      stepSel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initOddSumSquareLab() {
+      const canvas = document.getElementById('odd-sum-square-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const stepSel = document.getElementById('sel-oddsum-n');
+      const obs = document.getElementById('oddsum-obs');
+      const palette = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#a855f7', '#ec4899'];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = parseInt(stepSel.value);
+        const size = 220, startX = 40, startY = 30;
+        const cell = size / n;
+
+        for (let r = 0; r < n; r++) {
+          for (let c = 0; c < n; c++) {
+            const band = Math.max(r, c);
+            ctx.globalAlpha = 0.55;
+            ctx.fillStyle = palette[band % palette.length];
+            ctx.fillRect(startX + c * cell, startY + r * cell, cell, cell);
+            ctx.globalAlpha = 1;
+          }
+        }
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        for (let i = 0; i <= n; i++) {
+          ctx.beginPath(); ctx.moveTo(startX, startY + i * cell); ctx.lineTo(startX + size, startY + i * cell); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(startX + i * cell, startY); ctx.lineTo(startX + i * cell, startY + size); ctx.stroke();
+        }
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        ctx.strokeRect(startX, startY, size, size);
+
+        let ly = 40;
+        ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'left';
+        const terms = [];
+        for (let k = 0; k < n; k++) {
+          const val = 2 * k + 1;
+          terms.push(val);
+          ctx.fillStyle = palette[k % palette.length];
+          ctx.fillRect(320, ly - 10, 14, 14);
+          ctx.fillStyle = cssVar('--text-normal');
+          ctx.fillText(`Band ${k + 1} = ${val}`, 342, ly + 1);
+          ly += 22;
+        }
+        const sum = n * n;
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`${terms.join(' + ')} = ${sum}`, 320, ly + 15);
+
+        obs.innerHTML = `<strong>${terms.join(' + ')} = ${sum} = ${n}²</strong><br>Each coloured L-shaped band adds the next odd number of dots, wrapping around the previous square — after ${n} bands, the picture exactly fills a ${n}×${n} square, proving the sum of the first ${n} odd numbers is ${n}².`;
+      }
+
+      stepSel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initProtractorAngleLab() {
+      const canvas = document.getElementById('protractor-angle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-protractor-angle');
+      const obs = document.getElementById('protractor-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const angle = parseInt(sel.value);
+        const cx = W / 2, cy = 230, R = 170;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (let d = 0; d <= 180; d++) {
+          const rad = d * Math.PI / 180;
+          const x = cx + R * Math.cos(rad), y = cy - R * Math.sin(rad);
+          if (d === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx - R, cy); ctx.lineTo(cx + R, cy); ctx.stroke();
+
+        for (let d = 0; d <= 180; d += 10) {
+          const rad = d * Math.PI / 180;
+          const isMajor = d % 30 === 0;
+          const rInner = isMajor ? R - 14 : R - 7;
+          const x1 = cx + R * Math.cos(rad), y1 = cy - R * Math.sin(rad);
+          const x2 = cx + rInner * Math.cos(rad), y2 = cy - rInner * Math.sin(rad);
+          ctx.strokeStyle = cssVar('--text-light'); ctx.lineWidth = isMajor ? 2 : 1;
+          ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+          if (isMajor) {
+            const lx = cx + (R + 16) * Math.cos(rad), ly = cy - (R + 16) * Math.sin(rad);
+            ctx.fillStyle = cssVar('--text-muted'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+            ctx.fillText(`${d}°`, lx, ly);
+          }
+        }
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        const steps = 40;
+        for (let i = 0; i <= steps; i++) {
+          const a = (angle * i / steps) * Math.PI / 180;
+          ctx.lineTo(cx + 55 * Math.cos(a), cy - 55 * Math.sin(a));
+        }
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(16,185,129,0.35)';
+        ctx.fill();
+
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R, cy); ctx.stroke();
+
+        const rad2 = angle * Math.PI / 180;
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R * Math.cos(rad2), cy - R * Math.sin(rad2)); ctx.stroke();
+
+        ctx.fillStyle = cssVar('--text-normal');
+        ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2); ctx.fill();
+
+        ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`${angle}°`, cx, cy - 75);
+
+        obs.innerHTML = `<strong>Angle = ${angle}°</strong><br>The vertex sits at the protractor's centre, with one arm along the 0° baseline. The other arm crosses the scale at the ${angle}° mark — that crossing point is exactly how a protractor reads off an angle's measure.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initAngleClassifierLab() {
+      const canvas = document.getElementById('angle-classifier-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-angletype');
+      const obs = document.getElementById('angletype-obs');
+
+      function classify(angle) {
+        if (angle < 90) return 'Acute';
+        if (angle === 90) return 'Right';
+        if (angle < 180) return 'Obtuse';
+        if (angle === 180) return 'Straight';
+        return 'Reflex';
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const angle = parseInt(sel.value);
+        const cx = W / 2, cy = H / 2, R = 110;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        const steps = 60;
+        for (let i = 0; i <= steps; i++) {
+          const a = (angle * i / steps) * Math.PI / 180;
+          ctx.lineTo(cx + 70 * Math.cos(a), cy - 70 * Math.sin(a));
+        }
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(16,185,129,0.35)';
+        ctx.fill();
+
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R, cy); ctx.stroke();
+
+        const rad2 = angle * Math.PI / 180;
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R * Math.cos(rad2), cy - R * Math.sin(rad2)); ctx.stroke();
+
+        ctx.fillStyle = cssVar('--text-normal');
+        ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2); ctx.fill();
+
+        const type = classify(angle);
+        ctx.font = 'bold 20px system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`${angle}° — ${type} Angle`, cx, H - 20);
+
+        const rule = type === 'Acute' ? '0° < angle < 90°' : type === 'Right' ? 'angle = 90°' : type === 'Obtuse' ? '90° < angle < 180°' : type === 'Straight' ? 'angle = 180°' : '180° < angle < 360°';
+        obs.innerHTML = `<strong>${angle}° is a ${type} angle</strong><br>This matches the rule for ${type.toLowerCase()} angles: ${rule}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initKaprekarRoutineLab() {
+      const canvas = document.getElementById('kaprekar-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-kaprekar-n');
+      const obs = document.getElementById('kaprekar-obs');
+
+      function kaprekarStep(n) {
+        const digits = String(n).padStart(4, '0').split('');
+        const desc = [...digits].sort((a, b) => b - a).join('');
+        const asc = [...digits].sort((a, b) => a - b).join('');
+        const A = parseInt(desc), B = parseInt(asc);
+        return { A, B, C: A - B };
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const start = parseInt(sel.value);
+        const rounds = [];
+        let cur = start;
+        for (let i = 0; i < 8 && cur !== 6174; i++) {
+          const step = kaprekarStep(cur);
+          rounds.push(step);
+          cur = step.C;
+        }
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText(`Start: ${start}`, 30, 30);
+
+        let y = 65;
+        rounds.forEach((r, i) => {
+          const reached = r.C === 6174;
+          ctx.font = '14px system-ui';
+          ctx.fillStyle = reached ? cssVar('--accent-color') : cssVar('--text-normal');
+          const Astr = String(r.A).padStart(4, '0'), Bstr = String(r.B).padStart(4, '0'), Cstr = String(r.C).padStart(4, '0');
+          ctx.fillText(`Round ${i + 1}:  ${Astr} − ${Bstr} = ${Cstr}${reached ? '  ✓ reached 6174!' : ''}`, 30, y);
+          y += 32;
+        });
+
+        obs.innerHTML = `<strong>${start} reaches 6174 in ${rounds.length} round${rounds.length === 1 ? '' : 's'}.</strong><br>Each round: arrange the digits into the largest number (A) and smallest number (B), then subtract (C = A − B). Repeating with C's digits always eventually reaches 6174 — the Kaprekar constant — where it then stays forever.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCollatzSequenceLab() {
+      const canvas = document.getElementById('collatz-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-collatz-n');
+      const obs = document.getElementById('collatz-obs');
+
+      function collatzSequence(n) {
+        const seq = [n];
+        let cur = n;
+        while (cur !== 1 && seq.length < 500) {
+          cur = cur % 2 === 0 ? cur / 2 : cur * 3 + 1;
+          seq.push(cur);
+        }
+        return seq;
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = parseInt(sel.value);
+        const seq = collatzSequence(n);
+        const maxVal = Math.max(...seq);
+        const plotX = 50, plotY = 30, plotW = 500, plotH = 220;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.strokeRect(plotX, plotY, plotW, plotH);
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2;
+        ctx.beginPath();
+        seq.forEach((v, i) => {
+          const x = plotX + (i / Math.max(seq.length - 1, 1)) * plotW;
+          const y = plotY + plotH - (Math.log(v + 1) / Math.log(maxVal + 1)) * plotH;
+          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+
+        ctx.fillStyle = cssVar('--text-normal');
+        const startY = plotY + plotH - (Math.log(seq[0] + 1) / Math.log(maxVal + 1)) * plotH;
+        ctx.beginPath(); ctx.arc(plotX, startY, 4, 0, Math.PI * 2); ctx.fill();
+        const endY = plotY + plotH - (Math.log(2) / Math.log(maxVal + 1)) * plotH;
+        ctx.fillStyle = cssVar('--accent-color');
+        ctx.beginPath(); ctx.arc(plotX + plotW, endY, 4, 0, Math.PI * 2); ctx.fill();
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`Start: ${n}  →  ${seq.length - 1} steps  →  reaches 1`, W / 2, plotY + plotH + 35);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Peak value reached along the way: ${maxVal}`, W / 2, plotY + plotH + 55);
+
+        obs.innerHTML = `<strong>Starting at ${n}: took ${seq.length - 1} steps to reach 1.</strong><br>Peak value reached along the way: ${maxVal}. Even though the sequence can climb dramatically before descending, the Collatz Conjecture predicts every whole number eventually reaches 1 — confirmed here for ${n}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPictographBuilderLab() {
+      const canvas = document.getElementById('pictograph-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dataSel = document.getElementById('sel-picto-dataset');
+      const scaleSel = document.getElementById('sel-picto-scale');
+      const obs = document.getElementById('picto-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const ds = PICTO_DATASETS[dataSel.value];
+        const scale = parseInt(scaleSel.value);
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText(`${ds.label}  (each ⬤ = ${scale})`, 15, 20);
+
+        const rowH = Math.min(42, (H - 45) / ds.categories.length);
+        const startY = 42;
+        const labelW = 120;
+
+        ds.categories.forEach((cat, i) => {
+          const y = startY + i * rowH + rowH / 2;
+          ctx.fillStyle = cssVar('--text-normal'); ctx.font = '12px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText(cat, 12, y + 4);
+
+          const val = ds.values[i];
+          const fullSymbols = Math.floor(val / scale);
+          const remainder = val % scale;
+          const hasHalf = remainder > 0 && remainder >= scale / 2;
+          const totalSymbols = fullSymbols + (hasHalf ? 1 : 0);
+          const availableW = W - labelW - 65;
+          const r = totalSymbols > 0 ? Math.min(11, Math.max(2.5, availableW / (totalSymbols * 2.6))) : 11;
+
+          let x = labelW;
+          for (let s = 0; s < fullSymbols; s++) {
+            ctx.beginPath(); ctx.arc(x + r, y, r, 0, Math.PI * 2);
+            ctx.fillStyle = cssVar('--accent-color'); ctx.fill();
+            x += r * 2.6;
+          }
+          if (hasHalf) {
+            ctx.beginPath(); ctx.moveTo(x + r, y);
+            ctx.arc(x + r, y, r, -Math.PI / 2, Math.PI / 2);
+            ctx.closePath();
+            ctx.fillStyle = cssVar('--accent-color'); ctx.fill();
+            ctx.beginPath(); ctx.arc(x + r, y, r, 0, Math.PI * 2);
+            ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 1.5; ctx.stroke();
+            x += r * 2.6;
+          }
+          ctx.fillStyle = cssVar('--text-muted'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText(`= ${val}`, x + 6, y + 4);
+        });
+
+        obs.innerHTML = `<strong>${ds.label}</strong><br>Key: each ⬤ symbol represents ${scale}. Full circles count whole groups of ${scale}; a half-filled circle shows a remaining partial group. Change the scale to see the same data drawn with more or fewer symbols.`;
+      }
+
+      dataSel.addEventListener('change', draw);
+      scaleSel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initBarGraphBuilderLab() {
+      const canvas = document.getElementById('bar-graph-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-bargraph-dataset');
+      const obs = document.getElementById('bargraph-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const ds = BAR_DATASETS[sel.value];
+        const n = ds.categories.length;
+        const maxVal = Math.max(...ds.values);
+
+        const plotX = 45, plotY = 40, plotW = 535, plotH = 210;
+        const baseY = plotY + plotH;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(plotX, plotY); ctx.lineTo(plotX, baseY); ctx.lineTo(plotX + plotW, baseY); ctx.stroke();
+
+        const slot = plotW / n;
+        const barW = slot * 0.6;
+
+        ds.values.forEach((v, i) => {
+          const barH = (v / maxVal) * (plotH - 20);
+          const x = plotX + i * slot + (slot - barW) / 2;
+          const y = baseY - barH;
+          ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillRect(x, y, barW, barH);
+
+          ctx.fillStyle = cssVar('--text-normal'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(`${v}`, x + barW / 2, y - 6);
+
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          const label = ds.categories[i];
+          ctx.fillText(label.length > 9 ? label.slice(0, 8) + '…' : label, x + barW / 2, baseY + 14);
+        });
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(ds.label, W / 2, 18);
+
+        const maxIdx = ds.values.indexOf(maxVal);
+        obs.innerHTML = `<strong>${ds.label}</strong><br>Tallest bar: ${ds.categories[maxIdx]} at ${maxVal}. Bar height is directly proportional to each value, making it easy to compare all categories at a glance.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSieveOfEratosthenesLab() {
+      const canvas = document.getElementById('sieve-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-sieve-stage');
+      const obs = document.getElementById('sieve-obs');
+
+      function computeState(stageIdx) {
+        const n = 100;
+        const isComposite = new Array(n + 1).fill(false);
+        const circled = new Array(n + 1).fill(false);
+        const primesToUse = [2, 3, 5, 7].slice(0, stageIdx);
+        primesToUse.forEach(p => {
+          circled[p] = true;
+          for (let m = p * 2; m <= n; m += p) isComposite[m] = true;
+        });
+        if (stageIdx === 4) {
+          for (let i = 2; i <= n; i++) if (!isComposite[i]) circled[i] = true;
+        }
+        return { isComposite, circled };
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const stageIdx = parseInt(sel.value);
+        const { isComposite, circled } = computeState(stageIdx);
+
+        const startX = 20, startY = 22, cellW = 56, cellH = 27;
+        let primeCount = 0;
+
+        for (let i = 1; i <= 100; i++) {
+          const row = Math.floor((i - 1) / 10), col = (i - 1) % 10;
+          const x = startX + col * cellW + cellW / 2, y = startY + row * cellH + cellH / 2;
+
+          if (i === 1) {
+            ctx.fillStyle = cssVar('--text-light'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+            ctx.fillText('1', x, y + 4);
+            ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 1.5;
+            ctx.beginPath(); ctx.moveTo(x - 8, y - 6); ctx.lineTo(x + 8, y + 6); ctx.stroke();
+          } else if (circled[i]) {
+            primeCount++;
+            ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(x, y, 11, 0, Math.PI * 2); ctx.stroke();
+            ctx.fillStyle = cssVar('--accent-color'); ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+            ctx.fillText(`${i}`, x, y + 4);
+          } else if (isComposite[i]) {
+            ctx.globalAlpha = 0.4;
+            ctx.fillStyle = cssVar('--text-light'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+            ctx.fillText(`${i}`, x, y + 4);
+            ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 1.2;
+            ctx.beginPath(); ctx.moveTo(x - 8, y - 6); ctx.lineTo(x + 8, y + 6); ctx.stroke();
+            ctx.globalAlpha = 1;
+          } else {
+            ctx.fillStyle = cssVar('--text-normal'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+            ctx.fillText(`${i}`, x, y + 4);
+          }
+        }
+
+        const stageLabels = [
+          'Nothing marked yet — every number from 2 to 100 is still a candidate.',
+          'After marking multiples of 2: every even number past 2 is crossed out.',
+          'After marking multiples of 2 and 3: more composites are eliminated.',
+          'After marking multiples of 2, 3 and 5.',
+          `Complete — all ${primeCount} primes up to 100 have been found and circled.`
+        ];
+        obs.innerHTML = `<strong>Step ${stageIdx + 1} of 5</strong><br>${stageLabels[stageIdx]}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDivisibilityTesterLab() {
+      const canvas = document.getElementById('divisibility-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-divisibility-n');
+      const obs = document.getElementById('divisibility-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = parseInt(sel.value);
+        const last1 = n % 10, last2 = n % 100, last3 = n % 1000;
+
+        const tests = [
+          { by: 2, ok: last1 % 2 === 0, rule: `last digit (${last1}) is even` },
+          { by: 4, ok: last2 % 4 === 0, rule: `last two digits (${String(last2).padStart(2, '0')}) divisible by 4` },
+          { by: 5, ok: (last1 === 0 || last1 === 5), rule: `last digit (${last1}) is 0 or 5` },
+          { by: 8, ok: last3 % 8 === 0, rule: `last three digits (${String(last3).padStart(3, '0')}) divisible by 8` },
+          { by: 10, ok: last1 === 0, rule: `last digit (${last1}) is 0` }
+        ];
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 30px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`${n}`, W / 2, 48);
+
+        let y = 90;
+        tests.forEach(t => {
+          ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'left';
+          ctx.fillStyle = t.ok ? cssVar('--accent-color') : '#ef4444';
+          ctx.fillText(`${t.ok ? '✓' : '✗'}  Divisible by ${t.by}`, 40, y);
+          ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText(t.rule, 230, y);
+          y += 42;
+        });
+
+        const passCount = tests.filter(t => t.ok).length;
+        obs.innerHTML = `<strong>${n} passes ${passCount} of the 5 divisibility tests shown.</strong><br>Each test checks only the last one, two, or three digits of ${n} — no long division needed.`;
+      }
+
+      sel.addEventListener('change', draw);
       draw();
     }
 
