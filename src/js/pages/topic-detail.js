@@ -2054,6 +2054,51 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const acidBaseIndicatorLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="acid-base-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a substance and see how it colours blue litmus, red litmus, and turmeric paper.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Substance</h3>
+            <select id="sel-acid-base-substance" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Lemon juice</option>
+              <option value="1">Soap solution</option>
+              <option value="2">Vinegar</option>
+              <option value="3">Baking soda solution</option>
+              <option value="4">Tap water</option>
+              <option value="5">Salt solution</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Indicator Response</h3>
+            <div id="acid-base-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a substance above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const neutralisationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="neutralisation-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Add drops of lime water to acidic litmus solution and watch it neutralise.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Drops of Lime Water Added</h3>
+            <select id="sel-neutralisation-drops" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[0,1,2,3,4,5,6].map(n => `<option value="${n}"${n===1?' selected':''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Solution Status</h3>
+            <div id="neutralisation-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose how many drops added above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -3805,6 +3850,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'equation-solver-sim') {
               labHtml = equationSolverLabHtml;
               labDesc = 'Pick an equation and watch it solved step by step using inverse operations, then checked by substitution.';
+            } else if (topicObj.lab.type === 'acid-base-indicator-sim') {
+              labHtml = acidBaseIndicatorLabHtml;
+              labDesc = 'Pick a substance and see its effect on blue litmus, red litmus, and turmeric paper indicators.';
+            } else if (topicObj.lab.type === 'neutralisation-sim') {
+              labHtml = neutralisationLabHtml;
+              labDesc = 'Add drops of lime water to an acidic solution and watch the litmus colour shift toward neutral.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4180,6 +4231,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initWeighingScaleEquationLab();
         } else if (topicObj.lab.type === 'equation-solver-sim') {
           initEquationSolverLab();
+        } else if (topicObj.lab.type === 'acid-base-indicator-sim') {
+          initAcidBaseIndicatorLab();
+        } else if (topicObj.lab.type === 'neutralisation-sim') {
+          initNeutralisationLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -15353,6 +15408,116 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(`Check: ${a}×(${solStr}) ${fmtSigned(b)} = ${lhsCheck}${lhsCheck === c ? ' ✓' : ''}`, W / 2, 185);
 
         obs.innerHTML = `<strong>${a}${label} ${fmtSigned(b)} = ${c}  →  ${label} = ${solStr}</strong><br>Step 1: ${b >= 0 ? 'subtract' : 'add'} ${Math.abs(b)} from both sides to get ${a}${label}=${afterStep1}. Step 2: divide both sides by ${a} to isolate ${label}. Checked by substitution: LHS=${lhsCheck}, matching RHS=${c}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initAcidBaseIndicatorLab() {
+      const canvas = document.getElementById('acid-base-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-acid-base-substance');
+      const obs = document.getElementById('acid-base-obs');
+      const SUBSTANCES = [
+        { name: 'Lemon juice', type: 'acidic' },
+        { name: 'Soap solution', type: 'basic' },
+        { name: 'Vinegar', type: 'acidic' },
+        { name: 'Baking soda solution', type: 'basic' },
+        { name: 'Tap water', type: 'neutral' },
+        { name: 'Salt solution', type: 'neutral' }
+      ];
+      const COLORS = {
+        blueLitmus: { acidic: '#ef4444', basic: '#3b82f6', neutral: '#3b82f6' },
+        redLitmus: { acidic: '#ef4444', basic: '#3b82f6', neutral: '#ef4444' },
+        turmeric: { acidic: '#fbbf24', basic: '#ef4444', neutral: '#fbbf24' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const sub = SUBSTANCES[parseInt(sel.value)];
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(sub.name, W / 2, 25);
+
+        const strips = [
+          { label: 'Blue Litmus', color: COLORS.blueLitmus[sub.type] },
+          { label: 'Red Litmus', color: COLORS.redLitmus[sub.type] },
+          { label: 'Turmeric', color: COLORS.turmeric[sub.type] }
+        ];
+
+        const stripW = 60, stripH = 140, gap = 60;
+        const totalW = strips.length * stripW + (strips.length - 1) * gap;
+        let x = W / 2 - totalW / 2;
+        const y = 55;
+
+        strips.forEach(s => {
+          ctx.fillStyle = s.color;
+          ctx.fillRect(x, y, stripW, stripH);
+          ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+          ctx.strokeRect(x, y, stripW, stripH);
+          ctx.fillStyle = cssVar('--text-normal'); ctx.font = '12px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(s.label, x + stripW / 2, y + stripH + 20);
+          x += stripW + gap;
+        });
+
+        const typeLabel = sub.type.charAt(0).toUpperCase() + sub.type.slice(1);
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        ctx.fillText(`${sub.name} is ${typeLabel}`, W / 2, y + stripH + 55);
+
+        obs.innerHTML = `<strong>${sub.name} is ${typeLabel}.</strong><br>Blue litmus: ${sub.type === 'acidic' ? 'turns red' : 'stays blue'}. Red litmus: ${sub.type === 'basic' ? 'turns blue' : 'stays red'}. Turmeric: ${sub.type === 'basic' ? 'turns red' : 'stays yellow'}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initNeutralisationLab() {
+      const canvas = document.getElementById('neutralisation-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-neutralisation-drops');
+      const obs = document.getElementById('neutralisation-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const drops = parseInt(sel.value);
+        const level = -3 + drops;
+
+        let r, g, b;
+        if (level <= 0) {
+          const t = (level + 3) / 3;
+          r = Math.round(239 + (139 - 239) * t);
+          g = Math.round(68 + (92 - 68) * t);
+          b = Math.round(68 + (246 - 68) * t);
+        } else {
+          const t = level / 3;
+          r = Math.round(139 + (59 - 139) * t);
+          g = Math.round(92 + (130 - 92) * t);
+          b = 246;
+        }
+        const color = `rgb(${r},${g},${b})`;
+
+        const tubeX = W / 2 - 40, tubeY = 40, tubeW = 80, tubeH = 160;
+        ctx.fillStyle = color;
+        ctx.fillRect(tubeX, tubeY, tubeW, tubeH);
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.strokeRect(tubeX, tubeY, tubeW, tubeH);
+
+        let status;
+        if (level < -0.5) status = 'Acidic (red)';
+        else if (level > 0.5) status = 'Basic (blue)';
+        else status = 'Neutral point! (purple)';
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`${drops} drop${drops === 1 ? '' : 's'} of lime water added`, W / 2, 220);
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(status, W / 2, 250);
+
+        obs.innerHTML = `<strong>${drops} drops of lime water added: ${status}</strong><br>${level < -0.5 ? 'The solution is still acidic — more lime water (a base) would move it toward neutral.' : level > 0.5 ? 'Enough lime water has been added to make the solution basic overall.' : 'The acid and base have neutralised each other — the solution is neither acidic nor basic.'}`;
       }
 
       sel.addEventListener('change', draw);

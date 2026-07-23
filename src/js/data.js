@@ -4707,7 +4707,362 @@ export const curriculumData = {
       tagline: "Exploring & Investigating",
       theme: "linear-gradient(135deg, #4facfe, #00f2fe)",
       subjects: {
-        science: { name: "Science", icon: "🧪", chapters: [] },
+        science: {
+          name: "Science",
+          icon: "🧪",
+          chapters: [
+            {
+              id: "7s-1",
+              title: "The Ever-Evolving World of Science",
+              topics: [
+                {
+                  id: "7s-1-1",
+                  title: "1. Happy Exploring! Thinking Like a Scientist",
+                  theory: {
+                    intro: "Science is not just a collection of facts to memorise — it is a way of thinking that welcomes curiosity, asks deeper questions, and stays open to the unknown. This year's journey moves from 'what' to 'how' and 'why'.",
+                    sections: [
+                      {
+                        heading: "Asking Deeper Questions",
+                        text: "In Grade 7, we try to ask deeper questions: How do things work? Why do events happen the way they do? What patterns can we find in nature? Exploration isn't just about discovering new facts — it's about stepping out of the classroom to experience the world through activities and experiments, turning science into an ongoing process of discovery."
+                      },
+                      {
+                        heading: "Science and Responsibility",
+                        text: "Being a science explorer isn't only about discovery — it's also about responsibility. Human activities are deeply linked to what happens in the natural world and connected to the society we live in. Science plays a real role in addressing environmental challenges and building a more sustainable world."
+                      },
+                      {
+                        heading: "A Preview of the Year's Journey",
+                        text: "This year's chapters explore the properties of materials around us (why some fruits are sour, how stains behave), electricity and circuits, metals and non-metals, reversible and irreversible changes, heat flow, life processes in animals and plants, measuring time and motion, light and shadows, and finally the Earth-Moon-Sun system and eclipses. Though these appear as separate chapters covering physics, chemistry, biology, and earth science, they are all deeply interconnected — an idea from one area often inspires questions in another."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Question the Answer",
+                      objective: "To practice scientific curiosity by working backward — inventing creative, thoughtful questions that could lead to a given surprising answer, rather than only answering questions given to you.",
+                      materials: ["Paper and pencil", "Imagination"],
+                      steps: [
+                        "Read the given answer: 'Just add some milk.' Try to invent an interesting, creative question that this could be a response to.",
+                        "Do the same for the answer: 'Because the cat's teeth were crooked.'",
+                        "Do the same for the answer: 'Don't panic, I have my towel.'",
+                        "Do the same for the answer: '42' — avoid obvious questions like simple arithmetic; aim for something imaginative.",
+                        "Share your invented questions with classmates and compare how differently everyone interpreted the same answer."
+                      ],
+                      observation: "The same answer can be the response to many wildly different, equally valid questions — showing that asking good questions is a creative skill in its own right, just as important to scientific thinking as finding correct answers."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "According to the chapter, what is science fundamentally described as, beyond just a collection of facts?",
+                      options: ["A list of definitions to memorise", "A way of thinking that welcomes curiosity, asks questions, and stays open to the unknown", "A set of rules that never change", "A subject only for future scientists"],
+                      answer: 1,
+                      explanation: "The chapter frames science as an ongoing process and way of thinking — rooted in curiosity and questioning — rather than a static body of facts to memorise."
+                    },
+                    {
+                      question: "What THREE deeper kinds of questions does Grade 7 encourage asking, beyond just 'what is it'?",
+                      options: ["Where, when, and who", "How do things work? Why do events happen the way they do? What patterns exist in nature?", "Only mathematical questions", "Questions with only one correct answer"],
+                      answer: 1,
+                      explanation: "The chapter emphasizes moving toward deeper 'how', 'why', and 'pattern-finding' questions, beyond simply identifying facts."
+                    },
+                    {
+                      question: "Why does the chapter say being a 'science explorer' involves responsibility, not just discovery?",
+                      options: ["Because science has no connection to real life", "Because human activities are linked to the natural world and to society, and science plays a role in addressing environmental challenges", "Because scientists must follow strict laws", "Responsibility is unrelated to science"],
+                      answer: 1,
+                      explanation: "The chapter connects scientific discovery to real-world responsibility — understanding how human actions affect nature, and how science can help build a more sustainable world."
+                    },
+                    {
+                      question: "Although this year's chapters cover physics, chemistry, biology, and earth science separately, what does the chapter say about how these fields relate?",
+                      options: ["They are completely unrelated and should be studied in isolation", "They are all deeply interconnected — ideas in one area often inspire discoveries or questions in another", "Only physics and chemistry are related; biology is separate", "Each field uses a completely different kind of logic"],
+                      answer: 1,
+                      explanation: "The chapter explicitly states that although organised into separate chapters, all these scientific fields are interconnected, with ideas crossing over between them."
+                    },
+                    {
+                      question: "What is the point of the 'Question the Answer' activity?",
+                      options: ["To test memorisation of facts", "To practice inventing creative questions for a given answer, building the skill of curious, imaginative thinking", "To find the one correct question for each answer", "To avoid asking questions altogether"],
+                      answer: 1,
+                      explanation: "This activity flips the usual question-answer structure, encouraging creative question-generation as a valuable scientific skill in itself."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "7s-2",
+              title: "Exploring Substances: Acidic, Basic, and Neutral",
+              topics: [
+                {
+                  id: "7s-2-1",
+                  title: "1. Litmus, Red Rose & Turmeric as Indicators",
+                  lab: { type: "acid-base-indicator-sim" },
+                  theory: {
+                    intro: "A mysterious spray that reveals hidden writing on paper turns out to be simple chemistry — natural substances like litmus, red rose extract, and turmeric all change colour depending on whether they touch something acidic or basic.",
+                    sections: [
+                      {
+                        heading: "Litmus as an Acid-Base Indicator",
+                        text: "Litmus, obtained from lichens, comes as blue and red paper strips. Substances that turn BLUE litmus paper RED are acidic (like lemon juice, amla juice, tamarind water, vinegar). Substances that turn RED litmus paper BLUE are basic (like soap solution, baking soda solution, lime water, washing powder solution). Substances that don't change either strip — like tap water, sugar solution, salt solution — are neutral (neither acidic nor basic). Since litmus shows different colours for acids and bases, it is called an acid-base indicator."
+                      },
+                      {
+                        heading: "Red Rose and Other Natural Indicators",
+                        text: "Many coloured flowers, like red rose or red hibiscus, can also serve as natural acid-base indicators — extracts often show one colour with acids and a different colour with bases, just like litmus."
+                      },
+                      {
+                        heading: "Turmeric as a Partial Indicator",
+                        text: "Turmeric (haldi) paper is naturally yellow. When basic substances are dropped on it, the yellow turns RED. But acidic and neutral substances cause NO colour change on turmeric paper — meaning turmeric can identify BASIC substances, but cannot distinguish between acidic and neutral substances (unlike litmus, which distinguishes all three)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Household Substances with Litmus Paper",
+                      objective: "To classify a range of common household substances as acidic, basic, or neutral using blue and red litmus paper.",
+                      materials: ["Blue and red litmus paper strips", "Dropper", "Samples: lemon juice, soap solution, vinegar, baking soda solution, tap water, sugar solution, salt solution"],
+                      steps: [
+                        "Cut small pieces of blue and red litmus paper and place them on a clean, dry white tile.",
+                        "Using a dropper, place one drop of each sample on a fresh piece of blue litmus paper, and separately on red litmus paper.",
+                        "Record whether each sample changes the colour of blue litmus (to red), red litmus (to blue), or neither.",
+                        "Sort your samples into three groups: Group A (turns blue litmus red — acidic), Group B (turns red litmus blue — basic), Group C (no change — neutral).",
+                        "Compare your groupings with a classmate's, and discuss any samples that gave surprising or unclear results."
+                      ],
+                      observation: "Common household substances sort clearly into acidic (like lemon juice, vinegar), basic (like soap solution, baking soda solution), and neutral (like tap water, salt solution) groups based on how they affect blue and red litmus paper."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What happens to BLUE litmus paper when an acidic substance is dropped on it?",
+                      options: ["It stays blue", "It turns red", "It turns green", "It dissolves completely"],
+                      answer: 1,
+                      explanation: "Acidic substances turn blue litmus paper red — this colour change is how litmus indicates the presence of an acid."
+                    },
+                    {
+                      question: "What happens to RED litmus paper when a basic substance is dropped on it?",
+                      options: ["It stays red", "It turns blue", "It turns yellow", "It turns black"],
+                      answer: 1,
+                      explanation: "Basic substances turn red litmus paper blue — the corresponding indicator response for a base."
+                    },
+                    {
+                      question: "What does it mean for a substance to be 'neutral'?",
+                      options: ["It is always a strong acid", "It does not change the colour of either blue or red litmus paper — neither acidic nor basic", "It is always a strong base", "It cannot be tested with litmus"],
+                      answer: 1,
+                      explanation: "Neutral substances (like tap water or salt solution) don't change the colour of either litmus paper, since they are neither acidic nor basic in nature."
+                    },
+                    {
+                      question: "Why can't turmeric paper distinguish between acidic and neutral substances?",
+                      options: ["Turmeric paper doesn't react to any substance", "Because turmeric paper only changes colour (yellow to red) with BASIC substances — it shows no change for both acidic AND neutral substances", "Turmeric paper turns a unique colour for every substance", "Turmeric paper only works with liquids, not solids"],
+                      answer: 1,
+                      explanation: "Turmeric paper's yellow colour turns red only in the presence of a base; since both acidic and neutral substances leave it unchanged, it cannot tell those two apart, unlike litmus which responds differently to all three."
+                    },
+                    {
+                      question: "What is litmus, and where does it come from?",
+                      options: ["A synthetic chemical made only in factories", "A natural substance obtained from lichens, available as a solution or paper strips", "A type of acid", "A mineral found in rocks"],
+                      answer: 1,
+                      explanation: "Litmus is a natural dye obtained from lichens (organisms formed from a fungus and an alga), available in solution or paper-strip form."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-2-2",
+                  title: "2. Properties of Acids and Bases",
+                  theory: {
+                    intro: "Beyond changing the colour of indicators, acids and bases have their own distinct physical properties — taste, touch, and even smell can offer additional (though not always foolproof) clues to a substance's nature.",
+                    sections: [
+                      {
+                        heading: "Taste: Acids Are Generally Sour",
+                        text: "Edible acidic substances (lemon juice, amla, tamarind, vinegar) all taste sour — so a sour taste is generally a sign of an acid. Common acids in familiar foods include citric acid (lemon), ascorbic acid/Vitamin C and citric acid (amla), tartaric acid (tamarind), and acetic acid (vinegar). Caution: never taste unknown substances to test them — this is only safe for known, edible items."
+                      },
+                      {
+                        heading: "Touch: Bases Feel Soapy or Slippery",
+                        text: "Basic substances, like baking soda solution, feel soapy or slippery when rubbed between the fingers. Bases also generally taste bitter — but bitterness ALONE doesn't guarantee something is basic: bitter gourd (karela) tastes bitter but is not basic in nature, showing why relying on just one property can be misleading."
+                      },
+                      {
+                        heading: "Olfactory Indicators: Smell as a Clue",
+                        text: "Some substances change their ODOUR in the presence of acids or bases — these are called olfactory indicators. For example, cloth strips soaked in onion odour lose their oniony smell when exposed to certain acidic or basic substances, offering another (smell-based) way to detect acid-base changes."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Odour Changes with Onion-Soaked Strips",
+                      objective: "To observe how the odour of onion-soaked cloth strips changes when exposed to acidic and basic substances, exploring olfactory indicators.",
+                      materials: ["Finely chopped onions", "Cotton cloth or filter paper strips", "A sealable container", "Tamarind water", "Baking soda solution"],
+                      steps: [
+                        "Place finely chopped onions and several cotton/filter paper strips in a container, seal it tightly, and leave it overnight.",
+                        "The next day, remove two strips and check their onion odour.",
+                        "Place a few drops of tamarind water on one strip and baking soda solution on the other, letting the drops spread.",
+                        "Smell both strips again and note any change in the onion odour after adding the acidic or basic substance.",
+                        "Repeat with other acidic and basic substances of your choice, recording your observations each time."
+                      ],
+                      observation: "The onion odour on the treated strips changes noticeably after exposure to an acidic or basic substance, showing that odour-based (olfactory) indicators offer another valid way to detect acid-base changes, alongside colour-based indicators like litmus."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What taste do most edible acidic substances (like lemon juice, tamarind, vinegar) share?",
+                      options: ["Sweet", "Sour", "Bitter", "Salty"],
+                      answer: 1,
+                      explanation: "Edible acidic substances generally taste sour — a common recognisable property of acids."
+                    },
+                    {
+                      question: "How do basic substances (like baking soda solution) generally feel to the touch?",
+                      options: ["Rough and dry", "Soapy or slippery", "Sharp and prickly", "Sticky like honey"],
+                      answer: 1,
+                      explanation: "Basic substances typically feel soapy or slippery when rubbed between the fingers."
+                    },
+                    {
+                      question: "Why is bitter gourd (karela) an important example regarding the 'bases taste bitter' rule?",
+                      options: ["It proves all bitter things are basic", "It shows that bitterness ALONE doesn't guarantee a substance is basic — karela is bitter but not basic", "It is used to neutralise acids", "It has no relevance to acids and bases"],
+                      answer: 1,
+                      explanation: "Karela demonstrates that while many bases taste bitter, not everything bitter is basic — bitterness alone is not a reliable indicator of a base."
+                    },
+                    {
+                      question: "What is an 'olfactory indicator'?",
+                      options: ["An indicator that only works with litmus paper", "A substance whose ODOUR changes in the presence of acids or bases", "A type of acid", "A device for measuring temperature"],
+                      answer: 1,
+                      explanation: "Olfactory indicators are substances (like onion-soaked strips) whose smell changes when exposed to acidic or basic substances, offering a smell-based way to detect them."
+                    },
+                    {
+                      question: "Why should you never taste an unknown substance to test if it's an acid?",
+                      options: ["Tasting is always required", "Unknown substances could be harmful or toxic — tasting should only ever be done with known, safe, edible items", "Taste never reveals anything about acids", "This caution doesn't actually matter"],
+                      answer: 1,
+                      explanation: "Since taste-testing is only meaningful (and safe) for substances already known to be edible, tasting unknown or unlabelled substances risks real harm and should always be avoided."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-2-3",
+                  title: "3. Neutralisation Reactions",
+                  lab: { type: "neutralisation-sim" },
+                  theory: {
+                    intro: "When an acid and a base are mixed together in the right amounts, something remarkable happens — both lose their acidic and basic character entirely, becoming neither acidic nor basic at all.",
+                    sections: [
+                      {
+                        heading: "Observing Neutralisation",
+                        text: "Adding blue litmus solution to dilute lemon juice turns it red (confirming it's acidic). Slowly adding lime water (a base) to this red solution, drop by drop, eventually turns the colour from red back to BLUE — showing the solution is no longer acidic. Lime water has neutralised the acid's effect."
+                      },
+                      {
+                        heading: "What Is a Neutralisation Reaction?",
+                        text: "When a sufficient quantity of an acid solution is mixed with a base solution, the resulting solution is neither acidic nor basic — this is called a neutralisation reaction. In a neutralisation reaction, a SALT and WATER are formed, along with the release of HEAT: Acid + Base → Salt + Water + Heat."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Observing a Neutralisation Reaction with Litmus",
+                      objective: "To directly observe the colour change of litmus solution as an acid is gradually neutralised by a base, identifying the neutralisation point.",
+                      materials: ["Diluted lemon juice", "Blue litmus solution", "Lime water", "Dropper", "Test tube"],
+                      steps: [
+                        "Add one drop of lemon juice to about twenty drops of water in a test tube.",
+                        "Add a drop of blue litmus solution and observe the colour change (it should turn red, confirming the acid).",
+                        "Slowly add lime water drop by drop, swirling the test tube gently after each addition.",
+                        "Watch carefully for the moment the solution's colour changes from red back to blue.",
+                        "Add one more drop of lemon juice to the now-blue solution and observe what happens to the colour again."
+                      ],
+                      observation: "As lime water (a base) is added gradually to the acidic, red-litmus solution, the colour eventually shifts to blue at the point of neutralisation — and adding more acid afterward turns it red again, showing the colour genuinely tracks the acid-base balance of the solution."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'neutralisation reaction'?",
+                      options: ["A reaction where two acids combine", "A reaction where an acid and a base combine in sufficient quantity to form a solution that is neither acidic nor basic", "A reaction that only happens with litmus paper", "A reaction where nothing changes at all"],
+                      answer: 1,
+                      explanation: "Neutralisation occurs when an acid and a base react in the right proportions, resulting in a solution that is neither acidic nor basic anymore."
+                    },
+                    {
+                      question: "What are the products of a neutralisation reaction?",
+                      options: ["Only water", "Salt and water, with the release of heat", "Only heat, with no other products", "A new acid"],
+                      answer: 1,
+                      explanation: "The general equation for neutralisation is Acid + Base → Salt + Water + Heat — producing a salt and water, and releasing heat."
+                    },
+                    {
+                      question: "In the lemon juice and lime water experiment, why does the solution's colour change from red to blue?",
+                      options: ["The litmus dye simply degrades over time", "As lime water (a base) is added, it gradually neutralises the acid, and the solution stops being acidic — shown by litmus turning blue", "Lime water is itself red in colour", "The colour change is unrelated to the chemicals added"],
+                      answer: 1,
+                      explanation: "As the base (lime water) neutralises the acid (lemon juice), the solution's acidic character is lost, which litmus reveals by shifting from red (acidic) to blue (no longer acidic)."
+                    },
+                    {
+                      question: "What happens if you add MORE lemon juice to a solution that has just been neutralised to blue?",
+                      options: ["Nothing happens, it stays blue forever", "The solution can turn red again, since more acid re-introduces acidic character", "The solution turns a permanent green", "This is impossible to observe"],
+                      answer: 1,
+                      explanation: "Adding more acid after neutralisation shifts the balance back toward acidic, which litmus reveals by turning red again — confirming the colour genuinely reflects the ongoing acid-base balance."
+                    },
+                    {
+                      question: "Is heat released or absorbed during a neutralisation reaction?",
+                      options: ["Heat is absorbed from the surroundings", "Heat is released (evolved) as a product of the reaction", "No heat change occurs at all", "This varies unpredictably with no pattern"],
+                      answer: 1,
+                      explanation: "Neutralisation reactions release (evolve) heat as one of their products, alongside the formation of salt and water."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-2-4",
+                  title: "4. Neutralisation in Daily Life",
+                  theory: {
+                    intro: "From a stinging ant bite to acidic farmland soil to polluted lake water, the same core idea — neutralising an acid with a base, or a base with an acid — solves surprisingly different real-world problems.",
+                    sections: [
+                      {
+                        heading: "Treating an Ant Bite",
+                        text: "When an ant bites, it injects formic acid (an acidic liquid) into the skin, causing a stinging pain. Rubbing moist baking soda (a base) onto the bite neutralises the acid, relieving the pain — a simple, everyday application of neutralisation chemistry."
+                      },
+                      {
+                        heading: "Treating Acidic or Basic Soil",
+                        text: "Excessive use of chemical fertilisers can make soil too ACIDIC, harming plant growth — this is treated by adding lime (a base) to the soil. If soil is too BASIC instead, organic matter like manure and composted leaves is added; decomposing organic matter releases acids that neutralise the excess base. (Note: sometimes soil is neutral, but plants still struggle due to a lack of nutrients — a separate issue from soil acidity/basicity.)"
+                      },
+                      {
+                        heading: "Protecting Lakes from Industrial Waste",
+                        text: "Factory waste released into lakes can be acidic, harming fish populations. Before releasing such waste into a lake, adding basic substances neutralises its acidity, protecting aquatic life — showing how neutralisation chemistry supports environmental protection at an industrial scale."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Mapping Neutralisation Examples in Everyday Life",
+                      objective: "To identify and explain real-world situations where neutralisation reactions solve practical problems, reinforcing the Acid+Base→Salt+Water+Heat pattern.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "List the three neutralisation examples from the chapter: ant bite treatment, soil pH correction, and industrial waste treatment for lakes.",
+                        "For each example, identify which substance is acting as the ACID and which is acting as the BASE.",
+                        "Think of one additional real-world neutralisation example from your own experience or research (e.g., antacid tablets for stomach acidity).",
+                        "Explain, in your own words, why understanding acids and bases has practical value beyond the science laboratory.",
+                        "Discuss with classmates: are there situations in your own community where neutralisation could solve a problem (like soil health or water quality)?"
+                      ],
+                      observation: "The same underlying neutralisation chemistry — an acid combining with a base to cancel out its effects — explains solutions to problems as different as insect bites, farming, and environmental protection, showing how one core chemical idea has wide, practical relevance."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does applying moist baking soda relieve the pain of an ant bite?",
+                      options: ["Baking soda has no chemical effect, it's just cooling", "An ant bite injects acidic formic acid; baking soda (a base) neutralises this acid, relieving the sting", "The ant bite itself is basic, and needs an acid to neutralise it", "Baking soda kills the ant"],
+                      answer: 1,
+                      explanation: "Ant bites inject formic acid; rubbing baking soda (a base) onto the site neutralises this acid, providing relief."
+                    },
+                    {
+                      question: "What is added to soil that has become too ACIDIC due to excessive chemical fertiliser use?",
+                      options: ["More acidic fertiliser", "Lime, which is basic, to neutralise the excess acidity", "Salt water", "Nothing, acidic soil cannot be treated"],
+                      answer: 1,
+                      explanation: "Lime (a base) is added to acidic soil to neutralise the excess acidity and help restore healthy growing conditions for plants."
+                    },
+                    {
+                      question: "What is added to soil that has become too BASIC?",
+                      options: ["More lime", "Organic matter like manure and composted leaves, which release acids that neutralise the excess base", "Only water", "Baking soda"],
+                      answer: 1,
+                      explanation: "Organic matter such as manure and composted leaves releases acids as it decomposes, which neutralises soil that has become too basic."
+                    },
+                    {
+                      question: "How can factory waste be treated to protect fish in a lake, if the waste is acidic?",
+                      options: ["The waste should be released without any treatment", "Adding basic substances to the waste before release neutralises its acidity, protecting aquatic life", "Adding more acidic substances", "Nothing can be done to protect the fish"],
+                      answer: 1,
+                      explanation: "Neutralising acidic factory waste with basic substances before it enters the lake helps protect fish and other aquatic life from harmful acidity."
+                    },
+                    {
+                      question: "What do all three examples (ant bite, soil treatment, industrial waste) have in common, chemically?",
+                      options: ["They all involve heating substances", "They all rely on neutralisation — combining an acid with a base (or vice versa) to cancel out harmful acidic or basic effects", "They involve no chemistry at all", "They only work with litmus paper present"],
+                      answer: 1,
+                      explanation: "All three situations apply the same neutralisation principle — pairing an acid with a base to cancel out an unwanted acidic or basic condition."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
         mathematics: {
           name: "Mathematics",
           icon: "📐",
