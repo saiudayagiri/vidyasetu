@@ -2573,6 +2573,71 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const earthRotationDayNightLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="earth-rotation-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a time of day and see where the observer is on the rotating Earth.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Time of Day</h3>
+            <select id="sel-earth-rotation-time" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="morning" selected>Morning (Sunrise)</option>
+              <option value="noon">Noon</option>
+              <option value="evening">Evening (Sunset)</option>
+              <option value="midnight">Midnight</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What the Observer Sees</h3>
+            <div id="earth-rotation-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a time of day above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const earthTiltSeasonsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="earth-tilt-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a month and see which hemisphere tilts toward the Sun.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Month</h3>
+            <select id="sel-earth-tilt-month" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="june" selected>June</option>
+              <option value="december">December</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Seasons</h3>
+            <div id="earth-tilt-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a month above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const eclipseTypeLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="eclipse-type-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an eclipse type and see the Sun-Earth-Moon alignment.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Eclipse Type</h3>
+            <select id="sel-eclipse-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="solar" selected>Solar eclipse (Moon between Sun and Earth)</option>
+              <option value="lunar">Lunar eclipse (Earth between Sun and Moon)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What Happens</h3>
+            <div id="eclipse-type-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an eclipse type above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4393,6 +4458,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'pinhole-camera-sim') {
               labHtml = pinholeCameraLabHtml;
               labDesc = 'Pick an object position and see the inverted image a pinhole camera forms on its screen.';
+            } else if (topicObj.lab.type === 'earth-rotation-daynight-sim') {
+              labHtml = earthRotationDayNightLabHtml;
+              labDesc = 'Pick a time of day and see where the observer stands on the rotating, half-lit Earth.';
+            } else if (topicObj.lab.type === 'earth-tilt-seasons-sim') {
+              labHtml = earthTiltSeasonsLabHtml;
+              labDesc = 'Pick a month and see how the Earth’s tilt gives each hemisphere its season.';
+            } else if (topicObj.lab.type === 'eclipse-type-sim') {
+              labHtml = eclipseTypeLabHtml;
+              labDesc = 'Pick an eclipse type and see the Sun-Earth-Moon alignment that causes it.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4814,6 +4888,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initPlaneMirrorImageLab();
         } else if (topicObj.lab.type === 'pinhole-camera-sim') {
           initPinholeCameraLab();
+        } else if (topicObj.lab.type === 'earth-rotation-daynight-sim') {
+          initEarthRotationDayNightLab();
+        } else if (topicObj.lab.type === 'earth-tilt-seasons-sim') {
+          initEarthTiltSeasonsLab();
+        } else if (topicObj.lab.type === 'eclipse-type-sim') {
+          initEclipseTypeLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -17359,6 +17439,184 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         obs.innerHTML = near
           ? '<strong>Object close to the pinhole → a larger inverted image forms on the screen.</strong> Light rays from the top and bottom of the object cross at the pinhole, flipping the image upside down.'
           : '<strong>Object far from the pinhole → a smaller inverted image forms on the screen.</strong> The image is still flipped upside down, but appears smaller since the object is farther away.';
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initEarthRotationDayNightLab() {
+      const canvas = document.getElementById('earth-rotation-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-earth-rotation-time');
+      const obs = document.getElementById('earth-rotation-obs');
+      const POSITIONS = {
+        morning: { dx: 0, dy: 1, label: 'Morning (Sunrise)', desc: 'Entering daylight — the Sun appears to rise in the East, to the observer’s right.' },
+        noon: { dx: 1, dy: 0, label: 'Noon', desc: 'The observer directly faces the Sun — it appears overhead in the sky.' },
+        evening: { dx: 0, dy: -1, label: 'Evening (Sunset)', desc: 'Entering darkness — the Sun appears to set in the West, to the observer’s left.' },
+        midnight: { dx: -1, dy: 0, label: 'Midnight', desc: 'Deep in the night side, facing away from the Sun — stars are visible overhead.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const pos = POSITIONS[sel.value];
+        const cx = W / 2 - 30, cy = 145, r = 75;
+
+        const sunX = cx + r + 90, sunY = cy;
+        ctx.beginPath(); ctx.arc(sunX, sunY, 22, 0, Math.PI * 2);
+        ctx.fillStyle = '#fde047'; ctx.fill();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('Sun', sunX, sunY + 40);
+        for (let i = -1; i <= 1; i++) {
+          ctx.strokeStyle = 'rgba(253,224,71,0.5)'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(sunX - 24, sunY + i * 18); ctx.lineTo(cx + r + 4, sunY + i * 22); ctx.stroke();
+        }
+
+        ctx.save();
+        ctx.beginPath(); ctx.arc(cx, cy, r, -Math.PI / 2, Math.PI / 2); ctx.closePath();
+        ctx.fillStyle = '#fbbf24'; ctx.fill();
+        ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI / 2, -Math.PI / 2); ctx.closePath();
+        ctx.fillStyle = '#1e293b'; ctx.fill();
+        ctx.restore();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+
+        const obsX = cx + pos.dx * r, obsY = cy + pos.dy * r;
+        ctx.beginPath(); ctx.arc(obsX, obsY, 7, 0, Math.PI * 2);
+        ctx.fillStyle = cssVar('--accent-color'); ctx.fill();
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 1.5; ctx.stroke();
+
+        const labelX = cx + pos.dx * (r + 30), labelY = cy + pos.dy * (r + 22);
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(pos.label, labelX, labelY);
+
+        ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('← rotation (West to East)', cx, cy + r + 35);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText('Observer on the rotating Earth', W / 2, 20);
+
+        obs.innerHTML = `<strong>${pos.label}.</strong> ${pos.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initEarthTiltSeasonsLab() {
+      const canvas = document.getElementById('earth-tilt-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-earth-tilt-month');
+      const obs = document.getElementById('earth-tilt-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const isJune = sel.value === 'june';
+        const cx = W / 2 - 20, cy = 150, r = 70;
+        const tilt = (isJune ? 1 : -1) * 20 * Math.PI / 180;
+
+        const sunX = cx + r + 100, sunY = cy;
+        ctx.beginPath(); ctx.arc(sunX, sunY, 22, 0, Math.PI * 2);
+        ctx.fillStyle = '#fde047'; ctx.fill();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('Sun', sunX, sunY + 40);
+        for (let i = -1; i <= 1; i++) {
+          ctx.strokeStyle = 'rgba(253,224,71,0.5)'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(sunX - 24, sunY + i * 18); ctx.lineTo(cx + r + 4, sunY + i * 22); ctx.stroke();
+        }
+
+        const northWarm = isJune;
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(tilt);
+        ctx.beginPath(); ctx.arc(0, 0, r, Math.PI, Math.PI * 2); ctx.closePath();
+        ctx.fillStyle = northWarm ? '#f97316' : '#3b82f6';
+        ctx.fill();
+        ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI); ctx.closePath();
+        ctx.fillStyle = northWarm ? '#3b82f6' : '#f97316';
+        ctx.fill();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(-r, 0); ctx.lineTo(r, 0); ctx.stroke();
+        ctx.restore();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+
+        const axisTopX = cx - r * 1.3 * Math.sin(tilt), axisTopY = cy - r * 1.3 * Math.cos(tilt);
+        const axisBotX = cx + r * 1.3 * Math.sin(tilt), axisBotY = cy + r * 1.3 * Math.cos(tilt);
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(axisTopX, axisTopY); ctx.lineTo(axisBotX, axisBotY); ctx.stroke();
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText('N', axisTopX, axisTopY - 8);
+        ctx.fillText('S', axisBotX, axisBotY + 16);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(isJune ? 'June' : 'December', W / 2, 20);
+
+        ctx.font = '11px system-ui'; ctx.textAlign = 'left';
+        ctx.fillStyle = northWarm ? '#f97316' : '#3b82f6';
+        ctx.fillText(`Northern Hemisphere: ${northWarm ? 'Summer (>12h sunlight)' : 'Winter (<12h sunlight)'}`, 20, 245);
+        ctx.fillStyle = northWarm ? '#3b82f6' : '#f97316';
+        ctx.fillText(`Southern Hemisphere: ${northWarm ? 'Winter (<12h sunlight)' : 'Summer (>12h sunlight)'}`, 20, 263);
+
+        obs.innerHTML = isJune
+          ? '<strong>June: the Northern Hemisphere tilts toward the Sun.</strong> It receives more intense, longer sunlight — summer there — while the Southern Hemisphere (tilted away) has winter.'
+          : '<strong>December: the Northern Hemisphere tilts away from the Sun.</strong> It receives less intense, shorter sunlight — winter there — while the Southern Hemisphere (tilted toward the Sun) has summer.';
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initEclipseTypeLab() {
+      const canvas = document.getElementById('eclipse-type-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-eclipse-type');
+      const obs = document.getElementById('eclipse-type-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const solar = sel.value === 'solar';
+        const cy = 140;
+        const sunX = 80, midX = 300, farX = 500;
+
+        ctx.beginPath(); ctx.arc(sunX, cy, 45, 0, Math.PI * 2);
+        ctx.fillStyle = '#fde047'; ctx.fill();
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText('Sun', sunX, cy + 65);
+
+        const midR = solar ? 16 : 55;
+        const farR = solar ? 55 : 16;
+        ctx.beginPath(); ctx.arc(midX, cy, midR, 0, Math.PI * 2);
+        ctx.fillStyle = solar ? '#94a3b8' : '#3b82f6'; ctx.fill();
+        ctx.fillText(solar ? 'Moon' : 'Earth', midX, cy + midR + 20);
+
+        ctx.beginPath(); ctx.arc(farX, cy, farR, 0, Math.PI * 2);
+        ctx.fillStyle = solar ? '#3b82f6' : '#94a3b8'; ctx.fill();
+        ctx.fillText(solar ? 'Earth' : 'Moon', farX, cy + farR + 20);
+
+        ctx.fillStyle = 'rgba(15,23,42,0.7)';
+        ctx.beginPath();
+        ctx.moveTo(midX, cy - midR * 0.5);
+        ctx.lineTo(farX - farR * 0.4, cy - farR * 0.5);
+        ctx.lineTo(farX - farR * 0.4, cy + farR * 0.5);
+        ctx.lineTo(midX, cy + midR * 0.5);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(solar ? 'Solar Eclipse' : 'Lunar Eclipse', W / 2, 20);
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(solar ? 'Moon’s shadow blocks sunlight from reaching part of the Earth' : 'Earth’s shadow blocks sunlight from reaching the Moon', W / 2, 240);
+
+        obs.innerHTML = solar
+          ? '<strong>Solar eclipse.</strong> The Moon passes between the Sun and the Earth, casting its shadow on part of the Earth’s surface — observers there see the Sun blocked, partially or totally.'
+          : '<strong>Lunar eclipse.</strong> The Earth passes between the Sun and the Moon, casting its shadow onto the Moon — observers on the night side of Earth see the Moon darkened, partially or totally.';
       }
 
       sel.addEventListener('change', draw);

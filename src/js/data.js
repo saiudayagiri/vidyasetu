@@ -7573,6 +7573,287 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "7s-12",
+              title: "Earth, Moon, and the Sun",
+              topics: [
+                {
+                  id: "7s-12-1",
+                  title: "1. Rotation of the Earth and the Day-Night Cycle",
+                  lab: { type: "earth-rotation-daynight-sim" },
+                  theory: {
+                    intro: "Watching coconut tree shadows shrink from morning to afternoon raises a very old question: does the Sun really move across the sky, or is it the Earth quietly spinning beneath our feet?",
+                    sections: [
+                      {
+                        heading: "Why the Sun Appears to Move",
+                        text: "Riding a merry-go-round facing outward and turning anti-clockwise makes a fixed tree appear to move in the opposite (clockwise) direction around you — from your left to your right. In the same way, the Sun appears to rise in the East, cross the sky, and set in the West because the Earth itself is rotating (turning on its own axis), not because the Sun is actually moving around us."
+                      },
+                      {
+                        heading: "The Earth's Rotation",
+                        text: "The Earth spins on its own axis — an imaginary line passing through its North and South Poles — completing one rotation in about 24 hours. Viewed from above the North Pole, the Earth rotates anti-clockwise, that is, from West to East. Shining a torch (representing the Sun) on a globe shows that only half the globe is lit at any time — that half experiences daytime, while the other half experiences night."
+                      },
+                      {
+                        heading: "The Changing View from the Equator",
+                        text: "For someone standing on the Equator as the Earth rotates West to East: the morning Sun appears in the East (to their right, if facing North); by noon, the Sun is overhead; by evening, the Sun disappears in the West (to their left); and at night, the stars become visible. Since the Earth's rotational axis points very close to the Pole Star, the Pole Star appears nearly stationary while all other stars (and the Moon) appear to rise in the East and set in the West, just like the Sun."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Modelling Day and Night with a Globe and Torch",
+                      objective: "To use a globe and a torch to demonstrate how the Earth's rotation causes the day-night cycle.",
+                      materials: ["A globe", "A torch", "A small sticker (to mark a location)", "A dark room"],
+                      steps: [
+                        "Place a small sticker on the globe to mark your own location.",
+                        "In a dark room, shine the torch on the globe from about 1.5 metres away, representing sunlight from the Sun.",
+                        "Observe that one half of the globe is lit (daytime) while the other half remains dark (night time).",
+                        "Slowly rotate the globe anti-clockwise (viewed from above the North Pole), and watch your marked location move from light to dark and back.",
+                        "Note when your location crosses from darkness into light (sunrise) and from light into darkness (sunset)."
+                      ],
+                      observation: "As the globe rotates from West to East, the marked location cycles between the lit half (daytime) and the dark half (night time) — confirming that the Earth's West-to-East rotation is what causes the day-night cycle."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does the Sun appear to rise in the East and set in the West?",
+                      options: ["Because the Sun physically moves around the Earth every day", "Because the Earth rotates on its own axis from West to East, making the Sun appear to move across the sky in the opposite sense", "Because the Earth is standing still and only the sky moves", "This is purely a coincidence with no real explanation"],
+                      answer: 1,
+                      explanation: "The Earth rotates from West to East; since we view the sky from the rotating Earth, the Sun appears to move from East to West across the sky, similar to how a fixed tree appears to move past someone on a spinning merry-go-round."
+                    },
+                    {
+                      question: "In which direction does the Earth rotate, when viewed from above the North Pole?",
+                      options: ["Clockwise", "Anti-clockwise (West to East)", "It does not rotate at all", "The direction changes every day"],
+                      answer: 1,
+                      explanation: "Viewed from above the North Pole, the Earth rotates anti-clockwise, which corresponds to a West-to-East rotation."
+                    },
+                    {
+                      question: "About how long does the Earth take to complete one full rotation on its axis?",
+                      options: ["About 1 hour", "About 24 hours", "About 1 week", "About 1 year"],
+                      answer: 1,
+                      explanation: "The Earth completes one full rotation on its axis in about 24 hours, which defines the length of one day."
+                    },
+                    {
+                      question: "In the globe-and-torch activity, what does the dark half of the globe represent?",
+                      options: ["A place with no atmosphere", "Night time — the half of the Earth not currently facing the Sun", "A place that never experiences daytime", "A malfunction in the model"],
+                      answer: 1,
+                      explanation: "The globe's dark half (not illuminated by the torch) represents night time, since that portion of the Earth is turned away from the Sun at that moment."
+                    },
+                    {
+                      question: "Why does the Pole Star appear to stay nearly stationary in the night sky, while other stars appear to move around it?",
+                      options: ["The Pole Star does not actually exist", "The Earth's axis of rotation points very close to the direction of the Pole Star, so it appears fixed while the Earth (and our view) rotates around that axis", "The Pole Star is much closer to Earth than other stars", "All stars actually orbit the Pole Star physically"],
+                      answer: 1,
+                      explanation: "Since the Earth's rotational axis points nearly toward the Pole Star, it appears to stay in roughly the same spot in the sky, while the Earth's rotation makes all other stars appear to circle around it."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-12-2",
+                  title: "2. Revolution of the Earth and the Changing Night Sky",
+                  theory: {
+                    intro: "The Earth doesn't just spin in place — it's also racing around the Sun on a year-long journey, which is why the constellations you see after sunset slowly shift throughout the year.",
+                    sections: [
+                      {
+                        heading: "Rotation vs. Revolution",
+                        text: "While rotating on its own axis, the Earth also revolves around the Sun — a completely different kind of motion. Revolution is the motion of an object around another object; the path an object takes while revolving is called its orbit. Viewed from above, the Earth's orbit around the Sun is nearly circular, and the Earth completes one revolution in about 365 days and 6 hours (one year)."
+                      },
+                      {
+                        heading: "Why the Night Sky Changes Throughout the Year",
+                        text: "Every evening, the Sun sets in the West and the night sky becomes visible due to the Earth's rotation. But since the Earth is also continuously revolving around the Sun, we end up looking toward different parts of space at sunset on different days of the year. As a result, the stars visible in the night sky right after sunset gradually change over the course of a year — this can be noticed by observing the star patterns at a fixed time of night, on days a month apart."
+                      },
+                      {
+                        heading: "Stars as Seasonal and Cultural Markers",
+                        text: "Because certain stars and constellations become visible at predictable times of year, various cultures have used them as calendars or signals — for example, the Bhil and Pawara communities of the Tapi Valley in western India traditionally used the appearance of specific star patterns to mark the arrival of the monsoon rains."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tracking the Changing Night Sky Over Time",
+                      objective: "To observe how the pattern of visible stars at a fixed time of night changes over the course of a month, due to the Earth's revolution.",
+                      materials: ["A clear view of the night sky", "A notebook to record star patterns", "A consistent observation time each night"],
+                      steps: [
+                        "Choose a fixed time each night (for example, 8 PM) to observe the sky in a particular direction.",
+                        "Sketch the pattern of visible stars or constellations you can identify at that time, and note the date.",
+                        "Repeat this observation at the same time of night, but on a date about a month later.",
+                        "Compare your two sketches — are the same stars/constellations in the same position, or have they shifted?",
+                        "Discuss how the Earth's revolution around the Sun explains any change you observe."
+                      ],
+                      observation: "The star patterns visible at the same time of night shift gradually from month to month, since the Earth's continuous revolution around the Sun changes which direction of space we are facing after sunset."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the key difference between 'rotation' and 'revolution'?",
+                      options: ["They are exactly the same motion", "Rotation is spinning on one's own axis; revolution is moving around another object, following an orbit", "Revolution only applies to the Moon, not the Earth", "Rotation only happens once a year"],
+                      answer: 1,
+                      explanation: "Rotation refers to an object spinning around its own axis, while revolution refers to an object moving around a different object, tracing out an orbit."
+                    },
+                    {
+                      question: "About how long does the Earth take to complete one revolution around the Sun?",
+                      options: ["About 24 hours", "About one month", "About 365 days and 6 hours (one year)", "About 10 years"],
+                      answer: 2,
+                      explanation: "The Earth takes approximately 365 days and 6 hours — one year — to complete a full revolution (orbit) around the Sun."
+                    },
+                    {
+                      question: "What is an object's 'orbit'?",
+                      options: ["The axis around which it spins", "The path it takes while revolving around another object", "A synonym for rotation", "The distance from the Sun at a single moment"],
+                      answer: 1,
+                      explanation: "An orbit is specifically the path traced out by an object as it revolves around another object, such as the Earth's nearly circular path around the Sun."
+                    },
+                    {
+                      question: "Why do the stars visible in the night sky (right after sunset) gradually change over the course of a year?",
+                      options: ["Stars physically move to new locations in space every night", "As the Earth revolves around the Sun, we face different directions in space at sunset on different days of the year, revealing different parts of the sky", "The night sky never actually changes", "This has nothing to do with the Earth's motion"],
+                      answer: 1,
+                      explanation: "As the Earth orbits the Sun, our position (and the direction we face at sunset) continuously shifts, so different stars become visible in the evening sky at different times of the year."
+                    },
+                    {
+                      question: "How did the Bhil and Pawara communities traditionally use the changing night sky?",
+                      options: ["To build calendars for religious festivals only", "To mark the arrival of the monsoon rains, based on the appearance of certain star patterns", "They did not observe the night sky at all", "To track ocean tides"],
+                      answer: 1,
+                      explanation: "The Bhil and Pawara communities of the Tapi Valley traditionally used the appearance of specific star patterns in the sky as a marker for the arrival of the monsoon season."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-12-3",
+                  title: "3. Seasons on the Earth",
+                  lab: { type: "earth-tilt-seasons-sim" },
+                  theory: {
+                    intro: "Summer isn't caused by Earth getting closer to the Sun — it's the planet's permanent tilt, quietly pointing one hemisphere toward the Sun for half the year and away for the other half.",
+                    sections: [
+                      {
+                        heading: "The Tilt of the Earth's Axis",
+                        text: "The Earth's axis of rotation is not upright relative to its orbit — it is tilted, and the Earth maintains this same tilt throughout its journey around the Sun. This tilt, combined with the Earth's spherical shape, is what causes seasons. In June, the Northern Hemisphere is tilted toward the Sun (while the Southern Hemisphere tilts away); in December, the situation reverses."
+                      },
+                      {
+                        heading: "Why Tilt Causes Seasons",
+                        text: "When a hemisphere is tilted toward the Sun, the same amount of sunlight spreads over a smaller area there (making it more intense), and that hemisphere receives sunlight for MORE than 12 hours a day — both effects combine to create summer. The opposite hemisphere, tilted away, receives less intense, shorter sunlight — creating winter. Two commonly believed but INCORRECT explanations for seasons are that the tilted hemisphere is 'closer' to the Sun, or that Earth's orbit brings it closer/farther over the year — in fact, Earth is actually closest to the Sun in January, which has nothing to do with the season occurring then."
+                      },
+                      {
+                        heading: "Solstices, Equinoxes, and the Equator",
+                        text: "In the Northern Hemisphere, the longest day (around 21 June) is the summer solstice, and the shortest day (around 22 December) is the winter solstice; around 21 March and 23 September, day and night are each 12 hours long — the spring and autumn equinoxes. The seasons and day-lengths are exactly reversed in the Southern Hemisphere. At the Equator, day and night are always close to 12 hours each, with little seasonal variation in sunlight intensity — which is why seasons are less noticeable in southern India, which lies close to the Equator."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Modelling Why the Tilt of the Earth Causes Seasons",
+                      objective: "To use a tilted globe and a lamp to observe how sunlight distribution changes between hemispheres at different points in Earth's orbit.",
+                      materials: ["A globe (mounted with a tilted axis)", "An electric lamp (to represent the Sun)", "A marked circular path around the lamp"],
+                      steps: [
+                        "Place the globe at different positions along a circular path around the lamp, always keeping the same tilt direction (as the real Earth does).",
+                        "At each position, observe how much of the Northern Hemisphere versus the Southern Hemisphere is illuminated by the lamp.",
+                        "Rotate the globe at each position and note the relative length of daytime versus night-time for a fixed location in each hemisphere.",
+                        "Compare the June-like position (Northern Hemisphere tilted toward the lamp) with the December-like position (tilted away).",
+                        "Discuss how the changing illumination and day-length patterns relate to the seasons."
+                      ],
+                      observation: "At the position representing June, the Northern Hemisphere is more illuminated and experiences longer daytime (summer there), while the Southern Hemisphere is less illuminated with shorter daytime (winter there) — and this pattern reverses at the December-like position, confirming that the Earth's constant tilt (not distance from the Sun) causes the seasons."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the primary cause of seasons on Earth?",
+                      options: ["The Earth moving closer to and farther from the Sun throughout the year", "The tilt of the Earth's axis of rotation, combined with its spherical shape, as it revolves around the Sun", "The Moon's gravitational pull", "Random weather patterns with no astronomical cause"],
+                      answer: 1,
+                      explanation: "Seasons are caused by the Earth's axial tilt (maintained throughout its orbit) combined with its spherical shape — NOT by changes in distance from the Sun, which are actually very small and unrelated to the timing of seasons."
+                    },
+                    {
+                      question: "In June, which hemisphere is tilted toward the Sun, and what season does it experience?",
+                      options: ["The Southern Hemisphere; winter", "The Northern Hemisphere; summer", "The Northern Hemisphere; winter", "Neither hemisphere is tilted in June"],
+                      answer: 1,
+                      explanation: "In June, the Northern Hemisphere is tilted toward the Sun, receiving more intense and longer sunlight, resulting in the summer season there."
+                    },
+                    {
+                      question: "During which month is the Earth actually closest to the Sun?",
+                      options: ["June", "December", "January", "September"],
+                      answer: 2,
+                      explanation: "The Earth is actually closest to the Sun in January — this is unrelated to the Northern Hemisphere's winter season occurring around that time, confirming that distance from the Sun is NOT what causes seasons."
+                    },
+                    {
+                      question: "What is the 'summer solstice' in the Northern Hemisphere?",
+                      options: ["The shortest day of the year, around 22 December", "The longest day of the year, occurring around 21 June", "A day when day and night are exactly equal", "A day that only occurs in the Southern Hemisphere"],
+                      answer: 1,
+                      explanation: "The summer solstice in the Northern Hemisphere is the longest day of the year, occurring around 21 June."
+                    },
+                    {
+                      question: "Why are seasons less noticeable in places near the Equator, like southern India?",
+                      options: ["The Equator has no sunlight at all", "At the Equator, day and night remain close to 12 hours each year-round, with little seasonal variation in sunlight intensity", "The Equator experiences the most extreme seasons of anywhere on Earth", "Seasons do not exist anywhere on Earth"],
+                      answer: 1,
+                      explanation: "Locations near the Equator experience roughly 12 hours of daylight and 12 hours of night throughout the year, with little variation in sunlight intensity, making seasonal changes far less pronounced than at higher latitudes."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-12-4",
+                  title: "4. Eclipses: Solar and Lunar",
+                  lab: { type: "eclipse-type-sim" },
+                  theory: {
+                    intro: "The Moon is hundreds of times smaller than the Sun, yet it can completely blot it out from view — a cosmic coincidence of size and distance that also gives us two very different kinds of eclipses.",
+                    sections: [
+                      {
+                        heading: "Why the Moon Can Block the Sun",
+                        text: "Holding your thumb at arm's length can completely cover a distant friend's head, even though your thumb is much smaller — because apparent size depends on both actual size AND distance. Similarly, though the Moon is much smaller than the Sun, it is also much closer to Earth, so the Moon and Sun have similar APPARENT sizes in our sky — allowing the Moon to completely cover the Sun during certain alignments."
+                      },
+                      {
+                        heading: "Solar Eclipse",
+                        text: "A solar eclipse occurs when the Moon comes between the Sun and the Earth, blocking sunlight from reaching parts of Earth's surface. Where the Moon's shadow falls completely, observers see a total solar eclipse (complete darkness, no part of the Sun visible); where only part of the Sun is blocked, observers see a partial solar eclipse. Because the Moon's shadow is small and constantly moving (due to Earth's rotation and the Moon's orbit), a total solar eclipse is visible only briefly, from a small part of the Earth. IMPORTANT: never look directly at a solar eclipse — even during the eclipse, the Sun remains intense enough to cause permanent eye damage; safe viewing requires special eclipse goggles or organised viewing events, never sunglasses, binoculars, or telescopes."
+                      },
+                      {
+                        heading: "Lunar Eclipse",
+                        text: "A lunar eclipse occurs when the Earth comes between the Sun and the Moon, blocking sunlight from reaching the Moon — we see the Earth's shadow fall on the Moon's disc. When the Moon is completely within Earth's shadow, it's a total lunar eclipse (the Moon appears dark red); when only part of the Moon is shadowed, it's a partial lunar eclipse. Unlike a solar eclipse, it is completely safe to view a lunar eclipse directly with the naked eye, and it can be seen from a much larger part of the Earth at once (since Earth's shadow is far larger than the Moon's)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Demonstrating Why a Small Moon Can Block a Large Sun",
+                      objective: "To demonstrate, using a thumb and a distant friend, how apparent size (not actual size) determines whether one object can visually block another.",
+                      materials: ["A friend to stand about 5 metres away", "Your own outstretched thumb"],
+                      steps: [
+                        "Ask a friend to stand about 5 metres in front of you, representing the Sun (using their head as a reference).",
+                        "Close one eye, and hold your thumb out at arm's length toward your friend, giving a thumbs-up gesture.",
+                        "Check whether your thumb, despite being much smaller than your friend's head, can completely cover it from your view.",
+                        "Move your thumb closer to your eye (without moving your friend) and observe how the effect changes.",
+                        "Relate this observation to how the much-smaller Moon can completely block the much-larger Sun during a solar eclipse."
+                      ],
+                      observation: "Even though the thumb is far smaller than the friend's actual head, holding it much closer to your eye makes its apparent size similar to the friend's head, allowing it to completely cover the view — demonstrating exactly why the Moon (much smaller than the Sun, but much closer to Earth) can completely block the Sun during a total solar eclipse."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'solar eclipse'?",
+                      options: ["When the Earth comes between the Sun and the Moon", "When the Moon comes between the Sun and the Earth, blocking sunlight from reaching parts of Earth", "When the Moon disappears completely from the sky", "A monthly event that always covers the entire Earth"],
+                      answer: 1,
+                      explanation: "A solar eclipse occurs when the Moon passes between the Sun and the Earth, blocking sunlight from reaching certain areas of Earth's surface."
+                    },
+                    {
+                      question: "Why can the Moon, despite being much smaller than the Sun, completely block it during a total solar eclipse?",
+                      options: ["The Moon is actually larger than the Sun", "The Moon's much closer distance to Earth gives it a similar apparent size to the Sun, as seen from Earth", "This is a special effect with no physical explanation", "The Sun temporarily shrinks during an eclipse"],
+                      answer: 1,
+                      explanation: "Apparent size depends on both actual size and distance; since the Moon is far closer to Earth than the Sun is, its much smaller actual size is compensated by its closeness, giving it a similar apparent size to the Sun."
+                    },
+                    {
+                      question: "What is a 'lunar eclipse'?",
+                      options: ["When the Moon blocks the Sun from Earth's view", "When the Earth comes between the Sun and the Moon, blocking sunlight from reaching the Moon", "When the Moon crashes into the Earth", "A rare event that has never actually been observed"],
+                      answer: 1,
+                      explanation: "A lunar eclipse occurs when the Earth passes between the Sun and the Moon, causing the Earth's shadow to fall on the Moon's surface."
+                    },
+                    {
+                      question: "Is it safe to look directly at a solar eclipse with the naked eye?",
+                      options: ["Yes, since the Moon blocks most of the Sun's harmful rays", "No — the Sun remains intense enough during an eclipse to cause serious eye damage, so direct viewing must always be avoided", "Yes, but only during a total solar eclipse", "It depends on the time of day"],
+                      answer: 1,
+                      explanation: "Even during an eclipse, the Sun is intense enough to cause permanent eye damage; direct viewing (or viewing through sunglasses, binoculars, or telescopes) must be strictly avoided — only certified eclipse goggles or organised safe-viewing events should be used."
+                    },
+                    {
+                      question: "Why can a lunar eclipse be seen from a much larger part of the Earth than a total solar eclipse?",
+                      options: ["Lunar eclipses do not actually have a limited visible area", "The Earth's shadow (which causes a lunar eclipse) is far larger than the Moon's shadow (which causes a solar eclipse), so more of the Earth can be within view of the eclipsed Moon at once", "Solar eclipses are actually visible from the whole Earth too", "This has nothing to do with the size of the shadows involved"],
+                      answer: 1,
+                      explanation: "Since the Earth is much larger than the Moon, its shadow (cast during a lunar eclipse) is correspondingly larger and more far-reaching than the Moon's small shadow during a solar eclipse — allowing far more of the Earth's night side to witness a lunar eclipse simultaneously."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
