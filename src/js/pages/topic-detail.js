@@ -2192,6 +2192,53 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const physicalChemicalChangeClassifierLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="pcc-classifier-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an everyday change and see whether it's physical or chemical.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Change</h3>
+            <select id="sel-pcc-change" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Folding a sheet of paper</option>
+              <option value="1">Ice melting into water</option>
+              <option value="2">Blowing breath into lime water</option>
+              <option value="3">Mixing vinegar with baking soda</option>
+              <option value="4">Iron nail rusting</option>
+              <option value="5">Chopping vegetables</option>
+              <option value="6">Burning magnesium ribbon</option>
+              <option value="7">Crushing chalk into powder</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Verdict</h3>
+            <div id="pcc-classifier-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a change above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const fireTriangleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="fire-triangle-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Toggle the three requirements and see if combustion happens.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Fire Triangle Requirements</h3>
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;color:var(--text-normal);margin-bottom:0.5rem;"><input type="checkbox" id="chk-fire-fuel" checked> Combustible substance (fuel)</label>
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;color:var(--text-normal);margin-bottom:0.5rem;"><input type="checkbox" id="chk-fire-oxygen" checked> Oxygen</label>
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;color:var(--text-normal);"><input type="checkbox" id="chk-fire-heat" checked> Heat to ignition temperature</label>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="fire-triangle-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Toggle the requirements above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -3961,6 +4008,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'conduction-comparison-sim') {
               labHtml = conductionComparisonLabHtml;
               labDesc = 'Pick a material and see its heat and electrical conduction test results side by side.';
+            } else if (topicObj.lab.type === 'physical-chemical-change-classifier-sim') {
+              labHtml = physicalChemicalChangeClassifierLabHtml;
+              labDesc = 'Pick an everyday change and see whether it is a physical change or a chemical change, and why.';
+            } else if (topicObj.lab.type === 'fire-triangle-sim') {
+              labHtml = fireTriangleLabHtml;
+              labDesc = 'Toggle fuel, oxygen, and heat on or off and see whether combustion can occur.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4348,6 +4401,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initMetalPropertyTesterLab();
         } else if (topicObj.lab.type === 'conduction-comparison-sim') {
           initConductionComparisonLab();
+        } else if (topicObj.lab.type === 'physical-chemical-change-classifier-sim') {
+          initPhysicalChemicalChangeClassifierLab();
+        } else if (topicObj.lab.type === 'fire-triangle-sim') {
+          initFireTriangleLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -15883,6 +15940,147 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPhysicalChemicalChangeClassifierLab() {
+      const canvas = document.getElementById('pcc-classifier-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-pcc-change');
+      const obs = document.getElementById('pcc-classifier-obs');
+      const CHANGES = [
+        { name: 'Folding a sheet of paper', chemical: false, beforeColor: '#f5f0e1', afterColor: '#f5f0e1', beforeLabel: 'Flat paper', afterLabel: 'Folded paper', reason: 'The paper is folded into a new shape, but it is still the exact same paper — no new substance forms.' },
+        { name: 'Ice melting into water', chemical: false, beforeColor: '#bfdbfe', afterColor: '#bfdbfe', beforeLabel: 'Ice (solid)', afterLabel: 'Water (liquid)', reason: 'Only the state changes from solid to liquid — it remains the same substance (water) throughout.' },
+        { name: 'Blowing breath into lime water', chemical: true, beforeColor: '#e0f2fe', afterColor: '#f8fafc', beforeLabel: 'Clear lime water', afterLabel: 'Milky calcium carbonate', reason: 'Carbon dioxide reacts with calcium hydroxide (lime water) to form calcium carbonate — a genuinely new, insoluble white substance.' },
+        { name: 'Mixing vinegar with baking soda', chemical: true, beforeColor: '#fef9c3', afterColor: '#cbd5e1', beforeLabel: 'Vinegar + baking soda', afterLabel: 'Carbon dioxide gas', reason: 'The reaction releases carbon dioxide gas, a new substance not present in either the vinegar or the baking soda before mixing.' },
+        { name: 'Iron nail rusting', chemical: true, beforeColor: '#94a3b8', afterColor: '#b45309', beforeLabel: 'Shiny iron', afterLabel: 'Reddish-brown rust', reason: 'Iron reacts with oxygen and moisture to form iron oxide (rust) — a new substance with different properties from iron.' },
+        { name: 'Chopping vegetables', chemical: false, beforeColor: '#4ade80', afterColor: '#4ade80', beforeLabel: 'Whole vegetable', afterLabel: 'Chopped pieces', reason: 'Chopping only changes the size and shape of the vegetable — it is still made of the same substance (though the change is irreversible).' },
+        { name: 'Burning magnesium ribbon', chemical: true, beforeColor: '#e5e7eb', afterColor: '#f8fafc', beforeLabel: 'Silvery magnesium', afterLabel: 'White magnesium oxide ash', reason: 'Magnesium reacts with oxygen to form magnesium oxide, releasing heat and light — combustion always forms a new substance.' },
+        { name: 'Crushing chalk into powder', chemical: false, beforeColor: '#f8fafc', afterColor: '#f8fafc', beforeLabel: 'Chalk stick', afterLabel: 'Chalk powder', reason: 'Crushing only changes the size/form of the chalk — the powder is still made of the same chalk material.' }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const item = CHANGES[parseInt(sel.value)];
+        const beforeX = 160, afterX = 440, cy = 130, r = 45;
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(item.name, W / 2, 26);
+
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('BEFORE', beforeX, cy - r - 14);
+        ctx.beginPath(); ctx.arc(beforeX, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = item.beforeColor; ctx.fill();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = '12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(item.beforeLabel, beforeX, cy + r + 22);
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(beforeX + r + 15, cy); ctx.lineTo(afterX - r - 15, cy); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(afterX - r - 25, cy - 8); ctx.lineTo(afterX - r - 15, cy); ctx.lineTo(afterX - r - 25, cy + 8); ctx.stroke();
+
+        ctx.beginPath();
+        if (item.chemical) {
+          const spikes = 10;
+          for (let i = 0; i < spikes * 2; i++) {
+            const ang = (Math.PI * 2 * i) / (spikes * 2);
+            const rad = i % 2 === 0 ? r : r * 0.72;
+            const x = afterX + rad * Math.cos(ang), y = cy + rad * Math.sin(ang);
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          }
+          ctx.closePath();
+        } else {
+          ctx.arc(afterX, cy, r, 0, Math.PI * 2);
+        }
+        ctx.fillStyle = item.afterColor; ctx.fill();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2; ctx.stroke();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('AFTER', afterX, cy - r - 14);
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = '12px system-ui';
+        ctx.fillText(item.afterLabel, afterX, cy + r + 22);
+
+        ctx.font = 'bold 17px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = item.chemical ? '#f97316' : cssVar('--accent-color');
+        ctx.fillText(item.chemical ? 'CHEMICAL CHANGE — new substance formed' : 'PHYSICAL CHANGE — same substance', W / 2, 235);
+
+        obs.innerHTML = `<strong>${item.chemical ? 'Chemical change.' : 'Physical change.'}</strong> ${item.reason}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initFireTriangleLab() {
+      const canvas = document.getElementById('fire-triangle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const chkFuel = document.getElementById('chk-fire-fuel');
+      const chkOxygen = document.getElementById('chk-fire-oxygen');
+      const chkHeat = document.getElementById('chk-fire-heat');
+      const obs = document.getElementById('fire-triangle-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const fuel = chkFuel.checked, oxygen = chkOxygen.checked, heat = chkHeat.checked;
+        const allThree = fuel && oxygen && heat;
+        const cx = W / 2, cy = 165, R = 100;
+        const verts = [
+          { label: 'Fuel', active: fuel, angle: -Math.PI / 2 },
+          { label: 'Oxygen', active: oxygen, angle: -Math.PI / 2 + (2 * Math.PI / 3) },
+          { label: 'Heat', active: heat, angle: -Math.PI / 2 + (4 * Math.PI / 3) }
+        ].map(v => ({ ...v, x: cx + R * Math.cos(v.angle), y: cy + R * Math.sin(v.angle) }));
+
+        for (let i = 0; i < 3; i++) {
+          const a = verts[i], b = verts[(i + 1) % 3];
+          const edgeLit = a.active && b.active;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = edgeLit ? cssVar('--accent-color') : cssVar('--text-muted');
+          ctx.lineWidth = edgeLit ? 4 : 2;
+          if (!edgeLit) ctx.setLineDash([6, 5]); else ctx.setLineDash([]);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+
+        verts.forEach(v => {
+          ctx.beginPath(); ctx.arc(v.x, v.y, 16, 0, Math.PI * 2);
+          ctx.fillStyle = v.active ? cssVar('--accent-color') : cssVar('--border-color');
+          ctx.fill();
+          ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 1.5; ctx.stroke();
+          ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          const labelY = v.y < cy ? v.y - 26 : v.y + 32;
+          ctx.fillText(v.label, v.x, labelY);
+        });
+
+        if (allThree) {
+          ctx.beginPath(); ctx.moveTo(cx, cy - 30);
+          ctx.bezierCurveTo(cx + 22, cy - 5, cx + 14, cy + 20, cx, cy + 30);
+          ctx.bezierCurveTo(cx - 14, cy + 20, cx - 22, cy - 5, cx, cy - 30);
+          ctx.fillStyle = '#f97316'; ctx.fill();
+          ctx.beginPath(); ctx.moveTo(cx, cy - 14);
+          ctx.bezierCurveTo(cx + 10, cy, cx + 6, cy + 14, cx, cy + 20);
+          ctx.bezierCurveTo(cx - 6, cy + 14, cx - 10, cy, cx, cy - 14);
+          ctx.fillStyle = '#fde047'; ctx.fill();
+          ctx.font = 'bold 18px system-ui'; ctx.fillStyle = '#f97316'; ctx.textAlign = 'center';
+          ctx.fillText('FIRE!', cx, cy + 65);
+        } else {
+          ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText('No Combustion', cx, cy + 5);
+        }
+
+        const missing = [];
+        if (!fuel) missing.push('a combustible substance (fuel)');
+        if (!oxygen) missing.push('oxygen');
+        if (!heat) missing.push('heat to reach ignition temperature');
+        obs.innerHTML = missing.length === 0
+          ? '<strong>All three sides of the fire triangle are present.</strong> Fuel, oxygen, and heat are all available together, so combustion occurs and the fire burns.'
+          : `<strong>Combustion cannot occur.</strong> Missing: ${missing.join(', ')}. The fire triangle is broken without ${missing.length > 1 ? 'these' : 'this'}, so there is no fire.`;
+      }
+
+      [chkFuel, chkOxygen, chkHeat].forEach(chk => chk.addEventListener('change', draw));
       draw();
     }
 

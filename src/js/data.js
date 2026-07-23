@@ -5616,6 +5616,282 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "7s-5",
+              title: "Changes Around Us: Physical and Chemical",
+              topics: [
+                {
+                  id: "7s-5-1",
+                  title: "1. Physical Changes: Same Substance, Different Appearance",
+                  theory: {
+                    intro: "Folding paper, popping a balloon, and crushing chalk all change how something looks — but in every case, the material itself remains exactly what it always was.",
+                    sections: [
+                      {
+                        heading: "Changing Appearance Without Changing the Substance",
+                        text: "Folding paper into new shapes, letting air escape from a balloon, and crushing chalk into powder all change the SIZE or SHAPE of the material — but unfolding the paper, or examining the rubber or chalk powder, confirms it's still the exact same substance. Water changing between solid (ice), liquid, and gas (vapour) states is another familiar example."
+                      },
+                      {
+                        heading: "Defining Physical Change",
+                        text: "Changes in which only physical properties — like shape, size, or state — change, WITHOUT forming any new substance, are called physical changes. The substance's fundamental identity remains completely unchanged, even though its appearance is different."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Identifying Physical Changes in Everyday Objects",
+                      objective: "To directly observe and confirm that folding, popping, and crushing change only the appearance of a material, not its fundamental identity.",
+                      materials: ["Sheets of paper", "A balloon", "A piece of chalk", "A pin"],
+                      steps: [
+                        "Fold a sheet of paper into a new shape (like a paper boat or plane), then unfold it and confirm it's the same original sheet of paper.",
+                        "Inflate a balloon, then loosen the opening to let the air escape slowly — observe the balloon return to (roughly) its original shape.",
+                        "Inflate a second balloon and carefully pop it with a pin (with caution) — note that this change cannot easily be reversed, though the rubber material itself is unchanged.",
+                        "Crush a small piece of chalk into powder, and examine whether the powder is still made of the same chalk material.",
+                        "For each activity, discuss: has the SUBSTANCE changed, or just its shape, size, or form?"
+                      ],
+                      observation: "In every case — folded paper, deflated or popped balloon, crushed chalk — the underlying material remains fundamentally the same substance, even though its shape or size has visibly changed, confirming these are all physical changes."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'physical change'?",
+                      options: ["A change in which a new substance is always formed", "A change in physical properties like shape, size, or state, without forming any new substance", "Any change that cannot be reversed", "A change that only happens to metals"],
+                      answer: 1,
+                      explanation: "A physical change alters properties like shape, size, or state (solid/liquid/gas), but the substance's fundamental identity stays the same — no new substance forms."
+                    },
+                    {
+                      question: "When a balloon is inflated and then deflated by releasing the air slowly, what has happened to the rubber material?",
+                      options: ["It has turned into a completely new substance", "It remains the same rubber material, just changed in shape/size temporarily", "It has been destroyed", "It becomes a metal"],
+                      answer: 1,
+                      explanation: "The rubber of the balloon is the same material throughout — inflating and deflating only changes its shape and size, not its fundamental substance."
+                    },
+                    {
+                      question: "Is crushing a piece of chalk into powder an example of a physical or chemical change?",
+                      options: ["Chemical change, since a new substance forms", "Physical change, since the chalk powder is still made of the same chalk material, just in smaller pieces", "Neither type of change applies", "This cannot be determined"],
+                      answer: 1,
+                      explanation: "Crushing chalk only changes its size/form into powder — the chemical composition of the chalk remains unchanged, making it a physical change."
+                    },
+                    {
+                      question: "Water changing between ice, liquid water, and water vapour is an example of what type of change?",
+                      options: ["A chemical change, since water becomes a new substance each time", "A physical change, since only the STATE changes while it remains water throughout", "Neither a physical nor chemical change", "This is not actually a real change"],
+                      answer: 1,
+                      explanation: "Water remains chemically the same substance (H₂O) in all three states — only its physical state changes, making this purely a physical change."
+                    },
+                    {
+                      question: "What is the key test for identifying whether a change is 'physical'?",
+                      options: ["Whether the change can be seen with the naked eye", "Whether NO new substance is formed, even though properties like shape, size, or state may change", "Whether the change happens quickly", "Whether the change involves heat"],
+                      answer: 1,
+                      explanation: "The defining feature of a physical change is that the substance's identity is preserved — no new substance forms, even if appearance changes."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-5-2",
+                  title: "2. Chemical Changes: New Substances Form",
+                  lab: { type: "physical-chemical-change-classifier-sim" },
+                  theory: {
+                    intro: "Blowing exhaled breath into lime water, or mixing vinegar with baking soda, both trigger something fundamentally different from a physical change: brand new substances are created that weren't there before.",
+                    sections: [
+                      {
+                        heading: "Blowing Breath into Lime Water",
+                        text: "Blowing air into plain water just creates bubbles with no other change. But blowing into LIME water creates bubbles AND turns the lime water milky/cloudy, eventually leaving a white substance at the bottom. This happens because carbon dioxide (from exhaled breath) reacts with lime water (calcium hydroxide) to form calcium carbonate (an insoluble white substance) and water: Calcium hydroxide + Carbon dioxide → Calcium carbonate + Water. Since a genuinely NEW substance forms, this is a chemical change — and this milky-lime-water reaction is used as a standard TEST for detecting carbon dioxide gas."
+                      },
+                      {
+                        heading: "Vinegar and Baking Soda",
+                        text: "Mixing vinegar (or lemon juice) with baking soda produces a fizzing, bubbling reaction, releasing carbon dioxide gas (confirmed by turning lime water milky when passed through it): Vinegar + Baking soda → Carbon dioxide + Other substances. Since carbon dioxide is a genuinely new substance, this is also a chemical change. (Simply mixing baking soda with water, without vinegar, produces NO bubbling — showing that reaction requires both particular substances together, not just any liquid.)"
+                      },
+                      {
+                        heading: "Rusting as a Chemical Change",
+                        text: "The rusting of iron (studied in the previous chapter) forms a new brown substance — iron oxide (rust) — making rusting a chemical change, just like the lime water and vinegar-baking soda reactions."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing for Carbon Dioxide Using Lime Water",
+                      objective: "To perform the classic vinegar-and-baking-soda reaction, confirming the released gas is carbon dioxide by its effect on lime water.",
+                      materials: ["Vinegar or lemon juice", "Baking soda", "Freshly prepared lime water", "Two test tubes or small bottles", "A flexible straw or tube"],
+                      steps: [
+                        "Add a teaspoonful of vinegar (or lemon juice) to a test tube.",
+                        "Add a pinch of baking soda to the vinegar and observe the fizzing, bubbling reaction.",
+                        "Using a flexible tube, direct the gas produced into a second test tube containing freshly prepared lime water.",
+                        "Observe whether the lime water turns milky or cloudy.",
+                        "For comparison, mix baking soda with plain water (no vinegar) and check whether any bubbling occurs."
+                      ],
+                      observation: "Mixing vinegar and baking soda produces vigorous bubbling and releases a gas that turns lime water milky — confirming carbon dioxide is formed, and that a genuine chemical change (not just mixing) has occurred, since baking soda in plain water alone shows no such reaction."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'chemical change'?",
+                      options: ["A change in which no new substance ever forms", "A change in which one or more new substances are formed", "A change that only happens to gases", "Any change that can be seen"],
+                      answer: 1,
+                      explanation: "A chemical change is specifically defined by the formation of new substance(s), as opposed to a physical change where the original substance's identity is preserved."
+                    },
+                    {
+                      question: "Why does blowing exhaled air into lime water turn it milky, while blowing into plain water does not?",
+                      options: ["Plain water always turns milky too", "Carbon dioxide from exhaled breath reacts with lime water to form insoluble calcium carbonate, making it milky; plain water has no such reaction", "Lime water always looks milky regardless", "This is purely a physical change with no new substance"],
+                      answer: 1,
+                      explanation: "The carbon dioxide in exhaled breath chemically reacts with the calcium hydroxide in lime water, forming calcium carbonate (insoluble, making the water milky) — a genuine chemical change absent when blowing into plain water."
+                    },
+                    {
+                      question: "What gas is produced when vinegar is mixed with baking soda?",
+                      options: ["Oxygen", "Carbon dioxide", "Nitrogen", "Hydrogen"],
+                      answer: 1,
+                      explanation: "Mixing vinegar and baking soda produces carbon dioxide gas, confirmed by its ability to turn lime water milky when passed through it."
+                    },
+                    {
+                      question: "Why is the milky-lime-water reaction used as a 'test' for a specific gas?",
+                      options: ["It tests for the presence of any gas at all", "It specifically confirms the presence of carbon dioxide, since only CO2 reacts with lime water to form the visible milky calcium carbonate", "It has no practical use", "It tests for the presence of water only"],
+                      answer: 1,
+                      explanation: "Since lime water reliably turns milky specifically in the presence of carbon dioxide (forming calcium carbonate), this reaction serves as a standard chemical test to confirm CO2 is present."
+                    },
+                    {
+                      question: "Why is rusting of iron classified as a chemical change?",
+                      options: ["Because it only changes the shape of the iron", "Because it forms a genuinely new substance — iron oxide (rust) — which wasn't present before", "Because rusting can be easily reversed", "Rusting is not actually a real chemical process"],
+                      answer: 1,
+                      explanation: "Rusting forms iron oxide, a new substance distinct from the original iron — this formation of a new substance is exactly what defines a chemical change."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-5-3",
+                  title: "3. Combustion: Fire and its Requirements",
+                  lab: { type: "fire-triangle-sim" },
+                  theory: {
+                    intro: "Fire seems almost magical, but it always needs exactly three specific ingredients together — remove even one, and combustion simply cannot happen.",
+                    sections: [
+                      {
+                        heading: "What Is Combustion?",
+                        text: "Burning magnesium ribbon forms magnesium oxide, releasing heat and light: Magnesium + Oxygen → Magnesium oxide + Heat + Light. A chemical reaction where a substance reacts with oxygen to produce heat and/or light is called combustion. Substances that undergo combustion are called combustible substances (like wood, paper, cotton, and kerosene)."
+                      },
+                      {
+                        heading: "Oxygen Is Essential for Combustion",
+                        text: "Covering a burning candle with a glass tumbler cuts off its air supply, and the flame soon extinguishes — while an uncovered candle keeps burning. Testing the air inside the tumbler afterward with lime water confirms carbon dioxide is present (from the wax's carbon combining with the air's oxygen), proving that oxygen is required for combustion to continue."
+                      },
+                      {
+                        heading: "The Fire Triangle: Three Requirements for Combustion",
+                        text: "Paper doesn't catch fire just sitting in air, even though it's combustible and oxygen is present — it also needs enough HEAT to reach its ignition temperature (the minimum temperature at which a substance catches fire). Focusing sunlight with a magnifying glass onto paper eventually heats it past its ignition point, making it catch fire without any flame ever touching it. Combustion therefore requires THREE things together: (i) a combustible substance (fuel), (ii) oxygen, and (iii) heat to reach the ignition temperature — together called the fire triangle."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing the Effect of Removing Air on a Flame",
+                      objective: "To observe firsthand how cutting off the oxygen supply extinguishes a flame, confirming oxygen's essential role in combustion.",
+                      materials: ["Two identical candles", "Two petri dishes", "A glass tumbler", "Lime water", "Matches (with adult supervision)"],
+                      steps: [
+                        "With adult supervision, light two identical candles, each on its own petri dish.",
+                        "Leave one candle uncovered, and cover the other completely with an inverted glass tumbler.",
+                        "Observe both flames over the next minute or two, noting what happens to each.",
+                        "After the covered candle's flame extinguishes, carefully add a small amount of lime water to the air trapped in that petri dish/tumbler and check if it turns milky.",
+                        "Discuss why the covered candle went out, and what the lime water test reveals about what was produced."
+                      ],
+                      observation: "The uncovered candle continues burning steadily, while the covered candle's flame extinguishes once its limited oxygen supply is used up — and the lime water turning milky confirms carbon dioxide was produced, proving that oxygen was indeed being consumed by the combustion process."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 'combustion'?",
+                      options: ["Any change in the shape of a substance", "A chemical reaction in which a substance reacts with oxygen, producing heat and/or light", "The process of freezing a liquid", "A type of physical change only"],
+                      answer: 1,
+                      explanation: "Combustion is specifically the chemical reaction of a substance with oxygen that releases heat and/or light, as seen in burning magnesium or a candle flame."
+                    },
+                    {
+                      question: "Why does a candle's flame go out when covered with a glass tumbler?",
+                      options: ["The glass tumbler is too cold", "The limited air supply inside the tumbler runs out of oxygen, which is required for combustion to continue", "Covering a candle always makes it burn brighter", "Glass tumblers extinguish flames through a physical effect only"],
+                      answer: 1,
+                      explanation: "The sealed tumbler cuts off the continuous air supply; once the trapped oxygen is used up, combustion can no longer continue, and the flame extinguishes."
+                    },
+                    {
+                      question: "What is 'ignition temperature'?",
+                      options: ["The temperature at which all substances freeze", "The minimum temperature at which a substance catches fire", "The temperature of a lit matchstick specifically", "A temperature that has no relevance to combustion"],
+                      answer: 1,
+                      explanation: "Ignition temperature is the specific minimum temperature a combustible substance must reach before it will catch fire and combustion begins."
+                    },
+                    {
+                      question: "What are the THREE requirements of the 'fire triangle' needed for combustion?",
+                      options: ["Water, air, and fuel", "A combustible substance (fuel), oxygen, and heat to reach ignition temperature", "Only fuel and water", "Light, sound, and heat"],
+                      answer: 1,
+                      explanation: "Combustion requires all three together: a combustible substance (fuel), oxygen, and sufficient heat to bring the fuel to its ignition temperature."
+                    },
+                    {
+                      question: "Why doesn't paper catch fire just sitting in ordinary air at room temperature, even though it's combustible and oxygen is present?",
+                      options: ["Paper is not actually combustible", "Room temperature air doesn't provide enough heat to raise the paper to its ignition temperature", "Oxygen isn't actually needed for paper to burn", "This is impossible to explain"],
+                      answer: 1,
+                      explanation: "Even with fuel (paper) and oxygen present, combustion also requires enough HEAT to reach the ignition temperature — ordinary room temperature isn't hot enough, so the paper doesn't spontaneously combust."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-5-4",
+                  title: "4. Reversibility, Desirability, and Slow Natural Changes",
+                  theory: {
+                    intro: "Some changes can be undone, some cannot; some changes help us, others cause harm — and over thousands of years, slow physical and chemical changes reshape entire landscapes through weathering and erosion.",
+                    sections: [
+                      {
+                        heading: "Reversible vs. Irreversible Changes",
+                        text: "Some changes can be reversed — melted ice can be refrozen, and evaporated water can be condensed back to liquid. Other changes CANNOT be reversed — chopped vegetables cannot be un-chopped, and popcorn cannot return to its original corn kernel form. Changes around us can be grouped into these two broad categories: reversible and irreversible."
+                      },
+                      {
+                        heading: "Desirable vs. Undesirable Changes",
+                        text: "Many changes are useful and desirable — milk turning into curd, fruit ripening, and food cooking. Others are undesirable — like iron rusting, or food decaying during storage. Interestingly, the SAME kind of change can be desirable in one context but undesirable in another: food decomposition is undesirable for stored food, but very useful for converting food waste into compost. Human activities can also cause long-term undesirable changes, like increasing atmospheric carbon dioxide from burning fuels, or pollution from evaporating paint."
+                      },
+                      {
+                        heading: "Weathering and Erosion: Slow Natural Changes",
+                        text: "Weathering is the combination of physical changes (temperature swings, growing tree roots, freezing water cracking rocks) AND chemical changes (water or air reacting with rock minerals, like iron in basalt forming red iron oxide) that break down large rocks into smaller sediments over time, eventually forming soil. Erosion is the process by which broken-down rock, soil, and sediment are transported elsewhere by wind or flowing water — smoothing river pebbles and eventually depositing sediments that harden into new rocks. Most of these changes take thousands of years and are essentially irreversible on a human timescale."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Classifying Changes as Reversible/Irreversible and Desirable/Undesirable",
+                      objective: "To categorise a list of familiar changes along two independent dimensions: whether they can be reversed, and whether they are generally desirable.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "List at least 8 changes from daily life (e.g., melting ice, rusting iron, ripening fruit, burning wood, boiling water, chopping vegetables).",
+                        "For each change, decide: can the original substance/object be recovered (reversible) or not (irreversible)?",
+                        "For each change, also decide: is this change generally desirable, undesirable, or does it depend on context?",
+                        "Organise your findings into a table with columns: Change | Reversible? | Desirable?",
+                        "Discuss any change where the 'desirable' answer depends heavily on context (like food decomposition being bad for stored food but good for composting)."
+                      ],
+                      observation: "Reversibility and desirability turn out to be two SEPARATE, independent properties of a change — some reversible changes are undesirable (like a toy breaking, if it could be 'reversed'... i.e. some irreversible changes are desirable, like cooking food) — showing these two ways of categorising changes don't always align."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Which of these changes is REVERSIBLE?",
+                      options: ["Chopping vegetables", "Melting ice (which can be refrozen)", "Making popcorn from corn", "Burning wood"],
+                      answer: 1,
+                      explanation: "Melting ice can be reversed by refreezing the water back into ice — unlike chopping vegetables, making popcorn, or burning wood, which cannot be undone."
+                    },
+                    {
+                      question: "Why is food decomposition sometimes considered undesirable, and sometimes considered desirable?",
+                      options: ["It is always undesirable, with no exceptions", "It is undesirable for food we want to keep fresh, but desirable when composting food waste into useful material", "It is always desirable, with no exceptions", "Decomposition never actually happens to food"],
+                      answer: 1,
+                      explanation: "The SAME chemical change (decomposition) is undesirable when it spoils stored food, but desirable when intentionally used to convert food waste into compost — showing desirability depends on context."
+                    },
+                    {
+                      question: "What is 'weathering'?",
+                      options: ["Only a chemical process affecting rocks", "The combination of physical and chemical changes that break down large rocks into smaller sediments over time", "A process that only happens in one day", "The transportation of sediment by wind or water"],
+                      answer: 1,
+                      explanation: "Weathering combines both physical changes (temperature swings, root growth, freezing) and chemical changes (mineral reactions with water/air) to gradually break down rocks."
+                    },
+                    {
+                      question: "What is 'erosion'?",
+                      options: ["The breaking down of rocks in place, without any movement", "The process by which broken-down rock, soil, and sediment are transported elsewhere by natural forces like wind or flowing water", "A type of chemical reaction only", "The formation of new rocks instantly"],
+                      answer: 1,
+                      explanation: "Erosion specifically involves the TRANSPORT of weathered material (rock, soil, sediment) from one location to another via wind or water, distinct from the breaking-down process of weathering itself."
+                    },
+                    {
+                      question: "How does an originally black basalt rock develop a red-coloured layer over time?",
+                      options: ["Through simple physical erosion alone, with no chemical change", "Through a chemical change where iron in the rock reacts with water/air over time to form red iron oxide", "The rock is naturally red and never changes", "This has nothing to do with weathering"],
+                      answer: 1,
+                      explanation: "The red colouring is a genuine chemical change — iron within the basalt reacts with water or air over a long time to form iron oxide, which is red, illustrating chemical weathering."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
