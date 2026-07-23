@@ -1805,6 +1805,255 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const hcfPrimeFactorLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="hcf-prime-canvas" width="600" height="220"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a pair of numbers and see their common prime factors build the HCF.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Pair</h3>
+            <select id="sel-hcf-pair" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>12 and 16</option>
+              <option value="1">84 and 108</option>
+              <option value="2">84 and 180</option>
+              <option value="3">270 and 50</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>HCF Computation</h3>
+            <div id="hcf-prime-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a pair above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const lcmPrimeFactorLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="lcm-prime-canvas" width="600" height="260"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a pair of numbers and see the LCM built prime by prime.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Pair</h3>
+            <select id="sel-lcm-pair" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>6 and 8</option>
+              <option value="1">14 and 35</option>
+              <option value="2">96 and 360</option>
+              <option value="3">30 and 72</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>LCM Computation</h3>
+            <div id="lcm-prime-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a pair above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const decimalMultiplicationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="decimal-mult-canvas" width="600" height="180"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick two decimals and watch the shortcut multiplication rule work.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Pair</h3>
+            <select id="sel-decimal-mult-pair" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>5.96 × 24.8</option>
+              <option value="1">5.8 × 1.24</option>
+              <option value="2">9.5 × 5</option>
+              <option value="3">12.5 × 7.5</option>
+              <option value="4">5.7 × 13.3</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Shortcut Rule</h3>
+            <div id="decimal-mult-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a pair above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const decimalDivisionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="decimal-div-canvas" width="600" height="190"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a division problem and watch the decimal divisor scale to a whole number.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Problem</h3>
+            <select id="sel-decimal-div-problem" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>126 ÷ 2.5</option>
+              <option value="1">4.68 ÷ 1.3</option>
+              <option value="2">4.68 ÷ 0.13</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Scaling to a Whole Divisor</h3>
+            <div id="decimal-div-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a problem above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const meanFairShareLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="mean-fairshare-canvas" width="600" height="220"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a dataset and see the mean as a fair-share leveling line.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Dataset</h3>
+            <select id="sel-mean-dataset" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Guavas — Shreyas's group</option>
+              <option value="1">Guavas — Parag's group</option>
+              <option value="2">Hibiscus blooms per day</option>
+              <option value="3">Ball bounces (8 attempts)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Fair-Share Mean</h3>
+            <div id="mean-fairshare-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a dataset above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const meanMedianOutlierLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="mean-median-canvas" width="600" height="220"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a dataset and compare where the mean and median land.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Dataset</h3>
+            <select id="sel-outlier-dataset" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Yaangba's family (no outlier)</option>
+              <option value="1">Poovizhi's family (with outlier)</option>
+              <option value="2">Poovizhi's family (outlier removed)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Mean vs Median</h3>
+            <div id="mean-median-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a dataset above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const perpendicularBisectorLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="perp-bisector-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a segment length and watch the perpendicular bisector construction.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Segment Length (XY)</h3>
+            <select id="sel-perp-length" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="4">4 cm</option>
+              <option value="6" selected>6 cm</option>
+              <option value="8">8 cm</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>The Construction</h3>
+            <div id="perp-bisector-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a segment length above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const angleBisectorLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="angle-bisector-canvas" width="600" height="270"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an angle and watch it get bisected into two equal halves.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Angle ∠XOY</h3>
+            <select id="sel-angle-bisect" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[40,60,80,90,120,140].map(n => `<option value="${n}"${n===90?' selected':''}>${n}°</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>The Bisection</h3>
+            <div id="angle-bisector-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an angle above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const dominoTilingLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="domino-tiling-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a grid size and see whether it can be tiled with 2×1 dominoes.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Grid Size</h3>
+            <select id="sel-domino-grid" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>4 × 6 grid</option>
+              <option value="1">4 × 7 grid</option>
+              <option value="2">3 × 4 grid</option>
+              <option value="3">5 × 7 grid</option>
+              <option value="4">5 × 3 grid</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Tileability Check</h3>
+            <div id="domino-tiling-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a grid size above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const weighingScaleEquationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="weighing-scale-canvas" width="600" height="260"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a balance scenario and see the equation formed and solved.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-scale-scenario" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>3 bread slices = 2 eggs</option>
+              <option value="1">4-unit weight + 2 unknowns = 16</option>
+              <option value="2">3 sacks = 15-unit weight</option>
+              <option value="3">4 weights = 20-unit weight</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>The Equation</h3>
+            <div id="weighing-scale-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const equationSolverLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="equation-solver-canvas" width="600" height="220"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an equation and watch it get solved step by step.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Equation</h3>
+            <select id="sel-equation-solve" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>5x − 4 = 7</option>
+              <option value="1">11y − 5 = 61</option>
+              <option value="2">8m + 3 = 35</option>
+              <option value="3">9k − 5 = 40</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Step-by-Step Solution</h3>
+            <div id="equation-solver-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an equation above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -3523,6 +3772,39 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'integer-division-sim') {
               labHtml = integerDivisionLabHtml;
               labDesc = 'Pick a division problem and watch it get reframed as a multiplication question to solve.';
+            } else if (topicObj.lab.type === 'hcf-prime-factor-sim') {
+              labHtml = hcfPrimeFactorLabHtml;
+              labDesc = 'Pick a pair of numbers and see their common prime factors multiply together to give the HCF.';
+            } else if (topicObj.lab.type === 'lcm-prime-factor-sim') {
+              labHtml = lcmPrimeFactorLabHtml;
+              labDesc = 'Pick a pair of numbers and see the LCM built by taking the maximum count of each prime factor.';
+            } else if (topicObj.lab.type === 'decimal-multiplication-sim') {
+              labHtml = decimalMultiplicationLabHtml;
+              labDesc = 'Pick two decimals and watch the shortcut rule: multiply as whole numbers, then place the decimal point.';
+            } else if (topicObj.lab.type === 'decimal-division-sim') {
+              labHtml = decimalDivisionLabHtml;
+              labDesc = 'Pick a division problem and watch the decimal divisor scale up into a whole number.';
+            } else if (topicObj.lab.type === 'mean-fair-share-sim') {
+              labHtml = meanFairShareLabHtml;
+              labDesc = 'Pick a dataset and see the mean visualized as a fair-share leveling line across the bars.';
+            } else if (topicObj.lab.type === 'mean-median-outlier-sim') {
+              labHtml = meanMedianOutlierLabHtml;
+              labDesc = 'Pick a dataset and see how an outlier pulls the mean away from the more resistant median.';
+            } else if (topicObj.lab.type === 'perpendicular-bisector-sim') {
+              labHtml = perpendicularBisectorLabHtml;
+              labDesc = 'Pick a segment length and watch the compass-arc construction find its perpendicular bisector.';
+            } else if (topicObj.lab.type === 'angle-bisector-sim') {
+              labHtml = angleBisectorLabHtml;
+              labDesc = 'Pick an angle and watch the compass-arc construction split it into two exactly equal halves.';
+            } else if (topicObj.lab.type === 'domino-tiling-sim') {
+              labHtml = dominoTilingLabHtml;
+              labDesc = 'Pick a grid size and see whether it can be tiled with 2×1 dominoes, and one way to do it.';
+            } else if (topicObj.lab.type === 'weighing-scale-equation-sim') {
+              labHtml = weighingScaleEquationLabHtml;
+              labDesc = 'Pick a balance scenario and see it turned into an equation and solved for the unknown weight.';
+            } else if (topicObj.lab.type === 'equation-solver-sim') {
+              labHtml = equationSolverLabHtml;
+              labDesc = 'Pick an equation and watch it solved step by step using inverse operations, then checked by substitution.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -3876,6 +4158,28 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initIntegerMultiplicationPatternLab();
         } else if (topicObj.lab.type === 'integer-division-sim') {
           initIntegerDivisionLab();
+        } else if (topicObj.lab.type === 'hcf-prime-factor-sim') {
+          initHcfPrimeFactorLab();
+        } else if (topicObj.lab.type === 'lcm-prime-factor-sim') {
+          initLcmPrimeFactorLab();
+        } else if (topicObj.lab.type === 'decimal-multiplication-sim') {
+          initDecimalMultiplicationLab();
+        } else if (topicObj.lab.type === 'decimal-division-sim') {
+          initDecimalDivisionLab();
+        } else if (topicObj.lab.type === 'mean-fair-share-sim') {
+          initMeanFairShareLab();
+        } else if (topicObj.lab.type === 'mean-median-outlier-sim') {
+          initMeanMedianOutlierLab();
+        } else if (topicObj.lab.type === 'perpendicular-bisector-sim') {
+          initPerpendicularBisectorLab();
+        } else if (topicObj.lab.type === 'angle-bisector-sim') {
+          initAngleBisectorLab();
+        } else if (topicObj.lab.type === 'domino-tiling-sim') {
+          initDominoTilingLab();
+        } else if (topicObj.lab.type === 'weighing-scale-equation-sim') {
+          initWeighingScaleEquationLab();
+        } else if (topicObj.lab.type === 'equation-solver-sim') {
+          initEquationSolverLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -14444,6 +14748,611 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(sameSign ? 'Same signs → positive quotient' : 'Different signs → negative quotient', W / 2, 205);
 
         obs.innerHTML = `<strong>(${dividend}) ÷ (${divisor}) = ${quotient}</strong><br>Reframed as "${divisor} × ? = ${dividend}", solved by recalling that ${divisor} × ${quotient} = ${dividend}. ${sameSign ? 'Both numbers share the same sign, giving a positive quotient.' : 'The two numbers have different signs, giving a negative quotient.'}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initHcfPrimeFactorLab() {
+      const canvas = document.getElementById('hcf-prime-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-hcf-pair');
+      const obs = document.getElementById('hcf-prime-obs');
+      const PAIRS = [[12, 16], [84, 108], [84, 180], [270, 50]];
+
+      function primeFactorize(n) {
+        const factors = [];
+        let num = n;
+        for (let p = 2; p * p <= num; p++) {
+          while (num % p === 0) { factors.push(p); num /= p; }
+        }
+        if (num > 1) factors.push(num);
+        return factors;
+      }
+
+      function commonIndices(fa, fb) {
+        const bCopy = [...fb];
+        const idxs = [];
+        fa.forEach((f, i) => {
+          const idx = bCopy.indexOf(f);
+          if (idx !== -1) { idxs.push(i); bCopy.splice(idx, 1); }
+        });
+        return idxs;
+      }
+
+      function drawFactors(factors, commonIdx, y, label) {
+        ctx.fillStyle = cssVar('--text-muted'); ctx.font = '12px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText(label, 20, y - 14);
+        let x = 20;
+        factors.forEach((f, i) => {
+          const isCommon = commonIdx.includes(i);
+          ctx.fillStyle = isCommon ? cssVar('--accent-color') : cssVar('--text-light');
+          ctx.font = 'bold 16px system-ui';
+          ctx.fillText(`${f}`, x, y);
+          x += 22;
+          if (i < factors.length - 1) { ctx.fillStyle = cssVar('--text-muted'); ctx.fillText('×', x, y); x += 18; }
+        });
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [a, b] = PAIRS[parseInt(sel.value)];
+        const fa = primeFactorize(a), fb = primeFactorize(b);
+        const commonIdxA = commonIndices(fa, fb);
+        const commonIdxB = commonIndices(fb, fa);
+        const hcf = commonIdxA.length ? commonIdxA.reduce((acc, i) => acc * fa[i], 1) : 1;
+
+        drawFactors(fa, commonIdxA, 55, `${a} =`);
+        drawFactors(fb, commonIdxB, 100, `${b} =`);
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        const commonStr = commonIdxA.map(i => fa[i]).join(' × ') || '1';
+        ctx.fillText(`HCF = ${commonStr} = ${hcf}`, W / 2, 150);
+
+        obs.innerHTML = `<strong>HCF(${a}, ${b}) = ${hcf}</strong><br>${a} = ${fa.join('×')}, ${b} = ${fb.join('×')}. The highlighted prime factors are common to both numbers — multiplying them together gives the HCF.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initLcmPrimeFactorLab() {
+      const canvas = document.getElementById('lcm-prime-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-lcm-pair');
+      const obs = document.getElementById('lcm-prime-obs');
+      const PAIRS = [[6, 8], [14, 35], [96, 360], [30, 72]];
+
+      function primeFactorCounts(n) {
+        const counts = {};
+        let num = n;
+        for (let p = 2; p * p <= num; p++) {
+          while (num % p === 0) { counts[p] = (counts[p] || 0) + 1; num /= p; }
+        }
+        if (num > 1) counts[num] = (counts[num] || 0) + 1;
+        return counts;
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [a, b] = PAIRS[parseInt(sel.value)];
+        const ca = primeFactorCounts(a), cb = primeFactorCounts(b);
+        const allPrimes = [...new Set([...Object.keys(ca), ...Object.keys(cb)])].map(Number).sort((x, y) => x - y);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+        ctx.fillText(`${a} = ${Object.entries(ca).map(([p, c]) => c > 1 ? `${p}^${c}` : `${p}`).join(' × ')}`, 20, 30);
+        ctx.fillText(`${b} = ${Object.entries(cb).map(([p, c]) => c > 1 ? `${p}^${c}` : `${p}`).join(' × ')}`, 20, 52);
+
+        let lcm = 1;
+        let y = 85;
+        allPrimes.forEach(p => {
+          const countA = ca[p] || 0, countB = cb[p] || 0;
+          const maxCount = Math.max(countA, countB);
+          lcm *= Math.pow(p, maxCount);
+          ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'left';
+          ctx.fillText(`Prime ${p}: appears ${countA}× in ${a}, ${countB}× in ${b} → take ${maxCount}×`, 30, y);
+          y += 24;
+        });
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        ctx.fillText(`LCM = ${lcm}`, W / 2, y + 25);
+
+        obs.innerHTML = `<strong>LCM(${a}, ${b}) = ${lcm}</strong><br>For each prime factor, take the maximum number of times it appears in either number's factorisation, then multiply these together.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDecimalMultiplicationLab() {
+      const canvas = document.getElementById('decimal-mult-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-decimal-mult-pair');
+      const obs = document.getElementById('decimal-mult-obs');
+      const PAIRS = [[5.96, 24.8], [5.8, 1.24], [9.5, 5], [12.5, 7.5], [5.7, 13.3]];
+
+      function decimalPlaces(n) {
+        const s = String(n);
+        const idx = s.indexOf('.');
+        return idx === -1 ? 0 : s.length - idx - 1;
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [a, b] = PAIRS[parseInt(sel.value)];
+        const dpA = decimalPlaces(a), dpB = decimalPlaces(b);
+        const wholeA = Math.round(a * Math.pow(10, dpA));
+        const wholeB = Math.round(b * Math.pow(10, dpB));
+        const wholeProduct = wholeA * wholeB;
+        const totalDp = dpA + dpB;
+        const finalProduct = wholeProduct / Math.pow(10, totalDp);
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 20px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`${a} × ${b} = ?`, W / 2, 30);
+
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Remove decimal points: ${wholeA} × ${wholeB} = ${wholeProduct}`, W / 2, 68);
+        ctx.fillText(`Decimal places: ${dpA} + ${dpB} = ${totalDp}`, W / 2, 92);
+
+        ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`${a} × ${b} = ${finalProduct}`, W / 2, 135);
+
+        obs.innerHTML = `<strong>${a} × ${b} = ${finalProduct}</strong><br>Multiply as whole numbers (${wholeA}×${wholeB}=${wholeProduct}), then place the decimal point ${totalDp} digit${totalDp === 1 ? '' : 's'} from the right (since ${dpA}+${dpB}=${totalDp} total decimal places).`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDecimalDivisionLab() {
+      const canvas = document.getElementById('decimal-div-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-decimal-div-problem');
+      const obs = document.getElementById('decimal-div-obs');
+      const PROBLEMS = [
+        { dividend: 126, divisor: 2.5 },
+        { dividend: 4.68, divisor: 1.3 },
+        { dividend: 4.68, divisor: 0.13 }
+      ];
+
+      function decimalPlaces(n) {
+        const s = String(n);
+        const idx = s.indexOf('.');
+        return idx === -1 ? 0 : s.length - idx - 1;
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const { dividend, divisor } = PROBLEMS[parseInt(sel.value)];
+        const dp = decimalPlaces(divisor);
+        const scale = Math.pow(10, dp);
+        const newDividend = +(dividend * scale).toFixed(6);
+        const newDivisor = Math.round(divisor * scale);
+        const quotient = +(newDividend / newDivisor).toFixed(4);
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 20px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`${dividend} ÷ ${divisor} = ?`, W / 2, 30);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Multiply both by ${scale} to make the divisor a whole number:`, W / 2, 65);
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`${newDividend} ÷ ${newDivisor}`, W / 2, 100);
+
+        ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(`= ${quotient}`, W / 2, 145);
+
+        obs.innerHTML = `<strong>${dividend} ÷ ${divisor} = ${quotient}</strong><br>Since the divisor has ${dp} decimal place${dp === 1 ? '' : 's'}, multiplying both numbers by ${scale} converts it to a whole number (${newDivisor}), leaving the quotient unchanged.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMeanFairShareLab() {
+      const canvas = document.getElementById('mean-fairshare-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-mean-dataset');
+      const obs = document.getElementById('mean-fairshare-obs');
+      const DATASETS = [
+        { label: "Guavas — Shreyas's group", values: [3, 8, 10, 5, 4] },
+        { label: "Guavas — Parag's group", values: [5, 4, 6, 3, 4, 8] },
+        { label: 'Hibiscus blooms per day', values: [2, 7, 9, 4, 3] },
+        { label: 'Ball bounces (8 attempts)', values: [6, 2, 9, 5, 4, 6, 3, 5] }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const ds = DATASETS[parseInt(sel.value)];
+        const values = ds.values;
+        const sum = values.reduce((a, b) => a + b, 0);
+        const mean = sum / values.length;
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(ds.label, W / 2, 20);
+
+        const maxVal = Math.max(...values, mean);
+        const plotX = 50, plotY = 40, plotW = 500, plotH = 150;
+        const n = values.length;
+        const slot = plotW / n;
+        const barW = slot * 0.55;
+
+        values.forEach((v, i) => {
+          const barH = (v / maxVal) * plotH;
+          const x = plotX + i * slot + (slot - barW) / 2;
+          const y = plotY + plotH - barH;
+          ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillRect(x, y, barW, barH);
+          ctx.fillStyle = cssVar('--text-normal'); ctx.font = '12px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(`${v}`, x + barW / 2, y - 6);
+        });
+
+        const meanY = plotY + plotH - (mean / maxVal) * plotH;
+        ctx.strokeStyle = '#3b82f6'; ctx.setLineDash([5, 4]); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(plotX, meanY); ctx.lineTo(plotX + plotW, meanY); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#3b82f6'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'right';
+        ctx.fillText(`Mean = ${mean.toFixed(1)}`, plotX + plotW, meanY - 8);
+
+        obs.innerHTML = `<strong>Mean = ${sum} ÷ ${n} = ${mean.toFixed(2)}</strong><br>If the total (${sum}) were shared equally among all ${n} values, each would get ${mean.toFixed(2)} — the dashed line shows this 'fair-share' level, balancing the taller and shorter bars.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMeanMedianOutlierLab() {
+      const canvas = document.getElementById('mean-median-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-outlier-dataset');
+      const obs = document.getElementById('mean-median-obs');
+      const DATASETS = [
+        { label: "Yaangba's family (no outlier)", values: [169, 173, 155, 165, 160, 164] },
+        { label: "Poovizhi's family (with outlier)", values: [170, 173, 165, 118, 175] },
+        { label: "Poovizhi's family (outlier removed)", values: [170, 173, 165, 175] }
+      ];
+
+      function median(sorted) {
+        const n = sorted.length;
+        const mid = Math.floor(n / 2);
+        return n % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const ds = DATASETS[parseInt(sel.value)];
+        const values = ds.values;
+        const sorted = [...values].sort((a, b) => a - b);
+        const mean = values.reduce((a, b) => a + b, 0) / values.length;
+        const med = median(sorted);
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(ds.label, W / 2, 18);
+
+        const min = Math.min(...values, mean, med) - 10;
+        const max = Math.max(...values, mean, med) + 10;
+        const plotX = 40, plotY = 120, plotW = 520;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(plotX, plotY); ctx.lineTo(plotX + plotW, plotY); ctx.stroke();
+
+        function toX(v) { return plotX + ((v - min) / (max - min)) * plotW; }
+
+        values.forEach(v => {
+          const x = toX(v);
+          ctx.fillStyle = cssVar('--text-light');
+          ctx.beginPath(); ctx.arc(x, plotY, 6, 0, Math.PI * 2); ctx.fill();
+        });
+
+        const meanX = toX(mean);
+        ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(meanX, plotY - 40); ctx.lineTo(meanX, plotY + 10); ctx.stroke();
+        ctx.fillStyle = '#3b82f6'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`Mean=${mean.toFixed(1)}`, meanX, plotY - 45);
+
+        const medX = toX(med);
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(medX, plotY + 10); ctx.lineTo(medX, plotY + 55); ctx.stroke();
+        ctx.fillStyle = cssVar('--accent-color'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`Median=${med}`, medX, plotY + 68);
+
+        obs.innerHTML = `<strong>Mean = ${mean.toFixed(2)}, Median = ${med}</strong><br>Sorted data: ${sorted.join(', ')}. ${Math.abs(mean - med) > 5 ? 'Notice how far apart the mean and median are — a sign that an outlier is pulling the mean away from the typical value.' : 'The mean and median are close together, suggesting no strong outlier is present.'}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPerpendicularBisectorLab() {
+      const canvas = document.getElementById('perp-bisector-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-perp-length');
+      const obs = document.getElementById('perp-bisector-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const lengthCm = parseInt(sel.value);
+        const scale = 30;
+        const segLen = lengthCm * scale;
+        const cx = W / 2, y0 = H / 2 + 20;
+        const Xx = cx - segLen / 2, Yx = cx + segLen / 2;
+        const radius = segLen * 0.7;
+
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(Xx, y0); ctx.lineTo(Yx, y0); ctx.stroke();
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('X', Xx - 14, y0 + 5);
+        ctx.fillText('Y', Yx + 14, y0 + 5);
+
+        const halfSeg = segLen / 2;
+        const h = Math.sqrt(Math.max(radius * radius - halfSeg * halfSeg, 1));
+        const Ay = y0 - h, By = y0 + h;
+
+        ctx.strokeStyle = cssVar('--text-light'); ctx.setLineDash([4, 3]); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(Xx, y0, radius, -1.1, 1.1); ctx.stroke();
+        ctx.beginPath(); ctx.arc(Yx, y0, radius, Math.PI - 1.1, Math.PI + 1.1); ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = cssVar('--accent-color');
+        ctx.beginPath(); ctx.arc(cx, Ay, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(cx, By, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('A', cx + 16, Ay);
+        ctx.fillText('B', cx + 16, By);
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx, Ay); ctx.lineTo(cx, By); ctx.stroke();
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = '12px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText('O', cx + 10, y0 + 18);
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1;
+        ctx.strokeRect(cx - 9, y0 - 9, 9, 9);
+
+        obs.innerHTML = `<strong>XY = ${lengthCm} cm</strong><br>Arcs of equal radius from X and Y meet at A (above) and B (below). Line AB passes through the midpoint O of XY at exactly 90° — the perpendicular bisector.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initAngleBisectorLab() {
+      const canvas = document.getElementById('angle-bisector-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-angle-bisect');
+      const obs = document.getElementById('angle-bisector-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const angle = parseInt(sel.value);
+        const half = angle / 2;
+
+        const ox = 150, oy = 230, armLen = 160;
+        const rad = angle * Math.PI / 180;
+        const arm1 = { x: ox + armLen, y: oy };
+        const arm2 = { x: ox + armLen * Math.cos(rad), y: oy - armLen * Math.sin(rad) };
+
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(arm1.x, arm1.y); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(arm2.x, arm2.y); ctx.stroke();
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('O', ox - 16, oy + 5);
+        ctx.fillText('Y', arm1.x + 14, arm1.y + 5);
+        ctx.fillText('X', arm2.x + 12 * Math.cos(rad), arm2.y - 12 * Math.sin(rad) - 6);
+
+        const dOA = 90;
+        const Ax = ox + dOA, Ay = oy;
+        const Bx = ox + dOA * Math.cos(rad), By = oy - dOA * Math.sin(rad);
+
+        ctx.fillStyle = cssVar('--accent-color');
+        ctx.beginPath(); ctx.arc(Ax, Ay, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(Bx, By, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.font = '12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('A', Ax, Ay + 18);
+        ctx.fillText('B', Bx - 10 * Math.cos(rad), By + 10 * Math.sin(rad) - 6);
+
+        const halfRad = half * Math.PI / 180;
+        const Cx = ox + armLen * 0.9 * Math.cos(halfRad), Cy = oy - armLen * 0.9 * Math.sin(halfRad);
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2; ctx.setLineDash([5, 3]);
+        ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(Cx, Cy); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = cssVar('--accent-color'); ctx.font = 'bold 12px system-ui';
+        ctx.fillText('C', Cx + 12 * Math.cos(halfRad), Cy - 12 * Math.sin(halfRad));
+
+        ctx.fillStyle = cssVar('--text-muted'); ctx.font = '13px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText(`∠XOC = ∠COY = ${half}°`, 20, 30);
+        ctx.fillText(`(Original ∠XOY = ${angle}°)`, 20, 50);
+
+        obs.innerHTML = `<strong>∠XOY = ${angle}° bisects into two ${half}° angles</strong><br>Points A and B are equidistant from O; C is found by drawing equal-radius arcs from A and B. Ray OC splits the angle exactly in half, proven by SSS congruence of ∆OAC and ∆OBC.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDominoTilingLab() {
+      const canvas = document.getElementById('domino-tiling-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-domino-grid');
+      const obs = document.getElementById('domino-tiling-obs');
+      const GRIDS = [
+        { rows: 4, cols: 6 },
+        { rows: 4, cols: 7 },
+        { rows: 3, cols: 4 },
+        { rows: 5, cols: 7 },
+        { rows: 5, cols: 3 }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const { rows, cols } = GRIDS[parseInt(sel.value)];
+        const total = rows * cols;
+        const tileable = total % 2 === 0;
+
+        const maxGridW = 420, maxGridH = 220;
+        const cellSize = Math.min(maxGridW / cols, maxGridH / rows, 45);
+        const gridW = cellSize * cols, gridH = cellSize * rows;
+        const startX = (W - gridW) / 2, startY = 55;
+
+        if (tileable) {
+          const palette = ['rgba(16,185,129,0.4)', 'rgba(59,130,246,0.4)'];
+          let colorIdx = 0;
+          if (rows % 2 === 0) {
+            for (let c = 0; c < cols; c++) {
+              for (let r = 0; r < rows; r += 2) {
+                ctx.fillStyle = palette[colorIdx % 2]; colorIdx++;
+                ctx.fillRect(startX + c * cellSize + 1, startY + r * cellSize + 1, cellSize - 2, cellSize * 2 - 2);
+              }
+            }
+          } else {
+            for (let r = 0; r < rows; r++) {
+              for (let c = 0; c < cols; c += 2) {
+                ctx.fillStyle = palette[colorIdx % 2]; colorIdx++;
+                ctx.fillRect(startX + c * cellSize + 1, startY + r * cellSize + 1, cellSize * 2 - 2, cellSize - 2);
+              }
+            }
+          }
+        } else {
+          ctx.fillStyle = 'rgba(239,68,68,0.15)';
+          ctx.fillRect(startX, startY, gridW, gridH);
+        }
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        for (let r = 0; r <= rows; r++) {
+          ctx.beginPath(); ctx.moveTo(startX, startY + r * cellSize); ctx.lineTo(startX + gridW, startY + r * cellSize); ctx.stroke();
+        }
+        for (let c = 0; c <= cols; c++) {
+          ctx.beginPath(); ctx.moveTo(startX + c * cellSize, startY); ctx.lineTo(startX + c * cellSize, startY + gridH); ctx.stroke();
+        }
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`${rows} × ${cols} grid = ${total} unit squares`, W / 2, 30);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = tileable ? cssVar('--accent-color') : '#ef4444';
+        ctx.fillText(tileable ? '✓ Tileable with 2×1 dominoes' : '✗ NOT tileable — odd number of squares', W / 2, startY + gridH + 25);
+
+        obs.innerHTML = tileable
+          ? `<strong>${rows}×${cols}=${total} squares (even) — tileable!</strong><br>Since ${rows % 2 === 0 ? 'the number of rows is even' : 'the number of columns is even'}, every ${rows % 2 === 0 ? 'column' : 'row'} can be filled completely with dominoes stacked ${rows % 2 === 0 ? 'vertically' : 'horizontally'}.`
+          : `<strong>${rows}×${cols}=${total} squares (odd) — NOT tileable.</strong><br>Since each 2×1 domino covers exactly 2 squares, the total covered is always even. An odd total (${total}) can never be completely covered.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initWeighingScaleEquationLab() {
+      const canvas = document.getElementById('weighing-scale-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-scale-scenario');
+      const obs = document.getElementById('weighing-scale-obs');
+      const SCENARIOS = [
+        { coeff: 2, constant: 0, total: 6, label: 'e', desc: '3 bread slices (2 units each) balance 2 eggs' },
+        { coeff: 2, constant: 4, total: 16, label: 'y', desc: 'A 4-unit weight plus 2 unknown weights balance 16 units' },
+        { coeff: 3, constant: 0, total: 15, label: 'w', desc: '3 identical sacks balance a 15-unit weight' },
+        { coeff: 4, constant: 0, total: 20, label: 's', desc: '4 identical weights balance a 20-unit weight' }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const sc = SCENARIOS[parseInt(sel.value)];
+        const unknown = (sc.total - sc.constant) / sc.coeff;
+
+        const cx = W / 2, beamY = 90;
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx - 180, beamY); ctx.lineTo(cx + 180, beamY); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx, beamY); ctx.lineTo(cx - 15, beamY + 25); ctx.lineTo(cx + 15, beamY + 25); ctx.closePath();
+        ctx.fillStyle = cssVar('--text-muted'); ctx.fill();
+
+        const leftX = cx - 150, rightX = cx + 150;
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(leftX, beamY); ctx.lineTo(leftX - 40, beamY + 60); ctx.lineTo(leftX + 40, beamY + 60); ctx.closePath(); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(rightX, beamY); ctx.lineTo(rightX - 40, beamY + 60); ctx.lineTo(rightX + 40, beamY + 60); ctx.closePath(); ctx.stroke();
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        let leftLabel = '';
+        if (sc.constant > 0) leftLabel += `${sc.constant} + `;
+        leftLabel += Array(sc.coeff).fill(sc.label).join('+');
+        ctx.fillText(leftLabel, leftX, beamY + 45);
+        ctx.fillText(`${sc.total}`, rightX, beamY + 45);
+
+        ctx.fillStyle = cssVar('--text-muted'); ctx.font = '12px system-ui';
+        ctx.fillText(sc.desc, W / 2, 25);
+
+        const eqStr = sc.constant > 0 ? `${sc.constant} + ${sc.coeff}${sc.label} = ${sc.total}` : `${sc.coeff}${sc.label} = ${sc.total}`;
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        ctx.fillText(eqStr, W / 2, beamY + 110);
+        ctx.font = 'bold 16px system-ui';
+        ctx.fillText(`${sc.label} = ${unknown}`, W / 2, beamY + 140);
+
+        obs.innerHTML = `<strong>Equation: ${eqStr}</strong><br>Solving gives ${sc.label} = ${unknown}. ${sc.desc}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initEquationSolverLab() {
+      const canvas = document.getElementById('equation-solver-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-equation-solve');
+      const obs = document.getElementById('equation-solver-obs');
+      const EQUATIONS = [
+        { a: 5, b: -4, c: 7, label: 'x' },
+        { a: 11, b: -5, c: 61, label: 'y' },
+        { a: 8, b: 3, c: 35, label: 'm' },
+        { a: 9, b: -5, c: 40, label: 'k' }
+      ];
+
+      function fmtSigned(n) { return n >= 0 ? `+ ${n}` : `− ${Math.abs(n)}`; }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const { a, b, c, label } = EQUATIONS[parseInt(sel.value)];
+        const afterStep1 = c - b;
+        const solutionExact = afterStep1 / a;
+        const solStr = Number.isInteger(solutionExact) ? `${solutionExact}` : `${afterStep1}/${a}`;
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 18px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`${a}${label} ${fmtSigned(b)} = ${c}`, W / 2, 28);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Step 1: ${b >= 0 ? 'subtract' : 'add'} ${Math.abs(b)} on both sides`, W / 2, 60);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(`${a}${label} = ${afterStep1}`, W / 2, 88);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Step 2: divide both sides by ${a}`, W / 2, 120);
+        ctx.font = 'bold 20px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`${label} = ${solStr}`, W / 2, 152);
+
+        const lhsCheck = a * solutionExact + b;
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Check: ${a}×(${solStr}) ${fmtSigned(b)} = ${lhsCheck}${lhsCheck === c ? ' ✓' : ''}`, W / 2, 185);
+
+        obs.innerHTML = `<strong>${a}${label} ${fmtSigned(b)} = ${c}  →  ${label} = ${solStr}</strong><br>Step 1: ${b >= 0 ? 'subtract' : 'add'} ${Math.abs(b)} from both sides to get ${a}${label}=${afterStep1}. Step 2: divide both sides by ${a} to isolate ${label}. Checked by substitution: LHS=${lhsCheck}, matching RHS=${c}.`;
       }
 
       sel.addEventListener('change', draw);

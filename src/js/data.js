@@ -7563,6 +7563,1383 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "7m-11",
+              title: "Finding Common Ground",
+              topics: [
+                {
+                  id: "7m-11-1",
+                  title: "1. HCF: The Greatest Common Factor",
+                  lab: { type: "hcf-prime-factor-sim" },
+                  theory: {
+                    intro: "Tiling a room with the largest possible square tiles, or splitting rice into the fewest possible equal-weight bags, both come down to the same question: what is the largest number that divides evenly into two given numbers?",
+                    sections: [
+                      {
+                        heading: "Finding the Largest Common Factor",
+                        text: "A 12ft × 16ft room needs square tiles whose side is a factor of BOTH 12 and 16 (so the tiles fit exactly along both walls). Factors of 12: 1,2,3,4,6,12. Factors of 16: 1,2,4,8,16. Common factors: 1,2,4. Choosing the LARGEST common factor (4ft) uses the fewest tiles. This largest shared factor is called the Highest Common Factor (HCF), also known as the Greatest Common Divisor (GCD)."
+                      },
+                      {
+                        heading: "HCF Through Prime Factorisation",
+                        text: "Listing every factor gets tedious for large numbers. Instead, prime factorisation gives a reliable shortcut: break each number into its prime factors, then the HCF is built from the prime factors common to BOTH numbers, taken the minimum number of times each appears. For example, 84=2×2×3×7 and 108=2×2×3×3×3, sharing 2×2×3=12 as their HCF."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding the HCF Using Prime Factorisation",
+                      objective: "To practice computing the HCF of two numbers by comparing their prime factorisations, rather than listing every factor.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Find the complete prime factorisation of 84 (84 = 2×2×3×7) and of 180 (180 = 2×2×3×3×5).",
+                        "Identify which prime factors appear in BOTH factorisations, and how many times each appears in both.",
+                        "Build the HCF by taking each common prime factor the SMALLER number of times it appears in either factorisation (here: 2×2×3).",
+                        "Calculate this product to get the HCF.",
+                        "Double-check by listing a few factors of 84 and 180 directly, confirming your computed HCF is indeed their largest shared factor."
+                      ],
+                      observation: "Comparing prime factorisations directly (rather than listing every single factor) gives a fast, reliable way to compute the HCF, especially useful for larger numbers where listing factors becomes tedious or error-prone."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does HCF stand for?",
+                      options: ["Highest Common Fraction", "Highest Common Factor (also called Greatest Common Divisor)", "Half of the Common Factor", "Hundred Common Factors"],
+                      answer: 1,
+                      explanation: "HCF stands for Highest Common Factor — the largest number that divides evenly into two or more given numbers, also known as the Greatest Common Divisor (GCD)."
+                    },
+                    {
+                      question: "For tiling a 12ft × 16ft room with the largest possible whole-number square tiles, what size tile should be used?",
+                      options: ["2 ft, since it's a common factor", "4 ft, the HCF of 12 and 16", "6 ft, a factor of 12", "8 ft, a factor of 16"],
+                      answer: 1,
+                      explanation: "The common factors of 12 and 16 are 1, 2, and 4 — choosing the largest (4ft, the HCF) minimizes the number of tiles needed."
+                    },
+                    {
+                      question: "Using prime factorisation, what is the HCF of 84 (=2×2×3×7) and 108 (=2×2×3×3×3)?",
+                      options: ["6", "12", "2", "36"],
+                      answer: 1,
+                      explanation: "The common prime factors are 2 (appearing twice in both) and 3 (appearing once in 84, though more in 108 — take the minimum, once) — giving HCF = 2×2×3 = 12."
+                    },
+                    {
+                      question: "Why is using prime factorisation to find the HCF more reliable than listing all factors for large numbers?",
+                      options: ["It isn't more reliable", "Listing every factor of large numbers is tedious and error-prone, while comparing prime factorisations is systematic and less likely to miss a factor", "Prime factorisation only works for small numbers", "Both methods are equally unreliable"],
+                      answer: 1,
+                      explanation: "For numbers with many factors, listing them all risks missing one, while prime factorisation breaks the problem into a systematic comparison of prime factors, which is much less error-prone."
+                    },
+                    {
+                      question: "In building the HCF from prime factorisations, how many times should a shared prime factor be included?",
+                      options: ["As many times as it appears in the larger number", "The MINIMUM number of times it appears across both factorisations", "Always exactly once", "The maximum number of times it appears in either number"],
+                      answer: 1,
+                      explanation: "For the HCF, each shared prime factor is included the smaller (minimum) number of times it appears between the two factorisations — ensuring the result divides both numbers exactly."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-11-2",
+                  title: "2. LCM: The Lowest Common Multiple",
+                  lab: { type: "lcm-prime-factor-sim" },
+                  theory: {
+                    intro: "Two friends making decorative torans from cloth strips of different lengths, or a sweet shop and a customer's visits landing on the same day again — both scenarios ask for the SMALLEST shared multiple of two numbers.",
+                    sections: [
+                      {
+                        heading: "Finding the Smallest Common Multiple",
+                        text: "Anshu's toran strips are 6cm each (multiples: 6,12,18,24,30,...); Guna's are 8cm each (multiples: 8,16,24,32,...). The shortest toran BOTH can make matches a common multiple — the smallest being 24cm. This smallest shared multiple is called the Lowest Common Multiple (LCM)."
+                      },
+                      {
+                        heading: "LCM Through Prime Factorisation",
+                        text: "Like the HCF, prime factorisation simplifies finding the LCM for larger numbers. Break each number into primes, then build the LCM by taking EVERY prime factor that appears in either number, the MAXIMUM number of times it appears in either factorisation. For example, 96=2×2×2×2×2×3 and 360=2×2×2×3×3×5; taking five 2s (max of 5 and 3), two 3s (max of 1 and 2), and one 5 (max of 0 and 1) gives LCM = 2⁵×3²×5 = 1440."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding the LCM Using Prime Factorisation",
+                      objective: "To practice computing the LCM of two numbers by taking the maximum count of each prime factor across both factorisations.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Find the prime factorisation of 14 (14 = 2×7) and of 35 (35 = 5×7).",
+                        "List every distinct prime that appears in either number: 2, 5, and 7.",
+                        "For each prime, count the MAXIMUM number of times it appears in either factorisation: 2 (once, from 14), 5 (once, from 35), 7 (once, common to both).",
+                        "Multiply these together to build the LCM: 2×5×7 = 70.",
+                        "Verify by listing a few multiples of 14 and 35 directly, confirming 70 is indeed their smallest common multiple."
+                      ],
+                      observation: "Building the LCM from the MAXIMUM count of each prime factor (rather than listing multiples) works reliably even for large numbers, since it guarantees the result is a multiple of both original numbers with nothing extra."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does LCM stand for?",
+                      options: ["Largest Common Multiple", "Lowest Common Multiple — the smallest shared multiple of two or more numbers", "Least Common Measure", "Long Common Multiplication"],
+                      answer: 1,
+                      explanation: "LCM stands for Lowest Common Multiple — the smallest positive number that is a multiple of all the given numbers."
+                    },
+                    {
+                      question: "What is the LCM of 6 and 8 (the toran strip lengths)?",
+                      options: ["48", "24", "14", "6"],
+                      answer: 1,
+                      explanation: "The multiples of 6 (6,12,18,24,...) and 8 (8,16,24,...) first share 24 as their smallest common multiple — so the LCM of 6 and 8 is 24."
+                    },
+                    {
+                      question: "Using prime factorisation (14=2×7, 35=5×7), what is the LCM of 14 and 35?",
+                      options: ["7", "490", "70", "14"],
+                      answer: 2,
+                      explanation: "Taking the maximum count of each prime (2 once, 5 once, 7 once — since it appears once in both), the LCM = 2×5×7 = 70."
+                    },
+                    {
+                      question: "When building the LCM from prime factorisations, how many times should each prime factor be included?",
+                      options: ["The minimum number of times across both numbers", "The MAXIMUM number of times it appears in either factorisation", "Always exactly once regardless of repetition", "Only if it appears in both numbers"],
+                      answer: 1,
+                      explanation: "The LCM must be a multiple of BOTH numbers, so each prime factor must appear the maximum number of times needed by either number's factorisation."
+                    },
+                    {
+                      question: "For 96=2×2×2×2×2×3 and 360=2×2×2×3×3×5, what is the LCM?",
+                      options: ["720", "1440", "2880", "360"],
+                      answer: 1,
+                      explanation: "Taking five 2s (max of 5,3), two 3s (max of 1,2), and one 5 (max of 0,1): LCM = 2⁵×3²×5 = 32×9×5 = 1440."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-11-3",
+                  title: "3. Patterns and Properties of HCF and LCM",
+                  theory: {
+                    intro: "Noticing that the HCF of 6 and 18 is simply 6 itself — one of the original numbers — leads to a broader, algebra-expressible pattern about when this special relationship holds.",
+                    sections: [
+                      {
+                        heading: "When the HCF Equals One of the Numbers",
+                        text: "The HCF of 6 and 18 is 6, because 6 is a FACTOR of 18 (equivalently, 18 is a MULTIPLE of 6). This is a general pattern: whenever one number is a factor of the other, their HCF is simply the smaller number. Using algebra: for any number n, the HCF of n and any multiple of n (like 5n) is always n itself."
+                      },
+                      {
+                        heading: "When the LCM Equals One of the Numbers",
+                        text: "Similarly, the LCM of 3 and 24 is 24 — because 24 is already a multiple of 3. In general, whenever one number is a multiple of the other, their LCM is simply the larger number."
+                      },
+                      {
+                        heading: "Doubling Both Numbers Doubles the HCF",
+                        text: "If both numbers in an HCF calculation are doubled, the HCF also doubles. This is because doubling both numbers adds an extra factor of 2 to each of their prime factorisations, which then also appears in the shared (common) part — so the HCF gains that same extra factor of 2. For example, HCF(270,50)=10, but HCF(540,100)=20 — exactly double."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Discovering HCF and LCM Patterns Through Examples",
+                      objective: "To discover, through worked examples, the general patterns connecting HCF/LCM to special relationships between number pairs.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Pick three pairs of numbers where one number is a factor of the other (like 4 and 20), and compute the HCF for each pair.",
+                        "Confirm that in every case, the HCF equals the SMALLER of the two numbers.",
+                        "Pick three pairs of numbers where one number is a multiple of the other (like 5 and 45), and compute the LCM for each pair.",
+                        "Confirm that in every case, the LCM equals the LARGER of the two numbers.",
+                        "Pick any pair of numbers, find their HCF, then double both numbers and find the new HCF — confirm it has also doubled."
+                      ],
+                      observation: "These patterns hold consistently across many different examples, confirming the general algebraic statements: HCF(n, multiple of n) = n; LCM(n, factor of n) = n; and doubling both numbers in an HCF calculation always doubles the resulting HCF."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why is the HCF of 6 and 18 simply 6?",
+                      options: ["It's a coincidence", "Because 6 is a factor of 18 (18 is a multiple of 6), so the smaller number itself is the largest shared factor", "Because both numbers are even", "Because 6 is a prime number"],
+                      answer: 1,
+                      explanation: "Since 6 divides evenly into 18, every factor of 6 is also a factor of 18 — making 6 itself the highest common factor."
+                    },
+                    {
+                      question: "In general, what is the HCF of a number n and any multiple of n (like 5n)?",
+                      options: ["5n", "n itself", "1", "It cannot be determined generally"],
+                      answer: 1,
+                      explanation: "Since n always divides evenly into any of its multiples, the HCF of n and 5n is always n itself."
+                    },
+                    {
+                      question: "What is the LCM of 3 and 24, and why?",
+                      options: ["3, since it's the smaller number", "24, because 24 is already a multiple of 3, making it the smallest shared multiple", "72, the product of both numbers", "8, since 24÷3=8"],
+                      answer: 1,
+                      explanation: "Since 24 is already a multiple of 3, it is itself the smallest number that is a multiple of both — so the LCM of 3 and 24 is 24."
+                    },
+                    {
+                      question: "If both numbers in an HCF calculation are doubled, what happens to the HCF?",
+                      options: ["It stays exactly the same", "It also doubles", "It is halved", "It becomes unpredictable"],
+                      answer: 1,
+                      explanation: "Doubling both numbers adds an extra factor of 2 to each of their prime factorisations, which carries through into the shared (common) part, doubling the HCF as well."
+                    },
+                    {
+                      question: "For 270=2×3×3×3×5 and 50=2×5×5 (HCF=10), what is the HCF of 540 and 100 (both doubled)?",
+                      options: ["10", "20", "40", "100"],
+                      answer: 1,
+                      explanation: "Doubling both 270 and 50 adds one more factor of 2 to each, so the HCF also gains that extra factor of 2: HCF(540,100) = 2 × HCF(270,50) = 2×10 = 20."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-11-4",
+                  title: "4. An Efficient Division Procedure for HCF",
+                  theory: {
+                    intro: "A compact 'ladder' division procedure — repeatedly dividing two numbers by a shared prime factor — provides a fast, systematic way to compute the HCF without writing out full prime factorisations separately.",
+                    sections: [
+                      {
+                        heading: "The Ladder Division Procedure",
+                        text: "To find the HCF of 84 and 180: divide both by a common prime factor (2), writing the quotients (42, 90) in the next row. Repeat with another common prime factor (2 again: 21, 45), then (3: 7, 15). Once the two numbers share no more common prime factors, stop. The HCF is the PRODUCT of all the prime divisors used at each step: 2×2×3 = 12."
+                      },
+                      {
+                        heading: "Why This Procedure Works",
+                        text: "This procedure is really prime factorisation done directly on BOTH numbers simultaneously — each step strips away one shared prime factor from both numbers at once, similar to the 'staircase' method used for finding an individual number's prime factorisation. Continuing until the remaining two numbers share no common prime factor guarantees every shared prime has been accounted for, exactly once each at its lowest shared count."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Using the Ladder Division Method to Find the HCF",
+                      objective: "To practice the efficient ladder (staircase) division procedure for computing the HCF of two numbers directly, without separately listing full factorisations.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Write 300 and 150 side by side at the top of a two-column 'ladder'.",
+                        "Find a common prime factor of both (2), divide both numbers by it, and write the quotients (150, 75) in the next row, with the '2' written to the left.",
+                        "Repeat: find a common prime factor of the new pair (5), divide, and write the new quotients, continuing until the two numbers share no more common prime factors.",
+                        "Multiply together all the prime divisors written on the left side of the ladder — this product is the HCF.",
+                        "Verify your answer by checking it divides both original numbers (300 and 150) exactly."
+                      ],
+                      observation: "The ladder division method reaches the same HCF as full prime factorisation, but organizes the work compactly in one place, dividing both numbers simultaneously at each step rather than factorising them separately first."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the ladder division method for HCF, what is written to the left of each row?",
+                      options: ["The remainder of the division", "A common prime factor of the current pair of numbers", "The final answer", "A random number"],
+                      answer: 1,
+                      explanation: "At each step, a common prime factor of the current pair of numbers is identified and written to the left, then both numbers are divided by it to produce the next row."
+                    },
+                    {
+                      question: "How is the final HCF obtained from the ladder division procedure?",
+                      options: ["It's the last quotient in the final row", "It's the product of all the prime divisors written down the left side", "It's the sum of all the numbers in the ladder", "It's the largest number that appeared anywhere in the ladder"],
+                      answer: 1,
+                      explanation: "The HCF is found by multiplying together all the common prime factors used as divisors at each step of the ladder."
+                    },
+                    {
+                      question: "When does the ladder division procedure stop?",
+                      options: ["After exactly 3 steps, always", "When the remaining pair of numbers no longer shares any common prime factor", "As soon as one number becomes 1", "It never stops"],
+                      answer: 1,
+                      explanation: "The procedure continues dividing by shared prime factors until the current pair of numbers has no more common prime factor, at which point all shared primes have been found."
+                    },
+                    {
+                      question: "For the ladder division of 84 and 180, dividing by 2, then 2, then 3 gives quotients 7 and 15 (no more common factors). What is the HCF?",
+                      options: ["7", "15", "12 (=2×2×3)", "105"],
+                      answer: 2,
+                      explanation: "The HCF is the product of the divisors used: 2×2×3 = 12."
+                    },
+                    {
+                      question: "Why does the ladder division method give the same result as full prime factorisation?",
+                      options: ["It doesn't, they often disagree", "Because it IS prime factorisation, just applied to both numbers simultaneously, stripping out shared prime factors one at a time", "Because it uses a completely different mathematical principle", "It only works by coincidence"],
+                      answer: 1,
+                      explanation: "The ladder method performs the same prime factorisation process, but does it on both numbers at once, extracting each shared prime factor step by step until none remain — giving an identical result to computing both full factorisations separately."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "7m-12",
+              title: "Another Peek Beyond the Point",
+              topics: [
+                {
+                  id: "7m-12-1",
+                  title: "1. Decimal Multiplication",
+                  lab: { type: "decimal-multiplication-sim" },
+                  theory: {
+                    intro: "Multiplying two decimals — like finding the cost of 5 pens at ₹9.5 each, or the area of a 5.7cm × 13.3cm rectangle — can always be done by converting decimals to fractions, revealing a simple shortcut rule along the way.",
+                    sections: [
+                      {
+                        heading: "Multiplying Decimals via Fractions",
+                        text: "9.5 × 5 can be computed by writing 9.5 as the fraction 95/10, then multiplying: (95/10) × (5/1) = 475/10 = 47.5. This fraction-based approach works for any decimal multiplication, including two decimals together, like 12.5 × 7.5 = (125/10) × (75/10) = 9375/100 = 93.75."
+                      },
+                      {
+                        heading: "The Shortcut Rule for Multiplying Decimals",
+                        text: "Multiply the two numbers as if the decimal points weren't there (e.g., 596 × 248 = 147808), then place the decimal point in the answer so that the TOTAL number of decimal places matches the sum of the decimal places in both original numbers. For 5.96 (2 decimal places) × 24.8 (1 decimal place), the product needs 2+1=3 decimal places: 147.808."
+                      },
+                      {
+                        heading: "Why This Shortcut Works",
+                        text: "Since each decimal number is really a fraction with a denominator of 10, 100, 1000, etc., multiplying two decimals means multiplying their numerators (the whole-number version with the decimal point removed) and multiplying their denominators (which combine to have a number of zeroes equal to the SUM of zeroes in each). This is exactly why the total decimal-place count in the product equals the sum of the decimal places in the two original numbers."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Multiplying Decimals Using the Shortcut Rule",
+                      objective: "To practice the decimal multiplication shortcut — multiplying as whole numbers, then placing the decimal point based on total decimal places.",
+                      materials: ["Paper and pencil", "Calculator (for verification only)"],
+                      steps: [
+                        "Compute 58 × 124 as whole numbers (getting 7192).",
+                        "Count the decimal places in 5.8 (1 place) and 1.24 (2 places), for a total of 3 decimal places needed in the answer.",
+                        "Place the decimal point in 7192 so it has 3 decimal places: 7.192.",
+                        "Verify this matches 5.8 × 1.24 computed directly with a calculator.",
+                        "Repeat this shortcut for 4.23 × 3.7 and 0.432 × 0.23, checking each with a calculator."
+                      ],
+                      observation: "Multiplying the whole-number versions of two decimals and then placing the decimal point based on the TOTAL decimal-place count always gives the correct product — a fast, reliable shortcut that avoids working with fractions directly each time."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "To multiply 9.5 × 5 using fractions, how is 9.5 first rewritten?",
+                      options: ["As 9 + 0.5", "As the fraction 95/10", "As 950/100 only", "It cannot be rewritten as a fraction"],
+                      answer: 1,
+                      explanation: "9.5 is rewritten as the fraction 95/10, allowing standard fraction multiplication rules to be applied."
+                    },
+                    {
+                      question: "If 596 × 248 = 147808, what is 5.96 × 24.8?",
+                      options: ["14.7808", "147.808", "1478.08", "1.47808"],
+                      answer: 1,
+                      explanation: "5.96 has 2 decimal places and 24.8 has 1, totaling 3 decimal places — so the product is 147.808, placing the decimal point 3 places from the right in 147808."
+                    },
+                    {
+                      question: "What determines the number of decimal places in the product of two decimals?",
+                      options: ["It's always 2 decimal places", "The SUM of the number of decimal places in the two numbers being multiplied", "The larger of the two decimal-place counts", "It cannot be determined in advance"],
+                      answer: 1,
+                      explanation: "The product's decimal places equal the sum of the decimal places in the multiplier and multiplicand, since this matches the total number of zeroes in their combined fraction denominators."
+                    },
+                    {
+                      question: "Why does the decimal multiplication shortcut rule work?",
+                      options: ["It's an arbitrary convention with no explanation", "Because each decimal is a fraction with a power-of-10 denominator, and multiplying fractions multiplies both numerators and denominators — the combined denominator's zero-count matches the total decimal places", "Because decimals cannot really be multiplied directly", "It only works for two-digit decimals"],
+                      answer: 1,
+                      explanation: "Since decimals are fractions with denominators like 10, 100, or 1000, multiplying them combines their denominators' zeroes, which is exactly why the total decimal-place count in the product equals the sum from both original numbers."
+                    },
+                    {
+                      question: "What is the area of a rectangle with sides 5.7cm and 13.3cm?",
+                      options: ["7.581 sq cm", "75.81 sq cm", "758.1 sq cm", "7581 sq cm"],
+                      answer: 1,
+                      explanation: "57 × 133 = 7581; with 1+1=2 total decimal places, the area is 75.81 sq cm."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-12-2",
+                  title: "2. Is the Product Always Greater? Multiplication Situations",
+                  theory: {
+                    intro: "Unlike multiplying whole numbers, multiplying decimals doesn't always give a bigger result — whether the product grows or shrinks compared to the original numbers depends entirely on whether those numbers are above or below 1.",
+                    sections: [
+                      {
+                        heading: "Three Situations for Decimal Multiplication",
+                        text: "When BOTH numbers are greater than 1 (like 3.4 × 6.5 = 22.1), the product is LARGER than both numbers. When BOTH numbers are between 0 and 1 (like 0.75 × 0.4 = 0.3), the product is SMALLER than both numbers. When one number is between 0 and 1 and the other is greater than 1 (like 0.75 × 5 = 3.75), the product falls in between — smaller than the number greater than 1, but larger than the number between 0 and 1."
+                      },
+                      {
+                        heading: "Connecting Decimals to Fractions",
+                        text: "This pattern isn't unique to decimals — it directly mirrors what happens when multiplying fractions. A fraction less than 1 (like 0.75 = 3/4) acts like 'taking a part of' something, which naturally shrinks the result, while a whole number or decimal greater than 1 acts like genuine repeated addition, which grows the result."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Classifying Decimal Multiplications by Situation",
+                      objective: "To practice predicting whether a decimal product will be larger, smaller, or in-between, BEFORE calculating, based on whether the numbers are above or below 1.",
+                      materials: ["Paper and pencil", "Calculator (for verification only)"],
+                      steps: [
+                        "Without calculating, predict whether 4.2 × 8.1 will be larger than, smaller than, or between the two numbers — then calculate to check.",
+                        "Do the same prediction-then-check for 0.6 × 0.5 (both less than 1).",
+                        "Do the same for 0.3 × 12 (one less than 1, one greater).",
+                        "Write a general rule in your own words describing all three situations.",
+                        "Test your rule on two more multiplications of your own choosing."
+                      ],
+                      observation: "Correctly predicting whether a decimal product grows, shrinks, or falls in between — just by checking whether each number is above or below 1 — confirms a reliable general pattern that applies to decimal multiplication broadly, not just to the specific examples first observed."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "If both numbers being multiplied are greater than 1 (like 3.4 × 6.5), what happens to the product?",
+                      options: ["It is smaller than both numbers", "It is larger than both numbers", "It equals exactly 1", "It cannot be determined"],
+                      answer: 1,
+                      explanation: "When both numbers exceed 1, their product is always greater than both of them — matching ordinary whole-number multiplication intuition."
+                    },
+                    {
+                      question: "If both numbers being multiplied are between 0 and 1 (like 0.75 × 0.4), what happens to the product?",
+                      options: ["It is larger than both numbers", "It is smaller than both numbers", "It equals 1", "It becomes negative"],
+                      answer: 1,
+                      explanation: "When both numbers are fractions of a whole (between 0 and 1), their product is smaller than both — since multiplying by a number less than 1 shrinks a value."
+                    },
+                    {
+                      question: "In 0.75 × 5 = 3.75, where does the product (3.75) fall relative to the two original numbers?",
+                      options: ["Larger than both 0.75 and 5", "Smaller than both 0.75 and 5", "Between them — smaller than 5, but larger than 0.75", "Exactly equal to 5"],
+                      answer: 2,
+                      explanation: "When one number is greater than 1 and the other is between 0 and 1, the product falls in between: less than the larger number (5) but more than the smaller, sub-1 number (0.75)."
+                    },
+                    {
+                      question: "Why does multiplying by a number between 0 and 1 tend to shrink the result?",
+                      options: ["It's an arbitrary rule with no explanation", "Because a number between 0 and 1 acts like taking only a PART of the other number, similar to multiplying by a proper fraction", "Because such numbers are always negative", "It doesn't actually shrink the result"],
+                      answer: 1,
+                      explanation: "A decimal between 0 and 1 behaves like a proper fraction — multiplying by it takes only a fractional part of the other number, which is naturally smaller than the whole."
+                    },
+                    {
+                      question: "Without calculating, is the product of 0.2 × 0.9 larger or smaller than both 0.2 and 0.9?",
+                      options: ["Larger than both", "Smaller than both, since both numbers are between 0 and 1", "Equal to both", "Cannot be predicted without calculating"],
+                      answer: 1,
+                      explanation: "Since both 0.2 and 0.9 are between 0 and 1, their product will be smaller than both — following Situation 2's pattern."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-12-3",
+                  title: "3. Decimal Division: Decimal Dividends and Divisors",
+                  lab: { type: "decimal-division-sim" },
+                  theory: {
+                    intro: "Dividing by a decimal — like finding an average speed of 126km travelled in 2.5 hours — becomes manageable by converting the DIVISOR into a whole number first, scaling the dividend by the exact same amount.",
+                    sections: [
+                      {
+                        heading: "Converting a Decimal Divisor to a Whole Number",
+                        text: "To compute 126 ÷ 2.5, rewrite 2.5 as the fraction 25/10, so 126 ÷ (25/10) = 126 × (10/25) = 1260/25 = 50.4. In general, when the divisor is a decimal, multiply BOTH the divisor and the dividend by the same power of 10 (10, 100, 1000...) needed to make the divisor a whole number — the quotient stays exactly the same."
+                      },
+                      {
+                        heading: "Scaling Both Numbers by the Same Amount",
+                        text: "For 4.68 ÷ 0.13, multiply both numbers by 100 (since 0.13 needs 2 decimal places shifted): (4.68×100) ÷ (0.13×100) = 468 ÷ 13 = 36. Once the divisor is a whole number, the standard long-division place-value procedure can be used directly to find the quotient."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Converting Decimal Divisors to Whole Numbers",
+                      objective: "To practice scaling both the divisor and dividend by the same power of 10, turning a decimal division into a whole-number division.",
+                      materials: ["Paper and pencil", "Calculator (for verification only)"],
+                      steps: [
+                        "Write down the division 4.68 ÷ 1.3.",
+                        "Determine what power of 10 is needed to make 1.3 a whole number (multiplying by 10 gives 13).",
+                        "Multiply BOTH the divisor and dividend by that same power of 10: 4.68×10=46.8, 1.3×10=13.",
+                        "Perform the division 46.8 ÷ 13 using standard long division to find the quotient.",
+                        "Verify your answer with a calculator, confirming that scaling both numbers by the same factor didn't change the quotient."
+                      ],
+                      observation: "Multiplying both the divisor and the dividend by the same power of 10 always leaves the quotient unchanged (since it's the same as multiplying the whole division by 1) — this trick reliably converts any decimal division into an easier whole-number division."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Ravi travels 126 km in 2.5 hours. What is his average speed?",
+                      options: ["50.4 km/hour", "504 km/hour", "5.04 km/hour", "63 km/hour"],
+                      answer: 0,
+                      explanation: "126 ÷ 2.5 = 126 × (10/25) = 1260/25 = 50.4 km per hour."
+                    },
+                    {
+                      question: "To divide 4.68 ÷ 0.13, what should be done to both numbers first?",
+                      options: ["Nothing needs to change", "Multiply BOTH numbers by 100, making the divisor a whole number (13) while keeping the quotient the same", "Only multiply the divisor by 100", "Subtract 0.13 from 4.68"],
+                      answer: 1,
+                      explanation: "Multiplying both the divisor and dividend by 100 turns 0.13 into 13 (a whole number) while 4.68 becomes 468 — the quotient of 468÷13 is identical to that of 4.68÷0.13."
+                    },
+                    {
+                      question: "What is 4.68 ÷ 0.13?",
+                      options: ["3.6", "36", "0.36", "360"],
+                      answer: 1,
+                      explanation: "Scaling both by 100 gives 468 ÷ 13 = 36."
+                    },
+                    {
+                      question: "Why does multiplying both the divisor and dividend by the same power of 10 not change the quotient?",
+                      options: ["It actually does change the quotient", "Because multiplying both parts of a division by the same number is equivalent to multiplying the whole division by 1, leaving the result unchanged", "Because division rules don't apply to decimals", "Only the divisor's value matters, not the dividend's"],
+                      answer: 1,
+                      explanation: "Scaling both dividend and divisor by the same factor is mathematically equivalent to multiplying the entire fraction (dividend/divisor) by (factor/factor)=1, which never changes its value."
+                    },
+                    {
+                      question: "What is the first step in dividing by a decimal divisor, like in 4.68 ÷ 1.3?",
+                      options: ["Round the divisor to the nearest whole number", "Convert the divisor into a whole number by multiplying it (and the dividend) by an appropriate power of 10", "Ignore the decimal point entirely", "Divide only the whole-number parts"],
+                      answer: 1,
+                      explanation: "The key first step is scaling both the divisor and dividend by the same power of 10 so the divisor becomes a whole number, after which standard division can proceed."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-12-4",
+                  title: "4. Non-Terminating Decimals",
+                  theory: {
+                    intro: "Not every division of whole numbers produces a decimal that neatly ends — some divisions, like 10 ÷ 3, go on forever with a repeating pattern of digits, revealing an entirely new kind of number.",
+                    sections: [
+                      {
+                        heading: "A Division That Never Ends",
+                        text: "Performing long division for 10 ÷ 3: at each step, dividing the remainder (regrouped into the next smaller place value) by 3 always leaves a remainder of 1 — which then gets regrouped again, and again, forever. This means 10 ÷ 3 = 3.333... cannot be written using a finite number of decimal digits."
+                      },
+                      {
+                        heading: "Tracking the Repeating Pattern",
+                        text: "Dividing 1 by 7 (1 ÷ 7) also never terminates — but the remainders that appear (1, 3, 2, 6, 4, 5, then back to 1) form a repeating CYCLE. Since the remainders eventually repeat, the digits of the quotient must repeat too, giving a predictable, patterned non-terminating decimal rather than a random one."
+                      },
+                      {
+                        heading: "Why This Matters",
+                        text: "Discovering that some perfectly ordinary whole-number divisions (like 10÷3 or 1÷7) produce decimals that never terminate is an important stepping stone toward understanding that not all numbers can be written as simple terminating or even simple repeating decimals — a deeper exploration saved for later classes."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Discovering the Repeating Remainder Cycle",
+                      objective: "To perform long division on 1 ÷ 7 by hand and discover the repeating cycle of remainders that explains why the decimal never terminates.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Perform long division for 1 ÷ 7, carrying the division out to at least 6-7 decimal places.",
+                        "At each step, write down the remainder you get before regrouping to the next decimal place.",
+                        "Continue until you notice a remainder that has appeared before in your list.",
+                        "Count how many decimal digits appear before the remainder cycle repeats.",
+                        "Compare your repeating decimal for 1÷7 with a classmate's, confirming you both get the exact same repeating pattern."
+                      ],
+                      observation: "The remainders in the long division of 1 ÷ 7 (1, 3, 2, 6, 4, 5) eventually cycle back to the starting remainder, which is exactly why the decimal digits of the quotient (0.142857142857...) repeat forever in the same 6-digit pattern."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does the long division of 10 ÷ 3 never terminate?",
+                      options: ["Because 3 is a prime number", "Because at every step of the division, the remainder is always 1, which keeps getting regrouped into the next smaller place value forever", "Because 10 is too small a number", "Long division always terminates; this is an error"],
+                      answer: 1,
+                      explanation: "Each division step in 10÷3 leaves a remainder of exactly 1, which regroups into the next decimal place and repeats the same division step endlessly — so the process never reaches a remainder of 0."
+                    },
+                    {
+                      question: "What is 10 ÷ 3 as a decimal?",
+                      options: ["3.3", "3.333... (repeating forever)", "3.0", "It cannot be expressed as a decimal"],
+                      answer: 1,
+                      explanation: "10 ÷ 3 = 3.333..., where the digit 3 repeats forever, since the division process never terminates."
+                    },
+                    {
+                      question: "In the long division of 1 ÷ 7, what pattern do the remainders show?",
+                      options: ["They are always 0", "They cycle through the sequence 1, 3, 2, 6, 4, 5, and then repeat", "They increase forever without repeating", "There is no pattern at all"],
+                      answer: 1,
+                      explanation: "The remainders in 1÷7's long division cycle through 1, 3, 2, 6, 4, 5, then return to 1, repeating the cycle — which is why the quotient's digits also repeat in a 6-digit pattern."
+                    },
+                    {
+                      question: "Why does a repeating remainder cycle guarantee that the decimal quotient also repeats?",
+                      options: ["It doesn't guarantee this", "Because once the same remainder reappears, the exact same sequence of division steps (and therefore digits) must repeat from that point onward", "Because all decimals eventually repeat regardless of remainders", "Remainders and quotient digits are unrelated"],
+                      answer: 1,
+                      explanation: "Since each step of long division is fully determined by the current remainder, seeing the same remainder again means the following steps (and resulting digits) must play out identically, producing a repeating pattern."
+                    },
+                    {
+                      question: "What is significant about discovering that 10÷3 and 1÷7 never terminate?",
+                      options: ["It shows long division is broken", "It reveals that not every division of whole numbers gives a simple, finite decimal — some produce non-terminating (though often repeating) decimals", "It means these numbers cannot be divided at all", "It only applies to the number 3 and 7 specifically"],
+                      answer: 1,
+                      explanation: "This discovery is an important conceptual step: it shows decimals aren't always neatly finite, opening the door to understanding repeating and non-terminating decimals more deeply in later study."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "7m-13",
+              title: "Connecting the Dots…",
+              topics: [
+                {
+                  id: "7m-13-1",
+                  title: "1. Comparing Data & the Arithmetic Mean",
+                  lab: { type: "mean-fair-share-sim" },
+                  theory: {
+                    intro: "Comparing two cricket players' scores, or two groups sharing guavas, raises a genuine challenge: can a single representative number fairly summarise an entire collection of values?",
+                    sections: [
+                      {
+                        heading: "Why a Single Total Isn't Always Fair",
+                        text: "Comparing two players by their TOTAL runs can be misleading if they played a different number of matches — Shubman's 110 runs in 5 matches isn't directly comparable to Yashasvi's 96 runs in 4 matches, since the number of opportunities differs. A fairer comparison needs a value that accounts for the group size."
+                      },
+                      {
+                        heading: "The Arithmetic Mean (Average)",
+                        text: "The Mean = (Sum of all values) ÷ (Number of values) balances out the highs and lows in a dataset into one representative number. For Shubman: 110÷5=22 runs/match on average; for Yashasvi: 96÷4=24 runs/match — showing Yashasvi's average was actually higher, despite a lower total."
+                      },
+                      {
+                        heading: "The Mean as Fair-Share",
+                        text: "The mean can also be understood as 'fair-share': if a group's 5 members collected 3,8,10,5,4 guavas (30 total), sharing equally gives 30÷5=6 guavas each. This is exactly the same calculation as the arithmetic mean — redistributing the total so everyone has an EQUAL share, which is why ancient Indian mathematicians called it 'samamiti' (mean measure) or associated it with 'sama' (equal)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Computing and Comparing Means as Fair-Share",
+                      objective: "To calculate the arithmetic mean of two datasets and interpret it as an equal 'fair share' redistribution of the total.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Two friends collect stones: Friend A collects 5 stones over 4 days (2,1,0,2), Friend B collects 6 stones over 3 days (1,3,2).",
+                        "Compute the daily average (mean) for each friend by dividing their total by their number of days.",
+                        "Interpret each mean as 'fair-share': if all the stones collected were redistributed equally across the days, how many would each day get?",
+                        "Compare the two means to determine who collected more per day, on average.",
+                        "Discuss why comparing TOTALS alone (5 vs 6) would have been misleading, given the different number of days involved."
+                      ],
+                      observation: "The arithmetic mean gives a fair, single representative value for a dataset regardless of how many data points it contains, making it possible to meaningfully compare groups of different sizes — unlike comparing raw totals."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the formula for the Arithmetic Mean?",
+                      options: ["Number of values ÷ Sum of all values", "Sum of all values ÷ Number of values", "The largest value in the data", "The smallest value in the data"],
+                      answer: 1,
+                      explanation: "The Mean is calculated as the sum of all values in the dataset, divided by how many values there are."
+                    },
+                    {
+                      question: "Shubman scored 110 runs in 5 matches; Yashasvi scored 96 runs in 4 matches. Whose average was higher?",
+                      options: ["Shubman's, since his total (110) is higher", "Yashasvi's — 96÷4=24 runs/match is higher than Shubman's 110÷5=22 runs/match", "They are exactly equal", "Cannot be determined from this information"],
+                      answer: 1,
+                      explanation: "Shubman's average is 110÷5=22, while Yashasvi's is 96÷4=24 — despite a lower total, Yashasvi's per-match average is higher."
+                    },
+                    {
+                      question: "Why can comparing raw TOTALS be misleading when groups have different sizes?",
+                      options: ["Totals are always the best way to compare", "Because a larger total might simply reflect more matches/days/items, not necessarily better individual performance — the mean accounts for this by dividing by the count", "Totals and means are always identical", "This never causes any issue"],
+                      answer: 1,
+                      explanation: "A bigger total can come from having more opportunities (matches, days) rather than better individual performance — dividing by the count (finding the mean) corrects for this."
+                    },
+                    {
+                      question: "How can the arithmetic mean be understood as 'fair-share'?",
+                      options: ["It cannot be understood this way", "It represents what each member/day/match would get if the total were redistributed equally among all of them", "It only applies to sharing physical objects like guavas", "Fair-share and mean are unrelated concepts"],
+                      answer: 1,
+                      explanation: "Computing the mean (total ÷ count) is mathematically identical to redistributing the total equally across all data points — exactly the idea of a 'fair share'."
+                    },
+                    {
+                      question: "If 5 people collect a total of 30 guavas and share them equally, how many does each person get, and what is this equivalent to calculating?",
+                      options: ["5 guavas each; equivalent to finding the total", "6 guavas each; equivalent to finding the arithmetic mean (30÷5=6)", "30 guavas each; equivalent to multiplying", "10 guavas each; equivalent to finding the median"],
+                      answer: 1,
+                      explanation: "30÷5=6 guavas per person — this equal-sharing calculation is exactly the same as computing the arithmetic mean of the group's collection."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-13-2",
+                  title: "2. Outliers and the Median",
+                  lab: { type: "mean-median-outlier-sim" },
+                  theory: {
+                    intro: "The average height of a family can be pulled down by just one unusually young child — revealing that the mean isn't always the best representative value, and introducing the median as a sturdier alternative.",
+                    sections: [
+                      {
+                        heading: "When the Mean Misleads: Outliers",
+                        text: "Poovizhi's family heights (170,173,165,118,175 cm) average to just 160.2cm — LESS than 4 of the 5 family members' actual heights! This happens because one very young child (118cm) pulls the average down. A value that differs greatly from the rest of the data, like this 118cm, is called an outlier."
+                      },
+                      {
+                        heading: "The Median: Sorting and Finding the Middle",
+                        text: "The median is found by sorting the data and picking the middle value. For Poovizhi's sorted heights (118,165,170,173,175), the middle (3rd of 5) value is 170 — a far better representative than the mean of 160.2. For an EVEN number of values (like Yaangba's 6 family members: 155,160,164,165,169,173), there's no single middle number — so the median is the average of the two middle values: (164+165)÷2=164.5."
+                      },
+                      {
+                        heading: "Why the Median Resists Outliers",
+                        text: "Since the median only depends on which value is in the middle POSITION after sorting (not on the actual size of extreme values), a single outlier — however extreme — has little to no effect on it. This makes the median a more reliable 'typical value' than the mean whenever a dataset contains outliers."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Mean and Median With and Without an Outlier",
+                      objective: "To directly observe how an outlier affects the mean much more than the median, using a hands-on dataset.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Take the dataset 4, 5, 6, 5, 4, 6, 5 (7 values) and compute both the mean and median.",
+                        "Now add an extreme outlier to the dataset, such as 40, making it 4,5,6,5,4,6,5,40 (8 values), and recompute both the mean and median.",
+                        "Compare how much the mean changed versus how much the median changed after adding the outlier.",
+                        "Discuss which measure (mean or median) better represents the 'typical' value in the presence of the outlier.",
+                        "Try removing the outlier and adding a different one (like 0) to see if the same pattern holds."
+                      ],
+                      observation: "Adding a single extreme outlier value dramatically shifts the mean, while the median barely changes (or doesn't change at all) — confirming that the median is much more resistant to the influence of outliers than the mean."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is an 'outlier' in a dataset?",
+                      options: ["The largest value in the data, always", "A value that differs significantly from the rest of the values in the data", "Any even number in the data", "The first value listed in the data"],
+                      answer: 1,
+                      explanation: "An outlier is a data point that stands out as significantly different from the rest of the values — like the 118cm height amid a family mostly in the 165-175cm range."
+                    },
+                    {
+                      question: "Why is Poovizhi's family's mean height (160.2cm) lower than 4 out of 5 actual family members' heights?",
+                      options: ["This is impossible and must be an error", "Because one outlier (the young child at 118cm) pulls the average down significantly", "Because the mean formula is wrong for heights", "Because there are exactly 5 family members"],
+                      answer: 1,
+                      explanation: "The single much-shorter outlier value (118cm) drags the calculated average below most of the other family members' actual heights."
+                    },
+                    {
+                      question: "How is the median found for a dataset with an ODD number of values?",
+                      options: ["Add all values and divide by the count", "Sort the data and pick the single middle value", "Always pick the largest value", "Average the first and last values"],
+                      answer: 1,
+                      explanation: "For an odd number of data points, sorting the data and selecting the exact middle value gives the median."
+                    },
+                    {
+                      question: "How is the median found for a dataset with an EVEN number of values, like Yaangba's 6 family members?",
+                      options: ["Pick either middle value at random", "Average the two middle values after sorting the data", "It cannot be found for even-sized datasets", "Use the largest value instead"],
+                      answer: 1,
+                      explanation: "With an even count, there are two middle values after sorting — the median is their average, e.g., (164+165)÷2=164.5."
+                    },
+                    {
+                      question: "Why does the median resist the influence of outliers better than the mean does?",
+                      options: ["It doesn't actually resist outliers", "Because the median depends only on which value occupies the middle POSITION after sorting, not on how extreme the outlier's actual value is", "Because the median is always larger than the mean", "Medians cannot be calculated when outliers are present"],
+                      answer: 1,
+                      explanation: "Since the median only cares about position (which value is in the middle after sorting), an outlier can be extremely far from the rest of the data without shifting the median much — unlike the mean, which directly incorporates every value's magnitude."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-13-3",
+                  title: "3. Visualising Data: Double Column Graphs",
+                  theory: {
+                    intro: "When comparing two related datasets — like onion prices in two towns across the same months — combining them into a single, cleverly designed graph makes comparison far easier than viewing two separate graphs.",
+                    sections: [
+                      {
+                        heading: "Combining Two Column Graphs",
+                        text: "Instead of drawing two SEPARATE column graphs for Yahapur's and Wahapur's monthly onion prices, the bars for each month can be placed SIDE BY SIDE in a single graph, using different colours (or patterns) to distinguish the two towns. This is called a clustered column graph (or double column graph, since each month's 'cluster' has two columns)."
+                      },
+                      {
+                        heading: "Reading a Double Column Graph",
+                        text: "In a double column graph, comparing the relative heights of the two bars within each month's cluster instantly shows which town had higher prices that month, and roughly by how much (using the vertical scale). Distinguishing marks like dots or slanted lines within the bars help readers who have difficulty distinguishing colours, or when the graph is printed in greyscale."
+                      },
+                      {
+                        heading: "A Two-Step Process for Reading Complex Graphs",
+                        text: "For graphs with a lot of information (like worldwide rocket launch data by different organisations), a two-step approach helps: Step 1 — identify what is given (what does each axis represent, what scale is used, what are the categories). Step 2 — look for patterns and specific comparisons relevant to the question being asked, rather than trying to absorb every detail at once."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Creating a Double Column Graph to Compare Two Datasets",
+                      objective: "To construct a clustered (double) column graph comparing two related datasets across the same categories.",
+                      materials: ["Graph paper or plain paper with a ruler", "Two different coloured pencils"],
+                      steps: [
+                        "Collect or use two related datasets across the same categories, such as the high temperature in your city for each day of a week, compared to a different city.",
+                        "Draw a horizontal axis with one position (cluster) for each day, and a vertical axis marked in an appropriate scale for temperature.",
+                        "For each day's cluster, draw two bars side by side — one colour for each city — with heights matching their temperatures.",
+                        "Add a legend indicating which colour represents which city.",
+                        "Use your finished graph to identify which city was warmer on most days, and the day with the biggest temperature difference."
+                      ],
+                      observation: "A double column graph makes day-by-day (or month-by-month) comparison between two related datasets far more immediate than switching between two separate graphs — the side-by-side bars make relative differences visually obvious."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'clustered column graph' (or double column graph)?",
+                      options: ["A graph with only one column per category", "A graph where two (or more) bars are placed side by side within each category, using different colours to compare related datasets", "A graph with no axes", "A type of pie chart"],
+                      answer: 1,
+                      explanation: "A clustered/double column graph places multiple bars — one per dataset — side by side within each category (like each month), making direct visual comparison easy."
+                    },
+                    {
+                      question: "Why might a double column graph use dots or slanted line patterns within the bars, in addition to colour?",
+                      options: ["Purely for decoration", "To help readers who have difficulty distinguishing colours, and to remain readable when printed in greyscale (black-and-white)", "Because colours are not allowed in graphs", "To make the graph harder to read"],
+                      answer: 1,
+                      explanation: "Patterns like dots or slanted lines provide an additional way to distinguish datasets beyond colour alone, aiding colour-blind readers and greyscale printing."
+                    },
+                    {
+                      question: "What is Step 1 of the two-step process for reading a complex graph?",
+                      options: ["Immediately calculate the mean of all the data", "Identify what is given — how the graph is organised, what scale is used, and what the categories represent", "Ignore the graph's labels and scale", "Redraw the entire graph from scratch"],
+                      answer: 1,
+                      explanation: "Step 1 is orienting yourself to the graph's structure — understanding its axes, scale, and categories — before trying to extract specific insights."
+                    },
+                    {
+                      question: "In a double column graph comparing two towns' monthly onion prices, how would you determine which town was costlier in a specific month?",
+                      options: ["Compare the heights of the two bars within that month's cluster", "Guess randomly", "Only look at the town with more letters in its name", "It cannot be determined from the graph"],
+                      answer: 0,
+                      explanation: "Comparing the relative heights of the two side-by-side bars within a given month's cluster directly shows which town had the higher price that month."
+                    },
+                    {
+                      question: "What is the main advantage of combining two separate column graphs into one clustered graph?",
+                      options: ["It uses less ink", "It makes direct, month-by-month (or category-by-category) comparison between the two datasets much easier than viewing two separate graphs", "It hides the data more effectively", "There is no real advantage"],
+                      answer: 1,
+                      explanation: "Placing corresponding bars side by side within the same graph lets viewers directly compare the two datasets category by category, without needing to mentally cross-reference two separate graphs."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-13-4",
+                  title: "4. Data Detective: Reading Data Critically",
+                  theory: {
+                    intro: "Well-organised data can tell a compelling story — but reading it carefully and critically, rather than jumping to the first conclusion, is essential to avoid being misled by a partial picture.",
+                    sections: [
+                      {
+                        heading: "Comparing Multiple Dot Plots Across Groups",
+                        text: "Comparing the heights of boys and girls across Grades 6, 7, and 8 in two different schools (School A and School B), each shown as a separate dot plot with its own mean marked, reveals patterns not visible from a single number alone — such as how the gap between two groups' means might grow, shrink, or reverse across different grades."
+                      },
+                      {
+                        heading: "The Skill of Being a 'Data Detective'",
+                        text: "Being a good data detective means: checking multiple representative values (not just the mean, but also median, minimum, maximum, and range) before drawing conclusions; being alert to outliers that might distort a summary statistic; and comparing data fairly, accounting for differences in group size or context, rather than jumping to conclusions from a single eye-catching number."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Investigating a Dataset Like a Data Detective",
+                      objective: "To practice thoroughly analysing a dataset — computing multiple representative values and checking for outliers — before drawing a conclusion.",
+                      materials: ["A real or provided dataset (e.g., daily temperatures, test scores, or another suitable dataset)", "Paper and pencil"],
+                      steps: [
+                        "Choose or use a given dataset of at least 10 values.",
+                        "Compute the mean, median, minimum, maximum, and range (maximum − minimum) of the dataset.",
+                        "Check whether there are any outliers, and if so, recompute the mean and median without them to see how much they change.",
+                        "Write one sentence describing the dataset using ONLY the mean, and another sentence using multiple measures (median, range, outlier presence) together.",
+                        "Discuss which description gives a more complete and honest picture of the data."
+                      ],
+                      observation: "Relying on a single number (like the mean alone) can give an incomplete or even misleading picture of a dataset — checking multiple representative values together, and watching for outliers, gives a much more honest and complete understanding of what the data actually shows."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does being a good 'data detective' involve?",
+                      options: ["Only ever looking at the mean of a dataset", "Checking multiple representative values (mean, median, range), watching for outliers, and comparing data fairly before drawing conclusions", "Ignoring all data and guessing", "Only trusting the largest number in the data"],
+                      answer: 1,
+                      explanation: "Being a thoughtful data detective means examining data from multiple angles — several representative values, outlier checks, and fair comparisons — rather than relying on a single potentially misleading number."
+                    },
+                    {
+                      question: "Why is it useful to compare dot plots across multiple grades (like 6, 7, and 8) rather than looking at just one grade's data?",
+                      options: ["It isn't useful, one grade is always enough", "Because patterns like a growing or shrinking gap between groups may only become visible when looking across multiple related datasets together", "Because only Grade 7 data matters", "Comparing multiple grades is not possible"],
+                      answer: 1,
+                      explanation: "Trends and patterns (like how a difference between groups changes over time or across categories) often only become visible when several related datasets are examined together, not from a single isolated data point."
+                    },
+                    {
+                      question: "Why shouldn't conclusions be drawn from a single eye-catching number in a dataset?",
+                      options: ["Because a single number is always the most reliable", "Because a single number (like a maximum or an outlier) may not represent the overall pattern in the data, and could lead to a misleading conclusion", "Because all numbers in a dataset are equally important, and order doesn't matter", "Single numbers can never be part of good data analysis"],
+                      answer: 1,
+                      explanation: "Focusing on just one striking number (like the highest price, without considering the mean, median, or overall trend) risks drawing a conclusion that doesn't reflect the data's true overall pattern."
+                    },
+                    {
+                      question: "What should a careful data analysis do when an outlier is present in the data?",
+                      options: ["Always delete the outlier without mentioning it", "Check how much the mean and median change with and without the outlier, to understand its influence on the summary", "Ignore the existence of outliers entirely", "Assume outliers never affect any calculation"],
+                      answer: 1,
+                      explanation: "A careful analysis explicitly checks the effect of an outlier by comparing summary statistics with and without it, rather than ignoring its presence or silently removing it."
+                    },
+                    {
+                      question: "According to the chapter, what can well-organised and well-presented data do?",
+                      options: ["Nothing beyond showing raw numbers", "Tell interesting stories, and also expose or help solve mysteries hidden within the numbers", "Only be useful for mathematicians", "Data can never be organized meaningfully"],
+                      answer: 1,
+                      explanation: "The chapter compares well-organised data to a well-told story — it can reveal genuine insights, patterns, or even 'mysteries' that raw, unorganised numbers would hide."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "7m-14",
+              title: "Constructions and Tilings",
+              topics: [
+                {
+                  id: "7m-14-1",
+                  title: "1. Perpendicular Bisector Construction",
+                  lab: { type: "perpendicular-bisector-sim" },
+                  theory: {
+                    intro: "Constructing a perfectly symmetrical pair of eyes reveals a fundamental geometric tool: the perpendicular bisector, and congruent triangles provide a rigorous proof of exactly why the construction works.",
+                    sections: [
+                      {
+                        heading: "Finding Symmetrical Points",
+                        text: "To draw a symmetrical eye around a supporting line XY, we need two points A and B where AX=AY=BX=BY. These are found by drawing arcs of the same radius from X and Y — the arcs intersect above XY (giving A) and below XY (giving B)."
+                      },
+                      {
+                        heading: "AB is the Perpendicular Bisector of XY",
+                        text: "Joining A and B always produces a line that passes through the exact midpoint of XY, meeting it at a right angle — this is called the perpendicular bisector. A perpendicular bisector both BISECTS a line segment (divides it into two identical parts) and is PERPENDICULAR to it."
+                      },
+                      {
+                        heading: "Proving It with Congruent Triangles",
+                        text: "To prove O (where AB meets XY) is the midpoint and AB⊥XY: first, ∆ABX≅∆ABY (by SSS, since AX=AY, BX=BY, and AB is shared), giving ∠XAO=∠YAO. Then ∆AOX≅∆AOY (by SAS, using AX=AY, the shared side AO, and the just-proven equal angles), giving OX=OY (so O is the midpoint) and ∠AOX=∠AOY. Since these two angles together form a straight line (180°), each must be exactly 90° — proving AB is perpendicular to XY."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Constructing a Perpendicular Bisector with Compass and Ruler",
+                      objective: "To construct the perpendicular bisector of a line segment using only a compass and ruler, and verify it both bisects and is perpendicular to the segment.",
+                      materials: ["Ruler", "Compass", "Pencil", "Protractor (for verification)"],
+                      steps: [
+                        "Draw a line segment XY of any length, say 8cm.",
+                        "Open the compass to a radius more than half of XY, and draw arcs above and below XY from centre X.",
+                        "Without changing the compass width, draw arcs above and below XY from centre Y — mark the two intersection points as A (above) and B (below).",
+                        "Draw the line AB, and mark where it crosses XY as point O.",
+                        "Measure XO and OY with a ruler (confirming they're equal) and measure the angle at O with a protractor (confirming it's 90°)."
+                      ],
+                      observation: "The line AB constructed this way always passes through the exact midpoint of XY and meets it at exactly 90° — confirming AB is the perpendicular bisector, exactly as guaranteed by the congruent-triangles proof."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a perpendicular bisector of a line segment?",
+                      options: ["Any line that touches the segment at one point", "A line that divides the segment into two equal parts AND meets it at a right angle (90°)", "A line parallel to the segment", "A line that is twice as long as the segment"],
+                      answer: 1,
+                      explanation: "A perpendicular bisector both bisects (splits into two equal parts) the segment and is perpendicular (meets at 90°) to it — both conditions must hold."
+                    },
+                    {
+                      question: "In constructing the perpendicular bisector of XY, why must the arcs from X and Y have the SAME radius?",
+                      options: ["It doesn't matter what radius is used", "So that the intersection points A and B are equidistant from BOTH X and Y (AX=AY and BX=BY), which is required for AB to be the perpendicular bisector", "To make the drawing look neater", "Because compasses can only draw one specific radius"],
+                      answer: 1,
+                      explanation: "Using the same radius from both X and Y ensures the resulting intersection points are equally distant from X and Y — exactly the condition needed for the line joining them to be the perpendicular bisector."
+                    },
+                    {
+                      question: "Which congruence condition proves ∆ABX ≅ ∆ABY in the perpendicular bisector proof?",
+                      options: ["ASA", "SSS — using AX=AY, BX=BY, and the shared side AB", "RHS", "There is no valid congruence condition here"],
+                      answer: 1,
+                      explanation: "∆ABX and ∆ABY share all three corresponding sides equal (AX=AY, BX=BY, and AB in common), satisfying the SSS congruence condition."
+                    },
+                    {
+                      question: "Once ∆AOX ≅ ∆AOY is established, how does the proof conclude that AB is perpendicular to XY?",
+                      options: ["It doesn't prove perpendicularity, only bisection", "Since ∠AOX and ∠AOY are equal (corresponding angles) AND together form a straight line (180°), each must be exactly 90°", "By simply assuming it must be perpendicular", "By measuring with a protractor only"],
+                      answer: 1,
+                      explanation: "Since ∠AOX=∠AOY (from congruence) and they together form a straight angle (180°), each angle must be 90° — proving AB meets XY at a right angle."
+                    },
+                    {
+                      question: "If points C and D also satisfy CX=CY and DX=DY, where must C and D lie?",
+                      options: ["Anywhere in the plane", "On the same perpendicular bisector line AB, since a line segment has only ONE perpendicular bisector", "Only at the midpoint of XY", "C and D cannot exist"],
+                      answer: 1,
+                      explanation: "Since any point equidistant from X and Y lies on XY's unique perpendicular bisector, C and D (both satisfying this equidistant condition) must lie on the same line AB."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-14-2",
+                  title: "2. Angle Bisector Construction",
+                  lab: { type: "angle-bisector-sim" },
+                  theory: {
+                    intro: "Building an 8-petalled design requires dividing a full turn into 8 equal 45° angles — achieved by first constructing a 90° angle, then splitting it exactly in half using a compass-and-ruler angle bisection method proven by congruent triangles.",
+                    sections: [
+                      {
+                        heading: "Why 45°? Dividing 360° into 8 Equal Parts",
+                        text: "An 8-petalled design needs the angle between every pair of adjacent lines to be equal, so 360°÷8=45° per petal. Since we already know how to construct a 90° angle, bisecting (halving) it gives exactly 45°."
+                      },
+                      {
+                        heading: "The Angle Bisection Construction",
+                        text: "To bisect ∠XOY: Step 1 — mark points A and B on the two arms OY and OX such that OA=OB (using a single compass-arc from O). Step 2 — from A and B, draw arcs of the SAME radius that intersect at a new point C. Step 3 — the line OC bisects ∠AOB, meaning ∠BOC=∠AOC."
+                      },
+                      {
+                        heading: "Proving It with SSS Congruence",
+                        text: "Since OA=OB (by construction), AC=BC (by construction, using equal arc radii), and OC is shared by both triangles, ∆OBC≅∆OAC by the SSS condition. Therefore ∠BOC=∠AOC (corresponding angles of congruent triangles) — proving OC genuinely bisects the angle, splitting it into two exactly equal halves."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Bisecting an Angle to Construct 45° and 22.5°",
+                      objective: "To construct a 90° angle, bisect it to get 45°, and bisect again to get 22.5°, using only compass and ruler.",
+                      materials: ["Ruler", "Compass", "Protractor (for verification)"],
+                      steps: [
+                        "Construct a 90° angle ∠XOY using your usual method (e.g., constructing a perpendicular).",
+                        "Mark points A and B on the two arms OY and OX at equal distances from O.",
+                        "From A and B, draw arcs of equal radius that intersect at point C, and draw ray OC.",
+                        "Measure ∠XOC and ∠COY with a protractor to confirm they are both 45°.",
+                        "Repeat the bisection process on one of the 45° angles to construct a 22.5° angle, and verify with the protractor."
+                      ],
+                      observation: "Each successive angle bisection exactly halves the original angle — 90°→45°→22.5° — confirming that repeated bisection is a reliable way to construct a wide variety of precise angle measures using only a compass and ruler."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does an 8-petalled design require 45° angles between adjacent lines?",
+                      options: ["45° is an arbitrary choice", "Because dividing the full 360° turn into 8 equal parts gives 360°÷8=45° per part", "Because 8 petals always require 90° angles", "The angle size doesn't matter for petals"],
+                      answer: 1,
+                      explanation: "To create 8 equally-spaced lines around a full circle, the angle between each adjacent pair must be 360°÷8=45°."
+                    },
+                    {
+                      question: "In the angle bisection construction, what is the first step?",
+                      options: ["Draw the bisector immediately", "Mark points A and B on the two arms of the angle such that OA=OB", "Measure the angle with a protractor", "Draw a random line through the vertex"],
+                      answer: 1,
+                      explanation: "The construction begins by marking two points, one on each arm, both at the same distance from the vertex O (OA=OB), using a single compass setting."
+                    },
+                    {
+                      question: "Which congruence condition proves that OC bisects the angle in the angle bisection construction?",
+                      options: ["ASA", "SSS — since OA=OB, AC=BC (equal arc radii), and OC is a shared side", "AAS", "There is no valid proof"],
+                      answer: 1,
+                      explanation: "∆OBC and ∆OAC share all three corresponding sides equal (OA=OB, AC=BC, and OC in common), satisfying SSS congruence, which gives ∠BOC=∠AOC."
+                    },
+                    {
+                      question: "How can a 45° angle be constructed using only a compass and ruler?",
+                      options: ["It cannot be constructed this way", "By first constructing a 90° angle, then bisecting it", "By measuring exactly 45° with a ruler", "By trisecting a 135° angle"],
+                      answer: 1,
+                      explanation: "Since 90°÷2=45°, bisecting a constructed 90° angle gives exactly 45° using only compass-and-ruler methods."
+                    },
+                    {
+                      question: "What angle would you get by bisecting a 45° angle?",
+                      options: ["90°", "22.5°", "67.5°", "180°"],
+                      answer: 1,
+                      explanation: "Bisecting (halving) a 45° angle gives 45°÷2=22.5°."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-14-3",
+                  title: "3. Tiling: Covering Regions Without Gaps",
+                  lab: { type: "domino-tiling-sim" },
+                  theory: {
+                    intro: "Tangram puzzles and grid-covering problems both explore the same core idea: can a region be completely covered by a set of shapes with no gaps and no overlaps? Simple counting arguments often reveal the answer before any actual tiling is attempted.",
+                    sections: [
+                      {
+                        heading: "Tangrams and Tiling",
+                        text: "Tangrams are ancient Chinese puzzles made of 7 pieces cut from a single square, which can be rearranged into many different figures (like an arrow) while using every piece exactly once with no gaps or overlaps. Covering a region completely using a set of shapes, without gaps or overlaps, is called tiling."
+                      },
+                      {
+                        heading: "Tiling Grids with 2×1 Dominoes",
+                        text: "A 4×6 grid (4 rows, 6 columns) has 24 unit squares — and can indeed be tiled using 2×1 domino tiles (allowed to rotate as vertical or horizontal). A key requirement: since each 2×1 tile covers exactly 2 unit squares, the TOTAL number of unit squares in the grid must be even for any tiling to be possible at all."
+                      },
+                      {
+                        heading: "General Strategies for Even-by-Even Grids",
+                        text: "When BOTH the number of rows and columns (m and n) are even, a reliable tiling strategy is to cover each column entirely with vertical dominoes stacked top to bottom — this always works cleanly since an even number of rows means each column splits perfectly into pairs."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Exploring Which Grids Can Be Tiled with Dominoes",
+                      objective: "To test different grid sizes for tileability with 2×1 dominoes, and discover the role of total square count (odd vs even).",
+                      materials: ["Graph paper", "Scissors (to cut out 2×1 domino shapes, or just draw them in)"],
+                      steps: [
+                        "Draw a 4×6 grid on graph paper and try tiling it completely with 2×1 dominoes (rotating as needed).",
+                        "Draw a 5×7 grid (35 unit squares, an odd number) and try to tile it — notice you always end up with one square uncovered.",
+                        "Draw a 4×4 grid and tile it by covering each column with vertical dominoes.",
+                        "Try a 3×4 grid (one side odd, one even) and determine if it can be tiled.",
+                        "Based on your experiments, write a general rule for when an m×n grid CAN be tiled with 2×1 dominoes."
+                      ],
+                      observation: "Any grid with an ODD total number of unit squares can never be tiled with 2×1 dominoes (since each domino covers exactly 2 squares, an odd total can never be evenly divided) — this simple counting argument predicts non-tileability without needing to attempt the tiling at all."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 'tiling'?",
+                      options: ["Drawing random shapes on paper", "Covering a region completely using a set of shapes, without any gaps or overlaps", "Cutting a shape into smaller pieces", "Colouring a picture"],
+                      answer: 1,
+                      explanation: "Tiling means completely covering a region with a set of shapes such that there are no gaps between them and no overlapping."
+                    },
+                    {
+                      question: "Why must a grid have an EVEN total number of unit squares to be tileable with 2×1 dominoes?",
+                      options: ["It doesn't need to be even", "Because each domino covers exactly 2 unit squares, so the total covered must always be a multiple of 2 — an odd total can never be completely covered", "Because dominoes can only be placed in even-numbered rows", "This requirement doesn't actually exist"],
+                      answer: 1,
+                      explanation: "Since every 2×1 domino covers exactly 2 squares, the total number of squares covered by any number of dominoes is always even — making an odd-sized grid impossible to tile completely."
+                    },
+                    {
+                      question: "How many unit squares does a 5×7 grid have, and is it tileable with 2×1 dominoes?",
+                      options: ["35 squares; yes, tileable", "35 squares; NOT tileable, since 35 is odd", "12 squares; tileable", "It has no unit squares"],
+                      answer: 1,
+                      explanation: "5×7=35 unit squares, which is odd — since dominoes always cover an even total, a 5×7 grid can never be completely tiled with 2×1 dominoes."
+                    },
+                    {
+                      question: "What is a reliable strategy for tiling an m×n grid when BOTH m and n are even?",
+                      options: ["It cannot be tiled", "Cover each column entirely with vertical dominoes stacked top to bottom, which works cleanly since the even row count splits into perfect pairs", "Randomly place dominoes anywhere", "Only diagonal placement works"],
+                      answer: 1,
+                      explanation: "When the number of rows is even, stacking vertical dominoes to fill each column completely and cleanly gives a straightforward, guaranteed tiling strategy."
+                    },
+                    {
+                      question: "What are tangrams?",
+                      options: ["A type of calculator", "Ancient Chinese puzzles made of 7 pieces cut from a square, rearrangeable into many figures", "A kind of graph paper", "A measuring tool"],
+                      answer: 1,
+                      explanation: "Tangrams are traditional Chinese puzzles consisting of 7 pieces from a divided square, which can be rearranged (with no gaps or overlaps) into a wide variety of shapes."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-14-4",
+                  title: "4. The Checkerboard Argument for Non-Tileable Regions",
+                  theory: {
+                    intro: "Even when a region has an EVEN total number of squares, it might still be impossible to tile with dominoes — a clever checkerboard colouring argument reveals exactly why, without needing to try every possible arrangement.",
+                    sections: [
+                      {
+                        heading: "A Grid with a Square Removed",
+                        text: "A 5×3 grid (15 squares) with one square removed has 14 squares — an even number. But is it necessarily tileable? Not always: the ANSWER depends on exactly WHICH square was removed, not just the total count."
+                      },
+                      {
+                        heading: "The Checkerboard Colouring Trick",
+                        text: "Colour the grid's unit squares alternately black and white, like a checkerboard, so every black square touches only white squares and vice versa. Every single 2×1 domino, wherever placed (horizontally or vertically), always covers exactly ONE black square and ONE white square — never two of the same colour."
+                      },
+                      {
+                        heading: "Why Colour Imbalance Proves Non-Tileability",
+                        text: "If removing a square leaves an UNEQUAL number of black and white squares remaining, tiling becomes IMPOSSIBLE — since every domino covers one of each colour, a full tiling would always need EQUAL numbers of black and white squares. Even with an even total count, an imbalance between the two colours is enough to rule out any possible tiling, without needing to try a single arrangement."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Using Checkerboard Colouring to Predict Tileability",
+                      objective: "To apply the checkerboard colouring argument to predict, without physically attempting the tiling, whether a region with squares removed can be tiled with dominoes.",
+                      materials: ["Graph paper", "Two coloured pencils"],
+                      steps: [
+                        "Draw a 5×3 grid and colour its squares in an alternating checkerboard pattern (using two colours).",
+                        "Count how many squares of each colour there are in total (should be close to 15/2, so 8 of one colour and 7 of the other).",
+                        "Remove one specific square (of your choice) and recount the remaining squares of each colour.",
+                        "Predict, based on whether the two colour counts are now EQUAL or UNEQUAL, whether the resulting 14-square region can be tiled with dominoes.",
+                        "Try to actually tile the region to confirm your prediction, then repeat by removing a DIFFERENT square and comparing results."
+                      ],
+                      observation: "Whenever removing a square leaves unequal counts of the two checkerboard colours, tiling turns out to be genuinely impossible — confirming that the checkerboard argument correctly predicts tileability without requiring an exhaustive physical search."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In a checkerboard colouring of a grid, how many squares of each colour does a single 2×1 domino always cover?",
+                      options: ["Two squares of the same colour", "Exactly one black square and one white square, regardless of placement", "It depends on the domino's orientation", "Dominoes don't interact with colour at all"],
+                      answer: 1,
+                      explanation: "Since adjacent squares in a checkerboard pattern always have different colours, any 2×1 domino (horizontal or vertical) always covers exactly one square of each colour."
+                    },
+                    {
+                      question: "If a region has an EVEN total number of squares but an UNEQUAL number of black and white squares (in checkerboard colouring), can it be tiled with dominoes?",
+                      options: ["Yes, always, since the total is even", "No — since every domino covers one black and one white square, a full tiling requires EQUAL counts of both colours", "It depends on the exact shape", "Colour has no bearing on tileability"],
+                      answer: 1,
+                      explanation: "Even with an even total, if the black and white counts are unequal, no tiling can succeed, since every domino placed must use exactly one of each colour, requiring equal totals for a complete tiling."
+                    },
+                    {
+                      question: "Why is the checkerboard argument useful for predicting tileability?",
+                      options: ["It isn't useful, tiling must always be attempted physically", "Because it reveals impossibility through simple counting, without needing to try every possible physical arrangement of dominoes", "It only works for square grids", "It always confirms a region IS tileable"],
+                      answer: 1,
+                      explanation: "The checkerboard colour-count argument can definitively prove a region is NOT tileable using simple counting, avoiding the need for exhaustive (and potentially endless) trial-and-error attempts."
+                    },
+                    {
+                      question: "A 5×3 grid (15 squares) has one square removed, leaving 14 squares (even). Does this guarantee it's tileable with dominoes?",
+                      options: ["Yes, an even total always guarantees tileability", "No — it also depends on whether removing that specific square leaves equal numbers of both checkerboard colours", "No grid with a removed square can ever be tiled", "This cannot be determined by any method"],
+                      answer: 1,
+                      explanation: "An even total square count is NECESSARY but not SUFFICIENT for tileability — the checkerboard colour balance must also be checked, since removing certain squares can create a colour imbalance that blocks tiling even with an even total."
+                    },
+                    {
+                      question: "What does it mean for a mathematical argument like the checkerboard colouring to 'prove impossibility'?",
+                      options: ["It means the argument is just a guess", "It provides a rigorous, general reason why NO possible arrangement of dominoes could ever work, without needing to check every arrangement individually", "It means tiling is always possible", "Such arguments don't really prove anything"],
+                      answer: 1,
+                      explanation: "A rigorous impossibility argument (like checkerboard colour-counting) shows that EVERY possible tiling attempt must fail for a structural reason, which is far stronger than just failing to find a tiling after some attempts."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "7m-15",
+              title: "Finding the Unknown",
+              topics: [
+                {
+                  id: "7m-15-1",
+                  title: "1. Weighing Scales, Matchsticks & Framing Equations",
+                  lab: { type: "weighing-scale-equation-sim" },
+                  theory: {
+                    intro: "A balanced weighing scale and a growing matchstick pattern both hide an unknown value — and framing that unknown using a letter-number turns a puzzle into a solvable equation.",
+                    sections: [
+                      {
+                        heading: "Unknown Weights on a Balance",
+                        text: "If a weighing scale balances with 3 slices of bread (each weighing 2 units) on one side and 2 fried eggs on the other, we can write 6 = e+e, or 2e=6, where e is the weight of one egg. Framing the unknown weight as a letter-number turns a visual balance puzzle into a solvable equation."
+                      },
+                      {
+                        heading: "The Matchstick Pattern Problem",
+                        text: "A sequence of matchstick shapes has 3, 5, 7, ... sticks at positions 1, 2, 3, ... — following the rule 2n+1 sticks at position n. To find which position uses exactly 99 sticks, we solve the equation 2n+1=99."
+                      },
+                      {
+                        heading: "What Is an Equation?",
+                        text: "A statement of equality between two algebraic expressions, joined by an '=' sign, is called an equation — like 3x+4=7, or 2n+1=99. The expression on the left of '=' is the Left Hand Side (LHS); the expression on the right is the Right Hand Side (RHS). Solving an equation means finding the value(s) of the unknown letter-number for which LHS genuinely equals RHS."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Framing Equations from Weighing Scale Puzzles",
+                      objective: "To practice translating a balanced weighing-scale scenario into an algebraic equation using a letter-number for the unknown weight.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Imagine a weighing scale balanced with 3 identical unknown weights on one side, and a single 15-unit weight on the other side.",
+                        "Let w represent the unknown weight, and write the equation representing this balance: 3w=15.",
+                        "Now imagine a scale with 2 unknown weights PLUS a 4-unit weight on one side, balanced against an 18-unit weight on the other side — write this equation.",
+                        "Solve both equations for the unknown weight w.",
+                        "Verify each solution by substituting it back into the original balance scenario, confirming both sides genuinely balance."
+                      ],
+                      observation: "Representing an unknown weight with a letter-number turns a visual balance puzzle into a precise algebraic equation, which can then be solved systematically rather than by trial guessing."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is an 'equation'?",
+                      options: ["Any single algebraic expression", "A statement of equality between two algebraic expressions, joined by an '=' sign", "A number without any letters", "A type of graph"],
+                      answer: 1,
+                      explanation: "An equation is specifically a statement that two algebraic expressions are equal, written with an '=' sign between them, like 3x+4=7."
+                    },
+                    {
+                      question: "In the matchstick pattern where position n has 2n+1 sticks, what equation finds the position using exactly 99 sticks?",
+                      options: ["99n + 1 = 2", "2n + 1 = 99", "n = 99 + 1", "2 + 99 = n"],
+                      answer: 1,
+                      explanation: "Since position n has 2n+1 sticks, finding which position uses 99 sticks means solving 2n+1=99."
+                    },
+                    {
+                      question: "What are the LHS and RHS of an equation?",
+                      options: ["Both refer to the same side", "LHS (Left Hand Side) is the expression left of '=', and RHS (Right Hand Side) is the expression right of '='", "LHS means 'largest half side'", "These terms don't apply to equations"],
+                      answer: 1,
+                      explanation: "LHS and RHS refer to the algebraic expressions on the left and right of the equals sign, respectively."
+                    },
+                    {
+                      question: "If a scale balances with 3 slices of bread (2 units each) against 2 identical eggs, what equation represents this, using e for one egg's weight?",
+                      options: ["e = 6", "2e = 6, since 3 slices of 2 units each total 6, balanced against 2 eggs (e+e)", "6e = 2", "e + 6 = 2"],
+                      answer: 1,
+                      explanation: "3 slices × 2 units = 6 total on one side, balanced against e+e=2e on the other, giving the equation 2e=6."
+                    },
+                    {
+                      question: "What does 'solving an equation' mean?",
+                      options: ["Making the equation longer", "Finding the value(s) of the unknown letter-number for which the LHS truly equals the RHS", "Erasing the equation", "Adding more unknowns to the equation"],
+                      answer: 1,
+                      explanation: "Solving an equation means determining what value(s) the unknown must take so that the LHS and RHS are genuinely equal."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-15-2",
+                  title: "2. Trial and Error vs. the Balance Principle",
+                  theory: {
+                    intro: "Guessing values one by one to solve an equation works, but can be slow — a far more powerful idea comes from the weighing scale: performing the SAME operation on both sides of an equation always preserves its balance.",
+                    sections: [
+                      {
+                        heading: "The Trial and Error Method",
+                        text: "To solve 2n+1=99, we can substitute guesses: n=5 gives LHS=11 (too low); n=30 gives 61 (still low); n=49 gives exactly 99 — the solution! This trial and error method works but can be slow and inefficient, especially for equations with less obvious solutions."
+                      },
+                      {
+                        heading: "The Balance Principle",
+                        text: "Just as removing equal weights from both plates keeps a weighing scale balanced, performing the SAME operation (adding, subtracting, multiplying, or dividing by the same number) on BOTH sides of an equation always preserves its equality. For example, knowing 14593−1459+145−14+88=13353, we can find 14593−1459+145−14 simply by subtracting 88 from BOTH sides, since addition and subtraction are inverse operations."
+                      },
+                      {
+                        heading: "Using Inverse Operations to Isolate an Expression",
+                        text: "Multiplication and division are also inverse operations: knowing 23×41×11×8×7=5,80,888, dividing BOTH sides by 7 isolates 23×41×11×8 on the left. This 'same operation on both sides' idea is exactly how we can systematically strip away extra terms from an equation until only the unknown remains."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Trial-and-Error with the Balance Principle",
+                      objective: "To directly experience the inefficiency of trial-and-error versus the reliability of the balance principle for solving equations.",
+                      materials: ["Paper and pencil", "A stopwatch or timer (optional)"],
+                      steps: [
+                        "Try solving 7x − 3 = 46 using ONLY trial and error, substituting different guesses for x until LHS=RHS.",
+                        "Note how many guesses it took and how long it took.",
+                        "Now solve the SAME equation using the balance principle: add 3 to both sides, then divide both sides by 7.",
+                        "Compare how many steps and how much time each method required.",
+                        "Discuss: would trial and error still be practical if the answer were a large or non-whole number, like x=347.5?"
+                      ],
+                      observation: "While trial and error can eventually find simple whole-number solutions, it becomes increasingly impractical for larger numbers or non-whole-number solutions — the balance principle (performing the same operation on both sides) reaches the exact answer directly, regardless of its size or form."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the 'trial and error' method for solving an equation?",
+                      options: ["Always guessing a single, correct value on the first try", "Substituting different values for the unknown and checking which one makes LHS=RHS", "A method that never works", "Solving the equation using only addition"],
+                      answer: 1,
+                      explanation: "Trial and error involves testing different candidate values for the unknown until one is found that makes both sides of the equation equal."
+                    },
+                    {
+                      question: "What is the main drawback of the trial and error method?",
+                      options: ["It never gives the correct answer", "It can be slow and inefficient, especially when the solution isn't a small whole number", "It only works for equations with two unknowns", "It cannot be used at all"],
+                      answer: 1,
+                      explanation: "Trial and error requires repeated guessing and checking, which becomes impractical for large, fractional, or otherwise non-obvious solution values."
+                    },
+                    {
+                      question: "What is the 'balance principle' for solving equations?",
+                      options: ["Equations cannot be manipulated at all", "Performing the SAME operation (add, subtract, multiply, or divide by the same amount) on both sides of an equation always preserves its equality", "Only the left side of an equation can be changed", "Balance only applies to physical scales, not equations"],
+                      answer: 1,
+                      explanation: "Just like a balanced weighing scale stays balanced when equal weights are added or removed from both sides, an equation stays true when the same operation is applied to both its sides."
+                    },
+                    {
+                      question: "Given 23×41×11×8×7=5,80,888, how can you find 23×41×11×8 without recalculating from scratch?",
+                      options: ["Multiply both sides by 7", "Divide BOTH sides by 7, isolating the desired expression on the left", "Add 7 to both sides", "This cannot be found without full recalculation"],
+                      answer: 1,
+                      explanation: "Since multiplication and division are inverse operations, dividing both sides of the known equation by 7 directly isolates 23×41×11×8 on the left, giving its value without recalculating the whole product."
+                    },
+                    {
+                      question: "Why does performing the same operation on both sides of an equation preserve its equality?",
+                      options: ["It doesn't actually preserve equality", "Because if two quantities are equal, applying the identical operation to both keeps them equal to each other, even though their shared value may change", "Only addition preserves equality, not other operations", "This principle only applies to whole numbers"],
+                      answer: 1,
+                      explanation: "If LHS=RHS, applying the same operation to both keeps them equal — their common value might change, but they remain equal to EACH OTHER."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-15-3",
+                  title: "3. Solving Equations Using Inverse Operations",
+                  lab: { type: "equation-solver-sim" },
+                  theory: {
+                    intro: "Systematically undoing each operation applied to the unknown — using its exact inverse — peels away every extra term until the unknown stands alone, revealing its value.",
+                    sections: [
+                      {
+                        heading: "Solving 5x − 4 = 7 Step by Step",
+                        text: "To isolate 5x, remove the '−4' term by adding 4 to BOTH sides: 5x−4+4=7+4, giving 5x=11. To isolate x itself, remove the factor of 5 by dividing BOTH sides by 5: 5x÷5=11÷5, giving x=11/5."
+                      },
+                      {
+                        heading: "Always Check Your Solution",
+                        text: "Substituting x=11/5 back into the original equation: LHS=5×(11/5)−4=11−4=7, which equals the RHS (7) — confirming the solution is correct. Checking a solution by substitution is a reliable way to catch any arithmetic mistakes made while solving."
+                      },
+                      {
+                        heading: "Handling Negative Terms",
+                        text: "For 11y+(−5)=61, remove the '+(−5)' term by subtracting (−5) from both sides — equivalently, adding 5: 11y+(−5)−(−5)=61−(−5), giving 11y=66. Dividing both sides by 11 gives y=6, since 11×6=66."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Solving and Verifying Equations Step by Step",
+                      objective: "To practice the full systematic process — isolating the unknown using inverse operations, then verifying the solution by substitution.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Solve the equation 8m + 3 = 35 by first subtracting 3 from both sides, then dividing both sides by 8.",
+                        "Write down each intermediate step clearly, showing exactly which operation was applied to both sides.",
+                        "Substitute your found value of m back into the ORIGINAL equation (8m+3=35) to verify LHS=RHS.",
+                        "Repeat this full process for the equation 9k − 5 = 40.",
+                        "Discuss with a classmate: what would happen if you forgot to apply an operation to BOTH sides?"
+                      ],
+                      observation: "Systematically applying inverse operations to both sides — and always checking the final answer by substitution — reliably solves equations while also catching any arithmetic slip-ups made along the way."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "To solve 5x − 4 = 7, what is the first step?",
+                      options: ["Divide both sides by 5 immediately", "Add 4 to both sides, to remove the '−4' term and isolate 5x", "Subtract 7 from both sides", "Multiply both sides by 4"],
+                      answer: 1,
+                      explanation: "Adding 4 to both sides removes the '−4' term from the LHS, leaving 5x=11 as the next step toward isolating x."
+                    },
+                    {
+                      question: "After finding 5x=11, what operation isolates x completely?",
+                      options: ["Add 5 to both sides", "Divide both sides by 5", "Multiply both sides by 5", "Subtract 11 from both sides"],
+                      answer: 1,
+                      explanation: "Since x is multiplied by 5, dividing both sides by 5 removes that factor, giving x=11/5."
+                    },
+                    {
+                      question: "Why is it important to check a solution by substituting it back into the ORIGINAL equation?",
+                      options: ["It isn't important, solving is always correct", "Because substituting verifies that LHS truly equals RHS, catching any arithmetic mistakes made during solving", "Checking is only needed for equations with fractions", "Substitution changes the actual solution"],
+                      answer: 1,
+                      explanation: "Substituting the found value back into the original equation confirms the solution is genuinely correct, revealing any errors made in the solving steps."
+                    },
+                    {
+                      question: "To solve 11y + (−5) = 61, what operation removes the '+(−5)' term?",
+                      options: ["Multiplying both sides by −5", "Subtracting (−5) from both sides (equivalent to adding 5)", "Dividing both sides by −5", "Adding 61 to both sides"],
+                      answer: 1,
+                      explanation: "Subtracting (−5) from both sides — the same as adding 5 — removes the '+(−5)' term, leaving 11y=66."
+                    },
+                    {
+                      question: "What is the solution to 11y = 66?",
+                      options: ["y = 55", "y = 6, since 11×6=66", "y = 77", "y = 6.6"],
+                      answer: 1,
+                      explanation: "Dividing both sides by 11 gives y=66÷11=6, and indeed 11×6=66 confirms this."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-15-4",
+                  title: "4. Equations with Unknowns on Both Sides",
+                  theory: {
+                    intro: "Sometimes the unknown letter-number appears on BOTH sides of an equation — solving these requires one extra step: first gathering all the unknown terms onto a single side, before applying the usual inverse-operation strategy.",
+                    sections: [
+                      {
+                        heading: "Bringing Unknown Terms to One Side",
+                        text: "To solve 6y+7=4y+21 (unknowns on both sides), first subtract 4y from BOTH sides: 6y+7−4y=4y+21−4y, simplifying to 2y+7=21 — now the unknown appears only on the left, just like earlier examples."
+                      },
+                      {
+                        heading: "Finishing with Inverse Operations",
+                        text: "From 2y+7=21, subtract 7 from both sides: 2y=14. Then divide both sides by 2: y=7. As always, checking by substitution (6×7+7=49 and 4×7+21=49, both equal) confirms the solution."
+                      },
+                      {
+                        heading: "Some Equations Have No Solution",
+                        text: "Not every equation has a solution. Consider a number that is '4 more than a number' compared to being '5 more than the same number' — these can NEVER be equal, since 4 more and 5 more always differ by exactly 1, no matter what the number is. Such equations, when simplified, lead to a false statement (like 4=5), revealing they have no solution at all."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Solving Equations with Unknowns on Both Sides",
+                      objective: "To practice gathering unknown terms onto one side before applying inverse operations, for equations with the unknown appearing on both sides.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Solve 3u − 7 = 2u + 3 by first subtracting 2u from both sides to gather the unknown terms.",
+                        "Continue solving using inverse operations until u is fully isolated.",
+                        "Check your solution by substituting it into the ORIGINAL equation (3u−7=2u+3).",
+                        "Try framing your own equation where a number is described as '4 more than itself' compared to '5 more than itself' — simplify it and observe what happens.",
+                        "Discuss why this particular equation has no valid solution, no matter what value is tried."
+                      ],
+                      observation: "Gathering all unknown terms onto one side first (by subtracting the smaller unknown term from both sides) reduces an equation with unknowns on both sides to the same familiar form solved earlier — but some equations, when simplified, reveal a false statement, meaning no solution exists at all."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "To solve 6y + 7 = 4y + 21, what is the first step?",
+                      options: ["Divide both sides by 6 immediately", "Subtract 4y from both sides, to gather the unknown terms onto the left", "Add 21 to both sides", "Multiply both sides by 4"],
+                      answer: 1,
+                      explanation: "Subtracting 4y from both sides removes the unknown from the right side, simplifying to 2y+7=21, ready for the usual solving steps."
+                    },
+                    {
+                      question: "After simplifying 6y+7=4y+21 to 2y+7=21, what is the solution for y?",
+                      options: ["y = 14", "y = 7", "y = 21", "y = 2"],
+                      answer: 1,
+                      explanation: "From 2y+7=21: subtract 7 to get 2y=14, then divide by 2 to get y=7."
+                    },
+                    {
+                      question: "Why can an equation stating 'a number + 4 = the same number + 5' NEVER have a solution?",
+                      options: ["It always has a solution", "Because subtracting the number from both sides leaves 4=5, which is false regardless of the number's value", "Because 4 and 5 are both even", "Such equations always equal zero"],
+                      answer: 1,
+                      explanation: "Simplifying this equation (by subtracting the unknown number from both sides) leaves the false statement 4=5 — since this can never be true, no value of the unknown can solve the original equation."
+                    },
+                    {
+                      question: "What does it mean when simplifying an equation leads to a false numerical statement (like 4=5)?",
+                      options: ["It means you made an arithmetic error only", "It means the original equation has NO solution — no value of the unknown can make it true", "It means the unknown must be 0", "It means the equation has infinite solutions"],
+                      answer: 1,
+                      explanation: "Reaching a false statement like 4=5 after valid simplification steps proves the original equation is never true for ANY value of the unknown — it simply has no solution."
+                    },
+                    {
+                      question: "When solving an equation with the unknown on both sides, what general strategy should be applied first?",
+                      options: ["Immediately divide both sides by the coefficient", "Subtract one of the unknown terms from both sides to gather all unknown terms onto a single side", "Ignore one side of the equation", "Multiply both sides by the unknown"],
+                      answer: 1,
+                      explanation: "The key first step is consolidating all unknown terms onto one side (by subtracting one of them from both sides), reducing the problem to the familiar single-side-unknown case."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
