@@ -2638,6 +2638,73 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const squarePatternBuilderLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="square-pattern-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number and see its square built from layers of consecutive odd numbers.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose n</h3>
+            <select id="sel-square-pattern-n" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[3,4,5,6,7,8,9,10].map(n => `<option value="${n}"${n===5?' selected':''}>n = ${n}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Decomposition</h3>
+            <div id="square-pattern-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a value of n above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const perfectSquareFactorCheckerLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="square-checker-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number and see if its prime factors split into two identical groups.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Number</h3>
+            <select id="sel-square-checker-num" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="36" selected>36</option>
+              <option value="156">156</option>
+              <option value="324">324</option>
+              <option value="1156">1156</option>
+              <option value="2800">2800</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Verdict</h3>
+            <div id="square-checker-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const cubeLayerVisualizerLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="cube-layer-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an edge length and see the cube built layer by layer.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Edge Length n</h3>
+            <select id="sel-cube-layer-n" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="2">n = 2</option>
+              <option value="3" selected>n = 3</option>
+              <option value="4">n = 4</option>
+              <option value="5">n = 5</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Total Unit Cubes</h3>
+            <div id="cube-layer-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an edge length above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4467,6 +4534,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'eclipse-type-sim') {
               labHtml = eclipseTypeLabHtml;
               labDesc = 'Pick an eclipse type and see the Sun-Earth-Moon alignment that causes it.';
+            } else if (topicObj.lab.type === 'square-pattern-builder-sim') {
+              labHtml = squarePatternBuilderLabHtml;
+              labDesc = 'Pick a number and see its square built up from layers of consecutive odd numbers.';
+            } else if (topicObj.lab.type === 'perfect-square-factor-checker-sim') {
+              labHtml = perfectSquareFactorCheckerLabHtml;
+              labDesc = 'Pick a number and see whether its prime factors split into two identical groups.';
+            } else if (topicObj.lab.type === 'cube-layer-visualizer-sim') {
+              labHtml = cubeLayerVisualizerLabHtml;
+              labDesc = 'Pick an edge length and see the cube built up layer by layer from unit cubes.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4894,6 +4970,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initEarthTiltSeasonsLab();
         } else if (topicObj.lab.type === 'eclipse-type-sim') {
           initEclipseTypeLab();
+        } else if (topicObj.lab.type === 'square-pattern-builder-sim') {
+          initSquarePatternBuilderLab();
+        } else if (topicObj.lab.type === 'perfect-square-factor-checker-sim') {
+          initPerfectSquareFactorCheckerLab();
+        } else if (topicObj.lab.type === 'cube-layer-visualizer-sim') {
+          initCubeLayerVisualizerLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -17617,6 +17699,140 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         obs.innerHTML = solar
           ? '<strong>Solar eclipse.</strong> The Moon passes between the Sun and the Earth, casting its shadow on part of the Earth’s surface — observers there see the Sun blocked, partially or totally.'
           : '<strong>Lunar eclipse.</strong> The Earth passes between the Sun and the Moon, casting its shadow onto the Moon — observers on the night side of Earth see the Moon darkened, partially or totally.';
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSquarePatternBuilderLab() {
+      const canvas = document.getElementById('square-pattern-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-square-pattern-n');
+      const obs = document.getElementById('square-pattern-obs');
+      const PALETTE = ['#10b981', '#60a5fa', '#f97316', '#f472b6', '#a78bfa', '#fbbf24', '#34d399', '#f87171', '#38bdf8', '#facc15'];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = parseInt(sel.value);
+        const cell = Math.min(18, Math.floor(150 / n));
+        const gridW = cell * n;
+        const originX = 90, originY = 55;
+
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < n; j++) {
+            const layer = Math.max(i, j);
+            ctx.fillStyle = PALETTE[layer % PALETTE.length];
+            ctx.fillRect(originX + j * cell, originY + i * cell, cell - 1, cell - 1);
+          }
+        }
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.strokeRect(originX, originY, gridW, gridW);
+
+        const oddTerms = [];
+        for (let k = 1; k <= n; k++) oddTerms.push(2 * k - 1);
+        const sq = n * n;
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${n}² = ${sq}`, W / 2, 25);
+
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+        ctx.fillText(`${oddTerms.join(' + ')} = ${sq}`, originX + gridW + 30, originY + 20);
+        ctx.fillText('Each coloured layer (an "L" shape)', originX + gridW + 30, originY + 50);
+        ctx.fillText('is one of these odd numbers.', originX + gridW + 30, originY + 70);
+
+        obs.innerHTML = `<strong>${n}² = ${sq}.</strong> This square is built from ${n} layers, one inside the next — the odd numbers ${oddTerms.join(', ')} — since ${oddTerms.join(' + ')} = ${sq}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPerfectSquareFactorCheckerLab() {
+      const canvas = document.getElementById('square-checker-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-square-checker-num');
+      const obs = document.getElementById('square-checker-obs');
+      const NUMBERS = {
+        36: { factorStr: '2 × 2 × 3 × 3', groupStr: '(2 × 3) × (2 × 3) = 6 × 6', perfect: true, root: 6 },
+        156: { factorStr: '2 × 2 × 3 × 13', groupStr: null, perfect: false },
+        324: { factorStr: '2 × 2 × 3 × 3 × 3 × 3', groupStr: '(2 × 3 × 3) × (2 × 3 × 3) = 18 × 18', perfect: true, root: 18 },
+        1156: { factorStr: '2 × 2 × 17 × 17', groupStr: '(2 × 17) × (2 × 17) = 34 × 34', perfect: true, root: 34 },
+        2800: { factorStr: '2 × 2 × 2 × 2 × 5 × 5 × 7', groupStr: null, perfect: false }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const num = sel.value;
+        const info = NUMBERS[num];
+
+        ctx.font = 'bold 20px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(num, W / 2, 35);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Prime factors: ${info.factorStr}`, W / 2, 75);
+
+        if (info.perfect) {
+          ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillText(info.groupStr, W / 2, 115);
+          ctx.font = 'bold 20px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillText(`√${num} = ${info.root}`, W / 2, 165);
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillText('Perfect square!', W / 2, 200);
+        } else {
+          ctx.font = '13px system-ui'; ctx.fillStyle = '#f97316';
+          ctx.fillText('Cannot be split into two identical groups', W / 2, 130);
+          ctx.font = 'bold 16px system-ui'; ctx.fillStyle = '#f97316';
+          ctx.fillText('Not a perfect square', W / 2, 165);
+        }
+
+        obs.innerHTML = info.perfect
+          ? `<strong>${num} is a perfect square.</strong> Its factors ${info.factorStr} split evenly into ${info.groupStr}, so √${num} = ${info.root}.`
+          : `<strong>${num} is NOT a perfect square.</strong> Its factors (${info.factorStr}) cannot be split into two identical groups.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCubeLayerVisualizerLab() {
+      const canvas = document.getElementById('cube-layer-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-cube-layer-n');
+      const obs = document.getElementById('cube-layer-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = parseInt(sel.value);
+        const cell = Math.min(22, Math.floor(100 / n));
+        const layerW = cell * n;
+        const offsetX = 14, offsetY = -10;
+        const startX = 130, startY = 210;
+
+        for (let layer = n - 1; layer >= 0; layer--) {
+          const baseX = startX + layer * offsetX, baseY = startY + layer * offsetY - layer * 26;
+          for (let i = 0; i < n; i++) {
+            for (let j = 0; j < n; j++) {
+              ctx.fillStyle = layer === n - 1 ? '#10b981' : `rgba(16,185,129,${0.35 + 0.5 * (layer / n)})`;
+              ctx.fillRect(baseX + j * cell, baseY - i * cell, cell - 1, cell - 1);
+            }
+          }
+          ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+          ctx.strokeRect(baseX, baseY - (n - 1) * cell, cell * n, cell * n);
+        }
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`n = ${n}: each layer has ${n}×${n} = ${n * n} unit cubes`, W / 2, 25);
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`${n} layers × ${n * n} = ${n}³ = ${n * n * n} unit cubes`, W / 2, 255);
+
+        obs.innerHTML = `<strong>A cube of edge length ${n} contains ${n * n * n} unit cubes.</strong> It has ${n} identical layers, each an ${n}×${n} square of ${n * n} unit cubes, so the total is ${n} × ${n * n} = ${n}³ = ${n * n * n}.`;
       }
 
       sel.addEventListener('change', draw);

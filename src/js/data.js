@@ -12153,7 +12153,293 @@ export const curriculumData = {
             }
           ]
         },
-        mathematics: { name: "Mathematics", icon: "📐", chapters: [] }
+        mathematics: {
+          name: "Mathematics",
+          icon: "📐",
+          chapters: [
+            {
+              id: "8m-1",
+              title: "A Square and A Cube",
+              topics: [
+                {
+                  id: "8m-1-1",
+                  title: "1. Square Numbers and Their Patterns",
+                  lab: { type: "square-pattern-builder-sim" },
+                  theory: {
+                    intro: "In a puzzle about 100 lockers toggled again and again by 100 people, only the lockers with square numbers stay open — a clue that squares are secretly built from layers of consecutive odd numbers.",
+                    sections: [
+                      {
+                        heading: "Why Squares Stay Open",
+                        text: "If 100 people take turns toggling lockers (person n toggles every nth locker), a locker ends up open only if it's toggled an odd number of times — which happens exactly when its number has an odd number of factors. Since factors normally pair up (like 1×6 and 2×3 for locker 6), only squares (like 36 = 6×6) have an unpaired middle factor, giving them an odd number of factors. A number obtained by multiplying a number by itself is called a square number; squares of natural numbers are called perfect squares."
+                      },
+                      {
+                        heading: "Patterns in Perfect Squares",
+                        text: "Perfect squares always end in 0, 1, 4, 5, 6, or 9 — never in 2, 3, 7, or 8 (though ending in 0,1,4,5,6,9 doesn't guarantee a number IS a square, e.g. 26). Squares always have an even number of zeros at the end. Also, every square is the sum of consecutive odd numbers starting from 1: 1 = 1, 1+3 = 4, 1+3+5 = 9, 1+3+5+7 = 16, and so on — the sum of the first n odd numbers is always n²."
+                      },
+                      {
+                        heading: "Testing a Number Using Odd Numbers",
+                        text: "We can test whether a number is a perfect square by successively subtracting 1, 3, 5, 7, ... from it. For 25: 25−1=24, 24−3=21, 21−5=16, 16−7=9, 9−9=0 — reaching exactly 0 after 5 steps confirms 25 = 5². For 38, this process gives a negative result before reaching 0 (38−1=37, 37−3=34, ..., 13−11=2, 2−13=−11), proving 38 is NOT a perfect square."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Solving the Locker Puzzle",
+                      objective: "To determine which of 100 lockers remain open after a sequence of toggles, and connect the answer to perfect squares.",
+                      materials: ["Paper and pencil", "A list of numbers 1 to 100"],
+                      steps: [
+                        "For a small range (say lockers 1 to 36), list out which \"people\" (person 1, 2, 3, ...) would toggle each locker (a locker n is toggled by every person whose number divides n).",
+                        "Count the total number of times each locker is toggled — this equals the number of factors of that locker's number.",
+                        "Mark a locker as 'open' if it's toggled an odd number of times, 'closed' if even.",
+                        "Compare your list of 'open' lockers to the list of perfect squares (1, 4, 9, 16, 25, 36, ...).",
+                        "Explain why only perfect squares end up open, using the idea of factor pairs."
+                      ],
+                      observation: "The lockers that remain open are exactly the perfect squares (1, 4, 9, 16, 25, 36, ...) — because every other number's factors pair up completely (giving an even count), while a square number has one factor pair repeated (like 6×6=36), giving an odd factor count."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the 100-locker puzzle, why do only perfect-square-numbered lockers remain open?",
+                      options: ["Because squares are toggled by every single person", "Because squares are the only numbers with an odd number of factors, due to one repeated (unpaired) factor pair", "Because square-numbered lockers are never toggled at all", "There is no real mathematical reason — it's random"],
+                      answer: 1,
+                      explanation: "A locker stays open if toggled an odd number of times, which happens only when the locker's number has an odd number of factors — true only for perfect squares, since they have one repeated factor pair (e.g., 6×6=36) instead of two distinct partners."
+                    },
+                    {
+                      question: "Which of these digits can NEVER appear as the last digit of a perfect square?",
+                      options: ["6", "9", "8", "5"],
+                      answer: 2,
+                      explanation: "Perfect squares only ever end in 0, 1, 4, 5, 6, or 9 — a number ending in 2, 3, 7, or 8 can never be a perfect square."
+                    },
+                    {
+                      question: "What is the sum of the first 6 odd numbers (1+3+5+7+9+11)?",
+                      options: ["25", "30", "36", "42"],
+                      answer: 2,
+                      explanation: "The sum of the first n odd numbers always equals n²; for n=6, this is 6² = 36 (1+3+5+7+9+11 = 36)."
+                    },
+                    {
+                      question: "When successively subtracting consecutive odd numbers (1, 3, 5, ...) from 38, what does the result show?",
+                      options: ["38 is a perfect square, reaching exactly 0", "38 is NOT a perfect square, since the process goes below 0 before reaching exactly 0", "This method cannot be applied to 38", "38 equals 6²"],
+                      answer: 1,
+                      explanation: "Subtracting consecutive odd numbers from 38 eventually produces a negative result (2−13=−11) without ever landing exactly on 0, proving 38 is not a perfect square."
+                    },
+                    {
+                      question: "If 35² = 1225, what is 36² using the successive-odd-number pattern?",
+                      options: ["1225 + 35 = 1260", "1225 + 71 = 1296", "1225 + 36 = 1261", "1225 + 72 = 1297"],
+                      answer: 1,
+                      explanation: "Each perfect square is the previous one plus the next odd number; the 36th odd number is 2(36)−1 = 71, so 36² = 1225 + 71 = 1296."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-1-2",
+                  title: "2. Square Roots",
+                  lab: { type: "perfect-square-factor-checker-sim" },
+                  theory: {
+                    intro: "Given a large number like 576, how do you find its square root without a calculator? Splitting its prime factors into two identical groups reveals the answer directly.",
+                    sections: [
+                      {
+                        heading: "What Is a Square Root?",
+                        text: "If y = x², then x is the square root of y, written x = √y. Every perfect square has two integer square roots — one positive, one negative — since squaring either gives the same positive result (e.g., 8² = 64 and (−8)² = 64, so √64 = ±8). In this chapter, we consider only the positive square root."
+                      },
+                      {
+                        heading: "Finding Square Roots via Prime Factorisation",
+                        text: "A number is a perfect square exactly when its prime factors can be split into two identical groups. For 324 = 2×2×3×3×3×3, we can group as (2×3×3)×(2×3×3) = 18×18, so √324 = 18. For 156 = 2×2×3×13, the factors cannot be paired into two identical groups, so 156 is NOT a perfect square."
+                      },
+                      {
+                        heading: "Estimating Square Roots",
+                        text: "For numbers that aren't perfect squares, we can estimate the square root by finding the nearest perfect squares. For example, since 15² = 225 and 16² = 256, and 250 is closer to 256, √250 is approximately 16 (and definitely less than 16). This estimation technique is useful for quickly narrowing down a square root without exact calculation."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding Square Roots Using Prime Factorisation",
+                      objective: "To determine whether given numbers are perfect squares by splitting their prime factorisation into two identical groups.",
+                      materials: ["Paper and pencil", "A list of numbers to test (e.g., 324, 156, 1156, 2800)"],
+                      steps: [
+                        "Find the complete prime factorisation of each number.",
+                        "Try to split the prime factors into two identical groups.",
+                        "If successful, multiply the factors in one group to find the square root.",
+                        "If the factors cannot be split evenly, conclude the number is not a perfect square.",
+                        "Verify each result by squaring your answer to check it matches the original number."
+                      ],
+                      observation: "324 = 2×2×3×3×3×3 splits evenly into (2×3×3)×(2×3×3), giving √324 = 18; but 156 = 2×2×3×13 cannot be split into two identical groups, confirming 156 is not a perfect square."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "If y = x², what is x called?",
+                      options: ["The cube of y", "The square root of y", "The factor of y", "The prime of y"],
+                      answer: 1,
+                      explanation: "By definition, if y equals x squared, then x is called the square root of y, written x = √y."
+                    },
+                    {
+                      question: "How many integer square roots does every perfect square have?",
+                      options: ["Only one (positive)", "Two: one positive and one negative", "Three", "None"],
+                      answer: 1,
+                      explanation: "Every perfect square has exactly two integer square roots — a positive one and its negative counterpart — since both (+n)² and (−n)² equal the same positive square."
+                    },
+                    {
+                      question: "Using prime factorisation, what is √324, given 324 = 2×2×3×3×3×3?",
+                      options: ["16", "18", "12", "24"],
+                      answer: 1,
+                      explanation: "Grouping the factors as (2×3×3)×(2×3×3) = 18×18 shows that 324 = 18², so √324 = 18."
+                    },
+                    {
+                      question: "Why is 156 NOT a perfect square?",
+                      options: ["Because 156 is an odd number", "Because its prime factorisation (2×2×3×13) cannot be split into two identical groups", "Because 156 ends in the digit 6", "156 actually IS a perfect square"],
+                      answer: 1,
+                      explanation: "156 = 2×2×3×13; since these prime factors cannot be divided into two matching groups, 156 fails the perfect-square test."
+                    },
+                    {
+                      question: "Using the estimation method, between which two consecutive integers does √250 lie, and which is it closer to?",
+                      options: ["Between 14 and 15, closer to 15", "Between 15 and 16, closer to 16", "Between 16 and 17, closer to 16", "Between 10 and 20, closer to 10"],
+                      answer: 1,
+                      explanation: "Since 15² = 225 and 16² = 256, √250 lies between 15 and 16 — and because 250 is much closer to 256 than to 225, √250 is approximately 16 (though technically just under it)."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-1-3",
+                  title: "3. Cubic Numbers",
+                  lab: { type: "cube-layer-visualizer-sim" },
+                  theory: {
+                    intro: "When a mathematician once dismissed a taxi's number 1729 as 'dull,' Ramanujan instantly replied that it was the smallest number expressible as the sum of two cubes in two different ways — a spark of insight rooted in understanding cubes deeply.",
+                    sections: [
+                      {
+                        heading: "What Is a Perfect Cube?",
+                        text: "A cube is obtained by multiplying a number by itself three times: 1 = 1×1×1, 8 = 2×2×2, 27 = 3×3×3, and so on — these are called perfect cubes. In general, for any number n, we write n×n×n as n³. Visually, a cube of edge length n contains exactly n×n×n = n³ unit cubes — for example, an edge-length-4 cube contains 4 layers of 4×4=16 unit cubes each, totalling 64 unit cubes."
+                      },
+                      {
+                        heading: "The Hardy-Ramanujan Number",
+                        text: "Mathematician Srinivasa Ramanujan famously identified 1729 as special: it is the smallest number expressible as the sum of two cubes in two different ways — 1729 = 1³ + 12³ = 9³ + 10³. Because of this story, 1729 is called the Hardy-Ramanujan Number, and numbers with this property are called taxicab numbers. The next two taxicab numbers are 4104 and 13832."
+                      },
+                      {
+                        heading: "Cubes and Consecutive Odd Numbers",
+                        text: "Just as squares relate to sums of consecutive odd numbers, cubes do too: 1=1³, 3+5=8=2³, 7+9+11=27=3³, 13+15+17+19=64=4³, 21+23+25+27+29=125=5³. Each perfect cube n³ is the sum of n consecutive odd numbers, continuing from where the previous cube's odd numbers left off."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Visualizing Cubes as Unit Cube Layers",
+                      objective: "To physically or visually confirm that a cube of edge length n contains n³ unit cubes, by counting layer by layer.",
+                      materials: ["Small cubes or sugar cubes (or grid paper for a 2D layer sketch)", "Paper and pencil"],
+                      steps: [
+                        "Build (or sketch) a single square layer of n×n unit cubes for a chosen edge length n (start with n=3).",
+                        "Count the unit cubes in this one layer (it should be n×n = n²).",
+                        "Stack n such identical layers on top of each other to form the full cube.",
+                        "Count the total number of unit cubes across all layers (n layers × n² per layer = n³).",
+                        "Repeat for a different edge length (like n=4) and verify the pattern n³ holds each time."
+                      ],
+                      observation: "For edge length 3, there are 3 layers of 9 unit cubes each, totalling 27 = 3³ unit cubes; for edge length 4, there are 4 layers of 16 unit cubes each, totalling 64 = 4³ unit cubes — confirming that a cube's total unit cubes always equals its edge length cubed."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'perfect cube'?",
+                      options: ["A number obtained by multiplying a number by itself twice", "A number obtained by multiplying a number by itself three times", "Any even number", "A number with exactly three factors"],
+                      answer: 1,
+                      explanation: "A perfect cube is a number formed by multiplying a number by itself three times (n×n×n = n³), such as 1, 8, 27, 64, and so on."
+                    },
+                    {
+                      question: "How many unit cubes make up a cube with edge length 4 units?",
+                      options: ["16", "32", "64", "128"],
+                      answer: 2,
+                      explanation: "A cube of edge length 4 has 4 layers, each containing 4×4=16 unit cubes, for a total of 4×4×4 = 64 unit cubes."
+                    },
+                    {
+                      question: "What makes the number 1729 famous, according to the Ramanujan story?",
+                      options: ["It is the largest known perfect cube", "It is the smallest number expressible as the sum of two cubes in two different ways (1³+12³ = 9³+10³)", "It has no factors at all", "It is the only taxicab number in existence"],
+                      answer: 1,
+                      explanation: "1729 is celebrated as the Hardy-Ramanujan Number because it's the smallest number that can be written as a sum of two positive cubes in two distinct ways: 1³+12³ and 9³+10³."
+                    },
+                    {
+                      question: "What are numbers like 1729, which can be expressed as a sum of two cubes in two different ways, called?",
+                      options: ["Prime numbers", "Taxicab numbers", "Triangular numbers", "Perfect numbers"],
+                      answer: 1,
+                      explanation: "Numbers expressible as the sum of two positive cubes in more than one way are called taxicab numbers, named after the story of Ramanujan and the taxicab numbered 1729."
+                    },
+                    {
+                      question: "According to the consecutive-odd-numbers pattern, what is 13+15+17+19 equal to?",
+                      options: ["3³ = 27", "4³ = 64", "5³ = 125", "6³ = 216"],
+                      answer: 1,
+                      explanation: "The sum of 4 consecutive odd numbers starting appropriately (13+15+17+19) equals 64, which is 4³ — matching the established pattern where n consecutive odd numbers sum to n³."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-1-4",
+                  title: "4. Cube Roots and A Pinch of History",
+                  theory: {
+                    intro: "Long before calculators, Babylonian clay tablets from 1700 BCE already listed squares and cubes — and the very word 'root' we use today traces back to an ancient Sanskrit word for the root of a plant.",
+                    sections: [
+                      {
+                        heading: "What Is a Cube Root?",
+                        text: "If y = x³, then x is the cube root of y, denoted x = ∛y. For example, since 8 = 2³, the cube root of 8 is 2 (∛8 = 2). Similarly, ∛27 = 3 and ∛1000 = 10. A number is a perfect cube exactly when its prime factors can be split into three identical groups — for 3375 = 3×3×3×5×5×5, we group as (3×5)×(3×5)×(3×5) = 15×15×15, so ∛3375 = 15. For 500 = 2×2×5×5×5, the factors cannot form three identical groups, so 500 is NOT a perfect cube."
+                      },
+                      {
+                        heading: "A Pinch of History: Babylon to India",
+                        text: "The earliest known lists of perfect squares and cubes were compiled by the Babylonians around 1700 BCE on clay tablets, used for land measurement and architectural design. In ancient India (at least from the third century BCE), the Sanskrit term varga referred to both a square figure and squaring, while ghana referred to both the solid cube and cubing. Aryabhata (499 CE) described varga as 'the product of two equal quantities.'"
+                      },
+                      {
+                        heading: "Where the Word 'Root' Comes From",
+                        text: "The mathematical use of 'root' (as in square root, cube root) comes from the Sanskrit word mula, meaning the root of a plant, basis, or origin — used in India for these operations from at least the first century BCE. Terms like varga-mula (square root) and ghana-mula (cube root) were later echoed in Arabic (jidhr) and Latin (radix), both also meaning 'root of a plant' — showing how this single metaphor spread across mathematical traditions worldwide."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding Cube Roots Using Prime Factorisation",
+                      objective: "To determine whether given numbers are perfect cubes by splitting their prime factorisation into three identical groups.",
+                      materials: ["Paper and pencil", "A list of numbers to test (e.g., 3375, 500, 27000, 10648)"],
+                      steps: [
+                        "Find the complete prime factorisation of each number.",
+                        "Try to split the prime factors into three identical groups.",
+                        "If successful, the product of the factors in one group is the cube root.",
+                        "If the factors cannot be split into three equal groups, conclude the number is not a perfect cube.",
+                        "Verify your answer by cubing it to check it matches the original number."
+                      ],
+                      observation: "3375 = 3×3×3×5×5×5 splits evenly into three groups of (3×5), giving ∛3375 = 15; but 500 = 2×2×5×5×5 cannot be split into three identical groups, confirming 500 is not a perfect cube."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "If y = x³, what is x called?",
+                      options: ["The square of y", "The cube root of y", "The prime factor of y", "The reciprocal of y"],
+                      answer: 1,
+                      explanation: "By definition, if y equals x cubed, x is called the cube root of y, denoted x = ∛y."
+                    },
+                    {
+                      question: "A number is a perfect cube exactly when its prime factors can be split into how many identical groups?",
+                      options: ["Two identical groups", "Three identical groups", "Four identical groups", "Any number of groups"],
+                      answer: 1,
+                      explanation: "A perfect cube's prime factorisation can always be divided into exactly three identical groups, since it equals some number multiplied by itself three times."
+                    },
+                    {
+                      question: "Using prime factorisation, what is ∛3375, given 3375 = 3×3×3×5×5×5?",
+                      options: ["9", "12", "15", "25"],
+                      answer: 2,
+                      explanation: "Grouping the factors into three identical sets of (3×5) shows 3375 = 15³, so ∛3375 = 15."
+                    },
+                    {
+                      question: "Where did the mathematical use of the word 'root' (as in square root or cube root) originate from?",
+                      options: ["A Greek word meaning 'calculation'", "The Sanskrit word mula, meaning the root of a plant, basis, or origin", "A modern English invention", "An Egyptian hieroglyphic symbol"],
+                      answer: 1,
+                      explanation: "The term 'root' traces back to the Sanskrit word mula (root of a plant/origin), used in India for these mathematical operations from at least the first century BCE, later echoed in Arabic (jidhr) and Latin (radix)."
+                    },
+                    {
+                      question: "Who compiled the earliest known lists of perfect squares and cubes, and around when?",
+                      options: ["Ancient Egyptians, around 3000 BCE", "The Babylonians, around 1700 BCE", "Aryabhata, around 499 CE", "Modern mathematicians, in the 1900s"],
+                      answer: 1,
+                      explanation: "The Babylonians compiled the earliest known lists of perfect squares and cubes on clay tablets around 1700 BCE, using them for land measurement and architectural design."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
       }
     },
     "9": {
