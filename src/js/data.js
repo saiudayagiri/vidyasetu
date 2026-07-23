@@ -5340,6 +5340,282 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "7s-4",
+              title: "The World of Metals and Non-metals",
+              topics: [
+                {
+                  id: "7s-4-1",
+                  title: "1. Metallic Properties: Malleability, Ductility & Sonority",
+                  lab: { type: "metal-property-tester-sim" },
+                  theory: {
+                    intro: "Hammering, drawing into wires, and dropping objects on the floor all reveal the same underlying truth: metals share a distinctive set of physical properties that clearly set them apart from other materials.",
+                    sections: [
+                      {
+                        heading: "Metallic Lustre and Malleability",
+                        text: "Materials like copper, aluminium, and iron are lustrous (shiny) and hard — this shine is called metallic lustre. When beaten with a hammer, metals flatten into thin sheets rather than shattering — this property is called malleability. Gold and silver are the most malleable metals, thin enough to form silver foil on sweets or aluminium foil for wrapping food. Materials like coal and sulfur instead break into pieces when hammered — they are brittle, not malleable. Wood does neither — it is neither malleable nor brittle."
+                      },
+                      {
+                        heading: "Ductility",
+                        text: "The property by which materials can be drawn into wires is called ductility — mainly possessed by metals, used for electrical wiring, jewellery, and musical instrument strings (veena, sitar, violin, guitar). Gold is so ductile that just one gram can be drawn into a 2-kilometre-long wire! Coal and sulfur cannot be drawn into wires — they are not ductile."
+                      },
+                      {
+                        heading: "Sonority",
+                        text: "Metals produce a ringing sound when struck or dropped — like a metal spoon or coin hitting the floor — this property is called sonority, and sonorous materials include the metal of school bells and ghungroos (ankle bells). Coal and wood instead produce dull, non-ringing sounds when dropped."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Malleability, Ductility Awareness, and Sonority",
+                      objective: "To directly test and compare metals and non-metals for malleability (hammering) and sonority (dropping), reinforcing the key distinguishing properties of metals.",
+                      materials: ["Small pieces of copper, aluminium, iron nail, coal, sulfur (if safely available), a wooden block", "A hammer and hard surface", "Adult supervision"],
+                      steps: [
+                        "Under supervision, place each material one at a time on a hard surface and gently strike it with a hammer.",
+                        "Record whether each material flattens (malleable), breaks into pieces (brittle), or does neither (like wood).",
+                        "Drop each material from a small height onto a hard floor and listen carefully to the sound produced.",
+                        "Record which materials produce a ringing sound (sonorous) versus a dull thud.",
+                        "Compare your malleability and sonority results — do the same materials that are malleable also tend to be sonorous?"
+                      ],
+                      observation: "Metals (copper, aluminium, iron) consistently flatten under hammering and produce ringing sounds when dropped, while non-metals like coal and sulfur break into pieces and produce dull sounds — confirming that malleability and sonority are properties that go together in true metals."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 'malleability'?",
+                      options: ["The ability of a material to conduct electricity", "The property by which materials can be beaten into thin sheets without breaking", "The ability to produce a ringing sound", "The property of being drawn into wires"],
+                      answer: 1,
+                      explanation: "Malleability is the property that allows materials (mostly metals) to be hammered or beaten into thin sheets, rather than shattering."
+                    },
+                    {
+                      question: "Which two metals are described as the MOST malleable?",
+                      options: ["Iron and aluminium", "Gold and silver", "Copper and sodium", "Mercury and potassium"],
+                      answer: 1,
+                      explanation: "Gold and silver are the most malleable metals, capable of being beaten into extremely thin foils."
+                    },
+                    {
+                      question: "What is 'ductility'?",
+                      options: ["The property of producing a ringing sound", "The property by which materials can be drawn into wires", "The ability to break easily", "The ability to conduct heat"],
+                      answer: 1,
+                      explanation: "Ductility is the property allowing a material to be drawn out into thin wires — a property mainly seen in metals."
+                    },
+                    {
+                      question: "What is 'sonority'?",
+                      options: ["The property of being shiny", "The property of producing a ringing sound when struck", "The ability to be drawn into wires", "The ability to conduct electricity"],
+                      answer: 1,
+                      explanation: "Sonority is the property of metals that causes them to produce a clear ringing sound when struck or dropped, unlike the dull sound of non-metals."
+                    },
+                    {
+                      question: "Why are coal and sulfur described as 'brittle' rather than malleable?",
+                      options: ["Because they conduct electricity well", "Because they break into pieces when hammered, instead of flattening into sheets", "Because they are extremely soft", "Because they produce ringing sounds"],
+                      answer: 1,
+                      explanation: "Unlike malleable metals, coal and sulfur shatter into pieces under hammering — this breaking behaviour defines brittleness."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-4-2",
+                  title: "2. Conduction of Heat and Electricity",
+                  lab: { type: "conduction-comparison-sim" },
+                  theory: {
+                    intro: "Why are cooking vessels made of metal, but their handles made of wood? And why do electricians wear rubber gloves? Both questions come down to the same key property: how well a material conducts heat and electricity.",
+                    sections: [
+                      {
+                        heading: "Metals Are Good Conductors of Heat",
+                        text: "Immersing a metal spoon and a wooden spoon simultaneously in hot water, the metal spoon becomes noticeably hotter to touch at its upper end — showing that heat transfers efficiently through the metal, while the wooden spoon transfers heat poorly. The transfer of heat from one point to another through a material is called conduction; materials that conduct heat well are conductors, while poor conductors (like wood) barely transfer heat at all. This is exactly why cooking vessels are made of metal (to conduct heat to the food) while their handles are made of wood or similar poor conductors (to stay safe to touch)."
+                      },
+                      {
+                        heading: "Metals Are Good Conductors of Electricity",
+                        text: "Testing various materials with a simple conduction-tester circuit, objects made of aluminium, iron, and copper make the tester's bulb glow — confirming they are good conductors of electricity. Materials like sulfur, coal, wood, stone, rubber, and nylon do NOT make the bulb glow — they are poor conductors (insulators) of electricity. This is why electrician's tools have rubber or plastic (insulating) handles, and electricians wear rubber gloves and shoes for safety while working with electrical conductors."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Heat Conduction: Metal vs Wood",
+                      objective: "To directly observe the difference in heat conduction between a metal object and a wooden object immersed in hot water.",
+                      materials: ["A glass tumbler", "Hot water (with adult supervision)", "A metal spoon", "A wooden spoon of similar size"],
+                      steps: [
+                        "Under adult supervision, fill a glass tumbler with hot water.",
+                        "Simultaneously place a metal spoon and a wooden spoon into the hot water, making sure both are immersed to a similar depth.",
+                        "Wait a few minutes without disturbing the spoons.",
+                        "Carefully touch the upper (dry) end of each spoon and compare how hot each one feels.",
+                        "Discuss why the metal spoon becomes hotter, even though both spoons are in water of the same temperature for the same duration."
+                      ],
+                      observation: "The metal spoon consistently becomes noticeably hotter to touch than the wooden spoon, directly demonstrating that metals conduct heat far more efficiently than wood — the same reason metal cooking vessels heat food quickly while their wooden or plastic handles stay cool enough to hold safely."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the hot water spoon experiment, which spoon becomes hotter to touch, and why?",
+                      options: ["The wooden spoon, because wood conducts heat well", "The metal spoon, because metals conduct heat efficiently while wood conducts heat poorly", "Both spoons heat up equally", "Neither spoon heats up at all"],
+                      answer: 1,
+                      explanation: "The metal spoon becomes noticeably hotter because metals are good conductors of heat, while the wooden spoon stays cooler since wood is a poor heat conductor."
+                    },
+                    {
+                      question: "What is 'conduction' (of heat)?",
+                      options: ["The complete blocking of heat transfer", "The transfer of heat from one point to another through a material", "A property only seen in liquids", "The production of heat from friction"],
+                      answer: 1,
+                      explanation: "Conduction refers to the transfer of heat energy from one point of a material to another, occurring efficiently in good conductors like metals."
+                    },
+                    {
+                      question: "Why are the handles of cooking vessels typically made of wood or plastic, rather than metal?",
+                      options: ["Wood and plastic look nicer", "Wood and plastic are poor conductors of heat, keeping the handle safe to touch even when the metal vessel is hot", "Metal handles are too expensive", "There is no particular reason"],
+                      answer: 1,
+                      explanation: "Since wood and plastic conduct heat poorly, they stay cool enough to hold safely, even while the metal body of the vessel conducts heat efficiently to cook the food."
+                    },
+                    {
+                      question: "Using a conduction-tester circuit, which of these materials would make the bulb glow?",
+                      options: ["A piece of coal", "An iron nail", "A wooden block", "A rubber eraser"],
+                      answer: 1,
+                      explanation: "An iron nail (a metal) is a good conductor of electricity and would complete the tester circuit, making the bulb glow — unlike coal, wood, or rubber."
+                    },
+                    {
+                      question: "Why do electricians wear rubber gloves and shoes while working?",
+                      options: ["Rubber makes them work faster", "Rubber is a poor conductor of electricity (an insulator), protecting them from electric shocks", "Rubber conducts electricity very well, which is helpful", "There is no safety reason for this"],
+                      answer: 1,
+                      explanation: "Rubber is an excellent electrical insulator, so wearing rubber gloves and shoes protects electricians from being shocked by electric current while working."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-4-3",
+                  title: "3. Rusting and Corrosion of Metals",
+                  theory: {
+                    intro: "Iron objects left outdoors slowly develop a telltale brown coating — but this doesn't happen just from air alone, or water alone. It takes BOTH together to trigger this famous chemical transformation.",
+                    sections: [
+                      {
+                        heading: "Discovering the Cause of Rust",
+                        text: "Testing iron nails in three separate conditions — dry air only (with silica gel to remove moisture), water only (with oil sealing out air), and BOTH air and water together — shows that brown deposits form ONLY in the third condition. This proves that MOIST air (both water and air together) is required for the brown deposit, called rust, to form. The process of rust formation on iron objects is called rusting."
+                      },
+                      {
+                        heading: "Corrosion: A Broader Pattern",
+                        text: "Many metals besides iron show similar discolouration when exposed to air — copper develops a green coating, and silver develops a black coating. This gradual deterioration of metal surfaces due to air, water, or other substances is called corrosion. Rusting of iron specifically causes enormous economic damage each year, requiring costly repair or replacement of rusted iron structures. Rusting can be prevented through painting, oiling, greasing, or galvanisation (coating iron with a protective layer of zinc)."
+                      },
+                      {
+                        heading: "Metal Oxides Are Generally Basic",
+                        text: "Burning a magnesium ribbon produces a dazzling white flame and a white powder — magnesium oxide, formed from magnesium reacting with oxygen in the air. Testing this oxide's solution with litmus shows it turns red litmus BLUE, confirming it is basic in nature. This reflects a general pattern: oxides formed when metals react with oxygen are generally basic."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Investigating the Conditions Required for Rust Formation",
+                      objective: "To determine experimentally whether air alone, water alone, or both together are required for iron to rust.",
+                      materials: ["Three clean iron nails (sandpapered to remove existing rust)", "Three sealable glass bottles/test tubes", "Silica gel", "Boiled and cooled water", "Cooking oil", "Thread"],
+                      steps: [
+                        "Label three bottles A, B, and C, and tie a thread to each iron nail for easy retrieval.",
+                        "In bottle A, place a nail with silica gel (to keep the air dry) and seal it tightly.",
+                        "In bottle B, place a nail fully submerged in boiled, cooled water, with a layer of oil on top (to keep air out), and seal it tightly.",
+                        "In bottle C, place a nail partially in water, leaving the bottle UNSEALED, so it's exposed to both water and air.",
+                        "Leave all three bottles undisturbed for 8-10 days, then compare the nails for any brown rust deposits."
+                      ],
+                      observation: "Only the nail in bottle C (exposed to BOTH water and air, unsealed) develops rust, while the nails in bottles A (dry air only) and B (water only, air excluded) remain rust-free — proving that rusting requires both air and water together, not either alone."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is required for iron to rust?",
+                      options: ["Dry air alone", "Water alone", "Both air AND water together (moist air)", "Neither air nor water"],
+                      answer: 2,
+                      explanation: "The three-bottle experiment shows rust only forms when iron is exposed to BOTH air and water simultaneously — dry air alone or water alone (with air excluded) does not cause rusting."
+                    },
+                    {
+                      question: "What is 'rust'?",
+                      options: ["A type of metal", "The brown deposit formed on iron when exposed to moist air", "A protective coating applied to iron", "A green coating found on silver"],
+                      answer: 1,
+                      explanation: "Rust is the brown deposit that forms specifically on iron objects when exposed to both air and water together."
+                    },
+                    {
+                      question: "What is 'corrosion'?",
+                      options: ["Only the rusting of iron specifically", "The gradual deterioration of metal surfaces caused by air, water, or other substances — a broader phenomenon than just iron rusting", "A method to strengthen metals", "The process of making metal wires"],
+                      answer: 1,
+                      explanation: "Corrosion is the general term for gradual metal surface damage from air, water, or chemicals — rusting of iron is one specific example, alongside copper's green coating or silver's black coating."
+                    },
+                    {
+                      question: "What is 'galvanisation'?",
+                      options: ["A method of testing electrical conductivity", "Applying a protective layer of zinc metal onto iron to prevent rusting", "A type of rust", "Melting iron at high temperatures"],
+                      answer: 1,
+                      explanation: "Galvanisation is a rust-prevention method that coats iron with a protective layer of zinc, along with other methods like painting, oiling, and greasing."
+                    },
+                    {
+                      question: "When magnesium burns in air to form magnesium oxide, and this oxide is dissolved in water, what is the nature of the resulting solution?",
+                      options: ["Acidic", "Basic — it turns red litmus paper blue", "Neutral", "It cannot be tested with litmus"],
+                      answer: 1,
+                      explanation: "Magnesium oxide's solution turns red litmus paper blue, confirming it is basic — reflecting the general pattern that metal oxides are basic in nature."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-4-4",
+                  title: "4. Non-metals: Properties and Everyday Importance",
+                  theory: {
+                    intro: "Sulfur and phosphorus behave very differently from metals when exposed to air and water — and though non-metals lack the shine and strength of metals, they turn out to be absolutely essential to everyday life, from the air we breathe to the antiseptic on a wound.",
+                    sections: [
+                      {
+                        heading: "How Non-metals Differ from Metals",
+                        text: "Burning sulfur in air produces sulfur dioxide gas, which dissolves in water to form sulfurous acid — testing ACIDIC on litmus, unlike the basic oxides formed by metals. Unlike metals, sulfur shows NO reaction at all when simply placed in water. Non-metals like sulfur and phosphorus are usually soft, dull (non-lustrous), neither malleable nor ductile, not sonorous, and poor conductors of heat and electricity — essentially opposite to metals in nearly every physical property. (Phosphorus is even stored in water, since it catches fire on contact with air!)"
+                      },
+                      {
+                        heading: "Other Non-metals",
+                        text: "Beyond sulfur and phosphorus, other common non-metals include oxygen, hydrogen, nitrogen, and carbon. Materials like plastic, glass, wood, rubber, and paper are NOT classified as metals or non-metals at all, since they are not elements (an element is a substance that cannot be broken down into simpler substances; 118 elements are currently known)."
+                      },
+                      {
+                        heading: "Non-metals Are Essential in Everyday Life",
+                        text: "Despite lacking the shine and strength of metals, non-metals are vital: oxygen is essential for breathing and survival; carbon is the fundamental building block of all life forms (proteins, fats, carbohydrates); nitrogen is key to fertiliser manufacturing and plant growth; chlorine is used in water purification; and iodine solution is a common antiseptic for wounds."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Metal and Non-metal Oxides Using Litmus",
+                      objective: "To compare the acidic nature of a non-metal oxide (from burning sulfur) against the basic nature of a metal oxide (from burning magnesium), reinforcing the metal/non-metal oxide pattern.",
+                      materials: ["Results from the magnesium oxide litmus test (from Topic 3)", "Blue and red litmus paper (or access to a teacher demonstration of burning sulfur)"],
+                      steps: [
+                        "Recall or observe the result of testing magnesium oxide solution with litmus paper (it turns red litmus blue — basic).",
+                        "Recall or observe (via teacher demonstration) the result of dissolving sulfur dioxide gas (from burning sulfur) in water and testing it with litmus (it turns blue litmus red — acidic).",
+                        "Create a two-column comparison: 'Metal Oxide (Magnesium Oxide)' vs 'Non-metal Oxide (Sulfur Dioxide solution)', noting their litmus test results.",
+                        "Write a general rule connecting the type of element (metal vs non-metal) to the acidic/basic nature of its oxide.",
+                        "List three everyday uses of non-metals (like oxygen, nitrogen, chlorine, or iodine) from your own knowledge or the chapter."
+                      ],
+                      observation: "Metal oxides (like magnesium oxide) consistently test basic, while non-metal oxides (like the sulfur dioxide solution) consistently test acidic — confirming a reliable general pattern connecting an element's metal/non-metal classification to the acidic or basic nature of its oxide."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What happens when sulfur burns in air?",
+                      options: ["It produces oxygen gas", "It produces sulfur dioxide gas, which forms an acidic solution (sulfurous acid) when dissolved in water", "It produces a basic oxide, just like metals", "Sulfur cannot burn at all"],
+                      answer: 1,
+                      explanation: "Burning sulfur produces sulfur dioxide gas; dissolved in water, it forms sulfurous acid, which tests acidic on litmus — unlike the basic oxides formed by metals."
+                    },
+                    {
+                      question: "How does sulfur behave when simply placed in water (without burning)?",
+                      options: ["It reacts vigorously, like sodium does", "It shows no reaction at all", "It dissolves completely and turns the water acidic immediately", "It catches fire"],
+                      answer: 1,
+                      explanation: "Unlike some reactive metals, sulfur shows no reaction when simply placed in water — it neither dissolves nor reacts."
+                    },
+                    {
+                      question: "Which of these physical properties do non-metals GENERALLY lack, unlike metals?",
+                      options: ["Softness", "Malleability, ductility, sonority, and good heat/electrical conductivity", "Dullness", "Ability to exist as solids"],
+                      answer: 1,
+                      explanation: "Non-metals are generally NOT malleable, NOT ductile, NOT sonorous, and are poor conductors of heat and electricity — essentially opposite to metals in these properties."
+                    },
+                    {
+                      question: "Why are materials like plastic, glass, wood, and rubber NOT classified as either metals or non-metals?",
+                      options: ["Because they are too soft", "Because they are not elements — metals and non-metals are specifically sub-categories of elements", "Because they don't exist in nature", "Because they conduct electricity"],
+                      answer: 1,
+                      explanation: "Metals and non-metals are categories of ELEMENTS (substances that can't be broken into simpler substances) — materials like plastic or wood are not elements, so this classification doesn't apply to them."
+                    },
+                    {
+                      question: "Which of these is an essential everyday use of a non-metal?",
+                      options: ["Iron used for building bridges", "Oxygen essential for breathing, and carbon as the building block of all life forms", "Aluminium used for cooking utensils", "Copper used for electrical wiring"],
+                      answer: 1,
+                      explanation: "Oxygen (needed for breathing) and carbon (the fundamental building block of proteins, fats, and carbohydrates in all life) are both essential non-metals — unlike the metal examples listed, which are metallic uses."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

@@ -2143,6 +2143,55 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const metalPropertyTesterLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="metal-property-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a material and see the hammer and drop tests reveal its properties.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Material</h3>
+            <select id="sel-metal-property-material" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Copper</option>
+              <option value="1">Iron</option>
+              <option value="2">Aluminium</option>
+              <option value="3">Coal</option>
+              <option value="4">Sulfur</option>
+              <option value="5">Wood</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Test Results</h3>
+            <div id="metal-property-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a material above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const conductionComparisonLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="conduction-comparison-canvas" width="600" height="220"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a material and see its heat and electrical conduction test results.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Material</h3>
+            <select id="sel-conduction-material" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Iron (metal)</option>
+              <option value="1">Copper (metal)</option>
+              <option value="2">Wood</option>
+              <option value="3">Rubber</option>
+              <option value="4">Plastic</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Conduction Results</h3>
+            <div id="conduction-comparison-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a material above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -3906,6 +3955,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'circuit-diagram-sim') {
               labHtml = circuitDiagramLabHtml;
               labDesc = 'Toggle a switch and watch the circuit diagram open or close, controlling whether the lamp glows.';
+            } else if (topicObj.lab.type === 'metal-property-tester-sim') {
+              labHtml = metalPropertyTesterLabHtml;
+              labDesc = 'Pick a material and see hammer and drop tests reveal its malleability, brittleness, and sonority.';
+            } else if (topicObj.lab.type === 'conduction-comparison-sim') {
+              labHtml = conductionComparisonLabHtml;
+              labDesc = 'Pick a material and see its heat and electrical conduction test results side by side.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4289,6 +4344,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initCircuitBuilderLab();
         } else if (topicObj.lab.type === 'circuit-diagram-sim') {
           initCircuitDiagramLab();
+        } else if (topicObj.lab.type === 'metal-property-tester-sim') {
+          initMetalPropertyTesterLab();
+        } else if (topicObj.lab.type === 'conduction-comparison-sim') {
+          initConductionComparisonLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -15707,6 +15766,120 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(isOn ? '✓ Circuit closed — lamp glows' : '✗ Circuit open — lamp does not glow', W / 2, 285);
 
         obs.innerHTML = `<strong>Switch ${isOn ? 'ON (closed)' : 'OFF (open)'}</strong><br>${isOn ? 'The switch completes the circuit, allowing current to flow from the cell through the lamp and back — the lamp glows.' : 'The switch leaves a gap in the circuit, so no current can flow — the lamp stays dark.'}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMetalPropertyTesterLab() {
+      const canvas = document.getElementById('metal-property-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-metal-property-material');
+      const obs = document.getElementById('metal-property-obs');
+      const MATERIALS = [
+        { name: 'Copper', malleable: true, brittle: false, sonorous: true },
+        { name: 'Iron', malleable: true, brittle: false, sonorous: true },
+        { name: 'Aluminium', malleable: true, brittle: false, sonorous: true },
+        { name: 'Coal', malleable: false, brittle: true, sonorous: false },
+        { name: 'Sulfur', malleable: false, brittle: true, sonorous: false },
+        { name: 'Wood', malleable: false, brittle: false, sonorous: false }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mat = MATERIALS[parseInt(sel.value)];
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(mat.name, W / 2, 25);
+
+        ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillRect(100, 90, 60, 60);
+        ctx.fillStyle = cssVar('--text-muted'); ctx.font = '12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Before', 130, 170);
+
+        ctx.font = '18px system-ui';
+        ctx.fillText('🔨 →', 230, 130);
+
+        if (mat.malleable) {
+          ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillRect(350, 115, 150, 12);
+          ctx.fillStyle = cssVar('--text-muted'); ctx.font = '12px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('Flattened (Malleable)', 425, 150);
+        } else if (mat.brittle) {
+          ctx.fillStyle = cssVar('--accent-color');
+          const pieces = [[350, 100, 20, 20], [380, 120, 15, 15], [400, 95, 18, 22], [420, 115, 16, 18]];
+          pieces.forEach(([x, y, w, h]) => ctx.fillRect(x, y, w, h));
+          ctx.fillStyle = cssVar('--text-muted'); ctx.font = '12px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('Broken into pieces (Brittle)', 400, 150);
+        } else {
+          ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillRect(390, 90, 60, 60);
+          ctx.fillStyle = cssVar('--text-muted'); ctx.font = '12px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('Unchanged (dented)', 420, 170);
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Sonority when dropped: ${mat.sonorous ? '🔔 Ringing sound' : '🔇 Dull thud'}`, W / 2, 220);
+
+        const type = mat.malleable ? 'a Metal (malleable, sonorous)' : mat.brittle ? 'a Brittle non-metal' : 'neither malleable nor brittle';
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`${mat.name} is ${type}`, W / 2, 255);
+
+        obs.innerHTML = `<strong>${mat.name}: ${mat.malleable ? 'Malleable & Sonorous (a metal)' : mat.brittle ? 'Brittle & Non-sonorous (a non-metal)' : 'Neither malleable nor brittle (like wood)'}</strong><br>Hammer test: ${mat.malleable ? 'flattens into a sheet' : mat.brittle ? 'shatters into pieces' : 'stays roughly the same shape, just dented'}. Drop test: ${mat.sonorous ? 'produces a ringing sound' : 'produces a dull thud'}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initConductionComparisonLab() {
+      const canvas = document.getElementById('conduction-comparison-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-conduction-material');
+      const obs = document.getElementById('conduction-comparison-obs');
+      const MATERIALS = [
+        { name: 'Iron (metal)', conducts: true },
+        { name: 'Copper (metal)', conducts: true },
+        { name: 'Wood', conducts: false },
+        { name: 'Rubber', conducts: false },
+        { name: 'Plastic', conducts: false }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mat = MATERIALS[parseInt(sel.value)];
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(mat.name, W / 2, 25);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+        ctx.fillText('Heat Conduction Test:', 40, 65);
+        ctx.fillStyle = mat.conducts ? '#ef4444' : '#3b82f6';
+        ctx.fillRect(280, 50, 100, 20);
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = '12px system-ui';
+        ctx.fillText(mat.conducts ? 'Becomes HOT' : 'Stays cool', 390, 65);
+
+        ctx.fillStyle = cssVar('--text-muted'); ctx.font = '13px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText('Electrical Conduction Test:', 40, 130);
+        const bulbX = 340, bulbY = 130;
+        ctx.strokeStyle = mat.conducts ? cssVar('--accent-color') : cssVar('--text-normal'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(bulbX, bulbY, 22, 0, Math.PI * 2); ctx.stroke();
+        if (mat.conducts) {
+          ctx.fillStyle = 'rgba(16,185,129,0.35)';
+          ctx.beginPath(); ctx.arc(bulbX, bulbY, 30, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = '12px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText(mat.conducts ? 'Bulb glows!' : 'Bulb stays dark', bulbX + 40, bulbY + 5);
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        ctx.fillText(`${mat.name} is a ${mat.conducts ? 'Good Conductor' : 'Poor Conductor (Insulator)'}`, W / 2, 195);
+
+        obs.innerHTML = `<strong>${mat.name} is a ${mat.conducts ? 'good conductor' : 'poor conductor (insulator)'}.</strong><br>Heat test: ${mat.conducts ? 'the material becomes hot, conducting heat efficiently' : 'the material stays cool, conducting heat poorly'}. Electrical test: ${mat.conducts ? 'the tester bulb glows, since current flows through it' : 'the tester bulb stays dark, since current cannot pass through'}.`;
       }
 
       sel.addEventListener('change', draw);
