@@ -2290,6 +2290,50 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const conductionPinsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="conduction-pins-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a strip material and see which pins fall from the heated strip.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Strip Material</h3>
+            <select id="sel-conduction-pins-material" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Steel strip (metal)</option>
+              <option value="1">Aluminium strip (metal)</option>
+              <option value="2">Wood strip</option>
+              <option value="3">Glass strip</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What Happens to the Pins?</h3>
+            <div id="conduction-pins-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a material above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const landSeaBreezeLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="land-sea-breeze-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Switch between day and night and see the breeze direction reverse.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Time of Day</h3>
+            <select id="sel-breeze-time" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="day" selected>Day</option>
+              <option value="night">Night</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Breeze Direction</h3>
+            <div id="land-sea-breeze-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a time of day above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4071,6 +4115,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'adolescent-nutrition-matcher-sim') {
               labHtml = adolescentNutritionMatcherLabHtml;
               labDesc = 'Pick a food source and see the key nutrient it provides and how it helps growth.';
+            } else if (topicObj.lab.type === 'conduction-pins-sim') {
+              labHtml = conductionPinsLabHtml;
+              labDesc = 'Pick a strip material and see whether the wax-stuck pins fall as heat conducts along it.';
+            } else if (topicObj.lab.type === 'land-sea-breeze-sim') {
+              labHtml = landSeaBreezeLabHtml;
+              labDesc = 'Switch between day and night and see the direction of the coastal breeze reverse.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4466,6 +4516,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initSecondarySexualCharacteristicsClassifierLab();
         } else if (topicObj.lab.type === 'adolescent-nutrition-matcher-sim') {
           initAdolescentNutritionMatcherLab();
+        } else if (topicObj.lab.type === 'conduction-pins-sim') {
+          initConductionPinsLab();
+        } else if (topicObj.lab.type === 'land-sea-breeze-sim') {
+          initLandSeaBreezeLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -16264,6 +16318,163 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         wrapText(item.fn, W / 2, 200, 520, 18);
 
         obs.innerHTML = `<strong>Key nutrient: ${item.nutrient}.</strong> ${item.fn}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initConductionPinsLab() {
+      const canvas = document.getElementById('conduction-pins-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-conduction-pins-material');
+      const obs = document.getElementById('conduction-pins-obs');
+      const MATERIALS = [
+        { name: 'Steel strip (metal)', conducts: true },
+        { name: 'Aluminium strip (metal)', conducts: true },
+        { name: 'Wood strip', conducts: false },
+        { name: 'Glass strip', conducts: false }
+      ];
+      const PINS = [
+        { label: 'I', x: 440 },
+        { label: 'II', x: 380 },
+        { label: 'III', x: 320 },
+        { label: 'IV', x: 260 }
+      ];
+
+      function drawPin(pin, state) {
+        const stripY = 100;
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(pin.label, pin.x, stripY - 16);
+
+        if (state === 'fallen') {
+          const gy = 205;
+          ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(pin.x - 16, gy); ctx.lineTo(pin.x + 16, gy); ctx.stroke();
+          ctx.beginPath(); ctx.arc(pin.x + 18, gy, 4, 0, Math.PI * 2); ctx.fillStyle = cssVar('--text-normal'); ctx.fill();
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText('fell!', pin.x, gy + 18);
+          return;
+        }
+
+        const tilt = state === 'falling' ? 0.45 : 0;
+        ctx.save();
+        ctx.translate(pin.x, stripY + 4);
+        ctx.rotate(tilt);
+        ctx.beginPath(); ctx.ellipse(0, 0, 5, 4, 0, 0, Math.PI * 2);
+        ctx.fillStyle = state === 'falling' ? '#fbbf24' : '#facc15'; ctx.fill();
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, 36); ctx.stroke();
+        ctx.beginPath(); ctx.arc(0, 36, 5, 0, Math.PI * 2); ctx.fillStyle = cssVar('--text-normal'); ctx.fill();
+        ctx.restore();
+        if (state === 'falling') {
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText('falling...', pin.x, stripY + 55);
+        }
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mat = MATERIALS[parseInt(sel.value)];
+        const stripY = 100, stripX1 = 90, stripX2 = 470;
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(mat.name, W / 2, 24);
+
+        ctx.fillStyle = cssVar('--border-color');
+        ctx.fillRect(stripX1 - 10, stripY - 30, 8, 34);
+        ctx.fillRect(stripX1 - 10, stripY, 60, 6);
+
+        ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillRect(stripX1, stripY - 4, stripX2 - stripX1, 8);
+
+        const flameX = stripX2 + 22, flameY = stripY;
+        ctx.beginPath(); ctx.moveTo(flameX, flameY + 16); ctx.quadraticCurveTo(flameX + 14, flameY, flameX, flameY - 20); ctx.quadraticCurveTo(flameX - 14, flameY, flameX, flameY + 16);
+        ctx.fillStyle = '#f97316'; ctx.fill();
+        ctx.beginPath(); ctx.moveTo(flameX, flameY + 10); ctx.quadraticCurveTo(flameX + 7, flameY, flameX, flameY - 10); ctx.quadraticCurveTo(flameX - 7, flameY, flameX, flameY + 10);
+        ctx.fillStyle = '#fde047'; ctx.fill();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('flame', flameX, flameY + 32);
+        ctx.fillText('(heated end)', flameX, flameY + 44);
+
+        const states = mat.conducts ? ['fallen', 'fallen', 'falling', 'attached'] : ['attached', 'attached', 'attached', 'attached'];
+        PINS.forEach((pin, i) => drawPin(pin, states[i]));
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+        ctx.beginPath(); ctx.moveTo(stripX1 - 40, 205); ctx.lineTo(stripX2 + 10, 205); ctx.stroke();
+        ctx.setLineDash([]);
+
+        obs.innerHTML = mat.conducts
+          ? `<strong>${mat.name} is a good conductor.</strong> Heat travels along the strip from the flame — pins I and II have already fallen, pin III is about to fall as its wax melts, and pin IV (farthest away) is still attached since the heat hasn't reached it yet.`
+          : `<strong>${mat.name} is a poor conductor (insulator).</strong> Heat cannot travel along the strip, so none of the wax melts and all four pins remain attached, even with the flame burning steadily at one end.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initLandSeaBreezeLab() {
+      const canvas = document.getElementById('land-sea-breeze-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-breeze-time');
+      const obs = document.getElementById('land-sea-breeze-obs');
+
+      function drawArrow(x1, y1, x2, y2, color) {
+        ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+        const ang = Math.atan2(y2 - y1, x2 - x1);
+        ctx.beginPath();
+        ctx.moveTo(x2, y2);
+        ctx.lineTo(x2 - 10 * Math.cos(ang - 0.4), y2 - 10 * Math.sin(ang - 0.4));
+        ctx.lineTo(x2 - 10 * Math.cos(ang + 0.4), y2 - 10 * Math.sin(ang + 0.4));
+        ctx.closePath(); ctx.fill();
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const isDay = sel.value === 'day';
+        const groundY = 190;
+
+        ctx.fillStyle = '#92400e'; ctx.fillRect(0, groundY, W / 2, H - groundY);
+        ctx.fillStyle = '#1d4ed8'; ctx.fillRect(W / 2, groundY, W / 2, H - groundY);
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(0, groundY); ctx.lineTo(W, groundY); ctx.stroke();
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = '#f8fafc'; ctx.textAlign = 'center';
+        ctx.fillText('LAND', W / 4, groundY + 40);
+        ctx.fillText('SEA', 3 * W / 4, groundY + 40);
+
+        const landWarmer = isDay;
+        ctx.font = 'bold 12px system-ui';
+        ctx.fillStyle = landWarmer ? '#fdba74' : '#93c5fd';
+        ctx.fillText(landWarmer ? 'Warmer' : 'Cooler', W / 4, groundY - 12);
+        ctx.fillStyle = landWarmer ? '#93c5fd' : '#fdba74';
+        ctx.fillText(landWarmer ? 'Cooler' : 'Warmer', 3 * W / 4, groundY - 12);
+
+        const risingX = landWarmer ? W / 4 : 3 * W / 4;
+        const sinkingX = landWarmer ? 3 * W / 4 : W / 4;
+        drawArrow(risingX, groundY - 20, risingX, 40, '#f97316');
+        drawArrow(sinkingX, 40, sinkingX, groundY - 20, '#60a5fa');
+
+        const breezeY = groundY - 55;
+        if (landWarmer) {
+          drawArrow(W - 70, breezeY, 70, breezeY, cssVar('--accent-color'));
+        } else {
+          drawArrow(70, breezeY, W - 70, breezeY, cssVar('--accent-color'));
+        }
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        ctx.fillText(landWarmer ? 'Sea Breeze (sea → land)' : 'Land Breeze (land → sea)', W / 2, breezeY - 12);
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(isDay ? 'DAY' : 'NIGHT', W / 2, 24);
+
+        obs.innerHTML = isDay
+          ? '<strong>Sea breeze.</strong> During the day, land heats up faster than the sea, so warm air rises over the land, and cooler air flows in from the sea to take its place — this is the sea breeze.'
+          : '<strong>Land breeze.</strong> At night, land cools down faster than the sea, so the sea (now relatively warmer) has rising air, and cooler air flows from the land out towards the sea — this is the land breeze.';
       }
 
       sel.addEventListener('change', draw);

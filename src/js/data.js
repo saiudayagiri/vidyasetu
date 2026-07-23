@@ -6170,6 +6170,286 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "7s-7",
+              title: "Heat Transfer in Nature",
+              topics: [
+                {
+                  id: "7s-7-1",
+                  title: "1. Conduction: Heat Through Direct Contact",
+                  lab: { type: "conduction-pins-sim" },
+                  theory: {
+                    intro: "Attaching wax-stuck pins to a heated metal strip reveals exactly how heat travels through a solid — one particle passing warmth to its neighbour, all the way down the line.",
+                    sections: [
+                      {
+                        heading: "The Falling-Pins Experiment",
+                        text: "Four pins are attached with wax at equal distances along a metal strip, labelled I, II, III, and IV. Heating the far end of the strip causes pin I (closest to the flame) to fall first, followed by II, III, and IV in order. As heat travels along the strip, the wax holding each pin melts in sequence, and the pin drops off."
+                      },
+                      {
+                        heading: "Defining Conduction",
+                        text: "The process of heat transfer from the hotter part of an object to the colder part is called conduction. In this process, the particle that gets heated passes the heat on to its neighbour, and so on — but the particles themselves do not move from their positions. In solids, heat transfer takes place mainly through conduction."
+                      },
+                      {
+                        heading: "Good Conductors and Poor Conductors (Insulators)",
+                        text: "Materials like metals that allow heat to pass through them easily are called good conductors of heat — which is why cooking utensils are made of metals. Materials such as wood, glass, clay, and porcelain do not allow heat to pass through easily and are poor conductors (insulators) of heat — which is why tea stays hot longer in clay or porcelain cups, and why woollen clothes (which trap air, itself a poor conductor) keep us warm in winter."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Observing Heat Conduction Along a Metal Strip",
+                      objective: "To observe, through the classic falling-pins setup, that heat travels progressively along a metal strip from the heated end towards the far end.",
+                      materials: ["A 15 cm metal strip (aluminium or iron)", "Wax", "Four pins", "A stand (or two bricks)", "A candle or spirit lamp"],
+                      steps: [
+                        "With adult supervision, attach four pins to the metal strip using wax, spaced about 2 cm apart, and label them I, II, III, and IV.",
+                        "Secure the strip to a stand (or rest it between two bricks).",
+                        "Heat the end of the strip farthest from the stand using a candle or spirit lamp.",
+                        "Observe and record the order in which the pins fall.",
+                        "Repeat with a wood or glass strip instead of metal, and compare whether the pins fall at all."
+                      ],
+                      observation: "Pin I (closest to the flame) falls first, followed by II, III, and IV in order, confirming heat is conducted progressively along the metal strip from the hot end to the cold end. With a wood or glass strip, the pins do not fall at all, since these materials are poor conductors of heat."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the falling-pins experiment, which pin falls first when the far end of the metal strip is heated?",
+                      options: ["Pin IV, farthest from the flame", "Pin I, closest to the flame", "All pins fall together", "None of the pins fall"],
+                      answer: 1,
+                      explanation: "Pin I, being closest to the heated end, receives heat first as it travels along the strip, so its wax melts first and it falls before the others."
+                    },
+                    {
+                      question: "What is 'conduction'?",
+                      options: ["The movement of particles from one place to another", "The process of heat transfer from the hotter part of an object to the colder part, without the particles themselves moving", "A process that only happens in liquids", "A process that requires no material medium"],
+                      answer: 1,
+                      explanation: "Conduction is heat transfer through a material where each particle passes heat to its neighbour, without the particles themselves changing position."
+                    },
+                    {
+                      question: "Why are cooking utensils generally made of metals?",
+                      options: ["Metals are cheap to manufacture", "Metals are good conductors of heat, allowing heat to pass through them easily for cooking", "Metals are poor conductors of heat", "Metals look attractive"],
+                      answer: 1,
+                      explanation: "Metals are good conductors of heat, meaning heat passes through them easily — ideal for transferring heat efficiently to food during cooking."
+                    },
+                    {
+                      question: "Why does tea stay hot longer in a clay or porcelain cup compared to a metal cup?",
+                      options: ["Clay and porcelain are good conductors of heat", "Clay and porcelain are poor conductors of heat, so they slow down heat loss from the tea", "Clay cups are always kept in the sun", "This has nothing to do with heat conduction"],
+                      answer: 1,
+                      explanation: "Clay and porcelain are poor conductors (insulators) of heat, so they slow the transfer of heat away from the tea, helping it stay warm longer."
+                    },
+                    {
+                      question: "Why do woollen clothes keep us warm during winter?",
+                      options: ["Wool actively generates heat", "Wool traps air in its pores, and since air is a poor conductor of heat, it reduces heat flow away from our bodies", "Wool is a good conductor of heat", "Wool reflects all incoming heat"],
+                      answer: 1,
+                      explanation: "Woollen fabric traps air within its pores; since air is a poor conductor of heat, this trapped air reduces the flow of heat from our bodies to the surroundings, keeping us warm."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-7-2",
+                  title: "2. Convection: Heat Through Moving Particles",
+                  lab: { type: "land-sea-breeze-sim" },
+                  theory: {
+                    intro: "Unlike conduction, heat transfer in liquids and gases usually involves the particles themselves physically moving — rising, cooling, sinking, and rising again, exactly like the cup that lifts off a candle flame.",
+                    sections: [
+                      {
+                        heading: "Rising Air and Convection",
+                        text: "When a lit candle is placed below one of two paper cups hanging from a horizontal stick, that cup rises. The air around the candle flame heats up, expands, occupies more space, becomes lighter, and rises — lifting the cup. This same principle explains why a partially inflated balloon expands in sunlight, and why smoke from an incense stick or fire rises upward, since it is warmer (and lighter) than the surrounding air."
+                      },
+                      {
+                        heading: "Convection in Liquids",
+                        text: "Placing a candle below a beaker of water containing a grain of potassium permanganate at its base shows a coloured streak rising in the middle and sinking along the sides. The water at the bottom gets heated, expands, becomes lighter, and rises; cooler, heavier water from the sides moves down to take its place, and this cycle continues until the whole volume is heated. This process — heat transfer through the actual movement of particles — is called convection. In liquids and gases, heat transfer takes place mainly through convection."
+                      },
+                      {
+                        heading: "Land and Sea Breeze",
+                        text: "During the day, land heats up faster than water, so warm air above the land rises, and cooler air moves in from the sea — this movement of cool air from sea to land is called sea breeze. At night, the process reverses: land cools faster than water, so warmer air above the sea rises, and cooler air moves from land to sea — this is called land breeze. This is why coastal houses often face the sea, to benefit from the cooling sea breeze."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Demonstrating Convection with Paper Cups",
+                      objective: "To observe how heating air beneath a suspended paper cup causes it to rise, demonstrating the principle of convection.",
+                      materials: ["Two identical paper cups", "Thread", "A wooden stick", "A burning candle"],
+                      steps: [
+                        "Hang two identical paper cups using threads of equal length, in an inverted position, from the two ends of a wooden stick.",
+                        "Adjust the cups so the stick hangs horizontally, balanced.",
+                        "With adult supervision, place a burning candle below one of the cups.",
+                        "Observe what happens to the cup above the candle.",
+                        "Record your observations and think about the probable reason."
+                      ],
+                      observation: "The cup above the burning candle rises, because the air beneath it heats up, expands, becomes lighter, and rises — demonstrating convection, the same process by which smoke rises and land/sea breezes form."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 'convection'?",
+                      options: ["Heat transfer where particles stay fixed in place", "Heat transfer that takes place through the actual movement of particles of liquids or gases from one place to another", "A process that only happens in solids", "A process requiring no medium at all"],
+                      answer: 1,
+                      explanation: "Convection is heat transfer through the physical movement of heated particles (in liquids or gases) from one place to another, unlike conduction where particles stay in place."
+                    },
+                    {
+                      question: "In the paper-cup experiment, why does the cup above the burning candle rise?",
+                      options: ["The candle's smoke physically pushes the cup up", "The air beneath the cup heats up, expands, becomes lighter, and rises, lifting the cup", "Paper cups always rise when near fire", "The thread shrinks when heated"],
+                      answer: 1,
+                      explanation: "Heating causes the air beneath the cup to expand and become lighter than the surrounding air, so it rises — carrying the cup upward with it."
+                    },
+                    {
+                      question: "In the potassium permanganate experiment, why does the coloured streak rise in the middle of the beaker and sink along the sides?",
+                      options: ["This is random and has no explanation", "Heated water at the bottom expands, becomes lighter, and rises in the middle, while cooler, heavier water sinks along the sides to replace it", "The permanganate crystal moves on its own", "Cold water always rises first"],
+                      answer: 1,
+                      explanation: "The heated water at the base becomes lighter and rises through the middle; cooler, denser water from the sides sinks to replace it, creating a continuous convection cycle."
+                    },
+                    {
+                      question: "What causes 'sea breeze' during the day in coastal areas?",
+                      options: ["Land cools faster than water during the day", "Land heats up faster than water during the day, causing warm air over land to rise and cooler air to move in from the sea", "The sea always blows air towards land regardless of temperature", "Sea breeze has nothing to do with heating and cooling"],
+                      answer: 1,
+                      explanation: "During the day, land heats faster than water; the resulting rising warm air over land draws in cooler air from the sea, creating the sea breeze."
+                    },
+                    {
+                      question: "Why does the direction of coastal wind reverse at night, creating a 'land breeze'?",
+                      options: ["It never actually reverses", "At night, land cools faster than water, so warmer air rises above the sea instead, drawing cooler air from land towards the sea", "The Earth's rotation directly causes this reversal", "Land breeze and sea breeze are the same thing"],
+                      answer: 1,
+                      explanation: "At night, land cools faster than the sea, so the sea's warmer air rises, pulling cooler land air towards the sea — reversing the daytime sea breeze into a land breeze."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-7-3",
+                  title: "3. Radiation and Everyday Heat Transfer",
+                  theory: {
+                    intro: "Sit near a fire and you feel its warmth even without touching it — this is radiation, the one form of heat transfer that needs no medium at all, and it's how the Sun warms the entire Earth.",
+                    sections: [
+                      {
+                        heading: "What Is Radiation?",
+                        text: "Heat transfer directly from a hot object (like a fire) to us, without any medium in between, is called radiation. The heat of the Sun reaches us through this process. All objects radiate heat — a hot utensil kept away from a flame cools down over time by radiating heat to its surroundings."
+                      },
+                      {
+                        heading: "Light vs. Dark Coloured Clothes",
+                        text: "Light-coloured clothes reflect most of the heat falling on them, making them more comfortable in summer, while dark-coloured surfaces absorb more heat, making them more comfortable to wear in winter."
+                      },
+                      {
+                        heading: "All Three Processes Together",
+                        text: "Everyday situations often combine all three heat transfer processes: when water is heated in a pan, heat travels from the flame to the utensil by conduction, water inside gets heated by convection, and the warmth we feel around the flame and hot pan is due to radiation. Traditional heaters like the bukhari (used in the Himalayan region) also use conduction, convection, and radiation together for cooking and warming rooms."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Identifying Conduction, Convection, and Radiation Together",
+                      objective: "To identify all three heat transfer processes occurring simultaneously in a single everyday scenario — water being heated in a pan on a flame.",
+                      materials: ["Notebook and pencil (observation only — no actual flame needed for this activity)"],
+                      steps: [
+                        "Picture (or observe, with adult supervision) a pan of water being heated over a flame.",
+                        "Identify how heat travels from the flame to the metal pan itself — which process is this?",
+                        "Identify how heat then spreads from the bottom of the pan through the water — which process is this?",
+                        "Identify how you feel warmth on your skin even without touching the flame or pan directly — which process is this?",
+                        "Write down all three processes and match each to the correct part of the scenario."
+                      ],
+                      observation: "Heat travels from the flame to the pan by conduction, the water inside is heated by convection (the actual movement of heated water particles), and the warmth felt in the surrounding air comes from radiation — showing that all three heat transfer processes commonly act together in a single everyday scenario."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 'radiation' as a mode of heat transfer?",
+                      options: ["Heat transfer that requires a solid medium", "Heat transfer directly from a hot object to another, without requiring any material medium", "A process that only happens in liquids", "The same process as conduction"],
+                      answer: 1,
+                      explanation: "Radiation is the transfer of heat directly between objects (like the Sun and the Earth, or a fire and a person) without requiring any material medium in between."
+                    },
+                    {
+                      question: "Why is it more comfortable to wear light-coloured clothes in summer?",
+                      options: ["Light-coloured clothes absorb more heat", "Light-coloured clothes reflect most of the heat falling on them, keeping the wearer cooler", "Colour has no effect on comfort", "Light-coloured clothes generate cooling air"],
+                      answer: 1,
+                      explanation: "Light-coloured clothes reflect most incoming heat rather than absorbing it, which helps keep the wearer cooler and more comfortable during summer."
+                    },
+                    {
+                      question: "Why is it more comfortable to wear dark-coloured clothes in winter?",
+                      options: ["Dark clothes reflect all heat away", "Dark surfaces absorb more heat, helping keep the wearer warmer", "Dark clothes have nothing to do with heat", "Dark clothes are always thicker"],
+                      answer: 1,
+                      explanation: "Dark-coloured surfaces absorb more of the heat that falls on them (rather than reflecting it), which helps keep the wearer warmer during winter."
+                    },
+                    {
+                      question: "When water is heated in a metal pan over a flame, which heat transfer process moves heat from the flame to the pan itself?",
+                      options: ["Radiation", "Conduction", "Evaporation", "None of the processes apply"],
+                      answer: 1,
+                      explanation: "Heat travels from the flame to the metal utensil by conduction, since the pan is a solid material in direct contact with the heat source."
+                    },
+                    {
+                      question: "Out of conduction, convection, and radiation, which process does NOT require any material medium?",
+                      options: ["Conduction", "Convection", "Radiation", "All three require a medium"],
+                      answer: 2,
+                      explanation: "Radiation is unique among the three heat transfer processes in that it does not require any material medium — this is how the Sun's heat reaches Earth through the vacuum of space."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-7-4",
+                  title: "4. The Water Cycle and Groundwater",
+                  theory: {
+                    intro: "Heat from the Sun doesn't just warm us — it powers an endless global cycle of evaporation, condensation, and rainfall that keeps rivers, aquifers, and oceans replenished.",
+                    sections: [
+                      {
+                        heading: "The Water Cycle",
+                        text: "Water in oceans, rivers, and lakes gets heated by the Sun and evaporates as water vapour; water also evaporates from trees and plants through transpiration. When water vapour rises, it cools and condenses to form clouds, which bring rain, snow, and hail — this is called precipitation. The continuous movement of water — upward as water vapour and downward through precipitation, passing through soil, rocks, and plants, and finally returning to water bodies — is called the water cycle. It redistributes and replenishes water in rivers, lakes, and oceans, while conserving the total amount of water on Earth."
+                      },
+                      {
+                        heading: "Infiltration and Aquifers",
+                        text: "Rainwater that falls on the Earth's surface flows into ponds, lakes, rivers, and oceans, or seeps into the ground — a process called infiltration. Water seeps fastest through gravel, slower through sand, and slowest through clay, because the spaces between gravel particles are wider than those in sand and clay. The water that seeps through gets stored in the pore spaces of sediments and openings in rocks beneath the surface as groundwater; the underground layers that store this water are called aquifers, from which we draw water using wells or bore wells."
+                      },
+                      {
+                        heading: "Conserving Groundwater",
+                        text: "Groundwater is not unlimited — growing population needs and increased concrete surfaces (which limit infiltration) are depleting it. Rainwater harvesting and recharge pits help replenish groundwater. In water-scarce regions like Ladakh, people build ice stupas — tall, cone-shaped ice structures formed by spraying mountain-stream water into cold winter air — which melt slowly in spring to provide water for farming through the summer."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Water Seepage Through Clay, Sand, and Gravel",
+                      objective: "To compare how quickly water seeps through clay, sand, and gravel, and relate the results to how groundwater and aquifers form.",
+                      materials: ["Three transparent 1L plastic bottles (cut in the middle, with a small hole in each cap)", "Clay, sand, and gravel", "Three beakers", "Water"],
+                      steps: [
+                        "Invert each cut bottle and fill one with clay, one with sand, and one with gravel.",
+                        "Place an identical beaker below each inverted bottle to catch the water.",
+                        "Predict which material will let water seep through fastest and slowest.",
+                        "Add 200 mL of water to each bottle at the same time, and collect the water that flows through for 10 minutes.",
+                        "Compare the amount of water collected from each bottle and rank the materials by seepage speed."
+                      ],
+                      observation: "Water seeps fastest through gravel, slower through sand, and slowest through clay — because the spaces between gravel particles are wider and more open than those in sand or clay, allowing water to pass through more easily (this is exactly how water infiltrates and forms groundwater in nature)."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What causes water vapour to rise from oceans, rivers, and lakes as part of the water cycle?",
+                      options: ["Wind alone, with no role for heat", "Heat from the Sun, which causes water to evaporate", "Cold temperatures at the water's surface", "Water vapour does not actually rise"],
+                      answer: 1,
+                      explanation: "The Sun's heat causes water in oceans, rivers, and lakes to evaporate into water vapour, which then rises as part of the water cycle."
+                    },
+                    {
+                      question: "What is 'precipitation'?",
+                      options: ["The process of water evaporating from the ocean", "Rain, snow, and hail that fall from clouds after water vapour cools and condenses", "The seepage of water into the ground", "The storage of water underground"],
+                      answer: 1,
+                      explanation: "Precipitation refers to rain, snow, and hail brought by clouds, which form when rising water vapour cools and condenses."
+                    },
+                    {
+                      question: "Why does water seep fastest through gravel, compared to sand or clay?",
+                      options: ["Gravel repels water", "The spaces between gravel particles are wider and more open than those in sand or clay, allowing easier seepage", "Gravel absorbs water into itself, unlike sand or clay", "There is no difference in seepage rate between these materials"],
+                      answer: 1,
+                      explanation: "Gravel has wider, more open spaces between its particles compared to sand or clay, so water can pass through it more easily and quickly."
+                    },
+                    {
+                      question: "What are 'aquifers'?",
+                      options: ["Surface-level lakes and rivers", "Underground layers of sediments and rocks that store water in their pore spaces", "A type of cloud formation", "Man-made storage tanks"],
+                      answer: 1,
+                      explanation: "Aquifers are underground layers of sediments and rocks that store water within their pore spaces — this stored groundwater is accessed through wells or bore wells."
+                    },
+                    {
+                      question: "What is an 'ice stupa', as used by people in Ladakh?",
+                      options: ["A type of underground water pipe", "A tall, cone-shaped structure of ice, built by spraying stream water into cold winter air, which melts slowly in spring to provide water for farming", "A machine that purifies water", "A type of aquifer found only in Ladakh"],
+                      answer: 1,
+                      explanation: "An ice stupa is a human-made, cone-shaped ice structure formed by spraying mountain-stream water into freezing winter air; it melts gradually during spring, providing a water source for farming through the summer."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
