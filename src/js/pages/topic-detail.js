@@ -2099,6 +2099,50 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const circuitBuilderLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="circuit-builder-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a connection arrangement and see whether the lamp or LED glows.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Arrangement</h3>
+            <select id="sel-circuit-scenario" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Lamp: both terminals connected</option>
+              <option value="1">Lamp: only one wire connected</option>
+              <option value="2">LED: correctly oriented (+ to +)</option>
+              <option value="3">LED: reversed (+ to −)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Does It Glow?</h3>
+            <div id="circuit-builder-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an arrangement above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const circuitDiagramLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="circuit-diagram-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Toggle the switch and watch the circuit diagram open or close.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Switch Position</h3>
+            <select id="sel-switch-state" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="on" selected>ON (closed)</option>
+              <option value="off">OFF (open)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Circuit Status</h3>
+            <div id="circuit-diagram-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a switch position above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -3856,6 +3900,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'neutralisation-sim') {
               labHtml = neutralisationLabHtml;
               labDesc = 'Add drops of lime water to an acidic solution and watch the litmus colour shift toward neutral.';
+            } else if (topicObj.lab.type === 'circuit-builder-sim') {
+              labHtml = circuitBuilderLabHtml;
+              labDesc = 'Pick a wiring arrangement and see whether the lamp or LED completes its circuit and glows.';
+            } else if (topicObj.lab.type === 'circuit-diagram-sim') {
+              labHtml = circuitDiagramLabHtml;
+              labDesc = 'Toggle a switch and watch the circuit diagram open or close, controlling whether the lamp glows.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4235,6 +4285,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initAcidBaseIndicatorLab();
         } else if (topicObj.lab.type === 'neutralisation-sim') {
           initNeutralisationLab();
+        } else if (topicObj.lab.type === 'circuit-builder-sim') {
+          initCircuitBuilderLab();
+        } else if (topicObj.lab.type === 'circuit-diagram-sim') {
+          initCircuitDiagramLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -15518,6 +15572,141 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(status, W / 2, 250);
 
         obs.innerHTML = `<strong>${drops} drops of lime water added: ${status}</strong><br>${level < -0.5 ? 'The solution is still acidic — more lime water (a base) would move it toward neutral.' : level > 0.5 ? 'Enough lime water has been added to make the solution basic overall.' : 'The acid and base have neutralised each other — the solution is neither acidic nor basic.'}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCircuitBuilderLab() {
+      const canvas = document.getElementById('circuit-builder-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-circuit-scenario');
+      const obs = document.getElementById('circuit-builder-obs');
+      const SCENARIOS = [
+        { label: 'Lamp: both terminals connected', complete: true, deviceType: 'lamp', reversed: false },
+        { label: 'Lamp: only one wire connected', complete: false, deviceType: 'lamp', reversed: false },
+        { label: 'LED: correctly oriented (+ to +)', complete: true, deviceType: 'led', reversed: false },
+        { label: 'LED: reversed (+ to −)', complete: true, deviceType: 'led', reversed: true }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const sc = SCENARIOS[parseInt(sel.value)];
+        const glows = sc.complete && (sc.deviceType === 'lamp' || (sc.deviceType === 'led' && !sc.reversed));
+
+        const cellX = 130, cellY = 150, deviceX = 470, deviceY = 150;
+
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cellX - 4, cellY - 25); ctx.lineTo(cellX - 4, cellY + 25); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cellX + 8, cellY - 12); ctx.lineTo(cellX + 8, cellY + 12); ctx.stroke();
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('+', cellX - 4, cellY - 35);
+        ctx.fillText('−', cellX + 8, cellY - 35);
+
+        ctx.strokeStyle = glows ? cssVar('--accent-color') : cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cellX - 4, cellY - 25); ctx.lineTo(cellX - 4, 60); ctx.lineTo(deviceX, 60); ctx.lineTo(deviceX, deviceY - 25); ctx.stroke();
+
+        if (sc.complete) {
+          ctx.beginPath(); ctx.moveTo(cellX + 8, cellY + 25); ctx.lineTo(cellX + 8, 240); ctx.lineTo(deviceX, 240); ctx.lineTo(deviceX, deviceY + 25); ctx.stroke();
+        } else {
+          ctx.beginPath(); ctx.moveTo(cellX + 8, cellY + 25); ctx.lineTo(cellX + 8, 240); ctx.lineTo(340, 240); ctx.stroke();
+          ctx.setLineDash([3, 3]);
+          ctx.beginPath(); ctx.moveTo(360, 240); ctx.lineTo(deviceX, 240); ctx.lineTo(deviceX, deviceY + 25); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = '#ef4444'; ctx.font = 'bold 14px system-ui';
+          ctx.fillText('✕ gap', 350, 260);
+        }
+
+        if (sc.deviceType === 'lamp') {
+          ctx.strokeStyle = glows ? cssVar('--accent-color') : cssVar('--text-normal'); ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(deviceX, deviceY, 25, 0, Math.PI * 2); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(deviceX - 18, deviceY - 18); ctx.lineTo(deviceX + 18, deviceY + 18); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(deviceX + 18, deviceY - 18); ctx.lineTo(deviceX - 18, deviceY + 18); ctx.stroke();
+          if (glows) {
+            ctx.fillStyle = 'rgba(16,185,129,0.3)';
+            ctx.beginPath(); ctx.arc(deviceX, deviceY, 35, 0, Math.PI * 2); ctx.fill();
+          }
+        } else {
+          const dir = sc.reversed ? -1 : 1;
+          ctx.strokeStyle = glows ? cssVar('--accent-color') : cssVar('--text-normal'); ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(deviceX - 15 * dir, deviceY - 20);
+          ctx.lineTo(deviceX - 15 * dir, deviceY + 20);
+          ctx.lineTo(deviceX + 15 * dir, deviceY);
+          ctx.closePath();
+          ctx.stroke();
+          if (glows) { ctx.fillStyle = 'rgba(16,185,129,0.3)'; ctx.fill(); }
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText(sc.reversed ? '(reversed)' : '(+ to +)', deviceX, deviceY + 45);
+        }
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(sc.label, W / 2, 25);
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = glows ? cssVar('--accent-color') : '#ef4444';
+        ctx.fillText(glows ? '✓ Glows!' : '✗ Does NOT glow', W / 2, 285);
+
+        obs.innerHTML = `<strong>${sc.label}: ${glows ? 'Glows!' : 'Does not glow'}</strong><br>${!sc.complete ? 'The circuit has a gap — current cannot flow without a complete path.' : (sc.deviceType === 'led' && sc.reversed) ? 'The LED is connected backwards — current can only flow through an LED in one direction.' : 'The circuit is complete and correctly connected, so current flows and the device lights up.'}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCircuitDiagramLab() {
+      const canvas = document.getElementById('circuit-diagram-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-switch-state');
+      const obs = document.getElementById('circuit-diagram-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const isOn = sel.value === 'on';
+
+        const cellX = 100, midY = 150, lampX = 500, switchX = 300;
+
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cellX - 4, midY - 25); ctx.lineTo(cellX - 4, midY + 25); ctx.stroke();
+        ctx.lineWidth = 5;
+        ctx.beginPath(); ctx.moveTo(cellX + 10, midY - 12); ctx.lineTo(cellX + 10, midY + 12); ctx.stroke();
+
+        ctx.strokeStyle = isOn ? cssVar('--accent-color') : cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cellX - 4, midY - 25); ctx.lineTo(cellX - 4, 60); ctx.lineTo(lampX, 60); ctx.lineTo(lampX, midY - 25); ctx.stroke();
+
+        ctx.strokeStyle = isOn ? cssVar('--accent-color') : cssVar('--text-normal');
+        ctx.beginPath(); ctx.arc(lampX, midY, 25, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(lampX - 18, midY - 18); ctx.lineTo(lampX + 18, midY + 18); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(lampX + 18, midY - 18); ctx.lineTo(lampX - 18, midY + 18); ctx.stroke();
+        if (isOn) {
+          ctx.fillStyle = 'rgba(16,185,129,0.3)';
+          ctx.beginPath(); ctx.arc(lampX, midY, 35, 0, Math.PI * 2); ctx.fill();
+        }
+
+        ctx.strokeStyle = isOn ? cssVar('--accent-color') : cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(lampX, midY + 25); ctx.lineTo(lampX, 240); ctx.lineTo(switchX + 30, 240); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(switchX - 30, 240); ctx.lineTo(cellX + 10, 240); ctx.lineTo(cellX + 10, midY + 12); ctx.stroke();
+
+        ctx.fillStyle = cssVar('--text-normal');
+        ctx.beginPath(); ctx.arc(switchX - 30, 240, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(switchX + 30, 240, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = isOn ? cssVar('--accent-color') : cssVar('--text-normal'); ctx.lineWidth = 3;
+        if (isOn) {
+          ctx.beginPath(); ctx.moveTo(switchX - 30, 240); ctx.lineTo(switchX + 30, 240); ctx.stroke();
+        } else {
+          ctx.beginPath(); ctx.moveTo(switchX - 30, 240); ctx.lineTo(switchX + 15, 215); ctx.stroke();
+        }
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`Switch is ${isOn ? 'ON (closed)' : 'OFF (open)'}`, W / 2, 25);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = isOn ? cssVar('--accent-color') : '#ef4444';
+        ctx.fillText(isOn ? '✓ Circuit closed — lamp glows' : '✗ Circuit open — lamp does not glow', W / 2, 285);
+
+        obs.innerHTML = `<strong>Switch ${isOn ? 'ON (closed)' : 'OFF (open)'}</strong><br>${isOn ? 'The switch completes the circuit, allowing current to flow from the cell through the lamp and back — the lamp glows.' : 'The switch leaves a gap in the circuit, so no current can flow — the lamp stays dark.'}`;
       }
 
       sel.addEventListener('change', draw);

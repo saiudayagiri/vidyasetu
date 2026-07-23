@@ -5060,6 +5060,286 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "7s-3",
+              title: "Electricity: Circuits and their Components",
+              topics: [
+                {
+                  id: "7s-3-1",
+                  title: "1. Electric Cells, Batteries and Lamps",
+                  theory: {
+                    intro: "Every torch hides a small collection of carefully connected components — cells, a lamp, and a switch — each with its own role in letting electricity flow and produce light.",
+                    sections: [
+                      {
+                        heading: "The Electric Cell",
+                        text: "Every electric cell has two terminals: a positive (+ve) terminal, marked by a small protruding metal cap, and a negative (−ve) terminal, marked by a flat metal disc. The electric cell is a portable source of electrical energy."
+                      },
+                      {
+                        heading: "The Battery: Combining Cells",
+                        text: "When two or more cells are connected together — with the positive terminal of one cell touching the negative terminal of the next — this combination is called a battery. Connecting multiple cells provides energy to a circuit for longer and/or with more power. (The word 'battery' is also commonly used for a single cell, like in a mobile phone.)"
+                      },
+                      {
+                        heading: "Incandescent Lamps and LEDs",
+                        text: "An incandescent lamp has a thin FILAMENT wire inside a glass bulb that glows when heated by electric current; the filament connects to two terminals — the metal case and the metal tip at the base. An LED (Light Emitting Diode) has no filament at all, and instead has two terminals of different wire lengths — a longer wire (positive) and a shorter wire (negative)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Examining an Electric Cell and Lamp",
+                      objective: "To identify the positive and negative terminals of an electric cell and understand the structure of an incandescent lamp's filament and terminals.",
+                      materials: ["An electric cell", "A torch with an incandescent lamp", "A torch with an LED (if available)"],
+                      steps: [
+                        "Examine an electric cell closely and locate its protruding metal cap (positive terminal) and flat metal disc (negative terminal).",
+                        "With an adult's help, open a torch's cell compartment and observe how multiple cells are arranged to form a battery.",
+                        "If possible, examine an incandescent lamp and locate its thin filament wire and the two thicker support wires connecting to its terminals.",
+                        "Compare an LED's two wire terminals, noting which is longer (positive) and which is shorter (negative).",
+                        "Discuss why connecting cells in a specific order (positive-to-negative) matters for a torch to work."
+                      ],
+                      observation: "Every electric cell has clearly distinguishable positive and negative terminals, and combining cells correctly (positive-to-negative) forms a working battery — while incandescent lamps and LEDs, though both producing light, have structurally very different terminal and filament designs."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What are the two terminals of an electric cell called?",
+                      options: ["Big and small", "Positive (+ve) and negative (−ve)", "Left and right", "Metal and plastic"],
+                      answer: 1,
+                      explanation: "Every electric cell has a positive terminal (marked by the protruding metal cap) and a negative terminal (marked by the flat metal disc)."
+                    },
+                    {
+                      question: "What is a 'battery'?",
+                      options: ["Any single wire", "A combination of two or more electric cells connected together, positive-to-negative", "A type of lamp", "A material that blocks electric current"],
+                      answer: 1,
+                      explanation: "A battery is formed by connecting two or more cells, with the positive terminal of one connected to the negative terminal of the next."
+                    },
+                    {
+                      question: "What is the 'filament' in an incandescent lamp?",
+                      options: ["The glass bulb itself", "The thin wire inside the bulb that heats up and glows to produce light", "The metal case at the base", "A type of switch"],
+                      answer: 1,
+                      explanation: "The filament is the thin wire fixed inside the glass bulb of an incandescent lamp — it glows when electric current heats it up."
+                    },
+                    {
+                      question: "How can you identify the positive and negative terminals of an LED?",
+                      options: ["Both wires are always the same length, with no way to tell them apart", "The longer wire is the positive terminal, and the shorter wire is the negative terminal", "The colour of the LED tells you which terminal is which", "LEDs do not have terminals"],
+                      answer: 1,
+                      explanation: "An LED's two wire terminals differ in length — the longer wire is positive, and the shorter wire is negative."
+                    },
+                    {
+                      question: "Why might multiple cells be connected together in a device like a torch?",
+                      options: ["It never makes any difference", "To provide energy to the circuit for a longer time and/or with more power", "To make the torch heavier only", "Multiple cells always cancel each other out"],
+                      answer: 1,
+                      explanation: "Connecting multiple cells together (forming a battery) supplies more energy and/or a longer duration of power to the device."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-3-2",
+                  title: "2. Making Lamps and LEDs Glow: The Complete Circuit",
+                  lab: { type: "circuit-builder-sim" },
+                  theory: {
+                    intro: "Connecting a cell and a lamp doesn't always make it glow — only a genuinely COMPLETE path lets electric current flow, and LEDs add an extra twist: they only work when connected in one specific direction.",
+                    sections: [
+                      {
+                        heading: "What Makes a Complete Circuit?",
+                        text: "A lamp glows only when one terminal of the lamp connects to one terminal of the cell, AND the other terminal of the lamp connects to the other terminal of the cell — forming a complete, closed path called an electrical circuit. If any part of this path is broken or missing, no current flows, and the lamp stays dark."
+                      },
+                      {
+                        heading: "Direction Doesn't Matter for Incandescent Lamps",
+                        text: "With an incandescent lamp, it doesn't matter which of its two terminals connects to the cell's positive or negative terminal — the lamp glows either way, as long as the circuit is complete and current flows through the filament. (A lamp that doesn't glow even when properly connected has likely 'fused' — its filament has broken.)"
+                      },
+                      {
+                        heading: "LEDs Only Work in One Direction",
+                        text: "Unlike incandescent lamps, an LED only glows when connected in ONE specific direction: its positive terminal (longer wire) must connect to the battery's positive terminal, and its negative terminal (shorter wire) to the battery's negative terminal. If the connections are reversed, current cannot pass through the LED, and it will NOT glow."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Which Connections Make a Lamp or LED Glow",
+                      objective: "To systematically test different cell-lamp and cell-LED connection arrangements, discovering which complete the circuit and which don't.",
+                      materials: ["Electric cell(s)", "Incandescent lamp with holder", "LED", "Connecting wires"],
+                      steps: [
+                        "Connect a cell and lamp with only ONE wire linking one terminal of each — predict and then observe if the lamp glows.",
+                        "Now connect BOTH terminals of the lamp to BOTH terminals of the cell, completing the circuit — observe if the lamp glows now.",
+                        "Try reversing which lamp terminal connects to which cell terminal, and check if the lamp still glows.",
+                        "Repeat the full-circuit connection using an LED instead of a lamp, carefully connecting its longer wire to the cell's positive terminal.",
+                        "Now reverse the LED's connections (longer wire to negative, shorter wire to positive) and observe what happens."
+                      ],
+                      observation: "A lamp only glows when BOTH its terminals are connected to complete a full circuit, and an incandescent lamp works regardless of which way round it's connected — but an LED glows ONLY when its longer (positive) wire connects to the battery's positive terminal, failing to glow if the connection is reversed."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is required for a lamp to glow when connected to a cell?",
+                      options: ["Only one terminal needs to be connected", "BOTH terminals of the lamp must connect to BOTH terminals of the cell, forming a complete circuit", "The lamp must be shaken first", "Lamps glow automatically near any cell"],
+                      answer: 1,
+                      explanation: "A complete, closed circuit — connecting both lamp terminals to both cell terminals — is required for current to flow and the lamp to glow."
+                    },
+                    {
+                      question: "Does it matter which terminal of an incandescent lamp connects to the positive or negative terminal of the cell?",
+                      options: ["Yes, it must be connected exactly one way", "No — an incandescent lamp glows either way, as long as the circuit is complete", "Incandescent lamps never glow regardless of connection", "This only matters for LEDs, not incandescent lamps... wait, that's backwards"],
+                      answer: 1,
+                      explanation: "Incandescent lamps are not direction-sensitive — they glow regardless of which terminal connects to positive or negative, as long as the circuit is complete."
+                    },
+                    {
+                      question: "What happens if an LED's connections to the battery are reversed?",
+                      options: ["The LED glows even brighter", "The LED does NOT glow, since current can only pass through an LED in one direction", "Nothing changes at all", "The LED changes colour"],
+                      answer: 1,
+                      explanation: "LEDs are direction-sensitive — current only flows through them one way, so reversing the connections prevents the LED from glowing."
+                    },
+                    {
+                      question: "For an LED to glow, which wire should connect to the battery's positive terminal?",
+                      options: ["The shorter wire", "The longer wire (the LED's positive terminal)", "Either wire works equally well", "Neither wire should be connected to positive"],
+                      answer: 1,
+                      explanation: "The LED's longer wire is its positive terminal, which must connect to the battery's positive terminal for the LED to glow."
+                    },
+                    {
+                      question: "What does it mean when an incandescent lamp has 'fused'?",
+                      options: ["It has become brighter than usual", "Its filament has broken, stopping the flow of current and preventing the lamp from glowing", "It is working perfectly", "It has changed into an LED"],
+                      answer: 1,
+                      explanation: "A 'fused' lamp has a broken filament, which interrupts the current path so the lamp cannot glow even when properly connected in a circuit."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-3-3",
+                  title: "3. Switches and Circuit Diagrams",
+                  lab: { type: "circuit-diagram-sim" },
+                  theory: {
+                    intro: "A switch is a deceptively simple device — it just opens or closes a tiny gap in a circuit — but this single action is exactly what turns lights and countless devices on and off. Circuit diagrams use standard symbols to represent these components clearly.",
+                    sections: [
+                      {
+                        heading: "How a Switch Works",
+                        text: "A simple switch (like a safety pin touching a drawing pin) closes a gap in the circuit when in the ON position, completing the path and allowing current to flow — making a connected lamp glow. In the OFF position, the safety pin doesn't touch the second pin, leaving a gap that breaks the circuit (an 'open' circuit), so no current flows and the lamp stays dark. A switch can be placed anywhere in a circuit and simply completes or breaks it."
+                      },
+                      {
+                        heading: "Circuit Diagrams and Standard Symbols",
+                        text: "Instead of drawing realistic pictures of cells, lamps, and wires, standard SYMBOLS represent each component — making circuits much easier to draw and understand. A circuit diagram is this symbol-based representation of an electrical circuit. In a cell's symbol, a long line represents the positive terminal and a short line represents the negative terminal. In an LED's symbol, a triangle points in the direction current can flow, with two arrows showing that it emits light."
+                      },
+                      {
+                        heading: "Why Standard Symbols Matter",
+                        text: "International organisations (like the IEC, ANSI, and IEEE) establish standard symbols for electrical components, so that people from different countries and industries can understand circuit diagrams consistently, no matter where they are made."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building a Simple Switch and Drawing Its Circuit Diagram",
+                      objective: "To construct a basic switch from simple materials, test it in a circuit, and represent the full circuit using standard symbols.",
+                      materials: ["Two drawing pins", "A safety pin or paper clip", "A small piece of cardboard", "Two wires", "An electric cell and lamp"],
+                      steps: [
+                        "Insert one drawing pin through the ring of a safety pin and fix it to the cardboard, letting the pin rotate freely.",
+                        "Fix a second drawing pin to the cardboard so the free end of the safety pin can touch it when rotated.",
+                        "Connect a wire to each drawing pin, then connect this switch into a circuit with a cell and lamp.",
+                        "Test both positions: rotate the safety pin away from the second pin (OFF) and touching it (ON), observing the lamp each time.",
+                        "Draw the circuit diagram of your switch circuit using the standard symbols for a cell, lamp, switch, and wire."
+                      ],
+                      observation: "The switch you built behaves exactly like a commercial switch — completing the circuit (ON) lets the lamp glow, while breaking the circuit (OFF) stops it — and representing this using standard symbols in a circuit diagram makes the same circuit far easier to communicate and understand than a realistic drawing."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does a switch do in an electrical circuit?",
+                      options: ["It generates electricity", "It completes or breaks the circuit, allowing or stopping the flow of current", "It changes the colour of the lamp", "It stores electrical energy"],
+                      answer: 1,
+                      explanation: "A switch is a simple device that either completes (closes) or breaks (opens) a circuit, controlling whether current can flow."
+                    },
+                    {
+                      question: "What is a 'circuit diagram'?",
+                      options: ["A realistic photograph of a circuit", "A representation of an electrical circuit using standard symbols for its components", "A written description with no drawing at all", "A diagram only used for LEDs"],
+                      answer: 1,
+                      explanation: "A circuit diagram represents an electrical circuit using standard symbols (for cells, lamps, switches, wires, etc.) instead of realistic drawings."
+                    },
+                    {
+                      question: "In the symbol for an electric cell, what do the long and short lines represent?",
+                      options: ["Both represent the same terminal", "The long line is the positive terminal, and the short line is the negative terminal", "The long line is negative, the short line is positive", "Neither line represents a terminal"],
+                      answer: 1,
+                      explanation: "In a cell's standard symbol, the longer line represents the positive terminal, and the shorter line represents the negative terminal."
+                    },
+                    {
+                      question: "Why do international organisations establish standard symbols for electrical components?",
+                      options: ["To make circuits more complicated", "So that people from different countries and industries can understand circuit diagrams consistently", "Standard symbols don't actually exist", "Only for decorative purposes"],
+                      answer: 1,
+                      explanation: "Standardised symbols (set by organisations like the IEC, ANSI, and IEEE) ensure circuit diagrams are understood the same way worldwide, regardless of where they are created."
+                    },
+                    {
+                      question: "In the OFF position of a simple pin-based switch, why does the lamp not glow?",
+                      options: ["The lamp is broken", "The safety pin doesn't touch the second drawing pin, leaving a gap that breaks the circuit and stops current flow", "OFF position generates reverse current", "The cell runs out of energy instantly"],
+                      answer: 1,
+                      explanation: "In the OFF position, the gap between the safety pin and the second drawing pin breaks the circuit, preventing current from flowing and the lamp from glowing."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-3-4",
+                  title: "4. Conductors and Insulators",
+                  theory: {
+                    intro: "Not every material lets electricity pass through it — testing a wide variety of everyday objects reveals a clear divide between materials that conduct electricity and those that block it.",
+                    sections: [
+                      {
+                        heading: "Building a Conduction Tester",
+                        text: "Connecting an electric cell and lamp with the wire ends left free creates a simple conduction tester: touching the two free wire ends together completes the circuit and makes the lamp glow, confirming the tester works. Placing different materials between the two free ends (without letting the wires touch each other directly) tests whether that material allows current to pass."
+                      },
+                      {
+                        heading: "Conductors vs. Insulators",
+                        text: "Materials through which electric current flows easily are called good conductors (or simply conductors) of electricity — metals like copper, iron, and aluminium are common examples. Materials through which current CANNOT easily pass are called insulators (or poor conductors) — examples include plastic, rubber, wood, glass, and paper."
+                      },
+                      {
+                        heading: "Why Wires Use Both Conductors and Insulators",
+                        text: "Electrical wires use a metal (usually copper) core, since metals are excellent conductors, allowing current to flow through the wire efficiently. But the metal core is covered with plastic or rubber — insulators — to prevent the current from escaping the wire or causing shocks when handled, since insulators block current from passing through them."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Materials as Conductors or Insulators",
+                      objective: "To classify a variety of everyday objects and materials as conductors or insulators of electricity, using a simple conduction tester.",
+                      materials: ["An electric cell", "A lamp", "Connecting wires", "Various objects: metal spoon, coin, cork, rubber band, glass piece, key, plastic scale, wooden block, aluminium foil, paper strip"],
+                      steps: [
+                        "Build a conduction tester by connecting a cell and lamp with two free wire ends, and confirm it works by touching the two ends together (lamp should glow).",
+                        "One by one, touch the tester's two free wire ends to both ends of each collected object, without letting the wires touch each other directly.",
+                        "Record whether the lamp glows (conductor) or stays dark (insulator) for each material.",
+                        "Sort all tested materials into two lists: Conductors and Insulators.",
+                        "Based on your results, explain why electrical wires have a metal core wrapped in plastic or rubber."
+                      ],
+                      observation: "Metal objects (spoons, coins, keys, foil) consistently make the lamp glow, confirming they are conductors, while non-metal objects (cork, rubber, glass, plastic, wood, paper) leave the lamp dark, confirming they are insulators — explaining exactly why wires combine a metal (conducting) core with a plastic or rubber (insulating) covering."
+                      }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'conductor' of electricity?",
+                      options: ["A material that blocks all electric current", "A material through which electric current flows easily", "A type of switch", "A material that generates its own electricity"],
+                      answer: 1,
+                      explanation: "A conductor is a material that allows electric current to flow through it easily, such as most metals."
+                    },
+                    {
+                      question: "What is an 'insulator'?",
+                      options: ["A material through which current flows very easily", "A material through which electric current cannot easily pass", "Another name for a conductor", "A type of electric cell"],
+                      answer: 1,
+                      explanation: "Insulators are materials (like plastic, rubber, wood, and glass) that do not allow electric current to pass through them easily."
+                    },
+                    {
+                      question: "How does a simple conduction tester work?",
+                      options: ["It has no moving parts and cannot test anything", "A cell and lamp are connected with two free wire ends; if touching an object between them makes the lamp glow, that object is a conductor", "It only works with metal objects placed directly on the cell", "It requires a switch to function at all"],
+                      answer: 1,
+                      explanation: "A conduction tester completes a cell-lamp circuit through whatever material is placed between its two free wire ends — the lamp glowing indicates the material conducts electricity."
+                    },
+                    {
+                      question: "Why are electrical wires typically made with a metal core covered in plastic or rubber?",
+                      options: ["It's purely for decoration", "The metal core (a conductor) lets current flow efficiently, while the plastic/rubber covering (an insulator) prevents current from escaping or causing shocks", "Metal and plastic have no functional purpose in wires", "Plastic conducts electricity better than metal"],
+                      answer: 1,
+                      explanation: "The metal core conducts current efficiently along the wire, while the insulating plastic/rubber covering safely contains that current, preventing shocks or short circuits."
+                    },
+                    {
+                      question: "Based on typical test results, which of these is classified as an insulator?",
+                      options: ["A metal key", "A rubber eraser", "Aluminium foil", "A metal spoon"],
+                      answer: 1,
+                      explanation: "A rubber eraser does not allow current to pass through it, making it an insulator — unlike metal objects (keys, foil, spoons), which are good conductors."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
