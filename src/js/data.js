@@ -7292,6 +7292,287 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "7s-11",
+              title: "Light: Shadows and Reflections",
+              topics: [
+                {
+                  id: "7s-11-1",
+                  title: "1. Luminous Objects and Light Travelling in a Straight Line",
+                  theory: {
+                    intro: "Watching the moon glow and headlight beams flash by on a night bus ride raises a deceptively simple question — does everything that shines actually make its own light?",
+                    sections: [
+                      {
+                        heading: "Luminous and Non-Luminous Objects",
+                        text: "The Sun emits its own light and is the main source of natural light on Earth; stars, lightning, natural fire, and certain animals (like fireflies) also emit their own light. Objects that emit their own light are called luminous objects. Objects that do NOT emit their own light are called non-luminous objects — the Moon is non-luminous; it merely reflects sunlight falling on it. Humans first created fire as artificial lighting, later using fuels like animal fat, oil, and wax, and eventually electric lighting, including modern, efficient LED lamps."
+                      },
+                      {
+                        heading: "Testing Whether Light Travels in a Straight Line",
+                        text: "Aligning three matchboxes (each with a hole at the same height) in a straight line, with a torch on one side and a screen on the other, produces a bright spot on the screen — but moving any one matchbox out of line makes the spot disappear. Similarly, a candle flame can be seen through a straight flexible pipe, but not through a bent one. Both results show that light travels in a straight line."
+                      },
+                      {
+                        heading: "A Laser Beam Confirms It",
+                        text: "Passing a laser beam through water with a drop of milk added (to make the beam visible) shows the beam travelling along a clearly straight path inside the water — further confirming that light travels in straight lines, at least under normal conditions in a single medium."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing if Light Travels in a Straight Line Using Matchboxes",
+                      objective: "To confirm, using aligned and misaligned holes in matchboxes, that light travels only in a straight line.",
+                      materials: ["Three matchboxes with holes made at the same position in each inner tray", "A torch", "A cardboard screen"],
+                      steps: [
+                        "Arrange the three matchboxes in a straight line so all three holes are at the same height and aligned.",
+                        "Place a torch on one side, with its lamp at the height of the holes.",
+                        "Place a cardboard screen on the other side, and adjust until you get a bright spot of light on it.",
+                        "Move one matchbox slightly to a side or up/down, breaking the alignment.",
+                        "Observe whether the light spot on the screen still appears."
+                      ],
+                      observation: "When all three holes are aligned in a straight line, the light spot appears clearly on the screen; once any hole is moved out of alignment, the light spot disappears — confirming that light can only travel in a straight line, not around obstacles."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'luminous object'?",
+                      options: ["An object that only reflects light from another source", "An object that emits its own light", "Any object that is visible", "An object that blocks light"],
+                      answer: 1,
+                      explanation: "Luminous objects, like the Sun or a burning flame, produce and emit their own light, unlike non-luminous objects, which only reflect light falling on them."
+                    },
+                    {
+                      question: "Why is the Moon considered a 'non-luminous' object?",
+                      options: ["Because it does not exist", "Because it does not emit its own light — it only reflects sunlight that falls on it", "Because it is always dark", "Because it is too far from Earth to be luminous"],
+                      answer: 1,
+                      explanation: "The Moon has no light source of its own; what we see as moonlight is simply sunlight reflecting off the Moon's surface."
+                    },
+                    {
+                      question: "In the matchbox activity, what happens to the light spot on the screen if one matchbox is moved out of alignment?",
+                      options: ["The light spot becomes brighter", "The light spot disappears, since light cannot bend around the misaligned hole", "Nothing changes at all", "The light spot changes colour"],
+                      answer: 1,
+                      explanation: "Since light travels in a straight line, misaligning even one hole blocks the straight path needed for light to pass through all three holes and reach the screen."
+                    },
+                    {
+                      question: "Why can you see a candle flame through a straight pipe but not through a bent pipe?",
+                      options: ["Bent pipes always block all light regardless of the reason", "Light travels in a straight line, so it cannot follow the bend in the pipe to reach your eye", "Straight pipes make the flame brighter", "This has nothing to do with the shape of the pipe"],
+                      answer: 1,
+                      explanation: "Since light only travels in straight lines, it cannot navigate around the bend in a curved pipe, so the flame becomes invisible once the pipe is bent."
+                    },
+                    {
+                      question: "What does passing a laser beam through milky water demonstrate?",
+                      options: ["That light only travels through solids", "That the laser beam travels along a clearly straight path, confirming light travels in a straight line", "That water always changes the direction of light", "That milk creates its own light"],
+                      answer: 1,
+                      explanation: "Adding milk to water scatters some light, making the laser beam's path visible — and that visible path is a straight line, confirming light travels in straight lines."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-11-2",
+                  title: "2. Light Through Materials, and Shadow Formation",
+                  lab: { type: "material-light-transmission-sim" },
+                  theory: {
+                    intro: "Shine a torch through glass, tracing paper, and cardboard, and you get three completely different results — a clue to why some materials cast dark shadows while others barely cast any at all.",
+                    sections: [
+                      {
+                        heading: "Transparent, Translucent, and Opaque Materials",
+                        text: "Placing different materials in a torch's beam and observing the light spot on a screen shows: light passes almost completely through transparent materials (like glass), light passes only partially through translucent materials (like tracing paper), and light does not pass through opaque materials (like cardboard or thick cloth) at all."
+                      },
+                      {
+                        heading: "What Is a Shadow?",
+                        text: "When an opaque object is placed in the straight-line path of light, the light is blocked, creating a dark patch where light does not reach — this is a shadow. We need a source of light, an opaque object, and a screen (like a wall, floor, or ground) to observe a shadow."
+                      },
+                      {
+                        heading: "Shadows of Different Materials",
+                        text: "Opaque objects form darker shadows, translucent objects make lighter shadows, and even some transparent objects can create faint shadows. The shape, size, and sharpness of a shadow depend on the position of the object relative to the light source and the screen — but changing the COLOUR of an opaque object does NOT change the colour of its shadow (shadows are simply dark, regardless of object colour)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Classifying Materials by How Light Passes Through Them",
+                      objective: "To test various everyday materials with a torch and screen, classifying each as transparent, translucent, or opaque.",
+                      materials: ["A torch", "A dark room", "Objects made of different materials: cardboard, glass, tracing paper, thick cloth, plastic sheet, etc.", "A screen (wall or cardboard)"],
+                      steps: [
+                        "In a dark room, shine the torch to get a spot of light on a screen or wall.",
+                        "Predict what will happen to the light spot if you hold each object between the torch and the screen.",
+                        "Place each object between the torch and the screen, one at a time, and observe whether the light spot remains, dims, or disappears.",
+                        "Classify each material as transparent (light passes fully), translucent (light passes partially), or opaque (no light passes).",
+                        "Compare your predictions to your observations."
+                      ],
+                      observation: "Glass allows the light spot to remain bright (transparent), tracing paper dims the spot without blocking it entirely (translucent), and cardboard or thick cloth blocks the spot completely, casting a dark shadow (opaque)."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How much light passes through a 'translucent' material?",
+                      options: ["All of it", "None of it", "Only partially", "It depends only on the material's colour"],
+                      answer: 2,
+                      explanation: "Translucent materials, like tracing paper, allow only part of the light to pass through, unlike transparent materials (which allow nearly all light through) or opaque materials (which block it entirely)."
+                    },
+                    {
+                      question: "What three things are needed to observe a shadow?",
+                      options: ["Only a light source and a screen", "A source of light, an opaque object, and a screen", "Only an opaque object", "A mirror and a light source"],
+                      answer: 1,
+                      explanation: "A shadow requires all three: a light source (to travel in a straight line), an opaque object (to block that light), and a screen (to display the resulting dark patch)."
+                    },
+                    {
+                      question: "Why does an opaque object form a darker shadow than a translucent object?",
+                      options: ["Opaque objects are always painted black", "Opaque objects block all the light falling on them, while translucent objects let some light through, making a lighter shadow", "There is no actual difference between the two", "Translucent objects create no shadow at all"],
+                      answer: 1,
+                      explanation: "Since opaque objects block all incoming light, they form completely dark shadows, while translucent objects let some light pass through, creating a lighter shadow."
+                    },
+                    {
+                      question: "If you change the colour of an opaque object (say, from red to blue), what happens to the colour of its shadow?",
+                      options: ["The shadow changes to match the new colour of the object", "The shadow's colour does not change — it remains dark, regardless of the object's colour", "The shadow disappears entirely", "The shadow becomes transparent"],
+                      answer: 1,
+                      explanation: "A shadow is simply the region where light is blocked — its appearance does not depend on the colour of the object casting it, so changing the object's colour does not change the shadow's colour."
+                    },
+                    {
+                      question: "Can transparent materials ever create a faint shadow?",
+                      options: ["No, transparent materials never create any shadow", "Yes, even some transparent materials can create a faint shadow, since they don't let through absolutely 100% of light", "Only opaque materials can create shadows", "Transparent materials create the darkest shadows of all"],
+                      answer: 1,
+                      explanation: "Even highly transparent materials rarely transmit 100% of incoming light, so they can sometimes cast a very faint shadow, unlike the sharp, dark shadow cast by opaque objects."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-11-3",
+                  title: "3. Reflection of Light and Images in a Plane Mirror",
+                  lab: { type: "plane-mirror-image-sim" },
+                  theory: {
+                    intro: "Look into a flat mirror and you'll always find your reflection exactly as far behind the glass as you are standing in front of it — same size, right-side up, but strangely left-right reversed.",
+                    sections: [
+                      {
+                        heading: "What Is Reflection of Light?",
+                        text: "Shining sunlight onto a shiny flat steel plate or plane mirror and redirecting it onto a wall shows a bright spot of light appearing where the mirror is pointed — and tilting the mirror moves this spot. This shows that a shiny surface or mirror changes the direction of light falling on it — a change called the reflection of light. Passing a thin beam of light (through a slit) onto a mirror confirms this: the beam's straight path visibly bends at the point where it meets the mirror."
+                      },
+                      {
+                        heading: "Properties of the Image in a Plane Mirror",
+                        text: "Placing an object (like a pen) in front of a plane mirror makes it appear as though a similar object is placed behind the mirror — this apparent object is called the image, while the real object is called the object. Moving the pen to different distances shows the image is always the SAME SIZE as the object, and always ERECT (upright) — never obtained on a screen (it's a virtual image). The image also appears exactly as far BEHIND the mirror as the object is in FRONT of it."
+                      },
+                      {
+                        heading: "Lateral Inversion",
+                        text: "Raising your left arm in front of a mirror makes your image appear to raise its RIGHT arm — this apparent left-right reversal is called lateral inversion, and it always occurs in images formed by a plane mirror. This is why the word 'AMBULANCE' is often written in mirror-image text on the front of ambulances — so that drivers ahead can read it correctly in their rear-view mirrors."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Exploring the Properties of Images in a Plane Mirror",
+                      objective: "To determine the size, orientation, and distance properties of the image formed by a plane mirror, using a pen as the object.",
+                      materials: ["A plane mirror", "A pen or similar small object", "A screen (optional)"],
+                      steps: [
+                        "Place the pen in front of the mirror and observe its image, noting that it appears to be positioned behind the mirror.",
+                        "Move the pen to different distances from the mirror, and compare the size of the image to the size of the object each time.",
+                        "Check whether the image remains upright (erect) at every position.",
+                        "Try placing a screen behind (and then in front of) the mirror to see if the image can be captured on it.",
+                        "Stand at different distances from the mirror and observe how far your image appears to be, comparing it to your own distance from the mirror."
+                      ],
+                      observation: "The image formed by the plane mirror is always the same size as the pen, always appears erect, cannot be captured on a screen, and always appears exactly as far behind the mirror as the pen is in front of it."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the 'reflection of light'?",
+                      options: ["The bending of light as it passes through water", "The change in direction of light when it falls on a shiny surface or mirror", "The blocking of light by an opaque object", "The complete absorption of light by a surface"],
+                      answer: 1,
+                      explanation: "Reflection of light refers specifically to light changing direction after striking a shiny or mirror-like surface, as opposed to being absorbed or blocked."
+                    },
+                    {
+                      question: "How does the size of the image formed by a plane mirror compare to the size of the actual object?",
+                      options: ["The image is always larger than the object", "The image is always smaller than the object", "The image is exactly the same size as the object", "The size varies randomly with each viewing"],
+                      answer: 2,
+                      explanation: "A plane mirror always produces an image that is exactly the same size as the object placed in front of it, regardless of distance."
+                    },
+                    {
+                      question: "Can the image formed by a plane mirror be captured on a screen?",
+                      options: ["Yes, easily, if the screen is placed correctly", "No, the image formed by a plane mirror cannot be obtained on a screen", "Only if the object is very close to the mirror", "Only if the mirror is curved"],
+                      answer: 1,
+                      explanation: "The image formed by a plane mirror is a virtual image — it appears to be behind the mirror but cannot actually be projected onto or captured by a physical screen."
+                    },
+                    {
+                      question: "What is 'lateral inversion'?",
+                      options: ["The image appearing upside down", "The apparent left-right reversal seen in images formed by a plane mirror (e.g., your left arm appears as your image's right arm)", "The image becoming smaller than the object", "A property found only in curved mirrors"],
+                      answer: 1,
+                      explanation: "Lateral inversion is the left-right reversal characteristic of plane mirror images — what is on your left appears on the right side of your mirror image, and vice versa."
+                    },
+                    {
+                      question: "Why is the word 'AMBULANCE' often written in mirror-image (reversed) text on the front of an ambulance?",
+                      options: ["It is simply a stylistic design choice with no functional purpose", "So that drivers viewing it through their rear-view mirrors see it laterally inverted back into normal, readable text", "Ambulances always display text backwards for no particular reason", "It makes the ambulance appear faster"],
+                      answer: 1,
+                      explanation: "Since a plane mirror laterally inverts images, writing 'AMBULANCE' in reverse on the vehicle's front makes it appear correctly readable when viewed through another driver's rear-view mirror."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-11-4",
+                  title: "4. Pinhole Camera and Optical Instruments",
+                  lab: { type: "pinhole-camera-sim" },
+                  theory: {
+                    intro: "A dark box with nothing more than a tiny hole can capture a surprisingly clear image of the world outside — just upside down, thanks to light's insistence on travelling in straight lines.",
+                    sections: [
+                      {
+                        heading: "The Pinhole Camera",
+                        text: "A pinhole camera is a device in which light rays from an object pass through a tiny hole (a pinhole) and form an image on a screen. Placing a lit candle in front of a small hole in a cardboard, with a screen behind, produces a surprising image of the candle flame on the screen — one that is upside down (inverted). This inversion happens because light travels in straight lines: rays from the top of the object cross through the pinhole and land at the bottom of the image, and vice versa."
+                      },
+                      {
+                        heading: "Building a Sliding Pinhole Camera",
+                        text: "A working pinhole camera can be built from two cardboard boxes that slide into each other, with a pinhole on the larger box's far face and a translucent screen (like tracing paper) on the smaller box's near face. Looking through the open side at a distant object in bright sunlight and sliding the boxes to adjust distance produces an inverted image of the object on the tracing-paper screen."
+                      },
+                      {
+                        heading: "Periscopes and Kaleidoscopes",
+                        text: "A periscope uses two plane mirrors placed in a Z-shaped arrangement to let us see objects not directly visible — used in submarines, tanks, and by soldiers in bunkers. A kaleidoscope uses three rectangular mirror strips joined in a triangle inside a tube; light reflecting repeatedly between the three mirrors (reflections of reflections) creates ever-changing, beautiful symmetrical patterns from small coloured objects like bangle pieces, with a new pattern appearing every time the tube is turned."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building and Testing a Simple Pinhole Camera",
+                      objective: "To construct a working sliding pinhole camera and confirm that it produces an inverted image of distant objects.",
+                      materials: ["Two cardboard boxes (one sliding into the other with a small gap)", "Tracing paper", "A rubber band or adhesive tape"],
+                      steps: [
+                        "Cut open one side of each box, and make a small pinhole in the middle of the opposite face of the larger box.",
+                        "On the smaller box, cut a square opening in the middle of its opposite face and cover it with tracing paper to form a screen.",
+                        "Slide the smaller box inside the larger one, with the tracing-paper side facing inward.",
+                        "Point the pinhole toward a distant, brightly lit object (like a tree or building), and look through the open side of the smaller box.",
+                        "Slide the smaller box forward or backward until a clear image appears on the tracing paper, and observe its orientation."
+                      ],
+                      observation: "The image of the distant object appears on the tracing-paper screen upside down (inverted), confirming that a pinhole camera always forms an inverted image, due to light travelling in straight lines through the pinhole."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What kind of image does a pinhole camera form on its screen?",
+                      options: ["An upright (erect) image", "An inverted (upside-down) image", "No image at all", "A laterally inverted but upright image"],
+                      answer: 1,
+                      explanation: "A pinhole camera always forms an inverted (upside-down) image, since light rays from the top and bottom of the object cross paths as they pass through the tiny pinhole."
+                    },
+                    {
+                      question: "Why does a pinhole camera produce an inverted image?",
+                      options: ["Because the pinhole is curved like a lens", "Because light travels in straight lines, so rays from the top of the object cross through the pinhole and land at the bottom of the screen, and vice versa", "Because the screen material flips the image", "Pinhole cameras do not actually produce inverted images"],
+                      answer: 1,
+                      explanation: "Since light rays travel in straight lines, a ray from the top of an object continues in a straight line through the pinhole to the bottom of the screen — and a ray from the bottom goes to the top — resulting in an inverted image."
+                    },
+                    {
+                      question: "How many mirrors are used in a simple periscope, and how are they arranged?",
+                      options: ["Three mirrors, in a triangle", "Two plane mirrors, arranged in a Z-shape", "One curved mirror", "Four mirrors in a square"],
+                      answer: 1,
+                      explanation: "A simple periscope uses two plane mirrors placed in a Z-shaped arrangement, allowing light to be reflected twice to let the viewer see objects not directly in their line of sight."
+                    },
+                    {
+                      question: "How many mirror strips are used in a basic kaleidoscope, and how are they arranged?",
+                      options: ["Two mirrors, placed parallel to each other", "Three rectangular mirror strips, joined together in a triangular arrangement", "One large curved mirror", "Five small mirrors in a star shape"],
+                      answer: 1,
+                      explanation: "A kaleidoscope typically uses three rectangular mirror strips arranged in a triangle, creating multiple reflections that form ever-changing symmetrical patterns."
+                    },
+                    {
+                      question: "Why does a kaleidoscope show a different pattern every time it is turned?",
+                      options: ["The mirrors physically change shape each time", "The small coloured objects (like bangle pieces) shift position with each turn, and the three-mirror reflections (reflections of reflections) create new symmetrical arrangements", "Kaleidoscopes always show the exact same pattern", "The patterns are pre-printed inside the tube"],
+                      answer: 1,
+                      explanation: "As the kaleidoscope is turned, the loose coloured pieces inside shift to new positions, and since the three mirrors create multiple reflections of these pieces, a new symmetrical pattern forms each time."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

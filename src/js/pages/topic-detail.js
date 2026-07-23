@@ -2507,6 +2507,72 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const materialLightTransmissionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="material-light-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a material and see how much light passes through it.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Material</h3>
+            <select id="sel-material-light" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="glass" selected>Glass</option>
+              <option value="tracing">Tracing paper</option>
+              <option value="cardboard">Cardboard</option>
+              <option value="cloth">Thick cloth</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Light Spot on Screen</h3>
+            <div id="material-light-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a material above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const planeMirrorImageLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="mirror-image-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an object distance and see the mirror image's position and size.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Object Distance from Mirror</h3>
+            <select id="sel-mirror-distance" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="60">Close: 60 px</option>
+              <option value="120" selected>Medium: 120 px</option>
+              <option value="180">Far: 180 px</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Image Properties</h3>
+            <div id="mirror-image-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a distance above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const pinholeCameraLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="pinhole-camera-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an object position and see the inverted image it forms.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Object Position</h3>
+            <select id="sel-pinhole-position" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="near" selected>Close to the pinhole</option>
+              <option value="far">Far from the pinhole</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Image on Screen</h3>
+            <div id="pinhole-camera-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an object position above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4318,6 +4384,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'xylem-transport-sim') {
               labHtml = xylemTransportLabHtml;
               labDesc = 'Pick a tumbler and see how far coloured water travels up the plant through the xylem.';
+            } else if (topicObj.lab.type === 'material-light-transmission-sim') {
+              labHtml = materialLightTransmissionLabHtml;
+              labDesc = 'Pick a material and see whether light passes through it fully, partially, or not at all.';
+            } else if (topicObj.lab.type === 'plane-mirror-image-sim') {
+              labHtml = planeMirrorImageLabHtml;
+              labDesc = 'Pick an object distance and see the mirror image form at an equal distance behind it.';
+            } else if (topicObj.lab.type === 'pinhole-camera-sim') {
+              labHtml = pinholeCameraLabHtml;
+              labDesc = 'Pick an object position and see the inverted image a pinhole camera forms on its screen.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4733,6 +4808,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initPhotosynthesisRequirementsLab();
         } else if (topicObj.lab.type === 'xylem-transport-sim') {
           initXylemTransportLab();
+        } else if (topicObj.lab.type === 'material-light-transmission-sim') {
+          initMaterialLightTransmissionLab();
+        } else if (topicObj.lab.type === 'plane-mirror-image-sim') {
+          initPlaneMirrorImageLab();
+        } else if (topicObj.lab.type === 'pinhole-camera-sim') {
+          initPinholeCameraLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -17122,6 +17203,162 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         obs.innerHTML = isRed
           ? '<strong>Red colouring appears in the stem, leaves, and flower.</strong> The xylem — a tube-like structure in the stem — carries the red-inked water all the way up from the tumbler to the leaves and flower.'
           : '<strong>No colour change appears.</strong> The plain water is still transported upward through the xylem, but since it has no dye, the stem, leaves, and flower show no visible colour change.';
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMaterialLightTransmissionLab() {
+      const canvas = document.getElementById('material-light-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-material-light');
+      const obs = document.getElementById('material-light-obs');
+      const MATERIALS = {
+        glass: { category: 'transparent', opacity: 1.0, spotDesc: 'Bright spot (light passes almost fully)' },
+        tracing: { category: 'translucent', opacity: 0.45, spotDesc: 'Dim spot (light passes partially)' },
+        cardboard: { category: 'opaque', opacity: 0, spotDesc: 'No spot — dark shadow (light fully blocked)' },
+        cloth: { category: 'opaque', opacity: 0, spotDesc: 'No spot — dark shadow (light fully blocked)' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mat = MATERIALS[sel.value];
+        const cy = 140;
+
+        ctx.beginPath(); ctx.moveTo(50, cy - 20); ctx.lineTo(50, cy + 20); ctx.lineTo(90, cy + 10); ctx.lineTo(90, cy - 10); ctx.closePath();
+        ctx.fillStyle = cssVar('--text-muted'); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(90, cy - 10); ctx.lineTo(230, cy - 45); ctx.lineTo(230, cy + 45); ctx.lineTo(90, cy + 10); ctx.closePath();
+        ctx.fillStyle = mat.opacity > 0 ? 'rgba(253,224,71,0.35)' : 'rgba(148,163,184,0.15)';
+        ctx.fill();
+
+        ctx.fillStyle = cssVar('--border-color');
+        ctx.fillRect(270, cy - 55, 60, 110);
+        ctx.font = 'bold 11px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.value === 'glass' ? 'Glass' : sel.value === 'tracing' ? 'Tracing' : sel.value === 'cardboard' ? 'Cardboard' : 'Cloth', 300, cy);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(480, cy - 70); ctx.lineTo(480, cy + 70); ctx.stroke();
+
+        if (mat.opacity > 0) {
+          ctx.beginPath(); ctx.arc(480, cy, 30, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(253,224,71,${mat.opacity})`; ctx.fill();
+        } else {
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText('(dark)', 480, cy + 5);
+        }
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${mat.category.charAt(0).toUpperCase() + mat.category.slice(1)} material`, W / 2, 30);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(mat.spotDesc, W / 2, 240);
+
+        obs.innerHTML = `<strong>${mat.category.charAt(0).toUpperCase() + mat.category.slice(1)}.</strong> ${mat.spotDesc}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPlaneMirrorImageLab() {
+      const canvas = document.getElementById('mirror-image-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-mirror-distance');
+      const obs = document.getElementById('mirror-image-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = parseInt(sel.value);
+        const mirrorX = W / 2, cy = 150;
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(mirrorX, 40); ctx.lineTo(mirrorX, 250); ctx.stroke();
+
+        const objX = mirrorX - d, imgX = mirrorX + d;
+
+        ctx.font = 'bold 40px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.save(); ctx.translate(objX, cy); ctx.fillText('F', 0, 15); ctx.restore();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('OBJECT', objX, cy + 45);
+
+        ctx.save();
+        ctx.globalAlpha = 0.55;
+        ctx.translate(imgX, cy); ctx.scale(-1, 1);
+        ctx.font = 'bold 40px system-ui'; ctx.fillStyle = cssVar('--secondary-color');
+        ctx.fillText('F', 0, 15);
+        ctx.restore();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('IMAGE (virtual)', imgX, cy + 45);
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+        ctx.beginPath(); ctx.moveTo(objX, cy - 60); ctx.lineTo(objX, cy - 30); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(imgX, cy - 60); ctx.lineTo(imgX, cy - 30); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(objX, cy - 45); ctx.lineTo(mirrorX, cy - 45); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(mirrorX, cy - 45); ctx.lineTo(imgX, cy - 45); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText(`${d}px`, (objX + mirrorX) / 2, cy - 52);
+        ctx.fillText(`${d}px`, (mirrorX + imgX) / 2, cy - 52);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText('Same size, erect, laterally inverted — always equidistant from the mirror', W / 2, 24);
+
+        obs.innerHTML = `<strong>Image forms ${d}px behind the mirror</strong> — exactly as far as the object (also ${d}px) is in front. The image is the same size as the object, erect, and laterally inverted (notice the "F" is mirror-flipped).`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPinholeCameraLab() {
+      const canvas = document.getElementById('pinhole-camera-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-pinhole-position');
+      const obs = document.getElementById('pinhole-camera-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const near = sel.value === 'near';
+        const pinholeX = W / 2, cy = 140;
+        const objX = near ? pinholeX - 130 : pinholeX - 220;
+        const objHeight = 60;
+        const screenX = pinholeX + 150;
+        const imgHeight = near ? 95 : 42;
+
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(objX, cy + objHeight / 2); ctx.lineTo(objX, cy - objHeight / 2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(objX - 6, cy - objHeight / 2 + 10); ctx.lineTo(objX, cy - objHeight / 2); ctx.lineTo(objX + 6, cy - objHeight / 2 + 10); ctx.stroke();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('Object', objX, cy + objHeight / 2 + 18);
+
+        ctx.fillStyle = cssVar('--border-color');
+        ctx.fillRect(pinholeX - 4, 40, 8, cy - 44);
+        ctx.fillRect(pinholeX - 4, cy + 4, 8, 210 - cy);
+        ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('pinhole', pinholeX, 30);
+
+        ctx.strokeStyle = 'rgba(96,165,250,0.6)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(objX, cy - objHeight / 2); ctx.lineTo(pinholeX, cy); ctx.lineTo(screenX, cy + imgHeight / 2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(objX, cy + objHeight / 2); ctx.lineTo(pinholeX, cy); ctx.lineTo(screenX, cy - imgHeight / 2); ctx.stroke();
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(screenX, cy - imgHeight / 2); ctx.lineTo(screenX, cy + imgHeight / 2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(screenX - 6, cy + imgHeight / 2 - 10); ctx.lineTo(screenX, cy + imgHeight / 2); ctx.lineTo(screenX + 6, cy + imgHeight / 2 - 10); ctx.stroke();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('Inverted image', screenX, cy + imgHeight / 2 + 30 > 250 ? 250 : cy + imgHeight / 2 + 30);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(near ? 'Object close to pinhole' : 'Object far from pinhole', W / 2, 20);
+
+        obs.innerHTML = near
+          ? '<strong>Object close to the pinhole → a larger inverted image forms on the screen.</strong> Light rays from the top and bottom of the object cross at the pinhole, flipping the image upside down.'
+          : '<strong>Object far from the pinhole → a smaller inverted image forms on the screen.</strong> The image is still flipped upside down, but appears smaller since the object is farther away.';
       }
 
       sel.addEventListener('change', draw);
