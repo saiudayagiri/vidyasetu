@@ -5892,6 +5892,284 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "7s-6",
+              title: "Adolescence: A Stage of Growth and Change",
+              topics: [
+                {
+                  id: "7s-6-1",
+                  title: "1. Growing With Age: The Teenage Years",
+                  lab: { type: "secondary-sexual-characteristics-classifier-sim" },
+                  theory: {
+                    intro: "Somewhere between childhood and adulthood, the body goes through a burst of visible changes — height, voice, hair, and skin all shift noticeably, marking the start of adolescence.",
+                    sections: [
+                      {
+                        heading: "What Is Adolescence?",
+                        text: "Human life passes through stages — infancy, childhood, adolescence, adulthood, and old age. Until around 10–12 years of age, most changes relate to height and weight; after this, other noticeable changes begin, marking the onset of adolescence — a stage of rapid growth and development, typically occurring between the ages of 10–19, during which the body prepares for adulthood."
+                      },
+                      {
+                        heading: "Observable Physical Changes",
+                        text: "During adolescence, height increases more prominently, and body structure changes — boys may gain weight with broader shoulders and wider chests, while girls undergo changes in height, weight, and develop breasts. The voice box grows, making boys' voices sound hoarse (sometimes visible as a bump called the Adam's apple), with smaller voice changes in girls. Hair growth appears in the armpits and pubic region in both sexes, with boys often developing facial, chest, and back hair. Acne (small, reddish pimples) commonly appears due to increased oily skin secretions clogging pores."
+                      },
+                      {
+                        heading: "Secondary Sexual Characteristics and Puberty",
+                        text: "Changes like voice change, facial/chest hair growth in boys, and breast development in girls are not directly involved in reproduction, but help distinguish males from females — so they are called secondary sexual characteristics. These are natural signs that the body is preparing for adulthood, marking the onset of puberty: the stage in which an adolescent's body undergoes external and internal changes to develop into an adult capable of reproduction. The timing, nature, and extent of these changes vary among individuals, and this variation is completely normal."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Discussing Common Changes While Growing Up",
+                      objective: "To identify, through anonymous class discussion, the physical changes most commonly noticed among students as they grow from Grade 5 to Grade 8.",
+                      materials: ["A jar", "Paper slips", "A pen"],
+                      steps: [
+                        "On a paper slip, anonymously write down changes you've noticed among students going from Grade 5 to Grade 8 (related to height, strength, behaviour, or any other aspect), without writing your name.",
+                        "Fold the slip and place it in the jar.",
+                        "Once all slips from the class are collected, mix them and unfold them one by one.",
+                        "As a class, discuss the changes mentioned and identify the most commonly observed ones.",
+                        "List the most common changes in a table (e.g., height, weight and strength, appearance, and any others noted)."
+                      ],
+                      observation: "The most commonly noted changes are typically an increase in height, gains in weight and strength, and changes in appearance (voice, hair growth, skin) — confirming that these changes are a shared, universal part of growing into adolescence, not something unusual to any one individual."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 'adolescence'?",
+                      options: ["A disease that affects only some children", "A stage of rapid growth and development, typically between ages 10–19, during which the body prepares for adulthood", "A stage that only affects boys", "A stage that occurs only after age 20"],
+                      answer: 1,
+                      explanation: "Adolescence is the developmental stage between childhood and adulthood, typically occurring between ages 10 and 19, marked by rapid physical, biological, and emotional changes."
+                    },
+                    {
+                      question: "What causes the hoarse voice and 'Adam's apple' seen in adolescent boys?",
+                      options: ["A change in diet", "Growth of the voice box, which is more prominent in boys than in girls", "It has nothing to do with adolescence", "A temporary illness"],
+                      answer: 1,
+                      explanation: "The voice box grows during adolescence in both sexes, but more prominently in boys — leading to a hoarse voice and sometimes a visible bump in the throat called the Adam's apple."
+                    },
+                    {
+                      question: "What are 'secondary sexual characteristics'?",
+                      options: ["Changes directly involved in the process of reproduction", "Features that help distinguish males from females, but are not directly involved in reproduction", "Changes that only occur in adulthood", "Characteristics present from birth"],
+                      answer: 1,
+                      explanation: "Secondary sexual characteristics (like voice change, facial hair, or breast development) distinguish males from females without being directly part of the reproductive process itself."
+                    },
+                    {
+                      question: "What is 'puberty'?",
+                      options: ["A skin condition", "The stage in which an adolescent's body undergoes external and internal changes to develop into an adult capable of reproduction", "A stage that occurs before infancy", "A synonym for old age"],
+                      answer: 1,
+                      explanation: "Puberty is specifically the stage during adolescence when the body undergoes changes — both visible and internal — to become capable of reproduction."
+                    },
+                    {
+                      question: "Why do some adolescents develop acne (pimples)?",
+                      options: ["Due to eating too many vegetables", "Due to increased oily secretions from the skin during adolescence, which can clog skin pores and lead to infections", "Acne has no connection to adolescence", "Due to a lack of physical activity only"],
+                      answer: 1,
+                      explanation: "Acne occurs because adolescence increases oily secretions from the skin, which can clog pores and lead to the small, reddish pimples characteristic of this skin condition."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-6-2",
+                  title: "2. Changes that Indicate Reproductive Capability",
+                  theory: {
+                    intro: "Alongside outwardly visible changes, adolescence also brings internal changes — most notably, in girls, the onset of the menstrual cycle, an entirely natural and healthy process.",
+                    sections: [
+                      {
+                        heading: "The Menstrual Cycle",
+                        text: "An important internal change in adolescent girls is the onset of the menstrual cycle, commonly known as 'the period.' It recurs generally every 28–30 days, though many healthy girls have cycles ranging from 21–35 days. The menstrual cycle is an important natural process and a sign of good reproductive health. The phase when blood discharge occurs is called menstruation, lasting three to seven days; some girls may feel pain or discomfort in the lower abdomen during this time. Menstruation usually stops naturally by the age of 45–55, marking the end of reproductive capability."
+                      },
+                      {
+                        heading: "Breaking Myths About Menstruation",
+                        text: "Many wrong beliefs about menstruation lead to unnecessary fear, shame, or guilt, giving rise to myths and taboos — including the unfortunately still-prevalent physical isolation of menstruating girls. Menstruation is a completely natural process, and such myths have no scientific basis. Encouraging a scientific outlook helps society support good reproductive health and a healthier lifestyle for women."
+                      },
+                      {
+                        heading: "Government Initiatives for Menstrual Hygiene",
+                        text: "Several government initiatives support menstrual hygiene in India: the Menstrual Hygiene Scheme (MHS) provides sanitary pads free or at reduced price to adolescent girls in rural areas along with awareness programmes; the Rashtriya Kishor Swasthya Karyakram (RKSK) improves overall adolescent health including menstrual hygiene through peer education; the Suvidha Sanitary Napkin Initiative provides biodegradable sanitary pads at affordable prices through Jan Aushadhi Kendras; and various state governments run their own schemes, such as Karnataka's 'Shuchi Scheme' and free sanitary napkin schemes in Tamil Nadu and Odisha."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Understanding Menstrual Hygiene Practices",
+                      objective: "To research and discuss appropriate menstrual hygiene practices and the government schemes that support them.",
+                      materials: ["Notebook", "Access to reliable information (teacher/textbook/government resources)"],
+                      steps: [
+                        "Discuss with your teacher or guardian what items (sanitary pads, reusable cloth pads) can be used to maintain hygiene during menstruation.",
+                        "Note the correct way to dispose of used sanitary pads (wrapping in newspaper before placing in a dustbin) for community health and cleanliness.",
+                        "Research one government menstrual hygiene initiative (MHS, RKSK, Suvidha, or a state-level scheme) and note who it helps and how.",
+                        "Discuss why myths and taboos around menstruation are scientifically baseless, and how a scientific outlook helps society."
+                      ],
+                      observation: "Menstruation is a natural biological process requiring proper hygiene practices (like using and correctly disposing of sanitary products) rather than fear or isolation — and multiple government schemes exist specifically to make hygienic menstrual products accessible and affordable."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How often does the menstrual cycle typically recur?",
+                      options: ["Every 5-10 days", "Generally every 28–30 days, though a range of 21–35 days is also healthy", "Every 6 months", "Only once a year"],
+                      answer: 1,
+                      explanation: "The menstrual cycle generally recurs every 28–30 days, though many healthy girls experience cycles ranging from 21 to 35 days."
+                    },
+                    {
+                      question: "At approximately what age does menstruation usually stop naturally?",
+                      options: ["Age 20-25", "Age 45–55", "Age 60-70", "It never stops naturally"],
+                      answer: 1,
+                      explanation: "Menstruation usually stops naturally by the age of 45–55, marking the end of a woman's reproductive capability."
+                    },
+                    {
+                      question: "What is the scientific basis for isolating menstruating girls, as some myths suggest?",
+                      options: ["There is strong scientific evidence supporting isolation", "There is no scientific basis — menstruation is a natural process and such myths/taboos are baseless", "It is required for hygiene reasons", "It depends on the individual"],
+                      answer: 1,
+                      explanation: "Menstruation is a natural, healthy biological process; myths suggesting isolation or shame around it have no scientific basis."
+                    },
+                    {
+                      question: "What is the goal of the Rashtriya Kishor Swasthya Karyakram (RKSK)?",
+                      options: ["To provide free school meals", "To improve the overall health of adolescents, including menstrual health and hygiene, using peer education", "To fund school sports equipment", "To build new schools"],
+                      answer: 1,
+                      explanation: "RKSK aims to improve adolescent health broadly, including menstrual health and hygiene, and encourages peer education where older students help younger ones learn about these topics."
+                    },
+                    {
+                      question: "How should used sanitary pads be properly disposed of, according to the chapter?",
+                      options: ["Thrown directly into any open area", "Wrapped in newspaper and disposed of inside a dustbin", "Flushed down the toilet", "Burned immediately wherever found"],
+                      answer: 1,
+                      explanation: "Proper disposal involves wrapping used sanitary pads in newspaper and placing them in a dustbin, to ensure community health and environmental cleanliness."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-6-3",
+                  title: "3. Emotional Changes, Nutrition, and a Healthy Lifestyle",
+                  lab: { type: "adolescent-nutrition-matcher-sim" },
+                  theory: {
+                    intro: "Adolescence isn't only about physical change — mood swings, stronger emotions, and new social pressures arrive too, making balanced nutrition, hygiene, exercise, and wise choices about harmful substances all the more important.",
+                    sections: [
+                      {
+                        heading: "Emotional and Behavioural Changes",
+                        text: "Adolescence is often marked by stronger emotions than childhood — mood swings and strong emotions are common, and can lead to increased sensitivity or engagement in creative activities like music, dance, or sports. Understanding how emotions influence behaviour helps adolescents make better choices and respond thoughtfully to situations."
+                      },
+                      {
+                        heading: "Nutrition, Hygiene, and Physical Activity",
+                        text: "Since adolescence is a period of rapid growth, a nutritious diet matters greatly: proteins and carbohydrates support growth and performance, while fats, vitamins, and minerals are also essential — for example, calcium (from milk, curd, paneer) supports bone growth, and iron (from spinach, kidney beans, dried fruits) helps in blood formation. Personal hygiene — especially in the armpits and pubic region, and proper menstrual hygiene for girls — protects against infections. Regular exercise and physical activity keep the body and mind fit, build stamina, and boost mood."
+                      },
+                      {
+                        heading: "Balanced Social Life and Avoiding Harmful Substances",
+                        text: "Since adolescents often feel drawn to peers and interact heavily online, being thoughtful and responsible on social media matters — cyberbullying (harassment via digital devices, spreading rumours, or sharing information without consent) should be reported to trusted adults rather than faced alone. Adolescents may also face pressure to try harmful, addictive substances like tobacco, alcohol, or drugs — substance abuse causes serious health problems (breathing difficulties, memory loss, lung damage) and it's important to say 'NO' firmly. Seeking help from family, friends, or counselling is the first step to overcoming addiction; India's Nasha Mukt Bharat Abhiyaan and National De-addiction Helpline (14446) support this."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building a Balanced Plate for Adolescent Growth",
+                      objective: "To identify locally available food sources and match them to the nutrients they provide and the growth functions those nutrients support.",
+                      materials: ["Notebook", "List of commonly available local foods"],
+                      steps: [
+                        "List locally available foods such as milk, curd, paneer, spinach, kidney beans, dried fruits (raisins, figs), and protein-rich foods like eggs, pulses, or meat.",
+                        "For each food, research which key nutrient it is rich in (e.g., calcium, protein, iron, vitamins).",
+                        "Match each nutrient to its function in the body (e.g., calcium for bone growth, iron for blood formation, protein for growth and strength).",
+                        "Compile your findings into a table: Food source | Nutrient | Function.",
+                        "Discuss why a varied diet — not just one food group — is important during the rapid growth of adolescence."
+                      ],
+                      observation: "Different food groups provide distinct essential nutrients — milk/curd/paneer for calcium (bone growth), spinach/kidney beans/dried fruits for iron (blood formation), and protein-rich foods for growth and energy — showing that a balanced, varied diet is necessary to meet all of an adolescent's nutritional needs."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why are adolescents' emotions often described as 'stronger' than in childhood?",
+                      options: ["Adolescents do not experience emotions at all", "Adolescence is marked by increased emotional intensity, which can lead to mood swings or strong emotional responses", "This only happens to adults", "Emotions weaken during adolescence"],
+                      answer: 1,
+                      explanation: "Adolescence is characterised by stronger emotions than childhood, which can manifest as mood swings, increased sensitivity, or heightened engagement in creative or social pursuits."
+                    },
+                    {
+                      question: "Which nutrient, found in milk, curd, and paneer, is especially important for bone growth during adolescence?",
+                      options: ["Iron", "Calcium", "Vitamin C", "Sodium"],
+                      answer: 1,
+                      explanation: "Calcium, abundant in milk, curd, and paneer, is essential for optimal bone growth, which is especially important during the rapid growth of adolescence."
+                    },
+                    {
+                      question: "What is 'cyberbullying'?",
+                      options: ["A fun online game", "Using digital devices to harass others by sending misleading messages, spreading rumours, or sharing personal information without consent", "A type of physical exercise", "A government health scheme"],
+                      answer: 1,
+                      explanation: "Cyberbullying involves using phones, computers, or online platforms to harass others through misleading messages, false rumours, or non-consensual sharing of personal information."
+                    },
+                    {
+                      question: "What is the recommended first step for someone trying to overcome addiction to a harmful substance?",
+                      options: ["Trying to quit alone without telling anyone", "Seeking help and support from family, friends, or trusted people like parents or teachers, along with counselling or medical advice", "Continuing to use the substance in smaller amounts", "Ignoring the problem entirely"],
+                      answer: 1,
+                      explanation: "The first step to overcoming addiction is seeking help and support from trusted people (family, friends, parents, or teachers), with counselling and medical advice also being helpful."
+                    },
+                    {
+                      question: "What is the purpose of India's National De-addiction Helpline (14446)?",
+                      options: ["To report cyberbullying only", "To help deal with drug addiction and support drug addicts", "To provide nutrition advice", "To report menstrual hygiene product shortages"],
+                      answer: 1,
+                      explanation: "The National De-addiction Helpline, numbered 14446, was launched by the Government of India specifically to deal with drug addiction and support those affected by it."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-6-4",
+                  title: "4. The 'Why' Question: Hormones as Chemical Messengers",
+                  theory: {
+                    intro: "Behind every adolescent change — from the menstrual cycle to a deepening voice to sudden mood swings — lie hormones: chemical messengers produced within the body itself.",
+                    sections: [
+                      {
+                        heading: "What Are Hormones?",
+                        text: "Many changes in adolescence, including menstruation and other signs of puberty, are mainly due to hormones — certain chemicals produced in our bodies. Hormones play a crucial role in regulating various aspects of growth and development, contributing to the proper functioning of the body."
+                      },
+                      {
+                        heading: "How Hormones Work",
+                        text: "Hormones are produced in different parts of the body and are released at an appropriate time in response to signals from the brain. Some hormones influence mood and behaviour, which explains why adolescents may experience mood swings and stronger emotions alongside their physical changes."
+                      },
+                      {
+                        heading: "Adolescence in Summary",
+                        text: "Adolescence is the period of change from childhood to adulthood, generally beginning around age 10 and lasting until about 19. It brings significant physical, biological, and emotional changes, guided internally by hormones, and by staying informed, seeking support when needed, and making healthy decisions, adolescents can build a strong foundation for their life ahead."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tracing a Change Back to Its Hormonal Cause",
+                      objective: "To connect specific adolescent changes discussed earlier in the chapter to the underlying concept of hormones as their common cause.",
+                      materials: ["Notebook", "List of adolescent changes from earlier in the chapter"],
+                      steps: [
+                        "List three physical or behavioural changes discussed earlier in this chapter (e.g., voice change, menstrual cycle onset, mood swings).",
+                        "For each change, write down that it is fundamentally caused by hormones — chemicals produced in the body.",
+                        "Discuss how hormones are released in response to signals from the brain, and how this single underlying cause explains such a wide variety of changes.",
+                        "Reflect on why understanding the hormonal basis of these changes can help adolescents feel less confused or alone about them."
+                      ],
+                      observation: "Despite appearing very different on the surface — a voice change, a growth spurt, a mood swing, or the onset of menstruation — all these adolescent changes trace back to the same underlying cause: hormones released by the body in response to signals from the brain."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What are 'hormones'?",
+                      options: ["A type of food nutrient", "Certain chemicals produced in our bodies that regulate growth, development, and other bodily functions", "A type of exercise", "A disease affecting adolescents"],
+                      answer: 1,
+                      explanation: "Hormones are chemicals produced within the body that regulate various aspects of growth, development, and body function, and are responsible for most of the changes seen during adolescence."
+                    },
+                    {
+                      question: "What triggers the release of hormones in the body?",
+                      options: ["Hormones are released completely randomly", "Hormones are released at an appropriate time in response to signals from the brain", "Hormones are only released once at birth", "Hormones are triggered only by diet"],
+                      answer: 1,
+                      explanation: "Hormones are produced in different parts of the body and released at appropriate times in response to signals from the brain."
+                    },
+                    {
+                      question: "Besides physical changes, what else can hormones influence, according to the chapter?",
+                      options: ["Only height", "Mood and behaviour", "Only eye colour", "Nothing besides reproduction"],
+                      answer: 1,
+                      explanation: "Some hormones influence mood and behaviour, which is why adolescents may experience emotional changes like mood swings alongside physical changes."
+                    },
+                    {
+                      question: "At approximately what age does adolescence generally begin and end, according to the chapter?",
+                      options: ["Begins at 1, ends at 5", "Begins around age 10, and usually lasts until around age 19", "Begins at 20, ends at 30", "Begins at birth, ends at 5"],
+                      answer: 1,
+                      explanation: "Adolescence generally begins around age 10 and usually lasts until about age 19, marking the transition from childhood to adulthood."
+                    },
+                    {
+                      question: "What is the single underlying cause connecting most of the diverse changes seen during adolescence?",
+                      options: ["Changes in diet alone", "Hormones — chemicals produced in the body that regulate growth, development, and mood", "Changes in the weather", "Changes in school curriculum"],
+                      answer: 1,
+                      explanation: "Nearly all the diverse changes of adolescence — physical, reproductive, and emotional — are ultimately driven by hormones, the body's internal chemical messengers."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

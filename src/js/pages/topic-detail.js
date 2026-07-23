@@ -2239,6 +2239,57 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const secondarySexualCharacteristicsClassifierLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="ssc-classifier-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a change and see whether it's seen in boys, girls, or both.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Change</h3>
+            <select id="sel-ssc-characteristic" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Change in voice</option>
+              <option value="1">Development of breasts</option>
+              <option value="2">Growth of moustache</option>
+              <option value="3">Growth of facial hair</option>
+              <option value="4">Pimples on the face (acne)</option>
+              <option value="5">Hair growth: pubic region</option>
+              <option value="6">Hair growth: armpits</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Explanation</h3>
+            <div id="ssc-classifier-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a change above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const adolescentNutritionMatcherLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="nutrition-matcher-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a food source and see the key nutrient it provides.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Food Source</h3>
+            <select id="sel-nutrition-food" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Milk, curd, paneer</option>
+              <option value="1">Eggs, pulses, meat</option>
+              <option value="2">Spinach, kidney beans, dried fruits</option>
+              <option value="3">Rice, wheat, millets</option>
+              <option value="4">Nuts, seeds, ghee</option>
+              <option value="5">Citrus fruits, vegetables</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Nutrient &amp; Function</h3>
+            <div id="nutrition-matcher-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a food source above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4014,6 +4065,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'fire-triangle-sim') {
               labHtml = fireTriangleLabHtml;
               labDesc = 'Toggle fuel, oxygen, and heat on or off and see whether combustion can occur.';
+            } else if (topicObj.lab.type === 'secondary-sexual-characteristics-classifier-sim') {
+              labHtml = secondarySexualCharacteristicsClassifierLabHtml;
+              labDesc = 'Pick a change seen during adolescence and see whether it occurs in boys, girls, or both.';
+            } else if (topicObj.lab.type === 'adolescent-nutrition-matcher-sim') {
+              labHtml = adolescentNutritionMatcherLabHtml;
+              labDesc = 'Pick a food source and see the key nutrient it provides and how it helps growth.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4405,6 +4462,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initPhysicalChemicalChangeClassifierLab();
         } else if (topicObj.lab.type === 'fire-triangle-sim') {
           initFireTriangleLab();
+        } else if (topicObj.lab.type === 'secondary-sexual-characteristics-classifier-sim') {
+          initSecondarySexualCharacteristicsClassifierLab();
+        } else if (topicObj.lab.type === 'adolescent-nutrition-matcher-sim') {
+          initAdolescentNutritionMatcherLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -16081,6 +16142,131 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       [chkFuel, chkOxygen, chkHeat].forEach(chk => chk.addEventListener('change', draw));
+      draw();
+    }
+
+    function initSecondarySexualCharacteristicsClassifierLab() {
+      const canvas = document.getElementById('ssc-classifier-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-ssc-characteristic');
+      const obs = document.getElementById('ssc-classifier-obs');
+      const CHARACTERISTICS = [
+        { name: 'Change in voice', boys: true, girls: true, note: 'The voice box grows in both boys and girls, but the change is much more noticeable and hoarse-sounding in boys.' },
+        { name: 'Development of breasts', boys: false, girls: true, note: 'This change is specific to girls, as their bodies develop towards adulthood.' },
+        { name: 'Growth of moustache', boys: true, girls: false, note: 'This change is specific to boys, as facial hair develops towards adulthood.' },
+        { name: 'Growth of facial hair', boys: true, girls: false, note: 'Facial hair (moustache and beard) is specific to boys as they move towards adulthood.' },
+        { name: 'Pimples on the face (acne)', boys: true, girls: true, note: 'Increased oily skin secretions during adolescence can cause acne in both boys and girls.' },
+        { name: 'Hair growth: pubic region', boys: true, girls: true, note: 'Both boys and girls experience hair growth in the pubic region during adolescence.' },
+        { name: 'Hair growth: armpits', boys: true, girls: true, note: 'Both boys and girls experience hair growth in the armpits during adolescence.' }
+      ];
+
+      function wrapText(text, x, y, maxWidth, lineHeight) {
+        const words = text.split(' ');
+        let line = '';
+        let ly = y;
+        for (let i = 0; i < words.length; i++) {
+          const testLine = line + words[i] + ' ';
+          if (ctx.measureText(testLine).width > maxWidth && line !== '') {
+            ctx.fillText(line, x, ly);
+            line = words[i] + ' ';
+            ly += lineHeight;
+          } else {
+            line = testLine;
+          }
+        }
+        ctx.fillText(line, x, ly);
+        return ly;
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const item = CHARACTERISTICS[parseInt(sel.value)];
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 17px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(item.name, W / 2, 28);
+
+        const boysX = 200, girlsX = 400, cy = 120, r = 48;
+        [{ x: boysX, active: item.boys, label: 'BOYS' }, { x: girlsX, active: item.girls, label: 'GIRLS' }].forEach(v => {
+          ctx.beginPath(); ctx.arc(v.x, cy, r, 0, Math.PI * 2);
+          ctx.fillStyle = v.active ? cssVar('--accent-color') : cssVar('--border-color');
+          ctx.fill();
+          ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 1.5; ctx.stroke();
+          ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(v.label, v.x, cy - r - 14);
+          ctx.font = 'bold 24px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+          ctx.fillText(v.active ? '✓' : '✕', v.x, cy + 9);
+        });
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        wrapText(item.note, W / 2, 205, 520, 18);
+
+        const verdict = item.boys && item.girls ? 'Common to both boys and girls' : (item.boys ? 'Observed only in boys' : 'Observed only in girls');
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        ctx.fillText(verdict, W / 2, 258);
+
+        obs.innerHTML = `<strong>${verdict}.</strong> ${item.note}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initAdolescentNutritionMatcherLab() {
+      const canvas = document.getElementById('nutrition-matcher-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-nutrition-food');
+      const obs = document.getElementById('nutrition-matcher-obs');
+      const FOODS = [
+        { name: 'Milk, curd, paneer', nutrient: 'Calcium', color: '#f8fafc', fn: 'Supports optimal bone growth during adolescence.' },
+        { name: 'Eggs, pulses, meat', nutrient: 'Proteins', color: '#fde68a', fn: 'Supports growth, builds strength, and improves energy levels.' },
+        { name: 'Spinach, kidney beans, dried fruits', nutrient: 'Iron', color: '#86efac', fn: 'Helps in the formation of blood.' },
+        { name: 'Rice, wheat, millets', nutrient: 'Carbohydrates', color: '#fdba74', fn: 'Provides energy for daily activities, growth, and performance on the playground.' },
+        { name: 'Nuts, seeds, ghee', nutrient: 'Fats', color: '#fca5a5', fn: 'Provides a concentrated source of energy and supports cell growth.' },
+        { name: 'Citrus fruits, vegetables', nutrient: 'Vitamins', color: '#93c5fd', fn: 'Boosts immunity and supports overall body function.' }
+      ];
+
+      function wrapText(text, x, y, maxWidth, lineHeight) {
+        const words = text.split(' ');
+        let line = '';
+        let ly = y;
+        for (let i = 0; i < words.length; i++) {
+          const testLine = line + words[i] + ' ';
+          if (ctx.measureText(testLine).width > maxWidth && line !== '') {
+            ctx.fillText(line, x, ly);
+            line = words[i] + ' ';
+            ly += lineHeight;
+          } else {
+            line = testLine;
+          }
+        }
+        ctx.fillText(line, x, ly);
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const item = FOODS[parseInt(sel.value)];
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(item.name, W / 2, 26);
+
+        const cx = W / 2, cy = 115, r = 55;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = item.color; ctx.fill();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2; ctx.stroke();
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = '#0f172a'; ctx.textAlign = 'center';
+        ctx.fillText(item.nutrient, cx, cy + 6);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        wrapText(item.fn, W / 2, 200, 520, 18);
+
+        obs.innerHTML = `<strong>Key nutrient: ${item.nutrient}.</strong> ${item.fn}`;
+      }
+
+      sel.addEventListener('change', draw);
       draw();
     }
 
