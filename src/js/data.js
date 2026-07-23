@@ -6731,6 +6731,286 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "7s-9",
+              title: "Life Processes in Animals",
+              topics: [
+                {
+                  id: "7s-9-1",
+                  title: "1. Digestion in Human Beings: Mouth to Small Intestine",
+                  lab: { type: "starch-iodine-test-sim" },
+                  theory: {
+                    intro: "Chewing a plain piece of chapati for a full minute reveals something surprising — it starts tasting sweet, a clue to exactly how digestion begins right in the mouth.",
+                    sections: [
+                      {
+                        heading: "The Alimentary Canal and Digestion in the Mouth",
+                        text: "Breaking down complex food components (carbohydrates, proteins, fats) into simpler forms occurs in a long tube called the alimentary canal, running from the mouth to the anus. In the mouth, teeth crush and chew food into fine pieces — this is called mechanical digestion. Saliva contains a digestive juice that breaks down starch into sugar, which is why starchy food like chapati or rice tastes sweet after chewing for a while. This overall process of breaking complex food into simpler forms is called digestion."
+                      },
+                      {
+                        heading: "The Food Pipe and Stomach",
+                        text: "Chewed, saliva-moistened food is pushed by the tongue into the oesophagus (food pipe), whose walls contract and relax in a wave-like motion to push food down — this movement continues throughout the alimentary canal. In the stomach, the walls churn the food, mixing it with a secretion containing digestive juice, acid, and mucus. The digestive juice breaks down proteins, the acid kills harmful bacteria, and mucus protects the stomach lining from the acid — transforming the food into a semi-liquid mass."
+                      },
+                      {
+                        heading: "The Small Intestine",
+                        text: "The partially digested food then moves into the small intestine — despite its name, it is the LONGEST part of the alimentary canal, at almost 6 metres. It receives digestive secretions from its own lining, plus bile from the liver (which neutralises stomach acid and breaks fats into tiny droplets) and pancreatic juice from the pancreas (also basic, breaking down carbohydrates, proteins, and fats). The small intestine's thin inner lining has thousands of finger-like projections that increase surface area, allowing digested nutrients to be absorbed into the blood — a process called absorption."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing the Action of Saliva on Starch",
+                      objective: "To use the iodine-starch colour test to confirm that chewing (and the saliva it releases) breaks down starch into sugar.",
+                      materials: ["Two test tubes labelled A and B", "Boiled rice", "Water", "Iodine solution", "A dropper"],
+                      steps: [
+                        "Place a teaspoon of plain boiled rice in test tube A, and a teaspoon of boiled rice chewed for 30-60 seconds in test tube B.",
+                        "Add 3-4 mL of water to both test tubes.",
+                        "Note the initial colour of the rice-water mixture in each tube.",
+                        "Add 3-4 drops of iodine solution to each test tube and mix.",
+                        "Observe and record any colour change in each tube."
+                      ],
+                      observation: "Test tube A (unchewed rice) turns blue-black, confirming starch is present. Test tube B (chewed rice) shows little to no blue-black colour change, showing that saliva has already broken down most of the starch into simple sugars during chewing."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the 'alimentary canal'?",
+                      options: ["A blood vessel carrying nutrients", "A long tube running from the mouth to the anus, where digestion of food occurs", "Another name for the small intestine only", "A part of the respiratory system"],
+                      answer: 1,
+                      explanation: "The alimentary canal is the complete tube along which digestion occurs, starting at the mouth and ending at the anus."
+                    },
+                    {
+                      question: "Why does chewing starchy food like chapati or rice for a long time make it taste sweet?",
+                      options: ["The food changes on its own regardless of chewing", "Saliva contains a digestive juice that breaks down starch into sugar", "Sweetness has nothing to do with digestion", "Chewing releases sugar stored in the teeth"],
+                      answer: 1,
+                      explanation: "Saliva contains a digestive enzyme that converts starch into simple sugars, which is why prolonged chewing of starchy food reveals a sweet taste."
+                    },
+                    {
+                      question: "In the iodine-starch test, what does a blue-black colour indicate?",
+                      options: ["The absence of starch", "The presence of starch", "The presence of sugar only", "The presence of protein"],
+                      answer: 1,
+                      explanation: "Iodine reacts with starch to produce a characteristic blue-black colour — its presence confirms starch is present in the sample."
+                    },
+                    {
+                      question: "Why is the small intestine, despite its name, considered the longest part of the alimentary canal?",
+                      options: ["It is not actually the longest part", "It measures almost 6 metres, longer than any other part of the alimentary canal, even though it is narrower than the large intestine", "It is named 'small' because of its short length", "Length has nothing to do with its name"],
+                      answer: 1,
+                      explanation: "The small intestine is called 'small' because of its narrower width compared to the large intestine, but at nearly 6 metres, it is actually the longest section of the alimentary canal."
+                    },
+                    {
+                      question: "What is the role of bile, secreted by the liver, in digestion?",
+                      options: ["It has no role in digestion", "It neutralises acid from the stomach and breaks down fats into tiny droplets, making fat digestion easier", "It only affects the mouth", "It makes food more acidic"],
+                      answer: 1,
+                      explanation: "Bile is mildly basic, so it neutralises the acidic food arriving from the stomach, and it also breaks fats into tiny droplets to make them easier to digest."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-9-2",
+                  title: "2. Absorption, Egestion, and Digestion in Other Animals",
+                  theory: {
+                    intro: "Not every animal digests food the way humans do — cows chew their cud for hours, and birds grind their food using swallowed stones instead of teeth.",
+                    sections: [
+                      {
+                        heading: "Absorption and the Large Intestine",
+                        text: "Digested nutrients pass from the small intestine into the blood through its finger-like projections — this is absorption. Undigested food then moves into the large intestine (about 1.5 metres long, but wider than the small intestine, hence its name), which absorbs water and some salts, forming semi-solid waste called stool. Stool is stored in the rectum until expelled through the anus — a process called egestion. The large intestine also hosts helpful bacteria that break down fibre and produce nutrients; fibre-rich and fermented foods (like curd and pickles) support this healthy process."
+                      },
+                      {
+                        heading: "Ruminants: Cows and Other Grass-Eaters",
+                        text: "Grass-eating animals like cows and buffaloes partially chew grass and swallow it into their stomachs, where partial digestion occurs. The partially digested food is then brought back to the mouth for thorough, gradual chewing — a process called rumination, and such animals are called ruminants. A cow spends about 8 hours a day just chewing food this way, before it passes down the alimentary canal for further digestion."
+                      },
+                      {
+                        heading: "Birds and the Gizzard",
+                        text: "Birds have no teeth, but they have a muscular chamber called the gizzard, which breaks down food through contraction and relaxation of its walls, often aided by grit (small stones) that birds swallow. This shows how different animals have evolved variations in the structure and function of their alimentary canal to suit their particular diets."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Digestive Adaptations Across Animals",
+                      objective: "To compare how humans, ruminants (cows), and birds each digest food differently, relating structure to function.",
+                      materials: ["Notebook", "Reference diagrams of human, ruminant, and bird digestive systems"],
+                      steps: [
+                        "List the key stages of digestion in humans: mouth, oesophagus, stomach, small intestine, large intestine, anus.",
+                        "Research and note how a cow's digestion differs — specifically the process of rumination and why it takes so many hours.",
+                        "Research and note how a bird's gizzard functions in place of teeth, including the role of swallowed grit.",
+                        "Create a comparison table: Animal | Special digestive feature | Purpose.",
+                        "Discuss why these differences might have evolved based on each animal's typical diet."
+                      ],
+                      observation: "Humans, ruminants, and birds each show a distinct digestive adaptation suited to their diet — humans have teeth for chewing once, ruminants re-chew tough grass via rumination for thorough breakdown, and birds use a gizzard with grit to grind food in the absence of teeth."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 'egestion'?",
+                      options: ["The absorption of nutrients into the blood", "The expulsion of undigested waste (stool) through the anus", "The chewing of food in the mouth", "The production of saliva"],
+                      answer: 1,
+                      explanation: "Egestion is the process of expelling solid waste (stool) from the body through the anus, after water and salts have been absorbed by the large intestine."
+                    },
+                    {
+                      question: "Why is the large intestine called 'large' if it is shorter than the small intestine?",
+                      options: ["It is a mistake in naming", "Because it is wider (has a greater diameter) than the small intestine, even though it is shorter in length", "Because it holds more food at once", "It is not actually shorter than the small intestine"],
+                      answer: 1,
+                      explanation: "The large intestine is named for its greater width, not its length — despite being shorter than the small intestine, it has a larger diameter."
+                    },
+                    {
+                      question: "What is 'rumination'?",
+                      options: ["A process only found in birds", "The process by which ruminant animals (like cows) bring back partially digested food from the stomach to the mouth for further chewing", "A type of egestion", "The initial chewing of food only"],
+                      answer: 1,
+                      explanation: "Rumination is the distinctive process where ruminants regurgitate partially digested food from the stomach back to the mouth for thorough re-chewing."
+                    },
+                    {
+                      question: "How do birds break down food, since they have no teeth?",
+                      options: ["Birds cannot break down food at all", "Using a muscular chamber called the gizzard, often aided by swallowed grit (small stones)", "Birds only eat pre-digested food", "Birds use saliva alone to digest all food"],
+                      answer: 1,
+                      explanation: "Birds use the gizzard — a muscular chamber that contracts and relaxes, often assisted by swallowed grit, to physically grind food in place of teeth."
+                    },
+                    {
+                      question: "What role do bacteria in the large intestine play?",
+                      options: ["They are always harmful and should be eliminated", "They help break down fibre and undigested food, producing essential nutrients and supporting digestive health", "They have no function at all", "They only cause disease"],
+                      answer: 1,
+                      explanation: "Beneficial bacteria in the large intestine break down fibre and undigested food, producing nutrients and helping to keep the digestive system healthy."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-9-3",
+                  title: "3. Breathing: How Air Moves In and Out",
+                  lab: { type: "breathing-model-sim" },
+                  theory: {
+                    intro: "A simple bottle-and-balloon model reveals exactly how our chest works like a bellows — a moving sheet standing in for the diaphragm, and balloons standing in for the lungs.",
+                    sections: [
+                      {
+                        heading: "The Respiratory System",
+                        text: "The process of inhaling and exhaling air is called breathing. Air enters through the nostrils, where tiny hairs and mucus trap dust and dirt, then passes through the nasal passages and windpipe, which branches into the two lungs. Inside the lungs, branches divide further into small balloon-like sacs called alveoli, where gas exchange occurs. The lungs are protected by the rib cage."
+                      },
+                      {
+                        heading: "Modelling the Mechanism of Breathing",
+                        text: "In a simple model, two balloons (representing the lungs) are fixed to a Y-tube inside a bottle with its base sealed by a rubber sheet (representing the diaphragm). Pulling the rubber sheet downward inflates the balloons; releasing it upward deflates them. In our real body, during inhalation, the ribs move up and outward and the diaphragm moves downward, increasing chest space so air enters the lungs. During exhalation, the ribs move down and inward and the diaphragm moves upward, reducing space and pushing air out."
+                      },
+                      {
+                        heading: "What Do We Breathe Out?",
+                        text: "Passing exhaled breath through lime water turns it milky, while passing ordinary air (via a syringe) does not — showing that exhaled air contains more carbon dioxide than inhaled air. In the alveoli, blood carrying carbon dioxide releases it into the air to be exhaled, while oxygen from inhaled air passes into the blood to be transported throughout the body."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building a Model of the Breathing Mechanism",
+                      objective: "To build a simple mechanical model demonstrating how the diaphragm's movement causes the lungs to inflate and deflate during breathing.",
+                      materials: ["A wide transparent plastic bottle with its bottom removed", "A Y-shaped hollow tube", "Two small balloons", "Rubber bands", "Clay", "A thin rubber sheet"],
+                      steps: [
+                        "Make a hole in the bottle's lid and fix two deflated balloons to the forked ends of the Y-tube, securing them airtight with rubber bands.",
+                        "Insert the straight end of the tube through the lid and seal it airtight with clay.",
+                        "Attach a thin rubber sheet tightly across the open (bottom) end of the bottle using a rubber band.",
+                        "Pull the rubber sheet downward from its centre and observe the balloons.",
+                        "Release the rubber sheet upward and observe the balloons again."
+                      ],
+                      observation: "Pulling the rubber sheet downward makes the balloons inflate (representing inhalation), while releasing it upward makes the balloons deflate (representing exhalation) — demonstrating how the diaphragm's up-and-down movement drives air into and out of the lungs."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the bottle-and-balloon breathing model, what do the balloons represent?",
+                      options: ["The diaphragm", "The lungs", "The ribs", "The windpipe"],
+                      answer: 1,
+                      explanation: "In the model, the two balloons fixed to the Y-tube represent the lungs, which inflate and deflate as air moves in and out."
+                    },
+                    {
+                      question: "In the same model, what does the rubber sheet at the base of the bottle represent?",
+                      options: ["The lungs", "The diaphragm", "The windpipe", "The nostrils"],
+                      answer: 1,
+                      explanation: "The rubber sheet represents the diaphragm — pulling it down mimics the diaphragm moving down during inhalation, and releasing it up mimics exhalation."
+                    },
+                    {
+                      question: "What happens to the ribs and diaphragm during inhalation?",
+                      options: ["Ribs move down and inward, diaphragm moves upward", "Ribs move up and outward, diaphragm moves downward", "Neither the ribs nor the diaphragm move", "Ribs and diaphragm both move downward"],
+                      answer: 1,
+                      explanation: "During inhalation, the ribs move up and outward while the diaphragm moves downward, increasing the space in the chest so air can enter the lungs."
+                    },
+                    {
+                      question: "Why does lime water turn milky when we exhale into it, but not when ordinary air is passed through it?",
+                      options: ["Exhaled air contains less carbon dioxide than ordinary air", "Exhaled air contains more carbon dioxide than the air we inhale, and carbon dioxide turns lime water milky", "Lime water always turns milky regardless of the gas passed through it", "This has nothing to do with carbon dioxide"],
+                      answer: 1,
+                      explanation: "Exhaled air has a higher concentration of carbon dioxide than inhaled air; since carbon dioxide reacts with lime water to form a milky precipitate, this confirms exhaled air is CO2-enriched."
+                    },
+                    {
+                      question: "Where does the exchange of oxygen and carbon dioxide take place in the lungs?",
+                      options: ["In the windpipe", "In the alveoli, the small balloon-like sacs at the end of the lungs' branching tubes", "In the nostrils", "In the rib cage"],
+                      answer: 1,
+                      explanation: "Gas exchange occurs specifically in the alveoli — tiny, thin-walled sacs surrounded by blood vessels, where oxygen enters the blood and carbon dioxide is released."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-9-4",
+                  title: "4. Respiration and Breathing in Different Animals",
+                  theory: {
+                    intro: "Breathing brings oxygen in, but it's respiration — a chemical process deep inside cells — that actually turns food into usable energy, and different animals have evolved very different ways to get that oxygen.",
+                    sections: [
+                      {
+                        heading: "Respiration: Releasing Energy from Food",
+                        text: "Oxygen helps break down glucose (from digested food) to release energy — this process is called respiration: Glucose + Oxygen → Carbon dioxide + Water + Energy. Breathing is a physical process (moving air in and out), while respiration is a chemical process (releasing energy inside the body) — both are essential for survival. Inhaled air contains nearly 21% oxygen and 0.04% carbon dioxide, while exhaled air contains only about 16-17% oxygen and 4-5% carbon dioxide, since not all inhaled oxygen is used up."
+                      },
+                      {
+                        heading: "The Circulatory System",
+                        text: "The circulatory system — consisting of the heart, blood, and blood vessels — transports nutrients, oxygen, and other substances to all parts of the body, while carrying away waste products. The heart pumps blood through blood vessels to accomplish this continuously."
+                      },
+                      {
+                        heading: "Breathing in Other Animals",
+                        text: "Animals like birds, elephants, lions, cows, and snakes breathe through lungs, though their lung structures differ. Most aquatic animals, like fish, use gills — richly blood-supplied structures where oxygen and carbon dioxide are exchanged directly with water. Amphibians like frogs use different organs at different life stages: tadpoles breathe through gills, while adult frogs use lungs on land and their skin for gas exchange in water. Earthworms breathe entirely through their moist skin. These varied adaptations let animals thrive in very different habitats."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Breathing Structures Across Animal Habitats",
+                      objective: "To relate an animal's breathing structure (lungs, gills, or skin) to the habitat it lives in.",
+                      materials: ["Notebook", "Reference images or descriptions of fish, frogs, earthworms, and land mammals"],
+                      steps: [
+                        "List four animals: a fish, an adult frog, an earthworm, and a mammal such as a cow.",
+                        "For each, identify the main structure used for breathing (gills, lungs, skin, or a combination).",
+                        "Note the habitat of each animal (fully aquatic, both land and water, entirely land-based).",
+                        "Discuss how the frog's changing breathing structure (gills as a tadpole, lungs and skin as an adult) relates to its changing habitat across its life stages.",
+                        "Summarise how breathing structure adapts to habitat across the animal kingdom."
+                      ],
+                      observation: "Fish (fully aquatic) use gills, earthworms (moist soil-dwelling) use their skin, adult frogs (both land and water) use both lungs and skin, and mammals like cows (land-based) use lungs exclusively — showing a clear relationship between habitat and breathing structure."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the word equation for respiration?",
+                      options: ["Water + Carbon dioxide → Glucose + Oxygen", "Glucose + Oxygen → Carbon dioxide + Water + Energy", "Oxygen + Energy → Glucose + Water", "Carbon dioxide + Energy → Glucose + Oxygen"],
+                      answer: 1,
+                      explanation: "Respiration breaks down glucose using oxygen, releasing carbon dioxide, water, and energy — the reverse of how plants build glucose during photosynthesis."
+                    },
+                    {
+                      question: "What is the key difference between 'breathing' and 'respiration'?",
+                      options: ["They are exactly the same process", "Breathing is the physical movement of air in and out of the lungs; respiration is the chemical process of releasing energy from food using oxygen", "Breathing only happens in animals, respiration only in plants", "Respiration is the same as digestion"],
+                      answer: 1,
+                      explanation: "Breathing is a physical process (inhaling and exhaling air), while respiration is a chemical process occurring inside cells that releases energy from glucose using oxygen."
+                    },
+                    {
+                      question: "How do fish breathe underwater?",
+                      options: ["Using lungs, just like mammals", "Using gills, which are richly supplied with blood vessels and exchange gases directly with water", "Using their skin only", "Fish do not need to breathe"],
+                      answer: 1,
+                      explanation: "Fish use gills — specialised, blood-vessel-rich structures that allow oxygen and carbon dioxide to be exchanged directly between the blood and the surrounding water."
+                    },
+                    {
+                      question: "How does a frog's breathing structure change between its tadpole stage and adulthood?",
+                      options: ["It stays exactly the same throughout its life", "Tadpoles breathe through gills, while adult frogs use lungs on land and skin for gas exchange in water", "Adult frogs no longer need to breathe at all", "Tadpoles use lungs, while adults use gills"],
+                      answer: 1,
+                      explanation: "As tadpoles, frogs breathe through gills (suited to fully aquatic life); as adults, they use lungs while on land and their skin for gas exchange while in water, reflecting their dual-habitat lifestyle."
+                    },
+                    {
+                      question: "What does the circulatory system do?",
+                      options: ["It only produces digestive juices", "It transports nutrients, oxygen, and other substances to all parts of the body via the heart, blood, and blood vessels, while removing waste", "It is responsible only for breathing", "It has no connection to respiration or digestion"],
+                      answer: 1,
+                      explanation: "The circulatory system (heart, blood, and blood vessels) delivers nutrients and oxygen throughout the body and carries away waste products, working closely with both the digestive and respiratory systems."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

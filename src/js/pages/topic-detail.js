@@ -2403,6 +2403,48 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const starchIodineTestLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="starch-iodine-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a test tube and see what happens when iodine is added.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Test Tube</h3>
+            <select id="sel-starch-tube" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="A" selected>Test tube A: unchewed boiled rice</option>
+              <option value="B">Test tube B: chewed boiled rice (30-60s)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result After Adding Iodine</h3>
+            <div id="starch-iodine-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a test tube above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const breathingModelLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="breathing-model-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a rubber sheet action and see the balloons inflate or deflate.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Rubber Sheet Action</h3>
+            <select id="sel-breathing-action" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="inhale" selected>Pull rubber sheet down (Inhalation)</option>
+              <option value="exhale">Release rubber sheet up (Exhalation)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What Happens to the Balloons?</h3>
+            <div id="breathing-model-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an action above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4199,6 +4241,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'uniform-motion-sim') {
               labHtml = uniformMotionLabHtml;
               labDesc = 'Pick a train and see its position-time data plotted to reveal uniform or non-uniform motion.';
+            } else if (topicObj.lab.type === 'starch-iodine-test-sim') {
+              labHtml = starchIodineTestLabHtml;
+              labDesc = 'Pick a test tube and see the iodine colour test reveal whether starch is still present.';
+            } else if (topicObj.lab.type === 'breathing-model-sim') {
+              labHtml = breathingModelLabHtml;
+              labDesc = 'Pick a rubber sheet action and see the balloon lungs inflate or deflate in the breathing model.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4604,6 +4652,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initSpeedDistanceTimeCalculatorLab();
         } else if (topicObj.lab.type === 'uniform-motion-sim') {
           initUniformMotionLab();
+        } else if (topicObj.lab.type === 'starch-iodine-test-sim') {
+          initStarchIodineTestLab();
+        } else if (topicObj.lab.type === 'breathing-model-sim') {
+          initBreathingModelLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -16717,6 +16769,113 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         obs.innerHTML = uniform
           ? `<strong>Train ${sel.value} covers equal distances (${diffs[0]} km) in every 10-minute interval.</strong> This is uniform linear motion — a constant speed throughout.`
           : `<strong>Train ${sel.value} covers unequal distances (${diffs.join(', ')} km) across equal 10-minute intervals.</strong> This is non-uniform linear motion — its speed keeps changing.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initStarchIodineTestLab() {
+      const canvas = document.getElementById('starch-iodine-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-starch-tube');
+      const obs = document.getElementById('starch-iodine-obs');
+      const INFO = {
+        A: { title: 'Test tube A: unchewed rice', afterColor: '#1e1b4b', afterLabel: 'Blue-black', reason: 'Iodine reacts with the starch still present in unchewed rice, producing a blue-black colour — confirming starch has not been broken down.' },
+        B: { title: 'Test tube B: chewed rice (30-60s)', afterColor: '#f0e6c8', afterLabel: 'No significant change', reason: 'Saliva released while chewing has already broken most of the starch down into sugar, so little to no starch remains to react with the iodine.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const info = INFO[sel.value];
+        const beforeX = 160, afterX = 440, cy = 130, r = 45;
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(info.title, W / 2, 26);
+
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('BEFORE IODINE', beforeX, cy - r - 14);
+        ctx.beginPath(); ctx.arc(beforeX, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = '#f5f0e1'; ctx.fill();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = '12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Rice-water mixture', beforeX, cy + r + 22);
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(beforeX + r + 15, cy); ctx.lineTo(afterX - r - 15, cy); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(afterX - r - 25, cy - 8); ctx.lineTo(afterX - r - 15, cy); ctx.lineTo(afterX - r - 25, cy + 8); ctx.stroke();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('+ iodine', (beforeX + afterX) / 2, cy - 12);
+
+        ctx.beginPath(); ctx.arc(afterX, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = info.afterColor; ctx.fill();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2; ctx.stroke();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('AFTER IODINE', afterX, cy - r - 14);
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = '12px system-ui';
+        ctx.fillText(info.afterLabel, afterX, cy + r + 22);
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        ctx.fillText(sel.value === 'A' ? 'Starch is present' : 'Starch is mostly broken down', W / 2, 235);
+
+        obs.innerHTML = `<strong>${sel.value === 'A' ? 'Starch present.' : 'Starch broken down.'}</strong> ${info.reason}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initBreathingModelLab() {
+      const canvas = document.getElementById('breathing-model-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-breathing-action');
+      const obs = document.getElementById('breathing-model-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const inhale = sel.value === 'inhale';
+        const bx1 = 180, bx2 = 420, bTop = 55, bBottom = 220;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(bx1, bTop); ctx.lineTo(bx1, bBottom); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(bx2, bTop); ctx.lineTo(bx2, bBottom); ctx.stroke();
+
+        const forkY = bTop + 10;
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(W / 2, 20); ctx.lineTo(W / 2, forkY); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(W / 2, forkY); ctx.lineTo(230, 90); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(W / 2, forkY); ctx.lineTo(370, 90); ctx.stroke();
+
+        const balloonR = inhale ? 38 : 15;
+        [230, 370].forEach(bx => {
+          ctx.beginPath(); ctx.ellipse(bx, 90 + balloonR * 0.5, balloonR * 0.8, balloonR, 0, 0, Math.PI * 2);
+          ctx.fillStyle = inhale ? '#f87171' : '#94a3b8';
+          ctx.fill();
+          ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 1.5; ctx.stroke();
+        });
+
+        const sheetBaseY = bBottom;
+        const sheetY = inhale ? sheetBaseY + 35 : sheetBaseY - 15;
+        ctx.beginPath();
+        ctx.moveTo(bx1, sheetBaseY);
+        ctx.quadraticCurveTo(W / 2, sheetY, bx2, sheetBaseY);
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3; ctx.stroke();
+        ctx.lineTo(bx2, sheetBaseY + 6); ctx.lineTo(bx1, sheetBaseY + 6); ctx.closePath();
+        ctx.fillStyle = 'rgba(16,185,129,0.15)'; ctx.fill();
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(inhale ? 'INHALATION' : 'EXHALATION', W / 2, 20);
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('Balloons (lungs)', W / 2, 145);
+        ctx.fillText('Rubber sheet (diaphragm)', W / 2, sheetBaseY + 28);
+
+        obs.innerHTML = inhale
+          ? '<strong>Inhalation.</strong> Pulling the rubber sheet (diaphragm) downward increases the space inside the bottle, so the balloons (lungs) inflate — just as the real diaphragm moving down draws air into the lungs.'
+          : '<strong>Exhalation.</strong> Releasing the rubber sheet (diaphragm) upward reduces the space inside the bottle, so the balloons (lungs) deflate — just as the real diaphragm moving up pushes air out of the lungs.';
       }
 
       sel.addEventListener('change', draw);
