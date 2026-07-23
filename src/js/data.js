@@ -6450,6 +6450,287 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "7s-8",
+              title: "Measurement of Time and Motion",
+              topics: [
+                {
+                  id: "7s-8-1",
+                  title: "1. Measuring Time: From Sundials to Atomic Clocks",
+                  theory: {
+                    intro: "Long before wristwatches and phones, people tracked time using the Sun's shadow, dripping water, burning candles, and falling sand — each device a clever use of something that repeats at a steady rate.",
+                    sections: [
+                      {
+                        heading: "Ancient Timekeeping Devices",
+                        text: "Humans noticed that events like the rising and setting of the Sun, phases of the Moon, and changing seasons repeat at definite intervals, and used these cycles for timekeeping, eventually devising calendars. To measure smaller intervals within a day, they built sundials (using the changing position of a shadow cast by sunlight), water clocks (using water flowing out of, or filling, a marked vessel), hourglasses (using sand flowing between two bulbs), and candle clocks (using markings on a burning candle). In ancient India, both shadow-based methods and water clocks like the Ghatika-yantra (a sinking bowl clock) were used, with the bowl's sinking announced by drums, conch shells, or gongs."
+                      },
+                      {
+                        heading: "Mechanical and Modern Clocks",
+                        text: "As civilisation advanced, mechanical devices driven by weights, gears, and springs were developed from the fourteenth century onwards. The pendulum clock, invented by Christiaan Huygens in 1656 (inspired by Galileo Galilei's observations of a swinging lamp), marked a major breakthrough. Modern clocks use rapidly repeating vibrations from a quartz crystal (quartz clocks) or specific atoms (atomic clocks) — while early pendulum clocks could drift by 10 seconds a day, today's atomic clocks lose only about one second in millions of years."
+                      },
+                      {
+                        heading: "The SI Unit of Time",
+                        text: "The SI unit of time is the second, with symbol s. The larger units are minute (min) and hour (h), related as: 60 s = 1 min, and 60 min = 1 h. Modern timekeeping can measure incredibly tiny intervals — sports timing devices record to a thousandth of a second, ECG heart monitors detect millisecond variations, and smartphones process signals in microseconds (one-millionth of a second)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building a Simple Water Clock",
+                      objective: "To construct a working water clock and understand how a steady, repeating process (dripping water) can be used to measure time intervals.",
+                      materials: ["A used transparent plastic bottle (½ litre or larger) with its cap", "A drawing pin", "A watch", "Ink or food colour (optional)"],
+                      steps: [
+                        "Cut the plastic bottle into two pieces, roughly in the middle.",
+                        "Using a drawing pin, make a small hole in the bottle's cap.",
+                        "Place the upper part of the bottle (with the cap) upside down over the lower half.",
+                        "Fill the upper part with water, adding a few drops of ink or colour to make the water level easier to see.",
+                        "As the water drips into the lower part, use a watch to mark the water level after every one minute, until all the water has drained."
+                      ],
+                      observation: "The water clock allows time to be measured without any modern device — every time the water level drops to a marked line, exactly one minute has passed, demonstrating the same basic principle (a steady, repeating process) used by all clocks, ancient or modern."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How does a sundial measure time?",
+                      options: ["By counting drips of water", "Using the changing position of the shadow of an object, cast by sunlight during the day", "By burning at a steady rate", "By using a swinging pendulum"],
+                      answer: 1,
+                      explanation: "A sundial determines time based on how the shadow of an object (cast by sunlight) changes position throughout the day."
+                    },
+                    {
+                      question: "Who invented the pendulum clock, and in which century?",
+                      options: ["Galileo Galilei, in the sixteenth century", "Christiaan Huygens, in the seventeenth century", "Aryabhata, in the fifth century", "Varahamihira, in the sixth century"],
+                      answer: 1,
+                      explanation: "The pendulum clock was invented by Christiaan Huygens in 1656 (seventeenth century), inspired by Galileo Galilei's earlier observations of pendulum motion."
+                    },
+                    {
+                      question: "What is the SI unit of time, and its symbol?",
+                      options: ["Minute, symbol 'min'", "Second, symbol 's'", "Hour, symbol 'h'", "Ghati, symbol 'g'"],
+                      answer: 1,
+                      explanation: "The SI unit of time is the second, with the symbol 's'; minute and hour are larger units derived from it."
+                    },
+                    {
+                      question: "How many seconds are there in one minute, and how many minutes in one hour?",
+                      options: ["100 seconds in a minute, 100 minutes in an hour", "60 seconds in a minute, 60 minutes in an hour", "24 seconds in a minute, 24 minutes in an hour", "10 seconds in a minute, 10 minutes in an hour"],
+                      answer: 1,
+                      explanation: "60 seconds make one minute, and 60 minutes make one hour — the standard relationships between SI time units."
+                    },
+                    {
+                      question: "Compared to Huygens' early pendulum clocks, how precise are today's atomic clocks?",
+                      options: ["Atomic clocks are less accurate than pendulum clocks", "Atomic clocks lose only about one second in millions of years, while pendulum clocks could drift by 10 seconds a day", "Both are equally precise", "Atomic clocks do not use repeating processes at all"],
+                      answer: 1,
+                      explanation: "Atomic clocks are vastly more precise, losing only about one second over millions of years, compared to early pendulum clocks that could drift by around 10 seconds per day."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-8-2",
+                  title: "2. The Simple Pendulum and its Time Period",
+                  lab: { type: "pendulum-time-period-sim" },
+                  theory: {
+                    intro: "A simple swinging ball on a string turns out to follow a remarkably precise rule: however long you let it swing, each oscillation takes almost exactly the same amount of time.",
+                    sections: [
+                      {
+                        heading: "What Is a Simple Pendulum?",
+                        text: "A simple pendulum consists of a small metallic ball (called the bob) suspended from a rigid support by a long thread. At rest, it hangs in its mean position. When the bob is moved slightly to one side and released, it starts an oscillatory (periodic) motion, repeating its path after a fixed interval of time."
+                      },
+                      {
+                        heading: "One Oscillation and Time Period",
+                        text: "The pendulum completes one oscillation when its bob, starting from the mean position O, moves to one extreme position A, changes direction, moves to the other extreme position B, changes direction again, and returns to O. The time taken to complete one oscillation is called the time period of the pendulum."
+                      },
+                      {
+                        heading: "What the Time Period Depends On",
+                        text: "The time period of a simple pendulum depends on its length but NOT on the mass of the bob — all pendulums of the same length have the same time period at a given location, and this time period stays constant every time you measure it. A longer pendulum has a longer time period (it swings more slowly); a shorter pendulum has a shorter time period. This constancy is exactly why pendulums have historically been used to measure time."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Measuring the Time Period of a Simple Pendulum",
+                      objective: "To set up a simple pendulum and measure its time period, confirming that it remains almost constant across repeated trials.",
+                      materials: ["A piece of string about 150 cm long", "A heavy metal ball with a hook, or a stone (as the bob)", "A stopwatch or watch", "A ruler", "A rigid support"],
+                      steps: [
+                        "Tie the bob to one end of the string, and fix the other end to a rigid support so that the length between support and bob is about 100 cm.",
+                        "Wait for the bob to come to rest — your pendulum is now ready.",
+                        "Gently move the bob slightly to one side and release it (without pushing), keeping the string taut.",
+                        "Using a watch, measure the time taken for the pendulum to complete 10 oscillations, and repeat this 3-4 times.",
+                        "Divide the time for 10 oscillations by 10 to calculate the time period, and check whether it stays roughly the same across trials."
+                      ],
+                      observation: "The time period calculated from each trial comes out to be almost the same, confirming that the time period of a simple pendulum of a fixed length is constant at a given location — and repeating with pendulums of different lengths shows that a longer pendulum has a longer time period, while changing only the bob's mass (keeping length fixed) does not change the time period at all."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the 'time period' of a simple pendulum?",
+                      options: ["The total time the pendulum swings before stopping", "The time taken by the pendulum to complete one oscillation", "The length of the string used", "The weight of the bob"],
+                      answer: 1,
+                      explanation: "The time period is specifically defined as the time taken for the pendulum's bob to complete one full oscillation — from mean position, to one extreme, to the other extreme, and back."
+                    },
+                    {
+                      question: "Does the mass of the pendulum's bob affect its time period?",
+                      options: ["Yes, heavier bobs always have a longer time period", "No, the time period depends on the pendulum's length, not the bob's mass", "Yes, but only for very light bobs", "The mass completely determines the time period"],
+                      answer: 1,
+                      explanation: "The time period of a simple pendulum depends only on its length — changing the bob's mass while keeping the length the same does not change the time period."
+                    },
+                    {
+                      question: "How does increasing the length of a pendulum affect its time period?",
+                      options: ["A longer pendulum has a shorter time period (swings faster)", "A longer pendulum has a longer time period (swings more slowly)", "Length has no effect on time period at all", "The time period becomes zero"],
+                      answer: 1,
+                      explanation: "A longer pendulum takes more time to complete one oscillation, meaning it has a longer time period and swings more slowly than a shorter pendulum."
+                    },
+                    {
+                      question: "When is a pendulum said to have completed 'one oscillation'?",
+                      options: ["When it moves only halfway to one extreme position", "When its bob moves from the mean position to one extreme, to the other extreme, and back to the mean position", "When it stops swinging completely", "When the string breaks"],
+                      answer: 1,
+                      explanation: "One oscillation is a complete round trip: from the mean position O, to extreme position A, to extreme position B, and back to O (or equivalently, from one extreme back to the same extreme)."
+                    },
+                    {
+                      question: "Why is the constant time period of a pendulum (for a given length) historically significant?",
+                      options: ["It has no practical use", "It allows the pendulum to be used as a reliable time-measuring device, as in pendulum clocks", "It only matters for very short pendulums", "It was only used for decoration"],
+                      answer: 1,
+                      explanation: "Since a pendulum of fixed length always takes the same time per oscillation, counting oscillations gives a reliable way to measure elapsed time — the basis of the pendulum clock."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-8-3",
+                  title: "3. Speed: Distance Covered in Unit Time",
+                  lab: { type: "speed-distance-time-calculator-sim" },
+                  theory: {
+                    intro: "Whether it's a runner, a bicycle, or a train, 'how fast' always comes down to the same simple idea: how much distance is covered for each unit of time.",
+                    sections: [
+                      {
+                        heading: "Defining Speed",
+                        text: "Someone who covers more distance within the same time is running faster — this is what we mean by speed. The distance covered by an object in a unit time (one second, minute, or hour) is called the speed of the object: Speed = Total distance covered ÷ Total time taken."
+                      },
+                      {
+                        heading: "Units of Speed",
+                        text: "Since speed is distance divided by time, its SI unit is metre/second, written m/s. Speed can also be expressed as kilometre/hour (km/h), if distance is in kilometres and time in hours. For example, Swati's school is 3.6 km away, and it takes her 15 min to cycle there: Speed = 3.6 km ÷ 15 min = (3.6 × 1000 m) ÷ (15 × 60 s) = 4 m/s."
+                      },
+                      {
+                        heading: "Rearranging the Speed Formula",
+                        text: "From Speed = Distance ÷ Time, we can also find: Distance = Speed × Time, and Time = Distance ÷ Speed. For example, a bus at 50 km/h taking 2 hours covers 50 × 2 = 100 km; a train at 90 km/h covering 360 km takes 360 ÷ 90 = 4 hours. Since real objects rarely move at exactly the same speed throughout a journey, the speed calculated this way is technically the average speed — though this book uses 'speed' to mean 'average speed'. Vehicles use a speedometer to show current speed and an odometer to measure total distance travelled."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding the Speed of Trains from a Timetable",
+                      objective: "To use a real railway timetable to calculate the speed of different trains between two stations, applying the speed = distance ÷ time formula.",
+                      materials: ["Access to a railway timetable (online)", "Notebook and calculator"],
+                      steps: [
+                        "Look up the railway timetable for a train stopping at the station nearest to your home.",
+                        "Identify the next station where the train stops, and note the distance to it from the timetable.",
+                        "Note the train's departure time from your station and arrival time at the next station, and find the time taken.",
+                        "Calculate the speed of the train using Speed = Distance ÷ Time.",
+                        "Repeat for 4-5 different types of trains (Passenger/Express/Superfast) and compare which is fastest."
+                      ],
+                      observation: "The train covering the maximum distance in the least time has the highest speed and is the fastest — typically, Superfast trains show a notably higher calculated speed than Passenger trains between the same or similar station pairs."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the formula for calculating the speed of an object?",
+                      options: ["Speed = Time ÷ Distance", "Speed = Total distance covered ÷ Total time taken", "Speed = Distance × Time", "Speed = Distance + Time"],
+                      answer: 1,
+                      explanation: "Speed is defined as the total distance covered divided by the total time taken to cover it."
+                    },
+                    {
+                      question: "What is the SI unit of speed?",
+                      options: ["Kilometre/hour (km/h)", "Metre/second (m/s)", "Second (s)", "Metre (m)"],
+                      answer: 1,
+                      explanation: "Since speed is distance (metres, the SI unit of length) divided by time (seconds, the SI unit of time), the SI unit of speed is metre/second (m/s)."
+                    },
+                    {
+                      question: "Swati cycles 3.6 km to school in 15 minutes. What is her speed in m/s?",
+                      options: ["2 m/s", "4 m/s", "6 m/s", "8 m/s"],
+                      answer: 1,
+                      explanation: "3.6 km = 3600 m and 15 min = 900 s, so speed = 3600 ÷ 900 = 4 m/s — exactly as worked out in the chapter's example."
+                    },
+                    {
+                      question: "A train travels at 90 km/h and covers 360 km. How much time does it take?",
+                      options: ["2 hours", "3 hours", "4 hours", "5 hours"],
+                      answer: 2,
+                      explanation: "Time = Distance ÷ Speed = 360 km ÷ 90 km/h = 4 hours."
+                    },
+                    {
+                      question: "Why is the 'speed' calculated using total distance ÷ total time usually called the 'average' speed?",
+                      options: ["Because objects always move at exactly one constant speed", "Because an object may move slower or faster at different points during its journey, so this calculation only gives the overall average", "Because average speed and actual speed are unrelated concepts", "Because this formula is only an estimate with no real meaning"],
+                      answer: 1,
+                      explanation: "Since an object's speed can vary throughout a journey (moving faster or slower at different times), dividing total distance by total time gives only the average speed over the whole journey, not the speed at every instant."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-8-4",
+                  title: "4. Uniform and Non-uniform Linear Motion",
+                  lab: { type: "uniform-motion-sim" },
+                  theory: {
+                    intro: "Not all motion is the same kind of 'moving' — a train gliding at a constant speed between stations behaves very differently from one that's still speeding up or slowing down.",
+                    sections: [
+                      {
+                        heading: "Linear Motion",
+                        text: "When an object moves along a straight line, its motion is called linear motion. A train moving along a straight track between two stations is a good example. Typically, such a train starts slow, speeds up, moves at a roughly constant speed for a while, then slows down and halts."
+                      },
+                      {
+                        heading: "Uniform vs. Non-uniform Motion",
+                        text: "An object moving along a straight line with a constant speed is said to be in uniform linear motion — it covers equal distances in equal intervals of time. If the speed keeps changing, the object is in non-uniform linear motion — it covers unequal distances in equal intervals of time. In everyday life, objects rarely move with a perfectly constant speed over long distances, so uniform motion is really an idealisation, and we usually rely on average speeds instead."
+                      },
+                      {
+                        heading: "Comparing Two Trains",
+                        text: "Consider two trains, X and Y, each recorded every 10 minutes over an hour. Train X covers exactly 20 km in every 10-minute interval — equal distances in equal times — so it is in uniform linear motion. Train Y covers varying distances (20, 15, 15, 25, 20, 25 km) in each interval — unequal distances in equal times — so it is in non-uniform linear motion."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Classifying Motion as Uniform or Non-uniform from Data",
+                      objective: "To analyse position-time data for two trains and determine which one is in uniform linear motion and which is in non-uniform linear motion.",
+                      materials: ["Notebook", "Calculator", "Table 8.3 data (positions of Train X and Train Y every 10 minutes)"],
+                      steps: [
+                        "For Train X, calculate the distance covered in each successive 10-minute interval (subtracting consecutive position values).",
+                        "For Train Y, do the same, calculating the distance covered in each 10-minute interval.",
+                        "Compare the interval distances for each train — are they all equal, or do they vary?",
+                        "Based on this, classify Train X and Train Y as being in uniform or non-uniform linear motion.",
+                        "Discuss why uniform motion is considered an 'idealisation' rarely seen exactly in real life."
+                      ],
+                      observation: "Train X covers exactly 20 km in every 10-minute interval (equal distances in equal times), confirming uniform linear motion, while Train Y's interval distances vary (20, 15, 15, 25, 20, 25 km), confirming non-uniform linear motion — even though both trains cover the same total distance (120 km) in the same total time (1 hour)."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 'uniform linear motion'?",
+                      options: ["Motion along a straight line where the object covers unequal distances in equal time intervals", "Motion along a straight line where the object covers equal distances in equal time intervals (constant speed)", "Any motion at all, regardless of path or speed", "Motion that only happens in circles"],
+                      answer: 1,
+                      explanation: "Uniform linear motion means an object moves along a straight line at a constant speed, covering equal distances in every equal interval of time."
+                    },
+                    {
+                      question: "What is 'non-uniform linear motion'?",
+                      options: ["Motion along a straight line where speed keeps changing, covering unequal distances in equal time intervals", "Motion along a straight line at a perfectly constant speed", "Motion that never changes direction", "Motion with no distance covered at all"],
+                      answer: 0,
+                      explanation: "In non-uniform linear motion, an object's speed keeps changing, so it covers unequal distances during equal intervals of time."
+                    },
+                    {
+                      question: "In the chapter's Table 8.3, Train X covers exactly 20 km in every 10-minute interval throughout the hour. What type of motion is this?",
+                      options: ["Non-uniform linear motion", "Uniform linear motion", "No motion at all", "Circular motion"],
+                      answer: 1,
+                      explanation: "Since Train X covers equal distances (20 km) in every equal time interval (10 minutes), its motion is uniform linear motion."
+                    },
+                    {
+                      question: "In Table 8.3, Train Y covers 20, 15, 15, 25, 20, and 25 km in successive 10-minute intervals. What type of motion is this?",
+                      options: ["Uniform linear motion", "Non-uniform linear motion", "The data is insufficient to tell", "This is also uniform motion since the total distance is the same"],
+                      answer: 1,
+                      explanation: "Since Train Y covers varying (unequal) distances across equal time intervals, its motion is non-uniform linear motion, even though its total distance over the hour matches Train X's."
+                    },
+                    {
+                      question: "Why is uniform motion described as an 'idealisation' in everyday life?",
+                      options: ["Because no object can ever move at all", "Because real objects rarely move at a perfectly constant speed over long distances or times, so average speed is generally used instead", "Because uniform motion is purely a mathematical fiction with no real examples", "Because non-uniform motion does not actually exist"],
+                      answer: 1,
+                      explanation: "In practice, moving objects rarely maintain a perfectly constant speed for long — hence uniform motion is treated as an ideal case, and average speed is used to describe most real journeys."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

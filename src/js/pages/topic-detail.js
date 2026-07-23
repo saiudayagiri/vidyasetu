@@ -2334,6 +2334,75 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const pendulumTimePeriodLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="pendulum-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a pendulum length and see how the time period changes.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Pendulum Length</h3>
+            <select id="sel-pendulum-length" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="25">25 cm</option>
+              <option value="100" selected>100 cm</option>
+              <option value="225">225 cm</option>
+              <option value="400">400 cm</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Time Period</h3>
+            <div id="pendulum-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a length above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const speedDistanceTimeCalculatorLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="speed-calc-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see the speed calculated from distance and time.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-speed-scenario" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Swati's bicycle: 3.6 km in 15 min</option>
+              <option value="1">Bus: 100 km in 2 h</option>
+              <option value="2">Train: 360 km in 4 h</option>
+              <option value="3">100 m sprint: 100 m in 10 s</option>
+              <option value="4">Galloping horse: 18 m in 1 s</option>
+              <option value="5">Garden snail: 0.9 m in 60 s</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Calculated Speed</h3>
+            <div id="speed-calc-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const uniformMotionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="uniform-motion-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a train and see whether it moves with uniform or non-uniform motion.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Train</h3>
+            <select id="sel-uniform-train" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="X" selected>Train X</option>
+              <option value="Y">Train Y</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Motion Type</h3>
+            <div id="uniform-motion-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a train above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4121,6 +4190,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'land-sea-breeze-sim') {
               labHtml = landSeaBreezeLabHtml;
               labDesc = 'Switch between day and night and see the direction of the coastal breeze reverse.';
+            } else if (topicObj.lab.type === 'pendulum-time-period-sim') {
+              labHtml = pendulumTimePeriodLabHtml;
+              labDesc = 'Pick a pendulum length and see its swing and computed time period.';
+            } else if (topicObj.lab.type === 'speed-distance-time-calculator-sim') {
+              labHtml = speedDistanceTimeCalculatorLabHtml;
+              labDesc = 'Pick a real-world scenario and see its speed calculated from distance and time.';
+            } else if (topicObj.lab.type === 'uniform-motion-sim') {
+              labHtml = uniformMotionLabHtml;
+              labDesc = 'Pick a train and see its position-time data plotted to reveal uniform or non-uniform motion.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4520,6 +4598,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initConductionPinsLab();
         } else if (topicObj.lab.type === 'land-sea-breeze-sim') {
           initLandSeaBreezeLab();
+        } else if (topicObj.lab.type === 'pendulum-time-period-sim') {
+          initPendulumTimePeriodLab();
+        } else if (topicObj.lab.type === 'speed-distance-time-calculator-sim') {
+          initSpeedDistanceTimeCalculatorLab();
+        } else if (topicObj.lab.type === 'uniform-motion-sim') {
+          initUniformMotionLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -16475,6 +16559,164 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         obs.innerHTML = isDay
           ? '<strong>Sea breeze.</strong> During the day, land heats up faster than the sea, so warm air rises over the land, and cooler air flows in from the sea to take its place — this is the sea breeze.'
           : '<strong>Land breeze.</strong> At night, land cools down faster than the sea, so the sea (now relatively warmer) has rising air, and cooler air flows from the land out towards the sea — this is the land breeze.';
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPendulumTimePeriodLab() {
+      const canvas = document.getElementById('pendulum-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-pendulum-length');
+      const obs = document.getElementById('pendulum-obs');
+      const PIXEL_LEN = { 25: 60, 100: 110, 225: 150, 400: 180 };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const Lcm = parseInt(sel.value);
+        const pixLen = PIXEL_LEN[Lcm];
+        const T = 2 * Math.sqrt(Lcm / 100);
+        const cx = W / 2, py = 42;
+
+        ctx.fillStyle = cssVar('--border-color');
+        ctx.fillRect(cx - 40, py - 10, 80, 10);
+
+        const angle = 25 * Math.PI / 180;
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+        ctx.beginPath(); ctx.moveTo(cx, py); ctx.lineTo(cx, py + pixLen); ctx.stroke();
+        ctx.beginPath(); ctx.arc(cx, py, pixLen, Math.PI / 2 - angle, Math.PI / 2 + angle); ctx.stroke();
+        ctx.setLineDash([]);
+
+        const bobX = cx - pixLen * Math.sin(angle), bobY = py + pixLen * Math.cos(angle);
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx, py); ctx.lineTo(bobX, bobY); ctx.stroke();
+        ctx.beginPath(); ctx.arc(bobX, bobY, 12, 0, Math.PI * 2);
+        ctx.fillStyle = cssVar('--accent-color'); ctx.fill();
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 1.5; ctx.stroke();
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Pendulum length: ${Lcm} cm`, W / 2, 24);
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Time period ≈ ${T.toFixed(1)} s`, W / 2, 258);
+
+        const compare = Lcm < 100 ? 'shorter, so it swings faster' : (Lcm === 100 ? 'the reference length' : 'longer, so it swings more slowly');
+        obs.innerHTML = `<strong>Length = ${Lcm} cm → Time period ≈ ${T.toFixed(1)} s per oscillation.</strong> Compared to a 100 cm pendulum, this one is ${compare}. Note the time period depends only on the length — changing the bob's mass would not change it.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSpeedDistanceTimeCalculatorLab() {
+      const canvas = document.getElementById('speed-calc-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-speed-scenario');
+      const obs = document.getElementById('speed-calc-obs');
+      const SCENARIOS = [
+        { name: "Swati's bicycle", distanceM: 3600, timeS: 900 },
+        { name: 'Bus', distanceM: 100000, timeS: 7200 },
+        { name: 'Train', distanceM: 360000, timeS: 14400 },
+        { name: '100 m sprint', distanceM: 100, timeS: 10 },
+        { name: 'Galloping horse', distanceM: 18, timeS: 1 },
+        { name: 'Garden snail', distanceM: 0.9, timeS: 60 }
+      ];
+
+      function fmt(n) {
+        return Number.isInteger(n) ? String(n) : n.toFixed(2);
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const s = SCENARIOS[parseInt(sel.value)];
+        const speedMps = s.distanceM / s.timeS;
+        const speedKmph = speedMps * 3.6;
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(s.name, W / 2, 30);
+
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Distance = ${fmt(s.distanceM)} m`, W / 2, 75);
+        ctx.fillText(`Time = ${fmt(s.timeS)} s`, W / 2, 100);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 120, 120); ctx.lineTo(W / 2 + 120, 120); ctx.stroke();
+
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Speed = Distance ÷ Time = ${fmt(s.distanceM)} ÷ ${fmt(s.timeS)}`, W / 2, 145);
+
+        ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`${fmt(speedMps)} m/s`, W / 2, 185);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(`(= ${fmt(speedKmph)} km/h)`, W / 2, 210);
+
+        obs.innerHTML = `<strong>${s.name}: ${fmt(s.distanceM)} m in ${fmt(s.timeS)} s.</strong> Speed = ${fmt(s.distanceM)} ÷ ${fmt(s.timeS)} = <strong>${fmt(speedMps)} m/s</strong>, which equals <strong>${fmt(speedKmph)} km/h</strong> (multiplying m/s by 3.6).`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initUniformMotionLab() {
+      const canvas = document.getElementById('uniform-motion-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-uniform-train');
+      const obs = document.getElementById('uniform-motion-obs');
+      const TRAINS = {
+        X: { times: [0, 10, 20, 30, 40, 50, 60], positions: [0, 20, 40, 60, 80, 100, 120] },
+        Y: { times: [0, 10, 20, 30, 40, 50, 60], positions: [0, 20, 35, 50, 75, 95, 120] }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const train = TRAINS[sel.value];
+        const marginL = 55, marginR = 25, marginT = 40, marginB = 45;
+        const plotW = W - marginL - marginR, plotH = H - marginT - marginB;
+        const maxT = 60, maxD = 120;
+        const px = t => marginL + (t / maxT) * plotW;
+        const py = d => marginT + plotH - (d / maxD) * plotH;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(marginL, marginT); ctx.lineTo(marginL, marginT + plotH); ctx.lineTo(marginL + plotW, marginT + plotH); ctx.stroke();
+        ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('Time (min)', marginL + plotW / 2, H - 8);
+        ctx.save(); ctx.translate(14, marginT + plotH / 2); ctx.rotate(-Math.PI / 2); ctx.fillText('Distance (km)', 0, 0); ctx.restore();
+
+        ctx.beginPath();
+        train.times.forEach((t, i) => {
+          const x = px(t), y = py(train.positions[i]);
+          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        });
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3; ctx.stroke();
+
+        const diffs = [];
+        for (let i = 1; i < train.positions.length; i++) diffs.push(train.positions[i] - train.positions[i - 1]);
+        const uniform = diffs.every(d => d === diffs[0]);
+
+        train.times.forEach((t, i) => {
+          const x = px(t), y = py(train.positions[i]);
+          ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2);
+          ctx.fillStyle = cssVar('--text-normal'); ctx.fill();
+          if (i > 0) {
+            const midX = px((train.times[i - 1] + t) / 2);
+            const midY = py((train.positions[i - 1] + train.positions[i]) / 2) - 10;
+            ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+            ctx.fillText(`${diffs[i - 1]}`, midX, midY);
+          }
+        });
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Train ${sel.value}`, W / 2, 20);
+
+        obs.innerHTML = uniform
+          ? `<strong>Train ${sel.value} covers equal distances (${diffs[0]} km) in every 10-minute interval.</strong> This is uniform linear motion — a constant speed throughout.`
+          : `<strong>Train ${sel.value} covers unequal distances (${diffs.join(', ')} km) across equal 10-minute intervals.</strong> This is non-uniform linear motion — its speed keeps changing.`;
       }
 
       sel.addEventListener('change', draw);
