@@ -2445,6 +2445,68 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const leafStarchSunlightLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="leaf-starch-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a leaf sample and see its iodine test result.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Leaf Sample</h3>
+            <select id="sel-leaf-starch" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="sun_green" selected>Sunlight — green patch</option>
+              <option value="sun_nongreen">Sunlight — non-green patch</option>
+              <option value="dark_green">Kept in dark — green patch</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Iodine Test Result</h3>
+            <div id="leaf-starch-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a leaf sample above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const photosynthesisRequirementsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="photosynthesis-req-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Toggle sunlight and carbon dioxide to see if photosynthesis occurs.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Requirements</h3>
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;color:var(--text-normal);margin-bottom:0.5rem;"><input type="checkbox" id="chk-photo-sunlight" checked> Sunlight</label>
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;color:var(--text-normal);"><input type="checkbox" id="chk-photo-co2" checked> Carbon dioxide</label>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="photosynthesis-req-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Toggle the requirements above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const xylemTransportLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="xylem-transport-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a tumbler and see how far the colour travels up the plant.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Tumbler</h3>
+            <select id="sel-xylem-tumbler" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="A" selected>Tumbler A: plain water</option>
+              <option value="B">Tumbler B: red-inked water</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>After One Day</h3>
+            <div id="xylem-transport-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a tumbler above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4247,6 +4309,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'breathing-model-sim') {
               labHtml = breathingModelLabHtml;
               labDesc = 'Pick a rubber sheet action and see the balloon lungs inflate or deflate in the breathing model.';
+            } else if (topicObj.lab.type === 'leaf-starch-sunlight-sim') {
+              labHtml = leafStarchSunlightLabHtml;
+              labDesc = 'Pick a leaf sample and see whether the iodine test reveals starch or not.';
+            } else if (topicObj.lab.type === 'photosynthesis-requirements-sim') {
+              labHtml = photosynthesisRequirementsLabHtml;
+              labDesc = 'Toggle sunlight and carbon dioxide to see whether photosynthesis occurs.';
+            } else if (topicObj.lab.type === 'xylem-transport-sim') {
+              labHtml = xylemTransportLabHtml;
+              labDesc = 'Pick a tumbler and see how far coloured water travels up the plant through the xylem.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4656,6 +4727,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initStarchIodineTestLab();
         } else if (topicObj.lab.type === 'breathing-model-sim') {
           initBreathingModelLab();
+        } else if (topicObj.lab.type === 'leaf-starch-sunlight-sim') {
+          initLeafStarchSunlightLab();
+        } else if (topicObj.lab.type === 'photosynthesis-requirements-sim') {
+          initPhotosynthesisRequirementsLab();
+        } else if (topicObj.lab.type === 'xylem-transport-sim') {
+          initXylemTransportLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -16876,6 +16953,175 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         obs.innerHTML = inhale
           ? '<strong>Inhalation.</strong> Pulling the rubber sheet (diaphragm) downward increases the space inside the bottle, so the balloons (lungs) inflate — just as the real diaphragm moving down draws air into the lungs.'
           : '<strong>Exhalation.</strong> Releasing the rubber sheet (diaphragm) upward reduces the space inside the bottle, so the balloons (lungs) deflate — just as the real diaphragm moving up pushes air out of the lungs.';
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initLeafStarchSunlightLab() {
+      const canvas = document.getElementById('leaf-starch-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-leaf-starch');
+      const obs = document.getElementById('leaf-starch-obs');
+      const INFO = {
+        sun_green: { title: 'Sunlight — green patch', afterColor: '#1e1b4b', afterLabel: 'Blue-black', verdict: 'Starch present', reason: 'This patch has chlorophyll and received sunlight, so it could photosynthesise and produce starch.' },
+        sun_nongreen: { title: 'Sunlight — non-green patch', afterColor: '#f0e6c8', afterLabel: 'No significant change', verdict: 'No starch detected', reason: 'This patch lacks sufficient chlorophyll, so even with sunlight available, it could not produce enough starch to detect.' },
+        dark_green: { title: 'Kept in dark — green patch', afterColor: '#f0e6c8', afterLabel: 'No significant change', verdict: 'No starch detected', reason: 'This patch has chlorophyll, but without sunlight, photosynthesis could not occur, so no starch was produced.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const info = INFO[sel.value];
+        const beforeX = 160, afterX = 440, cy = 130, r = 45;
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(info.title, W / 2, 26);
+
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('BEFORE IODINE', beforeX, cy - r - 14);
+        ctx.beginPath(); ctx.arc(beforeX, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = '#f5f0e1'; ctx.fill();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = '12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Decolourised leaf', beforeX, cy + r + 22);
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(beforeX + r + 15, cy); ctx.lineTo(afterX - r - 15, cy); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(afterX - r - 25, cy - 8); ctx.lineTo(afterX - r - 15, cy); ctx.lineTo(afterX - r - 25, cy + 8); ctx.stroke();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('+ iodine', (beforeX + afterX) / 2, cy - 12);
+
+        ctx.beginPath(); ctx.arc(afterX, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = info.afterColor; ctx.fill();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2; ctx.stroke();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('AFTER IODINE', afterX, cy - r - 14);
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = '12px system-ui';
+        ctx.fillText(info.afterLabel, afterX, cy + r + 22);
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        ctx.fillText(info.verdict, W / 2, 235);
+
+        obs.innerHTML = `<strong>${info.verdict}.</strong> ${info.reason}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPhotosynthesisRequirementsLab() {
+      const canvas = document.getElementById('photosynthesis-req-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const chkSunlight = document.getElementById('chk-photo-sunlight');
+      const chkCo2 = document.getElementById('chk-photo-co2');
+      const obs = document.getElementById('photosynthesis-req-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const sunlight = chkSunlight.checked, co2 = chkCo2.checked;
+        const occurs = sunlight && co2;
+        const cx = W / 2, cy = 130;
+
+        if (sunlight) {
+          ctx.beginPath(); ctx.arc(cx, 40, 20, 0, Math.PI * 2);
+          ctx.fillStyle = '#fde047'; ctx.fill();
+          for (let i = 0; i < 8; i++) {
+            const ang = (Math.PI * 2 * i) / 8;
+            ctx.beginPath();
+            ctx.moveTo(cx + 26 * Math.cos(ang), 40 + 26 * Math.sin(ang));
+            ctx.lineTo(cx + 34 * Math.cos(ang), 40 + 34 * Math.sin(ang));
+            ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2; ctx.stroke();
+          }
+        }
+
+        ctx.beginPath();
+        ctx.ellipse(cx, cy, 70, 90, 0, 0, Math.PI * 2);
+        ctx.fillStyle = occurs ? '#22c55e' : '#475569';
+        ctx.fill();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2; ctx.stroke();
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(cx, cy - 90); ctx.lineTo(cx, cy + 90); ctx.stroke();
+
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText(co2 ? 'CO2 available' : 'CO2 absorbed (blocked)', cx, 232);
+
+        if (occurs) {
+          [[cx - 100, 90], [cx + 100, 90], [cx - 100, 150], [cx + 100, 150]].forEach(([x, y]) => {
+            ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2);
+            ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = 2; ctx.stroke();
+          });
+          ctx.font = '11px system-ui'; ctx.fillStyle = '#60a5fa'; ctx.textAlign = 'center';
+          ctx.fillText('O2 bubbles', cx + 100, 175);
+        }
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Starch formed: ${occurs ? 'Yes' : 'No'}`, W / 2, 255);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Oxygen released: ${occurs ? 'Yes' : 'No'}`, W / 2, 272);
+
+        const missing = [];
+        if (!sunlight) missing.push('sunlight');
+        if (!co2) missing.push('carbon dioxide');
+        obs.innerHTML = occurs
+          ? '<strong>Photosynthesis occurs.</strong> With both sunlight and carbon dioxide available, the leaf produces starch and releases oxygen.'
+          : `<strong>Photosynthesis does not occur.</strong> Missing: ${missing.join(' and ')}. Without ${missing.length > 1 ? 'these' : 'this'}, the leaf cannot produce starch or release oxygen, even though water and chlorophyll are present.`;
+      }
+
+      chkSunlight.addEventListener('change', draw);
+      chkCo2.addEventListener('change', draw);
+      draw();
+    }
+
+    function initXylemTransportLab() {
+      const canvas = document.getElementById('xylem-transport-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-xylem-tumbler');
+      const obs = document.getElementById('xylem-transport-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const isRed = sel.value === 'B';
+        const cx = W / 2;
+        const waterColor = isRed ? '#dc2626' : '#93c5fd';
+        const tintColor = isRed ? '#ef4444' : cssVar('--accent-color');
+
+        const tumblerY1 = 190, tumblerY2 = 250, tumblerHalfW = 45;
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx - tumblerHalfW, tumblerY1); ctx.lineTo(cx - tumblerHalfW, tumblerY2); ctx.lineTo(cx + tumblerHalfW, tumblerY2); ctx.lineTo(cx + tumblerHalfW, tumblerY1); ctx.stroke();
+        ctx.fillStyle = waterColor;
+        ctx.fillRect(cx - tumblerHalfW + 2, tumblerY1 + 15, tumblerHalfW * 2 - 4, tumblerY2 - tumblerY1 - 17);
+
+        ctx.strokeStyle = tintColor; ctx.lineWidth = 5;
+        ctx.beginPath(); ctx.moveTo(cx, tumblerY1); ctx.lineTo(cx, 60); ctx.stroke();
+
+        [[cx - 22, 110, -1], [cx + 22, 90, 1], [cx - 18, 70, -1]].forEach(([lx, ly, dir]) => {
+          ctx.beginPath();
+          ctx.ellipse(lx, ly, 22, 11, dir * 0.5, 0, Math.PI * 2);
+          ctx.fillStyle = isRed ? '#f87171' : '#4ade80';
+          ctx.fill();
+          ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1; ctx.stroke();
+        });
+
+        ctx.beginPath(); ctx.arc(cx, 50, 16, 0, Math.PI * 2);
+        ctx.fillStyle = isRed ? '#fca5a5' : '#f8fafc';
+        ctx.fill();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5; ctx.stroke();
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(isRed ? 'Tumbler B: red-inked water' : 'Tumbler A: plain water', W / 2, 24);
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('Xylem carries water upward', cx + 55, 130);
+
+        obs.innerHTML = isRed
+          ? '<strong>Red colouring appears in the stem, leaves, and flower.</strong> The xylem — a tube-like structure in the stem — carries the red-inked water all the way up from the tumbler to the leaves and flower.'
+          : '<strong>No colour change appears.</strong> The plain water is still transported upward through the xylem, but since it has no dye, the stem, leaves, and flower show no visible colour change.';
       }
 
       sel.addEventListener('change', draw);

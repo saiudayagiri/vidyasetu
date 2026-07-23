@@ -7011,6 +7011,287 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "7s-10",
+              title: "Life Processes in Plants",
+              topics: [
+                {
+                  id: "7s-10-1",
+                  title: "1. What Plants Need to Grow, and Leaves as Food Factories",
+                  lab: { type: "leaf-starch-sunlight-sim" },
+                  theory: {
+                    intro: "Unlike animals, plants never eat — yet they still need water, sunlight, and their own green leaves to manufacture the food that powers their growth.",
+                    sections: [
+                      {
+                        heading: "What Plants Need to Grow",
+                        text: "Testing three potted plants — one in sunlight with water, one in sunlight without water, and one in the dark with water — shows that the plant with BOTH sunlight and water grows best, the plant without water grows poorly or dies (even with sunlight), and the plant without sunlight grows poorly (even with water). This shows that plants require both sunlight and water for healthy growth."
+                      },
+                      {
+                        heading: "Leaves: The 'Food Factories' of Plants",
+                        text: "Plants store food in the form of starch, a type of carbohydrate, produced in their leaves. Leaves are generally broad and flat, and mostly green due to a pigment called chlorophyll, which efficiently captures sunlight. Testing a decolourised, boiled leaf with iodine solution turns it blue-black — confirming starch is present, since iodine reacts with starch to produce this colour."
+                      },
+                      {
+                        heading: "Chlorophyll Is Essential for Starch Production",
+                        text: "Comparing a leaf with green and non-green patches from a plant kept in sunlight against one from a plant kept in the dark shows: the green patches of the sunlit leaf turn blue-black (starch present), the non-green patches do not (insufficient chlorophyll), and the leaf from the dark-kept plant shows no colour change at all (no starch, since no sunlight was available). This shows chlorophyll, together with sunlight, is essential for starch production — which is why leaves are called the 'food factories' of plants."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Whether Plants Need Both Sunlight and Water",
+                      objective: "To test, using three potted plants under different conditions, whether sunlight and water are both necessary for healthy plant growth.",
+                      materials: ["Three similar pots or containers with garden soil", "Three similar saplings of a fast-growing plant (like chilli or tomato)", "Water", "A sunny spot", "A dark spot"],
+                      steps: [
+                        "Plant similar saplings in three pots labelled A, B, and C, and count the initial number of leaves on each.",
+                        "Place Pot A in direct sunlight, watering it adequately every day.",
+                        "Place Pot B in direct sunlight, but do NOT water it at all.",
+                        "Place Pot C in the dark, watering it adequately every day.",
+                        "Observe all three plants over two weeks, recording height, number of leaves, and leaf colour."
+                      ],
+                      observation: "The plant in Pot A (sunlight + water) grows the best; the plant in Pot C (water, no sunlight) grows poorly; the plant in Pot B (sunlight, no water) grows poorly or dies — confirming that plants need BOTH sunlight and water for healthy growth."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the three-pot experiment, which plant is expected to grow the best?",
+                      options: ["Pot B: sunlight, without water", "Pot A: sunlight, with water", "Pot C: dark, with water", "All three grow equally well"],
+                      answer: 1,
+                      explanation: "Pot A, which receives BOTH sunlight and water, provides the best growth conditions, so its plant grows the best among the three."
+                    },
+                    {
+                      question: "Why do we first decolourise (boil in water, then alcohol) a leaf before testing it for starch with iodine?",
+                      options: ["To destroy the starch completely", "To remove the green chlorophyll colour so that the blue-black colour change from the iodine-starch reaction can be seen clearly", "Decolourising has no real purpose", "To add more starch to the leaf"],
+                      answer: 1,
+                      explanation: "Removing the leaf's natural green colour makes it much easier to clearly observe the blue-black colour change that indicates starch is present."
+                    },
+                    {
+                      question: "In a leaf with both green and non-green patches (from a plant kept in sunlight), which part turns blue-black in the iodine test?",
+                      options: ["Only the non-green patches", "Only the green patches, since they contain chlorophyll and can produce starch", "Neither part changes colour", "Both parts change colour equally"],
+                      answer: 1,
+                      explanation: "Only the green (chlorophyll-containing) patches can produce starch through photosynthesis, so only they turn blue-black in the iodine test."
+                    },
+                    {
+                      question: "Why does a leaf from a plant kept in the dark NOT turn blue-black in the iodine test, even on its green patches?",
+                      options: ["Dark-grown leaves always have more starch", "Without sunlight, the plant could not carry out photosynthesis, so no starch was produced even in the chlorophyll-containing patches", "The iodine test does not work in the dark", "Leaves in the dark are not really leaves"],
+                      answer: 1,
+                      explanation: "Since photosynthesis (and thus starch production) requires sunlight, a leaf kept in the dark produces no starch — so it shows no colour change with iodine, even in its green patches."
+                    },
+                    {
+                      question: "Why are leaves called the 'food factories' of plants?",
+                      options: ["Leaves have no special role in food production", "Leaves are the primary site where starch (food) is produced through photosynthesis, using chlorophyll and sunlight", "Leaves only store food produced elsewhere", "Leaves absorb food directly from the soil"],
+                      answer: 1,
+                      explanation: "Leaves are broad, flat, and rich in chlorophyll, making them the primary site where plants manufacture their food (starch) via photosynthesis — earning them the nickname 'food factories'."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-10-2",
+                  title: "2. Photosynthesis: How Plants Make Food",
+                  lab: { type: "photosynthesis-requirements-sim" },
+                  theory: {
+                    intro: "Trap a leaf's carbon dioxide supply with caustic soda, and half of that leaf simply stops making food — a clean demonstration that plants need air, not just sunlight and water, to photosynthesise.",
+                    sections: [
+                      {
+                        heading: "Carbon Dioxide Is Also Essential",
+                        text: "Placing half of a destarched leaf inside a bottle containing caustic soda (which absorbs carbon dioxide from the air), with the other half left outside, and leaving the setup in sunlight, shows: the part of the leaf OUTSIDE the bottle turns blue-black (starch present), while the part INSIDE the bottle does not (no starch), because caustic soda absorbed the available carbon dioxide. This shows carbon dioxide from the air is essential for plants to prepare starch."
+                      },
+                      {
+                        heading: "Defining Photosynthesis",
+                        text: "The process by which plants prepare food in the presence of sunlight and chlorophyll, using carbon dioxide and water, is called photosynthesis. A leaf is the primary site for photosynthesis, though other green (chlorophyll-containing) parts of a plant can also photosynthesise. During photosynthesis, food is produced in the form of glucose — an instant energy source that can also be converted into starch for storage."
+                      },
+                      {
+                        heading: "The Word Equation and Oxygen Release",
+                        text: "Carbon dioxide + Water --(Sunlight, Chlorophyll)--> Glucose + Oxygen. A classic experiment with an aquatic plant under an inverted, water-filled test tube shows gas bubbles collecting at the top when placed in sunlight; testing this gas with a glowing/lit matchstick causes an intense flame, confirming the gas is rich in oxygen. This shows that oxygen is released during photosynthesis, and that photosynthesis requires sunlight."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Whether Carbon Dioxide Is Needed for Photosynthesis",
+                      objective: "To demonstrate, using caustic soda to remove carbon dioxide from part of a leaf's air supply, that carbon dioxide is essential for starch production.",
+                      materials: ["A destarched potted green plant (kept in the dark for 2-3 days beforehand)", "A wide-mouthed bottle", "Caustic soda (sodium hydroxide) — teacher-handled only", "A split cork", "Iodine solution"],
+                      steps: [
+                        "Pour some caustic soda solution into the wide-mouthed bottle (it will absorb carbon dioxide from the air inside).",
+                        "Insert half of a destarched leaf into the bottle through a split cork, leaving the other half outside.",
+                        "Place the setup in sunlight for a few hours.",
+                        "Remove the leaf and test the whole leaf for starch using the iodine test.",
+                        "Compare the colour change between the part that was inside the bottle and the part that was outside."
+                      ],
+                      observation: "The part of the leaf that was OUTSIDE the bottle turns blue-black (starch present), while the part INSIDE the bottle (deprived of carbon dioxide by the caustic soda) does not — confirming carbon dioxide is essential for photosynthesis."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 'photosynthesis'?",
+                      options: ["The process by which plants absorb water only", "The process by which plants prepare food (glucose) using carbon dioxide and water, in the presence of sunlight and chlorophyll", "The process by which plants release carbon dioxide", "A process that only happens in animals"],
+                      answer: 1,
+                      explanation: "Photosynthesis is the process where plants use carbon dioxide, water, sunlight, and chlorophyll to produce glucose (food) and oxygen."
+                    },
+                    {
+                      question: "In the caustic soda experiment, why does the part of the leaf inside the bottle NOT show starch, while the part outside does?",
+                      options: ["The inside part received extra sunlight", "Caustic soda absorbed the carbon dioxide inside the bottle, so that part of the leaf could not photosynthesise", "The outside part had no chlorophyll", "There is no real difference between the two parts"],
+                      answer: 1,
+                      explanation: "Caustic soda absorbs carbon dioxide from the air; without carbon dioxide, the leaf portion inside the bottle cannot perform photosynthesis, so it produces no starch."
+                    },
+                    {
+                      question: "What is the word equation for photosynthesis?",
+                      options: ["Glucose + Oxygen → Carbon dioxide + Water + Energy", "Carbon dioxide + Water → Glucose + Oxygen (using sunlight and chlorophyll)", "Water + Oxygen → Carbon dioxide + Glucose", "Glucose + Water → Carbon dioxide + Oxygen"],
+                      answer: 1,
+                      explanation: "Photosynthesis combines carbon dioxide and water, using sunlight and chlorophyll, to produce glucose and oxygen — the reverse of the respiration equation."
+                    },
+                    {
+                      question: "In the aquatic plant experiment, how was it confirmed that the gas collected in the inverted test tube was oxygen?",
+                      options: ["By smelling the gas", "By inserting a lit/glowing matchstick into the tube, which produced an intense flame (oxygen supports combustion)", "By adding lime water to the gas", "The gas was never actually tested"],
+                      answer: 1,
+                      explanation: "Oxygen supports combustion, so inserting a glowing matchstick into oxygen-rich gas causes it to burst into an intense flame — confirming the collected gas is oxygen."
+                    },
+                    {
+                      question: "During photosynthesis, what happens to the glucose that plants produce?",
+                      options: ["It is immediately released into the air", "It serves as an instant energy source and can also be converted into starch for storage", "It is converted directly into carbon dioxide", "It has no further use once produced"],
+                      answer: 1,
+                      explanation: "Glucose produced during photosynthesis can be used immediately for energy, or converted into starch for longer-term storage within the plant."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-10-3",
+                  title: "3. Gas Exchange and Transport in Plants",
+                  lab: { type: "xylem-transport-sim" },
+                  theory: {
+                    intro: "Place a plant's cut stem in red-dyed water, and by the next day the colour has travelled all the way up into its leaves and flowers — visible proof of the tiny internal pipeline carrying water throughout the plant.",
+                    sections: [
+                      {
+                        heading: "Stomata: Gas Exchange in Leaves",
+                        text: "Examining a peel from the lower surface of a leaf (such as rhoeo or onion) under a microscope reveals tiny pores called stomata. Stomata, present on the surface of leaves, help in the exchange of gases — allowing carbon dioxide in and oxygen out during photosynthesis, and the reverse during respiration."
+                      },
+                      {
+                        heading: "Transport of Water and Minerals: The Xylem",
+                        text: "Water and minerals from the soil are taken up by a plant's roots. Placing cut plant twigs in plain water versus red-inked water shows that, after a day, the twig from the red-inked water develops visible red colouring in its stem, leaves, and flowers — while the plain-water twig does not. This happens because thin tube-like structures called xylem, present in the stem, branches, and leaves, carry water (and the red ink dissolved in it) upward. Minerals dissolved in water move up the plant through the xylem in exactly the same way."
+                      },
+                      {
+                        heading: "Transport of Food: The Phloem",
+                        text: "Since leaves are the primary site of photosynthesis, the food they produce must be transported to all other parts of the plant. This happens through a separate set of thin tube-like structures called phloem. Transported food may also be stored in other parts of the plant, such as seeds and roots."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tracking Water Transport with Coloured Water",
+                      objective: "To visually confirm that water moves upward through a plant's stem via the xylem, by tracking coloured water.",
+                      materials: ["Two glass tumblers", "Water", "Red ink", "Two similar tender plant twigs (preferably with white flowers)"],
+                      steps: [
+                        "Fill both tumblers one-third with water, and add a few drops of red ink to tumbler B only (leave tumbler A plain).",
+                        "Obliquely cut the stems of both plant twigs at their base while underwater, then immediately place one twig in each tumbler.",
+                        "Leave both setups undisturbed and observe the next day.",
+                        "Compare the stems, leaves, and flowers of both twigs for any colour change.",
+                        "Cut the upper stem (above the water line) of the twig from tumbler B and examine the cut end with a magnifying glass."
+                      ],
+                      observation: "The twig from tumbler B (red-inked water) shows red colouring in its stem, leaves, and flowers, while the twig from tumbler A (plain water) shows no colour change — and the cut stem from tumbler B reveals red colouring specifically in the tube-like xylem, confirming that water moves upward through this structure."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What are 'stomata'?",
+                      options: ["Tube-like structures that transport water", "Tiny pores present on the surface of leaves that help in the exchange of gases", "A type of plant root", "Structures that store starch"],
+                      answer: 1,
+                      explanation: "Stomata are microscopic pores on a leaf's surface, allowing gases like carbon dioxide and oxygen to move in and out during photosynthesis and respiration."
+                    },
+                    {
+                      question: "In the red-ink experiment, why does the twig placed in red-inked water show red colouring in its stem, leaves, and flowers the next day?",
+                      options: ["The plant absorbs colour through its leaves directly", "Water (carrying the dissolved red ink) is transported upward through the xylem, a tube-like structure in the stem", "This is just a coincidence with no real cause", "The red colour is produced by the plant itself"],
+                      answer: 1,
+                      explanation: "The xylem carries water (and anything dissolved in it, like red ink or minerals) upward from the roots through the stem to the leaves and flowers."
+                    },
+                    {
+                      question: "What is the function of the 'xylem' in a plant?",
+                      options: ["It transports food from the leaves to other parts of the plant", "It transports water and minerals from the roots upward to other parts of the plant", "It produces starch", "It is responsible for gas exchange"],
+                      answer: 1,
+                      explanation: "The xylem is a tube-like structure that carries water and dissolved minerals upward from the roots to the stem, leaves, and other plant parts."
+                    },
+                    {
+                      question: "What is the function of the 'phloem' in a plant?",
+                      options: ["It transports water from the roots", "It transports food (produced during photosynthesis) from the leaves to all other parts of the plant, including storage areas like roots and seeds", "It absorbs carbon dioxide from the air", "It has no real function"],
+                      answer: 1,
+                      explanation: "The phloem carries food (produced in the leaves via photosynthesis) to other parts of the plant, including areas where it may be stored, such as roots and seeds."
+                    },
+                    {
+                      question: "Why are stomata important for both photosynthesis and respiration?",
+                      options: ["They have no connection to either process", "They allow the exchange of gases (carbon dioxide and oxygen) needed for both photosynthesis and respiration to occur", "They only matter for water transport", "They only function during the night"],
+                      answer: 1,
+                      explanation: "Stomata allow carbon dioxide to enter (for photosynthesis) and oxygen to enter (for respiration), while also allowing the corresponding gases to exit — making them essential for both processes."
+                    }
+                  ]
+                },
+                {
+                  id: "7s-10-4",
+                  title: "4. Respiration in Plants",
+                  theory: {
+                    intro: "Plants might not breathe the way we do, but every part of them — from the roots to the leaves — is quietly using oxygen to release energy, just like animal cells do.",
+                    sections: [
+                      {
+                        heading: "Do Plants Respire?",
+                        text: "Soaking moong bean seeds and placing them in a sealed conical flask (connected via tubes to a test tube of lime water) for 24 hours in the dark shows the lime water turning milky — indicating carbon dioxide. Since carbon dioxide is normally present only in tiny amounts in air, this additional carbon dioxide must be produced by the germinating seeds themselves as they respire."
+                      },
+                      {
+                        heading: "The Word Equation for Respiration",
+                        text: "During respiration, glucose is broken down in the presence of oxygen, releasing carbon dioxide, water, and energy: Glucose + Oxygen → Carbon dioxide + Water + Energy. This is essentially the reverse of the photosynthesis equation. The energy released is used by plants for their growth and development."
+                      },
+                      {
+                        heading: "All Parts of a Plant Respire",
+                        text: "All parts of a plant — green or non-green, including roots, stems, and leaves — carry out respiration, not just the leaves (which are special because they ALSO carry out photosynthesis). Thus, plants have distinct mechanisms for synthesising food (photosynthesis, mainly in leaves), transporting it (via xylem and phloem), and using it for energy (respiration, throughout the whole plant)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Detecting Carbon Dioxide Released by Germinating Seeds",
+                      objective: "To confirm, using the lime water test, that germinating seeds release carbon dioxide through respiration.",
+                      materials: ["Moong bean seeds", "Water", "Cotton", "A conical flask", "A two-holed cork with two tubes", "Lime water", "A test tube with a one-holed cork", "Rubber pipe"],
+                      steps: [
+                        "Soak moong bean seeds in water overnight, then place them on wet cotton inside a conical flask.",
+                        "Seal the flask's mouth with a two-holed cork fitted with tubes A and B.",
+                        "Connect tube B (via rubber pipe) to a test tube filled with lime water, sealed with a one-holed cork.",
+                        "Leave the setup undisturbed in the dark for 24 hours.",
+                        "Observe whether the lime water in the connected test tube changes colour."
+                      ],
+                      observation: "The lime water connected to the flask turns milky, indicating carbon dioxide has built up inside the flask — produced by the germinating seeds as they respire, since normal air contains only a very small amount of carbon dioxide."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the germinating-seeds experiment, why does the lime water connected to the flask turn milky?",
+                      options: ["Because lime water always turns milky on its own", "Because the germinating seeds release carbon dioxide through respiration, which builds up in the flask and reacts with the lime water", "Because the seeds release oxygen", "This has no connection to respiration"],
+                      answer: 1,
+                      explanation: "Germinating seeds respire, releasing carbon dioxide, which accumulates in the sealed flask and turns the connected lime water milky when it reacts with it."
+                    },
+                    {
+                      question: "What is the word equation for respiration?",
+                      options: ["Carbon dioxide + Water → Glucose + Oxygen", "Glucose + Oxygen → Carbon dioxide + Water + Energy", "Glucose + Water → Carbon dioxide + Oxygen", "Oxygen + Energy → Glucose + Carbon dioxide"],
+                      answer: 1,
+                      explanation: "Respiration breaks down glucose using oxygen, releasing carbon dioxide, water, and energy — the reverse process of photosynthesis."
+                    },
+                    {
+                      question: "Do only the green parts of a plant carry out respiration?",
+                      options: ["Yes, only green (chlorophyll-containing) parts respire", "No, all parts of a plant — green or non-green — carry out respiration", "No plant parts carry out respiration", "Only the roots carry out respiration"],
+                      answer: 1,
+                      explanation: "Respiration occurs in every part of a plant, regardless of whether it is green or non-green — unlike photosynthesis, which requires chlorophyll and mainly occurs in green parts."
+                    },
+                    {
+                      question: "What is the energy released during respiration used for in plants?",
+                      options: ["It is entirely wasted", "It is used by plants for their growth and development", "It is only used to produce more chlorophyll", "It has no purpose in plants"],
+                      answer: 1,
+                      explanation: "The energy released when plants break down glucose during respiration powers their growth and development, just as it powers various functions in animals."
+                    },
+                    {
+                      question: "How are photosynthesis and respiration related to each other, as chemical processes?",
+                      options: ["They are completely unrelated processes", "Respiration is essentially the reverse of photosynthesis — photosynthesis builds glucose and releases oxygen, while respiration breaks down glucose using oxygen", "They both produce the exact same products", "Only one of the two processes actually occurs in plants"],
+                      answer: 1,
+                      explanation: "Photosynthesis uses carbon dioxide and water to build glucose and release oxygen, while respiration does the reverse — breaking down glucose using oxygen to release carbon dioxide, water, and energy."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
