@@ -1578,6 +1578,233 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const placeValueCommaLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="place-value-canvas" width="600" height="260"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number and see it grouped by the Indian and International systems.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Number</h3>
+            <select id="sel-placevalue-n" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${['4050678','48121620','20022002','246813579','345000543','9876501234'].map(n => `<option value="${n}"${n==='48121620'?' selected':''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Comma Grouping</h3>
+            <div id="placevalue-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const roundingNearestNeighbourLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="rounding-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number and see its five nearest neighbours.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Number</h3>
+            <select id="sel-rounding-n" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[67285183,38769957,290532481,45832619].map(n => `<option value="${n}"${n===67285183?' selected':''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Nearest Neighbours</h3>
+            <div id="rounding-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const expressionTermSplitterLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="term-splitter-canvas" width="600" height="260"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an expression and see it split into its terms.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Expression</h3>
+            <select id="sel-term-expr" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>13 − 2 + 6</option>
+              <option value="1">5 + 6 × 3</option>
+              <option value="2">4 + 15 − 9</option>
+              <option value="3">23 − 2×4 + 16</option>
+              <option value="4">28 + 19 − 8</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Terms</h3>
+            <div id="term-splitter-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an expression above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const swapGroupTermsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="swap-group-canvas" width="600" height="260"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a set of terms and an order, and see the sum stays the same.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Terms</h3>
+            <select id="sel-swapgroup-set" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.5rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>−7, 10, −11</option>
+              <option value="1">6, −4, 9</option>
+              <option value="2">−12, −5, 20</option>
+            </select>
+            <label style="font-size:0.85rem;color:var(--text-muted);">Order to Add Them</label>
+            <select id="sel-swapgroup-order" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>1st + 2nd + 3rd</option>
+              <option value="1">1st + 3rd + 2nd</option>
+              <option value="2">2nd + 1st + 3rd</option>
+              <option value="3">2nd + 3rd + 1st</option>
+              <option value="4">3rd + 1st + 2nd</option>
+              <option value="5">3rd + 2nd + 1st</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Running Sum</h3>
+            <div id="swap-group-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose terms and an order above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const decimalPlaceValueLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="decimal-place-canvas" width="600" height="220"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a decimal and see its digits placed in the units/tenths/hundredths/thousandths table.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Decimal</h3>
+            <select id="sel-decimal-place-n" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${['4.5','4.05','0.405','4.050','4.005','4.50'].map(n => `<option value="${n}"${n==='4.05'?' selected':''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Equivalence Check</h3>
+            <div id="decimal-place-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a decimal above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const decimalNumberLineLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="decimal-numberline-canvas" width="600" height="260"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a pair of decimals and see them compared digit by digit.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Pair</h3>
+            <select id="sel-decimal-pair" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>6.456 vs 6.465</option>
+              <option value="1">1.009 vs 1.090</option>
+              <option value="2">3.81 vs 13.800</option>
+              <option value="3">1.23 vs 1.32</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Comparison</h3>
+            <div id="decimal-numberline-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a pair above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const triangleCongruenceSSSLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="triangle-congruence-canvas" width="600" height="260"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a pair of triangles and check if they're congruent by SSS.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Pair of Triangles</h3>
+            <select id="sel-congruence-pair" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>4,6,8 vs 4,6,8 (same)</option>
+              <option value="1">4,6,8 vs 6,8,4 (reordered)</option>
+              <option value="2">4,6,8 vs 5,6,8 (different)</option>
+              <option value="3">3,4,5 vs 5,4,3 (reordered)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>SSS Check</h3>
+            <div id="congruence-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a pair above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const isoscelesAngleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="isosceles-angle-canvas" width="600" height="260"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick the apex angle and see the equal base angles computed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Apex Angle (∠A)</h3>
+            <select id="sel-isosceles-apex" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[20,40,60,80,100,120,140].map(n => `<option value="${n}"${n===80?' selected':''}>${n}°</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Base Angles</h3>
+            <div id="isosceles-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an apex angle above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const integerMultiplicationPatternLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="int-mult-pattern-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a multiplicand and watch the pattern extend across zero.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Multiplicand</h3>
+            <select id="sel-int-mult-multiplicand" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="3" selected>3</option>
+              <option value="-3">−3</option>
+              <option value="5">5</option>
+              <option value="-5">−5</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What's Happening</h3>
+            <div id="int-mult-pattern-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a multiplicand above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const integerDivisionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="integer-division-canvas" width="600" height="260"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a division problem and watch it get reframed as multiplication.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Problem</h3>
+            <select id="sel-int-division" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>(−100) ÷ 25</option>
+              <option value="1">(−100) ÷ (−4)</option>
+              <option value="2">84 ÷ (−12)</option>
+              <option value="3">(−90) ÷ (−9)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Reframed as Multiplication</h3>
+            <div id="integer-division-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a problem above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -3266,6 +3493,36 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'divisibility-tester-sim') {
               labHtml = divisibilityTesterLabHtml;
               labDesc = 'Pick a number and see it tested for divisibility by 2, 4, 5, 8, and 10 using only its last digits.';
+            } else if (topicObj.lab.type === 'place-value-comma-sim') {
+              labHtml = placeValueCommaLabHtml;
+              labDesc = 'Pick a number and see it grouped by both the Indian (lakh/crore) and International (million/billion) systems.';
+            } else if (topicObj.lab.type === 'rounding-nearest-neighbour-sim') {
+              labHtml = roundingNearestNeighbourLabHtml;
+              labDesc = 'Pick a number and see its nearest thousand, ten thousand, lakh, ten lakh, and crore.';
+            } else if (topicObj.lab.type === 'expression-term-splitter-sim') {
+              labHtml = expressionTermSplitterLabHtml;
+              labDesc = 'Pick an expression and see it split into its terms, each evaluated separately before adding.';
+            } else if (topicObj.lab.type === 'swap-group-terms-sim') {
+              labHtml = swapGroupTermsLabHtml;
+              labDesc = 'Pick a set of terms and an order to add them, and see the sum always stays the same.';
+            } else if (topicObj.lab.type === 'decimal-place-value-sim') {
+              labHtml = decimalPlaceValueLabHtml;
+              labDesc = 'Pick a decimal and see its digits placed in a units/tenths/hundredths/thousandths table.';
+            } else if (topicObj.lab.type === 'decimal-number-line-sim') {
+              labHtml = decimalNumberLineLabHtml;
+              labDesc = 'Pick a pair of decimals and see them located on a number line and compared digit by digit.';
+            } else if (topicObj.lab.type === 'triangle-congruence-sss-sim') {
+              labHtml = triangleCongruenceSSSLabHtml;
+              labDesc = 'Pick a pair of triangles and check whether their three sidelengths match, confirming SSS congruence.';
+            } else if (topicObj.lab.type === 'isosceles-angle-sim') {
+              labHtml = isoscelesAngleLabHtml;
+              labDesc = 'Pick the apex angle of an isosceles triangle and see its two equal base angles computed.';
+            } else if (topicObj.lab.type === 'integer-multiplication-pattern-sim') {
+              labHtml = integerMultiplicationPatternLabHtml;
+              labDesc = 'Pick a multiplicand and watch the multiplication pattern extend consistently across zero.';
+            } else if (topicObj.lab.type === 'integer-division-sim') {
+              labHtml = integerDivisionLabHtml;
+              labDesc = 'Pick a division problem and watch it get reframed as a multiplication question to solve.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -3599,6 +3856,26 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initSieveOfEratosthenesLab();
         } else if (topicObj.lab.type === 'divisibility-tester-sim') {
           initDivisibilityTesterLab();
+        } else if (topicObj.lab.type === 'place-value-comma-sim') {
+          initPlaceValueCommaLab();
+        } else if (topicObj.lab.type === 'rounding-nearest-neighbour-sim') {
+          initRoundingNearestNeighbourLab();
+        } else if (topicObj.lab.type === 'expression-term-splitter-sim') {
+          initExpressionTermSplitterLab();
+        } else if (topicObj.lab.type === 'swap-group-terms-sim') {
+          initSwapGroupTermsLab();
+        } else if (topicObj.lab.type === 'decimal-place-value-sim') {
+          initDecimalPlaceValueLab();
+        } else if (topicObj.lab.type === 'decimal-number-line-sim') {
+          initDecimalNumberLineLab();
+        } else if (topicObj.lab.type === 'triangle-congruence-sss-sim') {
+          initTriangleCongruenceSSSLab();
+        } else if (topicObj.lab.type === 'isosceles-angle-sim') {
+          initIsoscelesAngleLab();
+        } else if (topicObj.lab.type === 'integer-multiplication-pattern-sim') {
+          initIntegerMultiplicationPatternLab();
+        } else if (topicObj.lab.type === 'integer-division-sim') {
+          initIntegerDivisionLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -13609,6 +13886,564 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         const passCount = tests.filter(t => t.ok).length;
         obs.innerHTML = `<strong>${n} passes ${passCount} of the 5 divisibility tests shown.</strong><br>Each test checks only the last one, two, or three digits of ${n} — no long division needed.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPlaceValueCommaLab() {
+      const canvas = document.getElementById('place-value-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-placevalue-n');
+      const obs = document.getElementById('placevalue-obs');
+      const palette = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444'];
+
+      function groupIndian(numStr) {
+        const groups = [];
+        let rest = numStr;
+        if (rest.length > 3) {
+          groups.unshift(rest.slice(-3));
+          rest = rest.slice(0, -3);
+          while (rest.length > 2) {
+            groups.unshift(rest.slice(-2));
+            rest = rest.slice(0, -2);
+          }
+          if (rest.length > 0) groups.unshift(rest);
+        } else {
+          groups.unshift(rest);
+        }
+        return groups;
+      }
+
+      function groupInternational(numStr) {
+        const groups = [];
+        let rest = numStr;
+        while (rest.length > 3) {
+          groups.unshift(rest.slice(-3));
+          rest = rest.slice(0, -3);
+        }
+        groups.unshift(rest);
+        return groups;
+      }
+
+      function drawGroups(groups, x, y, label) {
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+        ctx.fillText(label, x, y - 20);
+        ctx.font = 'bold 22px system-ui'; ctx.textAlign = 'left';
+        let curX = x;
+        groups.forEach((g, i) => {
+          ctx.fillStyle = palette[i % palette.length];
+          ctx.fillText(g, curX, y);
+          curX += ctx.measureText(g).width;
+          if (i < groups.length - 1) {
+            ctx.fillStyle = cssVar('--text-normal');
+            ctx.fillText(',', curX, y);
+            curX += ctx.measureText(',').width + 4;
+          }
+        });
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const numStr = sel.value;
+
+        const indianGroups = groupIndian(numStr);
+        const intlGroups = groupInternational(numStr);
+
+        drawGroups(indianGroups, 30, 90, 'Indian System (3-2-2-2...)');
+        drawGroups(intlGroups, 30, 190, 'International System (3-3-3...)');
+
+        ctx.fillStyle = cssVar('--text-muted'); ctx.font = '12px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText(`Same value both ways: ${numStr}`, 30, 240);
+
+        obs.innerHTML = `<strong>Indian: ${indianGroups.join(',')}  |  International: ${intlGroups.join(',')}</strong><br>Both represent the exact same value — the Indian system groups as 3-2-2-2... (ones, thousands, lakhs, crores), while the International system groups uniformly as 3-3-3... (ones, thousands, millions, billions).`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initRoundingNearestNeighbourLab() {
+      const canvas = document.getElementById('rounding-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-rounding-n');
+      const obs = document.getElementById('rounding-obs');
+
+      function formatIndian(num) {
+        const numStr = String(num);
+        let rest = numStr;
+        const groups = [];
+        if (rest.length > 3) {
+          groups.unshift(rest.slice(-3));
+          rest = rest.slice(0, -3);
+          while (rest.length > 2) {
+            groups.unshift(rest.slice(-2));
+            rest = rest.slice(0, -2);
+          }
+          if (rest.length > 0) groups.unshift(rest);
+        } else {
+          groups.unshift(rest);
+        }
+        return groups.join(',');
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = parseInt(sel.value);
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 20px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(formatIndian(n), W / 2, 35);
+
+        const places = [
+          { label: 'Nearest Thousand', value: 1000 },
+          { label: 'Nearest Ten Thousand', value: 10000 },
+          { label: 'Nearest Lakh', value: 100000 },
+          { label: 'Nearest Ten Lakh', value: 1000000 },
+          { label: 'Nearest Crore', value: 10000000 }
+        ];
+
+        let y = 80;
+        places.forEach(p => {
+          const rounded = Math.round(n / p.value) * p.value;
+          ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+          ctx.fillText(p.label + ':', 60, y);
+          ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'right';
+          ctx.fillText(formatIndian(rounded), 540, y);
+          y += 42;
+        });
+
+        obs.innerHTML = `<strong>${formatIndian(n)}</strong> rounds to each place value shown above — found by checking the digit just past that place and rounding up (5 or more) or down (less than 5).`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initExpressionTermSplitterLab() {
+      const canvas = document.getElementById('term-splitter-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-term-expr');
+      const obs = document.getElementById('term-splitter-obs');
+
+      const EXPRESSIONS = [
+        { label: '13 − 2 + 6', terms: [['13', 13], ['−2', -2], ['6', 6]] },
+        { label: '5 + 6 × 3', terms: [['5', 5], ['6×3', 18]] },
+        { label: '4 + 15 − 9', terms: [['4', 4], ['15', 15], ['−9', -9]] },
+        { label: '23 − 2×4 + 16', terms: [['23', 23], ['−2×4', -8], ['16', 16]] },
+        { label: '28 + 19 − 8', terms: [['28', 28], ['19', 19], ['−8', -8]] }
+      ];
+      const palette = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444'];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const idx = parseInt(sel.value);
+        const expr = EXPRESSIONS[idx];
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 22px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(expr.label, W / 2, 38);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('= sum of terms:', W / 2, 65);
+
+        const boxW = 90, boxH = 48, gap = 18;
+        const totalW = expr.terms.length * boxW + (expr.terms.length - 1) * gap;
+        let x = W / 2 - totalW / 2;
+        const y = 85;
+
+        let sum = 0;
+        expr.terms.forEach(([disp, val], i) => {
+          sum += val;
+          ctx.strokeStyle = palette[i % palette.length]; ctx.lineWidth = 2;
+          ctx.strokeRect(x, y, boxW, boxH);
+          ctx.fillStyle = palette[i % palette.length]; ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(disp, x + boxW / 2, y + boxH / 2 + 6);
+          x += boxW + gap;
+        });
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 18px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`Sum = ${sum}`, W / 2, y + boxH + 45);
+
+        obs.innerHTML = `<strong>${expr.label} = ${sum}</strong><br>Terms: ${expr.terms.map(t => t[0]).join(', ')}. Each term is evaluated on its own first, then all terms are added together.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSwapGroupTermsLab() {
+      const canvas = document.getElementById('swap-group-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const setSel = document.getElementById('sel-swapgroup-set');
+      const ordSel = document.getElementById('sel-swapgroup-order');
+      const obs = document.getElementById('swap-group-obs');
+
+      const TERM_SETS = [[-7, 10, -11], [6, -4, 9], [-12, -5, 20]];
+      const PERMS = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+
+      function fmt(n) { return n >= 0 ? `${n}` : `(${n})`; }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const terms = TERM_SETS[parseInt(setSel.value)];
+        const perm = PERMS[parseInt(ordSel.value)];
+        const ordered = perm.map(i => terms[i]);
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 20px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`${fmt(ordered[0])} + ${fmt(ordered[1])} + ${fmt(ordered[2])}`, W / 2, 40);
+
+        let running = ordered[0];
+        ctx.font = '15px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        let y = 80;
+        ctx.fillText(`Start: ${running}`, W / 2, y);
+        y += 32;
+        running += ordered[1];
+        ctx.fillText(`After adding ${fmt(ordered[1])}: ${running}`, W / 2, y);
+        y += 32;
+        running += ordered[2];
+        ctx.fillText(`After adding ${fmt(ordered[2])}: ${running}`, W / 2, y);
+
+        ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Final Sum = ${running}`, W / 2, y + 48);
+
+        const originalSum = terms[0] + terms[1] + terms[2];
+        obs.innerHTML = `<strong>${fmt(ordered[0])} + ${fmt(ordered[1])} + ${fmt(ordered[2])} = ${running}</strong><br>The terms ${fmt(terms[0])}, ${fmt(terms[1])}, ${fmt(terms[2])} always sum to ${originalSum}, no matter which order or grouping is used — confirming the commutative and associative properties.`;
+      }
+
+      setSel.addEventListener('change', draw);
+      ordSel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDecimalPlaceValueLab() {
+      const canvas = document.getElementById('decimal-place-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-decimal-place-n');
+      const obs = document.getElementById('decimal-place-obs');
+      const NUMBERS = ['4.5', '4.05', '0.405', '4.050', '4.005', '4.50'];
+
+      function getPlaceDigits(numStr) {
+        const parts = numStr.split('.');
+        const units = parts[0];
+        const dec = parts[1] || '';
+        return {
+          units,
+          tenths: dec[0] || '0',
+          hundredths: dec[1] || '0',
+          thousandths: dec[2] || '0'
+        };
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const numStr = sel.value;
+        const digits = getPlaceDigits(numStr);
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 20px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(numStr, W / 2, 28);
+
+        const cols = [
+          { label: 'Units', val: digits.units },
+          { label: 'Tenths', val: digits.tenths },
+          { label: 'Hundredths', val: digits.hundredths },
+          { label: 'Thousandths', val: digits.thousandths }
+        ];
+        const colW = 135, startX = 40, startY = 50, colH = 100;
+
+        cols.forEach((c, i) => {
+          const x = startX + i * colW;
+          ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+          ctx.strokeRect(x, startY, colW - 10, colH);
+          ctx.fillStyle = cssVar('--text-muted'); ctx.font = '12px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(c.label, x + (colW - 10) / 2, startY + 20);
+          ctx.fillStyle = cssVar('--accent-color'); ctx.font = 'bold 30px system-ui';
+          ctx.fillText(c.val, x + (colW - 10) / 2, startY + 65);
+        });
+
+        const val = parseFloat(numStr);
+        const equalOthers = NUMBERS.filter(n => n !== numStr && parseFloat(n) === val);
+        const differentOthers = NUMBERS.filter(n => n !== numStr && parseFloat(n) !== val);
+
+        obs.innerHTML = equalOthers.length > 0
+          ? `<strong>${numStr} = ${equalOthers.join(' = ')}</strong><br>These all represent the exact same value — the extra zeros are trailing zeros that add nothing. Compare to ${differentOthers.slice(0, 2).join(', ')}, which are genuinely different values.`
+          : `<strong>${numStr} is a genuinely distinct value</strong><br>None of the other listed decimals equal ${numStr} — its non-zero digits sit in different place-value columns than the others.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDecimalNumberLineLab() {
+      const canvas = document.getElementById('decimal-numberline-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-decimal-pair');
+      const obs = document.getElementById('decimal-numberline-obs');
+      const PAIRS = [[6.456, 6.465], [1.009, 1.090], [3.81, 13.800], [1.23, 1.32]];
+
+      function compareDecimals(a, b) {
+        const aInt = Math.trunc(a), bInt = Math.trunc(b);
+        if (aInt !== bInt) {
+          return { level: 'whole-number part', aDigit: aInt, bDigit: bInt, larger: aInt > bInt ? a : b };
+        }
+        const aDec = a.toFixed(3).split('.')[1];
+        const bDec = b.toFixed(3).split('.')[1];
+        const placeNames = ['tenths', 'hundredths', 'thousandths'];
+        for (let i = 0; i < 3; i++) {
+          if (aDec[i] !== bDec[i]) {
+            return { level: placeNames[i], aDigit: aDec[i], bDigit: bDec[i], larger: parseInt(aDec[i]) > parseInt(bDec[i]) ? a : b };
+          }
+        }
+        return { level: 'none', larger: null };
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [a, b] = PAIRS[parseInt(sel.value)];
+        const lo = Math.min(a, b), hi = Math.max(a, b);
+        const range = (hi - lo) || 1;
+        const padding = range * 0.4 + 0.05;
+        const min = lo - padding, max = hi + padding;
+
+        const plotX = 40, plotY = 100, plotW = 520;
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(plotX, plotY); ctx.lineTo(plotX + plotW, plotY); ctx.stroke();
+
+        function toX(v) { return plotX + ((v - min) / (max - min)) * plotW; }
+
+        [[a, '#3b82f6', -18], [b, cssVar('--accent-color'), 34]].forEach(([v, color, dy]) => {
+          const x = toX(v);
+          ctx.fillStyle = color;
+          ctx.beginPath(); ctx.arc(x, plotY, 6, 0, Math.PI * 2); ctx.fill();
+          ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(`${v}`, x, plotY + dy);
+        });
+
+        const cmp = compareDecimals(a, b);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        if (cmp.level === 'whole-number part') {
+          ctx.fillText(`Whole-number parts differ: ${cmp.aDigit} vs ${cmp.bDigit} → ${cmp.larger} is larger`, W / 2, 165);
+        } else {
+          ctx.fillText(`Units and any earlier places match — first difference at the ${cmp.level} place: ${cmp.aDigit} vs ${cmp.bDigit}`, W / 2, 165);
+          ctx.fillText(`→ ${cmp.larger} is larger`, W / 2, 190);
+        }
+
+        obs.innerHTML = cmp.level === 'whole-number part'
+          ? `<strong>${a} vs ${b}: compare whole-number parts first — ${cmp.aDigit} vs ${cmp.bDigit}</strong><br>Since the whole-number parts already differ, ${cmp.larger} is larger without needing to look at any decimal digits.`
+          : `<strong>${a} vs ${b}: first difference at the ${cmp.level} place (${cmp.aDigit} vs ${cmp.bDigit})</strong><br>All digits before this point match exactly. Once a difference is found, ${cmp.larger} is larger — no digit further right can change this.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initTriangleCongruenceSSSLab() {
+      const canvas = document.getElementById('triangle-congruence-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-congruence-pair');
+      const obs = document.getElementById('congruence-obs');
+      const PAIRS = [
+        { a: [4, 6, 8], b: [4, 6, 8] },
+        { a: [4, 6, 8], b: [6, 8, 4] },
+        { a: [4, 6, 8], b: [5, 6, 8] },
+        { a: [3, 4, 5], b: [5, 4, 3] }
+      ];
+
+      function drawTriangle(sides, cx, baseY, scale) {
+        const [a, b, c] = sides;
+        const p1 = { x: cx - (a * scale) / 2, y: baseY };
+        const p2 = { x: cx + (a * scale) / 2, y: baseY };
+        const cosA = (b * b + a * a - c * c) / (2 * a * b);
+        const angleA = Math.acos(Math.max(-1, Math.min(1, cosA)));
+        const p3 = { x: p1.x + b * scale * Math.cos(angleA), y: p1.y - b * scale * Math.sin(angleA) };
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p3.x, p3.y); ctx.lineTo(p2.x, p2.y); ctx.closePath(); ctx.stroke();
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`${a}`, cx, baseY + 18);
+        ctx.fillText(`${b}`, (p1.x + p3.x) / 2 - 14, (p1.y + p3.y) / 2);
+        ctx.fillText(`${c}`, (p2.x + p3.x) / 2 + 14, (p2.y + p3.y) / 2);
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const pair = PAIRS[parseInt(sel.value)];
+        const scale = 20;
+
+        drawTriangle(pair.a, W * 0.27, 200, scale);
+        drawTriangle(pair.b, W * 0.73, 200, scale);
+
+        ctx.fillStyle = cssVar('--text-muted'); ctx.font = '13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`Sides: ${pair.a.join(', ')}`, W * 0.27, 235);
+        ctx.fillText(`Sides: ${pair.b.join(', ')}`, W * 0.73, 235);
+
+        const sortedA = [...pair.a].sort((x, y) => x - y).join(',');
+        const sortedB = [...pair.b].sort((x, y) => x - y).join(',');
+        const congruent = sortedA === sortedB;
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = congruent ? cssVar('--accent-color') : '#ef4444';
+        ctx.fillText(congruent ? '✓ Congruent (SSS)' : '✗ Not Congruent', W / 2, 30);
+
+        obs.innerHTML = congruent
+          ? `<strong>Congruent!</strong><br>Both triangles have the exact same three sidelengths {${sortedA}}, regardless of the order they're listed — satisfying the SSS condition.`
+          : `<strong>Not Congruent.</strong><br>The sidelength sets {${sortedA}} and {${sortedB}} are different — at least one side length doesn't match, so the SSS condition fails.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initIsoscelesAngleLab() {
+      const canvas = document.getElementById('isosceles-angle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-isosceles-apex');
+      const obs = document.getElementById('isosceles-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const apex = parseInt(sel.value);
+        const base = (180 - apex) / 2;
+
+        const cx = W / 2, baseY = 220;
+        let halfBase = 100;
+        const apexRad = apex * Math.PI / 180;
+        let height = halfBase / Math.tan(apexRad / 2);
+        const maxHeight = 170;
+        if (height > maxHeight) {
+          const shrink = maxHeight / height;
+          halfBase *= shrink;
+          height = maxHeight;
+        }
+        const apexY = baseY - height;
+        const Bx = cx - halfBase, Cx = cx + halfBase;
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(Bx, baseY); ctx.lineTo(cx, apexY); ctx.lineTo(Cx, baseY); ctx.closePath(); ctx.stroke();
+
+        ctx.strokeStyle = cssVar('--text-light'); ctx.setLineDash([4, 3]); ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(cx, apexY); ctx.lineTo(cx, baseY); ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('A', cx, apexY - 12);
+        ctx.fillText('B', Bx - 14, baseY + 5);
+        ctx.fillText('C', Cx + 14, baseY + 5);
+        ctx.fillText('D', cx + 14, baseY + 16);
+
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`∠A = ${apex}°`, cx, apexY - 30 < 15 ? apexY + 20 : apexY - 30);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.textAlign = 'right';
+        ctx.fillText(`∠B = ${base}°`, Bx - 8, baseY - 12);
+        ctx.textAlign = 'left';
+        ctx.fillText(`∠C = ${base}°`, Cx + 8, baseY - 12);
+        ctx.textAlign = 'center';
+
+        const isEquilateral = apex === 60;
+        obs.innerHTML = isEquilateral
+          ? `<strong>∠A=60°, so ∠B=∠C=60° — this is an equilateral triangle!</strong><br>Since AB=AC makes ∠B=∠C always, and here they also equal ∠A, all three angles (and therefore all three sides) turn out equal — a special case of the isosceles base-angle property.`
+          : `<strong>∠A = ${apex}°, so ∠B = ∠C = (180° − ${apex}°) ÷ 2 = ${base}°</strong><br>The altitude AD splits the isosceles triangle into two congruent right triangles (by RHS: shared side AD, equal hypotenuses AB=AC, right angles at D), proving ∠B = ∠C.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initIntegerMultiplicationPatternLab() {
+      const canvas = document.getElementById('int-mult-pattern-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-int-mult-multiplicand');
+      const obs = document.getElementById('int-mult-pattern-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const multiplicand = parseInt(sel.value);
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`Multiplicand = ${multiplicand}`, W / 2, 25);
+
+        const multipliers = [4, 3, 2, 1, 0, -1, -2, -3, -4];
+        const rowH = 26, startY = 50;
+
+        multipliers.forEach((m, i) => {
+          const product = m * multiplicand;
+          const y = startY + i * rowH;
+          ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'left';
+          ctx.fillStyle = m < 0 ? cssVar('--accent-color') : cssVar('--text-normal');
+          ctx.fillText(`${m} × ${multiplicand} = ${product}`, 70, y);
+        });
+
+        const zeroIdx = multipliers.indexOf(0);
+        ctx.strokeStyle = cssVar('--border-color'); ctx.setLineDash([4, 3]); ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(50, startY + zeroIdx * rowH + 8);
+        ctx.lineTo(450, startY + zeroIdx * rowH + 8);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        const step = Math.abs(multiplicand);
+        const dir = multiplicand > 0 ? '−' : '+';
+        obs.innerHTML = `<strong>Each step down in the multiplier changes the product by ${dir}${step}</strong><br>This exact pattern continues unbroken as the multiplier crosses zero into negative numbers — confirming the sign rules for multiplying integers.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initIntegerDivisionLab() {
+      const canvas = document.getElementById('integer-division-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-int-division');
+      const obs = document.getElementById('integer-division-obs');
+      const PROBLEMS = [
+        { dividend: -100, divisor: 25 },
+        { dividend: -100, divisor: -4 },
+        { dividend: 84, divisor: -12 },
+        { dividend: -90, divisor: -9 }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const { dividend, divisor } = PROBLEMS[parseInt(sel.value)];
+        const quotient = dividend / divisor;
+
+        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 22px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`(${dividend}) ÷ (${divisor}) = ?`, W / 2, 45);
+
+        ctx.font = '15px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('reframed as:', W / 2, 85);
+
+        ctx.font = 'bold 20px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`(${divisor}) × ? = (${dividend})`, W / 2, 125);
+
+        ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(`? = ${quotient}`, W / 2, 170);
+
+        const sameSign = (dividend < 0) === (divisor < 0);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(sameSign ? 'Same signs → positive quotient' : 'Different signs → negative quotient', W / 2, 205);
+
+        obs.innerHTML = `<strong>(${dividend}) ÷ (${divisor}) = ${quotient}</strong><br>Reframed as "${divisor} × ? = ${dividend}", solved by recalling that ${divisor} × ${quotient} = ${dividend}. ${sameSign ? 'Both numbers share the same sign, giving a positive quotient.' : 'The two numbers have different signs, giving a negative quotient.'}`;
       }
 
       sel.addEventListener('change', draw);

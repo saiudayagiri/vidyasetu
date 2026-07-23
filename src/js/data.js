@@ -4713,6 +4713,838 @@ export const curriculumData = {
           icon: "📐",
           chapters: [
             {
+              id: "7m-1",
+              title: "Large Numbers Around Us",
+              topics: [
+                {
+                  id: "7m-1-1",
+                  title: "1. A Lakh Varieties! Reading and Writing Large Numbers",
+                  theory: {
+                    intro: "India once had about a lakh varieties of rice — but how big is 'one lakh', really? Getting a genuine feel for large numbers, and being able to read and write them correctly, is the foundation for everything else in this chapter.",
+                    sections: [
+                      {
+                        heading: "How Big Is One Lakh?",
+                        text: "The smallest 6-digit number, 1,00,000, is called one lakh. If a person tried a new variety of rice every single day for a 100-year lifetime, they would experience only 365 × 100 = 36,500 days — nowhere close to one lakh (100,000) varieties, even eating one a day. This kind of direct comparison helps build a genuine sense of just how large one lakh actually is."
+                      },
+                      {
+                        heading: "Getting a Feel for Large Numbers by Comparison",
+                        text: "Large measurements are easier to understand when compared to something familiar. For example, if Somu is 1 metre tall and each floor of a building is about four times his height (4 metres), a building's height in floors can be compared directly to real landmarks like the 180-metre-tall Statue of Unity or the 450-metre Kunchikal waterfall — turning an abstract number into a concrete, relatable comparison."
+                      },
+                      {
+                        heading: "Reading and Writing Large Numbers with Commas",
+                        text: "In the Indian place value system, commas are placed after the hundreds digit, then after every 2 digits going left — separating thousands, lakhs, and beyond, e.g., 12,78,830 is read as 'twelve lakh seventy eight thousand eight hundred thirty'. Using commas correctly makes large numbers far easier to read and say aloud without error."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Is a Lakh Big or Small? Building Your Own Comparisons",
+                      objective: "To develop genuine number sense for the magnitude of one lakh by finding and evaluating real-world comparisons.",
+                      materials: ["Paper and pencil", "Access to a few basic facts (school population, stadium capacity, etc.)"],
+                      steps: [
+                        "List three things that a lakh of something would represent in your own life (e.g., lakh rupees, lakh seconds, lakh students).",
+                        "For each, calculate or estimate: is a lakh of that thing something huge, or something that could plausibly fit in a small space (like a stadium)?",
+                        "Compare: 1 lakh days equals about 274 years (a huge span of time), but 1 lakh people can fit in one large cricket stadium (a small area).",
+                        "Discuss with a partner: does the answer to 'is a lakh big or small?' depend on WHAT is being counted, not just the number itself?",
+                        "Write one sentence explaining your own conclusion about whether a lakh is 'big' or 'small'."
+                      ],
+                      observation: "Whether a lakh feels 'big' or 'small' entirely depends on what is being measured — a lakh days is an enormous span of a human lifetime, while a lakh people can comfortably fit inside a single modern stadium."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the smallest 6-digit number, also known as 'one lakh'?",
+                      options: ["10,000", "99,999", "1,00,000", "10,00,000"],
+                      answer: 2,
+                      explanation: "1,00,000 (one lakh) is the smallest 6-digit number — it comes immediately after the largest 5-digit number, 99,999."
+                    },
+                    {
+                      question: "If someone tried one new variety of rice every day for 100 years (ignoring leap years), how many varieties would they try in total?",
+                      options: ["Exactly 1,00,000", "About 36,500 — far short of one lakh", "About 1,000,000", "It is impossible to calculate"],
+                      answer: 1,
+                      explanation: "365 days/year × 100 years = 36,500 days, meaning only 36,500 varieties could be tried — far less than the 1,00,000 (one lakh) varieties that once existed."
+                    },
+                    {
+                      question: "Where are commas placed in the Indian place value system for large numbers?",
+                      options: ["Every 3 digits, from right to left, always", "After the hundreds digit, then after every 2 digits going further left", "Randomly, wherever convenient", "Only at the very end of the number"],
+                      answer: 1,
+                      explanation: "The Indian system places the first comma after the hundreds place (3 digits from the right), then a comma after every 2 digits beyond that — separating thousands, lakhs, crores, and so on."
+                    },
+                    {
+                      question: "How is 12,78,830 read in words using the Indian number system?",
+                      options: ["Twelve thousand seventy eight hundred thirty", "Twelve lakh seventy eight thousand eight hundred thirty", "One hundred twenty seven thousand eight hundred thirty", "Twelve crore seventy eight lakh"],
+                      answer: 1,
+                      explanation: "12,78,830 breaks into 12 lakh + 78 thousand + 830, read as 'twelve lakh seventy eight thousand eight hundred thirty'."
+                    },
+                    {
+                      question: "Why is it useful to compare a large measurement (like the Statue of Unity's height) to something familiar (like a person's height)?",
+                      options: ["It isn't useful, exact numbers are always better", "Because comparing to something familiar makes an abstract large number concrete and easier to genuinely understand", "Because familiar objects are always exactly 1 metre tall", "Comparisons are only used for small numbers"],
+                      answer: 1,
+                      explanation: "Relating an unfamiliar large measurement to something familiar (like a person's height or number of building floors) helps build real intuition for how large that measurement actually is."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-1-2",
+                  title: "2. Place Value: Lakhs, Crores and the International System",
+                  lab: { type: "place-value-comma-sim" },
+                  theory: {
+                    intro: "Beyond a lakh lie even larger place values — crores and arabs in the Indian system — and a completely different way of grouping digits is used internationally, with numbers like 'million' and 'billion'.",
+                    sections: [
+                      {
+                        heading: "Beyond the Lakh: Crores and Arabs",
+                        text: "A crore is a hundred lakhs: 1,00,00,000 (1 followed by 7 zeroes). An arab is a hundred crores: 1,00,00,00,000. In the Indian system, place values grow as ones, tens, hundreds, thousands, lakhs, crores, arabs — each new comma-separated group (after the first) represents 100 times the previous group, not 1000 times."
+                      },
+                      {
+                        heading: "The Indian System vs. the International (American) System",
+                        text: "The Indian system groups digits as 3-2-2-2... from the right (thousand, lakh, crore, ...). The International system groups digits uniformly as 3-3-3... from the right (thousand, million, billion, ...). For example, 1,00,000 (Indian: one lakh) equals 100,000 (International: one hundred thousand); 1,00,00,000 (Indian: one crore) equals 10,000,000 (International: ten million). The Indian system is also used in Bhutan, Nepal, Sri Lanka, Pakistan, Bangladesh, and several other South Asian countries; the words 'lakh' and 'crore' come from the Sanskrit lakṣha and koṭi."
+                      },
+                      {
+                        heading: "Reading the Same Number Both Ways",
+                        text: "The number 9876501234 can be grouped either way: in the Indian system, 9,87,65,01,234 reads as '987 crore 65 lakh 1 thousand 234'; in the International system, 9,876,501,234 reads as '9 billion 876 million 501 thousand 234'. Both groupings represent the exact same value — only the comma placement and naming convention differ."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Converting Between the Indian and International Numbering Systems",
+                      objective: "To practice re-grouping the same large number's digits using both the Indian (3-2-2-2) and International (3-3-3) comma patterns.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Write down a 9 or 10-digit number without any commas, such as 456789123.",
+                        "Insert commas using the Indian system's rule (first comma after 3 digits from the right, then every 2 digits) and write out its Indian number name.",
+                        "Insert commas into the SAME digits using the International system's rule (commas every 3 digits from the right) and write out its International number name.",
+                        "Double check that both comma-separated versions, when all commas are removed, give back the exact same original number.",
+                        "Repeat with a different large number of your choice, and compare your two number names with a classmate's."
+                      ],
+                      observation: "The same underlying number can always be read out in either system — the digits themselves never change, only where the commas are placed and which words (lakh/crore vs. million/billion) are used to name the groups."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How many zeroes does one crore have, written in numerals?",
+                      options: ["5 zeroes", "6 zeroes", "7 zeroes", "9 zeroes"],
+                      answer: 2,
+                      explanation: "One crore is written as 1,00,00,000 — that is, 1 followed by 7 zeroes."
+                    },
+                    {
+                      question: "How does the Indian system group digits with commas, compared to the International system?",
+                      options: ["Both systems group digits identically", "The Indian system groups as 3-2-2-2... from the right; the International system groups uniformly as 3-3-3... from the right", "The Indian system never uses commas", "The International system uses 2-2-2 grouping"],
+                      answer: 1,
+                      explanation: "The Indian system places its first comma after 3 digits, then every 2 digits thereafter (thousands, lakhs, crores); the International system places a comma every 3 digits uniformly (thousands, millions, billions)."
+                    },
+                    {
+                      question: "What is 1,00,00,000 (one crore) in the International system?",
+                      options: ["One hundred thousand", "One million", "Ten million", "One billion"],
+                      answer: 2,
+                      explanation: "One crore (10,000,000 with commas removed) equals ten million in the International system."
+                    },
+                    {
+                      question: "Where do the words 'lakh' and 'crore' originate from?",
+                      options: ["English", "The Sanskrit words lakṣha and koṭi", "French", "They have no historical origin"],
+                      answer: 1,
+                      explanation: "The words 'lakh' and 'crore' come from the Sanskrit words lakṣha (लक्ष) and koṭi (कोटि), and are used across the Indian system in several South Asian countries."
+                    },
+                    {
+                      question: "Does the number 9876501234 change in value when written as 9,87,65,01,234 (Indian) versus 9,876,501,234 (International)?",
+                      options: ["Yes, the Indian version is a bigger number", "No — both represent the exact same value; only the comma placement and naming convention differ", "Yes, the International version is smaller", "They cannot represent the same number"],
+                      answer: 1,
+                      explanation: "Removing the commas from both versions gives back the identical digit string 9876501234 — the underlying value is unchanged; only how it's grouped and named differs between the two systems."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-1-3",
+                  title: "3. Exact and Approximate Values: Rounding & Nearest Neighbours",
+                  lab: { type: "rounding-nearest-neighbour-sim" },
+                  theory: {
+                    intro: "Exact numbers aren't always necessary — often, a sensibly rounded number communicates the same idea more efficiently, and knowing a large number's 'nearest neighbours' at different place values is a genuinely useful skill.",
+                    sections: [
+                      {
+                        heading: "Rounding Up and Rounding Down",
+                        text: "Rounding UP gives an approximation larger than the actual value — useful when it's better to have a little extra, like a school principal ordering 750 sweets for 732 people rather than exactly 732. Rounding DOWN gives an approximation smaller than the actual value — useful when a slightly lower estimate is more natural, like saying an item costing ₹470 is 'around ₹450' rather than '₹500'."
+                      },
+                      {
+                        heading: "Finding the Nearest Neighbours of a Large Number",
+                        text: "A number's 'nearest neighbours' are its closest round values at different place values — nearest thousand, nearest ten thousand, nearest lakh, nearest ten lakh, and nearest crore. For example, the number 6,72,85,183 has nearest thousand 6,72,85,000, nearest lakh 6,73,00,000, and nearest crore 7,00,00,000 — found by looking at the digit just past the place value being rounded to, and rounding up if it's 5 or more, or down otherwise."
+                      },
+                      {
+                        heading: "Estimating Sums and Differences",
+                        text: "Rounding numbers before adding or subtracting gives a quick, useful estimate of the result WITHOUT doing the exact calculation — for example, roughly estimating that 4,63,128 + 4,19,682 is 'near 9,00,000, but less than 9,00,000' before computing the exact sum. Comparing an estimate to the exact answer afterward helps build confidence in when rounding gives a reliable, useful approximation."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding the Five Nearest Neighbours of a Large Number",
+                      objective: "To practice rounding a large number to its nearest thousand, ten thousand, lakh, ten lakh, and crore.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Choose a large number of your own, such as an 8-digit number like 4,58,32,619.",
+                        "Round it to the nearest thousand by looking at the hundreds digit and rounding up or down accordingly.",
+                        "Round it to the nearest ten thousand, then nearest lakh, then nearest ten lakh, each time looking one digit further to decide whether to round up or down.",
+                        "Finally, round it to the nearest crore.",
+                        "List all five 'nearest neighbour' values together, and check that each one is genuinely closer to your original number than the next round value in either direction."
+                      ],
+                      observation: "As you round to larger and larger place values (thousand → crore), each successive 'nearest neighbour' becomes a cruder approximation of the original number — useful for a quick sense of scale, but losing more and more precise detail at each step."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "When is it appropriate to ROUND UP an approximation, rather than round down?",
+                      options: ["Never, rounding down is always better", "When it's safer or more practical to have a little extra than to fall short, like ordering slightly more sweets than the exact headcount", "Only when the number is already round", "Rounding up and down give the exact same result always"],
+                      answer: 1,
+                      explanation: "Rounding up is useful when having a bit more than needed is preferable to falling short — such as ordering 750 sweets for 732 people, to be safe."
+                    },
+                    {
+                      question: "What is the nearest lakh of the number 6,72,85,183?",
+                      options: ["6,72,00,000", "6,73,00,000", "6,72,85,000", "7,00,00,000"],
+                      answer: 1,
+                      explanation: "Looking at the digit just past the lakh place, 6,72,85,183 rounds to 6,73,00,000 as its nearest lakh."
+                    },
+                    {
+                      question: "What is the nearest crore of the number 6,72,85,183?",
+                      options: ["6,00,00,000", "6,72,00,000", "7,00,00,000", "6,73,00,000"],
+                      answer: 2,
+                      explanation: "Since 6,72,85,183 is closer to 7,00,00,000 than to 6,00,00,000 (it's more than halfway), its nearest crore is 7,00,00,000."
+                    },
+                    {
+                      question: "Why might a shopkeeper round DOWN the price of a ₹470 item to 'around ₹450' rather than rounding up to '₹500'?",
+                      options: ["Because rounding down is always mathematically required", "Because ₹450 is a more natural, closer round approximation that doesn't overstate the price", "Because ₹470 is actually equal to ₹450", "There is no reason, it's arbitrary"],
+                      answer: 1,
+                      explanation: "₹450 is a closer, more honest approximation to ₹470 than ₹500 would be — rounding down here avoids overstating the actual cost."
+                    },
+                    {
+                      question: "What is the main benefit of estimating a sum (like 4,63,128 + 4,19,682) by rounding BEFORE calculating the exact answer?",
+                      options: ["It replaces the need to ever calculate the exact answer", "It gives a quick sense of the expected size of the answer, which can then be checked against the exact calculation", "It always gives the exact same number as the real sum", "There is no benefit to estimating first"],
+                      answer: 1,
+                      explanation: "A quick rounded estimate gives an expected ballpark for the answer, which is useful for sanity-checking the exact calculation once it's performed."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-1-4",
+                  title: "4. Patterns in Products",
+                  theory: {
+                    intro: "Multiplication hides useful shortcuts and surprising patterns — from quick mental-math tricks for multiplying by 5 or 25, to a predictable relationship between the number of digits being multiplied and the number of digits in the result.",
+                    sections: [
+                      {
+                        heading: "Multiplication Shortcuts",
+                        text: "Multiplying by 5 is the same as dividing by 2 and then multiplying by 10 — for example, 116 × 5 = (116 ÷ 2) × 10 = 58 × 10 = 580. Similarly, multiplying by 25 is the same as dividing by 4 and multiplying by 100 — for example, 824 × 25 = (824 ÷ 4) × 100 = 206 × 100 = 20,600. These work because 5 = 10÷2 and 25 = 100÷4, letting a harder multiplication be replaced by an easier division followed by simply appending zeroes."
+                      },
+                      {
+                        heading: "How Long Is the Product? Digit-Count Patterns",
+                        text: "Multiplying two numbers with a certain number of digits produces a product whose digit-count falls into a predictable range. A 2-digit number times a 2-digit number always gives either a 3-digit or a 4-digit product — since the smallest case (10×10=100) has 3 digits, and the largest case (99×99, just under 100×100=10,000) has at most 4 digits. In general, multiplying an n-digit number by an m-digit number always gives a product with either (n+m−1) or (n+m) digits."
+                      },
+                      {
+                        heading: "Estimating Enormous Real-World Quantities",
+                        text: "Large-number thinking can answer surprising real-world questions: could Mumbai's entire population (over 1 crore 24 lakh people) fit into 1 lakh buses (each holding 50 people)? Since 1 lakh × 50 = 50 lakh, and Mumbai's population is far more than 50 lakh, the answer is no. Breaking a huge calculation into stages — like finding the distance travelled in a year, then multiplying by the number of years — makes even enormous real-world questions (like reaching the Moon at 100 km/day) manageable to work out."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Applying Multiplication Shortcuts and Verifying Digit-Count Patterns",
+                      objective: "To practice fast mental multiplication using the ×5 and ×25 shortcuts, and to test the digit-count pattern rule for products of numbers with different digit counts.",
+                      materials: ["Paper and pencil", "Calculator (for verification only)"],
+                      steps: [
+                        "Use the shortcut to mentally compute 348 × 5 (divide by 2, then multiply by 10), and check your answer with a calculator.",
+                        "Use the shortcut to mentally compute 648 × 25 (divide by 4, then multiply by 100), and check your answer.",
+                        "Multiply a 3-digit number by another 3-digit number, and count the digits in the product — confirm it has either 5 or 6 digits, as the pattern predicts.",
+                        "Try a 4-digit number times a 2-digit number, and check whether the product has 5 or 6 digits, matching the (n+m−1) or (n+m) rule.",
+                        "Explain in your own words why the smallest and largest possible products at each digit-count combination set these limits."
+                      ],
+                      observation: "The ×5 and ×25 shortcuts always match the calculator's exact answer, confirming they are genuine equivalent calculations, not approximations — and the digit-count pattern (n+m−1 or n+m digits) held true in every multiplication tried."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Using the multiplication shortcut, how would you quickly compute 116 × 5?",
+                      options: ["Multiply 116 by 5 directly using long multiplication only", "Divide 116 by 2 to get 58, then multiply by 10 to get 580", "Multiply 116 by 10 and then by 5 again", "Add 5 to 116 repeatedly"],
+                      answer: 1,
+                      explanation: "Since 5 = 10 ÷ 2, multiplying by 5 is the same as dividing by 2 then multiplying by 10: 116 ÷ 2 = 58, then 58 × 10 = 580."
+                    },
+                    {
+                      question: "What is the shortcut for multiplying a number by 25?",
+                      options: ["Multiply by 100 only", "Divide the number by 4, then multiply the result by 100", "Divide the number by 25", "Add 25 to the number"],
+                      answer: 1,
+                      explanation: "Since 25 = 100 ÷ 4, multiplying by 25 equals dividing by 4 and then multiplying by 100 — for example, 824 × 25 = (824÷4) × 100 = 206 × 100 = 20,600."
+                    },
+                    {
+                      question: "What is the possible number of digits in the product of a 2-digit number and another 2-digit number?",
+                      options: ["Always exactly 4 digits", "Either 3 or 4 digits", "Always exactly 2 digits", "Either 2 or 3 digits"],
+                      answer: 1,
+                      explanation: "The smallest 2-digit × 2-digit product (10×10=100) has 3 digits, and the largest (99×99=9801, just under 100×100=10,000) has 4 digits — so the product always has either 3 or 4 digits."
+                    },
+                    {
+                      question: "In general, multiplying an n-digit number by an m-digit number gives a product with how many digits?",
+                      options: ["Always exactly n+m digits", "Either (n+m−1) or (n+m) digits", "Always exactly n×m digits", "A random, unpredictable number of digits"],
+                      answer: 1,
+                      explanation: "The product of an n-digit and an m-digit number always has either (n+m−1) or (n+m) digits, based on this pattern observed across many digit-count combinations."
+                    },
+                    {
+                      question: "If a bus holds 50 people, how many people can 1 lakh buses hold in total?",
+                      options: ["1 lakh people", "50 lakh people", "5 lakh people", "1 crore people"],
+                      answer: 1,
+                      explanation: "1 lakh buses × 50 people per bus = 1,00,000 × 50 = 50,00,000 = 50 lakh people."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "7m-2",
+              title: "Arithmetic Expressions",
+              topics: [
+                {
+                  id: "7m-2-1",
+                  title: "1. Simple Expressions and Comparing Them",
+                  theory: {
+                    intro: "Phrases like 13 + 2 or 12 × 5 are called arithmetic expressions — and just like numbers, expressions can be compared to each other using =, <, and >, often without needing to calculate their exact values at all.",
+                    sections: [
+                      {
+                        heading: "What is an Arithmetic Expression?",
+                        text: "An arithmetic expression is a mathematical phrase like 13 + 2, 20 − 4, 12 × 5, or 18 ÷ 3. Every expression has a value — the number it evaluates to. For example, 13 + 2 has value 15, written 13 + 2 = 15. Different expressions can share the same value: 10+2, 15−3, 3×4, and 24÷2 all equal 12."
+                      },
+                      {
+                        heading: "Comparing Expressions Without Calculating",
+                        text: "Expressions can be compared using =, <, or > based on their values. Often, a comparison can be reasoned out WITHOUT fully calculating both sides — for example, comparing 1023+125 to 1022+128: since 1023 is 1 more than 1022, but 128 is 3 more than 125, the second expression's total gain (3) outweighs the first's head start (1), so 1023+125 < 1022+128. This kind of reasoning — imagining a real situation, like marbles gained or lost — often reveals the answer faster than direct computation."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Expressions Using Real-World Reasoning",
+                      objective: "To compare pairs of arithmetic expressions without fully calculating them, by imagining a concrete real-world situation.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Write down the pair of expressions 364 + 587 and 363 + 589.",
+                        "Imagine two people with marble counts matching the first numbers (364 and 363), then receiving the second amounts (587 and 589) respectively.",
+                        "Reason about who ends up with more: the person starting with 363 is 1 marble behind, but receives 2 more marbles than the other — so who has more at the end?",
+                        "Write the correct comparison symbol (<, >, or =) between the two expressions based on your reasoning, without adding the full numbers.",
+                        "Check your answer by actually computing both sums, and confirm your reasoning was correct."
+                      ],
+                      observation: "Comparing the DIFFERENCES between corresponding parts of two expressions (rather than computing full sums) often reveals which expression is larger much faster, and builds a deeper number sense than direct calculation alone."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the 'value' of an arithmetic expression?",
+                      options: ["The number of operations it contains", "The number it evaluates to", "The number of digits used in it", "Its position in a list of expressions"],
+                      answer: 1,
+                      explanation: "Every arithmetic expression has a value — the single number that results from carrying out its operations, e.g., the value of 13+2 is 15."
+                    },
+                    {
+                      question: "Without fully calculating, how can we tell that 1023 + 125 is less than 1022 + 128?",
+                      options: ["It cannot be determined without full calculation", "1023 is only 1 more than 1022, but 128 is 3 more than 125 — so the second expression's extra gain outweighs the first's small head start", "Because 1023 is an odd number", "Both expressions are always equal"],
+                      answer: 1,
+                      explanation: "Comparing the differences (1023 is 1 more than 1022, but 128 is 3 more than 125) shows the second expression gains more overall, making it larger — without needing the exact sums."
+                    },
+                    {
+                      question: "Which symbol correctly compares 13 − 2 and 4 × 3?",
+                      options: ["13 − 2 > 4 × 3", "13 − 2 < 4 × 3", "13 − 2 = 4 × 3", "They cannot be compared"],
+                      answer: 1,
+                      explanation: "13 − 2 = 11 and 4 × 3 = 12, so 13 − 2 < 4 × 3."
+                    },
+                    {
+                      question: "Are 10+2, 15−3, 3×4, and 24÷2 all different ways to express which number?",
+                      options: ["10", "12", "15", "24"],
+                      answer: 1,
+                      explanation: "10+2=12, 15−3=12, 3×4=12, and 24÷2=12 — all four different expressions share the exact same value, 12."
+                    },
+                    {
+                      question: "What tool is being used when we imagine a real-life situation (like marbles gained or lost) to compare two expressions?",
+                      options: ["Long division", "A concrete mental model that reveals the comparison without needing to compute exact values", "A calculator", "Guessing randomly"],
+                      answer: 1,
+                      explanation: "Imagining a real situation (like marbles) turns an abstract numeric comparison into an intuitive one, often making the answer clear without needing to calculate exact totals."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-2-2",
+                  title: "2. Brackets and Terms in Expressions",
+                  lab: { type: "expression-term-splitter-sim" },
+                  theory: {
+                    intro: "An expression like 30 + 5 × 4, without any extra guidance, can be read in more than one way — just like an unpunctuated sentence. Brackets and the idea of 'terms' resolve this ambiguity, just as commas resolve ambiguity in language.",
+                    sections: [
+                      {
+                        heading: "The Ambiguity Problem",
+                        text: "Given the expression 30 + 5 × 4 (representing 30 marbles plus 5 bags of 4 marbles each), one person computed (30+5)×4=140, while another computed 30+(5×4)=50. Only the second is correct, since the 5 bags of 4 must be multiplied together BEFORE adding to the 30 separately-brought marbles. Brackets remove this ambiguity by explicitly grouping which operation happens first: 30 + (5 × 4) = 30 + 20 = 50."
+                      },
+                      {
+                        heading: "Terms: Resolving Ambiguity Without Brackets",
+                        text: "Even without brackets, expressions can be read unambiguously using the idea of terms — the parts of an expression separated by a '+' sign. To find the terms, every subtraction is first rewritten as 'adding the inverse' (the same number with the opposite sign): 83 − 14 becomes 83 + (−14), so its terms are 83 and −14. In 30 + 5×4, the terms are 30 and 5×4 (a single term, since it has no '+' inside it) — each term is evaluated on its own BEFORE the terms are added together."
+                      },
+                      {
+                        heading: "Evaluating Using Terms",
+                        text: "To evaluate any expression using terms: first, rewrite every subtraction as adding a negative. Second, evaluate each term separately (carrying out any multiplication/division within it). Third, add all the evaluated terms together. For example, 5 × (3+2) + 7×8 + 3 has terms 5×(3+2), 7×8, and 3 — evaluating each gives 25, 56, and 3, which sum to 84."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Splitting Expressions into Terms",
+                      objective: "To practice identifying the terms of an expression by converting every subtraction into 'adding the inverse'.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Write down the expression 23 − 2 × 4 + 16.",
+                        "Rewrite every subtraction as adding the inverse: 23 + (−2×4) + 16.",
+                        "Identify the terms: 23, −2×4, and 16 (each part between '+' signs, treating −2×4 as one term since it has no internal '+').",
+                        "Evaluate each term separately: 23 stays 23; −2×4 becomes −8; 16 stays 16.",
+                        "Add all evaluated terms together (23 + (−8) + 16) to get the final value, and check this matches the standard order-of-operations answer."
+                      ],
+                      observation: "Breaking an expression into terms — by converting subtraction to 'adding a negative' first — gives an unambiguous, step-by-step way to evaluate any expression correctly, even without using brackets."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the expression 30 + 5 × 4, why does treating it as (30+5)×4 give the WRONG answer for '30 marbles plus 5 bags of 4 marbles'?",
+                      options: ["It doesn't give the wrong answer", "Because the 5 bags of 4 marbles must be multiplied together first, then added to the 30 separate marbles — not added to 30 before multiplying", "Because 30 must always come last", "Because multiplication is never allowed after addition"],
+                      answer: 1,
+                      explanation: "The real situation requires computing the value of '5 bags of 4' (5×4=20) first, then adding the 30 separate marbles — giving 30+20=50, not (30+5)×4=140."
+                    },
+                    {
+                      question: "What are the terms of the expression 83 − 14?",
+                      options: ["83 and 14", "83 and −14, since subtracting 14 is the same as adding its inverse, −14", "Only 83", "There are no terms in a subtraction expression"],
+                      answer: 1,
+                      explanation: "Since subtracting a number equals adding its inverse, 83 − 14 = 83 + (−14), making the two terms 83 and −14."
+                    },
+                    {
+                      question: "In the expression 6 × 5 + 3, what are its terms?",
+                      options: ["6, 5, and 3 separately", "6×5 and 3, since 6×5 has no '+' sign inside it and counts as a single term", "Only 3", "6 and 5×3"],
+                      answer: 1,
+                      explanation: "Terms are separated by '+' signs; since there is no '+' inside 6×5, the whole product 6×5 counts as one single term, alongside the term 3."
+                    },
+                    {
+                      question: "What is the correct three-step process for evaluating an expression using terms?",
+                      options: ["Just add all the numbers together in the order written", "Convert subtractions to adding inverses, evaluate each term separately, then add all evaluated terms together", "Only evaluate the first term and ignore the rest", "Multiply everything together regardless of + or − signs"],
+                      answer: 1,
+                      explanation: "The term method requires: (1) rewrite subtractions as adding inverses, (2) evaluate each term on its own, (3) sum all the evaluated terms for the final answer."
+                    },
+                    {
+                      question: "Why did Irfan need to write 100 − (15 + 56) instead of just 100 − 15 + 56 for his change calculation?",
+                      options: ["Both expressions give the same, correct answer", "Without brackets, evaluating left to right (100−15+56=141) gives an absurd result — more money back than he paid; the brackets force adding the two costs together FIRST before subtracting", "Brackets are never needed in real-world problems", "Because 100 must always be written first"],
+                      answer: 1,
+                      explanation: "Evaluating strictly left-to-right without brackets gives 100−15+56=141, an impossible result (more change than the amount paid) — the brackets correctly group the total cost (15+56=71) to be subtracted from 100 all at once, giving the correct ₹29."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-2-3",
+                  title: "3. Commutative and Associative Properties",
+                  lab: { type: "swap-group-terms-sim" },
+                  theory: {
+                    intro: "Does the ORDER in which we add terms matter? A drone rising and falling, and marbles won and lost, reveal that swapping or regrouping terms — even with negative numbers involved — never changes the final sum.",
+                    sections: [
+                      {
+                        heading: "Swapping Terms: The Commutative Property",
+                        text: "A drone goes 6m up then 4m down, giving 6 + (−4) = 2. Swapping the terms, (−4) + 6, also equals 2. This holds generally: swapping any two terms in an addition never changes the sum, even when negative numbers are involved. In mathematics, this fact is called the commutative property of addition: Term 1 + Term 2 = Term 2 + Term 1."
+                      },
+                      {
+                        heading: "Grouping Terms: The Associative Property",
+                        text: "Consider (−7) + 10 + (−11). Adding the first two terms first, then adding the third, gives the same result as adding the last two terms first, then adding to the first: both give −8. This holds generally: however the terms of a sum are grouped, the total value stays the same. This is called the associative property of addition: (Term1 + Term2) + Term3 = Term1 + (Term2 + Term3)."
+                      },
+                      {
+                        heading: "Why Order Sometimes Matters in Real Life",
+                        text: "Wearing a hat then shoes gives the same final look as shoes then hat — order doesn't matter here, just like commutative addition. But wearing socks then shoes is NOT the same as shoes then socks — order matters critically here. This everyday contrast helps distinguish operations (like addition) where order truly doesn't matter from real-world processes where sequence is essential."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing the Commutative and Associative Properties with Negative Terms",
+                      objective: "To verify, using expressions with negative terms, that swapping and regrouping never changes the sum.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Choose three terms, including at least one negative number, such as −7, 10, and −11.",
+                        "Add them in the order written: (−7 + 10) + (−11), showing your intermediate sum.",
+                        "Now group them differently: −7 + (10 + (−11)), again showing your intermediate sum.",
+                        "Confirm both groupings give the same final answer (−8).",
+                        "Now try a completely different ORDER of the same three terms (e.g., 10 + (−11) + (−7)) and confirm the sum is still the same."
+                      ],
+                      observation: "No matter how the terms −7, 10, and −11 are ordered or grouped, the final sum is always −8 — confirming both the commutative property (order doesn't matter) and the associative property (grouping doesn't matter) hold true even with negative terms."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does the commutative property of addition state?",
+                      options: ["Grouping terms differently changes the sum", "Swapping the order of two terms does not change the sum: Term1 + Term2 = Term2 + Term1", "Addition and subtraction give the same result", "Only positive numbers can be swapped"],
+                      answer: 1,
+                      explanation: "The commutative property states that swapping the order of terms in an addition never changes the total sum, even with negative terms."
+                    },
+                    {
+                      question: "What does the associative property of addition state?",
+                      options: ["Swapping term order changes the sum", "However the terms of a sum are grouped (which pair is added first), the total value remains the same", "Only three terms can ever be added", "Grouping only works for positive numbers"],
+                      answer: 1,
+                      explanation: "The associative property states that regrouping which terms are added first doesn't change the overall sum: (T1+T2)+T3 = T1+(T2+T3)."
+                    },
+                    {
+                      question: "For the terms −7, 10, and −11, what is their sum, regardless of order or grouping?",
+                      options: ["−8", "8", "28", "−28"],
+                      answer: 0,
+                      explanation: "−7 + 10 + (−11) = 3 + (−11) = −8, and this same result of −8 holds no matter how the three terms are ordered or grouped."
+                    },
+                    {
+                      question: "Why is 'wearing socks and shoes' a good example of an operation where ORDER matters, unlike addition?",
+                      options: ["Because socks and shoes are both clothing items", "Because wearing shoes before socks gives a completely different (uncomfortable) result, unlike addition where swapping terms never changes the outcome", "Because socks and shoes cannot be worn together", "There is no real difference in either order"],
+                      answer: 1,
+                      explanation: "Unlike addition (where swapping terms never changes the sum), wearing shoes then socks produces a genuinely different and impractical result — showing that not all real-world 'combinations' are commutative like addition."
+                    },
+                    {
+                      question: "Does the commutative property of addition still hold when one of the terms is negative, such as 6 + (−4) versus (−4) + 6?",
+                      options: ["No, negative terms break the property", "Yes — both 6+(−4) and (−4)+6 equal 2, confirming the property holds even with negative terms", "Only if both terms are negative", "The property only applies to whole numbers greater than 10"],
+                      answer: 1,
+                      explanation: "Both orderings, 6+(−4) and (−4)+6, evaluate to 2 — confirming that the commutative property holds true regardless of whether some terms are negative."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-2-4",
+                  title: "4. Evaluating Expressions with Multiple Operations",
+                  theory: {
+                    intro: "Real situations — like splitting a restaurant bill with a tip — often require expressions with more than one kind of operation. The term-based method gives a reliable, step-by-step way to evaluate any such expression correctly.",
+                    sections: [
+                      {
+                        heading: "Combining Terms with Multiplication",
+                        text: "Four friends order 4 dosas at ₹23 each and add a ₹5 tip. The total cost expression is 4×23 + 5. This has two terms: 4×23 (a single term, evaluating to 92) and 5. Adding the evaluated terms gives 92+5=97 — the correct total bill."
+                      },
+                      {
+                        heading: "The General Rule for Evaluating Any Expression",
+                        text: "To evaluate ANY arithmetic expression correctly: (1) convert every subtraction into 'adding the inverse'; (2) identify the terms — the parts separated by '+' signs, where anything without a '+' inside (like a product or a bracketed group) counts as ONE term; (3) evaluate each term completely on its own (working out any multiplication, division, or bracketed operation inside it); (4) add all the evaluated terms together, in any order or grouping, since addition is both commutative and associative."
+                      },
+                      {
+                        heading: "Why This Method Always Works",
+                        text: "Because addition doesn't care about order or grouping (thanks to the commutative and associative properties), once an expression has been broken into fully-evaluated terms, they can safely be added in whatever order is most convenient — without ever risking a wrong answer, unlike naively evaluating strictly left-to-right."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Splitting a Real Restaurant Bill Using Terms",
+                      objective: "To apply the full term-based evaluation method to a realistic multi-operation word problem.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Imagine 3 friends order 3 plates of noodles at ₹45 each, plus one shared dessert at ₹60, and leave a ₹10 tip.",
+                        "Write the full expression for the total bill: 3×45 + 60 + 10.",
+                        "Identify the terms: 3×45 (one term), 60, and 10.",
+                        "Evaluate each term separately: 3×45=135, 60 stays 60, 10 stays 10.",
+                        "Add the evaluated terms together (135+60+10) to find the total bill, and double check this matches direct calculation."
+                      ],
+                      observation: "Breaking the bill into terms — treating the multiplication (3×45) as a single evaluated unit before adding the other flat costs — always gives the same, correct total as careful step-by-step arithmetic, and makes multi-operation word problems much easier to set up correctly."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "For 4 dosas at ₹23 each plus a ₹5 tip, what is the correct expression and its value?",
+                      options: ["(4+23)×5 = 135", "4×23 + 5 = 97", "4+23+5 = 32", "4×23×5 = 460"],
+                      answer: 1,
+                      explanation: "The cost of 4 dosas is 4×23=92 (one term), plus the ₹5 tip, giving 92+5=97 as the correct total."
+                    },
+                    {
+                      question: "What is Step 2 in the general rule for evaluating any expression using terms?",
+                      options: ["Add all the original numbers together immediately", "Identify the terms — parts separated by '+' signs, treating anything without an internal '+' as a single term", "Multiply every number in the expression together", "Ignore all negative signs"],
+                      answer: 1,
+                      explanation: "After converting subtractions to additions (Step 1), Step 2 is identifying the terms of the expression, where products or bracketed groups without an internal '+' count as one single term each."
+                    },
+                    {
+                      question: "Why is it safe to add the fully-evaluated terms of an expression in ANY order or grouping?",
+                      options: ["It isn't safe, order always matters", "Because addition is both commutative and associative, so the order and grouping of the final addition never affects the result", "Because all terms are always equal to each other", "Only because calculators are always used"],
+                      answer: 1,
+                      explanation: "Since addition's commutative and associative properties guarantee the same sum regardless of order or grouping, once terms are individually evaluated, they can be added in whatever order is most convenient."
+                    },
+                    {
+                      question: "What is the value of the expression 5 × (3+2) + 7×8 + 3?",
+                      options: ["66", "84", "120", "43"],
+                      answer: 1,
+                      explanation: "The terms are 5×(3+2)=25, 7×8=56, and 3. Adding these evaluated terms: 25+56+3=84."
+                    },
+                    {
+                      question: "In the expression 3×45 + 60 + 10 (a restaurant bill), how many terms does it have?",
+                      options: ["1", "2", "3", "4"],
+                      answer: 2,
+                      explanation: "The expression has three terms separated by '+' signs: 3×45 (one term, since it has no internal '+'), 60, and 10."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "7m-3",
+              title: "A Peek Beyond the Point",
+              topics: [
+                {
+                  id: "7m-3-1",
+                  title: "1. The Need for Smaller Units & Tenths",
+                  theory: {
+                    intro: "Two screws that look almost identical can still differ enough in length to matter — measuring such small differences accurately requires splitting our units of measurement into smaller and smaller parts.",
+                    sections: [
+                      {
+                        heading: "When Whole Units Aren't Precise Enough",
+                        text: "A screw might measure 'between 2 cm and 3 cm', or more precisely 'between 2½ cm and 3 cm' — but for real precision, we need something like 2 7/10 cm, read as 'two and seven-tenths centimetres'. This means going from 0 to 2 on the ruler, then taking 7 of the 10 equal small parts that make up the next whole centimetre."
+                      },
+                      {
+                        heading: "Splitting a Unit into Tenths",
+                        text: "Dividing the length between two consecutive whole numbers on a ruler into 10 equal parts gives tenths. Each small part represents 1/10 of a unit. This is exactly how a standard ruler is marked — the small ticks between centimetre marks represent tenths of a centimetre (millimetres)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Measuring Everyday Objects to the Nearest Tenth",
+                      objective: "To practice reading a ruler precisely to the nearest tenth of a unit, reinforcing why smaller units matter for accurate measurement.",
+                      materials: ["A ruler marked in centimetres and millimetres", "A pen, a sharpener, and two other small objects"],
+                      steps: [
+                        "Measure the length of a pen using the ruler, reading off the measurement to the nearest whole centimetre first.",
+                        "Look more closely at the small tick marks between centimetres, and refine your measurement to the nearest tenth of a centimetre (e.g., 'between 2 and 3 cm' becomes '2 and 7 tenths cm').",
+                        "Repeat this for a sharpener and two other small objects of your choice.",
+                        "Compare your tenths-precision measurements with a classmate's measurements of the same objects.",
+                        "Discuss: what would be lost if everyone only measured to the nearest whole centimetre?"
+                      ],
+                      observation: "Measuring to the nearest tenth reveals genuine size differences between objects that look almost identical at whole-centimetre precision — confirming why finer units are essential for accurate real-world measurement."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why did Sonu's two screws need to be measured more precisely than 'between 2 cm and 3 cm'?",
+                      options: ["Because the screws were actually the same length", "Because even a small difference in screw length mattered for the screw to fit correctly, requiring more precise measurement", "Because rulers cannot measure screws", "Because whole centimetres are always precise enough"],
+                      answer: 1,
+                      explanation: "The two screws looked nearly identical but had a small yet functionally important difference in length — revealing the need for measurement finer than whole centimetres."
+                    },
+                    {
+                      question: "What does the length 2 7/10 cm mean?",
+                      options: ["2 cm plus 7 whole centimetres", "2 whole centimetres, plus 7 of the 10 equal parts that make up the next centimetre", "7 cm minus 2 cm", "2 cm multiplied by 7/10"],
+                      answer: 1,
+                      explanation: "2 7/10 cm means going to the 2 cm mark, then taking 7 out of 10 equal small parts (tenths) of the next centimetre — read as 'two and seven-tenths centimetres'."
+                    },
+                    {
+                      question: "How is a ruler's unit typically divided to allow tenths to be measured?",
+                      options: ["Into 5 equal parts", "Into 10 equal parts between each pair of consecutive whole numbers", "Rulers cannot show tenths", "Into 100 equal parts only"],
+                      answer: 1,
+                      explanation: "A standard ruler divides the space between consecutive whole centimetres into 10 equal small parts (tenths, i.e., millimetres), enabling more precise measurement."
+                    },
+                    {
+                      question: "What general lesson does the screw example teach about measurement?",
+                      options: ["Whole numbers are always sufficient for any measurement", "When more precision is needed, we split units into smaller equal parts, like tenths", "Measurement is not useful for small objects", "Screws cannot be measured with a ruler"],
+                      answer: 1,
+                      explanation: "The screw example demonstrates that when exact measurements matter, we extend our number system by splitting whole units into smaller equal parts (like tenths) for the needed precision."
+                    },
+                    {
+                      question: "How is 2 7/10 cm read aloud?",
+                      options: ["Two point seventy centimetres", "Two and seven-tenths centimetres", "Twenty-seven centimetres", "Two sevenths centimetres"],
+                      answer: 1,
+                      explanation: "2 7/10 cm is read as 'two and seven-tenths centimetres' — 2 whole units plus 7 tenths of the next unit."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-3-2",
+                  title: "2. Decimal Place Value: Tenths, Hundredths & Thousandths",
+                  lab: { type: "decimal-place-value-sim" },
+                  theory: {
+                    intro: "The decimal system extends the familiar place-value pattern of whole numbers — where each place is 10 times bigger than the one to its right — into fractional territory, creating tenths, hundredths, and thousandths places.",
+                    sections: [
+                      {
+                        heading: "Extending Place Value Past the Ones Place",
+                        text: "In whole numbers, each place value is 10 times bigger than the place to its right: 10 ones make 1 ten, 10 tens make 1 hundred, and so on. This pattern extends past the ones place too: dividing 1 into 10 equal parts gives one-tenth (1/10); dividing one-tenth into 10 equal parts gives one-hundredth (1/100); dividing one-hundredth into 10 parts gives one-thousandth (1/1000) — and so on, forever."
+                      },
+                      {
+                        heading: "Why the Decimal System Uses 10",
+                        text: "While a unit COULD be split into any number of equal parts (4, 5, 8, or more), the number 10 is used consistently because it matches the Indian (and International) place value system already used for whole numbers. This system is called the 'decimal' system, from the Latin 'decem' meaning ten — related to the Sanskrit 'daśha' and similar words for 10 across many Indian languages."
+                      },
+                      {
+                        heading: "Trailing Zeros Don't Change the Value",
+                        text: "0.2, 0.20, and 0.200 all represent the exact same quantity — 2 tenths — since the extra zeros simply mean 0 hundredths and 0 thousandths, adding nothing to the value. But 0.2, 0.02, and 0.002 are genuinely DIFFERENT numbers, since the '2' digit sits in a different place value (tenths, hundredths, thousandths respectively) in each case."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building a Decimal Place Value Table",
+                      objective: "To correctly place the digits of several decimal numbers into a units/tenths/hundredths/thousandths table, and use it to compare which numbers are equal.",
+                      materials: ["Paper and pencil, or a hand-drawn table with columns for Units, Tenths, Hundredths, Thousandths"],
+                      steps: [
+                        "Draw a table with four columns: Units, Tenths, Hundredths, Thousandths.",
+                        "Place each of these decimal numbers into the table, one digit per column: 4.5, 4.05, 0.405, 4.050, 4.50, 4.005.",
+                        "Compare the filled rows to determine which numbers are actually EQUAL to each other (matching digit-for-digit in every column, ignoring only trailing zeros).",
+                        "Identify which numbers are genuinely different, even though they might look superficially similar at a glance.",
+                        "Write a short explanation of why 4.50 and 4.5 are equal, but 4.05 and 4.5 are not."
+                      ],
+                      observation: "Laying out decimal numbers in a place-value table makes it immediately clear which numbers are truly equal (only trailing zeros differ) and which are different (a non-zero digit appears in a different place value)."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What do you get when you divide 1 (one whole unit) into 10 equal parts?",
+                      options: ["One-hundredth", "One-tenth", "One-thousandth", "Ten"],
+                      answer: 1,
+                      explanation: "Dividing one whole unit into 10 equal parts gives one-tenth (1/10) — the first place value past the units place."
+                    },
+                    {
+                      question: "Why does the decimal system specifically split units into 10 equal parts, rather than 4 or 8?",
+                      options: ["10 is the only number units can be split into", "Because 10 matches the existing Indian/International place-value system already used for whole numbers, extending it consistently", "Because 10 is an even number", "There is no particular reason"],
+                      answer: 1,
+                      explanation: "Using 10 keeps the decimal system consistent with the same base-10 place-value pattern already used for whole numbers (ones, tens, hundreds, ...), just extended in the other direction."
+                    },
+                    {
+                      question: "Are 0.2, 0.20, and 0.200 equal in value?",
+                      options: ["No, they are all different numbers", "Yes — the extra zeros just mean zero hundredths and zero thousandths, adding nothing to the value", "Only 0.2 and 0.20 are equal", "Only 0.20 and 0.200 are equal"],
+                      answer: 1,
+                      explanation: "0.2, 0.20, and 0.200 all represent exactly 2 tenths — the trailing zeros contribute zero to the hundredths and thousandths places, so the value is unchanged."
+                    },
+                    {
+                      question: "Are 0.2 and 0.02 equal in value?",
+                      options: ["Yes, they are the same", "No — 0.2 is 2 tenths, while 0.02 is 2 hundredths, a genuinely smaller value", "Yes, because both contain the digit 2", "Cannot be determined"],
+                      answer: 1,
+                      explanation: "0.2 (2 tenths) and 0.02 (2 hundredths) are different values — the digit 2 occupies a different place value in each, so they are NOT equal, unlike trailing-zero variations."
+                    },
+                    {
+                      question: "Where does the word 'decimal' come from, and what does it relate to?",
+                      options: ["It has no historical origin", "From the Latin 'decem' (ten), related to the Sanskrit 'daśha' and similar words for 10 across many Indian languages", "From the word 'decide'", "From a place name"],
+                      answer: 1,
+                      explanation: "The word 'decimal' comes from the Latin 'decem' meaning ten, cognate with the Sanskrit 'daśha' and similar words for 10 found across many Indian languages."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-3-3",
+                  title: "3. Locating and Comparing Decimals",
+                  lab: { type: "decimal-number-line-sim" },
+                  theory: {
+                    intro: "A number line, zoomed in enough, can locate any decimal precisely — and comparing decimals digit by digit, starting from the most significant place, always correctly determines which of two decimals is larger.",
+                    sections: [
+                      {
+                        heading: "Locating Decimals on a Number Line",
+                        text: "To locate 1.4 on a number line, divide the unit segment between 1 and 2 into 10 equal parts, then count 4 parts from 1 — landing exactly on 1.4. For more precise decimals like 4.185, this process can be repeated: zoom into the segment between 4.1 and 4.2, divide IT into 10 equal parts, and locate 4.18; zoom in again between 4.18 and 4.19 to precisely find 4.185."
+                      },
+                      {
+                        heading: "Comparing Decimals Digit by Digit",
+                        text: "To compare two decimals like 6.456 and 6.465: first compare the units digit (both are 6, tied); then the tenths digit (both are 4, tied); then the hundredths digit (5 vs. 6) — since 6 > 5, the number with 6 in the hundredths place (6.465) is larger. Once a difference is found at some place value, ALL digits after that point become irrelevant to the comparison — the earlier, more significant difference has already decided the outcome."
+                      },
+                      {
+                        heading: "Finding the Closest Decimal to a Target",
+                        text: "Among 0.9, 1.1, 1.01, and 1.11, which is closest to 1? Arranging in order: 0.9 < 1 < 1.01 < 1.1 < 1.11. Checking distances from 1: 0.9 is 0.1 away, while 1.01 is only 0.01 away — so 1.01 is the closest, even though 0.9 might look 'closer' at first glance due to being a simpler-looking number."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Decimals Digit by Digit",
+                      objective: "To practice the systematic digit-by-digit method for comparing decimal numbers, confirming it always gives the correct answer.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Write down the pair of decimals 3.81 and 13.800.",
+                        "Compare the whole-number parts first (3 vs 13) — since these already differ, determine immediately which decimal is larger without checking any further digits.",
+                        "Now compare 1.009 and 1.090: since the whole number parts (both 1) and tenths digits (0 vs 0) tie, move to the hundredths place (0 vs 9) to find the difference.",
+                        "Determine which of 1.009 or 1.090 is larger based on this comparison.",
+                        "Make up two of your own close decimal pairs and practice the same digit-by-digit comparison method on a partner."
+                      ],
+                      observation: "Comparing decimals place by place, from the most significant digit down, always correctly identifies the larger number — and the comparison can stop as soon as the first differing digit is found, since no smaller place value can ever overturn a difference already found at a bigger place value."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "To locate 1.4 on a number line, how is the segment between 1 and 2 used?",
+                      options: ["It is left undivided", "It is divided into 10 equal parts, and the 4th part from 1 marks the location of 1.4", "It is divided into 4 equal parts", "1.4 cannot be located between 1 and 2"],
+                      answer: 1,
+                      explanation: "Dividing the unit segment between 1 and 2 into 10 equal (tenths) parts and counting 4 of them from 1 locates exactly 1.4."
+                    },
+                    {
+                      question: "When comparing 6.456 and 6.465 digit by digit, at which place value do they first differ?",
+                      options: ["The units place", "The tenths place", "The hundredths place (5 vs 6)", "They never differ"],
+                      answer: 2,
+                      explanation: "Both numbers share the same units digit (6) and tenths digit (4), but differ at the hundredths place (5 in 6.456 vs 6 in 6.465) — making 6.465 the larger number."
+                    },
+                    {
+                      question: "Once a difference is found at a certain place value when comparing two decimals, why can the comparison stop there?",
+                      options: ["It can't stop, all digits must always be checked", "Because no digit at a smaller (less significant) place value can ever overturn a difference already found at a larger, more significant place value", "Because decimals only have 3 digits", "Comparisons are always guesses"],
+                      answer: 1,
+                      explanation: "Since each place value is worth 10 times less than the one before it, a difference at an earlier (more significant) place value can never be outweighed by anything in the smaller place values that follow."
+                    },
+                    {
+                      question: "Among 0.9, 1.1, 1.01, and 1.11, which decimal is closest to 1?",
+                      options: ["0.9, since it looks like a round number close to 1", "1.01, since it is only 0.01 away from 1, closer than any of the others", "1.11, since it is also near 1", "They are all equally close to 1"],
+                      answer: 1,
+                      explanation: "1.01 is only 0.01 away from 1, which is closer than 0.9 (0.1 away), 1.1 (0.1 away), or 1.11 (0.11 away) — making 1.01 the closest."
+                    },
+                    {
+                      question: "Which is greater: 1.009 or 1.090?",
+                      options: ["1.009 is greater", "1.090 is greater, since at the hundredths place, 9 (in 1.090) is greater than 0 (in 1.009)", "They are equal", "Cannot be determined"],
+                      answer: 1,
+                      explanation: "Both share the same units (1) and tenths (0) digits, but at the hundredths place, 1.090 has 9 while 1.009 has 0 — making 1.090 the larger number."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-3-4",
+                  title: "4. Addition and Subtraction of Decimals",
+                  theory: {
+                    intro: "Adding and subtracting decimals uses exactly the same standard column procedure as whole numbers — as long as the decimal points (and matching place values) are carefully lined up first.",
+                    sections: [
+                      {
+                        heading: "Adding Decimals",
+                        text: "To find how much cloth Priya (2.7m) and Shylaja (3.5m) need in total, add 2.7 + 3.5. Just like adding fractions with the same denominator (2 7/10 + 3 5/10 = 5 12/10 = 6 2/10), adding decimals in column form gives the same result: 2.7 + 3.5 = 6.2 metres. The standard column-addition procedure for whole numbers works identically for decimals, as long as the decimal points are aligned."
+                      },
+                      {
+                        heading: "Subtracting Decimals",
+                        text: "To find how much LONGER Shylaja's cloth (3.5m) is than Priya's (2.7m), subtract 3.5 − 2.7. Just as with fractions (3 5/10 − 2 7/10 = 0 8/10), the standard column-subtraction procedure works directly on the decimals too, giving 3.5 − 2.7 = 0.8 metres — with borrowing across the decimal point handled exactly like borrowing between whole-number place values."
+                      },
+                      {
+                        heading: "The Underlying Place Value View",
+                        text: "A sum like 75.345 + 86.691 can be understood by expanding each number into its full place-value parts (tens, ones, tenths, hundredths, thousandths) and adding matching parts together, then combining and regrouping as needed — this detailed place-value view is exactly what the compact column-addition method (giving 162.036) is quietly doing behind the scenes."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Adding and Subtracting Decimals Using Column Method",
+                      objective: "To practice column addition and subtraction of decimal numbers, carefully aligning decimal points, including cases requiring borrowing or carrying.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Write the sum 6.236 + 0.487 in column form, carefully aligning the decimal points and matching place values.",
+                        "Add each column from right to left, carrying over into the next column exactly as with whole-number addition.",
+                        "Write the difference 34.505 − 18.1 in column form (padding 18.1 with trailing zeros to 18.100 if it helps alignment), and subtract, borrowing across place values as needed.",
+                        "Check both answers using a calculator to confirm the column method gives the correct results.",
+                        "Explain in your own words why lining up the decimal points is essential before adding or subtracting."
+                      ],
+                      observation: "As long as decimal points (and therefore matching place values) are carefully aligned first, the exact same column addition and subtraction procedures used for whole numbers work perfectly for decimals too, including carrying and borrowing."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 2.7 + 3.5?",
+                      options: ["5.2", "6.2", "5.12", "6.12"],
+                      answer: 1,
+                      explanation: "2.7 + 3.5 = 6.2, found by adding the tenths (7+5=12, carry 1) and then the units (2+3+1=6), giving 6.2."
+                    },
+                    {
+                      question: "What is 3.5 − 2.7?",
+                      options: ["0.8", "1.2", "0.2", "1.8"],
+                      answer: 0,
+                      explanation: "3.5 − 2.7 = 0.8, found using the standard subtraction procedure with borrowing across the decimal point (15 tenths − 7 tenths = 8 tenths, after borrowing 1 from the units place)."
+                    },
+                    {
+                      question: "What must be carefully done before adding or subtracting two decimal numbers in column form?",
+                      options: ["Nothing special is needed", "The decimal points (and therefore matching place values) must be carefully aligned", "The numbers must be rounded first", "Decimals cannot be added or subtracted at all"],
+                      answer: 1,
+                      explanation: "Aligning the decimal points ensures that units line up with units, tenths with tenths, hundredths with hundredths, and so on — essential for the column method to work correctly."
+                    },
+                    {
+                      question: "Why does the standard whole-number column addition procedure also work correctly for decimals?",
+                      options: ["It doesn't actually work for decimals", "Because decimal place values follow the exact same base-10 pattern as whole number place values, just extended past the units place", "Because decimals are rounded before adding", "Because decimals are a completely different number system"],
+                      answer: 1,
+                      explanation: "Since tenths, hundredths, and thousandths follow the same base-10 relationship as ones, tens, and hundreds, the identical carrying/borrowing column procedure applies seamlessly to decimals."
+                    },
+                    {
+                      question: "What is 75.345 + 86.691?",
+                      options: ["161.036", "162.036", "162.936", "161.936"],
+                      answer: 1,
+                      explanation: "75.345 + 86.691 = 162.036, as shown by the detailed place-value addition (adding matching tens, ones, tenths, hundredths, and thousandths, with appropriate regrouping)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               id: "7m-4",
               title: "Expressions Using Letter-Numbers",
               topics: [
@@ -6179,6 +7011,554 @@ export const curriculumData = {
                       options: ["Only addition of whole numbers", "Dividing a quantity by a fraction (or a whole number), using the reciprocal-and-multiply technique", "Squaring numbers", "Averaging several numbers together"],
                       answer: 1,
                       explanation: "All three problems require dividing a total quantity (milk, area, or a full day) by a rate or share expressed as a fraction — solved in every case using the reciprocal-and-multiply division rule."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "7m-9",
+              title: "Geometric Twins",
+              topics: [
+                {
+                  id: "7m-9-1",
+                  title: "1. Geometric Twins: What Makes Figures Congruent?",
+                  theory: {
+                    intro: "Recreating a signboard symbol exactly, or making a cardboard cutout identical to a frame, both raise the same question: what measurements are enough to guarantee two figures are truly identical in shape and size?",
+                    sections: [
+                      {
+                        heading: "What Is Congruence?",
+                        text: "Figures that are exact copies of each other — with the same shape and size — are said to be congruent. Congruent figures can be superimposed exactly, one over the other, using tracing paper. Importantly, a figure can be rotated or flipped before superimposing, and it would still count as congruent if it fits exactly."
+                      },
+                      {
+                        heading: "Arm Lengths Alone Aren't Enough",
+                        text: "For a two-armed symbol with vertex B and arms BA, BC, knowing just the two arm lengths (like AB=4cm, BC=8cm) is NOT enough to guarantee an exact replica — many different shapes can be drawn with the same two arm lengths but different angles between them. Only when the ANGLE between the arms is also fixed (∠ABC) does the figure's shape and size become completely determined."
+                      },
+                      {
+                        heading: "Checking Congruence of Simple Shapes",
+                        text: "Different shapes need different measurements to confirm congruence. Two circles are congruent exactly when they have the same radius. Two rectangles are congruent exactly when both their length and breadth match. In general, the measurements needed to guarantee congruence depend on how many independent quantities are needed to completely fix that shape's size and form."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Whether Two Arm Lengths Alone Guarantee Congruence",
+                      objective: "To discover, by direct construction, that arm lengths alone are insufficient to guarantee congruent figures — the angle between them matters too.",
+                      materials: ["Ruler", "Protractor", "Paper", "Pencil"],
+                      steps: [
+                        "Draw a two-armed 'V' shape with vertex B, one arm BA = 5 cm and the other arm BC = 7 cm, using any angle you like between them.",
+                        "Have a classmate independently draw their OWN two-armed shape with the exact same arm lengths (BA=5cm, BC=7cm), but a different angle.",
+                        "Compare the two shapes by placing one over the other (or tracing) — confirm they do NOT match exactly, despite having identical arm lengths.",
+                        "Now both redraw your shapes with the same arm lengths AND the same specified angle (say, 70°) between them.",
+                        "Compare again, and confirm that specifying the angle in addition to the arm lengths makes the two shapes come out exactly congruent."
+                      ],
+                      observation: "Arm lengths alone allow many different, non-congruent shapes — but fixing both the arm lengths AND the angle between them uniquely determines the shape, guaranteeing congruence between independently constructed copies."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does it mean for two figures to be 'congruent'?",
+                      options: ["They are the same colour", "They are exact copies of each other, with the same shape and size, and can be superimposed exactly", "They have the same area only", "They are both triangles"],
+                      answer: 1,
+                      explanation: "Congruent figures have identical shape and size, so one can be placed exactly over the other (after rotating or flipping if needed) with a perfect fit."
+                    },
+                    {
+                      question: "Is knowing only the two arm lengths (BA and BC) of a two-armed symbol enough to guarantee an exact replica?",
+                      options: ["Yes, arm lengths alone always guarantee an exact copy", "No — many different shapes are possible with the same two arm lengths but different angles between them", "It depends on the color of the symbol", "Arm lengths are irrelevant to congruence"],
+                      answer: 1,
+                      explanation: "Without also fixing the angle between the two arms, many different shapes (with different angles) can share the exact same two arm lengths — so arm lengths alone don't guarantee congruence."
+                    },
+                    {
+                      question: "What is true about a figure that has been rotated or flipped before being superimposed on another figure, when checking for congruence?",
+                      options: ["It can no longer be considered congruent to the original", "It can still be considered congruent, as long as it fits exactly after the rotation or flip", "Only rotation is allowed, never flipping", "Congruence checks never allow any movement of the figure"],
+                      answer: 1,
+                      explanation: "Congruence checks explicitly allow rotating or flipping a figure before superimposing — if it then fits exactly, the figures are still congruent."
+                    },
+                    {
+                      question: "What measurement(s) are needed to confirm two circles are congruent?",
+                      options: ["Their colour", "Their radius (or diameter) must match", "Nothing, all circles are automatically congruent", "Their position on the page"],
+                      answer: 1,
+                      explanation: "Two circles are congruent exactly when they share the same radius (or equivalently, the same diameter) — size alone determines a circle's shape completely."
+                    },
+                    {
+                      question: "What measurements are needed to confirm two rectangles are congruent?",
+                      options: ["Only their length", "Both their length AND their breadth must match", "Their colour and position", "Rectangles cannot be congruent to each other"],
+                      answer: 1,
+                      explanation: "Two rectangles are congruent only when both dimensions — length and breadth — match exactly; matching just one dimension isn't sufficient."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-9-2",
+                  title: "2. Congruence of Triangles: The SSS Condition",
+                  lab: { type: "triangle-congruence-sss-sim" },
+                  theory: {
+                    intro: "When trying to replicate a triangular frame, do the three side lengths alone guarantee an exact copy — without needing to measure any angles at all? A careful construction argument settles this question.",
+                    sections: [
+                      {
+                        heading: "Constructing a Triangle from Three Sidelengths",
+                        text: "Given three sidelengths (say 4cm, 6cm, 8cm), drawing a 6cm base and then drawing circles of radius 4cm and 8cm from its two endpoints produces TWO possible intersection points, forming two triangles (∆ABE and ∆ABF) — one above the base line, one below. Since these two triangles are mirror images across the base (the construction is identical above and below), they are congruent to each other."
+                      },
+                      {
+                        heading: "The SSS Condition for Congruence",
+                        text: "Because ∆ABE and ∆ABF (built from the exact same three sidelengths) are always congruent, this shows that ANY triangle with those three sidelengths must be congruent to any other triangle with the same three sidelengths — no matter how it's drawn. This result is called the SSS (Side-Side-Side) condition: if two triangles have the same three sidelengths, they are congruent."
+                      },
+                      {
+                        heading: "Conventions for Writing Congruence",
+                        text: "When two triangles are congruent, we write ∆ABC ≅ ∆XYZ, meaning vertex A corresponds to X, B to Y, and C to Z — matching up equal sides (AB=XY, BC=YZ, AC=XZ) and equal angles (∠A=∠X, ∠B=∠Y, ∠C=∠Z). Getting this correspondence order right matters: writing ∆ACB ≅ ∆XYZ would be WRONG for the same pair of triangles, since it implies AC=XY (not necessarily true) — the correct statement would be ∆ACB ≅ ∆XZY."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying the SSS Condition by Construction",
+                      objective: "To construct two independent triangles from the same three sidelengths and confirm they are congruent, demonstrating the SSS condition.",
+                      materials: ["Ruler", "Compass", "Paper", "Pencil", "Scissors (optional, for cutting out and superimposing)"],
+                      steps: [
+                        "Using a ruler and compass, construct a triangle with sidelengths 5cm, 6cm, and 7cm.",
+                        "On a separate sheet, independently construct a SECOND triangle using the exact same three sidelengths (5cm, 6cm, 7cm), without referring to your first triangle's drawing.",
+                        "Cut out both triangles (or trace one onto transparent paper) and try superimposing one over the other, allowing rotation or flipping.",
+                        "Confirm the two triangles fit exactly over each other, verifying they are congruent.",
+                        "Discuss why this works: is it possible to construct a genuinely different-shaped triangle using the same three sidelengths?"
+                      ],
+                      observation: "Two triangles built independently from the same three sidelengths always turn out to be congruent — confirming the SSS condition, and showing that three sidelengths alone (no angles needed) are sufficient to uniquely determine a triangle's shape and size."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does the SSS condition for triangle congruence state?",
+                      options: ["Two triangles with the same area are congruent", "If two triangles have the same three sidelengths, they are congruent", "Two triangles with one equal side are congruent", "Triangles can never be congruent"],
+                      answer: 1,
+                      explanation: "The SSS (Side-Side-Side) condition states that matching all three sidelengths between two triangles is sufficient to guarantee they are congruent."
+                    },
+                    {
+                      question: "When constructing a triangle from a 6cm base and two circle-arcs (radius 4cm and 8cm) from its endpoints, why are there two possible intersection points?",
+                      options: ["This is a construction error", "Because the two circles genuinely intersect at two points — one above and one below the base line, forming mirror-image triangles", "Because only one circle is needed", "Because the base must always be exactly halfway between the arcs"],
+                      answer: 1,
+                      explanation: "Two circles (from the two base endpoints) intersect at exactly two points — symmetric above and below the base line — giving two possible third-vertex positions."
+                    },
+                    {
+                      question: "Are the two triangles ∆ABE and ∆ABF (formed above and below the base from the same construction) congruent to each other?",
+                      options: ["No, they are always different shapes", "Yes — they are mirror images of each other across the base line, and thus congruent", "Only if the base length is exactly 6cm", "Congruence cannot be determined in this case"],
+                      answer: 1,
+                      explanation: "Since the construction above the base is an exact mirror image of the construction below it, ∆ABE and ∆ABF are congruent — confirming that a unique triangle shape results from three given sidelengths."
+                    },
+                    {
+                      question: "If ∆ABC ≅ ∆XYZ, which correspondence of sides must be true?",
+                      options: ["AB=YZ, BC=XZ, AC=XY", "AB=XY, BC=YZ, AC=XZ", "All sides must be equal to each other within the same triangle", "No particular correspondence is implied"],
+                      answer: 1,
+                      explanation: "In ∆ABC ≅ ∆XYZ, corresponding vertices in order (A↔X, B↔Y, C↔Z) mean corresponding sides match: AB=XY, BC=YZ, and AC=XZ."
+                    },
+                    {
+                      question: "Why would writing ∆ACB ≅ ∆XYZ be INCORRECT for two triangles where actually ∆ABC ≅ ∆XYZ?",
+                      options: ["It's always correct, order doesn't matter", "Because swapping B and C in the naming changes which sides are implied equal (like AC=XY), which may not actually be true", "Because triangle names must always be in alphabetical order", "Because congruence statements never use vertex order"],
+                      answer: 1,
+                      explanation: "The correspondence convention means position matters — writing ∆ACB ≅ ∆XYZ would incorrectly imply AC=XY and CB=YZ, which aren't necessarily the true equal sides; the correct restatement would be ∆ACB ≅ ∆XZY."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-9-3",
+                  title: "3. Corresponding Parts and Verifying Congruence",
+                  theory: {
+                    intro: "Once we know two figures are congruent, identifying exactly which vertices, sides, and angles correspond to each other is essential — getting this correspondence wrong can lead to false conclusions, even when congruence genuinely holds.",
+                    sections: [
+                      {
+                        heading: "Finding the Correct Correspondence",
+                        text: "In rectangle ABCD, triangles ∆ABD and ∆CDB share side BD in common, and AB=CD, AD=CB (opposite sides of a rectangle) — satisfying the SSS condition, so the triangles ARE congruent. But identifying the correspondence incorrectly — like assuming A↔C, B↔B, D↔D — would wrongly require AB=CB, which isn't generally true. The CORRECT correspondence must match up the sides that are actually proven equal: AB=CD (so A↔C, B↔D) and AD=CB (consistently)."
+                      },
+                      {
+                        heading: "Verifying by Superimposition",
+                        text: "The most concrete way to verify a proposed correspondence is to physically cut out both triangles (or trace them) and attempt to superimpose them according to the claimed vertex correspondence. If the shapes truly overlap with all corresponding sides matching, the correspondence is verified; if they don't align, the correspondence must be wrong, even if the triangles are otherwise congruent under a DIFFERENT correspondence."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding the Correct Vertex Correspondence in a Rectangle's Diagonal Triangles",
+                      objective: "To correctly identify which vertices correspond when proving two triangles formed by a rectangle's diagonal are congruent.",
+                      materials: ["Paper", "Ruler", "Scissors"],
+                      steps: [
+                        "Draw a rectangle ABCD and mark its diagonal BD, creating triangles ABD and CDB.",
+                        "Note the equal sides from the rectangle's properties: AB=CD and AD=CB, plus the shared side BD.",
+                        "Try the (incorrect) correspondence A↔C, B↔B, D↔D and check whether it requires AB=CB — verify this isn't generally true for a non-square rectangle.",
+                        "Now try the correspondence A↔C, B↔D, D↔B, and check that this correctly matches AB=CD, AD=CB, and BD=DB (the shared side).",
+                        "Cut out both triangles and physically superimpose them using the correct correspondence to confirm the fit."
+                      ],
+                      observation: "Even when two triangles are genuinely congruent, only ONE specific vertex correspondence (out of several possible pairings) correctly matches equal sides to equal sides — verifying this by physical superimposition prevents drawing false conclusions from a wrong correspondence."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In rectangle ABCD with diagonal BD forming triangles ABD and CDB, which sides are equal due to the rectangle's properties?",
+                      options: ["AB=BC and CD=DA", "AB=CD and AD=CB (opposite sides of the rectangle)", "All four sides are equal", "No sides are necessarily equal"],
+                      answer: 1,
+                      explanation: "In any rectangle, opposite sides are equal: AB=CD and AD=CB — these, plus the shared diagonal BD, satisfy the SSS condition for triangles ABD and CDB."
+                    },
+                    {
+                      question: "Why would the correspondence A↔C, B↔B, D↔D be INCORRECT for triangles ABD and CDB?",
+                      options: ["It is actually correct", "Because it would require AB=CB, which is not generally true for a rectangle (only opposite sides, not adjacent sides, are equal)", "Because vertices can never correspond to themselves", "Because rectangles don't have diagonals"],
+                      answer: 1,
+                      explanation: "This correspondence implies matching AB with CB, but in a rectangle, AB and CB are ADJACENT sides (usually of different lengths) — the correct correspondence must match sides actually proven equal (AB with CD, not CB)."
+                    },
+                    {
+                      question: "What is the most concrete, hands-on way to verify a proposed vertex correspondence between two congruent triangles?",
+                      options: ["Just guessing", "Cutting out both triangles and physically superimposing them according to the claimed correspondence, checking if they align exactly", "Measuring only one side", "Assuming any correspondence is correct if the triangles are congruent"],
+                      answer: 1,
+                      explanation: "Physically superimposing paper cutouts according to a specific claimed correspondence directly reveals whether that correspondence is correct — if the shapes align perfectly, the correspondence holds."
+                    },
+                    {
+                      question: "For triangles ABD and CDB in rectangle ABCD, what is the CORRECT vertex correspondence?",
+                      options: ["A↔C, B↔B, D↔D", "A↔C, B↔D, D↔B", "A↔D, B↔C, D↔A", "A↔A, B↔B, D↔D"],
+                      answer: 1,
+                      explanation: "The correct correspondence A↔C, B↔D, D↔B correctly matches AB=CD, AD=CB, and BD=DB (the shared side) — all genuinely equal sides."
+                    },
+                    {
+                      question: "Why does getting the vertex correspondence right matter, even after congruence has been established?",
+                      options: ["It doesn't matter at all", "Because the correspondence tells us exactly which specific angles and sides are equal to each other — a wrong correspondence gives false equalities", "Because triangles without correct correspondence are not really triangles", "Correspondence only matters for circles, not triangles"],
+                      answer: 1,
+                      explanation: "Congruence alone doesn't specify which parts match which — the correspondence is what tells us precisely which angles and sides can be treated as equal, so getting it wrong can lead to incorrect conclusions."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-9-4",
+                  title: "4. Angles of Isosceles and Equilateral Triangles",
+                  lab: { type: "isosceles-angle-sim" },
+                  theory: {
+                    intro: "Congruence isn't just useful for checking if two SEPARATE figures match — it can also reveal hidden properties WITHIN a single triangle, such as why the base angles of an isosceles triangle are always equal.",
+                    sections: [
+                      {
+                        heading: "Base Angles of an Isosceles Triangle",
+                        text: "In isosceles triangle ABC with AB=AC, drawing the altitude from A to BC (meeting BC at D) creates two smaller triangles, ADB and ADC. Since AB=AC (given), ∠ADB=∠ADC=90° (from the altitude), and AD is shared by both triangles, these two smaller triangles satisfy the RHS (Right angle-Hypotenuse-Side) condition — making them congruent. Since ∠B and ∠C are corresponding angles of these congruent triangles, ∠B = ∠C. This proves: the angles opposite to equal sides in a triangle are always equal."
+                      },
+                      {
+                        heading: "All Angles of an Equilateral Triangle Are 60°",
+                        text: "An equilateral triangle has all three sides equal. Since AB=AC, the base-angles property gives ∠B=∠C. Since AB=BC also holds, the same property (applied to a different pair of equal sides) gives ∠A=∠C. So all three angles are equal: ∠A=∠B=∠C. Since the three angles of any triangle sum to 180°, three equal angles must each be 180°÷3=60°. So every equilateral triangle has all three angles equal to exactly 60°."
+                      },
+                      {
+                        heading: "Congruent Triangles in Real Life",
+                        text: "Congruent triangles appear throughout real-world design and architecture — in the triangular glass panes of the Louvre Museum pyramid, the stone faces of the Egyptian pyramids of Giza, dome designs, rangoli patterns, and the triangular truss framework of bridges like the Howrah Bridge (Rabindra Setu) in Kolkata."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Proving the Isosceles Base-Angle Property with Paper Folding",
+                      objective: "To physically verify, using paper folding, that the base angles of an isosceles triangle are equal — connecting this to the RHS congruence argument.",
+                      materials: ["Paper", "Scissors", "Ruler", "Protractor"],
+                      steps: [
+                        "Cut out an isosceles triangle with two equal sides (measure carefully to ensure AB=AC).",
+                        "Fold the triangle in half so that side AB lands exactly on side AC, creasing along the altitude from the apex A.",
+                        "Observe that this fold makes vertex B land exactly on vertex C — meaning the two base angles must be equal (since the fold is a perfect mirror reflection).",
+                        "Unfold and measure both base angles with a protractor to confirm they are equal.",
+                        "Relate this folding argument to the textbook's RHS congruence proof: the crease line acts as the shared altitude AD, and each half of the folded triangle corresponds to one of the two congruent right triangles."
+                      ],
+                      observation: "Folding an isosceles triangle along its altitude from the apex always makes the two base vertices coincide exactly, physically confirming that the base angles must be equal — matching the RHS-congruence-based proof."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In isosceles triangle ABC (AB=AC) with altitude AD drawn to BC, which congruence condition proves ∆ADB ≅ ∆ADC?",
+                      options: ["SSS, using three matching sides", "RHS, using the right angle at D, the shared side AD, and equal hypotenuses AB=AC", "There is no way to prove this", "ASA, using two angles and the included side"],
+                      answer: 1,
+                      explanation: "∆ADB and ∆ADC share the right angle at D (from the altitude), the common side AD, and equal hypotenuses AB=AC — satisfying the RHS (Right angle-Hypotenuse-Side) condition for congruence."
+                    },
+                    {
+                      question: "What general property does the congruence ∆ADB ≅ ∆ADC prove about isosceles triangles?",
+                      options: ["All isosceles triangles are equilateral", "The angles opposite the two equal sides (∠B and ∠C) are equal", "The altitude is always longer than the base", "Isosceles triangles have no equal angles"],
+                      answer: 1,
+                      explanation: "Since ∠B and ∠C are corresponding angles of the congruent triangles ∆ADB and ∆ADC, this proves ∠B=∠C — the angles opposite the equal sides of an isosceles triangle are equal."
+                    },
+                    {
+                      question: "Why are all three angles of an equilateral triangle exactly 60°?",
+                      options: ["It is just an arbitrary rule with no reason", "Since all three sides are equal, all three angles must be equal too (by the base-angles property applied twice), and since they sum to 180°, each must be 180°÷3=60°", "Because 60° is a special protected angle", "Equilateral triangles can have any angle measures"],
+                      answer: 1,
+                      explanation: "Equal sides force equal opposite angles (applied to each pair of equal sides), making all three angles equal; since they must sum to 180°, each one is exactly 60°."
+                    },
+                    {
+                      question: "What does the abbreviation RHS stand for in the congruence condition used for isosceles triangles?",
+                      options: ["Right-Height-Side", "Right angle, Hypotenuse, Side", "Rectangle-Height-Sum", "Rotate-Half-Symmetric"],
+                      answer: 1,
+                      explanation: "RHS stands for Right angle, Hypotenuse, Side — a congruence condition applicable to right-angled triangles where the right angle, hypotenuse, and one other side match."
+                    },
+                    {
+                      question: "Which of these real-world structures is mentioned as an example of congruent triangles in design?",
+                      options: ["The Eiffel Tower's elevator", "The Louvre Museum pyramid's glass panes and the Howrah Bridge's truss framework", "A circular water tank", "A rectangular football field"],
+                      answer: 1,
+                      explanation: "The chapter highlights the Louvre pyramid, the Pyramids of Giza, dome designs, rangoli patterns, and the Howrah Bridge (Rabindra Setu) as real-world examples featuring congruent triangles."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "7m-10",
+              title: "Operations with Integers",
+              topics: [
+                {
+                  id: "7m-10-1",
+                  title: "1. Multiplying Integers with the Token Model",
+                  theory: {
+                    intro: "Green tokens for positive numbers and red tokens for negative numbers — already used to understand addition and subtraction of integers — can be extended to give real, concrete meaning to multiplying integers, including negative ones.",
+                    sections: [
+                      {
+                        heading: "Positive Times Positive: Placing Tokens",
+                        text: "4 × 2 can be modelled by placing 2 green (positive) tokens into an empty bag, 4 times — leaving 8 green tokens, so 4 × 2 = 8. This matches the familiar idea of multiplication as repeated addition."
+                      },
+                      {
+                        heading: "Positive Times Negative: Placing Negative Tokens",
+                        text: "4 × (−2) means placing 2 red (negative) tokens into an empty bag, 4 times, leaving 8 red tokens — so 4 × (−2) = −8. When the multiplier is positive, tokens (matching the multiplicand's sign) are simply PLACED into the bag, repeated as many times as the multiplier says."
+                      },
+                      {
+                        heading: "Negative Times Positive: Removing Tokens",
+                        text: "When the multiplier is negative, tokens are REMOVED instead of placed. For (−4) × 2, we must remove 2 green tokens from the bag, 4 times — but since the bag starts empty, we first add zero pairs (one green + one red token, which cancel to nothing) so there are green tokens available to remove. After removing 2 greens (using zero pairs) 4 times, 8 red tokens remain — so (−4) × 2 = −8."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Modelling Integer Multiplication with Tokens",
+                      objective: "To physically act out positive-times-positive, positive-times-negative, and negative-times-positive multiplication using a token model.",
+                      materials: ["Two colours of small counters, buttons, or coins (to represent positive and negative tokens)"],
+                      steps: [
+                        "Model 3 × 2 by placing 2 positive tokens into an empty 'bag' (a small box or circle drawn on paper), 3 times, and count the total.",
+                        "Model 3 × (−2) by placing 2 negative tokens into the empty bag, 3 times, and count the total.",
+                        "Model (−3) × 2 by adding 2 zero pairs (one positive + one negative each) to the empty bag, then removing 2 positive tokens, repeating this whole process 3 times.",
+                        "Count what remains in the bag after the removals, and record the result as an integer.",
+                        "Compare all three results and check they match the expected values: 3×2=6, 3×(−2)=−6, (−3)×2=−6."
+                      ],
+                      observation: "The token model gives every integer multiplication a concrete physical meaning — placing tokens for a positive multiplier, and removing tokens (using zero pairs when needed) for a negative multiplier — always producing results consistent with the standard rules of integer multiplication."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the token model, how is 4 × 2 represented?",
+                      options: ["Removing 2 negative tokens from the bag 4 times", "Placing 2 positive (green) tokens into an empty bag, 4 times", "Placing 4 negative tokens into the bag", "There is no token model for positive multiplication"],
+                      answer: 1,
+                      explanation: "4 × 2 is modelled by placing 2 positive tokens into an empty bag 4 times, leaving 8 positive tokens total."
+                    },
+                    {
+                      question: "How is 4 × (−2) represented in the token model?",
+                      options: ["Placing 2 negative (red) tokens into an empty bag, 4 times, leaving 8 negative tokens", "Removing 2 positive tokens 4 times", "The same as 4 × 2", "It cannot be modelled with tokens"],
+                      answer: 0,
+                      explanation: "4 × (−2) means placing 2 negative tokens into the bag 4 times, resulting in 8 negative tokens (i.e., −8)."
+                    },
+                    {
+                      question: "Why do we need to add 'zero pairs' when modelling (−4) × 2 with tokens?",
+                      options: ["Zero pairs are not actually needed", "Because the bag starts empty, so to REMOVE 2 positive tokens (as the negative multiplier requires), we must first add zero pairs to have positive tokens available to take out", "Because zero pairs make the bag heavier", "Zero pairs are only used for addition, never multiplication"],
+                      answer: 1,
+                      explanation: "Since removal requires tokens to already be present, and the bag starts empty, adding zero pairs (a positive and negative token that cancel to nothing) provides tokens that can then be removed without changing the bag's actual value."
+                    },
+                    {
+                      question: "What determines whether tokens are PLACED into the bag versus REMOVED from the bag, in the token model of multiplication?",
+                      options: ["The sign of the multiplicand", "The sign of the multiplier — positive multipliers place tokens, negative multipliers remove tokens", "The size of the numbers involved", "Tokens are always placed, never removed"],
+                      answer: 1,
+                      explanation: "A positive multiplier means placing (adding) the multiplicand's tokens into the bag; a negative multiplier means removing that many sets of tokens instead."
+                    },
+                    {
+                      question: "What is (−4) × 2 according to the token model?",
+                      options: ["8", "−8", "6", "−6"],
+                      answer: 1,
+                      explanation: "(−4) × 2 requires removing 2 positive tokens from the bag 4 times (using zero pairs), leaving 8 negative tokens behind — so (−4) × 2 = −8."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-10-2",
+                  title: "2. Multiplying Two Negatives & Patterns in Integer Multiplication",
+                  lab: { type: "integer-multiplication-pattern-sim" },
+                  theory: {
+                    intro: "What happens when BOTH numbers in a multiplication are negative? A pattern of steadily decreasing multipliers — extended below zero — reveals why a negative times a negative must be positive.",
+                    sections: [
+                      {
+                        heading: "Negative Times Negative: Removing Negative Tokens",
+                        text: "(−4) × (−2) means removing 2 negative (red) tokens from the bag, 4 times. Since the bag starts empty, zero pairs are added first, then 2 red tokens are removed — repeated 4 times. After this, 8 GREEN (positive) tokens remain, so (−4) × (−2) = 8 — a negative times a negative gives a positive."
+                      },
+                      {
+                        heading: "The Pattern Extension Argument",
+                        text: "Looking at 4×3=12, 3×3=9, 2×3=6, 1×3=3, 0×3=0 — each step down in the multiplier decreases the product by 3 (the multiplicand). Continuing this SAME pattern below zero: (−1)×3=−3, (−2)×3=−6, (−3)×3=−9 — confirming that decreasing the multiplier by 1 keeps decreasing the product by 3, even into negative multipliers. A similar pattern, run in reverse, explains why multiplying two negatives gives a positive: the consistent, unbroken pattern is what guarantees the sign rules for integer multiplication."
+                      },
+                      {
+                        heading: "Brahmagupta's Ancient Sign Rules",
+                        text: "In his 628 CE text Brāhmasphuṭasiddhānta, the mathematician Brahmagupta stated these exact rules using 'fortune' (positive) and 'debt' (negative): the product of two fortunes is a fortune; the product of two debts is a fortune; the product of a debt and a fortune is a debt — precisely matching the modern rules for multiplying signed numbers, articulated over 1,300 years ago. Multiplication of integers is also commutative: a × b = b × a, for any integers a and b, regardless of sign."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Extending the Multiplication Pattern Below Zero",
+                      objective: "To construct and extend a multiplication pattern by hand, confirming that a negative times a negative gives a positive.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Write down the sequence 4×(−3)=−12, 3×(−3)=−9, 2×(−3)=−6, 1×(−3)=−3, 0×(−3)=0, noting that each step down in the multiplier INCREASES the product by 3 (since the multiplicand is negative).",
+                        "Continue the exact same pattern (increasing by 3 each time) for multipliers −1, −2, and −3.",
+                        "Record the results: (−1)×(−3)=?, (−2)×(−3)=?, (−3)×(−3)=?",
+                        "Verify each of your extended results using the token model (removing negative tokens using zero pairs).",
+                        "Confirm that your pattern-based answers exactly match the standard rule that a negative times a negative gives a positive."
+                      ],
+                      observation: "Extending a consistent, step-by-step pattern below zero (rather than treating negative multipliers as a completely separate rule) naturally and convincingly explains why multiplying two negative integers must give a positive result."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is (−4) × (−2) according to the token model?",
+                      options: ["−8", "8", "−6", "6"],
+                      answer: 1,
+                      explanation: "(−4) × (−2) requires removing 2 negative tokens from the bag 4 times (using zero pairs), leaving 8 positive tokens — so (−4) × (−2) = 8."
+                    },
+                    {
+                      question: "In the pattern 4×3=12, 3×3=9, 2×3=6, ..., what happens to the product each time the multiplier decreases by 1?",
+                      options: ["The product increases by 3", "The product decreases by 3 (the multiplicand)", "The product stays the same", "The product becomes negative immediately"],
+                      answer: 1,
+                      explanation: "Since the multiplicand is 3, each unit decrease in the multiplier decreases the product by exactly 3 — a pattern that continues consistently even as the multiplier goes below zero."
+                    },
+                    {
+                      question: "According to Brahmagupta's 628 CE rules (using 'fortune' for positive and 'debt' for negative), what is the product of two 'debts'?",
+                      options: ["A debt (negative)", "A fortune (positive)", "Zero", "Cannot be determined"],
+                      answer: 1,
+                      explanation: "Brahmagupta explicitly stated that the product of two debts (two negative numbers) is a fortune (positive) — matching the modern rule that negative × negative = positive."
+                    },
+                    {
+                      question: "Why does extending the multiplication pattern below zero convincingly show that negative × negative = positive?",
+                      options: ["It doesn't show this at all", "Because the SAME consistent step-by-step change (increase or decrease by the multiplicand) that holds for positive multipliers naturally continues to hold as the multiplier crosses zero into negative territory", "Because patterns are always true regardless of evidence", "Multiplication patterns only work for positive numbers"],
+                      answer: 1,
+                      explanation: "Since the pattern of changing the product by the multiplicand for each unit change in the multiplier holds consistently for positive multipliers, extending that SAME unbroken pattern into negative multipliers naturally produces the negative×negative=positive result."
+                    },
+                    {
+                      question: "Is integer multiplication commutative (a × b = b × a) even when the integers are negative?",
+                      options: ["No, commutativity only works for positive integers", "Yes — multiplication is commutative for all integers, regardless of sign", "Only sometimes, depending on the specific numbers", "Commutativity does not apply to multiplication at all"],
+                      answer: 1,
+                      explanation: "Multiplication of integers is commutative for any integers a and b — swapping the multiplier and multiplicand never changes the product, whatever their signs."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-10-3",
+                  title: "3. Real-World Applications: Exams and Elevators",
+                  theory: {
+                    intro: "Negative numbers aren't just abstract — negative marking in exams and downward movement in an elevator shaft are both naturally modelled using integer multiplication and addition.",
+                    sections: [
+                      {
+                        heading: "Negative Marking in Exams",
+                        text: "An exam gives +5 marks for a correct answer and −2 for a wrong one. If Mala gets 30 correct and 20 wrong answers, her total is 30×5 + 20×(−2) = 150 + (−40) = 110 marks. Representing wrong answers as a NEGATIVE integer lets ordinary addition and multiplication compute the final score correctly, without needing a separate 'subtract the penalties' step."
+                      },
+                      {
+                        heading: "Elevators and Position Below Ground",
+                        text: "An elevator's position can be tracked with positive integers above ground and negative integers below ground. If it descends at 3 metres/minute for 60 minutes starting from ground level (0), its position is 60 × (−3) = −180, meaning 180 metres below ground. Starting from 15m above ground and descending for 45 minutes: 15 + (45 × (−3)) = 15 + (−135) = −120, meaning 120 metres below ground."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Solving Real-World Integer Word Problems",
+                      objective: "To apply integer multiplication and addition to realistic scenarios involving gains/losses or upward/downward movement.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "A cement company earns ₹8 profit per bag of white cement sold, and a ₹5 LOSS per bag of grey cement sold. If 40 bags of white cement and 25 bags of grey cement are sold, write an integer expression for the total profit or loss.",
+                        "Evaluate your expression: 40×8 + 25×(−5).",
+                        "A submarine starts at sea level (0m) and descends at 12 metres per minute for 8 minutes. Write an integer expression for its final position and evaluate it.",
+                        "A freezing process lowers room temperature from 32°C at 5°C per hour. Write an integer expression for the temperature after 10 hours, and evaluate it.",
+                        "Check each of your answers makes real-world sense (e.g., a very negative temperature or a large profit/loss, as appropriate)."
+                      ],
+                      observation: "Representing losses, penalties, or downward movement as negative integers lets the SAME standard arithmetic operations (multiplication, addition) correctly compute real-world outcomes — no special-case reasoning about 'subtracting' is needed once the signs are set up correctly."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In an exam with +5 for correct and −2 for wrong answers, what is the score for 30 correct and 20 wrong answers?",
+                      options: ["110", "150", "70", "190"],
+                      answer: 0,
+                      explanation: "30×5 + 20×(−2) = 150 + (−40) = 110 marks."
+                    },
+                    {
+                      question: "An elevator descends at 3 metres/minute for 60 minutes starting from ground level (0). What is its final position?",
+                      options: ["180 metres above ground", "180 metres below ground (−180)", "60 metres below ground", "It stays at ground level"],
+                      answer: 1,
+                      explanation: "60 × (−3) = −180, meaning the elevator is 180 metres below ground level."
+                    },
+                    {
+                      question: "An elevator starts 15m above ground and descends at 3 metres/minute for 45 minutes. What is its final position?",
+                      options: ["−120 (120 metres below ground)", "−135 (135 metres below ground)", "120 metres above ground", "15 metres above ground"],
+                      answer: 0,
+                      explanation: "15 + (45 × (−3)) = 15 + (−135) = −120, meaning the elevator ends up 120 metres below ground."
+                    },
+                    {
+                      question: "Why is representing a wrong exam answer's penalty as a NEGATIVE integer (like −2) useful?",
+                      options: ["It isn't useful, penalties should be handled separately", "It allows ordinary addition and multiplication to correctly compute the total score, without a separate subtraction step", "It makes the exam harder", "Negative integers cannot represent penalties"],
+                      answer: 1,
+                      explanation: "Using a negative integer for the penalty means the total score can be found by simply adding up all the (positive and negative) contributions using standard arithmetic, rather than needing special subtraction logic."
+                    },
+                    {
+                      question: "If a cement company earns ₹8 profit per white cement bag and a ₹5 loss per grey cement bag, and sells 40 white and 25 grey bags, what is the total profit or loss?",
+                      options: ["₹195 profit", "₹320 profit", "₹125 loss", "₹445 profit"],
+                      answer: 0,
+                      explanation: "40×8 + 25×(−5) = 320 + (−125) = 195 — a profit of ₹195."
+                    }
+                  ]
+                },
+                {
+                  id: "7m-10-4",
+                  title: "4. Division of Integers",
+                  lab: { type: "integer-division-sim" },
+                  theory: {
+                    intro: "Just as with whole numbers and fractions, dividing integers can always be reframed as a multiplication problem in disguise — revealing simple, consistent sign rules for integer division.",
+                    sections: [
+                      {
+                        heading: "Reframing Integer Division as Multiplication",
+                        text: "(−100) ÷ 25 asks: what must be multiplied by 25 to get −100? Since 25 × (−4) = −100, we get (−100) ÷ 25 = −4. Similarly, (−100) ÷ (−4) asks what must be multiplied by −4 to get −100; since (−4) × 25 = −100, we get (−100) ÷ (−4) = 25."
+                      },
+                      {
+                        heading: "The Sign Rules for Division",
+                        text: "For any positive integers a and b (b≠0): a ÷ (−b) = −(a÷b); (−a) ÷ b = −(a÷b); and (−a) ÷ (−b) = a÷b. In short: dividing a positive by a negative (or a negative by a positive) gives a negative result, while dividing two numbers with the SAME sign (both positive or both negative) always gives a positive result — mirroring exactly the sign rules already seen for multiplication."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Solving Integer Division by Reframing as Multiplication",
+                      objective: "To practice converting integer division problems into 'what must be multiplied' questions, and use known multiplication facts to solve them.",
+                      materials: ["Paper and pencil"],
+                      steps: [
+                        "Write down the division problem 84 ÷ (−12).",
+                        "Reframe it as multiplication: (−12) × ? = 84.",
+                        "Recall or calculate that (−12) × (−7) = 84, so ? = −7.",
+                        "Conclude that 84 ÷ (−12) = −7, and verify this matches the sign rule (positive ÷ negative = negative).",
+                        "Repeat this reframing process for (−90) ÷ (−9) and (−56) ÷ 8, checking each against the appropriate sign rule."
+                      ],
+                      observation: "Reframing any integer division as 'what number, multiplied by the divisor, gives the dividend' makes the correct quotient (and its sign) easy to find using already-known multiplication facts and sign rules."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is (−100) ÷ 25?",
+                      options: ["4", "−4", "125", "−125"],
+                      answer: 1,
+                      explanation: "Reframed as 25 × ? = −100, we know 25×(−4)=−100, so (−100)÷25 = −4."
+                    },
+                    {
+                      question: "What is (−100) ÷ (−4)?",
+                      options: ["−25", "25", "−400", "400"],
+                      answer: 1,
+                      explanation: "Reframed as (−4) × ? = −100, we know (−4)×25=−100, so (−100)÷(−4) = 25 — dividing two negatives gives a positive."
+                    },
+                    {
+                      question: "According to the sign rules for integer division, what is the sign of the result when dividing a positive number by a negative number?",
+                      options: ["Always positive", "Always negative", "Depends on the specific numbers", "Division is undefined in this case"],
+                      answer: 1,
+                      explanation: "Dividing a positive integer by a negative integer (or vice versa) always gives a negative result, matching the rule a ÷ (−b) = −(a÷b)."
+                    },
+                    {
+                      question: "What is the sign of the quotient when dividing two integers with the SAME sign (both positive or both negative)?",
+                      options: ["Always negative", "Always positive", "Always zero", "It varies unpredictably"],
+                      answer: 1,
+                      explanation: "Dividing two integers of the same sign (both positive, or both negative) always produces a positive quotient — mirroring the multiplication sign rules."
+                    },
+                    {
+                      question: "How can (−100) ÷ 25 be reframed as a multiplication question?",
+                      options: ["25 × ? = −100", "? × (−100) = 25", "−100 × 25 = ?", "It cannot be reframed"],
+                      answer: 0,
+                      explanation: "Any division a ÷ b can be reframed as 'b × ? = a' — for (−100) ÷ 25, this becomes 25 × ? = −100, which is solved by finding ? = −4."
                     }
                   ]
                 }
