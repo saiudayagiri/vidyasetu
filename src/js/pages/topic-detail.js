@@ -2797,6 +2797,75 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const romanNumeralConverterLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="roman-numeral-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number and see it broken down into Roman numerals.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Number</h3>
+            <select id="sel-roman-number" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="14" selected>14</option>
+              <option value="49">49</option>
+              <option value="88">88</option>
+              <option value="324">324</option>
+              <option value="1994">1994</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Roman Numeral</h3>
+            <div id="roman-numeral-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const baseNLandmarkLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="base-n-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number and base, and see it broken into landmark-number groups.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Number and Base</h3>
+            <select id="sel-base-n-choice" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="143-5" selected>143 in base 5</option>
+              <option value="292-7">292 in base 7</option>
+              <option value="500-20">500 in base 20</option>
+              <option value="2634-10">2634 in base 10</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Landmark Breakdown</h3>
+            <div id="base-n-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number and base above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const hinduPlaceValueLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="hindu-place-value-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number and see its full place-value breakdown.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Number</h3>
+            <select id="sel-hindu-place-num" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="375" selected>375</option>
+              <option value="2024">2024</option>
+              <option value="30506">30506</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Place-Value Breakdown</h3>
+            <div id="hindu-place-value-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4647,6 +4716,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'scientific-notation-converter-sim') {
               labHtml = scientificNotationConverterLabHtml;
               labDesc = 'Pick a real-world number and see it converted into scientific notation.';
+            } else if (topicObj.lab.type === 'roman-numeral-converter-sim') {
+              labHtml = romanNumeralConverterLabHtml;
+              labDesc = 'Pick a number and see it broken down step by step into Roman numerals.';
+            } else if (topicObj.lab.type === 'base-n-landmark-sim') {
+              labHtml = baseNLandmarkLabHtml;
+              labDesc = 'Pick a number and a base, and see it broken into landmark-number groups.';
+            } else if (topicObj.lab.type === 'hindu-place-value-sim') {
+              labHtml = hinduPlaceValueLabHtml;
+              labDesc = 'Pick a number and see its full place-value breakdown, digit by digit.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -5088,6 +5166,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initNegativeExponentVisualizerLab();
         } else if (topicObj.lab.type === 'scientific-notation-converter-sim') {
           initScientificNotationConverterLab();
+        } else if (topicObj.lab.type === 'roman-numeral-converter-sim') {
+          initRomanNumeralConverterLab();
+        } else if (topicObj.lab.type === 'base-n-landmark-sim') {
+          initBaseNLandmarkLab();
+        } else if (topicObj.lab.type === 'hindu-place-value-sim') {
+          initHinduPlaceValueLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -18145,6 +18229,175 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(`Coefficient ${coeff} is between 1 and 10; exponent ${exp} counts the digits moved.`, W / 2, 200);
 
         obs.innerHTML = `<strong>${formatIndian(numStr)} = ${sciForm}.</strong> The decimal point moves ${Math.abs(exp)} places to give a coefficient between 1 and 10, multiplied by 10 raised to the power ${exp}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initRomanNumeralConverterLab() {
+      const canvas = document.getElementById('roman-numeral-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-roman-number');
+      const obs = document.getElementById('roman-numeral-obs');
+      const VALUES = [
+        [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'],
+        [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'],
+        [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']
+      ];
+
+      function toRoman(num) {
+        let remaining = num;
+        const parts = [];
+        for (const [val, sym] of VALUES) {
+          while (remaining >= val) {
+            parts.push({ val, sym });
+            remaining -= val;
+          }
+        }
+        return parts;
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const num = parseInt(sel.value);
+        const parts = toRoman(num);
+        const numeral = parts.map(p => p.sym).join('');
+
+        ctx.font = 'bold 20px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(num, W / 2, 35);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(parts.map(p => `${p.val}(${p.sym})`).join(' + '), W / 2, 75, W - 60);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 120, 95); ctx.lineTo(W / 2 + 120, 95); ctx.stroke();
+
+        ctx.font = 'bold 34px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(numeral, W / 2, 150);
+
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('Largest landmark symbols are used first, subtracting as we go.', W / 2, 190);
+
+        obs.innerHTML = `<strong>${num} = ${numeral}.</strong> Breaking it down: ${parts.map(p => `${p.val} → ${p.sym}`).join(', ')}, combined to give ${numeral}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initBaseNLandmarkLab() {
+      const canvas = document.getElementById('base-n-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-base-n-choice');
+      const obs = document.getElementById('base-n-obs');
+
+      function toBaseDigits(num, base) {
+        if (num === 0) return [0];
+        const digits = [];
+        let remaining = num;
+        while (remaining > 0) {
+          digits.unshift(remaining % base);
+          remaining = Math.floor(remaining / base);
+        }
+        return digits;
+      }
+
+      function superscript(n) {
+        const map = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶' };
+        return String(n).split('').map(ch => map[ch] || ch).join('');
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [numStr, baseStr] = sel.value.split('-');
+        const num = parseInt(numStr), base = parseInt(baseStr);
+        const digits = toBaseDigits(num, base);
+        const numPlaces = digits.length;
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${num} in base ${base}`, W / 2, 30);
+
+        const landmarks = [];
+        for (let i = numPlaces - 1; i >= 0; i--) landmarks.push(Math.pow(base, i));
+
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        const colW = Math.min(90, (W - 80) / numPlaces);
+        const startX = W / 2 - (colW * numPlaces) / 2 + colW / 2;
+        digits.forEach((d, i) => {
+          const x = startX + i * colW;
+          ctx.fillText(`${base}${superscript(numPlaces - 1 - i)} = ${landmarks[i]}`, x, 65);
+          ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillText(d, x, 105);
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        });
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(startX - colW / 2, 120); ctx.lineTo(startX + colW * (numPlaces - 1) + colW / 2, 120); ctx.stroke();
+
+        const terms = digits.map((d, i) => `${d}×${landmarks[i]}`).join(' + ');
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(terms, W / 2, 160, W - 40);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`= ${num}`, W / 2, 190);
+
+        obs.innerHTML = `<strong>${num} in base ${base} is "${digits.join('')}".</strong> That's ${terms} = ${num}, using the landmark numbers (powers of ${base}): ${landmarks.join(', ')}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initHinduPlaceValueLab() {
+      const canvas = document.getElementById('hindu-place-value-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-hindu-place-num');
+      const obs = document.getElementById('hindu-place-value-obs');
+      const PLACE_NAMES = ['ones', 'tens', 'hundreds', 'thousands', 'ten-thousands'];
+
+      function superscript(n) {
+        const map = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶' };
+        return String(n).split('').map(ch => map[ch] || ch).join('');
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const numStr = sel.value;
+        const digits = numStr.split('').map(Number);
+        const n = digits.length;
+
+        ctx.font = 'bold 20px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(numStr, W / 2, 30);
+
+        const colW = Math.min(85, (W - 60) / n);
+        const startX = W / 2 - (colW * n) / 2 + colW / 2;
+        digits.forEach((d, i) => {
+          const power = n - 1 - i;
+          const x = startX + i * colW;
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText(PLACE_NAMES[power] || `10${superscript(power)}`, x, 60);
+          ctx.font = 'bold 24px system-ui'; ctx.fillStyle = d === 0 ? cssVar('--text-muted') : cssVar('--accent-color');
+          ctx.fillText(d, x, 100);
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText(`×10${superscript(power)}`, x, 120);
+        });
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(startX - colW / 2, 135); ctx.lineTo(startX + colW * (n - 1) + colW / 2, 135); ctx.stroke();
+
+        const terms = digits.map((d, i) => `${d}×10${superscript(n - 1 - i)}`).join(' + ');
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(terms, W / 2, 165, W - 40);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`= ${numStr}`, W / 2, 195);
+
+        obs.innerHTML = `<strong>${numStr} = ${terms} = ${numStr}.</strong> Each digit's value depends entirely on its position — even the 0s are essential to correctly mark a skipped place value.`;
       }
 
       sel.addEventListener('change', draw);

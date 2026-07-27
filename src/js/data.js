@@ -12719,6 +12719,287 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-3",
+              title: "A Story of Numbers",
+              topics: [
+                {
+                  id: "8m-3-1",
+                  title: "1. Early Number Systems: From Sticks to Symbols",
+                  lab: { type: "roman-numeral-converter-sim" },
+                  theory: {
+                    intro: "Long before the digits 0-9 existed, people counted with sticks, body parts, and notched bones — and one civilization's clever grouping trick survives today as Roman numerals.",
+                    sections: [
+                      {
+                        heading: "The Mechanism of Counting",
+                        text: "To count a herd of cows without number names, people used a one-to-one mapping — matching each cow to a stick, pebble, or tally mark. This works for any collection size, but becomes impractical for large numbers (imagine needing 10,000 sticks!). Archaeological finds like the Lebombo bone (about 44,000 years old, with 29 notches) and the Ishango bone (20,000-35,000 years old) show tally marks are among humanity's oldest number records."
+                      },
+                      {
+                        heading: "Counting in Groups",
+                        text: "The Gumulgal people of Australia built number names by counting in twos: 3 = 'two-one', 4 = 'two-two', 5 = 'two-two-one'. Remarkably, two geographically distant groups (the Bakairi of South America and the Bushmen of South Africa) independently developed nearly identical counting-by-twos systems — suggesting either a shared ancient ancestor or the universal human difficulty of instantly recognizing quantities beyond about 4 or 5 at a glance."
+                      },
+                      {
+                        heading: "The Roman Numeral System",
+                        text: "The Roman system used symbols I (1), V (5), X (10), L (50), C (100), D (500), and M (1000), combining and repeating them (e.g., 14 = XIV, using subtraction: X + IV = 10 + 4). It served Europe for centuries but had a fatal flaw: representing very large numbers required inventing more and more new symbols, with no way to systematically extend the pattern forever."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Converting Numbers to Roman Numerals",
+                      objective: "To practice converting numbers into Roman numerals, understanding the additive and subtractive grouping rules.",
+                      materials: ["Paper and pencil", "A reference table of Roman symbols: I=1, V=5, X=10, L=50, C=100, D=500, M=1000"],
+                      steps: [
+                        "Break a chosen number into thousands, hundreds, tens, and units (e.g., 1994 = 1000 + 900 + 90 + 4).",
+                        "Convert each part separately using the Roman symbols, applying subtraction when a smaller symbol precedes a larger one (like IV for 4, or XC for 90).",
+                        "Combine the parts in order from largest to smallest to form the complete Roman numeral.",
+                        "Check your answer by converting it back to a regular number.",
+                        "Discuss why representing a number like one million would be extremely impractical in this system."
+                      ],
+                      observation: "1994 breaks into 1000 (M) + 900 (CM) + 90 (XC) + 4 (IV), giving MCMXCIV — demonstrating how Roman numerals combine landmark symbols additively and subtractively, but require ever more symbols for ever larger numbers, unlike a true place-value system."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'one-to-one mapping', as used in early counting methods like tally marks?",
+                      options: ["Assigning multiple sticks to a single object", "Matching each object being counted to exactly one stick, mark, or symbol, with no repeats", "A method that only works for numbers below 10", "A modern invention unrelated to ancient counting"],
+                      answer: 1,
+                      explanation: "A one-to-one mapping pairs each object being counted with exactly one corresponding stick, notch, or symbol — the foundation of the earliest counting methods."
+                    },
+                    {
+                      question: "What is remarkable about the counting-by-twos systems of the Gumulgal (Australia), Bakairi (South America), and Bushmen (South Africa)?",
+                      options: ["They were all invented in the same century by trade contact", "Despite being geographically very distant with no known contact, they independently developed nearly identical systems", "They all used identical written symbols", "None of these groups actually used counting by twos"],
+                      answer: 1,
+                      explanation: "These three groups, despite vast geographic separation and no known historical contact, developed remarkably similar counting-by-twos number systems, a puzzle historians still debate the origins of."
+                    },
+                    {
+                      question: "In Roman numerals, how is the number 14 represented, and why?",
+                      options: ["XIIII, by repeating I four times after X", "XIV, using X (10) followed by IV (a subtractive 4, meaning 5 minus 1)", "IVX, with no clear rule", "14 cannot be represented in Roman numerals"],
+                      answer: 1,
+                      explanation: "14 is written as XIV: X represents 10, and IV represents 4 (I placed before V subtracts 1 from 5), combining additively to form 14."
+                    },
+                    {
+                      question: "What is the major limitation of the Roman numeral system for representing very large numbers?",
+                      options: ["It cannot represent any number greater than 10", "It requires inventing more and more new symbols as numbers get larger, with no systematic way to extend indefinitely", "It has no way to represent the number 1", "Roman numerals can represent any number with just the symbol I"],
+                      answer: 1,
+                      explanation: "Since Roman numerals rely on a fixed set of symbols (I, V, X, L, C, D, M), representing arbitrarily large numbers requires constantly inventing new symbols, unlike place-value systems which can represent any number using just a few repeated digits."
+                    },
+                    {
+                      question: "About how old are the Lebombo and Ishango bones, believed to be some of the earliest tally-mark artefacts?",
+                      options: ["About 100 years old", "About 1,000 years old", "Tens of thousands of years old (Lebombo ~44,000 years, Ishango ~20,000-35,000 years)", "About 500 years old"],
+                      answer: 2,
+                      explanation: "The Lebombo bone is estimated at around 44,000 years old, and the Ishango bone between 20,000-35,000 years old — among the oldest known mathematical artefacts in human history."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-3-2",
+                  title: "2. The Idea of a Base: Egyptian and Base-n Systems",
+                  lab: { type: "base-n-landmark-sim" },
+                  theory: {
+                    intro: "The ancient Egyptians hit on something clever: instead of arbitrary grouping sizes, they built their entire number system from powers of 10 — an idea we now call a 'base'.",
+                    sections: [
+                      {
+                        heading: "The Egyptian Number System",
+                        text: "Around 3000 BCE, the Egyptians developed landmark numbers that were all powers of 10: 1, 10, 100, 1000, and so on. A number like 324 (= 100+100+100+10+10+4) was written using the symbols for these landmark numbers, grouped starting from the largest landmark number smaller than the given number."
+                      },
+                      {
+                        heading: "Defining a 'Base'",
+                        text: "A number system is called a base-n system if its first landmark number is 1, and every next landmark number is obtained by multiplying the current one by a fixed number n. The landmark numbers of a base-n system are exactly the powers of n: n⁰=1, n¹, n², n³, and so on. The Egyptian system is base-10 (also called decimal); we can similarly build a base-5 system with landmark numbers 1, 5, 25, 125, 625, ..."
+                      },
+                      {
+                        heading: "Why a Base System Is Powerful",
+                        text: "Having landmark numbers as powers of a fixed base makes arithmetic far easier — adding numerals just means combining symbols and regrouping whenever a landmark number appears 10 (or n) times, converting it into the next higher landmark number automatically. This regrouping trick is the same idea used in today's carrying-over during addition."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Converting Numbers Into a Base-5 System",
+                      objective: "To practice breaking numbers into landmark numbers of a base-5 system (1, 5, 25, 125, ...), reinforcing the concept of a 'base'.",
+                      materials: ["Paper and pencil", "A list of numbers to convert (e.g., 143, 292, 500)"],
+                      steps: [
+                        "List the landmark numbers of a base-5 system: 1, 5, 25, 125, 625.",
+                        "For a chosen number, find how many times the largest landmark number (smaller than the number) fits into it, and note the remainder.",
+                        "Repeat with the next smaller landmark number on the remainder, continuing until you reach the landmark number 1.",
+                        "Write down how many of each landmark number were used — this is the number's base-5 representation.",
+                        "Verify your answer by multiplying each count by its landmark number and adding them all up to check it equals the original number."
+                      ],
+                      observation: "143 breaks down as 1×125 + 0×25 + 3×5 + 3×1 = 125+0+15+3 = 143, so 143 in base-5 uses the digits 1, 0, 3, 3 — confirming that any number can be represented using only the landmark numbers (powers) of a chosen base."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What are the landmark numbers of the ancient Egyptian number system?",
+                      options: ["1, 2, 3, 4, 5, ...", "Powers of 10: 1, 10, 100, 1000, ...", "Powers of 5: 1, 5, 25, 125, ...", "Only the number 100"],
+                      answer: 1,
+                      explanation: "The Egyptian system's landmark numbers were all powers of 10 (1, 10, 100, 1000, ...), making it a base-10 system."
+                    },
+                    {
+                      question: "What defines a 'base-n' number system?",
+                      options: ["Any system that uses exactly n symbols", "A system whose first landmark number is 1, and each subsequent landmark number is the previous one multiplied by n", "A system that can only count up to n", "A system with no landmark numbers at all"],
+                      answer: 1,
+                      explanation: "A base-n system starts its landmark numbers at 1, with each next landmark number formed by multiplying the previous one by the fixed number n — giving landmark numbers that are exactly the powers of n."
+                    },
+                    {
+                      question: "What are the landmark numbers of a base-5 system?",
+                      options: ["1, 5, 10, 15, 20, ...", "1, 5, 25, 125, 625, ...", "5, 10, 15, 20, 25, ...", "1, 2, 3, 4, 5"],
+                      answer: 1,
+                      explanation: "In a base-5 system, each landmark number is the previous one multiplied by 5, giving 1, 5, 25 (5²), 125 (5³), 625 (5⁴), and so on."
+                    },
+                    {
+                      question: "What is another common name for a base-10 number system?",
+                      options: ["Binary system", "Decimal system", "Sexagesimal system", "Roman system"],
+                      answer: 1,
+                      explanation: "A base-10 number system is also called a decimal number system — the system used by the ancient Egyptians and by the modern Hindu-Arabic numerals."
+                    },
+                    {
+                      question: "Why does having landmark numbers as powers of a fixed base make arithmetic easier?",
+                      options: ["It doesn't actually make arithmetic any easier", "It allows automatic regrouping — whenever a landmark number occurs n times, it converts neatly into one of the next higher landmark number, similar to carrying over in addition", "It eliminates the need for addition entirely", "It only works for very small numbers"],
+                      answer: 1,
+                      explanation: "Because each landmark number is a fixed multiple of the previous one, arithmetic operations like addition become systematic: whenever a landmark number accumulates n copies, it can be regrouped into the next higher landmark number — exactly like carrying over a digit."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-3-3",
+                  title: "3. Place Value: Mesopotamian, Mayan, and Chinese Systems",
+                  theory: {
+                    intro: "The Mesopotamians stumbled onto a revolutionary trick: instead of inventing new symbols for bigger and bigger landmark numbers, they let a symbol's POSITION tell you which landmark number it represented.",
+                    sections: [
+                      {
+                        heading: "The Mesopotamian Sexagesimal System",
+                        text: "The Mesopotamians (Babylonians) eventually used a base-60 system — landmark numbers 1, 60, 3600 (60²), and so on. Their key innovation: instead of separate symbols for each power of 60, they wrote numerals from 1-59 and used POSITION to show which power of 60 each group represented — the rightmost position for 1s, the next for 60s, the next for 3600s, and so on. This positional idea, called a place value system, is why we still use base-60 for time today: 60 seconds in a minute, 60 minutes in an hour."
+                      },
+                      {
+                        heading: "The Mayan System and the Chinese Rod Numerals",
+                        text: "The Mayan civilization also used a place value system (roughly base-20), and crucially, used a placeholder symbol for zero — an important historical advance, even though their system wasn't a fully consistent base-20 system. The Chinese used rod numerals (from at least the 3rd century AD) in a true base-10 place value system, alternating symbol styles (zong/heng) between positions to avoid ambiguity from blank spaces — for example, the number 2634 was represented as 2 (thousands) - 6 (hundreds) - 3 (tens) - 4 (units)."
+                      },
+                      {
+                        heading: "Why Place Value Was a Breakthrough",
+                        text: "A place value (or positional) number system uses the POSITION of each symbol to determine its landmark number, rather than needing an ever-growing set of unique symbols. This is considered the single most important milestone in the history of number systems — it lets any number, no matter how large, be represented with just a handful of reusable symbols."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Place Value Across Three Ancient Systems",
+                      objective: "To compare how the Mesopotamian (base-60), Mayan (base-20-like), and Chinese (base-10) systems each used position to represent landmark numbers.",
+                      materials: ["Notebook", "Reference table of each system's base and landmark numbers"],
+                      steps: [
+                        "For each system (Mesopotamian, Mayan, Chinese), note its base number and list its first four landmark numbers.",
+                        "Pick a number (like 130) and represent it conceptually in each system by dividing it into the appropriate landmark-number groups.",
+                        "Discuss which system's landmark numbers make the grouping process simplest for this particular number.",
+                        "Note which of the three systems used an explicit symbol or placeholder for zero.",
+                        "Summarize why a place value system (using position) is more powerful than a system needing a new symbol for every landmark number."
+                      ],
+                      observation: "The Mesopotamian system (base-60), Mayan system (base-20-like), and Chinese rod numerals (base-10) all used POSITION to indicate which landmark number a symbol represented — but only the Mayan system among these ancient examples used an explicit placeholder symbol for zero, foreshadowing the fully developed Hindu place-value system."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What base did the Mesopotamian (Babylonian) number system eventually use?",
+                      options: ["Base-10", "Base-20", "Base-60 (sexagesimal)", "Base-2"],
+                      answer: 2,
+                      explanation: "The Mesopotamian system became a base-60 (sexagesimal) system, whose influence survives today in our units of time: 60 seconds per minute, 60 minutes per hour."
+                    },
+                    {
+                      question: "What is a 'place value' (or positional) number system?",
+                      options: ["A system with no landmark numbers at all", "A system where the POSITION of a symbol determines which landmark number it represents, rather than needing a unique symbol for each landmark number", "A system that only works for numbers below 100", "A system identical to the Roman numeral system"],
+                      answer: 1,
+                      explanation: "In a place value system, a symbol's position (not its shape alone) tells you which landmark number (power of the base) it represents — allowing any number to be written using just a small set of reusable symbols."
+                    },
+                    {
+                      question: "Which ancient system is credited with using an explicit placeholder symbol for zero?",
+                      options: ["The Roman system", "The Egyptian system", "The Mayan system", "None of the ancient systems used zero"],
+                      answer: 2,
+                      explanation: "The Mayan number system used a placeholder symbol for zero — an important historical advance, even though their system wasn't a perfectly consistent base-20 system."
+                    },
+                    {
+                      question: "In the Chinese rod numeral system representing 2634, what does the digit '6' represent, based on its position?",
+                      options: ["6 thousands", "6 hundreds", "6 tens", "6 units"],
+                      answer: 1,
+                      explanation: "In 2634, reading from the left, the positions represent thousands, hundreds, tens, and units — so the '6' in the hundreds position represents 6×100 = 600."
+                    },
+                    {
+                      question: "Why is 'place value' considered the most important milestone in the history of number systems?",
+                      options: ["It has no real significance", "It allows any number, however large, to be represented using only a small, fixed set of reusable symbols, based on their position", "It only works for very small numbers", "It eliminates the need for a base entirely"],
+                      answer: 1,
+                      explanation: "Place value solves the fundamental challenge of representing an unending sequence of numbers — by using position to indicate landmark numbers, it needs only a handful of symbols to represent any number, no matter how large."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-3-4",
+                  title: "4. The Hindu Number System and the Invention of Zero",
+                  lab: { type: "hindu-place-value-sim" },
+                  theory: {
+                    intro: "India gave the world the one idea that made every other place-value system obsolete: a true zero — not just a placeholder, but a number in its own right that could be added, subtracted, and multiplied like any other.",
+                    sections: [
+                      {
+                        heading: "The Hindu Number System",
+                        text: "The Hindu number system is base-10, using exactly ten symbols: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. It is a true place value system — for example, 375 = (3×10²) + (7×10¹) + (5×10⁰). Because it uses zero as an actual digit and only ONE digit per position, it avoids the ambiguity that plagued the Mesopotamian and other earlier systems."
+                      },
+                      {
+                        heading: "Zero as a Number, Not Just a Placeholder",
+                        text: "The Hindu system had a symbol for 0 by at least 200 BCE. Aryabhata (499 CE) used the arithmetic properties of zero (0 plus any number equals that number; 0 times any number equals 0) for advanced scientific computation. Brahmagupta (628 CE) went further, treating 0 as a genuine number on which arithmetic could be performed — creating what mathematicians now call a 'ring': a set of numbers closed under addition, subtraction, and multiplication."
+                      },
+                      {
+                        heading: "The Journey to the Modern World",
+                        text: "This system spread from India to the Arab world by about 800 CE (popularized by Al-Khwārizmī and Al-Kindi), then to Europe by around 1100-1200 CE (championed by Fibonacci), though it took until the 17th century to fully displace Roman numerals in Europe. Because Europeans learned it via Arab scholars, it became known as 'Arabic numerals' — though it's more accurately called the Hindu, Indian, or Hindu-Arabic number system, reflecting its true origin."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Writing the Full Place-Value Breakdown of a Number",
+                      objective: "To practice expanding numbers into their complete place-value form, reinforcing why the Hindu system is unambiguous.",
+                      materials: ["Paper and pencil", "A list of numbers to expand (e.g., 375, 2024, 30506)"],
+                      steps: [
+                        "For a chosen number, identify the place value (ones, tens, hundreds, thousands, ...) of each digit.",
+                        "Write the number as a sum of each digit multiplied by its place value's power of 10.",
+                        "Check that digits in a 'skipped' position (like a middle zero) are still explicitly written as 0×10ⁿ.",
+                        "Compare this to how the same number might look in a system without zero as a digit (like Roman numerals), noting the ambiguity that could arise.",
+                        "Discuss why having exactly one digit per position, including zero, removes ambiguity entirely."
+                      ],
+                      observation: "The number 30506 expands as (3×10⁴)+(0×10³)+(5×10²)+(0×10¹)+(6×10⁰) — the two zeros are essential to correctly mark the 'skipped' thousands and tens positions, showing precisely why zero as a genuine digit (not just a blank space) eliminates the ambiguity found in earlier place-value systems like the Mesopotamian one."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How many symbols does the Hindu number system use, and what are they?",
+                      options: ["Seven symbols: I, V, X, L, C, D, M", "Ten symbols: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9", "Sixty symbols, one for each number 1-59", "Twenty symbols, matching a base-20 system"],
+                      answer: 1,
+                      explanation: "The Hindu number system is base-10, using exactly ten symbols (digits): 0 through 9."
+                    },
+                    {
+                      question: "What made Brahmagupta's treatment of zero (628 CE) especially significant?",
+                      options: ["He was the first to use zero as a placeholder only", "He treated zero as a genuine number in its own right, on which arithmetic operations (addition, subtraction, multiplication) could be performed", "He removed zero from mathematics entirely", "He invented Roman numerals"],
+                      answer: 1,
+                      explanation: "Brahmagupta went beyond using zero merely as a placeholder — he codified zero as a true number that could be added, subtracted, and multiplied like any other, creating what is now called a mathematical 'ring'."
+                    },
+                    {
+                      question: "Why does the Hindu number system avoid the ambiguity found in the Mesopotamian system?",
+                      options: ["It doesn't actually avoid any ambiguity", "It uses zero as an explicit digit and exactly one digit per position, so there's never confusion about a 'skipped' place value", "It uses more symbols than the Mesopotamian system", "It avoids using place value altogether"],
+                      answer: 1,
+                      explanation: "By using zero as an explicit written digit (not a blank space) and exactly one digit per position, the Hindu system removes any ambiguity about which place value each digit belongs to."
+                    },
+                    {
+                      question: "Why are the numerals we use today sometimes called 'Arabic numerals', even though they originated in India?",
+                      options: ["They were actually invented in Arabia, not India", "European scholars learned this number system through Arab intermediaries (like Al-Khwārizmī and Al-Kindi) and named them after that source", "This is a modern term with no historical basis", "Arabic numerals and Hindu numerals are two completely different systems"],
+                      answer: 1,
+                      explanation: "Since Europeans learned about these numerals through Arab scholars who had themselves learned them from India, Europeans called them 'Arabic numerals' — though the more historically accurate terms are Hindu, Indian, or Hindu-Arabic numerals."
+                    },
+                    {
+                      question: "In the place-value breakdown 375 = (3×10²) + (7×10¹) + (5×10⁰), what does the term (5×10⁰) represent?",
+                      options: ["5 hundreds", "5 tens", "5 units (ones), since 10⁰ = 1", "5 thousands"],
+                      answer: 2,
+                      explanation: "Since 10⁰ = 1, the term (5×10⁰) simply represents 5 units (the ones place) — the rightmost digit in the number 375."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
