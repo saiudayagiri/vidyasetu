@@ -2705,6 +2705,98 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const paperFoldingGrowthLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="paper-fold-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number of folds and see the thickness on a log scale, against real landmarks.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Number of Folds</h3>
+            <select id="sel-paper-fold-n" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="10">10 folds</option>
+              <option value="17">17 folds</option>
+              <option value="20">20 folds</option>
+              <option value="26" selected>26 folds</option>
+              <option value="30">30 folds</option>
+              <option value="46">46 folds</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Thickness Reached</h3>
+            <div id="paper-fold-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number of folds above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const exponentLawsCalculatorLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="exponent-laws-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a law of exponents and see it worked out step by step.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Expression</h3>
+            <select id="sel-exponent-law" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="product" selected>3⁴ × 3³ (same base)</option>
+              <option value="power_of_power">(4³)² (power of a power)</option>
+              <option value="same_exponent">2⁴ × 3⁴ (same exponent)</option>
+              <option value="quotient">2⁷ ÷ 2³ (dividing powers)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Steps &amp; Result</h3>
+            <div id="exponent-laws-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an expression above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const negativeExponentVisualizerLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="negative-exponent-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an exponent of 4 and see its value on the power line.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Exponent (base 4)</h3>
+            <select id="sel-negative-exponent" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              ${[3,2,1,0,-1,-2,-3].map(e => `<option value="${e}"${e===0?' selected':''}>4${e < 0 ? '⁻' + Math.abs(e) : (e===0?'⁰':(e===1?'¹':e===2?'²':'³'))}</option>`).join('')}
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Value</h3>
+            <div id="negative-exponent-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an exponent above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const scientificNotationConverterLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="sci-notation-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a real-world number and see it converted to scientific notation.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Number</h3>
+            <select id="sel-sci-notation-num" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="5900" selected>5,900</option>
+              <option value="20800">20,800</option>
+              <option value="20000000">Mumbai population: 2,00,00,000</option>
+              <option value="149600000000">Sun-Earth distance: 1,49,60,00,00,000 m</option>
+              <option value="1433500000000">Sun-Saturn distance: 14,33,50,00,00,000 m</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Scientific Notation</h3>
+            <div id="sci-notation-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4543,6 +4635,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'cube-layer-visualizer-sim') {
               labHtml = cubeLayerVisualizerLabHtml;
               labDesc = 'Pick an edge length and see the cube built up layer by layer from unit cubes.';
+            } else if (topicObj.lab.type === 'paper-folding-growth-sim') {
+              labHtml = paperFoldingGrowthLabHtml;
+              labDesc = 'Pick a number of folds and see the resulting thickness plotted against real landmarks.';
+            } else if (topicObj.lab.type === 'exponent-laws-calculator-sim') {
+              labHtml = exponentLawsCalculatorLabHtml;
+              labDesc = 'Pick an expression and see a law of exponents worked out step by step.';
+            } else if (topicObj.lab.type === 'negative-exponent-visualizer-sim') {
+              labHtml = negativeExponentVisualizerLabHtml;
+              labDesc = 'Pick an exponent of 4 and see its value on the power line, including negative exponents.';
+            } else if (topicObj.lab.type === 'scientific-notation-converter-sim') {
+              labHtml = scientificNotationConverterLabHtml;
+              labDesc = 'Pick a real-world number and see it converted into scientific notation.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -4976,6 +5080,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initPerfectSquareFactorCheckerLab();
         } else if (topicObj.lab.type === 'cube-layer-visualizer-sim') {
           initCubeLayerVisualizerLab();
+        } else if (topicObj.lab.type === 'paper-folding-growth-sim') {
+          initPaperFoldingGrowthLab();
+        } else if (topicObj.lab.type === 'exponent-laws-calculator-sim') {
+          initExponentLawsCalculatorLab();
+        } else if (topicObj.lab.type === 'negative-exponent-visualizer-sim') {
+          initNegativeExponentVisualizerLab();
+        } else if (topicObj.lab.type === 'scientific-notation-converter-sim') {
+          initScientificNotationConverterLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -17833,6 +17945,206 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(`${n} layers × ${n * n} = ${n}³ = ${n * n * n} unit cubes`, W / 2, 255);
 
         obs.innerHTML = `<strong>A cube of edge length ${n} contains ${n * n * n} unit cubes.</strong> It has ${n} identical layers, each an ${n}×${n} square of ${n * n} unit cubes, so the total is ${n} × ${n * n} = ${n}³ = ${n * n * n}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPaperFoldingGrowthLab() {
+      const canvas = document.getElementById('paper-fold-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-paper-fold-n');
+      const obs = document.getElementById('paper-fold-obs');
+      const FOLDS = {
+        10: { m: 0.01024, label: '≈1.024 cm', compare: 'roughly the width of a fingertip' },
+        17: { m: 1.31, label: '≈131 cm', compare: 'close to an adult’s waist height' },
+        20: { m: 10.4, label: '≈10.4 m', compare: 'about as tall as a 3-storey building' },
+        26: { m: 670, label: '≈670 m', compare: 'almost as tall as the Burj Khalifa (830 m), the world’s tallest building' },
+        30: { m: 10700, label: '≈10.7 km', compare: 'about the altitude of a cruising airplane, close to the Mariana Trench’s depth (11 km)' },
+        46: { m: 7e8, label: '>7,00,000 km', compare: 'far beyond the Moon’s distance from Earth (384,400 km) — almost twice as far!' }
+      };
+      const LANDMARKS = [
+        { m: 1.7, name: 'Human height' },
+        { m: 830, name: 'Burj Khalifa' },
+        { m: 11000, name: 'Mariana Trench' },
+        { m: 384400000, name: 'Moon distance' }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = sel.value;
+        const info = FOLDS[n];
+        const Lmin = -2, Lmax = 9;
+        const marginL = 40, marginR = 40, axisY = 160;
+        const plotW = W - marginL - marginR;
+        const xFor = m => marginL + (Math.log10(m) - Lmin) / (Lmax - Lmin) * plotW;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(marginL, axisY); ctx.lineTo(W - marginR, axisY); ctx.stroke();
+
+        LANDMARKS.forEach(lm => {
+          const x = xFor(lm.m);
+          ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(x, axisY - 6); ctx.lineTo(x, axisY + 6); ctx.stroke();
+          ctx.font = '9px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.save(); ctx.translate(x, axisY + 30); ctx.rotate(-Math.PI / 8); ctx.fillText(lm.name, 0, 0); ctx.restore();
+        });
+
+        const mx = Math.max(Lmin, Math.min(Lmax, Math.log10(info.m)));
+        const foldX = marginL + (mx - Lmin) / (Lmax - Lmin) * plotW;
+        ctx.beginPath(); ctx.moveTo(foldX, axisY); ctx.lineTo(foldX, axisY - 70); ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3; ctx.stroke();
+        ctx.beginPath(); ctx.arc(foldX, axisY - 70, 7, 0, Math.PI * 2); ctx.fillStyle = cssVar('--accent-color'); ctx.fill();
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        ctx.fillText(`${n} folds: ${info.label}`, foldX, axisY - 82);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText('Thickness on a log scale (each tick ×10)', W / 2, 20);
+
+        obs.innerHTML = `<strong>${n} folds → thickness ${info.label}.</strong> That's ${info.compare}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initExponentLawsCalculatorLab() {
+      const canvas = document.getElementById('exponent-laws-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-exponent-law');
+      const obs = document.getElementById('exponent-laws-obs');
+      const LAWS = {
+        product: { expr: '3⁴ × 3³', law: 'nᵃ × nᵇ = nᵃ⁺ᵇ', step: '3⁴ × 3³ = 3⁷', result: '2187' },
+        power_of_power: { expr: '(4³)²', law: '(nᵃ)ᵇ = nᵃˣᵇ', step: '(4³)² = 4⁶', result: '4096' },
+        same_exponent: { expr: '2⁴ × 3⁴', law: 'nᵃ × mᵃ = (nm)ᵃ', step: '2⁴ × 3⁴ = 6⁴', result: '1296' },
+        quotient: { expr: '2⁷ ÷ 2³', law: 'nᵃ ÷ nᵇ = nᵃ⁻ᵇ', step: '2⁷ ÷ 2³ = 2⁴', result: '16' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const info = LAWS[sel.value];
+
+        ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(info.expr, W / 2, 50);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Law: ${info.law}`, W / 2, 100);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 120, 120); ctx.lineTo(W / 2 + 120, 120); ctx.stroke();
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(info.step, W / 2, 160);
+
+        ctx.font = 'bold 24px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`= ${info.result}`, W / 2, 205);
+
+        obs.innerHTML = `<strong>${info.expr} = ${info.result}.</strong> Using the law ${info.law}, this simplifies as ${info.step} = ${info.result}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initNegativeExponentVisualizerLab() {
+      const canvas = document.getElementById('negative-exponent-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-negative-exponent');
+      const obs = document.getElementById('negative-exponent-obs');
+      const EXPONENTS = [3, 2, 1, 0, -1, -2, -3];
+
+      function valueFor(e) {
+        if (e >= 0) return { num: Math.pow(4, e), display: String(Math.pow(4, e)) };
+        const denom = Math.pow(4, -e);
+        return { num: 1 / denom, display: `1/${denom}` };
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const chosen = parseInt(sel.value);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText('Power line for base 4', W / 2, 20);
+
+        const rowH = 30, startY = 40;
+        EXPONENTS.forEach((e, i) => {
+          const y = startY + i * rowH;
+          const isChosen = e === chosen;
+          const v = valueFor(e);
+          const expLabel = e < 0 ? `4⁻${Math.abs(e)}` : (e === 0 ? '4⁰' : `4${e === 1 ? '¹' : e === 2 ? '²' : '³'}`);
+
+          if (isChosen) {
+            ctx.fillStyle = 'rgba(16,185,129,0.18)';
+            ctx.fillRect(W / 2 - 160, y - 14, 320, 24);
+          }
+          ctx.font = isChosen ? 'bold 15px system-ui' : '13px system-ui';
+          ctx.fillStyle = isChosen ? cssVar('--accent-color') : cssVar('--text-muted');
+          ctx.textAlign = 'right';
+          ctx.fillText(expLabel, W / 2 - 20, y + 4);
+          ctx.textAlign = 'center';
+          ctx.fillText('=', W / 2, y + 4);
+          ctx.textAlign = 'left';
+          ctx.fillText(v.display, W / 2 + 20, y + 4);
+        });
+
+        const chosenVal = valueFor(chosen);
+        obs.innerHTML = `<strong>4${chosen < 0 ? '⁻' + Math.abs(chosen) : (chosen === 0 ? '⁰' : chosen)} = ${chosenVal.display}.</strong> ${chosen < 0 ? `A negative exponent means the reciprocal: 4⁻${Math.abs(chosen)} = 1/4${Math.abs(chosen)} = ${chosenVal.display}.` : (chosen === 0 ? 'Any nonzero base raised to the power 0 equals 1.' : `Each step down the power line divides the previous value by 4.`)}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initScientificNotationConverterLab() {
+      const canvas = document.getElementById('sci-notation-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-sci-notation-num');
+      const obs = document.getElementById('sci-notation-obs');
+
+      function toScientific(numStr) {
+        const num = parseFloat(numStr);
+        const exp = Math.floor(Math.log10(num));
+        const coeff = num / Math.pow(10, exp);
+        const coeffStr = Number.isInteger(coeff) ? String(coeff) : coeff.toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
+        return { coeff: coeffStr, exp };
+      }
+
+      function formatIndian(numStr) {
+        return parseFloat(numStr).toLocaleString('en-IN');
+      }
+
+      function superscript(n) {
+        const map = { '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹', '-': '⁻' };
+        return String(n).split('').map(ch => map[ch] || ch).join('');
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const numStr = sel.value;
+        const { coeff, exp } = toScientific(numStr);
+        const sciForm = `${coeff} × 10${superscript(exp)}`;
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(formatIndian(numStr), W / 2, 60, W - 60);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 120, 100); ctx.lineTo(W / 2 + 120, 100); ctx.stroke();
+
+        ctx.font = 'bold 26px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(sciForm, W / 2, 155);
+
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Coefficient ${coeff} is between 1 and 10; exponent ${exp} counts the digits moved.`, W / 2, 200);
+
+        obs.innerHTML = `<strong>${formatIndian(numStr)} = ${sciForm}.</strong> The decimal point moves ${Math.abs(exp)} places to give a coefficient between 1 and 10, multiplied by 10 raised to the power ${exp}.`;
       }
 
       sel.addEventListener('change', draw);

@@ -12437,6 +12437,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-2",
+              title: "Power Play",
+              topics: [
+                {
+                  id: "8m-2-1",
+                  title: "1. Exponential Growth: Folding Paper",
+                  lab: { type: "paper-folding-growth-sim" },
+                  theory: {
+                    intro: "A sheet of paper just 0.001 cm thick, folded 46 times, would grow thicker than 700,000 km — taller than the distance to the Moon — because doubling again and again explodes far faster than adding ever could.",
+                    sections: [
+                      {
+                        heading: "Doubling With Every Fold",
+                        text: "Each fold doubles a paper's thickness: starting at 0.001 cm, after 10 folds the thickness is about 1.024 cm, after 17 folds about 131 cm, after 26 folds about 670 m (nearly as tall as the Burj Khalifa's 830 m), and after 30 folds about 10.7 km (roughly the height planes fly, close to the Mariana Trench's 11 km depth). This runaway growth is called multiplicative or exponential growth."
+                      },
+                      {
+                        heading: "Why It Grows So Fast",
+                        text: "From any starting point, folding 10 more times always multiplies the thickness by exactly 1024 (=2 multiplied by itself 10 times) — regardless of the starting thickness. This is very different from additive growth, where repeatedly adding the same amount only grows the total steadily, never explosively."
+                      },
+                      {
+                        heading: "From Folds to Exponential Notation",
+                        text: "The thickness after folding n times is (initial thickness) × 2ⁿ. Folding twice gives ×2², folding three times gives ×2³, and folding seven times gives ×2⁷ = 128, so the thickness becomes 0.001 cm × 128 = 0.128 cm — matching the fold table exactly."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Predicting Paper Thickness After Many Folds",
+                      objective: "To use the doubling pattern to predict paper thickness after a given number of folds, and connect it to exponential notation.",
+                      materials: ["A sheet of paper (or just a calculator/notebook for extending the table)", "The fold-thickness table from the lesson"],
+                      steps: [
+                        "Starting from an initial thickness of 0.001 cm, compute the thickness after 1, 2, and 3 folds by doubling each time.",
+                        "Continue doubling up to 10 folds, and check your answer against the known value (1.024 cm after 10 folds).",
+                        "Predict the thickness after 20 folds using the fact that every 10 additional folds multiplies the thickness by 1024.",
+                        "Express the thickness after n folds as (0.001 cm) × 2ⁿ for a few chosen values of n.",
+                        "Discuss why this kind of growth is called 'exponential' rather than steady or 'additive'."
+                      ],
+                      observation: "The thickness after any number of folds n can be written compactly as 0.001 cm × 2ⁿ, and every additional 10 folds multiplies the thickness by exactly 1024 — demonstrating that exponential growth accelerates far more dramatically than simply adding a fixed amount repeatedly."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "By what factor does a folded paper's thickness increase after 10 additional folds, from any starting point?",
+                      options: ["By 10 times", "By 1024 times (2 multiplied by itself 10 times)", "By 100 times", "By 20 times"],
+                      answer: 1,
+                      explanation: "Since each fold doubles the thickness, 10 additional folds multiply it by 2¹⁰ = 1024, regardless of the starting thickness."
+                    },
+                    {
+                      question: "What expression describes the thickness of a sheet of paper (with initial thickness v) after being folded 10 times?",
+                      options: ["10v", "10 + v", "2¹⁰v", "10²v"],
+                      answer: 2,
+                      explanation: "Since each fold doubles the thickness, folding 10 times multiplies the initial thickness v by 2¹⁰, giving 2¹⁰v (also written 210v with 210 meaning 2 to the power 10)."
+                    },
+                    {
+                      question: "After about how many folds does the paper's thickness reach roughly 10.7 km, similar to typical airplane cruising altitude?",
+                      options: ["17 folds", "26 folds", "30 folds", "46 folds"],
+                      answer: 2,
+                      explanation: "After 30 folds, the paper's thickness reaches approximately 10.7 km — comparable to the altitude at which planes typically fly."
+                    },
+                    {
+                      question: "What is the term for the kind of rapid growth seen when a quantity repeatedly doubles (or is repeatedly multiplied by the same factor)?",
+                      options: ["Additive growth", "Exponential (or multiplicative) growth", "Linear growth", "Static growth"],
+                      answer: 1,
+                      explanation: "Growth driven by repeated multiplication by the same factor (like doubling) is called exponential or multiplicative growth, and it accelerates far more dramatically than additive growth."
+                    },
+                    {
+                      question: "If a paper's thickness after 7 folds is 0.001 cm × 2⁷, what is this thickness?",
+                      options: ["0.007 cm", "0.128 cm", "0.512 cm", "1.28 cm"],
+                      answer: 1,
+                      explanation: "2⁷ = 128, so the thickness is 0.001 cm × 128 = 0.128 cm, exactly matching the value given in the fold-thickness table."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-2-2",
+                  title: "2. Exponential Notation and Laws of Exponents",
+                  lab: { type: "exponent-laws-calculator-sim" },
+                  theory: {
+                    intro: "A kingly puzzle about daughters, baskets, keys, rooms, and diamonds (each multiplying by 3) turns into a clean exponent calculation — and reveals the core rules for multiplying and combining powers.",
+                    sections: [
+                      {
+                        heading: "Exponential Notation",
+                        text: "For any number n, nᵃ means n multiplied by itself a times — read 'n raised to the power a'. Here a is the exponent (or power) and n is the base. For example, 5⁴ = 5×5×5×5 = 625. Numbers can also combine: a³b² means a×a×a×b×b, and 32400 = 2⁴×3⁴×5² in exponential prime-factorised form."
+                      },
+                      {
+                        heading: "Multiplying Powers of the Same Base",
+                        text: "When multiplying powers with the same base, add the exponents: nᵃ × nᵇ = nᵃ⁺ᵇ. For example, p⁴ × p⁶ = p¹⁰, and 3⁴ × 3³ = 3⁷ = 2187 (since 3⁷ splits into (3×3×3×3)×(3×3×3))."
+                      },
+                      {
+                        heading: "Power of a Power, and Powers of Different Bases",
+                        text: "Raising a power to another power multiplies the exponents: (nᵃ)ᵇ = nᵃˣᵇ — for example, (4³)² = 4⁶ = 4096. Also, when the SAME exponent applies to different bases being multiplied, the bases combine: mᵃ × nᵃ = (m×n)ᵃ — for example, 2⁴ × 3⁴ = (2×3)⁴ = 6⁴ = 1296, and similarly mᵃ ÷ nᵃ = (m÷n)ᵃ."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying the Laws of Exponents with the Diamond Puzzle",
+                      objective: "To count nested groups (daughters → baskets → keys → rooms → tables → necklaces → diamonds) using exponents, verifying the product-of-powers law.",
+                      materials: ["Paper and pencil", "The 'Stones that Shine' puzzle: 3 daughters, each with 3 baskets, each with 3 keys opening 3 rooms, each room with 3 tables, each with 3 necklaces, each with 3 diamonds"],
+                      steps: [
+                        "Count the number of rooms: 3 daughters × 3 baskets × 3 keys × 3 rooms-per-key = 3⁴ rooms.",
+                        "Compute 3⁴ step by step: 3, 9, 27, 81.",
+                        "Now count total diamonds by continuing to multiply by 3 for tables, necklaces, and diamonds: 3⁴ × 3 × 3 × 3 = 3⁷.",
+                        "Verify 3⁷ = 3⁴ × 3³ by computing both sides separately (81 × 27 and the full product), confirming they match.",
+                        "Discuss how this confirms the rule nᵃ × nᵇ = nᵃ⁺ᵇ."
+                      ],
+                      observation: "The total number of diamonds is 3⁷ = 2187, which can be verified as 3⁴ × 3³ = 81 × 27 = 2187 — directly confirming the law nᵃ × nᵇ = nᵃ⁺ᵇ using a concrete counting puzzle."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the expression 5⁴, what is the '4' called?",
+                      options: ["The base", "The exponent (or power)", "The coefficient", "The product"],
+                      answer: 1,
+                      explanation: "In nᵃ, the number a (here, 4) is called the exponent or power, while n (here, 5) is called the base."
+                    },
+                    {
+                      question: "What is p⁴ × p⁶ in exponential form?",
+                      options: ["p¹⁰", "p²⁴", "p¹⁰⁰⁰⁰", "p²"],
+                      answer: 0,
+                      explanation: "When multiplying powers of the same base, exponents add: p⁴ × p⁶ = p⁴⁺⁶ = p¹⁰."
+                    },
+                    {
+                      question: "What is (4³)² in exponential form, using the power-of-a-power rule?",
+                      options: ["4⁵", "4⁶", "4⁹", "4¹"],
+                      answer: 1,
+                      explanation: "Raising a power to another power multiplies the exponents: (4³)² = 4^(3×2) = 4⁶."
+                    },
+                    {
+                      question: "What is 2⁴ × 3⁴ using the rule for powers with the same exponent but different bases?",
+                      options: ["5⁴", "6⁴", "6⁸", "5⁸"],
+                      answer: 1,
+                      explanation: "When the same exponent applies to different bases being multiplied, the bases combine: 2⁴ × 3⁴ = (2×3)⁴ = 6⁴ = 1296."
+                    },
+                    {
+                      question: "Using the total-diamonds puzzle (3 daughters, 3 baskets each, 3 keys each, 3 rooms each, 3 tables each, 3 necklaces each, 3 diamonds each), how many diamonds are there in total?",
+                      options: ["3⁴ = 81", "3⁶ = 729", "3⁷ = 2187", "7³ = 343"],
+                      answer: 2,
+                      explanation: "There are 7 levels of 'multiply by 3' in total (daughters, baskets, keys, rooms, tables, necklaces, diamonds), giving 3⁷ = 2187 diamonds."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-2-3",
+                  title: "3. Negative Exponents and the Power of Zero",
+                  lab: { type: "negative-exponent-visualizer-sim" },
+                  theory: {
+                    intro: "Halving a 16-unit line again and again eventually needs exponents that go below zero — revealing what a negative or zero exponent actually means.",
+                    sections: [
+                      {
+                        heading: "Dividing Powers of the Same Base",
+                        text: "When dividing powers with the same base, subtract the exponents: nᵃ ÷ nᵇ = nᵃ⁻ᵇ (for n≠0). Halving a line of length 2⁴ units three times gives 2⁴ ÷ 2³ = 2¹ = 2 units, matching direct calculation."
+                      },
+                      {
+                        heading: "What Does an Exponent of Zero Mean?",
+                        text: "Applying the division rule when the exponents are equal gives 2⁰ = 2⁴⁻⁴ = 2⁴÷2⁴ = 1. In general, for any nonzero number x, x⁰ = 1 — this holds true for every base, which is why any nonzero number raised to the power 0 always equals 1."
+                      },
+                      {
+                        heading: "What Does a Negative Exponent Mean?",
+                        text: "Halving 2⁴ units 5 times gives 2⁴÷2⁵ = 2⁻¹, which equals exactly ½ — so 2⁻¹ = 1/2. In general, n⁻ᵃ = 1/nᵃ (for n≠0). For example, 10⁻³ = 1/10³ = 1/1000, and 7⁻² = 1/7² = 1/49. A negative exponent simply means 'take the reciprocal of the positive-exponent version'."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building a 'Power Line' to Visualize Negative Exponents",
+                      objective: "To construct a number line of powers of a chosen base, extending into zero and negative exponents, to see the halving pattern continue smoothly.",
+                      materials: ["Paper and pencil", "A calculator (optional, for checking larger powers)"],
+                      steps: [
+                        "Choose a base, such as 4, and compute its powers from 4¹ up to 4⁸ (or as far as convenient).",
+                        "Continue the pattern downward: compute 4⁰, then 4⁻¹, then 4⁻².",
+                        "For each step down the power line, check that the value is exactly the previous value divided by 4.",
+                        "Express 4⁻¹ and 4⁻² as fractions (1/4 and 1/16 respectively).",
+                        "Discuss how the 'divide by the base each time you decrease the exponent by 1' pattern continues seamlessly from positive, through zero, into negative exponents."
+                      ],
+                      observation: "Following the power line for base 4 — ..., 4²=16, 4¹=4, 4⁰=1, 4⁻¹=1/4, 4⁻²=1/16, ... — each step down divides the previous value by 4, showing that zero and negative exponents are a natural, consistent continuation of the same pattern used for positive exponents."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the value of any nonzero number raised to the power 0?",
+                      options: ["0", "1", "The number itself", "It is undefined"],
+                      answer: 1,
+                      explanation: "For any nonzero number x, x⁰ = 1 — this follows from the division rule xᵃ÷xᵃ = xᵃ⁻ᵃ = x⁰, and xᵃ÷xᵃ always equals 1."
+                    },
+                    {
+                      question: "What does n⁻ᵃ equal, in general (for n≠0)?",
+                      options: ["-(n × a)", "1/nᵃ", "nᵃ", "a/n"],
+                      answer: 1,
+                      explanation: "A negative exponent means taking the reciprocal of the positive-exponent version: n⁻ᵃ = 1/nᵃ."
+                    },
+                    {
+                      question: "What is 2⁻¹ equal to?",
+                      options: ["-2", "2", "1/2", "0"],
+                      answer: 2,
+                      explanation: "2⁻¹ = 1/2¹ = 1/2 — obtained by halving a line of length 2⁴ five times, giving 2⁴÷2⁵ = 2⁻¹ = 1/2."
+                    },
+                    {
+                      question: "What is 10⁻³ equal to, as a fraction?",
+                      options: ["1/10", "1/100", "1/1000", "-1000"],
+                      answer: 2,
+                      explanation: "10⁻³ = 1/10³ = 1/1000, following the rule that a negative exponent gives the reciprocal of the corresponding positive power."
+                    },
+                    {
+                      question: "On a 'power line' for base 4, what value comes right before 4⁰ = 1, when exponents decrease by 1 each step?",
+                      options: ["4¹ = 4", "4⁻¹ = 1/4", "0", "-4"],
+                      answer: 0,
+                      explanation: "Moving down the power line, exponent 1 (giving 4¹=4) comes immediately before exponent 0 (giving 4⁰=1) — each step divides the previous value by the base, 4."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-2-4",
+                  title: "4. Powers of 10 and Scientific Notation",
+                  lab: { type: "scientific-notation-converter-sim" },
+                  theory: {
+                    intro: "Numbers like the Earth's mass (59,760,000,000,000,000,000,000,000 kg) are nearly impossible to read accurately — scientific notation rescues us by putting the important digit (the exponent) right up front.",
+                    sections: [
+                      {
+                        heading: "Expressing Numbers Using Powers of 10",
+                        text: "Just as 47561 = (4×10⁴)+(7×10³)+(5×10²)+(6×10¹)+(1×10⁰), decimals extend this using negative exponents: 561.903 = (5×10²)+(6×10¹)+(1×10⁰)+(9×10⁻¹)+(0×10⁻²)+(3×10⁻³)."
+                      },
+                      {
+                        heading: "Scientific Notation (Standard Form)",
+                        text: "Any number can be written as x × 10ʸ, where x is a coefficient with 1 ≤ x < 10, and y (the exponent) is any integer. For example, 5900 = 5.9×10³, and 20,800 = 2.08×10⁴. The exponent y is usually more meaningful than the exact coefficient — changing y by 1 multiplies the number by 10, while changing the coefficient only adjusts it slightly."
+                      },
+                      {
+                        heading: "Why the Exponent Matters Most",
+                        text: "When Mumbai's population (2 crore) is written as 2×10⁷, changing the '2' to '3' raises the population by half (to 3 crore), but changing the '7' to '8' multiplies it by 10 (to 20 crore) — so the exponent carries far more weight. This is also why large distances are compared easily in scientific notation: the Sun-Saturn distance (1.4335×10¹² m) and Saturn-Uranus distance (1.439×10¹² m) share the same exponent and are close in size, while the Sun-Earth distance (1.496×10¹¹ m) has a smaller exponent, making it clearly the smallest of the three."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Converting Large Numbers to Scientific Notation",
+                      objective: "To practice converting large real-world numbers into scientific (standard) notation, and comparing numbers by their exponents.",
+                      materials: ["Paper and pencil", "A list of large numbers (e.g., populations, distances, masses)"],
+                      steps: [
+                        "Pick a large number, such as a country's population or an astronomical distance.",
+                        "Move the decimal point so that exactly one non-zero digit remains before the decimal, counting how many places you moved it.",
+                        "Write the number as (the resulting decimal) × 10^(number of places moved).",
+                        "Repeat for 2-3 more numbers, then compare them by looking at the exponents first.",
+                        "Confirm that a number with a larger exponent is always larger overall, regardless of the coefficient (as long as coefficients are between 1 and 10)."
+                      ],
+                      observation: "Converting the Sun-Saturn distance (1,433,500,000,000 m) gives 1.4335×10¹² m, and the Sun-Earth distance (149,600,000,000 m) gives 1.496×10¹¹ m — comparing the exponents (12 vs. 11) immediately shows the Sun-Earth distance is smaller, without needing to compare every digit."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the correct scientific notation form for any number?",
+                      options: ["x × 10ʸ, where x can be any number", "x × 10ʸ, where 1 ≤ x < 10 and y is an integer", "10ˣ × y, where y is between 1 and 10", "x + 10ʸ"],
+                      answer: 1,
+                      explanation: "Scientific (standard) notation requires the coefficient x to satisfy 1 ≤ x < 10, multiplied by 10 raised to an integer exponent y."
+                    },
+                    {
+                      question: "What is 5900 written in scientific notation?",
+                      options: ["59 × 10²", "5.9 × 10³", "0.59 × 10⁴", "590 × 10¹"],
+                      answer: 1,
+                      explanation: "Among the equivalent forms, only 5.9 × 10³ satisfies the standard-form requirement that the coefficient be between 1 and 10 (5.9 fits; 59 and 0.59 do not)."
+                    },
+                    {
+                      question: "Why is the exponent generally considered more important than the coefficient in scientific notation?",
+                      options: ["The exponent has no real significance", "Changing the exponent by 1 multiplies the number by 10, a much bigger change than adjusting the coefficient", "The coefficient is always more important", "They are always equally important"],
+                      answer: 1,
+                      explanation: "Since changing the exponent by even 1 scales the number by a full factor of 10, while adjusting the coefficient only makes a small correction, the exponent is generally the more significant part of the number."
+                    },
+                    {
+                      question: "Comparing 1.4335×10¹² m (Sun-Saturn) and 1.496×10¹¹ m (Sun-Earth), which distance is smaller, and how can you tell quickly?",
+                      options: ["Sun-Saturn is smaller, because 1.4335 < 1.496", "Sun-Earth is smaller, because its exponent (11) is less than Sun-Saturn's exponent (12)", "They are exactly equal", "It cannot be determined from scientific notation"],
+                      answer: 1,
+                      explanation: "Since 10¹¹ is ten times smaller than 10¹², the Sun-Earth distance (with the smaller exponent) is clearly smaller overall, regardless of the coefficients involved."
+                    },
+                    {
+                      question: "How would you write 47561 using powers of 10?",
+                      options: ["(4×10⁴)+(7×10³)+(5×10²)+(6×10¹)+(1×10⁰)", "(4×10⁵)+(7×10⁴)+(5×10³)+(6×10²)+(1×10¹)", "4+7+5+6+1", "47561×10⁰"],
+                      answer: 0,
+                      explanation: "Each digit of 47561 is multiplied by the power of 10 matching its place value: 4×10⁴ (ten-thousands), 7×10³ (thousands), 5×10² (hundreds), 6×10¹ (tens), and 1×10⁰ (units)."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
