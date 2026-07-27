@@ -2960,6 +2960,100 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const parityExpressionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="parity-expr-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick 4 consecutive numbers and see all 8 sign-combinations always come out even.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Starting Number</h3>
+            <select id="sel-parity-start" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="3" selected>3, 4, 5, 6</option>
+              <option value="5">5, 6, 7, 8</option>
+              <option value="10">10, 11, 12, 13</option>
+              <option value="20">20, 21, 22, 23</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>All 8 Results</h3>
+            <div id="parity-expr-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a starting number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const digitSumDivisibilityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="digit-sum-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number and see its digital root reveal divisibility by 9 and 3.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Number</h3>
+            <select id="sel-digit-sum-num" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="123" selected>123</option>
+              <option value="405">405</option>
+              <option value="8888">8888</option>
+              <option value="93547">93547</option>
+              <option value="358095">358095</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Digital Root &amp; Verdict</h3>
+            <div id="digit-sum-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const divisibilityBy11LabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="div-11-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number and see its alternating digit sum test divisibility by 11.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Number</h3>
+            <select id="sel-div-11-num" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="462" selected>462</option>
+              <option value="1331">1331</option>
+              <option value="2728">2728</option>
+              <option value="523">523</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Alternating Sum &amp; Verdict</h3>
+            <div id="div-11-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const cryptarithmSolverLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="cryptarithm-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a candidate for PQ and test it against PQ × 8 = RS.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Candidate for PQ</h3>
+            <select id="sel-cryptarithm-pq" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="10" selected>PQ = 10</option>
+              <option value="11">PQ = 11</option>
+              <option value="12">PQ = 12</option>
+              <option value="13">PQ = 13</option>
+              <option value="14">PQ = 14</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Is It Valid?</h3>
+            <div id="cryptarithm-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a candidate above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4831,6 +4925,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'quadrilateral-classifier-sim') {
               labHtml = quadrilateralClassifierLabHtml;
               labDesc = 'Pick a quadrilateral and see its full checklist of side, angle, and diagonal properties.';
+            } else if (topicObj.lab.type === 'parity-expression-sim') {
+              labHtml = parityExpressionLabHtml;
+              labDesc = 'Pick four consecutive numbers and see all 8 sign-combinations always come out even.';
+            } else if (topicObj.lab.type === 'digit-sum-divisibility-sim') {
+              labHtml = digitSumDivisibilityLabHtml;
+              labDesc = 'Pick a number and see its digital root reveal divisibility by 9 and 3.';
+            } else if (topicObj.lab.type === 'divisibility-by-11-sim') {
+              labHtml = divisibilityBy11LabHtml;
+              labDesc = 'Pick a number and see its alternating digit sum test divisibility by 11.';
+            } else if (topicObj.lab.type === 'cryptarithm-solver-sim') {
+              labHtml = cryptarithmSolverLabHtml;
+              labDesc = 'Pick a candidate for PQ and test it against the cryptarithm PQ × 8 = RS.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -5286,6 +5392,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initRhombusDiagonalAngleLab();
         } else if (topicObj.lab.type === 'quadrilateral-classifier-sim') {
           initQuadrilateralClassifierLab();
+        } else if (topicObj.lab.type === 'parity-expression-sim') {
+          initParityExpressionLab();
+        } else if (topicObj.lab.type === 'digit-sum-divisibility-sim') {
+          initDigitSumDivisibilityLab();
+        } else if (topicObj.lab.type === 'divisibility-by-11-sim') {
+          initDivisibilityBy11Lab();
+        } else if (topicObj.lab.type === 'cryptarithm-solver-sim') {
+          initCryptarithmSolverLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -18696,6 +18810,208 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         const trueProps = PROPS.filter((p, i) => flags[i]);
         obs.innerHTML = `<strong>${shape.charAt(0).toUpperCase() + shape.slice(1)}:</strong> ${trueProps.length > 0 ? trueProps.join(', ') : 'none of the special parallelogram properties'}${trueProps.length > 0 && trueProps.length < PROPS.length ? ' — but not ' + PROPS.filter((p, i) => !flags[i]).join(', ') : ''}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initParityExpressionLab() {
+      const canvas = document.getElementById('parity-expr-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-parity-start');
+      const obs = document.getElementById('parity-expr-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = parseInt(sel.value);
+        const nums = [n, n + 1, n + 2, n + 3];
+        const signCombos = [[1, 1, 1], [1, 1, -1], [1, -1, 1], [1, -1, -1], [-1, 1, 1], [-1, 1, -1], [-1, -1, 1], [-1, -1, -1]];
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Numbers: ${nums.join(', ')}`, W / 2, 24);
+
+        const rows = 4, cols = 2;
+        const cellW = 280, cellH = 48;
+        const startX = W / 2 - cellW, startY = 40;
+        let allEven = true;
+        signCombos.forEach((signs, i) => {
+          const row = Math.floor(i / cols), col = i % cols;
+          const x = startX + col * cellW, y = startY + row * cellH;
+          const result = nums[0] + signs[0] * nums[1] + signs[1] * nums[2] + signs[2] * nums[3];
+          if (result % 2 !== 0) allEven = false;
+          const expr = `${nums[0]} ${signs[0] > 0 ? '+' : '−'} ${nums[1]} ${signs[1] > 0 ? '+' : '−'} ${nums[2]} ${signs[2] > 0 ? '+' : '−'} ${nums[3]}`;
+          ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+          ctx.fillText(expr, x + 10, y + 20);
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillText(`= ${result}`, x + 10, y + 38);
+        });
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        ctx.fillText(allEven ? 'All 8 results are EVEN!' : 'Not all even (unexpected)', W / 2, H - 12);
+
+        obs.innerHTML = `<strong>Numbers ${nums.join(', ')}:</strong> all 8 ways of placing + and − signs between them give even results — confirming that switching any sign only ever changes the value by an even amount.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDigitSumDivisibilityLab() {
+      const canvas = document.getElementById('digit-sum-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-digit-sum-num');
+      const obs = document.getElementById('digit-sum-obs');
+
+      function digitSum(n) {
+        return String(n).split('').reduce((a, d) => a + parseInt(d), 0);
+      }
+
+      function digitalRootSteps(n) {
+        const steps = [n];
+        let cur = n;
+        while (cur >= 10) {
+          cur = digitSum(cur);
+          steps.push(cur);
+        }
+        return steps;
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const numStr = sel.value;
+        const num = parseInt(numStr);
+        const steps = digitalRootSteps(num);
+        const root = steps[steps.length - 1];
+        const digitsExpr = numStr.split('').join('+');
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(numStr, W / 2, 30);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        let y = 70;
+        for (let i = 0; i < steps.length - 1; i++) {
+          const nextDigits = String(steps[i]).split('').join('+');
+          ctx.fillText(`${steps[i]} → ${nextDigits} = ${steps[i + 1]}`, W / 2, y);
+          y += 24;
+        }
+
+        ctx.font = 'bold 26px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Digital root = ${root}`, W / 2, y + 20);
+
+        const div9 = root === 9;
+        const div3 = root % 3 === 0;
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = div9 ? cssVar('--accent-color') : '#f87171';
+        ctx.fillText(`Divisible by 9: ${div9 ? 'Yes' : 'No'}`, W / 2, y + 55);
+        ctx.fillStyle = div3 ? cssVar('--accent-color') : '#f87171';
+        ctx.fillText(`Divisible by 3: ${div3 ? 'Yes' : 'No'}`, W / 2, y + 78);
+
+        obs.innerHTML = `<strong>${numStr}: digit sum ${digitsExpr} = ${digitSum(num)}${steps.length > 2 ? `, reduced to digital root ${root}` : ''}.</strong> ${div9 ? `Divisible by 9 (and 3)` : div3 ? `Not divisible by 9, but divisible by 3` : `Not divisible by 9 or 3 — remainder mod 9 is ${root}`}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDivisibilityBy11Lab() {
+      const canvas = document.getElementById('div-11-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-div-11-num');
+      const obs = document.getElementById('div-11-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const numStr = sel.value;
+        const digits = numStr.split('').map(Number).reverse();
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(numStr, W / 2, 30);
+
+        const placeNames = ['units', 'tens', 'hundreds', 'thousands', 'ten-thousands'];
+        let altSum = 0;
+        let exprParts = [];
+        digits.forEach((d, i) => {
+          const sign = i % 2 === 0 ? 1 : -1;
+          altSum += sign * d;
+          exprParts.push(`${sign > 0 ? '+' : '−'}${d}`);
+        });
+        exprParts[0] = digits[0];
+
+        const colW = Math.min(90, (W - 60) / digits.length);
+        const startX = W / 2 - (colW * digits.length) / 2 + colW / 2;
+        digits.forEach((d, i) => {
+          const x = startX + i * colW;
+          const sign = i % 2 === 0 ? '+' : '−';
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText(placeNames[i] || `10^${i}`, x, 60);
+          ctx.font = 'bold 20px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillText(`${i === 0 ? '' : sign}${d}`, x, 95);
+        });
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(startX - colW / 2, 110); ctx.lineTo(startX + colW * (digits.length - 1) + colW / 2, 110); ctx.stroke();
+
+        ctx.font = 'bold 20px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Alternating sum = ${altSum}`, W / 2, 150);
+
+        const divisible = altSum % 11 === 0;
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = divisible ? cssVar('--accent-color') : '#f87171';
+        ctx.fillText(divisible ? `Divisible by 11!` : `Not divisible by 11`, W / 2, 185);
+
+        obs.innerHTML = `<strong>${numStr}: alternating sum (units − tens + hundreds − ...) = ${altSum}.</strong> ${divisible ? `Since ${altSum} is a multiple of 11, ${numStr} is divisible by 11.` : `Since ${altSum} is not a multiple of 11, ${numStr} is not divisible by 11.`}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCryptarithmSolverLab() {
+      const canvas = document.getElementById('cryptarithm-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-cryptarithm-pq');
+      const obs = document.getElementById('cryptarithm-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const pq = parseInt(sel.value);
+        const product = pq * 8;
+        const P = Math.floor(pq / 10), Q = pq % 10;
+        const is2Digit = product >= 10 && product <= 99;
+        let valid = false, reason = '';
+        if (!is2Digit) {
+          reason = `${pq} × 8 = ${product}, which has ${String(product).length} digits, not 2 — RS must be 2 digits.`;
+        } else {
+          const R = Math.floor(product / 10), S = product % 10;
+          const digitSet = new Set([P, Q, R, S]);
+          if (digitSet.size < 4) {
+            reason = `${pq} × 8 = ${product}, but digits P=${P}, Q=${Q}, R=${R}, S=${S} are not all different.`;
+          } else {
+            valid = true;
+            reason = `${pq} × 8 = ${product}, with P=${P}, Q=${Q}, R=${R}, S=${S} all different — valid!`;
+          }
+        }
+
+        ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`PQ = ${pq}`, W / 2, 45);
+
+        ctx.font = 'bold 20px system-ui'; ctx.fillStyle = valid ? cssVar('--accent-color') : '#f87171';
+        ctx.fillText(`${pq} × 8 = ${product}`, W / 2, 100);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(reason, W / 2, 145, W - 60);
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = valid ? cssVar('--accent-color') : '#f87171';
+        ctx.fillText(valid ? 'Valid solution!' : 'Not valid', W / 2, 200);
+
+        obs.innerHTML = `<strong>${pq} × 8 = ${product}.</strong> ${reason} ${valid ? 'This is the unique solution to PQ × 8 = RS.' : ''}`;
       }
 
       sel.addEventListener('change', draw);

@@ -13282,6 +13282,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-5",
+              title: "Number Play",
+              topics: [
+                {
+                  id: "8m-5-1",
+                  title: "1. Parity Puzzles: Consecutive Numbers and Sums",
+                  lab: { type: "parity-expression-sim" },
+                  theory: {
+                    intro: "Take any four consecutive numbers, place '+' and '−' signs between them in all 8 possible ways, and evaluate each expression — every single result turns out to be even, no matter which four numbers you started with.",
+                    sections: [
+                      {
+                        heading: "Sums of Consecutive Numbers",
+                        text: "Many numbers can be written as sums of consecutive numbers: 7=3+4, 10=1+2+3+4, 15=7+8=4+5+6=1+2+3+4+5. All odd numbers can be written as the sum of two consecutive numbers. Exploring which numbers can be written this way (and in how many ways) reveals deep patterns connecting addition and number properties."
+                      },
+                      {
+                        heading: "The Surprising Parity Pattern",
+                        text: "Taking four consecutive numbers (like 3,4,5,6) and placing '+'/'−' signs between them in all 8 possible ways (+++, ++−, +−+, +−−, −++, −+−, −−+, −−−) always produces EVEN results, regardless of which four consecutive numbers you start with. For example: 3+4−5+6=8 and 3−4−5−6=−12 — both even."
+                      },
+                      {
+                        heading: "Why This Always Happens",
+                        text: "Switching any single sign in an expression like a+b−c−d (say, changing +b to −b) changes the value by exactly 2b — always an even amount. Since changing any sign only shifts the result by an even number, and all 8 sign combinations are reachable from each other by such switches, ALL 8 expressions must share the same parity. Using the rule that a±b always has the same parity regardless of the signs, this extends to show a±b±c±d always has one consistent parity — and testing confirms that parity is always even."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing the Parity Pattern with Different Consecutive Number Sets",
+                      objective: "To verify that all 8 sign-combinations of four consecutive numbers always produce even results, regardless of the starting number.",
+                      materials: ["Paper and pencil", "A calculator (optional)"],
+                      steps: [
+                        "Choose four consecutive numbers, such as 3, 4, 5, 6.",
+                        "List all 8 possible ways to place '+' and '−' signs between them (keeping the first number always positive): +++, ++−, +−+, +−−, −++, −+−, −−+, −−−.",
+                        "Evaluate each of the 8 expressions.",
+                        "Check whether every result is even.",
+                        "Repeat with a different set of four consecutive numbers (like 10, 11, 12, 13) and confirm the pattern holds again."
+                      ],
+                      observation: "For the numbers 3, 4, 5, 6, all 8 sign-combinations (like 3+4−5+6=8 and 3−4−5−6=−12) produce even results — and this holds true for any set of four consecutive numbers, confirming that switching a sign only ever changes the value by an even amount (2× the switched number)."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "When four consecutive numbers are combined with '+' and '−' signs in all 8 possible ways, what do all the results have in common?",
+                      options: ["They are all odd", "They are all even", "They are all negative", "They are all multiples of 4"],
+                      answer: 1,
+                      explanation: "Regardless of which four consecutive numbers are chosen or how the signs are arranged, every one of the 8 resulting expressions always evaluates to an even number."
+                    },
+                    {
+                      question: "By how much does an expression's value change when a single '+' sign is switched to a '−' sign (e.g., changing a+b−c−d to a−b−c−d)?",
+                      options: ["By an odd amount", "By an even amount (specifically, twice the value of the switched term)", "By exactly 1", "The value never changes"],
+                      answer: 1,
+                      explanation: "Switching a sign on a term changes the total by exactly twice that term's value (e.g., switching +b to −b changes the result by 2b), which is always an even number."
+                    },
+                    {
+                      question: "What is the parity of a±b, regardless of whether a plus or minus sign is used?",
+                      options: ["It depends entirely on which sign is used", "It is always the same, regardless of the sign used", "It is always odd", "It is always even"],
+                      answer: 1,
+                      explanation: "Since a+b and a−b differ by 2b (an even number), they always share the same parity — the choice of sign does not affect whether the result is odd or even."
+                    },
+                    {
+                      question: "What is 3+4−5+6?",
+                      options: ["6", "8", "10", "12"],
+                      answer: 1,
+                      explanation: "3+4−5+6 = 7−5+6 = 2+6 = 8, an even number, matching the pattern that all sign-combinations of four consecutive numbers give even results."
+                    },
+                    {
+                      question: "Why do ALL 8 sign-combinations of four numbers end up with the same parity?",
+                      options: ["It is purely a coincidence with no explanation", "Because every sign switch changes the value by an even amount, and any one combination can be reached from any other through a sequence of such switches", "Because only 4 of the 8 combinations are actually different", "Because the numbers must always be consecutive for this to work"],
+                      answer: 1,
+                      explanation: "Since switching any single sign always changes the result by an even amount, and all 8 combinations can be reached from one another through a sequence of sign switches, they must all share the same parity."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-5-2",
+                  title: "2. Divisibility by 9 and 3: The Digit-Sum Trick",
+                  lab: { type: "digit-sum-divisibility-sim" },
+                  theory: {
+                    intro: "Add up all the digits of a huge number, and if that sum is divisible by 9, so is the original number — a shortcut that works because every power of 10 is just one more than a multiple of 9.",
+                    sections: [
+                      {
+                        heading: "Why the Digit-Sum Trick Works",
+                        text: "Every power of 10 is exactly 1 more than a multiple of 9: 10=9+1, 100=99+1, 1000=999+1, and so on. This means a number like 7309 = 7×1000+3×100+0×10+9×1 can be rewritten as (a multiple of 9) + (7+3+0+9). So the remainder when dividing by 9 depends ONLY on the sum of the digits, not the original number's size."
+                      },
+                      {
+                        heading: "The Digital Root",
+                        text: "To find the remainder when a number is divided by 9, add its digits — and if that sum has more than one digit, add its digits again, repeating until a single digit remains (called the digital root). A number is divisible by 9 exactly when its digital root is 9 (or equivalently, its digit sum is divisible by 9). For example, 7309 → 7+3+0+9=19 → 1+9=10 → 1+0=1, so 7309 leaves remainder 1 when divided by 9."
+                      },
+                      {
+                        heading: "The Same Trick Works for 3",
+                        text: "Since every multiple of 9 is also a multiple of 3, the exact same reasoning applies: a number is divisible by 3 if and only if the sum of its digits is divisible by 3. This is why 15, 33, and 87 are divisible by 3 (digit sums 6, 6, 15 — all multiples of 3) without being divisible by 9."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Divisibility by 9 Using Digit Sums",
+                      objective: "To use the digit-sum shortcut to quickly determine whether various numbers are divisible by 9, without performing long division.",
+                      materials: ["Paper and pencil", "A list of numbers to test (e.g., 123, 405, 8888, 93547, 358095)"],
+                      steps: [
+                        "For each number, add up all its digits.",
+                        "If the resulting sum has more than one digit, add its digits again, repeating until you reach a single digit (the digital root).",
+                        "If the digital root is 9, the original number is divisible by 9.",
+                        "Check your answer against actual division for a couple of examples to confirm the shortcut works.",
+                        "Note the remainder shown by the digital root for numbers that are NOT divisible by 9."
+                      ],
+                      observation: "405 has digit sum 4+0+5=9, confirming it's divisible by 9 (405÷9=45 exactly); but 123 has digit sum 1+2+3=6 (not 9), confirming 123 is NOT divisible by 9 — and the digital root 6 also tells us the actual remainder when 123 is divided by 9."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does the digit-sum trick work for testing divisibility by 9?",
+                      options: ["It doesn't actually work reliably", "Because every power of 10 (10, 100, 1000, ...) is exactly 1 more than a multiple of 9, so a number's remainder mod 9 depends only on its digit sum", "Because 9 is an odd number", "It only works for numbers less than 100"],
+                      answer: 1,
+                      explanation: "Since 10=9+1, 100=99+1, 1000=999+1, and so on, every place value contributes a multiple of 9 plus exactly its digit — so the total remainder when dividing by 9 depends only on the sum of the digits."
+                    },
+                    {
+                      question: "What is the 'digital root' of a number?",
+                      options: ["The first digit of the number", "The single digit obtained by repeatedly adding a number's digits until only one digit remains", "The last digit of the number", "The number of digits in the number"],
+                      answer: 1,
+                      explanation: "The digital root is found by repeatedly summing a number's digits until a single digit results — and for divisibility by 9, this final digit reveals the remainder (or confirms divisibility if it equals 9)."
+                    },
+                    {
+                      question: "Is 405 divisible by 9?",
+                      options: ["No, because 4+0+5=9 is not divisible by 9", "Yes, because its digit sum 4+0+5=9 is divisible by 9", "Cannot be determined without long division", "No, 405 is not divisible by anything"],
+                      answer: 1,
+                      explanation: "405's digits sum to 4+0+5=9, and since 9 is divisible by 9, so is 405 (405÷9=45 exactly)."
+                    },
+                    {
+                      question: "How is the divisibility test for 3 related to the test for 9?",
+                      options: ["They are completely unrelated tests", "The same digit-sum idea applies: a number is divisible by 3 if and only if the sum of its digits is divisible by 3, since every multiple of 9 is also a multiple of 3", "Divisibility by 3 has no digit-based shortcut", "The test for 3 requires a completely different method involving only the last digit"],
+                      answer: 1,
+                      explanation: "Since 9 is a multiple of 3, the same 'powers of 10 are one more than a multiple' reasoning extends directly: a number is divisible by 3 exactly when its digit sum is divisible by 3."
+                    },
+                    {
+                      question: "What is the digital root of 8888, and what does it tell us about divisibility by 9?",
+                      options: ["Digital root 9, meaning 8888 is divisible by 9", "Digital root 5 (8+8+8+8=32, then 3+2=5), meaning 8888 is NOT divisible by 9", "Digital root 8, meaning 8888 is divisible by 8", "Digital root 0, meaning 8888 is divisible by 9"],
+                      answer: 1,
+                      explanation: "8+8+8+8=32, and 3+2=5, so the digital root of 8888 is 5 — since this is not 9, 8888 is not divisible by 9 (and the digital root 5 tells us the actual remainder)."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-5-3",
+                  title: "3. Divisibility by 11: The Alternating Sum Trick",
+                  lab: { type: "divisibility-by-11-sim" },
+                  theory: {
+                    intro: "Unlike the digit-sum trick for 9, divisibility by 11 needs an alternating pattern — because powers of 10 flip between being one MORE and one LESS than a multiple of 11.",
+                    sections: [
+                      {
+                        heading: "The Alternating Pattern of Powers of 10",
+                        text: "Checking powers of 10 against multiples of 11 reveals an alternating pattern: 1 = 11×0+1 (one MORE than a multiple of 11), 10 = 11×1−1 (one LESS), 100 = 11×9+1 (one MORE), 1000 = 11×91−1 (one LESS), and this alternating +1/−1 pattern continues for every higher place value."
+                      },
+                      {
+                        heading: "Building the Divisibility Test",
+                        text: "Because of this alternation, each digit's contribution to the remainder (mod 11) alternates in sign based on its position: units digits count as +, tens digits count as −, hundreds digits count as +, thousands digits count as −, and so on. Adding up digits with these alternating signs (starting from the units digit) gives a number that has the same remainder mod 11 as the original number."
+                      },
+                      {
+                        heading: "Testing 462 for Divisibility by 11",
+                        text: "For 462: the units digit is 2 (contributes +2), the tens digit is 6 (contributes −6), and the hundreds digit is 4 (contributes +4). Adding these: 2−6+4=0. Since 0 is a multiple of 11 (indeed, of everything), 462 is divisible by 11 (462÷11=42 exactly)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Divisibility by 11 Using the Alternating Sum",
+                      objective: "To apply the alternating-sum shortcut to quickly check whether various numbers are divisible by 11.",
+                      materials: ["Paper and pencil", "A list of numbers to test (e.g., 462, 1331, 2728, 523)"],
+                      steps: [
+                        "Starting from the rightmost (units) digit, label the digits alternately + and − (units is +, tens is −, hundreds is +, and so on).",
+                        "Add up the digits according to their assigned sign.",
+                        "If the resulting alternating sum is 0 or a multiple of 11, the original number is divisible by 11.",
+                        "Verify your answer with a couple of examples by performing actual division.",
+                        "Discuss why the pattern alternates, unlike the digit-sum test for 9."
+                      ],
+                      observation: "For 462, the alternating sum (units 2, minus tens 6, plus hundreds 4) gives 2−6+4=0, confirming 462 is divisible by 11 (462÷11=42); for 523, the alternating sum gives 3−2+5=6, which is not a multiple of 11, confirming 523 is NOT divisible by 11."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does the divisibility test for 11 use an ALTERNATING sum of digits, unlike the test for 9?",
+                      options: ["There is no real reason for the difference", "Because powers of 10 alternate between being one MORE and one LESS than a multiple of 11 (unlike for 9, where they're always one more)", "Because 11 is a prime number", "The test for 11 doesn't actually use an alternating pattern"],
+                      answer: 1,
+                      explanation: "Unlike powers of 10 relative to 9 (always +1 from a multiple), powers of 10 relative to 11 alternate between +1 and −1, which is why the digits must be summed with alternating signs."
+                    },
+                    {
+                      question: "For the number 462, what is the alternating sum used to test divisibility by 11?",
+                      options: ["4+6+2=12", "2−6+4=0", "4−6+2=0", "6−4−2=0"],
+                      answer: 1,
+                      explanation: "Starting from the units digit with a '+' sign: units (2, +) minus tens (6, −) plus hundreds (4, +) gives 2−6+4=0."
+                    },
+                    {
+                      question: "Is 462 divisible by 11?",
+                      options: ["No, since the alternating sum is not zero", "Yes, since its alternating sum (2−6+4) equals 0, a multiple of 11", "Cannot be determined without long division", "No, 462 has no relationship to 11"],
+                      answer: 1,
+                      explanation: "The alternating sum of 462's digits is 2−6+4=0, which is a multiple of 11 (462÷11=42 exactly), confirming 462 is divisible by 11."
+                    },
+                    {
+                      question: "What is 100, expressed in terms of a multiple of 11?",
+                      options: ["100 = 11×9 − 1", "100 = 11×9 + 1", "100 = 11×10", "100 is not related to any multiple of 11"],
+                      answer: 1,
+                      explanation: "11×9=99, and 100 is exactly 1 more than 99, so 100 = 11×9+1 — the hundreds place is 'one more' than a multiple of 11, matching the alternating pattern."
+                    },
+                    {
+                      question: "Is 523 divisible by 11?",
+                      options: ["Yes, since its alternating sum is 0", "No, since its alternating sum (3−2+5=6) is not a multiple of 11", "Yes, since 523 ends in an odd digit", "Cannot be determined using the alternating sum method"],
+                      answer: 1,
+                      explanation: "The alternating sum for 523 is 3 (units) − 2 (tens) + 5 (hundreds) = 6, which is not a multiple of 11, confirming 523 is not divisible by 11."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-5-4",
+                  title: "4. Cryptarithms: Digits in Disguise",
+                  lab: { type: "cryptarithm-solver-sim" },
+                  theory: {
+                    intro: "In a cryptarithm, letters stand in for hidden digits — and solving PQ × 8 = RS means carefully ruling out candidates one by one, using nothing but logical reasoning about digit constraints.",
+                    sections: [
+                      {
+                        heading: "What Is a Cryptarithm?",
+                        text: "A cryptarithm is a puzzle where each letter stands for a digit, each digit is represented by at most one letter, and the first digit of a number is never 0. Solving them requires careful logical reasoning about place values, not guesswork."
+                      },
+                      {
+                        heading: "Solving PQ × 8 = RS Step by Step",
+                        text: "This puzzle needs a 2-digit number (PQ) multiplied by 8 to give another 2-digit number (RS), with all four letters representing different digits. Testing PQ=10: 10×8=80 — but the units digits of 10 and 80 are both 0, so Q and S would be equal, which isn't allowed. Testing PQ=11: 11×8=88 gives P=Q=1, also not allowed (P and Q must differ). Testing PQ=12: 12×8=96 — all digits (1,2,9,6) are different, satisfying every condition! Testing PQ=13 or higher: 13×8=104, a 3-digit number, so it doesn't fit the RS (2-digit) requirement at all."
+                      },
+                      {
+                        heading: "The General Strategy",
+                        text: "Cryptarithms are solved using patterns, properties, and logical elimination — checking constraints like the number of digits in a product, whether letters can repeat as the same value, and bounds on what digits are possible at each position. This systematic reasoning, rather than trial-and-error guessing, is what makes cryptarithms a genuine exercise in mathematical thinking."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Solving PQ × 8 = RS by Systematic Elimination",
+                      objective: "To find the unique solution to the cryptarithm PQ × 8 = RS by testing candidate values and applying the puzzle's constraints.",
+                      materials: ["Paper and pencil", "A calculator (optional, for verification)"],
+                      steps: [
+                        "List candidate 2-digit values for PQ, starting from 10.",
+                        "For each candidate, compute PQ × 8.",
+                        "Check whether the result is a 2-digit number (required for RS).",
+                        "Check whether all four digits (P, Q, R, S) are different from each other.",
+                        "Identify the unique value of PQ that satisfies both conditions."
+                      ],
+                      observation: "Testing PQ from 10 upward: 10×8=80 fails (Q=S=0), 11×8=88 fails (P=Q=1), 12×8=96 succeeds (digits 1,2,9,6 all different), and 13×8=104 fails (3-digit result) — confirming PQ=12 is the unique solution, giving 12×8=96."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In a cryptarithm, what rule applies to the first digit of any number?",
+                      options: ["It must always be 9", "It can never be 0", "It must always be an odd digit", "It has no special restriction"],
+                      answer: 1,
+                      explanation: "A standard rule in cryptarithms is that the leading (first) digit of any number can never be 0, since that would effectively reduce the number of digits."
+                    },
+                    {
+                      question: "In the cryptarithm PQ × 8 = RS, why does PQ=10 fail to be a valid solution?",
+                      options: ["10×8 is not a 2-digit number", "10×8=80, but this makes Q and S both equal to 0, violating the rule that different letters represent different digits", "10 is not allowed as a starting number", "PQ=10 actually is a valid solution"],
+                      answer: 1,
+                      explanation: "10×8=80 makes Q=0 and S=0 — since Q and S are different letters, they must represent different digits, so this candidate is invalid."
+                    },
+                    {
+                      question: "What is the unique solution to PQ × 8 = RS?",
+                      options: ["11 × 8 = 88", "12 × 8 = 96", "13 × 8 = 104", "14 × 8 = 112"],
+                      answer: 1,
+                      explanation: "12 × 8 = 96 is the unique solution: it's a 2-digit result, and all four digits (1, 2, 9, 6) are different from each other, satisfying every constraint of the puzzle."
+                    },
+                    {
+                      question: "Why does PQ=13 fail as a solution to PQ × 8 = RS?",
+                      options: ["13×8=104 is a 3-digit number, but RS must be a 2-digit number", "13 contains a repeated digit", "13×8 is not a whole number", "PQ=13 actually works fine"],
+                      answer: 0,
+                      explanation: "13×8=104, which has three digits — but RS is required to be a 2-digit number, so PQ=13 (and all values of PQ greater than 12) cannot work."
+                    },
+                    {
+                      question: "What is the main strategy used to solve cryptarithms, as demonstrated with PQ × 8 = RS?",
+                      options: ["Random guessing until something works", "Systematic testing of candidates combined with logical elimination based on digit and place-value constraints", "Cryptarithms cannot actually be solved logically", "Using a calculator to try every possible number"],
+                      answer: 1,
+                      explanation: "Cryptarithms are solved through systematic reasoning — testing candidates against constraints like the number of digits in a result and whether letters can share the same digit value — rather than random guessing."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
