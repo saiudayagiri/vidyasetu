@@ -13000,6 +13000,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-4",
+              title: "Quadrilaterals",
+              topics: [
+                {
+                  id: "8m-4-1",
+                  title: "1. Rectangles and the Angle Sum of a Quadrilateral",
+                  lab: { type: "quadrilateral-angle-sum-sim" },
+                  theory: {
+                    intro: "A carpenter needs two wooden strips to cross at exactly the right point and angle to form a perfect rectangle — geometry (not guesswork) tells her exactly how.",
+                    sections: [
+                      {
+                        heading: "Defining a Rectangle",
+                        text: "A rectangle is a quadrilateral in which all angles are right angles (90°) and opposite sides are equal in length. Using congruent triangles (△ADC ≅ △DAB by SAS), we can prove the diagonals of a rectangle are always equal in length. Using triangle angle-sum reasoning, we can further prove the diagonals always bisect each other (intersect at their midpoints) — this is why, for the carpenter's problem, both diagonals must be equal length and cross at their shared midpoint."
+                      },
+                      {
+                        heading: "The Angle Sum of Any Quadrilateral",
+                        text: "Drawing a diagonal splits any quadrilateral into two triangles. Since each triangle's angles sum to 180°, the total of all six resulting angles is 180°+180°=360° — and these six angles are exactly the four angles of the original quadrilateral (with two split into pairs). Therefore, the sum of all angles in ANY quadrilateral is always 360°. This is why a quadrilateral can never have exactly three right angles with a fourth angle that isn't also 90° — three 90° angles already total 270°, forcing the fourth to be exactly 90° as well."
+                      },
+                      {
+                        heading: "Why This Matters",
+                        text: "This angle-sum rule applies to every quadrilateral, not just rectangles — squares, parallelograms, rhombuses, kites, and trapeziums all obey it. Knowing any three angles of a quadrilateral instantly tells you the fourth, without any measurement."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying the Quadrilateral Angle-Sum Rule",
+                      objective: "To confirm, by splitting a quadrilateral into two triangles, that its four angles always sum to 360°.",
+                      materials: ["Paper and pencil", "A ruler", "A protractor"],
+                      steps: [
+                        "Draw any quadrilateral (not necessarily a rectangle) on paper, labelling its four vertices.",
+                        "Draw one diagonal, splitting the quadrilateral into two triangles.",
+                        "Measure (or calculate) all three angles of each triangle, confirming each triangle's angles sum to 180°.",
+                        "Add up all six triangle angles (180°+180°=360°), and confirm they correspond exactly to the quadrilateral's four original angles.",
+                        "Repeat with a differently-shaped quadrilateral to confirm the 360° total always holds."
+                      ],
+                      observation: "Regardless of the quadrilateral's shape, splitting it into two triangles via a diagonal always yields a combined angle total of 360° — confirming that all four angles of any quadrilateral sum to exactly 360°, a rule independent of the specific shape."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What are the two defining conditions for a quadrilateral to be a rectangle?",
+                      options: ["All sides equal, and all angles acute", "All angles are right angles (90°), and opposite sides are equal in length", "Only one pair of parallel sides", "Diagonals that are perpendicular to each other"],
+                      answer: 1,
+                      explanation: "A rectangle is defined by two conditions: all four angles must be 90°, and opposite sides must be equal in length."
+                    },
+                    {
+                      question: "What is the sum of all angles in ANY quadrilateral?",
+                      options: ["180°", "270°", "360°", "It varies depending on the quadrilateral's shape"],
+                      answer: 2,
+                      explanation: "By splitting any quadrilateral into two triangles via a diagonal, the total of all six triangle angles (180°+180°) equals 360° — and this total always equals the sum of the quadrilateral's four angles."
+                    },
+                    {
+                      question: "Why can a quadrilateral never have exactly three 90° angles with a different fourth angle?",
+                      options: ["Quadrilaterals can have any combination of angles", "Since three 90° angles already sum to 270°, and the total must be 360°, the fourth angle is forced to be exactly 90° as well", "This situation is actually possible", "Quadrilaterals only ever have angles less than 90°"],
+                      answer: 1,
+                      explanation: "Since all four angles must sum to 360°, and three right angles already total 270°, the remaining angle must be 360°-270°=90°, making it impossible to have exactly three right angles."
+                    },
+                    {
+                      question: "In the carpenter's problem, why must both diagonals of the rectangle be equal in length?",
+                      options: ["This is not actually a requirement for rectangles", "Because congruent triangles (like △ADC ≅ △DAB) prove that a rectangle's diagonals are always equal", "Because the carpenter chose to make them equal arbitrarily", "Rectangles never have equal diagonals"],
+                      answer: 1,
+                      explanation: "Using SAS congruence (△ADC ≅ △DAB), it can be proven that a rectangle's two diagonals are always equal in length — a necessary condition for the carpenter's construction to form a true rectangle."
+                    },
+                    {
+                      question: "If three angles of a quadrilateral are 100°, 85°, and 95°, what is the fourth angle?",
+                      options: ["70°", "80°", "90°", "100°"],
+                      answer: 1,
+                      explanation: "Since all four angles must sum to 360°: 360° - (100°+85°+95°) = 360° - 280° = 80°."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-4-2",
+                  title: "2. Parallelograms: Sides, Angles, and Diagonals",
+                  lab: { type: "parallelogram-properties-sim" },
+                  theory: {
+                    intro: "Skew a rectangle so its right angles tilt away from 90°, and it becomes a parallelogram — a whole larger family of shapes sharing the rectangle's parallel sides but not its right angles.",
+                    sections: [
+                      {
+                        heading: "What Is a Parallelogram?",
+                        text: "A parallelogram is a quadrilateral with both pairs of opposite sides parallel. A rectangle satisfies this (its opposite sides are parallel), so every rectangle is a parallelogram — specifically, a special parallelogram where all angles happen to be 90°. Constructing a parallelogram with one 30° angle shows the adjacent angle must be 150° (since consecutive interior angles on a transversal sum to 180°)."
+                      },
+                      {
+                        heading: "Angle Properties of a Parallelogram",
+                        text: "In any parallelogram, adjacent angles always add up to 180° (∠A+∠B=180°, ∠B+∠C=180°, etc.), and opposite angles are always equal (∠A=∠C, ∠B=∠D). So knowing just ONE angle of a parallelogram determines all four: if ∠A=30°, then ∠B=∠D=150° and ∠C=30°."
+                      },
+                      {
+                        heading: "Side and Diagonal Properties",
+                        text: "Using AAS congruence, it can be proven that opposite sides of a parallelogram are always equal (Property 1) and always parallel (Property 2, by definition). Unlike a rectangle, a parallelogram's diagonals are generally NOT equal in length — but they always bisect each other (Property 4), intersecting at their shared midpoint, exactly as proven for rectangles using congruent triangles."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Constructing a Parallelogram and Verifying Its Angle Properties",
+                      objective: "To construct a parallelogram with a given angle and side lengths, then verify that adjacent angles sum to 180° and opposite angles are equal.",
+                      materials: ["Ruler", "Protractor", "Pencil and paper"],
+                      steps: [
+                        "Draw a line segment AB of a chosen length, then draw AD at a chosen angle (e.g., 30°) and length from A.",
+                        "Draw a line through D parallel to AB, and a line through B parallel to AD; mark their intersection as C.",
+                        "Measure all four angles of the resulting parallelogram ABCD.",
+                        "Verify that adjacent angles (like ∠A and ∠B) sum to 180°, and opposite angles (like ∠A and ∠C) are equal.",
+                        "Measure both diagonals and confirm they are generally NOT equal, but that they cross at their shared midpoint."
+                      ],
+                      observation: "For a parallelogram constructed with ∠A=30°, measurement confirms ∠B=∠D=150° and ∠C=30° — verifying that adjacent angles sum to 180° and opposite angles are equal — while the diagonals, though unequal in length, always intersect at their midpoints."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the defining property of a parallelogram?",
+                      options: ["All four sides are equal", "Both pairs of opposite sides are parallel", "All angles are 90°", "The diagonals are always equal"],
+                      answer: 1,
+                      explanation: "A parallelogram is defined simply as a quadrilateral with both pairs of opposite sides parallel — a broader category that includes rectangles as a special case."
+                    },
+                    {
+                      question: "Is every rectangle a parallelogram?",
+                      options: ["No, rectangles and parallelograms are unrelated shapes", "Yes, since a rectangle's opposite sides are parallel, satisfying the parallelogram definition", "Only some rectangles are parallelograms", "Only squares are parallelograms, not rectangles"],
+                      answer: 1,
+                      explanation: "Since a rectangle has parallel opposite sides (as required by the parallelogram definition), every rectangle is a special type of parallelogram — one where all angles happen to equal 90°."
+                    },
+                    {
+                      question: "If one angle of a parallelogram is 30°, what are the other three angles?",
+                      options: ["30°, 30°, 30°", "150°, 30°, 150°", "60°, 90°, 60°", "It cannot be determined from just one angle"],
+                      answer: 1,
+                      explanation: "Since adjacent angles of a parallelogram sum to 180° and opposite angles are equal, a 30° angle means the adjacent angles are 150°, and the angle opposite the 30° angle is also 30° — giving 30°, 150°, 30°, 150° around the shape."
+                    },
+                    {
+                      question: "Are the diagonals of a parallelogram generally equal in length, like a rectangle's?",
+                      options: ["Yes, always equal", "No, they are generally NOT equal, though they still bisect each other", "They are always exactly twice each other's length", "Parallelograms do not have diagonals"],
+                      answer: 1,
+                      explanation: "Unlike a rectangle, a general parallelogram's diagonals are usually unequal in length — though they still always bisect each other (intersect at their shared midpoint)."
+                    },
+                    {
+                      question: "What congruence condition is used to prove that opposite sides of a parallelogram are equal?",
+                      options: ["SSS", "AAS", "There is no way to prove this", "HL"],
+                      answer: 1,
+                      explanation: "By identifying equal alternate angles (from parallel sides) and a shared side, the AAS congruence condition proves that the two triangles formed by a diagonal are congruent, showing opposite sides of the parallelogram are equal."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-4-3",
+                  title: "3. Rhombus: Equal Sides and Perpendicular Diagonals",
+                  lab: { type: "rhombus-diagonal-angle-sim" },
+                  theory: {
+                    intro: "A rhombus looks like a squashed square — every side the same length, but its angles free to lean, and its diagonals always crossing at a perfect right angle.",
+                    sections: [
+                      {
+                        heading: "Defining a Rhombus",
+                        text: "A rhombus is a quadrilateral in which all four sides have equal length. Constructing one with two equal sides at a 50° angle, then completing the shape, produces a rhombus where — using congruent triangles — the angles work out to 50°, 130°, 50°, 130° around the shape. Since a rhombus's opposite sides turn out to be parallel too, every rhombus is also a parallelogram, so it inherits all the parallelogram properties (adjacent angles sum to 180°, opposite angles are equal, diagonals bisect each other)."
+                      },
+                      {
+                        heading: "The Family Tree of Quadrilaterals",
+                        text: "A square is a rectangle (all angles 90°) AND a rhombus (all sides equal) AND a parallelogram — sitting at the intersection of all these categories in a Venn diagram. This nested relationship — square ⊂ rectangle ⊂ parallelogram, and square ⊂ rhombus ⊂ parallelogram — captures how each shape adds more specific constraints on top of the more general parallelogram."
+                      },
+                      {
+                        heading: "The Special Diagonal Properties of a Rhombus",
+                        text: "Beyond the parallelogram properties, a rhombus has two extra special properties, provable using congruent triangles: the diagonals of a rhombus always BISECT its angles (split each vertex angle exactly in half), and the diagonals always intersect at exactly 90° (perpendicular to each other) — properties that are NOT generally true for a plain parallelogram."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Constructing a Rhombus and Verifying Its Diagonal Properties",
+                      objective: "To construct a rhombus with a given angle, then verify that its diagonals bisect its angles and intersect at exactly 90°.",
+                      materials: ["Compass", "Ruler", "Protractor", "Pencil and paper"],
+                      steps: [
+                        "Draw two equal-length sides from a common vertex, at a chosen angle (e.g., 50°) between them.",
+                        "Using a compass set to the same side length, mark the remaining two vertices so all four sides are equal, completing the rhombus.",
+                        "Draw both diagonals, and measure the angle at which they intersect.",
+                        "Measure the angles formed at each vertex where a diagonal splits it, confirming each half equals exactly half the vertex's full angle.",
+                        "Confirm the four angles of the rhombus are 50°, 130°, 50°, 130° (matching the constructed 50° angle and its parallelogram-derived supplements)."
+                      ],
+                      observation: "For a rhombus constructed with a 50° angle, the full set of angles works out to 50°, 130°, 50°, 130°, the diagonals always intersect at exactly 90° regardless of the rhombus's shape, and each diagonal splits its vertex angles exactly in half — properties unique to the rhombus among general parallelograms."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the defining property of a rhombus?",
+                      options: ["All angles are 90°", "All four sides have equal length", "Only one pair of sides is parallel", "The diagonals are equal in length"],
+                      answer: 1,
+                      explanation: "A rhombus is defined simply as a quadrilateral where all four sides are of equal length."
+                    },
+                    {
+                      question: "Is every rhombus also a parallelogram?",
+                      options: ["No, they are unrelated shapes", "Yes, since a rhombus's opposite sides can be shown to be parallel, satisfying the parallelogram definition", "Only some rhombuses are parallelograms", "A rhombus is never a parallelogram"],
+                      answer: 1,
+                      explanation: "Since a rhombus's opposite sides can be proven parallel (using congruent triangles), every rhombus satisfies the parallelogram definition and inherits all parallelogram properties."
+                    },
+                    {
+                      question: "At what angle do the diagonals of a rhombus always intersect?",
+                      options: ["Any angle, depending on the rhombus", "Always exactly 90°", "Always exactly 45°", "Always exactly 60°"],
+                      answer: 1,
+                      explanation: "A special property of the rhombus (not shared by general parallelograms) is that its diagonals always intersect at exactly 90°, perpendicular to each other."
+                    },
+                    {
+                      question: "What special property do the diagonals of a rhombus have regarding its angles?",
+                      options: ["They have no relationship to the angles", "The diagonals bisect (split exactly in half) the angles at each vertex", "The diagonals only bisect one angle, never the others", "The diagonals triple the angle at each vertex"],
+                      answer: 1,
+                      explanation: "In a rhombus, each diagonal bisects the angles at the two vertices it passes through, splitting each vertex angle exactly in half — a property not generally true for other parallelograms."
+                    },
+                    {
+                      question: "Where does a square fit in relation to rectangles and rhombuses?",
+                      options: ["A square is neither a rectangle nor a rhombus", "A square is both a rectangle (all angles 90°) AND a rhombus (all sides equal), sitting at their intersection", "A square is a rectangle but never a rhombus", "A square is a rhombus but never a rectangle"],
+                      answer: 1,
+                      explanation: "A square satisfies both the rectangle definition (all angles 90°) and the rhombus definition (all sides equal), making it the special shape that lies at the intersection of both categories."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-4-4",
+                  title: "4. Kite, Trapezium, and the Quadrilateral Family",
+                  lab: { type: "quadrilateral-classifier-sim" },
+                  theory: {
+                    intro: "Not every quadrilateral fits neatly into the parallelogram family — kites and trapeziums relax different rules, yet each still obeys its own elegant set of properties.",
+                    sections: [
+                      {
+                        heading: "The Kite",
+                        text: "A kite is a quadrilateral labelled ABCD such that AB=BC and CD=DA — two DISTINCT pairs of ADJACENT equal sides (unlike a rhombus, where all four sides are equal). In a kite, the diagonal connecting the vertices between the unequal side-pairs (BD) bisects the angles at B and D, bisects the other diagonal (AC), and is perpendicular to it — though, unlike a rhombus, only ONE diagonal is bisected, not both."
+                      },
+                      {
+                        heading: "The Trapezium",
+                        text: "A trapezium is a quadrilateral with AT LEAST one pair of parallel opposite sides (relaxing the parallelogram's requirement of BOTH pairs being parallel). Since one pair of sides is parallel, the angles on each non-parallel side sum to 180° (like ∠S+∠P=180° when PQ∥SR). When the two non-parallel sides of a trapezium are equal in length, it's called an isosceles trapezium — and in this special case, the angles opposite the equal sides are also equal to each other."
+                      },
+                      {
+                        heading: "The Complete Quadrilateral Family",
+                        text: "Squares, rectangles, rhombuses, and parallelograms all have both pairs of opposite sides parallel (to varying degrees of extra restriction). Kites and general trapeziums break from this: a kite has NO parallel sides in general, and a trapezium has only ONE pair. Each shape in this family is defined by which properties it keeps and which it relaxes from the most general quadrilateral."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building a Complete Quadrilateral Classification Chart",
+                      objective: "To organize the properties of squares, rectangles, rhombuses, parallelograms, kites, and trapeziums into a single comparison chart.",
+                      materials: ["Paper and pencil", "A ruler for sketching each shape"],
+                      steps: [
+                        "Sketch a rough example of each shape: square, rectangle, rhombus, parallelogram, kite, and trapezium.",
+                        "For each shape, note whether it has: parallel opposite sides (both pairs, one pair, or none), all sides equal, all angles 90°, equal diagonals, diagonals that bisect each other, and perpendicular diagonals.",
+                        "Organize these findings into a table with shapes as rows and properties as columns.",
+                        "Identify which shapes share the most properties, and which are most distinct from the others.",
+                        "Draw a Venn diagram showing how these six shapes relate to (or are separate from) each other."
+                      ],
+                      observation: "Squares, rectangles, and rhombuses are all special parallelograms (nested inside that larger family), while kites and trapeziums stand mostly apart — a kite has no parallel sides at all (in general) but shares the rhombus's perpendicular-diagonal property, and a trapezium has only one pair of parallel sides, sharing none of the diagonal properties of the parallelogram family."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the defining property of a kite (ABCD)?",
+                      options: ["All four sides are equal", "AB=BC and CD=DA — two distinct pairs of adjacent equal sides", "Both pairs of opposite sides are parallel", "All angles are 90°"],
+                      answer: 1,
+                      explanation: "A kite is defined by two pairs of adjacent (not opposite) equal sides: AB=BC and CD=DA, giving it a distinctive kite shape rather than the parallelogram family's parallel sides."
+                    },
+                    {
+                      question: "In a kite, how many of its diagonals get bisected by the other?",
+                      options: ["Both diagonals bisect each other, like a parallelogram", "Only one diagonal is bisected by the other; they are not mutually bisecting", "Neither diagonal is ever bisected", "This cannot be determined for a general kite"],
+                      answer: 1,
+                      explanation: "Unlike a parallelogram (where both diagonals bisect each other) or a rhombus, a kite has only one diagonal bisected by the other — the diagonal connecting the vertices between the unequal side-pairs."
+                    },
+                    {
+                      question: "What is the defining property of a trapezium?",
+                      options: ["All four sides are equal", "At least one pair of opposite sides is parallel", "Both pairs of opposite sides must be parallel", "All angles must be 90°"],
+                      answer: 1,
+                      explanation: "A trapezium requires only AT LEAST one pair of parallel opposite sides — a more relaxed condition than a parallelogram's requirement of BOTH pairs being parallel."
+                    },
+                    {
+                      question: "What special property does an ISOSCELES trapezium have that a general trapezium does not?",
+                      options: ["All four sides are equal", "The angles opposite its equal (non-parallel) sides are also equal to each other", "Both pairs of sides are parallel", "Its diagonals are always perpendicular"],
+                      answer: 1,
+                      explanation: "In an isosceles trapezium (where the two non-parallel sides are equal in length), the angles opposite those equal sides are also equal — a property not guaranteed in a general (non-isosceles) trapezium."
+                    },
+                    {
+                      question: "Which of these shapes generally has NO pair of parallel sides at all?",
+                      options: ["Parallelogram", "Trapezium", "Kite", "Rectangle"],
+                      answer: 2,
+                      explanation: "A general kite has no pairs of parallel sides — unlike the parallelogram family (which has both pairs parallel) or the trapezium (which has at least one pair parallel)."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

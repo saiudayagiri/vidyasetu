@@ -2866,6 +2866,100 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const quadrilateralAngleSumLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="quad-angle-sum-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick three known angles and see the fourth angle computed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Three Angles</h3>
+            <select id="sel-quad-angle-set" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="A" selected>90°, 90°, 90°</option>
+              <option value="B">70°, 110°, 70°</option>
+              <option value="C">100°, 60°, 140°</option>
+              <option value="D">85°, 95°, 100°</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Fourth Angle</h3>
+            <div id="quad-angle-sum-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose three angles above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const parallelogramPropertiesLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="parallelogram-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick one angle and see all four angles of the parallelogram.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Angle A</h3>
+            <select id="sel-parallelogram-angle" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="30" selected>30°</option>
+              <option value="45">45°</option>
+              <option value="60">60°</option>
+              <option value="75">75°</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>All Four Angles</h3>
+            <div id="parallelogram-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose angle A above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const rhombusDiagonalAngleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="rhombus-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick one angle and see all four angles, plus the diagonal intersection.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Angle A</h3>
+            <select id="sel-rhombus-angle" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="50" selected>50°</option>
+              <option value="70">70°</option>
+              <option value="100">100°</option>
+              <option value="120">120°</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>All Four Angles &amp; Diagonals</h3>
+            <div id="rhombus-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose angle A above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const quadrilateralClassifierLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="quad-classifier-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a shape and see its full property checklist.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Shape</h3>
+            <select id="sel-quad-classifier-shape" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="square" selected>Square</option>
+              <option value="rectangle">Rectangle</option>
+              <option value="rhombus">Rhombus</option>
+              <option value="parallelogram">Parallelogram</option>
+              <option value="kite">Kite</option>
+              <option value="trapezium">Trapezium</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Property Checklist</h3>
+            <div id="quad-classifier-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a shape above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4725,6 +4819,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'hindu-place-value-sim') {
               labHtml = hinduPlaceValueLabHtml;
               labDesc = 'Pick a number and see its full place-value breakdown, digit by digit.';
+            } else if (topicObj.lab.type === 'quadrilateral-angle-sum-sim') {
+              labHtml = quadrilateralAngleSumLabHtml;
+              labDesc = 'Pick three known angles and see the fourth angle computed from the 360° rule.';
+            } else if (topicObj.lab.type === 'parallelogram-properties-sim') {
+              labHtml = parallelogramPropertiesLabHtml;
+              labDesc = 'Pick one angle and see all four angles of the parallelogram computed.';
+            } else if (topicObj.lab.type === 'rhombus-diagonal-angle-sim') {
+              labHtml = rhombusDiagonalAngleLabHtml;
+              labDesc = 'Pick one angle and see all four angles plus the perpendicular diagonal intersection.';
+            } else if (topicObj.lab.type === 'quadrilateral-classifier-sim') {
+              labHtml = quadrilateralClassifierLabHtml;
+              labDesc = 'Pick a quadrilateral and see its full checklist of side, angle, and diagonal properties.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -5172,6 +5278,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initBaseNLandmarkLab();
         } else if (topicObj.lab.type === 'hindu-place-value-sim') {
           initHinduPlaceValueLab();
+        } else if (topicObj.lab.type === 'quadrilateral-angle-sum-sim') {
+          initQuadrilateralAngleSumLab();
+        } else if (topicObj.lab.type === 'parallelogram-properties-sim') {
+          initParallelogramPropertiesLab();
+        } else if (topicObj.lab.type === 'rhombus-diagonal-angle-sim') {
+          initRhombusDiagonalAngleLab();
+        } else if (topicObj.lab.type === 'quadrilateral-classifier-sim') {
+          initQuadrilateralClassifierLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -18398,6 +18512,190 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(`= ${numStr}`, W / 2, 195);
 
         obs.innerHTML = `<strong>${numStr} = ${terms} = ${numStr}.</strong> Each digit's value depends entirely on its position — even the 0s are essential to correctly mark a skipped place value.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initQuadrilateralAngleSumLab() {
+      const canvas = document.getElementById('quad-angle-sum-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-quad-angle-set');
+      const obs = document.getElementById('quad-angle-sum-obs');
+      const SETS = {
+        A: [90, 90, 90], B: [70, 110, 70], C: [100, 60, 140], D: [85, 95, 100]
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const angles = SETS[sel.value];
+        const fourth = 360 - angles.reduce((a, b) => a + b, 0);
+        const all = [...angles, fourth];
+
+        const cx = W / 2, cy = 150, hw = 130, hh = 80;
+        const pts = [
+          { x: cx - hw, y: cy - hh }, { x: cx + hw, y: cy - hh - 20 },
+          { x: cx + hw - 10, y: cy + hh }, { x: cx - hw + 20, y: cy + hh }
+        ];
+        ctx.beginPath();
+        pts.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+        ctx.closePath();
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3; ctx.stroke();
+
+        const labelOffsets = [{ x: -22, y: -10 }, { x: 22, y: -10 }, { x: 22, y: 18 }, { x: -22, y: 18 }];
+        pts.forEach((p, i) => {
+          ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI * 2); ctx.fillStyle = cssVar('--text-normal'); ctx.fill();
+          ctx.font = 'bold 15px system-ui'; ctx.fillStyle = i === 3 ? cssVar('--accent-color') : cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(i === 3 ? `? = ${fourth}°` : `${all[i]}°`, p.x + labelOffsets[i].x, p.y + labelOffsets[i].y);
+        });
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${angles.join('° + ')}° + ? = 360°`, W / 2, 30);
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Fourth angle = ${fourth}°`, W / 2, 250);
+
+        obs.innerHTML = `<strong>Three angles: ${angles.join('°, ')}°.</strong> Since all four angles of a quadrilateral sum to 360°, the fourth angle = 360° − (${angles.join('+')}) = ${fourth}°.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initParallelogramPropertiesLab() {
+      const canvas = document.getElementById('parallelogram-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-parallelogram-angle');
+      const obs = document.getElementById('parallelogram-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const a = parseInt(sel.value);
+        const b = 180 - a;
+
+        const cx = W / 2, cy = 150, skew = 60, hw = 110, hh = 60;
+        const pts = [
+          { x: cx - hw + skew, y: cy - hh }, { x: cx + hw + skew, y: cy - hh },
+          { x: cx + hw - skew, y: cy + hh }, { x: cx - hw - skew, y: cy + hh }
+        ];
+        ctx.beginPath();
+        pts.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+        ctx.closePath();
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3; ctx.stroke();
+
+        const labels = ['A', 'B', 'C', 'D'];
+        const values = [a, b, a, b];
+        const offsets = [{ x: -20, y: 10 }, { x: 20, y: 10 }, { x: 20, y: -6 }, { x: -20, y: -6 }];
+        pts.forEach((p, i) => {
+          ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI * 2); ctx.fillStyle = cssVar('--text-normal'); ctx.fill();
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+          ctx.fillText(`${labels[i]}=${values[i]}°`, p.x + offsets[i].x, p.y + offsets[i].y);
+        });
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`∠A = ${a}° → ∠B = ∠D = ${b}°, ∠C = ${a}°`, W / 2, 30);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('Adjacent angles sum to 180°; opposite angles are equal.', W / 2, 240);
+
+        obs.innerHTML = `<strong>∠A = ${a}°.</strong> Since adjacent angles sum to 180°: ∠B = ∠D = ${b}°. Since opposite angles are equal: ∠C = ∠A = ${a}°.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initRhombusDiagonalAngleLab() {
+      const canvas = document.getElementById('rhombus-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-rhombus-angle');
+      const obs = document.getElementById('rhombus-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const a = parseInt(sel.value);
+        const b = 180 - a;
+
+        const cx = W / 2, cy = 150;
+        const dLong = 100, dShort = 60;
+        const top = { x: cx, y: cy - dLong / 2 }, bottom = { x: cx, y: cy + dLong / 2 };
+        const left = { x: cx - dShort, y: cy }, right = { x: cx + dShort, y: cy };
+        const pts = [top, right, bottom, left];
+
+        ctx.beginPath();
+        pts.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+        ctx.closePath();
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3; ctx.stroke();
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]);
+        ctx.beginPath(); ctx.moveTo(top.x, top.y); ctx.lineTo(bottom.x, bottom.y); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(left.x, left.y); ctx.lineTo(right.x, right.y); ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.font = 'bold 11px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        ctx.fillText('90°', cx + 16, cy - 8);
+
+        const values = [a, b, a, b];
+        const offsets = [{ x: 0, y: -12 }, { x: 24, y: 4 }, { x: 0, y: 20 }, { x: -24, y: 4 }];
+        pts.forEach((p, i) => {
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(`${values[i]}°`, p.x + offsets[i].x, p.y + offsets[i].y);
+        });
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Angles: ${a}°, ${b}°, ${a}°, ${b}° — diagonals ⊥ (90°)`, W / 2, 30);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('Diagonals bisect the angles and intersect at 90°.', W / 2, 245);
+
+        obs.innerHTML = `<strong>One angle = ${a}°.</strong> Opposite angle also = ${a}°; adjacent angles = ${b}° (since they sum to 180°). The diagonals always intersect at exactly 90°, and each bisects the vertex angles it passes through.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initQuadrilateralClassifierLab() {
+      const canvas = document.getElementById('quad-classifier-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-quad-classifier-shape');
+      const obs = document.getElementById('quad-classifier-obs');
+      const PROPS = ['Opposite sides parallel', 'All sides equal', 'All angles 90°', 'Diagonals equal', 'Diagonals bisect each other', 'Diagonals perpendicular'];
+      const DATA = {
+        square: [true, true, true, true, true, true],
+        rectangle: [true, false, true, true, true, false],
+        rhombus: [true, true, false, false, true, true],
+        parallelogram: [true, false, false, false, true, false],
+        kite: [false, false, false, false, false, true],
+        trapezium: [false, false, false, false, false, false]
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const shape = sel.value;
+        const flags = DATA[shape];
+
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(shape.charAt(0).toUpperCase() + shape.slice(1), W / 2, 26);
+
+        const startY = 55, rowH = 33;
+        PROPS.forEach((prop, i) => {
+          const y = startY + i * rowH;
+          const ok = flags[i];
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = ok ? cssVar('--accent-color') : '#f87171'; ctx.textAlign = 'left';
+          ctx.fillText(ok ? '✓' : '✕', 60, y);
+          ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+          ctx.fillText(prop, 90, y);
+        });
+
+        const trueProps = PROPS.filter((p, i) => flags[i]);
+        obs.innerHTML = `<strong>${shape.charAt(0).toUpperCase() + shape.slice(1)}:</strong> ${trueProps.length > 0 ? trueProps.join(', ') : 'none of the special parallelogram properties'}${trueProps.length > 0 && trueProps.length < PROPS.length ? ' — but not ' + PROPS.filter((p, i) => !flags[i]).join(', ') : ''}.`;
       }
 
       sel.addEventListener('change', draw);
