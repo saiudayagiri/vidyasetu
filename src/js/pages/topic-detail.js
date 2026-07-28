@@ -3054,6 +3054,97 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const productIncrementLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="product-increment-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an adjustment and see how the product a×b changes.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Adjustment (a=23, b=27)</h3>
+            <select id="sel-product-increment" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="b1" selected>Increase b by 1</option>
+              <option value="both1">Increase both a and b by 1</option>
+              <option value="updown">Increase a by 1, decrease b by 1</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Change in Product</h3>
+            <div id="product-increment-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an adjustment above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const squareIdentityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="square-identity-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number and see it squared using the sum/difference identity.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Number</h3>
+            <select id="sel-square-identity-num" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="65" selected>65 = 60 + 5</option>
+              <option value="55">55 = 60 − 5</option>
+              <option value="104">104 = 100 + 4</option>
+              <option value="99">99 = 100 − 1</option>
+              <option value="58">58 = 60 − 2</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Squared Using the Identity</h3>
+            <div id="square-identity-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const differenceOfSquaresLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="diff-squares-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a number and see it squared using Sridharacharya's trick.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Number</h3>
+            <select id="sel-diff-squares-num" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="31-1" selected>31² (b=1)</option>
+              <option value="197-3">197² (b=3)</option>
+              <option value="406-6">406² (b=6)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Computed Square</h3>
+            <div id="diff-squares-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const equivalentExpressionsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="equiv-expr-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a step number and see all 4 methods agree on the circle count.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Step k</h3>
+            <select id="sel-equiv-expr-k" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="3" selected>k = 3</option>
+              <option value="5">k = 5</option>
+              <option value="10">k = 10</option>
+              <option value="15">k = 15</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>All 4 Methods</h3>
+            <div id="equiv-expr-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a step number above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -4937,6 +5028,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'cryptarithm-solver-sim') {
               labHtml = cryptarithmSolverLabHtml;
               labDesc = 'Pick a candidate for PQ and test it against the cryptarithm PQ × 8 = RS.';
+            } else if (topicObj.lab.type === 'product-increment-sim') {
+              labHtml = productIncrementLabHtml;
+              labDesc = 'Pick an adjustment and see how the product a×b changes, using distributivity.';
+            } else if (topicObj.lab.type === 'square-identity-sim') {
+              labHtml = squareIdentityLabHtml;
+              labDesc = 'Pick a number and see it squared using the (a±b)² identity.';
+            } else if (topicObj.lab.type === 'difference-of-squares-sim') {
+              labHtml = differenceOfSquaresLabHtml;
+              labDesc = 'Pick a number and see it squared quickly using the Sridharacharya trick.';
+            } else if (topicObj.lab.type === 'equivalent-expressions-sim') {
+              labHtml = equivalentExpressionsLabHtml;
+              labDesc = 'Pick a step number and see all 4 counting methods agree on the same total.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -5400,6 +5503,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initDivisibilityBy11Lab();
         } else if (topicObj.lab.type === 'cryptarithm-solver-sim') {
           initCryptarithmSolverLab();
+        } else if (topicObj.lab.type === 'product-increment-sim') {
+          initProductIncrementLab();
+        } else if (topicObj.lab.type === 'square-identity-sim') {
+          initSquareIdentityLab();
+        } else if (topicObj.lab.type === 'difference-of-squares-sim') {
+          initDifferenceOfSquaresLab();
+        } else if (topicObj.lab.type === 'equivalent-expressions-sim') {
+          initEquivalentExpressionsLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -19012,6 +19123,160 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(valid ? 'Valid solution!' : 'Not valid', W / 2, 200);
 
         obs.innerHTML = `<strong>${pq} × 8 = ${product}.</strong> ${reason} ${valid ? 'This is the unique solution to PQ × 8 = RS.' : ''}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initProductIncrementLab() {
+      const canvas = document.getElementById('product-increment-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-product-increment');
+      const obs = document.getElementById('product-increment-obs');
+      const a = 23, b = 27, ab = a * b;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mode = sel.value;
+        let newA, newB, formula, increaseLabel;
+        if (mode === 'b1') { newA = a; newB = b + 1; formula = `${a} × (${b}+1)`; increaseLabel = `Increase = a = ${a}`; }
+        else if (mode === 'both1') { newA = a + 1; newB = b + 1; formula = `(${a}+1) × (${b}+1)`; increaseLabel = `Increase = a+b+1 = ${a + b + 1}`; }
+        else { newA = a + 1; newB = b - 1; formula = `(${a}+1) × (${b}-1)`; increaseLabel = `Increase = b-a-1 = ${b - a - 1}`; }
+        const newProduct = newA * newB;
+        const increase = newProduct - ab;
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`a × b = ${a} × ${b} = ${ab}`, W / 2, 35);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 130, 55); ctx.lineTo(W / 2 + 130, 55); ctx.stroke();
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`${formula} = ${newProduct}`, W / 2, 100);
+
+        ctx.font = 'bold 24px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(increase > 0 ? `+${increase}` : String(increase), W / 2, 145);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(increaseLabel, W / 2, 175);
+
+        obs.innerHTML = `<strong>New product = ${formula} = ${newProduct}.</strong> This is ${increase} more than the original ${ab} — matching the formula: ${increaseLabel}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSquareIdentityLab() {
+      const canvas = document.getElementById('square-identity-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-square-identity-num');
+      const obs = document.getElementById('square-identity-obs');
+      const DATA = {
+        65: { a: 60, b: 5, sign: 1 }, 55: { a: 60, b: 5, sign: -1 },
+        104: { a: 100, b: 4, sign: 1 }, 99: { a: 100, b: 1, sign: -1 }, 58: { a: 60, b: 2, sign: -1 }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const num = sel.value;
+        const { a, b, sign } = DATA[num];
+        const a2 = a * a, b2 = b * b, twoab = 2 * a * b;
+        const result = sign > 0 ? a2 + twoab + b2 : a2 - twoab + b2;
+        const opSym = sign > 0 ? '+' : '−';
+
+        ctx.font = 'bold 20px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${num}² = (${a} ${opSym} ${b})²`, W / 2, 35);
+
+        ctx.font = '15px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`= ${a}² ${sign > 0 ? '+' : '+'} ${sign > 0 ? '2×' : '−2×'}(${a}×${b}) + ${b}²`, W / 2, 75);
+        ctx.fillText(`= ${a2} ${sign > 0 ? '+' : '−'} ${twoab} + ${b2}`, W / 2, 105);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 100, 125); ctx.lineTo(W / 2 + 100, 125); ctx.stroke();
+
+        ctx.font = 'bold 28px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`= ${result}`, W / 2, 165);
+
+        obs.innerHTML = `<strong>${num}² = (${a}${opSym}${b})² = ${a2} ${opSym} ${twoab} + ${b2} = ${result}.</strong> Using Identity 1${sign > 0 ? 'A' : 'B'}, only easy squares and products were needed.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDifferenceOfSquaresLab() {
+      const canvas = document.getElementById('diff-squares-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-diff-squares-num');
+      const obs = document.getElementById('diff-squares-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [aStr, bStr] = sel.value.split('-');
+        const a = parseInt(aStr), b = parseInt(bStr);
+        const sum = a + b, diff = a - b, product = sum * diff, b2 = b * b, result = product + b2;
+
+        ctx.font = 'bold 20px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${a}² = (${a}+${b})(${a}−${b}) + ${b}²`, W / 2, 35);
+
+        ctx.font = '15px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`= ${sum} × ${diff} + ${b2}`, W / 2, 80);
+        ctx.fillText(`= ${product} + ${b2}`, W / 2, 108);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 100, 128); ctx.lineTo(W / 2 + 100, 128); ctx.stroke();
+
+        ctx.font = 'bold 28px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`= ${result}`, W / 2, 168);
+
+        obs.innerHTML = `<strong>${a}² = (${a}+${b})(${a}−${b}) + ${b}² = ${sum}×${diff} + ${b2} = ${result}.</strong> Choosing b=${b} rounds ${a} to a nearby easy number (${sum} or ${diff}), making the multiplication simple.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initEquivalentExpressionsLab() {
+      const canvas = document.getElementById('equiv-expr-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-equiv-expr-k');
+      const obs = document.getElementById('equiv-expr-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const k = parseInt(sel.value);
+        const methods = [
+          { label: `(${k}+1)² − 1`, val: (k + 1) * (k + 1) - 1 },
+          { label: `${k}² + 2×${k}`, val: k * k + 2 * k },
+          { label: `${k}×(${k}+1) + ${k}`, val: k * (k + 1) + k },
+          { label: `${k}×(${k}+2)`, val: k * (k + 2) }
+        ];
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Step k = ${k}`, W / 2, 26);
+
+        const rowH = 40, startY = 55;
+        methods.forEach((m, i) => {
+          const y = startY + i * rowH;
+          ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+          ctx.fillText(`Method ${i + 1}: ${m.label}`, 70, y);
+          ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'right';
+          ctx.fillText(`= ${m.val}`, W - 70, y);
+        });
+
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
+        ctx.fillText(`All methods agree: ${methods[0].val}`, W / 2, startY + 4 * rowH + 15);
+
+        obs.innerHTML = `<strong>For k=${k}, all 4 methods give ${methods[0].val}.</strong> Each expression simplifies algebraically to k²+2k = ${k}²+2×${k} = ${methods[0].val}, confirming they describe the same pattern.`;
       }
 
       sel.addEventListener('change', draw);

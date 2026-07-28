@@ -13564,6 +13564,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-6",
+              title: "We Distribute, Yet Things Multiply",
+              topics: [
+                {
+                  id: "8m-6-1",
+                  title: "1. Distributivity and Product Increments",
+                  lab: { type: "product-increment-sim" },
+                  theory: {
+                    intro: "If you increase both numbers in a multiplication by 1, how much does the product actually grow? Algebra answers this precisely, without ever needing to multiply the new numbers directly.",
+                    sections: [
+                      {
+                        heading: "The Distributive Property",
+                        text: "For any numbers a, b, c: a(b+c) = ab+ac — this is the distributive property of multiplication over addition, visualizable as a grid of a rows split into b and c columns. Using this with a=23, b=27, c=1: 23×(27+1) = 23×27+23, showing that increasing 27 by 1 increases the product by exactly 23 (the OTHER number)."
+                      },
+                      {
+                        heading: "Increasing Both Numbers by 1",
+                        text: "If both numbers in a product ab are increased by 1, we get (a+1)(b+1). Treating (a+1) as a single term and applying distributivity twice: (a+1)(b+1) = ab + (a+b+1). So the product increases by a+b+1 — for a=23, b=27, that's an increase of 23+27+1=51."
+                      },
+                      {
+                        heading: "Increasing One, Decreasing the Other",
+                        text: "If a is increased by 1 and b is decreased by 1, we get (a+1)(b−1) = ab + b − a − 1. This increase (b−a−1) can be positive, negative, or even zero depending on the values of a and b — unlike the previous two cases, the product does not always increase. These rules hold true even when a and b are negative integers, since the distributive property applies to all integers."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Product-Increment Formulas with Real Numbers",
+                      objective: "To verify the algebraic formulas for how a product changes when its factors are adjusted by 1, using concrete numbers.",
+                      materials: ["Paper and pencil", "A calculator (optional)"],
+                      steps: [
+                        "Choose two numbers, such as a=23 and b=27, and compute their product ab.",
+                        "Compute a×(b+1) directly, and check that it equals ab+a (an increase of exactly a).",
+                        "Compute (a+1)×(b+1) directly, and check that it equals ab+(a+b+1).",
+                        "Compute (a+1)×(b−1) directly, and check that it equals ab+(b−a−1).",
+                        "Try the same three calculations with negative values for a and/or b, confirming the formulas still hold."
+                      ],
+                      observation: "For a=23 and b=27 (product 621): increasing b by 1 gives 621+23=644 (matching a×(b+1)); increasing both by 1 gives 621+51=672 (matching a+b+1=51); increasing a by 1 and decreasing b by 1 gives 621+3=624 (matching b−a−1=3) — all confirming the algebraic formulas exactly."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the distributive property of multiplication over addition?",
+                      options: ["a+(b×c) = (a+b)×(a+c)", "a(b+c) = ab+ac", "a×b = b×a", "(a+b)+c = a+(b+c)"],
+                      answer: 1,
+                      explanation: "The distributive property states that a(b+c) = ab+ac — multiplying a sum by a number is the same as multiplying each term separately and adding the results."
+                    },
+                    {
+                      question: "If a product ab has its second number (b) increased by 1, by how much does the product increase?",
+                      options: ["By 1", "By b", "By a (the OTHER number)", "By a+b"],
+                      answer: 2,
+                      explanation: "Since a(b+1) = ab+a, increasing b by 1 increases the product by exactly a, the other factor in the product."
+                    },
+                    {
+                      question: "If BOTH numbers in a product ab are increased by 1, by how much does the product increase?",
+                      options: ["By 1", "By a+b", "By a+b+1", "By 2ab"],
+                      answer: 2,
+                      explanation: "Expanding (a+1)(b+1) = ab+a+b+1 shows the product increases by exactly a+b+1 when both factors are increased by 1."
+                    },
+                    {
+                      question: "If a is increased by 1 and b is decreased by 1, does the product ab always increase?",
+                      options: ["Yes, it always increases", "No — the change is b−a−1, which can be positive, negative, or zero depending on a and b", "The product always stays exactly the same", "The product always decreases"],
+                      answer: 1,
+                      explanation: "The change in this case is b−a−1, which depends on the specific values of a and b — it is not guaranteed to always be positive, unlike the other two increment scenarios."
+                    },
+                    {
+                      question: "For a=23 and b=27, by how much does the product increase when both numbers are increased by 1?",
+                      options: ["23", "27", "50", "51"],
+                      answer: 3,
+                      explanation: "Using the formula a+b+1 = 23+27+1 = 51, the product increases by 51 when both factors are increased by 1."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-6-2",
+                  title: "2. Squares of Sums and Differences",
+                  lab: { type: "square-identity-sim" },
+                  theory: {
+                    intro: "Splitting 65 into 60+5 lets you compute 65² using only the easy squares 60² and 5² — a geometric trick that becomes the algebraic identity (a+b)² = a²+2ab+b².",
+                    sections: [
+                      {
+                        heading: "Identity 1A: The Square of a Sum",
+                        text: "Splitting a square of side 65 into a 60×60 square, a 5×5 square, and two 60×5 rectangles: 65² = (60+5)² = 60²+5²+2×(60×5) = 3600+25+600 = 4225. In general, using the distributive property: (a+b)² = (a+b)(a+b) = a²+ab+ba+b² = a²+2ab+b². This is Identity 1A: (a+b)² = a²+2ab+b²."
+                      },
+                      {
+                        heading: "Identity 1B: The Square of a Difference",
+                        text: "For 55² = (60−5)², we take the square of side 60, remove two 60×5 rectangles, then add back the 5×5 square counted twice: 55² = 60²−(60×5)−(5×60)+5² = 3600−300−300+25 = 3025. In general: (a−b)² = a²−2ab+b². This is Identity 1B: (a−b)² = a²−2ab+b² — which can also be derived by substituting −b into Identity 1A, since (a−b)² = (a+(−b))²."
+                      },
+                      {
+                        heading: "Using the Identities for Quick Calculation",
+                        text: "These identities let us compute squares of numbers close to round numbers without long multiplication. For example, 104² = (100+4)² = 10000+800+16 = 10816, and 99² = (100−1)² = 10000−200+1 = 9801 — both computed using only easy squares and products of round numbers."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Computing Squares Using the Sum and Difference Identities",
+                      objective: "To practice decomposing numbers into convenient sums or differences, then squaring them using Identity 1A or 1B.",
+                      materials: ["Paper and pencil", "A list of numbers to square (e.g., 65, 104, 99, 58, 37)"],
+                      steps: [
+                        "For a chosen number, decompose it into a sum (a+b) or difference (a−b) where a and b have easy-to-compute squares (usually a round number and a small remainder).",
+                        "Apply Identity 1A [(a+b)²=a²+2ab+b²] or Identity 1B [(a−b)²=a²−2ab+b²] depending on the decomposition.",
+                        "Compute each term (a², b², and 2ab) separately, then add or subtract as required.",
+                        "Verify your answer using direct multiplication or a calculator.",
+                        "Repeat with a different decomposition of the same number (e.g., 65 as 30+35 instead of 60+5) and confirm you get the same final answer."
+                      ],
+                      observation: "104² decomposed as (100+4)² gives 10000+800+16=10816, and 99² decomposed as (100−1)² gives 10000−200+1=9801 — both matching direct computation, and confirming the identities work regardless of which convenient decomposition is chosen."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is Identity 1A, the expansion of (a+b)²?",
+                      options: ["a²+b²", "a²+2ab+b²", "a²−2ab+b²", "2a+2b"],
+                      answer: 1,
+                      explanation: "Identity 1A states (a+b)² = a²+2ab+b², derived by expanding (a+b)(a+b) using the distributive property."
+                    },
+                    {
+                      question: "What is Identity 1B, the expansion of (a−b)²?",
+                      options: ["a²−b²", "a²+2ab+b²", "a²−2ab+b²", "a²−2ab−b²"],
+                      answer: 2,
+                      explanation: "Identity 1B states (a−b)² = a²−2ab+b², which can be derived either directly through distributivity or by substituting −b into Identity 1A."
+                    },
+                    {
+                      question: "Using Identity 1A, what is 104² (decomposed as (100+4)²)?",
+                      options: ["10404", "10816", "10800", "11200"],
+                      answer: 1,
+                      explanation: "104² = (100+4)² = 100²+2×(100×4)+4² = 10000+800+16 = 10816."
+                    },
+                    {
+                      question: "Using Identity 1B, what is 99² (decomposed as (100−1)²)?",
+                      options: ["9801", "9800", "9900", "10000"],
+                      answer: 0,
+                      explanation: "99² = (100−1)² = 100²−2×(100×1)+1² = 10000−200+1 = 9801."
+                    },
+                    {
+                      question: "Why is 55² = (60−5)² computed as 60²−(60×5)−(5×60)+5², rather than just 60²−5²?",
+                      options: ["Because this is simply a mistake in the method", "Because subtracting only the two 60×5 rectangles once each removes the small 5×5 square's area twice, requiring it to be added back once", "Because 60²−5² is actually the correct simpler formula", "There is no geometric reasoning behind this identity"],
+                      answer: 1,
+                      explanation: "Geometrically, removing both 60×5 rectangles from the 60×60 square subtracts the small 5×5 corner square's area twice (once in each rectangle), so it must be added back once to get the correct area of the 55×55 square."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-6-3",
+                  title: "3. The Difference of Squares and Sridharacharya's Trick",
+                  lab: { type: "difference-of-squares-sim" },
+                  theory: {
+                    intro: "An 8th-century Indian mathematician found a way to compute any number's square using nothing but a nearby easy multiplication and one tiny correction — a trick still elegant thirteen centuries later.",
+                    sections: [
+                      {
+                        heading: "Identity 1C: The Difference of Squares",
+                        text: "Patterns like 9×9−1×1=10×8 and 7×7−2×2=9×5 suggest a²−b² = (a+b)×(a−b). Proving this with distributivity: (a+b)(a−b) = a²−ab+ba−b² = a²−b² (the −ab and +ba cancel). This is Identity 1C: (a+b)(a−b) = a²−b² — useful for quick multiplication too: 98×102 = (100−2)(100+2) = 100²−2² = 10000−4 = 9996."
+                      },
+                      {
+                        heading: "Sridharacharya's Squaring Trick",
+                        text: "The 8th-century mathematician Sridharacharya rearranged Identity 1C into: a² = (a+b)(a−b)+b² — letting us compute ANY number's square using a nearby, easier multiplication. For 31² (using b=1): 31² = (32)(30)+1² = 960+1 = 961. For 197² (using b=3): 197² = (200)(194)+3² = 38800+9 = 38809."
+                      },
+                      {
+                        heading: "Why the Trick Works",
+                        text: "The trick works because a²−b²=(a+b)(a−b), so rearranging gives a²=(a+b)(a−b)+b². Choosing a small b (like 1, 2, or 3) that rounds a to a nearby 'nice' number (like a multiple of 10 or 100) makes the multiplication (a+b)(a−b) much easier than multiplying a×a directly."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Using Sridharacharya's Trick to Compute Squares Quickly",
+                      objective: "To apply Sridharacharya's identity a²=(a+b)(a−b)+b² to compute squares of numbers using an easier nearby multiplication.",
+                      materials: ["Paper and pencil", "A list of numbers to square (e.g., 31, 197, 406)"],
+                      steps: [
+                        "For a chosen number a, pick a small value b such that a+b or a−b becomes a round, easy-to-multiply-by number.",
+                        "Compute (a+b) and (a−b), then multiply them together.",
+                        "Add b² to this product to get a².",
+                        "Verify your answer using direct multiplication or a calculator.",
+                        "Try a different choice of b for the same number and confirm you still get the correct answer."
+                      ],
+                      observation: "For 197² (using b=3): (197+3)×(197−3)+3² = 200×194+9 = 38800+9 = 38809 — confirmed by direct calculation, showing how choosing a small b that rounds 197 to 200 makes the multiplication far simpler than computing 197×197 directly."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is Identity 1C, the 'difference of squares' identity?",
+                      options: ["a²+b² = (a+b)(a−b)", "(a+b)(a−b) = a²−b²", "(a−b)² = a²−b²", "a²−b² = (a−b)²"],
+                      answer: 1,
+                      explanation: "Identity 1C states (a+b)(a−b) = a²−b², proven by expanding via distributivity and cancelling the −ab and +ba terms."
+                    },
+                    {
+                      question: "Using Identity 1C, what is 98×102?",
+                      options: ["9996", "9800", "10000", "9998"],
+                      answer: 0,
+                      explanation: "98×102 = (100−2)(100+2) = 100²−2² = 10000−4 = 9996."
+                    },
+                    {
+                      question: "What is Sridharacharya's rearranged identity for computing a square?",
+                      options: ["a² = (a+b)+(a−b)+b²", "a² = (a+b)(a−b)+b²", "a² = (a+b)(a−b)−b²", "a² = (a+b)²−b²"],
+                      answer: 1,
+                      explanation: "Sridharacharya rearranged the difference-of-squares identity into a² = (a+b)(a−b)+b², providing a quick way to compute any square using a nearby easier multiplication."
+                    },
+                    {
+                      question: "Using Sridharacharya's trick with b=1, what is 31²?",
+                      options: ["960", "961", "930", "962"],
+                      answer: 1,
+                      explanation: "31² = (31+1)(31−1)+1² = 32×30+1 = 960+1 = 961."
+                    },
+                    {
+                      question: "Why is choosing a small value for b important in Sridharacharya's trick?",
+                      options: ["b must always equal a for the trick to work", "A small b that rounds a to a nearby 'nice' number (like a multiple of 10 or 100) makes the multiplication (a+b)(a−b) much simpler", "b has no effect on how easy the calculation is", "Larger values of b always make the calculation easier"],
+                      answer: 1,
+                      explanation: "Picking a small b that shifts a to a round, easy-to-multiply number (such as 197 shifting to 200 with b=3) makes the resulting multiplication far simpler than squaring the original number directly."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-6-4",
+                  title: "4. Same Pattern, Different Expressions",
+                  lab: { type: "equivalent-expressions-sim" },
+                  theory: {
+                    intro: "Four completely different-looking ways of counting the same growing pattern of circles all simplify, through algebra, to the exact same expression — proof that appearances can be deceiving in mathematics.",
+                    sections: [
+                      {
+                        heading: "One Pattern, Four Interpretations",
+                        text: "A growing pattern of circles can be counted in multiple valid ways at Step k: Method 1 gives (k+1)²−1, Method 2 gives k²+2k, Method 3 gives k(k+1)+k, and Method 4 gives k(k+2). Each method comes from a genuinely different way of visually grouping the circles."
+                      },
+                      {
+                        heading: "Proving They're All the Same",
+                        text: "Expanding each expression using the identities learned in this chapter: (k+1)²−1 = k²+2k+1−1 = k²+2k (using Identity 1A). k(k+1)+k = k²+k+k = k²+2k. k(k+2) = k²+2k. All four methods simplify to exactly k²+2k — confirming they were always describing the identical pattern, just viewed differently."
+                      },
+                      {
+                        heading: "Why This Matters",
+                        text: "This demonstrates a core idea in mathematics: the same underlying quantity can often be expressed in multiple algebraically equivalent ways, and simplifying each expression is how we verify they truly describe the same thing. Finding creative alternative ways to view a problem — and then confirming they agree — is at the heart of mathematical thinking."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying That Four Expressions Describe the Same Pattern",
+                      objective: "To confirm, by direct substitution and algebraic simplification, that four differently-derived expressions for a growing pattern are all equivalent.",
+                      materials: ["Paper and pencil", "A calculator (optional)"],
+                      steps: [
+                        "Choose a value for k, such as k=10.",
+                        "Compute (k+1)²−1 directly for this value of k.",
+                        "Compute k²+2×k, k×(k+1)+k, and k×(k+2) directly for the same k.",
+                        "Confirm all four results are identical.",
+                        "Algebraically expand each expression symbolically (in terms of k) and confirm they all simplify to k²+2k."
+                      ],
+                      observation: "For k=10: (k+1)²−1 = 11²−1 = 120; k²+2k = 100+20 = 120; k(k+1)+k = 110+10 = 120; k(k+2) = 10×12 = 120 — all four expressions give exactly the same result, confirming they are algebraically equivalent descriptions of the same pattern."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What do all four methods of counting the circle pattern simplify to, in terms of k?",
+                      options: ["k²", "k²+2k", "2k²", "k²+k"],
+                      answer: 1,
+                      explanation: "Despite looking different, all four expressions — (k+1)²−1, k²+2k, k(k+1)+k, and k(k+2) — simplify algebraically to exactly k²+2k."
+                    },
+                    {
+                      question: "How does (k+1)²−1 simplify to k²+2k?",
+                      options: ["It cannot be simplified further", "Using Identity 1A: (k+1)² = k²+2k+1, so (k+1)²−1 = k²+2k+1−1 = k²+2k", "By simply removing the −1 term without any expansion", "(k+1)²−1 actually equals k²−1, not k²+2k"],
+                      answer: 1,
+                      explanation: "Expanding (k+1)² using Identity 1A gives k²+2k+1; subtracting 1 leaves k²+2k."
+                    },
+                    {
+                      question: "What is the value of k²+2k when k=15?",
+                      options: ["225", "240", "255", "270"],
+                      answer: 2,
+                      explanation: "15²+2×15 = 225+30 = 255."
+                    },
+                    {
+                      question: "Why is it valuable to find multiple different expressions for the same pattern and show they're equivalent?",
+                      options: ["It has no mathematical value", "It confirms the different ways of viewing the problem all correctly describe the same underlying quantity, deepening understanding", "Only one method can ever be correct, so this process is unnecessary", "This process is only useful for very simple patterns"],
+                      answer: 1,
+                      explanation: "Verifying that different-looking expressions simplify to the same result confirms they are genuinely equivalent descriptions of the same pattern, reinforcing both the pattern's structure and the algebraic identities used to simplify it."
+                    },
+                    {
+                      question: "What is k(k+2) when simplified using the distributive property?",
+                      options: ["k²+2", "k²+2k", "2k+2", "k²−2k"],
+                      answer: 1,
+                      explanation: "k(k+2) = k×k + k×2 = k²+2k, matching the simplified form of all the other equivalent expressions for this pattern."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
