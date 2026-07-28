@@ -3145,6 +3145,99 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const ratioSimplifierLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="ratio-simplifier-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an image and see its ratio reduced to simplest form.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Image</h3>
+            <select id="sel-ratio-simplifier-img" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="A" selected>Image A: 60 × 40</option>
+              <option value="B">Image B: 40 × 20</option>
+              <option value="C">Image C: 30 × 20</option>
+              <option value="D">Image D: 90 × 60</option>
+              <option value="E">Image E: 60 × 60</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Simplest Form</h3>
+            <div id="ratio-simplifier-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an image above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const proportionSolverLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="proportion-solver-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a proportion with a missing term and see it solved.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Proportion</h3>
+            <select id="sel-proportion-solver" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="a" selected>?:42 :: 14:21</option>
+              <option value="b">6:? :: 14:21</option>
+              <option value="c">2:? :: 14:21</option>
+              <option value="d">6:10 :: 18:? (lemonade)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Missing Term</h3>
+            <div id="proportion-solver-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a proportion above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const ratioSharingLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="ratio-sharing-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a total and a ratio, and see the two shares computed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-ratio-sharing" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="12-3-1" selected>12 counters, ratio 3:1</option>
+              <option value="42-4-3">42 counters, ratio 4:3</option>
+              <option value="4000-3-1">₹4,000 profit, ratio 3:1</option>
+              <option value="40-3-1">40 kg mixture, ratio 3:1</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>The Two Shares</h3>
+            <div id="ratio-sharing-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const unitConversionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="unit-conversion-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a conversion and see it worked out.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Conversion</h3>
+            <select id="sel-unit-conversion" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="temp" selected>25°C to °F</option>
+              <option value="hectare">1 hectare to sq ft</option>
+              <option value="sqm">500 sq m to sq ft</option>
+              <option value="ml">5000 mL to litres</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Converted Value</h3>
+            <div id="unit-conversion-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a conversion above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -5040,6 +5133,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'equivalent-expressions-sim') {
               labHtml = equivalentExpressionsLabHtml;
               labDesc = 'Pick a step number and see all 4 counting methods agree on the same total.';
+            } else if (topicObj.lab.type === 'ratio-simplifier-sim') {
+              labHtml = ratioSimplifierLabHtml;
+              labDesc = 'Pick an image and see its width:height ratio reduced to simplest form.';
+            } else if (topicObj.lab.type === 'proportion-solver-sim') {
+              labHtml = proportionSolverLabHtml;
+              labDesc = 'Pick a proportion with a missing term and see it solved using the scale factor.';
+            } else if (topicObj.lab.type === 'ratio-sharing-sim') {
+              labHtml = ratioSharingLabHtml;
+              labDesc = 'Pick a total and a ratio, and see it divided into two proportional shares.';
+            } else if (topicObj.lab.type === 'unit-conversion-sim') {
+              labHtml = unitConversionLabHtml;
+              labDesc = 'Pick a unit conversion and see it computed step by step.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -5511,6 +5616,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initDifferenceOfSquaresLab();
         } else if (topicObj.lab.type === 'equivalent-expressions-sim') {
           initEquivalentExpressionsLab();
+        } else if (topicObj.lab.type === 'ratio-simplifier-sim') {
+          initRatioSimplifierLab();
+        } else if (topicObj.lab.type === 'proportion-solver-sim') {
+          initProportionSolverLab();
+        } else if (topicObj.lab.type === 'ratio-sharing-sim') {
+          initRatioSharingLab();
+        } else if (topicObj.lab.type === 'unit-conversion-sim') {
+          initUnitConversionLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -19277,6 +19390,188 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(`All methods agree: ${methods[0].val}`, W / 2, startY + 4 * rowH + 15);
 
         obs.innerHTML = `<strong>For k=${k}, all 4 methods give ${methods[0].val}.</strong> Each expression simplifies algebraically to k²+2k = ${k}²+2×${k} = ${methods[0].val}, confirming they describe the same pattern.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initRatioSimplifierLab() {
+      const canvas = document.getElementById('ratio-simplifier-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-ratio-simplifier-img');
+      const obs = document.getElementById('ratio-simplifier-obs');
+      const DATA = { A: [60, 40], B: [40, 20], C: [30, 20], D: [90, 60], E: [60, 60] };
+
+      function gcd(x, y) { return y === 0 ? x : gcd(y, x % y); }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const img = sel.value;
+        const [w, h] = DATA[img];
+        const g = gcd(w, h);
+        const sw = w / g, sh = h / g;
+        const isProportionalToA = sw === 3 && sh === 2;
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Image ${img}: ${w} × ${h}`, W / 2, 35);
+
+        const scale = 120 / Math.max(w, h);
+        const rw = w * scale, rh = h * scale;
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        ctx.strokeRect(W / 2 - rw / 2, 60, rw, rh);
+
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`HCF(${w}, ${h}) = ${g}`, W / 2, 60 + rh + 30);
+        ctx.font = 'bold 20px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Simplest form = ${sw}:${sh}`, W / 2, 60 + rh + 60);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = isProportionalToA ? cssVar('--accent-color') : '#f87171';
+        ctx.fillText(isProportionalToA ? 'Proportional to Image A (3:2)' : 'NOT proportional to Image A (3:2)', W / 2, 60 + rh + 85);
+
+        obs.innerHTML = `<strong>Image ${img} (${w}×${h}):</strong> dividing by HCF ${g} gives the simplest form ${sw}:${sh}. ${isProportionalToA ? 'This matches Image A, so they are proportionally similar.' : 'This does not match Image A (3:2), so they are not proportionally similar.'}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initProportionSolverLab() {
+      const canvas = document.getElementById('proportion-solver-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-proportion-solver');
+      const obs = document.getElementById('proportion-solver-obs');
+      const SCENARIOS = {
+        a: { known: [14, 21], given: { pos: 0, val: 42 }, label: '?:42 :: 14:21' },
+        b: { known: [14, 21], given: { pos: 0, val: 6 }, label: '6:? :: 14:21' },
+        c: { known: [14, 21], given: { pos: 0, val: 2 }, label: '2:? :: 14:21' },
+        d: { known: [6, 10], given: { pos: 0, val: 18 }, label: '6:10 :: 18:? (lemonade)' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const s = SCENARIOS[sel.value];
+        const [k1, k2] = s.known;
+        let missing, factor, filledLabel;
+        if (sel.value === 'a') { factor = s.given.val / k2; missing = k1 * factor; filledLabel = `${missing}:${s.given.val} :: ${k1}:${k2}`; }
+        else if (sel.value === 'b') { factor = s.given.val / k1; missing = k2 * factor; filledLabel = `${s.given.val}:${missing.toFixed(0)} :: ${k1}:${k2}`; }
+        else if (sel.value === 'c') { factor = s.given.val / k1; missing = k2 * factor; filledLabel = `${s.given.val}:${missing.toFixed(0)} :: ${k1}:${k2}`; }
+        else { factor = s.given.val / k1; missing = k2 * factor; filledLabel = `${k1}:${k2} :: ${s.given.val}:${missing.toFixed(0)}`; }
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(s.label, W / 2, 40);
+
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Scale factor = ${s.given.val}/${sel.value === 'd' ? k1 : k1} = ${factor.toFixed(3).replace(/\.?0+$/, '')}`, W / 2, 90);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 110, 110); ctx.lineTo(W / 2 + 110, 110); ctx.stroke();
+
+        ctx.font = 'bold 26px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Missing term = ${missing.toFixed(2).replace(/\.?0+$/, '')}`, W / 2, 155);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(filledLabel, W / 2, 190);
+
+        obs.innerHTML = `<strong>${s.label}:</strong> the scale factor is ${factor.toFixed(3).replace(/\.?0+$/, '')}, giving a missing term of ${missing.toFixed(2).replace(/\.?0+$/, '')}. Completed: ${filledLabel}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initRatioSharingLab() {
+      const canvas = document.getElementById('ratio-sharing-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-ratio-sharing');
+      const obs = document.getElementById('ratio-sharing-obs');
+      const LABELS = {
+        '12-3-1': '12 counters', '42-4-3': '42 counters', '4000-3-1': '₹4,000 profit', '40-3-1': '40 kg mixture'
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [total, m, n] = sel.value.split('-').map(Number);
+        const groupSize = total / (m + n);
+        const part1 = m * groupSize, part2 = n * groupSize;
+
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${LABELS[sel.value]}, ratio ${m}:${n}`, W / 2, 32);
+
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Groups = ${m}+${n} = ${m + n}; each group = ${total}÷${m + n} = ${groupSize}`, W / 2, 70);
+
+        const barW = 320, barH = 40, barX = W / 2 - barW / 2, barY = 100;
+        const w1 = barW * (m / (m + n));
+        ctx.fillStyle = cssVar('--accent-color'); ctx.fillRect(barX, barY, w1, barH);
+        ctx.fillStyle = '#60a5fa'; ctx.fillRect(barX + w1, barY, barW - w1, barH);
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2; ctx.strokeRect(barX, barY, barW, barH);
+
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = '#0f172a'; ctx.textAlign = 'center';
+        ctx.fillText(part1, barX + w1 / 2, barY + 25);
+        ctx.fillText(part2, barX + w1 + (barW - w1) / 2, barY + 25);
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Parts: ${part1} and ${part2}`, W / 2, barY + barH + 40);
+
+        obs.innerHTML = `<strong>${LABELS[sel.value]} shared in ratio ${m}:${n}:</strong> ${m + n} total groups of size ${groupSize} each — giving parts of ${part1} and ${part2}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initUnitConversionLab() {
+      const canvas = document.getElementById('unit-conversion-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-unit-conversion');
+      const obs = document.getElementById('unit-conversion-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const type = sel.value;
+        let title, steps, result;
+
+        if (type === 'temp') {
+          title = '25°C to °F';
+          steps = ['F = (9/5) × 25 + 32', '= 45 + 32'];
+          result = '77°F';
+        } else if (type === 'hectare') {
+          title = '1 hectare to sq ft';
+          steps = ['1 hectare = 10,000 sq m', '10,000 × 10.764 sq ft/sq m'];
+          result = '≈107,640 sq ft';
+        } else if (type === 'sqm') {
+          title = '500 sq m to sq ft';
+          steps = ['500 × 10.764 sq ft/sq m'];
+          result = '5,382 sq ft';
+        } else {
+          title = '5000 mL to litres';
+          steps = ['5000 ÷ 1,000 mL/L'];
+          result = '5 litres';
+        }
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(title, W / 2, 35);
+
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        let y = 80;
+        steps.forEach(s => { ctx.fillText(s, W / 2, y); y += 26; });
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 110, y); ctx.lineTo(W / 2 + 110, y); ctx.stroke();
+
+        ctx.font = 'bold 28px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(result, W / 2, y + 45);
+
+        obs.innerHTML = `<strong>${title} = ${result}.</strong> ${steps.join('; ')}.`;
       }
 
       sel.addEventListener('change', draw);

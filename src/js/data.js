@@ -13846,6 +13846,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-7",
+              title: "Proportional Reasoning-1",
+              topics: [
+                {
+                  id: "8m-7-1",
+                  title: "1. Ratios and Their Simplest Form",
+                  lab: { type: "ratio-simplifier-sim" },
+                  theory: {
+                    intro: "Five resized images might all look 'the same shape' or subtly different — and the mathematical test for this is whether their width-to-height ratios reduce to the exact same simplest form.",
+                    sections: [
+                      {
+                        heading: "What Is a Ratio?",
+                        text: "A ratio a:b means that for every 'a' units of the first quantity, there are 'b' units of the second. The numbers a and b are called the terms of the ratio. For an image with width 60mm and height 40mm, the ratio of width to height is 60:40."
+                      },
+                      {
+                        heading: "Reducing Ratios to Simplest Form",
+                        text: "A ratio is reduced to its simplest form by dividing both terms by their HCF. For 60:40, the HCF is 20, giving the simplest form 3:2. Two ratios are proportional (written a:b :: c:d) exactly when their simplest forms match — for example, 60:40 and 90:60 both simplify to 3:2, so 60:40 :: 90:60."
+                      },
+                      {
+                        heading: "Identifying Similar Images",
+                        text: "Images with proportional width-to-height ratios look genuinely 'similar' (same shape, different size), while images with non-proportional ratios look visually distorted relative to each other, even if their absolute dimensions seem comparable. This is exactly why some resized images look 'stretched' or 'squished' while others look like clean scaled copies."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Whether Images Are Proportionally Similar",
+                      objective: "To determine which of several differently-sized images share the same width-to-height ratio in simplest form, and are therefore truly similar in shape.",
+                      materials: ["A ruler", "Several images or rectangles of different sizes to compare", "Paper and pencil"],
+                      steps: [
+                        "Measure the width and height of each image or rectangle, in the same units.",
+                        "Write each measurement as a ratio (width:height).",
+                        "Find the HCF of each ratio's two terms, and divide both terms by the HCF to get the simplest form.",
+                        "Group the images that share the same simplest-form ratio — these are proportionally similar.",
+                        "Confirm your groupings by visually comparing whether the images 'look the same shape'."
+                      ],
+                      observation: "Images with ratios 60:40, 30:20, and 90:60 all simplify to 3:2, confirming they are proportionally similar (the same shape, different sizes) — while an image with ratio 40:20 (simplest form 2:1) or 60:60 (simplest form 1:1) is a genuinely different shape, despite being in a similar size range."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In a ratio a:b, what does the number 'a' represent?",
+                      options: ["The total of both quantities", "For every 'a' units of the first quantity, there are 'b' units of the second", "Always the larger of the two numbers", "The difference between the two quantities"],
+                      answer: 1,
+                      explanation: "In a ratio a:b, 'a' represents how many units of the first quantity correspond to 'b' units of the second quantity."
+                    },
+                    {
+                      question: "What is the simplest form of the ratio 60:40?",
+                      options: ["6:4", "3:2", "30:20", "2:3"],
+                      answer: 1,
+                      explanation: "The HCF of 60 and 40 is 20; dividing both terms by 20 gives the simplest form 3:2."
+                    },
+                    {
+                      question: "What does it mean for two ratios a:b and c:d to be 'proportional' (written a:b :: c:d)?",
+                      options: ["Their terms are always identical numbers", "Their simplest forms are the same", "Their sums are equal", "One ratio is always exactly double the other"],
+                      answer: 1,
+                      explanation: "Two ratios are proportional when, after reducing each to its simplest form, they turn out to be identical."
+                    },
+                    {
+                      question: "Are the ratios 60:40 and 90:60 proportional?",
+                      options: ["No, since 60≠90 and 40≠60", "Yes, since both reduce to the simplest form 3:2", "Cannot be determined without more information", "No, since their simplest forms are different"],
+                      answer: 1,
+                      explanation: "60:40 simplifies to 3:2 (dividing by 20), and 90:60 also simplifies to 3:2 (dividing by 30) — since their simplest forms match, the ratios are proportional."
+                    },
+                    {
+                      question: "Why might two differently-sized images 'look similar' in shape, while a third of a comparable size looks visually different?",
+                      options: ["Image size alone always determines whether images look similar", "The two images have width-to-height ratios that reduce to the same simplest form, while the third does not", "This has nothing to do with ratios at all", "All resized images always look identical in shape"],
+                      answer: 1,
+                      explanation: "Images look genuinely similar in shape when their width-to-height ratios are proportional (same simplest form) — a difference in simplest form causes a visible distortion in shape, regardless of overall size."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-7-2",
+                  title: "2. Solving Problems with Proportional Reasoning",
+                  lab: { type: "proportion-solver-sim" },
+                  theory: {
+                    intro: "Making 18 more glasses of lemonade with the same sweetness means scaling every ingredient by the exact same factor — proportional reasoning turns 'how much sugar?' into simple arithmetic.",
+                    sections: [
+                      {
+                        heading: "Finding a Missing Term in a Proportion",
+                        text: "For 6 glasses of lemonade needing 10 spoons of sugar, making 18 glasses (to keep the same sweetness) requires solving 6:10 :: 18:?. The first term changed by a factor of 18÷6=3, so the second term must also change by that same factor: 10×3=30 spoons of sugar."
+                      },
+                      {
+                        heading: "When the Scale Factor Isn't a Whole Number",
+                        text: "For ratios proportional to 14:21, finding the missing term in 6:? requires the scale factor 6÷14=3/7 (not a whole number) — then multiplying 21×3/7=9 gives the missing term. Proportional reasoning works with fractional scale factors just as well as whole-number ones."
+                      },
+                      {
+                        heading: "Adding or Subtracting Breaks Proportionality",
+                        text: "Importantly, ratios stay proportional only when BOTH terms are multiplied by the same factor — not when the same amount is added to or subtracted from both terms. For example, if a 3-year-old's ratio to her mother's age is 3:30 (simplest form 1:10), nine years later the ratio becomes 12:39 (simplest form 4:13) — a completely different ratio, since ages don't scale multiplicatively over time."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Solving Real-World Proportion Problems",
+                      objective: "To practice finding an unknown term in a proportion by identifying the scale factor connecting two ratios.",
+                      materials: ["Paper and pencil", "A calculator (optional)"],
+                      steps: [
+                        "Set up the problem as a proportion a:b :: c:?, identifying which quantities correspond to a, b, and c.",
+                        "Find the scale factor by dividing the new value of the first term by its original value (c÷a).",
+                        "Multiply the second term (b) by this same scale factor to find the missing value.",
+                        "Verify your answer makes sense in the context of the problem.",
+                        "Try a case where the scale factor is a fraction (not a whole number) to confirm the method still works."
+                      ],
+                      observation: "For 6:10 :: 18:?, the scale factor is 18÷6=3, so the missing term is 10×3=30 — confirming that to keep the lemonade equally sweet with 18 glasses, 30 spoons of sugar are needed, exactly 3 times the original 10 spoons for 6 glasses."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "To keep lemonade equally sweet, if 6 glasses need 10 spoons of sugar, how many spoons are needed for 18 glasses?",
+                      options: ["18 spoons", "24 spoons", "30 spoons", "36 spoons"],
+                      answer: 2,
+                      explanation: "The scale factor is 18÷6=3, so the sugar needed is 10×3=30 spoons, keeping the ratio 6:10 proportional to 18:30."
+                    },
+                    {
+                      question: "For the proportion 6:? :: 14:21, what value must fill in the blank?",
+                      options: ["6", "9", "12", "15"],
+                      answer: 1,
+                      explanation: "The scale factor from 14 to 6 is 6÷14=3/7; multiplying 21 by 3/7 gives 9, so 6:9 is proportional to 14:21."
+                    },
+                    {
+                      question: "Can the scale factor between two proportional ratios be a fraction (not a whole number)?",
+                      options: ["No, scale factors must always be whole numbers", "Yes, proportional reasoning works correctly with fractional scale factors too", "Only if both original terms are already fractions", "Fractional scale factors always make the ratios non-proportional"],
+                      answer: 1,
+                      explanation: "Scale factors can be any positive number, including fractions — as long as both terms of the ratio are multiplied by the same factor, the result remains proportional to the original."
+                    },
+                    {
+                      question: "Why does adding the same number to both terms of a ratio generally break its proportionality?",
+                      options: ["Adding the same number always keeps ratios proportional", "Proportionality requires both terms to be multiplied by the same factor, not increased by the same additive amount, which changes the ratio's simplest form", "Ratios are never affected by any kind of change to their terms", "This only applies to ratios involving ages"],
+                      answer: 1,
+                      explanation: "Since proportionality depends on both terms scaling by the same MULTIPLICATIVE factor, adding the same fixed amount to both terms (like ages increasing by the same number of years) generally changes the simplest form of the ratio, breaking proportionality."
+                    },
+                    {
+                      question: "A 3-year-old's age-ratio to her mother's is 3:30 (simplest form 1:10). Nine years later, is the ratio of their ages still 1:10?",
+                      options: ["Yes, since both people age by the same amount", "No — the new ratio is 12:39, which simplifies to 4:13, a different ratio", "Yes, age ratios never change over time", "The ratio becomes exactly 2:20"],
+                      answer: 1,
+                      explanation: "Nine years later, the ages become 12 and 39 (12:39, simplest form 4:13) — since both ages increased by the same ADDITIVE amount (9 years), not the same multiplicative factor, the ratio changes."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-7-3",
+                  title: "3. Sharing in a Given Ratio",
+                  lab: { type: "ratio-sharing-sim" },
+                  theory: {
+                    intro: "Splitting a business profit of ₹4,000 between two partners in the same ratio as their investment turns out to need nothing more than dividing by the sum of the ratio's parts.",
+                    sections: [
+                      {
+                        heading: "Sharing a Whole in a Given Ratio",
+                        text: "To share 12 counters in the ratio 3:1, think of the 'whole' (12) as being split into 3+1=4 equal groups. Each group has 12÷4=3 counters. One person gets 3 groups (3×3=9 counters), the other gets 1 group (1×3=3 counters) — giving 9:3, which simplifies back to 3:1."
+                      },
+                      {
+                        heading: "The General Formula",
+                        text: "To divide a quantity x in the ratio m:n: the first part is m×[x/(m+n)], and the second part is n×[x/(m+n)]. For 42 shared in the ratio 4:3: total groups = 4+3=7, each group = 42÷7=6, so the parts are 4×6=24 and 3×6=18."
+                      },
+                      {
+                        heading: "Applying This to Real Problems",
+                        text: "This formula applies directly to splitting profits by investment ratio: if Prashanti invested ₹75,000 and Bhuvan invested ₹25,000 (ratio 3:1 in simplest form) and they earn ₹4,000 profit, Prashanti's share is 3×(4000/4)=₹3,000 and Bhuvan's share is 1×(4000/4)=₹1,000. The same method applies to splitting mixtures, like 40kg of sand-and-cement in a 3:1 ratio, giving 30kg sand and 10kg cement."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Dividing Quantities in a Given Ratio",
+                      objective: "To practice splitting a total quantity into two parts according to a specified ratio, using the group-size method.",
+                      materials: ["Paper and pencil", "Counters or coins (optional, for physical demonstration)"],
+                      steps: [
+                        "Choose a total quantity (like 42) and a target ratio (like 4:3).",
+                        "Add the two parts of the ratio together to find the total number of 'groups' (4+3=7).",
+                        "Divide the total quantity by the number of groups to find the size of each group (42÷7=6).",
+                        "Multiply each ratio term by the group size to find each actual share (4×6=24, 3×6=18).",
+                        "Verify that the two shares add up to the original total quantity (24+18=42)."
+                      ],
+                      observation: "Dividing 42 in the ratio 4:3 gives shares of 24 and 18 (using group size 42÷7=6) — and this exact method, applied to splitting a ₹4,000 profit in the ratio 3:1, correctly gives shares of ₹3,000 and ₹1,000."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "To divide 12 counters in the ratio 3:1, how many counters does each person get?",
+                      options: ["6 and 6", "9 and 3", "8 and 4", "10 and 2"],
+                      answer: 1,
+                      explanation: "With 3+1=4 total groups, each group has 12÷4=3 counters; one person gets 3 groups (9 counters) and the other gets 1 group (3 counters)."
+                    },
+                    {
+                      question: "To divide a quantity x in the ratio m:n, what is the formula for the first part?",
+                      options: ["m × x", "m × [x/(m+n)]", "x/(m×n)", "m + x/n"],
+                      answer: 1,
+                      explanation: "The first part of x divided in the ratio m:n is m multiplied by the group size x/(m+n)."
+                    },
+                    {
+                      question: "Dividing 42 in the ratio 4:3, what are the two shares?",
+                      options: ["21 and 21", "28 and 14", "24 and 18", "30 and 12"],
+                      answer: 2,
+                      explanation: "With 4+3=7 total groups, each group is 42÷7=6; the shares are 4×6=24 and 3×6=18."
+                    },
+                    {
+                      question: "Prashanti (₹75,000 investment) and Bhuvan (₹25,000 investment) share a ₹4,000 profit in the ratio of their investment (3:1 simplified). What is Bhuvan's share?",
+                      options: ["₹1,000", "₹2,000", "₹3,000", "₹4,000"],
+                      answer: 0,
+                      explanation: "With the investment ratio simplified to 3:1 (4 total groups), each group is 4000÷4=₹1,000; Bhuvan (1 group) gets ₹1,000 and Prashanti (3 groups) gets ₹3,000."
+                    },
+                    {
+                      question: "A 40kg mixture has sand and cement in the ratio 3:1. How much sand does it contain?",
+                      options: ["10 kg", "20 kg", "30 kg", "35 kg"],
+                      answer: 2,
+                      explanation: "With 3+1=4 total groups, each group is 40÷4=10kg; sand (3 groups) is 3×10=30kg and cement (1 group) is 1×10=10kg."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-7-4",
+                  title: "4. Unit Conversions and Real-World Applications",
+                  lab: { type: "unit-conversion-sim" },
+                  theory: {
+                    intro: "Proportional reasoning becomes essential the moment two quantities are measured in different units — converting between them is itself a proportion waiting to be solved.",
+                    sections: [
+                      {
+                        heading: "Common Unit Conversions",
+                        text: "Length: 1 metre = 3.281 feet. Area: 1 square metre = 10.764 square feet; 1 acre = 43,560 square feet; 1 hectare = 10,000 square metres = 2.471 acres. Volume: 1 millilitre = 1 cubic centimetre; 1 litre = 1,000 mL. These conversion factors are themselves ratios, and converting a measurement means applying proportional reasoning."
+                      },
+                      {
+                        heading: "Converting Temperature",
+                        text: "Temperature conversion between Celsius and Fahrenheit uses a formula rather than a simple ratio, since 0°C corresponds to 32°F (not 0°F): Fahrenheit = (9/5)×Celsius + 32, and Celsius = (5/9)×(Fahrenheit−32). For example, 25°C converts to (9/5)×25+32 = 45+32 = 77°F."
+                      },
+                      {
+                        heading: "Why Unit Conversions Matter for Proportional Reasoning",
+                        text: "Many real-world proportional reasoning problems (like comparing crop yields, population density, or material costs) require converting between units before the ratios can be meaningfully compared. Getting the units consistent is often the first and most important step in solving these problems correctly."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Practicing Real-World Unit Conversions",
+                      objective: "To apply the standard conversion factors for length, area, volume, and temperature to solve practical problems.",
+                      materials: ["Paper and pencil", "A calculator", "The table of standard unit conversions"],
+                      steps: [
+                        "Choose a measurement in one unit system (e.g., 25°C, or 500 square metres).",
+                        "Identify the correct conversion factor or formula from the reference table.",
+                        "Apply the conversion, showing your calculation step by step.",
+                        "Check that your answer makes reasonable sense (e.g., a hot day in Celsius should convert to a sensible Fahrenheit value).",
+                        "Try converting the same measurement using a different method or in the reverse direction, to double-check your answer."
+                      ],
+                      observation: "Converting 25°C using Fahrenheit=(9/5)×25+32 gives 45+32=77°F — matching the well-known reference point that 25°C is a comfortable 77°F, confirming the conversion formula works correctly."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the formula to convert Celsius to Fahrenheit?",
+                      options: ["Fahrenheit = Celsius + 32", "Fahrenheit = (9/5) × Celsius + 32", "Fahrenheit = (5/9) × Celsius", "Fahrenheit = 2 × Celsius"],
+                      answer: 1,
+                      explanation: "The correct formula is Fahrenheit = (9/5) × Celsius + 32, accounting for both the different scale and the offset (0°C = 32°F)."
+                    },
+                    {
+                      question: "What is 25°C converted to Fahrenheit?",
+                      options: ["57°F", "68°F", "77°F", "82°F"],
+                      answer: 2,
+                      explanation: "Using the formula: (9/5)×25+32 = 45+32 = 77°F."
+                    },
+                    {
+                      question: "How many square feet are in 1 hectare?",
+                      options: ["10,000 sq ft", "43,560 sq ft", "About 107,640 sq ft", "2.471 sq ft"],
+                      answer: 2,
+                      explanation: "1 hectare = 10,000 square metres, and since 1 square metre = 10.764 square feet, 1 hectare = 10,000×10.764 ≈ 107,640 square feet."
+                    },
+                    {
+                      question: "How many millilitres are in 1 litre?",
+                      options: ["10", "100", "1,000", "10,000"],
+                      answer: 2,
+                      explanation: "1 litre = 1,000 millilitres (mL), which is also equal to 1,000 cubic centimetres (cc)."
+                    },
+                    {
+                      question: "Why is converting units often the essential first step in solving proportional reasoning problems?",
+                      options: ["Unit conversion is never actually necessary", "Comparing or combining ratios requires the quantities to be measured in consistent units first", "Units have no effect on the mathematics of ratios", "Only temperature conversions matter for proportional reasoning"],
+                      answer: 1,
+                      explanation: "Ratios and proportions only make sense when comparing quantities in consistent units — converting mismatched units into a common system is often the necessary first step before any proportional reasoning can be applied correctly."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
