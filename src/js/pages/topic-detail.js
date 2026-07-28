@@ -3238,6 +3238,99 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const fractionToPercentageLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="fdp-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a percentage and see its fraction and decimal forms.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Percentage</h3>
+            <select id="sel-fdp-percent" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="50" selected>50%</option>
+              <option value="25">25%</option>
+              <option value="75">75%</option>
+              <option value="10">10%</option>
+              <option value="1">1%</option>
+              <option value="5">5%</option>
+              <option value="43">43%</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Fraction &amp; Decimal</h3>
+            <div id="fdp-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a percentage above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const percentageOfQuantityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="percent-of-qty-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see the percentage of the quantity computed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-percent-of-qty" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="madhu" selected>Madhu: 25% of 120g biscuits</option>
+              <option value="madhav">Madhav: 35% of 95g biscuits</option>
+              <option value="zubin">Zubin: 80% of 75 marks</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="percent-of-qty-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const percentageChangeLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="percent-change-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see the percentage increase or decrease.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-percent-change" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="tomato" selected>Tomato price: ₹30 → ₹42</option>
+              <option value="footfall">Theater footfall: 160 → 100</option>
+              <option value="rice">Rice price: ₹38 → ₹42</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Percentage Change</h3>
+            <div id="percent-change-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const profitLossDiscountLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="profit-loss-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see the profit, loss, or discount computed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-profit-loss" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="sweater" selected>Sweater: CP ₹300, SP ₹430</option>
+              <option value="rice">Rice: CP ₹350, SP ₹300</option>
+              <option value="vase">Vase: CP ₹2,650, 18% loss</option>
+              <option value="cooker">Cooker: MRP ₹1,800, 35% discount</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="profit-loss-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -5145,6 +5238,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'unit-conversion-sim') {
               labHtml = unitConversionLabHtml;
               labDesc = 'Pick a unit conversion and see it computed step by step.';
+            } else if (topicObj.lab.type === 'fraction-to-percentage-sim') {
+              labHtml = fractionToPercentageLabHtml;
+              labDesc = 'Pick a percentage and see its equivalent fraction and decimal forms.';
+            } else if (topicObj.lab.type === 'percentage-of-quantity-sim') {
+              labHtml = percentageOfQuantityLabHtml;
+              labDesc = 'Pick a scenario and see the percentage of a quantity computed.';
+            } else if (topicObj.lab.type === 'percentage-change-sim') {
+              labHtml = percentageChangeLabHtml;
+              labDesc = 'Pick a scenario and see the percentage increase or decrease computed.';
+            } else if (topicObj.lab.type === 'profit-loss-discount-sim') {
+              labHtml = profitLossDiscountLabHtml;
+              labDesc = 'Pick a scenario and see the profit, loss, or discount computed.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -5624,6 +5729,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initRatioSharingLab();
         } else if (topicObj.lab.type === 'unit-conversion-sim') {
           initUnitConversionLab();
+        } else if (topicObj.lab.type === 'fraction-to-percentage-sim') {
+          initFractionToPercentageLab();
+        } else if (topicObj.lab.type === 'percentage-of-quantity-sim') {
+          initPercentageOfQuantityLab();
+        } else if (topicObj.lab.type === 'percentage-change-sim') {
+          initPercentageChangeLab();
+        } else if (topicObj.lab.type === 'profit-loss-discount-sim') {
+          initProfitLossDiscountLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -19572,6 +19685,176 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(result, W / 2, y + 45);
 
         obs.innerHTML = `<strong>${title} = ${result}.</strong> ${steps.join('; ')}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initFractionToPercentageLab() {
+      const canvas = document.getElementById('fdp-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-fdp-percent');
+      const obs = document.getElementById('fdp-obs');
+
+      function gcd(x, y) { return y === 0 ? x : gcd(y, x % y); }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const pct = parseInt(sel.value);
+        const g = gcd(pct, 100);
+        const num = pct / g, den = 100 / g;
+        const decimal = (pct / 100).toString();
+
+        ctx.font = 'bold 30px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${pct}%`, W / 2, 50);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`= ${pct}/100`, W / 2, 90);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 100, 105); ctx.lineTo(W / 2 + 100, 105); ctx.stroke();
+
+        ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Fraction: ${num}/${den}`, W / 2, 150);
+        ctx.fillText(`Decimal: ${decimal}`, W / 2, 190);
+
+        obs.innerHTML = `<strong>${pct}% = ${num}/${den} = ${decimal}.</strong> Dividing ${pct}/100 by their HCF (${g}) gives the simplest fraction; dividing ${pct} by 100 gives the decimal form.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPercentageOfQuantityLab() {
+      const canvas = document.getElementById('percent-of-qty-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-percent-of-qty');
+      const obs = document.getElementById('percent-of-qty-obs');
+      const DATA = {
+        madhu: { pct: 25, qty: 120, unit: 'g sugar', label: "Madhu's biscuits" },
+        madhav: { pct: 35, qty: 95, unit: 'g sugar', label: "Madhav's biscuits" },
+        zubin: { pct: 80, qty: 75, unit: 'marks', label: "Zubin's A-grade cutoff" }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const result = (d.pct / 100) * d.qty;
+
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(d.label, W / 2, 32);
+
+        ctx.font = '16px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`${d.pct}% of ${d.qty}`, W / 2, 75);
+        ctx.fillText(`= (${d.pct}/100) × ${d.qty}`, W / 2, 105);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 100, 120); ctx.lineTo(W / 2 + 100, 120); ctx.stroke();
+
+        ctx.font = 'bold 26px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`= ${result.toString().replace(/(\.\d*?)0+$/, '$1').replace(/\.$/, '')} ${d.unit}`, W / 2, 165);
+
+        obs.innerHTML = `<strong>${d.pct}% of ${d.qty} = ${result} ${d.unit}.</strong> Computed as (${d.pct}/100) × ${d.qty}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPercentageChangeLab() {
+      const canvas = document.getElementById('percent-change-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-percent-change');
+      const obs = document.getElementById('percent-change-obs');
+      const DATA = {
+        tomato: { from: 30, to: 42, label: 'Tomato price (₹)' },
+        footfall: { from: 160, to: 100, label: 'Theater footfall' },
+        rice: { from: 38, to: 42, label: 'Rice price (₹/kg)' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const change = d.to - d.from;
+        const isIncrease = change > 0;
+        const pctChange = (Math.abs(change) / d.from) * 100;
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${d.label}: ${d.from} → ${d.to}`, W / 2, 32);
+
+        ctx.font = '15px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Change = ${d.to} − ${d.from} = ${change}`, W / 2, 75);
+        ctx.fillText(`${isIncrease ? 'Increase' : 'Decrease'} % = (${Math.abs(change)}/${d.from}) × 100`, W / 2, 105);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 110, 120); ctx.lineTo(W / 2 + 110, 120); ctx.stroke();
+
+        ctx.font = 'bold 28px system-ui'; ctx.fillStyle = isIncrease ? cssVar('--accent-color') : '#f87171';
+        ctx.fillText(`${isIncrease ? '+' : '−'}${pctChange.toFixed(2).replace(/\.?0+$/, '')}%`, W / 2, 165);
+
+        obs.innerHTML = `<strong>${d.label} went from ${d.from} to ${d.to}, a ${isIncrease ? 'increase' : 'decrease'} of ${pctChange.toFixed(2).replace(/\.?0+$/, '')}%.</strong> Computed as (${Math.abs(change)}/${d.from}) × 100.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initProfitLossDiscountLab() {
+      const canvas = document.getElementById('profit-loss-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-profit-loss');
+      const obs = document.getElementById('profit-loss-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const type = sel.value;
+        let title, steps, result, resultColor;
+
+        if (type === 'sweater') {
+          const cp = 300, sp = 430, profit = sp - cp, pct = (profit / cp) * 100;
+          title = 'Sweater: CP ₹300, SP ₹430';
+          steps = [`Profit = ${sp} − ${cp} = ₹${profit}`, `% Profit = (${profit}/${cp}) × 100`];
+          result = `≈ ${pct.toFixed(1)}% profit`; resultColor = cssVar('--accent-color');
+        } else if (type === 'rice') {
+          const cp = 350, sp = 300, loss = cp - sp, pct = (loss / cp) * 100;
+          title = 'Rice: CP ₹350, SP ₹300';
+          steps = [`Loss = ${cp} − ${sp} = ₹${loss}`, `% Loss = (${loss}/${cp}) × 100`];
+          result = `≈ ${pct.toFixed(2)}% loss`; resultColor = '#f87171';
+        } else if (type === 'vase') {
+          const cp = 2650, lossPct = 18, lossAmt = (lossPct / 100) * cp, sp = cp - lossAmt;
+          title = 'Vase: CP ₹2,650, 18% loss';
+          steps = [`Loss amount = 18% × 2650 = ₹${lossAmt}`, `SP = 2650 − ${lossAmt} = ₹${sp}`];
+          result = `SP = ₹${sp}`; resultColor = '#f87171';
+        } else {
+          const mp = 1800, discPct = 35, discAmt = (discPct / 100) * mp, sp = mp - discAmt;
+          title = 'Cooker: MRP ₹1,800, 35% discount';
+          steps = [`Discount = 35% × 1800 = ₹${discAmt}`, `SP = 1800 − ${discAmt} = ₹${sp}`];
+          result = `SP = ₹${sp}`; resultColor = cssVar('--accent-color');
+        }
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(title, W / 2, 32);
+
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        let y = 75;
+        steps.forEach(s => { ctx.fillText(s, W / 2, y); y += 26; });
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 110, y); ctx.lineTo(W / 2 + 110, y); ctx.stroke();
+
+        ctx.font = 'bold 24px system-ui'; ctx.fillStyle = resultColor;
+        ctx.fillText(result, W / 2, y + 40);
+
+        obs.innerHTML = `<strong>${title} → ${result}.</strong> ${steps.join('; ')}.`;
       }
 
       sel.addEventListener('change', draw);

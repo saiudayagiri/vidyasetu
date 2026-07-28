@@ -14128,6 +14128,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-8",
+              title: "Fractions in Disguise",
+              topics: [
+                {
+                  id: "8m-8-1",
+                  title: "1. Fractions as Percentages",
+                  lab: { type: "fraction-to-percentage-sim" },
+                  theory: {
+                    intro: "'Per cent' literally means 'by the hundred' in Latin — so every percentage is secretly just a fraction with 100 as its denominator, dressed up in a familiar % symbol.",
+                    sections: [
+                      {
+                        heading: "What Percentages Really Mean",
+                        text: "The symbol % is read 'per cent', from the Latin 'per centum' meaning 'out of hundred'. So 25% means 25 out of every 100 — 25 people out of 100, or 25 rupees out of 100 rupees. In general, y% of some value s means (y/100)×s. Percentages are simply fractions with denominator 100: 20% = 20/100 = 1/5, and 33% = 33/100."
+                      },
+                      {
+                        heading: "The FDP Trio: Fractions, Decimals, Percentages",
+                        text: "Since 50% = 50/100 = 1/2 = 0.5, multiplying by 50% gives the same result as multiplying by 0.5 or by 1/2 — these three representations (fraction, decimal, percentage) are simply different notations for the same value. Similarly, 25% = 1/4 = 0.25, and 75% = 3/4 = 0.75."
+                      },
+                      {
+                        heading: "Quick Mental Percentage Tricks",
+                        text: "Since 25% is exactly 1/4, finding 25% of 40 is the same as finding 1/4 of 40 (=10). Useful relationships include: 20% of a value is always double 10% of that value, and (20% of y)+(5% of y) always equals 25% of y — since 20/100+5/100=25/100. These patterns make many percentages easy to calculate mentally."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building the Fraction-Decimal-Percentage (FDP) Table",
+                      objective: "To practice converting between fractions, decimals, and percentages, recognizing they are equivalent representations of the same value.",
+                      materials: ["Paper and pencil", "A table with columns for Percentage, Fraction, and Decimal"],
+                      steps: [
+                        "For each percentage in a list (like 50%, 25%, 75%, 10%, 1%, 5%, 43%), write it first as a fraction with denominator 100.",
+                        "Simplify the fraction to its lowest terms where possible (e.g., 50/100 simplifies to 1/2).",
+                        "Convert the same percentage to a decimal by dividing by 100.",
+                        "Check that all three forms (percentage, fraction, decimal) represent the exact same value by comparing them on a chosen quantity.",
+                        "Use the completed table to quickly estimate percentages of new numbers using whichever form is easiest."
+                      ],
+                      observation: "50% = 1/2 = 0.5, 25% = 1/4 = 0.25, and 75% = 3/4 = 0.75 — confirming that percentages, fractions, and decimals are simply three different notations for identical values, and the easiest one to use often depends on the specific calculation at hand."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does the symbol '%' mean, based on its Latin origin?",
+                      options: ["Multiplied by 100", "Out of (per) one hundred", "Divided by 10", "A special kind of fraction unrelated to 100"],
+                      answer: 1,
+                      explanation: "The % symbol comes from the Latin 'per centum', meaning 'out of' or 'by the' hundred — so a percentage always expresses a quantity out of 100."
+                    },
+                    {
+                      question: "What is 20% expressed as a simplified fraction?",
+                      options: ["1/20", "1/5", "1/4", "2/10"],
+                      answer: 1,
+                      explanation: "20% = 20/100, which simplifies to 1/5 when both terms are divided by their HCF, 20."
+                    },
+                    {
+                      question: "What is 25% of 40, using the fact that 25% = 1/4?",
+                      options: ["4", "10", "16", "20"],
+                      answer: 1,
+                      explanation: "Since 25% equals exactly 1/4, 25% of 40 is the same as 1/4 of 40, which is 10."
+                    },
+                    {
+                      question: "What is the decimal equivalent of 75%?",
+                      options: ["0.7", "0.75", "7.5", "0.075"],
+                      answer: 1,
+                      explanation: "75% = 75/100 = 0.75, since converting a percentage to a decimal means dividing by 100."
+                    },
+                    {
+                      question: "Why does (20% of y) + (5% of y) always equal (25% of y)?",
+                      options: ["This is only true for specific values of y, not in general", "Because 20/100 + 5/100 = 25/100, so adding the fractional parts gives exactly 25% for any y", "Percentages cannot be added together at all", "This equation is actually false in general"],
+                      answer: 1,
+                      explanation: "Since percentages are fractions with denominator 100, adding 20/100 and 5/100 always gives 25/100 (=25%), regardless of the value of y — this is simply fraction addition with a common denominator."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-8-2",
+                  title: "2. Finding a Percentage of a Quantity",
+                  lab: { type: "percentage-of-quantity-sim" },
+                  theory: {
+                    intro: "Madhu's biscuits had 25% sugar and Madhav's had 35% — but since they ate different total amounts, comparing the raw percentages alone can't tell you who actually ate more sugar.",
+                    sections: [
+                      {
+                        heading: "Why the Total Quantity Matters",
+                        text: "Madhu ate 120g of biscuits with 25% sugar, while Madhav ate 95g of biscuits with 35% sugar. To find who ate more actual sugar, we compute y% of the specific quantity each person ate: Madhu ate 25%×120g = 30g of sugar; Madhav ate 35%×95g = 33.25g of sugar. Despite Madhu's biscuits having a lower sugar percentage, Madhav actually consumed more sugar overall, since the comparison depends on both the percentage AND the total quantity."
+                      },
+                      {
+                        heading: "Computing a Percentage of a Quantity",
+                        text: "In general, y% of some quantity s is (y/100)×s. This can also be modeled as a proportion: y:100 :: (amount):s. For example, to find 80% of 75 (the minimum marks for an A grade out of 75 total marks): (80/100)×75 = 60 marks."
+                      },
+                      {
+                        heading: "Multiple Ways to Compute the Same Percentage",
+                        text: "The same percentage-of-quantity calculation can be done via fraction multiplication [(80/100)×75], decimal multiplication [0.8×75], or proportional reasoning (setting up a ratio) — all three methods give the same answer (60), just using different but equivalent approaches."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Real Quantities Using Percentages",
+                      objective: "To compute the actual amount represented by a percentage of different total quantities, and correctly compare them.",
+                      materials: ["Paper and pencil", "A calculator (optional)"],
+                      steps: [
+                        "For each scenario, identify the percentage and the total quantity it applies to.",
+                        "Compute the actual amount using (percentage/100) × total quantity.",
+                        "Repeat for a second scenario with a different percentage and total quantity.",
+                        "Compare the actual computed amounts (not just the raw percentages) to answer the real question being asked.",
+                        "Discuss why comparing percentages alone, without considering the different totals, can be misleading."
+                      ],
+                      observation: "Even though Madhu's biscuits had a lower sugar percentage (25% vs Madhav's 35%), computing the actual sugar amounts (30g vs 33.25g) shows Madhav consumed more total sugar — demonstrating why the underlying quantity matters just as much as the percentage itself."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Madhu ate 120g of biscuits with 25% sugar. How much sugar did he consume?",
+                      options: ["25 g", "30 g", "35 g", "40 g"],
+                      answer: 1,
+                      explanation: "25% of 120g = (25/100)×120 = 30g of sugar."
+                    },
+                    {
+                      question: "Madhav ate 95g of biscuits with 35% sugar. How much sugar did he consume?",
+                      options: ["30 g", "33.25 g", "35 g", "38 g"],
+                      answer: 1,
+                      explanation: "35% of 95g = (35/100)×95 = 33.25g of sugar."
+                    },
+                    {
+                      question: "Between Madhu (30g sugar) and Madhav (33.25g sugar), who consumed more sugar overall, despite Madhu's biscuits having a lower sugar percentage?",
+                      options: ["Madhu, since his percentage calculation is simpler", "Madhav, since the actual quantity of sugar he ate is higher", "They consumed exactly the same amount", "This cannot be determined from percentages alone"],
+                      answer: 1,
+                      explanation: "Even though Madhav's biscuits had a higher sugar percentage on a smaller total quantity, calculating the actual sugar amounts shows Madhav consumed more (33.25g vs Madhu's 30g)."
+                    },
+                    {
+                      question: "If the maximum marks in a test are 75 and students need 80% to get an A grade, what is the minimum score needed?",
+                      options: ["55", "60", "65", "70"],
+                      answer: 1,
+                      explanation: "80% of 75 = (80/100)×75 = 60 marks."
+                    },
+                    {
+                      question: "Why is it important to consider the total quantity, not just the percentage, when comparing two situations?",
+                      options: ["The total quantity never actually matters", "Because the same percentage of different totals can represent very different actual amounts", "Percentages are always identical regardless of the total", "This consideration only matters for percentages above 50%"],
+                      answer: 1,
+                      explanation: "A percentage represents a proportion of a specific quantity — comparing raw percentages without considering the underlying totals can be misleading, since the actual amounts they represent can differ significantly."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-8-3",
+                  title: "3. Percentage Increase, Decrease, and Comparisons",
+                  lab: { type: "percentage-change-sim" },
+                  theory: {
+                    intro: "Saying tomato prices 'increased by 40%' packs an entire before-and-after story into one number — the amount of change, expressed as a fraction of where you started.",
+                    sections: [
+                      {
+                        heading: "Percentage Increase and Decrease",
+                        text: "Percentage increase = (amount of increase / original amount) × 100. If tomatoes cost ₹30 three years ago and ₹42 now, the increase is ₹12, giving a percentage increase of (12/30)×100 = 40%. Percentage decrease = (amount of decrease / original amount) × 100. If a theater's footfall dropped from 160 to 100, the decrease is 60, giving a percentage decrease of (60/160)×100 = 37.5%."
+                      },
+                      {
+                        heading: "Two Equivalent Ways to Describe Growth",
+                        text: "Saying 'the population in 1991 is 165% of that in 1961' means exactly the same thing as saying 'the population increased by 65% from 1961 to 1991' — both describe a new value q related to an old value p by q=1.65p. This is because 165%=100%+65%, where the 100% represents the original amount and the extra 65% represents the increase."
+                      },
+                      {
+                        heading: "Using Percentages to Compare Different Totals",
+                        text: "When comparing test scores with different maximum marks (like 42/50 in English vs 70/80 in Science), converting both to percentages makes fair comparison possible: 42/50=84%, while 70/80=87.5% — showing the Science score was proportionally better, even though the raw score (70) was higher than English's raw score (42) purely due to a larger maximum."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Calculating Percentage Increase and Decrease in Real Scenarios",
+                      objective: "To compute percentage increase or decrease for various real-world before-and-after scenarios.",
+                      materials: ["Paper and pencil", "A calculator (optional)", "Examples of price or quantity changes over time"],
+                      steps: [
+                        "For a chosen scenario, identify the original amount and the new amount.",
+                        "Calculate the amount of change (new amount minus original amount).",
+                        "Determine whether this represents an increase or a decrease.",
+                        "Compute the percentage change using (amount of change / original amount) × 100.",
+                        "Interpret the result in a sentence (e.g., 'the price increased by X%')."
+                      ],
+                      observation: "For tomato prices rising from ₹30 to ₹42 (an increase of ₹12), the percentage increase is (12/30)×100=40%; for theater footfall dropping from 160 to 100 (a decrease of 60), the percentage decrease is (60/160)×100=37.5% — both calculated using the same fundamental formula, just applied to increases versus decreases."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the formula for percentage increase?",
+                      options: ["(original amount / amount of increase) × 100", "(amount of increase / original amount) × 100", "amount of increase × 100", "(new amount / 100)"],
+                      answer: 1,
+                      explanation: "Percentage increase is calculated as (amount of increase ÷ original amount) × 100."
+                    },
+                    {
+                      question: "If tomato prices rose from ₹30 to ₹42, what is the percentage increase?",
+                      options: ["12%", "30%", "40%", "42%"],
+                      answer: 2,
+                      explanation: "The increase is ₹12; percentage increase = (12/30)×100 = 40%."
+                    },
+                    {
+                      question: "If theater footfall dropped from 160 to 100, what is the percentage decrease?",
+                      options: ["25%", "37.5%", "40%", "60%"],
+                      answer: 1,
+                      explanation: "The decrease is 60; percentage decrease = (60/160)×100 = 37.5%."
+                    },
+                    {
+                      question: "Do the statements 'population in 1991 is 165% of 1961's population' and 'population increased by 65% from 1961 to 1991' mean the same thing?",
+                      options: ["No, they describe completely different situations", "Yes, both mean the new value equals 1.65 times the original value", "They can only be compared if the actual population numbers are known", "These statements are contradictory"],
+                      answer: 1,
+                      explanation: "Both statements describe the same relationship: q=1.65p, since 165% = 100% (the original) + 65% (the increase)."
+                    },
+                    {
+                      question: "Eesha scored 42/50 in English (84%) and 70/80 in Science (87.5%). Which test did she perform better on, proportionally?",
+                      options: ["English, since she lost fewer marks (8 vs 10)", "Science, since her percentage score (87.5%) was higher than English's (84%)", "They performed identically", "This cannot be determined without knowing the difficulty of each test"],
+                      answer: 1,
+                      explanation: "Converting both scores to percentages (84% for English, 87.5% for Science) allows a fair comparison despite the different maximum marks — showing Eesha performed proportionally better in Science."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-8-4",
+                  title: "4. Profit, Loss, and Discounts",
+                  lab: { type: "profit-loss-discount-sim" },
+                  theory: {
+                    intro: "A retailer buying a sweater for ₹300 and selling it for ₹430 makes a ₹130 profit — but is that a 'good' profit? Only percentages, calculated against the cost price, can really answer that.",
+                    sections: [
+                      {
+                        heading: "Cost Price, Selling Price, and Profit/Loss",
+                        text: "The cost price (CP) is what the seller paid to acquire an item; the selling price (SP) is what the customer pays. If SP > CP, there's a profit (SP−CP); if SP < CP, there's a loss (CP−SP). For a sweater bought at CP=₹300 and sold at SP=₹430: profit=₹130, and percentage profit = (130/300)×100 ≈ 43.3% (calculated with respect to the cost price)."
+                      },
+                      {
+                        heading: "Calculating Loss and Applying a Target Loss Percentage",
+                        text: "For rice bought at CP=₹350 (10kg) and sold at SP=₹300: loss=₹50, giving a percentage loss of (50/350)×100≈14.28%. Working the other direction: to sell a ₹2,650 vase at an 18% loss, the loss amount is 18%×2650=₹477, so the selling price is 2650−477=₹2,173."
+                      },
+                      {
+                        heading: "Discounts and Marked Price",
+                        text: "The marked price (MP) is the price a shop initially quotes (often the MRP); a discount reduces this to the actual selling price. A 35% discount on a ₹1,800 cooker means reducing the price by 35%×1800=₹630, giving a selling price of 1800−630=₹1,170. Profit percentage can be calculated either against the cost price (how much you gained relative to what you spent) or against the revenue/selling price (how much of your sales was actual profit) — these give different percentages for the same transaction, and it's important to know which one is being referenced."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Calculating Profit, Loss, and Discount Percentages",
+                      objective: "To practice computing profit percentage, loss percentage, and discounted selling prices for realistic business scenarios.",
+                      materials: ["Paper and pencil", "A calculator (optional)", "Example transactions with cost price, selling price, or discount information"],
+                      steps: [
+                        "For a profit scenario, calculate profit = SP − CP, then percentage profit = (profit/CP) × 100.",
+                        "For a loss scenario, calculate loss = CP − SP, then percentage loss = (loss/CP) × 100.",
+                        "For a discount scenario, calculate the discount amount = (discount% / 100) × MP, then selling price = MP − discount amount.",
+                        "Verify each calculation makes sense (profit percentages should be positive, discounted prices should be less than the marked price).",
+                        "Try working backward: given a desired profit or loss percentage and one price, find the missing price."
+                      ],
+                      observation: "For a vase bought at ₹2,650 sold at an 18% loss, the loss amount is 18%×2650=₹477, giving a selling price of ₹2,173 — and for a ₹1,800 cooker with a 35% discount, the discount amount is 35%×1800=₹630, giving a selling price of ₹1,170, demonstrating the consistent pattern of applying a percentage to a base amount and then adding or subtracting."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "A sweater is bought (cost price) for ₹300 and sold (selling price) for ₹430. What is the percentage profit?",
+                      options: ["30.2%", "43.3%", "130%", "13%"],
+                      answer: 1,
+                      explanation: "Profit = 430−300 = ₹130; percentage profit = (130/300)×100 ≈ 43.3%, calculated with respect to the cost price."
+                    },
+                    {
+                      question: "10 kg of rice is bought for ₹350 and sold for ₹300. What is the percentage loss?",
+                      options: ["12.5%", "14.28%", "16.67%", "20%"],
+                      answer: 1,
+                      explanation: "Loss = 350−300 = ₹50; percentage loss = (50/350)×100 ≈ 14.28%."
+                    },
+                    {
+                      question: "A vase costing ₹2,650 is sold at an 18% loss. What is the selling price?",
+                      options: ["₹2,173", "₹2,272", "₹2,100", "₹2,477"],
+                      answer: 0,
+                      explanation: "18% of 2650 = ₹477 (the loss amount); selling price = 2650−477 = ₹2,173."
+                    },
+                    {
+                      question: "A cooker with MRP ₹1,800 is offered at a 35% discount. What is the selling price?",
+                      options: ["₹1,170", "₹1,300", "₹1,530", "₹630"],
+                      answer: 0,
+                      explanation: "35% of 1800 = ₹630 (the discount amount); selling price = 1800−630 = ₹1,170."
+                    },
+                    {
+                      question: "Why might the same transaction have a different 'profit percentage' depending on whether it's calculated against the cost price or the selling price (revenue)?",
+                      options: ["This never actually happens — profit percentage is always identical either way", "Because the base amount (cost price vs. selling price) used in the (profit/base)×100 formula is different, so the two percentages answer different questions", "Profit percentage can only ever be calculated one way", "The selling price and cost price are always exactly equal"],
+                      answer: 1,
+                      explanation: "Profit percentage against cost price answers 'how much did I gain relative to what I spent', while profit percentage against revenue answers 'what fraction of my sales was profit' — since these use different base amounts in the denominator, they naturally give different percentage values for the same transaction."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
