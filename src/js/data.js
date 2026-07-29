@@ -14410,6 +14410,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-9",
+              title: "The Baudhāyana-Pythagoras Theorem",
+              topics: [
+                {
+                  id: "8m-9-1",
+                  title: "1. Doubling a Square Using the Diagonal",
+                  lab: { type: "square-diagonal-sim" },
+                  theory: {
+                    intro: "Around 800 BCE, the Indian mathematician Baudhāyana solved a deceptively tricky puzzle: how do you build a square with exactly DOUBLE the area of a given one? The answer turns out to be hiding in the diagonal.",
+                    sections: [
+                      {
+                        heading: "Why Doubling the Sides Doesn't Work",
+                        text: "A natural first guess for doubling a square's area is to double its side length. But doubling the side length actually makes the new square's area 2×2=4 times the original — not double. A different approach is needed."
+                      },
+                      {
+                        heading: "Baudhāyana's Elegant Solution",
+                        text: "In his Śulba-Sūtra (Verse 1.9, c. 800 BCE), Baudhāyana states: 'The diagonal of a square produces a square of double the area of the original square.' Constructing a new square using the original square's DIAGONAL as its side length gives exactly double the area — a remarkably simple and elegant solution to an ancient geometric problem."
+                      },
+                      {
+                        heading: "The Reverse Problem: Halving a Square",
+                        text: "The same idea works in reverse: to halve a square's area, construct a new square whose diagonal equals the original square's side length. This relationship between a square's side and its diagonal — where the diagonal-square has double the area — is the earliest known hint of what would become the Pythagorean theorem."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Constructing a Square with Double the Area",
+                      objective: "To verify, through construction and area calculation, that using a square's diagonal as the side of a new square doubles its area.",
+                      materials: ["Graph paper or plain paper", "Ruler", "Pencil"],
+                      steps: [
+                        "Draw a square of a chosen side length (e.g., 4 cm) and calculate its area (side²).",
+                        "Draw the diagonal of this square, and measure its length.",
+                        "Construct a new square using this diagonal as its side length.",
+                        "Calculate the area of the new square (diagonal²) and compare it to twice the area of the original square.",
+                        "Confirm that the new square's area is exactly double the original square's area."
+                      ],
+                      observation: "For a square of side 4 cm (area 16 sq cm), the diagonal measures about 5.66 cm, and a new square built on this diagonal has an area of about 32 sq cm — exactly double the original 16 sq cm, confirming Baudhāyana's rule."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "If you double the side length of a square, by what factor does its area increase?",
+                      options: ["By a factor of 2", "By a factor of 4", "By a factor of 8", "The area stays the same"],
+                      answer: 1,
+                      explanation: "Doubling the side length means the new area is (2×side)² = 4×side², so the area increases by a factor of 4, not 2."
+                    },
+                    {
+                      question: "According to Baudhāyana's Śulba-Sūtra, how do you construct a square with double the area of a given square?",
+                      options: ["Double the side length of the original square", "Use the diagonal of the original square as the side length of the new square", "Double the perimeter of the original square", "Add the original square's area to itself using unrelated dimensions"],
+                      answer: 1,
+                      explanation: "Baudhāyana's insight was that constructing a new square using the ORIGINAL square's diagonal as its side length produces exactly double the area."
+                    },
+                    {
+                      question: "Roughly when did Baudhāyana write his Śulba-Sūtra containing this result?",
+                      options: ["Around 800 CE", "Around 800 BCE", "Around 500 BCE", "In the 17th century"],
+                      answer: 1,
+                      explanation: "Baudhāyana's Śulba-Sūtra dates to around 800 BCE, making this one of the earliest known geometric results of its kind."
+                    },
+                    {
+                      question: "How can you construct a square with HALF the area of a given square?",
+                      options: ["Halve the side length of the original square", "Construct a new square whose diagonal equals the original square's side length", "This is not possible using Baudhāyana's method", "Double the original square's diagonal"],
+                      answer: 1,
+                      explanation: "Reversing the doubling relationship, a square whose DIAGONAL equals the original square's SIDE length will have exactly half the original square's area."
+                    },
+                    {
+                      question: "For a square of side length 4 cm, what is its area, and what is the area of a square built on its diagonal?",
+                      options: ["Area 16 sq cm; diagonal-square area 16 sq cm", "Area 16 sq cm; diagonal-square area 32 sq cm", "Area 8 sq cm; diagonal-square area 16 sq cm", "Area 16 sq cm; diagonal-square area 64 sq cm"],
+                      answer: 1,
+                      explanation: "The original square has area 4×4=16 sq cm; a square built on its diagonal has exactly double that area, 32 sq cm."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-9-2",
+                  title: "2. Baudhāyana's Theorem: Combining Two Squares",
+                  lab: { type: "pythagorean-theorem-sim" },
+                  theory: {
+                    intro: "Take two squares of ANY sizes, arrange them as the two legs of a right triangle, and Baudhāyana promised something remarkable: the square built on the hypotenuse always has exactly their combined area.",
+                    sections: [
+                      {
+                        heading: "Baudhāyana's General Rule",
+                        text: "In Verse 1.12 of his Śulba-Sūtra, Baudhāyana states: 'The area of the square produced by the diagonal is the sum of the areas of the squares produced by the two sides.' In other words: build a right-angled triangle whose two shorter sides equal the side lengths of two different squares; the square built on the hypotenuse of this triangle has an area exactly equal to the sum of the two original squares' areas."
+                      },
+                      {
+                        heading: "The Theorem in Modern Form",
+                        text: "This translates to the famous formula: if a right-angled triangle has shorter sides of length a and b, and hypotenuse of length c, then a²+b²=c². Baudhāyana was the first person in history to state this in this general, essentially modern form — centuries before the Greek philosopher Pythagoras (c. 500 BCE), who later also studied and popularized it. This is why the result is properly called the Baudhāyana-Pythagoras Theorem."
+                      },
+                      {
+                        heading: "Using the Theorem to Find a Missing Side",
+                        text: "For a right triangle with shorter sides 3cm and 4cm: a²+b²=c² becomes 3²+4²=c², so 9+16=25=c², giving c=5cm — exactly matching direct measurement. This lets us find any missing side of a right triangle purely through calculation, without needing to physically measure it."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying Baudhāyana's Theorem by Construction and Measurement",
+                      objective: "To construct a right-angled triangle with known shorter sides, then confirm the hypotenuse length matches the prediction from a²+b²=c².",
+                      materials: ["Ruler", "Protractor or set square", "Paper and pencil"],
+                      steps: [
+                        "Draw a right angle, and mark off one side of length 3 cm and a perpendicular side of length 4 cm from the vertex.",
+                        "Join the two open ends to form the hypotenuse of the right triangle, and measure its length.",
+                        "Separately, calculate the predicted hypotenuse length using a²+b²=c²: 3²+4²=9+16=25, so c=√25=5.",
+                        "Compare your measured hypotenuse length to the calculated value of 5 cm.",
+                        "Repeat with a different pair of shorter side lengths (like 5cm and 12cm) to confirm the pattern holds generally."
+                      ],
+                      observation: "For a right triangle with shorter sides 3cm and 4cm, both direct measurement and the calculation 3²+4²=5² confirm the hypotenuse is exactly 5cm — demonstrating that Baudhāyana's Theorem correctly predicts the hypotenuse length without needing physical measurement."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is Baudhāyana's Theorem (also known as the Pythagorean Theorem), in modern algebraic form?",
+                      options: ["a+b=c", "a²+b²=c², where c is the hypotenuse", "a×b=c", "a²−b²=c²"],
+                      answer: 1,
+                      explanation: "For a right-angled triangle with shorter sides a and b and hypotenuse c, Baudhāyana's Theorem states a²+b²=c²."
+                    },
+                    {
+                      question: "Who first stated this theorem in its general, essentially modern form, and roughly when?",
+                      options: ["Pythagoras, around 500 BCE", "Baudhāyana, around 800 BCE (centuries before Pythagoras)", "Fermat, in the 17th century", "Aryabhata, around 499 CE"],
+                      answer: 1,
+                      explanation: "Baudhāyana was the first to state this theorem in its general, modern-equivalent form, in his Śulba-Sūtra around 800 BCE — well before Pythagoras studied and popularized it around 500 BCE."
+                    },
+                    {
+                      question: "For a right triangle with shorter sides 3cm and 4cm, what is the hypotenuse length?",
+                      options: ["6 cm", "5 cm", "7 cm", "4.5 cm"],
+                      answer: 1,
+                      explanation: "3²+4² = 9+16 = 25 = c², so c = √25 = 5 cm."
+                    },
+                    {
+                      question: "Why is this theorem sometimes called the 'Baudhāyana-Pythagoras Theorem' rather than just the 'Pythagorean Theorem'?",
+                      options: ["This dual name has no historical basis", "It honors Baudhāyana, who first stated the theorem in its general form centuries before Pythagoras", "Pythagoras and Baudhāyana worked together to discover it", "The theorem has two completely different proofs, one by each mathematician"],
+                      answer: 1,
+                      explanation: "Since Baudhāyana stated this theorem in its general, modern-equivalent form well before Pythagoras, using the combined name credits both mathematicians appropriately, with Baudhāyana's historical priority acknowledged."
+                    },
+                    {
+                      question: "If a right triangle has one shorter side of 8cm and a hypotenuse of 17cm, what is the length of the third side?",
+                      options: ["9 cm", "13 cm", "15 cm", "20 cm"],
+                      answer: 2,
+                      explanation: "Using a²+b²=c²: 8²+b²=17², so 64+b²=289, giving b²=225, so b=15 cm."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-9-3",
+                  title: "3. Baudhāyana Triples: Integer-Sided Right Triangles",
+                  lab: { type: "pythagorean-triple-checker-sim" },
+                  theory: {
+                    intro: "The famous 3-4-5 right triangle is just the first of infinitely many sets of whole numbers that satisfy a²+b²=c² — and once you find one, you can generate endless more by simple multiplication.",
+                    sections: [
+                      {
+                        heading: "What Are Baudhāyana Triples?",
+                        text: "In Verse 1.13 of his Śulba-Sūtra, Baudhāyana lists integer triples (a,b,c) satisfying a²+b²=c², including (3,4,5), (5,12,13), (8,15,17), (7,24,25), (12,35,37), and (15,36,39). These are called Baudhāyana triples (also known as Pythagorean triples or Baudhāyana-Pythagoras triples)."
+                      },
+                      {
+                        heading: "Scaling Triples to Get Infinitely Many More",
+                        text: "If (a,b,c) is a Baudhāyana triple, then (ka,kb,kc) is also a Baudhāyana triple for any positive integer k — since (ka)²+(kb)² = k²a²+k²b² = k²(a²+b²) = k²c² = (kc)². This means (3,4,5) generates an entire family: (6,8,10), (9,12,15), (12,16,20), and so on, proving there are infinitely many Baudhāyana triples."
+                      },
+                      {
+                        heading: "Primitive vs. Scaled Triples",
+                        text: "A Baudhāyana triple with no common factor greater than 1 among all three numbers is called a PRIMITIVE triple — like (3,4,5) or (5,12,13). A triple like (9,12,15) is NOT primitive, since it's just (3,4,5) scaled by k=3 (all three numbers share the common factor 3). Finding all primitive triples is the key to finding every possible Baudhāyana triple, since every non-primitive triple is just a scaled version of some primitive one."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Identifying and Scaling Baudhāyana Triples",
+                      objective: "To verify given triples satisfy a²+b²=c², and to determine whether they are primitive or scaled versions of smaller triples.",
+                      materials: ["Paper and pencil", "A calculator (optional)"],
+                      steps: [
+                        "For a given triple (a,b,c), calculate a², b², and c², and check whether a²+b²=c².",
+                        "Find the HCF of all three numbers in the triple.",
+                        "If the HCF is 1, the triple is primitive; if greater than 1, divide all three numbers by the HCF to find the primitive triple it was scaled from.",
+                        "Generate new triples by multiplying a known primitive triple by different positive integers k.",
+                        "Verify each newly generated triple also satisfies a²+b²=c²."
+                      ],
+                      observation: "The triple (9,12,15) satisfies 9²+12²=81+144=225=15², confirming it IS a valid Baudhāyana triple — but since HCF(9,12,15)=3, it is a scaled version (k=3) of the primitive triple (3,4,5), not primitive itself."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'Baudhāyana triple'?",
+                      options: ["Any three random numbers", "A set of three integers (a,b,c) that satisfy a²+b²=c², forming the sides of a right triangle", "Only the specific numbers 3, 4, and 5", "A triple of prime numbers"],
+                      answer: 1,
+                      explanation: "A Baudhāyana triple (also called a Pythagorean triple) is any set of three positive integers (a,b,c) satisfying a²+b²=c², which can form the sides of a right-angled triangle."
+                    },
+                    {
+                      question: "If (3,4,5) is a Baudhāyana triple, why is (6,8,10) also one?",
+                      options: ["It is a coincidence with no underlying reason", "Because (6,8,10) is (3,4,5) scaled by k=2, and scaling any triple by a positive integer preserves the a²+b²=c² relationship", "Because 6+8=10", "(6,8,10) is not actually a valid Baudhāyana triple"],
+                      answer: 1,
+                      explanation: "Since (ka)²+(kb)²=k²(a²+b²)=k²c²=(kc)² whenever a²+b²=c², scaling every term of a valid triple by the same integer k always produces another valid triple."
+                    },
+                    {
+                      question: "What is a 'primitive' Baudhāyana triple?",
+                      options: ["Any triple with very small numbers", "A Baudhāyana triple where the three numbers share no common factor greater than 1", "A triple discovered before Baudhāyana's time", "A triple that cannot be verified using a²+b²=c²"],
+                      answer: 1,
+                      explanation: "A primitive Baudhāyana triple has no common factor greater than 1 among all three numbers — like (3,4,5) — as opposed to a scaled triple like (9,12,15), which shares the common factor 3."
+                    },
+                    {
+                      question: "Is the triple (9,12,15) a primitive Baudhāyana triple?",
+                      options: ["Yes, since 9²+12²=15²", "No, since it's a scaled version of (3,4,5) with common factor 3", "No, since it doesn't satisfy a²+b²=c² at all", "Yes, since all three numbers are different"],
+                      answer: 1,
+                      explanation: "While (9,12,15) does satisfy 9²+12²=15², it is NOT primitive, since all three numbers share the common factor 3 (it's simply (3,4,5) scaled by k=3)."
+                    },
+                    {
+                      question: "Why are there infinitely many Baudhāyana triples?",
+                      options: ["There are actually only a handful of them", "Because any known triple can be scaled by any positive integer k to produce a new, valid triple, and there are infinitely many choices of k", "Because Baudhāyana listed infinitely many triples directly", "This has never actually been proven"],
+                      answer: 1,
+                      explanation: "Since scaling ANY valid Baudhāyana triple by ANY positive integer k always produces another valid triple, and there are infinitely many positive integers, this guarantees infinitely many Baudhāyana triples exist."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-9-4",
+                  title: "4. Generating New Triples from Odd Squares",
+                  lab: { type: "odd-square-triple-generator-sim" },
+                  theory: {
+                    intro: "The fact that consecutive odd numbers sum to perfect squares hides a secret shortcut for generating brand-new Baudhāyana triples — whenever the odd number itself happens to be a perfect square.",
+                    sections: [
+                      {
+                        heading: "From Odd Number Sums to a New Formula",
+                        text: "We know that the sum of the first n odd numbers equals n²: 1+3+5+...+(2n−1)=n². Separating out just the last (nth) odd number gives: (n−1)² + (2n−1) = n² — since the sum of the first (n−1) odd numbers is (n−1)², and adding the nth odd number (2n−1) brings the total to n²."
+                      },
+                      {
+                        heading: "When the nth Odd Number Is Itself a Square",
+                        text: "If the nth odd number (2n−1) happens to itself be a perfect square, then the equation (n−1)² + (2n−1) = n² becomes a sum of TWO squares equal to a THIRD square — exactly the pattern of a Baudhāyana triple! For example, 9 is the 5th odd number (2×5−1=9) and is itself 3². Substituting n=5: (5−1)²+9=5², giving 4²+3²=5² — the classic (3,4,5) triple."
+                      },
+                      {
+                        heading: "Generating More Triples This Way",
+                        text: "Using 25 (which is 5², and the 13th odd number since 2×13−1=25): substituting n=13 gives (13−1)²+25=13², i.e., 12²+5²=13² — generating the triple (5,12,13). This method can generate a new Baudhāyana triple from any odd perfect square, by finding its position n in the sequence of odd numbers and computing (n−1)² + (that odd square) = n²."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Generating Baudhāyana Triples from Odd Perfect Squares",
+                      objective: "To use the identity (n−1)²+(2n−1)=n² to generate new Baudhāyana triples starting from odd perfect squares.",
+                      materials: ["Paper and pencil", "A calculator (optional)"],
+                      steps: [
+                        "Choose an odd perfect square, such as 49 (=7²).",
+                        "Find its position n in the sequence of odd numbers by solving 2n−1=49, giving n=25.",
+                        "Compute (n−1)² = 24² = 576.",
+                        "Verify that (n−1)² + (odd square) = n²: 576+49=625=25².",
+                        "Write down the resulting Baudhāyana triple: (24, 7, 25), and confirm 24²+7²=25² directly."
+                      ],
+                      observation: "Starting from the odd perfect square 49 (=7²), which is the 25th odd number, the identity gives 24²+49=25², yielding the new Baudhāyana triple (24,7,25) — confirmed directly since 576+49=625=25²."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the algebraic identity used to generate new Baudhāyana triples from odd perfect squares?",
+                      options: ["n² + (n−1)² = (2n−1)²", "(n−1)² + (2n−1) = n²", "n² − (n−1)² = (2n+1)²", "(n+1)² + (2n−1) = n²"],
+                      answer: 1,
+                      explanation: "The identity (n−1)² + (2n−1) = n² comes from separating the nth odd number (2n−1) from the sum of the first n odd numbers, which equals n²."
+                    },
+                    {
+                      question: "For n=5, what Baudhāyana triple does the identity (n−1)²+(2n−1)=n² generate, using the fact that 9=2(5)−1 is itself 3²?",
+                      options: ["(3, 4, 5)", "(4, 3, 5)", "Both (3,4,5) and (4,3,5) describe the same triple: 4²+3²=5²", "(5, 4, 3)"],
+                      answer: 2,
+                      explanation: "Substituting n=5 gives (5−1)²+9=5², i.e., 4²+3²=5² — the classic (3,4,5) triple, just written with the terms in a particular order."
+                    },
+                    {
+                      question: "Starting from the odd perfect square 25 (=5²), which is the 13th odd number, what Baudhāyana triple is generated?",
+                      options: ["(5, 12, 13)", "(12, 13, 5)", "(13, 12, 5)", "(25, 12, 13)"],
+                      answer: 0,
+                      explanation: "With n=13 (since 2×13−1=25): (13−1)²+25=13², i.e., 12²+5²=13², generating the triple (5,12,13)."
+                    },
+                    {
+                      question: "What condition must an odd number satisfy for this method to generate a new Baudhāyana triple from it?",
+                      options: ["It must be prime", "It must itself be a perfect square", "It must be greater than 100", "It must be divisible by 3"],
+                      answer: 1,
+                      explanation: "This method only works when the chosen odd number is ALSO a perfect square, since that's what allows (n−1)²+(2n−1)=n² to become a sum of two perfect squares equal to a third."
+                    },
+                    {
+                      question: "Using the odd perfect square 49 (=7², the 25th odd number), what triple does this method generate?",
+                      options: ["(7, 24, 25)", "(24, 25, 7)", "(49, 24, 25)", "(25, 24, 7)"],
+                      answer: 0,
+                      explanation: "With n=25 (since 2×25−1=49): (25−1)²+49=25², i.e., 24²+7²=25², generating the triple (7,24,25)."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

@@ -3331,6 +3331,98 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const squareDiagonalLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="square-diagonal-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a square's side length and see its diagonal double the area.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Side Length</h3>
+            <select id="sel-square-diagonal-side" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="2">2 cm</option>
+              <option value="3">3 cm</option>
+              <option value="4" selected>4 cm</option>
+              <option value="5">5 cm</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Diagonal &amp; Doubled Area</h3>
+            <div id="square-diagonal-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a side length above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const pythagoreanTheoremLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="pythagorean-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick two shorter sides and see the hypotenuse computed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose the Two Shorter Sides</h3>
+            <select id="sel-pythagorean-sides" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="3-4" selected>a=3, b=4</option>
+              <option value="5-12">a=5, b=12</option>
+              <option value="8-15">a=8, b=15</option>
+              <option value="7-24">a=7, b=24</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Hypotenuse</h3>
+            <div id="pythagorean-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose two sides above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const pythagoreanTripleCheckerLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="triple-checker-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a triple and see whether it's valid, and primitive or scaled.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Triple</h3>
+            <select id="sel-triple-checker" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="3-4-5" selected>(3, 4, 5)</option>
+              <option value="6-8-10">(6, 8, 10)</option>
+              <option value="9-12-15">(9, 12, 15)</option>
+              <option value="5-12-13">(5, 12, 13)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Verdict</h3>
+            <div id="triple-checker-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a triple above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const oddSquareTripleGeneratorLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="odd-triple-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an odd perfect square and see the triple it generates.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Odd Perfect Square</h3>
+            <select id="sel-odd-triple" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="9" selected>9 = 3²</option>
+              <option value="25">25 = 5²</option>
+              <option value="49">49 = 7²</option>
+              <option value="81">81 = 9²</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Generated Triple</h3>
+            <div id="odd-triple-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an odd square above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -5250,6 +5342,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'profit-loss-discount-sim') {
               labHtml = profitLossDiscountLabHtml;
               labDesc = 'Pick a scenario and see the profit, loss, or discount computed.';
+            } else if (topicObj.lab.type === 'square-diagonal-sim') {
+              labHtml = squareDiagonalLabHtml;
+              labDesc = 'Pick a square’s side length and see its diagonal-built square double the area.';
+            } else if (topicObj.lab.type === 'pythagorean-theorem-sim') {
+              labHtml = pythagoreanTheoremLabHtml;
+              labDesc = 'Pick two shorter sides and see the hypotenuse computed using a²+b²=c².';
+            } else if (topicObj.lab.type === 'pythagorean-triple-checker-sim') {
+              labHtml = pythagoreanTripleCheckerLabHtml;
+              labDesc = 'Pick a triple and see whether it satisfies a²+b²=c², and if it is primitive.';
+            } else if (topicObj.lab.type === 'odd-square-triple-generator-sim') {
+              labHtml = oddSquareTripleGeneratorLabHtml;
+              labDesc = 'Pick an odd perfect square and see the Baudhāyana triple it generates.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -5737,6 +5841,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initPercentageChangeLab();
         } else if (topicObj.lab.type === 'profit-loss-discount-sim') {
           initProfitLossDiscountLab();
+        } else if (topicObj.lab.type === 'square-diagonal-sim') {
+          initSquareDiagonalLab();
+        } else if (topicObj.lab.type === 'pythagorean-theorem-sim') {
+          initPythagoreanTheoremLab();
+        } else if (topicObj.lab.type === 'pythagorean-triple-checker-sim') {
+          initPythagoreanTripleCheckerLab();
+        } else if (topicObj.lab.type === 'odd-square-triple-generator-sim') {
+          initOddSquareTripleGeneratorLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -19855,6 +19967,177 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(result, W / 2, y + 40);
 
         obs.innerHTML = `<strong>${title} → ${result}.</strong> ${steps.join('; ')}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSquareDiagonalLab() {
+      const canvas = document.getElementById('square-diagonal-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-square-diagonal-side');
+      const obs = document.getElementById('square-diagonal-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const side = parseInt(sel.value);
+        const diagonal = side * Math.sqrt(2);
+        const area = side * side;
+        const doubledArea = diagonal * diagonal;
+
+        const px = 22;
+        const cx = W / 2, cy = 150;
+        const half = (side * px) / 2;
+        const pts = [{ x: cx - half, y: cy - half }, { x: cx + half, y: cy - half }, { x: cx + half, y: cy + half }, { x: cx - half, y: cy + half }];
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        ctx.beginPath();
+        pts.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+        ctx.closePath(); ctx.stroke();
+
+        ctx.strokeStyle = '#f97316'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+        ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); ctx.lineTo(pts[2].x, pts[2].y); ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Side = ${side} cm`, W / 2, 40);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Area = ${side}² = ${area} sq cm`, W / 2, 220);
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = '#f97316';
+        ctx.fillText(`Diagonal = ${side}×√2 ≈ ${diagonal.toFixed(2)} cm`, W / 2, 240);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Diagonal² = ${doubledArea.toFixed(1)} sq cm = 2 × ${area}`, W / 2, 262);
+
+        obs.innerHTML = `<strong>Side ${side} cm → diagonal ≈ ${diagonal.toFixed(2)} cm.</strong> The original square has area ${area} sq cm; a square built on the diagonal has area ${doubledArea.toFixed(1)} sq cm — exactly double, confirming Baudhāyana's rule.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPythagoreanTheoremLab() {
+      const canvas = document.getElementById('pythagorean-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-pythagorean-sides');
+      const obs = document.getElementById('pythagorean-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [a, b] = sel.value.split('-').map(Number);
+        const c = Math.sqrt(a * a + b * b);
+
+        const scale = 120 / Math.max(a, b);
+        const rx = a * scale, ry = b * scale;
+        const originX = W / 2 - rx / 2, originY = 190;
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(originX, originY);
+        ctx.lineTo(originX + rx, originY);
+        ctx.lineTo(originX, originY - ry);
+        ctx.closePath();
+        ctx.stroke();
+
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`a=${a}`, originX + rx / 2, originY + 20);
+        ctx.save(); ctx.translate(originX - 20, originY - ry / 2); ctx.fillText(`b=${b}`, 0, 0); ctx.restore();
+        ctx.fillStyle = cssVar('--accent-color');
+        ctx.save(); ctx.translate((originX + originX + rx) / 2 + 15, (originY + originY - ry) / 2 - 8); ctx.fillText(`c=?`, 0, 0); ctx.restore();
+
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`a²+b²=c²  →  ${a}²+${b}²=c²`, W / 2, 35);
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`${a * a}+${b * b} = ${a * a + b * b} = c²`, W / 2, 60);
+
+        ctx.font = 'bold 24px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`c = ${c}`, W / 2, 250);
+
+        obs.innerHTML = `<strong>a=${a}, b=${b} → c=${c}.</strong> ${a}²+${b}² = ${a * a}+${b * b} = ${a * a + b * b} = c², so c = √${a * a + b * b} = ${c}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPythagoreanTripleCheckerLab() {
+      const canvas = document.getElementById('triple-checker-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-triple-checker');
+      const obs = document.getElementById('triple-checker-obs');
+
+      function gcd(x, y) { return y === 0 ? x : gcd(y, x % y); }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [a, b, c] = sel.value.split('-').map(Number);
+        const isValid = a * a + b * b === c * c;
+        const g = gcd(gcd(a, b), c);
+        const isPrimitive = g === 1;
+
+        ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`(${a}, ${b}, ${c})`, W / 2, 40);
+
+        ctx.font = '15px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`${a}²+${b}² = ${a * a}+${b * b} = ${a * a + b * b}`, W / 2, 80);
+        ctx.fillText(`${c}² = ${c * c}`, W / 2, 105);
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = isValid ? cssVar('--accent-color') : '#f87171';
+        ctx.fillText(isValid ? 'Valid Baudhāyana triple!' : 'NOT a valid triple', W / 2, 150);
+
+        if (isValid) {
+          ctx.font = 'bold 15px system-ui'; ctx.fillStyle = isPrimitive ? cssVar('--accent-color') : '#fbbf24';
+          ctx.fillText(isPrimitive ? 'Primitive (HCF = 1)' : `Scaled ×${g} from (${a / g},${b / g},${c / g})`, W / 2, 185);
+        }
+
+        obs.innerHTML = isValid
+          ? `<strong>(${a},${b},${c}) is a valid Baudhāyana triple.</strong> ${a}²+${b}²=${a * a + b * b}=${c}². ${isPrimitive ? 'It is primitive (HCF=1).' : `It is a scaled version (×${g}) of the primitive triple (${a / g},${b / g},${c / g}).`}`
+          : `<strong>(${a},${b},${c}) is NOT a valid Baudhāyana triple.</strong> ${a}²+${b}²=${a * a + b * b}, but ${c}²=${c * c} — these don't match.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initOddSquareTripleGeneratorLab() {
+      const canvas = document.getElementById('odd-triple-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-odd-triple');
+      const obs = document.getElementById('odd-triple-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const oddSq = parseInt(sel.value);
+        const root = Math.sqrt(oddSq);
+        const n = (oddSq + 1) / 2;
+        const nMinus1 = n - 1;
+
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${oddSq} = ${root}² is the ${n}th odd number`, W / 2, 32);
+
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`(n−1)² + (2n−1) = n²`, W / 2, 75);
+        ctx.fillText(`(${n}−1)² + ${oddSq} = ${n}²`, W / 2, 100);
+        ctx.fillText(`${nMinus1}² + ${oddSq} = ${n * n}`, W / 2, 125);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 110, 140); ctx.lineTo(W / 2 + 110, 140); ctx.stroke();
+
+        ctx.font = 'bold 24px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Triple: (${nMinus1}, ${root}, ${n})`, W / 2, 180);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Check: ${nMinus1}²+${root}² = ${nMinus1 * nMinus1}+${oddSq} = ${nMinus1 * nMinus1 + oddSq} = ${n}²`, W / 2, 210);
+
+        obs.innerHTML = `<strong>Starting from ${oddSq}=${root}² (the ${n}th odd number), the triple (${nMinus1}, ${root}, ${n}) is generated.</strong> Check: ${nMinus1}²+${root}² = ${nMinus1 * nMinus1}+${oddSq} = ${n * n} = ${n}².`;
       }
 
       sel.addEventListener('change', draw);
