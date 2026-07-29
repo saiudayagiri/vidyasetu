@@ -14692,6 +14692,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-10",
+              title: "Proportional Reasoning-2",
+              topics: [
+                {
+                  id: "8m-10-1",
+                  title: "1. Scale and Ratios on Maps",
+                  lab: { type: "map-scale-sim" },
+                  theory: {
+                    intro: "Every map hides a secret ratio in its corner — a Representative Fraction like 1:60,00,000 — that lets a single centimetre on paper stand in for 60 real kilometres on the ground.",
+                    sections: [
+                      {
+                        heading: "What Is a Representative Fraction?",
+                        text: "A Representative Fraction (RF) is a ratio showing the relationship between a distance on a map and the corresponding real (geographical) distance on the ground. An RF of 1:60,00,000 means 1 cm on the map represents 60,00,000 cm of actual geographical distance — which converts to 60 km."
+                      },
+                      {
+                        heading: "Using Scale to Find Real Distances",
+                        text: "To find a real-world distance, measure the distance between two points on the map (using a ruler), then multiply by the scale factor from the RF. For example, if the map distance between two cities is 5 cm and the RF is 1:60,00,000, the actual geographical distance is 5×60,00,000 cm = 3,00,00,000 cm = 300 km."
+                      },
+                      {
+                        heading: "Different Scales for Different Purposes",
+                        text: "A classroom sketch might use a much larger-scale ratio like 1:50 (where 1 cm represents just 50 cm), while a country map might use 1:60,00,000 (where 1 cm represents 60 km). The appropriate scale depends on how much detail needs to be shown and how large an area the map covers."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Measuring Real-World Distances Using a Map Scale",
+                      objective: "To use a map's Representative Fraction (RF) to calculate actual geographical distances between locations.",
+                      materials: ["A map or atlas with a stated scale (RF)", "A ruler", "Paper and pencil"],
+                      steps: [
+                        "Find the RF (scale ratio) printed on the map, usually in a corner.",
+                        "Use a ruler to measure the straight-line distance between two chosen locations on the map, in centimetres.",
+                        "Multiply this measured distance by the scale factor (the second number in the RF) to find the actual geographical distance in centimetres.",
+                        "Convert the result to kilometres by dividing by 100,000 (since 1 km = 100,000 cm).",
+                        "Repeat with a different map of the same area but a different scale, and check whether you get approximately the same real-world distance."
+                      ],
+                      observation: "For a map with RF 1:60,00,000, a measured map distance of 5 cm between two cities corresponds to an actual geographical distance of 5×60,00,000 cm = 300 km — and using a different map with a different scale for the same two cities should give approximately the same real-world answer, confirming the scale conversion works consistently."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does a map's Representative Fraction (RF) of 1:60,00,000 mean?",
+                      options: ["The map is 60,00,000 times too small to be useful", "1 cm on the map represents 60,00,000 cm of actual geographical distance", "There are 60,00,000 cm on the entire map", "The map covers exactly 60,00,000 square km"],
+                      answer: 1,
+                      explanation: "An RF of 1:60,00,000 means every 1 cm measured on the map corresponds to 60,00,000 cm (=60 km) of real geographical distance."
+                    },
+                    {
+                      question: "If a map has RF 1:60,00,000 and two cities are 5 cm apart on the map, what is their actual geographical distance?",
+                      options: ["5 km", "60 km", "300 km", "3,000 km"],
+                      answer: 2,
+                      explanation: "5 cm × 60,00,000 = 3,00,00,000 cm, which converts to 300 km (dividing by 100,000 cm per km)."
+                    },
+                    {
+                      question: "How many centimetres are in 1 kilometre?",
+                      options: ["1,000 cm", "10,000 cm", "100,000 cm", "1,000,000 cm"],
+                      answer: 2,
+                      explanation: "1 km = 1,000 m = 1,000×100 cm = 100,000 cm."
+                    },
+                    {
+                      question: "Why might a classroom sketch use a scale like 1:50, while a country map uses a scale like 1:60,00,000?",
+                      options: ["There is no meaningful difference between these scales", "Smaller areas with more relevant detail use a scale where the map distance is closer to real size, while larger areas need a much more compressed scale to fit on paper", "Classroom sketches never use scale ratios", "Country maps always use scale 1:50 as well"],
+                      answer: 1,
+                      explanation: "A classroom is small enough that a scale like 1:50 keeps the sketch usefully detailed and manageable, while a country spans a much larger area, requiring a far more compressed scale like 1:60,00,000 to fit on a reasonably sized map."
+                    },
+                    {
+                      question: "If a classroom sketch has a scale of 1:50, and a wall measures 20 cm on the sketch, how long is the actual wall?",
+                      options: ["20 cm", "50 cm", "200 cm (2 m)", "1,000 cm (10 m)"],
+                      answer: 3,
+                      explanation: "20 cm × 50 = 1,000 cm, which is 10 metres — the actual length of the wall."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-10-2",
+                  title: "2. Ratios with More Than Two Terms",
+                  lab: { type: "multi-term-ratio-sim" },
+                  theory: {
+                    intro: "A spice mix recipe with four ingredients — coriander, chillies, toor dal, and fenugreek — can still be scaled up or down proportionally, as long as every single term changes by the exact same factor.",
+                    sections: [
+                      {
+                        heading: "Ratios Beyond Two Terms",
+                        text: "A ratio can have more than two terms if all quantities change together by the same factor. Viswanath's spice mix uses coriander:chillies:toor dal:fenugreek in the ratio 8:4:2:1. If Puneet has only 2 chillies (half of Viswanath's 4), he must scale every other ingredient by the same factor (½), giving 4:2:1:0.5 — proportional to the original: 8:4:2:1 :: 4:2:1:0.5."
+                      },
+                      {
+                        heading: "The General Rule for Multi-Term Proportions",
+                        text: "When two multi-term ratios a:b:c:d and p:q:r:s are proportional, every corresponding pair of terms shares the same scale factor: a/p = b/q = c/r = d/s. This extends the two-term proportion idea to any number of terms."
+                      },
+                      {
+                        heading: "Scaling Real Mixtures",
+                        text: "For a concrete mixture in the ratio cement:sand:gravel = 1:1.5:3, having 3 bags of cement means multiplying every term by 3, giving 3:4.5:9 — using 4.5 bags of sand and 9 bags of gravel, for a total of 3+4.5+9=16.5 bags of concrete."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Scaling a Multi-Ingredient Recipe Proportionally",
+                      objective: "To scale a recipe or mixture with more than two ingredients while keeping all proportions intact.",
+                      materials: ["Paper and pencil", "A recipe or mixture with 3+ ingredients in a known ratio"],
+                      steps: [
+                        "Write down the original ratio of all ingredients (e.g., 8:4:2:1).",
+                        "Identify a constraint on one ingredient (e.g., only having 2 units of the second ingredient, instead of the original 4).",
+                        "Calculate the scale factor needed for that ingredient (2÷4 = 0.5).",
+                        "Multiply every other ingredient's quantity by this same scale factor.",
+                        "Verify that the new ratio is proportional to the original by checking that all corresponding terms share the same scale factor."
+                      ],
+                      observation: "Scaling Viswanath's spice mix (8:4:2:1) by a factor of 0.5 (since Puneet has only 2 of the 4 chillies) gives 4:2:1:0.5 — confirming 8:4:2:1 :: 4:2:1:0.5, since every term was scaled by the same factor."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Can a ratio have more than two terms?",
+                      options: ["No, ratios are always limited to exactly two terms", "Yes, as long as all the quantities change together by the same factor to stay proportional", "Only in special mathematical cases", "Ratios with more than two terms are not really ratios"],
+                      answer: 1,
+                      explanation: "Ratios can have any number of terms, as long as maintaining proportionality means every term scales by the same factor when the ratio is scaled."
+                    },
+                    {
+                      question: "Viswanath's spice mix ratio is 8:4:2:1 (coriander:chillies:toor dal:fenugreek). If Puneet has only 2 chillies, what is his scaled ratio?",
+                      options: ["8:4:2:1 (unchanged)", "4:2:1:0.5", "16:8:4:2", "2:1:0.5:0.25"],
+                      answer: 1,
+                      explanation: "Since Puneet's chillies (2) are half of Viswanath's (4), every term must be scaled by 0.5: 8×0.5=4, 4×0.5=2, 2×0.5=1, 1×0.5=0.5, giving 4:2:1:0.5."
+                    },
+                    {
+                      question: "If two multi-term ratios a:b:c and p:q:r are proportional, what must be true?",
+                      options: ["a=p, b=q, and c=r exactly", "a/p = b/q = c/r (all terms share the same scale factor)", "a+b+c = p+q+r", "Only a and p need to be related"],
+                      answer: 1,
+                      explanation: "Proportional multi-term ratios require every corresponding pair of terms to share the exact same scale factor: a/p=b/q=c/r."
+                    },
+                    {
+                      question: "A concrete mixture uses cement:sand:gravel in the ratio 1:1.5:3. With 3 bags of cement, how many bags of sand are needed?",
+                      options: ["1.5 bags", "3 bags", "4.5 bags", "9 bags"],
+                      answer: 2,
+                      explanation: "Scaling the ratio by 3 (since cement went from 1 to 3): sand = 1.5×3 = 4.5 bags."
+                    },
+                    {
+                      question: "For the same concrete mixture (3:4.5:9 for cement:sand:gravel), what is the total amount of concrete?",
+                      options: ["12 bags", "13.5 bags", "16.5 bags", "18 bags"],
+                      answer: 2,
+                      explanation: "Adding all three terms: 3+4.5+9 = 16.5 bags of concrete in total."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-10-3",
+                  title: "3. Dividing a Whole in a Multi-Term Ratio",
+                  lab: { type: "multi-term-sharing-sim" },
+                  theory: {
+                    intro: "Constructing a triangle with angles in the ratio 1:3:5 is really just another 'sharing' problem — dividing the fixed 180° total among three parts in the right proportion.",
+                    sections: [
+                      {
+                        heading: "Extending the Sharing Formula",
+                        text: "Just as a two-term ratio divides a whole using x×[a/(a+b)] and x×[b/(a+b)], a multi-term ratio a:b:c:... divides a whole x using: x×[a/(a+b+c+...)], x×[b/(a+b+c+...)], x×[c/(a+b+c+...)], and so on — each term's share of the total ratio-sum."
+                      },
+                      {
+                        heading: "Example: Mixing Purple Paint",
+                        text: "To make 50 mL of purple paint using red:blue:white in the ratio 2:3:5 (total ratio-sum 10): red = 50×(2/10)=10 mL, blue = 50×(3/10)=15 mL, white = 50×(5/10)=25 mL — totaling exactly 50 mL."
+                      },
+                      {
+                        heading: "Example: Triangle Angles",
+                        text: "To construct a triangle with angles in the ratio 1:3:5 (total ratio-sum 9, and knowing all triangle angles sum to 180°): ∠A = 180°×(1/9)=20°, ∠B = 180°×(3/9)=60°, ∠C = 180°×(5/9)=100° — confirming 20°+60°+100°=180°."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Dividing a Total Quantity Using a Multi-Term Ratio",
+                      objective: "To practice splitting a fixed total (like 180° or a volume of paint) into multiple parts according to a given multi-term ratio.",
+                      materials: ["Paper and pencil", "A protractor and ruler (for the triangle example)"],
+                      steps: [
+                        "Add up all the terms in the given ratio to find the total ratio-sum.",
+                        "For each term, compute its share as (term ÷ total ratio-sum) × the actual total quantity.",
+                        "Verify that all the computed shares add up to exactly the original total quantity.",
+                        "For angle-based ratios, use a protractor to construct and verify the resulting angles.",
+                        "Try a different multi-term ratio and total quantity to confirm the method generalizes."
+                      ],
+                      observation: "For a triangle with angles in the ratio 1:3:5 (total ratio-sum 9) and total 180°: the angles are 180×(1/9)=20°, 180×(3/9)=60°, and 180×(5/9)=100° — which indeed sum to exactly 180°, confirming the multi-term sharing formula works correctly."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "To divide a total x in the ratio a:b:c, what is the formula for the first part?",
+                      options: ["a × x", "x × [a/(a+b+c)]", "x/(a×b×c)", "a + x/(b+c)"],
+                      answer: 1,
+                      explanation: "The first part is the total x multiplied by the first term's share of the total ratio-sum: x × [a/(a+b+c)]."
+                    },
+                    {
+                      question: "To make 50 mL of purple paint with red:blue:white in the ratio 2:3:5, how much white paint is needed?",
+                      options: ["10 mL", "15 mL", "20 mL", "25 mL"],
+                      answer: 3,
+                      explanation: "With total ratio-sum 2+3+5=10, white paint = 50×(5/10) = 25 mL."
+                    },
+                    {
+                      question: "A triangle has angles in the ratio 1:3:5. What is the largest angle?",
+                      options: ["60°", "80°", "100°", "120°"],
+                      answer: 2,
+                      explanation: "With total ratio-sum 1+3+5=9, the largest angle (ratio term 5) = 180×(5/9) = 100°."
+                    },
+                    {
+                      question: "For 110 units of concrete mixed in the ratio cement:sand:gravel = 1:1.5:3 (ratio-sum 5.5), how many units of cement are needed?",
+                      options: ["10 units", "20 units", "30 units", "55 units"],
+                      answer: 1,
+                      explanation: "Cement = 110×(1/5.5) = 20 units."
+                    },
+                    {
+                      question: "Why must all the parts computed from a multi-term ratio sum back up to the original total quantity?",
+                      options: ["This is a coincidence and doesn't always happen", "Because each part's fraction of the total ratio-sum, when added together, always equals 1 (the whole), by definition", "The parts are calculated completely independently with no guaranteed relationship", "This only works for ratios with exactly 2 terms"],
+                      answer: 1,
+                      explanation: "Since each part is (term/total ratio-sum) × x, and the terms themselves sum to the total ratio-sum, adding all the parts together always gives back exactly x — this is guaranteed by how the formula is constructed."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-10-4",
+                  title: "4. Pie Charts: Ratios as Angles",
+                  lab: { type: "pie-chart-angle-sim" },
+                  theory: {
+                    intro: "A pie chart is really a 360° circle being 'shared' in a ratio — turning grade counts, survey results, or budget categories into a single glance-able wheel of proportions.",
+                    sections: [
+                      {
+                        heading: "Turning Data into a Pie Chart",
+                        text: "A pie chart shows different proportions of a whole using slices of a circle, where each slice's angle is proportional to the quantity it represents. For grade counts A:12, B:10, C:8, D:6, E:4 (total 40 students), the angles must be found by dividing the full circle (360°) in the ratio 12:10:8:6:4."
+                      },
+                      {
+                        heading: "Simplifying the Ratio First",
+                        text: "Just like any ratio, 12:10:8:6:4 can be reduced to its simplest form by dividing all terms by their HCF (which is 2), giving 6:5:4:3:2. This simplified ratio has a total ratio-sum of 6+5+4+3+2=20, making the angle calculations for each slice cleaner: each 'part' of the ratio corresponds to 360°/20=18°."
+                      },
+                      {
+                        heading: "Computing Each Slice's Angle",
+                        text: "Using the simplified ratio 6:5:4:3:2 and 18° per part: Grade A = 6×18°=108°, Grade B = 5×18°=90°, Grade C = 4×18°=72°, Grade D = 3×18°=54°, Grade E = 2×18°=36°. Checking: 108+90+72+54+36=360°, confirming the slices correctly divide the full circle."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Constructing a Pie Chart from Raw Data",
+                      objective: "To convert a table of categorical data into the correct pie chart angles, using ratio simplification and proportional division of 360°.",
+                      materials: ["Paper and pencil", "A protractor and compass", "A table of category counts (e.g., grades scored by students)"],
+                      steps: [
+                        "Write the counts for each category as a multi-term ratio.",
+                        "Simplify this ratio by dividing all terms by their HCF.",
+                        "Find the total ratio-sum of the simplified ratio.",
+                        "Compute each category's angle as (category's ratio term / total ratio-sum) × 360°.",
+                        "Use a protractor to draw each slice of the pie chart with its calculated angle, and verify all angles sum to 360°."
+                      ],
+                      observation: "For the grade data 12:10:8:6:4 (simplified to 6:5:4:3:2, total ratio-sum 20), the resulting slice angles are 108°, 90°, 72°, 54°, and 36° — which sum to exactly 360°, confirming the pie chart correctly represents the proportions of the original data."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In a pie chart, what determines the angle of each slice?",
+                      options: ["All slices always have the same angle, regardless of data", "The angle is proportional to the quantity that slice represents, out of the total 360°", "The angle is randomly assigned", "The angle depends only on the number of categories, not their values"],
+                      answer: 1,
+                      explanation: "Each slice's angle is proportional to its share of the total data, calculated by dividing the full 360° circle in the ratio of the category counts."
+                    },
+                    {
+                      question: "For grade counts 12:10:8:6:4 (total 40 students), what is the simplified ratio?",
+                      options: ["12:10:8:6:4 (already simplest)", "6:5:4:3:2", "3:2.5:2:1.5:1", "4:3:2:1:0.5"],
+                      answer: 1,
+                      explanation: "Dividing all terms by their HCF (2) gives the simplified ratio 6:5:4:3:2."
+                    },
+                    {
+                      question: "Using the simplified ratio 6:5:4:3:2 (ratio-sum 20), what is the angle for Grade A (ratio term 6)?",
+                      options: ["72°", "90°", "108°", "120°"],
+                      answer: 2,
+                      explanation: "Grade A's angle = (6/20) × 360° = 108°."
+                    },
+                    {
+                      question: "What should the sum of all the slice angles in a correctly constructed pie chart always equal?",
+                      options: ["100°", "180°", "270°", "360°"],
+                      answer: 3,
+                      explanation: "Since a pie chart represents the ENTIRE dataset as a full circle, all the individual slice angles must sum to exactly 360°."
+                    },
+                    {
+                      question: "Why is it helpful to simplify the ratio (e.g., 12:10:8:6:4 to 6:5:4:3:2) before calculating pie chart angles?",
+                      options: ["Simplifying the ratio changes the final angles", "It makes the arithmetic easier (smaller numbers), without changing the final proportional angles, since the ratio remains equivalent", "Simplification is not actually necessary or helpful", "Only simplified ratios can be used to create pie charts at all"],
+                      answer: 1,
+                      explanation: "Simplifying the ratio doesn't change the underlying proportions (it's still an equivalent ratio) — it just makes the angle calculations simpler by working with smaller numbers."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

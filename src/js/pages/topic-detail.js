@@ -3423,6 +3423,95 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const mapScaleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="map-scale-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a map scale and see the real-world distance computed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Map Scenario</h3>
+            <select id="sel-map-scale" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="classroom" selected>Classroom (1:50), 20 cm on sketch</option>
+              <option value="city">City map (1:50,000), 4 cm on map</option>
+              <option value="country">Country map (1:60,00,000), 5 cm on map</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Real-World Distance</h3>
+            <div id="map-scale-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const multiTermRatioLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="multi-ratio-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see the multi-term ratio scaled proportionally.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-multi-ratio" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="spice" selected>Spice mix: 8:4:2:1, Puneet has 2 chillies</option>
+              <option value="concrete">Concrete: 1:1.5:3, 3 bags of cement</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Scaled Ratio</h3>
+            <div id="multi-ratio-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const multiTermSharingLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="multi-sharing-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see the total divided into its ratio parts.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-multi-sharing" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="paint" selected>Purple paint: 2:3:5, total 50 mL</option>
+              <option value="triangle">Triangle angles: 1:3:5, total 180°</option>
+              <option value="concrete">Concrete: 1:1.5:3, total 110 units</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>The Parts</h3>
+            <div id="multi-sharing-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const pieChartAngleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="pie-chart-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a grade and see its pie-slice angle computed and highlighted.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Grade</h3>
+            <select id="sel-pie-chart-grade" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="A" selected>Grade A: 12 students</option>
+              <option value="B">Grade B: 10 students</option>
+              <option value="C">Grade C: 8 students</option>
+              <option value="D">Grade D: 6 students</option>
+              <option value="E">Grade E: 4 students</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Slice Angle</h3>
+            <div id="pie-chart-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a grade above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -5354,6 +5443,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'odd-square-triple-generator-sim') {
               labHtml = oddSquareTripleGeneratorLabHtml;
               labDesc = 'Pick an odd perfect square and see the Baudhāyana triple it generates.';
+            } else if (topicObj.lab.type === 'map-scale-sim') {
+              labHtml = mapScaleLabHtml;
+              labDesc = 'Pick a map scale and see the corresponding real-world distance computed.';
+            } else if (topicObj.lab.type === 'multi-term-ratio-sim') {
+              labHtml = multiTermRatioLabHtml;
+              labDesc = 'Pick a scenario and see a multi-term ratio scaled proportionally.';
+            } else if (topicObj.lab.type === 'multi-term-sharing-sim') {
+              labHtml = multiTermSharingLabHtml;
+              labDesc = 'Pick a scenario and see a total divided into its multi-term ratio parts.';
+            } else if (topicObj.lab.type === 'pie-chart-angle-sim') {
+              labHtml = pieChartAngleLabHtml;
+              labDesc = 'Pick a grade and see its pie-slice angle computed and highlighted.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -5849,6 +5950,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initPythagoreanTripleCheckerLab();
         } else if (topicObj.lab.type === 'odd-square-triple-generator-sim') {
           initOddSquareTripleGeneratorLab();
+        } else if (topicObj.lab.type === 'map-scale-sim') {
+          initMapScaleLab();
+        } else if (topicObj.lab.type === 'multi-term-ratio-sim') {
+          initMultiTermRatioLab();
+        } else if (topicObj.lab.type === 'multi-term-sharing-sim') {
+          initMultiTermSharingLab();
+        } else if (topicObj.lab.type === 'pie-chart-angle-sim') {
+          initPieChartAngleLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -20138,6 +20247,203 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(`Check: ${nMinus1}²+${root}² = ${nMinus1 * nMinus1}+${oddSq} = ${nMinus1 * nMinus1 + oddSq} = ${n}²`, W / 2, 210);
 
         obs.innerHTML = `<strong>Starting from ${oddSq}=${root}² (the ${n}th odd number), the triple (${nMinus1}, ${root}, ${n}) is generated.</strong> Check: ${nMinus1}²+${root}² = ${nMinus1 * nMinus1}+${oddSq} = ${n * n} = ${n}².`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMapScaleLab() {
+      const canvas = document.getElementById('map-scale-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-map-scale');
+      const obs = document.getElementById('map-scale-obs');
+      const DATA = {
+        classroom: { scale: 50, dist: 20, title: 'Classroom sketch (1:50)' },
+        city: { scale: 50000, dist: 4, title: 'City map (1:50,000)' },
+        country: { scale: 6000000, dist: 5, title: 'Country map (1:60,00,000)' }
+      };
+
+      function formatDistance(cm) {
+        if (cm >= 100000) return `${(cm / 100000).toFixed(0)} km`;
+        if (cm >= 100) return `${(cm / 100).toFixed(0)} m`;
+        return `${cm} cm`;
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const actualCm = d.dist * d.scale;
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(d.title, W / 2, 35);
+
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Map distance = ${d.dist} cm`, W / 2, 80);
+        ctx.fillText(`Actual = ${d.dist} × ${d.scale.toLocaleString('en-IN')} cm`, W / 2, 105);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 110, 120); ctx.lineTo(W / 2 + 110, 120); ctx.stroke();
+
+        ctx.font = 'bold 28px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`= ${formatDistance(actualCm)}`, W / 2, 165);
+
+        obs.innerHTML = `<strong>${d.title}: ${d.dist} cm on the map = ${formatDistance(actualCm)} in reality.</strong> Computed as ${d.dist} × ${d.scale.toLocaleString('en-IN')} cm.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMultiTermRatioLab() {
+      const canvas = document.getElementById('multi-ratio-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-multi-ratio');
+      const obs = document.getElementById('multi-ratio-obs');
+      const DATA = {
+        spice: { orig: [8, 4, 2, 1], labels: ['Coriander', 'Chillies', 'Toor dal', 'Fenugreek'], knownIdx: 1, knownVal: 2 },
+        concrete: { orig: [1, 1.5, 3], labels: ['Cement', 'Sand', 'Gravel'], knownIdx: 0, knownVal: 3 }
+      };
+
+      function fmt(n) { return Number.isInteger(n) ? String(n) : n.toFixed(1); }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const factor = d.knownVal / d.orig[d.knownIdx];
+        const scaled = d.orig.map(v => v * factor);
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Original: ${d.orig.join(':')}`, W / 2, 30);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`(${d.labels.join(', ')})`, W / 2, 50);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Scale factor = ${fmt(d.knownVal)} / ${fmt(d.orig[d.knownIdx])} = ${fmt(factor)}`, W / 2, 90);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(W / 2 - 130, 105); ctx.lineTo(W / 2 + 130, 105); ctx.stroke();
+
+        ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`New: ${scaled.map(fmt).join(':')}`, W / 2, 150);
+
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        d.labels.forEach((label, i) => {
+          ctx.fillText(`${label}: ${fmt(scaled[i])}`, W / 2, 180 + i * 20);
+        });
+
+        obs.innerHTML = `<strong>${d.orig.join(':')} scaled by ${fmt(factor)} → ${scaled.map(fmt).join(':')}.</strong> Every term is multiplied by the same scale factor to keep the ratio proportional.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMultiTermSharingLab() {
+      const canvas = document.getElementById('multi-sharing-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-multi-sharing');
+      const obs = document.getElementById('multi-sharing-obs');
+      const DATA = {
+        paint: { ratio: [2, 3, 5], total: 50, labels: ['Red', 'Blue', 'White'], unit: 'mL' },
+        triangle: { ratio: [1, 3, 5], total: 180, labels: ['∠A', '∠B', '∠C'], unit: '°' },
+        concrete: { ratio: [1, 1.5, 3], total: 110, labels: ['Cement', 'Sand', 'Gravel'], unit: 'units' }
+      };
+      const COLORS = ['#ef4444', '#3b82f6', '#f8fafc'];
+
+      function fmt(n) { return Number.isInteger(n) ? String(n) : n.toFixed(1); }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const sum = d.ratio.reduce((a, b) => a + b, 0);
+        const parts = d.ratio.map(r => (r / sum) * d.total);
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Ratio ${d.ratio.join(':')}, total ${d.total}${d.unit}`, W / 2, 30);
+
+        const barW = 340, barH = 45, barX = W / 2 - barW / 2, barY = 65;
+        let xCursor = barX;
+        d.ratio.forEach((r, i) => {
+          const segW = barW * (r / sum);
+          ctx.fillStyle = COLORS[i % COLORS.length];
+          ctx.fillRect(xCursor, barY, segW, barH);
+          xCursor += segW;
+        });
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2; ctx.strokeRect(barX, barY, barW, barH);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        let y = 140;
+        d.labels.forEach((label, i) => {
+          ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 14px system-ui';
+          ctx.fillText(`${label}: ${fmt(parts[i])}${d.unit}`, W / 2, y);
+          y += 24;
+        });
+
+        obs.innerHTML = `<strong>${d.ratio.join(':')} of ${d.total}${d.unit}:</strong> ${d.labels.map((l, i) => `${l}=${fmt(parts[i])}${d.unit}`).join(', ')} (ratio-sum ${fmt(sum)}).`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPieChartAngleLab() {
+      const canvas = document.getElementById('pie-chart-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-pie-chart-grade');
+      const obs = document.getElementById('pie-chart-obs');
+      const GRADES = [
+        { key: 'A', count: 12, color: '#ef4444' },
+        { key: 'B', count: 10, color: '#f97316' },
+        { key: 'C', count: 8, color: '#fbbf24' },
+        { key: 'D', count: 6, color: '#22c55e' },
+        { key: 'E', count: 4, color: '#3b82f6' }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const total = GRADES.reduce((a, g) => a + g.count, 0);
+        const cx = 160, cy = 145, r = 90;
+
+        let startAngle = -Math.PI / 2;
+        const angles = {};
+        GRADES.forEach(g => {
+          const sweep = (g.count / total) * Math.PI * 2;
+          angles[g.key] = { start: startAngle, sweep, deg: (g.count / total) * 360 };
+          const isSelected = g.key === sel.value;
+          ctx.beginPath(); ctx.moveTo(cx, cy);
+          ctx.arc(cx, cy, isSelected ? r + 8 : r, startAngle, startAngle + sweep);
+          ctx.closePath();
+          ctx.fillStyle = g.color; ctx.globalAlpha = isSelected ? 1 : 0.55; ctx.fill();
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = cssVar('--bg-primary'); ctx.lineWidth = 2; ctx.stroke();
+          startAngle += sweep;
+        });
+
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+        let ly = 40;
+        GRADES.forEach(g => {
+          ctx.fillStyle = g.color; ctx.fillRect(340, ly - 10, 12, 12);
+          ctx.fillStyle = cssVar('--text-normal');
+          ctx.fillText(`${g.key}: ${g.count} students`, 360, ly);
+          ly += 24;
+        });
+
+        const sel_ = GRADES.find(g => g.key === sel.value);
+        const deg = angles[sel.value].deg;
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Grade ${sel.value}: ${sel_.count}/${total} students`, W / 2, 260);
+
+        obs.innerHTML = `<strong>Grade ${sel.value} (${sel_.count} students out of ${total}) → angle = (${sel_.count}/${total}) × 360° = ${deg.toFixed(0)}°.</strong> All 5 slice angles together sum to exactly 360°.`;
       }
 
       sel.addEventListener('change', draw);
