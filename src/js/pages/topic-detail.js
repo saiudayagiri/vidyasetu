@@ -3789,6 +3789,95 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const rectTriAreaLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="rect-tri-area-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a rectangle and see its area and its diagonal triangle's area.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Rectangle</h3>
+            <select id="sel-rect-tri-area" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="7,4" selected>7 cm × 4 cm</option>
+              <option value="8,3">8 cm × 3 cm</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Areas</h3>
+            <div id="rect-tri-area-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a rectangle above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const triangleAltitudeLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="triangle-altitude-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a new base AC and see the corresponding altitude BY computed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Triangle: Area fixed at 7.5 sq units (AX=3, BC=5)</h3>
+            <select id="sel-triangle-altitude" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="4" selected>New base AC = 4 units</option>
+              <option value="3">New base AC = 3 units</option>
+              <option value="5">New base AC = 5 units</option>
+              <option value="6">New base AC = 6 units</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Solving for BY</h3>
+            <div id="triangle-altitude-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a base above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const parallelogramAreaLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="parallelogram-area-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a parallelogram and see it dissected into a rectangle.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Parallelogram</h3>
+            <select id="sel-parallelogram-area" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="7,4" selected>base 7 cm, height 4 cm</option>
+              <option value="5,3">base 5 cm, height 3 cm</option>
+              <option value="4.8,5">base 4.8 cm, height 5 cm</option>
+              <option value="4.4,2">base 4.4 cm, height 2 cm</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Area = Base × Height</h3>
+            <div id="parallelogram-area-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a parallelogram above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const rhombusTrapeziumAreaLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="rhombus-trapezium-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a shape and see its area computed from its formula.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Shape</h3>
+            <select id="sel-rhombus-trapezium" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="rhombus-20-15" selected>Rhombus: diagonals 20 cm, 15 cm</option>
+              <option value="trap-6-10-4">Trapezium: sides 6 cm, 10 cm, height 4 cm</option>
+              <option value="trap-8-12-5">Trapezium: sides 8 cm, 12 cm, height 5 cm</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Computed Area</h3>
+            <div id="rhombus-trapezium-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a shape above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -5768,6 +5857,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'largest-product-sim') {
               labHtml = largestProductLabHtml;
               labDesc = 'Pick three digits and see which arrangement gives the largest product.';
+            } else if (topicObj.lab.type === 'rectangle-triangle-area-sim') {
+              labHtml = rectTriAreaLabHtml;
+              labDesc = 'Pick a rectangle and see its area, plus the area of its diagonal triangle.';
+            } else if (topicObj.lab.type === 'triangle-altitude-solver-sim') {
+              labHtml = triangleAltitudeLabHtml;
+              labDesc = 'Pick a new base and solve for the corresponding altitude using a fixed area.';
+            } else if (topicObj.lab.type === 'parallelogram-area-sim') {
+              labHtml = parallelogramAreaLabHtml;
+              labDesc = 'Pick a parallelogram and see it dissected into a rectangle of equal area.';
+            } else if (topicObj.lab.type === 'rhombus-trapezium-area-sim') {
+              labHtml = rhombusTrapeziumAreaLabHtml;
+              labDesc = 'Pick a rhombus or trapezium and see its area computed from its formula.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -6295,6 +6396,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initCalendarGridLab();
         } else if (topicObj.lab.type === 'largest-product-sim') {
           initLargestProductLab();
+        } else if (topicObj.lab.type === 'rectangle-triangle-area-sim') {
+          initRectTriAreaLab();
+        } else if (topicObj.lab.type === 'triangle-altitude-solver-sim') {
+          initTriangleAltitudeLab();
+        } else if (topicObj.lab.type === 'parallelogram-area-sim') {
+          initParallelogramAreaLab();
+        } else if (topicObj.lab.type === 'rhombus-trapezium-area-sim') {
+          initRhombusTrapeziumAreaLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -21398,6 +21507,197 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         });
 
         obs.innerHTML = `<strong>Best arrangement: ${multiplicand} × ${r} = ${product}.</strong> The largest digit (${r}) is the multiplier; the other two digits (${q}, ${p}) form the multiplicand in decreasing order.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initRectTriAreaLab() {
+      const canvas = document.getElementById('rect-tri-area-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-rect-tri-area');
+      const obs = document.getElementById('rect-tri-area-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [len, wid] = sel.value.split(',').map(Number);
+        const area = len * wid;
+        const triArea = area / 2;
+        const unit = 28;
+        const rectW = len * unit, rectH = wid * unit;
+        const x0 = W / 2 - rectW / 2, y0 = 210 - rectH;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        for (let i = 0; i <= len; i++) {
+          ctx.beginPath(); ctx.moveTo(x0 + i * unit, y0); ctx.lineTo(x0 + i * unit, y0 + rectH); ctx.stroke();
+        }
+        for (let j = 0; j <= wid; j++) {
+          ctx.beginPath(); ctx.moveTo(x0, y0 + j * unit); ctx.lineTo(x0 + rectW, y0 + j * unit); ctx.stroke();
+        }
+        ctx.fillStyle = 'rgba(16,185,129,0.12)'; ctx.fillRect(x0, y0, rectW, rectH);
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2.5; ctx.strokeRect(x0, y0, rectW, rectH);
+
+        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.moveTo(x0, y0 + rectH); ctx.lineTo(x0 + rectW, y0); ctx.stroke();
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${len} cm`, x0 + rectW / 2, y0 + rectH + 20);
+        ctx.save(); ctx.translate(x0 - 18, y0 + rectH / 2); ctx.rotate(-Math.PI / 2);
+        ctx.fillText(`${wid} cm`, 0, 0); ctx.restore();
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Rectangle area = ${area} cm²`, W / 2, 35);
+
+        obs.innerHTML = `<strong>${len} cm × ${wid} cm rectangle:</strong> Area = ${len}×${wid} = ${area} cm². The diagonal (red) splits it into two triangles, each with area ${triArea} cm² — exactly half.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initTriangleAltitudeLab() {
+      const canvas = document.getElementById('triangle-altitude-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-triangle-altitude');
+      const obs = document.getElementById('triangle-altitude-obs');
+      const AREA = 7.5;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const AC = parseFloat(sel.value);
+        const BY = (2 * AREA) / AC;
+
+        const bx = 150, by = 220, cx = 150 + 5 * 40, cy = 220;
+        const ax = 150 + 2 * 40, ay = 220 - 3 * 40;
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(cx, cy); ctx.lineTo(ax, ay); ctx.closePath(); ctx.stroke();
+        ctx.fillStyle = 'rgba(16,185,129,0.1)'; ctx.fill();
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(ax, by); ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText('A', ax, ay - 10);
+        ctx.fillText('B', bx - 12, by + 5);
+        ctx.fillText('C', cx + 12, cy + 5);
+        ctx.fillText('X', ax, by + 18);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('AX=3', ax + 20, (ay + by) / 2);
+        ctx.fillText('BC=5', (bx + cx) / 2, by + 18);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'left';
+        ctx.fillText(`Area = ½×3×5 = 7.5 sq units (fixed)`, 60, 40);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`New base AC=${AC} → BY = 2×7.5/${AC} = ${BY.toFixed(2)}`, 60, 65);
+
+        obs.innerHTML = `<strong>With AC=${AC} as the new base:</strong> ½×${AC}×BY = 7.5, so BY = 15/${AC} = <strong style="color:#22c55e;">${BY.toFixed(2)} units</strong>. The area stays fixed at 7.5 sq units regardless of which side is used as the base.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initParallelogramAreaLab() {
+      const canvas = document.getElementById('parallelogram-area-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-parallelogram-area');
+      const obs = document.getElementById('parallelogram-area-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [base, height] = sel.value.split(',').map(Number);
+        const area = base * height;
+        const scale = 30;
+        const bw = base * scale, bh = height * scale;
+        const shear = bh * 0.55;
+        const x0 = W / 2 - (bw + shear) / 2, y0 = 210 - bh;
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(x0 + shear, y0); ctx.lineTo(x0 + shear + bw, y0);
+        ctx.lineTo(x0 + bw, y0 + bh); ctx.lineTo(x0, y0 + bh); ctx.closePath();
+        ctx.fillStyle = 'rgba(16,185,129,0.12)'; ctx.fill(); ctx.stroke();
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(x0 + shear, y0); ctx.lineTo(x0 + shear, y0 + bh); ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText(`base=${base}cm`, x0 + bw / 2, y0 + bh + 20);
+        ctx.save(); ctx.translate(x0 + shear + 15, y0 + bh / 2); ctx.rotate(-Math.PI / 2);
+        ctx.fillText(`height=${height}cm`, 0, 0); ctx.restore();
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Area = ${base} × ${height} = ${area} cm²`, W / 2, 35);
+
+        obs.innerHTML = `<strong>Parallelogram (base=${base} cm, height=${height} cm):</strong> Dissecting along the height and rearranging gives a rectangle with the same base and height, so Area = base × height = ${area} cm².`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initRhombusTrapeziumAreaLab() {
+      const canvas = document.getElementById('rhombus-trapezium-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-rhombus-trapezium');
+      const obs = document.getElementById('rhombus-trapezium-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const val = sel.value;
+        const cx = W / 2, cy = 150;
+
+        if (val.startsWith('rhombus')) {
+          const D1 = 6, D2 = 4.5;
+          ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - D2 * 10); ctx.lineTo(cx + D1 * 10, cy);
+          ctx.lineTo(cx, cy + D2 * 10); ctx.lineTo(cx - D1 * 10, cy); ctx.closePath();
+          ctx.fillStyle = 'rgba(16,185,129,0.12)'; ctx.fill(); ctx.stroke();
+          ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+          ctx.beginPath(); ctx.moveTo(cx - D1 * 10, cy); ctx.lineTo(cx + D1 * 10, cy); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx, cy - D2 * 10); ctx.lineTo(cx, cy + D2 * 10); ctx.stroke();
+          ctx.setLineDash([]);
+          const area = 0.5 * 20 * 15;
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText('Rhombus: diagonals 20 cm, 15 cm', W / 2, 35);
+          obs.innerHTML = `<strong>Rhombus (diagonals 20 cm, 15 cm):</strong> Area = ½×20×15 = <strong style="color:#22c55e;">${area} cm²</strong>.`;
+        } else {
+          const parts = val.split('-');
+          const a = Number(parts[1]), b = Number(parts[2]), h = Number(parts[3]);
+          const scale = 14;
+          const topW = a * scale, botW = b * scale, hh = h * scale;
+          const x0 = cx - botW / 2, y0 = cy - hh / 2;
+          const inset = (botW - topW) / 2;
+          ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          ctx.moveTo(x0 + inset, y0); ctx.lineTo(x0 + inset + topW, y0);
+          ctx.lineTo(x0 + botW, y0 + hh); ctx.lineTo(x0, y0 + hh); ctx.closePath();
+          ctx.fillStyle = 'rgba(16,185,129,0.12)'; ctx.fill(); ctx.stroke();
+
+          ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText(`a=${a}cm`, x0 + inset + topW / 2, y0 - 10);
+          ctx.fillText(`b=${b}cm`, x0 + botW / 2, y0 + hh + 20);
+          ctx.save(); ctx.translate(x0 - 15, y0 + hh / 2); ctx.rotate(-Math.PI / 2);
+          ctx.fillText(`h=${h}cm`, 0, 0); ctx.restore();
+
+          const area = 0.5 * h * (a + b);
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(`Trapezium: a=${a}cm, b=${b}cm, h=${h}cm`, W / 2, 35);
+          obs.innerHTML = `<strong>Trapezium (parallel sides ${a} cm, ${b} cm; height ${h} cm):</strong> Area = ½×${h}×(${a}+${b}) = <strong style="color:#22c55e;">${area} cm²</strong>.`;
+        }
       }
 
       sel.addEventListener('change', draw);

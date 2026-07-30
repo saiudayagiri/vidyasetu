@@ -15821,6 +15821,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-14",
+              title: "Area",
+              topics: [
+                {
+                  id: "8m-14-1",
+                  title: "1. Area of Rectangles and Triangles",
+                  lab: { type: "rectangle-triangle-area-sim" },
+                  theory: {
+                    intro: "We measure area by counting how many unit squares fit inside a region — and this simple idea leads directly to the familiar formulas for the area of a rectangle and a triangle.",
+                    sections: [
+                      {
+                        heading: "Measuring Area with Unit Squares",
+                        text: "The area of a region is measured by counting the number of unit squares (squares of side 1 cm, for instance) whose combined area equals that of the region. Comparing a 7 cm × 4 cm rectangle to an 8 cm × 3 cm rectangle: the first contains 7×4=28 unit squares, and the second contains 8×3=24 unit squares — so the 7×4 rectangle needs more colouring powder to fill evenly."
+                      },
+                      {
+                        heading: "Area of a Rectangle",
+                        text: "Since the number of unit squares in a rectangle equals the product of its length and width: Area of a rectangle = length × width. This gives areas written as, for example, 28 sq. cm or 28 cm²."
+                      },
+                      {
+                        heading: "Area of a Right Triangle from a Rectangle",
+                        text: "The diagonal of a rectangle divides it into two congruent triangles, so each triangle has exactly half the rectangle's area. For a 7 cm × 4 cm rectangle, each diagonal triangle has area ½×7×4 = 14 cm² — exactly half of the rectangle's 28 cm²."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Rectangle Areas by Counting Unit Squares",
+                      objective: "To find the area of two rectangles by counting unit squares, and confirm this matches the length × width formula.",
+                      materials: ["Grid paper (1 cm squares)", "Ruler", "Pencil"],
+                      steps: [
+                        "Draw a 7 cm × 4 cm rectangle on grid paper and count the unit squares inside it.",
+                        "Draw an 8 cm × 3 cm rectangle and count its unit squares.",
+                        "Compare the two counts to the length × width formula for each rectangle.",
+                        "Draw the diagonal of the 7×4 rectangle and count the unit squares in one of the resulting triangles.",
+                        "Confirm the triangle's area is exactly half the full rectangle's area."
+                      ],
+                      observation: "The 7 cm × 4 cm rectangle contains 28 unit squares (matching 7×4=28); the 8 cm × 3 cm rectangle contains 24 unit squares (matching 8×3=24); the diagonal triangle of the 7×4 rectangle contains exactly 14 unit squares — half of 28."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How is the area of a region measured using unit squares?",
+                      options: ["By counting the region's boundary length", "By counting the number of unit squares whose combined area equals the region's area", "By measuring only one side of the region", "Area cannot be measured this way"],
+                      answer: 1,
+                      explanation: "The area of a region is found by counting how many unit squares (e.g., 1 cm × 1 cm squares) fit inside it — this is the fundamental definition of area."
+                    },
+                    {
+                      question: "Between a 7 cm × 4 cm rectangle and an 8 cm × 3 cm rectangle, which has the larger area?",
+                      options: ["The 8 cm × 3 cm rectangle (24 cm²)", "The 7 cm × 4 cm rectangle (28 cm²)", "They have equal areas", "Cannot be determined without more information"],
+                      answer: 1,
+                      explanation: "The 7×4 rectangle has area 28 cm², while the 8×3 rectangle has area 24 cm² — so the 7×4 rectangle has the larger area, even though its dimensions are more 'balanced'."
+                    },
+                    {
+                      question: "What is the formula for the area of a rectangle?",
+                      options: ["Area = 2 × (length + width)", "Area = length × width", "Area = length + width", "Area = length² "],
+                      answer: 1,
+                      explanation: "The area of a rectangle equals the number of unit squares it contains, which is the product of its length and width."
+                    },
+                    {
+                      question: "The diagonal of a rectangle divides it into two triangles. What can we say about these two triangles?",
+                      options: ["They have different areas but the same perimeter", "They are congruent, and each has exactly half the rectangle's area", "Only one of them has a defined area", "Their combined area is less than the rectangle's area"],
+                      answer: 1,
+                      explanation: "The diagonal creates two congruent triangles, and since they together make up the whole rectangle with no overlap, each has exactly half the rectangle's total area."
+                    },
+                    {
+                      question: "What is the area of the triangle formed by the diagonal of a 7 cm × 4 cm rectangle?",
+                      options: ["7 cm²", "14 cm²", "28 cm²", "56 cm²"],
+                      answer: 1,
+                      explanation: "The full rectangle has area 7×4=28 cm²; the diagonal triangle is exactly half of this, giving ½×28=14 cm²."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-14-2",
+                  title: "2. Finding Unknown Measurements Using Area",
+                  lab: { type: "triangle-altitude-solver-sim" },
+                  theory: {
+                    intro: "A triangle's area stays the same no matter which side you call the 'base' — which means knowing the area lets you work backwards to find an altitude you can't measure directly.",
+                    sections: [
+                      {
+                        heading: "The General Triangle Area Formula",
+                        text: "For any triangle with base BC, constructing a rectangle BCDE around it (using a line through A parallel to BC) shows that Area(∆ABC) = ½ × base × height, where height is the perpendicular distance from the opposite vertex to the base. This formula holds for all triangles, including ones where the vertex doesn't sit directly 'above' the base — since the area can always be expressed as a difference of two right-triangle areas that simplifies to the same formula."
+                      },
+                      {
+                        heading: "Finding an Altitude from a Known Area",
+                        text: "In ∆ABC, if AX⊥BC with AX=3 units and BC=5 units, then Area(∆ABC) = ½×3×5 = 7.5 sq. units. The SAME area can also be written using AC as the base and BY (the altitude to AC) as the height: Area(∆ABC) = ½×AC×BY. If AC=4 units, then ½×4×BY=7.5, so 4×BY=15, giving BY=15/4=3.75 units."
+                      },
+                      {
+                        heading: "Triangles That Share Height and Base",
+                        text: "If OB and OD are taken as bases for two triangles sharing the same altitude, and OB=OD, the triangles have equal areas. This is why the line joining a triangle's vertex to the midpoint of the opposite side always divides it into two triangles of equal area — and why the diagonals of a rectangle divide it into four triangles of equal area."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding an Altitude Using a Triangle's Fixed Area",
+                      objective: "To use the fact that a triangle's area is the same regardless of which side is chosen as the base, in order to solve for an unknown altitude.",
+                      materials: ["Paper and pencil", "A calculator"],
+                      steps: [
+                        "For a triangle with AX⊥BC, AX=3 units, BC=5 units, compute the area: ½×3×5=7.5 sq. units.",
+                        "Identify a second base, AC=4 units, with unknown altitude BY.",
+                        "Set the two area expressions equal: ½×4×BY = 7.5.",
+                        "Solve for BY: 4×BY=15, so BY=3.75 units.",
+                        "Verify: this altitude and base also give ½×4×3.75=7.5, matching the original area."
+                      ],
+                      observation: "Using base BC=5 and height AX=3 gives area 7.5 sq. units; switching to base AC=4 and solving for the unknown height gives BY=3.75 units — and ½×4×3.75=7.5 confirms both computations describe the same triangle."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In ∆ABC, AX⊥BC with AX=3 units and BC=5 units. What is the area of the triangle?",
+                      options: ["7.5 sq. units", "15 sq. units", "8 sq. units", "3.75 sq. units"],
+                      answer: 0,
+                      explanation: "Area = ½ × base × height = ½ × 5 × 3 = 7.5 sq. units."
+                    },
+                    {
+                      question: "For the same triangle (area 7.5 sq. units), if AC=4 units is used as the base, what is the corresponding altitude BY?",
+                      options: ["1.875 units", "3 units", "3.75 units", "4 units"],
+                      answer: 2,
+                      explanation: "½×4×BY=7.5 → 4×BY=15 → BY=3.75 units."
+                    },
+                    {
+                      question: "Why can a triangle's area be computed using ANY side as the base, always giving the same answer?",
+                      options: ["It cannot — different bases give different areas", "Because the area formula ½×base×height always describes the same fixed triangle, regardless of which side and corresponding altitude are chosen", "Only equilateral triangles have this property", "This only works for right triangles"],
+                      answer: 1,
+                      explanation: "Since the area is a fixed property of the triangle itself, ½×base×height gives the same value no matter which side is used as the base, as long as the correct corresponding altitude is used."
+                    },
+                    {
+                      question: "What can be said about two triangles that share the same altitude and have equal-length bases?",
+                      options: ["They must be congruent", "They have equal areas", "Their areas must be different", "No relationship can be determined"],
+                      answer: 1,
+                      explanation: "Since area = ½×base×height, if both the base length and the height are equal between two triangles, their areas must be equal — even if the triangles aren't congruent in shape."
+                    },
+                    {
+                      question: "Why does the line from a triangle's vertex to the midpoint of the opposite side split it into two equal-area triangles?",
+                      options: ["Because the midpoint always creates two congruent triangles", "Because the two resulting triangles share the same height (the perpendicular from the vertex) and have equal-length bases (since it's a midpoint)", "This is only true for isosceles triangles", "The two triangles do not actually have equal areas"],
+                      answer: 1,
+                      explanation: "Both smaller triangles share the same altitude (from the vertex to the line containing the base) and have equal base lengths (since the point is the midpoint) — so by the area formula, their areas must be equal."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-14-3",
+                  title: "3. Area of a Parallelogram",
+                  lab: { type: "parallelogram-area-sim" },
+                  theory: {
+                    intro: "Cut a parallelogram along one of its heights, slide the triangular piece to the other side, and it transforms into a rectangle of exactly the same area — revealing the parallelogram's area formula.",
+                    sections: [
+                      {
+                        heading: "Dissecting a Parallelogram into a Rectangle",
+                        text: "Constructing AX⊥CD (a height of the parallelogram ABCD) and cutting along AX splits it into ∆AXD and trapezium ABCX. Extending XC and constructing BY⊥XC completes ABCX into a rectangle ABYX, with ∆BYC filling the gap. Since BY=AX, ∠BYC=∠AXD=90°, and BC=AD, triangles ∆BYC and ∆AXD are congruent (RHS criterion) — so ∆AXD fits exactly where ∆BYC was, converting the parallelogram into a rectangle of the same area. This process of cutting and rearranging pieces to form an equal-area shape is called dissection."
+                      },
+                      {
+                        heading: "Area of a Parallelogram = Base × Height",
+                        text: "Since Area(ABCD) = Area(rectangle ABYX) = AX × XY, and DX=CY means DC=XY (adding the common part XC to both), we get Area of a parallelogram = base × height, where the base is DC and the height is the perpendicular distance AX."
+                      },
+                      {
+                        heading: "Any Side Can Serve as the Base",
+                        text: "The parallelogram can also be dissected using a different side as the base, with its own corresponding perpendicular height — and this always gives the same area. So any side of a parallelogram, together with its corresponding height, can be used in the area formula."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Dissecting a Parallelogram into a Rectangle",
+                      objective: "To physically verify, using a cut-out parallelogram, that cutting along a height and rearranging the pieces produces a rectangle of equal area.",
+                      materials: ["A parallelogram cut-out (paper or cardboard)", "Scissors", "Ruler"],
+                      steps: [
+                        "Draw a parallelogram ABCD and construct the height AX perpendicular to side DC.",
+                        "Cut along AX to separate the parallelogram into triangle AXD and trapezium ABCX.",
+                        "Slide triangle AXD to the opposite side of the trapezium, aligning the matching edges.",
+                        "Confirm the resulting shape is a rectangle.",
+                        "Measure the rectangle's sides and compute its area, then compare to base × height of the original parallelogram."
+                      ],
+                      observation: "After cutting along the height and rearranging, the parallelogram forms a rectangle with sides equal to the parallelogram's base and height — confirming that Area = base × height for the original parallelogram."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the name for the technique of cutting a figure into pieces and rearranging them into a different figure of equal area?",
+                      options: ["Congruence", "Dissection", "Bisection", "Tessellation"],
+                      answer: 1,
+                      explanation: "Dissection is the process of cutting a shape into pieces and rearranging them to form a different shape with the same total area."
+                    },
+                    {
+                      question: "What is the formula for the area of a parallelogram?",
+                      options: ["Area = side × side", "Area = ½ × base × height", "Area = base × height", "Area = 2 × (base + height)"],
+                      answer: 2,
+                      explanation: "Dissecting the parallelogram into a rectangle of the same base and height shows Area of a parallelogram = base × height."
+                    },
+                    {
+                      question: "When dissecting parallelogram ABCD by cutting along height AX, which congruence criterion shows that ∆BYC ≅ ∆AXD?",
+                      options: ["SSS (Side-Side-Side)", "SAS (Side-Angle-Side)", "RHS (Right angle-Hypotenuse-Side)", "AAA (Angle-Angle-Angle)"],
+                      answer: 2,
+                      explanation: "Since BY=AX, ∠BYC=∠AXD=90°, and BC=AD (opposite sides of the parallelogram), the Right angle-Hypotenuse-Side criterion confirms the triangles are congruent."
+                    },
+                    {
+                      question: "A parallelogram has base 7 cm and height 4 cm. What is its area?",
+                      options: ["11 cm²", "22 cm²", "28 cm²", "14 cm²"],
+                      answer: 2,
+                      explanation: "Area = base × height = 7 × 4 = 28 cm²."
+                    },
+                    {
+                      question: "Can any side of a parallelogram be used as the 'base' in the area formula?",
+                      options: ["No, only the longer side can be used", "Yes, as long as the corresponding perpendicular height to that side is used", "No, only the shorter side can be used", "Only if the parallelogram is a rectangle"],
+                      answer: 1,
+                      explanation: "Any side can serve as the base, provided its own corresponding perpendicular height (not a height to a different side) is used — the resulting area is always the same."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-14-4",
+                  title: "4. Area of a Rhombus and a Trapezium",
+                  lab: { type: "rhombus-trapezium-area-sim" },
+                  theory: {
+                    intro: "A rhombus can be split by its diagonals into triangles that reassemble into a rectangle, and a trapezium's area turns out to be exactly half of a related parallelogram's — two more elegant applications of dissection.",
+                    sections: [
+                      {
+                        heading: "Area of a Rhombus",
+                        text: "Since a rhombus's diagonals are perpendicular bisectors of each other, ∆ABD and ∆CBD are isosceles triangles, each of which can be dissected into a rectangle; joining these two rectangles forms one larger rectangle WXYZ with the same area as the rhombus, where XW equals diagonal AC and WZ equals half of diagonal BD. This gives Area of a rhombus = ½ × product of its diagonals. For diagonals 20 cm and 15 cm: Area = ½×20×15 = 150 cm²."
+                      },
+                      {
+                        heading: "Area of a Trapezium",
+                        text: "For a trapezium WXYZ with WX∥ZY, constructing perpendiculars from W and X down to ZY creates a rectangle WXNM in the middle, flanked by two triangles. Using letter-numbers for the parallel sides (a=WX, b=ZY) and height h, the total area works out to Area of a trapezium = ½ × height × (sum of the parallel sides)."
+                      },
+                      {
+                        heading: "A Second Way: Two Copies of the Trapezium",
+                        text: "Joining two identical copies of a trapezium (one rotated 180°) along their equal non-parallel side forms a parallelogram with base equal to the sum of the trapezium's two parallel sides, and the same height. Since two trapeziums make one parallelogram, Area of the trapezium = ½ × Area of the parallelogram = ½×height×(a+b) — confirming the formula a second way."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Computing Areas Using the Rhombus and Trapezium Formulas",
+                      objective: "To apply the diagonal-product formula for a rhombus and the height-times-sum formula for a trapezium to find their areas.",
+                      materials: ["Paper and pencil", "A calculator"],
+                      steps: [
+                        "For a rhombus with diagonals 20 cm and 15 cm, compute the area using Area = ½ × d1 × d2.",
+                        "Calculate: ½×20×15 = 150 cm².",
+                        "For a trapezium with parallel sides 6 cm and 10 cm and height 4 cm, compute the area using Area = ½ × height × (sum of parallel sides).",
+                        "Calculate: ½×4×(6+10) = ½×4×16 = 32 cm².",
+                        "Compare both formulas — notice both involve a ½ factor multiplied by a product of two lengths, echoing the triangle area formula."
+                      ],
+                      observation: "The rhombus with diagonals 20 cm and 15 cm has area 150 cm²; the trapezium with parallel sides 6 cm and 10 cm and height 4 cm has area 32 cm² — both computed directly from their respective formulas."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the formula for the area of a rhombus in terms of its diagonals d1 and d2?",
+                      options: ["Area = d1 × d2", "Area = ½ × d1 × d2", "Area = d1 + d2", "Area = ½ × (d1 + d2)"],
+                      answer: 1,
+                      explanation: "Dissecting a rhombus into a rectangle using its diagonals shows Area of a rhombus = ½ × product of its diagonals."
+                    },
+                    {
+                      question: "A rhombus has diagonals of length 20 cm and 15 cm. What is its area?",
+                      options: ["35 cm²", "75 cm²", "150 cm²", "300 cm²"],
+                      answer: 2,
+                      explanation: "Area = ½ × 20 × 15 = 150 cm²."
+                    },
+                    {
+                      question: "What is the formula for the area of a trapezium with parallel sides a and b, and height h?",
+                      options: ["Area = h × (a + b)", "Area = ½ × h × (a + b)", "Area = ½ × h × a × b", "Area = h × a × b"],
+                      answer: 1,
+                      explanation: "Breaking the trapezium into a rectangle and triangles (or using two copies to form a parallelogram) gives Area of a trapezium = ½ × height × sum of the parallel sides."
+                    },
+                    {
+                      question: "A trapezium has parallel sides 8 cm and 12 cm, and height 5 cm. What is its area?",
+                      options: ["40 cm²", "50 cm²", "60 cm²", "100 cm²"],
+                      answer: 1,
+                      explanation: "Area = ½ × 5 × (8+12) = ½×5×20 = 50 cm²."
+                    },
+                    {
+                      question: "How does joining two identical copies of a trapezium (one rotated 180°) help derive its area formula?",
+                      options: ["It has no connection to the area formula", "The two copies form a parallelogram with base (a+b) and the same height, so the trapezium's area is exactly half the parallelogram's area", "The two copies always form a rectangle instead", "This method only works for isosceles trapeziums"],
+                      answer: 1,
+                      explanation: "The two rotated copies join to form a parallelogram whose base equals the sum of the trapezium's two parallel sides — since this parallelogram is made of exactly two trapeziums, each trapezium's area is half of base×height = ½×(a+b)×h."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
