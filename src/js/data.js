@@ -14974,6 +14974,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-11",
+              title: "Exploring Some Geometric Themes",
+              topics: [
+                {
+                  id: "8m-11-1",
+                  title: "1. Fractals: Sierpinski Patterns",
+                  lab: { type: "sierpinski-growth-sim" },
+                  theory: {
+                    intro: "A fern's leaves look like tiny copies of the whole fern — and its sub-leaves look like tiny copies of those leaves. This endless self-similarity, repeating at smaller and smaller scales, is called a fractal.",
+                    sections: [
+                      {
+                        heading: "What Is a Fractal?",
+                        text: "A fractal is a self-similar shape that exhibits the same or similar pattern over and over again, at smaller and smaller scales. This self-similarity appears throughout nature — in ferns, trees (trunk→limbs→branches→branchlets), clouds, coastlines, mountains, and lightning."
+                      },
+                      {
+                        heading: "The Sierpinski Carpet",
+                        text: "The Sierpinski Carpet is made by taking a square, breaking it into 9 smaller equal squares, and removing the central one — then repeating this same procedure on each of the remaining 8 squares, forever. If Rₙ is the number of remaining squares at step n, then every square at step n produces 8 squares at step (n+1), giving Rₙ₊₁=8Rₙ, so Rₙ=8ⁿ. The number of holes Hₙ follows Hₙ₊₁=Hₙ+Rₙ (every remaining square creates one new hole, and old holes stay)."
+                      },
+                      {
+                        heading: "The Sierpinski Gasket (Triangle)",
+                        text: "A similar fractal starts with an equilateral triangle, divides it into 4 identical smaller triangles by joining midpoints, and removes the central one — repeating on the remaining 3 triangles. Here, the number of remaining triangles follows Tₙ=3ⁿ (each triangle produces 3 more), and holes follow the same accumulation pattern as the Carpet."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Constructing the First Steps of the Sierpinski Carpet",
+                      objective: "To draw the first few steps of the Sierpinski Carpet and verify the formula Rₙ=8ⁿ for remaining squares.",
+                      materials: ["Graph paper", "Ruler", "Pencil", "Eraser"],
+                      steps: [
+                        "Draw a large square (Step 0) and divide it into a 3×3 grid of 9 smaller squares.",
+                        "Shade or remove the central square, leaving 8 remaining squares (Step 1).",
+                        "Repeat the same 3×3 division-and-removal process on each of the 8 remaining squares to get Step 2.",
+                        "Count the number of remaining (unshaded) squares at each step, and compare to the formula Rₙ=8ⁿ.",
+                        "Count the number of holes at each step and compare to the pattern Hₙ₊₁=Hₙ+Rₙ."
+                      ],
+                      observation: "At Step 0, there is R₀=1 square and H₀=0 holes; at Step 1, R₁=8 squares remain and H₁=1 hole; at Step 2, R₂=64 (=8²) squares remain and H₂=1+8=9 holes — confirming the formulas Rₙ=8ⁿ and Hₙ₊₁=Hₙ+Rₙ exactly."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'fractal'?",
+                      options: ["Any geometric shape with straight edges", "A self-similar shape that repeats the same or similar pattern at smaller and smaller scales", "A shape that can only be created using a computer", "A three-dimensional solid only"],
+                      answer: 1,
+                      explanation: "A fractal is defined by self-similarity — the same pattern appearing again and again at progressively smaller scales, as seen in ferns, coastlines, and mathematical constructions like the Sierpinski Carpet."
+                    },
+                    {
+                      question: "How is the Sierpinski Carpet constructed?",
+                      options: ["By adding smaller squares to the corners of a larger square", "By dividing a square into 9 smaller squares and removing the central one, then repeating on the remaining 8", "By drawing circles inside a square repeatedly", "By doubling the size of a square repeatedly"],
+                      answer: 1,
+                      explanation: "The Sierpinski Carpet is built by repeatedly dividing each remaining square into a 3×3 grid of 9 smaller squares and removing the central one."
+                    },
+                    {
+                      question: "If Rₙ is the number of remaining squares in the Sierpinski Carpet at step n, what is the general formula for Rₙ?",
+                      options: ["Rₙ = 8n", "Rₙ = 8ⁿ", "Rₙ = n⁸", "Rₙ = 9ⁿ"],
+                      answer: 1,
+                      explanation: "Since each remaining square produces 8 new remaining squares at the next step (Rₙ₊₁=8Rₙ, with R₀=1), the general formula is Rₙ=8ⁿ."
+                    },
+                    {
+                      question: "How many remaining squares are there at Step 2 of the Sierpinski Carpet?",
+                      options: ["8", "16", "64", "72"],
+                      answer: 2,
+                      explanation: "Using Rₙ=8ⁿ with n=2: R₂=8²=64 remaining squares."
+                    },
+                    {
+                      question: "In the Sierpinski Gasket (Triangle), how many identical smaller triangles does joining the midpoints of a triangle create?",
+                      options: ["2", "3", "4", "6"],
+                      answer: 2,
+                      explanation: "Joining the midpoints of an equilateral triangle's three sides divides it into 4 identical smaller equilateral triangles — 3 corner triangles plus 1 central triangle (which gets removed in the Gasket construction)."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-11-2",
+                  title: "2. The Koch Snowflake and Fractals in Art",
+                  lab: { type: "koch-snowflake-sim" },
+                  theory: {
+                    intro: "Named after a Swedish mathematician who described it in 1904, the Koch Snowflake grows a 'bump' on every single side, over and over — producing a perimeter that grows without bound around a shape of limited area.",
+                    sections: [
+                      {
+                        heading: "Constructing the Koch Snowflake",
+                        text: "Starting with an equilateral triangle, each side is divided into 3 equal parts; an equilateral triangle is raised over the middle part, and the middle part itself is removed. Effectively, each side gets replaced by a 'bump'-shaped structure of 4 smaller segments. This procedure repeats on every side of the new shape, forever."
+                      },
+                      {
+                        heading: "Counting Sides and Perimeter",
+                        text: "Since each side becomes 4 new sides at every step, the number of sides follows sidesₙ=3×4ⁿ (starting from the triangle's 3 sides). Each new side is 1/3 the length of the side it replaced, so the side length at step n is (1/3)ⁿ. This makes the perimeter perimeterₙ = sidesₙ × sidelengthₙ = 3×4ⁿ×(1/3)ⁿ = 3×(4/3)ⁿ — growing without bound as n increases, even though the snowflake's total area stays finite."
+                      },
+                      {
+                        heading: "Fractals in Human Art and Culture",
+                        text: "Fractals appear in human-made art across history and cultures: the Kandariya Mahadev Temple in Khajuraho (c. 1025 CE) features a tall structure made of smaller copies of itself, with even smaller copies on those; similar fractal-like patterns appear in temples in Madurai, Hampi, Rameswaram, and Varanasi. Nigerian Fulani wedding blankets often show fractal diamond patterns nested within diamond patterns. The Dutch artist M.C. Escher's 'Smaller and Smaller' print shows an identical lizard pattern repeating at smaller and smaller scales."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tracking Sides and Perimeter Growth in the Koch Snowflake",
+                      objective: "To construct the first steps of the Koch Snowflake and verify the formulas for the number of sides and the perimeter at each step.",
+                      materials: ["Paper and pencil", "Ruler", "A compass (for equilateral triangles)"],
+                      steps: [
+                        "Draw an equilateral triangle with side length 1 unit (Step 0), and note it has 3 sides and perimeter 3.",
+                        "On each side, mark the middle third, and draw an outward-pointing equilateral triangle bump on it, removing the base of the bump — this is Step 1.",
+                        "Count the number of sides at Step 1, and compute the new (shorter) side length.",
+                        "Calculate the Step 1 perimeter (sides × side length) and compare it to the formula 3×(4/3)¹.",
+                        "Repeat the bump procedure on every side to reach Step 2, and verify the formulas again."
+                      ],
+                      observation: "At Step 0: 3 sides, perimeter 3. At Step 1: 3×4=12 sides, each of length 1/3, giving perimeter 12×(1/3)=4, matching 3×(4/3)¹=4. At Step 2: 3×4²=48 sides, each of length 1/9, giving perimeter 48/9≈5.33, matching 3×(4/3)²≈5.33 — confirming the perimeter grows by a factor of 4/3 at every step."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How is each side transformed in one step of the Koch Snowflake construction?",
+                      options: ["It is simply erased", "It is divided into 3 equal parts, with an equilateral triangle bump raised over the middle part (replacing it with 4 smaller segments)", "It is doubled in length", "It is rotated 90 degrees"],
+                      answer: 1,
+                      explanation: "Each side is divided into thirds, and the middle third is replaced by two sides of an outward equilateral triangle bump — turning 1 side into 4 shorter segments."
+                    },
+                    {
+                      question: "What is the formula for the number of sides at step n of the Koch Snowflake?",
+                      options: ["sidesₙ = 3n", "sidesₙ = 3×4ⁿ", "sidesₙ = 4×3ⁿ", "sidesₙ = 4ⁿ"],
+                      answer: 1,
+                      explanation: "Starting from 3 sides and multiplying by 4 at every step gives sidesₙ = 3×4ⁿ."
+                    },
+                    {
+                      question: "As the number of steps n increases, what happens to the perimeter of the Koch Snowflake?",
+                      options: ["It stays exactly the same", "It decreases toward zero", "It grows without bound (approaches infinity)", "It doubles exactly once and then stops changing"],
+                      answer: 2,
+                      explanation: "Since the perimeter formula 3×(4/3)ⁿ has a base greater than 1 (4/3), the perimeter grows without bound as n increases, even though the snowflake's enclosed area remains finite."
+                    },
+                    {
+                      question: "Where does an early example of fractal-like patterns appear in Indian architecture?",
+                      options: ["The Taj Mahal", "The Kandariya Mahadev Temple in Khajuraho (c. 1025 CE), made of smaller copies of the full structure", "The Red Fort in Delhi", "The Golden Temple in Amritsar"],
+                      answer: 1,
+                      explanation: "The Kandariya Mahadev Temple in Khajuraho, completed around 1025 CE, features a tall structure made up of smaller copies of the full structure, with even smaller copies on those — an early architectural example of fractal self-similarity."
+                    },
+                    {
+                      question: "What is the perimeter of the Koch Snowflake at Step 1, starting from a triangle with side length 1 unit?",
+                      options: ["3", "4", "12", "1/3"],
+                      answer: 1,
+                      explanation: "At Step 1, there are 3×4=12 sides, each of length 1/3, giving a perimeter of 12×(1/3)=4 — matching the formula 3×(4/3)¹=4."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-11-3",
+                  title: "3. Faces, Edges, Vertices, and Nets",
+                  lab: { type: "polyhedron-properties-sim" },
+                  theory: {
+                    intro: "A cube, a pentagonal prism, and a tetrahedron all follow the same hidden pattern in their faces, edges, and vertices — one determined entirely by the shape of their base polygon.",
+                    sections: [
+                      {
+                        heading: "Faces, Edges, and Vertices",
+                        text: "Faces are the flat surfaces forming a solid's boundary; edges are the line segments forming the sides of faces; vertices are the points where edges meet. A cube (or cuboid) has 6 faces, 12 edges, and 8 vertices."
+                      },
+                      {
+                        heading: "Prisms and Pyramids",
+                        text: "A prism has two congruent polygons as opposite faces, connected by parallelogram faces along corresponding vertices. Named by their polygon shape (triangular, pentagonal, hexagonal, etc.), a prism with an n-sided polygon base has n+2 faces, 3n edges, and 2n vertices. A pyramid has a polygonal base and a single point (apex) outside it, connected to every base vertex by an edge — an n-sided pyramid has n+1 faces, 2n edges, and n+1 vertices. A triangular pyramid is also called a tetrahedron."
+                      },
+                      {
+                        heading: "Nets: Unfolding Solids onto a Plane",
+                        text: "A net is a flat shape that can be folded to form a solid — obtained by 'unfolding' a solid onto a plane. Basic solids like cuboids, cylinders, cones, prisms, and pyramids can all be made from foldable flat materials (paper, cardboard) using their nets. When actually constructing a solid, extra flaps are often added to the net for gluing or taping adjacent faces together — but the net itself refers only to the unfolded shape, not these supporting flaps."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying Face-Edge-Vertex Counts for Prisms and Pyramids",
+                      objective: "To count faces, edges, and vertices for several prisms and pyramids, and verify the general formulas based on the polygon's number of sides.",
+                      materials: ["Paper and pencil", "Cardboard or paper models of prisms/pyramids (or images to study)"],
+                      steps: [
+                        "For a triangular prism (n=3), count its faces, edges, and vertices directly from a model or diagram.",
+                        "Compare your count to the formulas: faces=n+2, edges=3n, vertices=2n.",
+                        "Repeat for a pentagonal prism (n=5) and a hexagonal prism (n=6).",
+                        "For a square pyramid (n=4) and a pentagonal pyramid (n=5), count faces, edges, and vertices, and compare to: faces=n+1, edges=2n, vertices=n+1.",
+                        "Discuss how these counts would extend to a prism or pyramid with a 10-sided (decagonal) base."
+                      ],
+                      observation: "A triangular prism (n=3) has 5 faces, 9 edges, and 6 vertices — matching n+2=5, 3n=9, 2n=6 exactly; a square pyramid (n=4) has 5 faces, 8 edges, and 5 vertices — matching n+1=5, 2n=8, n+1=5 exactly."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How many faces, edges, and vertices does a cube have?",
+                      options: ["4 faces, 6 edges, 4 vertices", "6 faces, 12 edges, 8 vertices", "8 faces, 12 edges, 6 vertices", "6 faces, 8 edges, 12 vertices"],
+                      answer: 1,
+                      explanation: "A cube has 6 square faces, 12 edges, and 8 vertices — a standard reference fact for polyhedra."
+                    },
+                    {
+                      question: "For a prism with an n-sided polygon base, what is the formula for the number of edges?",
+                      options: ["n+2", "2n", "3n", "n²"],
+                      answer: 2,
+                      explanation: "A prism with an n-sided base has 3n edges: n edges on each of the two polygon faces (2n total), plus n connecting edges between corresponding vertices."
+                    },
+                    {
+                      question: "For a pyramid with an n-sided polygon base, what is the formula for the number of vertices?",
+                      options: ["n", "n+1", "2n", "n+2"],
+                      answer: 1,
+                      explanation: "A pyramid with an n-sided base has n vertices around the base, plus 1 apex vertex, giving n+1 total vertices."
+                    },
+                    {
+                      question: "What is another name for a triangular pyramid?",
+                      options: ["Tetrahedron", "Octahedron", "Icosahedron", "Dodecahedron"],
+                      answer: 0,
+                      explanation: "A triangular pyramid (a pyramid with a triangular base) is also known as a tetrahedron."
+                    },
+                    {
+                      question: "What is a 'net' of a solid?",
+                      options: ["A 3D model made of wire", "A flat shape obtained by unfolding a solid onto a plane, which can be folded back to form the solid", "The shadow cast by a solid", "A type of prism"],
+                      answer: 1,
+                      explanation: "A net is the flat pattern created by unfolding a solid's surface onto a plane — folding it back along its edges recreates the original 3D solid."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-11-4",
+                  title: "4. Isometric Projections",
+                  lab: { type: "cube-projection-sim" },
+                  theory: {
+                    intro: "Balance a cube perfectly on one corner and look straight down — every one of its edges appears exactly the same length in the resulting 2D outline, a special view called the isometric projection.",
+                    sections: [
+                      {
+                        heading: "Profiles and Projections",
+                        text: "When we see a solid object, we're really seeing its profile (outline) from a specific viewpoint — and this outline can look dramatically different depending on the viewing direction. A cube might show a square profile from one angle, a rectangle from another, or even a hexagon from a third."
+                      },
+                      {
+                        heading: "The Isometric Projection",
+                        text: "In general, projecting a solid onto a flat plane loses information — but for certain special orientations, much of that lost information can be recovered. Balancing a cube on one of its corner vertices and projecting it straight down onto the floor creates an isometric projection ('isometric' means 'equal measure' in Greek) — a projection where the lengths of all projected edges are equal. The isometric projection of a cube takes the shape of a regular hexagon."
+                      },
+                      {
+                        heading: "Isometric Grids in Engineering",
+                        text: "Tiling a plane with hexagons (matching the isometric cube shape) creates an isometric grid — widely used in engineering to draw projections of solids and measure lengths along all three primary directions (length, depth, and height) simultaneously, all on one 2D drawing."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Exploring Different Projections of a Cube",
+                      objective: "To observe how a cube's 2D outline (profile) changes dramatically depending on the viewing angle, culminating in the special isometric (corner-balanced) view.",
+                      materials: ["A cube-shaped object or model (like a die or box)", "A flashlight or lamp (to cast shadows)", "A wall or screen"],
+                      steps: [
+                        "Hold the cube so one face directly faces a light source, and observe the shadow's outline on the wall — note its shape.",
+                        "Rotate the cube so you're viewing it edge-on (along one edge), and observe how the shadow outline changes.",
+                        "Try to balance the cube on a single corner vertex (or approximate this orientation), and observe the outline from directly above.",
+                        "Compare the three outlines: face-on (square), edge-on (rectangle), and corner-on (hexagon).",
+                        "Discuss why the corner-on (isometric) view is special: all edges appear the same length in this projection."
+                      ],
+                      observation: "Viewing the cube face-on gives a square outline, viewing it edge-on gives a rectangular outline, but viewing it balanced on a corner vertex gives a regular hexagon outline — the isometric projection, where all edges are projected to equal lengths, unlike the other two views."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does 'isometric' mean, and where does the term come from?",
+                      options: ["'Many-sided', from Latin", "'Equal measure', from Greek", "'Solid shape', from French", "'Flat projection', from German"],
+                      answer: 1,
+                      explanation: "'Isometric' comes from Greek, meaning 'equal measure' — referring to a projection where all edges of the solid appear the same length."
+                    },
+                    {
+                      question: "What shape does the isometric projection of a cube take?",
+                      options: ["A square", "A rectangle", "A regular hexagon", "A circle"],
+                      answer: 2,
+                      explanation: "When a cube is balanced on one corner vertex and projected straight down, the resulting outline is a regular hexagon — the isometric projection."
+                    },
+                    {
+                      question: "How is the isometric projection of a cube obtained?",
+                      options: ["By viewing the cube directly face-on", "By balancing the cube on one of its corner vertices and projecting it straight down", "By cutting the cube in half", "By viewing the cube from directly below only"],
+                      answer: 1,
+                      explanation: "Balancing a cube on a corner vertex and projecting it down onto a plane produces the isometric projection, where all edge-projections have equal length."
+                    },
+                    {
+                      question: "Why are isometric grids (made of tiled hexagons) useful in engineering?",
+                      options: ["They have no practical use in engineering", "They allow drawing projections of solids while measuring lengths along all 3 primary directions (length, depth, height) on one 2D drawing", "They are only used for artistic decoration", "They can only represent spheres, not other solids"],
+                      answer: 1,
+                      explanation: "Isometric grids let engineers draw a solid's projection while still being able to accurately measure along all three spatial directions, making them valuable for technical and engineering drawings."
+                    },
+                    {
+                      question: "In general, does projecting a 3D solid onto a 2D plane lose information?",
+                      options: ["No, all information is always fully preserved", "Yes, generally information is lost — though for special orientations like the isometric view, much of it can be recovered", "Only spheres lose information when projected", "Projections always create more information than the original solid had"],
+                      answer: 1,
+                      explanation: "Projecting a 3D solid onto a 2D plane generally loses information (since a 2D outline can't fully capture a 3D shape) — but special orientations, like the isometric projection, allow much of that information (such as equal edge lengths) to be recovered."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

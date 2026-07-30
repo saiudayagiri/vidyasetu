@@ -3512,6 +3512,104 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const sierpinskiGrowthLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="sierpinski-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a fractal and step number and see remaining pieces and holes computed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Fractal &amp; Step</h3>
+            <select id="sel-sierpinski-shape" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);margin-bottom:0.5rem;">
+              <option value="carpet" selected>Sierpinski Carpet</option>
+              <option value="gasket">Sierpinski Gasket</option>
+            </select>
+            <select id="sel-sierpinski-step" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0">Step 0</option>
+              <option value="1">Step 1</option>
+              <option value="2" selected>Step 2</option>
+              <option value="3">Step 3</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Remaining Pieces &amp; Holes</h3>
+            <div id="sierpinski-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a fractal and step above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const kochSnowflakeLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="koch-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a step number and see the number of sides and perimeter computed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Step</h3>
+            <select id="sel-koch-step" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0">Step 0</option>
+              <option value="1" selected>Step 1</option>
+              <option value="2">Step 2</option>
+              <option value="3">Step 3</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Sides &amp; Perimeter</h3>
+            <div id="koch-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a step above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const polyhedronPropertiesLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="polyhedron-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a solid and see its faces, edges, and vertices computed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Solid</h3>
+            <select id="sel-polyhedron-solid" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="prism-3">Triangular prism</option>
+              <option value="prism-4" selected>Cube (square prism)</option>
+              <option value="prism-5">Pentagonal prism</option>
+              <option value="prism-6">Hexagonal prism</option>
+              <option value="pyramid-3">Triangular pyramid (tetrahedron)</option>
+              <option value="pyramid-4">Square pyramid</option>
+              <option value="pyramid-5">Pentagonal pyramid</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Faces, Edges, Vertices</h3>
+            <div id="polyhedron-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a solid above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const cubeProjectionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="cube-projection-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a viewing angle and see the cube's 2D projection outline.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Viewpoint</h3>
+            <select id="sel-cube-projection" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="face" selected>Face-on view</option>
+              <option value="edge">Edge-on view</option>
+              <option value="corner">Corner-on view (isometric)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Resulting Outline</h3>
+            <div id="cube-projection-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a viewpoint above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -5455,6 +5553,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'pie-chart-angle-sim') {
               labHtml = pieChartAngleLabHtml;
               labDesc = 'Pick a grade and see its pie-slice angle computed and highlighted.';
+            } else if (topicObj.lab.type === 'sierpinski-growth-sim') {
+              labHtml = sierpinskiGrowthLabHtml;
+              labDesc = 'Pick a fractal and step and see the remaining pieces and holes computed.';
+            } else if (topicObj.lab.type === 'koch-snowflake-sim') {
+              labHtml = kochSnowflakeLabHtml;
+              labDesc = 'Pick a step and see the number of sides and perimeter of the Koch Snowflake.';
+            } else if (topicObj.lab.type === 'polyhedron-properties-sim') {
+              labHtml = polyhedronPropertiesLabHtml;
+              labDesc = 'Pick a solid and see its faces, edges, and vertices computed from its base polygon.';
+            } else if (topicObj.lab.type === 'cube-projection-sim') {
+              labHtml = cubeProjectionLabHtml;
+              labDesc = 'Pick a viewing angle and see the cube’s resulting 2D projection outline.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -5958,6 +6068,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initMultiTermSharingLab();
         } else if (topicObj.lab.type === 'pie-chart-angle-sim') {
           initPieChartAngleLab();
+        } else if (topicObj.lab.type === 'sierpinski-growth-sim') {
+          initSierpinskiGrowthLab();
+        } else if (topicObj.lab.type === 'koch-snowflake-sim') {
+          initKochSnowflakeLab();
+        } else if (topicObj.lab.type === 'polyhedron-properties-sim') {
+          initPolyhedronPropertiesLab();
+        } else if (topicObj.lab.type === 'cube-projection-sim') {
+          initCubeProjectionLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -20444,6 +20562,236 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(`Grade ${sel.value}: ${sel_.count}/${total} students`, W / 2, 260);
 
         obs.innerHTML = `<strong>Grade ${sel.value} (${sel_.count} students out of ${total}) → angle = (${sel_.count}/${total}) × 360° = ${deg.toFixed(0)}°.</strong> All 5 slice angles together sum to exactly 360°.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSierpinskiGrowthLab() {
+      const canvas = document.getElementById('sierpinski-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const selShape = document.getElementById('sel-sierpinski-shape');
+      const selStep = document.getElementById('sel-sierpinski-step');
+      const obs = document.getElementById('sierpinski-obs');
+
+      function drawCarpet(x, y, size, depth) {
+        if (depth === 0) {
+          ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillRect(x, y, size, size);
+          return;
+        }
+        const s = size / 3;
+        for (let i = 0; i < 3; i++) {
+          for (let j = 0; j < 3; j++) {
+            if (i === 1 && j === 1) continue;
+            drawCarpet(x + i * s, y + j * s, s, depth - 1);
+          }
+        }
+      }
+
+      function drawGasket(p1, p2, p3, depth) {
+        if (depth === 0) {
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.lineTo(p3.x, p3.y);
+          ctx.closePath();
+          ctx.fillStyle = cssVar('--accent-color');
+          ctx.fill();
+          return;
+        }
+        const m12 = { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 };
+        const m23 = { x: (p2.x + p3.x) / 2, y: (p2.y + p3.y) / 2 };
+        const m31 = { x: (p3.x + p1.x) / 2, y: (p3.y + p1.y) / 2 };
+        drawGasket(p1, m12, m31, depth - 1);
+        drawGasket(m12, p2, m23, depth - 1);
+        drawGasket(m31, m23, p3, depth - 1);
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const shape = selShape.value;
+        const n = parseInt(selStep.value);
+        const size = 180;
+
+        if (shape === 'carpet') {
+          drawCarpet(W / 2 - size / 2, 30, size, n);
+          const R = Math.pow(8, n);
+          const H_ = n === 0 ? 0 : (Math.pow(8, n) - 1) / 7;
+          ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(`Sierpinski Carpet — Step ${n}`, W / 2, 20);
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillText(`Remaining squares Rₙ = 8${n === 0 ? '' : '^' + n} = ${R}`, W / 2, 235);
+          ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText(`Holes Hₙ = ${H_}`, W / 2, 255);
+          obs.innerHTML = `<strong>Sierpinski Carpet, Step ${n}:</strong> Rₙ=8ⁿ=${R} remaining squares, Hₙ=${H_} holes.`;
+        } else {
+          const p1 = { x: W / 2, y: 30 }, p2 = { x: W / 2 - size / 2, y: 30 + size * 0.87 }, p3 = { x: W / 2 + size / 2, y: 30 + size * 0.87 };
+          drawGasket(p1, p2, p3, n);
+          const T = Math.pow(3, n);
+          const H_ = n === 0 ? 0 : (Math.pow(3, n) - 1) / 2;
+          ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(`Sierpinski Gasket — Step ${n}`, W / 2, 20);
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillText(`Remaining triangles Tₙ = 3${n === 0 ? '' : '^' + n} = ${T}`, W / 2, 235);
+          ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText(`Holes Hₙ = ${H_}`, W / 2, 255);
+          obs.innerHTML = `<strong>Sierpinski Gasket, Step ${n}:</strong> Tₙ=3ⁿ=${T} remaining triangles, Hₙ=${H_} holes.`;
+        }
+      }
+
+      selShape.addEventListener('change', draw);
+      selStep.addEventListener('change', draw);
+      draw();
+    }
+
+    function initKochSnowflakeLab() {
+      const canvas = document.getElementById('koch-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-koch-step');
+      const obs = document.getElementById('koch-obs');
+
+      function kochPoints(p1, p2, depth) {
+        if (depth === 0) return [p1, p2];
+        const dx = (p2.x - p1.x) / 3, dy = (p2.y - p1.y) / 3;
+        const pA = { x: p1.x + dx, y: p1.y + dy };
+        const pB = { x: p1.x + 2 * dx, y: p1.y + 2 * dy };
+        const angle = -Math.PI / 3;
+        const rx = dx * Math.cos(angle) - dy * Math.sin(angle);
+        const ry = dx * Math.sin(angle) + dy * Math.cos(angle);
+        const pApex = { x: pA.x + rx, y: pA.y + ry };
+        const left = kochPoints(p1, pA, depth - 1);
+        const mid1 = kochPoints(pA, pApex, depth - 1);
+        const mid2 = kochPoints(pApex, pB, depth - 1);
+        const right = kochPoints(pB, p2, depth - 1);
+        return [...left.slice(0, -1), ...mid1.slice(0, -1), ...mid2.slice(0, -1), ...right];
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = parseInt(sel.value);
+        const size = 160;
+        const cx = W / 2, top = 40;
+        const p1 = { x: cx, y: top }, p2 = { x: cx - size / 2, y: top + size * 0.87 }, p3 = { x: cx + size / 2, y: top + size * 0.87 };
+
+        [[p1, p2], [p2, p3], [p3, p1]].forEach(([a, b]) => {
+          const pts = kochPoints(a, b, Math.min(n, 3));
+          ctx.beginPath();
+          ctx.moveTo(pts[0].x, pts[0].y);
+          pts.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+          ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2; ctx.stroke();
+        });
+
+        const sides = 3 * Math.pow(4, n);
+        const perimeter = 3 * Math.pow(4 / 3, n);
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Koch Snowflake — Step ${n}`, W / 2, 20);
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Sides = 3×4${n === 0 ? '' : '^' + n} = ${sides}`, W / 2, 240);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Perimeter = 3×(4/3)${n === 0 ? '' : '^' + n} ≈ ${perimeter.toFixed(2)}`, W / 2, 260);
+
+        obs.innerHTML = `<strong>Koch Snowflake, Step ${n}:</strong> ${sides} sides, perimeter ≈ ${perimeter.toFixed(2)} (starting side length 1).`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPolyhedronPropertiesLab() {
+      const canvas = document.getElementById('polyhedron-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-polyhedron-solid');
+      const obs = document.getElementById('polyhedron-obs');
+      const NAMES = {
+        'prism-3': 'Triangular prism', 'prism-4': 'Cube (square prism)', 'prism-5': 'Pentagonal prism', 'prism-6': 'Hexagonal prism',
+        'pyramid-3': 'Triangular pyramid (tetrahedron)', 'pyramid-4': 'Square pyramid', 'pyramid-5': 'Pentagonal pyramid'
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [type, nStr] = sel.value.split('-');
+        const n = parseInt(nStr);
+        const isPrism = type === 'prism';
+        const F = isPrism ? n + 2 : n + 1;
+        const E = isPrism ? 3 * n : 2 * n;
+        const V = isPrism ? 2 * n : n + 1;
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(NAMES[sel.value], W / 2, 35);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Base polygon: ${n}-sided`, W / 2, 60);
+
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+        ctx.fillText(isPrism ? 'Faces = n+2' : 'Faces = n+1', 130, 105);
+        ctx.fillText(isPrism ? 'Edges = 3n' : 'Edges = 2n', 130, 130);
+        ctx.fillText(isPrism ? 'Vertices = 2n' : 'Vertices = n+1', 130, 155);
+
+        const stats = [['Faces', F], ['Edges', E], ['Vertices', V]];
+        let y = 105;
+        stats.forEach(([label, val]) => {
+          ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'right';
+          ctx.fillText(`${val}`, 420, y + 5);
+          y += 25;
+        });
+
+        obs.innerHTML = `<strong>${NAMES[sel.value]} (n=${n}):</strong> Faces=${F}, Edges=${E}, Vertices=${V}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCubeProjectionLab() {
+      const canvas = document.getElementById('cube-projection-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-cube-projection');
+      const obs = document.getElementById('cube-projection-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mode = sel.value;
+        const cx = W / 2, cy = 140;
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        ctx.fillStyle = 'rgba(16,185,129,0.15)';
+
+        if (mode === 'face') {
+          const s = 100;
+          ctx.beginPath(); ctx.rect(cx - s / 2, cy - s / 2, s, s); ctx.fill(); ctx.stroke();
+        } else if (mode === 'edge') {
+          const w = 130, h = 75;
+          ctx.beginPath(); ctx.rect(cx - w / 2, cy - h / 2, w, h); ctx.fill(); ctx.stroke();
+        } else {
+          const r = 80;
+          ctx.beginPath();
+          for (let i = 0; i < 6; i++) {
+            const ang = Math.PI / 3 * i - Math.PI / 2;
+            const x = cx + r * Math.cos(ang), y = cy + r * Math.sin(ang);
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          }
+          ctx.closePath(); ctx.fill(); ctx.stroke();
+        }
+
+        const labels = { face: 'Square outline', edge: 'Rectangular outline', corner: 'Regular hexagon (isometric)' };
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(labels[mode], W / 2, 240);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(mode === 'corner' ? 'All projected edges are equal length' : 'A non-isometric projection', W / 2, 262);
+
+        obs.innerHTML = mode === 'face'
+          ? '<strong>Face-on view: square outline.</strong> Looking directly at one face of the cube shows a simple square.'
+          : mode === 'edge'
+          ? '<strong>Edge-on view: rectangular outline.</strong> Looking along one edge shows a rectangle, combining two adjacent faces\' widths.'
+          : '<strong>Corner-on (isometric) view: regular hexagon.</strong> Balancing the cube on a corner vertex and projecting down gives a hexagon where all edges appear equal in length.';
       }
 
       sel.addEventListener('change', draw);
