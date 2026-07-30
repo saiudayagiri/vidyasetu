@@ -15538,6 +15538,289 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-13",
+              title: "Algebra Play",
+              topics: [
+                {
+                  id: "8m-13-1",
+                  title: "1. 'Think of a Number' Tricks",
+                  lab: { type: "think-of-a-number-sim" },
+                  theory: {
+                    intro: "Pick any number, double it, add four, halve it, and subtract your original number — no matter what you started with, the answer is always 2. Algebra reveals exactly why.",
+                    sections: [
+                      {
+                        heading: "Why the Trick Always Works",
+                        text: "Using a letter-number x for the unknown starting value: (1) Think of a number: x. (2) Double it: 2x. (3) Add four: 2x+4. (4) Divide by two: x+2. (5) Subtract the original number: (x+2)−x = 2. The x cancels out completely, which is exactly why the final answer is always 2, regardless of the starting number."
+                      },
+                      {
+                        heading: "The Date-Guessing Trick",
+                        text: "Shubham can guess any date by asking for a final number: multiply the month M by 5, add 6, multiply by 4, add 9, multiply by 5, then add the day D. Algebraically, this gives 100M+165+D. For Mukta's Republic Day (26/01): 5(1)+6=11, 11×4=44, 44+9=53, 53×5=265, 265+26=291 — matching the formula 100(1)+165+26=291."
+                      },
+                      {
+                        heading: "Reversing the Trick to Find the Date",
+                        text: "Given only the final answer, subtract 165 to get 100M+D — a number whose last two digits are the day D, and whose remaining leading digit(s) are the month M. For a final answer of 1390: 1390−165=1225, so D=25 and M=12, meaning the date was 25th December."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing the 'Think of a Number' Trick",
+                      objective: "To verify algebraically that the classic 'double, add four, halve, subtract' trick always produces 2, regardless of starting number.",
+                      materials: ["Paper and pencil", "A calculator"],
+                      steps: [
+                        "Choose any starting number (e.g., 7).",
+                        "Double it: 7×2=14.",
+                        "Add four: 14+4=18.",
+                        "Divide by two: 18/2=9.",
+                        "Subtract the original number: 9−7=2.",
+                        "Repeat with a different starting number and confirm the result is still 2."
+                      ],
+                      observation: "Starting from 7: double→14, add 4→18, halve→9, subtract 7→2. Trying any other starting number produces the same final result of 2, confirming the algebraic proof that the x always cancels out."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the trick 'double it, add four, divide by two, subtract the original number', why does the final answer always equal 2 regardless of the starting number?",
+                      options: ["It is a coincidence that only works for small numbers", "Algebraically, (2x+4)/2 − x = (x+2) − x = 2, so the x term always cancels out", "The trick only works for even starting numbers", "The final answer actually varies each time"],
+                      answer: 1,
+                      explanation: "Representing the starting number as x, the steps simplify algebraically to (x+2)−x=2 — the x cancels completely, so the result is always 2 no matter the starting value."
+                    },
+                    {
+                      question: "In the date-guessing trick, what algebraic expression represents the final answer, where M is the month and D is the day?",
+                      options: ["M + D", "10M + D", "100M + 165 + D", "5M + 6D"],
+                      answer: 2,
+                      explanation: "Following the steps (×5, +6, ×4, +9, ×5, +D) algebraically gives 100M+165+D, which is why subtracting 165 isolates the month and day digits."
+                    },
+                    {
+                      question: "If Mukta's final answer in the date trick is 1390, what date did she start with?",
+                      options: ["13th September", "25th December", "9th March", "19th October"],
+                      answer: 1,
+                      explanation: "Subtracting 165 from 1390 gives 1225 — the last two digits (25) are the day, and the remaining digits (12) are the month, giving 25th December."
+                    },
+                    {
+                      question: "If the final answer in the date trick is 1269, what date was chosen?",
+                      options: ["4th November", "12th June", "26th September", "1st February"],
+                      answer: 0,
+                      explanation: "1269−165=1104. The last two digits (04) give the day, and the remaining digits (11) give the month — 4th November."
+                    },
+                    {
+                      question: "What mathematical idea explains why this entire family of 'Think of a Number' tricks works?",
+                      options: ["Random chance ensures the same answer every time", "Representing the unknown as a letter-number and simplifying the expression shows the unknown term cancels out, leaving a fixed result", "The tricks only work for numbers less than 10", "Calculators always round to the same final digit"],
+                      answer: 1,
+                      explanation: "Algebra lets us represent the unknown starting value symbolically and track it through each operation — showing precisely when and why it cancels out to leave a value that doesn't depend on the starting number."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-13-2",
+                  title: "2. Number Pyramids",
+                  lab: { type: "number-pyramid-sim" },
+                  theory: {
+                    intro: "In a number pyramid, each block is the sum of the two blocks directly below it — and algebra reveals a surprisingly clean formula connecting the very top of the pyramid to the numbers at its base.",
+                    sections: [
+                      {
+                        heading: "The Basic Rule",
+                        text: "Each number in a pyramid equals the sum of the two numbers directly below it. For example, with bottom row 1, 9, 4, the middle row is 1+9=10 and 9+4=13, and the top is 10+13=23."
+                      },
+                      {
+                        heading: "Working Backwards with Letter-Numbers",
+                        text: "When some pyramid values are unknown, algebra can fill them in. For a pyramid with top 60, middle a and b, and bottom 12, c, 8: the rules give a+b=60, 12+c=a, and c+8=b. Adding the last two equations: (12+c)+(c+8)=a+b=60, so 20+2c=60, meaning c=20. This gives a=32 and b=28, completing the pyramid as top 60, middle 32 and 28, bottom 12, 20, 8."
+                      },
+                      {
+                        heading: "The General Formula for a 3-Row Pyramid",
+                        text: "For a 3-row pyramid with bottom row a, b, c, the middle row is a+b and b+c, and the top is (a+b)+(b+c) = a+2b+c. This means the topmost value can always be computed directly from the bottom row, without building the entire pyramid — the middle value b is counted twice because it contributes to both middle-row sums."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Computing Pyramid Tops Directly from the Bottom Row",
+                      objective: "To use the formula top = a+2b+c to find a 3-row pyramid's top value without building the whole pyramid.",
+                      materials: ["Paper and pencil", "A calculator"],
+                      steps: [
+                        "Choose a bottom row of 3 numbers, e.g., 4, 13, 8.",
+                        "Apply the formula: top = a + 2b + c = 4 + 2(13) + 8.",
+                        "Compute the result: 4+26+8=38.",
+                        "Verify by building the full pyramid: middle row = 4+13=17 and 13+8=21; top = 17+21=38.",
+                        "Repeat with a different bottom row and confirm the formula gives the same result as building the full pyramid."
+                      ],
+                      observation: "For bottom row 4, 13, 8: the formula gives top = 4+2(13)+8 = 38, which exactly matches the value obtained by building the full pyramid (middle row 17, 21; top 38) — confirming the shortcut formula."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In a number pyramid, how is each number related to the row below it?",
+                      options: ["It is the product of the two numbers below it", "It is the sum of the two numbers directly below it", "It is the average of the entire row below it", "It is unrelated to the row below it"],
+                      answer: 1,
+                      explanation: "The basic rule of a number pyramid is that each block equals the sum of the two blocks directly beneath it."
+                    },
+                    {
+                      question: "For a 3-row pyramid with bottom row a, b, c, what is the algebraic formula for the topmost value?",
+                      options: ["a + b + c", "a + 2b + c", "2a + b + 2c", "a × b × c"],
+                      answer: 1,
+                      explanation: "The middle row is (a+b) and (b+c); adding these for the top gives (a+b)+(b+c) = a+2b+c — the middle value b is counted twice."
+                    },
+                    {
+                      question: "Using the formula top = a+2b+c, what is the top value for the bottom row 7, 11, 3?",
+                      options: ["21", "28", "32", "36"],
+                      answer: 2,
+                      explanation: "top = 7 + 2(11) + 3 = 7+22+3 = 32."
+                    },
+                    {
+                      question: "A pyramid has top value 60, with bottom row 12, c, 8 (middle row unknowns a, b). What is the value of c?",
+                      options: ["10", "15", "20", "25"],
+                      answer: 2,
+                      explanation: "From a+b=60, 12+c=a, and c+8=b, adding the last two gives 20+2c=60, so c=20 (giving a=32, b=28)."
+                    },
+                    {
+                      question: "If the first three Virahāṅka-Fibonacci numbers (1, 2, 3) are placed in the bottom row of a 3-row pyramid, what is the topmost value, and how does it relate to the Fibonacci sequence?",
+                      options: ["Top = 6, unrelated to the Fibonacci sequence", "Top = 8, which is itself the next Virahāṅka-Fibonacci number after 1, 2, 3, 5", "Top = 5, matching the previous Fibonacci number", "Top = 10, twice the largest bottom value"],
+                      answer: 1,
+                      explanation: "Using top = a+2b+c with a=1, b=2, c=3: top = 1+4+3 = 8 — which is exactly the next number in the Virahāṅka-Fibonacci sequence 1, 2, 3, 5, 8, ..."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-13-3",
+                  title: "3. Calendar Magic and Algebra Grids",
+                  lab: { type: "calendar-grid-sim" },
+                  theory: {
+                    intro: "Pick any 2×2 square from a calendar page, tell a friend just the sum of its four numbers, and algebra lets you reconstruct all four numbers exactly.",
+                    sections: [
+                      {
+                        heading: "Setting Up the Grid Algebraically",
+                        text: "In any calendar, each row of dates increases by 1 across a week and by 7 down a row. If the top-left number of a 2×2 grid is a, the grid is a, a+1 in the top row and a+7, a+8 in the bottom row. Adding all four: a+(a+1)+(a+7)+(a+8) = 4a+16."
+                      },
+                      {
+                        heading: "Working Backwards from the Sum",
+                        text: "Given a grid sum, we can solve for a. For example, if a friend picks the grid 6, 7, 13, 14, the sum is 6+7+13+14=40, matching 4a+16 with a=6. If instead told only that the sum is 36: 4a+16=36, so 4a=20, giving a=5 — reconstructing the full grid as 5, 6, 12, 13."
+                      },
+                      {
+                        heading: "Algebra Grids with Repeated Shapes",
+                        text: "A similar idea works with 'shape grids', where each row's last column is the sum of the shapes to its left, and the same shape may repeat across rows. Setting up an equation per row (e.g., three of the same shape summing to 27 gives that shape=9; then two shapes plus 9 summing to 19 gives 2×shape+9=19, so that shape=5) lets us solve for every shape's value using ordinary algebra, exactly as with letter-numbers."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Reconstructing a Calendar Grid from Its Sum",
+                      objective: "To use the formula sum=4a+16 to algebraically recover all four numbers of a 2×2 calendar grid, knowing only their sum.",
+                      materials: ["A calendar page", "Paper and pencil"],
+                      steps: [
+                        "Pick any 2×2 grid of dates from a calendar and label the top-left value a.",
+                        "Write the other three values in terms of a: a+1 (top-right), a+7 (bottom-left), a+8 (bottom-right).",
+                        "Add all four expressions to get 4a+16, and compute the actual sum from your chosen grid.",
+                        "Given only that sum, solve the equation 4a+16=sum for a.",
+                        "Reconstruct the full grid from a and verify it matches your original chosen grid."
+                      ],
+                      observation: "For the grid 6, 7, 13, 14 (top-left a=6): sum = 6+7+13+14 = 40, which matches 4(6)+16=40 exactly — confirming the formula lets the full grid be reconstructed from the sum alone."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "For a 2×2 calendar grid with top-left value a, what is the algebraic expression for the sum of all four numbers?",
+                      options: ["4a", "4a + 16", "a + 16", "2a + 8"],
+                      answer: 1,
+                      explanation: "The grid is a, a+1, a+7, a+8; adding these gives 4a + (1+7+8) = 4a+16."
+                    },
+                    {
+                      question: "If a calendar grid's four numbers sum to 36, what is the top-left value a?",
+                      options: ["4", "5", "6", "9"],
+                      answer: 1,
+                      explanation: "4a+16=36 → 4a=20 → a=5, giving the grid 5, 6, 12, 13."
+                    },
+                    {
+                      question: "For the grid 6, 7, 13, 14, what is the sum of all four numbers, and does it match the formula 4a+16 with a=6?",
+                      options: ["Sum=36, does not match", "Sum=40, matches exactly", "Sum=44, does not match", "Sum=40, but only approximately"],
+                      answer: 1,
+                      explanation: "6+7+13+14=40, and 4(6)+16=24+16=40 — an exact match."
+                    },
+                    {
+                      question: "In an algebra grid where three identical shapes in a row sum to 27, what is the value of that shape?",
+                      options: ["3", "6", "9", "27"],
+                      answer: 2,
+                      explanation: "If shape+shape+shape=27, then 3×shape=27, so shape=9."
+                    },
+                    {
+                      question: "Continuing the algebra grid: if two more shapes plus the previously found shape (9) sum to 19 in the next row, what is the value of the new shape?",
+                      options: ["5", "10", "14", "19"],
+                      answer: 0,
+                      explanation: "2×shape + 9 = 19, so 2×shape=10, giving shape=5."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-13-4",
+                  title: "4. Largest Products and Divisibility Tricks",
+                  lab: { type: "largest-product-sim" },
+                  theory: {
+                    intro: "Given three digits and two empty boxes for a multiplication, where should each digit go to make the largest possible product? Algebra proves the answer works for any three digits, every time.",
+                    sections: [
+                      {
+                        heading: "Finding the Largest Product Systematically",
+                        text: "For digits 2, 3, 5 filled into [ ][ ] × [ ], there are six possible arrangements. Grouping by common multiplier and comparing, the largest turns out to be 32×5=160. In general, for digits p<q<r, expanding qp×r = (10×q×r)+(p×r) and rp×q = (10×r×q)+(p×q) shows the first terms are equal, and since r>q, qp×r is always larger — so the largest digit should always be the multiplier, with the remaining two digits arranged in decreasing order as the multiplicand."
+                      },
+                      {
+                        heading: "The Reverse-and-Subtract Trick",
+                        text: "Choosing a 2-digit number 'ab' (value 10a+b) and reversing its digits to 'ba' (value 10b+a), their difference — when b>a — is (10b+a)−(10a+b) = 9b−9a = 9(b−a), always exactly divisible by 9. For example, 74−47=27=9×3. A similar reverse-and-ADD trick gives (10a+b)+(10b+a)=11a+11b=11(a+b), always divisible by 11."
+                      },
+                      {
+                        heading: "Cycling the Digits of a 3-Digit Number",
+                        text: "For a 3-digit number 'abc' (value 100a+10b+c), cycling its digits gives 'bca' (100b+10c+a) and 'cab' (100c+10a+b). Adding all three: each of a, b, c appears once with coefficient 100, once with 10, and once with 1, so the total is 111(a+b+c) = 3×37×(a+b+c) — always divisible by both 37 and 3."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding the Largest Product for Different Digit Sets",
+                      objective: "To apply the rule 'largest digit as multiplier, remaining digits in decreasing order' to find the largest possible product for several digit sets.",
+                      materials: ["Paper and pencil", "A calculator"],
+                      steps: [
+                        "Choose three distinct digits, e.g., 1, 3, 7.",
+                        "Identify the largest digit (7) as the multiplier.",
+                        "Arrange the remaining two digits (3, 1) in decreasing order to form the multiplicand: 31.",
+                        "Compute the product: 31×7=217.",
+                        "Verify by computing all six possible arrangements and confirming 217 is indeed the largest."
+                      ],
+                      observation: "For digits 1, 3, 7: the rule gives 31×7=217. Checking all six arrangements (17×3=51, 71×3=213, 13×7=91, 73×1=73, 31×7=217, 37×1=37) confirms 217 is the largest — exactly as the rule predicts."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "For digits 2, 3, and 5 filled into a 2-digit × 1-digit multiplication, what is the largest possible product?",
+                      options: ["106", "156", "160", "175"],
+                      answer: 2,
+                      explanation: "The largest product is 32×5=160, formed by using the largest digit (5) as the multiplier and the remaining digits in decreasing order (32) as the multiplicand."
+                    },
+                    {
+                      question: "For digits p<q<r, why is qp×r always the largest of the six possible products?",
+                      options: ["It is simply the first arrangement tried", "Expanding shows qp×r and rp×q share the same first term, but since r>q the second term makes qp×r larger", "All six products are actually always equal", "It only works for even digits"],
+                      answer: 1,
+                      explanation: "Comparing qp×r = (10qr)+(pr) and rp×q = (10rq)+(pq), the first terms are identical; since r>q, the second term pr>pq, making qp×r larger — proving the largest digit should be the multiplier."
+                    },
+                    {
+                      question: "What is the largest possible product using the digits 3, 5, and 9?",
+                      options: ["465", "477", "285", "195"],
+                      answer: 1,
+                      explanation: "Using the largest digit (9) as multiplier and the rest in decreasing order (53) as multiplicand: 53×9=477 — the largest of all six possible arrangements."
+                    },
+                    {
+                      question: "A 2-digit number and its digit-reversal are subtracted (larger minus smaller). Why is the result always divisible by 9?",
+                      options: ["It is a coincidence for most numbers", "Algebraically, the difference simplifies to 9×(difference of the digits), which is always a multiple of 9", "The result is only divisible by 9 for numbers starting with an even digit", "This is true only when the two digits are equal"],
+                      answer: 1,
+                      explanation: "For 'ab' and 'ba' with b>a, the difference (10b+a)−(10a+b) simplifies to 9(b−a) — always an exact multiple of 9."
+                    },
+                    {
+                      question: "For a 3-digit number 'abc', its two cyclic rotations 'bca' and 'cab' are added to the original. Why is the sum always divisible by both 37 and 3?",
+                      options: ["This is only true for specific numbers, not in general", "The sum always simplifies to 111(a+b+c), and since 111=3×37, the result is always divisible by both 3 and 37", "The digits must always be in increasing order for this to work", "This relationship has no algebraic explanation"],
+                      answer: 1,
+                      explanation: "Adding abc+bca+cab gives each digit a total coefficient of 100+10+1=111, so the sum is 111(a+b+c). Since 111 factors as 3×37, the sum is always divisible by both 3 and 37, regardless of the digits chosen."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

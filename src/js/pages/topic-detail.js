@@ -3699,6 +3699,96 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const thinkOfANumberLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="think-number-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a starting number and watch it always reduce to 2.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Think of a Number</h3>
+            <select id="sel-think-number" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="3">Start with 3</option>
+              <option value="7" selected>Start with 7</option>
+              <option value="12">Start with 12</option>
+              <option value="20">Start with 20</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Step-by-Step Result</h3>
+            <div id="think-number-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a starting number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const numberPyramidLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="number-pyramid-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a bottom row and see the pyramid computed upward.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Bottom Row</h3>
+            <select id="sel-number-pyramid" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="4,13,8" selected>4, 13, 8</option>
+              <option value="7,11,3">7, 11, 3</option>
+              <option value="10,14,25">10, 14, 25</option>
+              <option value="1,2,3">1, 2, 3 (Fibonacci)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Top = a + 2b + c</h3>
+            <div id="number-pyramid-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a bottom row above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const calendarGridLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="calendar-grid-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a grid sum and see the 4 calendar numbers recovered.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Grid Sum</h3>
+            <select id="sel-calendar-grid" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="40" selected>Sum = 40</option>
+              <option value="36">Sum = 36</option>
+              <option value="52">Sum = 52</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Recovered Grid</h3>
+            <div id="calendar-grid-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a sum above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const largestProductLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="largest-product-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick 3 digits and see the arrangement that gives the largest product.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose 3 Digits</h3>
+            <select id="sel-largest-product" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="2,3,5" selected>2, 3, 5</option>
+              <option value="1,3,7">1, 3, 7</option>
+              <option value="3,5,9">3, 5, 9</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Best Arrangement</h3>
+            <div id="largest-product-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose digits above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -5666,6 +5756,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'line-graph-reading-sim') {
               labHtml = lineGraphReadingLabHtml;
               labDesc = 'Pick a city and read its monthly rainfall-days line graph.';
+            } else if (topicObj.lab.type === 'think-of-a-number-sim') {
+              labHtml = thinkOfANumberLabHtml;
+              labDesc = 'Pick a starting number and see why the trick always reduces to 2.';
+            } else if (topicObj.lab.type === 'number-pyramid-sim') {
+              labHtml = numberPyramidLabHtml;
+              labDesc = 'Pick a bottom row and see the pyramid computed via top = a+2b+c.';
+            } else if (topicObj.lab.type === 'calendar-grid-sim') {
+              labHtml = calendarGridLabHtml;
+              labDesc = 'Pick a grid sum and see the four calendar numbers recovered algebraically.';
+            } else if (topicObj.lab.type === 'largest-product-sim') {
+              labHtml = largestProductLabHtml;
+              labDesc = 'Pick three digits and see which arrangement gives the largest product.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -6185,6 +6287,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initMissingValueMeanLab();
         } else if (topicObj.lab.type === 'line-graph-reading-sim') {
           initLineGraphReadingLab();
+        } else if (topicObj.lab.type === 'think-of-a-number-sim') {
+          initThinkOfANumberLab();
+        } else if (topicObj.lab.type === 'number-pyramid-sim') {
+          initNumberPyramidLab();
+        } else if (topicObj.lab.type === 'calendar-grid-sim') {
+          initCalendarGridLab();
+        } else if (topicObj.lab.type === 'largest-product-sim') {
+          initLargestProductLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -21124,6 +21234,170 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(`${NAMES[key]}: Average Rainfall Days per Month`, W / 2, 20);
 
         obs.innerHTML = `<strong>${NAMES[key]}:</strong> Peak rainfall in <strong>${MONTHS[maxI]}</strong> (${data[maxI]} days), lowest in <strong>${MONTHS[minI]}</strong> (${data[minI]} days).`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initThinkOfANumberLab() {
+      const canvas = document.getElementById('think-number-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-think-number');
+      const obs = document.getElementById('think-number-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const x = parseFloat(sel.value);
+        const step2 = x * 2;
+        const step3 = step2 + 4;
+        const step4 = step3 / 2;
+        const step5 = step4 - x;
+
+        const steps = [
+          { label: 'Think of a number', expr: 'x', val: x },
+          { label: 'Double it', expr: '2x', val: step2 },
+          { label: 'Add four', expr: '2x + 4', val: step3 },
+          { label: 'Divide by two', expr: 'x + 2', val: step4 },
+          { label: 'Subtract original', expr: 'x + 2 − x', val: step5 }
+        ];
+
+        let y = 45;
+        steps.forEach((s, i) => {
+          const isFinal = i === steps.length - 1;
+          ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+          ctx.fillText(`${i + 1}. ${s.label}`, 60, y);
+          ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'left';
+          ctx.fillText(s.expr, 320, y);
+          ctx.font = isFinal ? 'bold 16px system-ui' : '13px system-ui'; ctx.fillStyle = isFinal ? '#22c55e' : cssVar('--accent-color'); ctx.textAlign = 'right';
+          ctx.fillText(`${s.val}`, 540, y);
+          y += 40;
+        });
+
+        obs.innerHTML = `<strong>Starting number x=${x}:</strong> double→${step2}, add 4→${step3}, halve→${step4}, subtract ${x}→<strong style="color:#22c55e;">${step5}</strong>. No matter the starting value, the result is always 2.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initNumberPyramidLab() {
+      const canvas = document.getElementById('number-pyramid-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-number-pyramid');
+      const obs = document.getElementById('number-pyramid-obs');
+
+      function drawBox(x, y, val, color) {
+        ctx.fillStyle = color; ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.roundRect(x - 28, y - 18, 56, 36, 6); ctx.fill(); ctx.stroke();
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = '#0b1220'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(`${val}`, x, y + 1);
+        ctx.textBaseline = 'alphabetic';
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [a, b, c] = sel.value.split(',').map(Number);
+        const mid1 = a + b, mid2 = b + c;
+        const top = mid1 + mid2;
+        const cx = W / 2;
+
+        drawBox(cx, 60, top, '#22c55e');
+        drawBox(cx - 60, 140, mid1, '#f59e0b');
+        drawBox(cx + 60, 140, mid2, '#f59e0b');
+        drawBox(cx - 120, 220, a, cssVar('--accent-color'));
+        drawBox(cx, 220, b, cssVar('--accent-color'));
+        drawBox(cx + 120, 220, c, cssVar('--accent-color'));
+
+        obs.innerHTML = `<strong>Bottom row {${a}, ${b}, ${c}}:</strong> middle row = ${a}+${b}=${mid1} and ${b}+${c}=${mid2}; top = ${mid1}+${mid2} = <strong style="color:#22c55e;">${top}</strong> (= a+2b+c = ${a}+2(${b})+${c}).`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCalendarGridLab() {
+      const canvas = document.getElementById('calendar-grid-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-calendar-grid');
+      const obs = document.getElementById('calendar-grid-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const sum = parseInt(sel.value);
+        const a = (sum - 16) / 4;
+        const vals = [[a, a + 1], [a + 7, a + 8]];
+
+        const cx = W / 2, cy = 140, boxSize = 70;
+        for (let r = 0; r < 2; r++) {
+          for (let col = 0; col < 2; col++) {
+            const x = cx - boxSize + col * boxSize;
+            const y = cy - boxSize + r * boxSize;
+            ctx.fillStyle = cssVar('--accent-color'); ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+            ctx.fillRect(x, y, boxSize - 4, boxSize - 4);
+            ctx.strokeRect(x, y, boxSize - 4, boxSize - 4);
+            ctx.font = 'bold 20px system-ui'; ctx.fillStyle = '#0b1220'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(`${vals[r][col]}`, x + (boxSize - 4) / 2, y + (boxSize - 4) / 2);
+            ctx.textBaseline = 'alphabetic';
+          }
+        }
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Sum = ${sum}`, W / 2, 240);
+
+        obs.innerHTML = `<strong>Sum=${sum} → 4a+16=${sum} → a=${a}.</strong> Grid = ${a}, ${a + 1}, ${a + 7}, ${a + 8}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initLargestProductLab() {
+      const canvas = document.getElementById('largest-product-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-largest-product');
+      const obs = document.getElementById('largest-product-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const digits = sel.value.split(',').map(Number).sort((a, b) => a - b);
+        const [p, q, r] = digits;
+        const multiplicand = q * 10 + p;
+        const product = multiplicand * r;
+
+        const combos = [
+          [q * 10 + p, r], [p * 10 + q, r],
+          [r * 10 + p, q], [p * 10 + r, q],
+          [r * 10 + q, p], [q * 10 + r, p]
+        ];
+        let maxIdx = 0;
+        combos.forEach((c, i) => { if (c[0] * c[1] > combos[maxIdx][0] * combos[maxIdx][1]) maxIdx = i; });
+
+        let y = 45;
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Digits: ${p}, ${q}, ${r}`, W / 2, y);
+        y += 35;
+
+        combos.forEach((c, i) => {
+          const isMax = i === maxIdx;
+          const prod = c[0] * c[1];
+          ctx.font = isMax ? 'bold 15px system-ui' : '13px system-ui';
+          ctx.fillStyle = isMax ? '#22c55e' : cssVar('--text-muted');
+          ctx.textAlign = 'left';
+          ctx.fillText(`${c[0]} × ${c[1]} = ${prod}`, 150, y);
+          if (isMax) { ctx.textAlign = 'right'; ctx.fillText('← largest', 450, y); }
+          y += 28;
+        });
+
+        obs.innerHTML = `<strong>Best arrangement: ${multiplicand} × ${r} = ${product}.</strong> The largest digit (${r}) is the multiplier; the other two digits (${q}, ${p}) form the multiplicand in decreasing order.`;
       }
 
       sel.addEventListener('change', draw);
