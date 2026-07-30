@@ -3610,6 +3610,95 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const meanBalanceLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="mean-balance-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Add a new value and watch the mean shift up, down, or stay put.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Add a Value to {10, 10, 11, 17}</h3>
+            <select id="sel-mean-balance-add" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="none" selected>No new value (original data)</option>
+              <option value="20">Add 20 (above the mean)</option>
+              <option value="5">Add 5 (below the mean)</option>
+              <option value="12">Add 12 (equal to the mean)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Balance Result</h3>
+            <div id="mean-balance-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an option above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const meanShiftScaleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="mean-shift-scale-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Shift or scale every value in {8,3,10,13,4,6,7,7,8,8,5} and see the new mean.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Apply an Operation to Every Value</h3>
+            <select id="sel-mean-shift-scale" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="none" selected>No change (original data)</option>
+              <option value="add10">Add 10 to every value</option>
+              <option value="sub1">Subtract 1 from every value</option>
+              <option value="mul5">Multiply every value by 5</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Effect on the Mean</h3>
+            <div id="mean-shift-scale-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an option above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const missingValueMeanLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="missing-value-mean-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see the missing value recovered from the mean.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-missing-value-mean" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="wrestlers" selected>Coach Balwan's 10 wrestlers</option>
+              <option value="coconuts">Venkayya's 15 coconut trees</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Solving for the Unknown</h3>
+            <div id="missing-value-mean-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const lineGraphReadingLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="line-graph-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a city and see its monthly rainfall-days line graph.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a City</h3>
+            <select id="sel-line-graph-city" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="mangaluru" selected>Mangaluru</option>
+              <option value="portblair">Port Blair</option>
+              <option value="rameswaram">Rameswaram</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Peak &amp; Low Months</h3>
+            <div id="line-graph-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a city above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -5565,6 +5654,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'cube-projection-sim') {
               labHtml = cubeProjectionLabHtml;
               labDesc = 'Pick a viewing angle and see the cube’s resulting 2D projection outline.';
+            } else if (topicObj.lab.type === 'mean-balance-sim') {
+              labHtml = meanBalanceLabHtml;
+              labDesc = 'Add a new value and watch how it shifts (or doesn’t shift) the mean.';
+            } else if (topicObj.lab.type === 'mean-shift-scale-sim') {
+              labHtml = meanShiftScaleLabHtml;
+              labDesc = 'Shift or scale every value in a dataset and see the effect on the mean.';
+            } else if (topicObj.lab.type === 'missing-value-mean-sim') {
+              labHtml = missingValueMeanLabHtml;
+              labDesc = 'Recover a missing or incorrect value using the mean formula.';
+            } else if (topicObj.lab.type === 'line-graph-reading-sim') {
+              labHtml = lineGraphReadingLabHtml;
+              labDesc = 'Pick a city and read its monthly rainfall-days line graph.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -6076,6 +6177,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initPolyhedronPropertiesLab();
         } else if (topicObj.lab.type === 'cube-projection-sim') {
           initCubeProjectionLab();
+        } else if (topicObj.lab.type === 'mean-balance-sim') {
+          initMeanBalanceLab();
+        } else if (topicObj.lab.type === 'mean-shift-scale-sim') {
+          initMeanShiftScaleLab();
+        } else if (topicObj.lab.type === 'missing-value-mean-sim') {
+          initMissingValueMeanLab();
+        } else if (topicObj.lab.type === 'line-graph-reading-sim') {
+          initLineGraphReadingLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -20792,6 +20901,229 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           : mode === 'edge'
           ? '<strong>Edge-on view: rectangular outline.</strong> Looking along one edge shows a rectangle, combining two adjacent faces\' widths.'
           : '<strong>Corner-on (isometric) view: regular hexagon.</strong> Balancing the cube on a corner vertex and projecting down gives a hexagon where all edges appear equal in length.';
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMeanBalanceLab() {
+      const canvas = document.getElementById('mean-balance-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-mean-balance-add');
+      const obs = document.getElementById('mean-balance-obs');
+      const BASE = [10, 10, 11, 17];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const addVal = sel.value === 'none' ? null : parseFloat(sel.value);
+        const data = addVal === null ? BASE.slice() : BASE.concat([addVal]);
+        const sum = data.reduce((a, b) => a + b, 0);
+        const mean = sum / data.length;
+        const originalMean = 12;
+
+        const minV = 0, maxV = 22;
+        const axisY = 160, xLeft = 60, xRight = 560;
+        const scaleX = v => xLeft + ((v - minV) / (maxV - minV)) * (xRight - xLeft);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(xLeft, axisY); ctx.lineTo(xRight, axisY); ctx.stroke();
+        for (let v = 0; v <= 22; v += 2) {
+          const x = scaleX(v);
+          ctx.beginPath(); ctx.moveTo(x, axisY - 5); ctx.lineTo(x, axisY + 5); ctx.stroke();
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText(`${v}`, x, axisY + 18);
+        }
+
+        data.forEach((v, i) => {
+          const x = scaleX(v);
+          const isNew = addVal !== null && i === data.length - 1;
+          ctx.beginPath(); ctx.arc(x, axisY - 20, 8, 0, Math.PI * 2);
+          ctx.fillStyle = isNew ? '#ef4444' : cssVar('--accent-color'); ctx.fill();
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(`${v}`, x, axisY - 32);
+        });
+
+        const meanX = scaleX(mean);
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(meanX, axisY + 5); ctx.lineTo(meanX - 12, axisY + 30); ctx.lineTo(meanX + 12, axisY + 30); ctx.closePath();
+        ctx.stroke();
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = '#22c55e'; ctx.textAlign = 'center';
+        ctx.fillText(`mean = ${mean.toFixed(1)}`, meanX, axisY + 48);
+
+        if (addVal !== null) {
+          const origX = scaleX(originalMean);
+          ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+          ctx.beginPath(); ctx.moveTo(origX, axisY + 5); ctx.lineTo(origX, axisY - 45); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText('original mean=12', origX, axisY - 50);
+        }
+
+        const dir = addVal === null ? 'unchanged' : addVal > originalMean ? 'increased' : addVal < originalMean ? 'decreased' : 'unchanged';
+        obs.innerHTML = addVal === null
+          ? `<strong>Original data {10, 10, 11, 17}: mean = 48/4 = 12.</strong> This is the balance point of the data.`
+          : `<strong>Adding ${addVal} → new mean = ${sum}/${data.length} = ${mean.toFixed(1)}.</strong> Since ${addVal} is ${addVal > originalMean ? 'above' : addVal < originalMean ? 'below' : 'equal to'} the original mean (12), the mean ${dir}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMeanShiftScaleLab() {
+      const canvas = document.getElementById('mean-shift-scale-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-mean-shift-scale');
+      const obs = document.getElementById('mean-shift-scale-obs');
+      const BASE = [8, 3, 10, 13, 4, 6, 7, 7, 8, 8, 5];
+      const baseMean = BASE.reduce((a, b) => a + b, 0) / BASE.length;
+
+      function transform(op) {
+        if (op === 'add10') return BASE.map(v => v + 10);
+        if (op === 'sub1') return BASE.map(v => v - 1);
+        if (op === 'mul5') return BASE.map(v => v * 5);
+        return BASE.slice();
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const op = sel.value;
+        const data = transform(op);
+        const newMean = data.reduce((a, b) => a + b, 0) / data.length;
+        const maxV = Math.max(...data, ...BASE) * 1.15;
+
+        const axisY = 230, xLeft = 55, barW = 38, gap = 6;
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(xLeft, axisY); ctx.lineTo(W - 15, axisY); ctx.stroke();
+
+        data.forEach((v, i) => {
+          const x = xLeft + i * (barW + gap);
+          const h = (v / maxV) * (axisY - 30);
+          ctx.fillStyle = cssVar('--accent-color'); ctx.fillRect(x, axisY - h, barW, h);
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(`${v}`, x + barW / 2, axisY - h - 6);
+        });
+
+        const meanH = (newMean / maxV) * (axisY - 30);
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+        ctx.beginPath(); ctx.moveTo(xLeft, axisY - meanH); ctx.lineTo(xLeft + data.length * (barW + gap), axisY - meanH); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = '#22c55e'; ctx.textAlign = 'left';
+        ctx.fillText(`mean = ${newMean.toFixed(2)}`, xLeft + data.length * (barW + gap) + 6, axisY - meanH + 4);
+
+        const opLabel = { none: 'no change', add10: '+10 to every value', sub1: '−1 from every value', mul5: '×5 on every value' }[op];
+        obs.innerHTML = op === 'none'
+          ? `<strong>Original data: mean = ${baseMean.toFixed(2)}.</strong>`
+          : `<strong>${opLabel} → new mean = ${newMean.toFixed(2)}.</strong> This matches ${op === 'add10' ? `(original mean + 10) = ${(baseMean + 10).toFixed(2)}` : op === 'sub1' ? `(original mean − 1) = ${(baseMean - 1).toFixed(2)}` : `(original mean × 5) = ${(baseMean * 5).toFixed(2)}`} exactly.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMissingValueMeanLab() {
+      const canvas = document.getElementById('missing-value-mean-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-missing-value-mean');
+      const obs = document.getElementById('missing-value-mean-obs');
+
+      const SCENARIOS = {
+        wrestlers: {
+          title: "Coach Balwan's 10 Wrestlers",
+          lines: ['Mean weight = 39.2 kg, n = 10', 'Known 9 weights sum = 349 kg', 'Total = 39.2 × 10 = 392 kg', 'Missing weight w = 392 − 349', 'w = 43 kg']
+        },
+        coconuts: {
+          title: "Venkayya's 15 Coconut Trees",
+          lines: ['Recorded average = 25.6, n = 15', 'Recorded total z = 25.6 × 15 = 384', 'One tree was 3 more than actual', 'Corrected total = 384 − 3 = 381', 'Corrected average = 381 / 15 = 25.4']
+        }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const s = SCENARIOS[sel.value];
+
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(s.title, W / 2, 35);
+
+        let y = 80;
+        s.lines.forEach((line, i) => {
+          const isFinal = i === s.lines.length - 1;
+          ctx.font = isFinal ? 'bold 16px system-ui' : '14px system-ui';
+          ctx.fillStyle = isFinal ? '#22c55e' : cssVar('--text-muted');
+          ctx.textAlign = 'left';
+          ctx.fillText(line, 90, y);
+          y += 36;
+        });
+
+        obs.innerHTML = sel.value === 'wrestlers'
+          ? `<strong>w = 43 kg.</strong> Total weight (392 kg) minus the sum of the 9 known weights (349 kg) isolates the missing weight.`
+          : `<strong>Corrected average = 25.4.</strong> The recorded total (384) is reduced by the 3-coconut error before dividing by 15 trees.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initLineGraphReadingLab() {
+      const canvas = document.getElementById('line-graph-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-line-graph-city');
+      const obs = document.getElementById('line-graph-obs');
+      const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const DATA = {
+        mangaluru: [0.1, 0, 0.1, 1.8, 6.2, 24.1, 27.7, 24.5, 14, 8.8, 3.9, 0.9],
+        portblair: [2.4, 1.3, 0.9, 3.3, 15.5, 18.7, 17.3, 18.8, 16.8, 14.1, 11.3, 5.4],
+        rameswaram: [2.6, 1.3, 1.9, 3.4, 2.5, 0.4, 1, 1, 1.9, 8.1, 10.4, 7.8]
+      };
+      const NAMES = { mangaluru: 'Mangaluru', portblair: 'Port Blair', rameswaram: 'Rameswaram' };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const key = sel.value;
+        const data = DATA[key];
+        const maxV = 30;
+        const xLeft = 55, xRight = 570, yTop = 40, yBottom = 240;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(xLeft, yTop); ctx.lineTo(xLeft, yBottom); ctx.lineTo(xRight, yBottom); ctx.stroke();
+        for (let v = 0; v <= 30; v += 10) {
+          const y = yBottom - (v / maxV) * (yBottom - yTop);
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'right';
+          ctx.fillText(`${v}`, xLeft - 8, y + 3);
+        }
+
+        const stepX = (xRight - xLeft) / (MONTHS.length - 1);
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        data.forEach((v, i) => {
+          const x = xLeft + i * stepX, y = yBottom - (v / maxV) * (yBottom - yTop);
+          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+
+        let maxI = 0, minI = 0;
+        data.forEach((v, i) => { if (v > data[maxI]) maxI = i; if (v < data[minI]) minI = i; });
+
+        data.forEach((v, i) => {
+          const x = xLeft + i * stepX, y = yBottom - (v / maxV) * (yBottom - yTop);
+          ctx.beginPath(); ctx.arc(x, y, i === maxI ? 6 : 3.5, 0, Math.PI * 2);
+          ctx.fillStyle = i === maxI ? '#ef4444' : cssVar('--accent-color'); ctx.fill();
+          ctx.font = '9px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText(MONTHS[i], x, yBottom + 15);
+        });
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${NAMES[key]}: Average Rainfall Days per Month`, W / 2, 20);
+
+        obs.innerHTML = `<strong>${NAMES[key]}:</strong> Peak rainfall in <strong>${MONTHS[maxI]}</strong> (${data[maxI]} days), lowest in <strong>${MONTHS[minI]}</strong> (${data[minI]} days).`;
       }
 
       sel.addEventListener('change', draw);

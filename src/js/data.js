@@ -15256,6 +15256,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8m-12",
+              title: "Tales by Dots and Lines",
+              topics: [
+                {
+                  id: "8m-12-1",
+                  title: "1. How the Mean Balances Data",
+                  lab: { type: "mean-balance-sim" },
+                  theory: {
+                    intro: "The mean isn't just 'add everything up and divide' — it's a genuine balance point, where the total distance to every value below it exactly equals the total distance to every value above it.",
+                    sections: [
+                      {
+                        heading: "The Mean as a Balance Point",
+                        text: "For any two numbers, their mean sits exactly halfway between them. For larger collections, the mean acts as a 'centre' in a deeper sense: the SUM of distances from the mean to all values below it exactly equals the sum of distances to all values above it. For the data 10, 10, 11, 17 (mean=12), this balance is why 12 — and no other value — can be the true centre: any value larger than 12 would increase the left-side distances and decrease the right-side distances (breaking the balance), and any smaller value would do the reverse."
+                      },
+                      {
+                        heading: "Adding a New Value",
+                        text: "Including a new value greater than the current mean pulls the mean up (to restore the balance); including a value smaller than the mean pulls the mean down. This follows directly from the fair-share interpretation of the mean: a higher-than-average newcomer has 'extra' to redistribute among everyone, raising the average."
+                      },
+                      {
+                        heading: "Unchanging Mean",
+                        text: "It's possible to add or remove multiple values without changing the mean at all — as long as the extra amounts above the mean exactly cancel the shortfalls below it. For example, adding two values below the mean and one value above it can keep the mean unchanged, if their combined 'distances' from the mean balance out exactly."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing How New Values Shift the Mean",
+                      objective: "To observe, using a fixed dataset, how adding values above, below, or equal to the mean shifts the mean up, down, or not at all.",
+                      materials: ["Paper and pencil", "A calculator", "A starting dataset (e.g., 10, 10, 11, 17)"],
+                      steps: [
+                        "Calculate the mean of the starting dataset (10, 10, 11, 17): sum=48, n=4, mean=12.",
+                        "Add a new value greater than 12 (e.g., 20) and recalculate the mean.",
+                        "Add a new value less than 12 (e.g., 5) to the ORIGINAL dataset and recalculate the mean.",
+                        "Add a new value exactly equal to 12 to the original dataset and recalculate the mean.",
+                        "Compare all three new means to the original mean of 12, and note the direction of each shift."
+                      ],
+                      observation: "Starting from mean=12: adding 20 (above the mean) raises the new mean to 13.6; adding 5 (below the mean) lowers the new mean to 10.6; adding 12 (equal to the mean) keeps the mean exactly at 12 — confirming that a new value's position relative to the current mean determines the direction (or absence) of the shift."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In what sense is the mean the 'centre' of a data collection?",
+                      options: ["It is always exactly the middle value when sorted", "The sum of distances from the mean to values below it equals the sum of distances to values above it", "It is always the midpoint between the smallest and largest values", "It has no special balancing property"],
+                      answer: 1,
+                      explanation: "The mean balances the data: the total distance from the mean down to lower values exactly equals the total distance from the mean up to higher values — a genuine 'centre of balance', not simply the midpoint of the extremes."
+                    },
+                    {
+                      question: "For the data 10, 10, 11, 17 (mean=12), what happens if we add a new value of 20?",
+                      options: ["The mean stays at 12", "The mean decreases below 12", "The mean increases above 12 (to 13.6)", "The mean becomes exactly 20"],
+                      answer: 2,
+                      explanation: "Since 20 is greater than the current mean of 12, adding it pulls the mean upward — the new mean becomes (10+10+11+17+20)/5 = 13.6."
+                    },
+                    {
+                      question: "What happens to the mean when a value LESS than the current mean is added to the data?",
+                      options: ["The mean increases", "The mean decreases", "The mean always stays exactly the same", "This cannot be determined"],
+                      answer: 1,
+                      explanation: "Adding a below-average value pulls the mean downward, since that value has 'less than its fair share' relative to the current average."
+                    },
+                    {
+                      question: "Is it possible to add multiple new values to a dataset without changing the mean at all?",
+                      options: ["No, adding any values always changes the mean", "Yes, if the added values' distances above and below the mean balance out exactly", "Only if all added values are identical to each other", "Only if exactly one value is added"],
+                      answer: 1,
+                      explanation: "As long as the combined 'excess' of added values above the mean exactly cancels the combined 'shortfall' of added values below the mean, the overall mean remains unchanged."
+                    },
+                    {
+                      question: "Why can there be only ONE value that serves as the true balancing 'centre' of a dataset?",
+                      options: ["There can actually be many such values", "Any value other than the true mean would create an imbalance — either more total distance on one side or the other", "This property doesn't actually determine a unique value", "The centre depends on how the data is sorted"],
+                      answer: 1,
+                      explanation: "Moving away from the true mean in either direction breaks the balance (increasing distances on one side while decreasing them on the other), which is why the balancing centre is always unique."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-12-2",
+                  title: "2. Shifting and Scaling the Mean",
+                  lab: { type: "mean-shift-scale-sim" },
+                  theory: {
+                    intro: "Add 10 to every single value in a dataset, and — without recalculating from scratch — you already know the new mean: it's just the old mean plus 10.",
+                    sections: [
+                      {
+                        heading: "Adding a Constant to Every Value",
+                        text: "If every value in a collection increases by the same fixed amount, the mean increases by that exact same amount. Algebraically: if the original mean is a = (x₁+x₂+...+xₙ)/n, and 3 is added to every value, the new mean is [(x₁+3)+(x₂+3)+...+(xₙ+3)]/n = (x₁+x₂+...+xₙ)/n + 3n/n = a+3."
+                      },
+                      {
+                        heading: "Multiplying Every Value by a Constant",
+                        text: "If every value in a collection is multiplied by the same fixed number, the mean is multiplied by that same number. Algebraically: if every value is multiplied by 5, the new mean is [(5x₁)+(5x₂)+...+(5xₙ)]/n = 5×(x₁+x₂+...+xₙ)/n = 5a, using the distributive property."
+                      },
+                      {
+                        heading: "Why This Matters",
+                        text: "These shortcuts mean you never need to recompute an entire dataset's mean from scratch after a uniform shift or scale — just apply the same operation directly to the old mean. This connects directly to the fair-share interpretation of averages from Grade 7: if everyone's share increases by the same amount, the average share increases by that amount too."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying the Shift and Scale Rules for the Mean",
+                      objective: "To confirm, using a real dataset, that adding a constant to every value shifts the mean by that constant, and multiplying every value scales the mean by that same factor.",
+                      materials: ["Paper and pencil", "A calculator", "A dataset (e.g., 8, 3, 10, 13, 4, 6, 7, 7, 8, 8, 5)"],
+                      steps: [
+                        "Calculate the mean of the original dataset (8,3,10,13,4,6,7,7,8,8,5): sum=79, n=11, mean≈7.18.",
+                        "Add 10 to every value in the dataset, and calculate the new mean directly.",
+                        "Compare this new mean to (original mean + 10).",
+                        "Now, starting from the original dataset again, multiply every value by 5, and calculate the new mean directly.",
+                        "Compare this new mean to (original mean × 5)."
+                      ],
+                      observation: "The original dataset has mean ≈7.18; after adding 10 to every value, the new mean is exactly 17.18 (=7.18+10); after multiplying every value by 5 (from the original), the new mean is exactly 35.9 (=7.18×5) — confirming both the shift and scale rules exactly."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "If every value in a dataset is increased by 3, how does the mean change?",
+                      options: ["The mean increases by 3 as well", "The mean stays exactly the same", "The mean increases by 3×n (n = number of values)", "The mean triples"],
+                      answer: 0,
+                      explanation: "Adding a constant (3) to every value shifts the mean by that exact same constant — the new mean is (old mean)+3."
+                    },
+                    {
+                      question: "If every value in a dataset is multiplied by 5, how does the mean change?",
+                      options: ["The mean stays exactly the same", "The mean increases by 5", "The mean is also multiplied by 5", "The mean increases by 5n"],
+                      answer: 2,
+                      explanation: "Multiplying every value by 5 scales the mean by that same factor — the new mean is 5×(old mean), following directly from the distributive property."
+                    },
+                    {
+                      question: "A dataset has mean 7.18. If 10 is added to every value, what is the new mean?",
+                      options: ["7.18", "17.18", "71.8", "10"],
+                      answer: 1,
+                      explanation: "Adding 10 to every value shifts the mean by exactly 10: new mean = 7.18+10 = 17.18."
+                    },
+                    {
+                      question: "A dataset has mean 7.18. If every value is multiplied by 5, what is the new mean?",
+                      options: ["7.18", "12.18", "35.9", "5"],
+                      answer: 2,
+                      explanation: "Multiplying every value by 5 scales the mean by 5: new mean = 7.18×5 = 35.9."
+                    },
+                    {
+                      question: "Algebraically, why does adding a constant k to every value in a dataset increase the mean by exactly k?",
+                      options: ["This is simply an approximation, not an exact result", "Because [(x₁+k)+(x₂+k)+...+(xₙ+k)]/n = (x₁+x₂+...+xₙ)/n + kn/n = (original mean) + k", "Because k always equals the mean itself", "This relationship only holds for datasets with exactly 2 values"],
+                      answer: 1,
+                      explanation: "Expanding the sum of the shifted values shows the k's contribute exactly kn total, which divided by n gives exactly k added to the original mean — an exact algebraic result for any dataset size."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-12-3",
+                  title: "3. Finding the Unknown Using the Mean",
+                  lab: { type: "missing-value-mean-sim" },
+                  theory: {
+                    intro: "Coach Balwan's notebook has a smudged weight — but knowing the mean of all ten wrestlers is enough to recover the exact missing number, no measuring required.",
+                    sections: [
+                      {
+                        heading: "Finding a Missing Value",
+                        text: "Coach Balwan recorded 10 wrestlers' weights with a known mean of 39.2 kg, but one value is smudged. Setting the unknown weight as w: (42+40+39+33+48+38+42+35+32+w)/10 = 39.2. Simplifying: 349+w = 392, so w = 392−349 = 43 kg — the missing weight."
+                      },
+                      {
+                        heading: "Correcting a Mean After an Error",
+                        text: "Venkayya's average coconut harvest per tree was calculated as 25.6 (from 15 trees), but one tree's count was later found to be 3 more than the true value. First, find the (incorrect) total: 25.6 = z/15, so z = 25.6×15 = 384. The correct total is 384−3 = 381. The correct average is 381/15 = 25.4."
+                      },
+                      {
+                        heading: "The General Strategy",
+                        text: "Both problems use the same core idea: since average = (total sum)/(number of values), knowing the average and the count lets us recover the total sum — from which any single unknown value (or correction) can be isolated algebraically."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Solving for a Missing Value Using the Mean Formula",
+                      objective: "To use the relationship 'mean = total sum ÷ count' to algebraically recover a missing or incorrect data value.",
+                      materials: ["Paper and pencil", "A calculator"],
+                      steps: [
+                        "Write down the known mean and the count of values (including the unknown one).",
+                        "Multiply the mean by the count to find the total sum of all values.",
+                        "Add up all the KNOWN values, and subtract this from the total sum to isolate the unknown value.",
+                        "Verify your answer by adding the unknown value back into the known values and recomputing the mean.",
+                        "For a 'correction' problem (like Venkayya's), adjust the recovered total by the known error amount before recalculating the corrected average."
+                      ],
+                      observation: "For Coach Balwan's 10 wrestlers (known mean 39.2 kg), the total weight is 39.2×10=392 kg; subtracting the 9 known weights (summing to 349 kg) isolates the missing weight as 392−349=43 kg."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Coach Balwan's 10 wrestlers have a mean weight of 39.2 kg. Nine known weights sum to 349 kg. What is the missing (smudged) weight?",
+                      options: ["39 kg", "40 kg", "43 kg", "45 kg"],
+                      answer: 2,
+                      explanation: "Total weight = 39.2×10 = 392 kg; missing weight = 392−349 = 43 kg."
+                    },
+                    {
+                      question: "What is the first step in finding a missing value when the mean and count are known?",
+                      options: ["Guess the missing value directly", "Multiply the mean by the count to find the total sum of all values", "Divide the mean by the count", "Assume the missing value equals the mean"],
+                      answer: 1,
+                      explanation: "Since mean = total sum ÷ count, multiplying mean × count recovers the total sum — the essential first step before isolating any single unknown value."
+                    },
+                    {
+                      question: "Venkayya's average coconut harvest was calculated as 25.6 per tree across 15 trees, using an incorrect total. What was this (incorrect) total number of coconuts?",
+                      options: ["371", "381", "384", "390"],
+                      answer: 2,
+                      explanation: "Incorrect total = 25.6×15 = 384 coconuts."
+                    },
+                    {
+                      question: "If one tree's harvest count was 3 more than the true value, what is the corrected total, and corrected average, for Venkayya's 15 trees?",
+                      options: ["Corrected total 381, corrected average 25.4", "Corrected total 384, corrected average 25.6", "Corrected total 378, corrected average 25.2", "Corrected total 387, corrected average 25.8"],
+                      answer: 0,
+                      explanation: "Corrected total = 384−3 = 381; corrected average = 381÷15 = 25.4."
+                    },
+                    {
+                      question: "What is the core mathematical relationship used to solve both the missing-weight and harvest-correction problems?",
+                      options: ["Median = middle value when sorted", "Mean = total sum ÷ number of values, which can be rearranged to find the total sum from the mean and count", "Mode = most frequently occurring value", "Range = maximum value minus minimum value"],
+                      answer: 1,
+                      explanation: "Both problems rely on rearranging the mean formula (mean = total sum ÷ count) to first recover the total sum, from which an unknown or incorrect value can be isolated."
+                    }
+                  ]
+                },
+                {
+                  id: "8m-12-4",
+                  title: "4. Line Graphs: Visualising Data Over Time",
+                  lab: { type: "line-graph-reading-sim" },
+                  theory: {
+                    intro: "Rainfall records from Mangaluru, Port Blair, and Rameswaram — plotted as line graphs across all twelve months — reveal each city's monsoon rhythm at a single glance, something a table of 36 numbers could never show as clearly.",
+                    sections: [
+                      {
+                        heading: "What Is a Line Graph?",
+                        text: "A line graph connects data points with line segments to show how a value changes over time. Line graphs are especially useful for visualising trends across many time periods — a dataset spread across 12 months and multiple cities, shown as a clustered-column graph, could require dozens of separate bars and become crowded and hard to read; a line graph shows the same information as clean, easy-to-follow trends."
+                      },
+                      {
+                        heading: "A Two-Step Process for Reading Graphs",
+                        text: "Step 1 (Identify what is given): notice how the graph is organised, what scale is used, and what patterns appear — including checking axis labels and how different data series are distinguished (color, marker shape). Step 2 (Infer and interpret): analyse the observed patterns and form summary/conclusion statements, while remaining aware of what the data does NOT show (e.g., a graph showing only 3 countries' totals may not add up to a 'worldwide' total, meaning other countries' contributions are simply not displayed)."
+                      },
+                      {
+                        heading: "Rainfall Patterns Across India",
+                        text: "Monthly average rainfall-day data for coastal Indian cities reveals clear seasonal patterns: cities differ sharply in which months bring the most rain, reflecting India's monsoon geography. Comparing multiple cities' line graphs side-by-side makes it possible to identify which cities share similar rainy seasons and which have very different patterns — for example, distinguishing cities affected mainly by the south-west monsoon from those affected mainly by the north-east monsoon."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Reading and Interpreting a Rainfall Line Graph",
+                      objective: "To construct a line graph from monthly rainfall-day data and identify each city's peak and low rainfall months.",
+                      materials: ["Graph paper", "Ruler", "Monthly rainfall-day data for a chosen city"],
+                      steps: [
+                        "Plot the 12 monthly values (Jan–Dec) as points on a graph, with month on the horizontal axis and days of rainfall on the vertical axis.",
+                        "Connect the consecutive monthly points with straight line segments.",
+                        "Identify the month(s) where the line reaches its highest point (the peak rainy month).",
+                        "Identify the month(s) where the line reaches its lowest point (the driest month).",
+                        "Compare your city's line graph shape to a different city's, and note whether their rainy seasons occur at similar or different times of year."
+                      ],
+                      observation: "For Mangaluru, the line graph rises sharply from near-zero in February–March to a peak around July (about 27.7 days of rainfall), then falls again toward December — clearly identifying its monsoon season, in contrast to a city like Rameswaram, whose line graph peaks later, around October–November instead."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a line graph particularly well-suited for showing?",
+                      options: ["Comparing only two single values", "Visualising how data changes or trends over time", "Showing the exact proportion of a whole", "Displaying data with no numerical values at all"],
+                      answer: 1,
+                      explanation: "Line graphs connect data points with line segments, making them ideal for visualising trends and changes across time periods, much more clearly than a crowded set of bars would."
+                    },
+                    {
+                      question: "What is Step 1 of the two-step process for interpreting a graph?",
+                      options: ["Immediately draw conclusions without examining the graph", "Identify what is given — noticing the graph's organisation, scale, and patterns shown", "Redraw the graph in a different format", "Assume the graph shows all possible related data"],
+                      answer: 1,
+                      explanation: "Step 1 involves carefully identifying what the graph actually shows — its scale, organisation, and the patterns present — before attempting any interpretation."
+                    },
+                    {
+                      question: "If a line graph shows only 3 countries' space launch counts that don't add up to a labelled 'worldwide' total, what can we correctly infer?",
+                      options: ["The graph must contain an error", "The worldwide total includes contributions from other countries not shown in the graph", "Space launches from other countries never happened", "The three countries shown account for all space launches"],
+                      answer: 1,
+                      explanation: "Since the shown countries' counts don't add up to the worldwide total, we can correctly infer that other, unlisted countries are also contributing to that total — an example of interpreting what a graph does NOT show."
+                    },
+                    {
+                      question: "Why might a clustered-column graph be a poor choice for 12 months of data across multiple cities, compared to a line graph?",
+                      options: ["Clustered-column graphs are always better for time-based data", "With many time periods and categories, a clustered-column graph could require dozens of bars, becoming crowded and hard to read — a line graph shows the same trends more clearly", "Clustered-column graphs cannot display numerical data at all", "There is no meaningful difference between the two graph types for this purpose"],
+                      answer: 1,
+                      explanation: "A clustered-column graph with many months and categories can require many separate bars, making trends hard to follow — a line graph condenses the same information into continuous, easy-to-read trend lines."
+                    },
+                    {
+                      question: "Based on typical monsoon patterns, why might Mangaluru's peak rainfall occur around June–August while Rameswaram's occurs around October–December?",
+                      options: ["This is entirely random with no geographic explanation", "Different coastal regions of India are affected by different monsoon systems (south-west vs. north-east monsoon) at different times of year", "All Indian cities actually have identical rainfall patterns", "Rainfall timing has no connection to a region's geography"],
+                      answer: 1,
+                      explanation: "India's west coast (like Mangaluru) is primarily affected by the south-west monsoon (roughly June–September), while parts of the east coast (like Rameswaram) receive more rainfall from the north-east monsoon (roughly October–December) — explaining the differing peak rainfall months."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
