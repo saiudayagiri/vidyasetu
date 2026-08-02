@@ -4508,6 +4508,97 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const solubilitySaturationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="solubility-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick how many spoons of salt were added and see if it's saturated.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Spoons of Salt Added</h3>
+            <select id="sel-solubility" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="1" selected>1 spoon</option>
+              <option value="3">3 spoons</option>
+              <option value="6">6 spoons (saturation point)</option>
+              <option value="8">8 spoons (past saturation)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Solution State</h3>
+            <div id="solubility-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an amount above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const temperatureSolubilityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="temp-solubility-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a substance and temperature and see how solubility changes.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Substance and Temperature</h3>
+            <select id="sel-temp-solubility" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="soda-20" selected>Baking soda at 20°C</option>
+              <option value="soda-50">Baking soda at 50°C</option>
+              <option value="soda-70">Baking soda at 70°C</option>
+              <option value="oxygen-cold">Dissolved oxygen, cold water</option>
+              <option value="oxygen-warm">Dissolved oxygen, warm water</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Solubility</h3>
+            <div id="temp-solubility-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an option above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const densityCalcLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="density-calc-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an object and see its computed density.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Object</h3>
+            <select id="sel-density-calc" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="aluminium" selected>Aluminium block (27g, 10cm³)</option>
+              <option value="stone">Stone (16.4g, 5cm³)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Density = Mass / Volume</h3>
+            <div id="density-calc-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an object above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const floatSinkLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="float-sink-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see whether the object floats or sinks.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-float-sink" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="ice-water" selected>Ice in liquid water</option>
+              <option value="egg-plain">Egg in plain water</option>
+              <option value="egg-salt">Egg in salty water</option>
+              <option value="hot-air">Hot air balloon in cool air</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="float-sink-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -6583,6 +6674,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'iron-sulfur-test-sim') {
               labHtml = ironSulfurTestLabHtml;
               labDesc = 'Pick a sample and test to see whether it behaves like a mixture or compound.';
+            } else if (topicObj.lab.type === 'solubility-saturation-sim') {
+              labHtml = solubilitySaturationLabHtml;
+              labDesc = 'Pick how many spoons of salt were added and see if the solution is saturated.';
+            } else if (topicObj.lab.type === 'temperature-solubility-sim') {
+              labHtml = temperatureSolubilityLabHtml;
+              labDesc = 'Pick a substance and temperature and see how solubility changes.';
+            } else if (topicObj.lab.type === 'density-calc-sim') {
+              labHtml = densityCalcLabHtml;
+              labDesc = 'Pick an object and see its computed density from mass and volume.';
+            } else if (topicObj.lab.type === 'float-sink-sim') {
+              labHtml = floatSinkLabHtml;
+              labDesc = 'Pick a scenario and see whether the object floats or sinks based on density.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -7174,6 +7277,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initCompoundRatioLab();
         } else if (topicObj.lab.type === 'iron-sulfur-test-sim') {
           initIronSulfurTestLab();
+        } else if (topicObj.lab.type === 'solubility-saturation-sim') {
+          initSolubilitySaturationLab();
+        } else if (topicObj.lab.type === 'temperature-solubility-sim') {
+          initTemperatureSolubilityLab();
+        } else if (topicObj.lab.type === 'density-calc-sim') {
+          initDensityCalcLab();
+        } else if (topicObj.lab.type === 'float-sink-sim') {
+          initFloatSinkLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -23698,6 +23809,172 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(r.result, W / 2, 230);
 
         obs.innerHTML = `<strong>${r.result}:</strong> ${r.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSolubilitySaturationLab() {
+      const canvas = document.getElementById('solubility-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-solubility');
+      const obs = document.getElementById('solubility-obs');
+      const SAT_POINT = 6;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const spoons = parseInt(sel.value);
+        const dissolved = Math.min(spoons, SAT_POINT);
+        const undissolved = Math.max(0, spoons - SAT_POINT);
+        const cx = W / 2, glassTop = 50, glassBottom = 210, glassW = 100;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx - glassW / 2, glassTop); ctx.lineTo(cx - glassW / 2, glassBottom); ctx.lineTo(cx + glassW / 2, glassBottom); ctx.lineTo(cx + glassW / 2, glassTop); ctx.stroke();
+        ctx.fillStyle = 'rgba(59,130,246,0.2)';
+        ctx.fillRect(cx - glassW / 2, glassTop, glassW, glassBottom - glassTop);
+
+        for (let i = 0; i < dissolved * 8; i++) {
+          const x = cx - glassW / 2 + 5 + Math.random() * (glassW - 10);
+          const y = glassTop + 5 + Math.random() * (glassBottom - glassTop - 10);
+          ctx.fillStyle = 'rgba(255,255,255,0.5)';
+          ctx.beginPath(); ctx.arc(x, y, 1.5, 0, Math.PI * 2); ctx.fill();
+        }
+
+        if (undissolved > 0) {
+          ctx.fillStyle = '#e5e7eb';
+          for (let i = 0; i < undissolved * 15; i++) {
+            const x = cx - glassW / 2 + 5 + Math.random() * (glassW - 10);
+            const y = glassBottom - 5 - Math.random() * (undissolved * 4);
+            ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${spoons} spoon${spoons > 1 ? 's' : ''} of salt added`, W / 2, 30);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = undissolved > 0 ? '#ef4444' : '#22c55e';
+        ctx.fillText(undissolved > 0 ? 'SATURATED (excess settles)' : 'UNSATURATED', W / 2, 250);
+
+        obs.innerHTML = undissolved > 0
+          ? `<strong>Saturated:</strong> ${SAT_POINT} spoons dissolved completely; the remaining ${undissolved} spoon(s) settle undissolved at the bottom.`
+          : `<strong>Unsaturated:</strong> All ${spoons} spoon(s) dissolve completely — more salt could still be added.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initTemperatureSolubilityLab() {
+      const canvas = document.getElementById('temp-solubility-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-temp-solubility');
+      const obs = document.getElementById('temp-solubility-obs');
+      const DATA = {
+        'soda-20': { level: 0.35, desc: 'At 20°C, only a small amount of baking soda dissolves before saturation.' },
+        'soda-50': { level: 0.65, desc: 'At 50°C, more baking soda dissolves than at 20°C — solubility increases with heat.' },
+        'soda-70': { level: 0.95, desc: 'At 70°C, even more baking soda dissolves — solids generally dissolve more as temperature rises.' },
+        'oxygen-cold': { level: 0.8, desc: 'Cold water holds MORE dissolved oxygen — good for aquatic life.' },
+        'oxygen-warm': { level: 0.3, desc: 'Warm water holds LESS dissolved oxygen — gas solubility decreases with heat, the opposite of solids.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const barX = 220, barY = 50, barMaxH = 170, barW = 90;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+        ctx.strokeRect(barX, barY, barW, barMaxH);
+        const fillH = d.level * barMaxH;
+        ctx.fillStyle = sel.value.startsWith('soda') ? '#f59e0b' : '#3b82f6';
+        ctx.fillRect(barX, barY + barMaxH - fillH, barW, fillH);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, barX + barW / 2, barY - 15);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('Amount dissolved', barX + barW / 2, barY + barMaxH + 25);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${d.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDensityCalcLab() {
+      const canvas = document.getElementById('density-calc-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-density-calc');
+      const obs = document.getElementById('density-calc-obs');
+      const DATA = {
+        aluminium: { mass: 27, vol: 10, color: '#94a3b8' },
+        stone: { mass: 16.4, vol: 5, color: '#78716c' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const density = (d.mass / d.vol).toFixed(2);
+        const cx = W / 2, cy = 140;
+        const size = 30 + d.vol * 4;
+
+        ctx.fillStyle = d.color; ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.fillRect(cx - size / 2, cy - size / 2, size, size);
+        ctx.strokeRect(cx - size / 2, cy - size / 2, size, size);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Mass=${d.mass}g, Volume=${d.vol}cm³`, W / 2, cy + size / 2 + 25);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`Density = ${density} g/cm³`, W / 2, 250);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> Density = ${d.mass}g / ${d.vol}cm³ = <strong style="color:#22c55e;">${density} g/cm³</strong>.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initFloatSinkLab() {
+      const canvas = document.getElementById('float-sink-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-float-sink');
+      const obs = document.getElementById('float-sink-obs');
+      const DATA = {
+        'ice-water': { floats: true, desc: 'Ice is less dense than liquid water (water expands on freezing), so it floats.' },
+        'egg-plain': { floats: false, desc: 'A raw egg is denser than plain water, so it sinks.' },
+        'egg-salt': { floats: true, desc: 'Dissolved salt increases the water’s density above the egg’s density, so the egg floats.' },
+        'hot-air': { floats: true, desc: 'Hot air is less dense than the surrounding cool air, so the balloon rises.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const cx = W / 2, containerTop = 50, containerBottom = 220, containerW = 140;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx - containerW / 2, containerTop); ctx.lineTo(cx - containerW / 2, containerBottom); ctx.lineTo(cx + containerW / 2, containerBottom); ctx.lineTo(cx + containerW / 2, containerTop); ctx.stroke();
+        ctx.fillStyle = 'rgba(59,130,246,0.15)';
+        ctx.fillRect(cx - containerW / 2, containerTop, containerW, containerBottom - containerTop);
+
+        const objY = d.floats ? containerTop + 30 : containerBottom - 30;
+        ctx.fillStyle = '#f59e0b';
+        ctx.beginPath(); ctx.arc(cx, objY, 20, 0, Math.PI * 2); ctx.fill();
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = d.floats ? '#22c55e' : '#ef4444';
+        ctx.fillText(d.floats ? 'FLOATS' : 'SINKS', W / 2, 250);
+
+        obs.innerHTML = `<strong>${d.floats ? 'Floats' : 'Sinks'}:</strong> ${d.desc}`;
       }
 
       sel.addEventListener('change', draw);

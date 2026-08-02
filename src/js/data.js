@@ -14124,6 +14124,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8s-9",
+              title: "The Amazing World of Solutes, Solvents, and Solutions",
+              topics: [
+                {
+                  id: "8s-9-1",
+                  title: "1. Solutions: Solute, Solvent, and Concentration",
+                  lab: { type: "solubility-saturation-sim" },
+                  theory: {
+                    intro: "Add spoon after spoon of salt to a glass of water and, at first, it all vanishes — but eventually the water simply can't dissolve any more, and the extra salt settles at the bottom, no matter how much you stir.",
+                    sections: [
+                      {
+                        heading: "Solute, Solvent, and Solution",
+                        text: "A uniform mixture — like salt or sugar dissolved in water — is called a solution. When a solid dissolves in a liquid, the solid is the solute and the liquid is the solvent: Solute + Solvent → Solution. When two liquids mix and it's unclear which dissolves the other, the substance present in the smaller amount is called the solute, and the one in the larger amount the solvent — even in sugar syrup (chashni), where there's more sugar than water, water is still considered the solvent."
+                      },
+                      {
+                        heading: "Saturated vs. Unsaturated Solutions",
+                        text: "Adding salt to water gradually: at first, all the salt dissolves completely — this is an unsaturated solution, meaning more solute can still dissolve. Eventually, a point is reached where added salt no longer dissolves and settles at the bottom — this is a saturated solution at that temperature. The maximum amount of solute that can dissolve in a fixed quantity of solvent is called its solubility."
+                      },
+                      {
+                        heading: "Dilute and Concentrated Solutions",
+                        text: "The amount of solute present in a fixed quantity of solution is its concentration. A solution with less solute is called dilute, while one with more solute is concentrated — these are relative terms. For example, a solution with 1 spoon of dissolved salt is dilute compared to one with 2 or more spoons dissolved in the same amount of water."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding the Saturation Point of Salt in Water",
+                      objective: "To determine how many spoons of salt a fixed amount of water can dissolve before becoming saturated.",
+                      materials: ["A clean glass tumbler", "Water", "Salt", "A spoon for stirring"],
+                      steps: [
+                        "Fill a glass tumbler halfway with water.",
+                        "Add one spoon of salt and stir until it completely dissolves.",
+                        "Continue adding salt one spoon at a time, stirring well after each addition.",
+                        "Record how many spoons dissolve completely before some salt remains undissolved at the bottom.",
+                        "Identify the point at which the solution becomes saturated."
+                      ],
+                      observation: "Initially, each spoonful of salt dissolves completely (unsaturated solution); after several spoonfuls, additional salt stops dissolving and settles at the bottom, marking the point where the solution becomes saturated at that temperature."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In a solution formed by dissolving sugar in water, what is the sugar called?",
+                      options: ["The solvent", "The solute", "The solution", "The concentration"],
+                      answer: 1,
+                      explanation: "When a solid dissolves in a liquid, the solid (sugar) is called the solute, and the liquid (water) is called the solvent."
+                    },
+                    {
+                      question: "What is a 'saturated solution'?",
+                      options: ["A solution that has no solute at all", "A solution in which no more solute can dissolve at a given temperature, so excess solute settles undissolved", "A solution that is always very dilute", "A solution made only of gases"],
+                      answer: 1,
+                      explanation: "A saturated solution has reached its limit — no more solute will dissolve at that temperature, and any additional solute added will remain undissolved."
+                    },
+                    {
+                      question: "In sugar syrup (chashni), which has much more sugar than water, which substance is still considered the solvent?",
+                      options: ["Sugar, since it is present in larger amount", "Water, even though it is present in a smaller amount", "Neither is considered a solvent", "Both are considered solutes"],
+                      answer: 1,
+                      explanation: "By convention, water is still considered the solvent even when present in a smaller amount than the dissolved sugar — the liquid is generally treated as the solvent."
+                    },
+                    {
+                      question: "What is 'solubility'?",
+                      options: ["The colour of a solution", "The maximum amount of solute that can dissolve in a fixed quantity of solvent", "The temperature of a solution", "The total volume of a solution"],
+                      answer: 1,
+                      explanation: "Solubility is defined as the maximum amount of solute that can be dissolved in a fixed quantity of solvent at a given temperature."
+                    },
+                    {
+                      question: "What distinguishes a 'dilute' solution from a 'concentrated' one?",
+                      options: ["Dilute solutions always contain gases", "A dilute solution has less solute relative to solvent; a concentrated solution has more — these are relative terms", "Concentrated solutions cannot exist", "There is no real difference between the two"],
+                      answer: 1,
+                      explanation: "Dilute and concentrated describe the relative amount of solute in a solution — less solute makes it dilute, more solute makes it concentrated, always compared relative to another solution."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-9-2",
+                  title: "2. How Temperature Affects Solubility",
+                  lab: { type: "temperature-solubility-sim" },
+                  theory: {
+                    intro: "Heat water and it can dissolve more baking soda — but heat water and it holds LESS dissolved oxygen, which is exactly why fish need cold water to breathe comfortably.",
+                    sections: [
+                      {
+                        heading: "Solids Dissolve More as Temperature Rises",
+                        text: "Adding baking soda to 50 mL of water at 20°C until some remains undissolved (saturated), then heating to 50°C shows the undissolved baking soda dissolves — the solution becomes unsaturated again. Heating further to 70°C allows even more baking soda to dissolve. For most substances, solubility increases with temperature: a saturated solution at one temperature behaves as unsaturated if heated."
+                      },
+                      {
+                        heading: "Gases Dissolve LESS as Temperature Rises",
+                        text: "Unlike solids, gas solubility generally DECREASES as temperature increases. Oxygen dissolves in water only to a small extent, but this dissolved oxygen sustains all aquatic life. More oxygen can dissolve in cold water, ensuring sufficient oxygen for fish and other aquatic organisms; as water warms, its oxygen solubility decreases — this is why warm water bodies can struggle to support as much aquatic life."
+                      },
+                      {
+                        heading: "Gas Solutions Are Uniform Mixtures Too",
+                        text: "The mixture of dissolved gases in water is a uniform mixture, since the gases dissolve evenly throughout — meeting the same definition as a solution. This shows that solutions aren't limited to solid-in-liquid combinations; gas-in-liquid mixtures like dissolved oxygen in water are solutions too."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing How Heating Affects Baking Soda's Solubility",
+                      objective: "To observe that a saturated solution of baking soda becomes unsaturated (able to dissolve more) when heated.",
+                      materials: ["A glass beaker", "50 mL water", "Baking soda", "A laboratory thermometer", "A heating source (under supervision)"],
+                      steps: [
+                        "Measure 50 mL of water at 20°C in a beaker.",
+                        "Add baking soda gradually, stirring, until some remains undissolved (a saturated solution).",
+                        "Heat the mixture to 50°C while stirring, and observe whether the undissolved soda dissolves.",
+                        "Add more baking soda at 50°C until saturation is reached again.",
+                        "Heat further to 70°C and observe whether even more baking soda dissolves."
+                      ],
+                      observation: "At each higher temperature (20°C → 50°C → 70°C), the previously undissolved baking soda dissolves completely, and even more can be added before reaching saturation again — confirming that solubility of a solid increases with temperature."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "For most solid solutes, how does solubility in water change as temperature increases?",
+                      options: ["Solubility decreases", "Solubility increases", "Solubility stays exactly the same", "Solids stop dissolving entirely at high temperatures"],
+                      answer: 1,
+                      explanation: "For most solid substances, solubility increases with temperature — a saturated solution at a lower temperature can dissolve even more solute when heated."
+                    },
+                    {
+                      question: "How does the solubility of gases (like oxygen) in water change as temperature increases?",
+                      options: ["It increases, just like solids", "It generally decreases", "It stays exactly the same as solids' behavior", "Gases cannot dissolve in water at all"],
+                      answer: 1,
+                      explanation: "Unlike solids, gas solubility in liquids generally DECREASES as temperature rises — this is the opposite trend from most solid solutes."
+                    },
+                    {
+                      question: "Why is dissolved oxygen in water critical for aquatic life?",
+                      options: ["It has no biological importance", "It is the oxygen that fish, plants, and other aquatic organisms depend on to survive", "Aquatic organisms only need dissolved carbon dioxide", "Oxygen only matters for organisms living outside water"],
+                      answer: 1,
+                      explanation: "Even though oxygen dissolves in water only in small quantities, this dissolved oxygen is essential and sustains all aquatic life, including fish and plants."
+                    },
+                    {
+                      question: "Why might warmer water bodies struggle to support as much aquatic life as cooler ones?",
+                      options: ["Warm water has no relationship to oxygen levels", "Warmer water holds less dissolved oxygen, since gas solubility decreases with rising temperature", "Warm water always has more oxygen than cold water", "Aquatic life does not need oxygen"],
+                      answer: 1,
+                      explanation: "Since gas solubility decreases as temperature rises, warmer water holds less dissolved oxygen — potentially straining the aquatic organisms that depend on it."
+                    },
+                    {
+                      question: "Is the mixture of dissolved gases in water a uniform or non-uniform mixture?",
+                      options: ["Non-uniform, since gas particles settle at the bottom", "Uniform, since the gases dissolve evenly throughout the water", "Neither — gases don't form mixtures with water", "It depends on the color of the gas"],
+                      answer: 1,
+                      explanation: "Dissolved gases distribute evenly throughout water, making it a uniform mixture — meeting the definition of a solution, just like dissolved solids."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-9-3",
+                  title: "3. Understanding Density",
+                  lab: { type: "density-calc-sim" },
+                  theory: {
+                    intro: "An iron rod and a wooden stick of the same size feel very different in your hand — not because of some magic, but because of density, the mass packed into each unit of volume.",
+                    sections: [
+                      {
+                        heading: "Defining Density",
+                        text: "Density is defined as the mass present in a unit volume of a substance: Density = Mass / Volume. Just as a crowded bus (many people in a fixed space) has high density and a nearly-empty bus has low density, denser substances pack more mass into the same volume. Density does not depend on an object's shape or size, but it does depend on temperature and pressure."
+                      },
+                      {
+                        heading: "Calculating Density: Worked Examples",
+                        text: "For an aluminium block with mass 27 g and volume 10 cm³: Density = 27g / 10cm³ = 2.7 g/cm³. For a stone with mass 16.400 g and volume 5 cm³ (found via water displacement): Density = 16.400g / 5cm³ = 3.28 g/cm³. The SI unit of density is kg/m³, though g/mL and g/cm³ are commonly used for liquids and small objects (1 g/mL = 1000 kg/m³)."
+                      },
+                      {
+                        heading: "Relative Density",
+                        text: "Relative density compares a substance's density to water's density: Relative density = Density of substance / Density of water. Since aluminium's density (2.7 g/cm³) is 2.7 times water's density (1 g/cm³), aluminium's relative density is 2.7 — a number with no units. Measuring volume of irregular solids (like a stone) uses water displacement: the stone's volume equals the rise in water level when it's submerged (e.g., 55 mL - 50 mL = 5 mL = 5 cm³)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Measuring the Density of an Irregular Object Using Water Displacement",
+                      objective: "To determine the density of an irregularly-shaped object (like a stone) by measuring its mass and finding its volume through water displacement.",
+                      materials: ["A digital weighing balance", "A measuring cylinder", "Water", "A stone or other small irregular object", "Thread"],
+                      steps: [
+                        "Measure the mass of the stone using a digital weighing balance (e.g., 16.400 g).",
+                        "Fill a measuring cylinder with a known volume of water (e.g., 50 mL) and record it.",
+                        "Tie the stone with thread and slowly lower it into the measuring cylinder.",
+                        "Record the new (final) water level (e.g., 55 mL).",
+                        "Calculate the volume displaced (final - initial = 5 mL = 5 cm³) and compute density = mass/volume."
+                      ],
+                      observation: "For a stone with mass 16.400 g that displaces water from 50 mL to 55 mL (a volume of 5 cm³), the calculated density is 16.400g / 5cm³ = 3.28 g/cm³."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the formula for density?",
+                      options: ["Density = Mass × Volume", "Density = Mass / Volume", "Density = Volume / Mass", "Density = Mass + Volume"],
+                      answer: 1,
+                      explanation: "Density is defined as mass per unit volume: Density = Mass / Volume."
+                    },
+                    {
+                      question: "An aluminium block has a mass of 27 g and a volume of 10 cm³. What is its density?",
+                      options: ["2.7 g/cm³", "270 g/cm³", "0.37 g/cm³", "17 g/cm³"],
+                      answer: 0,
+                      explanation: "Density = Mass/Volume = 27g / 10cm³ = 2.7 g/cm³."
+                    },
+                    {
+                      question: "A stone has mass 16.400 g and displaces water from 50 mL to 55 mL when submerged. What is the stone's density?",
+                      options: ["16.4 g/cm³", "3.28 g/cm³", "0.3 g/cm³", "5 g/cm³"],
+                      answer: 1,
+                      explanation: "The stone's volume is 55mL - 50mL = 5 cm³. Density = 16.400g / 5cm³ = 3.28 g/cm³."
+                    },
+                    {
+                      question: "How is the volume of an irregularly-shaped solid object (like a stone) typically measured?",
+                      options: ["By calculating length × width × height", "By measuring how much the water level rises when the object is submerged (water displacement)", "It cannot be measured at all", "By weighing it multiple times"],
+                      answer: 1,
+                      explanation: "For irregular objects, volume is found using water displacement: the object's volume equals the rise in water level when fully submerged in a measuring cylinder."
+                    },
+                    {
+                      question: "What does it mean if aluminium has a relative density of 2.7 (compared to water)?",
+                      options: ["Aluminium weighs exactly 2.7 grams", "Aluminium is 2.7 times as dense as water", "Aluminium has 2.7 times the volume of water", "This number has no real meaning"],
+                      answer: 1,
+                      explanation: "Relative density of 2.7 means aluminium's density is 2.7 times greater than the density of water — a unitless comparison ratio."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-9-4",
+                  title: "4. Density, Temperature, and Floating",
+                  lab: { type: "float-sink-sim" },
+                  theory: {
+                    intro: "Ice is one of the rare solids that floats on its own liquid — a strange exception to the normal rule that heating shrinks density, and one that quietly keeps entire lakes from freezing solid.",
+                    sections: [
+                      {
+                        heading: "How Temperature Affects Density",
+                        text: "Generally, a substance's density decreases with heating and increases with cooling. As temperature rises, particles spread further apart, increasing volume while mass stays the same — since Density = Mass/Volume, density decreases. This is why hot air rises (it's less dense than surrounding cool air), which is the exact principle hot air balloons use to fly."
+                      },
+                      {
+                        heading: "How Pressure Affects Density",
+                        text: "Pressure affects gases significantly: increasing pressure pushes gas particles closer together, decreasing volume and increasing density. Liquids are nearly incompressible, so pressure has only a small effect on their density. Solids are even less affected by pressure, with changes in their density usually negligible."
+                      },
+                      {
+                        heading: "Why Ice Floats: Water's Unusual Density",
+                        text: "Water is densest at 4°C. As it cools further and freezes into ice at 0°C, its particles arrange into a structure that takes up MORE space (expansion) — so ice has a LOWER density than liquid water, and floats. This matters immensely for aquatic life: floating ice forms an insulating layer on top of lakes and oceans, keeping the water underneath warm enough for fish and other creatures to survive through cold winters."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Investigating Why an Egg Sinks and How to Make It Float",
+                      objective: "To observe that a raw egg sinks in plain tap water, and explore what change to the water could make it float, based on density.",
+                      materials: ["A glass tumbler", "Tap water", "A raw whole egg", "Salt (for further exploration)"],
+                      steps: [
+                        "Fill a glass tumbler with tap water.",
+                        "Carefully place a raw whole egg into the water and observe what happens.",
+                        "Note that the egg sinks to the bottom, since its density is greater than plain water's.",
+                        "Predict what change to the water (such as adding salt to increase its density) might make the egg float instead.",
+                        "Test your prediction by gradually adding salt to the water and observing the egg's behavior."
+                      ],
+                      observation: "The raw egg sinks in plain tap water because its density is greater than water's; adding enough salt increases the water's density until it exceeds the egg's density, at which point the egg floats — showing how an object's ability to float depends on its density relative to the surrounding liquid."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does hot air rise above cooler surrounding air?",
+                      options: ["Hot air is heavier than cool air", "Hot air is less dense than cool air, since heating increases volume without changing mass", "Hot air has no relationship to density", "Cool air always rises instead"],
+                      answer: 1,
+                      explanation: "Heating air causes it to expand (increasing volume while mass stays the same), decreasing its density — since it becomes less dense than the surrounding cooler air, it rises, which is the principle behind hot air balloons."
+                    },
+                    {
+                      question: "How does increasing pressure typically affect the density of a gas?",
+                      options: ["It decreases the gas's density", "It increases the gas's density, since particles are pushed closer together, reducing volume", "Pressure has no effect on gas density", "It only affects liquids, not gases"],
+                      answer: 1,
+                      explanation: "Increasing pressure on a gas pushes its particles closer together, reducing its volume — since density = mass/volume, this increases the gas's density."
+                    },
+                    {
+                      question: "Why does ice float on liquid water, unlike most solids which sink in their own liquid form?",
+                      options: ["Ice is actually denser than water", "Water expands as it freezes into ice, making ice's density LOWER than liquid water's density", "Ice floats due to air trapped inside it, not density", "This is simply a random exception with no explanation"],
+                      answer: 1,
+                      explanation: "Water's particles arrange into a more spread-out structure when frozen, causing ice to occupy more volume for the same mass — this lower density is why ice floats on liquid water."
+                    },
+                    {
+                      question: "Why is it ecologically important that ice floats on top of lakes rather than sinking?",
+                      options: ["It has no ecological significance", "Floating ice insulates the water below, keeping it warm enough for aquatic life to survive cold winters", "Floating ice actually harms aquatic life", "Lakes would be unaffected either way"],
+                      answer: 1,
+                      explanation: "Because ice floats and forms a layer on top, it insulates the water beneath it, keeping it warmer and allowing fish and other aquatic organisms to survive even in extremely cold weather."
+                    },
+                    {
+                      question: "Why does adding salt to water potentially make a sinking egg float?",
+                      options: ["Salt has no effect on water's density", "Dissolved salt increases the water's density; if it exceeds the egg's density, the egg will float", "Salt makes the egg lighter directly", "This is not actually possible"],
+                      answer: 1,
+                      explanation: "Adding salt increases the density of the water. Once the salty water's density exceeds the egg's density, the egg is buoyed up and floats instead of sinking."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
