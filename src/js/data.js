@@ -12150,6 +12150,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8s-2",
+              title: "The Invisible Living World: Beyond Our Naked Eye",
+              topics: [
+                {
+                  id: "8s-2-1",
+                  title: "1. Cells: The Basic Unit of Life",
+                  lab: { type: "plant-vs-animal-cell-sim" },
+                  theory: {
+                    intro: "All living beings, whether plants or animals, are made up of cells — and a cell is far more than a simple bag of liquid. It's a compact structure with distinct parts, each with its own job.",
+                    sections: [
+                      {
+                        heading: "The Three Basic Parts of a Cell",
+                        text: "Every cell has three basic parts: the cell membrane (the outer layer that encloses the cell, separates it from neighbouring cells, and is porous enough to let essential materials in and waste out), the cytoplasm (the space between the membrane and nucleus, containing carbohydrates, proteins, fats, and mineral salts, where most life processes occur), and the nucleus (a round structure covered by its own membrane, which regulates all activities and growth within the cell)."
+                      },
+                      {
+                        heading: "Extra Structures in Plant Cells",
+                        text: "Plant cells (like onion peel cells) have an extra outer layer called the cell wall, giving rigidity and strength so that cells are arranged compactly and look firm. Plant cells also contain plastids — some, called chloroplasts, contain chlorophyll and carry out photosynthesis — and a large vacuole that stores substances, removes waste, and maintains the cell's shape. Animal cell vacuoles, by contrast, are usually absent or very small."
+                      },
+                      {
+                        heading: "Levels of Organisation",
+                        text: "In multicellular organisms, cells don't work in isolation. A group of similar cells forms a tissue; different tissues organise into an organ; several organs work together as an organ system; and all the organ systems together make up a complete organism. So the levels of organisation are: Cell → Tissue → Organ → Organ system → Organism."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Observing Onion Peel and Cheek Cells Under a Microscope",
+                      objective: "To observe and compare the structure of a plant cell (onion peel) and an animal cell (human cheek cell) using simple staining techniques.",
+                      materials: ["Onion bulb", "Forceps", "Safranin stain", "Methylene blue stain", "Glass slides, coverslips, glycerin", "Toothpick", "Microscope"],
+                      steps: [
+                        "Peel a thin, transparent layer from the inner surface of an onion piece and stain it with safranin.",
+                        "Mount the stained onion peel on a slide with glycerin and a coverslip; observe under a microscope.",
+                        "Separately, gently scrape the inside of your cheek with a clean toothpick and spread the material on a slide.",
+                        "Stain the cheek scraping with methylene blue, add glycerin, cover with a coverslip, and observe under a microscope.",
+                        "Compare the shapes: rectangular, compactly arranged onion cells vs. polygon-shaped, loosely arranged cheek cells."
+                      ],
+                      observation: "Onion peel cells appear as nearly rectangular compartments arranged tightly with no gaps, with a visible cell wall — while human cheek cells appear as loose, polygon-shaped cells without a cell wall, confirming that plant cells have an extra rigid outer layer that animal cells lack."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What are the three basic parts found in every cell?",
+                      options: ["Cell wall, chloroplast, vacuole", "Cell membrane, cytoplasm, nucleus", "Nucleoid, cell wall, membrane", "Mitochondria, nucleus, vacuole"],
+                      answer: 1,
+                      explanation: "Every cell has a cell membrane (outer boundary), cytoplasm (the space between membrane and nucleus), and a nucleus (which regulates cell activities) — these three are the basic parts of a cell."
+                    },
+                    {
+                      question: "Which structure is present in plant cells but generally absent (or very small) in animal cells, and helps store substances and maintain cell shape?",
+                      options: ["Nucleus", "Cell membrane", "Vacuole", "Cytoplasm"],
+                      answer: 2,
+                      explanation: "Plant cells have a large, prominent vacuole for storing substances, removing waste, and maintaining shape, while animal cell vacuoles are usually absent or very small."
+                    },
+                    {
+                      question: "What is the correct order of levels of organisation in a multicellular organism, from simplest to most complex?",
+                      options: ["Organism → Organ system → Organ → Tissue → Cell", "Cell → Tissue → Organ → Organ system → Organism", "Tissue → Cell → Organ → Organism → Organ system", "Cell → Organ → Tissue → Organism → Organ system"],
+                      answer: 1,
+                      explanation: "Starting from the smallest unit: Cell → Tissue (group of similar cells) → Organ (group of tissues) → Organ system (group of organs) → Organism (complete living being)."
+                    },
+                    {
+                      question: "What role does chlorophyll play in plant cell plastids called chloroplasts?",
+                      options: ["It gives the cell its rigid shape", "It enables photosynthesis, using light to make food", "It stores waste products", "It regulates the cell's growth"],
+                      answer: 1,
+                      explanation: "Chloroplasts contain chlorophyll, the green pigment that captures light energy and enables photosynthesis, allowing the plant to make its own food."
+                    },
+                    {
+                      question: "Why does the cell membrane need to be porous rather than a solid, sealed barrier?",
+                      options: ["To let the cell dissolve over time", "To allow essential materials to enter and waste materials to exit the cell", "Porosity has no functional purpose", "To prevent all substances from entering or leaving"],
+                      answer: 1,
+                      explanation: "The cell membrane must allow the controlled entry of materials essential for life processes and the exit of waste — a purely solid barrier would prevent the cell from exchanging anything with its surroundings."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-2-2",
+                  title: "2. Discovering Microorganisms",
+                  lab: { type: "microorganism-classifier-sim" },
+                  theory: {
+                    intro: "A single drop of pond water or a pinch of garden soil, viewed under a microscope, reveals a bustling world of Amoeba, Paramecium, algae, moulds, and bacteria — creatures far too small to see with the naked eye.",
+                    sections: [
+                      {
+                        heading: "What Are Microorganisms?",
+                        text: "Microorganisms (or microbes) are tiny living creatures that cannot be seen with the naked eye — 'micro' means very small, and 'organisms' means living beings. Some, like bacteria and Amoeba, are unicellular (made of just one cell); others, like some fungi and algae, are multicellular. They are found everywhere: in water, soil, air, and even inside our bodies."
+                      },
+                      {
+                        heading: "Microbes Found in Pond Water and Soil",
+                        text: "Observing pond water under a microscope reveals Amoeba (single-celled, moving, irregular shape), Paramecium (single-celled, moves using specialised structures), and algae (single-celled, green due to a green pigment). Observing soil suspension reveals bread mould and mould (branched filaments without chlorophyll), algae (spherical, green), and bacteria (spherical, comma-shaped, spiral, or rod-shaped)."
+                      },
+                      {
+                        heading: "Viruses: A Special Case",
+                        text: "Viruses are microscopic and acellular (not made of cells). They multiply only when they enter a living cell, and may infect plants, animals, or even bacteria — sometimes causing disease. This ability to reproduce only inside a host cell sets viruses apart from all other microorganisms, which are made of at least one complete cell."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Observing Microorganisms in Pond Water and Soil Suspension",
+                      objective: "To observe and identify different types of microorganisms present in pond water and soil suspension using a microscope.",
+                      materials: ["Pond or stagnant water sample", "Moist garden soil", "Beaker, glass rod, dropper", "Microscope slides and coverslips", "Microscope"],
+                      steps: [
+                        "Place a drop of pond water on a slide, cover with a coverslip, and observe under a microscope.",
+                        "Separately, mix moist soil with water in a beaker to form a soil suspension, and let it settle.",
+                        "Take a drop from the top layer of the settled soil suspension and place it on a slide.",
+                        "Cover with a coverslip and observe under the microscope.",
+                        "Record and sketch the shapes of any moving or stationary microorganisms you observe in each sample."
+                      ],
+                      observation: "Pond water typically reveals Amoeba (irregular, moving) and Paramecium (moves via specialised structures), while soil suspension typically reveals bread mould, mould, algae, and bacteria of various spherical, comma, spiral, or rod shapes — confirming that both water and soil are rich in microscopic life."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does the term 'microorganism' literally mean?",
+                      options: ["A very large living being", "A very small living being (micro=small, organism=living being)", "A non-living particle", "An organism found only in water"],
+                      answer: 1,
+                      explanation: "'Micro' means very small and 'organisms' means living beings — so microorganisms are simply tiny living beings too small to see with the naked eye."
+                    },
+                    {
+                      question: "Which of these microorganisms is described as single-celled, moving, with an irregular shape, commonly found in pond water?",
+                      options: ["Paramecium", "Amoeba", "Bread mould", "Bacteria"],
+                      answer: 1,
+                      explanation: "Amoeba is a protozoan described as a single cell with an irregular, changing shape that moves within pond water."
+                    },
+                    {
+                      question: "What distinguishes a virus from other microorganisms like bacteria, algae, and fungi?",
+                      options: ["Viruses are much larger than bacteria", "Viruses are acellular and can only multiply inside a living host cell", "Viruses can only be found in water", "Viruses are always beneficial, never harmful"],
+                      answer: 1,
+                      explanation: "Unlike bacteria, algae, and fungi (which are made of at least one complete cell), viruses are acellular and can only reproduce once they enter a living host cell."
+                    },
+                    {
+                      question: "In soil suspension, bread mould and mould are identified by which feature?",
+                      options: ["Spherical shape with chlorophyll", "Branched filaments without chlorophyll", "Comma or spiral shape", "Movement using specialised structures"],
+                      answer: 1,
+                      explanation: "Bread mould and mould are types of fungi identified by their branched, filament-like structure that lacks chlorophyll (since fungi cannot photosynthesize)."
+                    },
+                    {
+                      question: "Why are microorganisms classified as unicellular OR multicellular, rather than all being one or the other?",
+                      options: ["All microorganisms are actually unicellular", "Different types of microbes vary — bacteria and Amoeba are unicellular, while some fungi and algae are multicellular", "All microorganisms are actually multicellular", "This classification does not apply to microorganisms"],
+                      answer: 1,
+                      explanation: "Microorganisms show real diversity in cell count: bacteria and Amoeba are made of just one cell (unicellular), while some fungi and algae are made of many cells (multicellular)."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-2-3",
+                  title: "3. Microbes That Help Us",
+                  lab: { type: "fermentation-sim" },
+                  theory: {
+                    intro: "The fluffy bread on your table, the sour curd in your fridge, and the rich manure in a garden compost pit are all the work of microorganisms quietly transforming raw ingredients through fermentation and decomposition.",
+                    sections: [
+                      {
+                        heading: "Yeast and Fermentation in Baking",
+                        text: "Yeast is a unicellular fungus that respires and breaks down food to release energy, releasing carbon dioxide as a byproduct. In dough, these CO2 bubbles make the dough soft and fluffy, while a small amount of alcohol produced gives it a distinct smell. This is why dough with yeast (kept warm) rises after 4-5 hours, while dough without yeast does not. Some bacteria, like Lactobacillus, similarly ferment batter for idli and dosa, and dough for bhatura."
+                      },
+                      {
+                        heading: "Curd Formation and Temperature",
+                        text: "Curd contains Lactobacillus bacteria, which feed on the sugar (lactose) in milk, multiply, and ferment it — producing lactic acid (which makes curd sour) instead of alcohol. These bacteria grow well in warm conditions: milk kept warm with a curd starter turns into curd within hours, while milk kept cold (e.g., in a refrigerator) does not curdle, since Lactobacillus grows poorly in cold conditions."
+                      },
+                      {
+                        heading: "Decomposition, Nitrogen Fixation, and Microalgae",
+                        text: "Fungi and bacteria in soil break down plant and animal waste into nutrient-rich manure, through decomposition — recycling nutrients back into the soil. Rhizobium bacteria live in root nodules of legumes (peas, beans, lentils) and trap nitrogen from the air, naturally fertilising the soil — which is why farmers rotate legume crops. Microalgae like Spirulina and Chlorella produce more than half of Earth's oxygen supply through photosynthesis, and are also used as nutrient-rich health supplements."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Yeast Fermentation in Warm vs. Cold Dough",
+                      objective: "To observe how temperature affects yeast fermentation by comparing dough with and without yeast under warm conditions.",
+                      materials: ["Flour (atta or maida)", "Sugar", "Yeast powder", "Warm water", "Two mixing bowls", "Damp cloth"],
+                      steps: [
+                        "In bowl A, mix 200g flour with a pinch of sugar and a small amount of yeast powder.",
+                        "In bowl B, mix 200g flour with a pinch of sugar but NO yeast.",
+                        "Knead both with warm water into soft dough, cover with a damp cloth, and place in a warm spot.",
+                        "Observe both bowls after 4-5 hours for changes in volume, texture, and smell.",
+                        "Compare: which dough rose and became fluffy, and which stayed the same?"
+                      ],
+                      observation: "The dough in bowl A (with yeast) rises noticeably, becomes fluffy, and develops a distinct smell due to CO2 and alcohol produced by yeast fermentation; the dough in bowl B (without yeast) shows no such change, confirming yeast is responsible for the rise."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What gas does yeast release during fermentation that makes bread dough soft and fluffy?",
+                      options: ["Oxygen", "Nitrogen", "Carbon dioxide", "Methane"],
+                      answer: 2,
+                      explanation: "Yeast respires and breaks down food, releasing carbon dioxide gas, which forms bubbles in the dough, making it soft and fluffy — along with a small amount of alcohol."
+                    },
+                    {
+                      question: "Which bacterium ferments milk sugar (lactose) into lactic acid to form curd?",
+                      options: ["Rhizobium", "E. coli", "Lactobacillus", "Salmonella"],
+                      answer: 2,
+                      explanation: "Lactobacillus bacteria feed on lactose in milk, multiply, and produce lactic acid, which curdles the milk and gives curd its sour taste."
+                    },
+                    {
+                      question: "Why does milk kept warm with a curd starter turn into curd faster than milk kept cold?",
+                      options: ["Cold milk has less lactose", "Lactobacillus bacteria grow and ferment much better in warm conditions than in cold conditions", "Warm milk contains more water", "There is no actual difference between warm and cold milk"],
+                      answer: 1,
+                      explanation: "Lactobacillus bacteria are most active and multiply fastest in warm conditions, so curd forms much faster (and more reliably) in warm milk than in refrigerated cold milk."
+                    },
+                    {
+                      question: "How do Rhizobium bacteria in legume root nodules benefit the soil?",
+                      options: ["They produce oxygen for the plant", "They trap nitrogen from the air and make it useful for plants, naturally fertilising the soil", "They decompose the plant's roots", "They protect the plant from insects"],
+                      answer: 1,
+                      explanation: "Rhizobium bacteria living in the root nodules of legumes trap atmospheric nitrogen and convert it into a form plants can use — naturally increasing soil fertility without chemical fertilisers."
+                    },
+                    {
+                      question: "What significant environmental role do microalgae like Spirulina and Chlorella play?",
+                      options: ["They consume most of Earth's oxygen", "They produce more than half of Earth's oxygen supply through photosynthesis", "They have no role in oxygen production", "They only survive in extremely polluted water"],
+                      answer: 1,
+                      explanation: "Microalgae are microscopic plant-like organisms that photosynthesize, releasing oxygen — together producing more than half of the Earth's total oxygen supply."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-2-4",
+                  title: "4. Seeing the Invisible: Microscopes",
+                  lab: { type: "microscope-magnification-sim" },
+                  theory: {
+                    intro: "From a water-filled flask to Robert Hooke's hand-built microscope to today's electron microscopes, each improvement in magnifying power has revealed a deeper layer of the invisible living world.",
+                    sections: [
+                      {
+                        heading: "Early Magnifying Tools",
+                        text: "A curved piece of glass — thick in the middle, thin at the edges, shaped like a lentil seed (hence 'lens') — was found to make small things look bigger. Even a round-bottom flask filled with water can act as a simple magnifying glass. Over time, lenses were improved into more powerful magnifying glasses and microscopes."
+                      },
+                      {
+                        heading: "Robert Hooke and the First 'Cell'",
+                        text: "In 1665, Robert Hooke published Micrographia, showing detailed drawings made using his microscope, which magnified things 200 to 300 times. Observing a thin slice of cork, he saw many small, empty compartments resembling a honeycomb, and named each one a 'cell' — the first scientific use of that word. Around the same time, Antonie van Leeuwenhoek built even better lenses and was the first to clearly see bacteria and blood cells, earning him the title Father of Microbiology."
+                      },
+                      {
+                        heading: "Modern Microscopes and Their Power",
+                        text: "Standard microscopes used to observe microorganisms typically magnify objects 100 to 400 times. Electron microscopes go far further, magnifying a cell about 10,00,000 (1,000,000) times — powerful enough to reveal subcellular components invisible even to a standard light microscope."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building a Simple Water-Flask Magnifier",
+                      objective: "To demonstrate that a water-filled round flask can act as a basic magnifying lens, similar to early magnifying tools.",
+                      materials: ["A round-bottom glass flask", "Water", "A cork stopper", "A book with printed text"],
+                      steps: [
+                        "Fill the round-bottom flask completely with water.",
+                        "Close the mouth of the flask with the cork.",
+                        "Place the flask on top of an open book, directly over some printed text.",
+                        "Look at the letters through the curved, water-filled flask.",
+                        "Compare the apparent size of the letters seen through the flask to their normal size."
+                      ],
+                      observation: "The letters appear noticeably larger when viewed through the water-filled flask, since the curved surface of water bends light similarly to a magnifying lens — confirming that even simple household objects can replicate basic magnification."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why was the curved piece of glass used for magnification named a 'lens'?",
+                      options: ["After the scientist who invented it", "Because its shape (thick in the middle, thin at the edges) resembled a lentil seed", "Because it was originally made from lens-shaped metal", "The name has no particular origin"],
+                      answer: 1,
+                      explanation: "The word 'lens' comes from the lentil seed, since the curved glass — thick in the middle and thin at the edges — resembled that shape."
+                    },
+                    {
+                      question: "What did Robert Hooke observe under his microscope that led him to coin the term 'cell'?",
+                      options: ["Bacteria swimming in pond water", "Small, empty, honeycomb-like compartments in a thin slice of cork", "Blood cells under high magnification", "Crystals in table salt"],
+                      answer: 1,
+                      explanation: "Hooke observed thin cork under his microscope and saw many small, empty compartments resembling a honeycomb — he called each compartment a 'cell', the first scientific use of the term."
+                    },
+                    {
+                      question: "Approximately how many times did Robert Hooke's microscope magnify objects?",
+                      options: ["10 to 20 times", "50 to 100 times", "200 to 300 times", "1,000,000 times"],
+                      answer: 2,
+                      explanation: "Hooke's microscope magnified objects 200 to 300 times compared to the unaided eye — powerful enough to reveal the honeycomb structure of cork cells."
+                    },
+                    {
+                      question: "Who was the first person to clearly see and describe bacteria and blood cells, earning the title 'Father of Microbiology'?",
+                      options: ["Robert Hooke", "Antonie van Leeuwenhoek", "Charles Darwin", "Louis Pasteur"],
+                      answer: 1,
+                      explanation: "Antonie van Leeuwenhoek built improved lenses that let him clearly observe bacteria and blood cells for the first time, earning him this title."
+                    },
+                    {
+                      question: "Roughly how many times more powerful is an electron microscope's magnification compared to a standard light microscope used to view microorganisms (100-400x)?",
+                      options: ["About 2 times more powerful", "About 10 times more powerful", "About 2,500 to 10,000 times more powerful", "Electron microscopes are actually less powerful"],
+                      answer: 2,
+                      explanation: "An electron microscope magnifies about 10,00,000 (1,000,000) times, compared to a light microscope's 100-400 times — roughly 2,500 to 10,000 times more powerful, revealing subcellular details invisible to light microscopes."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

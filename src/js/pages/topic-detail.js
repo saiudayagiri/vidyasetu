@@ -3878,6 +3878,97 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const plantVsAnimalCellLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="plant-animal-cell-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Toggle between a plant and animal cell to compare their parts.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Cell Type</h3>
+            <select id="sel-plant-animal-cell" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="plant" selected>Plant Cell</option>
+              <option value="animal">Animal Cell</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Cell Parts</h3>
+            <div id="plant-animal-cell-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a cell type above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const microorganismClassifierLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="microorganism-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a microorganism and see its shape and characteristics.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Microorganism</h3>
+            <select id="sel-microorganism" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="amoeba" selected>Amoeba (Protozoa)</option>
+              <option value="paramecium">Paramecium (Protozoa)</option>
+              <option value="algae">Algae</option>
+              <option value="mould">Bread Mould (Fungi)</option>
+              <option value="bacteria">Bacteria</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Characteristics</h3>
+            <div id="microorganism-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a microorganism above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const fermentationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="fermentation-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see whether fermentation occurs.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-fermentation" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="dough-yeast-warm" selected>Dough + Yeast, Warm Place</option>
+              <option value="dough-noyeast-warm">Dough, No Yeast, Warm Place</option>
+              <option value="curd-warm">Milk + Starter, Warm Place</option>
+              <option value="curd-cold">Milk + Starter, Refrigerator</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="fermentation-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const microscopeMagnificationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="microscope-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a viewing tool and see how much it magnifies a tiny object.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Viewing Tool</h3>
+            <select id="sel-microscope" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="naked" selected>Naked Eye (1×)</option>
+              <option value="hooke">Hooke's Microscope (250×)</option>
+              <option value="light">Light Microscope (400×)</option>
+              <option value="electron">Electron Microscope (1,000,000×)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Magnification</h3>
+            <div id="microscope-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a tool above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -5869,6 +5960,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'rhombus-trapezium-area-sim') {
               labHtml = rhombusTrapeziumAreaLabHtml;
               labDesc = 'Pick a rhombus or trapezium and see its area computed from its formula.';
+            } else if (topicObj.lab.type === 'plant-vs-animal-cell-sim') {
+              labHtml = plantVsAnimalCellLabHtml;
+              labDesc = 'Toggle between a plant cell and an animal cell to compare their parts.';
+            } else if (topicObj.lab.type === 'microorganism-classifier-sim') {
+              labHtml = microorganismClassifierLabHtml;
+              labDesc = 'Pick a microorganism and see its shape and characteristics.';
+            } else if (topicObj.lab.type === 'fermentation-sim') {
+              labHtml = fermentationLabHtml;
+              labDesc = 'Pick a fermentation scenario and see whether it succeeds or fails.';
+            } else if (topicObj.lab.type === 'microscope-magnification-sim') {
+              labHtml = microscopeMagnificationLabHtml;
+              labDesc = 'Pick a viewing tool and see how much it magnifies a tiny object.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -6404,6 +6507,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initParallelogramAreaLab();
         } else if (topicObj.lab.type === 'rhombus-trapezium-area-sim') {
           initRhombusTrapeziumAreaLab();
+        } else if (topicObj.lab.type === 'plant-vs-animal-cell-sim') {
+          initPlantVsAnimalCellLab();
+        } else if (topicObj.lab.type === 'microorganism-classifier-sim') {
+          initMicroorganismClassifierLab();
+        } else if (topicObj.lab.type === 'fermentation-sim') {
+          initFermentationLab();
+        } else if (topicObj.lab.type === 'microscope-magnification-sim') {
+          initMicroscopeMagnificationLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -21698,6 +21809,228 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillText(`Trapezium: a=${a}cm, b=${b}cm, h=${h}cm`, W / 2, 35);
           obs.innerHTML = `<strong>Trapezium (parallel sides ${a} cm, ${b} cm; height ${h} cm):</strong> Area = ½×${h}×(${a}+${b}) = <strong style="color:#22c55e;">${area} cm²</strong>.`;
         }
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPlantVsAnimalCellLab() {
+      const canvas = document.getElementById('plant-animal-cell-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-plant-animal-cell');
+      const obs = document.getElementById('plant-animal-cell-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const isPlant = sel.value === 'plant';
+        const cx = W / 2, cy = H / 2 + 10;
+
+        if (isPlant) {
+          ctx.strokeStyle = '#a16207'; ctx.lineWidth = 6;
+          ctx.strokeRect(cx - 110, cy - 80, 220, 160);
+          ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+          ctx.strokeRect(cx - 100, cy - 70, 200, 140);
+          ctx.fillStyle = 'rgba(16,185,129,0.08)'; ctx.fillRect(cx - 100, cy - 70, 200, 140);
+
+          ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.ellipse(cx - 30, cy, 55, 40, 0, 0, Math.PI * 2); ctx.fill();
+          ctx.font = '10px system-ui'; ctx.fillStyle = 'white'; ctx.textAlign = 'center';
+          ctx.fillText('Vacuole', cx - 30, cy + 4);
+
+          ctx.fillStyle = '#8b5cf6'; ctx.beginPath(); ctx.arc(cx + 45, cy - 25, 18, 0, Math.PI * 2); ctx.fill();
+          ctx.font = '9px system-ui'; ctx.fillStyle = 'white'; ctx.fillText('Nucleus', cx + 45, cy - 22);
+
+          ctx.fillStyle = '#22c55e';
+          [[cx + 60, cy + 30], [cx + 20, cy + 45], [cx - 60, cy - 45]].forEach(([x, y]) => {
+            ctx.beginPath(); ctx.ellipse(x, y, 10, 5, 0.4, 0, Math.PI * 2); ctx.fill();
+          });
+
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText('Plant Cell', W / 2, 30);
+          ctx.font = '10px system-ui'; ctx.fillStyle = '#a16207';
+          ctx.fillText('Cell Wall (outer)', W / 2, cy + 95);
+
+          obs.innerHTML = `<strong>Plant Cell:</strong> Has a rigid cell wall (brown, outermost), cell membrane, cytoplasm, nucleus (purple), a large vacuole (blue), and chloroplasts (green) for photosynthesis.`;
+        } else {
+          ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.ellipse(cx, cy, 110, 80, 0, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(16,185,129,0.08)'; ctx.fill(); ctx.stroke();
+
+          ctx.fillStyle = '#8b5cf6'; ctx.beginPath(); ctx.arc(cx, cy, 22, 0, Math.PI * 2); ctx.fill();
+          ctx.font = '9px system-ui'; ctx.fillStyle = 'white'; ctx.textAlign = 'center';
+          ctx.fillText('Nucleus', cx, cy + 3);
+
+          ctx.fillStyle = '#f59e0b';
+          [[cx + 55, cy - 30], [cx - 55, cy + 25], [cx + 40, cy + 40]].forEach(([x, y]) => {
+            ctx.beginPath(); ctx.ellipse(x, y, 12, 7, 0.5, 0, Math.PI * 2); ctx.fill();
+          });
+          ctx.font = '9px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText('Mitochondria', cx + 55, cy - 45);
+
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText('Animal Cell', W / 2, 30);
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+          ctx.fillText('Cell Membrane (outer, no wall)', W / 2, cy + 95);
+
+          obs.innerHTML = `<strong>Animal Cell:</strong> Has only a flexible cell membrane (no rigid wall), cytoplasm, and nucleus (purple) — no chloroplasts, no cell wall, and usually no visible vacuole.`;
+        }
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMicroorganismClassifierLab() {
+      const canvas = document.getElementById('microorganism-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-microorganism');
+      const obs = document.getElementById('microorganism-obs');
+      const INFO = {
+        amoeba: { desc: 'Single cell, moving, irregular shape. A protozoan found in pond water.' },
+        paramecium: { desc: 'Single cell, moves using specialised hair-like structures (cilia). A protozoan found in pond water.' },
+        algae: { desc: 'Single cell, looks green due to chlorophyll, moves with specialised structures. Found in both pond water and soil.' },
+        mould: { desc: 'Branched filaments without chlorophyll, often with a sac-like or brush-like structure. A fungus found in soil.' },
+        bacteria: { desc: 'Spherical, comma, spiral, or rod-shaped, with hair-like projections. Found in soil, water, air, and inside our bodies.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const type = sel.value;
+        const cx = W / 2, cy = 140;
+        ctx.fillStyle = '#22c55e'; ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2;
+
+        if (type === 'amoeba') {
+          ctx.beginPath();
+          const pts = [[0, -40], [35, -20], [45, 15], [15, 45], [-25, 35], [-45, 0], [-20, -35]];
+          pts.forEach(([dx, dy], i) => { const x = cx + dx, y = cy + dy; if (i === 0) ctx.moveTo(x, y); else ctx.quadraticCurveTo(cx + dx * 1.1, cy + dy * 1.1, x, y); });
+          ctx.closePath(); ctx.fill(); ctx.stroke();
+        } else if (type === 'paramecium') {
+          ctx.beginPath(); ctx.ellipse(cx, cy, 60, 25, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+          ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1;
+          for (let a = 0; a < Math.PI * 2; a += 0.35) {
+            const x1 = cx + 60 * Math.cos(a), y1 = cy + 25 * Math.sin(a);
+            const x2 = cx + 68 * Math.cos(a), y2 = cy + 32 * Math.sin(a);
+            ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+          }
+        } else if (type === 'algae') {
+          ctx.beginPath(); ctx.arc(cx, cy, 45, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        } else if (type === 'mould') {
+          ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 2;
+          function branch(x, y, len, angle, depth) {
+            if (depth === 0) return;
+            const x2 = x + len * Math.cos(angle), y2 = y + len * Math.sin(angle);
+            ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x2, y2); ctx.stroke();
+            branch(x2, y2, len * 0.7, angle - 0.5, depth - 1);
+            branch(x2, y2, len * 0.7, angle + 0.5, depth - 1);
+          }
+          branch(cx, cy + 60, 45, -Math.PI / 2, 4);
+        } else {
+          const shapes = [[-90, 0, 'rod'], [-30, 20, 'sphere'], [30, -20, 'spiral'], [80, 10, 'comma']];
+          shapes.forEach(([dx, dy, shape]) => {
+            const x = cx + dx, y = cy + dy;
+            if (shape === 'sphere') { ctx.beginPath(); ctx.arc(x, y, 12, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
+            else if (shape === 'rod') { ctx.beginPath(); ctx.roundRect(x - 18, y - 8, 36, 16, 8); ctx.fill(); ctx.stroke(); }
+            else if (shape === 'comma') { ctx.beginPath(); ctx.arc(x, y, 14, 0.3, Math.PI * 1.5); ctx.stroke(); }
+            else { ctx.beginPath(); for (let t = 0; t < Math.PI * 3; t += 0.2) { const r = t * 2; const px = x + r * Math.cos(t), py = y + r * Math.sin(t); if (t === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py); } ctx.stroke(); }
+          });
+        }
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        const NAMES = { amoeba: 'Amoeba', paramecium: 'Paramecium', algae: 'Algae', mould: 'Bread Mould', bacteria: 'Bacteria (various shapes)' };
+        ctx.fillText(NAMES[type], W / 2, 30);
+
+        obs.innerHTML = `<strong>${NAMES[type]}:</strong> ${INFO[type].desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initFermentationLab() {
+      const canvas = document.getElementById('fermentation-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-fermentation');
+      const obs = document.getElementById('fermentation-obs');
+      const SCENARIOS = {
+        'dough-yeast-warm': { works: true, label: 'Dough rises and becomes fluffy', reason: 'Yeast respires in the warm conditions, releasing CO2 bubbles that make the dough soft and fluffy.' },
+        'dough-noyeast-warm': { works: false, label: 'Dough stays flat, unchanged', reason: 'With no yeast present, there is no organism to produce CO2 gas, so the dough does not rise.' },
+        'curd-warm': { works: true, label: 'Milk curdles into curd', reason: 'Lactobacillus grows well in warm conditions, fermenting lactose into lactic acid, which curdles the milk.' },
+        'curd-cold': { works: false, label: 'Milk stays liquid, does not curdle', reason: 'Lactobacillus grows poorly in cold conditions, so fermentation is too slow for curd to form.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const s = SCENARIOS[sel.value];
+        const cx = W / 2, cy = 160;
+
+        if (sel.value.startsWith('dough')) {
+          const scale = s.works ? 1.6 : 1;
+          ctx.fillStyle = s.works ? '#f59e0b' : '#a3a3a3';
+          ctx.beginPath(); ctx.ellipse(cx, cy, 70 * scale, 45 * scale, 0, 0, Math.PI * 2); ctx.fill();
+          if (s.works) {
+            ctx.fillStyle = 'rgba(255,255,255,0.4)';
+            for (let i = 0; i < 8; i++) { const x = cx + (Math.random() - 0.5) * 100, y = cy + (Math.random() - 0.5) * 60; ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2); ctx.fill(); }
+          }
+        } else {
+          ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(cx - 60, cy - 60); ctx.lineTo(cx - 60, cy + 60); ctx.lineTo(cx + 60, cy + 60); ctx.lineTo(cx + 60, cy - 60); ctx.stroke();
+          ctx.fillStyle = s.works ? '#fef3c7' : '#e0f2fe';
+          ctx.fillRect(cx - 58, cy - 10, 116, 68);
+          if (s.works) {
+            ctx.fillStyle = 'rgba(255,255,255,0.5)';
+            ctx.beginPath(); ctx.ellipse(cx, cy + 20, 40, 12, 0, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = s.works ? '#22c55e' : '#ef4444'; ctx.textAlign = 'center';
+        ctx.fillText(s.label, W / 2, 250);
+
+        obs.innerHTML = `<strong>${s.works ? '✓' : '✗'} ${s.label}.</strong> ${s.reason}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMicroscopeMagnificationLab() {
+      const canvas = document.getElementById('microscope-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-microscope');
+      const obs = document.getElementById('microscope-obs');
+      const MAG = { naked: 1, hooke: 250, light: 400, electron: 1000000 };
+      const NAMES = { naked: 'Naked Eye', hooke: "Hooke's Microscope", light: 'Light Microscope', electron: 'Electron Microscope' };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const tool = sel.value;
+        const mag = MAG[tool];
+        const cx = W / 2, cy = 150;
+        const displayR = Math.min(20 + Math.log10(mag + 1) * 30, 110);
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2.5;
+        ctx.fillStyle = 'rgba(16,185,129,0.15)';
+        ctx.beginPath(); ctx.arc(cx, cy, displayR, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        if (mag > 1) {
+          ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+          ctx.beginPath(); ctx.arc(cx, cy, 3, 0, Math.PI * 2); ctx.stroke();
+          ctx.setLineDash([]);
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(NAMES[tool], W / 2, 30);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`${mag.toLocaleString()}×`, W / 2, 255);
+
+        obs.innerHTML = `<strong>${NAMES[tool]}: ${mag.toLocaleString()}× magnification.</strong> A tiny object invisible to the naked eye becomes visible and detailed at this magnification level.`;
       }
 
       sel.addEventListener('change', draw);
