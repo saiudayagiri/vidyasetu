@@ -12432,6 +12432,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8s-3",
+              title: "Health: The Ultimate Treasure",
+              topics: [
+                {
+                  id: "8s-3-1",
+                  title: "1. What Does It Mean to Be Healthy?",
+                  lab: { type: "health-dimensions-sim" },
+                  theory: {
+                    intro: "Being healthy is more than simply not being sick — the World Health Organization defines it as a complete state of physical, mental, and social well-being, all working together.",
+                    sections: [
+                      {
+                        heading: "The WHO Definition of Health",
+                        text: "As per the World Health Organization (WHO), health is defined as 'a state of complete physical, mental, and social well-being, and not merely the absence of disease.' A healthy person can generally perform various tasks more efficiently, cope well in difficult situations, and adjust well with peer groups and other members of society."
+                      },
+                      {
+                        heading: "Maintaining a Healthy Lifestyle",
+                        text: "Key habits for physical and mental health include: eating a balanced diet rich in fruits, vegetables, and whole grains; avoiding processed, fatty, or sugary food; staying physically active through play, walking, running, or cycling; limiting screen time; getting enough sleep; practising yoga or breathing exercises like pranayama; and saying 'NO' to harmful substances like tobacco and alcohol."
+                      },
+                      {
+                        heading: "Environment and Social Well-being Matter Too",
+                        text: "A clean environment supports health — polluted, unhygienic surroundings (like a littered playground) attract disease-carrying insects and increase illness. But health isn't only physical: even with good food and clean surroundings, loneliness or emotional distress can still make us unwell. Spending time with friends and family, talking, and having fun helps keep our minds healthy too."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Listing Healthy and Unhealthy Habits",
+                      objective: "To identify which daily habits support health and which ones undermine it, across physical, mental, and social dimensions.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "List habits your parents, teachers, or elders encourage you to follow (e.g., balanced diet, regular exercise, daily meditation).",
+                        "Mark which of these habits are already part of your daily routine.",
+                        "List habits that are not good for your health (e.g., excessive screen time, eating junk food daily, skipping breakfast).",
+                        "For each unhealthy habit, note which dimension of health (physical, mental, or social) it most affects.",
+                        "Discuss your findings with a friend or teacher to identify one habit you could improve."
+                      ],
+                      observation: "Healthy habits like a balanced diet and regular exercise primarily support physical health, though they also improve mood (mental health); habits like spending time with friends primarily support social and mental health — showing how the three dimensions of health are interconnected rather than separate."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "According to the WHO definition, what does 'health' mean?",
+                      options: ["Simply not having any disease", "A state of complete physical, mental, and social well-being, not merely the absence of disease", "Only having a strong, disease-free body", "Only having positive emotions"],
+                      answer: 1,
+                      explanation: "The WHO defines health as a state of complete physical, mental, and social well-being — not merely the absence of disease, meaning all three dimensions matter together."
+                    },
+                    {
+                      question: "A student eats well and lives in a clean home but feels persistently lonely and upset. According to the WHO definition, is this student fully healthy?",
+                      options: ["Yes, since their physical health is fine", "No, since social and mental well-being are also required for complete health", "Yes, since loneliness doesn't affect health", "This cannot be determined from the WHO definition"],
+                      answer: 1,
+                      explanation: "Since health requires complete physical, mental, AND social well-being, persistent loneliness or distress means the student is not fully healthy by the WHO definition, even if physically fine."
+                    },
+                    {
+                      question: "Which of the following is listed as a healthy lifestyle habit?",
+                      options: ["Skipping breakfast regularly", "Spending most of the day on digital screens", "Practising yoga or breathing exercises like pranayama regularly", "Avoiding physical activity"],
+                      answer: 2,
+                      explanation: "Practising yoga or pranayama regularly is specifically listed as a habit that supports both physical and mental well-being."
+                    },
+                    {
+                      question: "How does a polluted, unhygienic environment (like a littered playground) typically affect health?",
+                      options: ["It has no effect on health", "It attracts flies and mosquitoes and increases the chance of falling sick", "It only affects mental health, not physical health", "It only affects adults, not children"],
+                      answer: 1,
+                      explanation: "Polluted, unhygienic areas attract disease-carrying insects like flies and mosquitoes, increasing the likelihood that people living or playing there will fall sick more often."
+                    },
+                    {
+                      question: "Why does the WHO definition of health include 'social well-being' as a required dimension, not just physical health?",
+                      options: ["Social well-being is not actually part of the WHO definition", "Because a person's relationships and social life directly affect how healthy and well they feel overall", "Physical health always guarantees social well-being", "Social well-being only matters for elderly people"],
+                      answer: 1,
+                      explanation: "The WHO explicitly includes social well-being because relationships, social connection, and community matter for a person's overall health — not just their physical body."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-3-2",
+                  title: "2. Communicable Diseases: Causes and Spread",
+                  lab: { type: "disease-transmission-sim" },
+                  theory: {
+                    intro: "Diseases caused by pathogens like bacteria, viruses, fungi, and worms can spread from person to person — through the air, direct contact, contaminated food and water, or even insect bites.",
+                    sections: [
+                      {
+                        heading: "What Causes a Disease?",
+                        text: "A disease is a condition that affects the normal working of the body or mind, when one or more organs or organ systems stop functioning properly. Disease-causing organisms — bacteria, viruses, fungi, worms, or protozoa — are called pathogens. Diseases caused by pathogens that can spread from person to person are called communicable diseases (e.g., typhoid, dengue, flu, chickenpox, COVID-19); diseases NOT caused by pathogens and NOT spread between people, usually linked to lifestyle, diet, or environment, are called non-communicable diseases (e.g., cancer, diabetes, asthma)."
+                      },
+                      {
+                        heading: "How Do Communicable Diseases Spread?",
+                        text: "Pathogens spread through several routes: by air (coughing or sneezing), by direct contact (like shaking hands), by indirect contact (sharing personal items), through contaminated food or water, and via vectors — insects like mosquitoes and houseflies that carry pathogens between people. For example, common cold and influenza (caused by a virus) spread through the air, while cholera and typhoid (caused by bacteria) spread through contaminated water and food."
+                      },
+                      {
+                        heading: "Preventing the Spread",
+                        text: "Simple precautions greatly reduce disease spread: washing hands with soap and water, covering the mouth and nose while coughing or sneezing, wearing a mask in crowded places, avoiding sharing personal items like towels, keeping home food and water clean, and resting at home when unwell. A community sanitation campaign in Bhadrak district, Odisha increased toilet use, significantly reducing open defecation and childhood diarrhoea cases."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Mapping Diseases to Their Transmission Routes",
+                      objective: "To classify common communicable diseases by how they spread, and identify matching prevention measures.",
+                      materials: ["Notebook and pen", "Reference: Table 3.1 of common communicable diseases"],
+                      steps: [
+                        "List three diseases spread through air (e.g., common cold, chickenpox, tuberculosis).",
+                        "List three diseases spread through contaminated water or food (e.g., cholera, typhoid, Hepatitis A).",
+                        "List two diseases spread by insect vectors (e.g., malaria, dengue fever).",
+                        "For each disease, note its causal agent (virus, bacteria, protozoa, or worm).",
+                        "For each transmission route, identify one prevention measure that specifically targets that route."
+                      ],
+                      observation: "Airborne diseases (common cold, TB) are best prevented by covering the mouth/nose and masks; waterborne diseases (cholera, typhoid) are prevented by boiling water and proper sanitation; vector-borne diseases (malaria, dengue) are prevented by mosquito nets and controlling mosquito breeding — showing that prevention strategies must match the specific transmission route."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the term for disease-causing organisms like bacteria, viruses, fungi, and worms?",
+                      options: ["Vectors", "Pathogens", "Antibodies", "Antibiotics"],
+                      answer: 1,
+                      explanation: "Disease-causing organisms are collectively called pathogens, regardless of whether they are bacteria, viruses, fungi, worms, or protozoa."
+                    },
+                    {
+                      question: "What distinguishes a communicable disease from a non-communicable disease?",
+                      options: ["Communicable diseases are always more serious", "Communicable diseases are caused by pathogens and can spread between people; non-communicable diseases are not caused by pathogens and don't spread this way", "Non-communicable diseases only affect children", "There is no real difference between the two"],
+                      answer: 1,
+                      explanation: "Communicable diseases (like typhoid, flu, COVID-19) are caused by pathogens and can spread person-to-person; non-communicable diseases (like diabetes, cancer, asthma) are not caused by pathogens and are usually linked to lifestyle, diet, or environment."
+                    },
+                    {
+                      question: "What is a 'vector' in the context of disease transmission?",
+                      options: ["A type of virus", "An insect (like a mosquito or housefly) that spreads pathogens from one person to another", "A vaccine ingredient", "A type of antibiotic"],
+                      answer: 1,
+                      explanation: "A vector is an organism, typically an insect like a mosquito or housefly, that carries and spreads pathogens between hosts without necessarily getting sick itself."
+                    },
+                    {
+                      question: "Which of these diseases is spread through contaminated water and food, rather than through the air?",
+                      options: ["Common cold", "Chickenpox", "Cholera", "Tuberculosis"],
+                      answer: 2,
+                      explanation: "Cholera is caused by bacteria and spreads through contaminated drinking water and food, unlike common cold, chickenpox, and TB, which spread through the air."
+                    },
+                    {
+                      question: "How did the community sanitation campaign in Bhadrak district, Odisha improve child health?",
+                      options: ["By distributing free antibiotics to all children", "By increasing toilet construction and use, reducing open defecation and cases of diarrhoea and infections", "By closing all schools temporarily", "By banning all street food"],
+                      answer: 1,
+                      explanation: "The campaign helped more people build and use toilets, significantly reducing open defecation — which in turn reduced diarrhoea and infection cases among children."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-3-3",
+                  title: "3. Non-Communicable Diseases and Immunity",
+                  lab: { type: "vaccine-immunity-sim" },
+                  theory: {
+                    intro: "While some diseases spread from person to person, others — like diabetes and cancer — develop from our own lifestyle and environment; and our best long-term defense against communicable diseases is a well-trained immune system.",
+                    sections: [
+                      {
+                        heading: "Non-Communicable Diseases (NCDs)",
+                        text: "Diseases like cancer, diabetes, and asthma are non-communicable — not caused by pathogens, and linked to lifestyle, diet, and environment instead. Diseases lasting more than 3 months are called chronic diseases. In India, NCDs like diabetes and heart disease have become more common due to lifestyle changes: more processed food, less exercise, and longer lifespans. Today, most deaths in India are caused by NCDs, not communicable diseases."
+                      },
+                      {
+                        heading: "Immunity: The Body's Natural Defense",
+                        text: "Immunity is the natural ability of our body to fight diseases, carried out by our immune system. Vaccines help train the immune system to recognise and attack harmful germs before we ever get sick — called acquired immunity. Vaccines can be made from weakened or dead pathogens, or from harmless parts of a pathogen. Vaccines are preventive, not curative: they minimise disease before it happens but don't treat someone already sick."
+                      },
+                      {
+                        heading: "Edward Jenner and the First Vaccine",
+                        text: "In the late 1700s, Edward Jenner observed that milkmaids who had caught cowpox (a mild disease from cows) never caught smallpox (a deadly disease). He hypothesised that cowpox pus protected against smallpox, and tested this by injecting cowpox sap into a boy, who later showed no illness when exposed to smallpox. This led to the world's first vaccine, and eventually to the global eradication of smallpox by 1979 through mass vaccination campaigns."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tracing Jenner's Scientific Method",
+                      objective: "To walk through Edward Jenner's observation-hypothesis-experiment-result-application process that led to the first vaccine.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "Observation: Note that milkmaids who caught cowpox did not later catch smallpox.",
+                        "Hypothesis: Formulate the idea that cowpox pus contains something that protects against smallpox.",
+                        "Experiment: Describe how Jenner tested this by injecting cowpox sap into a boy.",
+                        "Result: Record that the boy showed no illness when later exposed to smallpox.",
+                        "Application: Explain how mass vaccination based on this discovery eventually eradicated smallpox worldwide by 1979."
+                      ],
+                      observation: "Following Jenner's five-step process (observation → hypothesis → experiment → result → application) shows how a single careful observation about milkmaids and cowpox led, over centuries, to the complete global eradication of smallpox — a powerful example of the scientific method in action."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why are diseases like cancer, diabetes, and asthma classified as non-communicable?",
+                      options: ["They spread rapidly between people", "They are not caused by pathogens and don't spread from person to person; they're linked to lifestyle, diet, and environment", "They only affect elderly people", "They can be cured with antibiotics"],
+                      answer: 1,
+                      explanation: "Non-communicable diseases are not caused by pathogens and do not spread between people — they are usually linked to lifestyle, diet, or environmental factors instead."
+                    },
+                    {
+                      question: "What is 'immunity'?",
+                      options: ["A type of vaccine ingredient", "The natural ability of the body to fight diseases", "A medicine that kills bacteria", "A synonym for infection"],
+                      answer: 1,
+                      explanation: "Immunity is the body's natural ability to fight off diseases, carried out through the immune system."
+                    },
+                    {
+                      question: "What did Edward Jenner observe that led to his hypothesis about smallpox protection?",
+                      options: ["Milkmaids who had cowpox did not catch smallpox", "Cows never got sick", "Smallpox only affected children", "Vaccines had already been invented by someone else"],
+                      answer: 0,
+                      explanation: "Jenner observed that milkmaids who had previously caught cowpox (a milder disease) never went on to catch smallpox, leading him to hypothesize a protective connection between the two."
+                    },
+                    {
+                      question: "Are vaccines preventive or curative?",
+                      options: ["Curative — they treat diseases after infection", "Preventive — they help avoid disease before it happens, but don't treat existing illness", "Both equally", "Neither — vaccines have no medical effect"],
+                      answer: 1,
+                      explanation: "Vaccines are preventive: they train the immune system in advance so it can fight off a pathogen before serious illness develops — they do not cure an infection that has already taken hold."
+                    },
+                    {
+                      question: "What major global health achievement resulted from Jenner's discovery and later mass vaccination campaigns?",
+                      options: ["The complete eradication of smallpox worldwide by 1979", "The invention of antibiotics", "The discovery of bacteria", "The elimination of all communicable diseases"],
+                      answer: 0,
+                      explanation: "Mass vaccination campaigns built on Jenner's discovery eventually led to smallpox being completely eradicated worldwide by 1979 — one of the greatest achievements in public health history."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-3-4",
+                  title: "4. Treating Diseases: Antibiotics and Resistance",
+                  lab: { type: "antibiotic-resistance-sim" },
+                  theory: {
+                    intro: "A chance discovery in a messy petri dish gave the world its first antibiotic — but decades of overuse now threaten to make many antibiotics powerless against the very bacteria they once easily defeated.",
+                    sections: [
+                      {
+                        heading: "How Antibiotics Work",
+                        text: "When our immune system fails to protect us against an infectious disease, doctors may prescribe antibiotics — medicines that kill the bacteria causing the illness. Antibiotics work ONLY against bacterial infections, because they target specific parts of bacterial cells that differ from human cells. They do NOT work against viruses or diseases caused by protozoa."
+                      },
+                      {
+                        heading: "The Discovery of Penicillin",
+                        text: "In 1928, bacteriologist Alexander Fleming noticed that a mould growing on a discarded, contaminated petri dish had stopped bacteria from growing nearby. He realised the mould released a substance that killed the bacteria — this chance discovery led to penicillin, the world's first antibiotic used to treat bacterial infections."
+                      },
+                      {
+                        heading: "Antibiotic Resistance",
+                        text: "Antibiotic resistance occurs when bacteria that were previously killed by an antibiotic survive and multiply despite treatment with that same antibiotic. This happens especially when antibiotics are taken unnecessarily or in an incomplete dose, allowing partially-resistant bacteria to survive and spread — through animals, food, soil, and hospitals. This makes common infections harder to treat. To prevent it, antibiotics should be used only when prescribed by a doctor, in the correct dose, for the full duration."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Correct vs. Incorrect Antibiotic Use",
+                      objective: "To understand how incomplete or unnecessary antibiotic use contributes to antibiotic resistance, compared to correct use.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "Scenario 1: A patient takes the full prescribed course of antibiotics exactly as directed by a doctor.",
+                        "Scenario 2: A patient stops taking antibiotics early, once they start feeling better, without finishing the course.",
+                        "For each scenario, predict whether all the targeted bacteria are likely to be killed.",
+                        "Consider what happens to any bacteria that survive an incomplete course of treatment.",
+                        "Discuss why doctors always emphasize finishing the entire prescribed antibiotic course."
+                      ],
+                      observation: "Completing the full antibiotic course (Scenario 1) kills the bacteria completely; stopping early (Scenario 2) leaves the strongest, most resistant bacteria alive to multiply and spread — directly contributing to antibiotic resistance in the community."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Against which type of pathogen do antibiotics work?",
+                      options: ["Only viruses", "Only bacteria", "Only protozoa", "All types of pathogens equally"],
+                      answer: 1,
+                      explanation: "Antibiotics work only against bacterial infections because they target specific parts of bacterial cells not found in human cells, viruses, or protozoa."
+                    },
+                    {
+                      question: "How was penicillin, the first antibiotic, discovered?",
+                      options: ["Through years of deliberate laboratory synthesis", "By chance, when Alexander Fleming noticed a mould on a petri dish had stopped nearby bacteria from growing", "It was discovered by testing thousands of plant extracts", "It was first isolated from human blood"],
+                      answer: 1,
+                      explanation: "Alexander Fleming's discovery was accidental — he noticed that a mould contaminating a petri dish had killed nearby bacteria, leading to the discovery of penicillin."
+                    },
+                    {
+                      question: "What is 'antibiotic resistance'?",
+                      options: ["When a person becomes immune to all diseases", "When bacteria that were previously killed by an antibiotic survive and multiply despite treatment with it", "When a vaccine stops working", "When antibiotics become more effective over time"],
+                      answer: 1,
+                      explanation: "Antibiotic resistance is when bacteria evolve to survive and multiply even when exposed to an antibiotic that used to kill them, making infections harder to treat."
+                    },
+                    {
+                      question: "What is a major cause of antibiotic resistance spreading in a community?",
+                      options: ["Always completing the full prescribed antibiotic course", "Taking antibiotics when not required, or stopping treatment with an incomplete dose", "Washing hands regularly", "Getting vaccinated"],
+                      answer: 1,
+                      explanation: "Taking antibiotics unnecessarily, or stopping a course early (incomplete dose), allows partially-resistant bacteria to survive and multiply, spreading antibiotic resistance."
+                    },
+                    {
+                      question: "Why don't antibiotics work against diseases like the common cold or COVID-19?",
+                      options: ["Antibiotics only work against viral infections, not bacterial ones", "These diseases are caused by viruses, and antibiotics only target bacteria", "The common cold and COVID-19 do not actually require any treatment", "Antibiotics work against all pathogens equally"],
+                      answer: 1,
+                      explanation: "The common cold and COVID-19 are caused by viruses, and antibiotics specifically target structures found in bacterial cells — they have no effect on viruses."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

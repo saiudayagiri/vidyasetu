@@ -3969,6 +3969,97 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const healthDimensionsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="health-dimensions-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a habit and see which dimension(s) of health it affects.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Habit</h3>
+            <select id="sel-health-dimensions" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="balanced-diet" selected>Eating a balanced diet</option>
+              <option value="exercise">Regular exercise</option>
+              <option value="friends">Spending time with friends</option>
+              <option value="screen-time">Excessive screen time</option>
+              <option value="junk-food">Eating junk food daily</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Effect on Health</h3>
+            <div id="health-dimensions-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a habit above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const diseaseTransmissionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="disease-transmission-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a disease and see its causal agent, spread route, and prevention.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Disease</h3>
+            <select id="sel-disease-transmission" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="cold" selected>Common Cold (Air)</option>
+              <option value="tb">Tuberculosis (Air)</option>
+              <option value="cholera">Cholera (Water/Food)</option>
+              <option value="typhoid">Typhoid (Water/Food)</option>
+              <option value="malaria">Malaria (Insect Vector)</option>
+              <option value="dengue">Dengue (Insect Vector)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Disease Profile</h3>
+            <div id="disease-transmission-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a disease above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const vaccineImmunityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="vaccine-immunity-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see whether the person falls ill after exposure.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-vaccine-immunity" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="cowpox-exposed" selected>Had cowpox, then exposed to smallpox</option>
+              <option value="unvaccinated-exposed">Never exposed, then exposed to smallpox</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Outcome</h3>
+            <div id="vaccine-immunity-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const antibioticResistanceLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="antibiotic-resistance-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a treatment scenario and see the effect on the bacteria population.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-antibiotic-resistance" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="full-course" selected>Full prescribed course completed</option>
+              <option value="incomplete-course">Stopped early (incomplete dose)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Bacteria Population Outcome</h3>
+            <div id="antibiotic-resistance-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -5972,6 +6063,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'microscope-magnification-sim') {
               labHtml = microscopeMagnificationLabHtml;
               labDesc = 'Pick a viewing tool and see how much it magnifies a tiny object.';
+            } else if (topicObj.lab.type === 'health-dimensions-sim') {
+              labHtml = healthDimensionsLabHtml;
+              labDesc = 'Pick a habit and see which dimension(s) of health it affects.';
+            } else if (topicObj.lab.type === 'disease-transmission-sim') {
+              labHtml = diseaseTransmissionLabHtml;
+              labDesc = 'Pick a disease and see its causal agent, transmission route, and prevention.';
+            } else if (topicObj.lab.type === 'vaccine-immunity-sim') {
+              labHtml = vaccineImmunityLabHtml;
+              labDesc = 'Pick a scenario and see whether prior immunity prevents illness.';
+            } else if (topicObj.lab.type === 'antibiotic-resistance-sim') {
+              labHtml = antibioticResistanceLabHtml;
+              labDesc = 'Pick a treatment scenario and see its effect on the bacteria population.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -6515,6 +6618,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initFermentationLab();
         } else if (topicObj.lab.type === 'microscope-magnification-sim') {
           initMicroscopeMagnificationLab();
+        } else if (topicObj.lab.type === 'health-dimensions-sim') {
+          initHealthDimensionsLab();
+        } else if (topicObj.lab.type === 'disease-transmission-sim') {
+          initDiseaseTransmissionLab();
+        } else if (topicObj.lab.type === 'vaccine-immunity-sim') {
+          initVaccineImmunityLab();
+        } else if (topicObj.lab.type === 'antibiotic-resistance-sim') {
+          initAntibioticResistanceLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -22031,6 +22142,169 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(`${mag.toLocaleString()}×`, W / 2, 255);
 
         obs.innerHTML = `<strong>${NAMES[tool]}: ${mag.toLocaleString()}× magnification.</strong> A tiny object invisible to the naked eye becomes visible and detailed at this magnification level.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initHealthDimensionsLab() {
+      const canvas = document.getElementById('health-dimensions-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-health-dimensions');
+      const obs = document.getElementById('health-dimensions-obs');
+      const HABITS = {
+        'balanced-diet': { dims: ['physical'], verdict: 'positive', desc: 'A balanced diet primarily supports physical health, fueling the body with the nutrients it needs.' },
+        'exercise': { dims: ['physical', 'mental'], verdict: 'positive', desc: 'Regular exercise strengthens the body (physical) and is well known to boost mood and reduce stress (mental).' },
+        'friends': { dims: ['social', 'mental'], verdict: 'positive', desc: 'Spending time with friends builds social connection and supports mental well-being through laughter and support.' },
+        'screen-time': { dims: ['physical', 'mental'], verdict: 'negative', desc: 'Excessive screen time is linked to poor sleep and eye strain (physical), and increased anxiety (mental).' },
+        'junk-food': { dims: ['physical'], verdict: 'negative', desc: 'Regular junk food consumption negatively affects physical health, contributing to obesity and poor nutrition.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const h = HABITS[sel.value];
+        const positions = { physical: [W / 2 - 90, 150], mental: [W / 2 + 90, 150], social: [W / 2, 90] };
+        const NAMES = { physical: 'Physical', mental: 'Mental', social: 'Social' };
+        const isPos = h.verdict === 'positive';
+
+        Object.entries(positions).forEach(([dim, [x, y]]) => {
+          const active = h.dims.includes(dim);
+          ctx.beginPath(); ctx.arc(x, y, 55, 0, Math.PI * 2);
+          ctx.fillStyle = active ? (isPos ? 'rgba(34,197,94,0.3)' : 'rgba(239,68,68,0.3)') : 'rgba(148,163,184,0.1)';
+          ctx.fill();
+          ctx.strokeStyle = active ? (isPos ? '#22c55e' : '#ef4444') : cssVar('--border-color');
+          ctx.lineWidth = active ? 3 : 1.5; ctx.stroke();
+          ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(NAMES[dim], x, y + 4);
+        });
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 245);
+
+        obs.innerHTML = `<strong>${isPos ? '✓ Positive' : '✗ Negative'} effect on ${h.dims.map(d => NAMES[d]).join(' & ')} health:</strong> ${h.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDiseaseTransmissionLab() {
+      const canvas = document.getElementById('disease-transmission-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-disease-transmission');
+      const obs = document.getElementById('disease-transmission-obs');
+      const DISEASES = {
+        cold: { agent: 'Virus', route: 'Air', symptoms: 'Nasal congestion, sore throat, fever, cough', prevention: 'Wash hands, avoid sharing items, cover mouth/nose' },
+        tb: { agent: 'Bacteria', route: 'Air', symptoms: 'Cough, fever, fatigue, loss of appetite, night sweats', prevention: 'Avoid close contact, cover mouth/nose, vaccination' },
+        cholera: { agent: 'Bacteria', route: 'Water/Food', symptoms: 'Diarrhoea and dehydration', prevention: 'Boiled water, properly cooked food, good sanitation' },
+        typhoid: { agent: 'Bacteria', route: 'Water/Food', symptoms: 'Headache, abdominal discomfort, fever, diarrhoea', prevention: 'Boiled water, properly cooked food, good hygiene' },
+        malaria: { agent: 'Protozoa', route: 'Insect Vector', symptoms: 'High fever, profuse sweating, periodic chills', prevention: 'Mosquito nets, repellents, control mosquito breeding' },
+        dengue: { agent: 'Virus', route: 'Insect Vector', symptoms: 'Fever, headache, muscle and joint pain, nausea', prevention: 'Mosquito nets, repellents, avoid stagnant water' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const key = sel.value;
+        const d = DISEASES[key];
+        const cx = W / 2, cy = 130;
+
+        const routeIcon = { 'Air': '💨', 'Water/Food': '💧', 'Insect Vector': '🦟' }[d.route];
+        ctx.font = '48px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(routeIcon, cx, cy);
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text.split(' (')[0], W / 2, 40);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`Spreads via: ${d.route}`, W / 2, 175);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Causal agent: ${d.agent}`, W / 2, 200);
+
+        obs.innerHTML = `<strong>Causal agent:</strong> ${d.agent} &nbsp;|&nbsp; <strong>Spreads via:</strong> ${d.route}<br><strong>Symptoms:</strong> ${d.symptoms}<br><strong>Prevention:</strong> ${d.prevention}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initVaccineImmunityLab() {
+      const canvas = document.getElementById('vaccine-immunity-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-vaccine-immunity');
+      const obs = document.getElementById('vaccine-immunity-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const isImmune = sel.value === 'cowpox-exposed';
+        const cx = W / 2, cy = 140;
+
+        ctx.fillStyle = cssVar('--accent-color');
+        ctx.beginPath(); ctx.arc(cx, cy - 30, 25, 0, Math.PI * 2); ctx.fill();
+        ctx.fillRect(cx - 20, cy - 5, 40, 55);
+
+        if (isImmune) {
+          ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.arc(cx, cy + 15, 65, 0, Math.PI * 2); ctx.stroke();
+          ctx.font = '11px system-ui'; ctx.fillStyle = '#22c55e'; ctx.textAlign = 'center';
+          ctx.fillText('Antibodies block smallpox virus', cx, cy + 100);
+        } else {
+          ctx.font = '28px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('🦠', cx + 50, cy);
+          ctx.font = '11px system-ui'; ctx.fillStyle = '#ef4444';
+          ctx.fillText('No prior immunity — virus infects the body', cx, cy + 100);
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(isImmune ? 'Protected — No Illness' : 'Falls Ill with Smallpox', W / 2, 30);
+
+        obs.innerHTML = isImmune
+          ? `<strong>✓ Protected:</strong> Since the person previously had cowpox, their immune system already recognizes the related virus and blocks smallpox infection — exactly as Jenner discovered.`
+          : `<strong>✗ Falls ill:</strong> With no prior exposure or immunity, the person's immune system has not learned to fight this pathogen, so smallpox infection develops.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initAntibioticResistanceLab() {
+      const canvas = document.getElementById('antibiotic-resistance-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-antibiotic-resistance');
+      const obs = document.getElementById('antibiotic-resistance-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const isFull = sel.value === 'full-course';
+        const cols = 8, rows = 3;
+        const startX = W / 2 - (cols * 40) / 2 + 20, startY = 80;
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const x = startX + c * 40, y = startY + r * 40;
+            const killed = isFull || (r < 2);
+            ctx.fillStyle = killed ? 'rgba(148,163,184,0.25)' : '#ef4444';
+            ctx.beginPath(); ctx.arc(x, y, 12, 0, Math.PI * 2); ctx.fill();
+            if (killed) {
+              ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5;
+              ctx.beginPath(); ctx.moveTo(x - 8, y - 8); ctx.lineTo(x + 8, y + 8); ctx.moveTo(x + 8, y - 8); ctx.lineTo(x - 8, y + 8); ctx.stroke();
+            }
+          }
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = isFull ? '#22c55e' : '#ef4444'; ctx.textAlign = 'center';
+        ctx.fillText(isFull ? 'All bacteria killed' : 'Resistant bacteria survive & multiply', W / 2, 235);
+
+        obs.innerHTML = isFull
+          ? `<strong>✓ Full course completed:</strong> All targeted bacteria — including partially-resistant ones — are killed, preventing resistance from developing.`
+          : `<strong>✗ Incomplete dose:</strong> Weaker bacteria die quickly, but stronger, partially-resistant bacteria survive the shortened treatment and multiply — spreading antibiotic resistance.`;
       }
 
       sel.addEventListener('change', draw);
