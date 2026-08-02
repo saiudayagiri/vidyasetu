@@ -4243,6 +4243,94 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const pressureCalcLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="pressure-calc-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an area and see how pressure changes for the same 100 N force.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Area the Force Acts On</h3>
+            <select id="sel-pressure-calc" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="2" selected>2 m² (broad area)</option>
+              <option value="0.5">0.5 m² (medium area)</option>
+              <option value="0.1">0.1 m² (small area)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Pressure = Force / Area</h3>
+            <div id="pressure-calc-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an area above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const liquidPressureLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="liquid-pressure-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a water column height and see how much the balloon bulges.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Water Column Height</h3>
+            <select id="sel-liquid-pressure" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="low" selected>Low (half-filled pipe)</option>
+              <option value="medium">Medium</option>
+              <option value="high">High (nearly full pipe)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Balloon Bulge</h3>
+            <div id="liquid-pressure-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a height above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const windFormationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="wind-formation-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a time of day and see which way the breeze blows.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Time of Day</h3>
+            <select id="sel-wind-formation" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="day" selected>Daytime</option>
+              <option value="night">Nighttime</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Breeze Direction</h3>
+            <div id="wind-formation-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a time above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const cyclonePressureLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="cyclone-pressure-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a distance from the eye and see the pressure and wind conditions.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Distance from Cyclone Center</h3>
+            <select id="sel-cyclone-pressure" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="eye" selected>The Eye (center)</option>
+              <option value="near">Near the eye</option>
+              <option value="mid">Mid-distance</option>
+              <option value="far">Far (outer edge)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Pressure &amp; Wind Conditions</h3>
+            <div id="cyclone-pressure-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a distance above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -6282,6 +6370,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'weight-on-planets-sim') {
               labHtml = weightOnPlanetsLabHtml;
               labDesc = 'Pick a planet and see the weight of a fixed 1 kg mass there.';
+            } else if (topicObj.lab.type === 'pressure-calc-sim') {
+              labHtml = pressureCalcLabHtml;
+              labDesc = 'Pick an area and see how pressure changes for the same applied force.';
+            } else if (topicObj.lab.type === 'liquid-pressure-sim') {
+              labHtml = liquidPressureLabHtml;
+              labDesc = 'Pick a water column height and see how much the balloon bulges.';
+            } else if (topicObj.lab.type === 'wind-formation-sim') {
+              labHtml = windFormationLabHtml;
+              labDesc = 'Pick a time of day and see which way the sea/land breeze blows.';
+            } else if (topicObj.lab.type === 'cyclone-pressure-sim') {
+              labHtml = cyclonePressureLabHtml;
+              labDesc = 'Pick a distance from the eye and see the pressure and wind conditions.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -6849,6 +6949,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initNoncontactForceLab();
         } else if (topicObj.lab.type === 'weight-on-planets-sim') {
           initWeightOnPlanetsLab();
+        } else if (topicObj.lab.type === 'pressure-calc-sim') {
+          initPressureCalcLab();
+        } else if (topicObj.lab.type === 'liquid-pressure-sim') {
+          initLiquidPressureLab();
+        } else if (topicObj.lab.type === 'wind-formation-sim') {
+          initWindFormationLab();
+        } else if (topicObj.lab.type === 'cyclone-pressure-sim') {
+          initCyclonePressureLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -22880,6 +22988,161 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText('for a fixed 1 kg mass', barX + barW / 2, barY + barMaxH + 25);
 
         obs.innerHTML = `<strong>On ${NAMES[key]}, a 1 kg mass weighs ${w} N.</strong> The mass never changes (always 1 kg), but the weight changes because each location has a different gravitational pull.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPressureCalcLab() {
+      const canvas = document.getElementById('pressure-calc-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-pressure-calc');
+      const obs = document.getElementById('pressure-calc-obs');
+      const FORCE = 100;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const area = parseFloat(sel.value);
+        const pressure = FORCE / area;
+        const sqSize = 30 + Math.sqrt(area) * 60;
+        const cx = W / 2, cy = 150;
+
+        ctx.fillStyle = 'rgba(16,185,129,0.2)'; ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2.5;
+        ctx.fillRect(cx - sqSize / 2, cy - sqSize / 2, sqSize, sqSize);
+        ctx.strokeRect(cx - sqSize / 2, cy - sqSize / 2, sqSize, sqSize);
+
+        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx, cy - sqSize / 2 - 40); ctx.lineTo(cx, cy - sqSize / 2 - 5); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx, cy - sqSize / 2 - 5); ctx.lineTo(cx - 7, cy - sqSize / 2 - 18); ctx.lineTo(cx + 7, cy - sqSize / 2 - 18); ctx.closePath(); ctx.fill();
+        ctx.font = '12px system-ui'; ctx.fillStyle = '#ef4444'; ctx.textAlign = 'center';
+        ctx.fillText('100 N', cx, cy - sqSize / 2 - 48);
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Area = ${area} m²`, W / 2, 250);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`Pressure = ${pressure} N/m²`, W / 2, 30);
+
+        obs.innerHTML = `<strong>Force = 100 N, Area = ${area} m²:</strong> Pressure = 100 / ${area} = <strong style="color:#22c55e;">${pressure} N/m²</strong>. Smaller area with the same force always produces higher pressure.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initLiquidPressureLab() {
+      const canvas = document.getElementById('liquid-pressure-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-liquid-pressure');
+      const obs = document.getElementById('liquid-pressure-obs');
+      const LEVELS = { low: 0.35, medium: 0.6, high: 0.9 };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const frac = LEVELS[sel.value];
+        const pipeX = W / 2, pipeTop = 40, pipeBottom = 200, pipeW = 50;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.strokeRect(pipeX - pipeW / 2, pipeTop, pipeW, pipeBottom - pipeTop);
+        const waterH = (pipeBottom - pipeTop) * frac;
+        ctx.fillStyle = 'rgba(59,130,246,0.4)';
+        ctx.fillRect(pipeX - pipeW / 2, pipeBottom - waterH, pipeW, waterH);
+
+        const bulgeR = 15 + frac * 35;
+        ctx.fillStyle = '#ef4444';
+        ctx.beginPath(); ctx.arc(pipeX, pipeBottom + bulgeR * 0.6, bulgeR, 0, Math.PI * 2); ctx.fill();
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 25);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> A ${sel.value === 'low' ? 'small' : sel.value === 'medium' ? 'moderate' : 'large'} water column height produces a ${sel.value === 'low' ? 'small' : sel.value === 'medium' ? 'moderate' : 'large'} bulge — confirming pressure increases with column height, not pipe width.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initWindFormationLab() {
+      const canvas = document.getElementById('wind-formation-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-wind-formation');
+      const obs = document.getElementById('wind-formation-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const isDay = sel.value === 'day';
+        const landX = 0, landW = W * 0.4, seaX = W * 0.4, seaW = W * 0.6;
+        const groundY = 180;
+
+        ctx.fillStyle = '#78350f'; ctx.fillRect(landX, groundY, landW, 40);
+        ctx.fillStyle = '#1e40af'; ctx.fillRect(seaX, groundY, seaW, 40);
+        ctx.font = '12px system-ui'; ctx.fillStyle = 'white'; ctx.textAlign = 'center';
+        ctx.fillText('LAND', landW / 2, groundY + 25);
+        ctx.fillText('SEA', seaX + seaW / 2, groundY + 25);
+
+        const arrowY = 130;
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3;
+        if (isDay) {
+          ctx.beginPath(); ctx.moveTo(seaX + 40, arrowY); ctx.lineTo(landW - 20, arrowY); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(landW - 20, arrowY); ctx.lineTo(landW - 35, arrowY - 8); ctx.lineTo(landW - 35, arrowY + 8); ctx.closePath(); ctx.fill();
+        } else {
+          ctx.beginPath(); ctx.moveTo(landW - 20, arrowY); ctx.lineTo(seaX + 40, arrowY); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(seaX + 40, arrowY); ctx.lineTo(seaX + 55, arrowY - 8); ctx.lineTo(seaX + 55, arrowY + 8); ctx.closePath(); ctx.fill();
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(isDay ? 'Sea Breeze (sea → land)' : 'Land Breeze (land → sea)', W / 2, 30);
+
+        obs.innerHTML = isDay
+          ? `<strong>Daytime — Sea Breeze:</strong> Land heats faster than the sea, so warm air over land rises, creating low pressure. Higher-pressure air from the sea flows in to replace it.`
+          : `<strong>Nighttime — Land Breeze:</strong> The sea stays warmer than the land at night, so warm air over the sea rises, creating low pressure there. Higher-pressure air from the land flows out to sea.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCyclonePressureLab() {
+      const canvas = document.getElementById('cyclone-pressure-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-cyclone-pressure');
+      const obs = document.getElementById('cyclone-pressure-obs');
+      const RINGS = [
+        { key: 'eye', r: 20, mb: 994, wind: 'Calm' },
+        { key: 'near', r: 55, mb: 996, wind: 'Very strong winds' },
+        { key: 'mid', r: 90, mb: 998, wind: 'Strong winds' },
+        { key: 'far', r: 125, mb: 1008, wind: 'Light winds' }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cx = W / 2, cy = 150;
+        const selected = sel.value;
+
+        [...RINGS].reverse().forEach(ring => {
+          ctx.beginPath(); ctx.arc(cx, cy, ring.r, 0, Math.PI * 2);
+          ctx.fillStyle = ring.key === selected ? 'rgba(239,68,68,0.35)' : 'rgba(148,163,184,0.12)';
+          ctx.fill();
+          ctx.strokeStyle = ring.key === selected ? '#ef4444' : cssVar('--border-color'); ctx.lineWidth = ring.key === selected ? 2.5 : 1;
+          ctx.stroke();
+        });
+
+        const sr = RINGS.find(r => r.key === selected);
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${sr.mb} mb`, cx, cy + 4);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}: ${sr.mb} mb.</strong> Wind conditions: ${sr.wind}. Pressure rises steadily from 994 mb at the eye to 1008 mb at the outer edge — this pressure difference drives the cyclone's winds.`;
       }
 
       sel.addEventListener('change', draw);

@@ -13278,6 +13278,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8s-6",
+              title: "Pressure, Winds, Storms, and Cyclones",
+              topics: [
+                {
+                  id: "8s-6-1",
+                  title: "1. Pressure: Force Per Unit Area",
+                  lab: { type: "pressure-calc-sim" },
+                  theory: {
+                    intro: "Two identical bags weigh exactly the same — yet one hurts your shoulders while the other doesn't, simply because of how narrow or broad the straps are. This is the essence of pressure.",
+                    sections: [
+                      {
+                        heading: "Defining Pressure",
+                        text: "Since the area over which a force acts matters, we define pressure as force per unit area: Pressure = Force / Area. A bag with narrow straps concentrates the same weight onto a smaller area of your shoulder, producing higher pressure and more discomfort, while broad straps spread that same weight over a larger area, reducing pressure."
+                      },
+                      {
+                        heading: "The Unit of Pressure",
+                        text: "Since force is measured in newtons and area in metre², the SI unit of pressure is newton/metre² (N/m²) — also called the pascal (Pa). For example, a force of 100 N applied on a cardboard of area 2 m² produces a pressure of Pressure = Force/Area = 100 N / 2 m² = 50 N/m²."
+                      },
+                      {
+                        heading: "Reducing or Increasing Pressure by Changing Area",
+                        text: "This principle explains many everyday situations: a bucket with a broad handle is easier to carry than one with a narrow handle (same weight spread over more area); a round cloth pad reduces pressure when carrying a load on the head. Conversely, reducing the area increases pressure for the same force — which is why it's easier to drive a nail using its pointed end, and easier to cut with the sharp edge of a knife rather than its blunt edge."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Ease of Cutting and Driving Using Sharp vs. Blunt Edges",
+                      objective: "To observe how concentrating a force onto a smaller area (sharp edge, pointed tip) makes cutting and piercing tasks easier, due to higher pressure.",
+                      materials: ["An iron nail", "A hammer", "An apple", "A knife"],
+                      steps: [
+                        "Under adult supervision, try driving a nail into wood using its flat head-end first, then using its pointed end.",
+                        "Note which method requires less effort and works faster.",
+                        "Try cutting an apple using the flat/blunt side of a knife, then using its sharp edge.",
+                        "Note which method cuts the apple more easily.",
+                        "Explain both observations in terms of pressure = force / area."
+                      ],
+                      observation: "Driving the nail with its pointed end (smaller area) requires much less effort than using the flat head, and cutting with the sharp edge (smaller area) is far easier than using the blunt edge — in both cases, concentrating the same force onto a smaller area produces higher pressure, making the task easier."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the formula for pressure?",
+                      options: ["Pressure = Force × Area", "Pressure = Force / Area", "Pressure = Area / Force", "Pressure = Force + Area"],
+                      answer: 1,
+                      explanation: "Pressure is defined as force per unit area: Pressure = Force / Area."
+                    },
+                    {
+                      question: "A force of 100 N is applied on a cardboard of area 2 m². What is the pressure?",
+                      options: ["200 N/m²", "50 N/m²", "100 N/m²", "2 N/m²"],
+                      answer: 1,
+                      explanation: "Pressure = Force/Area = 100 N / 2 m² = 50 N/m²."
+                    },
+                    {
+                      question: "Why is it more comfortable to carry a bag with broad straps than one with narrow straps, if both bags weigh the same?",
+                      options: ["Broad straps weigh less", "Broad straps spread the same force over a larger area, reducing pressure on the shoulder", "Narrow straps carry less weight", "There is no actual difference"],
+                      answer: 1,
+                      explanation: "Since pressure = force/area, spreading the same weight (force) over a larger area (broad straps) reduces the pressure felt on the shoulder."
+                    },
+                    {
+                      question: "What is the SI unit of pressure, also known as the pascal?",
+                      options: ["Newton (N)", "Newton/metre² (N/m²)", "Metre² (m²)", "Joule (J)"],
+                      answer: 1,
+                      explanation: "Since pressure = force/area, and force is in newtons while area is in metre², the SI unit of pressure is N/m², also called the pascal (Pa)."
+                    },
+                    {
+                      question: "Why is it easier to cut with the sharp edge of a knife rather than its blunt edge?",
+                      options: ["The sharp edge weighs less", "The sharp edge concentrates the same force onto a much smaller area, producing higher pressure", "Blunt edges are actually sharper", "There is no real difference between the two edges"],
+                      answer: 1,
+                      explanation: "The sharp edge has a much smaller surface area than the blunt edge, so the same applied force produces far higher pressure at the sharp edge, making cutting easier."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-6-2",
+                  title: "2. Pressure in Liquids and the Atmosphere",
+                  lab: { type: "liquid-pressure-sim" },
+                  theory: {
+                    intro: "An overhead water tank isn't placed high up by accident — the taller the column of water above your tap, the harder that water pushes, giving you a stronger stream.",
+                    sections: [
+                      {
+                        heading: "Liquid Pressure Depends on Column Height",
+                        text: "When two pipes of different diameters are filled with water to the same height, balloons attached to their bottoms bulge to the SAME extent — showing that the weight of water isn't what matters, but rather the height of the water column. As the height of a water column increases, the pressure at the bottom increases too, causing a bigger bulge. This is exactly why overhead tanks are placed at a height: greater height means greater pressure, giving a stronger stream of water from taps below."
+                      },
+                      {
+                        heading: "Liquids Exert Pressure in All Directions",
+                        text: "A plastic bottle with holes made at the same height around its sides, when filled with water, sprays water out of ALL the holes once unsealed — showing that liquids exert pressure not just downward at the bottom of a container, but also sideways on its walls, in all directions. This is why the base of a dam is built much broader than its top: it must withstand strong horizontal water pressure that is greatest near the bottom."
+                      },
+                      {
+                        heading: "Atmospheric Pressure",
+                        text: "The atmosphere — the envelope of air surrounding Earth — also exerts pressure on everything, called atmospheric pressure. This pressure is surprisingly large: the force exerted by the air column over just a 15 cm × 15 cm area is nearly equal to the weight of a 225 kg object (2250 N)! We aren't crushed by this because the pressure inside our bodies balances it exactly. A rubber sucker sticks to a surface because pushing out the air beneath it creates a region of lower pressure inside, while higher atmospheric pressure outside holds it firmly in place."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Demonstrating That Liquid Pressure Depends on Column Height",
+                      objective: "To show, using balloons attached to water-filled pipes, that liquid pressure increases with the height of the liquid column, regardless of the pipe's width.",
+                      materials: ["Two transparent pipes of different diameters (same length)", "Two rubber balloons", "A stand to clamp the pipes", "Water"],
+                      steps: [
+                        "Attach a balloon to one end of each pipe and clamp both pipes upright on a stand.",
+                        "Fill both pipes with water to the same height (about halfway).",
+                        "Observe and compare how much each balloon bulges.",
+                        "Add more water to one pipe, increasing its water column height, and observe the change in bulge.",
+                        "Record how the extent of the bulge relates to the height of the water column, not the pipe's width."
+                      ],
+                      observation: "Despite having different diameters (and therefore different weights of water), both balloons bulge to the SAME extent when filled to the same height — and the bulge increases as more water is added, confirming that liquid pressure depends on column height, not the total weight or volume of liquid."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Two pipes of different diameters are filled with water to the same height. What happens to the balloons attached to their bottoms?",
+                      options: ["The wider pipe's balloon bulges much more", "The narrower pipe's balloon bulges much more", "Both balloons bulge to the same extent", "Neither balloon bulges at all"],
+                      answer: 2,
+                      explanation: "Since liquid pressure depends on the height of the column (not the pipe's width or the total weight of water), both balloons bulge equally when filled to the same height."
+                    },
+                    {
+                      question: "Why are overhead water tanks placed at a height?",
+                      options: ["To save space only", "Greater height increases the water column's pressure, giving a stronger stream from taps below", "Height has no effect on water pressure", "To keep the water cooler"],
+                      answer: 1,
+                      explanation: "A taller water column exerts greater pressure at the bottom, so placing tanks at a height ensures stronger water pressure (and flow) at the taps below."
+                    },
+                    {
+                      question: "A plastic bottle has holes at the same height all around its sides. When filled with water and unsealed, what happens?",
+                      options: ["Water only comes out of the bottom", "Water sprays out equally from all the side holes, showing liquids exert pressure in all directions", "No water comes out at all", "Water only comes out of one random hole"],
+                      answer: 1,
+                      explanation: "Water sprays from all the holes because liquids exert pressure not just downward, but sideways on container walls too — in all directions."
+                    },
+                    {
+                      question: "Why is the base of a dam built much broader than its top?",
+                      options: ["To make the dam look bigger", "To withstand the large horizontal water pressure that is greatest near the bottom", "Because it uses less material that way", "Water pressure has nothing to do with dam design"],
+                      answer: 1,
+                      explanation: "Water pressure acting horizontally on a dam's walls is greatest near the bottom (due to the greater height of water above), so the base must be broader and stronger to withstand it."
+                    },
+                    {
+                      question: "Why does a rubber sucker stick firmly to a smooth surface?",
+                      options: ["It uses a magnetic force", "Pressing it out most of the air creates lower pressure inside, while higher atmospheric pressure outside holds it in place", "Suckers use an adhesive chemical", "There is no scientific explanation for this"],
+                      answer: 1,
+                      explanation: "Pressing the sucker pushes out most of the air inside, reducing the pressure there — since atmospheric pressure outside is now higher than the pressure inside, it pushes the sucker firmly against the surface."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-6-3",
+                  title: "3. Wind Formation and High-Speed Winds",
+                  lab: { type: "wind-formation-sim" },
+                  theory: {
+                    intro: "Wind is simply air rushing from where pressure is high to where it's low — a single idea that explains everything from a gentle sea breeze to a roof torn off by a passing storm.",
+                    sections: [
+                      {
+                        heading: "Air Flows from High to Low Pressure",
+                        text: "When a straw connects an inflated balloon (high pressure) to an uninflated one (low pressure), air flows from the inflated balloon to the uninflated one until both reach equal pressure and equal size. This confirms that air moves from a region of high pressure to a region of low pressure. This explains land and sea breeze: during the day, land heats faster than water, so warm air over land rises, creating low pressure — cooler, high-pressure air from the sea rushes in, creating a sea breeze. At night, the pattern reverses, creating a land breeze."
+                      },
+                      {
+                        heading: "High-Speed Winds Create Low Pressure",
+                        text: "Blowing air into the narrow gap between two hanging balloons makes them move TOWARD each other, not apart — because blowing creates a low-pressure region between them, and the higher pressure surrounding the balloons pushes them together. Blowing harder increases this effect. This shows that high-speed winds are accompanied by reduced air pressure."
+                      },
+                      {
+                        heading: "Why Storms Blow Off Roofs",
+                        text: "When high-speed winds blow over a house's roof, they create a low-pressure area above it. Since the air pressure inside the house (below the roof) stays higher, this pressure difference can be strong enough to blow the roof away if it's weak. This is why it's safer to keep doors and windows open during storms: doing so lets high-speed wind move through the house too, reducing the inside-outside pressure difference and helping prevent the roof from being blown off."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Demonstrating That High-Speed Winds Lower Pressure",
+                      objective: "To observe how blowing air between two hanging balloons causes them to move toward each other, demonstrating that high-speed winds create a low-pressure region.",
+                      materials: ["Two balloons of the same size", "String", "A stick to hang the balloons from"],
+                      steps: [
+                        "Inflate both balloons to the same size and tie strings to them.",
+                        "Hang them from a stick, leaving a gap of about 6-10 cm between them.",
+                        "Blow air gently into the narrow space between the two balloons.",
+                        "Observe which direction the balloons move.",
+                        "Blow harder and observe whether the effect becomes stronger."
+                      ],
+                      observation: "When air is blown between the balloons, they move TOWARD each other rather than apart, because the fast-moving air between them creates a low-pressure zone, and the higher surrounding pressure pushes them together — blowing harder makes them move together even faster."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In which direction does air flow between two regions of different pressure?",
+                      options: ["From low pressure to high pressure", "From high pressure to low pressure", "Air does not flow based on pressure differences", "Only from land to sea"],
+                      answer: 1,
+                      explanation: "Air always flows from a region of higher pressure to a region of lower pressure, continuing until the pressure equalizes."
+                    },
+                    {
+                      question: "During the day, why does a sea breeze blow from the sea toward the land?",
+                      options: ["The sea is always colder than land", "Land heats faster than water, creating low pressure over land, so higher-pressure air from the sea flows in", "Sea breezes only occur at night", "There is no pressure difference between land and sea"],
+                      answer: 1,
+                      explanation: "Land heats up faster than water during the day, causing warm air over land to rise and create a low-pressure area — cooler, higher-pressure air from the sea then flows in to replace it, creating a sea breeze."
+                    },
+                    {
+                      question: "When air is blown into the gap between two hanging balloons, what happens to the balloons?",
+                      options: ["They move apart from each other", "They move toward each other", "Nothing happens to them", "They both pop immediately"],
+                      answer: 1,
+                      explanation: "Blowing air between the balloons creates a low-pressure zone there; the higher pressure surrounding the balloons then pushes them toward each other."
+                    },
+                    {
+                      question: "What is the relationship between wind speed and air pressure, based on the balloon activity?",
+                      options: ["Higher wind speed means higher air pressure", "Higher wind speed is accompanied by reduced (lower) air pressure", "Wind speed and pressure are completely unrelated", "Air pressure only depends on temperature"],
+                      answer: 1,
+                      explanation: "The balloon activity shows that high-speed winds are accompanied by a reduction in air pressure in the region where the fast wind is blowing."
+                    },
+                    {
+                      question: "Why is it recommended to keep doors and windows open during a storm with high-speed winds?",
+                      options: ["To let more wind damage the interior", "To reduce the pressure difference between inside the house and above the roof, helping prevent the roof from blowing off", "Open windows have no effect on roof safety", "To cool down the house faster"],
+                      answer: 1,
+                      explanation: "Keeping doors and windows open lets high-speed wind pass through the house, reducing the pressure difference between the inside and the low-pressure area above the roof — this helps prevent the roof from being blown away."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-6-4",
+                  title: "4. Thunderstorms, Lightning, and Cyclones",
+                  lab: { type: "cyclone-pressure-sim" },
+                  theory: {
+                    intro: "A single low-pressure area over warm ocean water can grow, through a self-reinforcing cycle of rising air and condensation, into a cyclone hundreds of kilometres wide, with an oddly calm 'eye' at its violent center.",
+                    sections: [
+                      {
+                        heading: "How Thunderstorms Form",
+                        text: "When land heats up, warm moist air rises, creating a low-pressure area; cooler air rushes in to replace it, creating continuous wind circulation. As rising air cools, its moisture condenses into water droplets, forming clouds; these droplets merge into heavier drops that fall as rain, hail, or snow. This combination of strong wind and rain is called a storm. Strong winds moving up and down cause water droplets and ice particles to rub together, building up static electric charges — positive charges collect in the upper (icy) part of clouds, negative charges in the lower (watery) part."
+                      },
+                      {
+                        heading: "Lightning and Thunder",
+                        text: "Air normally acts as an electrical insulator, keeping opposite charges apart. But when charge buildup becomes large enough, air's insulating property breaks down, causing a sudden flow of charge — a bright flash called lightning. This can happen within a cloud, between clouds, or between a cloud and the ground. Lightning rapidly heats the surrounding air, causing it to expand and produce the loud sound of thunder. A storm with both lightning and thunder is called a thunderstorm."
+                      },
+                      {
+                        heading: "Cyclones: When Storms Intensify",
+                        text: "Cyclones form over warm ocean waters: as moist air rises and its water vapour condenses, it releases heat, warming the rising air further and pulling it up even more — creating an ever-lower pressure area that draws in more surrounding air, which begins spinning due to Earth's rotation. This spinning system of clouds, wind, and rain is called a cyclone. The lowest-pressure region at the very center, called the eye of the cyclone, is calm, while the surrounding region has violent winds and heavy rain. The 2020 Amphan cyclone had peak wind speeds of 270 km/h, and cyclones can push ocean water into a storm surge 3-12 metres high, causing severe coastal flooding."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Mapping Pressure Around a Cyclone",
+                      objective: "To understand how air pressure decreases progressively toward the center (eye) of a cyclone, using pressure values in millibars.",
+                      materials: ["Notebook and pen", "Reference: Fig 6.19 pressure map (994, 996, 998, 1008 mb rings)"],
+                      steps: [
+                        "Note the outermost pressure ring value: 1008 mb (high pressure, far from the cyclone center).",
+                        "Note the next ring inward: 998 mb.",
+                        "Note the next ring inward: 996 mb.",
+                        "Note the innermost, lowest pressure value near the eye: 994 mb.",
+                        "Explain why wind speed increases as you move from the outer rings toward the center (larger pressure differences drive faster winds)."
+                      ],
+                      observation: "Pressure decreases steadily from 1008 mb at the outer edge to 994 mb near the eye of the cyclone — this steep pressure gradient is what drives the extremely high wind speeds found in the region surrounding (but not at) the calm eye."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What causes the electric charge buildup inside storm clouds?",
+                      options: ["Sunlight heating the clouds directly", "Strong winds moving up and down cause water droplets and ice particles to rub together", "Clouds are always naturally charged", "Charge only comes from lightning itself"],
+                      answer: 1,
+                      explanation: "Strong updrafts and downdrafts cause water droplets and ice particles within the cloud to rub against each other, building up static electric charge — similar to rubbing two objects together."
+                    },
+                    {
+                      question: "What causes the flash of light we see as lightning?",
+                      options: ["Reflected sunlight", "A sudden flow of charge when air's insulating property breaks down under a large charge buildup", "Friction between clouds and the ground only", "Lightning has no electrical cause"],
+                      answer: 1,
+                      explanation: "When charge buildup in clouds becomes large enough, air (normally an insulator) breaks down, allowing a sudden, bright flow of electric charge — this is lightning."
+                    },
+                    {
+                      question: "What is the 'eye' of a cyclone?",
+                      options: ["The strongest, most violent part of the cyclone", "The region of lowest pressure at the center, where the wind is calm", "A part of the cyclone with no rain", "The outermost edge of the cyclone"],
+                      answer: 1,
+                      explanation: "The eye of a cyclone is the calm region of lowest pressure at its very center — the surrounding area, in contrast, experiences the strongest winds and heaviest rain."
+                    },
+                    {
+                      question: "What happens to a cyclone once it moves from the ocean onto land?",
+                      options: ["It becomes stronger immediately", "It gradually loses strength, since its source of moist ocean air is cut off", "It transforms into a thunderstorm instantly", "Cyclones cannot move onto land at all"],
+                      answer: 1,
+                      explanation: "A cyclone's energy comes from warm, moist air rising off the ocean; once it moves over land, this moisture source is cut off, and the cyclone gradually weakens."
+                    },
+                    {
+                      question: "Why is lying flat on the ground NOT recommended during a lightning storm?",
+                      options: ["It is actually the safest position", "It increases contact area with the ground, which is discouraged — a low crouching position minimizing ground contact is safer", "Lying down attracts lightning directly", "There is no safety guidance about body position during lightning"],
+                      answer: 1,
+                      explanation: "Safety guidance recommends minimizing contact with the ground and crouching low in an open area, rather than lying flat, to reduce the risk if lightning strikes nearby."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
