@@ -4689,6 +4689,101 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const moonPhaseLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="moon-phase-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a position in the Moon's orbit and see the resulting phase.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Moon's Position (A-H)</h3>
+            <select id="sel-moon-phase" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="A" selected>A — Day 1</option>
+              <option value="B">B — Day 4 (Gibbous)</option>
+              <option value="C">C — Day 8</option>
+              <option value="D">D — Day 12 (Crescent)</option>
+              <option value="E">E — Day 15</option>
+              <option value="F">F — Day 18 (Crescent)</option>
+              <option value="G">G — Day 22</option>
+              <option value="H">H — Day 26 (Gibbous)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Phase Seen from Earth</h3>
+            <div id="moon-phase-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a position above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const eclipseConditionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="eclipse-condition-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see whether an eclipse can occur.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-eclipse-condition" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="full-aligned" selected>Full Moon, orbits aligned</option>
+              <option value="full-tilted">Full Moon, orbit tilted</option>
+              <option value="new-aligned">New Moon, orbits aligned</option>
+              <option value="new-tilted">New Moon, orbit tilted</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Eclipse Outcome</h3>
+            <div id="eclipse-condition-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const shadowStickLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="shadow-stick-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a time of day and see the length of the stick's shadow.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Time of Day</h3>
+            <select id="sel-shadow-stick" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="11" selected>11:00 a.m.</option>
+              <option value="12.33">12:20 p.m. (shortest shadow)</option>
+              <option value="13.16">1:10 p.m.</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Shadow Length</h3>
+            <div id="shadow-stick-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a time above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const calendarComparisonLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="calendar-comparison-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a calendar type and see its year length and seasonal drift.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Calendar Type</h3>
+            <select id="sel-calendar-comparison" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="lunar" selected>Lunar calendar</option>
+              <option value="solar">Solar calendar</option>
+              <option value="leap">Solar calendar (leap year)</option>
+              <option value="lunisolar">Luni-solar calendar</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Days per Year</h3>
+            <div id="calendar-comparison-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a calendar above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -6788,6 +6883,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'lens-image-sim') {
               labHtml = lensImageLabHtml;
               labDesc = 'Pick a lens type and see how it bends parallel light rays.';
+            } else if (topicObj.lab.type === 'moon-phase-sim') {
+              labHtml = moonPhaseLabHtml;
+              labDesc = 'Pick a position in the Moon’s orbit and see the resulting phase seen from Earth.';
+            } else if (topicObj.lab.type === 'eclipse-condition-sim') {
+              labHtml = eclipseConditionLabHtml;
+              labDesc = 'Pick a scenario and see whether an eclipse can occur.';
+            } else if (topicObj.lab.type === 'shadow-stick-sim') {
+              labHtml = shadowStickLabHtml;
+              labDesc = 'Pick a time of day and see the length of the stick’s shadow.';
+            } else if (topicObj.lab.type === 'calendar-comparison-sim') {
+              labHtml = calendarComparisonLabHtml;
+              labDesc = 'Pick a calendar type and see its year length and seasonal drift.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -7395,6 +7502,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initParallelBeamMirrorLab();
         } else if (topicObj.lab.type === 'lens-image-sim') {
           initLensImageLab();
+        } else if (topicObj.lab.type === 'moon-phase-sim') {
+          initMoonPhaseLab();
+        } else if (topicObj.lab.type === 'eclipse-condition-sim') {
+          initEclipseConditionLab();
+        } else if (topicObj.lab.type === 'shadow-stick-sim') {
+          initShadowStickLab();
+        } else if (topicObj.lab.type === 'calendar-comparison-sim') {
+          initCalendarComparisonLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -24285,6 +24400,200 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
 
         obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${INFO[type]}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMoonPhaseLab() {
+      const canvas = document.getElementById('moon-phase-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-moon-phase');
+      const obs = document.getElementById('moon-phase-obs');
+      const PHASES = {
+        A: { name: 'Full Moon', litFrac: 1.0 }, B: { name: 'Gibbous (waning)', litFrac: 0.75 },
+        C: { name: 'Half Moon', litFrac: 0.5 }, D: { name: 'Crescent (waning)', litFrac: 0.25 },
+        E: { name: 'New Moon', litFrac: 0.0 }, F: { name: 'Crescent (waxing)', litFrac: 0.25 },
+        G: { name: 'Half Moon', litFrac: 0.5 }, H: { name: 'Gibbous (waxing)', litFrac: 0.75 }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const key = sel.value;
+        const p = PHASES[key];
+        const cx = W / 2, cy = 140, r = 70;
+
+        ctx.fillStyle = '#1e293b';
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+
+        ctx.save();
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.clip();
+        ctx.fillStyle = '#facc15';
+        if (p.litFrac === 1) {
+          ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+        } else if (p.litFrac === 0) {
+          // nothing lit
+        } else if (p.litFrac === 0.5) {
+          const leftSide = 'BCD'.includes(key) === false && key === 'C';
+          const isRightLit = key === 'C';
+          ctx.beginPath();
+          if (key === 'C') ctx.rect(cx, cy - r, r, r * 2);
+          else ctx.rect(cx - r, cy - r, r, r * 2);
+          ctx.fill();
+        } else {
+          const isWaning = 'BCD'.includes(key);
+          ctx.beginPath();
+          if (isWaning) ctx.rect(cx - r, cy - r, r, r * 2);
+          else ctx.rect(cx, cy - r, r, r * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.ellipse(cx, cy, r * (p.litFrac === 0.75 ? 0.5 : 0.5), r, 0, 0, Math.PI * 2);
+          ctx.fillStyle = p.litFrac === 0.75 ? '#facc15' : '#1e293b';
+          ctx.fill();
+        }
+        ctx.restore();
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Position ${key}: ${p.name}`, W / 2, 30);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`${(p.litFrac * 100).toFixed(0)}% illuminated portion visible`, W / 2, 240);
+
+        obs.innerHTML = `<strong>Position ${key} — ${p.name}:</strong> ${(p.litFrac * 100).toFixed(0)}% of the Moon's illuminated half is visible from Earth at this point in its orbit.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initEclipseConditionLab() {
+      const canvas = document.getElementById('eclipse-condition-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-eclipse-condition');
+      const obs = document.getElementById('eclipse-condition-obs');
+      const DATA = {
+        'full-aligned': { eclipse: true, type: 'Lunar eclipse', desc: 'Full Moon + aligned orbits: Earth\'s shadow falls on the Moon.' },
+        'full-tilted': { eclipse: false, type: 'No eclipse', desc: 'Full Moon but tilted orbit: the Moon passes above/below Earth\'s shadow.' },
+        'new-aligned': { eclipse: true, type: 'Solar eclipse', desc: 'New Moon + aligned orbits: the Moon blocks sunlight from reaching Earth.' },
+        'new-tilted': { eclipse: false, type: 'No eclipse', desc: 'New Moon but tilted orbit: the Moon\'s shadow misses Earth entirely.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const isFull = sel.value.startsWith('full');
+        const tilted = sel.value.endsWith('tilted');
+        const cy = 140;
+
+        ctx.fillStyle = '#facc15';
+        ctx.beginPath(); ctx.arc(80, cy, 30, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#3b82f6';
+        ctx.beginPath(); ctx.arc(W / 2, cy, 22, 0, Math.PI * 2); ctx.fill();
+
+        const moonX = isFull ? W - 100 : W / 2 + 100;
+        const moonY = tilted ? cy - 35 : cy;
+        ctx.fillStyle = '#94a3b8';
+        ctx.beginPath(); ctx.arc(moonX, moonY, 12, 0, Math.PI * 2); ctx.fill();
+
+        ctx.strokeStyle = d.eclipse ? '#ef4444' : cssVar('--border-color'); ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(80, cy); ctx.lineTo(W - 60, cy); ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = d.eclipse ? '#ef4444' : '#22c55e';
+        ctx.fillText(d.type, W / 2, 230);
+
+        obs.innerHTML = `<strong>${d.type}:</strong> ${d.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initShadowStickLab() {
+      const canvas = document.getElementById('shadow-stick-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-shadow-stick');
+      const obs = document.getElementById('shadow-stick-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const t = parseFloat(sel.value);
+        const distFromNoon = Math.abs(t - 12.33);
+        const shadowLen = 20 + distFromNoon * 60;
+        const groundY = 210, stickX = W / 2, stickH = 100;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(60, groundY); ctx.lineTo(W - 60, groundY); ctx.stroke();
+
+        ctx.strokeStyle = '#8b5cf6'; ctx.lineWidth = 5;
+        ctx.beginPath(); ctx.moveTo(stickX, groundY); ctx.lineTo(stickX, groundY - stickH); ctx.stroke();
+
+        ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.lineWidth = 8;
+        ctx.beginPath(); ctx.moveTo(stickX, groundY); ctx.lineTo(stickX + shadowLen, groundY); ctx.stroke();
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Shadow length: ${shadowLen.toFixed(0)} cm`, W / 2, 240);
+
+        obs.innerHTML = distFromNoon < 0.1
+          ? `<strong>Shortest shadow:</strong> The Sun is at its highest point in the sky — this moment marks solar noon.`
+          : `<strong>Shadow length ${shadowLen.toFixed(0)} cm:</strong> Farther from solar noon, the Sun is lower in the sky, casting a longer shadow.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCalendarComparisonLab() {
+      const canvas = document.getElementById('calendar-comparison-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-calendar-comparison');
+      const obs = document.getElementById('calendar-comparison-obs');
+      const DATA = {
+        lunar: { days: 354, desc: '12 lunar months × 29.5 days ≈ 354 days — about 11 days short of the solar year, causing seasons to drift.' },
+        solar: { days: 365, desc: 'Adjusted months add up to 365 days, matching the solar year closely.' },
+        leap: { days: 366, desc: 'Every 4th year, an extra day (Feb 29) is added to correct for Earth\'s 365.25-day orbit.' },
+        lunisolar: { days: 354, desc: 'Uses lunar months (354 days/year) but inserts a leap month every 2-3 years to stay aligned with the seasons.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const barX = 200, barY = 60, barMaxH = 160, barW = 100;
+        const maxDays = 366;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+        ctx.strokeRect(barX, barY, barW, barMaxH);
+        const fillH = (d.days / maxDays) * barMaxH;
+        ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillRect(barX, barY + barMaxH - fillH, barW, fillH);
+
+        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
+        const solarY = barY + barMaxH - (365 / maxDays) * barMaxH;
+        ctx.beginPath(); ctx.moveTo(barX - 10, solarY); ctx.lineTo(barX + barW + 10, solarY); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.font = '10px system-ui'; ctx.fillStyle = '#ef4444'; ctx.textAlign = 'left';
+        ctx.fillText('365 (solar year)', barX + barW + 12, solarY + 3);
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${d.days} days/year`, barX + barW / 2, barY - 15);
+        ctx.font = 'bold 13px system-ui';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 250);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text} (${d.days} days/year):</strong> ${d.desc}`;
       }
 
       sel.addEventListener('change', draw);

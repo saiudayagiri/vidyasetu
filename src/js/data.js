@@ -14688,6 +14688,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8s-11",
+              title: "Keeping Time with the Skies",
+              topics: [
+                {
+                  id: "8s-11-1",
+                  title: "1. Phases of the Moon",
+                  lab: { type: "moon-phase-sim" },
+                  theory: {
+                    intro: "The Moon itself never changes shape — only the sliver of its sunlit half that faces Earth changes, growing and shrinking in a cycle that repeats roughly every month.",
+                    sections: [
+                      {
+                        heading: "Why the Moon Appears to Change Shape",
+                        text: "The Moon doesn't emit its own light — it shines by reflecting sunlight. The half of the Moon facing the Sun is illuminated; the half facing away is not. As the Moon revolves around Earth, the portion of its illuminated half that faces Earth keeps changing — sometimes we see the entire illuminated portion, sometimes only part of it, and on New Moon day, none of it at all. These changing shapes of the visible bright portion are called the phases of the Moon."
+                      },
+                      {
+                        heading: "Waxing and Waning",
+                        text: "On Full Moon day (Purnima), the Moon is opposite the Sun in the sky, and its entire illuminated half faces Earth. Over about two weeks, the bright portion shrinks (waning period / Krishna Paksha) until it disappears entirely on New Moon day (Amavasya). Over the following two weeks, the bright portion grows again (waxing period / Shukla Paksha) back to a Full Moon. The full cycle from one Full Moon to the next takes about a month."
+                      },
+                      {
+                        heading: "Named Phases: Gibbous and Crescent",
+                        text: "When more than half of the illuminated portion is visible, it's called the gibbous phase; when less than half is visible, it's the crescent phase. A simple ball-and-torchlight activity confirms this: holding a ball opposite a light source (like Full Moon) shows its fully lit side; holding it toward the light (like New Moon) shows only its dark side; in between positions show the curved boundary between light and dark, just like the Moon's real phases."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Simulating Moon Phases with a Ball and Torchlight",
+                      objective: "To understand how the Moon's phases arise from its changing position relative to the Sun, using a ball to represent the Moon.",
+                      materials: ["A small soft ball on a stick", "A torchlight (or electric lamp)", "A dark open space"],
+                      steps: [
+                        "Have someone shine a torchlight toward you from about 3 metres away (representing sunlight); your head represents Earth.",
+                        "Hold the ball at arm's length, slightly above your head, in the direction of the light (position E) — observe if the facing side is illuminated.",
+                        "Slowly turn around (anti-clockwise) with your arm outstretched, continuing to watch the ball.",
+                        "Note how the illuminated shape changes as you turn, and whether the boundary between light and dark is curved.",
+                        "Identify which position corresponds to Full Moon (ball opposite the light) and which to New Moon (ball toward the light)."
+                      ],
+                      observation: "When the ball is opposite the light source, its entire visible face is illuminated (like Full Moon); when it's toward the light source, its visible face is entirely dark (like New Moon); at in-between positions, a curved boundary divides the light and dark portions — mirroring the real phases of the Moon."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does the Moon appear to change shape throughout the month?",
+                      options: ["The Moon's actual physical shape changes", "The changing portion of the Moon's illuminated half that faces Earth changes as the Moon orbits Earth", "The Moon periodically stops shining", "Clouds cause the apparent shape change"],
+                      answer: 1,
+                      explanation: "The Moon's actual shape never changes — what changes is how much of its sunlit half faces Earth as it orbits, which is why we see different amounts of the illuminated portion on different days."
+                    },
+                    {
+                      question: "What is the 'waxing period' of the Moon?",
+                      options: ["When the bright portion shrinks toward New Moon", "When the bright portion grows from New Moon toward Full Moon (Shukla Paksha)", "A period with no Moon visible at all", "Another name for a lunar eclipse"],
+                      answer: 1,
+                      explanation: "The waxing period (Shukla Paksha in India) is when the Moon's illuminated portion grows larger each day, moving from New Moon toward Full Moon."
+                    },
+                    {
+                      question: "What is the 'gibbous phase' of the Moon?",
+                      options: ["When less than half the illuminated portion is visible", "When more than half of the illuminated portion of the Moon is visible", "Another name for the New Moon", "A phase that never actually occurs"],
+                      answer: 1,
+                      explanation: "The gibbous phase occurs when more than half of the Moon's illuminated portion is visible from Earth — occurring just before and after Full Moon."
+                    },
+                    {
+                      question: "In the ball-and-torchlight activity, what does it mean when the ball is held directly toward the light source?",
+                      options: ["This represents Full Moon, with the entire lit side visible", "This represents New Moon, since only the dark (non-illuminated) side faces the observer", "This position has no real-world equivalent", "This always represents a lunar eclipse"],
+                      answer: 1,
+                      explanation: "When the ball is held toward the light source, the observer sees only its non-illuminated side — just like New Moon, when we cannot see any of the Moon's illuminated portion."
+                    },
+                    {
+                      question: "Approximately how long does it take for the Moon to go through one complete cycle of phases (Full Moon to Full Moon)?",
+                      options: ["One day", "One week", "About one month", "One year"],
+                      answer: 2,
+                      explanation: "The complete cycle of Moon phases, from one Full Moon to the next, takes about one month (approximately 29.5 days)."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-11-2",
+                  title: "2. Locating the Moon and Eclipses",
+                  lab: { type: "eclipse-condition-sim" },
+                  theory: {
+                    intro: "Contrary to popular belief, the Moon does NOT rise exactly when the Sun sets — it actually rises about 50 minutes later each day, a subtle shift caused by its own orbit around Earth.",
+                    sections: [
+                      {
+                        heading: "Why the Moon's Position Shifts Daily",
+                        text: "On a Full Moon day, the Moon is nearly opposite the Sun — rising in the East as the Sun sets in the West. As the Moon's phase changes, it appears to shift position relative to the Sun: a waning Moon is easiest to spot at sunrise, a waxing Moon at sunset. This happens because while Earth completes one rotation in 24 hours, the Moon also moves ahead in its own orbit — so Earth must rotate slightly MORE than 24 hours for the Moon to return to nearly the same spot in the sky, causing moonrise to occur about 50 minutes later each day."
+                      },
+                      {
+                        heading: "Moon Phases Are NOT Caused by Earth's Shadow",
+                        text: "A common misconception is that Earth's shadow causes the Moon's phases — this is incorrect. Phases occur purely due to the changing relative positions of the Sun, Moon, and Earth as the Moon orbits. Earth's shadow falling on the Moon is what causes a LUNAR ECLIPSE — a completely different phenomenon from the regular monthly phases."
+                      },
+                      {
+                        heading: "When Eclipses Can (and Can't) Happen",
+                        text: "Lunar eclipses can only happen on a Full Moon day (when Earth is between the Sun and Moon); solar eclipses can only happen on a New Moon day (when the Moon is between the Sun and Earth). However, eclipses do NOT happen every single Full or New Moon — because the Moon's orbit is slightly tilted relative to Earth's orbit around the Sun, the three bodies usually aren't perfectly aligned, so eclipses only occur when this tilt allows exact alignment."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tracking Moonrise Times Over Several Days",
+                      objective: "To observe that moonrise occurs progressively later each day, rather than always coinciding with sunset.",
+                      materials: ["A local newspaper or astronomy website with moonrise times", "A notebook for recording data"],
+                      steps: [
+                        "Look up the moonrise time for your location for today and note it down.",
+                        "Record the moonrise time for the next several consecutive days.",
+                        "Calculate the difference in moonrise time between each consecutive day.",
+                        "Check whether the Moon sometimes rises during daylight hours (e.g., 2:00-4:00 p.m.).",
+                        "Confirm whether the pattern matches an approximately 50-minute daily delay."
+                      ],
+                      observation: "Across consecutive days, the recorded moonrise times shift later by approximately 50 minutes each day — confirming that the Moon does not simply rise when the Sun sets, and sometimes rises during broad daylight."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does moonrise occur about 50 minutes later each day?",
+                      options: ["The Moon randomly changes its schedule", "While Earth rotates once in 24 hours, the Moon also moves ahead in its own orbit, so Earth needs extra rotation time for the Moon to return to nearly the same sky position", "This is incorrect — moonrise always happens at the same time", "It is caused by lunar eclipses"],
+                      answer: 1,
+                      explanation: "Since the Moon moves along its own orbit while Earth rotates, Earth needs to rotate a bit more than a full 24-hour rotation for the Moon to appear in nearly the same position again — causing the roughly 50-minute daily delay."
+                    },
+                    {
+                      question: "What actually causes the Moon's phases (its changing visible shape)?",
+                      options: ["Earth's shadow falling on the Moon", "The changing relative positions of the Sun, Moon, and Earth as the Moon orbits Earth", "Clouds blocking part of the Moon", "The Moon periodically stops reflecting light"],
+                      answer: 1,
+                      explanation: "Moon phases result from the changing orientation of the Sun-Moon-Earth system as the Moon orbits — NOT from Earth's shadow, which is a common misconception."
+                    },
+                    {
+                      question: "What actually causes a lunar eclipse?",
+                      options: ["The Moon's own shadow falling on itself", "Earth's shadow falling on the Moon", "The Sun's light being blocked by clouds", "A change in the Moon's own light emission"],
+                      answer: 1,
+                      explanation: "A lunar eclipse occurs when Earth passes between the Sun and Moon, casting Earth's shadow onto the Moon's surface — distinct from the Moon's regular phases."
+                    },
+                    {
+                      question: "On which type of day can a lunar eclipse occur, and on which type of day can a solar eclipse occur?",
+                      options: ["Lunar eclipses on New Moon day; solar eclipses on Full Moon day", "Lunar eclipses on Full Moon day; solar eclipses on New Moon day", "Both types of eclipses can occur on any day", "Neither type of eclipse has any connection to Moon phases"],
+                      answer: 1,
+                      explanation: "Lunar eclipses require Earth to be between the Sun and Moon, which can only happen on Full Moon day; solar eclipses require the Moon to be between the Sun and Earth, which can only happen on New Moon day."
+                    },
+                    {
+                      question: "Why don't eclipses occur every single Full Moon and New Moon?",
+                      options: ["Eclipses actually do occur every month without exception", "The Moon's orbit is slightly tilted relative to Earth's orbit around the Sun, so perfect alignment for an eclipse doesn't happen every month", "Eclipses are entirely random with no predictable pattern", "Eclipses only happen once per century"],
+                      answer: 1,
+                      explanation: "Because the Moon's orbital plane is slightly tilted compared to Earth's orbital plane around the Sun, the Sun, Earth, and Moon are rarely perfectly aligned — so eclipses only happen on the occasions when this tilt permits exact alignment."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-11-3",
+                  title: "3. Natural Units of Time: Day, Month, and Year",
+                  lab: { type: "shadow-stick-sim" },
+                  theory: {
+                    intro: "Long before clocks existed, a simple stick planted in the ground could tell you the time — its shadow shrinking to its shortest length at the exact moment the Sun reached its highest point in the sky.",
+                    sections: [
+                      {
+                        heading: "The Day: Defined by the Sun's Cycle",
+                        text: "The Sun's apparent daily east-to-west motion (caused by Earth's rotation on its axis) is the foundation of the day. The average time for the Sun to return to its highest position in the sky (shortest shadow) from one day to the next is 24 hours, called the mean solar day. Planting a vertical stick and tracking its shadow's length throughout the day — noting when the shadow is shortest — lets you measure the length of a solar day directly."
+                      },
+                      {
+                        heading: "The Month: Defined by the Moon's Cycle",
+                        text: "The Moon takes about 29.5 days (nearly a month) to cycle through all its phases. This cycle of the Moon's phases forms the natural basis for a month, a unit of time longer than a day but shorter than a year."
+                      },
+                      {
+                        heading: "The Year: Defined by Earth's Orbit",
+                        text: "Earth takes nearly 365 and a quarter days to complete one full revolution around the Sun. During this time, Earth undergoes one complete cycle of seasons — which defines a solar year, the largest of these three natural time units, all derived directly from observable cycles in the sky."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Measuring a Solar Day Using a Shadow Stick",
+                      objective: "To measure the length of a solar day by tracking when a vertical stick's shadow is shortest on consecutive days.",
+                      materials: ["A 1 metre stick", "A flat, sunlit patch of ground", "A watch or clock", "Chalk or markers for the ground"],
+                      steps: [
+                        "Fix the stick vertically in the ground in an open, sunlit area.",
+                        "Starting around 11:00 a.m., mark a dot at the tip of the stick's shadow every minute.",
+                        "Continue marking dots until around 1:10 p.m.",
+                        "Identify the time when the shadow was shortest (the Sun's highest point) and record it.",
+                        "Repeat this process on the following day, and calculate the time difference between the two 'shortest shadow' moments."
+                      ],
+                      observation: "The time of the shortest shadow on consecutive days differs by very close to 24 hours (e.g., 12:20 on Day 1 and 12:20 on Day 2 gives a 24:00 duration) — confirming that the mean solar day is approximately 24 hours long."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the 'mean solar day'?",
+                      options: ["A day with unusually bright sunlight", "The average time it takes for the Sun to return to its highest position in the sky from one day to the next, equal to 24 hours", "A day with no shadows at all", "A unit only used in ancient calendars"],
+                      answer: 1,
+                      explanation: "The mean solar day is defined as the average 24-hour period between the Sun reaching its highest point in the sky on consecutive days."
+                    },
+                    {
+                      question: "How can you determine when the Sun is at its highest position in the sky using a stick?",
+                      options: ["By measuring when the stick's shadow is longest", "By measuring when the stick's shadow is shortest", "Sticks cannot be used to measure the Sun's position", "By measuring the stick's own height"],
+                      answer: 1,
+                      explanation: "The Sun is at its highest point in the sky when a vertical stick casts its shortest shadow, since the light is coming from most directly overhead at that moment."
+                    },
+                    {
+                      question: "What natural cycle forms the basis for defining a 'month'?",
+                      options: ["Earth's full rotation on its axis", "The Moon's cycle through all its phases, taking about 29.5 days", "Earth's complete revolution around the Sun", "The cycle of ocean tides alone"],
+                      answer: 1,
+                      explanation: "A month is based on the Moon's roughly 29.5-day cycle through all its phases, from one New Moon (or Full Moon) to the next."
+                    },
+                    {
+                      question: "What natural cycle forms the basis for defining a 'year'?",
+                      options: ["A single lunar phase cycle", "Earth's complete revolution around the Sun, taking about 365 and a quarter days, corresponding to one full cycle of seasons", "One rotation of Earth on its axis", "The time between two consecutive sunrises"],
+                      answer: 1,
+                      explanation: "A year is based on Earth's revolution around the Sun (about 365.25 days), during which Earth completes one full cycle of the seasons."
+                    },
+                    {
+                      question: "What is the correct order of these three natural time units, from shortest to longest?",
+                      options: ["Year, Month, Day", "Day, Year, Month", "Day, Month, Year", "Month, Day, Year"],
+                      answer: 2,
+                      explanation: "The natural order from shortest to longest is: Day (~24 hours, from Earth's rotation) → Month (~29.5 days, from the Moon's phase cycle) → Year (~365.25 days, from Earth's revolution around the Sun)."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-11-4",
+                  title: "4. Calendars: Lunar, Solar, and Luni-Solar",
+                  lab: { type: "calendar-comparison-sim" },
+                  theory: {
+                    intro: "A calendar based purely on the Moon drifts out of sync with the seasons within just a few years — which is exactly why most modern calendars, including the one on your wall, are built around the Sun instead.",
+                    sections: [
+                      {
+                        heading: "Lunar Calendars",
+                        text: "Ancient observers noticed that roughly 12 cycles of the Moon's phases fit into one cycle of seasons, leading to lunar calendars: a day as the shortest unit, a month of about 29.5 days, and a lunar year of 12 lunar months. However, since 12 lunar months add up to only 354 days — about 11 days short of the 365-day solar year — a lunar calendar's months drift out of sync with the seasons year after year."
+                      },
+                      {
+                        heading: "Solar Calendars",
+                        text: "For agricultural purposes, knowing exactly when seasons would arrive was crucial — leading to solar calendars, adjusted so months add up to 365 days (the widely-used Gregorian calendar is a solar calendar). Since Earth actually takes about 365.25 days to orbit the Sun, solar calendars add an extra day every four years — a leap year — with February gaining a 29th day. Further corrections (skipping leap years in most century years, like 1700, 1800, 1900, but keeping them every 400 years, like 1600 and 2000) keep the calendar closely matched to the seasons over centuries."
+                      },
+                      {
+                        heading: "Luni-Solar Calendars",
+                        text: "Luni-solar calendars primarily use the Moon's phases for counting days and months, but make periodic adjustments to stay synchronized with the solar year's seasons. Since 12 lunar months (354 days) fall about 11 days short of the solar year every year, the accumulated gap becomes close to a full month every 2-3 years — at which point an extra 'leap month' is inserted to realign the calendar with the seasons, combining the Moon's easy-to-track phases with the Sun's seasonal accuracy."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing the Length of Lunar, Solar, and Luni-Solar Years",
+                      objective: "To calculate and compare how many days a lunar year, solar year, and luni-solar year each contain, and understand why adjustments are needed.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "Calculate the length of a lunar year: 12 lunar months × 29.5 days ≈ 354 days.",
+                        "Compare this to the solar year: approximately 365.25 days.",
+                        "Calculate the yearly gap between the lunar and solar year (365 - 354 = 11 days).",
+                        "Determine how many years it takes for this gap to accumulate to about 30 days (a full lunar month): roughly 30/11 ≈ 2.7 years.",
+                        "Explain why a luni-solar calendar needs to insert an extra month roughly every 2-3 years to stay synchronized."
+                      ],
+                      observation: "A pure lunar year (354 days) falls about 11 days short of the solar year (365 days) every single year; this 11-day gap accumulates to nearly a full month within about 2-3 years, which is exactly when luni-solar calendars insert an extra leap month to catch back up with the seasons."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How many days does a typical lunar year (12 lunar months) contain?",
+                      options: ["About 365 days", "About 354 days", "About 400 days", "About 300 days"],
+                      answer: 1,
+                      explanation: "A lunar year of 12 lunar months (each about 29.5 days) totals approximately 354 days — about 11 days shorter than the solar year."
+                    },
+                    {
+                      question: "Why do solar calendars like the Gregorian calendar include a 'leap year' every four years?",
+                      options: ["To make February shorter", "Because Earth takes about 365.25 days to orbit the Sun, so the extra quarter-day accumulates to a full day every four years", "Leap years have no scientific basis", "To synchronize with the Moon's phases"],
+                      answer: 1,
+                      explanation: "Since Earth's orbit takes about 365.25 days (not exactly 365), the extra quarter-day per year adds up to roughly one full day every four years — accounted for by adding a leap day (February 29th)."
+                    },
+                    {
+                      question: "In the Gregorian calendar's leap year rule, which of these years is typically NOT a leap year, despite being divisible by 4?",
+                      options: ["2000", "1600", "1900", "2024"],
+                      answer: 2,
+                      explanation: "Century years (like 1900) are normally skipped as leap years unless divisible by 400 — so 1900 was NOT a leap year, while 1600 and 2000 (divisible by 400) WERE leap years."
+                    },
+                    {
+                      question: "What is the key feature of a luni-solar calendar?",
+                      options: ["It ignores the Moon entirely and only uses the Sun", "It primarily tracks time using Moon phases, but adds an extra 'leap month' periodically to stay synchronized with the solar year's seasons", "It has no relationship to either the Moon or the Sun", "It uses exactly 354 days every year with no adjustments"],
+                      answer: 1,
+                      explanation: "A luni-solar calendar uses the Moon's phases for its basic day/month structure, but periodically inserts an extra month to correct the roughly 11-day yearly gap with the solar year, keeping it aligned with the seasons."
+                    },
+                    {
+                      question: "Roughly how often does a luni-solar calendar need to insert an extra 'leap month' to stay synchronized with the seasons?",
+                      options: ["Every year", "Every 2-3 years", "Every 50 years", "Never — luni-solar calendars require no adjustment"],
+                      answer: 1,
+                      explanation: "Since the lunar year falls about 11 days short of the solar year each year, this gap accumulates to nearly a full month every 2-3 years, which is when a leap month is inserted."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
