@@ -4331,6 +4331,95 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const particleBreakdownLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="particle-breakdown-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a grinding stage and see the chalk piece get finer.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Grinding Stage</h3>
+            <select id="sel-particle-breakdown" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="whole" selected>Whole chalk stick</option>
+              <option value="broken">Broken into pieces</option>
+              <option value="powder">Ground into fine powder</option>
+              <option value="particles">Constituent particles (imagined limit)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What's Happening</h3>
+            <div id="particle-breakdown-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a stage above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const meltingPointLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="melting-point-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a material and see its melting point on the scale.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Material</h3>
+            <select id="sel-melting-point" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="ice" selected>Ice</option>
+              <option value="urea">Urea</option>
+              <option value="iron">Iron</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Melting Point</h3>
+            <div id="melting-point-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a material above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const statePropertiesLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="state-properties-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a state of matter and see the particle arrangement.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a State</h3>
+            <select id="sel-state-properties" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="solid" selected>Solid</option>
+              <option value="liquid">Liquid</option>
+              <option value="gas">Gas</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Properties</h3>
+            <div id="state-properties-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a state above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const diffusionTemperatureLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="diffusion-temp-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a water temperature and see how fast the colour spreads.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Water Temperature</h3>
+            <select id="sel-diffusion-temp" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="hot" selected>Hot water</option>
+              <option value="room">Room temperature water</option>
+              <option value="cold">Ice-cold water</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Diffusion Speed</h3>
+            <div id="diffusion-temp-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a temperature above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -6382,6 +6471,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'cyclone-pressure-sim') {
               labHtml = cyclonePressureLabHtml;
               labDesc = 'Pick a distance from the eye and see the pressure and wind conditions.';
+            } else if (topicObj.lab.type === 'particle-breakdown-sim') {
+              labHtml = particleBreakdownLabHtml;
+              labDesc = 'Pick a grinding stage and see the chalk broken down into finer particles.';
+            } else if (topicObj.lab.type === 'melting-point-sim') {
+              labHtml = meltingPointLabHtml;
+              labDesc = 'Pick a material and see its melting point on the temperature scale.';
+            } else if (topicObj.lab.type === 'state-properties-sim') {
+              labHtml = statePropertiesLabHtml;
+              labDesc = 'Pick a state of matter and see the particle arrangement and properties.';
+            } else if (topicObj.lab.type === 'diffusion-temperature-sim') {
+              labHtml = diffusionTemperatureLabHtml;
+              labDesc = 'Pick a water temperature and see how fast the colour diffuses.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -6957,6 +7058,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initWindFormationLab();
         } else if (topicObj.lab.type === 'cyclone-pressure-sim') {
           initCyclonePressureLab();
+        } else if (topicObj.lab.type === 'particle-breakdown-sim') {
+          initParticleBreakdownLab();
+        } else if (topicObj.lab.type === 'melting-point-sim') {
+          initMeltingPointLab();
+        } else if (topicObj.lab.type === 'state-properties-sim') {
+          initStatePropertiesLab();
+        } else if (topicObj.lab.type === 'diffusion-temperature-sim') {
+          initDiffusionTemperatureLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -23143,6 +23252,172 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
 
         obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}: ${sr.mb} mb.</strong> Wind conditions: ${sr.wind}. Pressure rises steadily from 994 mb at the eye to 1008 mb at the outer edge — this pressure difference drives the cyclone's winds.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initParticleBreakdownLab() {
+      const canvas = document.getElementById('particle-breakdown-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-particle-breakdown');
+      const obs = document.getElementById('particle-breakdown-obs');
+      const STAGES = {
+        whole: { desc: 'A whole stick of chalk — one continuous-looking piece.' },
+        broken: { desc: 'Broken by hand into several pieces — still clearly chalk, just smaller.' },
+        powder: { desc: 'Ground with mortar and pestle into a fine powder — every speck is still chalk (a physical change).' },
+        particles: { desc: 'Imagining grinding continued forever, we reach constituent particles — the smallest units chalk is made of, too small to see even with a magnifying glass.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const stage = sel.value;
+        const cx = W / 2, cy = 150;
+        ctx.fillStyle = '#e5e7eb';
+
+        if (stage === 'whole') {
+          ctx.fillRect(cx - 60, cy - 15, 120, 30);
+        } else if (stage === 'broken') {
+          [[-70, 0], [-10, 5], [50, -8]].forEach(([dx, dy]) => ctx.fillRect(cx + dx, cy + dy - 10, 35, 20));
+        } else if (stage === 'powder') {
+          for (let i = 0; i < 60; i++) {
+            const x = cx + (Math.random() - 0.5) * 200, y = cy + (Math.random() - 0.5) * 80;
+            ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI * 2); ctx.fill();
+          }
+        } else {
+          for (let i = 0; i < 150; i++) {
+            const x = cx + (Math.random() - 0.5) * 260, y = cy + (Math.random() - 0.5) * 140;
+            ctx.beginPath(); ctx.arc(x, y, 1, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${STAGES[stage].desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMeltingPointLab() {
+      const canvas = document.getElementById('melting-point-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-melting-point');
+      const obs = document.getElementById('melting-point-obs');
+      const DATA = {
+        ice: { mp: 0, strength: 'Weak', color: '#60a5fa' },
+        urea: { mp: 133, strength: 'Moderate', color: '#f59e0b' },
+        iron: { mp: 1538, strength: 'Very strong', color: '#ef4444' }
+      };
+      const MAXMP = 1538;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+
+        const barX = 220, barY = 50, barMaxH = 170, barW = 90;
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+        ctx.strokeRect(barX, barY, barW, barMaxH);
+        const fillH = Math.max(6, Math.sqrt(d.mp / MAXMP) * barMaxH);
+        ctx.fillStyle = d.color;
+        ctx.fillRect(barX, barY + barMaxH - fillH, barW, fillH);
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${sel.options[sel.selectedIndex].text}: ${d.mp}°C`, barX + barW / 2, barY - 15);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Interparticle attraction: ${d.strength}`, barX + barW / 2, barY + barMaxH + 25);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text} melts at ${d.mp}°C.</strong> This reflects ${d.strength.toLowerCase()} interparticle attraction between its particles.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initStatePropertiesLab() {
+      const canvas = document.getElementById('state-properties-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-state-properties');
+      const obs = document.getElementById('state-properties-obs');
+      const INFO = {
+        solid: 'Fixed shape AND fixed volume. Particles tightly packed, strong attraction, only vibrate in place.',
+        liquid: 'No fixed shape, but fixed volume. Particles close but free to move — takes the shape of its container.',
+        gas: 'No fixed shape AND no fixed volume. Particles far apart, negligible attraction, fill all available space.'
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const state = sel.value;
+        const cx = W / 2, cy = 150;
+        ctx.fillStyle = cssVar('--accent-color');
+
+        if (state === 'solid') {
+          for (let r = 0; r < 5; r++) for (let c = 0; c < 6; c++) {
+            ctx.beginPath(); ctx.arc(cx - 100 + c * 40, cy - 60 + r * 30, 6, 0, Math.PI * 2); ctx.fill();
+          }
+        } else if (state === 'liquid') {
+          ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2; ctx.strokeRect(cx - 90, cy - 55, 180, 110);
+          for (let i = 0; i < 60; i++) {
+            const x = cx - 85 + Math.random() * 170, y = cy - 50 + Math.random() * 100;
+            ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2); ctx.fill();
+          }
+        } else {
+          for (let i = 0; i < 45; i++) {
+            const x = cx - 140 + Math.random() * 280, y = cy - 100 + Math.random() * 200;
+            ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${INFO[state]}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDiffusionTemperatureLab() {
+      const canvas = document.getElementById('diffusion-temp-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-diffusion-temp');
+      const obs = document.getElementById('diffusion-temp-obs');
+      const SPREAD = { hot: 90, room: 50, cold: 20 };
+      const SPEED = { hot: 'fastest', room: 'moderate', cold: 'slowest' };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const spread = SPREAD[sel.value];
+        const cx = W / 2, cy = 150;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx - 70, cy - 80); ctx.lineTo(cx - 70, cy + 80); ctx.lineTo(cx + 70, cy + 80); ctx.lineTo(cx + 70, cy - 80); ctx.stroke();
+
+        const grad = ctx.createRadialGradient(cx, cy, 2, cx, cy, spread);
+        grad.addColorStop(0, 'rgba(236,72,153,0.9)');
+        grad.addColorStop(1, 'rgba(236,72,153,0.05)');
+        ctx.fillStyle = grad;
+        ctx.beginPath(); ctx.arc(cx, cy, spread, 0, Math.PI * 2); ctx.fill();
+
+        ctx.fillStyle = '#831843';
+        ctx.beginPath(); ctx.arc(cx, cy, 5, 0, Math.PI * 2); ctx.fill();
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> Diffusion is ${SPEED[sel.value]} here — higher temperature means faster-moving particles, spreading the pink colour more quickly.`;
       }
 
       sel.addEventListener('change', draw);

@@ -13560,6 +13560,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8s-7",
+              title: "Particulate Nature of Matter",
+              topics: [
+                {
+                  id: "8s-7-1",
+                  title: "1. Matter Is Made of Tiny Particles",
+                  lab: { type: "particle-breakdown-sim" },
+                  theory: {
+                    intro: "Grind a piece of chalk into the finest powder imaginable, or dissolve sugar until it vanishes from sight — either way, you're revealing that all matter is built from countless tiny particles too small to see.",
+                    sections: [
+                      {
+                        heading: "Breaking Chalk Down to Its Particles",
+                        text: "Repeatedly breaking and grinding a piece of chalk produces a fine powder — but every speck is still chalk (grinding is a physical change, not a chemical one). If this grinding could continue indefinitely, we would eventually reach tiny units that cannot be broken down further. These basic building blocks are called constituent particles — the basic unit that makes up a larger piece of a substance or material."
+                      },
+                      {
+                        heading: "Sugar Dissolving Reveals Particles Too",
+                        text: "When sugar is stirred into water, sugar particles can no longer be seen, yet their presence can still be sensed by taste — the water tastes sweet throughout. This happens because the sugar breaks up into its constituent particles, which spread out and occupy the interparticle spaces between water particles. Each tiny grain of sugar is made up of millions and millions of such constituent particles."
+                      },
+                      {
+                        heading: "Interparticle Attraction",
+                        text: "The constituent particles of matter are held together by attractive forces called interparticle attractions. The strength of these attractions depends on the nature of the substance and the distance between particles — even a slight increase in distance drastically weakens these forces. This strength ultimately determines whether a substance is a solid, liquid, or gas."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Grinding Chalk to Observe Constituent Particles",
+                      objective: "To observe, through repeated breaking and grinding, that a solid substance is made of tiny particles that remain the same substance no matter how finely divided.",
+                      materials: ["A stick of chalk", "Mortar and pestle", "A magnifying glass"],
+                      steps: [
+                        "Break a stick of chalk into two pieces, then continue breaking the pieces until it's difficult to break further by hand.",
+                        "Grind the small pieces using a mortar and pestle to produce a fine powder.",
+                        "Observe the fine chalk powder using a magnifying glass.",
+                        "Confirm that each tiny grain observed is still chalk, not a different substance.",
+                        "Discuss: is grinding a physical or chemical change, and why does this matter for understanding particles?"
+                      ],
+                      observation: "No matter how finely the chalk is ground, each tiny speck observed under the magnifying glass is still chalk — confirming that grinding is a physical change that only reduces particle size, without changing the substance itself."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'constituent particle'?",
+                      options: ["A chemical impurity in a substance", "The basic unit that makes up a larger piece of a substance or material", "A type of microscope", "A unit used only for measuring liquids"],
+                      answer: 1,
+                      explanation: "A constituent particle is the basic building-block unit that makes up a larger piece of any substance or material."
+                    },
+                    {
+                      question: "When chalk is repeatedly broken and ground into a fine powder, what happens to the substance?",
+                      options: ["It turns into a completely different substance", "It remains chalk throughout — only the particle size decreases (a physical change)", "It becomes a liquid", "It disappears entirely"],
+                      answer: 1,
+                      explanation: "Grinding chalk is a physical change — every speck of the resulting powder is still chalk; only the size of the particles has been reduced."
+                    },
+                    {
+                      question: "When sugar is dissolved in water and can no longer be seen, how do we know it's still present?",
+                      options: ["It cannot be detected at all once dissolved", "The water can still be tasted as sweet, indicating sugar particles are present, just not visible", "Sugar disappears completely and is destroyed", "It changes into a completely different substance"],
+                      answer: 1,
+                      explanation: "Even though dissolved sugar particles are too small to see, their presence is confirmed by taste — the water tastes sweet because sugar particles are dispersed throughout it."
+                    },
+                    {
+                      question: "What are 'interparticle spaces'?",
+                      options: ["Gaps found only inside solid objects", "The spaces between the particles of matter, which dissolved substances' particles can occupy", "A term used only in chemistry labs", "Spaces found only in gases"],
+                      answer: 1,
+                      explanation: "Interparticle spaces are the gaps between the constituent particles of any substance — when sugar dissolves, its particles occupy the interparticle spaces between water particles."
+                    },
+                    {
+                      question: "What determines whether a substance exists as a solid, liquid, or gas?",
+                      options: ["The color of the substance", "The strength of interparticle attractions holding its constituent particles together", "The substance's smell", "Whether the substance is natural or artificial"],
+                      answer: 1,
+                      explanation: "The strength of the interparticle attractions — which depends on the substance's nature and the distance between particles — ultimately determines its physical state."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-7-2",
+                  title: "2. The Solid State",
+                  lab: { type: "melting-point-sim" },
+                  theory: {
+                    intro: "Ice melts at a chilly 0°C, but iron holds its shape until a scorching 1538°C — a difference entirely explained by how strongly each substance's particles cling to one another.",
+                    sections: [
+                      {
+                        heading: "Why Solids Hold Their Shape",
+                        text: "In solids, particles are tightly packed with very strong interparticle attractions, holding them in fixed positions. Particles can only vibrate or oscillate about these fixed positions — they cannot move past each other. This is why solids have a definite shape and volume, and why objects like an iron nail or a stone are difficult to deform even when hammered."
+                      },
+                      {
+                        heading: "Melting: When Vibration Overcomes Attraction",
+                        text: "When a solid is heated, its particles vibrate more vigorously. Eventually, these vibrations become strong enough that particles start leaving their fixed positions, weakening the interparticle forces and converting the solid into a liquid. The minimum temperature at which a solid melts into a liquid at atmospheric pressure is called its melting point."
+                      },
+                      {
+                        heading: "Melting Points Reflect Interparticle Attraction Strength",
+                        text: "Solids with weak interparticle forces have low melting points, while those with strong attractive forces have high melting points. For example: Ice melts at 0°C, Urea melts at 133°C, and Iron melts at a much higher 1538°C — showing that iron's particles are held together far more strongly than ice's."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing How Strongly Particles Are Held in Different Solids",
+                      objective: "To compare several solid objects and infer which have more strongly bonded particles, based on how difficult they are to deform.",
+                      materials: ["An iron nail", "A piece of rock salt", "A stone", "A piece of wood", "A key", "A piece of aluminium"],
+                      steps: [
+                        "Collect the six solid objects and observe their shapes and sizes.",
+                        "Under supervision, try gently hammering or applying force to each object.",
+                        "Note which objects are hardest to deform or break.",
+                        "Rank the objects from hardest to easiest to deform.",
+                        "Relate your ranking to the relative strength of interparticle attractions in each material."
+                      ],
+                      observation: "All six objects are solids with a definite shape, but they differ in how much force is needed to deform them — objects like the iron nail resist deformation much more than the piece of wood, reflecting differences in the strength of interparticle attraction between their constituent particles."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why do solids have a definite shape and volume?",
+                      options: ["Their particles move freely in all directions", "Their particles are tightly packed with strong interparticle attractions, holding them in fixed positions", "Solids have no particles at all", "Solid particles have no interparticle attraction"],
+                      answer: 1,
+                      explanation: "Strong interparticle attractions in solids hold particles in fixed positions, allowing only vibration (not free movement) — this gives solids their definite shape and volume."
+                    },
+                    {
+                      question: "What is the 'melting point' of a solid?",
+                      options: ["The temperature at which a solid catches fire", "The minimum temperature at which a solid melts into a liquid at atmospheric pressure", "The coldest temperature a solid can reach", "A fixed value that is the same for all solids"],
+                      answer: 1,
+                      explanation: "The melting point is defined as the minimum temperature at which a solid changes into a liquid at atmospheric pressure."
+                    },
+                    {
+                      question: "According to the chapter's data, which of these three has the HIGHEST melting point?",
+                      options: ["Ice (0°C)", "Urea (133°C)", "Iron (1538°C)"],
+                      answer: 2,
+                      explanation: "Iron has the highest melting point (1538°C) among the three, reflecting the very strong interparticle attractions between iron atoms."
+                    },
+                    {
+                      question: "Why does heating a solid eventually cause it to melt?",
+                      options: ["Heat has no effect on solid particles", "Heating makes particles vibrate more vigorously until they leave their fixed positions, weakening interparticle forces", "Heating destroys the particles entirely", "Melting happens instantly at any temperature"],
+                      answer: 1,
+                      explanation: "As a solid is heated, its particles vibrate increasingly vigorously; eventually, this vibration becomes strong enough to overcome the interparticle attractions, causing the solid to melt."
+                    },
+                    {
+                      question: "What does a LOW melting point indicate about a solid's interparticle forces?",
+                      options: ["The forces are unusually strong", "The forces are relatively weak, so less thermal energy is needed to overcome them", "Melting point has no relationship to interparticle forces", "Low melting point means the substance has no particles"],
+                      answer: 1,
+                      explanation: "A low melting point indicates weaker interparticle forces of attraction — less thermal energy (lower temperature) is needed to make the particles vibrate enough to break free and melt."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-7-3",
+                  title: "3. Liquid and Gaseous States",
+                  lab: { type: "state-properties-sim" },
+                  theory: {
+                    intro: "Pour water into three differently-shaped containers and it takes on each new shape while staying exactly 200 mL — but let smoke escape into an open jar and it doesn't just change shape, it expands to fill every available space.",
+                    sections: [
+                      {
+                        heading: "Liquids: No Fixed Shape, But Fixed Volume",
+                        text: "Water poured into containers of different shapes takes the shape of each container, since liquid particles can move freely — yet the water level stays at exactly 200 mL in every container. This shows liquids have no fixed shape but DO have a fixed (definite) volume. Moving a finger through water temporarily displaces it without permanently breaking it, showing that interparticle attractions in liquids are slightly weaker than in solids, but still strong enough to hold particles close together."
+                      },
+                      {
+                        heading: "Boiling Point vs. Evaporation",
+                        text: "The temperature at which a liquid boils and turns to vapour at atmospheric pressure is its boiling point. At the boiling point, vapour forms rapidly both at the surface and within the liquid (seen as bubbles). Evaporation, by contrast, is a slower process that occurs at ALL temperatures (even below boiling point) but only at the liquid's surface — which is why a spill dries up over time even without boiling."
+                      },
+                      {
+                        heading: "Gases: No Fixed Shape or Volume",
+                        text: "Smoke trapped in a gas jar and released into a second jar spreads to fill the ENTIRE available space — showing gases have neither a fixed shape nor a fixed volume, since interparticle attractions in gases are negligible and particles move freely in all directions. Both liquids and gases flow and lack a fixed shape, which is why they are together classified as fluids."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Observing Whether Water Has a Fixed Shape or Volume",
+                      objective: "To determine whether liquids have a fixed shape and/or a fixed volume by pouring the same water through differently-shaped containers.",
+                      materials: ["Three clean, dry containers of different shapes (A, B, C)", "Water", "A marker or paper strip for marking levels"],
+                      steps: [
+                        "Mark the 200 mL level on all three containers.",
+                        "Fill Container A with water up to the 200 mL mark.",
+                        "Carefully transfer the water to Container B, observing its new shape and checking its level.",
+                        "Transfer the same water to Container C, again observing shape and level.",
+                        "Compare the water's shape and volume across all three containers."
+                      ],
+                      observation: "The water takes on the shape of each container it's poured into (proving liquids have no fixed shape), but the water level remains at 200 mL in all three containers (proving liquids have a fixed, definite volume)."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does the container-pouring activity demonstrate about liquids?",
+                      options: ["Liquids have a fixed shape and fixed volume", "Liquids have no fixed shape but DO have a fixed (definite) volume", "Liquids have a fixed shape but no fixed volume", "Liquids have neither a fixed shape nor a fixed volume"],
+                      answer: 1,
+                      explanation: "Water takes the shape of whichever container it's poured into (no fixed shape), but its volume (200 mL) stays the same across all containers (fixed volume)."
+                    },
+                    {
+                      question: "What is the key difference between boiling and evaporation?",
+                      options: ["They are exactly the same process", "Boiling occurs rapidly at a fixed temperature throughout the liquid; evaporation occurs slowly at all temperatures, only at the surface", "Evaporation only happens above the boiling point", "Boiling only happens at the liquid's surface"],
+                      answer: 1,
+                      explanation: "Boiling happens rapidly at a specific temperature (the boiling point) throughout the liquid (seen as bubbles), while evaporation is a slower surface-only process that occurs at any temperature."
+                    },
+                    {
+                      question: "When smoke is transferred from one gas jar to another, what happens?",
+                      options: ["The smoke stays confined to a small area", "The smoke spreads to fill the entire available space in the new jar", "The smoke disappears completely", "The smoke turns back into a solid"],
+                      answer: 1,
+                      explanation: "Smoke spreads to fill the entire jar, demonstrating that gases have no fixed shape or volume — they expand to occupy all available space."
+                    },
+                    {
+                      question: "Why are both liquids and gases classified together as 'fluids'?",
+                      options: ["They are both invisible", "Both flow and lack a fixed shape, unlike solids", "Both have a fixed shape like solids", "This classification does not actually exist"],
+                      answer: 1,
+                      explanation: "Liquids and gases are both classified as fluids because they can flow and neither has a fixed shape, distinguishing them from solids."
+                    },
+                    {
+                      question: "Why do gas particles have negligible interparticle attraction compared to solids and liquids?",
+                      options: ["Gas particles are much larger than solid particles", "Gas particles are far apart and move freely in all directions, unlike the tightly-held particles in solids", "Gases actually have the strongest interparticle attraction of all three states", "There is no real difference in interparticle attraction between the three states"],
+                      answer: 1,
+                      explanation: "In gases, particles are spread far apart and move freely in all directions, so the attractive forces between them are negligible — this is why gases have neither a fixed shape nor volume."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-7-4",
+                  title: "4. Interparticle Spacing and Diffusion",
+                  lab: { type: "diffusion-temperature-sim" },
+                  theory: {
+                    intro: "Push the plunger of an air-filled syringe and the air compresses easily — try the same with water, and it barely budges. This single difference reveals just how much empty space exists between gas particles compared to liquid particles.",
+                    sections: [
+                      {
+                        heading: "Compressibility Reveals Interparticle Spacing",
+                        text: "Pushing the plunger of a syringe filled with trapped air noticeably decreases its volume — gas particles have a lot of space between them, which external pressure can compress. Repeating this with water shows it is practically incompressible, since liquid particles are already packed close together with very little space between them."
+                      },
+                      {
+                        heading: "Dissolving Reveals Space in Liquids Too",
+                        text: "When sugar is added to water, the water level first rises; but after the sugar fully dissolves, the level drops back down somewhat — the final solution's volume is LESS than the sum of the original water and sugar volumes. This shows there IS some space between water particles, into which the dissolved sugar particles fit. In contrast, insoluble solids like sand simply settle and increase the total volume, since sand particles cannot fit into the spaces between water particles."
+                      },
+                      {
+                        heading: "Diffusion: Particles Are Always Moving",
+                        text: "Dropping potassium permanganate crystals into water produces streaks of pink that gradually spread until the entire water turns uniformly pink — because water particles are in constant motion, pulling out and spreading the permanganate particles throughout the liquid; this spontaneous mixing is called diffusion. Diffusion happens faster in hot water than at room temperature, and slowest in ice-cold water, since particle movement speeds up with rising temperature."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Diffusion Speed at Different Temperatures",
+                      objective: "To observe how the speed of diffusion of potassium permanganate in water depends on water temperature.",
+                      materials: ["Three glass tumblers", "Hot water, room-temperature water, ice-cold water", "A few grains of potassium permanganate", "A spoon or spatula"],
+                      steps: [
+                        "Pour hot water into the first tumbler, room-temperature water into the second, and ice-cold water into the third.",
+                        "Using a spoon (never touching it directly), drop a small grain of potassium permanganate into each tumbler.",
+                        "Watch and compare how quickly the pink color spreads in each tumbler.",
+                        "Record which tumbler shows the fastest and slowest spread of color.",
+                        "Draw a diagram illustrating the difference in particle movement across the three temperatures."
+                      ],
+                      observation: "The pink color from potassium permanganate spreads fastest in the hot water, more slowly in room-temperature water, and slowest in the ice-cold water — confirming that particle movement (and therefore diffusion speed) increases with temperature."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the syringe activity, why does the trapped air compress easily when the plunger is pushed, while water does not?",
+                      options: ["Air particles are heavier than water particles", "Gas particles have much more space between them than liquid particles, which are already tightly packed", "Water actually compresses more easily than air", "There is no real difference between compressing air and water"],
+                      answer: 1,
+                      explanation: "Gas particles have significant space between them that can be reduced under pressure, while liquid particles are already closely packed, leaving little room for further compression."
+                    },
+                    {
+                      question: "When sugar fully dissolves in water, why does the final water level end up LOWER than right after adding the (undissolved) sugar?",
+                      options: ["Some water evaporates during stirring", "Dissolved sugar particles fit into the existing spaces between water particles, rather than adding extra volume", "This never actually happens", "Sugar disappears completely and stops existing"],
+                      answer: 1,
+                      explanation: "Once dissolved, sugar particles occupy the interparticle spaces already present between water particles, so the total volume increases less than the sum of the separate volumes would suggest."
+                    },
+                    {
+                      question: "What is 'diffusion'?",
+                      options: ["The process of a solid melting into a liquid", "The spontaneous spreading and mixing of particles due to their constant motion", "A method for measuring temperature", "The process of a liquid evaporating into gas"],
+                      answer: 1,
+                      explanation: "Diffusion is the spontaneous spreading and mixing of particles (such as dissolved potassium permanganate in water) driven by the constant, random motion of particles."
+                    },
+                    {
+                      question: "Why does potassium permanganate spread fastest in hot water compared to cold water?",
+                      options: ["Cold water dissolves potassium permanganate faster", "Higher temperature increases the speed of particle movement, speeding up diffusion", "Hot water has fewer interparticle spaces", "Temperature has no effect on diffusion speed"],
+                      answer: 1,
+                      explanation: "Higher temperatures make water particles move faster, which speeds up the process of diffusion — spreading the permanganate particles throughout the water more quickly."
+                    },
+                    {
+                      question: "Why does sand NOT dissolve in water the way sugar does?",
+                      options: ["Sand particles are held together too strongly to be pulled apart by water particles, unlike sugar", "Sand is actually a liquid", "There is no real difference between how sugar and sand behave in water", "Water cannot exert any force on sand particles"],
+                      answer: 0,
+                      explanation: "Sand's constituent particles are held together by forces too strong for water particles to pull apart, so sand remains insoluble and simply settles, unlike sugar which dissolves and disperses."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
