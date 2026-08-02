@@ -13842,6 +13842,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8s-8",
+              title: "Nature of Matter: Elements, Compounds, and Mixtures",
+              topics: [
+                {
+                  id: "8s-8-1",
+                  title: "1. Mixtures: Uniform and Non-Uniform",
+                  lab: { type: "mixture-classifier-sim" },
+                  theory: {
+                    intro: "A sprout salad shows you every ingredient at a glance, but sugar dissolved in water hides its sweetness completely from view — both are mixtures, just very different kinds.",
+                    sections: [
+                      {
+                        heading: "What Is a Mixture?",
+                        text: "When two or more substances are mixed such that each substance retains its own properties, it is called a mixture. The individual substances making up a mixture are called its components, and they do not react chemically with each other. In a mixture like sprout salad, components like green gram, chickpeas, onion, and tomato are easily visible — this makes it a non-uniform mixture."
+                      },
+                      {
+                        heading: "Uniform Mixtures",
+                        text: "Some mixtures have components so thoroughly mixed that they cannot be distinguished even under a microscope — like sugar dissolved in water. These are called uniform mixtures. Alloys like stainless steel (iron, nickel, chromium, and carbon), brass (copper and zinc), and bronze (copper and tin) are also uniform mixtures, since their component metals are mixed so evenly that the material looks the same throughout."
+                      },
+                      {
+                        heading: "Air: A Uniform Mixture of Gases",
+                        text: "Air is a uniform mixture mainly of nitrogen (about 78%, does not support combustion), oxygen (needed for life and combustion), argon, carbon dioxide, and water vapour. Bubbling exhaled air through lime water turns it milky, confirming carbon dioxide is present (calcium hydroxide + carbon dioxide → calcium carbonate + water). Dust particles settling on an undisturbed black sheet of paper show that air also carries suspended dust — pollutants that are not an integral part of air itself."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing for Carbon Dioxide Using Lime Water",
+                      objective: "To confirm the presence of carbon dioxide in air by observing lime water turn milky.",
+                      materials: ["A glass tumbler", "Calcium oxide (quick lime)", "Water", "A petri dish", "A filter"],
+                      steps: [
+                        "Fill a glass tumbler half with water and carefully add a small amount of calcium oxide.",
+                        "Stir continuously to form a solution of calcium hydroxide (lime water).",
+                        "Filter the solution and observe that it is colourless.",
+                        "Leave the colourless lime water in a petri dish, exposed to air, for a few hours, stirring occasionally.",
+                        "Observe whether the solution turns milky, and explain why."
+                      ],
+                      observation: "The initially colourless lime water gradually turns milky when exposed to air, because carbon dioxide in the air reacts with calcium hydroxide to form insoluble calcium carbonate — confirming that carbon dioxide is a component of air."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'mixture'?",
+                      options: ["A single pure substance", "Two or more substances combined such that each retains its own properties, without reacting chemically", "A substance that always looks uniform", "A newly-formed substance with entirely new properties"],
+                      answer: 1,
+                      explanation: "A mixture is formed when two or more substances are combined such that each substance keeps its own properties, and they do not react chemically with each other."
+                    },
+                    {
+                      question: "What distinguishes a 'uniform' mixture from a 'non-uniform' mixture?",
+                      options: ["Uniform mixtures always contain metals", "In uniform mixtures, components are evenly distributed and cannot be distinguished even under a microscope; in non-uniform mixtures, components remain visibly separate", "Non-uniform mixtures cannot be separated at all", "There is no real difference between the two"],
+                      answer: 1,
+                      explanation: "Uniform mixtures have components so evenly mixed they can't be told apart even microscopically (like sugar in water); non-uniform mixtures have visibly distinct components (like a sprout salad)."
+                    },
+                    {
+                      question: "What is stainless steel an example of?",
+                      options: ["A pure element", "A uniform mixture (alloy) of iron, nickel, chromium, and carbon", "A compound", "A non-uniform mixture"],
+                      answer: 1,
+                      explanation: "Stainless steel is an alloy — a uniform mixture of iron, nickel, chromium, and a small amount of carbon, mixed so thoroughly that individual substances cannot be seen."
+                    },
+                    {
+                      question: "What does it mean when lime water turns milky after being exposed to air?",
+                      options: ["It confirms the presence of oxygen in air", "It confirms the presence of carbon dioxide in air, which reacts with calcium hydroxide to form calcium carbonate", "It means the water has evaporated completely", "It has no scientific significance"],
+                      answer: 1,
+                      explanation: "Lime water (calcium hydroxide) reacts with carbon dioxide in the air to form insoluble calcium carbonate, which makes the solution appear milky — confirming carbon dioxide's presence."
+                    },
+                    {
+                      question: "Why is nitrogen, which makes up about 78% of air, significant despite not supporting combustion?",
+                      options: ["Nitrogen actually supports combustion strongly", "It is still a major component of the uniform gas mixture that makes up air, even though it does not participate in combustion", "Nitrogen is not actually present in air", "Air is made up entirely of nitrogen"],
+                      answer: 1,
+                      explanation: "Nitrogen makes up the largest share of air (about 78%) as part of this uniform gas mixture, even though — unlike oxygen — it does not take part in combustion."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-8-2",
+                  title: "2. Pure Substances and Elements",
+                  lab: { type: "electrolysis-sim" },
+                  theory: {
+                    intro: "Pass an electric current through water and something remarkable happens: it splits apart into two invisible gases — one that pops when lit, and one that makes a flame burn brighter.",
+                    sections: [
+                      {
+                        heading: "What Is a Pure Substance?",
+                        text: "In science, a pure substance is matter that consists of only one type of particle and cannot be separated into other kinds of matter by any physical process — a stricter definition than the everyday meaning of 'pure' (unadulterated). Even products labeled 'pure' in stores, like milk, can be scientifically impure if made of more than one substance."
+                      },
+                      {
+                        heading: "Splitting Water with Electricity",
+                        text: "Passing electric current through acidified water (using a 9V battery) produces gas bubbles at both terminals. Testing with a burning candle: one test tube's gas makes a 'pop' sound (hydrogen), while the other makes the candle's flame glow brighter (oxygen). Since these gases don't condense back into water, they cannot be water vapour — this proves water is made of two different substances, hydrogen and oxygen."
+                      },
+                      {
+                        heading: "Elements: The Building Blocks of Matter",
+                        text: "Hydrogen and oxygen are both elements — pure substances made of identical particles called atoms, which cannot be broken down into simpler substances. Elements are classified as metals (like gold, silver, iron, aluminium) or non-metals (like carbon, sulfur, hydrogen, oxygen), with a few metalloids (like silicon, boron) having intermediate properties. Of the 118 known elements, most are solids; only 11 are gases at room temperature, and just two — mercury (metal) and bromine (non-metal) — are liquids."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Splitting Water into Hydrogen and Oxygen Using Electricity",
+                      objective: "To demonstrate that water is composed of two elements, hydrogen and oxygen, by passing electric current through acidified water.",
+                      materials: ["Two small test tubes", "A beaker or glass tumbler", "A 9V battery", "Dilute sulfuric acid", "Water", "A burning candle"],
+                      steps: [
+                        "Fill a beaker 2/3 with water and add a few drops of dilute sulfuric acid.",
+                        "Fill both test tubes completely with this acidified water and invert them over the battery's two terminals without spilling.",
+                        "Wait 10-15 minutes and observe gas bubbles collecting at both terminals.",
+                        "Compare the volume of gas collected in each test tube.",
+                        "Test each gas by bringing a burning candle near the mouth of each test tube and note the result."
+                      ],
+                      observation: "Gas collects faster and in greater volume at one terminal than the other; testing with a burning candle produces a 'pop' sound at one terminal (hydrogen) and a brighter flame at the other (oxygen) — confirming water splits into these two elements when electricity passes through it."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "According to science, what makes a substance 'pure'?",
+                      options: ["It has no artificial additives, as in common usage", "It consists of only one type of particle and cannot be separated into other substances by physical means", "It is labeled 'pure' on its packaging", "It is a liquid rather than a solid"],
+                      answer: 1,
+                      explanation: "In science, a pure substance consists of a single type of particle throughout, and cannot be broken down into other kinds of matter using any physical process."
+                    },
+                    {
+                      question: "When water undergoes electrolysis (electric current passed through it), what gas produces a 'pop' sound when tested with a flame?",
+                      options: ["Oxygen", "Hydrogen", "Carbon dioxide", "Nitrogen"],
+                      answer: 1,
+                      explanation: "Hydrogen gas produces a characteristic 'pop' sound when a burning candle or splinter is brought near it — this is the standard test for hydrogen."
+                    },
+                    {
+                      question: "How do we know the gases produced from electrolysis of water are not simply water vapour?",
+                      options: ["They have no distinguishing features at all", "Water vapour would condense back into water, but these gases do not", "Water vapour always makes a 'pop' sound", "There is no way to distinguish them"],
+                      answer: 1,
+                      explanation: "If the collected gases were water vapour, they would condense back into liquid water — since they don't, they must be genuinely different substances (hydrogen and oxygen)."
+                    },
+                    {
+                      question: "What is an 'element'?",
+                      options: ["Any mixture of two or more substances", "A pure substance made of identical atoms that cannot be broken down into simpler substances", "Only substances found in liquid form", "A substance that is always man-made"],
+                      answer: 1,
+                      explanation: "An element is a pure substance composed of identical particles (atoms) that cannot be broken down further into simpler substances by chemical means."
+                    },
+                    {
+                      question: "How many elements are currently known, and how many of them are gases at room temperature?",
+                      options: ["50 known elements, 20 gases", "118 known elements, 11 gases", "200 known elements, 50 gases", "100 known elements, 5 gases"],
+                      answer: 1,
+                      explanation: "There are 118 known elements; only 11 of them (all non-metals, like oxygen, helium, and nitrogen) exist as gases at room temperature."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-8-3",
+                  title: "3. Compounds: When Elements Combine",
+                  lab: { type: "compound-ratio-sim" },
+                  theory: {
+                    intro: "Hydrogen is a flammable fuel, oxygen feeds fire — yet combine them chemically in a fixed 2:1 ratio, and you get water, a substance that puts fires OUT. This is the strange magic of compounds.",
+                    sections: [
+                      {
+                        heading: "What Is a Compound?",
+                        text: "Compounds form when different elements combine chemically in FIXED ratios to create something entirely new, with properties completely different from its constituent elements. Unlike mixtures, the elements in a compound cannot be separated by any physical method. Water is a compound of hydrogen and oxygen combined in a fixed 2:1 ratio (2 hydrogen atoms to 1 oxygen atom) — this is why hydrogen and oxygen can't be separated from water just by physical means."
+                      },
+                      {
+                        heading: "Common Salt: Another Fixed-Ratio Compound",
+                        text: "Sodium (a soft, reactive metal) and chlorine (a hazardous gas) combine to form sodium chloride (common salt) — a harmless, taste-enhancing substance essential for life, made of sodium and chlorine particles in a 1:1 ratio. While dissolved salt CAN be separated from water by evaporation (since salt-water is a mixture), the sodium and chlorine within the salt itself cannot be separated by physical means, since salt is a true compound."
+                      },
+                      {
+                        heading: "Sugar Decomposes into Its Elements on Heating",
+                        text: "Heating sugar in a boiling tube makes it turn brown, then char (turn black); water droplets form inside the tube, and charcoal (carbon) is left behind. Since sugar decomposes into carbon and water (which itself is hydrogen and oxygen combined), sugar cannot be an element — it is a compound made of carbon, hydrogen, and oxygen combined in fixed proportions."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Decomposing Sugar by Heating",
+                      objective: "To observe how heating sugar reveals it is a compound made of carbon, hydrogen, and oxygen, not a single element.",
+                      materials: ["A boiling tube", "A teaspoon of sugar", "A spirit lamp", "A watch glass"],
+                      steps: [
+                        "Under teacher supervision, put a teaspoon of sugar into a boiling tube.",
+                        "Gently heat the tube and observe the sugar's color change.",
+                        "Note the water droplets forming inside the tube near its open end.",
+                        "Continue heating until a black, charred mass (charcoal) remains.",
+                        "Scoop out the charcoal onto a watch glass and consider whether it burns like coal."
+                      ],
+                      observation: "Heated sugar first turns brown, then chars completely black, releasing water droplets and leaving charcoal (carbon) behind — showing that sugar decomposes into water (hydrogen + oxygen) and carbon, proving it is a compound, not an element."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What defines a 'compound'?",
+                      options: ["Any two substances mixed together in any proportion", "Different elements combined chemically in a FIXED ratio, forming a new substance with different properties", "A substance that can always be separated by physical methods", "A pure metal"],
+                      answer: 1,
+                      explanation: "A compound forms when elements combine chemically in a fixed ratio, creating a new substance whose properties differ entirely from its constituent elements — and which cannot be separated by physical methods."
+                    },
+                    {
+                      question: "What is the ratio of hydrogen to oxygen atoms in a water molecule?",
+                      options: ["1:1", "1:2", "2:1", "3:1"],
+                      answer: 2,
+                      explanation: "Water molecules are formed from hydrogen and oxygen atoms combined in a fixed 2:1 ratio (2 hydrogen atoms for every 1 oxygen atom)."
+                    },
+                    {
+                      question: "What is the ratio of sodium to chlorine particles in common salt (sodium chloride)?",
+                      options: ["1:1", "2:1", "1:2", "3:2"],
+                      answer: 0,
+                      explanation: "Sodium chloride is made of sodium and chlorine particles combined in a 1:1 ratio."
+                    },
+                    {
+                      question: "When sugar is heated and decomposes, what does it break down into?",
+                      options: ["Only water", "Carbon and water (hydrogen + oxygen)", "Only carbon", "Sodium and chlorine"],
+                      answer: 1,
+                      explanation: "Heating sugar decomposes it into carbon (left as charcoal) and water — showing that sugar itself is a compound made of carbon, hydrogen, and oxygen."
+                    },
+                    {
+                      question: "Why is it significant that hydrogen is flammable and oxygen supports combustion, yet water (made of both) extinguishes fire?",
+                      options: ["This is a contradiction that cannot be explained", "It demonstrates that a compound's properties are completely different from those of its constituent elements", "Water does not actually contain hydrogen and oxygen", "Fire has nothing to do with chemistry"],
+                      answer: 1,
+                      explanation: "This striking example shows one of the defining features of compounds: their properties bear no resemblance to their constituent elements — hydrogen (flammable) and oxygen (supports burning) combine to form water, which extinguishes fire."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-8-4",
+                  title: "4. Iron and Sulfur: Mixture vs. Compound",
+                  lab: { type: "iron-sulfur-test-sim" },
+                  theory: {
+                    intro: "Mix iron filings with sulfur powder, and a magnet still pulls out the iron. Heat that same mixture into a black mass, and the magnet suddenly has no effect at all — a vivid, hands-on demonstration of exactly what separates a mixture from a compound.",
+                    sections: [
+                      {
+                        heading: "Sample A: Iron + Sulfur Mixture",
+                        text: "Mixing iron filings and sulfur powder (Sample A) produces a mixture where both black (iron) and yellow (sulfur) particles remain visible — a non-uniform mixture. A magnet passed over Sample A attracts the iron filings, physically separating them from the sulfur. Adding dilute hydrochloric acid to Sample A makes the iron react to form iron chloride and hydrogen gas (a colourless, odourless gas that burns with a 'pop' sound), while the sulfur is left behind unreacted."
+                      },
+                      {
+                        heading: "Sample B: Iron Sulfide Compound",
+                        text: "Gently heating Sample A with continuous stirring forms a black mass (Sample B) — iron sulfide — with uniform colour and texture throughout. Unlike Sample A, a magnet has NO effect on Sample B, since iron and sulfur have chemically combined into an entirely new substance and can no longer be separated by physical means. Adding dilute hydrochloric acid to Sample B produces iron chloride and hydrogen SULFIDE gas — colourless, but with a distinctive rotten-egg smell, completely different from Sample A's odourless gas."
+                      },
+                      {
+                        heading: "What This Comparison Proves",
+                        text: "Sample A (mixture) retains the individual properties of iron and sulfur — magnetic, separable, and reacting as iron alone with acid. Sample B (compound, iron sulfide) has entirely new properties — non-magnetic, inseparable by physical means, and reacting to produce a completely different, foul-smelling gas. This side-by-side comparison makes the difference between mixtures and compounds unmistakably clear."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing an Iron-Sulfur Mixture to Iron Sulfide Compound",
+                      objective: "To distinguish a mixture (iron + sulfur) from a compound (iron sulfide) using appearance, magnetism, and acid reaction tests.",
+                      materials: ["Iron filings (5.6 g)", "Sulfur powder (3.2 g)", "A watch glass", "A magnet", "A china dish and burner", "Dilute hydrochloric acid", "Test tubes"],
+                      steps: [
+                        "Mix iron filings and sulfur powder thoroughly on a watch glass to form Sample A; observe its appearance.",
+                        "Gently heat half of Sample A in a china dish with continuous stirring until a black mass forms; let it cool and grind it — this is Sample B.",
+                        "Pass a magnet over both Sample A and Sample B, and note which one responds.",
+                        "Add dilute hydrochloric acid to small amounts of both samples in separate test tubes.",
+                        "Carefully waft (never directly smell) the gas from each test tube, and test each with a burning splinter."
+                      ],
+                      observation: "Sample A (mixture) shows visible black and yellow particles, is attracted by a magnet, and reacts with acid to release odourless hydrogen gas (pop sound); Sample B (compound, iron sulfide) is uniformly black, is NOT attracted by a magnet, and reacts with acid to release rotten-egg-smelling hydrogen sulfide gas — clearly demonstrating the difference between a mixture and a compound."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In Sample A (iron + sulfur mixture), what happens when a magnet is passed over it?",
+                      options: ["Nothing happens at all", "The iron filings are attracted to the magnet, separating from the sulfur", "The sulfur is attracted to the magnet", "Both iron and sulfur are equally attracted"],
+                      answer: 1,
+                      explanation: "Since Sample A is a mixture, iron retains its magnetic properties and is attracted to the magnet, allowing it to be physically separated from the sulfur."
+                    },
+                    {
+                      question: "What happens when a magnet is passed over Sample B (iron sulfide, formed by heating Sample A)?",
+                      options: ["The magnet strongly attracts Sample B", "The magnet has no effect on Sample B at all", "Only half of Sample B is attracted", "Sample B becomes magnetic itself"],
+                      answer: 1,
+                      explanation: "Since Sample B is a compound (iron sulfide) with entirely new properties, the magnet has no effect on it — the iron's original magnetic property is lost once it chemically combines with sulfur."
+                    },
+                    {
+                      question: "What gas is produced when Sample A (mixture) reacts with dilute hydrochloric acid, and what does it smell like?",
+                      options: ["Hydrogen sulfide, smells like rotten eggs", "Hydrogen gas, colourless and odourless", "Oxygen gas, has a sharp smell", "Carbon dioxide, no smell"],
+                      answer: 1,
+                      explanation: "In Sample A, the iron reacts with hydrochloric acid to form iron chloride and hydrogen gas, which is colourless, odourless, and burns with a 'pop' sound."
+                    },
+                    {
+                      question: "What gas is produced when Sample B (iron sulfide compound) reacts with dilute hydrochloric acid, and what does it smell like?",
+                      options: ["Hydrogen gas, odourless", "Hydrogen sulfide gas, with a rotten-egg-like odour", "Oxygen gas, odourless", "No gas is produced at all"],
+                      answer: 1,
+                      explanation: "Iron sulfide reacts with hydrochloric acid to produce iron chloride and hydrogen sulfide gas, which has a distinctive rotten-egg smell — quite different from Sample A's odourless hydrogen."
+                    },
+                    {
+                      question: "What is the overall conclusion drawn from comparing Sample A and Sample B?",
+                      options: ["Mixtures and compounds behave identically", "Sample A (a mixture) retains its components' individual properties, while Sample B (a compound) has entirely new properties and cannot be separated by physical means", "Only Sample B is affected by acid", "Iron and sulfur cannot form either a mixture or a compound"],
+                      answer: 1,
+                      explanation: "The comparison shows the defining difference between mixtures and compounds: a mixture (Sample A) keeps the original properties of its components and can be physically separated, while a compound (Sample B) has entirely new properties and cannot be separated by physical means."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

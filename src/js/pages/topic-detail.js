@@ -4420,6 +4420,94 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const mixtureClassifierLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="mixture-classifier-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an example and see if it's a uniform or non-uniform mixture.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Example</h3>
+            <select id="sel-mixture-classifier" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="sprout" selected>Sprout salad</option>
+              <option value="sugarwater">Sugar dissolved in water</option>
+              <option value="air">Air</option>
+              <option value="steel">Stainless steel (alloy)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Classification</h3>
+            <div id="mixture-classifier-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an example above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const electrolysisLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="electrolysis-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a terminal and see which gas collects and how it tests.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Terminal</h3>
+            <select id="sel-electrolysis" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="cathode" selected>Cathode (more gas collected)</option>
+              <option value="anode">Anode (less gas collected)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Gas Test Result</h3>
+            <div id="electrolysis-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a terminal above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const compoundRatioLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="compound-ratio-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a compound and see its fixed atom ratio.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Compound</h3>
+            <select id="sel-compound-ratio" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="water" selected>Water (H₂O)</option>
+              <option value="salt">Salt (NaCl)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Fixed Ratio</h3>
+            <div id="compound-ratio-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a compound above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const ironSulfurTestLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="iron-sulfur-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a sample and test to see the result.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Sample and Test</h3>
+            <select id="sel-iron-sulfur" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="A-magnet" selected>Sample A (mixture) + Magnet</option>
+              <option value="B-magnet">Sample B (compound) + Magnet</option>
+              <option value="A-acid">Sample A (mixture) + Acid</option>
+              <option value="B-acid">Sample B (compound) + Acid</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Test Result</h3>
+            <div id="iron-sulfur-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a sample and test above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -6483,6 +6571,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'diffusion-temperature-sim') {
               labHtml = diffusionTemperatureLabHtml;
               labDesc = 'Pick a water temperature and see how fast the colour diffuses.';
+            } else if (topicObj.lab.type === 'mixture-classifier-sim') {
+              labHtml = mixtureClassifierLabHtml;
+              labDesc = 'Pick an example and see whether it is a uniform or non-uniform mixture.';
+            } else if (topicObj.lab.type === 'electrolysis-sim') {
+              labHtml = electrolysisLabHtml;
+              labDesc = 'Pick a terminal and see which gas collects and how it tests.';
+            } else if (topicObj.lab.type === 'compound-ratio-sim') {
+              labHtml = compoundRatioLabHtml;
+              labDesc = 'Pick a compound and see its fixed atom ratio.';
+            } else if (topicObj.lab.type === 'iron-sulfur-test-sim') {
+              labHtml = ironSulfurTestLabHtml;
+              labDesc = 'Pick a sample and test to see whether it behaves like a mixture or compound.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -7066,6 +7166,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initStatePropertiesLab();
         } else if (topicObj.lab.type === 'diffusion-temperature-sim') {
           initDiffusionTemperatureLab();
+        } else if (topicObj.lab.type === 'mixture-classifier-sim') {
+          initMixtureClassifierLab();
+        } else if (topicObj.lab.type === 'electrolysis-sim') {
+          initElectrolysisLab();
+        } else if (topicObj.lab.type === 'compound-ratio-sim') {
+          initCompoundRatioLab();
+        } else if (topicObj.lab.type === 'iron-sulfur-test-sim') {
+          initIronSulfurTestLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -23418,6 +23526,178 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
 
         obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> Diffusion is ${SPEED[sel.value]} here — higher temperature means faster-moving particles, spreading the pink colour more quickly.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMixtureClassifierLab() {
+      const canvas = document.getElementById('mixture-classifier-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-mixture-classifier');
+      const obs = document.getElementById('mixture-classifier-obs');
+      const DATA = {
+        sprout: { uniform: false, desc: 'Green gram, chickpeas, onion, and tomato are all separately visible — a non-uniform mixture.' },
+        sugarwater: { uniform: true, desc: 'Sugar particles are evenly distributed and invisible even under a microscope — a uniform mixture.' },
+        air: { uniform: true, desc: 'Nitrogen, oxygen, argon, and carbon dioxide are evenly mixed as gases — a uniform mixture.' },
+        steel: { uniform: true, desc: 'Iron, nickel, chromium, and carbon are mixed so thoroughly that the alloy looks the same throughout — a uniform mixture.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const cx = W / 2, cy = 150;
+
+        if (d.uniform) {
+          for (let i = 0; i < 80; i++) {
+            const x = cx - 100 + Math.random() * 200, y = cy - 60 + Math.random() * 120;
+            ctx.fillStyle = cssVar('--accent-color'); ctx.globalAlpha = 0.7;
+            ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill();
+          }
+          ctx.globalAlpha = 1;
+        } else {
+          const colors = ['#22c55e', '#f59e0b', '#ef4444', '#3b82f6'];
+          for (let i = 0; i < 16; i++) {
+            const x = cx - 100 + Math.random() * 200, y = cy - 60 + Math.random() * 120;
+            ctx.fillStyle = colors[i % 4];
+            ctx.beginPath(); ctx.arc(x, y, 10, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = d.uniform ? '#22c55e' : '#f59e0b';
+        ctx.fillText(d.uniform ? 'UNIFORM MIXTURE' : 'NON-UNIFORM MIXTURE', W / 2, 250);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${d.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initElectrolysisLab() {
+      const canvas = document.getElementById('electrolysis-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-electrolysis');
+      const obs = document.getElementById('electrolysis-obs');
+      const DATA = {
+        cathode: { gas: 'Hydrogen', vol: 0.9, test: "'Pop' sound with a burning candle", color: '#93c5fd' },
+        anode: { gas: 'Oxygen', vol: 0.45, test: 'Candle flame glows brighter', color: '#fca5a5' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const cx = W / 2, tubeTop = 40, tubeBottom = 220, tubeW = 60;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx - tubeW / 2, tubeTop); ctx.lineTo(cx - tubeW / 2, tubeBottom); ctx.lineTo(cx + tubeW / 2, tubeBottom); ctx.lineTo(cx + tubeW / 2, tubeTop); ctx.stroke();
+
+        const gasH = (tubeBottom - tubeTop) * d.vol;
+        ctx.fillStyle = d.color;
+        ctx.fillRect(cx - tubeW / 2, tubeTop, tubeW, gasH);
+        ctx.fillStyle = 'rgba(59,130,246,0.3)';
+        ctx.fillRect(cx - tubeW / 2, tubeTop + gasH, tubeW, tubeBottom - tubeTop - gasH);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 25);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = d.color;
+        ctx.fillText(`Gas: ${d.gas}`, W / 2, tubeBottom + 30);
+
+        obs.innerHTML = `<strong>${d.gas} gas collected:</strong> Test result — ${d.test}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCompoundRatioLab() {
+      const canvas = document.getElementById('compound-ratio-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-compound-ratio');
+      const obs = document.getElementById('compound-ratio-obs');
+      const DATA = {
+        water: { a: 2, b: 1, aName: 'H', bName: 'O', aColor: '#93c5fd', bColor: '#ef4444', ratio: '2:1' },
+        salt: { a: 1, b: 1, aName: 'Na', bName: 'Cl', aColor: '#f59e0b', bColor: '#22c55e', ratio: '1:1' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const cx = W / 2, cy = 140;
+
+        for (let i = 0; i < d.a; i++) {
+          ctx.fillStyle = d.aColor;
+          ctx.beginPath(); ctx.arc(cx - 60 + i * 50, cy - 30, 22, 0, Math.PI * 2); ctx.fill();
+          ctx.font = 'bold 13px system-ui'; ctx.fillStyle = 'white'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(d.aName, cx - 60 + i * 50, cy - 30); ctx.textBaseline = 'alphabetic';
+        }
+        for (let i = 0; i < d.b; i++) {
+          ctx.fillStyle = d.bColor;
+          ctx.beginPath(); ctx.arc(cx - 60 + i * 50, cy + 40, 22, 0, Math.PI * 2); ctx.fill();
+          ctx.font = 'bold 13px system-ui'; ctx.fillStyle = 'white'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(d.bName, cx - 60 + i * 50, cy + 40); ctx.textBaseline = 'alphabetic';
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`Ratio = ${d.ratio}`, W / 2, 230);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${d.aName} and ${d.bName} combine in a fixed ${d.ratio} ratio to form this compound.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initIronSulfurTestLab() {
+      const canvas = document.getElementById('iron-sulfur-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-iron-sulfur');
+      const obs = document.getElementById('iron-sulfur-obs');
+      const RESULTS = {
+        'A-magnet': { result: 'Iron filings ARE attracted to the magnet', success: true, desc: 'Sample A is a mixture — iron keeps its magnetic property, so it is pulled toward the magnet and can be separated from sulfur.' },
+        'B-magnet': { result: 'NO attraction to the magnet', success: false, desc: 'Sample B is a compound (iron sulfide) — the magnetic property of iron is lost once it chemically bonds with sulfur.' },
+        'A-acid': { result: 'Colourless, odourless gas — "pop" sound', success: true, desc: 'The iron in Sample A reacts with acid to form hydrogen gas, tested with a pop sound.' },
+        'B-acid': { result: 'Rotten-egg-smelling gas (hydrogen sulfide)', success: true, desc: 'Sample B reacts with acid to release hydrogen sulfide — a completely different gas from Sample A’s reaction.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const key = sel.value;
+        const isCompound = key.startsWith('B');
+        const cx = W / 2, cy = 140;
+
+        if (isCompound) {
+          ctx.fillStyle = '#1f2937';
+          ctx.beginPath(); ctx.arc(cx, cy, 50, 0, Math.PI * 2); ctx.fill();
+        } else {
+          for (let i = 0; i < 30; i++) {
+            const x = cx - 60 + Math.random() * 120, y = cy - 40 + Math.random() * 80;
+            ctx.fillStyle = i % 2 === 0 ? '#1f2937' : '#facc15';
+            ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+
+        const r = RESULTS[key];
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = r.success ? '#22c55e' : '#ef4444';
+        ctx.fillText(r.result, W / 2, 230);
+
+        obs.innerHTML = `<strong>${r.result}:</strong> ${r.desc}`;
       }
 
       sel.addEventListener('change', draw);
