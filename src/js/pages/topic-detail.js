@@ -4784,6 +4784,99 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const habitatClassifierLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="habitat-classifier-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a component and see whether it's biotic or abiotic.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Component</h3>
+            <select id="sel-habitat-classifier" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="fish" selected>Fish (in a pond)</option>
+              <option value="water">Water (in a pond)</option>
+              <option value="trees">Trees (in a forest)</option>
+              <option value="soil">Soil (in a forest)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Classification</h3>
+            <div id="habitat-classifier-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a component above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const ecosystemInteractionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="ecosystem-interaction-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an example and see which type of interaction it is.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Example</h3>
+            <select id="sel-ecosystem-interaction" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="earthworm" selected>Earthworms live in moist soil</option>
+              <option value="sunlight">Sunlight causes water to evaporate faster</option>
+              <option value="frog">A frog eats insects</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Interaction Type</h3>
+            <div id="ecosystem-interaction-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an example above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const foodChainTrophicLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="food-chain-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an organism and see its trophic level in the food chain.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Organism</h3>
+            <select id="sel-food-chain" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="grass" selected>Grass</option>
+              <option value="grasshopper">Grasshopper</option>
+              <option value="frog">Frog</option>
+              <option value="snake">Snake</option>
+              <option value="eagle">Eagle</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Trophic Level</h3>
+            <div id="food-chain-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an organism above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const cascadeEffectLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="cascade-effect-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a stage and see how the pond pollution cascade unfolds.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Stage</h3>
+            <select id="sel-cascade-effect" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="1" selected>1. Pollution kills pond plants</option>
+              <option value="2">2. Less oxygen produced</option>
+              <option value="3">3. Fish population drops</option>
+              <option value="4">4. Insects increase</option>
+              <option value="5">5. Farmers use pesticides</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Cascade Stage</h3>
+            <div id="cascade-effect-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a stage above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -6895,6 +6988,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'calendar-comparison-sim') {
               labHtml = calendarComparisonLabHtml;
               labDesc = 'Pick a calendar type and see its year length and seasonal drift.';
+            } else if (topicObj.lab.type === 'habitat-classifier-sim') {
+              labHtml = habitatClassifierLabHtml;
+              labDesc = 'Pick a component and see whether it is biotic or abiotic.';
+            } else if (topicObj.lab.type === 'ecosystem-interaction-sim') {
+              labHtml = ecosystemInteractionLabHtml;
+              labDesc = 'Pick an example and see which type of ecosystem interaction it represents.';
+            } else if (topicObj.lab.type === 'food-chain-trophic-sim') {
+              labHtml = foodChainTrophicLabHtml;
+              labDesc = 'Pick an organism and see its trophic level in the food chain.';
+            } else if (topicObj.lab.type === 'cascade-effect-sim') {
+              labHtml = cascadeEffectLabHtml;
+              labDesc = 'Pick a stage and see how the pond pollution cascade unfolds.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -7510,6 +7615,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initShadowStickLab();
         } else if (topicObj.lab.type === 'calendar-comparison-sim') {
           initCalendarComparisonLab();
+        } else if (topicObj.lab.type === 'habitat-classifier-sim') {
+          initHabitatClassifierLab();
+        } else if (topicObj.lab.type === 'ecosystem-interaction-sim') {
+          initEcosystemInteractionLab();
+        } else if (topicObj.lab.type === 'food-chain-trophic-sim') {
+          initFoodChainTrophicLab();
+        } else if (topicObj.lab.type === 'cascade-effect-sim') {
+          initCascadeEffectLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -24594,6 +24707,165 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 250);
 
         obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text} (${d.days} days/year):</strong> ${d.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initHabitatClassifierLab() {
+      const canvas = document.getElementById('habitat-classifier-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-habitat-classifier');
+      const obs = document.getElementById('habitat-classifier-obs');
+      const DATA = {
+        fish: { biotic: true, icon: '🐟', desc: 'Fish are living organisms — a biotic component of the pond habitat.' },
+        water: { biotic: false, icon: '💧', desc: 'Water is a non-living substance — an abiotic component of the pond habitat.' },
+        trees: { biotic: true, icon: '🌳', desc: 'Trees are living organisms — a biotic component of the forest habitat.' },
+        soil: { biotic: false, icon: '🪨', desc: 'Soil is a non-living substance — an abiotic component of the forest habitat.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const cx = W / 2, cy = 130;
+
+        ctx.font = '64px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(d.icon, cx, cy + 20);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = d.biotic ? '#22c55e' : '#3b82f6';
+        ctx.fillText(d.biotic ? 'BIOTIC (living)' : 'ABIOTIC (non-living)', W / 2, 220);
+
+        obs.innerHTML = `<strong>${d.biotic ? 'Biotic' : 'Abiotic'}:</strong> ${d.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initEcosystemInteractionLab() {
+      const canvas = document.getElementById('ecosystem-interaction-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-ecosystem-interaction');
+      const obs = document.getElementById('ecosystem-interaction-obs');
+      const DATA = {
+        earthworm: { type: 'Biotic ↔ Abiotic', color: '#22c55e', icon1: '🪱', icon2: '🟤', desc: 'Earthworms (biotic) interacting with moist soil (abiotic) — Criterion 1.' },
+        sunlight: { type: 'Abiotic ↔ Abiotic', color: '#f59e0b', icon1: '☀️', icon2: '💧', desc: 'Sunlight (abiotic) causing water (abiotic) to evaporate — Criterion 2.' },
+        frog: { type: 'Biotic ↔ Biotic', color: '#ef4444', icon1: '🐸', icon2: '🦗', desc: 'A frog (biotic) eating insects (biotic) — Criterion 3.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const cx = W / 2, cy = 130;
+
+        ctx.font = '48px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(d.icon1, cx - 60, cy + 15);
+        ctx.fillText(d.icon2, cx + 60, cy + 15);
+
+        ctx.strokeStyle = d.color; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx - 30, cy - 10); ctx.lineTo(cx + 30, cy - 10); ctx.stroke();
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = d.color;
+        ctx.fillText(d.type, W / 2, 220);
+
+        obs.innerHTML = `<strong>${d.type}:</strong> ${d.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initFoodChainTrophicLab() {
+      const canvas = document.getElementById('food-chain-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-food-chain');
+      const obs = document.getElementById('food-chain-obs');
+      const CHAIN = ['grass', 'grasshopper', 'frog', 'snake', 'eagle'];
+      const ICONS = { grass: '🌾', grasshopper: '🦗', frog: '🐸', snake: '🐍', eagle: '🦅' };
+      const LEVELS = { grass: '1st — Producer', grasshopper: '2nd — Herbivore', frog: '3rd — Small carnivore', snake: '4th — Carnivore', eagle: '5th — Top carnivore' };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const selected = sel.value;
+        const gap = 100, startX = W / 2 - (CHAIN.length - 1) * gap / 2, cy = 140;
+
+        CHAIN.forEach((org, i) => {
+          const x = startX + i * gap;
+          const isSel = org === selected;
+          ctx.font = isSel ? '40px system-ui' : '28px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(ICONS[org], x, cy + (isSel ? 10 : 5));
+          if (isSel) {
+            ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2.5;
+            ctx.beginPath(); ctx.arc(x, cy - 10, 32, 0, Math.PI * 2); ctx.stroke();
+          }
+          if (i < CHAIN.length - 1) {
+            ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5;
+            ctx.beginPath(); ctx.moveTo(x + 20, cy - 5); ctx.lineTo(x + gap - 20, cy - 5); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(x + gap - 20, cy - 5); ctx.lineTo(x + gap - 28, cy - 10); ctx.lineTo(x + gap - 28, cy); ctx.closePath(); ctx.fillStyle = cssVar('--text-muted'); ctx.fill();
+          }
+        });
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText('Grass → Grasshopper → Frog → Snake → Eagle', W / 2, 30);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(LEVELS[selected], W / 2, 230);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text} — ${LEVELS[selected]}:</strong> This organism's position in the food chain determines its trophic level.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCascadeEffectLab() {
+      const canvas = document.getElementById('cascade-effect-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-cascade-effect');
+      const obs = document.getElementById('cascade-effect-obs');
+      const STAGES = {
+        1: { icon: '☠️🌱', desc: 'Pollution kills the plants growing in the pond.' },
+        2: { icon: '🌱➡️💨', desc: 'With fewer plants, less oxygen is produced in the water.' },
+        3: { icon: '🐟⬇️', desc: 'Low oxygen levels cause the fish population to decline.' },
+        4: { icon: '🦗🦗🦗', desc: 'With fewer fish eating them, insect populations rise sharply.' },
+        5: { icon: '🚜💧', desc: 'Insects spread to nearby farmland, forcing farmers to use pesticides.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const stage = sel.value;
+
+        for (let i = 1; i <= 5; i++) {
+          const x = 80 + (i - 1) * 110, y = 140;
+          const active = i.toString() === stage;
+          ctx.fillStyle = active ? 'rgba(239,68,68,0.25)' : 'rgba(148,163,184,0.1)';
+          ctx.beginPath(); ctx.arc(x, y, active ? 38 : 28, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = active ? '#ef4444' : cssVar('--border-color'); ctx.lineWidth = active ? 2.5 : 1;
+          ctx.stroke();
+          ctx.font = active ? '22px system-ui' : '16px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(STAGES[i].icon, x, y + 6);
+          if (i < 5) {
+            ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5;
+            ctx.beginPath(); ctx.moveTo(x + 40, y); ctx.lineTo(x + 70, y); ctx.stroke();
+          }
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+
+        obs.innerHTML = `<strong>Stage ${stage}:</strong> ${STAGES[stage].desc}`;
       }
 
       sel.addEventListener('change', draw);

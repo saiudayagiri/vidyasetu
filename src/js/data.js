@@ -14970,6 +14970,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8s-12",
+              title: "How Nature Works in Harmony",
+              topics: [
+                {
+                  id: "8s-12-1",
+                  title: "1. Habitats, Populations, and Communities",
+                  lab: { type: "habitat-classifier-sim" },
+                  theory: {
+                    intro: "A pond and a forest look nothing alike, yet both are built from the exact same two ingredients — living things and non-living things — interacting in their own unique combination.",
+                    sections: [
+                      {
+                        heading: "Habitats: Biotic and Abiotic Components",
+                        text: "A habitat is simply the place where an organism lives — it could be a pond, a forest, or even just the bark of a tree. Every habitat has living beings, called biotic components (like fish, trees, birds), and non-living things, called abiotic components (like water, soil, air, sunlight, temperature). Different habitats offer different living conditions, which is why different organisms live in different places."
+                      },
+                      {
+                        heading: "Populations",
+                        text: "A population is a group of the same type of organism living together in a habitat at a given time — for example, all the fish of one species in a pond, or all the plants of one type in a 1m×1m garden plot. Counting individuals of a species in a fixed area at a fixed time lets us measure its population size."
+                      },
+                      {
+                        heading: "Communities",
+                        text: "A community comprises different populations sharing the same habitat — the biotic components (plants, animals, microorganisms) together, all interacting and depending on one another for survival. If a habitat had only ONE type of organism, all individuals would need the exact same resources (food, water, space), leading to intense competition and possible resource scarcity — which is why real habitats support many different, interacting populations."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Recording Populations in a Fixed Area",
+                      objective: "To measure the population size of different organisms within a fixed 1m × 1m area, and understand how populations are counted.",
+                      materials: ["A measuring tape or string (to mark 1m × 1m)", "A notebook for recording"],
+                      steps: [
+                        "Mark out a 1 metre × 1 metre area in a garden or grassy area.",
+                        "Identify four different organisms (plants and/or animals) present within this area.",
+                        "Count the number of individuals of each organism within the marked area.",
+                        "Record the counts in a table, one row per organism type.",
+                        "Compare the population sizes of different organisms in the same area."
+                      ],
+                      observation: "Different organisms in the same fixed area show very different population counts — for example, 20 individuals of one plant type versus only 5 of another — demonstrating that a population is specific to one type of organism at a given time and place."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'habitat'?",
+                      options: ["Only large forests and oceans", "The place where an organism lives", "A synonym for 'population'", "Only man-made environments"],
+                      answer: 1,
+                      explanation: "A habitat is simply the place where an organism lives — this could be as large as a forest or as small as the bark of a single tree."
+                    },
+                    {
+                      question: "What are 'biotic components' of a habitat?",
+                      options: ["Non-living things like water and soil", "The living beings present in the habitat, like plants, animals, and microorganisms", "Only the largest organisms in a habitat", "Man-made structures"],
+                      answer: 1,
+                      explanation: "Biotic components are the living beings found in a habitat — plants, animals, and microorganisms — as opposed to abiotic (non-living) components."
+                    },
+                    {
+                      question: "What is a 'population' in ecological terms?",
+                      options: ["All organisms of every type in a habitat", "A group of the same type of organism living together in a habitat at a given time", "Only human populations", "A synonym for 'ecosystem'"],
+                      answer: 1,
+                      explanation: "A population refers specifically to a group of organisms of the SAME type/species living together in a particular habitat at a particular time."
+                    },
+                    {
+                      question: "What is a 'community' in the context of ecology?",
+                      options: ["A single population of one organism", "Different populations of various organisms sharing the same habitat and interacting with each other", "Only the human residents of an area", "The abiotic components alone"],
+                      answer: 1,
+                      explanation: "A community consists of the different populations of various organisms that share a habitat and depend on one another — the entire biotic component of that habitat."
+                    },
+                    {
+                      question: "What might happen if a habitat contained only ONE type of organism?",
+                      options: ["The habitat would function perfectly with no issues", "All individuals would compete for identical resources (food, water, space), potentially causing scarcity", "This situation is common in nature and causes no problems", "The organism would not need any resources at all"],
+                      answer: 1,
+                      explanation: "If every organism in a habitat were identical, they would all require exactly the same resources, leading to intense competition and possible resource scarcity — one reason why diverse communities are the norm in nature."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-12-2",
+                  title: "2. Interactions in an Ecosystem",
+                  lab: { type: "ecosystem-interaction-sim" },
+                  theory: {
+                    intro: "A frog eating an insect, sunlight warming the soil, a fish laying eggs in water — every single one of these everyday events is a different type of interaction that together weaves an entire ecosystem into being.",
+                    sections: [
+                      {
+                        heading: "Three Types of Interactions",
+                        text: "Interactions in a habitat fall into three types: (1) biotic-abiotic interactions, like earthworms living in moist soil or fish laying eggs in water — these influence life processes like nutrition, respiration, and reproduction; (2) abiotic-abiotic interactions, like sunlight causing high daytime temperature or evaporating water faster — these influence a habitat's physical characteristics; (3) biotic-biotic interactions, like a frog eating insects or a water snake eating fish — these influence resource availability for life processes."
+                      },
+                      {
+                        heading: "What Is an Ecosystem?",
+                        text: "When biotic components (plants, animals, microorganisms) and abiotic components (air, water, soil, sunlight, temperature) in a habitat interact with each other, together they form an ecosystem. There are two main types: aquatic ecosystems (ponds, rivers, lakes) and terrestrial ecosystems (forests, farms, even a single large tree). Ecosystems can be large or small, and different ecosystems often overlap — a river running through a forest connects an aquatic ecosystem with a terrestrial one."
+                      },
+                      {
+                        heading: "Mutual Dependence Between Biotic and Abiotic Components",
+                        text: "Biotic components depend on abiotic ones: sunlight, carbon dioxide, and water are essential for plants to produce food; soil provides nutrients; air provides oxygen for respiration. But this dependence runs both ways — abiotic components are also shaped by biotic ones: plants release oxygen during photosynthesis, roots hold soil in place preventing erosion, and plants help retain soil moisture and cool the atmosphere."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Classifying Interactions by Type",
+                      objective: "To observe a habitat and classify the interactions seen into biotic-abiotic, abiotic-abiotic, and biotic-biotic categories.",
+                      materials: ["Notebook and pen", "Access to observe a local habitat (pond, garden, or forest edge)"],
+                      steps: [
+                        "Observe a habitat and note at least 3 examples of organisms interacting with non-living factors (e.g., a plant growing toward sunlight).",
+                        "Note at least 2 examples of two abiotic factors interacting (e.g., wind creating ripples on water).",
+                        "Note at least 3 examples of two living organisms interacting (e.g., a bird eating an insect).",
+                        "Organize your observations into a three-column table matching the three interaction types.",
+                        "Discuss how these interactions together create the overall functioning ecosystem."
+                      ],
+                      observation: "A single small habitat reveals all three interaction types simultaneously — organisms using abiotic resources, abiotic factors changing due to physical processes, and organisms feeding on or competing with each other — together forming the interconnected web of an ecosystem."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Which of these is an example of a biotic-abiotic interaction?",
+                      options: ["A frog eating an insect", "Earthworms living in moist soil", "Wind creating ripples on a pond's surface", "Two fish competing for food"],
+                      answer: 1,
+                      explanation: "Earthworms (biotic) living in moist soil (abiotic) is a biotic-abiotic interaction — a living organism interacting with a non-living factor."
+                    },
+                    {
+                      question: "Which of these is an example of an abiotic-abiotic interaction?",
+                      options: ["A frog eating insects", "A fish laying eggs in water", "Sunlight causing water to evaporate faster", "A water snake eating fish"],
+                      answer: 2,
+                      explanation: "Sunlight (abiotic) causing water (abiotic) to evaporate faster is a purely abiotic-abiotic interaction, involving no living organisms."
+                    },
+                    {
+                      question: "What is formed when biotic and abiotic components in a habitat interact with each other?",
+                      options: ["A population", "An ecosystem", "A single organism", "A habitat only, with no further classification"],
+                      answer: 1,
+                      explanation: "When the biotic and abiotic components of a habitat interact together, they form an ecosystem."
+                    },
+                    {
+                      question: "What are the two main types of ecosystems described?",
+                      options: ["Hot and cold ecosystems", "Aquatic (ponds, rivers, lakes) and terrestrial (forests, farms, trees) ecosystems", "Only forest ecosystems", "Only man-made ecosystems"],
+                      answer: 1,
+                      explanation: "The two main ecosystem types are aquatic ecosystems (like ponds, rivers, and lakes) and terrestrial ecosystems (like forests, farms, and even individual large trees)."
+                    },
+                    {
+                      question: "How do biotic components influence abiotic components, according to the chapter?",
+                      options: ["Biotic components have no effect on abiotic components", "Plants release oxygen through photosynthesis, and their roots hold soil in place, preventing erosion", "Only abiotic components can influence biotic ones, never the reverse", "Abiotic components are entirely independent of all biotic components"],
+                      answer: 1,
+                      explanation: "The dependence goes both ways: plants (biotic) release oxygen via photosynthesis and their roots physically hold soil (abiotic) in place, demonstrating how biotic components actively shape abiotic conditions."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-12-3",
+                  title: "3. Food Chains, Food Webs, and Trophic Levels",
+                  lab: { type: "food-chain-trophic-sim" },
+                  theory: {
+                    intro: "Grass feeds a grasshopper, the grasshopper feeds a frog, the frog feeds a snake, and the snake feeds an eagle — a simple chain of 'who eats whom' that, once you connect all the overlapping chains in an ecosystem, becomes a sprawling web.",
+                    sections: [
+                      {
+                        heading: "Food Chains and Feeding Categories",
+                        text: "A food chain is a simple sequence showing 'who eats whom' in an ecosystem — for example: Grass → Grasshopper → Frog → Snake → Eagle. Organisms that make their own food (green plants) are producers; those that depend on other organisms for food are consumers or heterotrophs. Among consumers: herbivores eat only plants (deer, hare); carnivores eat only animals (leopard); omnivores eat both (crows, foxes, mice)."
+                      },
+                      {
+                        heading: "Trophic Levels",
+                        text: "Each organism's specific position in a food chain is called its trophic level: producers (green plants) form the first trophic level; herbivores (like hares) form the second; small carnivores (like frogs) form the third; large carnivores (like tigers or eagles) occupy the next level. Arranging organisms by their population size (most at the base, fewest at the top) creates a pyramid shape, reflecting how energy and numbers decrease at higher trophic levels."
+                      },
+                      {
+                        heading: "Food Webs",
+                        text: "In a real ecosystem, a single organism is often eaten by multiple types of predators, and eats multiple types of prey — meaning many food chains interconnect. This network of interlinked food chains is called a food web, giving a more complete and realistic picture of feeding relationships than a single linear food chain."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building a Food Chain and Converting It to a Pyramid",
+                      objective: "To construct a food chain for a grassland ecosystem and represent the relative population sizes as a trophic pyramid.",
+                      materials: ["Notebook and pen", "Colored pencils (optional)"],
+                      steps: [
+                        "List the organisms found in a grassland ecosystem: grass, grasshopper, frog, snake, eagle.",
+                        "Arrange them into a food chain showing who eats whom, using arrows (Grass → Grasshopper → Frog → Snake → Eagle).",
+                        "Estimate or research the relative population size of each organism (most grass, fewest eagles).",
+                        "Draw a pyramid shape with the most abundant organism (grass) at the base and the least abundant (eagle) at the top.",
+                        "Label each level of the pyramid with its trophic level (producer, herbivore, small carnivore, large carnivore)."
+                      ],
+                      observation: "The food chain Grass → Grasshopper → Frog → Snake → Eagle, when converted into a pyramid based on relative population sizes, naturally forms a triangle shape — with the greatest numbers of producers (grass) at the base and progressively fewer organisms at each higher trophic level."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'food chain'?",
+                      options: ["A random list of organisms in a habitat", "A simple sequence showing 'who eats whom' in an ecosystem", "A list of only plant species", "A synonym for 'ecosystem'"],
+                      answer: 1,
+                      explanation: "A food chain is a simple linear sequence that shows the feeding relationship — who eats whom — moving from producers to various levels of consumers."
+                    },
+                    {
+                      question: "What trophic level do green plants occupy in a food chain?",
+                      options: ["The second trophic level", "The first trophic level, as producers", "The highest trophic level", "Plants are not part of trophic levels"],
+                      answer: 1,
+                      explanation: "Green plants, as producers that make their own food, always occupy the first trophic level in any food chain."
+                    },
+                    {
+                      question: "What distinguishes a herbivore from a carnivore?",
+                      options: ["Herbivores eat only animals; carnivores eat only plants", "Herbivores eat only plants; carnivores eat only animals", "There is no real difference between them", "Herbivores and carnivores both eat exclusively insects"],
+                      answer: 1,
+                      explanation: "Herbivores (like deer and hare) eat only plants, while carnivores (like leopards) eat only animals — omnivores eat both."
+                    },
+                    {
+                      question: "Why does a food chain, when converted to a pyramid based on population size, typically have the most organisms at the base?",
+                      options: ["This is a coincidence with no ecological reason", "Producers (like grass) are typically far more numerous than the herbivores and carnivores that depend on them at higher trophic levels", "Predators always outnumber their prey", "Pyramids have nothing to do with population size"],
+                      answer: 1,
+                      explanation: "Producers form the base because they must support all the herbivores and carnivores above them — this typically requires far greater numbers of producers than of the consumers at higher trophic levels."
+                    },
+                    {
+                      question: "What is a 'food web', and how does it differ from a single food chain?",
+                      options: ["A food web is identical to a single food chain", "A food web is a network of interlinked food chains, showing that organisms are typically eaten by and eat multiple different species", "A food web only includes plants", "A food web has no connection to feeding relationships"],
+                      answer: 1,
+                      explanation: "A food web connects multiple overlapping food chains, since real organisms are usually eaten by more than one predator and eat more than one type of prey — giving a fuller picture than a single linear food chain."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-12-4",
+                  title: "4. Balance in Nature: Cascading Effects and Competition",
+                  lab: { type: "cascade-effect-sim" },
+                  theory: {
+                    intro: "One small change — pollution killing off plants in a pond — can ripple outward through an ecosystem, eventually forcing farmers miles away to reach for pesticides that harm the very environment everyone depends on.",
+                    sections: [
+                      {
+                        heading: "Decomposers: Nature's Recyclers",
+                        text: "Microorganisms like fungi and bacteria (decomposers or saprotrophs) break down complex substances in dead plants and animals into simpler ones, returning essential nutrients to the soil — this process is called decomposition. Insects like beetles and flies help break down animal droppings too. In nature, nothing is truly wasted; everything gets reused through decomposition."
+                      },
+                      {
+                        heading: "Cascading Effects of a Single Change",
+                        text: "A single change can trigger a chain reaction: pollution kills plants in a pond → less oxygen is produced in the water → fish populations drop (fish need oxygen) → fewer fish means fewer consumers of insects → insect populations rise → insects spread to nearby farmland → farmers are forced to use pesticides → pesticides further harm the environment. This shows how deeply interconnected ecosystem components are — and how one disruption can cascade into many others."
+                      },
+                      {
+                        heading: "Competition Keeps Ecosystems Balanced",
+                        text: "In the 1980s, India's large-scale export of frog legs sharply reduced frog populations; since frogs eat insects, fewer frogs meant more agricultural pests, forcing farmers to use more synthetic pesticides — harming soil, water, and human health. India then banned frog leg exports. This illustrates a broader principle: organisms compete for shared resources (food, water, space, sunlight), and this competition helps control population sizes and keep ecosystems balanced — without it, one species could multiply unchecked and destabilize the whole system. This balance is dynamic, not fixed, and can be disrupted by both natural and human-made changes."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tracing the Cascading Effects of Pond Pollution",
+                      objective: "To trace, step by step, how a single disruption (pollution) in a pond ecosystem cascades into multiple, wider-reaching consequences.",
+                      materials: ["Notebook and pen", "Diagram paper for drawing the cascade"],
+                      steps: [
+                        "Start with the initial event: pollution causes plants in a pond to die.",
+                        "Trace the next effect: with fewer plants, less oxygen is produced in the water.",
+                        "Trace the next effect: lower oxygen levels cause the fish population to decline.",
+                        "Trace the next effect: fewer fish (which eat insects) means insect populations rise.",
+                        "Trace the final effects: insects spread to nearby farmland, forcing farmers to use pesticides, which further harms the environment."
+                      ],
+                      observation: "A single starting event (pond pollution killing plants) cascades through at least five connected consequences — reduced oxygen, fewer fish, more insects, farmland pest problems, and pesticide use — demonstrating how tightly interconnected ecosystem components truly are."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What role do decomposers (like fungi and bacteria) play in an ecosystem?",
+                      options: ["They have no significant role", "They break down dead plants and animals into simpler substances, returning nutrients to the soil", "They only produce oxygen", "They only consume living plants"],
+                      answer: 1,
+                      explanation: "Decomposers break down complex organic matter from dead organisms into simpler substances, recycling essential nutrients back into the soil for other organisms to use."
+                    },
+                    {
+                      question: "In the pond pollution cascade example, what is the FIRST consequence of plants dying due to pollution?",
+                      options: ["Insects immediately spread to farmland", "Less oxygen is produced in the water", "Farmers immediately use pesticides", "Fish populations increase"],
+                      answer: 1,
+                      explanation: "The first consequence of plants dying is a drop in oxygen production in the water, since plants are a key oxygen source in the pond — this then leads to fish population decline."
+                    },
+                    {
+                      question: "How did the large-scale export of frog legs in the 1980s affect Indian agriculture?",
+                      options: ["It had no effect on agriculture", "Reduced frog populations led to more agricultural pests (since frogs eat insects), forcing farmers to use more pesticides", "It directly increased crop yields", "It caused frogs to become more numerous"],
+                      answer: 1,
+                      explanation: "Exporting frog legs reduced frog populations; since frogs are natural insect predators, fewer frogs meant more crop-damaging insects, forcing farmers to rely more heavily on synthetic pesticides."
+                    },
+                    {
+                      question: "How does competition among organisms help maintain balance in an ecosystem?",
+                      options: ["Competition has no effect on ecosystem balance", "Competition for shared resources helps control population sizes, preventing any one species from multiplying unchecked", "Competition always destroys ecosystems", "Only human competition affects ecosystems"],
+                      answer: 1,
+                      explanation: "When organisms compete for limited resources like food, water, and space, this naturally limits how much any single population can grow — helping keep the overall ecosystem in balance."
+                    },
+                    {
+                      question: "Is the balance of an ecosystem fixed and unchanging, or dynamic?",
+                      options: ["Completely fixed and unchangeable", "Dynamic — it can be disrupted by both natural and human-made changes", "Ecosystems have no concept of balance", "Balance only applies to aquatic ecosystems"],
+                      answer: 1,
+                      explanation: "Ecosystem balance is dynamic, not fixed — it depends on ongoing interactions among organisms and their environment, and can be disrupted by natural events or human activities."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
