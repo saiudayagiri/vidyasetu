@@ -12714,6 +12714,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8s-4",
+              title: "Electricity: Magnetic and Heating Effects",
+              topics: [
+                {
+                  id: "8s-4-1",
+                  title: "1. The Magnetic Effect of Electric Current",
+                  lab: { type: "compass-deflection-sim" },
+                  theory: {
+                    intro: "In 1820, Hans Christian Oersted noticed a compass needle twitch whenever he switched a nearby circuit on or off — a chance observation that revealed electricity and magnetism are deeply connected.",
+                    sections: [
+                      {
+                        heading: "Discovering the Link Between Electricity and Magnetism",
+                        text: "When a magnetic compass is placed beneath a wire connected to a cell, switching the circuit ON causes the compass needle to deflect from its original direction; switching it OFF returns the needle to normal. This shows that a current-carrying wire has a magnetic effect on the compass needle."
+                      },
+                      {
+                        heading: "The Magnetic Field",
+                        text: "The region around a magnet or a current-carrying wire where its magnetic effect can be felt (such as by deflecting a compass needle) is called a magnetic field. When electric current flows through a conductor like a wire, it produces a magnetic field around it — this is known as the magnetic effect of electric current. The magnetic field disappears the moment the current stops flowing."
+                      },
+                      {
+                        heading: "Oersted's Discovery",
+                        text: "Danish professor Hans Christian Oersted made this discovery in 1820, while giving a demonstration: he noticed that whenever an electrical circuit was closed or opened, a nearby compass needle deflected. He investigated further and, once certain that electric current produced a magnetic field, published his findings — leading other scientists to repeat and confirm the connection between electricity and magnetism."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Detecting Current Using a Compass Needle",
+                      objective: "To observe how a current-carrying wire deflects a nearby magnetic compass needle, recreating Oersted's discovery.",
+                      materials: ["Magnetic compass", "Electric cell and cell holder", "Switch (drawing pins, safety pin, cardboard)", "Two nails, connecting wires", "Cardboard piece"],
+                      steps: [
+                        "Set up a simple circuit with a cell, switch, and a wire stretched between two nails on cardboard.",
+                        "Place the magnetic compass directly beneath the wire.",
+                        "While watching the compass needle, move the switch to the ON position.",
+                        "Observe the needle's deflection, then move the switch to OFF and observe again.",
+                        "Repeat switching ON and OFF several times to confirm the pattern."
+                      ],
+                      observation: "When the switch is ON and current flows, the compass needle deflects from its original direction; when the switch is OFF, the needle returns to normal — confirming that current flow creates a magnetic field around the wire."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What happens to a compass needle placed beneath a current-carrying wire when the circuit is switched ON?",
+                      options: ["Nothing happens", "The needle deflects from its original direction", "The needle disappears", "The wire breaks"],
+                      answer: 1,
+                      explanation: "When current flows through the wire, it creates a magnetic field that deflects the nearby compass needle from its original north-south direction."
+                    },
+                    {
+                      question: "What is a 'magnetic field'?",
+                      options: ["A type of electric current", "The region around a magnet or current-carrying wire where its magnetic effect can be felt", "A physical object that generates electricity", "A type of compass"],
+                      answer: 1,
+                      explanation: "A magnetic field is the region around a magnet or a current-carrying conductor where its magnetic influence can be detected, such as by the deflection of a compass needle."
+                    },
+                    {
+                      question: "Who discovered the link between electricity and magnetism in 1820?",
+                      options: ["Alessandro Volta", "Luigi Galvani", "Hans Christian Oersted", "Alexander Fleming"],
+                      answer: 2,
+                      explanation: "Hans Christian Oersted, a Danish professor, discovered in 1820 that an electric current produces a magnetic field, after noticing a compass needle deflect near a circuit."
+                    },
+                    {
+                      question: "What happens to the magnetic field around a wire when the electric current is switched off?",
+                      options: ["It gets stronger", "It stays exactly the same", "It disappears", "It reverses direction automatically"],
+                      answer: 2,
+                      explanation: "The magnetic field exists only while current flows through the conductor — the moment the current stops, the magnetic field disappears."
+                    },
+                    {
+                      question: "What is the term for the phenomenon where a current-carrying conductor produces a magnetic field around it?",
+                      options: ["The heating effect of electric current", "The magnetic effect of electric current", "Electromagnetic induction", "The Voltaic effect"],
+                      answer: 1,
+                      explanation: "This phenomenon — where flowing electric current produces a magnetic field around the conductor — is called the magnetic effect of electric current."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-4-2",
+                  title: "2. Electromagnets",
+                  lab: { type: "electromagnet-strength-sim" },
+                  theory: {
+                    intro: "Wrap a wire into a coil, insert an iron nail, and connect it to a battery — and you've built an electromagnet strong enough to lift paper clips, with a strength you can control simply by adjusting the current or the number of turns.",
+                    sections: [
+                      {
+                        heading: "Building an Electromagnet",
+                        text: "When current is passed through a cylindrical coil of wire, it behaves like a magnet, deflecting a nearby compass needle. Inserting an iron nail into the core of the coil makes it a much stronger magnet — the compass deflection increases, and the coil can now attract iron paper clips. This current-carrying coil that behaves as a magnet is called an electromagnet. When the current is stopped, the coil immediately loses its magnetic effect."
+                      },
+                      {
+                        heading: "Poles and Strength of an Electromagnet",
+                        text: "Just like a bar magnet, an electromagnet has two poles — North and South — found using a compass at each end. The strength of an electromagnet can be increased by using more cells (a larger current) or more turns of the coil — both create a stronger magnetic field, giving greater compass deflection and more attracted clips. Reversing the direction of the current reverses the electromagnet's poles."
+                      },
+                      {
+                        heading: "Applications: Lifting Electromagnets and Earth's Magnetism",
+                        text: "Lifting electromagnets are strong electromagnets hung from cranes: switching the current ON lifts iron/steel objects, and switching it OFF releases them — widely used in factories and scrap yards. On a planetary scale, the movement of liquid iron in Earth's core creates electric currents that generate Earth's own magnetic field, which migratory birds, fish, and animals use for navigation, and which shields life on Earth from harmful particles from space."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building and Testing an Electromagnet",
+                      objective: "To construct a simple electromagnet and observe how an iron core and number of cells affect its magnetic strength.",
+                      materials: ["Insulated flexible wire (~100cm)", "Iron nail", "Electric cell(s)", "Two magnetic compasses", "Iron/steel paper clips", "Chart paper cylinder"],
+                      steps: [
+                        "Wind about 50 turns of insulated wire around a paper cylinder to form a coil.",
+                        "Place compasses near both ends of the coil, then connect the coil to a cell and observe the deflection.",
+                        "Insert an iron nail into the coil's core and repeat, noting any difference in compass deflection.",
+                        "Bring iron paper clips near the ends of the nail and observe whether they are attracted.",
+                        "Repeat with 2 cells instead of 1, and compare the strength of deflection and clip attraction."
+                      ],
+                      observation: "Without the iron nail, the coil weakly deflects the compass; with the iron nail inserted, the deflection is much stronger and the coil now attracts paper clips. Using 2 cells instead of 1 produces an even stronger magnetic field, with greater deflection and more clips attracted."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is an electromagnet?",
+                      options: ["A permanent magnet made of iron", "A current-carrying coil that behaves as a magnet", "A type of battery", "A compass needle"],
+                      answer: 1,
+                      explanation: "An electromagnet is a coil of wire that behaves as a magnet only while electric current flows through it."
+                    },
+                    {
+                      question: "Why does inserting an iron nail into a current-carrying coil make it a stronger magnet?",
+                      options: ["The nail blocks the magnetic field", "The iron core strengthens the coil's magnetic effect, increasing compass deflection and clip attraction", "The nail has no effect on the coil's magnetism", "Iron nails generate their own separate current"],
+                      answer: 1,
+                      explanation: "An iron core significantly strengthens an electromagnet's magnetic field, which is why most practical electromagnets are built with an iron core."
+                    },
+                    {
+                      question: "How can the strength of an electromagnet be increased?",
+                      options: ["By using fewer cells and fewer turns", "By using more cells (more current) or more turns of the coil", "Strength cannot be changed once built", "Only by using a longer nail"],
+                      answer: 1,
+                      explanation: "Increasing the current (using more cells) or increasing the number of coil turns both increase an electromagnet's magnetic field strength."
+                    },
+                    {
+                      question: "What happens to an electromagnet's poles if the direction of the current through it is reversed?",
+                      options: ["The poles stay exactly the same", "The poles reverse (North becomes South and vice versa)", "The electromagnet stops working entirely", "The electromagnet becomes a permanent magnet"],
+                      answer: 1,
+                      explanation: "Reversing the current's direction reverses the electromagnet's polarity, swapping which end is North and which is South."
+                    },
+                    {
+                      question: "What generates Earth's own magnetic field, according to the chapter?",
+                      options: ["Sunlight hitting the atmosphere", "The movement of liquid iron in Earth's core, which creates electric currents", "Ocean currents", "The rotation of the Moon"],
+                      answer: 1,
+                      explanation: "Deep inside Earth, the movement of liquid iron in the core creates electric currents, which generate Earth's magnetic field — used by migratory animals for navigation and shielding life from space particles."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-4-3",
+                  title: "3. The Heating Effect of Electric Current",
+                  lab: { type: "heating-effect-sim" },
+                  theory: {
+                    intro: "Every wire resists the flow of electric current to some degree — and that resistance converts some electrical energy into heat, a principle behind everything from a glowing lamp filament to an electric kettle.",
+                    sections: [
+                      {
+                        heading: "Resistance and Heat Generation",
+                        text: "When electric current flows through any conductor, it faces some opposition or resistance to its flow. Different conductors offer different resistance — nichrome wire, for example, offers much higher resistance than a copper wire of the same size and length. This resistance converts some electrical energy into heat energy, warming the conductor. This warming is called the heating effect of electric current."
+                      },
+                      {
+                        heading: "Factors Affecting the Amount of Heat",
+                        text: "The amount of heat generated in a wire depends on the material, thickness, and length of the wire, the magnitude of the electric current, and the duration for which the current flows. Using a battery of 2 cells produces more heat than a single cell in the same wire over the same time, since the current is larger."
+                      },
+                      {
+                        heading: "Everyday and Industrial Applications",
+                        text: "Many household appliances — electric room heaters, stoves, kettles, irons, immersion rods, and hair dryers — work on the heating effect of electric current, using a heating element (a rod or coil of wire) that can glow red hot. Industrially, high-temperature electric furnaces use this same principle to melt and recycle scrap steel. However, overheating can also cause problems: energy loss during transmission, melted plastic in plugs/sockets, or even fires — which is why household circuits include safety devices."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Observing the Heating Effect in a Nichrome Wire",
+                      objective: "To observe how passing current through a nichrome wire causes it to warm up due to electrical resistance.",
+                      materials: ["Cardboard piece (10cm x 10cm)", "Two nails", "Nichrome wire (~10cm, 0.3mm thick)", "Electric cell, cell holder, switch", "Connecting wires"],
+                      steps: [
+                        "Mount two nails on the cardboard about 5cm apart and tie the nichrome wire between them.",
+                        "Connect the circuit with the switch in the OFF position, and touch the wire to feel its temperature.",
+                        "Move the switch to ON for about 30 seconds, then switch it back OFF.",
+                        "Momentarily touch the nichrome wire (not holding it) and note any difference in temperature.",
+                        "Repeat with 2 cells instead of 1, and compare how much warmer the wire feels for the same duration."
+                      ],
+                      observation: "The nichrome wire feels distinctly warmer after current has flowed through it for 30 seconds, compared to before the switch was turned on — and it feels even warmer when 2 cells are used instead of 1, since a larger current generates more heat."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What causes a conductor to heat up when electric current flows through it?",
+                      options: ["The conductor absorbs heat from the surrounding air", "The conductor's resistance to current flow converts some electrical energy into heat energy", "All conductors heat up equally regardless of material", "Heat is generated only in broken wires"],
+                      answer: 1,
+                      explanation: "Every conductor offers some resistance to current flow, and this resistance converts part of the electrical energy into heat — known as the heating effect of electric current."
+                    },
+                    {
+                      question: "Why does nichrome wire heat up more than a copper wire of the same size carrying the same current?",
+                      options: ["Nichrome wire is thicker", "Nichrome wire offers higher resistance than copper wire of the same size and length", "Copper wire doesn't conduct electricity", "There is no actual difference between them"],
+                      answer: 1,
+                      explanation: "Nichrome wire has a much higher electrical resistance than copper wire of the same dimensions, so it converts more electrical energy into heat."
+                    },
+                    {
+                      question: "Which of the following does NOT affect the amount of heat generated in a wire?",
+                      options: ["The material of the wire", "The length and thickness of the wire", "The magnitude of the current and duration it flows", "The color of the wire's insulation"],
+                      answer: 3,
+                      explanation: "Heat generated depends on the wire's material, thickness, length, the current's magnitude, and the duration of current flow — insulation color has no effect on heat generation."
+                    },
+                    {
+                      question: "What common component do household heating appliances like kettles, irons, and room heaters share?",
+                      options: ["A magnetic compass", "A heating element — a rod or coil of wire that heats up due to resistance", "A Voltaic cell", "An electromagnet"],
+                      answer: 1,
+                      explanation: "These appliances all contain a heating element (a rod or coil of wire) that heats up due to electrical resistance, sometimes glowing red hot."
+                    },
+                    {
+                      question: "Why do household electrical circuits include safety devices related to heating?",
+                      options: ["To make appliances brighter", "To minimise risks like melted plugs/sockets or fires caused by overheating", "To increase the current flowing through wires", "Safety devices have nothing to do with heating"],
+                      answer: 1,
+                      explanation: "Overheating in wires or appliances can melt plastic parts or even cause fires, so safety devices are included in household circuits to minimise these risks."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-4-4",
+                  title: "4. How Batteries Generate Electricity",
+                  lab: { type: "battery-types-sim" },
+                  theory: {
+                    intro: "From a frog's twitching leg in the 1780s to the lithium-ion battery in your phone today, every electric cell works on the same basic idea: a chemical reaction between two different materials that pushes electrons through a circuit.",
+                    sections: [
+                      {
+                        heading: "The Voltaic Cell",
+                        text: "A Voltaic (or Galvanic) cell contains two metal rods (electrodes) made of different materials, partly dipped in a liquid electrolyte (usually a weak acid or salt solution). A chemical reaction between the electrodes and electrolyte produces electricity. Over time, the chemicals get used up and the cell 'dies', unable to supply more electricity. A homemade version can be built using lemons as the electrolyte source, with copper wire and iron nails as electrodes — lighting up a small LED."
+                      },
+                      {
+                        heading: "Dry Cells",
+                        text: "Dry cells are among the most widely used electric cells today, called 'dry' because their electrolyte is a thick moist paste rather than a liquid. A dry cell has a zinc container (the negative terminal) and a central carbon rod covered with a metal cap (the positive terminal), with the paste-like electrolyte surrounding the carbon rod. A dry cell is single-use — once used up, it must be disposed of."
+                      },
+                      {
+                        heading: "Rechargeable Batteries",
+                        text: "Rechargeable batteries can be recharged and reused multiple times, preventing waste and saving money over time. They range from small batteries in watches and phones to large batteries in laptops, inverters, and electric vehicles. Even rechargeable batteries wear out after being charged and used many times. Today, lithium-ion (Li-ion) batteries are the most common rechargeable type, and scientists are developing solid-state batteries — using solid materials instead of liquid/paste electrolytes — for improved safety, faster charging, and longer life."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building a Simple Lemon-Powered Voltaic Cell",
+                      objective: "To construct a working Voltaic cell using lemons as the electrolyte source, and confirm it generates electricity by lighting an LED.",
+                      materials: ["5-6 juicy lemons", "Copper wires/strips", "Iron nails", "One LED", "Connecting wires"],
+                      steps: [
+                        "Insert a copper wire and an iron nail into each lemon, keeping them apart by a small distance.",
+                        "Connect the copper wire of one lemon to the iron nail of the next lemon, chaining all lemons together.",
+                        "Connect the LED between the copper wire of the first lemon and the iron nail of the last lemon.",
+                        "Observe whether the LED glows; if not, reverse the LED's connections (matching its longer positive lead correctly).",
+                        "Note that the copper wires and iron nails are the electrodes, and the lemon juice is the electrolyte."
+                      ],
+                      observation: "When connected correctly (matching the LED's positive and negative terminals to the battery's terminals), the chain of lemon cells generates enough electricity to light the LED — demonstrating that the combination of two different metals and an acidic electrolyte (lemon juice) produces an electric current."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What are the two main components of a Voltaic cell that generate electricity through a chemical reaction?",
+                      options: ["Two identical metal rods and pure water", "Two different metal electrodes and a liquid electrolyte", "A magnet and a coil of wire", "A battery and a switch"],
+                      answer: 1,
+                      explanation: "A Voltaic cell uses two electrodes made of different metals, partly dipped in a liquid electrolyte (like a weak acid or salt solution) — their chemical reaction generates electricity."
+                    },
+                    {
+                      question: "Why is a dry cell called 'dry' even though it still contains an electrolyte?",
+                      options: ["It contains no electrolyte at all", "Its electrolyte is a thick moist paste rather than a liquid", "It never needs to be replaced", "It generates electricity without any chemical reaction"],
+                      answer: 1,
+                      explanation: "A dry cell is called 'dry' because its electrolyte is a thick, moist paste rather than a free-flowing liquid, unlike a Voltaic cell."
+                    },
+                    {
+                      question: "What is the key advantage of rechargeable batteries over dry cells?",
+                      options: ["They are always smaller in size", "They can be recharged and reused multiple times, reducing waste and saving money", "They never wear out, unlike dry cells", "They don't require any chemical reactions to work"],
+                      answer: 1,
+                      explanation: "Rechargeable batteries can be charged and reused many times, unlike single-use dry cells, which reduces waste and saves money over time — though rechargeable batteries do eventually wear out too."
+                    },
+                    {
+                      question: "In the lemon-powered Voltaic cell activity, what serves as the electrolyte?",
+                      options: ["The copper wire", "The iron nail", "The lemon juice", "The LED"],
+                      answer: 2,
+                      explanation: "The lemon juice acts as the electrolyte in this homemade Voltaic cell, allowing the chemical reaction between the copper and iron electrodes to generate electricity."
+                    },
+                    {
+                      question: "What key advantage do the emerging solid-state batteries offer over current lithium-ion batteries?",
+                      options: ["They are always heavier and slower", "They replace liquid/paste electrolytes with solid materials, offering improved safety, faster charging, and longer life", "They cannot be recharged at all", "They only work in laptops, not phones"],
+                      answer: 1,
+                      explanation: "Solid-state batteries replace the liquid or paste-like electrolyte with a solid material, which scientists expect will make them safer, faster-charging, and longer-lasting than current lithium-ion batteries."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

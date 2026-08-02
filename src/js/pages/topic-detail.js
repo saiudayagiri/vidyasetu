@@ -4060,6 +4060,95 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const compassDeflectionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="compass-deflection-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Toggle the switch and see how the compass needle responds.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Circuit Switch</h3>
+            <select id="sel-compass-deflection" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="off" selected>Switch OFF</option>
+              <option value="on-forward">Switch ON (current forward)</option>
+              <option value="on-reverse">Switch ON (current reversed)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Compass Needle</h3>
+            <div id="compass-deflection-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a switch state above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const electromagnetStrengthLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="electromagnet-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a setup and see the electromagnet's relative strength.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Setup</h3>
+            <select id="sel-electromagnet" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="1cell-nonail" selected>1 cell, coil only (no nail)</option>
+              <option value="1cell-nail">1 cell, coil + iron nail</option>
+              <option value="2cell-nail">2 cells, coil + iron nail</option>
+              <option value="2cell-moreturns">2 cells, more coil turns + nail</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Magnetic Strength</h3>
+            <div id="electromagnet-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a setup above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const heatingEffectLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="heating-effect-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a wire/current setup and see the heating effect.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Setup</h3>
+            <select id="sel-heating-effect" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="copper-1cell" selected>Copper wire, 1 cell</option>
+              <option value="nichrome-1cell">Nichrome wire, 1 cell</option>
+              <option value="nichrome-2cell">Nichrome wire, 2 cells</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Heat Generated</h3>
+            <div id="heating-effect-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a setup above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const batteryTypesLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="battery-types-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a cell/battery type and see its structure and key facts.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Cell Type</h3>
+            <select id="sel-battery-types" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="voltaic" selected>Voltaic Cell (lemon/electrolyte)</option>
+              <option value="dry">Dry Cell</option>
+              <option value="rechargeable">Rechargeable Battery (Li-ion)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Structure &amp; Facts</h3>
+            <div id="battery-types-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a cell type above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -6075,6 +6164,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'antibiotic-resistance-sim') {
               labHtml = antibioticResistanceLabHtml;
               labDesc = 'Pick a treatment scenario and see its effect on the bacteria population.';
+            } else if (topicObj.lab.type === 'compass-deflection-sim') {
+              labHtml = compassDeflectionLabHtml;
+              labDesc = 'Toggle the switch and see how the compass needle responds to current.';
+            } else if (topicObj.lab.type === 'electromagnet-strength-sim') {
+              labHtml = electromagnetStrengthLabHtml;
+              labDesc = 'Pick a setup and see the electromagnet’s relative strength.';
+            } else if (topicObj.lab.type === 'heating-effect-sim') {
+              labHtml = heatingEffectLabHtml;
+              labDesc = 'Pick a wire/current setup and see the resulting heating effect.';
+            } else if (topicObj.lab.type === 'battery-types-sim') {
+              labHtml = batteryTypesLabHtml;
+              labDesc = 'Pick a cell/battery type and see its structure and key facts.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -6626,6 +6727,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initVaccineImmunityLab();
         } else if (topicObj.lab.type === 'antibiotic-resistance-sim') {
           initAntibioticResistanceLab();
+        } else if (topicObj.lab.type === 'compass-deflection-sim') {
+          initCompassDeflectionLab();
+        } else if (topicObj.lab.type === 'electromagnet-strength-sim') {
+          initElectromagnetStrengthLab();
+        } else if (topicObj.lab.type === 'heating-effect-sim') {
+          initHeatingEffectLab();
+        } else if (topicObj.lab.type === 'battery-types-sim') {
+          initBatteryTypesLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -22305,6 +22414,190 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         obs.innerHTML = isFull
           ? `<strong>✓ Full course completed:</strong> All targeted bacteria — including partially-resistant ones — are killed, preventing resistance from developing.`
           : `<strong>✗ Incomplete dose:</strong> Weaker bacteria die quickly, but stronger, partially-resistant bacteria survive the shortened treatment and multiply — spreading antibiotic resistance.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCompassDeflectionLab() {
+      const canvas = document.getElementById('compass-deflection-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-compass-deflection');
+      const obs = document.getElementById('compass-deflection-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const state = sel.value;
+        const cx = W / 2, cy = 150;
+
+        ctx.strokeStyle = state === 'off' ? cssVar('--border-color') : '#f59e0b'; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(cx - 150, cy - 70); ctx.lineTo(cx + 150, cy - 70); ctx.stroke();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('Wire (above compass)', cx, cy - 85);
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, 55, 0, Math.PI * 2); ctx.stroke();
+
+        let angle = -Math.PI / 2;
+        if (state === 'on-forward') angle -= 0.6;
+        else if (state === 'on-reverse') angle += 0.6;
+
+        ctx.save(); ctx.translate(cx, cy); ctx.rotate(angle);
+        ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.moveTo(0, -45); ctx.lineTo(-8, 0); ctx.lineTo(8, 0); ctx.closePath(); ctx.fill();
+        ctx.fillStyle = cssVar('--text-normal'); ctx.beginPath(); ctx.moveTo(0, 45); ctx.lineTo(-8, 0); ctx.lineTo(8, 0); ctx.closePath(); ctx.fill();
+        ctx.restore();
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(state === 'off' ? 'Switch OFF — No Current' : 'Switch ON — Current Flowing', W / 2, 245);
+
+        obs.innerHTML = state === 'off'
+          ? `<strong>No deflection:</strong> With the switch off, no current flows, so there is no magnetic field — the compass needle points normally (north).`
+          : `<strong>Needle deflects ${state === 'on-forward' ? 'one way' : 'the opposite way'}:</strong> Current flowing through the wire creates a magnetic field that deflects the needle. Reversing the current's direction reverses the direction of deflection.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initElectromagnetStrengthLab() {
+      const canvas = document.getElementById('electromagnet-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-electromagnet');
+      const obs = document.getElementById('electromagnet-obs');
+      const SETUPS = {
+        '1cell-nonail': { strength: 1, clips: 0, desc: 'A coil alone (no iron core) with 1 cell produces only a weak magnetic field — too weak to attract clips.' },
+        '1cell-nail': { strength: 2, clips: 2, desc: 'Adding an iron nail as a core makes the coil a much stronger magnet, now able to attract a few clips.' },
+        '2cell-nail': { strength: 3, clips: 4, desc: 'Using 2 cells increases the current, creating an even stronger magnetic field and attracting more clips.' },
+        '2cell-moreturns': { strength: 4, clips: 6, desc: 'Combining 2 cells with more coil turns gives the strongest magnetic field, attracting the most clips.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const s = SETUPS[sel.value];
+        const cx = W / 2;
+
+        const barMaxW = 400, barH = 30, barX = cx - barMaxW / 2, barY = 80;
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+        ctx.strokeRect(barX, barY, barMaxW, barH);
+        ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillRect(barX, barY, (s.strength / 4) * barMaxW, barH);
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Relative Magnetic Strength: ${s.strength}/4`, cx, barY - 12);
+
+        for (let i = 0; i < s.clips; i++) {
+          const x = cx - (s.clips - 1) * 15 + i * 30;
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.arc(x, 170, 10, 0.3, Math.PI * 1.7); ctx.stroke();
+        }
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText(s.clips === 0 ? 'No clips attracted' : `${s.clips} clips attracted`, cx, 210);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${s.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initHeatingEffectLab() {
+      const canvas = document.getElementById('heating-effect-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-heating-effect');
+      const obs = document.getElementById('heating-effect-obs');
+      const SETUPS = {
+        'copper-1cell': { level: 1, color: '#94a3b8', desc: 'Copper wire has low resistance, so with 1 cell it stays close to room temperature — barely warm.' },
+        'nichrome-1cell': { level: 2, color: '#f59e0b', desc: 'Nichrome wire has much higher resistance than copper, so with 1 cell it becomes noticeably warm.' },
+        'nichrome-2cell': { level: 3, color: '#ef4444', desc: 'Nichrome wire with 2 cells carries more current, generating even more heat — the wire becomes distinctly hot.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const s = SETUPS[sel.value];
+        const cx = W / 2, cy = 140;
+
+        ctx.strokeStyle = s.color; ctx.lineWidth = 6;
+        ctx.beginPath(); ctx.moveTo(cx - 150, cy); ctx.lineTo(cx + 150, cy); ctx.stroke();
+
+        const thermX = cx + 200, thermTop = 60, thermBottom = 220;
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(thermX, thermTop); ctx.lineTo(thermX, thermBottom); ctx.stroke();
+        const fillH = (s.level / 3) * (thermBottom - thermTop);
+        ctx.strokeStyle = s.color; ctx.lineWidth = 6; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(thermX, thermBottom); ctx.lineTo(thermX, thermBottom - fillH); ctx.stroke();
+        ctx.lineCap = 'butt';
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = '12px system-ui'; ctx.fillStyle = s.color;
+        const labels = ['', 'Slightly warm', 'Warm', 'Hot'];
+        ctx.fillText(labels[s.level], cx, cy + 40);
+
+        obs.innerHTML = `<strong>${labels[s.level]}:</strong> ${s.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initBatteryTypesLab() {
+      const canvas = document.getElementById('battery-types-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-battery-types');
+      const obs = document.getElementById('battery-types-obs');
+      const INFO = {
+        voltaic: { desc: 'Two different metal electrodes (e.g., copper and iron) dipped in a liquid electrolyte (e.g., lemon juice). Chemical reaction generates current; the cell eventually "dies" as chemicals are used up.' },
+        dry: { desc: 'Zinc container (negative terminal) surrounds a paste-like electrolyte, with a central carbon rod and metal cap (positive terminal). Single-use — must be disposed of once used up.' },
+        rechargeable: { desc: 'Can be charged and reused many times, unlike single-use cells. Lithium-ion (Li-ion) is the most common type today, found in phones, laptops, and electric vehicles.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const type = sel.value;
+        const cx = W / 2, cy = 140;
+
+        if (type === 'voltaic') {
+          ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+          ctx.strokeRect(cx - 70, cy - 60, 140, 100);
+          ctx.fillStyle = 'rgba(59,130,246,0.15)'; ctx.fillRect(cx - 68, cy - 20, 136, 58);
+          ctx.fillStyle = '#f59e0b'; ctx.fillRect(cx - 45, cy - 70, 8, 90);
+          ctx.fillStyle = '#94a3b8'; ctx.fillRect(cx + 37, cy - 70, 8, 90);
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText('Electrode 1 (Cu)', cx - 41, cy - 78);
+          ctx.fillText('Electrode 2 (Fe)', cx + 41, cy - 78);
+          ctx.fillText('Electrolyte (liquid)', cx, cy + 55);
+        } else if (type === 'dry') {
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+          ctx.strokeRect(cx - 40, cy - 70, 80, 130);
+          ctx.fillStyle = 'rgba(148,163,184,0.15)'; ctx.fillRect(cx - 38, cy - 68, 76, 126);
+          ctx.fillStyle = '#1f2937'; ctx.fillRect(cx - 6, cy - 80, 12, 130);
+          ctx.fillStyle = '#f59e0b'; ctx.fillRect(cx - 10, cy - 90, 20, 12);
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText('Metal cap (+)', cx, cy - 98);
+          ctx.fillText('Carbon rod', cx + 30, cy - 20);
+          ctx.fillText('Zinc container (−)', cx, cy + 75);
+        } else {
+          ctx.fillStyle = cssVar('--accent-color'); ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.roundRect(cx - 60, cy - 40, 120, 80, 10); ctx.fill(); ctx.stroke();
+          ctx.font = 'bold 12px system-ui'; ctx.fillStyle = '#0b1220'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('Li-ion', cx, cy);
+          ctx.textBaseline = 'alphabetic';
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText('Rechargeable — 100s of cycles', cx, cy + 60);
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${INFO[type].desc}`;
       }
 
       sel.addEventListener('change', draw);
