@@ -12996,6 +12996,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8s-5",
+              title: "Exploring Forces",
+              topics: [
+                {
+                  id: "8s-5-1",
+                  title: "1. What Is a Force and What Can It Do?",
+                  lab: { type: "force-effect-sim" },
+                  theory: {
+                    intro: "Every push or pull you've ever applied — opening a drawer, kicking a ball, stretching a rubber band — is an example of the same basic concept in physics: force.",
+                    sections: [
+                      {
+                        heading: "Defining Force",
+                        text: "The push or pull applied on an object is called force. A force is a push or pull on an object resulting from the object's interaction with another object — meaning at least two objects must interact for a force to come into play. When you push a table, your hand and the table are two objects interacting with each other. The SI unit of force is the newton (symbol N)."
+                      },
+                      {
+                        heading: "What Force Can Do to an Object",
+                        text: "A force applied on an object may: make an object move from rest, change the speed of a moving object, change the direction of motion of an object, bring about a change in the shape of an object, or cause some or all of these effects together. For example, hitting a moving ball with a bat changes its direction; pressing an inflated balloon changes its shape."
+                      },
+                      {
+                        heading: "Forces Are a Two-Way Interaction",
+                        text: "Whenever two objects interact, each object experiences a force from the other. When you push a table with your hand, you also feel a force on your hand — the moment you stop pushing, that force disappears too. Even when an object appears at rest with no visible force acting on it, this actually means the forces acting on it are balancing one another."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Cataloguing Push and Pull Actions",
+                      objective: "To identify everyday actions as pushes or pulls, and analyze their effect on the object involved.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "List 5 everyday actions involving force (e.g., stopping a moving bicycle, hitting a ball with a bat, pressing a balloon).",
+                        "For each action, classify it as a push or a pull.",
+                        "For each action, identify the effect: does it start motion, change speed, change direction, or change shape?",
+                        "Note which actions involve more than one of these effects at once.",
+                        "Discuss: is it possible for an effect (change in speed, direction, or shape) to happen WITHOUT a force acting?"
+                      ],
+                      observation: "Every push or pull action produces at least one of the four effects (starting motion, changing speed, changing direction, or changing shape) — confirming that none of these changes can occur without a force acting on the object."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the scientific definition of 'force'?",
+                      options: ["Only a pulling action on an object", "A push or pull on an object resulting from its interaction with another object", "Any change in an object's shape", "A type of energy stored in an object"],
+                      answer: 1,
+                      explanation: "Force is defined as a push or pull applied on an object, arising specifically from that object's interaction with another object."
+                    },
+                    {
+                      question: "What is the SI unit of force?",
+                      options: ["Joule", "Watt", "Newton (N)", "Kilogram"],
+                      answer: 2,
+                      explanation: "The SI unit of force is the newton, symbolized as N."
+                    },
+                    {
+                      question: "How many objects must be involved for a force to occur?",
+                      options: ["Exactly one", "At least two, since force arises from an interaction between objects", "At least three", "Force does not require any objects"],
+                      answer: 1,
+                      explanation: "A force always results from an interaction between at least two objects — one object cannot exert force in complete isolation."
+                    },
+                    {
+                      question: "Which of the following is NOT a possible effect of a force applied to an object?",
+                      options: ["Changing its speed", "Changing its direction of motion", "Changing its shape", "Creating new matter out of nothing"],
+                      answer: 3,
+                      explanation: "Force can start motion, change speed, change direction, or change shape — but it cannot create new matter; that is not a physical effect of force."
+                    },
+                    {
+                      question: "If an object appears to be at rest with no motion, what can we conclude about the forces acting on it?",
+                      options: ["No forces are acting on it at all", "The forces acting on it are balancing one another", "It is impossible for any force to act on a resting object", "The object has no mass"],
+                      answer: 1,
+                      explanation: "An object at rest may still have multiple forces acting on it — if these forces balance each other out, the net effect is no change in motion, so the object stays at rest."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-5-2",
+                  title: "2. Contact Forces: Muscular Force and Friction",
+                  lab: { type: "friction-surface-sim" },
+                  theory: {
+                    intro: "Some forces need direct or indirect physical contact to act — from the muscular force that lets you lift a bag, to the friction that quietly slows a rolling ball to a stop.",
+                    sections: [
+                      {
+                        heading: "Contact Forces and Muscular Force",
+                        text: "Forces that act only when there is physical contact between objects (direct, like using your hands, or indirect, like using a stick or rope) are called contact forces. Muscular force is a contact force caused by the action of muscles contracting and elongating during activities like walking, running, lifting, or pushing. Animals, birds, fish, and insects all use muscular force for movement and survival, and it also powers internal body functions like digestion and blood circulation."
+                      },
+                      {
+                        heading: "Friction: The Force That Opposes Motion",
+                        text: "When an object slides across a surface and gradually slows to a stop with no other visible force acting, this is due to friction — the force that comes into play when an object moves or tries to move over another surface. Friction always acts in a direction opposite to the object's motion. Friction is a contact force, arising because even seemingly smooth surfaces have microscopic irregularities that lock into each other and oppose sliding."
+                      },
+                      {
+                        heading: "Friction Depends on Surface Roughness",
+                        text: "The force of friction depends on the nature of the surfaces in contact — rougher surfaces (like sand) produce greater friction than smoother surfaces (like glass or ceramic tile), causing an object to stop sooner. Friction isn't limited to solid surfaces: air, water, and other fluids also exert friction on objects moving through them, which is why aeroplanes, ships, boats, and high-speed trains are specially shaped to reduce this fluid friction."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Friction on Different Surfaces",
+                      objective: "To observe how the distance a sliding object travels before stopping depends on the roughness of the surface.",
+                      materials: ["An object with a flat base (lunch box or notebook)", "Different surfaces: glass, cloth, wood, ceramic tile, sand"],
+                      steps: [
+                        "Place the flat-based object on a smooth surface (like glass or a ceramic tile) and give it a gentle, consistent push.",
+                        "Measure or estimate the distance it travels before stopping.",
+                        "Repeat with the same push force on a rougher surface, such as cloth or sand.",
+                        "Compare the stopping distances across all the surfaces tested.",
+                        "Rank the surfaces from least friction (object travels farthest) to most friction (object stops soonest)."
+                      ],
+                      observation: "The object travels a much shorter distance on rough surfaces like sand or cloth before stopping, compared to smooth surfaces like glass or ceramic tile — confirming that friction is greater on rougher surfaces."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a 'contact force'?",
+                      options: ["A force that acts only from a distance", "A force that acts only when there is physical contact between objects", "A force that only living things can exert", "A force with no direction"],
+                      answer: 1,
+                      explanation: "Contact forces require physical contact between objects — either direct (like hands) or indirect (like a stick or rope) — to act."
+                    },
+                    {
+                      question: "What causes muscular force?",
+                      options: ["Gravitational attraction", "The contraction and elongation of muscles during activity", "Electric charges building up on the skin", "Magnetic fields inside the body"],
+                      answer: 1,
+                      explanation: "Muscular force results from muscles contracting and elongating as we perform activities like walking, lifting, or pushing."
+                    },
+                    {
+                      question: "In which direction does the force of friction act, relative to an object's motion?",
+                      options: ["In the same direction as the motion", "In the direction opposite to the object's motion", "Perpendicular to the object's motion", "Friction has no specific direction"],
+                      answer: 1,
+                      explanation: "Friction always acts opposite to the direction an object is moving or trying to move, which is why it slows objects down."
+                    },
+                    {
+                      question: "Why does an object stop sooner when sliding on a rough surface (like sand) compared to a smooth surface (like glass)?",
+                      options: ["Rough surfaces have less gravity", "Rough surfaces have more microscopic irregularities that increase friction", "Smooth surfaces have more mass", "There is no actual difference between surfaces"],
+                      answer: 1,
+                      explanation: "Rougher surfaces have more microscopic irregularities that lock together and resist sliding, producing greater friction and stopping the object sooner."
+                    },
+                    {
+                      question: "Why are aeroplanes, ships, and high-speed trains specially shaped?",
+                      options: ["To make them look more attractive", "To reduce the friction (drag) exerted by air or water as they move through it", "To increase their weight", "Shape has no effect on their movement"],
+                      answer: 1,
+                      explanation: "Air and water exert friction (drag) on objects moving through them, so vehicles are specially shaped to minimize this fluid friction and move more efficiently."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-5-3",
+                  title: "3. Non-Contact Forces: Magnetic, Electrostatic, and Gravitational",
+                  lab: { type: "noncontact-force-sim" },
+                  theory: {
+                    intro: "Not every force needs touch to act — a magnet can push another magnet away without contact, a charged balloon can pull in bits of paper, and the Earth itself pulls everything toward its center from a distance.",
+                    sections: [
+                      {
+                        heading: "Magnetic Force",
+                        text: "The force exerted by a magnet on another magnet or a magnetic material is called magnetic force. Like poles (North-North or South-South) repel each other, while unlike poles (North-South) attract. Since a magnet can exert this force from a distance without contact — such as a ring magnet floating above another with like poles facing each other — it is called a non-contact force."
+                      },
+                      {
+                        heading: "Electrostatic Force",
+                        text: "When certain materials are rubbed together, electrical charges build up on their surfaces — called static charges. A charged object exerts a force on uncharged objects (like small paper pieces) even without contact. Similarly charged objects (like two balloons rubbed with the same wool cloth) repel each other, while oppositely charged objects (like a charged balloon and the wool cloth that charged it) attract. This is called electrostatic force — like charges repel, unlike charges attract, and it acts without contact."
+                      },
+                      {
+                        heading: "Gravitational Force",
+                        text: "Since all objects thrown upward eventually fall back toward the Earth, the Earth must be attracting them. The force with which the Earth attracts objects toward itself is called gravitational force, or simply gravity. Unlike magnetic or electrostatic force (which can attract or repel), gravitational force is always attractive, and it acts without contact — making it a non-contact force."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Demonstrating Electrostatic Attraction and Repulsion",
+                      objective: "To observe how rubbing objects with wool creates static charges that cause attraction and repulsion without any contact.",
+                      materials: ["Two balloons", "Thread", "A woollen cloth", "Small pieces of paper", "A plastic scale or straw"],
+                      steps: [
+                        "Rub a plastic scale vigorously with a polythene sheet, then bring it near small paper pieces without touching them.",
+                        "Observe whether the paper pieces are attracted to the charged scale.",
+                        "Inflate two balloons, hang them close together (not touching), and rub both with the woollen cloth.",
+                        "Release the balloons and observe whether they move toward or away from each other.",
+                        "Bring the woollen cloth (used for rubbing) close to one of the charged balloons and observe what happens."
+                      ],
+                      observation: "The charged plastic scale attracts the small paper pieces without touching them; the two similarly-charged balloons repel each other (move apart); but the charged balloon and the woollen cloth attract each other — showing that like charges repel and unlike charges attract."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What happens when the like poles of two magnets (e.g., North-North) are brought close together?",
+                      options: ["They attract each other", "They repel each other", "Nothing happens between them", "They merge into one magnet"],
+                      answer: 1,
+                      explanation: "Like poles (North-North or South-South) repel each other, which is why a ring magnet can float above another with like poles facing."
+                    },
+                    {
+                      question: "When two balloons are rubbed with the same woollen cloth and hung near each other, what happens?",
+                      options: ["They stick together immediately", "They repel each other, since they carry similar (like) charges", "They fall to the ground", "Nothing happens, since balloons cannot be charged"],
+                      answer: 1,
+                      explanation: "Rubbing both balloons with the same wool gives them similar (like) charges, and like charges repel each other, causing the balloons to move apart."
+                    },
+                    {
+                      question: "Why does a charged balloon attract the woollen cloth used to charge it?",
+                      options: ["The balloon and cloth carry unlike (opposite) charges, and unlike charges attract", "This never actually happens", "The cloth is magnetic", "Attraction only happens with direct contact"],
+                      answer: 0,
+                      explanation: "Rubbing transfers charge between the balloon and cloth, giving them opposite charges — since unlike charges attract, the balloon and cloth pull toward each other."
+                    },
+                    {
+                      question: "What is unique about gravitational force compared to magnetic and electrostatic force?",
+                      options: ["It is always a contact force", "It is always attractive, unlike magnetic or electrostatic force which can be attractive or repulsive", "It only acts on charged objects", "It has no relationship to distance"],
+                      answer: 1,
+                      explanation: "Gravitational force is always attractive — objects are only ever pulled toward each other by gravity, never pushed apart, unlike magnetic and electrostatic forces which can do both."
+                    },
+                    {
+                      question: "What do magnetic force, electrostatic force, and gravitational force all have in common?",
+                      options: ["They only act when objects are touching", "They are all classified as non-contact forces, acting without physical contact", "They are all types of muscular force", "They only exist on Earth"],
+                      answer: 1,
+                      explanation: "All three — magnetic, electrostatic, and gravitational force — can act on objects from a distance without requiring physical contact, which is why they are grouped together as non-contact forces."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-5-4",
+                  title: "4. Weight, Mass, and Buoyancy",
+                  lab: { type: "weight-on-planets-sim" },
+                  theory: {
+                    intro: "A 1 kg object weighs 10 N on Earth — but the very same object would weigh just 1.6 N on the Moon and a hefty 25.4 N on Jupiter, since weight depends on gravity, not on the amount of matter in the object.",
+                    sections: [
+                      {
+                        heading: "Weight vs. Mass",
+                        text: "The force with which the Earth pulls an object toward itself is called the weight of the object, measured in newtons (N) — the same unit as force. Mass, by contrast, is the amount of matter in an object, measured in grams or kilograms, and stays the same everywhere. Since gravitational force varies slightly across locations (and greatly between planets), an object's weight can change even though its mass never does."
+                      },
+                      {
+                        heading: "Weight Across the Solar System",
+                        text: "For a fixed 1 kg mass, weight varies dramatically by planet: Earth = 10 N, Moon = 1.6 N, Mars = 3.8 N, Venus = 9 N, Jupiter = 25.4 N. This happens because each planet (or moon) has a different gravitational pull — Jupiter's much stronger gravity gives the same 1 kg mass a far greater weight than the Moon's weak gravity does."
+                      },
+                      {
+                        heading: "Floating, Sinking, and Buoyant Force",
+                        text: "When an object is placed in a liquid, the liquid pushes back on it in the upward direction — a force called upthrust or buoyant force. If gravitational force exceeds the buoyant force, the object sinks; if the two forces are equal, it floats. Archimedes' Principle states that an object immersed in a liquid experiences an upward force equal to the weight of the liquid it displaces — if the displaced liquid's weight is less than the object's weight, it sinks; if equal, it floats."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Measuring Weight with a Spring Balance",
+                      objective: "To use a spring balance to measure the weight of different objects and understand its scale and precision.",
+                      materials: ["A spring balance", "A few objects of different masses (pencil box, water bottle)"],
+                      steps: [
+                        "Examine the spring balance's scale to find its maximum measurable weight (its range).",
+                        "Find the weight difference between two adjacent large marks on the scale.",
+                        "Count the small divisions between two large marks, and calculate the value of one small division.",
+                        "Suspend each object one by one from the hook and record its weight in newtons.",
+                        "Compare the weights of the different objects, and note which is heaviest and lightest."
+                      ],
+                      observation: "For a spring balance with a range of 0-10 N and 5 divisions between each 1 N mark, each small division reads 1/5 = 0.2 N — meaning the smallest weight difference this balance can detect is 0.2 N."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the key difference between mass and weight?",
+                      options: ["They are exactly the same thing", "Mass is the amount of matter in an object (constant everywhere); weight is the gravitational force pulling it (which can vary by location)", "Weight never changes, but mass does", "Mass is measured in newtons, weight in kilograms"],
+                      answer: 1,
+                      explanation: "Mass measures the amount of matter in an object and stays constant everywhere; weight is the force of gravity acting on that mass, which varies depending on the gravitational pull of the location."
+                    },
+                    {
+                      question: "A 1 kg object weighs 10 N on Earth. What would the SAME 1 kg object weigh on the Moon?",
+                      options: ["10 N (weight never changes)", "1.6 N", "25.4 N", "0 N"],
+                      answer: 1,
+                      explanation: "Since the Moon's gravity is much weaker than Earth's, the same 1 kg mass weighs only 1.6 N on the Moon, even though its mass remains exactly 1 kg."
+                    },
+                    {
+                      question: "On which of these locations would a 1 kg object have the GREATEST weight?",
+                      options: ["Moon (1.6 N)", "Mars (3.8 N)", "Venus (9 N)", "Jupiter (25.4 N)"],
+                      answer: 3,
+                      explanation: "Jupiter has the strongest gravitational pull among these, giving a 1 kg object a weight of 25.4 N — the highest of the listed values."
+                    },
+                    {
+                      question: "What is 'buoyant force' (or upthrust)?",
+                      options: ["The downward force of gravity on an object in a liquid", "The upward force applied by a liquid on an object placed in it", "A type of magnetic force", "The force that causes objects to sink"],
+                      answer: 1,
+                      explanation: "Buoyant force (or upthrust) is the upward force that a liquid exerts on an object placed within it, opposing the downward pull of gravity."
+                    },
+                    {
+                      question: "According to Archimedes' Principle, when does an object float in a liquid?",
+                      options: ["When the object has no mass at all", "When the weight of the liquid displaced by the object equals the object's own weight", "Only when the object is made of wood", "Objects never float according to this principle"],
+                      answer: 1,
+                      explanation: "Archimedes' Principle states that an object floats when the weight of the liquid it displaces equals its own weight — if the displaced liquid weighs less than the object, the object sinks instead."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

@@ -4149,6 +4149,100 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const forceEffectLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="force-effect-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an action and see which effect(s) the force produces.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Action</h3>
+            <select id="sel-force-effect" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="push-rest" selected>Pushing a stationary box</option>
+              <option value="hit-ball">Hitting a moving ball with a bat</option>
+              <option value="press-balloon">Pressing an inflated balloon</option>
+              <option value="brake-bicycle">Applying brakes on a moving bicycle</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Effect(s) Produced</h3>
+            <div id="force-effect-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an action above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const frictionSurfaceLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="friction-surface-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a surface and see how far the object slides before stopping.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Surface</h3>
+            <select id="sel-friction-surface" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="glass" selected>Glass (very smooth)</option>
+              <option value="tile">Ceramic Tile (smooth)</option>
+              <option value="wood">Wood (medium)</option>
+              <option value="cloth">Cloth (rough)</option>
+              <option value="sand">Sand (very rough)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Sliding Distance</h3>
+            <div id="friction-surface-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a surface above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const noncontactForceLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="noncontact-force-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see whether the objects attract or repel.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Scenario</h3>
+            <select id="sel-noncontact-force" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="magnet-like" selected>Two magnets, like poles facing</option>
+              <option value="magnet-unlike">Two magnets, unlike poles facing</option>
+              <option value="charge-like">Two balloons charged the same way</option>
+              <option value="charge-unlike">Charged balloon and the wool cloth</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="noncontact-force-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const weightOnPlanetsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="weight-planets-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a planet and see the weight of a fixed 1 kg mass there.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Location</h3>
+            <select id="sel-weight-planets" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="earth" selected>Earth</option>
+              <option value="moon">Moon</option>
+              <option value="mars">Mars</option>
+              <option value="venus">Venus</option>
+              <option value="jupiter">Jupiter</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Weight of 1 kg Mass</h3>
+            <div id="weight-planets-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a location above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -6176,6 +6270,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'battery-types-sim') {
               labHtml = batteryTypesLabHtml;
               labDesc = 'Pick a cell/battery type and see its structure and key facts.';
+            } else if (topicObj.lab.type === 'force-effect-sim') {
+              labHtml = forceEffectLabHtml;
+              labDesc = 'Pick an action and see which effect(s) the force produces.';
+            } else if (topicObj.lab.type === 'friction-surface-sim') {
+              labHtml = frictionSurfaceLabHtml;
+              labDesc = 'Pick a surface and see how far the object slides before friction stops it.';
+            } else if (topicObj.lab.type === 'noncontact-force-sim') {
+              labHtml = noncontactForceLabHtml;
+              labDesc = 'Pick a scenario and see whether the objects attract or repel without contact.';
+            } else if (topicObj.lab.type === 'weight-on-planets-sim') {
+              labHtml = weightOnPlanetsLabHtml;
+              labDesc = 'Pick a planet and see the weight of a fixed 1 kg mass there.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -6735,6 +6841,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initHeatingEffectLab();
         } else if (topicObj.lab.type === 'battery-types-sim') {
           initBatteryTypesLab();
+        } else if (topicObj.lab.type === 'force-effect-sim') {
+          initForceEffectLab();
+        } else if (topicObj.lab.type === 'friction-surface-sim') {
+          initFrictionSurfaceLab();
+        } else if (topicObj.lab.type === 'noncontact-force-sim') {
+          initNoncontactForceLab();
+        } else if (topicObj.lab.type === 'weight-on-planets-sim') {
+          initWeightOnPlanetsLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -22598,6 +22712,174 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
 
         obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${INFO[type].desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initForceEffectLab() {
+      const canvas = document.getElementById('force-effect-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-force-effect');
+      const obs = document.getElementById('force-effect-obs');
+      const EFFECTS = {
+        'push-rest': { flags: ['start'], desc: 'The box was at rest and starts moving — the force makes it move from rest.' },
+        'hit-ball': { flags: ['direction'], desc: 'The ball was already moving; hitting it with a bat changes its direction of motion.' },
+        'press-balloon': { flags: ['shape'], desc: 'The balloon’s shape changes as it is pressed inward — a change in shape.' },
+        'brake-bicycle': { flags: ['speed'], desc: 'The moving bicycle slows down — the brake force changes (decreases) its speed.' }
+      };
+      const ALL = [['start', 'Starts Motion'], ['speed', 'Changes Speed'], ['direction', 'Changes Direction'], ['shape', 'Changes Shape']];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const e = EFFECTS[sel.value];
+
+        let y = 70;
+        ALL.forEach(([key, label]) => {
+          const active = e.flags.includes(key);
+          ctx.fillStyle = active ? 'rgba(34,197,94,0.2)' : 'rgba(148,163,184,0.08)';
+          ctx.fillRect(120, y - 22, 360, 36);
+          ctx.strokeStyle = active ? '#22c55e' : cssVar('--border-color'); ctx.lineWidth = active ? 2.5 : 1;
+          ctx.strokeRect(120, y - 22, 360, 36);
+          ctx.font = active ? 'bold 14px system-ui' : '13px system-ui'; ctx.fillStyle = active ? '#22c55e' : cssVar('--text-muted'); ctx.textAlign = 'left';
+          ctx.fillText((active ? '✓ ' : '') + label, 135, y + 3);
+          y += 50;
+        });
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 35);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${e.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initFrictionSurfaceLab() {
+      const canvas = document.getElementById('friction-surface-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-friction-surface');
+      const obs = document.getElementById('friction-surface-obs');
+      const SURFACES = {
+        glass: { dist: 0.95, desc: 'Very smooth — minimal irregularities mean very low friction, so the object slides far before stopping.' },
+        tile: { dist: 0.8, desc: 'Smooth — low friction lets the object slide a good distance.' },
+        wood: { dist: 0.55, desc: 'Medium roughness — moderate friction brings the object to a stop sooner.' },
+        cloth: { dist: 0.3, desc: 'Rough — high friction from fabric fibers stops the object quickly.' },
+        sand: { dist: 0.12, desc: 'Very rough — loose grains create very high friction, stopping the object almost immediately.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const s = SURFACES[sel.value];
+        const trackY = 180, trackX = 60, trackW = 480;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(trackX, trackY); ctx.lineTo(trackX + trackW, trackY); ctx.stroke();
+
+        const stopX = trackX + trackW * s.dist;
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 6;
+        ctx.beginPath(); ctx.moveTo(trackX, trackY); ctx.lineTo(stopX, trackY); ctx.stroke();
+
+        ctx.fillStyle = '#f59e0b'; ctx.beginPath(); ctx.arc(stopX, trackY - 12, 10, 0, Math.PI * 2); ctx.fill();
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 35);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('Object slides here → stops due to friction', W / 2, 220);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${s.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initNoncontactForceLab() {
+      const canvas = document.getElementById('noncontact-force-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-noncontact-force');
+      const obs = document.getElementById('noncontact-force-obs');
+      const SCENARIOS = {
+        'magnet-like': { repel: true, labels: ['N', 'N'], color: '#3b82f6', desc: 'Like poles (North-North) repel — the magnets push apart, letting one float above the other.' },
+        'magnet-unlike': { repel: false, labels: ['N', 'S'], color: '#3b82f6', desc: 'Unlike poles (North-South) attract — the magnets pull together.' },
+        'charge-like': { repel: true, labels: ['+', '+'], color: '#ef4444', desc: 'Both balloons carry similar (like) charges from rubbing with the same wool — like charges repel.' },
+        'charge-unlike': { repel: false, labels: ['+', '−'], color: '#ef4444', desc: 'The balloon and wool cloth carry opposite (unlike) charges — unlike charges attract.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const s = SCENARIOS[sel.value];
+        const cy = 140;
+        const gap = s.repel ? 160 : 60;
+        const x1 = W / 2 - gap / 2, x2 = W / 2 + gap / 2;
+
+        [x1, x2].forEach((x, i) => {
+          ctx.fillStyle = s.color; ctx.beginPath(); ctx.arc(x, cy, 35, 0, Math.PI * 2); ctx.fill();
+          ctx.font = 'bold 18px system-ui'; ctx.fillStyle = 'white'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(s.labels[i], x, cy); ctx.textBaseline = 'alphabetic';
+        });
+
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 2.5;
+        const midX = W / 2;
+        if (s.repel) {
+          ctx.beginPath(); ctx.moveTo(midX - 15, cy); ctx.lineTo(midX - 45, cy); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(midX - 45, cy); ctx.lineTo(midX - 35, cy - 6); ctx.lineTo(midX - 35, cy + 6); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(midX + 15, cy); ctx.lineTo(midX + 45, cy); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(midX + 45, cy); ctx.lineTo(midX + 35, cy - 6); ctx.lineTo(midX + 35, cy + 6); ctx.closePath(); ctx.fill();
+        } else {
+          ctx.beginPath(); ctx.moveTo(x1 + 45, cy); ctx.lineTo(x1 + 20, cy); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x1 + 20, cy); ctx.lineTo(x1 + 30, cy - 6); ctx.lineTo(x1 + 30, cy + 6); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(x2 - 45, cy); ctx.lineTo(x2 - 20, cy); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x2 - 20, cy); ctx.lineTo(x2 - 30, cy - 6); ctx.lineTo(x2 - 30, cy + 6); ctx.closePath(); ctx.fill();
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = s.repel ? '#ef4444' : '#22c55e'; ctx.textAlign = 'center';
+        ctx.fillText(s.repel ? 'REPEL (push apart)' : 'ATTRACT (pull together)', W / 2, 230);
+
+        obs.innerHTML = `<strong>${s.repel ? 'Repel' : 'Attract'}:</strong> ${s.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initWeightOnPlanetsLab() {
+      const canvas = document.getElementById('weight-planets-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-weight-planets');
+      const obs = document.getElementById('weight-planets-obs');
+      const WEIGHTS = { earth: 10, moon: 1.6, mars: 3.8, venus: 9, jupiter: 25.4 };
+      const NAMES = { earth: 'Earth', moon: 'Moon', mars: 'Mars', venus: 'Venus', jupiter: 'Jupiter' };
+      const MAXW = 26;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const key = sel.value;
+        const w = WEIGHTS[key];
+
+        const barX = 200, barY = 60, barMaxH = 160, barW = 80;
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+        ctx.strokeRect(barX, barY, barW, barMaxH);
+        const fillH = (w / MAXW) * barMaxH;
+        ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillRect(barX, barY + barMaxH - fillH, barW, fillH);
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${NAMES[key]}: ${w} N`, barX + barW / 2, barY - 15);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('for a fixed 1 kg mass', barX + barW / 2, barY + barMaxH + 25);
+
+        obs.innerHTML = `<strong>On ${NAMES[key]}, a 1 kg mass weighs ${w} N.</strong> The mass never changes (always 1 kg), but the weight changes because each location has a different gravitational pull.`;
       }
 
       sel.addEventListener('change', draw);
