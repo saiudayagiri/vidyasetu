@@ -19498,7 +19498,294 @@ export const curriculumData = {
       theme: "linear-gradient(135deg, #f6d365, #fda085)",
       subjects: {
         science: { name: "Science", icon: "🧪", chapters: [] },
-        mathematics: { name: "Mathematics", icon: "📐", chapters: [] }
+        mathematics: {
+          name: "Mathematics",
+          icon: "📐",
+          chapters: [
+            {
+              id: "9m-1",
+              title: "Orienting Yourself: The Use of Coordinates",
+              topics: [
+                {
+                  id: "9m-1-1",
+                  title: "1. The 2-D Cartesian Coordinate System",
+                  lab: { type: "cartesian-plane-sim" },
+                  theory: {
+                    intro: "Thousands of years ago, the streets of the Sindhu-Sarasvatī Civilisation were laid out in precise North–South and East–West grids about 10 metres apart — a working coordinate system, long before the mathematics was formalised.",
+                    sections: [
+                      {
+                        heading: "Building the Coordinate System",
+                        text: "While a number line is one-dimensional, the two-dimensional coordinate system uses two lines at right angles to mark points in 2-D space. The horizontal line is the x-axis; the vertical line is the y-axis. Their point of intersection is the origin O, with coordinates (0, 0). Distances to the right of O or upwards are positive; distances to the left or downwards are negative."
+                      },
+                      {
+                        heading: "Points on the Axes",
+                        text: "A point P = (x, 0) lies on the x-axis: if x is positive, P lies right of O; if negative, left of O. A point P = (0, y) lies on the y-axis: if y is positive, P lies above O; if negative, below O. For example, B = (4.5, 0) sits on the x-axis 4.5 units right of O; G = (0, −4.5) sits on the y-axis 4.5 units below O; H = (0, 4) sits 4 units above O."
+                      },
+                      {
+                        heading: "A Rich History",
+                        text: "Āryabhaṭa (c. 499 CE) mapped the sky using celestial coordinates measured from the ecliptic. Brahmagupta (c. 628 CE) formalised zero and negative numbers as algebraic entities — without which the four-quadrant plane would be impossible, since the origin is zero and the negative axes represent values below zero. These ideas travelled through Arabic scholarship (Al-Bīrūnī, Ömar Khayyām) before Fermat (1636) and Descartes (1637) formalised that any point in a plane can be defined by just two numbers."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Plotting Points on the Coordinate Axes",
+                      objective: "To plot points lying on the x-axis and y-axis and confirm the sign conventions for direction.",
+                      materials: ["Graph paper", "Ruler", "Pencil"],
+                      steps: [
+                        "Draw the x-axis and y-axis on graph paper, marking the origin O at their intersection.",
+                        "Mark equal unit distances along both axes, positive to the right/up and negative to the left/down.",
+                        "Plot B (4.5, 0) and confirm it lies on the x-axis, 4.5 units right of O.",
+                        "Plot G (0, −4.5) and H (0, 4), confirming both lie on the y-axis, below and above O respectively.",
+                        "Note the pattern: any point of the form (x, 0) lies on the x-axis, and (0, y) lies on the y-axis."
+                      ],
+                      observation: "Points of the form (x, 0) always lie on the x-axis and points of the form (0, y) always lie on the y-axis, with the sign of the non-zero coordinate determining whether the point sits right/left of O or above/below O."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What are the coordinates of the origin O?",
+                      options: ["(1, 1)", "(0, 0)", "(0, 1)", "The origin has no coordinates"],
+                      answer: 1,
+                      explanation: "The origin is the point where the x-axis and y-axis intersect, and its coordinates are (0, 0)."
+                    },
+                    {
+                      question: "A point has coordinates (4.5, 0). Where does it lie?",
+                      options: ["On the y-axis, above the origin", "On the x-axis, 4.5 units to the right of the origin", "In Quadrant II", "At the origin itself"],
+                      answer: 1,
+                      explanation: "Since the y-coordinate is 0, the point lies on the x-axis; the positive x-coordinate of 4.5 places it 4.5 units to the right of the origin."
+                    },
+                    {
+                      question: "A point has coordinates (0, −4.5). Where does it lie?",
+                      options: ["On the x-axis, to the left of the origin", "On the y-axis, 4.5 units below the origin", "In Quadrant IV", "On the y-axis, 4.5 units above the origin"],
+                      answer: 1,
+                      explanation: "Since the x-coordinate is 0, the point lies on the y-axis; the negative y-coordinate places it 4.5 units below the origin."
+                    },
+                    {
+                      question: "Whose formalisation of zero and negative numbers made the four-quadrant Cartesian plane possible?",
+                      options: ["Āryabhaṭa", "Brahmagupta", "Ptolemy", "Descartes"],
+                      answer: 1,
+                      explanation: "Brahmagupta (c. 628 CE) formalised the notion and use of zero and negative numbers as algebraic entities — essential since the origin is zero and the negative axes represent values less than zero."
+                    },
+                    {
+                      question: "In which direction along the x-axis are distances considered negative?",
+                      options: ["To the right of the origin", "To the left of the origin", "Above the origin", "Below the origin"],
+                      answer: 1,
+                      explanation: "By convention, distances to the left of the origin along the x-axis are negative, while distances to the right are positive."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-1-2",
+                  title: "2. Quadrants and Coordinates",
+                  lab: { type: "quadrant-identifier-sim" },
+                  theory: {
+                    intro: "The two axes carve the plane into four regions, and just by looking at whether each coordinate is positive or negative, you can tell instantly which of the four a point belongs to.",
+                    sections: [
+                      {
+                        heading: "The Four Quadrants",
+                        text: "The plane containing the axes is called the Cartesian plane, the coordinate plane, or the xy-plane. The axes divide it into four parts called quadrants: Quadrant I has both x and y positive (+, +); Quadrant II has x negative and y positive (−, +); Quadrant III has both negative (−, −); Quadrant IV has x positive and y negative (+, −)."
+                      },
+                      {
+                        heading: "What the Coordinates Mean",
+                        text: "For a general point P = (x, y): x represents the perpendicular distance of P from the y-axis, measured along the x-axis, and y represents the perpendicular distance of P from the x-axis, measured along the y-axis. For example, S (3, −5) lies in Quadrant IV with x-coordinate 3 and y-coordinate −5, while Q (−5, 3) lies in Quadrant II with x-coordinate −5 and y-coordinate 3."
+                      },
+                      {
+                        heading: "Order Matters",
+                        text: "The order of coordinates in a pair is significant: if x ≠ y, then (x, y) ≠ (y, x). The two only coincide when x = y — for example, (3, 3) is the same point whether written as (x, y) or (y, x), but (3, −5) and (−5, 3) are entirely different points in different quadrants."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Identifying Quadrants from Coordinate Signs",
+                      objective: "To determine which quadrant a point lies in based purely on the signs of its coordinates.",
+                      materials: ["Graph paper", "Ruler", "Pencil"],
+                      steps: [
+                        "Draw the coordinate axes and label the four quadrants I, II, III, IV.",
+                        "Plot S (3, −5) and note which quadrant it falls in, along with the signs of its coordinates.",
+                        "Plot Q (−5, 3) and note its quadrant and coordinate signs.",
+                        "Mark any point P in Quadrant I and any point R in Quadrant III, writing down their coordinates.",
+                        "Summarise the sign pattern for each of the four quadrants."
+                      ],
+                      observation: "The sign pattern uniquely determines the quadrant: (+, +) → Quadrant I; (−, +) → Quadrant II; (−, −) → Quadrant III; (+, −) → Quadrant IV. So S (3, −5) lands in Quadrant IV and Q (−5, 3) in Quadrant II."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In which quadrant does the point S (3, −5) lie?",
+                      options: ["Quadrant I", "Quadrant II", "Quadrant III", "Quadrant IV"],
+                      answer: 3,
+                      explanation: "With a positive x-coordinate (3) and a negative y-coordinate (−5), the point has the sign pattern (+, −), placing it in Quadrant IV."
+                    },
+                    {
+                      question: "In which quadrant does the point Q (−5, 3) lie?",
+                      options: ["Quadrant I", "Quadrant II", "Quadrant III", "Quadrant IV"],
+                      answer: 1,
+                      explanation: "With a negative x-coordinate (−5) and a positive y-coordinate (3), the sign pattern (−, +) places this point in Quadrant II."
+                    },
+                    {
+                      question: "What is the sign pattern of coordinates for points in Quadrant III?",
+                      options: ["(+, +)", "(−, +)", "(−, −)", "(+, −)"],
+                      answer: 2,
+                      explanation: "Points in Quadrant III have both the x-coordinate and y-coordinate negative, giving the sign pattern (−, −)."
+                    },
+                    {
+                      question: "In the coordinate pair (x, y), what does the x-coordinate represent?",
+                      options: ["The perpendicular distance of the point from the x-axis", "The perpendicular distance of the point from the y-axis, measured along the x-axis", "The total distance from the origin", "The quadrant number"],
+                      answer: 1,
+                      explanation: "The x-coordinate gives the perpendicular distance of the point from the y-axis, measured along the x-axis — while the y-coordinate gives the perpendicular distance from the x-axis."
+                    },
+                    {
+                      question: "Under what condition does the point (x, y) coincide with the point (y, x)?",
+                      options: ["They always coincide", "They coincide only when x = y", "They never coincide", "They coincide only when both are negative"],
+                      answer: 1,
+                      explanation: "If x ≠ y, then (x, y) ≠ (y, x) — they are different points. They coincide if and only if x = y, in which case both notations describe the same point."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-1-3",
+                  title: "3. Distance Between Two Points",
+                  lab: { type: "distance-formula-sim" },
+                  theory: {
+                    intro: "To measure the distance between two points that don't line up neatly along an axis, we build a right triangle around them — and reach for the Baudhāyana–Pythagoras Theorem.",
+                    sections: [
+                      {
+                        heading: "Distances Along the Axes",
+                        text: "For two points sharing a y-coordinate, the distance between (x₁, y) and (x₂, y) is simply the absolute value |x₂ − x₁|. Similarly, for two points sharing an x-coordinate, the distance between (x, y₁) and (x, y₂) is |y₂ − y₁|. These give the horizontal and vertical 'legs' we need for the general case."
+                      },
+                      {
+                        heading: "The Distance Formula",
+                        text: "For any two points not aligned with an axis, drop a perpendicular to form a right triangle. Moving from A (3, 4) to D (7, 1): the horizontal distance CD = 7 − 3 = 4, and the vertical distance AC = 4 − 1 = 3. By the Baudhāyana–Pythagoras Theorem, AD = √(4² + 3²) = √25 = 5 units. In general, the distance between (x₁, y₁) and (x₂, y₂) is √((x₂ − x₁)² + (y₂ − y₁)²)."
+                      },
+                      {
+                        heading: "Signs Don't Matter",
+                        text: "It makes no difference whether (x₂ − x₁) and (y₂ − y₁) come out positive or negative, since we are simply measuring the shifts along the two axes and then squaring them. This is why reflecting a triangle across an axis preserves all its side lengths — for instance, reflecting triangle ADM across the y-axis gives A' (−3, 4), D' (−7, 1), M' (−9, 6), and the distance A'D' still works out to √(4² + 3²) = 5 units."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding Side Lengths of a Triangle Using the Distance Formula",
+                      objective: "To calculate all three side lengths of a triangle plotted on the coordinate plane using the distance formula.",
+                      materials: ["Graph paper", "Ruler", "Pencil", "A calculator"],
+                      steps: [
+                        "Plot the points A (3, 4), D (7, 1), and M (9, 6) on graph paper and join them to form triangle ADM.",
+                        "For side AD, compute the horizontal shift (7 − 3 = 4) and vertical shift (4 − 1 = 3), then apply √(4² + 3²).",
+                        "For side DM, compute the shifts (9 − 7 = 2 and 6 − 1 = 5), then apply √(2² + 5²).",
+                        "For side MA, compute the shifts (9 − 3 = 6 and 6 − 4 = 2), then apply √(6² + 2²).",
+                        "Record all three side lengths and check them against a ruler measurement on your graph."
+                      ],
+                      observation: "The three sides work out to AD = √(4²+3²) = 5 units, DM = √(2²+5²) = √29 units, and MA = √(6²+2²) = √40 units — all computed purely from the coordinates, without needing to physically measure anything."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the distance formula between two points (x₁, y₁) and (x₂, y₂)?",
+                      options: ["(x₂ − x₁) + (y₂ − y₁)", "√((x₂ − x₁)² + (y₂ − y₁)²)", "(x₂ − x₁) × (y₂ − y₁)", "√(x₂ + x₁) + √(y₂ + y₁)"],
+                      answer: 1,
+                      explanation: "By the Baudhāyana–Pythagoras Theorem applied to the right triangle formed by the horizontal and vertical shifts, the distance is √((x₂ − x₁)² + (y₂ − y₁)²)."
+                    },
+                    {
+                      question: "What is the distance between A (3, 4) and D (7, 1)?",
+                      options: ["3 units", "4 units", "5 units", "7 units"],
+                      answer: 2,
+                      explanation: "The horizontal shift is 7 − 3 = 4 and the vertical shift is 4 − 1 = 3, so the distance is √(4² + 3²) = √25 = 5 units."
+                    },
+                    {
+                      question: "What is the distance between D (7, 1) and M (9, 6)?",
+                      options: ["√29 units", "√40 units", "5 units", "7 units"],
+                      answer: 0,
+                      explanation: "The shifts are 9 − 7 = 2 and 6 − 1 = 5, so the distance is √(2² + 5²) = √29 units."
+                    },
+                    {
+                      question: "What is the distance between two points (x₁, y) and (x₂, y) that share the same y-coordinate?",
+                      options: ["√(x₂ + x₁)", "The absolute value |x₂ − x₁|", "Always zero", "(x₂ − x₁)²"],
+                      answer: 1,
+                      explanation: "When two points share a y-coordinate, they lie on a horizontal line, so the distance between them is simply the absolute value of the difference in their x-coordinates: |x₂ − x₁|."
+                    },
+                    {
+                      question: "Why does it not matter whether (x₂ − x₁) comes out positive or negative in the distance formula?",
+                      options: ["Because negative distances are allowed", "Because the difference is squared, which always gives a non-negative result — we are only measuring the size of the shift along the axis", "Because x₂ is always larger than x₁", "The sign does actually change the answer"],
+                      answer: 1,
+                      explanation: "The formula squares each difference, so a negative shift gives the same squared value as a positive one — we are measuring only the magnitude of the shift along each axis, not its direction."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-1-4",
+                  title: "4. Midpoints and Applications",
+                  lab: { type: "midpoint-sim" },
+                  theory: {
+                    intro: "Once you can compute distances from coordinates alone, you can answer surprisingly practical questions — whether three points sit on the same straight line, whether a point lies inside a circle, or exactly where the midpoint of a segment falls.",
+                    sections: [
+                      {
+                        heading: "Finding the Midpoint",
+                        text: "When M is the midpoint of segment ST, there is a direct connection between the coordinates: the midpoint's coordinates are the averages of the endpoints' coordinates. For example, M (0, 0) is the midpoint of S (−3, 0) and T (3, 0), since (−3+3)/2 = 0 and (0+0)/2 = 0. Similarly, M (3, 4) is the midpoint of S (2, 3) and T (4, 5), since (2+4)/2 = 3 and (3+5)/2 = 4."
+                      },
+                      {
+                        heading: "Testing Collinearity Without Plotting",
+                        text: "Three points lie on the same straight line (are collinear) if the distance between the two outer points equals the sum of the distances from each outer point to the middle one. This lets you check collinearity purely by computation — for instance, testing whether M (−3, −4), A (0, 0), and G (6, 8) all lie on one line, without ever drawing them."
+                      },
+                      {
+                        heading: "Points and Circles",
+                        text: "Since the distance formula gives the distance from any point to the origin, we can test whether points lie on, inside, or outside a circle centred at the origin: if the distance equals the radius, the point is on the circle; if less, inside; if greater, outside. This is exactly how a computer graphics program can determine whether a circular icon fits within a screen, or whether two circular icons overlap."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying Midpoints Using Coordinate Averages",
+                      objective: "To confirm the relationship between a midpoint's coordinates and those of the segment's endpoints.",
+                      materials: ["Graph paper", "Ruler", "Pencil", "A calculator"],
+                      steps: [
+                        "Plot S (−3, 0) and T (3, 0), then plot the candidate midpoint M (0, 0).",
+                        "Compute the average of the x-coordinates: (−3 + 3)/2, and the average of the y-coordinates: (0 + 0)/2.",
+                        "Check whether these averages match M's coordinates.",
+                        "Repeat for S (2, 3), M (3, 4), T (4, 5): compute (2+4)/2 and (3+5)/2.",
+                        "Test a non-midpoint case, such as S (0, 0), M (0, 5), T (0, −10), and see whether the averaging relationship fails."
+                      ],
+                      observation: "For genuine midpoints, the coordinates are exactly the averages of the endpoints' coordinates — M (0, 0) for S (−3, 0) and T (3, 0), and M (3, 4) for S (2, 3) and T (4, 5). For S (0, 0) and T (0, −10), the true midpoint would be (0, −5), not (0, 5), so M (0, 5) is not the midpoint."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the midpoint of the segment joining S (−3, 0) and T (3, 0)?",
+                      options: ["(0, 0)", "(3, 0)", "(−3, 0)", "(6, 0)"],
+                      answer: 0,
+                      explanation: "Averaging the coordinates: x = (−3 + 3)/2 = 0 and y = (0 + 0)/2 = 0, giving the midpoint (0, 0)."
+                    },
+                    {
+                      question: "Is M (3, 4) the midpoint of S (2, 3) and T (4, 5)?",
+                      options: ["No, it is not", "Yes — since (2+4)/2 = 3 and (3+5)/2 = 4", "Only if the points are collinear", "This cannot be determined"],
+                      answer: 1,
+                      explanation: "Averaging the coordinates of S and T gives x = (2+4)/2 = 3 and y = (3+5)/2 = 4, which matches M exactly — so M is indeed the midpoint."
+                    },
+                    {
+                      question: "Is M (0, 5) the midpoint of S (0, 0) and T (0, −10)?",
+                      options: ["Yes, it is", "No — the true midpoint is (0, −5)", "Yes, but only approximately", "Midpoints cannot be found for vertical segments"],
+                      answer: 1,
+                      explanation: "Averaging gives x = (0+0)/2 = 0 and y = (0 + (−10))/2 = −5, so the true midpoint is (0, −5), not (0, 5)."
+                    },
+                    {
+                      question: "How can you check whether three points are collinear (lie on one straight line) without plotting them?",
+                      options: ["This is impossible without plotting", "Check whether the distance between the two outer points equals the sum of the distances from each outer point to the middle one", "Check whether all three have the same x-coordinate", "Add all six coordinates together"],
+                      answer: 1,
+                      explanation: "If three points are collinear, the longest distance (between the two outer points) will exactly equal the sum of the two shorter distances — a check that can be done purely by computation using the distance formula."
+                    },
+                    {
+                      question: "A circle is centred at the origin with radius r. How can you tell if a point lies inside the circle?",
+                      options: ["If its distance from the origin is greater than r", "If its distance from the origin is less than r", "If its distance from the origin equals r", "Points can never lie inside a circle"],
+                      answer: 1,
+                      explanation: "Computing the point's distance from the origin using the distance formula: if that distance is less than the radius r, the point lies inside the circle; if equal, on the circle; if greater, outside."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
       }
     },
     "10": {

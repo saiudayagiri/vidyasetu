@@ -4967,6 +4967,97 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const cartesianPlaneLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="cartesian-plane-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a point and see where it lands on the coordinate axes.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Point</h3>
+            <select id="sel-cartesian-plane" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="O" selected>O (0, 0) — the origin</option>
+              <option value="B">B (4.5, 0)</option>
+              <option value="E">E (−2.9, 0)</option>
+              <option value="H">H (0, 4)</option>
+              <option value="G">G (0, −4.5)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Location</h3>
+            <div id="cartesian-plane-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a point above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const quadrantIdentifierLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="quadrant-identifier-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a point and see which quadrant it falls in.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Point</h3>
+            <select id="sel-quadrant-identifier" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="4,3" selected>P (4, 3)</option>
+              <option value="-5,3">Q (−5, 3)</option>
+              <option value="-4,-3">R (−4, −3)</option>
+              <option value="3,-5">S (3, −5)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Quadrant</h3>
+            <div id="quadrant-identifier-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a point above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const distanceFormulaLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="distance-formula-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a side of triangle ADM and see its length computed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Side</h3>
+            <select id="sel-distance-formula" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="AD" selected>AD — A (3, 4) to D (7, 1)</option>
+              <option value="DM">DM — D (7, 1) to M (9, 6)</option>
+              <option value="MA">MA — M (9, 6) to A (3, 4)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Distance Calculation</h3>
+            <div id="distance-formula-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a side above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const midpointLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="midpoint-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a segment and check whether M is really its midpoint.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Case</h3>
+            <select id="sel-midpoint" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="a" selected>S (−3, 0), M (0, 0), T (3, 0)</option>
+              <option value="b">S (2, 3), M (3, 4), T (4, 5)</option>
+              <option value="c">S (0, 0), M (0, 5), T (0, −10)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Is M the Midpoint?</h3>
+            <div id="midpoint-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a case above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -7102,6 +7193,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'reproduction-type-sim') {
               labHtml = reproductionTypeLabHtml;
               labDesc = 'Pick an example and see whether it is asexual or sexual reproduction.';
+            } else if (topicObj.lab.type === 'cartesian-plane-sim') {
+              labHtml = cartesianPlaneLabHtml;
+              labDesc = 'Pick a point and see where it lands on the coordinate axes.';
+            } else if (topicObj.lab.type === 'quadrant-identifier-sim') {
+              labHtml = quadrantIdentifierLabHtml;
+              labDesc = 'Pick a point and see which quadrant it falls in.';
+            } else if (topicObj.lab.type === 'distance-formula-sim') {
+              labHtml = distanceFormulaLabHtml;
+              labDesc = 'Pick a side of a triangle and see its length computed from coordinates.';
+            } else if (topicObj.lab.type === 'midpoint-sim') {
+              labHtml = midpointLabHtml;
+              labDesc = 'Pick a segment and check whether M is really its midpoint.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -7733,6 +7836,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initEarthSpheresLab();
         } else if (topicObj.lab.type === 'reproduction-type-sim') {
           initReproductionTypeLab();
+        } else if (topicObj.lab.type === 'cartesian-plane-sim') {
+          initCartesianPlaneLab();
+        } else if (topicObj.lab.type === 'quadrant-identifier-sim') {
+          initQuadrantIdentifierLab();
+        } else if (topicObj.lab.type === 'distance-formula-sim') {
+          initDistanceFormulaLab();
+        } else if (topicObj.lab.type === 'midpoint-sim') {
+          initMidpointLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -25173,6 +25284,218 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(d.sexual ? 'SEXUAL REPRODUCTION' : 'ASEXUAL REPRODUCTION', W / 2, 255);
 
         obs.innerHTML = `<strong>${d.sexual ? 'Sexual' : 'Asexual'} reproduction:</strong> ${d.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function drawCoordAxes(ctx, W, H, unit, ox, oy, range) {
+      ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+      for (let i = -range; i <= range; i++) {
+        ctx.beginPath(); ctx.moveTo(ox + i * unit, 0); ctx.lineTo(ox + i * unit, H); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0, oy + i * unit); ctx.lineTo(W, oy + i * unit); ctx.stroke();
+      }
+      ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(0, oy); ctx.lineTo(W, oy); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(ox, 0); ctx.lineTo(ox, H); ctx.stroke();
+      ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+      ctx.fillText('x', W - 10, oy - 8);
+      ctx.fillText('y', ox + 12, 12);
+    }
+
+    function initCartesianPlaneLab() {
+      const canvas = document.getElementById('cartesian-plane-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-cartesian-plane');
+      const obs = document.getElementById('cartesian-plane-obs');
+      const PTS = {
+        O: { x: 0, y: 0, label: 'O (0, 0)', desc: 'The origin — the point where the x-axis and y-axis intersect.' },
+        B: { x: 4.5, y: 0, label: 'B (4.5, 0)', desc: 'Lies on the x-axis, 4.5 units to the right of O (positive x-coordinate).' },
+        E: { x: -2.9, y: 0, label: 'E (−2.9, 0)', desc: 'Lies on the x-axis, 2.9 units to the left of O (negative x-coordinate).' },
+        H: { x: 0, y: 4, label: 'H (0, 4)', desc: 'Lies on the y-axis, 4 units above O (positive y-coordinate).' },
+        G: { x: 0, y: -4.5, label: 'G (0, −4.5)', desc: 'Lies on the y-axis, 4.5 units below O (negative y-coordinate).' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const unit = 28, ox = W / 2, oy = H / 2;
+        drawCoordAxes(ctx, W, H, unit, ox, oy, 10);
+
+        const p = PTS[sel.value];
+        const px = ox + p.x * unit, py = oy - p.y * unit;
+        ctx.fillStyle = '#22c55e';
+        ctx.beginPath(); ctx.arc(px, py, 7, 0, Math.PI * 2); ctx.fill();
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = '#22c55e'; ctx.textAlign = 'left';
+        ctx.fillText(p.label, px + 12, py - 8);
+
+        obs.innerHTML = `<strong>${p.label}:</strong> ${p.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initQuadrantIdentifierLab() {
+      const canvas = document.getElementById('quadrant-identifier-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-quadrant-identifier');
+      const obs = document.getElementById('quadrant-identifier-obs');
+
+      function quadrantOf(x, y) {
+        if (x > 0 && y > 0) return { n: 'I', signs: '(+, +)' };
+        if (x < 0 && y > 0) return { n: 'II', signs: '(−, +)' };
+        if (x < 0 && y < 0) return { n: 'III', signs: '(−, −)' };
+        return { n: 'IV', signs: '(+, −)' };
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const unit = 28, ox = W / 2, oy = H / 2;
+        const [x, y] = sel.value.split(',').map(Number);
+        const q = quadrantOf(x, y);
+
+        const qRects = { I: [ox, 0, W - ox, oy], II: [0, 0, ox, oy], III: [0, oy, ox, H - oy], IV: [ox, oy, W - ox, H - oy] };
+        const r = qRects[q.n];
+        ctx.fillStyle = 'rgba(34,197,94,0.12)';
+        ctx.fillRect(r[0], r[1], r[2], r[3]);
+
+        drawCoordAxes(ctx, W, H, unit, ox, oy, 10);
+
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('II', ox - 100, oy - 100);
+        ctx.fillText('I', ox + 100, oy - 100);
+        ctx.fillText('III', ox - 100, oy + 100);
+        ctx.fillText('IV', ox + 100, oy + 100);
+
+        const px = ox + x * unit, py = oy - y * unit;
+        ctx.fillStyle = '#22c55e';
+        ctx.beginPath(); ctx.arc(px, py, 7, 0, Math.PI * 2); ctx.fill();
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = '#22c55e'; ctx.textAlign = 'left';
+        ctx.fillText(`(${x}, ${y})`, px + 12, py - 8);
+
+        obs.innerHTML = `<strong>(${x}, ${y}) → Quadrant ${q.n}:</strong> The sign pattern is ${q.signs}, which places this point in Quadrant ${q.n}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDistanceFormulaLab() {
+      const canvas = document.getElementById('distance-formula-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-distance-formula');
+      const obs = document.getElementById('distance-formula-obs');
+      const A = { x: 3, y: 4, n: 'A' }, D = { x: 7, y: 1, n: 'D' }, M = { x: 9, y: 6, n: 'M' };
+      const SIDES = { AD: [A, D], DM: [D, M], MA: [M, A] };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const unit = 26, ox = 45, oy = H - 40;
+        drawCoordAxes(ctx, W, H, unit, ox, oy, 11);
+
+        const toPx = p => [ox + p.x * unit, oy - p.y * unit];
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        [A, D, M].forEach((p, i) => { const [px, py] = toPx(p); i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py); });
+        ctx.closePath(); ctx.stroke();
+
+        const [p1, p2] = SIDES[sel.value];
+        const [x1, y1] = toPx(p1), [x2, y2] = toPx(p2);
+        const [cx, cy] = [x2, y1];
+
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(cx, cy); ctx.lineTo(x2, y2); ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+
+        [A, D, M].forEach(p => {
+          const [px, py] = toPx(p);
+          ctx.fillStyle = cssVar('--accent-color');
+          ctx.beginPath(); ctx.arc(px, py, 5, 0, Math.PI * 2); ctx.fill();
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'left';
+          ctx.fillText(`${p.n} (${p.x}, ${p.y})`, px + 8, py - 6);
+        });
+
+        const dx = Math.abs(p2.x - p1.x), dy = Math.abs(p2.y - p1.y);
+        const d2 = dx * dx + dy * dy;
+        const exact = Math.sqrt(d2);
+        const isPerfect = Number.isInteger(exact);
+        const disp = isPerfect ? `${exact}` : `√${d2}`;
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = '#22c55e'; ctx.textAlign = 'center';
+        ctx.fillText(`${sel.value} = √(${dx}² + ${dy}²) = ${disp} units`, W / 2, 22);
+
+        obs.innerHTML = `<strong>${sel.value} = √(${dx}² + ${dy}²) = ${disp} units.</strong> The horizontal shift is ${dx} and the vertical shift is ${dy}; the Baudhāyana–Pythagoras Theorem gives the distance directly.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMidpointLab() {
+      const canvas = document.getElementById('midpoint-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-midpoint');
+      const obs = document.getElementById('midpoint-obs');
+      const CASES = {
+        a: { S: [-3, 0], M: [0, 0], T: [3, 0] },
+        b: { S: [2, 3], M: [3, 4], T: [4, 5] },
+        c: { S: [0, 0], M: [0, 5], T: [0, -10] }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const unit = 20, ox = W / 2, oy = H / 2;
+        drawCoordAxes(ctx, W, H, unit, ox, oy, 15);
+
+        const c = CASES[sel.value];
+        const trueMx = (c.S[0] + c.T[0]) / 2, trueMy = (c.S[1] + c.T[1]) / 2;
+        const isMid = trueMx === c.M[0] && trueMy === c.M[1];
+
+        const toPx = ([x, y]) => [ox + x * unit, oy - y * unit];
+        const [sx, sy] = toPx(c.S), [tx, ty] = toPx(c.T), [mx, my] = toPx(c.M);
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(tx, ty); ctx.stroke();
+
+        [[sx, sy, 'S', c.S], [tx, ty, 'T', c.T]].forEach(([px, py, n, co]) => {
+          ctx.fillStyle = cssVar('--accent-color');
+          ctx.beginPath(); ctx.arc(px, py, 6, 0, Math.PI * 2); ctx.fill();
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'left';
+          ctx.fillText(`${n} (${co[0]}, ${co[1]})`, px + 9, py - 7);
+        });
+
+        ctx.fillStyle = isMid ? '#22c55e' : '#ef4444';
+        ctx.beginPath(); ctx.arc(mx, my, 7, 0, Math.PI * 2); ctx.fill();
+        ctx.font = 'bold 11px system-ui'; ctx.fillStyle = isMid ? '#22c55e' : '#ef4444'; ctx.textAlign = 'left';
+        ctx.fillText(`M (${c.M[0]}, ${c.M[1]})`, mx + 10, my + 16);
+
+        if (!isMid) {
+          const [tmx, tmy] = toPx([trueMx, trueMy]);
+          ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(tmx, tmy, 7, 0, Math.PI * 2); ctx.stroke();
+          ctx.font = '11px system-ui'; ctx.fillStyle = '#22c55e'; ctx.textAlign = 'left';
+          ctx.fillText(`true midpoint (${trueMx}, ${trueMy})`, tmx + 10, tmy - 8);
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = isMid ? '#22c55e' : '#ef4444'; ctx.textAlign = 'center';
+        ctx.fillText(isMid ? 'YES — M is the midpoint' : 'NO — M is not the midpoint', W / 2, 22);
+
+        obs.innerHTML = isMid
+          ? `<strong>Yes:</strong> Averaging gives x = (${c.S[0]} + ${c.T[0]})/2 = ${trueMx} and y = (${c.S[1]} + ${c.T[1]})/2 = ${trueMy}, matching M exactly.`
+          : `<strong>No:</strong> Averaging gives x = (${c.S[0]} + ${c.T[0]})/2 = ${trueMx} and y = (${c.S[1]} + ${c.T[1]})/2 = ${trueMy}, so the true midpoint is (${trueMx}, ${trueMy}), not (${c.M[0]}, ${c.M[1]}).`;
       }
 
       sel.addEventListener('change', draw);
