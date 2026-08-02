@@ -4599,6 +4599,96 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const mirrorImageLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="mirror-image-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a mirror and distance to see the resulting image.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose Mirror and Distance</h3>
+            <select id="sel-mirror-image" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="concave-close" selected>Concave mirror, object close</option>
+              <option value="concave-far">Concave mirror, object far</option>
+              <option value="convex-close">Convex mirror, object close</option>
+              <option value="convex-far">Convex mirror, object far</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Image Characteristics</h3>
+            <div id="mirror-image-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an option above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const reflectionAngleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="reflection-angle-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an angle of incidence and see the matching angle of reflection.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Angle of Incidence</h3>
+            <select id="sel-reflection-angle" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>0° (along the normal)</option>
+              <option value="30">30°</option>
+              <option value="45">45°</option>
+              <option value="60">60°</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Angle of Reflection</h3>
+            <div id="reflection-angle-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an angle above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const parallelBeamMirrorLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="parallel-beam-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a mirror type and see how parallel beams reflect.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Mirror</h3>
+            <select id="sel-parallel-beam" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="plane" selected>Plane mirror</option>
+              <option value="concave">Concave mirror</option>
+              <option value="convex">Convex mirror</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Beam Behaviour</h3>
+            <div id="parallel-beam-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a mirror above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const lensImageLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="lens-image-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a lens type and see how it bends parallel light.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Lens</h3>
+            <select id="sel-lens-image" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="flat" selected>Thin flat glass plate</option>
+              <option value="convex">Convex lens</option>
+              <option value="concave">Concave lens</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Light Behaviour</h3>
+            <div id="lens-image-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a lens above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -6686,6 +6776,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'float-sink-sim') {
               labHtml = floatSinkLabHtml;
               labDesc = 'Pick a scenario and see whether the object floats or sinks based on density.';
+            } else if (topicObj.lab.type === 'mirror-image-sim') {
+              labHtml = mirrorImageLabHtml;
+              labDesc = 'Pick a mirror type and distance to see the resulting image characteristics.';
+            } else if (topicObj.lab.type === 'reflection-angle-sim') {
+              labHtml = reflectionAngleLabHtml;
+              labDesc = 'Pick an angle of incidence and see the matching angle of reflection.';
+            } else if (topicObj.lab.type === 'parallel-beam-mirror-sim') {
+              labHtml = parallelBeamMirrorLabHtml;
+              labDesc = 'Pick a mirror type and see how parallel beams converge, diverge, or stay parallel.';
+            } else if (topicObj.lab.type === 'lens-image-sim') {
+              labHtml = lensImageLabHtml;
+              labDesc = 'Pick a lens type and see how it bends parallel light rays.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -7285,6 +7387,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initDensityCalcLab();
         } else if (topicObj.lab.type === 'float-sink-sim') {
           initFloatSinkLab();
+        } else if (topicObj.lab.type === 'mirror-image-sim') {
+          initMirrorImageLab();
+        } else if (topicObj.lab.type === 'reflection-angle-sim') {
+          initReflectionAngleLab();
+        } else if (topicObj.lab.type === 'parallel-beam-mirror-sim') {
+          initParallelBeamMirrorLab();
+        } else if (topicObj.lab.type === 'lens-image-sim') {
+          initLensImageLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -23975,6 +24085,206 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(d.floats ? 'FLOATS' : 'SINKS', W / 2, 250);
 
         obs.innerHTML = `<strong>${d.floats ? 'Floats' : 'Sinks'}:</strong> ${d.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMirrorImageLab() {
+      const canvas = document.getElementById('mirror-image-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-mirror-image');
+      const obs = document.getElementById('mirror-image-obs');
+      const DATA = {
+        'concave-close': { erect: true, scale: 1.6, desc: 'Object close to a concave mirror: image is erect and enlarged.' },
+        'concave-far': { erect: false, scale: 0.6, desc: 'Object far from a concave mirror: image is inverted and diminished.' },
+        'convex-close': { erect: true, scale: 0.7, desc: 'Object close to a convex mirror: image is erect and diminished.' },
+        'convex-far': { erect: true, scale: 0.4, desc: 'Object far from a convex mirror: image is erect and even more diminished.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const cx = W / 2, groundY = 220;
+        const objH = 60;
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx - 120, groundY); ctx.lineTo(cx - 120, groundY - objH); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx - 125, groundY - objH); ctx.lineTo(cx - 115, groundY - objH); ctx.lineTo(cx - 120, groundY - objH - 10); ctx.closePath(); ctx.fill();
+
+        const imgH = objH * d.scale;
+        const imgY = d.erect ? groundY : groundY - imgH;
+        const imgTopY = d.erect ? groundY - imgH : groundY;
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx + 80, groundY); ctx.lineTo(cx + 80, imgTopY); ctx.stroke();
+        const arrowDir = d.erect ? -1 : 1;
+        ctx.beginPath(); ctx.moveTo(cx + 75, imgTopY); ctx.lineTo(cx + 85, imgTopY); ctx.lineTo(cx + 80, imgTopY + arrowDir * -10); ctx.closePath(); ctx.fill();
+
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText('Object', cx - 120, groundY + 20);
+        ctx.fillText('Image', cx + 80, groundY + 20);
+        ctx.font = 'bold 14px system-ui';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${d.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initReflectionAngleLab() {
+      const canvas = document.getElementById('reflection-angle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-reflection-angle');
+      const obs = document.getElementById('reflection-angle-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const angle = parseFloat(sel.value);
+        const cx = W / 2, cy = 180;
+        const rad = angle * Math.PI / 180;
+        const len = 130;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx - 150, cy); ctx.lineTo(cx + 150, cy); ctx.stroke();
+        ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx, cy - 150); ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2.5;
+        const ix = cx - len * Math.sin(rad), iy = cy - len * Math.cos(rad);
+        ctx.beginPath(); ctx.moveTo(ix, iy); ctx.lineTo(cx, cy); ctx.stroke();
+        ctx.strokeStyle = '#22c55e';
+        const rx = cx + len * Math.sin(rad), ry = cy - len * Math.cos(rad);
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(rx, ry); ctx.stroke();
+
+        ctx.font = '12px system-ui'; ctx.fillStyle = '#ef4444'; ctx.textAlign = 'center';
+        ctx.fillText('Incident ray', ix - 10, iy - 10);
+        ctx.fillStyle = '#22c55e';
+        ctx.fillText('Reflected ray', rx + 15, ry - 10);
+        ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('Normal', cx + 25, cy - 130);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`i = ${angle}°, r = ${angle}°`, W / 2, 30);
+
+        obs.innerHTML = `<strong>Angle of incidence = ${angle}°:</strong> The angle of reflection is also exactly ${angle}°, confirming i = r.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initParallelBeamMirrorLab() {
+      const canvas = document.getElementById('parallel-beam-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-parallel-beam');
+      const obs = document.getElementById('parallel-beam-obs');
+      const INFO = {
+        plane: 'Reflected beams stay parallel to each other.',
+        concave: 'Reflected beams converge, meeting at a focal point.',
+        convex: 'Reflected beams diverge, spreading outward.'
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const type = sel.value;
+        const mirrorX = W / 2 + 40, cy = 140;
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        if (type === 'plane') {
+          ctx.beginPath(); ctx.moveTo(mirrorX, cy - 80); ctx.lineTo(mirrorX, cy + 80); ctx.stroke();
+        } else if (type === 'concave') {
+          ctx.beginPath(); ctx.arc(mirrorX + 60, cy, 90, Math.PI * 0.75, Math.PI * 1.25); ctx.stroke();
+        } else {
+          ctx.beginPath(); ctx.arc(mirrorX - 60, cy, 90, -Math.PI * 0.25, Math.PI * 0.25); ctx.stroke();
+        }
+
+        const focal = mirrorX + 100;
+        [-60, -30, 0, 30, 60].forEach(off => {
+          const y = cy + off;
+          ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(mirrorX - 150, y); ctx.lineTo(mirrorX, y); ctx.stroke();
+        });
+
+        [-60, -30, 0, 30, 60].forEach(off => {
+          const y = cy + off;
+          ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(mirrorX, y);
+          if (type === 'plane') ctx.lineTo(mirrorX - 150, y);
+          else if (type === 'concave') ctx.lineTo(focal, cy);
+          else { const dx = mirrorX - focal, dy = y - cy; ctx.lineTo(mirrorX - 150, cy + dy * (1 + 150 / Math.abs(dx || 1))); }
+          ctx.stroke();
+        });
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${INFO[type]}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initLensImageLab() {
+      const canvas = document.getElementById('lens-image-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-lens-image');
+      const obs = document.getElementById('lens-image-obs');
+      const INFO = {
+        flat: 'Light passes straight through unchanged — no converging or diverging.',
+        convex: 'A convex (converging) lens bends parallel rays inward to meet at a focal point.',
+        concave: 'A concave (diverging) lens bends parallel rays outward, spreading them apart.'
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const type = sel.value;
+        const lensX = W / 2, cy = 140;
+
+        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
+        if (type === 'flat') {
+          ctx.beginPath(); ctx.moveTo(lensX, cy - 80); ctx.lineTo(lensX, cy + 80); ctx.stroke();
+        } else if (type === 'convex') {
+          ctx.beginPath(); ctx.moveTo(lensX, cy - 80);
+          ctx.quadraticCurveTo(lensX + 25, cy, lensX, cy + 80);
+          ctx.quadraticCurveTo(lensX - 25, cy, lensX, cy - 80);
+          ctx.stroke();
+        } else {
+          ctx.beginPath(); ctx.moveTo(lensX - 15, cy - 80);
+          ctx.quadraticCurveTo(lensX + 8, cy, lensX - 15, cy + 80);
+          ctx.moveTo(lensX + 15, cy - 80);
+          ctx.quadraticCurveTo(lensX - 8, cy, lensX + 15, cy + 80);
+          ctx.stroke();
+        }
+
+        const focalX = lensX + 110;
+        [-60, -30, 0, 30, 60].forEach(off => {
+          const y = cy + off;
+          ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(lensX - 150, y); ctx.lineTo(lensX, y); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(lensX, y);
+          if (type === 'flat') ctx.lineTo(lensX + 150, y);
+          else if (type === 'convex') ctx.lineTo(focalX, cy);
+          else { const dy = y - cy; ctx.lineTo(lensX + 150, cy + dy * 2.2); }
+          ctx.stroke();
+        });
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${INFO[type]}`;
       }
 
       sel.addEventListener('change', draw);

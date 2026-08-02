@@ -14406,6 +14406,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8s-10",
+              title: "Light: Mirrors and Lenses",
+              topics: [
+                {
+                  id: "8s-10-1",
+                  title: "1. Spherical Mirrors: Concave and Convex",
+                  lab: { type: "mirror-image-sim" },
+                  theory: {
+                    intro: "Look into the inside of a shiny spoon and your face appears upside down; flip it over, and suddenly you look small but right-side up — the same spoon, two completely different reflections.",
+                    sections: [
+                      {
+                        heading: "Concave and Convex Mirrors",
+                        text: "Spherical mirrors are curved mirrors shaped like part of a hollow sphere. A mirror whose reflecting surface curves INWARD is a concave mirror (like the inner side of a spoon); one that curves OUTWARD is a convex mirror (like the outer side of a spoon). Both are created by grinding and polishing flat glass into a curved shape and coating one side reflectively."
+                      },
+                      {
+                        heading: "Images in a Concave Mirror",
+                        text: "When an object is placed CLOSE to a concave mirror, its image is erect and enlarged. As the object moves FARTHER away, the image becomes inverted — initially still enlarged, then progressively smaller. This is very different from a plane mirror, which always shows an erect, same-size image."
+                      },
+                      {
+                        heading: "Images in a Convex Mirror",
+                        text: "A convex mirror always produces an image that is erect and diminished (smaller than the object), regardless of distance — though the image shrinks slightly further as the object moves away. This is why convex mirrors are used as vehicle side-view mirrors (providing a wider view of traffic, though objects appear smaller/closer than they are), road safety mirrors at blind intersections, and surveillance mirrors in stores. Concave mirrors are used as torch/headlight reflectors and dental mirrors (for their enlarging effect up close)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Images in Concave and Convex Mirrors",
+                      objective: "To observe how image size and orientation change with distance in concave and convex mirrors, compared to a plane mirror.",
+                      materials: ["A concave mirror", "A convex mirror", "Two wooden blocks or mirror stands", "A small toy or object"],
+                      steps: [
+                        "Place the concave and convex mirrors upright, side by side.",
+                        "Position a small object 3-4 cm in front of both mirrors and observe the images.",
+                        "Note whether each image is erect/inverted and enlarged/diminished.",
+                        "Slowly move the object farther from both mirrors, observing any changes.",
+                        "Record how the concave mirror's image changes compared to the convex mirror's image."
+                      ],
+                      observation: "Close to the concave mirror, the image is erect and enlarged; as the object moves away, it becomes inverted (first enlarged, then shrinking). The convex mirror's image stays erect and diminished at all distances, only shrinking slightly further as the object moves away."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a concave mirror?",
+                      options: ["A spherical mirror whose reflecting surface curves outward", "A spherical mirror whose reflecting surface curves inward", "A flat mirror with no curve", "A mirror made only of plastic"],
+                      answer: 1,
+                      explanation: "A concave mirror has a reflecting surface that curves inward, like the inner (concave) side of a spoon."
+                    },
+                    {
+                      question: "When an object is placed close to a concave mirror, what does its image look like?",
+                      options: ["Inverted and diminished", "Erect and enlarged", "Erect and diminished", "Always the same size as a plane mirror's image"],
+                      answer: 1,
+                      explanation: "An object placed close to a concave mirror produces an image that is erect (right-side up) and enlarged (larger than the object)."
+                    },
+                    {
+                      question: "What happens to a concave mirror's image as the object moves farther away?",
+                      options: ["It stays erect and enlarged forever", "It becomes inverted, first still enlarged and then progressively smaller", "It disappears completely", "It becomes diminished but stays erect"],
+                      answer: 1,
+                      explanation: "As the object moves farther from a concave mirror, the image flips to become inverted — initially enlarged, then shrinking as the distance increases further."
+                    },
+                    {
+                      question: "What is a defining characteristic of images formed by a convex mirror?",
+                      options: ["Always inverted and enlarged", "Always erect and diminished, regardless of distance", "They change between erect and inverted depending on distance", "Convex mirrors cannot form images"],
+                      answer: 1,
+                      explanation: "A convex mirror always produces an erect (upright), diminished (smaller) image, no matter how far or close the object is."
+                    },
+                    {
+                      question: "Why are convex mirrors preferred for vehicle side-view mirrors?",
+                      options: ["They make objects look bigger and closer", "They provide a wider field of view of the traffic behind, even though objects appear smaller/farther than they really are", "They are cheaper to manufacture", "Convex mirrors cannot be used for this purpose"],
+                      answer: 1,
+                      explanation: "Because convex mirrors always show a diminished, erect image, they capture a much wider area of the road behind — which is why vehicles use them for side-view mirrors, despite objects appearing closer than they seem."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-10-2",
+                  title: "2. Laws of Reflection",
+                  lab: { type: "reflection-angle-sim" },
+                  theory: {
+                    intro: "No matter what angle you shine a beam of light onto a mirror, one thing never changes: the angle it bounces away at always exactly matches the angle it came in at.",
+                    sections: [
+                      {
+                        heading: "Incident Ray, Reflected Ray, and the Normal",
+                        text: "The ray of light falling on a mirror is the incident ray; the ray bouncing back is the reflected ray. A line drawn perpendicular (at 90°) to the mirror's surface at the point where light strikes is called the normal. The angle between the incident ray and the normal is the angle of incidence (i); the angle between the reflected ray and the normal is the angle of reflection (r)."
+                      },
+                      {
+                        heading: "The First Law of Reflection",
+                        text: "Careful measurement shows that the angle of incidence always equals the angle of reflection (i = r) — this is the first law of reflection. When light falls exactly along the normal (perpendicular to the mirror), both the angle of incidence and angle of reflection are zero."
+                      },
+                      {
+                        heading: "The Second Law of Reflection",
+                        text: "Bending a sheet of paper along which a reflected beam travels makes the reflected beam disappear from view — until the paper is flattened again. This shows that the incident ray, the normal at the point of incidence, and the reflected ray all lie in the SAME plane — the second law of reflection. Both laws of reflection apply to plane mirrors AND spherical (concave/convex) mirrors."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Measuring the Angle of Incidence and Angle of Reflection",
+                      objective: "To verify that the angle of incidence equals the angle of reflection, using a plane mirror and a thin beam of light.",
+                      materials: ["A plane mirror with stand", "A torch", "A comb (with a single opening exposed)", "A paper clip", "White paper", "Black paper strip", "A protractor"],
+                      steps: [
+                        "Create a thin light beam using the torch and a comb slit.",
+                        "Place the mirror upright on white paper and direct the light beam onto it, tracing the incident and reflected rays.",
+                        "Draw the normal — a line at 90° to the mirror at the point where the ray strikes.",
+                        "Measure the angle between the incident ray and the normal (angle of incidence), and between the reflected ray and the normal (angle of reflection).",
+                        "Repeat with different incidence angles and compare i and r each time."
+                      ],
+                      observation: "In every trial, the measured angle of incidence closely matches the measured angle of reflection — confirming the first law of reflection: angle of incidence (i) = angle of reflection (r)."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the 'normal' in the context of reflection?",
+                      options: ["The reflected ray itself", "A line drawn at 90° to the mirror's surface at the point of incidence", "The incident ray itself", "A line parallel to the mirror's surface"],
+                      answer: 1,
+                      explanation: "The normal is an imaginary line drawn perpendicular (90°) to the mirror's surface exactly at the point where the incident ray strikes."
+                    },
+                    {
+                      question: "What is the first law of reflection?",
+                      options: ["The angle of incidence is always greater than the angle of reflection", "The angle of incidence equals the angle of reflection", "The angle of reflection is always 90°", "There is no fixed relationship between the two angles"],
+                      answer: 1,
+                      explanation: "The first law of reflection states that the angle of incidence (i) always equals the angle of reflection (r)."
+                    },
+                    {
+                      question: "If a light ray falls exactly along the normal (perpendicular to the mirror), what are the angle of incidence and angle of reflection?",
+                      options: ["Both are 90°", "Both are 0°", "Angle of incidence is 90°, angle of reflection is 0°", "They cannot be determined"],
+                      answer: 1,
+                      explanation: "When light falls exactly along the normal, it makes a 0° angle with the normal itself, so both the angle of incidence and angle of reflection are 0°."
+                    },
+                    {
+                      question: "What does the second law of reflection state?",
+                      options: ["The incident ray, normal, and reflected ray lie in different planes", "The incident ray, the normal at the point of incidence, and the reflected ray all lie in the same plane", "Reflection only works on flat surfaces", "The reflected ray always disappears"],
+                      answer: 1,
+                      explanation: "The second law of reflection states that the incident ray, the normal, and the reflected ray all lie within the same flat plane."
+                    },
+                    {
+                      question: "Do the laws of reflection apply only to plane mirrors, or also to spherical mirrors?",
+                      options: ["Only to plane mirrors", "They apply to both plane mirrors AND spherical (concave/convex) mirrors", "Only to concave mirrors", "They don't apply to any mirrors"],
+                      answer: 1,
+                      explanation: "The laws of reflection are universal — they apply to plane mirrors as well as concave and convex spherical mirrors, even though the curved shape causes additional converging/diverging effects."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-10-3",
+                  title: "3. Converging and Diverging: Parallel Beams on Mirrors",
+                  lab: { type: "parallel-beam-mirror-sim" },
+                  theory: {
+                    intro: "Point several parallel beams of sunlight at a concave mirror and they all bend inward to meet at a single spot — hot enough, in fact, to set paper on fire.",
+                    sections: [
+                      {
+                        heading: "How Spherical Mirrors Affect Parallel Beams",
+                        text: "When multiple parallel light beams strike a PLANE mirror, the reflected beams remain parallel. When they strike a CONCAVE mirror, the reflected beams bend inward and meet — they converge. When they strike a CONVEX mirror, the reflected beams spread outward — they diverge. Even though each individual ray still obeys the laws of reflection, the curved surface causes this different overall behavior depending on the mirror's shape."
+                      },
+                      {
+                        heading: "Concentrating Sunlight with a Concave Mirror",
+                        text: "Holding a concave mirror facing the Sun and directing the reflected light onto paper produces a sharp, bright spot where the converging rays meet — concentrating enough heat to make the paper smoke and even catch fire. This demonstrates the real power of convergence: focusing scattered light energy into a small, intense point."
+                      },
+                      {
+                        heading: "Solar Concentrators",
+                        text: "Devices that concentrate sunlight into a small area using mirrors and lenses are called solar concentrators. The concentrated sunlight can heat liquid to produce steam for generating electricity, provide heat for large-scale cooking, or even power solar furnaces hot enough to melt steel — all harnessing the same converging principle demonstrated by a simple concave mirror."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Concentrating Sunlight Using a Concave Mirror",
+                      objective: "To observe how a concave mirror converges parallel sunlight rays into a single bright, hot point capable of igniting paper.",
+                      materials: ["A concave mirror", "A thin sheet of paper or newspaper"],
+                      steps: [
+                        "Under adult supervision, hold the concave mirror with its reflecting surface facing the Sun.",
+                        "Direct the reflected sunlight onto a sheet of paper.",
+                        "Adjust the distance between the mirror and paper until a sharp, bright spot forms.",
+                        "Hold the setup steady for a few minutes, watching the paper at that spot.",
+                        "Observe whether the paper begins to smoke or ignite at the focused point."
+                      ],
+                      observation: "The concave mirror focuses (converges) the parallel rays of sunlight into a small, intensely bright spot on the paper — concentrating enough heat energy at that single point to make the paper smoke and eventually catch fire."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What happens to multiple parallel light beams when they reflect off a PLANE mirror?",
+                      options: ["They converge to a point", "They remain parallel", "They diverge outward", "They disappear entirely"],
+                      answer: 1,
+                      explanation: "A plane mirror reflects parallel beams so that they remain parallel to each other after reflection."
+                    },
+                    {
+                      question: "What happens to multiple parallel light beams when they reflect off a CONCAVE mirror?",
+                      options: ["They remain parallel", "They converge — bending inward to meet at a point", "They diverge — spreading outward", "They are absorbed completely"],
+                      answer: 1,
+                      explanation: "A concave mirror causes parallel reflected beams to converge, bending inward until they meet at (or near) a single point."
+                    },
+                    {
+                      question: "What happens to multiple parallel light beams when they reflect off a CONVEX mirror?",
+                      options: ["They converge to a point", "They remain exactly parallel", "They diverge — spreading outward", "They reverse direction entirely"],
+                      answer: 2,
+                      explanation: "A convex mirror causes parallel reflected beams to diverge, spreading outward rather than meeting at a point."
+                    },
+                    {
+                      question: "Why can a concave mirror make paper catch fire when focused on sunlight?",
+                      options: ["Concave mirrors generate their own heat", "The mirror converges scattered sunlight rays into a small, intensely concentrated point, producing enough heat to ignite the paper", "This is not actually possible with a mirror", "Convex mirrors are used for this purpose, not concave ones"],
+                      answer: 1,
+                      explanation: "By converging parallel sunlight rays to a single focused point, a concave mirror concentrates enough light energy (and therefore heat) at that point to ignite paper."
+                    },
+                    {
+                      question: "What is a 'solar concentrator'?",
+                      options: ["A device that blocks sunlight completely", "A device using mirrors and/or lenses to concentrate sunlight into a small area for uses like generating steam or heating", "A type of plane mirror", "A device that only works with artificial light"],
+                      answer: 1,
+                      explanation: "Solar concentrators use mirrors and lenses to focus sunlight into a small area, generating enough concentrated heat for applications like steam-based electricity generation or industrial furnaces."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-10-4",
+                  title: "4. Lenses: Convex and Concave",
+                  lab: { type: "lens-image-sim" },
+                  theory: {
+                    intro: "A single drop of water resting on a glass strip can make the text underneath it look noticeably bigger — a tiny, everyday demonstration of exactly how a lens works.",
+                    sections: [
+                      {
+                        heading: "What Is a Lens?",
+                        text: "A lens is a piece of transparent material (usually glass or plastic) with curved surfaces. A water drop on a glass strip, with its outward-curving surface, makes text underneath appear larger — acting as a simple lens, just like a magnifying glass. A convex lens is thicker in the middle than at the edges; a concave lens is thicker at the edges than in the middle. Unlike mirrors, lenses let light pass THROUGH them — we see objects through a lens, not in it."
+                      },
+                      {
+                        heading: "Images Through Convex and Concave Lenses",
+                        text: "An object placed close behind a convex lens appears erect and enlarged when viewed through it; as the object moves farther away, the image becomes inverted — first still enlarged, then progressively diminishing. An object viewed through a concave lens always appears erect and diminished, regardless of distance, though its size changes somewhat as distance changes."
+                      },
+                      {
+                        heading: "Converging and Diverging Lenses",
+                        text: "A thin flat glass plate lets parallel light beams pass straight through unchanged. A convex lens converges (bends together) parallel light beams passing through it — earning it the name converging lens. A concave lens diverges (spreads apart) parallel light beams — earning it the name diverging lens. This mirrors (pun intended) the same converge/diverge behavior seen with concave and convex mirrors."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Making a Simple Lens from a Water Drop",
+                      objective: "To demonstrate that a curved water drop acts as a simple lens, magnifying text placed beneath it.",
+                      materials: ["A flat glass or clear plastic strip", "A few drops of oil (or wax)", "A dropper", "Water", "A piece of paper with printed text"],
+                      steps: [
+                        "Spread a thin coating of oil on the glass/plastic strip and rub it in.",
+                        "Place a small drop of water on the oiled spot using a dropper — the oil helps it form a rounded drop.",
+                        "Observe the shape of the water drop's surface (curved outward).",
+                        "Place the strip over text on a paper, with the water drop directly above some letters.",
+                        "Look down through the water drop at the text and note any change in the letters' apparent size."
+                      ],
+                      observation: "The letters directly beneath the curved water drop appear noticeably larger than the surrounding letters — demonstrating that the water drop's curved (outward-bulging) surface acts as a simple magnifying lens."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the key difference between how mirrors and lenses interact with light?",
+                      options: ["Mirrors and lenses work identically", "Lenses allow light to pass THROUGH them (we see objects through a lens); mirrors reflect light back (we see images in a mirror)", "Lenses only reflect light, like mirrors", "Mirrors allow light to pass through them"],
+                      answer: 1,
+                      explanation: "Lenses are transparent and let light pass through them, so we view objects 'through' a lens — unlike mirrors, which reflect light back, so we see images 'in' a mirror."
+                    },
+                    {
+                      question: "What shape distinguishes a convex lens from a concave lens?",
+                      options: ["A convex lens is thicker at the edges than the middle", "A convex lens is thicker in the middle than at the edges; a concave lens is thicker at the edges than the middle", "There is no shape difference between them", "Both lenses have the exact same thickness throughout"],
+                      answer: 1,
+                      explanation: "A convex lens bulges outward, thicker in the middle than at the edges; a concave lens curves inward, thicker at the edges than in the middle."
+                    },
+                    {
+                      question: "What does an object look like when viewed through a concave lens?",
+                      options: ["Always inverted and enlarged", "Always erect and diminished, regardless of distance", "It varies unpredictably with no consistent pattern", "Concave lenses cannot form any image"],
+                      answer: 1,
+                      explanation: "Viewing an object through a concave lens always shows it as erect (upright) and diminished (smaller), though the exact size changes slightly with distance."
+                    },
+                    {
+                      question: "Why is a convex lens also called a 'converging lens'?",
+                      options: ["It has no effect on light passing through it", "It bends parallel light rays passing through it so that they come together (converge)", "It always makes objects look smaller", "It only works with reflected light, not transmitted light"],
+                      answer: 1,
+                      explanation: "A convex lens bends parallel light rays inward so they meet (converge) at a point after passing through — hence its name, a converging lens."
+                    },
+                    {
+                      question: "How does a water drop on a glass strip demonstrate the basic principle of a lens?",
+                      options: ["It has no magnifying effect at all", "Its curved (outward-bulging) surface bends light so that text beneath it appears larger, just like a simple convex lens", "Water drops only work as concave lenses", "This has nothing to do with how lenses work"],
+                      answer: 1,
+                      explanation: "The water drop's curved surface bends light rays similarly to a convex lens, magnifying the appearance of the text directly beneath it — a simple, everyday demonstration of lens behavior."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
