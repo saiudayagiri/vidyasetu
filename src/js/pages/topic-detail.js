@@ -4877,6 +4877,96 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const habitableZoneLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="habitable-zone-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a planet's distance from the Sun and see the state of its water.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Distance from the Sun</h3>
+            <select id="sel-habitable-zone" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="close" selected>Too close (like Venus)</option>
+              <option value="right">Just right (like Earth)</option>
+              <option value="far">Too far (like Mars' outer edge)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>State of Water</h3>
+            <div id="habitable-zone-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a distance above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const atmosphereRetentionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="atmosphere-retention-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a planet size and see whether it retains an atmosphere.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Planet Size</h3>
+            <select id="sel-atmosphere-retention" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="tiny" selected>Too small (like Mercury)</option>
+              <option value="small">Small (like Mars)</option>
+              <option value="earth">Earth-sized</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Atmosphere Retention</h3>
+            <div id="atmosphere-retention-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a size above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const earthSpheresLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="earth-spheres-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a sphere and see what it includes.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Sphere</h3>
+            <select id="sel-earth-spheres" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="atmosphere" selected>Atmosphere</option>
+              <option value="hydrosphere">Hydrosphere</option>
+              <option value="geosphere">Geosphere</option>
+              <option value="biosphere">Biosphere</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What It Includes</h3>
+            <div id="earth-spheres-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a sphere above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const reproductionTypeLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="reproduction-type-canvas" width="600" height="280"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an example and see whether it's asexual or sexual reproduction.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Example</h3>
+            <select id="sel-reproduction-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="potato" selected>Potato eye planted in soil</option>
+              <option value="bacteria">Bacteria splitting in two</option>
+              <option value="flower">Pollen fertilizing an ovule</option>
+              <option value="animal">Animal with male and female parent</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Reproduction Type</h3>
+            <div id="reproduction-type-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an example above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -7000,6 +7090,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'cascade-effect-sim') {
               labHtml = cascadeEffectLabHtml;
               labDesc = 'Pick a stage and see how the pond pollution cascade unfolds.';
+            } else if (topicObj.lab.type === 'habitable-zone-sim') {
+              labHtml = habitableZoneLabHtml;
+              labDesc = 'Pick a planet’s distance from the Sun and see the state of its water.';
+            } else if (topicObj.lab.type === 'atmosphere-retention-sim') {
+              labHtml = atmosphereRetentionLabHtml;
+              labDesc = 'Pick a planet size and see whether its gravity can retain an atmosphere.';
+            } else if (topicObj.lab.type === 'earth-spheres-sim') {
+              labHtml = earthSpheresLabHtml;
+              labDesc = 'Pick one of Earth’s four spheres and see what it includes.';
+            } else if (topicObj.lab.type === 'reproduction-type-sim') {
+              labHtml = reproductionTypeLabHtml;
+              labDesc = 'Pick an example and see whether it is asexual or sexual reproduction.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -7623,6 +7725,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initFoodChainTrophicLab();
         } else if (topicObj.lab.type === 'cascade-effect-sim') {
           initCascadeEffectLab();
+        } else if (topicObj.lab.type === 'habitable-zone-sim') {
+          initHabitableZoneLab();
+        } else if (topicObj.lab.type === 'atmosphere-retention-sim') {
+          initAtmosphereRetentionLab();
+        } else if (topicObj.lab.type === 'earth-spheres-sim') {
+          initEarthSpheresLab();
+        } else if (topicObj.lab.type === 'reproduction-type-sim') {
+          initReproductionTypeLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -24866,6 +24976,203 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
 
         obs.innerHTML = `<strong>Stage ${stage}:</strong> ${STAGES[stage].desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initHabitableZoneLab() {
+      const canvas = document.getElementById('habitable-zone-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-habitable-zone');
+      const obs = document.getElementById('habitable-zone-obs');
+      const DATA = {
+        close: { pos: 0.22, state: 'Water evaporates (steam)', color: '#ef4444', desc: 'Too close to the Sun: temperatures are so high that all water would evaporate away.' },
+        right: { pos: 0.5, state: 'Water stays liquid', color: '#22c55e', desc: 'Just right — this is the habitable zone, where temperatures allow water to remain liquid, essential for life.' },
+        far: { pos: 0.85, state: 'Water freezes (ice)', color: '#3b82f6', desc: 'Too far from the Sun: temperatures are so low that all water would freeze solid.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const barX = 80, barW = 440, cy = 140;
+
+        const grad = ctx.createLinearGradient(barX, 0, barX + barW, 0);
+        grad.addColorStop(0, 'rgba(239,68,68,0.4)');
+        grad.addColorStop(0.5, 'rgba(34,197,94,0.4)');
+        grad.addColorStop(1, 'rgba(59,130,246,0.4)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(barX, cy - 25, barW, 50);
+
+        ctx.fillStyle = '#facc15';
+        ctx.beginPath(); ctx.arc(50, cy, 22, 0, Math.PI * 2); ctx.fill();
+
+        const px = barX + barW * d.pos;
+        ctx.fillStyle = d.color;
+        ctx.beginPath(); ctx.arc(px, cy, 16, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = 'white'; ctx.lineWidth = 2; ctx.stroke();
+
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('Too hot', barX + barW * 0.15, cy + 45);
+        ctx.fillText('Habitable zone', barX + barW * 0.5, cy + 45);
+        ctx.fillText('Too cold', barX + barW * 0.87, cy + 45);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = d.color;
+        ctx.fillText(d.state, W / 2, 240);
+
+        obs.innerHTML = `<strong>${d.state}:</strong> ${d.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initAtmosphereRetentionLab() {
+      const canvas = document.getElementById('atmosphere-retention-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-atmosphere-retention');
+      const obs = document.getElementById('atmosphere-retention-obs');
+      const DATA = {
+        tiny: { r: 28, atmos: 0, label: 'No atmosphere at all', desc: 'Gravity is too weak to hold any gases — they all escape into space, as on Mercury.' },
+        small: { r: 42, atmos: 5, label: 'Atmosphere 100× thinner than Earth’s', desc: 'Weak gravity retains only a very thin atmosphere, as on Mars.' },
+        earth: { r: 62, atmos: 22, label: 'Full, substantial atmosphere', desc: 'Gravity is strong enough to hold a substantial atmosphere, yet not so strong that it would crush life.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const cx = W / 2, cy = 135;
+
+        if (d.atmos > 0) {
+          ctx.fillStyle = 'rgba(59,130,246,0.25)';
+          ctx.beginPath(); ctx.arc(cx, cy, d.r + d.atmos, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.fillStyle = '#78716c';
+        ctx.beginPath(); ctx.arc(cx, cy, d.r, 0, Math.PI * 2); ctx.fill();
+
+        if (d.atmos === 0) {
+          ctx.fillStyle = 'rgba(148,163,184,0.5)';
+          for (let i = 0; i < 12; i++) {
+            const a = (i / 12) * Math.PI * 2;
+            const rr = d.r + 30 + Math.random() * 30;
+            ctx.beginPath(); ctx.arc(cx + rr * Math.cos(a), cy + rr * Math.sin(a), 3, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = d.atmos > 10 ? '#22c55e' : '#ef4444';
+        ctx.fillText(d.label, W / 2, 245);
+
+        obs.innerHTML = `<strong>${d.label}:</strong> ${d.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initEarthSpheresLab() {
+      const canvas = document.getElementById('earth-spheres-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-earth-spheres');
+      const obs = document.getElementById('earth-spheres-obs');
+      const DATA = {
+        atmosphere: { icon: '☁️', color: '#93c5fd', desc: 'The layer of gases surrounding Earth — provides oxygen for respiration, carbon dioxide for photosynthesis, and the greenhouse effect that keeps Earth warm.' },
+        hydrosphere: { icon: '🌊', color: '#3b82f6', desc: 'All of Earth’s water (~70% of the surface) — oceans, lakes, rivers, springs, and groundwater, home to millions of aquatic life forms.' },
+        geosphere: { icon: '🪨', color: '#a16207', desc: 'The solid parts of Earth — rocks, soil, and minerals, providing nutrients for plants and materials like salt, coal, and metals.' },
+        biosphere: { icon: '🌿', color: '#22c55e', desc: 'All living beings together with the land, water, and air where they live and interact.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const keys = Object.keys(DATA);
+        const selected = sel.value;
+
+        keys.forEach((k, i) => {
+          const x = 100 + i * 135, y = 130;
+          const active = k === selected;
+          ctx.fillStyle = active ? DATA[k].color : 'rgba(148,163,184,0.12)';
+          ctx.beginPath(); ctx.arc(x, y, active ? 48 : 34, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = active ? cssVar('--text-normal') : cssVar('--border-color'); ctx.lineWidth = active ? 2.5 : 1;
+          ctx.stroke();
+          ctx.font = active ? '32px system-ui' : '22px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(DATA[k].icon, x, y + 10);
+          ctx.font = active ? 'bold 12px system-ui' : '10px system-ui';
+          ctx.fillStyle = active ? cssVar('--text-normal') : cssVar('--text-muted');
+          ctx.fillText(k.charAt(0).toUpperCase() + k.slice(1), x, y + (active ? 70 : 55));
+        });
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText('Earth’s Four Interconnected Spheres', W / 2, 30);
+
+        obs.innerHTML = `<strong>${selected.charAt(0).toUpperCase() + selected.slice(1)}:</strong> ${DATA[selected].desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initReproductionTypeLab() {
+      const canvas = document.getElementById('reproduction-type-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-reproduction-type');
+      const obs = document.getElementById('reproduction-type-obs');
+      const DATA = {
+        potato: { sexual: false, desc: 'One parent produces a genetically identical new plant — vegetative propagation, a form of asexual reproduction.' },
+        bacteria: { sexual: false, desc: 'A single bacterium splits into two identical individuals — asexual reproduction.' },
+        flower: { sexual: true, desc: 'Pollen (male gamete) fertilizes an ovule (female gamete), combining genetic material from two parents — sexual reproduction.' },
+        animal: { sexual: true, desc: 'Male and female gametes each contribute half the genetic material, producing offspring with a unique mix — sexual reproduction.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DATA[sel.value];
+        const cy = 130;
+
+        if (d.sexual) {
+          ctx.fillStyle = '#3b82f6';
+          ctx.beginPath(); ctx.arc(W / 2 - 100, cy - 30, 22, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#ec4899';
+          ctx.beginPath(); ctx.arc(W / 2 + 100, cy - 30, 22, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(W / 2 - 82, cy - 15); ctx.lineTo(W / 2 - 20, cy + 35); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(W / 2 + 82, cy - 15); ctx.lineTo(W / 2 + 20, cy + 35); ctx.stroke();
+          ctx.fillStyle = '#8b5cf6';
+          ctx.beginPath(); ctx.arc(W / 2, cy + 55, 24, 0, Math.PI * 2); ctx.fill();
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText('Parent 1', W / 2 - 100, cy - 60);
+          ctx.fillText('Parent 2', W / 2 + 100, cy - 60);
+          ctx.fillText('Offspring (mixed traits)', W / 2, cy + 95);
+        } else {
+          ctx.fillStyle = '#22c55e';
+          ctx.beginPath(); ctx.arc(W / 2 - 70, cy, 26, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(W / 2 - 40, cy); ctx.lineTo(W / 2 + 30, cy); ctx.stroke();
+          ctx.fillStyle = '#22c55e';
+          ctx.beginPath(); ctx.arc(W / 2 + 60, cy - 25, 22, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(W / 2 + 60, cy + 25, 22, 0, Math.PI * 2); ctx.fill();
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText('Single parent', W / 2 - 70, cy + 50);
+          ctx.fillText('Identical copies', W / 2 + 60, cy + 65);
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = d.sexual ? '#8b5cf6' : '#22c55e';
+        ctx.fillText(d.sexual ? 'SEXUAL REPRODUCTION' : 'ASEXUAL REPRODUCTION', W / 2, 255);
+
+        obs.innerHTML = `<strong>${d.sexual ? 'Sexual' : 'Asexual'} reproduction:</strong> ${d.desc}`;
       }
 
       sel.addEventListener('change', draw);

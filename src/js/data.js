@@ -15252,6 +15252,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "8s-13",
+              title: "Our Home: Earth, a Unique Life Sustaining Planet",
+              topics: [
+                {
+                  id: "8s-13-1",
+                  title: "1. Earth's Position in the Solar System",
+                  lab: { type: "habitable-zone-sim" },
+                  theory: {
+                    intro: "Venus is closer to the Sun than Earth, yet Mercury — closer still — is actually cooler than Venus. The reason has nothing to do with distance, and everything to do with a thick, heat-trapping blanket of carbon dioxide.",
+                    sections: [
+                      {
+                        heading: "The Habitable Zone",
+                        text: "Earth sits at just the right distance from the Sun for water to exist in liquid form: too close and water would evaporate; too far and it would freeze. This distance range around a star where water remains liquid is called the habitable zone (or 'Goldilocks zone'). While some microbes can survive frozen, liquid water is essential for life to evolve and thrive — which is exactly why Earth's position matters so much."
+                      },
+                      {
+                        heading: "The Greenhouse Effect: Why Venus Is Hotter Than Mercury",
+                        text: "Even though Venus is the second planet from the Sun (average temperature 450°C) and Mercury is closer (average temperature 170°C), Venus is far hotter — because Venus's atmosphere is almost entirely carbon dioxide, which traps heat and prevents it from escaping (the greenhouse effect). On Earth (average temperature 15°C), a much milder greenhouse effect from atmospheric gases like carbon dioxide keeps the planet's temperature in the right range for life, rather than making it too cold like it would otherwise be without an atmosphere."
+                      },
+                      {
+                        heading: "Earth, the Blue Planet",
+                        text: "Since most of Earth's surface is covered by water, it appears blue from space, giving it the name 'Blue Planet.' Mars lies at the edge of the Sun's habitable zone; while no proof of life has been found there, scientists believe Mars may once have had liquid water and conditions that could have supported simple life forms — a reminder that science remains open to new discoveries as we explore further."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Planet Temperatures and the Greenhouse Effect",
+                      objective: "To understand why Venus, not Mercury, is the hottest planet, despite Mercury being closer to the Sun.",
+                      materials: ["Notebook and pen", "Reference data: Mercury 170°C (no atmosphere), Venus 450°C (has atmosphere), Earth 15°C (has atmosphere)"],
+                      steps: [
+                        "Note that Mercury, the closest planet to the Sun, has an average temperature of 170°C and no atmosphere.",
+                        "Note that Venus, the second planet from the Sun, has a much higher average temperature of 450°C.",
+                        "Consider why Venus is hotter despite being farther from the Sun than Mercury.",
+                        "Research that Venus's atmosphere is almost entirely carbon dioxide, which traps heat via the greenhouse effect.",
+                        "Compare this to Earth's much milder greenhouse effect, which keeps its average temperature at a life-friendly 15°C."
+                      ],
+                      observation: "Despite being farther from the Sun than Mercury, Venus (450°C) is far hotter than Mercury (170°C) — proving that atmospheric composition (specifically, a thick CO2 atmosphere trapping heat) can matter more than distance from the Sun in determining a planet's temperature."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the 'habitable zone' (or 'Goldilocks zone')?",
+                      options: ["The zone closest to a star, regardless of temperature", "The range of distances from a star where water can remain in liquid form", "A zone found only around Earth", "The zone farthest from any star"],
+                      answer: 1,
+                      explanation: "The habitable zone is the range of distances from a star within which a planet's temperature allows water to exist in its liquid state — a key requirement for life as we know it."
+                    },
+                    {
+                      question: "Why is Venus (450°C) hotter than Mercury (170°C), even though Mercury is closer to the Sun?",
+                      options: ["Venus is actually closer to the Sun than Mercury", "Venus's thick carbon dioxide atmosphere traps heat through the greenhouse effect", "Mercury has a thicker atmosphere than Venus", "This information is incorrect — Mercury is actually hotter"],
+                      answer: 1,
+                      explanation: "Venus's atmosphere is composed almost entirely of carbon dioxide, which traps heat via the greenhouse effect — making it hotter than Mercury despite Mercury's closer proximity to the Sun."
+                    },
+                    {
+                      question: "What role does the greenhouse effect play in Earth's habitability?",
+                      options: ["It makes Earth much too hot for life, like Venus", "It provides a mild warming effect that keeps Earth's temperature in the right range for liquid water and life", "It has no effect on Earth's temperature at all", "It only affects the ocean, not the land"],
+                      answer: 1,
+                      explanation: "Earth's atmosphere produces a much milder greenhouse effect than Venus's, keeping the planet's average temperature (15°C) in the range needed to sustain liquid water and life."
+                    },
+                    {
+                      question: "Why is Earth sometimes called the 'Blue Planet'?",
+                      options: ["Because of its distance from the Sun", "Because most of its surface is covered by water, giving it a blue appearance from space", "Because of its magnetic field", "Because of the color of its atmosphere alone"],
+                      answer: 1,
+                      explanation: "Since most of Earth's surface is covered in water, the planet appears blue when viewed from space, earning it the nickname 'Blue Planet.'"
+                    },
+                    {
+                      question: "What do scientists believe about Mars's potential for past habitability?",
+                      options: ["Mars has definitely never had any water", "Mars may have once had liquid water and conditions that could have supported simple life forms, though no proof of life has been found", "Mars currently supports abundant life", "Scientists have found definitive proof of past life on Mars"],
+                      answer: 1,
+                      explanation: "While no direct proof of life has been found on Mars, scientists believe it may have once had liquid water and conditions capable of supporting simple life — an area of continuing scientific interest."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-13-2",
+                  title: "2. Earth's Size, Atmosphere, and Magnetic Field",
+                  lab: { type: "atmosphere-retention-sim" },
+                  theory: {
+                    intro: "If Earth were much smaller, its weaker gravity couldn't hold onto its atmosphere — the very gases we breathe would simply drift away into space, exactly as they have on Mars and Mercury.",
+                    sections: [
+                      {
+                        heading: "Earth's Size Is Just Right",
+                        text: "Earth's gravity, determined by its size, must be strong enough to hold onto atmospheric gases but not so strong that it crushes life. If Earth were much smaller (with the same density), its weaker gravity couldn't retain gases — this is exactly why Mars's atmosphere is 100 times thinner than Earth's, and Mercury has no atmosphere at all. If Earth were much larger, the stronger gravity could crush bones under its pull. Earth's actual size strikes the right balance to support both a substantial atmosphere and life."
+                      },
+                      {
+                        heading: "The Ozone Layer: A Protective Shield",
+                        text: "Oxygen in Earth's atmosphere is essential for breathing — but some of it also converts into ozone (a three-atom oxygen molecule), forming the ozone layer. This layer acts as a shield, blocking harmful ultraviolet (UV) rays from the Sun that could otherwise damage living cells."
+                      },
+                      {
+                        heading: "Earth's Magnetic Field: An Invisible Shield",
+                        text: "Earth behaves like a giant magnet, likely due to the movement of molten iron in its core, creating a magnetic field around the planet. Earth is constantly bombarded by high-energy particles from space — cosmic rays from across the universe, and solar wind from the Sun — which can damage the atmosphere and reduce the ozone layer if unblocked. Earth's magnetic field acts as a protective shield, pushing many of these harmful particles away and keeping the atmosphere (and life) safe."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Atmospheres Across Planets by Size",
+                      objective: "To understand how a planet's size (and resulting gravity) determines whether it can retain an atmosphere.",
+                      materials: ["Notebook and pen", "Reference data: Mercury (no atmosphere), Mars (atmosphere 100x thinner than Earth's), Earth (full atmosphere)"],
+                      steps: [
+                        "Note that Mercury, one of the smallest rocky planets, has no atmosphere at all.",
+                        "Note that Mars, larger than Mercury but smaller than Earth, has an atmosphere about 100 times thinner than Earth's.",
+                        "Note that Earth, the largest of the four rocky inner planets, retains a substantial atmosphere.",
+                        "Consider the relationship between a planet's size (and gravity) and its ability to hold onto atmospheric gases.",
+                        "Explain why a much smaller Earth would likely have lost its atmosphere to space, similar to Mercury and Mars."
+                      ],
+                      observation: "Smaller rocky planets (Mercury: no atmosphere, Mars: atmosphere 100x thinner than Earth's) retain far less atmosphere than Earth — directly demonstrating that a planet's size (and the resulting strength of its gravity) determines how effectively it can hold onto atmospheric gases."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does a planet's size matter for whether it can retain an atmosphere?",
+                      options: ["Size has no effect on atmosphere retention", "A larger planet has stronger gravity, which can hold atmospheric gases from escaping into space; a smaller planet's weaker gravity cannot", "Smaller planets always have thicker atmospheres", "Atmosphere retention depends only on temperature, not size"],
+                      answer: 1,
+                      explanation: "A planet's gravity (determined largely by its size) must be strong enough to prevent atmospheric gases from drifting into space — smaller planets with weaker gravity struggle to retain an atmosphere."
+                    },
+                    {
+                      question: "How does Mars's atmosphere compare to Earth's?",
+                      options: ["Mars has a much thicker atmosphere than Earth", "Mars's atmosphere is about 100 times thinner than Earth's", "Mars and Earth have identical atmospheres", "Mars has no atmosphere at all, just like Mercury"],
+                      answer: 1,
+                      explanation: "Mars's atmosphere is approximately 100 times thinner than Earth's, largely due to its smaller size and correspondingly weaker gravity."
+                    },
+                    {
+                      question: "What is the function of the ozone layer in Earth's atmosphere?",
+                      options: ["It has no protective function", "It blocks harmful ultraviolet (UV) rays from the Sun that could damage living cells", "It only affects weather patterns", "It traps oxygen and prevents it from being used for breathing"],
+                      answer: 1,
+                      explanation: "The ozone layer, formed from a three-atom form of oxygen, acts as a shield that blocks harmful UV radiation from the Sun, protecting living cells from damage."
+                    },
+                    {
+                      question: "What is believed to generate Earth's magnetic field?",
+                      options: ["The rotation of the Moon", "The movement of molten iron in Earth's core", "Solar wind particles hitting the atmosphere", "The ozone layer itself"],
+                      answer: 1,
+                      explanation: "Earth's magnetic field is believed to originate from the movement of molten iron within Earth's core, which causes the planet to behave like a giant magnet."
+                    },
+                    {
+                      question: "How does Earth's magnetic field help protect life on the planet?",
+                      options: ["It has no protective role", "It pushes away harmful high-energy particles (cosmic rays and solar wind) that could damage the atmosphere and ozone layer", "It only affects compass needles, with no other function", "It generates the greenhouse effect"],
+                      answer: 1,
+                      explanation: "Earth's magnetic field deflects harmful cosmic rays and solar wind particles away from the planet, protecting the atmosphere (and therefore the ozone layer and life) from damage."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-13-3",
+                  title: "3. The Spheres That Sustain Life",
+                  lab: { type: "earth-spheres-sim" },
+                  theory: {
+                    intro: "Scientists split Earth's life-supporting systems into four interconnected 'spheres' — air, water, rock, and living things — each essential on its own, but only truly powerful when working together.",
+                    sections: [
+                      {
+                        heading: "The Atmosphere and Hydrosphere",
+                        text: "The atmosphere provides oxygen for respiration and carbon dioxide (with sunlight and water) for photosynthesis, while its greenhouse effect keeps Earth warm enough for liquid water. Water — covering about 70% of Earth's surface in oceans, lakes, rivers, and groundwater — makes up the hydrosphere. Water is a good solvent, transports nutrients in plants, regulates body temperature and aids digestion in animals, and hosts millions of aquatic life forms, from tiny plankton to giant whales."
+                      },
+                      {
+                        heading: "The Geosphere",
+                        text: "Beneath our feet lies the geosphere — the solid parts of Earth including rocks, soil, and minerals. Though it may seem lifeless, soil is rich in nutrients like nitrogen and potassium (from the slow breakdown of rocks and remains of plants/animals) that plants need to grow. Minerals give us salt, coal, oil, and metals like iron and copper. The variety of landforms, rocks, and soils — and the processes shaping them — is called geodiversity, which helps create unique habitats for different life forms."
+                      },
+                      {
+                        heading: "The Biosphere and the Importance of Balance",
+                        text: "All living beings, together with the places they live, make up the biosphere — spanning land, water, and air. Plants make food via photosynthesis, animals eat plants or other animals, and decomposers recycle nutrients from dead matter — nature works as an interconnected system. Even a small disruption (like cutting down a forest) can impact rainfall, soil, air quality, and local animal life — showing that Earth's habitability depends not on any single factor, but on everything working together in dynamic balance."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Classifying Earth's Components into the Four Spheres",
+                      objective: "To identify and classify various Earth features and processes into the atmosphere, hydrosphere, geosphere, and biosphere.",
+                      materials: ["Notebook and pen", "A local area to observe (garden, park, or schoolyard)"],
+                      steps: [
+                        "Observe your surroundings and list features related to air (e.g., wind, clouds) — these belong to the atmosphere.",
+                        "List features related to water (e.g., a pond, rain, groundwater) — these belong to the hydrosphere.",
+                        "List features related to rocks, soil, or minerals — these belong to the geosphere.",
+                        "List living things you observe (plants, animals, microorganisms) — these belong to the biosphere.",
+                        "Discuss how these four spheres interact in your local area (e.g., how soil supports plants, which release oxygen into the atmosphere)."
+                      ],
+                      observation: "Even a small local area reveals features from all four spheres interacting simultaneously — soil (geosphere) supporting plant growth (biosphere), which draws water (hydrosphere) and releases oxygen into the air (atmosphere) — illustrating how these systems are deeply interconnected rather than separate."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does the term 'hydrosphere' refer to?",
+                      options: ["The layer of gases surrounding Earth", "All the water on Earth, including oceans, lakes, rivers, and groundwater", "The solid rock and soil beneath Earth's surface", "All living beings on Earth"],
+                      answer: 1,
+                      explanation: "The hydrosphere encompasses all of Earth's water — oceans, lakes, rivers, springs, seas, and groundwater — covering about 70% of Earth's surface."
+                    },
+                    {
+                      question: "What does the term 'geosphere' refer to?",
+                      options: ["Earth's atmosphere", "The solid parts of Earth, including rocks, soil, and minerals", "All of Earth's water", "The biosphere alone"],
+                      answer: 1,
+                      explanation: "The geosphere refers to the solid components of Earth — rocks, soil, and minerals — that form the planet's crust and provide nutrients and materials for life."
+                    },
+                    {
+                      question: "What is 'geodiversity'?",
+                      options: ["The diversity of animal species alone", "The variety of landforms, rocks, and soils on Earth, along with the processes that shape them", "A synonym for biodiversity", "The diversity of atmospheric gases"],
+                      answer: 1,
+                      explanation: "Geodiversity refers to the variety of landforms, rocks, and soil types found on Earth, plus the geological processes that create and alter them — this variety helps create diverse habitats."
+                    },
+                    {
+                      question: "What does the 'biosphere' include?",
+                      options: ["Only the oceans", "All living beings, together with the land, water, and air where they live and interact", "Only the atmosphere", "Only human settlements"],
+                      answer: 1,
+                      explanation: "The biosphere includes all living beings on Earth, along with the land, water, and air environments where they live and interact with their surroundings."
+                    },
+                    {
+                      question: "Why is the balance between Earth's spheres (atmosphere, hydrosphere, geosphere, biosphere) so important?",
+                      options: ["The spheres are completely independent and don't affect each other", "A disruption in one sphere (like deforestation) can cascade to affect rainfall, soil, air quality, and animal life in the others", "Only the biosphere matters for maintaining life", "Balance between spheres has no real-world importance"],
+                      answer: 1,
+                      explanation: "Earth's habitability depends on the dynamic balance and interaction between all four spheres — disrupting one, such as through deforestation, can have cascading effects across the others."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-13-4",
+                  title: "4. Reproduction: Keeping Life Going",
+                  lab: { type: "reproduction-type-sim" },
+                  theory: {
+                    intro: "A single potato 'eye' planted in soil can grow into a whole new potato plant — genetically identical to its parent — while two parents combining their genes can produce a child who resembles neither one exactly.",
+                    sections: [
+                      {
+                        heading: "Genes: The Instruction Manual of Life",
+                        text: "Every living cell contains genetic material or genes — a detailed instruction manual guiding how cells develop into blood, bones, muscles, or skin. These instructions, passed from parents to offspring, are why a calf grows into a cow and a kitten into a cat. Reproduction not only continues each kind of organism but can also introduce small changes over generations — like camels developing humps to survive in deserts, or bacteria evolving antibiotic resistance — allowing life to adapt and diversify over time."
+                      },
+                      {
+                        heading: "Asexual Reproduction",
+                        text: "In asexual reproduction, a SINGLE parent produces offspring that are exact genetic copies of itself. Many plants reproduce this way through vegetative propagation — growing new plants from a leaf, stem, or root cutting (like money plant cuttings, potato 'eyes,' or ginger pieces). Simple organisms reproduce asexually too: bacteria and amoebae split into two identical individuals; algae can regrow from cut fragments; Hydra grows buds that break off into new individuals; and Planaria (a flatworm) can regrow an entire new individual from just a small body fragment."
+                      },
+                      {
+                        heading: "Sexual Reproduction and Gametes",
+                        text: "In sexual reproduction, TWO parents (male and female) each contribute genetic material via specialized reproductive cells called gametes — each gamete carries only HALF of a parent's genetic material, so when male and female gametes combine, the offspring receives a complete set (half from each parent) without doubling every generation. This is why siblings can look different from each other and from their parents — each child inherits a unique mix of genetic instructions. In flowering plants, pollen grains (from the anther) are male gametes, and ovules (deep inside the flower) are female gametes."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Growing New Plants Through Vegetative Propagation",
+                      objective: "To observe asexual reproduction in plants by growing new individuals from stem, root, or 'eye' cuttings.",
+                      materials: ["A money plant stem cutting", "A sprouted potato with visible 'eyes'", "A piece of ginger", "Moist soil or a glass container of water"],
+                      steps: [
+                        "Plant a money plant cutting, a potato 'eye,' and a ginger piece separately in moist soil (or place the money plant cutting in a glass of water).",
+                        "Ensure each gets adequate water, air, and sunlight.",
+                        "Observe each cutting daily, recording how many days it takes for roots to appear.",
+                        "Continue observing until stems and the first new leaf appear.",
+                        "Compare the growth timelines across the three different plant materials."
+                      ],
+                      observation: "Each cutting (money plant stem, potato eye, ginger piece) develops roots first, followed by stems and eventually a first new leaf — demonstrating vegetative propagation, a form of asexual reproduction where a new, genetically identical plant grows from just a fragment of the parent plant."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is 'asexual reproduction'?",
+                      options: ["Reproduction requiring two parents", "Reproduction where a single parent produces offspring that are exact genetic copies of itself", "A process that only occurs in animals", "A process where offspring always look different from the parent"],
+                      answer: 1,
+                      explanation: "Asexual reproduction involves only ONE parent, producing offspring that are genetically identical copies of that parent — as seen in vegetative propagation and organisms like bacteria splitting in two."
+                    },
+                    {
+                      question: "What is 'vegetative propagation'?",
+                      options: ["A type of sexual reproduction only found in animals", "A form of asexual reproduction in plants, where a new plant grows from a leaf, stem, or root cutting", "A process requiring pollen and ovules", "A process that only occurs in bacteria"],
+                      answer: 1,
+                      explanation: "Vegetative propagation is asexual reproduction in plants, where a new individual plant grows from a fragment (leaf, stem, or root) of the parent plant, as seen with potato eyes or ginger pieces."
+                    },
+                    {
+                      question: "What is a 'gamete'?",
+                      options: ["A complete copy of a parent's full genetic material", "A specialized reproductive cell carrying only half of a parent's genetic material", "A type of asexual offspring", "A synonym for 'gene'"],
+                      answer: 1,
+                      explanation: "A gamete is a specialized reproductive cell (like a sperm or egg) that carries only HALF of a parent's genetic material — this prevents genetic material from doubling every generation when two gametes combine."
+                    },
+                    {
+                      question: "Why do siblings often look different from each other, even with the same parents?",
+                      options: ["Siblings are always genetically identical", "Each child inherits a different, unique mix of genetic instructions from both parents via gametes", "Sibling differences have no genetic explanation", "This only happens in asexual reproduction"],
+                      answer: 1,
+                      explanation: "Since each gamete carries a different combination of genetic instructions, and gametes combine differently each time, every child receives a unique mix of traits from their parents — explaining sibling differences."
+                    },
+                    {
+                      question: "In flowering plants, what are pollen grains and ovules?",
+                      options: ["Pollen grains are female gametes and ovules are male gametes", "Pollen grains (from the anther) are male gametes, and ovules (deep inside the flower) are female gametes", "Both pollen grains and ovules are asexual reproductive structures", "Pollen and ovules have no role in plant reproduction"],
+                      answer: 1,
+                      explanation: "In sexual reproduction in flowering plants, pollen grains produced in the anther serve as male gametes, while ovules located deep within the flower serve as female gametes."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
