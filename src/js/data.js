@@ -20065,6 +20065,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9m-3",
+              title: "The World of Numbers",
+              topics: [
+                {
+                  id: "9m-3-1",
+                  title: "1. Zero, Integers, and Brahmagupta's Rules",
+                  lab: { type: "integer-rules-sim" },
+                  theory: {
+                    intro: "For millennia the number line started at 1 — until Brahmagupta, drawing on the Indian philosophical idea of śhūnyatā, turned 'nothing' into a number you could actually calculate with.",
+                    sections: [
+                      {
+                        heading: "From Śhūnyatā to Śhūnya",
+                        text: "Civilisations like the Babylonians and Mayans used placeholders for an empty column, but did not treat 'nothing' as a number. In the Upanishads and Buddhist literature, śhūnyatā (emptiness) described the meditative state of emptying the mind of all vṛttis. Because Indian thinkers revered this state, they had the conceptual framework to welcome nothingness into mathematics. The Bakhśhālī Manuscript shows the physical transition — a bold dot (bindu) used for zero — and Brahmagupta's Brāhmasphuṭasiddhānta (628 CE) defined zero as the result of subtracting a number from itself: a − a = 0."
+                      },
+                      {
+                        heading: "Brahmagupta's Rules for Zero",
+                        text: "Brahmagupta laid down the fundamental laws of arithmetic with śhūnya: when zero is added to a number, the number remains unchanged (a + 0 = a); when zero is subtracted from a number, it remains unchanged (a − 0 = a); and when any number is multiplied by zero, the result is zero (a × 0 = 0)."
+                      },
+                      {
+                        heading: "Fortunes, Debts, and Integers",
+                        text: "Brahmagupta asked what happens when we subtract a larger number from a smaller one (3 − 5 = ?), grounding his answer in commerce: fortunes (dhana) are positive numbers representing wealth, and debts (ṛiṇa) are negative numbers representing debts. Moving left of zero introduced negative numbers, and together the positive naturals, their negatives, and zero form the integers, denoted Z (from the German Zahlen). His rules: a fortune plus a fortune is a fortune (5 + 4 = 9); a debt plus a debt is a debt ((−5) + (−4) = −9); the product of a debt and a fortune is a debt ((−3) × 4 = −12); and the product of two debts is a fortune ((−3) × (−4) = 12) — since removing four debts of ₹3 each leaves you ₹12 richer."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Applying Brahmagupta's Integer Laws",
+                      objective: "To compute integer products and sums using Brahmagupta's fortune-and-debt rules and interpret each result in commercial terms.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "Compute (−12) × 5 and describe it as taking on 5 debts of ₹12 each.",
+                        "Compute (−8) × (−7) and describe it as removing 7 debts of ₹8 each.",
+                        "Compute 0 − (−14), interpreting the removal of a ₹14 debt.",
+                        "Compute (−20) ÷ 4, describing a ₹20 debt split into 4 equal parts.",
+                        "For each result, state whether the answer is a fortune (positive) or a debt (negative)."
+                      ],
+                      observation: "(−12) × 5 = −60, a debt; (−8) × (−7) = 56, a fortune, since removing debts makes you richer; 0 − (−14) = 14, a fortune; and (−20) ÷ 4 = −5, a debt of ₹5 per share — every result matching Brahmagupta's rules exactly as written over 1,300 years ago."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How did Brahmagupta define zero in the Brāhmasphuṭasiddhānta (628 CE)?",
+                      options: ["As a blank space with no value", "As the result of subtracting a number from itself: a − a = 0", "As the smallest natural number", "As the product of any two numbers"],
+                      answer: 1,
+                      explanation: "Brahmagupta explicitly defined zero as the result of subtracting a number from itself (a − a = 0), transforming it from a mere placeholder symbol into a fully operational number."
+                    },
+                    {
+                      question: "According to Brahmagupta's rules, what is the result of multiplying any number by zero?",
+                      options: ["The number itself", "Zero", "One", "The result is undefined"],
+                      answer: 1,
+                      explanation: "Brahmagupta's rule states that when any number is multiplied by zero, the result is zero: a × 0 = 0."
+                    },
+                    {
+                      question: "In Brahmagupta's terminology, what do 'fortunes' (dhana) and 'debts' (ṛiṇa) represent?",
+                      options: ["Fractions and whole numbers", "Positive numbers and negative numbers respectively", "Even and odd numbers", "Rational and irrational numbers"],
+                      answer: 1,
+                      explanation: "Brahmagupta grounded his mathematics in commerce: fortunes (dhana) represent positive numbers or wealth, while debts (ṛiṇa) represent negative numbers."
+                    },
+                    {
+                      question: "What is (−3) × (−4), and how did Brahmagupta explain it?",
+                      options: ["−12, since two debts stay a debt", "12, since removing four debts of ₹3 each leaves you ₹12 richer", "−7, by adding the debts", "0, since the debts cancel"],
+                      answer: 1,
+                      explanation: "The product of two debts is a fortune: (−3) × (−4) = 12. Intuitively, if someone removes four of your debts each worth ₹3, you are effectively ₹12 richer."
+                    },
+                    {
+                      question: "What set of numbers is denoted by the symbol Z, and where does the letter come from?",
+                      options: ["The natural numbers, from 'zero'", "The integers, from the German word Zahlen meaning numbers", "The rational numbers, from 'zeta'", "The irrational numbers, from 'Z-series'"],
+                      answer: 1,
+                      explanation: "The integers — positive natural numbers, their negative counterparts, and zero — are denoted by Z, taken from the German word Zahlen, meaning numbers."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-3-2",
+                  title: "2. Rational Numbers and Their Density",
+                  lab: { type: "rational-density-sim" },
+                  theory: {
+                    intro: "Pick any two rational numbers, no matter how close together — take their average, and you have found another one squeezed between them. Repeat forever.",
+                    sections: [
+                      {
+                        heading: "The Density Property",
+                        text: "One of the most magical properties of rational numbers is that they are dense. Between the integers 1 and 2 lies the rational number 3/2. Between 1 and 3/2 lies another rational number, 5/4. No matter how close two rational numbers are on the number line, you can always find another between them by taking their average."
+                      },
+                      {
+                        heading: "Averaging to Find a Number Between",
+                        text: "A rational number between 1 and 3/2 can be found by taking their average: (1 + 3/2)/2 = (5/2)/2 = 5/4. In general, the average of two rational numbers a and b, which equals (a + b)/2, is always a rational number lying between a and b."
+                      },
+                      {
+                        heading: "Infinitely Many, But Are There Gaps?",
+                        text: "Because this averaging can be repeated endlessly, there are infinitely many rational numbers between any two points on the number line. It feels as though the rational numbers must completely fill the number line, leaving no gaps whatsoever. But do they? That question leads directly to the discovery of irrational numbers."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Repeatedly Averaging to Demonstrate Density",
+                      objective: "To find successive rational numbers between two given values by repeated averaging, illustrating the density property.",
+                      materials: ["Notebook and pen", "A ruler for drawing number lines"],
+                      steps: [
+                        "Draw a number line and mark the integers 1 and 2.",
+                        "Compute the average (1 + 2)/2 = 3/2 and mark it between them.",
+                        "Compute the average of 1 and 3/2: (1 + 3/2)/2 = 5/4, and mark it.",
+                        "Compute the average of 1 and 5/4 and mark that too.",
+                        "Note that this process can be continued indefinitely without ever running out of new rational numbers."
+                      ],
+                      observation: "Each averaging step produces a new rational number strictly between the previous two — 3/2, then 5/4, then 9/8, and so on — showing that infinitely many rational numbers lie between any two points, which is the density property."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does it mean to say the rational numbers are 'dense'?",
+                      options: ["They are difficult to compute with", "Between any two rational numbers, you can always find another rational number", "They are all very large numbers", "They occupy the entire number line with no irrational numbers"],
+                      answer: 1,
+                      explanation: "Density means that no matter how close two rational numbers are, there is always another rational number lying between them — so there are infinitely many between any two points."
+                    },
+                    {
+                      question: "What simple operation always produces a rational number between two given rational numbers a and b?",
+                      options: ["Their product, a × b", "Their average, (a + b)/2", "Their difference, a − b", "Their sum, a + b"],
+                      answer: 1,
+                      explanation: "The average of two rational numbers a and b, which equals (a + b)/2, is always a rational number lying strictly between them."
+                    },
+                    {
+                      question: "What rational number lies between 1 and 3/2, found by taking their average?",
+                      options: ["5/4", "2/3", "4/5", "7/4"],
+                      answer: 0,
+                      explanation: "The average is (1 + 3/2)/2 = (5/2)/2 = 5/4, which lies between 1 and 3/2."
+                    },
+                    {
+                      question: "How many rational numbers lie between any two distinct points on the number line?",
+                      options: ["Exactly one", "A finite number depending on the gap", "Infinitely many", "None, if the points are close enough"],
+                      answer: 2,
+                      explanation: "Since averaging can be repeated endlessly, producing a new rational number each time, there are infinitely many rational numbers between any two distinct points."
+                    },
+                    {
+                      question: "Which rational number lies between the integers 1 and 2?",
+                      options: ["3/2", "1/2", "2/3", "5/2"],
+                      answer: 0,
+                      explanation: "3/2 = 1.5 lies exactly between 1 and 2, and is the average of the two integers."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-3-3",
+                  title: "3. Irrational Numbers and the Proof for √2",
+                  lab: { type: "sqrt2-construction-sim" },
+                  theory: {
+                    intro: "Draw a square with sides of exactly 1 unit, and its diagonal has a length that no fraction on Earth can express — a discovery that shook ancient mathematics.",
+                    sections: [
+                      {
+                        heading: "The Discovery of Irrationals",
+                        text: "For centuries mathematicians believed every measurable length could be written as a ratio of two integers. But when Baudhāyana composed his Śhulbasūtra around 800 BCE, he encountered lengths that defied fractions; the Greeks hit the same crisis centuries later. For a square of side 1 unit, the Baudhāyana–Pythagoras Theorem gives 1² + 1² = d², so d² = 2 and the diagonal is √2. Numbers on the number line that cannot be expressed as a ratio of integers are called irrational numbers."
+                      },
+                      {
+                        heading: "Proof by Contradiction that √2 Is Irrational",
+                        text: "Hippasus (c. 400 BCE) proved this by assuming the opposite and deriving a disaster. Assume √2 = p/q in simplest form, with p and q co-prime. Squaring gives 2 = p²/q², so 2q² = p². Then p² is even, so p is even; write p = 2k. Substituting: 2q² = 4k², so q² = 2k², meaning q² is even and therefore q is even. But now both p and q are even, sharing a common factor of 2 — contradicting our assumption that the fraction was in simplest form. Therefore √2 cannot be rational."
+                      },
+                      {
+                        heading: "Constructing √2 and the Story of π",
+                        text: "To locate √2 on the number line: measure OA = 1 unit, draw a perpendicular at A, mark B with AB = 1 unit, so OB = √2 by the theorem; then with O as centre and OB as radius, draw an arc cutting the number line at P, which represents √2. Another famous irrational is π. Āryabhaṭa (499 CE) gave the accurate approximation 3927/1250 = 3.1416 but called it only an asanna (approximation). Since π is irrational (proven by Lambert in 1761), no finite set of fractions can express it exactly — Mādhava of Sangamagrama realised in the 14th century that an infinite sum is needed, discovering π = 4 × (1 − 1/3 + 1/5 − 1/7 + …)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Constructing √2 on the Number Line",
+                      objective: "To construct a line segment of length √2 using ruler and compass and mark its exact position on the number line.",
+                      materials: ["Ruler", "Compass", "Set square", "Graph paper or plain paper"],
+                      steps: [
+                        "Draw a number line and mark O at 0 and A at 1, so that OA = 1 unit.",
+                        "Draw a perpendicular to the number line through the point A.",
+                        "On this perpendicular, mark point B such that AB = 1 unit, and join O to B.",
+                        "Confirm using the Baudhāyana–Pythagoras Theorem that OB = √(1² + 1²) = √2 units.",
+                        "With O as centre and OB as radius, draw an arc cutting the number line at P — this point represents √2."
+                      ],
+                      observation: "The arc meets the number line at a point P slightly past 1.4, and by construction OP = OB = √2 units — showing that although √2 cannot be written as any fraction, it corresponds to a perfectly definite point on the number line."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is an irrational number?",
+                      options: ["Any negative number", "A number on the number line that cannot be expressed as a ratio of two integers", "Any number with a decimal point", "A number greater than 1"],
+                      answer: 1,
+                      explanation: "Irrational numbers are numbers on the number line that cannot be written as a ratio p/q of two integers — √2 and π are classic examples."
+                    },
+                    {
+                      question: "In the proof that √2 is irrational, what contradiction is finally reached?",
+                      options: ["That p must be zero", "That both p and q turn out to be even, contradicting the assumption that p/q was in simplest form", "That 2q² cannot be computed", "That √2 is negative"],
+                      answer: 1,
+                      explanation: "The proof deduces first that p is even, then that q is even — meaning both share a common factor of 2, which contradicts the starting assumption that p/q was in its simplest (co-prime) form."
+                    },
+                    {
+                      question: "Why is the diagonal of a unit square equal to √2?",
+                      options: ["Because 1 + 1 = 2", "Because by the Baudhāyana–Pythagoras Theorem, 1² + 1² = d², so d² = 2", "Because all diagonals equal √2", "Because the square has 4 sides"],
+                      answer: 1,
+                      explanation: "Applying the Baudhāyana–Pythagoras Theorem to a square of side 1 gives 1² + 1² = d², hence d² = 2 and d = √2."
+                    },
+                    {
+                      question: "What approximation for π did Āryabhaṭa give in 499 CE, and how did he describe it?",
+                      options: ["22/7, calling it exact", "3927/1250 = 3.1416, calling it only an asanna (approximation)", "3.14, calling it final", "355/113, calling it perfect"],
+                      answer: 1,
+                      explanation: "Āryabhaṭa gave the highly accurate value 3927/1250 = 3.1416 but explicitly called it an asanna (approximation), indicating an exact fraction could likely not be found."
+                    },
+                    {
+                      question: "What did Mādhava of Sangamagrama realise was needed to express π exactly?",
+                      options: ["A single very precise fraction", "An infinite sum, such as π = 4 × (1 − 1/3 + 1/5 − 1/7 + …)", "A larger unit of measurement", "A geometric construction with compass alone"],
+                      answer: 1,
+                      explanation: "Mādhava realised that no single fraction could express an irrational number, and discovered the infinite series π = 4 × (1 − 1/3 + 1/5 − 1/7 + …)."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-3-4",
+                  title: "4. Decimal Expansions: Terminating and Repeating",
+                  lab: { type: "decimal-expansion-sim" },
+                  theory: {
+                    intro: "Divide 3 by 8 and the decimal stops neatly at 0.375; divide 5 by 11 and it loops forever as 0.4545… — and you can predict which will happen just by factorising the denominator.",
+                    sections: [
+                      {
+                        heading: "Two Possible Outcomes",
+                        text: "Dividing the numerator of a rational number by its denominator gives exactly one of two results. It terminates: the division eventually leaves a remainder of 0 and the decimal stops, as with 3/8 = 0.375. Or it repeats: the division never reaches remainder 0, but the digits begin to loop infinitely, as with 5/11 = 0.454545… = 0.45̄."
+                      },
+                      {
+                        heading: "Why Repetition Must Happen",
+                        text: "Consider computing 1/7 by long division. Dividing by 7, the possible remainders at each step are only 1, 2, 3, 4, 5, or 6 (never 0, or the division would terminate). Because there is only a limited number of possible remainders, eventually one must show up a second time — and once a remainder repeats, the entire division process loops, creating a repeating decimal."
+                      },
+                      {
+                        heading: "Predicting the Type Without Dividing",
+                        text: "We can predict the outcome by finding the prime factors of the denominator. For p/q in lowest terms, the decimal expansion terminates precisely when the prime factors of q are only 2, only 5, or both 2 and 5. This is because in such cases we can turn the denominator into a power of 10. For example, 20 = 2² × 5, so 3/20 = 3/(2² × 5) = (3 × 5)/(2² × 5 × 5) = 15/100 = 0.15 — a terminating decimal."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Predicting Decimal Types from Prime Factors",
+                      objective: "To predict whether a fraction's decimal expansion terminates or repeats by factorising its denominator, then verify by division.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "For 3/8, factorise the denominator 8 into primes and check whether only 2s and/or 5s appear.",
+                        "Predict whether 3/8 terminates, then divide to verify.",
+                        "For 5/11, factorise the denominator 11 and note whether any prime other than 2 or 5 appears.",
+                        "Predict whether 5/11 terminates or repeats, then divide to verify.",
+                        "Repeat for 3/20 (denominator 2² × 5) and for 10/3, recording predictions and results."
+                      ],
+                      observation: "8 = 2³ (only 2s), so 3/8 terminates as 0.375; 11 is a prime other than 2 or 5, so 5/11 repeats as 0.4545…; 20 = 2² × 5 (only 2s and 5s), so 3/20 terminates as 0.15 — the prime-factor test predicts every case correctly without doing the long division first."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the decimal expansion of 3/8?",
+                      options: ["0.375, a terminating decimal", "0.383838…, a repeating decimal", "0.38, a terminating decimal", "It cannot be expressed as a decimal"],
+                      answer: 0,
+                      explanation: "Dividing 3 by 8 gives 0.375 exactly — the division leaves a remainder of 0, so the decimal terminates."
+                    },
+                    {
+                      question: "What is the decimal expansion of 5/11?",
+                      options: ["0.5, terminating", "0.454545…, repeating", "0.45, terminating", "0.511, terminating"],
+                      answer: 1,
+                      explanation: "Dividing 5 by 11 never reaches a remainder of 0; the digits loop, giving 0.454545… = 0.45̄, a repeating decimal."
+                    },
+                    {
+                      question: "For a fraction p/q in lowest terms, when does the decimal expansion terminate?",
+                      options: ["When q is a prime number", "When the prime factors of q are only 2, only 5, or both 2 and 5", "When p is even", "Whenever q is greater than 10"],
+                      answer: 1,
+                      explanation: "The expansion terminates precisely when q's prime factors are only 2s and/or 5s, since then the denominator can be converted into a power of 10."
+                    },
+                    {
+                      question: "Why must the long division of 1/7 eventually produce a repeating decimal?",
+                      options: ["Because 7 is an odd number", "Because the only possible remainders are 1–6, so one must eventually repeat, causing the whole process to loop", "Because 1 is smaller than 7", "It actually terminates, not repeats"],
+                      answer: 1,
+                      explanation: "Dividing by 7 allows only the remainders 1, 2, 3, 4, 5, or 6 (0 would terminate it). With finitely many options, a remainder must recur — and once it does, the division process loops forever."
+                    },
+                    {
+                      question: "How is 3/20 shown to be a terminating decimal using prime factorisation?",
+                      options: ["20 = 4 × 5, so it repeats", "20 = 2² × 5, so multiplying numerator and denominator by 5 gives 15/100 = 0.15", "20 is even, so it always terminates", "3 is prime, so it terminates"],
+                      answer: 1,
+                      explanation: "Since 20 = 2² × 5 contains only 2s and 5s, multiplying top and bottom by 5 converts the denominator into 100: 3/20 = 15/100 = 0.15, a terminating decimal."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

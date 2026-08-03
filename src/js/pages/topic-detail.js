@@ -5151,6 +5151,100 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const integerRulesLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="integer-rules-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a calculation and see it as fortunes and debts.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Calculation</h3>
+            <select id="sel-integer-rules" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="ff" selected>5 + 4 — fortune plus fortune</option>
+              <option value="dd">(−5) + (−4) — debt plus debt</option>
+              <option value="df">(−3) × 4 — debt times fortune</option>
+              <option value="dneg">(−3) × (−4) — debt times debt</option>
+              <option value="zero">7 × 0 — anything times zero</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Result</h3>
+            <div id="integer-rules-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a calculation above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const rationalDensityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="rational-density-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick how many averaging steps to take between 1 and 2.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Averaging Steps</h3>
+            <select id="sel-rational-density" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0">0 steps — just 1 and 2</option>
+              <option value="1">1 step — find 3/2</option>
+              <option value="2" selected>2 steps — then 5/4</option>
+              <option value="3">3 steps — then 9/8</option>
+              <option value="4">4 steps — then 17/16</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Numbers Found</h3>
+            <div id="rational-density-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number of steps above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const sqrt2ConstructionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="sqrt2-construction-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Step through the ruler-and-compass construction of √2.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Construction Step</h3>
+            <select id="sel-sqrt2-construction" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="1">Step 1 — mark OA = 1 unit</option>
+              <option value="2">Step 2 — perpendicular AB = 1, join OB</option>
+              <option value="3" selected>Step 3 — arc from O cuts line at P</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What This Shows</h3>
+            <div id="sqrt2-construction-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a step above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const decimalExpansionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="decimal-expansion-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a fraction and see whether its decimal terminates or repeats.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Fraction</h3>
+            <select id="sel-decimal-expansion" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="3/8" selected>3/8</option>
+              <option value="3/20">3/20</option>
+              <option value="5/11">5/11</option>
+              <option value="10/3">10/3</option>
+              <option value="1/7">1/7</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Prime Factor Test</h3>
+            <div id="decimal-expansion-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a fraction above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -7310,6 +7404,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'line-graph-slope-sim') {
               labHtml = lineGraphSlopeLabHtml;
               labDesc = 'Pick a set of lines and see how slope and y-intercept affect them.';
+            } else if (topicObj.lab.type === 'integer-rules-sim') {
+              labHtml = integerRulesLabHtml;
+              labDesc = 'Pick a calculation and see it worked out as fortunes and debts.';
+            } else if (topicObj.lab.type === 'rational-density-sim') {
+              labHtml = rationalDensityLabHtml;
+              labDesc = 'Take averaging steps and watch new rational numbers appear between them.';
+            } else if (topicObj.lab.type === 'sqrt2-construction-sim') {
+              labHtml = sqrt2ConstructionLabHtml;
+              labDesc = 'Step through the ruler-and-compass construction of √2 on the number line.';
+            } else if (topicObj.lab.type === 'decimal-expansion-sim') {
+              labHtml = decimalExpansionLabHtml;
+              labDesc = 'Pick a fraction and see whether its decimal terminates or repeats.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -7957,6 +8063,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initGrowthDecayLab();
         } else if (topicObj.lab.type === 'line-graph-slope-sim') {
           initLineGraphSlopeLab();
+        } else if (topicObj.lab.type === 'integer-rules-sim') {
+          initIntegerRulesLab();
+        } else if (topicObj.lab.type === 'rational-density-sim') {
+          initRationalDensityLab();
+        } else if (topicObj.lab.type === 'sqrt2-construction-sim') {
+          initSqrt2ConstructionLab();
+        } else if (topicObj.lab.type === 'decimal-expansion-sim') {
+          initDecimalExpansionLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -25800,6 +25914,243 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         });
 
         obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${s.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initIntegerRulesLab() {
+      const canvas = document.getElementById('integer-rules-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-integer-rules');
+      const obs = document.getElementById('integer-rules-obs');
+      const CASES = {
+        ff: { expr: '5 + 4 = 9', result: 9, rule: 'A fortune plus a fortune is a fortune.', story: 'You have ₹5 and gain ₹4 more — you now hold ₹9.' },
+        dd: { expr: '(−5) + (−4) = −9', result: -9, rule: 'A debt plus a debt is a debt.', story: 'You owe ₹5 and borrow ₹4 more — you now owe ₹9.' },
+        df: { expr: '(−3) × 4 = −12', result: -12, rule: 'The product of a debt and a fortune is a debt.', story: 'You take on 4 debts of ₹3 each — your total debt is ₹12.' },
+        dneg: { expr: '(−3) × (−4) = 12', result: 12, rule: 'The product of two debts is a fortune.', story: 'Someone removes 4 of your debts worth ₹3 each — you are ₹12 richer.' },
+        zero: { expr: '7 × 0 = 0', result: 0, rule: 'Any number multiplied by zero is zero.', story: 'Seven lots of nothing is still nothing.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const c = CASES[sel.value];
+        const color = c.result > 0 ? '#22c55e' : c.result < 0 ? '#ef4444' : cssVar('--text-muted');
+
+        ctx.font = 'bold 30px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(c.expr, W / 2, 60);
+
+        const nlY = 140, nlX = 60, nlW = W - 120;
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(nlX, nlY); ctx.lineTo(nlX + nlW, nlY); ctx.stroke();
+        const step = nlW / 30;
+        const zeroX = nlX + 15 * step;
+        for (let i = -15; i <= 15; i += 3) {
+          const x = zeroX + i * step;
+          ctx.beginPath(); ctx.moveTo(x, nlY - 5); ctx.lineTo(x, nlY + 5); ctx.stroke();
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText(`${i}`, x, nlY + 20);
+        }
+        ctx.font = '11px system-ui'; ctx.fillStyle = '#ef4444'; ctx.textAlign = 'center';
+        ctx.fillText('Debts (Ṛiṇa)', zeroX - 9 * step, nlY - 18);
+        ctx.fillStyle = '#22c55e';
+        ctx.fillText('Fortunes (Dhana)', zeroX + 9 * step, nlY - 18);
+
+        const rx = zeroX + c.result * step;
+        ctx.fillStyle = color;
+        ctx.beginPath(); ctx.arc(rx, nlY, 8, 0, Math.PI * 2); ctx.fill();
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = color; ctx.textAlign = 'center';
+        ctx.fillText(c.rule, W / 2, 210);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(c.story, W / 2, 240);
+
+        obs.innerHTML = `<strong>${c.expr}</strong> — ${c.rule} ${c.story}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initRationalDensityLab() {
+      const canvas = document.getElementById('rational-density-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-rational-density');
+      const obs = document.getElementById('rational-density-obs');
+      const LABELS = ['3/2', '5/4', '9/8', '17/16'];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const steps = parseInt(sel.value);
+        const nlY = 150, nlX = 70, nlW = W - 140;
+        const toX = v => nlX + (v - 1) * nlW;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(nlX, nlY); ctx.lineTo(nlX + nlW, nlY); ctx.stroke();
+
+        [[1, '1'], [2, '2']].forEach(([v, l]) => {
+          const x = toX(v);
+          ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(x, nlY - 10); ctx.lineTo(x, nlY + 10); ctx.stroke();
+          ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(l, x, nlY + 28);
+        });
+
+        let lo = 1, hi = 2;
+        const found = [];
+        for (let i = 0; i < steps; i++) {
+          const mid = (lo + hi) / 2;
+          found.push([mid, LABELS[i]]);
+          hi = mid;
+        }
+
+        found.forEach(([v, label], i) => {
+          const x = toX(v);
+          const col = i === found.length - 1 ? '#f59e0b' : '#22c55e';
+          ctx.fillStyle = col;
+          ctx.beginPath(); ctx.arc(x, nlY, 6, 0, Math.PI * 2); ctx.fill();
+          ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(label, x, nlY - 16 - (i % 2) * 16);
+        });
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(steps === 0 ? 'Start: the integers 1 and 2' : `${steps} averaging step${steps > 1 ? 's' : ''} between 1 and 2`, W / 2, 40);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('Each step takes the average (a + b)/2 — and never runs out', W / 2, H - 25);
+
+        obs.innerHTML = steps === 0
+          ? `<strong>Starting with 1 and 2:</strong> take their average to find a rational number strictly between them.`
+          : `<strong>Found so far: ${found.map(f => f[1]).join(', ')}.</strong> Each new number is the average of 1 and the previous one — the process can continue forever, so infinitely many rational numbers lie between any two points.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSqrt2ConstructionLab() {
+      const canvas = document.getElementById('sqrt2-construction-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-sqrt2-construction');
+      const obs = document.getElementById('sqrt2-construction-obs');
+      const NOTES = {
+        1: 'Measure OA = 1 unit along the number line, from the origin O to the point A at 1.',
+        2: 'Draw a perpendicular at A and mark B with AB = 1 unit. Joining O to B gives OB = √(1² + 1²) = √2 units.',
+        3: 'With O as centre and OB as radius, draw an arc cutting the number line at P. Since OP = OB, the point P represents √2 ≈ 1.414 on the number line.'
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const step = parseInt(sel.value);
+        const unit = 70, oy = 220, ox = 120;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(30, oy); ctx.lineTo(W - 30, oy); ctx.stroke();
+        for (let i = -1; i <= 3; i++) {
+          const x = ox + i * unit;
+          if (x < 30 || x > W - 30) continue;
+          ctx.beginPath(); ctx.moveTo(x, oy - 5); ctx.lineTo(x, oy + 5); ctx.stroke();
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText(`${i}`, x, oy + 20);
+        }
+
+        const ax = ox + unit;
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ax, oy); ctx.stroke();
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = '#22c55e'; ctx.textAlign = 'center';
+        ctx.fillText('OA = 1', (ox + ax) / 2, oy + 36);
+        ctx.fillText('O', ox, oy - 12);
+        ctx.fillText('A', ax, oy - 12);
+
+        if (step >= 2) {
+          const by = oy - unit;
+          ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(ax, oy); ctx.lineTo(ax, by); ctx.stroke();
+          ctx.font = 'bold 12px system-ui'; ctx.fillStyle = '#f59e0b'; ctx.textAlign = 'left';
+          ctx.fillText('AB = 1', ax + 8, (oy + by) / 2);
+          ctx.fillText('B', ax + 6, by - 6);
+
+          ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ax, by); ctx.stroke();
+          ctx.fillStyle = '#ef4444'; ctx.textAlign = 'right';
+          ctx.fillText('OB = √2', (ox + ax) / 2 - 4, (oy + by) / 2 - 6);
+        }
+
+        if (step >= 3) {
+          const r = unit * Math.SQRT2;
+          ctx.strokeStyle = '#8b5cf6'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+          ctx.beginPath(); ctx.arc(ox, oy, r, -Math.PI / 4, 0); ctx.stroke();
+          ctx.setLineDash([]);
+          const px = ox + r;
+          ctx.fillStyle = '#8b5cf6';
+          ctx.beginPath(); ctx.arc(px, oy, 7, 0, Math.PI * 2); ctx.fill();
+          ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('P = √2', px, oy - 16);
+        }
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Step ${step}`, W / 2, 30);
+
+        obs.innerHTML = `<strong>Step ${step}:</strong> ${NOTES[step]}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDecimalExpansionLab() {
+      const canvas = document.getElementById('decimal-expansion-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-decimal-expansion');
+      const obs = document.getElementById('decimal-expansion-obs');
+      const FRACS = {
+        '3/8': { factors: '8 = 2³', terminates: true, dec: '0.375', note: 'Only the prime 2 appears, so the denominator can become a power of 10.' },
+        '3/20': { factors: '20 = 2² × 5', terminates: true, dec: '0.15', note: 'Only 2s and a 5 appear: 3/20 = 15/100 = 0.15.' },
+        '5/11': { factors: '11 = 11', terminates: false, dec: '0.454545… = 0.4̄5̄', note: 'The prime 11 is neither 2 nor 5, so the decimal repeats.' },
+        '10/3': { factors: '3 = 3', terminates: false, dec: '3.3333… = 3.3̄', note: 'The prime 3 is neither 2 nor 5, so the decimal repeats.' },
+        '1/7': { factors: '7 = 7', terminates: false, dec: '0.142857142857… ', note: 'Dividing by 7 allows only remainders 1–6, so one must recur and the division loops.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const key = sel.value;
+        const f = FRACS[key];
+        const color = f.terminates ? '#22c55e' : '#f59e0b';
+
+        ctx.font = 'bold 32px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(key, W / 2, 60);
+
+        ctx.font = '15px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Denominator factorised:  ${f.factors}`, W / 2, 100);
+
+        ctx.fillStyle = f.terminates ? 'rgba(34,197,94,0.15)' : 'rgba(245,158,11,0.15)';
+        ctx.fillRect(W / 2 - 190, 120, 380, 46);
+        ctx.strokeStyle = color; ctx.lineWidth = 2;
+        ctx.strokeRect(W / 2 - 190, 120, 380, 46);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = color; ctx.textAlign = 'center';
+        ctx.fillText(f.terminates ? 'Only primes 2 and/or 5 → TERMINATES' : 'A prime other than 2 or 5 → REPEATS', W / 2, 149);
+
+        ctx.font = 'bold 22px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(`${key} = ${f.dec}`, W / 2, 205);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        const words = f.note.split(' ');
+        let line = '', y = 245;
+        words.forEach(w => {
+          if ((line + w).length > 62) { ctx.fillText(line, W / 2, y); line = w + ' '; y += 20; }
+          else line += w + ' ';
+        });
+        ctx.fillText(line, W / 2, y);
+
+        obs.innerHTML = `<strong>${key} = ${f.dec} — ${f.terminates ? 'terminating' : 'repeating'}.</strong> ${f.factors}. ${f.note}`;
       }
 
       sel.addEventListener('change', draw);
