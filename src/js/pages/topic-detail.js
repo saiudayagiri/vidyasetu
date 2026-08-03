@@ -5058,6 +5058,99 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const polynomialDegreeLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="polynomial-degree-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a polynomial and see its degree and classification.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Polynomial</h3>
+            <select id="sel-polynomial-degree" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="cubic" selected>5y³ + y² + 2y − 1</option>
+              <option value="quadratic">x² + 5x + 1</option>
+              <option value="linear">3z + 7</option>
+              <option value="constant">8</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Degree &amp; Type</h3>
+            <div id="polynomial-degree-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a polynomial above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const linearPatternLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="linear-pattern-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a stage and see the tiles counted by the rule 2n − 1.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Stage</h3>
+            <select id="sel-linear-pattern" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="1">Stage 1</option>
+              <option value="2">Stage 2</option>
+              <option value="3" selected>Stage 3</option>
+              <option value="4">Stage 4</option>
+              <option value="5">Stage 5</option>
+              <option value="6">Stage 6</option>
+              <option value="7">Stage 7</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Tiles at This Stage</h3>
+            <div id="linear-pattern-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a stage above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const growthDecayLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="growth-decay-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a function and see whether it grows or decays linearly.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Function</h3>
+            <select id="sel-growth-decay" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="cost" selected>C(d) = 100 + 60d — journey cost</option>
+              <option value="tank">h(t) = 3 − 0.5t — water height</option>
+              <option value="pocket">₹(100 − 5n) — pocket money left</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Growth or Decay?</h3>
+            <div id="growth-decay-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a function above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const lineGraphSlopeLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="line-graph-slope-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a set of lines and see how slope and y-intercept change them.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Set of Lines</h3>
+            <select id="sel-line-graph-slope" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="sameB" selected>Same b, different a</option>
+              <option value="sameA">Same a, different b (parallel)</option>
+              <option value="mixed">y = x+3, y = 2x+5, y = 3x−2</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What Changes</h3>
+            <div id="line-graph-slope-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a set above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -7205,6 +7298,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'midpoint-sim') {
               labHtml = midpointLabHtml;
               labDesc = 'Pick a segment and check whether M is really its midpoint.';
+            } else if (topicObj.lab.type === 'polynomial-degree-sim') {
+              labHtml = polynomialDegreeLabHtml;
+              labDesc = 'Pick a polynomial and see its degree and classification.';
+            } else if (topicObj.lab.type === 'linear-pattern-sim') {
+              labHtml = linearPatternLabHtml;
+              labDesc = 'Pick a stage and see the growing tile pattern counted by 2n − 1.';
+            } else if (topicObj.lab.type === 'growth-decay-sim') {
+              labHtml = growthDecayLabHtml;
+              labDesc = 'Pick a function and see whether it shows linear growth or linear decay.';
+            } else if (topicObj.lab.type === 'line-graph-slope-sim') {
+              labHtml = lineGraphSlopeLabHtml;
+              labDesc = 'Pick a set of lines and see how slope and y-intercept affect them.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -7844,6 +7949,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initDistanceFormulaLab();
         } else if (topicObj.lab.type === 'midpoint-sim') {
           initMidpointLab();
+        } else if (topicObj.lab.type === 'polynomial-degree-sim') {
+          initPolynomialDegreeLab();
+        } else if (topicObj.lab.type === 'linear-pattern-sim') {
+          initLinearPatternLab();
+        } else if (topicObj.lab.type === 'growth-decay-sim') {
+          initGrowthDecayLab();
+        } else if (topicObj.lab.type === 'line-graph-slope-sim') {
+          initLineGraphSlopeLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -25496,6 +25609,197 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         obs.innerHTML = isMid
           ? `<strong>Yes:</strong> Averaging gives x = (${c.S[0]} + ${c.T[0]})/2 = ${trueMx} and y = (${c.S[1]} + ${c.T[1]})/2 = ${trueMy}, matching M exactly.`
           : `<strong>No:</strong> Averaging gives x = (${c.S[0]} + ${c.T[0]})/2 = ${trueMx} and y = (${c.S[1]} + ${c.T[1]})/2 = ${trueMy}, so the true midpoint is (${trueMx}, ${trueMy}), not (${c.M[0]}, ${c.M[1]}).`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPolynomialDegreeLab() {
+      const canvas = document.getElementById('polynomial-degree-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-polynomial-degree');
+      const obs = document.getElementById('polynomial-degree-obs');
+      const POLYS = {
+        cubic: { expr: '5y³ + y² + 2y − 1', deg: 3, type: 'Cubic polynomial', terms: [['5y³', 'coefficient 5'], ['y²', 'coefficient 1'], ['2y', 'coefficient 2'], ['−1', 'constant term']] },
+        quadratic: { expr: 'x² + 5x + 1', deg: 2, type: 'Quadratic polynomial', terms: [['x²', 'coefficient 1'], ['5x', 'coefficient 5'], ['1', 'constant term']] },
+        linear: { expr: '3z + 7', deg: 1, type: 'Linear polynomial', terms: [['3z', 'coefficient 3'], ['7', 'constant term']] },
+        constant: { expr: '8', deg: 0, type: 'Constant polynomial', terms: [['8 = 8x⁰', 'power of x is 0']] }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const p = POLYS[sel.value];
+
+        ctx.font = 'bold 26px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(p.expr, W / 2, 55);
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`Degree = ${p.deg}`, W / 2, 95);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = '#f59e0b';
+        ctx.fillText(p.type, W / 2, 122);
+
+        let y = 165;
+        p.terms.forEach(([t, note]) => {
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'right';
+          ctx.fillText(t, W / 2 - 15, y);
+          ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+          ctx.fillText(note, W / 2 + 15, y);
+          y += 30;
+        });
+
+        obs.innerHTML = `<strong>${p.expr} has degree ${p.deg} — a ${p.type.toLowerCase()}.</strong> The degree is the highest power of the variable appearing in the polynomial.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initLinearPatternLab() {
+      const canvas = document.getElementById('linear-pattern-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-linear-pattern');
+      const obs = document.getElementById('linear-pattern-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = parseInt(sel.value);
+        const tiles = 2 * n - 1;
+        const size = 22, gap = 3;
+        const perRow = 13;
+        const rows = Math.ceil(tiles / perRow);
+        const startY = 90;
+
+        for (let i = 0; i < tiles; i++) {
+          const r = Math.floor(i / perRow), c = i % perRow;
+          const rowCount = Math.min(perRow, tiles - r * perRow);
+          const rowW = rowCount * (size + gap) - gap;
+          const x = W / 2 - rowW / 2 + c * (size + gap);
+          const y = startY + r * (size + gap);
+          const isNew = i >= 2 * (n - 1) - 1;
+          ctx.fillStyle = isNew ? '#f59e0b' : cssVar('--accent-color');
+          ctx.fillRect(x, y, size, size);
+          ctx.strokeStyle = cssVar('--bg-primary'); ctx.lineWidth = 1.5;
+          ctx.strokeRect(x, y, size, size);
+        }
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Stage ${n}`, W / 2, 35);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`2n − 1 = 2 × ${n} − 1 = ${tiles} tiles`, W / 2, 62);
+
+        const seq = [];
+        for (let k = 1; k <= 7; k++) seq.push(2 * k - 1);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Sequence: ${seq.join(', ')}  (constant difference 2)`, W / 2, startY + rows * (size + gap) + 30);
+
+        obs.innerHTML = `<strong>Stage ${n} has 2 × ${n} − 1 = ${tiles} tiles.</strong> Each stage adds exactly 2 more tiles than the last — the constant difference that makes 2n − 1 a linear polynomial.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initGrowthDecayLab() {
+      const canvas = document.getElementById('growth-decay-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-growth-decay');
+      const obs = document.getElementById('growth-decay-obs');
+      const FUNCS = {
+        cost: { label: 'C(d) = 100 + 60d', xs: [0, 1, 2, 3, 4, 5], f: d => 100 + 60 * d, unit: '₹', step: '+₹60 per km', growth: true, xlabel: 'distance d (km)' },
+        tank: { label: 'h(t) = 3 − 0.5t', xs: [0, 1, 2, 3, 4], f: t => 3 - 0.5 * t, unit: '', step: '−0.5 m per month', growth: false, xlabel: 'month t' },
+        pocket: { label: '₹(100 − 5n)', xs: [0, 3, 6, 9, 12], f: n => 100 - 5 * n, unit: '₹', step: '−₹5 per day', growth: false, xlabel: 'day n' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const fn = FUNCS[sel.value];
+        const vals = fn.xs.map(fn.f);
+        const maxV = Math.max(...vals), minV = Math.min(...vals);
+        const range = maxV - minV || 1;
+
+        const plotX = 70, plotY = 70, plotW = W - 120, plotH = 150;
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(plotX, plotY); ctx.lineTo(plotX, plotY + plotH); ctx.lineTo(plotX + plotW, plotY + plotH); ctx.stroke();
+
+        const stepX = plotW / (fn.xs.length - 1);
+        ctx.strokeStyle = fn.growth ? '#22c55e' : '#ef4444'; ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        vals.forEach((v, i) => {
+          const px = plotX + i * stepX;
+          const py = plotY + plotH - ((v - minV) / range) * (plotH - 20);
+          i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+        });
+        ctx.stroke();
+
+        vals.forEach((v, i) => {
+          const px = plotX + i * stepX;
+          const py = plotY + plotH - ((v - minV) / range) * (plotH - 20);
+          ctx.fillStyle = fn.growth ? '#22c55e' : '#ef4444';
+          ctx.beginPath(); ctx.arc(px, py, 4.5, 0, Math.PI * 2); ctx.fill();
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(`${fn.unit}${v}`, px, py - 12);
+          ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText(`${fn.xs[i]}`, px, plotY + plotH + 18);
+        });
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(fn.label, W / 2, 32);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(fn.xlabel, W / 2, plotY + plotH + 40);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = fn.growth ? '#22c55e' : '#ef4444';
+        ctx.fillText(fn.growth ? `LINEAR GROWTH (${fn.step})` : `LINEAR DECAY (${fn.step})`, W / 2, H - 12);
+
+        obs.innerHTML = `<strong>${fn.label} — linear ${fn.growth ? 'growth' : 'decay'}:</strong> the value changes by a constant ${fn.step} over each equal interval.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initLineGraphSlopeLab() {
+      const canvas = document.getElementById('line-graph-slope-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-line-graph-slope');
+      const obs = document.getElementById('line-graph-slope-obs');
+      const SETS = {
+        sameB: { lines: [[0.5, 0, '#22c55e'], [1, 0, '#f59e0b'], [2, 0, '#ef4444']], desc: 'With b = 0 fixed and a varying (½, 1, 2), all three lines pass through the origin but get steeper as a increases — a controls the slope.' },
+        sameA: { lines: [[2, -1, '#22c55e'], [2, 1, '#f59e0b'], [2, 5, '#ef4444']], desc: 'With a = 2 fixed and b varying (−1, 1, 5), the lines keep the same steepness but shift up and down — they stay parallel, cutting the y-axis at (0, −1), (0, 1) and (0, 5).' },
+        mixed: { lines: [[1, 3, '#22c55e'], [2, 5, '#f59e0b'], [3, -2, '#ef4444']], desc: 'y = x+3 cuts the y-axis at (0, 3), y = 2x+5 at (0, 5), and y = 3x−2 at (0, −2) — every line y = ax + b crosses the y-axis at (0, b).' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const unit = 26, ox = W / 2, oy = H / 2;
+        drawCoordAxes(ctx, W, H, unit, ox, oy, 12);
+
+        const s = SETS[sel.value];
+        s.lines.forEach(([a, b, color]) => {
+          ctx.strokeStyle = color; ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          const xL = -(ox / unit), xR = (W - ox) / unit;
+          ctx.moveTo(ox + xL * unit, oy - (a * xL + b) * unit);
+          ctx.lineTo(ox + xR * unit, oy - (a * xR + b) * unit);
+          ctx.stroke();
+
+          const iy = oy - b * unit;
+          ctx.fillStyle = color;
+          ctx.beginPath(); ctx.arc(ox, iy, 5, 0, Math.PI * 2); ctx.fill();
+          ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'left';
+          const aTxt = a === 0.5 ? '½' : `${a}`;
+          const bTxt = b === 0 ? '' : (b > 0 ? ` + ${b}` : ` − ${Math.abs(b)}`);
+          ctx.fillText(`y = ${aTxt}x${bTxt}`, ox + 10, iy - 8);
+        });
+
+        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${s.desc}`;
       }
 
       sel.addEventListener('change', draw);

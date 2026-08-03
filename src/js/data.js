@@ -19783,6 +19783,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9m-2",
+              title: "Introduction to Linear Polynomials",
+              topics: [
+                {
+                  id: "9m-2-1",
+                  title: "1. Polynomials and Their Degrees",
+                  lab: { type: "polynomial-degree-sim" },
+                  theory: {
+                    intro: "Buy x boxes of pens and y boxes of pencils, and the total works out to 4x + 5y + 3 — an algebraic expression whose parts each have their own name.",
+                    sections: [
+                      {
+                        heading: "Terms, Variables, Coefficients, and Constants",
+                        text: "If red boxes hold 4 pens each and blue boxes hold 5 pencils each, then x red boxes and y blue boxes plus 3 free pens gives the expression 4x + 5y + 3. Here 4x, 5y and 3 are the terms; x and y are the variables (also called letter-numbers); 4 and 5 are the coefficients of x and y; and 3 is the constant."
+                      },
+                      {
+                        heading: "One-Variable Polynomials",
+                        text: "Expressions such as 4x, x² + 1, 2y − 5, 5y³ + y² + 2y − 1, and 3z + 7 involve only one variable. Algebraic expressions involving one variable and its powers are called one-variable polynomials or univariate polynomials ('univariate' means 'having one variable'), or simply polynomials. In 5y³ + y² + 2y − 1, the coefficient of y³ is 5, of y² is 1, of y is 2, and the constant term is −1."
+                      },
+                      {
+                        heading: "Degree and Classification",
+                        text: "The highest power of the variable in a polynomial is called its degree. 5y³ + y² + 2y − 1 has degree 3 and is a cubic polynomial. x² + 5x + 1 has degree 2 and is a quadratic polynomial. 3z + 7 has degree 1 and is a linear polynomial. The constant 8 has degree 0, since it can be written as 8x⁰ — such polynomials are called constant polynomials."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Identifying Degrees and Coefficients",
+                      objective: "To determine the degree of various polynomials and identify the coefficients of specific terms.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "For 2x² − 5x + 3, find the highest power of x to determine the degree.",
+                        "For y³ + 2y − 1, find the degree and classify the polynomial.",
+                        "For the constant −9, express it as −9x⁰ and state its degree.",
+                        "In x⁴ − 3x³ + 6x² − 2x + 7, identify the coefficients of x² and x³.",
+                        "In 4z³ + 5z² − 11, identify the coefficient of z and the constant term."
+                      ],
+                      observation: "2x² − 5x + 3 has degree 2 (quadratic); y³ + 2y − 1 has degree 3 (cubic); −9 has degree 0 (constant); in x⁴ − 3x³ + 6x² − 2x + 7 the coefficient of x² is 6 and of x³ is −3; in 4z³ + 5z² − 11 the coefficient of z is 0 (no z term appears) and the constant term is −11."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the degree of the polynomial 2x² − 5x + 3?",
+                      options: ["0", "1", "2", "3"],
+                      answer: 2,
+                      explanation: "The degree is the highest power of the variable. Here the highest power of x is 2, so the polynomial has degree 2 (a quadratic polynomial)."
+                    },
+                    {
+                      question: "What is a polynomial of degree 1 called?",
+                      options: ["A constant polynomial", "A linear polynomial", "A quadratic polynomial", "A cubic polynomial"],
+                      answer: 1,
+                      explanation: "A polynomial whose highest power of the variable is 1 — such as 3z + 7 — is called a linear polynomial."
+                    },
+                    {
+                      question: "What is the degree of the constant polynomial −9?",
+                      options: ["0", "1", "9", "It has no degree"],
+                      answer: 0,
+                      explanation: "A constant such as −9 can be written as −9x⁰, in which the power of the variable is 0 — so its degree is 0, and it is called a constant polynomial."
+                    },
+                    {
+                      question: "In the polynomial x⁴ − 3x³ + 6x² − 2x + 7, what is the coefficient of x³?",
+                      options: ["6", "−3", "3", "−2"],
+                      answer: 1,
+                      explanation: "The term containing x³ is −3x³, so the coefficient of x³ is −3 (including its negative sign)."
+                    },
+                    {
+                      question: "In the expression 4x + 5y + 3, which parts are the coefficients?",
+                      options: ["x and y", "4 and 5", "3 only", "4x and 5y"],
+                      answer: 1,
+                      explanation: "The coefficients are the numbers multiplying the variables — here 4 (of x) and 5 (of y). The variables are x and y, the terms are 4x, 5y and 3, and 3 is the constant."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-2-2",
+                  title: "2. Linear Polynomials and Linear Patterns",
+                  lab: { type: "linear-pattern-sim" },
+                  theory: {
+                    intro: "A chess club charges ₹200 to join plus ₹50 per match — and the amount owed climbs by exactly the same ₹50 with every single match, which is the signature of a linear polynomial.",
+                    sections: [
+                      {
+                        heading: "Linear Polynomials in Context",
+                        text: "The perimeter of a square of side x is 4x, a linear polynomial in x. A chess club charging ₹200 joining fee plus ₹50 per match gives a total cost of ₹(200 + 50m) for m matches — a linear polynomial in m. The amounts for 1, 2, 3, 4, 5 matches are ₹250, ₹300, ₹350, ₹400, ₹450, increasing by a constant ₹50 each time."
+                      },
+                      {
+                        heading: "The Defining Feature: Constant Differences",
+                        text: "The characteristic feature of linear polynomials is that the difference between successive values at integers is constant. For a square, the perimeter increases by 2 cm each time the side increases by 0.5 cm; for the chess club, the amount rises by ₹50 per additional match. Such patterns are called linear patterns."
+                      },
+                      {
+                        heading: "Growing Patterns and Linear Equations",
+                        text: "In a growing tile pattern giving 1, 3, 5, 7, 9, 11, 13 squares at stages 1 to 7, the number of squares at stage n is 2n − 1 — a linear polynomial of degree 1, with a constant difference of 2 between consecutive terms. When we equate a linear polynomial to a constant, we get a linear equation: if the sum of two numbers is 64 and one is 10 more than the other, then x + (x + 10) = 64 gives 2x + 10 = 64, so 2x = 54 and x = 27 — the numbers are 27 and 37."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding the Rule for a Growing Tile Pattern",
+                      objective: "To generalise a growing pattern of square tiles into a linear polynomial and use it to predict later stages.",
+                      materials: ["Square tiles or graph paper", "Notebook and pen"],
+                      steps: [
+                        "Build or draw the first four stages of the pattern, counting the tiles at each stage.",
+                        "Record the counts in a table: Stage 1 → 1, Stage 2 → 3, Stage 3 → 5, Stage 4 → 7.",
+                        "Extend the table to Stage 7 by continuing to add two tiles per stage.",
+                        "Notice that the count at each stage is one less than twice the stage number, giving the rule 2n − 1.",
+                        "Use the rule to predict the tiles at Stage 15 and Stage 26."
+                      ],
+                      observation: "The counts 1, 3, 5, 7, 9, 11, 13 rise by a constant 2 each stage, and the rule 2n − 1 reproduces every value (e.g. Stage 5 gives 2 × 5 − 1 = 9). Applying it further gives 2 × 15 − 1 = 29 tiles at Stage 15 and 2 × 26 − 1 = 51 tiles at Stage 26."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "A chess club charges ₹200 to join plus ₹50 per match. What is the total cost for m matches?",
+                      options: ["₹(200m + 50)", "₹(200 + 50m)", "₹(250m)", "₹(200 × 50m)"],
+                      answer: 1,
+                      explanation: "The fixed joining fee of ₹200 is added to ₹50 for each of the m matches, giving ₹(200 + 50m) — a linear polynomial in m."
+                    },
+                    {
+                      question: "In the growing tile pattern 1, 3, 5, 7, 9, …, how many squares are at Stage n?",
+                      options: ["n + 2", "2n", "2n − 1", "n²"],
+                      answer: 2,
+                      explanation: "The number of squares at each stage is one less than twice the stage number — at Stage 5, for example, 2 × 5 − 1 = 9, matching the pattern."
+                    },
+                    {
+                      question: "What is the characteristic feature of a linear pattern?",
+                      options: ["The values double each time", "The difference between successive values at integers is constant", "The values follow a square-number sequence", "There is no predictable pattern"],
+                      answer: 1,
+                      explanation: "Linear polynomials produce patterns where each successive value differs from the previous one by the same constant amount — for example, ₹50 per extra chess match."
+                    },
+                    {
+                      question: "The sum of two numbers is 64, and one is 10 more than the other. What are the numbers?",
+                      options: ["27 and 37", "30 and 34", "24 and 40", "32 and 32"],
+                      answer: 0,
+                      explanation: "Letting the smaller number be x gives x + (x + 10) = 64, so 2x + 10 = 64, hence 2x = 54 and x = 27 — making the numbers 27 and 37."
+                    },
+                    {
+                      question: "How many tiles will the growing pattern 2n − 1 have at Stage 15?",
+                      options: ["15 tiles", "29 tiles", "30 tiles", "31 tiles"],
+                      answer: 1,
+                      explanation: "Substituting n = 15 into the rule gives 2 × 15 − 1 = 30 − 1 = 29 tiles."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-2-3",
+                  title: "3. Linear Growth and Linear Decay",
+                  lab: { type: "growth-decay-sim" },
+                  theory: {
+                    intro: "A taxi fare climbing ₹60 with every kilometre and a water tank dropping half a metre every month are the same idea running in opposite directions.",
+                    sections: [
+                      {
+                        heading: "Linear Growth",
+                        text: "The cost of a journey given by C(d) = 100 + 60d, where C is the total cost in rupees and d the distance in km, produces the values ₹100, ₹160, ₹220, ₹280, ₹340, ₹400 for d = 0 to 5. As d increases by one km, the cost increases by a fixed ₹60. Linear growth describes a linear pattern where a quantity increases by a constant amount over equal intervals."
+                      },
+                      {
+                        heading: "Linear Decay",
+                        text: "The height of water in a tank, h(t) = 3 − 0.5t metres after t months, gives 3, 2.5, 2, 1.5, 1 metres for t = 0 to 4. As t increases by a fixed one month, the height decreases by a fixed 0.5 m. Linear decay describes a linear pattern where a quantity decreases by a constant amount over equal intervals."
+                      },
+                      {
+                        heading: "Polynomials as Input-Output Processes",
+                        text: "A polynomial can be treated as an input-output machine: for the linear polynomial 2x + 3, substituting x = 4 gives 2 × 4 + 3 = 11, and substituting x = −6 gives 2 × (−6) + 3 = −9. This process is called a function, where 2x + 3 is a function of x. Note that 2x + 3 is a linear function, whereas 10x − x² is a quadratic function. Another decay example: with ₹100 pocket money and ₹5 spent daily, the amount left on day n is ₹(100 − 5n), so on day 12 the amount left is ₹(100 − 60) = ₹40."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tabulating Linear Growth and Decay",
+                      objective: "To build value tables for a growth function and a decay function and confirm the constant rate of change in each.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "For C(d) = 100 + 60d, compute the cost for d = 0, 1, 2, 3, 4, 5 km.",
+                        "Find the difference between consecutive costs and confirm it is constant.",
+                        "For h(t) = 3 − 0.5t, compute the height for t = 0, 1, 2, 3, 4 months.",
+                        "Find the difference between consecutive heights and confirm it is constant.",
+                        "Classify each function as linear growth or linear decay based on the sign of that constant difference."
+                      ],
+                      observation: "C(d) gives 100, 160, 220, 280, 340, 400 — rising by a constant +₹60 per km, so it is linear growth. h(t) gives 3, 2.5, 2, 1.5, 1 — falling by a constant −0.5 m per month, so it is linear decay."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "For the cost function C(d) = 100 + 60d, what is the cost of travelling 5 km?",
+                      options: ["₹300", "₹360", "₹400", "₹500"],
+                      answer: 2,
+                      explanation: "Substituting d = 5 gives C = 100 + 60 × 5 = 100 + 300 = ₹400."
+                    },
+                    {
+                      question: "In C(d) = 100 + 60d, by how much does the cost increase for each additional kilometre?",
+                      options: ["₹100", "₹60", "₹160", "It varies with distance"],
+                      answer: 1,
+                      explanation: "Each extra kilometre adds a fixed ₹60 to the cost — the constant rate of change that makes this an example of linear growth."
+                    },
+                    {
+                      question: "For the water tank function h(t) = 3 − 0.5t, what is the height at the end of 4 months?",
+                      options: ["1 m", "1.5 m", "2 m", "0.5 m"],
+                      answer: 0,
+                      explanation: "Substituting t = 4 gives h = 3 − 0.5 × 4 = 3 − 2 = 1 metre."
+                    },
+                    {
+                      question: "What is the value of the linear polynomial 2x + 3 when x = −6?",
+                      options: ["−9", "9", "−15", "15"],
+                      answer: 0,
+                      explanation: "Substituting x = −6 gives 2 × (−6) + 3 = −12 + 3 = −9."
+                    },
+                    {
+                      question: "Bela has ₹100 and spends ₹5 every day. After how many days will she have ₹40 left?",
+                      options: ["8 days", "10 days", "12 days", "20 days"],
+                      answer: 2,
+                      explanation: "The amount left on day n is ₹(100 − 5n). Setting 100 − 5n = 40 gives 5n = 60, so n = 12 days."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-2-4",
+                  title: "4. Visualising Linear Relationships",
+                  lab: { type: "line-graph-slope-sim" },
+                  theory: {
+                    intro: "Every equation of the form y = ax + b draws a straight line — and the two numbers a and b tell you precisely how steep it is and exactly where it crosses the y-axis.",
+                    sections: [
+                      {
+                        heading: "Plotting a Line from Two Points",
+                        text: "A linear relationship between two variables x and y can be expressed as y = ax + b. To plot such an equation, we need just two points. For y = 2x + 1: when x = 0, y = 1, giving A (0, 1); when x = 3, y = 7, giving B (3, 7). Plotting these, joining them, and extending in both directions produces the line."
+                      },
+                      {
+                        heading: "Finding a Linear Relationship from Data",
+                        text: "A telecom company charges a fixed monthly fee plus a cost per GB. If 10 GB gives a bill of ₹350 and 20 GB gives ₹550, substituting into y = ax + b gives 350 = 10a + b and 550 = 20a + b. From the first, b = 350 − 10a; substituting into the second gives 550 = 20a + 350 − 10a, so 10a = 200 and a = 20, hence b = 350 − 200 = 150. The relationship is y = 20x + 150."
+                      },
+                      {
+                        heading: "Slope and y-Intercept",
+                        text: "In y = ax + b, a represents the slope of the line and b represents the y-intercept — any line written in this form cuts the y-axis at the point (0, b). So y = 2x + 5 cuts the y-axis at (0, 5), y = x + 3 at (0, 3), and y = 3x − 2 at (0, −2). Changing a while keeping b fixed changes the slope but not the y-intercept; changing b while keeping a fixed shifts the line while keeping it parallel to the original — so lines with equal slopes but different y-intercepts are parallel."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Lines with the Same Slope and Different Intercepts",
+                      objective: "To plot several linear equations and observe how changing a and b affects the slope and y-intercept.",
+                      materials: ["Graph paper", "Ruler", "Pencil"],
+                      steps: [
+                        "Plot y = 2x + 1 by finding two points: (0, 1) and (3, 7), then join and extend the line.",
+                        "On the same axes, plot y = 2x − 1 and y = 2x + 5 using two points each.",
+                        "Note where each of these three lines crosses the y-axis.",
+                        "On fresh axes, plot y = x + 3, y = 2x + 5, and y = 3x − 2, again noting the y-axis crossings.",
+                        "Compare which lines are parallel and which have different steepness."
+                      ],
+                      observation: "The lines y = 2x + 1, y = 2x − 1 and y = 2x + 5 all share slope a = 2 and are parallel, crossing the y-axis at (0, 1), (0, −1) and (0, 5) respectively. The lines y = x + 3, y = 2x + 5 and y = 3x − 2 have different slopes and cut the y-axis at (0, 3), (0, 5) and (0, −2) — confirming that y = ax + b always crosses the y-axis at (0, b)."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the equation y = ax + b, what does a represent?",
+                      options: ["The y-intercept", "The slope of the line", "The x-intercept", "A constant with no geometric meaning"],
+                      answer: 1,
+                      explanation: "In y = ax + b, the coefficient a represents the slope of the line, while b represents the y-intercept."
+                    },
+                    {
+                      question: "At which point does the line y = 3x − 2 cut the y-axis?",
+                      options: ["(0, 3)", "(0, −2)", "(−2, 0)", "(3, −2)"],
+                      answer: 1,
+                      explanation: "Any line of the form y = ax + b cuts the y-axis at (0, b). Here b = −2, so the line crosses at (0, −2), which is 2 units below the origin."
+                    },
+                    {
+                      question: "A telecom bill follows y = ax + b. When x = 10 GB, y = ₹350; when x = 20 GB, y = ₹550. What are a and b?",
+                      options: ["a = 20, b = 150", "a = 15, b = 200", "a = 20, b = 350", "a = 10, b = 250"],
+                      answer: 0,
+                      explanation: "From 350 = 10a + b we get b = 350 − 10a. Substituting into 550 = 20a + b gives 550 = 10a + 350, so 10a = 200, a = 20 and b = 350 − 200 = 150."
+                    },
+                    {
+                      question: "What happens to a line when b changes but a stays fixed?",
+                      options: ["The slope changes but the y-intercept stays the same", "The line shifts but remains parallel to the original line", "The line rotates about the origin", "Nothing changes at all"],
+                      answer: 1,
+                      explanation: "Changing b while keeping a fixed shifts the line up or down without altering its steepness — so lines with equal slopes but different y-intercepts are parallel to each other."
+                    },
+                    {
+                      question: "Which two points can be used to plot the line y = 2x + 1?",
+                      options: ["(0, 1) and (3, 7)", "(0, 2) and (1, 3)", "(1, 0) and (7, 3)", "(0, 0) and (2, 1)"],
+                      answer: 0,
+                      explanation: "When x = 0, y = 2 × 0 + 1 = 1 giving (0, 1); when x = 3, y = 2 × 3 + 1 = 7 giving (3, 7). Both points satisfy the equation, so the line can be drawn through them."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
