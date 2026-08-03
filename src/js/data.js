@@ -20347,6 +20347,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9m-4",
+              title: "Exploring Algebraic Identities",
+              topics: [
+                {
+                  id: "9m-4-1",
+                  title: "1. Visualising (a + b)² and (a − b)²",
+                  lab: { type: "square-area-model-sim" },
+                  theory: {
+                    intro: "Draw a square with side (a + b), slice it into four pieces, and the areas of those pieces literally spell out the identity a² + 2ab + b².",
+                    sections: [
+                      {
+                        heading: "The Geometric Picture",
+                        text: "Take two line segments of lengths a and b and join them to form a segment of length (a + b). Build a square on it and partition it: the outer square has area (a + b)², the larger inner square has area a², the smaller square has area b², and the two rectangles have area ab each. Since together they make the whole square, (a + b)² = a² + 2ab + b²."
+                      },
+                      {
+                        heading: "Identity vs. Equation",
+                        text: "An algebraic identity is an equation true for all values of the variables in it, while an equation need not be. For example, x² − 1 = 24 is true only for x = 5 or −5, so it is an equation; but (x + y)² = x² + 2xy + y² holds for all x and y, so it is an identity. The geometric proof only covers positive lengths, but checking a = −2, b = −3 gives (a+b)² = 25 and a² + 2ab + b² = 4 + 12 + 9 = 25, and the distributive property confirms it in general: (a + b)(a + b) = a² + ab + ba + b² = a² + 2ab + b²."
+                      },
+                      {
+                        heading: "The Companion Identity (a − b)²",
+                        text: "Replacing b by −b gives (a − b)² = a² − 2ab + b², also an identity. Geometrically, draw a square of side a split into parts (a − b) and b: subtracting the rectangle areas from the big square gives (a − b)² = a² − ab − b(a − b) = a² − 2ab + b². These make mental arithmetic easy: 43² = (40 + 3)² = 1600 + 240 + 9 = 1849, and 29² = (30 − 1)² = 900 − 60 + 1 = 841."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building the Square Identity from Paper Pieces",
+                      objective: "To cut out squares and rectangles and reassemble them into a square of side (a + b), confirming the identity by area.",
+                      materials: ["Graph paper", "Scissors", "Ruler", "Pencil"],
+                      steps: [
+                        "Choose values such as a = 5 cm and b = 3 cm.",
+                        "Cut one square of side a (area a² = 25), one square of side b (area b² = 9), and two rectangles a × b (area 15 each).",
+                        "Arrange all four pieces to form one large square with no gaps or overlaps.",
+                        "Measure the side of the assembled square and confirm it equals a + b = 8 cm.",
+                        "Compare the total area of the four pieces with the area of the large square."
+                      ],
+                      observation: "The four pieces fit exactly into a square of side 8 cm with area 64. Adding the pieces gives 25 + 15 + 15 + 9 = 64 — confirming (a + b)² = a² + 2ab + b² by area."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In the geometric model of (a + b)², what do the two rectangles represent?",
+                      options: ["a² each", "b² each", "ab each, together giving 2ab", "(a + b) each"],
+                      answer: 2,
+                      explanation: "The square of side (a + b) splits into a square of area a², a square of area b², and two rectangles each of area ab — together contributing the 2ab term."
+                    },
+                    {
+                      question: "What is the difference between an equation and an identity?",
+                      options: ["There is no difference", "An identity is true for all values of its variables, while an equation need not be", "An equation is always true but an identity is not", "Identities contain no variables"],
+                      answer: 1,
+                      explanation: "An identity such as (x + y)² = x² + 2xy + y² holds for every value of the variables, whereas an equation like x² − 1 = 24 is true only for particular values (x = 5 or −5)."
+                    },
+                    {
+                      question: "Using the identity (a + b)² = a² + 2ab + b², what is (5x + 2y)²?",
+                      options: ["25x² + 4y²", "25x² + 20xy + 4y²", "10x² + 20xy + 4y²", "25x² + 10xy + 4y²"],
+                      answer: 1,
+                      explanation: "With a = 5x and b = 2y: (5x)² + 2(5x)(2y) + (2y)² = 25x² + 20xy + 4y²."
+                    },
+                    {
+                      question: "How can 29² be computed quickly using the identity (a − b)² = a² − 2ab + b²?",
+                      options: ["(30 − 1)² = 900 − 60 + 1 = 841", "(20 + 9)² = 400 + 81 = 481", "(29 − 0)² = 841 directly only", "(30 − 1)² = 900 − 1 = 899"],
+                      answer: 0,
+                      explanation: "Writing 29 as (30 − 1) gives 30² − 2 × 30 × 1 + 1² = 900 − 60 + 1 = 841."
+                    },
+                    {
+                      question: "Which identity results from replacing b with −b in (a + b)² = a² + 2ab + b²?",
+                      options: ["(a − b)² = a² + 2ab − b²", "(a − b)² = a² − 2ab + b²", "(a − b)² = a² − b²", "(a − b)² = a² + b²"],
+                      answer: 1,
+                      explanation: "Substituting −b for b gives (a − b)² = a² + 2a(−b) + (−b)² = a² − 2ab + b², since (−b)² = b²."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-4-2",
+                  title: "2. Factorisation Using Identities",
+                  lab: { type: "factorisation-identity-sim" },
+                  theory: {
+                    intro: "Run the square identity backwards and it becomes a factoring machine — spot the a², the b², and the 2ab, and the expression collapses into a perfect square.",
+                    sections: [
+                      {
+                        heading: "Recognising the Pattern",
+                        text: "To factor x² + 4x + 4, notice x² = (x)², 4 = 2², and 4x = 2(2)(x). So x² + 4x + 4 = x² + 2(x)(2) + 2², which matches a² + 2ab + b² with a = x and b = 2 — giving (x + 2)². Similarly 36x² + 12x + 1 = (6x)² + 2(6x)(1) + 1², so with a = 6x and b = 1 it factors as (6x + 1)²."
+                      },
+                      {
+                        heading: "Taking Out a Common Factor First",
+                        text: "For 50p² + 60pq + 18q², no term is a neat perfect square. But 2 is a common factor of all three terms, so 50p² + 60pq + 18q² = 2(25p² + 30pq + 9q²). Now 25p² = (5p)² and 9q² = (3q)², and 30pq = 2(5p)(3q), so the bracket is (5p + 3q)² — giving the full factorisation 2(5p + 3q)²."
+                      },
+                      {
+                        heading: "The Difference of Squares",
+                        text: "Another identity, a² − b² = (a + b)(a − b), is especially useful rewritten as a² = (a + b)(a − b) + b². In 750 CE Śhrīdharāchārya proposed exactly this as a fast method for squaring numbers: 55² = (55 + 5)(55 − 5) + 5² = 60 × 50 + 25 = 3000 + 25 = 3025."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Matching Expressions to the Square Identity",
+                      objective: "To factor quadratic expressions by identifying a and b in the pattern a² + 2ab + b².",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "For x² + 4x + 4, identify what a² and b² are, then check whether the middle term equals 2ab.",
+                        "Write the factorisation as a perfect square.",
+                        "Repeat for 36x² + 12x + 1, identifying a = 6x and b = 1.",
+                        "For 50p² + 60pq + 18q², first take out the common factor 2, then apply the identity to the bracket.",
+                        "Verify each factorisation by expanding it back out."
+                      ],
+                      observation: "x² + 4x + 4 = (x + 2)²; 36x² + 12x + 1 = (6x + 1)²; and 50p² + 60pq + 18q² = 2(5p + 3q)². Expanding each result reproduces the original expression exactly, confirming the factorisations."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Factor x² + 4x + 4 using an identity.",
+                      options: ["(x + 4)²", "(x + 2)²", "(x + 2)(x + 4)", "(x − 2)²"],
+                      answer: 1,
+                      explanation: "Since x² = (x)², 4 = 2², and 4x = 2(x)(2), the expression matches a² + 2ab + b² with a = x and b = 2, giving (x + 2)²."
+                    },
+                    {
+                      question: "Factor 36x² + 12x + 1.",
+                      options: ["(6x + 1)²", "(6x + 6)²", "(36x + 1)²", "(6x − 1)²"],
+                      answer: 0,
+                      explanation: "Writing it as (6x)² + 2(6x)(1) + 1² matches a² + 2ab + b² with a = 6x and b = 1, so the factorisation is (6x + 1)²."
+                    },
+                    {
+                      question: "What is the first step in factoring 50p² + 60pq + 18q²?",
+                      options: ["Take the square root of 50p²", "Take out the common factor 2 to get 2(25p² + 30pq + 9q²)", "Divide everything by p", "Add 2pq to both sides"],
+                      answer: 1,
+                      explanation: "All three terms share the factor 2. Removing it gives 2(25p² + 30pq + 9q²), and the bracket is then a clean perfect square (5p + 3q)²."
+                    },
+                    {
+                      question: "Using Śhrīdharāchārya's method a² = (a + b)(a − b) + b², compute 55².",
+                      options: ["60 × 50 + 25 = 3025", "55 × 55 = 3020", "60 × 50 = 3000", "50 × 50 + 25 = 2525"],
+                      answer: 0,
+                      explanation: "Taking b = 5: 55² = (55 + 5)(55 − 5) + 5² = 60 × 50 + 25 = 3000 + 25 = 3025."
+                    },
+                    {
+                      question: "What is the identity for the difference of two squares?",
+                      options: ["a² − b² = (a − b)²", "a² − b² = (a + b)(a − b)", "a² − b² = a² + b²", "a² − b² = 2ab"],
+                      answer: 1,
+                      explanation: "The difference of squares factors as a² − b² = (a + b)(a − b), which can also be rearranged as a² = (a + b)(a − b) + b²."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-4-3",
+                  title: "3. The Three-Term and Cube Identities",
+                  lab: { type: "cube-identity-sim" },
+                  theory: {
+                    intro: "Stretch the square into three terms and you get six pieces; stretch it into a cube and you get eight — two cubes and six cuboids that assemble into (a + b)³.",
+                    sections: [
+                      {
+                        heading: "The Square of Three Terms",
+                        text: "To find (a + b + c)², replace b + c by d. Since (a + d)² = a² + 2ad + d², substituting back gives a² + 2a(b + c) + (b + c)², which expands to a² + 2ab + 2ac + b² + 2bc + c². It is convenient to remember this as (a + b + c)² = a² + b² + c² + 2ab + 2bc + 2ca — geometrically, a square of side a + b + c divides into three squares and six rectangles."
+                      },
+                      {
+                        heading: "Using It for Mental Arithmetic",
+                        text: "This identity makes awkward squares manageable: 119² = (100 + 10 + 9)² = 100² + 10² + 9² + 2(100)(10) + 2(100)(9) + 2(10)(9) = 10000 + 100 + 81 + 2000 + 1800 + 180 = 14161."
+                      },
+                      {
+                        heading: "The Cube Identity",
+                        text: "Using the distributive property, (a + b)³ = (a + b)(a² + 2ab + b²) = a³ + 3a²b + 3ab² + b³. This too can be visualised: a cube of edge (a + b) splits into two cubes of volumes a³ and b³, plus six cuboids — three of dimensions a × a × b (giving 3a²b) and three of dimensions a × b × b (giving 3ab²)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Computing 119² Three Different Ways",
+                      objective: "To compare direct multiplication with the two-term and three-term square identities.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "Compute 119² by long multiplication as a reference answer.",
+                        "Compute it using the two-term identity as (120 − 1)² = 120² − 2(120)(1) + 1².",
+                        "Compute it using the three-term identity as (100 + 10 + 9)².",
+                        "Expand the three-term version fully: 100² + 10² + 9² + 2(100)(10) + 2(100)(9) + 2(10)(9).",
+                        "Compare all three answers and note which method needed the least effort."
+                      ],
+                      observation: "All three approaches give 14161. The three-term expansion gives 10000 + 100 + 81 + 2000 + 1800 + 180 = 14161, while (120 − 1)² = 14400 − 240 + 1 = 14161 — showing that choosing a convenient split makes the arithmetic much easier."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the expanded form of (a + b + c)²?",
+                      options: ["a² + b² + c²", "a² + b² + c² + 2ab + 2bc + 2ca", "a² + b² + c² + abc", "a² + b² + c² + 3abc"],
+                      answer: 1,
+                      explanation: "Replacing b + c by d and expanding (a + d)² gives a² + b² + c² + 2ab + 2bc + 2ca — three square terms plus three doubled cross terms."
+                    },
+                    {
+                      question: "What is 119² computed as (100 + 10 + 9)²?",
+                      options: ["14161", "14061", "14400", "13161"],
+                      answer: 0,
+                      explanation: "10000 + 100 + 81 + 2000 + 1800 + 180 = 14161."
+                    },
+                    {
+                      question: "What is the expanded form of (a + b)³?",
+                      options: ["a³ + b³", "a³ + 3a²b + 3ab² + b³", "a³ + 2a²b + 2ab² + b³", "a³ + a²b + ab² + b³"],
+                      answer: 1,
+                      explanation: "Multiplying (a + b)(a² + 2ab + b²) using the distributive property gives a³ + 3a²b + 3ab² + b³."
+                    },
+                    {
+                      question: "In the geometric model of (a + b)³, how many pieces does the cube split into?",
+                      options: ["Two cubes only", "Two cubes and six cuboids — eight pieces in total", "Four cubes and four cuboids", "Three cubes and three cuboids"],
+                      answer: 1,
+                      explanation: "The cube of edge (a + b) divides into a cube of volume a³, a cube of volume b³, three cuboids of a × a × b (giving 3a²b) and three of a × b × b (giving 3ab²)."
+                    },
+                    {
+                      question: "In the expansion of (a + b)³, which term comes from the three cuboids of dimensions a × a × b?",
+                      options: ["a³", "3a²b", "3ab²", "b³"],
+                      answer: 1,
+                      explanation: "Each cuboid of dimensions a × a × b has volume a²b, and there are three of them, contributing the term 3a²b."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-4-4",
+                  title: "4. Simplifying Rational Expressions",
+                  lab: { type: "rational-simplify-sim" },
+                  theory: {
+                    intro: "Factor the top, factor the bottom, and any matching bracket simply cancels — turning a fearsome-looking fraction of polynomials into something short.",
+                    sections: [
+                      {
+                        heading: "The Strategy",
+                        text: "To simplify a rational algebraic expression, factorise the numerator and denominator, then cancel common factors. The identities and factoring techniques from earlier sections do the heavy lifting."
+                      },
+                      {
+                        heading: "A Worked Example",
+                        text: "Simplify (x² − 7x + 12)/(5x² + 5x − 100), assuming 5x² + 5x − 100 ≠ 0. For the numerator, find a and b with a + b = −7 and ab = 12: they are −3 and −4, so x² − 7x + 12 = (x − 3)(x − 4). For the denominator, all terms are multiples of 5, giving 5(x² + x − 20); then find a and b with a + b = 1 and ab = −20: they are 5 and −4, so the denominator is 5(x − 4)(x + 5)."
+                      },
+                      {
+                        heading: "Cancelling Safely",
+                        text: "Substituting the factorisations gives (x − 4)(x − 3) / [5(x − 4)(x + 5)]. The common factor (x − 4) can be cancelled because it is not equal to zero — we know this since we were told 5x² + 5x − 100 ≠ 0. This leaves the simplified expression (x − 3)/[5(x + 5)]."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Simplifying a Rational Expression Step by Step",
+                      objective: "To factor a numerator and denominator and cancel common factors to simplify a rational expression.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "For the numerator x² − 7x + 12, find two numbers whose sum is −7 and product is 12.",
+                        "Write the numerator in factored form using those numbers.",
+                        "For the denominator 5x² + 5x − 100, first take out the common factor 5.",
+                        "Factor the remaining quadratic by finding two numbers with sum 1 and product −20.",
+                        "Cancel the common bracket, noting why the cancellation is valid."
+                      ],
+                      observation: "The numbers −3 and −4 factor the numerator as (x − 3)(x − 4); the numbers 5 and −4 factor the denominator as 5(x − 4)(x + 5). The common factor (x − 4) cancels — valid because the denominator is non-zero — leaving (x − 3)/[5(x + 5)]."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the factored form of x² − 7x + 12?",
+                      options: ["(x + 3)(x + 4)", "(x − 3)(x − 4)", "(x − 6)(x − 2)", "(x − 12)(x + 1)"],
+                      answer: 1,
+                      explanation: "We need two numbers with sum −7 and product 12: those are −3 and −4, giving (x − 3)(x − 4)."
+                    },
+                    {
+                      question: "What is the factored form of 5x² + 5x − 100?",
+                      options: ["5(x − 4)(x + 5)", "5(x + 4)(x − 5)", "(5x − 4)(x + 5)", "5(x − 10)(x + 2)"],
+                      answer: 0,
+                      explanation: "Taking out 5 gives 5(x² + x − 20); then two numbers with sum 1 and product −20 are 5 and −4, giving 5(x − 4)(x + 5)."
+                    },
+                    {
+                      question: "Simplify (x² − 7x + 12)/(5x² + 5x − 100).",
+                      options: ["(x − 3)/[5(x + 5)]", "(x − 4)/[5(x + 5)]", "(x − 3)/(x + 5)", "5(x − 3)/(x + 5)"],
+                      answer: 0,
+                      explanation: "Factoring gives (x − 3)(x − 4) / [5(x − 4)(x + 5)]; cancelling the common (x − 4) leaves (x − 3)/[5(x + 5)]."
+                    },
+                    {
+                      question: "Why is it valid to cancel the factor (x − 4) in this simplification?",
+                      options: ["Any factor can always be cancelled", "Because we are told 5x² + 5x − 100 ≠ 0, so (x − 4) is not zero", "Because x is always greater than 4", "Cancelling is never actually valid"],
+                      answer: 1,
+                      explanation: "Cancellation requires the factor to be non-zero. Since the denominator 5x² + 5x − 100 is given as non-zero, its factor (x − 4) cannot be zero, so the cancellation is safe."
+                    },
+                    {
+                      question: "What is the general strategy for simplifying a rational algebraic expression?",
+                      options: ["Add the numerator and denominator", "Factorise the numerator and denominator, then cancel common factors", "Always divide by x", "Convert it to a decimal"],
+                      answer: 1,
+                      explanation: "The standard approach is to factorise both the numerator and the denominator — often using algebraic identities — and then cancel any common non-zero factors."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

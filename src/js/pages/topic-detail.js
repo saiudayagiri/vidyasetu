@@ -5245,6 +5245,98 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const squareAreaModelLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="square-area-model-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick values of a and b and see the identity built from areas.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a and b</h3>
+            <select id="sel-square-area-model" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="5,3" selected>a = 5, b = 3</option>
+              <option value="6,2">a = 6, b = 2</option>
+              <option value="4,4">a = 4, b = 4</option>
+              <option value="7,1">a = 7, b = 1</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Area Check</h3>
+            <div id="square-area-model-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose values above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const factorisationIdentityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="factorisation-identity-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an expression and see how it matches a² + 2ab + b².</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Expression</h3>
+            <select id="sel-factorisation-identity" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="e1" selected>x² + 4x + 4</option>
+              <option value="e2">36x² + 12x + 1</option>
+              <option value="e3">50p² + 60pq + 18q²</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Factorisation</h3>
+            <div id="factorisation-identity-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an expression above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const cubeIdentityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="cube-identity-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a piece of the cube and see which term it contributes.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Highlight a Piece</h3>
+            <select id="sel-cube-identity" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="all" selected>Whole cube — (a + b)³</option>
+              <option value="a3">The a³ cube</option>
+              <option value="a2b">The three a×a×b cuboids — 3a²b</option>
+              <option value="ab2">The three a×b×b cuboids — 3ab²</option>
+              <option value="b3">The b³ cube</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Contribution</h3>
+            <div id="cube-identity-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a piece above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const rationalSimplifyLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="rational-simplify-canvas" width="600" height="300"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Step through factoring and cancelling the rational expression.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Simplification Step</h3>
+            <select id="sel-rational-simplify" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="1">Step 1 — the original expression</option>
+              <option value="2">Step 2 — factor the numerator</option>
+              <option value="3">Step 3 — factor the denominator</option>
+              <option value="4" selected>Step 4 — cancel and simplify</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What Happens</h3>
+            <div id="rational-simplify-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a step above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -7416,6 +7508,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'decimal-expansion-sim') {
               labHtml = decimalExpansionLabHtml;
               labDesc = 'Pick a fraction and see whether its decimal terminates or repeats.';
+            } else if (topicObj.lab.type === 'square-area-model-sim') {
+              labHtml = squareAreaModelLabHtml;
+              labDesc = 'Pick values of a and b and see (a + b)² built from areas.';
+            } else if (topicObj.lab.type === 'factorisation-identity-sim') {
+              labHtml = factorisationIdentityLabHtml;
+              labDesc = 'Pick an expression and see how it matches the square identity to factor.';
+            } else if (topicObj.lab.type === 'cube-identity-sim') {
+              labHtml = cubeIdentityLabHtml;
+              labDesc = 'Explore how the pieces of a cube build the identity (a + b)³.';
+            } else if (topicObj.lab.type === 'rational-simplify-sim') {
+              labHtml = rationalSimplifyLabHtml;
+              labDesc = 'Step through factoring and cancelling a rational expression.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -8071,6 +8175,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initSqrt2ConstructionLab();
         } else if (topicObj.lab.type === 'decimal-expansion-sim') {
           initDecimalExpansionLab();
+        } else if (topicObj.lab.type === 'square-area-model-sim') {
+          initSquareAreaModelLab();
+        } else if (topicObj.lab.type === 'factorisation-identity-sim') {
+          initFactorisationIdentityLab();
+        } else if (topicObj.lab.type === 'cube-identity-sim') {
+          initCubeIdentityLab();
+        } else if (topicObj.lab.type === 'rational-simplify-sim') {
+          initRationalSimplifyLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -26151,6 +26263,223 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(line, W / 2, y);
 
         obs.innerHTML = `<strong>${key} = ${f.dec} — ${f.terminates ? 'terminating' : 'repeating'}.</strong> ${f.factors}. ${f.note}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSquareAreaModelLab() {
+      const canvas = document.getElementById('square-area-model-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-square-area-model');
+      const obs = document.getElementById('square-area-model-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [a, b] = sel.value.split(',').map(Number);
+        const scale = 200 / (a + b);
+        const A = a * scale, B = b * scale;
+        const ox = W / 2 - (A + B) / 2, oy = 60;
+
+        ctx.fillStyle = 'rgba(34,197,94,0.30)';
+        ctx.fillRect(ox, oy, A, A);
+        ctx.fillStyle = 'rgba(245,158,11,0.30)';
+        ctx.fillRect(ox + A, oy, B, A);
+        ctx.fillRect(ox, oy + A, A, B);
+        ctx.fillStyle = 'rgba(139,92,246,0.30)';
+        ctx.fillRect(ox + A, oy + A, B, B);
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5;
+        ctx.strokeRect(ox, oy, A, A); ctx.strokeRect(ox + A, oy, B, A);
+        ctx.strokeRect(ox, oy + A, A, B); ctx.strokeRect(ox + A, oy + A, B, B);
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 2.5;
+        ctx.strokeRect(ox, oy, A + B, A + B);
+
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`a² = ${a * a}`, ox + A / 2, oy + A / 2);
+        ctx.fillStyle = '#f59e0b'; ctx.font = 'bold 13px system-ui';
+        ctx.fillText(`ab = ${a * b}`, ox + A + B / 2, oy + A / 2);
+        ctx.fillText(`ab = ${a * b}`, ox + A / 2, oy + A + B / 2);
+        ctx.fillStyle = '#8b5cf6';
+        ctx.fillText(`b² = ${b * b}`, ox + A + B / 2, oy + A + B / 2);
+        ctx.textBaseline = 'alphabetic';
+
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`a = ${a}`, ox + A / 2, oy - 10);
+        ctx.fillText(`b = ${b}`, ox + A + B / 2, oy - 10);
+
+        const total = (a + b) * (a + b);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`(${a} + ${b})² = ${a * a} + 2(${a * b}) + ${b * b} = ${total}`, W / 2, H - 20);
+
+        obs.innerHTML = `<strong>(a + b)² = a² + 2ab + b²</strong> with a = ${a}, b = ${b}: the four pieces have areas ${a * a}, ${a * b}, ${a * b} and ${b * b}, summing to ${total} — exactly (${a} + ${b})² = ${a + b}² = ${total}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initFactorisationIdentityLab() {
+      const canvas = document.getElementById('factorisation-identity-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-factorisation-identity');
+      const obs = document.getElementById('factorisation-identity-obs');
+      const CASES = {
+        e1: { expr: 'x² + 4x + 4', common: null, a: 'x', b: '2', checks: ['x² = (x)²', '4 = 2²', '4x = 2(x)(2)'], result: '(x + 2)²' },
+        e2: { expr: '36x² + 12x + 1', common: null, a: '6x', b: '1', checks: ['36x² = (6x)²', '1 = 1²', '12x = 2(6x)(1)'], result: '(6x + 1)²' },
+        e3: { expr: '50p² + 60pq + 18q²', common: '2', a: '5p', b: '3q', checks: ['25p² = (5p)²', '9q² = (3q)²', '30pq = 2(5p)(3q)'], result: '2(5p + 3q)²' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const c = CASES[sel.value];
+
+        ctx.font = 'bold 24px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(c.expr, W / 2, 45);
+
+        let y = 85;
+        if (c.common) {
+          ctx.font = '14px system-ui'; ctx.fillStyle = '#f59e0b';
+          ctx.fillText(`Take out the common factor ${c.common}:  ${c.common}(25p² + 30pq + 9q²)`, W / 2, y);
+          y += 32;
+        }
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Match against  a² + 2ab + b²`, W / 2, y); y += 28;
+
+        c.checks.forEach(chk => {
+          ctx.font = '14px system-ui'; ctx.fillStyle = '#22c55e';
+          ctx.fillText(chk, W / 2, y); y += 24;
+        });
+
+        y += 8;
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--accent-color');
+        ctx.fillText(`so  a = ${c.a}  and  b = ${c.b}`, W / 2, y);
+
+        ctx.font = 'bold 22px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`= ${c.result}`, W / 2, H - 22);
+
+        obs.innerHTML = `<strong>${c.expr} = ${c.result}.</strong> ${c.common ? `First take out the common factor ${c.common}, then match` : 'Match'} the remaining expression to a² + 2ab + b² with a = ${c.a} and b = ${c.b}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCubeIdentityLab() {
+      const canvas = document.getElementById('cube-identity-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-cube-identity');
+      const obs = document.getElementById('cube-identity-obs');
+      const NOTES = {
+        all: { term: '(a + b)³ = a³ + 3a²b + 3ab² + b³', desc: 'The whole cube of edge (a + b) splits into 8 pieces: two cubes and six cuboids.' },
+        a3: { term: 'a³', desc: 'The single large cube of edge a contributes the a³ term.' },
+        a2b: { term: '3a²b', desc: 'Three cuboids each of dimensions a × a × b contribute 3a²b in total.' },
+        ab2: { term: '3ab²', desc: 'Three cuboids each of dimensions a × b × b contribute 3ab² in total.' },
+        b3: { term: 'b³', desc: 'The single small cube of edge b contributes the b³ term.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mode = sel.value;
+        const a = 90, b = 50, dx = 0.5, dy = -0.35;
+        const ox = W / 2 - (a + b) / 2 - 30, oy = 235;
+
+        function box(x, y, z, w, d, h, type) {
+          const on = mode === 'all' || mode === type;
+          const p = (X, Y, Z) => [ox + X + Z * dx * 0.9, oy - Y + Z * dy * 0.9];
+          const cols = { a3: '#22c55e', a2b: '#f59e0b', ab2: '#8b5cf6', b3: '#ef4444' };
+          const col = cols[type];
+          const alpha = on ? 0.55 : 0.07;
+
+          const [x0, y0] = p(x, y, z), [x1, y1] = p(x + w, y, z), [x2, y2] = p(x + w, y + h, z), [x3, y3] = p(x, y + h, z);
+          const [x4, y4] = p(x, y, z + d), [x5, y5] = p(x + w, y, z + d), [x6, y6] = p(x + w, y + h, z + d), [x7, y7] = p(x, y + h, z + d);
+
+          ctx.globalAlpha = alpha;
+          ctx.fillStyle = col;
+          ctx.beginPath(); ctx.moveTo(x3, y3); ctx.lineTo(x2, y2); ctx.lineTo(x6, y6); ctx.lineTo(x7, y7); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.lineTo(x6, y6); ctx.lineTo(x5, y5); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.lineTo(x2, y2); ctx.lineTo(x3, y3); ctx.closePath(); ctx.fill();
+          ctx.globalAlpha = on ? 0.9 : 0.15;
+          ctx.strokeStyle = col; ctx.lineWidth = 1.2;
+          ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.lineTo(x2, y2); ctx.lineTo(x3, y3); ctx.closePath(); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.lineTo(x6, y6); ctx.lineTo(x5, y5); ctx.closePath(); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x3, y3); ctx.lineTo(x2, y2); ctx.lineTo(x6, y6); ctx.lineTo(x7, y7); ctx.closePath(); ctx.stroke();
+          ctx.globalAlpha = 1;
+        }
+
+        box(0, 0, 0, a, a, a, 'a3');
+        box(a, 0, 0, b, a, a, 'a2b');
+        box(0, 0, a, a, b, a, 'a2b');
+        box(0, a, 0, a, a, b, 'a2b');
+        box(a, 0, a, b, b, a, 'ab2');
+        box(a, a, 0, b, a, b, 'ab2');
+        box(0, a, a, a, b, b, 'ab2');
+        box(a, a, a, b, b, b, 'b3');
+
+        const n = NOTES[mode];
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(n.term, W / 2, 30);
+
+        obs.innerHTML = `<strong>${n.term}:</strong> ${n.desc}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initRationalSimplifyLab() {
+      const canvas = document.getElementById('rational-simplify-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-rational-simplify');
+      const obs = document.getElementById('rational-simplify-obs');
+      const STEPS = {
+        1: { num: 'x² − 7x + 12', den: '5x² + 5x − 100', note: 'The original rational expression, with the denominator assumed non-zero.', hl: null },
+        2: { num: '(x − 3)(x − 4)', den: '5x² + 5x − 100', note: 'Numerator: two numbers with sum −7 and product 12 are −3 and −4.', hl: 'num' },
+        3: { num: '(x − 3)(x − 4)', den: '5(x − 4)(x + 5)', note: 'Denominator: take out 5, then two numbers with sum 1 and product −20 are 5 and −4.', hl: 'den' },
+        4: { num: '(x − 3)', den: '5(x + 5)', note: 'The common factor (x − 4) cancels — valid because the denominator is non-zero.', hl: 'both' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const step = sel.value;
+        const s = STEPS[step];
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Step ${step}`, W / 2, 34);
+
+        const cy = 140;
+        ctx.font = 'bold 24px system-ui';
+        ctx.fillStyle = s.hl === 'num' || s.hl === 'both' ? '#22c55e' : cssVar('--text-normal');
+        ctx.fillText(s.num, W / 2, cy - 18);
+
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 2.5;
+        const halfW = Math.max(ctx.measureText(s.num).width, ctx.measureText(s.den).width) / 2 + 20;
+        ctx.beginPath(); ctx.moveTo(W / 2 - halfW, cy); ctx.lineTo(W / 2 + halfW, cy); ctx.stroke();
+
+        ctx.fillStyle = s.hl === 'den' || s.hl === 'both' ? '#22c55e' : cssVar('--text-normal');
+        ctx.fillText(s.den, W / 2, cy + 34);
+
+        if (step === '4') {
+          ctx.font = '13px system-ui'; ctx.fillStyle = '#f59e0b';
+          ctx.fillText('the common factor (x − 4) has been cancelled', W / 2, cy + 72);
+        }
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(s.note, W / 2, H - 30);
+
+        obs.innerHTML = `<strong>Step ${step}:</strong> ${s.note}`;
       }
 
       sel.addEventListener('change', draw);
