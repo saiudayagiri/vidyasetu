@@ -21193,6 +21193,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9m-7",
+              title: "The Mathematics of Maybe: Introduction to Probability",
+              topics: [
+                {
+                  id: "9m-7-1",
+                  title: "1. The Probability Scale",
+                  lab: { type: "probability-scale-sim" },
+                  theory: {
+                    intro: "Every uncertain event in the world sits somewhere on a single line from 0 to 1 — impossible at one end, certain at the other, and everything interesting in between.",
+                    sections: [
+                      {
+                        heading: "Measuring Likelihood from 0 to 1",
+                        text: "Probability is measured on a scale from 0 to 1 to indicate the likelihood of an event. A probability of 0.75 means a 75% chance — more likely than not. A probability of 0.5 means a 50% chance, so the two outcomes are equally likely. A probability of 0 means the event is impossible, and 1 means it is certain. The probabilities of most events fall strictly between 0 and 1."
+                      },
+                      {
+                        heading: "Sliding Along the Scale",
+                        text: "Imagine a deck of six cards where the number of purple and green cards is unknown. The probability of picking a purple card ranges from impossible (if there are no purple cards) to certain (if all six are purple). As the number of purple cards increases, the likelihood moves smoothly along the scale from less likely, to even chance, to more likely — just like using a number line."
+                      },
+                      {
+                        heading: "Examples Across the Scale",
+                        text: "Getting a number greater than 6 on a die is impossible, since dice only show 1 to 6. Rolling a 3 on a standard die is less likely, but not impossible, as one face is a 3. Flipping a coin and getting heads is an even chance, since heads and tails are equally likely. Drawing any number from 2 to 10 from a deck of 52 cards is more likely, since 36 of the 52 cards carry those numbers. Choosing a red sweet from a bag of all red sweets is certain."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Placing Events on the Probability Scale",
+                      objective: "To rank everyday events from impossible to certain and justify each placement.",
+                      materials: ["Notebook and pen", "A ruler to draw a 0-to-1 scale"],
+                      steps: [
+                        "Draw a horizontal line and mark 0 at the left, 0.5 in the middle and 1 at the right.",
+                        "Consider a deck of six cards with 0, 1, 3, 5 and 6 purple cards in turn.",
+                        "For each case, compute the probability of drawing a purple card and mark it on the scale.",
+                        "Label each mark as impossible, less likely, even chance, more likely, or certain.",
+                        "Add three everyday events of your own and place them on the same scale."
+                      ],
+                      observation: "With 0 purple cards the probability is 0 (impossible), with 3 it is 3/6 = 0.5 (even chance), and with 6 it is 1 (certain) — the marks spread evenly along the line, showing how probability behaves exactly like a measurement on a number line."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What range of values can a probability take?",
+                      options: ["From −1 to 1", "From 0 to 1", "From 0 to 100", "Any real number"],
+                      answer: 1,
+                      explanation: "Probability is measured on a scale from 0 (impossible) to 1 (certain), with most real events falling strictly between those two extremes."
+                    },
+                    {
+                      question: "What does a probability of 0.5 mean?",
+                      options: ["The event is impossible", "The event is certain", "The two outcomes are equally likely — an even chance", "The event happens half a time"],
+                      answer: 2,
+                      explanation: "A probability of 0.5 means a 50% chance, so the event is just as likely to happen as not — an even chance, like flipping a fair coin."
+                    },
+                    {
+                      question: "What is the probability of getting a number greater than 6 on a standard die?",
+                      options: ["0 — impossible", "1/6", "0.5", "1 — certain"],
+                      answer: 0,
+                      explanation: "A standard die only shows the numbers 1 to 6, so no face can exceed 6 — the event is impossible and has probability 0."
+                    },
+                    {
+                      question: "Drawing any number from 2 to 10 from a deck of 52 cards is described as which category?",
+                      options: ["Impossible", "Less likely", "Even chance", "More likely"],
+                      answer: 3,
+                      explanation: "There are 36 cards numbered 2 to 10 in a deck of 52, so with more than half the deck favourable, the event is more likely than not."
+                    },
+                    {
+                      question: "In a deck of six cards, what happens to the probability of drawing purple as the number of purple cards increases?",
+                      options: ["It stays fixed at 0.5", "It moves smoothly along the scale from impossible toward certain", "It drops toward 0", "It jumps randomly"],
+                      answer: 1,
+                      explanation: "With 0 purple cards the probability is 0 and with all six purple it is 1 — as the count rises, the probability slides steadily along the scale from less likely, through even chance, to more likely."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-7-2",
+                  title: "2. Experimental Probability",
+                  lab: { type: "experimental-probability-sim" },
+                  theory: {
+                    intro: "Roll a die fifty times, count the fours, and divide — you get a number that has nothing to do with theory and everything to do with what actually happened.",
+                    sections: [
+                      {
+                        heading: "Outcomes and Sample Space",
+                        text: "One way to obtain objective probability estimates is to perform an experiment. In an experiment, a result is called an outcome, and the set of all possible outcomes is called the sample space, written within brackets and separated by commas. Tossing a coin has possible outcomes Heads (H) or Tails (T), so its sample space is {H, T}. Rolling a die can show 1 to 6 dots, giving the sample space {1, 2, 3, 4, 5, 6}."
+                      },
+                      {
+                        heading: "The Experimental Probability Formula",
+                        text: "Experimental Probability = (Number of times the event occurred) ÷ (Total number of trials). For example, if you roll a die 50 times and it lands on a 4 exactly 8 times, the experimental probability of rolling a 4 is 8/50 = 0.16, or 16%."
+                      },
+                      {
+                        heading: "Relative Frequency",
+                        text: "That same quantity 8/50 = 0.16 is also called the relative frequency of rolling a 4. Relative frequency helps you understand probability based on actual data rather than theoretical predictions — it is especially useful in statistics and data analysis when working with observed outcomes."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Estimating Probability by Rolling a Die",
+                      objective: "To compute experimental probability from real trial data and compare it with the theoretical value.",
+                      materials: ["A standard 6-sided die", "Notebook and pen", "A calculator"],
+                      steps: [
+                        "Roll the die 50 times, recording the result of every roll in a tally table.",
+                        "Count how many times each face appeared.",
+                        "For the face 4, compute experimental probability = (times 4 appeared) ÷ 50.",
+                        "Compare your result with the theoretical probability of 1/6 ≈ 0.167.",
+                        "Repeat with 100 rolls and note whether the experimental value moves closer to 1/6."
+                      ],
+                      observation: "If 4 appears 8 times in 50 rolls, the experimental probability is 8/50 = 0.16 — close to but not exactly the theoretical 0.167. With more trials the experimental value typically drifts closer to the theoretical one."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the formula for experimental probability?",
+                      options: ["(Favourable outcomes) ÷ (Possible outcomes)", "(Number of times the event occurred) ÷ (Total number of trials)", "(Total trials) ÷ (Times the event occurred)", "Number of trials × outcomes"],
+                      answer: 1,
+                      explanation: "Experimental probability is computed from actual data: the number of times the event occurred divided by the total number of trials performed."
+                    },
+                    {
+                      question: "A die is rolled 50 times and lands on 4 exactly 8 times. What is the experimental probability of rolling a 4?",
+                      options: ["0.16 or 16%", "0.167 or 16.7%", "0.08 or 8%", "0.5 or 50%"],
+                      answer: 0,
+                      explanation: "Experimental probability = 8 ÷ 50 = 0.16, or 16% — based purely on what was observed, not on theory."
+                    },
+                    {
+                      question: "What is the sample space when a single die is rolled?",
+                      options: ["{H, T}", "{1, 2, 3, 4, 5, 6}", "{1, 6}", "{0, 1}"],
+                      answer: 1,
+                      explanation: "The die can show 1, 2, 3, 4, 5 or 6 dots on its top face, so the sample space is {1, 2, 3, 4, 5, 6}."
+                    },
+                    {
+                      question: "What is another name for the quantity 8/50 = 0.16 in the die example?",
+                      options: ["The sample size", "The relative frequency", "The theoretical probability", "The outcome"],
+                      answer: 1,
+                      explanation: "The ratio of occurrences to trials is also called the relative frequency, and it lets you understand probability from observed data rather than theory."
+                    },
+                    {
+                      question: "Why is relative frequency especially useful in statistics and data analysis?",
+                      options: ["It is easier to compute than theory", "It lets you work with observed outcomes rather than theoretical predictions", "It always gives exact answers", "It requires no data at all"],
+                      answer: 1,
+                      explanation: "Relative frequency is grounded in what actually happened in the data, making it the natural tool when you are analysing real observed outcomes."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-7-3",
+                  title: "3. Theoretical Probability",
+                  lab: { type: "theoretical-probability-sim" },
+                  theory: {
+                    intro: "Theoretical probability needs no dice-rolling at all — just count the outcomes you want, count all the outcomes there are, and divide.",
+                    sections: [
+                      {
+                        heading: "The Definition",
+                        text: "Theoretical probability studies the likelihood of an event happening based on all possible outcomes being equally likely. It is what we expect to happen in an ideal, perfectly fair situation — no experiment or data is required. It is written P(Event) or P(Outcome), and computed as: Theoretical Probability (P) = (Number of favourable outcomes) ÷ (Number of possible outcomes)."
+                      },
+                      {
+                        heading: "Rolling a Die",
+                        text: "If you roll a standard 6-sided die, what is the theoretical probability of getting a 4? The number of favourable outcomes is 1 (only the number 4), and the number of all possible outcomes is 6 (the numbers 1 through 6). So P(rolling a 4) = 1/6 = 0.1666… ≈ 0.167, or 16.7%."
+                      },
+                      {
+                        heading: "Picking a Letter",
+                        text: "A letter is picked at random from the word 'PROBABILITY'. The number of favourable outcomes for picking B is 2, since there are 2 Bs in the word, and the number of all possible outcomes is 11, the number of letters in the word. So P(picking the letter B) = 2/11 = 0.1818… ≈ 0.182, or 18.2%."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Computing Theoretical Probabilities from Letters",
+                      objective: "To count favourable and possible outcomes and compute theoretical probabilities for letters drawn from a word.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "Write out the word PROBABILITY and count its total letters to get the number of possible outcomes.",
+                        "Count how many times the letter B appears and compute P(B).",
+                        "Repeat for the letter I and for the letter P.",
+                        "Add up the probabilities of every distinct letter in the word.",
+                        "Check what the total comes to and explain why."
+                      ],
+                      observation: "PROBABILITY has 11 letters, so P(B) = 2/11 ≈ 0.182 and P(I) = 2/11 ≈ 0.182, while P(P) = 1/11 ≈ 0.091. Adding the probabilities of all distinct letters gives exactly 1, since one of them is certain to be picked."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the formula for theoretical probability?",
+                      options: ["(Times occurred) ÷ (Total trials)", "(Number of favourable outcomes) ÷ (Number of possible outcomes)", "(Possible outcomes) ÷ (Favourable outcomes)", "Favourable outcomes × possible outcomes"],
+                      answer: 1,
+                      explanation: "Theoretical probability assumes all outcomes are equally likely and is computed as favourable outcomes divided by total possible outcomes."
+                    },
+                    {
+                      question: "What is the theoretical probability of rolling a 4 on a standard 6-sided die?",
+                      options: ["1/4", "1/6 ≈ 0.167", "4/6", "1/2"],
+                      answer: 1,
+                      explanation: "There is 1 favourable outcome (the face 4) out of 6 possible outcomes, so P = 1/6 ≈ 0.167 or 16.7%."
+                    },
+                    {
+                      question: "A letter is picked at random from 'PROBABILITY'. What is the probability of picking the letter B?",
+                      options: ["1/11", "2/11 ≈ 0.182", "2/10", "1/2"],
+                      answer: 1,
+                      explanation: "There are 2 Bs among the 11 letters of PROBABILITY, so P(B) = 2/11 ≈ 0.182 or 18.2%."
+                    },
+                    {
+                      question: "What key assumption does theoretical probability rest on?",
+                      options: ["That experiments have been performed", "That all possible outcomes are equally likely", "That the sample space is small", "That the event is certain"],
+                      answer: 1,
+                      explanation: "Theoretical probability describes an ideal, perfectly fair situation in which every possible outcome is equally likely — which is why no experiment or data is needed."
+                    },
+                    {
+                      question: "How does theoretical probability differ from experimental probability?",
+                      options: ["Theoretical needs no experiment or data, while experimental is computed from actual trials", "They are exactly the same thing", "Theoretical always requires more data", "Experimental can only be used for coins"],
+                      answer: 0,
+                      explanation: "Theoretical probability is derived by counting outcomes in an ideal fair situation, whereas experimental probability comes from counting what actually happened across real trials."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-7-4",
+                  title: "4. Sample Spaces, Events, and Tree Diagrams",
+                  lab: { type: "tree-diagram-sim" },
+                  theory: {
+                    intro: "Toss a coin twice and there are four possible stories — and a tree diagram draws every one of them, branch by branch, so nothing gets missed.",
+                    sections: [
+                      {
+                        heading: "Sample Space and Sample Size",
+                        text: "The sample space, denoted S, is the list of all possible outcomes, and each possible outcome is an element of it. The sample space must include every possible outcome, no outcome should be listed more than once, and the number of elements is called the sample size, written n(S). Examples: rain tomorrow gives S = {Rain, No Rain} with n(S) = 2; a match gives S = {Win, Lose, Draw} with n(S) = 3; tossing two coins gives S = {HH, HT, TH, TT} with n(S) = 4."
+                      },
+                      {
+                        heading: "Events",
+                        text: "An event is any single possible result, or combination of results, that might happen when you perform a random action — it is like choosing particular outcomes from all the things that could possibly occur. Formally, an event is a subset of a sample space."
+                      },
+                      {
+                        heading: "Tree Diagrams",
+                        text: "A tree diagram is a visual representation used to list all possible outcomes of a multi-step experiment — a series of independent trials, such as tossing a coin twice. Each branch represents a possible outcome, and branches split to show different paths. Tossing a fair coin twice: draw a line to each outcome of the first toss, then from each of those draw two more lines. The result shows 4 possible outcomes, so S = {HH, HT, TH, TT}, and P(HH) = 1/4 = 0.25 or 25%."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Drawing a Tree Diagram for Two Coin Tosses",
+                      objective: "To build a tree diagram for a multi-step experiment and read the sample space and probabilities from it.",
+                      materials: ["Paper and pencil", "Two coins"],
+                      steps: [
+                        "From a single starting point, draw two branches for the first toss, labelled H and T.",
+                        "From the end of each of those branches, draw two more branches for the second toss.",
+                        "Read off the complete path along each route to list every outcome.",
+                        "Count the total number of end points to find the sample size.",
+                        "Compute the probability of HH, and then of getting exactly one head and one tail."
+                      ],
+                      observation: "The tree ends in 4 leaves, giving S = {HH, HT, TH, TT} and n(S) = 4. So P(HH) = 1/4 = 0.25, while getting one head and one tail covers two outcomes (HT and TH), giving 2/4 = 0.5."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the sample size n(S) when two coins are tossed?",
+                      options: ["2", "3", "4", "8"],
+                      answer: 2,
+                      explanation: "The sample space is S = {HH, HT, TH, TT}, which contains 4 elements — so the sample size n(S) = 4."
+                    },
+                    {
+                      question: "What is an 'event' in probability?",
+                      options: ["The same as the sample space", "A subset of the sample space — one or more chosen outcomes", "The number of trials", "Only an impossible outcome"],
+                      answer: 1,
+                      explanation: "An event is any single result or combination of results from a random action — formally, a subset of the sample space."
+                    },
+                    {
+                      question: "What is a tree diagram used for?",
+                      options: ["Measuring the height of trees", "Listing all possible outcomes of a multi-step experiment", "Computing areas", "Recording experimental data only"],
+                      answer: 1,
+                      explanation: "A tree diagram visually lists all outcomes of a multi-step experiment, with each path from start to end representing one complete outcome."
+                    },
+                    {
+                      question: "When a fair coin is tossed twice, what is the probability of getting heads both times?",
+                      options: ["1/2", "1/4 = 0.25", "1/3", "3/4"],
+                      answer: 1,
+                      explanation: "HH is one of the four equally likely outcomes {HH, HT, TH, TT}, so P(HH) = 1/4 = 0.25 or 25%."
+                    },
+                    {
+                      question: "When a fair coin is tossed twice, what is the probability of getting exactly one head and one tail?",
+                      options: ["1/4", "1/2", "3/4", "1/3"],
+                      answer: 1,
+                      explanation: "Two outcomes qualify — HT and TH — out of the four possible, giving 2/4 = 1/2 or 50%."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

@@ -5523,6 +5523,100 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const probabilityScaleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="probability-scale-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Change how many cards are purple and watch the probability slide.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Purple Cards (out of 6)</h3>
+            <select id="sel-probability-scale" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0">0 purple — impossible</option>
+              <option value="1">1 purple</option>
+              <option value="3" selected>3 purple — even chance</option>
+              <option value="5">5 purple</option>
+              <option value="6">6 purple — certain</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Where It Sits on the Scale</h3>
+            <div id="probability-scale-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a number above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const experimentalProbabilityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="experimental-probability-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Compare observed results with the theoretical 1/6.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Trial Data (rolling a die)</h3>
+            <select id="sel-experimental-probability" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="8,50" selected>4 appeared 8 times in 50 rolls</option>
+              <option value="12,60">4 appeared 12 times in 60 rolls</option>
+              <option value="31,200">4 appeared 31 times in 200 rolls</option>
+              <option value="165,1000">4 appeared 165 times in 1000 rolls</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Experimental Probability</h3>
+            <div id="experimental-probability-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a data set above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const theoreticalProbabilityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="theoretical-probability-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a letter of PROBABILITY and count the favourable outcomes.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Pick a Letter</h3>
+            <select id="sel-theoretical-probability" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="B" selected>Letter B</option>
+              <option value="I">Letter I</option>
+              <option value="P">Letter P</option>
+              <option value="R">Letter R</option>
+              <option value="Z">Letter Z (not present)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Theoretical Probability</h3>
+            <div id="theoretical-probability-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a letter above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const treeDiagramLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="tree-diagram-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Highlight an event and see which branches of the tree it covers.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Event to Highlight</h3>
+            <select id="sel-tree-diagram" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="none" selected>Full sample space</option>
+              <option value="HH">Both heads (HH)</option>
+              <option value="mixed">Exactly one head and one tail</option>
+              <option value="firstH">First toss is heads</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Event Probability</h3>
+            <div id="tree-diagram-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an event above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -7730,6 +7824,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'circle-area-sim') {
               labHtml = circleAreaLabHtml;
               labDesc = 'Compare ancient and modern estimates for the area of a circle.';
+            } else if (topicObj.lab.type === 'probability-scale-sim') {
+              labHtml = probabilityScaleLabHtml;
+              labDesc = 'Change how many cards are purple and watch the probability slide along the scale.';
+            } else if (topicObj.lab.type === 'experimental-probability-sim') {
+              labHtml = experimentalProbabilityLabHtml;
+              labDesc = 'Compare observed trial results against the theoretical probability.';
+            } else if (topicObj.lab.type === 'theoretical-probability-sim') {
+              labHtml = theoreticalProbabilityLabHtml;
+              labDesc = 'Pick a letter and count favourable outcomes out of all possible ones.';
+            } else if (topicObj.lab.type === 'tree-diagram-sim') {
+              labHtml = treeDiagramLabHtml;
+              labDesc = 'Highlight an event and see which branches of the tree diagram it covers.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -8409,6 +8515,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initHeronFormulaLab();
         } else if (topicObj.lab.type === 'circle-area-sim') {
           initCircleAreaLab();
+        } else if (topicObj.lab.type === 'probability-scale-sim') {
+          initProbabilityScaleLab();
+        } else if (topicObj.lab.type === 'experimental-probability-sim') {
+          initExperimentalProbabilityLab();
+        } else if (topicObj.lab.type === 'theoretical-probability-sim') {
+          initTheoreticalProbabilityLab();
+        } else if (topicObj.lab.type === 'tree-diagram-sim') {
+          initTreeDiagramLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -27176,6 +27290,243 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         obs.innerHTML = mode === 'modern'
           ? `<strong>A = πr² = ${est.toFixed(3)} for r = 5.</strong> This is the exact modern formula that the ancient approximations were reaching toward.`
           : `<strong>${label}: ${formula} gives ${est.toFixed(3)} for r = 5.</strong> The exact value is πr² = ${exact.toFixed(3)}, so this estimate is off by about ${err.toFixed(2)}% — impressively close for its era.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initProbabilityScaleLab() {
+      const canvas = document.getElementById('probability-scale-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-probability-scale');
+      const obs = document.getElementById('probability-scale-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const purple = parseInt(sel.value);
+        const p = purple / 6;
+
+        const cw = 52, ch = 72, gap = 10;
+        const totalW = 6 * cw + 5 * gap;
+        const sx = W / 2 - totalW / 2, sy = 46;
+        for (let i = 0; i < 6; i++) {
+          const x = sx + i * (cw + gap);
+          const isPurple = i < purple;
+          ctx.fillStyle = isPurple ? '#8b5cf6' : '#22c55e';
+          ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.roundRect(x, sy, cw, ch, 6); ctx.fill(); ctx.stroke();
+        }
+
+        const lx = 60, lw = W - 120, ly = 220;
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(lx + lw, ly); ctx.stroke();
+        [[0, '0'], [0.5, '0.5'], [1, '1']].forEach(([v, l]) => {
+          const x = lx + v * lw;
+          ctx.beginPath(); ctx.moveTo(x, ly - 8); ctx.lineTo(x, ly + 8); ctx.stroke();
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText(l, x, ly + 24);
+        });
+        ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('impossible', lx, ly + 42);
+        ctx.fillText('even chance', lx + lw / 2, ly + 42);
+        ctx.fillText('certain', lx + lw, ly + 42);
+
+        const px = lx + p * lw;
+        ctx.fillStyle = '#f59e0b';
+        ctx.beginPath(); ctx.arc(px, ly, 9, 0, Math.PI * 2); ctx.fill();
+        ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`P = ${purple}/6 = ${p.toFixed(3).replace(/0+$/, '').replace(/\.$/, '')}`, px, ly - 20);
+
+        const labels = { 0: 'Impossible', 1: 'Less likely', 3: 'Even chance', 5: 'More likely', 6: 'Certain' };
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(labels[purple] || 'Somewhere in between', W / 2, 28);
+
+        obs.innerHTML = `<strong>${purple} purple out of 6 → P = ${purple}/6 ≈ ${p.toFixed(3)} (${labels[purple] || 'in between'}).</strong> As the number of purple cards grows, the probability slides smoothly from 0 (impossible) all the way to 1 (certain) — behaving exactly like a point moving along a number line.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initExperimentalProbabilityLab() {
+      const canvas = document.getElementById('experimental-probability-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-experimental-probability');
+      const obs = document.getElementById('experimental-probability-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [hits, trials] = sel.value.split(',').map(Number);
+        const exp = hits / trials;
+        const theo = 1 / 6;
+
+        const bx = 110, bw = W - 220, by = 110, bh = 34;
+        ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'right';
+
+        ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText('Experimental', bx - 12, by + 22);
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+        ctx.strokeRect(bx, by, bw, bh);
+        ctx.fillStyle = '#22c55e';
+        ctx.fillRect(bx, by, bw * Math.min(1, exp / 0.35), bh);
+        ctx.textAlign = 'left'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(`${exp.toFixed(3)}`, bx + bw + 12, by + 22);
+
+        const ty = by + 70;
+        ctx.textAlign = 'right'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText('Theoretical 1/6', bx - 12, ty + 22);
+        ctx.strokeRect(bx, ty, bw, bh);
+        ctx.fillStyle = '#f59e0b';
+        ctx.fillRect(bx, ty, bw * (theo / 0.35), bh);
+        ctx.textAlign = 'left'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(`${theo.toFixed(3)}`, bx + bw + 12, ty + 22);
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`4 appeared ${hits} times in ${trials} rolls`, W / 2, 40);
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`${hits} ÷ ${trials} = ${exp.toFixed(3)}`, W / 2, 72);
+
+        const diff = Math.abs(exp - theo);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`difference from theoretical: ${diff.toFixed(4)}`, W / 2, H - 26);
+
+        obs.innerHTML = `<strong>Experimental probability = ${hits}/${trials} = ${exp.toFixed(3)}.</strong> The theoretical value is 1/6 ≈ 0.167, so this run differs by ${diff.toFixed(4)}. Try the larger trial counts — the experimental value generally settles closer to the theoretical one as the number of trials grows.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initTheoreticalProbabilityLab() {
+      const canvas = document.getElementById('theoretical-probability-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-theoretical-probability');
+      const obs = document.getElementById('theoretical-probability-obs');
+      const WORD = 'PROBABILITY';
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const letter = sel.value;
+        const count = WORD.split('').filter(ch => ch === letter).length;
+        const total = WORD.length;
+        const p = count / total;
+
+        const cw = 42, gap = 6;
+        const totalW = total * cw + (total - 1) * gap;
+        const sx = W / 2 - totalW / 2, sy = 90;
+        WORD.split('').forEach((ch, i) => {
+          const x = sx + i * (cw + gap);
+          const hit = ch === letter;
+          ctx.fillStyle = hit ? 'rgba(34,197,94,0.28)' : 'rgba(148,163,184,0.10)';
+          ctx.strokeStyle = hit ? '#22c55e' : cssVar('--border-color');
+          ctx.lineWidth = hit ? 2.5 : 1.2;
+          ctx.beginPath(); ctx.roundRect(x, sy, cw, 52, 6); ctx.fill(); ctx.stroke();
+          ctx.font = 'bold 20px system-ui'; ctx.fillStyle = hit ? '#22c55e' : cssVar('--text-muted');
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(ch, x + cw / 2, sy + 27);
+          ctx.textBaseline = 'alphabetic';
+        });
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(`Picking the letter ${letter} from PROBABILITY`, W / 2, 40);
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`favourable outcomes = ${count},  possible outcomes = ${total}`, W / 2, 192);
+        ctx.font = 'bold 19px system-ui'; ctx.fillStyle = count ? '#22c55e' : '#ef4444';
+        ctx.fillText(`P = ${count}/${total} = ${p.toFixed(3)}${count ? ` ≈ ${(p * 100).toFixed(1)}%` : '  (impossible)'}`, W / 2, 235);
+
+        obs.innerHTML = count
+          ? `<strong>P(${letter}) = ${count}/${total} ≈ ${p.toFixed(3)}.</strong> There ${count === 1 ? 'is 1 ' + letter : 'are ' + count + ' ' + letter + 's'} among the ${total} letters of PROBABILITY, and every letter is equally likely to be picked.`
+          : `<strong>P(${letter}) = 0 — impossible.</strong> The letter ${letter} does not appear anywhere in PROBABILITY, so there are no favourable outcomes at all.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initTreeDiagramLab() {
+      const canvas = document.getElementById('tree-diagram-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-tree-diagram');
+      const obs = document.getElementById('tree-diagram-obs');
+      const OUTCOMES = ['HH', 'HT', 'TH', 'TT'];
+      const EVENTS = {
+        none: OUTCOMES,
+        HH: ['HH'],
+        mixed: ['HT', 'TH'],
+        firstH: ['HH', 'HT']
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const active = EVENTS[sel.value];
+        const highlighting = sel.value !== 'none';
+
+        const rootX = 90, rootY = H / 2 + 4;
+        const midX = 250, leafX = 420;
+        const midY = [rootY - 74, rootY + 74];
+        const leafY = [rootY - 110, rootY - 38, rootY + 38, rootY + 110];
+
+        ctx.fillStyle = cssVar('--text-normal');
+        ctx.beginPath(); ctx.arc(rootX, rootY, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.font = '11px system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('start', rootX, rootY + 24);
+
+        ['H', 'T'].forEach((first, i) => {
+          const anyActive = active.some(o => o[0] === first);
+          ctx.strokeStyle = highlighting && !anyActive ? cssVar('--border-color') : '#22c55e';
+          ctx.globalAlpha = highlighting && !anyActive ? 0.35 : 1;
+          ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.moveTo(rootX, rootY); ctx.lineTo(midX, midY[i]); ctx.stroke();
+          ctx.fillStyle = ctx.strokeStyle;
+          ctx.beginPath(); ctx.arc(midX, midY[i], 5, 0, Math.PI * 2); ctx.fill();
+          ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(first, (rootX + midX) / 2, (rootY + midY[i]) / 2 - 8);
+          ctx.font = '10px system-ui';
+          ctx.fillText('½', (rootX + midX) / 2, (rootY + midY[i]) / 2 + 12);
+          ctx.globalAlpha = 1;
+        });
+
+        OUTCOMES.forEach((out, k) => {
+          const i = k < 2 ? 0 : 1;
+          const on = active.includes(out);
+          ctx.strokeStyle = highlighting && !on ? cssVar('--border-color') : '#22c55e';
+          ctx.globalAlpha = highlighting && !on ? 0.3 : 1;
+          ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.moveTo(midX, midY[i]); ctx.lineTo(leafX, leafY[k]); ctx.stroke();
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = ctx.strokeStyle; ctx.textAlign = 'center';
+          ctx.fillText(out[1], (midX + leafX) / 2, (midY[i] + leafY[k]) / 2 - 8);
+          ctx.font = '10px system-ui';
+          ctx.fillText('½', (midX + leafX) / 2, (midY[i] + leafY[k]) / 2 + 12);
+
+          ctx.fillStyle = on ? 'rgba(34,197,94,0.25)' : 'rgba(148,163,184,0.08)';
+          ctx.strokeStyle = on ? '#22c55e' : cssVar('--border-color');
+          ctx.lineWidth = on ? 2.5 : 1.2;
+          ctx.beginPath(); ctx.roundRect(leafX + 12, leafY[k] - 16, 62, 32, 6); ctx.fill(); ctx.stroke();
+          ctx.font = 'bold 15px system-ui'; ctx.fillStyle = on ? '#22c55e' : cssVar('--text-muted');
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(out, leafX + 43, leafY[k]);
+          ctx.textBaseline = 'alphabetic';
+          ctx.globalAlpha = 1;
+        });
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText('Tossing a fair coin twice', W / 2, 26);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`P = ${active.length}/4 = ${(active.length / 4).toFixed(2)}`, W / 2, H - 16);
+
+        obs.innerHTML = sel.value === 'none'
+          ? `<strong>Sample space S = {HH, HT, TH, TT}, n(S) = 4.</strong> The tree ends in 4 leaves, one for each complete path — every outcome appears exactly once, and each has probability 1/4.`
+          : `<strong>${active.length} of the 4 outcomes qualify: {${active.join(', ')}} → P = ${active.length}/4 = ${(active.length / 4).toFixed(2)}.</strong> An event is a subset of the sample space, so its probability is just the share of leaves it covers.`;
       }
 
       sel.addEventListener('change', draw);
