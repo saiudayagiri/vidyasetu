@@ -20911,6 +20911,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9m-6",
+              title: "Measuring Space: Perimeter and Area",
+              topics: [
+                {
+                  id: "9m-6-1",
+                  title: "1. The C/D Ratio and the Story of π",
+                  lab: { type: "cd-ratio-sim" },
+                  theory: {
+                    intro: "Wrap a thread around any circular object, divide by the diameter, and you always land near 3.14 — a constant so stubborn that chasing it has benchmarked mathematics for four thousand years.",
+                    sections: [
+                      {
+                        heading: "The Ratio That Never Changes",
+                        text: "In ancient days people realised that the ratio of the circumference to the diameter of a circle does not change if we change the size of the circle. Call this the 'C/D ratio'. You can estimate it at home: measure the diameter D of a cotton reel, wrap thin thread tightly around it 20 times, unwrap and measure the length L, then compute L/(20D). The result lands between 3.1 and 3.2."
+                      },
+                      {
+                        heading: "Ancient Approximations",
+                        text: "This constant is what we now call π (said 'pie', not as in 'pizza'). In Mesopotamia around 1900 BCE, mathematicians moved beyond the crude integer value of 3: they realised a circle's perimeter is slightly larger than that of the hexagon inscribed within it, so π must exceed 3, and set π = 3 + 1/8 = 3.125."
+                      },
+                      {
+                        heading: "π Bridges Two Worlds",
+                        text: "π represents a bridge between many different areas of mathematics, connecting the straight-edged world of polygons with the infinite curves of nature. While early civilisations relied on practical 'good-enough' values for construction and trade, the pursuit of this ratio became an important pastime of mathematicians, helping to benchmark the sophistication of mathematical theories — culminating in Mādhava's exact infinite series."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Measuring the C/D Ratio with Thread",
+                      objective: "To estimate the ratio of circumference to diameter experimentally and confirm it is the same for circles of different sizes.",
+                      materials: ["A cotton reel or cylindrical object", "Thin thread", "A ruler", "A calculator"],
+                      steps: [
+                        "Measure the diameter D of the reel as accurately as possible.",
+                        "Wrap the thin thread tightly around the reel exactly 20 times.",
+                        "Unwrap the thread and measure its total length L.",
+                        "Compute L ÷ (20 × D) — this estimates the C/D ratio.",
+                        "Repeat the whole process with a cylindrical object of a clearly different size and compare the two ratios."
+                      ],
+                      observation: "Both objects give a ratio between 3.1 and 3.2 despite their different sizes — confirming that the C/D ratio is a constant of the circle shape itself, not of any particular circle."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the 'C/D ratio' of a circle?",
+                      options: ["The ratio of the circumference to the diameter", "The ratio of the circumference to the radius", "The ratio of the diameter to the circumference", "The ratio of area to circumference"],
+                      answer: 0,
+                      explanation: "The C/D ratio is circumference divided by diameter — the constant we now call π, which stays the same no matter the size of the circle."
+                    },
+                    {
+                      question: "In the thread experiment, if the thread is wrapped 20 times and has total length L, how is the C/D ratio computed?",
+                      options: ["L × 20 × D", "L ÷ (20 × D)", "20 × L ÷ D", "L ÷ D"],
+                      answer: 1,
+                      explanation: "Twenty wraps give a total length of 20 circumferences, so one circumference is L/20, and dividing by the diameter gives L ÷ (20 × D)."
+                    },
+                    {
+                      question: "What value did Mesopotamian mathematicians use for π around 1900 BCE?",
+                      options: ["Exactly 3", "3 + 1/8 = 3.125", "22/7", "3.1416"],
+                      answer: 1,
+                      explanation: "They reasoned that a circle's perimeter exceeds that of its inscribed hexagon, so π must be larger than 3, and adopted the value 3 + 1/8 = 3.125."
+                    },
+                    {
+                      question: "Why did Mesopotamian mathematicians conclude that π must be greater than 3?",
+                      options: ["From pure guesswork", "Because a circle's perimeter is slightly larger than that of the hexagon inscribed within it", "Because 3 is an odd number", "Because they measured it with thread"],
+                      answer: 1,
+                      explanation: "An inscribed regular hexagon has perimeter exactly 3 times the circle's diameter, and the circle bulges outside it — so the circle's own perimeter, and hence π, must be greater than 3."
+                    },
+                    {
+                      question: "Does the C/D ratio depend on the size of the circle?",
+                      options: ["Yes, larger circles have larger ratios", "Yes, smaller circles have larger ratios", "No, it is the same constant for every circle", "It varies unpredictably"],
+                      answer: 2,
+                      explanation: "The whole significance of the C/D ratio is that it does not change with the size of the circle — it is a fixed constant, π, for circles of every scale."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-6-2",
+                  title: "2. Arc Length and the Running Track",
+                  lab: { type: "arc-length-sim" },
+                  theory: {
+                    intro: "A 400 m running track is really two straight lines and two half-circles — and once you know that, you can work out exactly why runners in outer lanes get a stagger.",
+                    sections: [
+                      {
+                        heading: "Semicircles and Quarter Circles",
+                        text: "The circumference of a circle of diameter d is πd; since the diameter is twice the radius, this is also 2πr. Reflecting a circle in the diameter AB swaps the two semicircles, so they have equal length: 2πr ÷ 2 = πr. Rotating a circle through 90° carries each quarter circle onto another, so each quarter arc has length 2πr ÷ 4 = πr/2."
+                      },
+                      {
+                        heading: "The 400 m Athletics Track",
+                        text: "A standard 400 m track has two straight sections of length 84.39 m each and two curved portions that are semicircles sharing centres A and B; the innermost semicircle on each side has radius 36.5 m, and each lane is 1.22 m wide."
+                      },
+                      {
+                        heading: "Verifying the 400 m",
+                        text: "Assume an athlete runs 0.3 m from the inner border. She covers two straight sections totalling 168.78 m, and two semicircles of radius 36.5 + 0.3 = 36.8 m. The two semicircles together make a complete circle of circumference 2 × 3.1416 × 36.8 = 231.22 m. Total: 168.78 + 231.22 = 400 m exactly. Two runners cover the same distance on the straights, but the outer runner's semicircles have a larger radius — which is precisely why staggers are needed."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying the 400 m Track Calculation",
+                      objective: "To compute the total distance around an athletics track and confirm it comes to exactly 400 m.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "Add the two straight sections: 84.39 + 84.39.",
+                        "Compute the running radius as 36.5 + 0.3 metres.",
+                        "Note that the two semicircles together form one full circle, and compute its circumference as 2 × 3.1416 × 36.8.",
+                        "Add the straight-section total to the circular total.",
+                        "Recompute for a runner one lane further out (radius larger by 1.22 m) and find the extra distance."
+                      ],
+                      observation: "The straights give 168.78 m and the circle gives 231.22 m, totalling exactly 400 m. Moving out one lane increases the radius by 1.22 m, adding 2π × 1.22 ≈ 7.67 m to the lap — which is exactly the gap that staggered starts must compensate for."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the length of a semicircular arc of radius r?",
+                      options: ["2πr", "πr", "πr/2", "πr²"],
+                      answer: 1,
+                      explanation: "The full circumference is 2πr, and reflecting in the diameter shows the two semicircles are equal, so each is 2πr ÷ 2 = πr."
+                    },
+                    {
+                      question: "What is the length of a quarter-circle arc of radius r?",
+                      options: ["πr", "πr/2", "πr/4", "2πr"],
+                      answer: 1,
+                      explanation: "Rotating the circle by 90° carries each quarter arc onto another, so all four are equal: 2πr ÷ 4 = πr/2."
+                    },
+                    {
+                      question: "On a standard 400 m track, what is the length of each straight section?",
+                      options: ["84.39 m", "36.5 m", "100 m", "115.61 m"],
+                      answer: 0,
+                      explanation: "The track has two straight sections of 84.39 m each, totalling 168.78 m of straight running."
+                    },
+                    {
+                      question: "For a runner 0.3 m from the inner border, what is the combined length of the two curved portions?",
+                      options: ["168.78 m", "231.22 m", "400 m", "115.61 m"],
+                      answer: 1,
+                      explanation: "The two semicircles of radius 36.8 m together form a full circle: 2 × 3.1416 × 36.8 = 231.22 m."
+                    },
+                    {
+                      question: "Why are staggered starts needed on a curved running track?",
+                      options: ["To make the race look better", "Because outer-lane runners cover a longer distance on the curves due to their larger radius", "Because outer lanes are rougher", "Because the straights differ in length between lanes"],
+                      answer: 1,
+                      explanation: "Runners cover identical distances on the straights, but an outer lane's semicircles have a larger radius and therefore greater arc length — staggers compensate for exactly this difference."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-6-3",
+                  title: "3. Areas of Parallelograms and Heron's Formula",
+                  lab: { type: "heron-formula-sim" },
+                  theory: {
+                    intro: "Heron's formula finds a triangle's area from its three sides alone — no height, no angles — and it looks so strange that the only convincing thing to do is test it against a case you already know.",
+                    sections: [
+                      {
+                        heading: "Area of a Parallelogram",
+                        text: "A parallelogram ABCD can be transformed into a rectangle with the same base b and the same height h. Though the two shapes look different, their areas are the same — so the area of a parallelogram is base × height = bh. For a 'thin' parallelogram where the perpendicular foot falls outside the base, the fix is to slide a congruent triangle across (since ΔCDD' ≅ ΔBAA'), repeating as many times as needed."
+                      },
+                      {
+                        heading: "Heron's Formula",
+                        text: "Discovered by Heron, who taught at the Museum in Alexandria, this formula gives a triangle's area from its side lengths alone. If ΔABC has sides BC = a, CA = b and AB = c, first compute the semi-perimeter s = (a + b + c)/2. Then area = √[s(s − a)(s − b)(s − c)]."
+                      },
+                      {
+                        heading: "Testing It on Known Cases",
+                        text: "For an equilateral triangle of side a, s = 3a/2, so the formula gives √[(3a/2)(a/2)(a/2)(a/2)] = (√3/4)a². Checking with 'half base times height': the height is h = (√3/2)a by the Baudhāyana–Pythagoras Theorem, giving area = ½ × a × (√3/2)a = (√3/4)a² — the same formula. For an isosceles triangle with equal sides a and base 2b, s = a + b, and Heron's formula gives b√(a² − b²)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Checking Heron's Formula Against a Known Triangle",
+                      objective: "To verify Heron's formula by comparing it with the familiar half-base-times-height result.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "Take a triangle with sides 3, 4 and 5 units and compute its semi-perimeter s.",
+                        "Apply Heron's formula: √[s(s − 3)(s − 4)(s − 5)].",
+                        "Note that 3-4-5 is a right triangle, so compute its area directly as ½ × 3 × 4.",
+                        "Compare the two answers.",
+                        "Repeat for an equilateral triangle of side 2 and compare with (√3/4)a²."
+                      ],
+                      observation: "For the 3-4-5 triangle, s = 6 and Heron gives √(6 × 3 × 2 × 1) = √36 = 6, matching ½ × 3 × 4 = 6 exactly. For the equilateral triangle of side 2, Heron gives √(3 × 1 × 1 × 1) = √3, matching (√3/4) × 4 = √3."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the formula for the area of a parallelogram?",
+                      options: ["½ × base × height", "base × height", "base + height", "base²"],
+                      answer: 1,
+                      explanation: "A parallelogram can be transformed into a rectangle of the same base and height without changing its area, so its area is base × height = bh."
+                    },
+                    {
+                      question: "In Heron's formula, what is the semi-perimeter s of a triangle with sides a, b, c?",
+                      options: ["a + b + c", "(a + b + c)/2", "(a + b + c)/3", "√(a + b + c)"],
+                      answer: 1,
+                      explanation: "The semi-perimeter is half the perimeter: s = (a + b + c)/2."
+                    },
+                    {
+                      question: "What is Heron's formula for the area of a triangle?",
+                      options: ["√[s(s − a)(s − b)(s − c)]", "s(s − a)(s − b)(s − c)", "½ × s × a", "√(a² + b² + c²)"],
+                      answer: 0,
+                      explanation: "Heron's formula gives the area as the square root of s(s − a)(s − b)(s − c), where s is the semi-perimeter."
+                    },
+                    {
+                      question: "Using Heron's formula, what is the area of a triangle with sides 3, 4 and 5?",
+                      options: ["6", "12", "√12", "10"],
+                      answer: 0,
+                      explanation: "The semi-perimeter is s = 6, so the area is √(6 × 3 × 2 × 1) = √36 = 6 — matching ½ × 3 × 4 = 6 for this right triangle."
+                    },
+                    {
+                      question: "What area does Heron's formula give for an equilateral triangle of side a?",
+                      options: ["a²", "(√3/2)a²", "(√3/4)a²", "(1/2)a²"],
+                      answer: 2,
+                      explanation: "With s = 3a/2, Heron's formula yields √[(3a/2)(a/2)(a/2)(a/2)] = (√3/4)a², which agrees with the half-base-times-height calculation."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-6-4",
+                  title: "4. Area of a Circle and Its Sectors",
+                  lab: { type: "circle-area-sim" },
+                  theory: {
+                    intro: "Long before anyone wrote πr², people noticed something suggestive: for any fixed shape, the ratio of perimeter-squared to area never changes — so a circle must have one too.",
+                    sections: [
+                      {
+                        heading: "Why P² : A Is Fixed for a Shape",
+                        text: "For a square of side a, the perimeter is P = 4a and the area A = a², so P² : A = 16a² : a² = 16 : 1 — the same for every square, regardless of size. For an equilateral triangle of side a, P = 3a and A = (√3/4)a², giving P² : A = 9a² : (√3/4)a² = 36 : √3, again independent of size. For any shape, changing the scale leaves the ratio P² : A fixed; its value depends only on the shape."
+                      },
+                      {
+                        heading: "The Circle's Constant",
+                        text: "This reasoning suggests that for a circle too, the ratio C² : A must be a fixed constant. Well before 1500 BCE the Babylonians found by measurement that this constant is close to 12, so their formula for the area was A ≈ C²/12."
+                      },
+                      {
+                        heading: "The Egyptian Approximation",
+                        text: "Around 1500 BCE, the ancient Egyptians produced a more accurate formula: A ≈ (8d/9)², where d is the diameter. Since d = 2r, this can be rewritten as A ≈ (64/81) × 4r², that is, A ≈ (256/81)r² — remarkably close to the exact πr², since 256/81 ≈ 3.16."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing That P² : A Is Scale-Independent",
+                      objective: "To confirm that the ratio of perimeter-squared to area depends only on a shape, not its size.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "For a square of side 2, compute the perimeter, the area, and the ratio P² : A.",
+                        "Repeat for a square of side 5 and compare the ratios.",
+                        "For an equilateral triangle of side 2, compute P, A = (√3/4)a², and the ratio.",
+                        "Repeat for an equilateral triangle of side 6 and compare.",
+                        "Compare the Egyptian circle estimate 256/81 with the modern value of π."
+                      ],
+                      observation: "Both squares give P² : A = 16 : 1 and both equilateral triangles give the same ratio as each other — confirming the ratio depends only on shape. The Egyptian value 256/81 ≈ 3.16 sits impressively close to π ≈ 3.1416."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "For any square, what is the ratio P² : A?",
+                      options: ["4 : 1", "16 : 1", "8 : 1", "It depends on the side length"],
+                      answer: 1,
+                      explanation: "With side a, P = 4a and A = a², so P² : A = 16a² : a² = 16 : 1 — the same for every square regardless of size."
+                    },
+                    {
+                      question: "What does the constancy of P² : A for a shape tell us?",
+                      options: ["The ratio depends only on the shape, not its scale", "Perimeter equals area for that shape", "All shapes have the same ratio", "The ratio grows with the size of the figure"],
+                      answer: 0,
+                      explanation: "Changing the scale of a shape leaves P² : A unchanged — the value of the ratio depends only on the shape itself, which is what suggests a circle must have its own fixed constant."
+                    },
+                    {
+                      question: "What value did the Babylonians find for the constant in C² : A, before 1500 BCE?",
+                      options: ["Close to 12", "Close to 16", "Close to 3", "Close to 36"],
+                      answer: 0,
+                      explanation: "Babylonian measurements gave C² : A ≈ 12 : 1, so their area formula for a circle was A ≈ C²/12."
+                    },
+                    {
+                      question: "What was the ancient Egyptian formula for the area of a circle of diameter d?",
+                      options: ["A ≈ d²/12", "A ≈ (8d/9)²", "A ≈ 3d²", "A ≈ (9d/8)²"],
+                      answer: 1,
+                      explanation: "Around 1500 BCE the Egyptians used A ≈ (8d/9)², which in terms of the radius becomes A ≈ (256/81)r²."
+                    },
+                    {
+                      question: "How close is the Egyptian constant 256/81 to the true value of π?",
+                      options: ["It is about 3.16, very close to π ≈ 3.1416", "It is about 4, quite far off", "It is exactly π", "It is about 2.5"],
+                      answer: 0,
+                      explanation: "256/81 ≈ 3.16, remarkably close to the modern value π ≈ 3.1416 for a formula devised around 1500 BCE."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

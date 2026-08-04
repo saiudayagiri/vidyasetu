@@ -5431,6 +5431,98 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const cdRatioLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="cd-ratio-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a circle size and see that C ÷ D stays the same.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Circle Diameter</h3>
+            <select id="sel-cd-ratio" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="4">D = 4</option>
+              <option value="6" selected>D = 6</option>
+              <option value="9">D = 9</option>
+              <option value="hexagon">Compare with inscribed hexagon</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>The C/D Ratio</h3>
+            <div id="cd-ratio-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a size above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const arcLengthLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="arc-length-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a fraction of the circle, or see the full 400 m track.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a View</h3>
+            <select id="sel-arc-length" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="semi" selected>Semicircle — πr</option>
+              <option value="quarter">Quarter circle — πr/2</option>
+              <option value="track">The 400 m athletics track</option>
+              <option value="lane2">Track: lane 2 stagger</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Arc Length</h3>
+            <div id="arc-length-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a view above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const heronFormulaLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="heron-formula-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a triangle and see Heron's formula worked through.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Triangle</h3>
+            <select id="sel-heron-formula" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="3,4,5" selected>Sides 3, 4, 5</option>
+              <option value="6,8,10">Sides 6, 8, 10</option>
+              <option value="5,5,6">Sides 5, 5, 6</option>
+              <option value="7,8,9">Sides 7, 8, 9</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Area via Heron</h3>
+            <div id="heron-formula-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a triangle above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const circleAreaLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="circle-area-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Compare how each civilisation estimated the area of a circle.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Method</h3>
+            <select id="sel-circle-area" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="square">Square: P² : A = 16 : 1</option>
+              <option value="babylon">Babylonian: A ≈ C²/12</option>
+              <option value="egypt" selected>Egyptian: A ≈ (8d/9)²</option>
+              <option value="modern">Modern: A = πr²</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Estimate for r = 5</h3>
+            <div id="circle-area-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a method above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -7626,6 +7718,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'inscribed-angle-sim') {
               labHtml = inscribedAngleLabHtml;
               labDesc = 'Move a point around the arc and watch the inscribed angle hold steady.';
+            } else if (topicObj.lab.type === 'cd-ratio-sim') {
+              labHtml = cdRatioLabHtml;
+              labDesc = 'Pick a circle size and confirm the C/D ratio never changes.';
+            } else if (topicObj.lab.type === 'arc-length-sim') {
+              labHtml = arcLengthLabHtml;
+              labDesc = 'Explore semicircle and quarter-circle arcs, and the 400 m track.';
+            } else if (topicObj.lab.type === 'heron-formula-sim') {
+              labHtml = heronFormulaLabHtml;
+              labDesc = 'Pick a triangle and see Heron’s formula worked through step by step.';
+            } else if (topicObj.lab.type === 'circle-area-sim') {
+              labHtml = circleAreaLabHtml;
+              labDesc = 'Compare ancient and modern estimates for the area of a circle.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -8297,6 +8401,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initChordDistanceLab();
         } else if (topicObj.lab.type === 'inscribed-angle-sim') {
           initInscribedAngleLab();
+        } else if (topicObj.lab.type === 'cd-ratio-sim') {
+          initCdRatioLab();
+        } else if (topicObj.lab.type === 'arc-length-sim') {
+          initArcLengthLab();
+        } else if (topicObj.lab.type === 'heron-formula-sim') {
+          initHeronFormulaLab();
+        } else if (topicObj.lab.type === 'circle-area-sim') {
+          initCircleAreaLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -26819,6 +26931,251 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         obs.innerHTML = sel.value === 'all'
           ? `<strong>All three positions of D give the same ${central / 2}° angle.</strong> The arc subtends ${central}° at the centre, and Theorem 9 makes every inscribed angle exactly half of that — so angles in the same segment are equal.`
           : `<strong>Arc AB subtends ${central}° at the centre and ${central / 2}° at D.</strong> The inscribed angle is exactly half the central angle, and it stays ${central / 2}° wherever D is placed on this arc.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCdRatioLab() {
+      const canvas = document.getElementById('cd-ratio-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-cd-ratio');
+      const obs = document.getElementById('cd-ratio-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cx = W / 2, cy = H / 2 + 12;
+        const hex = sel.value === 'hexagon';
+        const D = hex ? 6 : parseFloat(sel.value);
+        const r = (D / 9) * 120;
+
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx - r, cy); ctx.lineTo(cx + r, cy); ctx.stroke();
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText(`D = ${D}`, cx, cy - 8);
+
+        if (hex) {
+          ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          for (let i = 0; i <= 6; i++) {
+            const a = i * Math.PI / 3;
+            const x = cx + r * Math.cos(a), y = cy + r * Math.sin(a);
+            i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        if (hex) {
+          ctx.fillText('Hexagon perimeter = 3D   <   Circle circumference', W / 2, 28);
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = '#f59e0b';
+          ctx.fillText('so the C/D ratio must be greater than 3', W / 2, H - 16);
+          obs.innerHTML = `<strong>Hexagon perimeter = 3D.</strong> The inscribed hexagon has perimeter exactly 3 times the diameter, and the circle bulges outside it — so C/D must exceed 3. This is exactly how Mesopotamian mathematicians reasoned their way to π ≈ 3.125.`;
+        } else {
+          const C = Math.PI * D;
+          ctx.fillText(`C = π × ${D} = ${C.toFixed(3)}`, W / 2, 28);
+          ctx.font = 'bold 16px system-ui'; ctx.fillStyle = '#22c55e';
+          ctx.fillText(`C ÷ D = ${(C / D).toFixed(4)}`, W / 2, H - 16);
+          obs.innerHTML = `<strong>D = ${D}, C = ${C.toFixed(3)}, so C ÷ D = ${(C / D).toFixed(4)}.</strong> Try the other sizes — the circumference and diameter both change, but their ratio stays fixed at π. That constancy is what makes the C/D ratio meaningful.`;
+        }
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initArcLengthLab() {
+      const canvas = document.getElementById('arc-length-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-arc-length');
+      const obs = document.getElementById('arc-length-obs');
+
+      function drawTrack(lane2) {
+        const W = canvas.width, H = canvas.height;
+        const cy = H / 2 + 10, straightPx = 150, rPx = 78;
+        const ax = W / 2 - straightPx / 2, bx = W / 2 + straightPx / 2;
+        const off = lane2 ? 14 : 0;
+
+        function loop(pad, col, lw) {
+          ctx.strokeStyle = col; ctx.lineWidth = lw;
+          ctx.beginPath();
+          ctx.moveTo(ax, cy - rPx - pad); ctx.lineTo(bx, cy - rPx - pad);
+          ctx.arc(bx, cy, rPx + pad, -Math.PI / 2, Math.PI / 2);
+          ctx.lineTo(ax, cy + rPx + pad);
+          ctx.arc(ax, cy, rPx + pad, Math.PI / 2, Math.PI * 1.5);
+          ctx.stroke();
+        }
+
+        loop(0, cssVar('--text-muted'), 1.5);
+        loop(off + 4, lane2 ? '#f59e0b' : '#22c55e', 3);
+
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+        ctx.fillText('84.39 m straight', W / 2, cy - rPx - 14);
+        ctx.fillText('84.39 m straight', W / 2, cy + rPx + 24);
+        ctx.fillText('semicircle', ax - rPx - 6, cy + 4);
+        ctx.fillText('semicircle', bx + rPx + 6, cy + 4);
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mode = sel.value;
+
+        if (mode === 'track' || mode === 'lane2') {
+          drawTrack(mode === 'lane2');
+          ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          if (mode === 'track') {
+            ctx.fillText('168.78 m straights + 231.22 m curves = 400 m', W / 2, 26);
+            obs.innerHTML = `<strong>Total = 400 m exactly.</strong> Two straights of 84.39 m give 168.78 m. Running 0.3 m from the inner border makes the radius 36.8 m, and the two semicircles form one full circle: 2 × 3.1416 × 36.8 = 231.22 m. Adding gives 168.78 + 231.22 = 400 m.`;
+          } else {
+            const extra = 2 * Math.PI * 1.22;
+            ctx.fillText(`Lane 2 radius is 1.22 m larger — adds ${extra.toFixed(2)} m per lap`, W / 2, 26);
+            obs.innerHTML = `<strong>Lane 2 runs about ${extra.toFixed(2)} m further.</strong> The straights are identical, but the semicircles have a radius larger by the lane width 1.22 m, adding 2π × 1.22 ≈ ${extra.toFixed(2)} m to the lap — which is exactly what a staggered start compensates for.`;
+          }
+          return;
+        }
+
+        const cx = W / 2, cy = H / 2 + 20, r = 100;
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+
+        const end = mode === 'semi' ? Math.PI : Math.PI / 2;
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI, Math.PI + end); ctx.stroke();
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx - r, cy); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + r * Math.cos(Math.PI + end), cy + r * Math.sin(Math.PI + end));
+        ctx.stroke(); ctx.setLineDash([]);
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(mode === 'semi' ? 'Semicircle: 2πr ÷ 2 = πr' : 'Quarter circle: 2πr ÷ 4 = πr/2', W / 2, 30);
+
+        obs.innerHTML = mode === 'semi'
+          ? `<strong>Semicircle length = πr.</strong> Reflecting the circle in its diameter swaps the two semicircles, so they must be equal — each is half of 2πr.`
+          : `<strong>Quarter circle length = πr/2.</strong> Rotating the circle through 90° carries each quarter arc onto another, so all four are equal — each is a quarter of 2πr.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initHeronFormulaLab() {
+      const canvas = document.getElementById('heron-formula-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-heron-formula');
+      const obs = document.getElementById('heron-formula-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const [a, b, c] = sel.value.split(',').map(Number);
+        const s = (a + b + c) / 2;
+        const prod = s * (s - a) * (s - b) * (s - c);
+        const area = Math.sqrt(prod);
+
+        const scale = 190 / Math.max(a, b, c);
+        const B = [0, 0], C = [a * scale, 0];
+        const cosB = (a * a + c * c - b * b) / (2 * a * c);
+        const A = [c * scale * cosB, -c * scale * Math.sqrt(Math.max(0, 1 - cosB * cosB))];
+        const minX = Math.min(B[0], C[0], A[0]), maxX = Math.max(B[0], C[0], A[0]);
+        const minY = Math.min(B[1], C[1], A[1]);
+        const ox = W / 2 - (minX + maxX) / 2, oy = H - 78 + 0 * minY;
+
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2.5;
+        ctx.fillStyle = 'rgba(34,197,94,0.14)';
+        ctx.beginPath();
+        [B, C, A].forEach((p, i) => { const x = ox + p[0], y = oy + p[1]; i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`${a}`, ox + (B[0] + C[0]) / 2, oy + 18);
+        ctx.fillText(`${c}`, ox + (B[0] + A[0]) / 2 - 12, oy + (B[1] + A[1]) / 2);
+        ctx.fillText(`${b}`, ox + (C[0] + A[0]) / 2 + 14, oy + (C[1] + A[1]) / 2);
+
+        ctx.textAlign = 'center';
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`s = (${a} + ${b} + ${c}) ÷ 2 = ${s}`, W / 2, 30);
+        ctx.fillText(`s(s−a)(s−b)(s−c) = ${s} × ${s - a} × ${s - b} × ${s - c} = ${prod}`, W / 2, 54);
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`Area = √${prod} = ${Number.isInteger(area) ? area : area.toFixed(3)}`, W / 2, 82);
+
+        obs.innerHTML = `<strong>Sides ${a}, ${b}, ${c} → area ${Number.isInteger(area) ? area : area.toFixed(3)}.</strong> The semi-perimeter is s = ${s}, and Heron's formula gives √[${s}(${s - a})(${s - b})(${s - c})] = √${prod} — computed from the three side lengths alone, with no height needed.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCircleAreaLab() {
+      const canvas = document.getElementById('circle-area-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-circle-area');
+      const obs = document.getElementById('circle-area-obs');
+      const R = 5;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const mode = sel.value;
+        const cx = W / 2, cy = H / 2 + 26, r = 92;
+        const exact = Math.PI * R * R;
+
+        if (mode === 'square') {
+          const side = 150, sx = cx - side / 2, sy = cy - side / 2;
+          ctx.strokeStyle = '#8b5cf6'; ctx.lineWidth = 3;
+          ctx.fillStyle = 'rgba(139,92,246,0.14)';
+          ctx.fillRect(sx, sy, side, side); ctx.strokeRect(sx, sy, side, side);
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText('P = 4a,  A = a²', cx, cy + 6);
+          ctx.font = 'bold 16px system-ui'; ctx.fillStyle = '#8b5cf6';
+          ctx.fillText('P² : A = 16a² : a² = 16 : 1', W / 2, 40);
+          obs.innerHTML = `<strong>For every square, P² : A = 16 : 1.</strong> The a² cancels, so the ratio is the same whatever the side length — this scale-independence is what suggests a circle must have its own fixed C² : A constant.`;
+          return;
+        }
+
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3;
+        ctx.fillStyle = 'rgba(34,197,94,0.14)';
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        let label, est, formula;
+        if (mode === 'babylon') {
+          const C = 2 * Math.PI * R;
+          est = C * C / 12;
+          label = 'Babylonian (before 1500 BCE)';
+          formula = 'A ≈ C² ÷ 12';
+        } else if (mode === 'egypt') {
+          const d = 2 * R;
+          est = Math.pow(8 * d / 9, 2);
+          label = 'Egyptian (c. 1500 BCE)';
+          formula = 'A ≈ (8d/9)²';
+        } else {
+          est = exact;
+          label = 'Modern';
+          formula = 'A = πr²';
+        }
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(label, W / 2, 32);
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = '#f59e0b';
+        ctx.fillText(formula, W / 2, 60);
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`= ${est.toFixed(3)}  (r = 5)`, W / 2, H - 22);
+
+        const err = Math.abs(est - exact) / exact * 100;
+        obs.innerHTML = mode === 'modern'
+          ? `<strong>A = πr² = ${est.toFixed(3)} for r = 5.</strong> This is the exact modern formula that the ancient approximations were reaching toward.`
+          : `<strong>${label}: ${formula} gives ${est.toFixed(3)} for r = 5.</strong> The exact value is πr² = ${exact.toFixed(3)}, so this estimate is off by about ${err.toFixed(2)}% — impressively close for its era.`;
       }
 
       sel.addEventListener('change', draw);
