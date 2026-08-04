@@ -5711,6 +5711,102 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const scienceModelLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="science-model-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a detail and decide whether the model should keep it or ignore it.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Cricket Shot — Which Detail?</h3>
+            <select id="sel-science-model" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="mass" selected>Mass of the ball</option>
+              <option value="speed">Speed and direction of the hit</option>
+              <option value="brand">Brand of the bat</option>
+              <option value="colour">Colour of the ball</option>
+              <option value="grass">Amount of grass on the field</option>
+              <option value="spin">Spin and seam stitching</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Keep or Ignore?</h3>
+            <div id="science-model-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a detail above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const unitsSymbolsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="units-symbols-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a quantity and see its agreed symbol and SI unit.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Quantity</h3>
+            <select id="sel-units-symbols" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="mass" selected>Mass</option>
+              <option value="velocity">Velocity</option>
+              <option value="force">Force</option>
+              <option value="current">Electric current</option>
+              <option value="light">Speed of light</option>
+              <option value="fuel">The fuel miscalculation</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Symbol and Unit</h3>
+            <div id="units-symbols-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a quantity above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const lawTheoryLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="law-theory-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an example and see whether it is a law, a theory, or a principle.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Example</h3>
+            <select id="sel-law-theory" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="newton" selected>Newton's laws of motion</option>
+              <option value="atomic">The atomic theory</option>
+              <option value="energy">Conservation of energy</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Which Category?</h3>
+            <div id="law-theory-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an example above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const predictionTestLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="prediction-test-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Compare a vague claim with questions that make it testable.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Question</h3>
+            <select id="sel-prediction-test" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="vague" selected>"Do you think it will rain?"</option>
+              <option value="humidity">"What is the humidity today?"</option>
+              <option value="past">"What was the sky like last time it rained?"</option>
+              <option value="wind">"What is today's wind speed and direction?"</option>
+              <option value="temp">"Is the temperature dropping as before?"</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Is It Testable?</h3>
+            <div id="prediction-test-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a question above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -7942,6 +8038,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'gp-pattern-sim') {
               labHtml = gpPatternLabHtml;
               labDesc = 'Compare geometric progressions and see how they outpace an AP.';
+            } else if (topicObj.lab.type === 'science-model-sim') {
+              labHtml = scienceModelLabHtml;
+              labDesc = 'Decide which details a scientific model should keep and which it can ignore.';
+            } else if (topicObj.lab.type === 'units-symbols-sim') {
+              labHtml = unitsSymbolsLabHtml;
+              labDesc = 'Pick a quantity and see its agreed scientific symbol and SI unit.';
+            } else if (topicObj.lab.type === 'law-theory-sim') {
+              labHtml = lawTheoryLabHtml;
+              labDesc = 'See whether an example is a law, a theory, or a principle.';
+            } else if (topicObj.lab.type === 'prediction-test-sim') {
+              labHtml = predictionTestLabHtml;
+              labDesc = 'Compare a vague claim with questions that make a prediction testable.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -8637,6 +8745,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initNaturalSumLab();
         } else if (topicObj.lab.type === 'gp-pattern-sim') {
           initGpPatternLab();
+        } else if (topicObj.lab.type === 'science-model-sim') {
+          initScienceModelLab();
+        } else if (topicObj.lab.type === 'units-symbols-sim') {
+          initUnitsSymbolsLab();
+        } else if (topicObj.lab.type === 'law-theory-sim') {
+          initLawTheoryLab();
+        } else if (topicObj.lab.type === 'prediction-test-sim') {
+          initPredictionTestLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -27883,6 +27999,240 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(`${ratios} = ${s.r}`, W / 2, H - 22);
 
         obs.innerHTML = `<strong>${terms.join(', ')}, … with common ratio r = ${s.r}.</strong> Every consecutive pair has the same ratio, which is what makes this a geometric progression with nth term ${s.label}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initScienceModelLab() {
+      const canvas = document.getElementById('science-model-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-science-model');
+      const obs = document.getElementById('science-model-obs');
+      const DETAILS = {
+        mass: { keep: true, note: 'The mass of the ball directly affects how far it travels — essential to the model.' },
+        speed: { keep: true, note: 'The speed and direction of the hit are the most important inputs of all.' },
+        brand: { keep: false, note: 'The brand of the bat makes no difference to whether the ball clears the boundary.' },
+        colour: { keep: false, note: 'The colour of the ball has no effect on its flight at all.' },
+        grass: { keep: false, note: 'The amount of grass on the field does not change the ball’s path through the air.' },
+        spin: { keep: false, note: 'Spin and seam stitching do have small effects, but they can be ignored in a simple model — added later for greater accuracy.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const d = DETAILS[sel.value];
+        const label = sel.options[sel.selectedIndex].text;
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText('Question: will the ball cross the boundary without bouncing?', W / 2, 34);
+
+        const boxW = 210, boxH = 150, gap = 40;
+        const lx = W / 2 - boxW - gap / 2, rx = W / 2 + gap / 2, by = 78;
+
+        ctx.fillStyle = d.keep ? 'rgba(34,197,94,0.18)' : 'rgba(148,163,184,0.06)';
+        ctx.strokeStyle = d.keep ? '#22c55e' : cssVar('--border-color');
+        ctx.lineWidth = d.keep ? 3 : 1.4;
+        ctx.beginPath(); ctx.roundRect(lx, by, boxW, boxH, 10); ctx.fill(); ctx.stroke();
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = d.keep ? '#22c55e' : cssVar('--text-muted');
+        ctx.fillText('KEEP in the model', lx + boxW / 2, by + 30);
+
+        ctx.fillStyle = !d.keep ? 'rgba(245,158,11,0.18)' : 'rgba(148,163,184,0.06)';
+        ctx.strokeStyle = !d.keep ? '#f59e0b' : cssVar('--border-color');
+        ctx.lineWidth = !d.keep ? 3 : 1.4;
+        ctx.beginPath(); ctx.roundRect(rx, by, boxW, boxH, 10); ctx.fill(); ctx.stroke();
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = !d.keep ? '#f59e0b' : cssVar('--text-muted');
+        ctx.fillText('IGNORE deliberately', rx + boxW / 2, by + 30);
+
+        const tx = d.keep ? lx + boxW / 2 : rx + boxW / 2;
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        const words = label.split(' ');
+        let line = '', ly = by + 78;
+        words.forEach(w => {
+          if ((line + w).length > 18) { ctx.fillText(line, tx, ly); line = w + ' '; ly += 24; }
+          else line += w + ' ';
+        });
+        ctx.fillText(line, tx, ly);
+
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('Ignoring details is a deliberate choice, not a mistake', W / 2, H - 24);
+
+        obs.innerHTML = `<strong>${label} — ${d.keep ? 'keep it' : 'ignore it'}.</strong> ${d.note}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initUnitsSymbolsLab() {
+      const canvas = document.getElementById('units-symbols-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-units-symbols');
+      const obs = document.getElementById('units-symbols-obs');
+      const DATA = {
+        mass: { sym: 'm', unit: 'kilogram (kg)', note: 'Mass is represented by the symbol m and measured in kilograms.' },
+        velocity: { sym: 'v', unit: 'metre per second (m/s)', note: 'Velocity is represented by v and measured in metres per second.' },
+        force: { sym: 'F', unit: 'newton (N)', note: 'Force is represented by F and measured in newtons.' },
+        current: { sym: 'I', unit: 'ampere (A)', note: 'Electric current is represented by I and measured in amperes.' },
+        light: { sym: 'c', unit: 'exactly 299792458 m/s', note: 'The symbol c comes from the Latin celeritas, meaning speed. The speed of light is a defined physical constant.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        ctx.textAlign = 'center';
+
+        if (sel.value === 'fuel') {
+          ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+          ctx.fillText('When units are not shared: the fuel miscalculation', W / 2, 40);
+
+          const rows = [
+            ['Fuel actually needed', '22,300 kg', '#22c55e'],
+            ['Density used by mistake', 'pounds per litre', '#ef4444'],
+            ['Density that was required', 'kilograms per litre', '#22c55e'],
+            ['Resulting shortfall', 'about 15,000 litres', '#ef4444']
+          ];
+          rows.forEach(([k, v, col], i) => {
+            const y = 92 + i * 46;
+            ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'right';
+            ctx.fillText(k, W / 2 - 20, y);
+            ctx.font = 'bold 15px system-ui'; ctx.fillStyle = col; ctx.textAlign = 'left';
+            ctx.fillText(v, W / 2 + 20, y);
+          });
+          ctx.textAlign = 'center';
+          ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText('Using SI units everywhere avoids conversions — and errors', W / 2, H - 24);
+
+          obs.innerHTML = `<strong>The aircraft was about 15,000 litres short of fuel.</strong> The flight needed 22,300 kg, but the ground crew used the density of fuel in pounds per litre instead of kilograms per litre. Pounds and kilograms are very different — using standard SI units everywhere removes the conversion step where the error crept in.`;
+          return;
+        }
+
+        const d = DATA[sel.value];
+        const label = sel.options[sel.selectedIndex].text;
+
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(label, W / 2, 46);
+
+        ctx.fillStyle = 'rgba(34,197,94,0.16)'; ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.roundRect(W / 2 - 70, 78, 140, 100, 12); ctx.fill(); ctx.stroke();
+        ctx.font = 'bold 54px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.textBaseline = 'middle'; ctx.fillText(d.sym, W / 2, 130); ctx.textBaseline = 'alphabetic';
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('agreed symbol', W / 2, 196);
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = '#f59e0b';
+        ctx.fillText(d.unit, W / 2, 240);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('SI unit', W / 2, 262);
+
+        obs.innerHTML = `<strong>${label} → symbol ${d.sym}, unit ${d.unit}.</strong> ${d.note}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initLawTheoryLab() {
+      const canvas = document.getElementById('law-theory-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-law-theory');
+      const obs = document.getElementById('law-theory-obs');
+      const CASES = {
+        newton: { kind: 'LAW', role: 'describes a pattern', example: 'explains the jerk felt when a bus stops suddenly', col: '#22c55e' },
+        atomic: { kind: 'THEORY', role: 'explains why the pattern occurs', example: 'explains how molecules are formed', col: '#f59e0b' },
+        energy: { kind: 'PRINCIPLE', role: 'a broad idea applied to many situations', example: 'applied when climbing up the stairs', col: '#8b5cf6' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const c = CASES[sel.value];
+        const label = sel.options[sel.selectedIndex].text;
+        ctx.textAlign = 'center';
+
+        const kinds = [['LAW', 'describes a pattern', '#22c55e'], ['THEORY', 'explains why', '#f59e0b'], ['PRINCIPLE', 'broad idea', '#8b5cf6']];
+        const bw = 168, gap = 14;
+        const totalW = 3 * bw + 2 * gap;
+        const sx = W / 2 - totalW / 2;
+        kinds.forEach(([k, sub, col], i) => {
+          const x = sx + i * (bw + gap);
+          const on = k === c.kind;
+          ctx.fillStyle = on ? col.replace(')', ',0.20)').replace('#', 'rgba(') : 'rgba(148,163,184,0.06)';
+          ctx.fillStyle = on ? (k === 'LAW' ? 'rgba(34,197,94,0.20)' : k === 'THEORY' ? 'rgba(245,158,11,0.20)' : 'rgba(139,92,246,0.20)') : 'rgba(148,163,184,0.06)';
+          ctx.strokeStyle = on ? col : cssVar('--border-color');
+          ctx.lineWidth = on ? 3 : 1.3;
+          ctx.beginPath(); ctx.roundRect(x, 96, bw, 92, 10); ctx.fill(); ctx.stroke();
+          ctx.font = 'bold 16px system-ui'; ctx.fillStyle = on ? col : cssVar('--text-muted');
+          ctx.fillText(k, x + bw / 2, 130);
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText(sub, x + bw / 2, 156);
+        });
+
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(label, W / 2, 46);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(c.example, W / 2, 70);
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = c.col;
+        ctx.fillText(`It ${c.role}`, W / 2, 234);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('In science a theory is not a guess — it rests on careful testing', W / 2, H - 24);
+
+        obs.innerHTML = `<strong>${label} is a ${c.kind.toLowerCase()}.</strong> It ${c.role} — it ${c.example}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPredictionTestLab() {
+      const canvas = document.getElementById('prediction-test-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-prediction-test');
+      const obs = document.getElementById('prediction-test-obs');
+      const Q = {
+        vague: { good: false, why: 'This can be answered with a simple yes or no, and asks for an opinion rather than evidence.' },
+        humidity: { good: true, why: 'Humidity is measurable, and it can be compared against the value recorded the last time it rained.' },
+        past: { good: true, why: 'This looks for a past pattern that can be checked against today’s conditions.' },
+        wind: { good: true, why: 'Wind speed and direction are measurable quantities that can be compared with earlier rainy days.' },
+        temp: { good: true, why: 'A falling temperature is measurable, and comparing it with previous rains tests the prediction properly.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const q = Q[sel.value];
+        const label = sel.options[sel.selectedIndex].text;
+        ctx.textAlign = 'center';
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('Varsha: “It will rain this afternoon because the clouds look dark.”', W / 2, 38);
+
+        ctx.fillStyle = q.good ? 'rgba(34,197,94,0.15)' : 'rgba(239,68,68,0.15)';
+        ctx.strokeStyle = q.good ? '#22c55e' : '#ef4444'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.roundRect(60, 76, W - 120, 76, 10); ctx.fill(); ctx.stroke();
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.textBaseline = 'middle'; ctx.fillText(label, W / 2, 114); ctx.textBaseline = 'alphabetic';
+
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = q.good ? '#22c55e' : '#ef4444';
+        ctx.fillText(q.good ? 'TESTABLE — asks for measurable evidence' : 'NOT USEFUL — answerable with a simple yes/no', W / 2, 190);
+
+        const checks = [['measurable quantity?', q.good], ['compares a past pattern?', q.good], ['goes beyond appearance?', q.good]];
+        checks.forEach(([txt, ok], i) => {
+          const y = 226 + i * 26;
+          ctx.font = '13px system-ui'; ctx.fillStyle = ok ? '#22c55e' : '#ef4444'; ctx.textAlign = 'right';
+          ctx.fillText(ok ? '✓' : '✗', W / 2 - 8, y);
+          ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+          ctx.fillText(txt, W / 2 + 8, y);
+        });
+
+        obs.innerHTML = `<strong>${q.good ? 'Testable' : 'Not a useful scientific question'}.</strong> ${q.why}`;
       }
 
       sel.addEventListener('change', draw);

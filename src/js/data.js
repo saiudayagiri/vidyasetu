@@ -19497,7 +19497,294 @@ export const curriculumData = {
       tagline: "Critical Thinking & Concepts",
       theme: "linear-gradient(135deg, #f6d365, #fda085)",
       subjects: {
-        science: { name: "Science", icon: "🧪", chapters: [] },
+        science: {
+          name: "Science",
+          icon: "🧪",
+          chapters: [
+            {
+              id: "9s-1",
+              title: "Exploration: Entering the World of Secondary Science",
+              topics: [
+                {
+                  id: "9s-1-1",
+                  title: "1. Models: Simplifying to Understand",
+                  lab: { type: "science-model-sim" },
+                  theory: {
+                    intro: "The natural world is far too complex to study in full detail — so science deliberately throws away the parts that don't matter, and that discarding is a skill, not a shortcut.",
+                    sections: [
+                      {
+                        heading: "Why Science Uses Models",
+                        text: "The natural world is complex, and studying it in full detail is often impossible. To make sense of this complexity, science uses models — simplified ways of looking at real systems that focus only on what is most important for a given question. In physics, a moving car may be represented as a single point; in chemistry, atoms and molecules are drawn as spheres and bonds; in biology, cells are shown as diagrams highlighting key parts; and in earth science, the Earth may be treated as a smooth sphere layered into distinct regions."
+                      },
+                      {
+                        heading: "Deliberate Assumptions",
+                        text: "Building models involves making assumptions and deliberately ignoring certain details. When studying the motion of a falling object, air resistance may be neglected to understand the basic effect of gravity. In biology, when studying how the heart pumps blood, many individual cells are ignored so the organ can be understood as a functioning system. These choices are not mistakes — they are made on purpose to keep things simple enough while still allowing us to answer what we are looking for."
+                      },
+                      {
+                        heading: "A Cricket Shot, Modelled",
+                        text: "Think of a cricket ball hit for a six. To answer 'Will the ball cross the boundary without hitting the ground first?', the brand of the bat, the colour of the ball and the amount of grass on the field make no difference. The mass of the ball and the speed and direction it was hit are very important. Air resistance, spin, and the seam stitching have smaller effects that can be ignored in a simple model. As we build more complex models, we add extra details for greater accuracy. Meghnad Saha did exactly this with stars: rather than modelling every atom and reaction, he treated stellar matter as a hot gas and focused only on temperature, pressure and how atoms formed ions — a simplification that explained why star colour is connected to temperature."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Modelling a Bicycle Ride Home",
+                      objective: "To decide which details to keep and which to ignore when building a simple model, and to explain why ignoring details is useful.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "State the question your model must answer: how long does the ride from school to home take?",
+                        "List every detail you can think of about the journey, however small.",
+                        "Mark which details directly affect the travel time — such as distance and typical cycling speed.",
+                        "Mark which details can be safely ignored, such as the colour of the bicycle.",
+                        "Write one sentence explaining why ignoring those details makes the model more useful, not less."
+                      ],
+                      observation: "Distance and average speed determine the answer, while the bicycle's colour, the rider's clothing and the shape of the handlebars change nothing. Removing them leaves a model simple enough to actually use, yet still capable of answering the question asked — which is exactly the purpose of a scientific model."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why does science use models?",
+                      options: ["Because scientists cannot measure accurately", "Because the natural world is too complex to study in full detail, so models focus on what matters for a given question", "To make science harder to understand", "Because models are always more accurate than reality"],
+                      answer: 1,
+                      explanation: "The natural world is complex and often impossible to study in full detail, so models simplify it by focusing only on what is most important for the particular question being asked."
+                    },
+                    {
+                      question: "In the cricket-ball model, which detail is genuinely important?",
+                      options: ["The brand of the bat", "The colour of the ball", "The speed and direction the ball was hit", "The amount of grass on the field"],
+                      answer: 2,
+                      explanation: "To predict whether the ball clears the boundary, the mass of the ball and the speed and direction of the hit matter greatly, while the bat's brand, ball colour and grass length make no difference."
+                    },
+                    {
+                      question: "Is ignoring details such as air resistance when modelling a falling object a mistake?",
+                      options: ["Yes, it always makes the model wrong", "No — it is a deliberate choice to keep the model simple enough while still answering the question", "Yes, unless the object is very heavy", "Models should never ignore anything"],
+                      answer: 1,
+                      explanation: "Such omissions are made on purpose. Neglecting air resistance lets us understand the basic effect of gravity, and extra details can be added later when greater accuracy is needed."
+                    },
+                    {
+                      question: "How did Meghnad Saha simplify his study of starlight?",
+                      options: ["By modelling every atom and reaction inside the star", "By treating stellar matter as a hot gas and focusing on temperature, pressure and ion formation", "By ignoring temperature entirely", "By measuring each star individually"],
+                      answer: 1,
+                      explanation: "Saha ignored many complex internal processes and treated the matter in a star as a hot gas, concentrating on temperature, pressure and how atoms formed ions — which let him explain the link between a star's colour and its temperature."
+                    },
+                    {
+                      question: "What happens as a scientific model is made more complex?",
+                      options: ["It becomes less accurate", "Extra details are added for greater accuracy", "It stops being a model", "It must ignore even more details"],
+                      answer: 1,
+                      explanation: "Simple models deliberately omit smaller effects; as we build more complex models we add those extra details back in to gain greater accuracy."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-1-2",
+                  title: "2. The Precise Language of Science",
+                  lab: { type: "units-symbols-sim" },
+                  theory: {
+                    intro: "A passenger aircraft once ran out of fuel in mid-flight because someone used pounds where kilograms were needed — a stark reminder of why science insists on shared units.",
+                    sections: [
+                      {
+                        heading: "Everyday Words, Specific Meanings",
+                        text: "Science uses language in a very careful and precise way. Many words we use in everyday life — force, work, cell, reaction — have specific meanings in science. These meanings are precise because scientific ideas must be communicated clearly and unambiguously, allowing scientists across the world to describe observations, compare results and build ideas together. Quantities such as mass, velocity, force and electric current are represented by symbols like m, v, F and I, each associated with a defined unit."
+                      },
+                      {
+                        heading: "Why Standard Units Matter",
+                        text: "When we buy rice or vegetables we expect a kilogram to mean the same amount everywhere. Measurements are based on agreed international standards, not local objects or opinions — standard units allow scientific results to be compared and ensure fairness in daily life and trade. A famous failure shows the stakes: a flight needed 22,300 kg of fuel, but the ground crew calculated using the density of fuel in pounds per litre rather than kilograms per litre. The aircraft was about 15,000 litres short and had to glide to an emergency landing. Using SI units everywhere avoids conversions and errors."
+                      },
+                      {
+                        heading: "Where Symbols Come From",
+                        text: "Scientific symbols often come from history and international agreement, not from convenient abbreviations. The speed of light is denoted c, from the Latin word celeritas meaning speed. Today the speed of light is one of the physical constants, defined to be exactly 299792458 m/s. Science also turns to mathematics so that relationships between quantities can be expressed clearly and tested carefully — an equation is not just a calculation tool, it is a compact statement about how things are related."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Matching Quantities to Symbols and Units",
+                      objective: "To connect physical quantities with their standard symbols and SI units, and to see why a shared system prevents errors.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "Write down the quantities mass, velocity, force and electric current in a column.",
+                        "Beside each, write the symbol used in science: m, v, F and I.",
+                        "Add the SI unit for each quantity.",
+                        "Note down the symbol for the speed of light and the Latin word it comes from.",
+                        "Explain in one sentence how the fuel miscalculation could have been avoided."
+                      ],
+                      observation: "Each quantity pairs with an agreed symbol and unit — m for mass, v for velocity, F for force, I for electric current, and c for the speed of light from celeritas. Because pounds and kilograms are very different, using SI units throughout would have removed the conversion step that caused the aircraft to be 15,000 litres short of fuel."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why do scientific terms like 'force' and 'work' have very specific meanings?",
+                      options: ["To make science sound impressive", "So scientific ideas can be communicated clearly and unambiguously across the world", "Because everyday language has no words for them", "To keep science secret"],
+                      answer: 1,
+                      explanation: "Precise meanings let scientists everywhere describe observations, compare results and build ideas together without ambiguity."
+                    },
+                    {
+                      question: "What caused the aircraft in the fuel incident to run short?",
+                      options: ["The fuel tank leaked", "The ground crew used the density of fuel in pounds per litre instead of kilograms per litre", "The aircraft flew too fast", "The fuel gauge was broken"],
+                      answer: 1,
+                      explanation: "The flight needed 22,300 kg of fuel, but the crew calculated using pounds per litre rather than kilograms per litre, leaving the aircraft about 15,000 litres short."
+                    },
+                    {
+                      question: "Why is the speed of light denoted by the symbol c?",
+                      options: ["Because it stands for 'constant'", "It comes from the Latin word celeritas, meaning speed", "It is the third letter of the alphabet", "Because light travels in circles"],
+                      answer: 1,
+                      explanation: "Scientific symbols often have historical roots — c comes from the Latin celeritas, meaning speed, rather than being a convenient abbreviation."
+                    },
+                    {
+                      question: "What is the defined value of the speed of light?",
+                      options: ["Exactly 299792458 m/s", "Approximately 300000 km/h", "It varies by location", "It has never been measured precisely"],
+                      answer: 0,
+                      explanation: "The speed of light is one of the physical constants and is defined to be exactly 299792458 m/s."
+                    },
+                    {
+                      question: "According to the chapter, what is an equation in science?",
+                      options: ["Only a tool for calculating numbers", "A compact statement about how certain things are related", "A guess about nature", "A list of measurements"],
+                      answer: 1,
+                      explanation: "An equation is not merely a calculation tool — it is a compact statement expressing how quantities are related, which is why mathematics serves as a language for thinking in science."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-1-3",
+                  title: "3. Laws, Theories, and Principles",
+                  lab: { type: "law-theory-sim" },
+                  theory: {
+                    intro: "In everyday speech a 'theory' is a hunch. In science it is the opposite — an explanation that has survived careful testing and critical examination.",
+                    sections: [
+                      {
+                        heading: "Laws Describe Patterns",
+                        text: "A law usually describes a regular pattern observed in nature, often expressed using words or mathematical relationships. For example, Newton's laws of motion explain the jerk felt when a bus stops suddenly."
+                      },
+                      {
+                        heading: "Theories Explain Why",
+                        text: "A theory goes a step further and provides an explanation of why those patterns occur, usually based on evidence gathered over time and available at that time. For example, the atomic theory explains how molecules are formed. In science, a theory does not mean a guess or an untested idea — it is an explanation based on careful testing and critical examination."
+                      },
+                      {
+                        heading: "Principles, and Openness to Revision",
+                        text: "Principles are broad ideas that help us make sense of a given situation — for example, the principle of conservation of energy applied when climbing stairs. All these ideas are always open to improvement and often change as new evidence becomes available, and this is a key feature of what makes science reliable. Even the most successful theories have limits and may fail when new conditions are explored or measurements become more precise. Such failures are not a weakness of science; they are its greatest strength. Scientists reject ideas only on evidence, never on opinion or belief — no scientific theory is ever final, and none is beyond question."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Classifying Scientific Statements",
+                      objective: "To distinguish laws, theories and principles by what each one does.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "Write down Newton's laws of motion and note whether they describe a pattern or explain one.",
+                        "Write down the atomic theory and note what it explains.",
+                        "Write down the conservation of energy and note how broadly it applies.",
+                        "For each, label it as a law, a theory, or a principle.",
+                        "Write one sentence on why calling something a 'theory' in science is not the same as calling it a guess."
+                      ],
+                      observation: "Newton's laws describe the regular pattern behind the jerk when a bus stops — a law. Atomic theory explains why molecules form — a theory. Conservation of energy applies broadly, including when climbing stairs — a principle. In each case the scientific 'theory' rests on careful testing and critical examination, quite unlike an everyday guess."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does a scientific law usually do?",
+                      options: ["Explains why patterns occur", "Describes a regular pattern observed in nature", "Proves a theory correct forever", "Lists exceptions to a theory"],
+                      answer: 1,
+                      explanation: "A law describes a regular pattern observed in nature, often expressed in words or mathematical relationships — such as Newton's laws of motion."
+                    },
+                    {
+                      question: "How does a theory differ from a law?",
+                      options: ["A theory is just a guess", "A theory provides an explanation of why the patterns occur, based on evidence", "A theory is always less reliable", "There is no difference"],
+                      answer: 1,
+                      explanation: "While a law describes a pattern, a theory goes further and explains why that pattern occurs, based on evidence gathered over time."
+                    },
+                    {
+                      question: "Which of these is given as an example of a principle?",
+                      options: ["Newton's laws of motion", "The atomic theory", "The conservation of energy", "The speed of light"],
+                      answer: 2,
+                      explanation: "Principles are broad ideas that help make sense of a situation — the conservation of energy, applied when climbing stairs, is the chapter's example."
+                    },
+                    {
+                      question: "In science, what does the word 'theory' mean?",
+                      options: ["An untested guess", "An explanation based on careful testing and critical examination", "A rule that can never change", "A mathematical formula"],
+                      answer: 1,
+                      explanation: "Unlike everyday usage, a scientific theory is not a guess — it is an explanation built on careful testing and critical examination of evidence."
+                    },
+                    {
+                      question: "What happens when a well-established theory fails under new conditions?",
+                      options: ["Science is shown to be unreliable", "Scientists reject the idea based on opinion", "It is treated as a strength — ideas are revised based on evidence, since no theory is final", "The new evidence is ignored"],
+                      answer: 2,
+                      explanation: "Such failures are described as science's greatest strength: ideas are rejected only on evidence, never on opinion or belief, and this openness to correction is what makes science reliable."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-1-4",
+                  title: "4. Prediction and Estimation",
+                  lab: { type: "prediction-test-sim" },
+                  theory: {
+                    intro: "'It will rain because the clouds look dark' is a hunch. Turning it into science means asking what could actually be measured — humidity, wind speed, what happened last time.",
+                    sections: [
+                      {
+                        heading: "The Power of Prediction",
+                        text: "One of the most remarkable strengths of science is its ability to make predictions. When laws, theories and models are well established, they let us anticipate what will happen under new conditions — before an experiment, and sometimes even when no experiment is possible. Using ideas about motion we can predict how far a kicked football will travel; using chemical knowledge we can estimate how much carbon dioxide will be produced; using biological principles we can predict how breathing changes while running. These are not guesses but reasoned expectations based on evidence and careful thinking."
+                      },
+                      {
+                        heading: "Making a Prediction Testable",
+                        text: "When Varsha says 'It will rain this afternoon because the clouds look dark', good scientific questions look for measurable evidence and past patterns — questions with simple yes/no answers are usually not so useful. Meghna could ask: What was the condition of the sky when it rained last time? What is the humidity today, and was it above 80 per cent last time it rained? What is today's wind speed and direction? Is the temperature dropping as it did before recent rains? Questions like these go beyond 'the clouds look dark'. When predictions match observations, confidence grows; when they do not, scientists re-examine their assumptions, models or measurements."
+                      },
+                      {
+                        heading: "Estimation as a Thinking Tool",
+                        text: "A helpful strategy is to first understand the situation, then identify the quantities that matter, and finally make a rough estimate to check whether an answer makes sense. Exact values are not always necessary, especially early in reasoning — an approximate estimate is often enough to tell us whether a result is reasonable or impossible. Learning to estimate builds intuition, helps detect errors and develops confidence. Science values careful reasoning perhaps much more than accurate calculations. This is also why weather forecasts have limits: weather depends on many changing factors, and tiny differences in conditions can grow over time, making forecasts reliable for hours or days but less certain further ahead."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Turning a Claim into a Testable Prediction",
+                      objective: "To convert an everyday claim into a scientifically testable prediction by identifying measurable evidence.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "Write down a claim someone has made recently, such as 'it will rain this afternoon'.",
+                        "Ask what measurable quantity could support or contradict it — for example humidity or wind speed.",
+                        "Ask what past pattern could be compared against — what were conditions like the last time it rained?",
+                        "Rewrite the claim so it refers to measurable data rather than appearance alone.",
+                        "Decide what observation would show the prediction to be wrong."
+                      ],
+                      observation: "'The clouds look dark' relies on appearance alone and cannot be checked. Rewriting it around humidity above 80 per cent, falling temperature and a particular wind direction turns it into something measurable — and specifying what would disprove it is exactly what makes a prediction scientific rather than a guess."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What makes a scientific prediction different from a guess?",
+                      options: ["Predictions are always correct", "Predictions are reasoned expectations based on evidence and careful thinking", "Predictions are made only by experts", "There is no real difference"],
+                      answer: 1,
+                      explanation: "Predictions drawn from well-established laws, theories and models are reasoned expectations grounded in evidence — not guesswork."
+                    },
+                    {
+                      question: "Which question would best make the claim 'it will rain this afternoon' scientifically testable?",
+                      options: ["Do you think it will rain?", "What is the humidity today, and was it above 80 per cent the last time it rained?", "Are the clouds dark enough?", "Will it definitely rain, yes or no?"],
+                      answer: 1,
+                      explanation: "Good scientific questions look for measurable evidence and past patterns; questions answerable with a simple yes or no are usually not useful."
+                    },
+                    {
+                      question: "What do scientists do when a prediction does not match observations?",
+                      options: ["Ignore the observation", "Re-examine their assumptions, models or measurements", "Abandon science altogether", "Change the observation to fit"],
+                      answer: 1,
+                      explanation: "A mismatch prompts scientists to re-examine assumptions, models or measurements — which is why prediction drives further exploration and deeper understanding."
+                    },
+                    {
+                      question: "Why are weather forecasts less certain further into the future?",
+                      options: ["Because instruments stop working", "Because weather depends on many changing factors, and tiny differences in conditions grow over time", "Because forecasters lose interest", "Because weather is completely random"],
+                      answer: 1,
+                      explanation: "Weather depends on temperature, pressure, humidity and wind, and very small differences in conditions can grow over time — so forecasts are reliable for hours or days but less certain beyond that."
+                    },
+                    {
+                      question: "Why is learning to estimate valuable in science?",
+                      options: ["Because exact answers are never possible", "Because it builds intuition, helps detect errors and shows whether a result is reasonable", "Because estimation replaces measurement", "Because estimates are more accurate than calculations"],
+                      answer: 1,
+                      explanation: "A rough estimate is often enough to tell whether a result is reasonable or impossible, building intuition and confidence — science values careful reasoning perhaps even more than precise calculation."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
         mathematics: {
           name: "Mathematics",
           icon: "📐",
