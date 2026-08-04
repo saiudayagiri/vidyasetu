@@ -20629,6 +20629,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9m-5",
+              title: "I'm Up and Down, and Round and Round",
+              topics: [
+                {
+                  id: "9m-5-1",
+                  title: "1. Circles, Symmetry, and How Many Pass Through Two Points",
+                  lab: { type: "circles-through-points-sim" },
+                  theory: {
+                    intro: "Give me two points and I can draw infinitely many circles through them — but every single one of their centres is trapped on a single line.",
+                    sections: [
+                      {
+                        heading: "Definitions",
+                        text: "A circle is the set of all points on a plane that are equidistant from a given point on that plane. The set of points satisfying a condition is also called the locus of points, so a circle is the locus of points equidistant from a given point. That given point is the centre, and the distance from the centre to any point on the circle is the radius. If B and C are two points on the circle, the segment BC is a chord, and the angle it subtends at the centre A is ∠BAC. A chord passing through the centre is a diameter."
+                      },
+                      {
+                        heading: "Symmetries of a Circle",
+                        text: "A rotating wheel looks the same at all times — the circle has complete rotational symmetry: rotate it by any angle and it looks exactly the same. Fold a paper circle so its boundaries overlap and the crease is a line of reflection symmetry; that crease passes through the centre, so it is a diameter. All diameters are lines of reflection symmetry."
+                      },
+                      {
+                        heading: "How Many Circles Pass Through Two Points?",
+                        text: "If a circle passes through A and B with centre O, then OA = OB. The midpoint of AB has this property, giving a circle where AB is a diameter with radius half of AB. But any point equidistant from A and B can be a centre — and the perpendicular bisector of AB is exactly the locus of points equidistant from A and B. So the centres of all circles through A and B lie on the perpendicular bisector of AB, and since that line has infinitely many points, infinitely many circles pass through any two points."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Drawing Many Circles Through Two Fixed Points",
+                      objective: "To discover that the centres of all circles passing through two points lie on the perpendicular bisector of the segment joining them.",
+                      materials: ["Paper", "Ruler", "Compass", "Pencil"],
+                      steps: [
+                        "Mark two points A and B on a sheet of paper and join them.",
+                        "Construct the perpendicular bisector of segment AB.",
+                        "Choose any point on the perpendicular bisector as a centre and draw a circle through A and B.",
+                        "Repeat with three or four different points along the perpendicular bisector.",
+                        "Note what happens to the radius as the chosen centre moves further from AB."
+                      ],
+                      observation: "Every point chosen on the perpendicular bisector produces a valid circle through both A and B, and the radius grows as the centre moves further from AB — confirming that infinitely many circles pass through two points, with the smallest being the one where AB is a diameter."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How is a circle defined?",
+                      options: ["Any closed curved shape", "The set of all points on a plane equidistant from a given point", "A shape with no corners", "Any shape with rotational symmetry"],
+                      answer: 1,
+                      explanation: "A circle is the locus (set) of all points on a plane that are equidistant from a given point, which is called the centre."
+                    },
+                    {
+                      question: "What is a chord that passes through the centre of a circle called?",
+                      options: ["A radius", "A diameter", "An arc", "A tangent"],
+                      answer: 1,
+                      explanation: "A chord passing through the centre of a circle is called a diameter — it is also the longest possible chord."
+                    },
+                    {
+                      question: "Which lines are the lines of reflection symmetry of a circle?",
+                      options: ["Only the horizontal and vertical diameters", "All diameters", "All chords", "Only tangent lines"],
+                      answer: 1,
+                      explanation: "Folding a paper circle so the boundaries overlap always produces a crease through the centre — a diameter. All diameters are lines of reflection symmetry."
+                    },
+                    {
+                      question: "Where do the centres of all circles passing through two points A and B lie?",
+                      options: ["On the segment AB itself", "On the perpendicular bisector of AB", "Only at the midpoint of AB", "They can be anywhere on the plane"],
+                      answer: 1,
+                      explanation: "Any centre must be equidistant from A and B, and the perpendicular bisector of AB is precisely the locus of points equidistant from A and B."
+                    },
+                    {
+                      question: "How many circles pass through two given points on a plane?",
+                      options: ["Exactly one", "Exactly two", "Infinitely many", "None"],
+                      answer: 2,
+                      explanation: "Since every point on the perpendicular bisector of AB can serve as a centre, and that line contains infinitely many points, infinitely many circles pass through any two given points."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-5-2",
+                  title: "2. Chords and the Angles They Subtend",
+                  lab: { type: "chord-angle-sim" },
+                  theory: {
+                    intro: "Tie a thread across a wheel and spin it — the chord moves, but the angle it cuts at the hub never changes, because every radius is the same length.",
+                    sections: [
+                      {
+                        heading: "Theorem 2: Equal Chords Subtend Equal Angles",
+                        text: "Equal chords of a circle subtend equal angles at the centre. Given chords AB and DE of equal length in a circle with centre C, we have CA = CB = r and CD = CE = r, so CA = CD and CB = CE. Since AB = DE is given, the SSS congruence gives ∆CAB ≅ ∆CDE, and therefore ∠ACB = ∠DCE. The converse also holds: chords subtending equal angles at the centre are equal in length."
+                      },
+                      {
+                        heading: "Theorem 4: Centre to Midpoint Is Perpendicular",
+                        text: "The line joining the centre of a circle and the midpoint of a chord is perpendicular to the chord. In a circle with centre C and chord AB with midpoint M, triangle CAB is isosceles since CA = CB, so ∠A = ∠B. Since AM = BM, the SAS congruence gives ∆CMA ≅ ∆CMB, so ∠CMB = ∠CMA. But these two angles lie on a straight line, so ∠CMB + ∠CMA = 180° — meaning both are 90°, and CM ⊥ AB."
+                      },
+                      {
+                        heading: "The Converse",
+                        text: "The converse of Theorem 4 is also true: the perpendicular drawn from the centre of a circle to a chord bisects that chord. Together these two results mean that for any chord, the line from the centre that is perpendicular to it is exactly the line that passes through its midpoint."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing the Equal-Chords Theorem",
+                      objective: "To verify by construction and measurement that equal chords of a circle subtend equal angles at the centre.",
+                      materials: ["Compass", "Ruler", "Protractor", "Paper"],
+                      steps: [
+                        "Draw a circle with centre C and a convenient radius.",
+                        "Draw a chord AB of a chosen length, say 5 cm.",
+                        "Draw a second chord DE elsewhere on the circle with exactly the same length.",
+                        "Join C to each of A, B, D and E, and measure ∠ACB and ∠DCE with a protractor.",
+                        "Repeat with a different chord length and compare the two angles again."
+                      ],
+                      observation: "Both measured angles come out equal for every chord length tried — matching the SSS congruence argument, since CA = CD, CB = CE (all radii) and AB = DE force triangles CAB and CDE to be congruent."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does Theorem 2 state about equal chords of a circle?",
+                      options: ["They are always parallel", "They subtend equal angles at the centre", "They always pass through the centre", "They have different distances from the centre"],
+                      answer: 1,
+                      explanation: "Theorem 2 states that equal chords of a circle subtend equal angles at the centre of the circle."
+                    },
+                    {
+                      question: "Which congruence criterion proves that equal chords subtend equal angles at the centre?",
+                      options: ["SSS congruence", "AAA similarity", "RHS congruence", "No congruence is needed"],
+                      answer: 0,
+                      explanation: "Since CA = CD and CB = CE (all radii) and AB = DE (given), the SSS criterion gives ∆CAB ≅ ∆CDE, so the corresponding angles at the centre are equal."
+                    },
+                    {
+                      question: "What does Theorem 4 tell us about the line joining the centre to the midpoint of a chord?",
+                      options: ["It bisects the angle at the centre only", "It is perpendicular to the chord", "It is parallel to the chord", "It equals the radius"],
+                      answer: 1,
+                      explanation: "Theorem 4 states that the line joining the centre of a circle to the midpoint of a chord is perpendicular to that chord."
+                    },
+                    {
+                      question: "In the proof of Theorem 4, why must ∠CMA and ∠CMB each be 90°?",
+                      options: ["Because they are vertically opposite", "Because they are equal (by SAS congruence) and together form a straight line summing to 180°", "Because CM is a diameter", "Because the triangle is equilateral"],
+                      answer: 1,
+                      explanation: "SAS congruence makes the two angles equal, and since M lies on the chord they form a straight line, summing to 180° — so each must be 90°."
+                    },
+                    {
+                      question: "What is the converse of Theorem 4?",
+                      options: ["The perpendicular from the centre to a chord bisects the chord", "Every chord passes through the centre", "All chords are equal in length", "The chord bisects the radius"],
+                      answer: 0,
+                      explanation: "The converse states that the perpendicular drawn from the centre of a circle to a chord bisects that chord."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-5-3",
+                  title: "3. Distance of Chords from the Centre",
+                  lab: { type: "chord-distance-sim" },
+                  theory: {
+                    intro: "Measure a handful of chords and their distances from the centre, and a clean rule appears: the longer the chord, the closer it hugs the centre.",
+                    sections: [
+                      {
+                        heading: "Theorem 6: Equal Chords Are Equidistant",
+                        text: "Chords of a circle having the same length are all at the same distance from the centre. With centre C and equal chords AB and FG, drop perpendiculars CE and CH onto them. By the perpendicular-bisector property, E and H are the midpoints of AB and FG, so AE = FH. Since CA = CF (radii), the right triangles CEA and CHF are congruent, giving CE = CH."
+                      },
+                      {
+                        heading: "Theorem 7: The Converse",
+                        text: "Chords of a circle that are equidistant from the centre have equal length. So equal length and equal distance from the centre are two ways of saying the same thing about a pair of chords."
+                      },
+                      {
+                        heading: "Theorem 8: Longer Chords Are Closer",
+                        text: "Let AB and DE be chords of a circle with centre C, with AB > DE. Then the distance from C to AB is less than the distance from C to DE. Dropping perpendiculars CF and CG, the Baudhāyana–Pythagoras Theorem gives AC² = CF² + AF² and CD² = CG² + GD². Since AC = CD (radii), CF² + AF² = CG² + GD². Because AB > DE and F, G are midpoints, AF > GD — so CF must be smaller than CG."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tabulating Chord Length Against Distance from the Centre",
+                      objective: "To discover experimentally that longer chords lie closer to the centre of a circle.",
+                      materials: ["Compass", "Ruler", "Set square", "Paper"],
+                      steps: [
+                        "Draw a circle and mark its centre.",
+                        "Draw four or five chords of clearly different lengths.",
+                        "From the centre, drop a perpendicular to each chord using a set square.",
+                        "Measure and record each chord's length and its perpendicular distance from the centre in a table.",
+                        "Order the rows by chord length and examine how the distances change."
+                      ],
+                      observation: "As chord length increases, the recorded distance from the centre consistently decreases — the longest chord (the diameter) has distance 0, confirming Theorem 8 that longer chords lie closer to the centre."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does Theorem 6 state?",
+                      options: ["Longer chords are farther from the centre", "Chords of the same length are all at the same distance from the centre", "All chords pass through the centre", "Equal chords are always parallel"],
+                      answer: 1,
+                      explanation: "Theorem 6 states that chords of a circle having the same length are all at the same distance from the centre."
+                    },
+                    {
+                      question: "What is Theorem 7, the converse of Theorem 6?",
+                      options: ["Chords equidistant from the centre have equal length", "Chords of different lengths are equidistant", "Every chord is a diameter", "Distance from the centre is always zero"],
+                      answer: 0,
+                      explanation: "Theorem 7 states the converse: chords of a circle that are equidistant from the centre must have equal length."
+                    },
+                    {
+                      question: "Of two unequal chords in a circle, which one is closer to the centre?",
+                      options: ["The shorter chord", "The longer chord", "They are always equally close", "It depends on the radius"],
+                      answer: 1,
+                      explanation: "Theorem 8 establishes that the longer chord lies closer to the centre — the diameter, being the longest chord, passes through the centre itself."
+                    },
+                    {
+                      question: "Which theorem is used to prove Theorem 8 about unequal chords?",
+                      options: ["The SSS congruence criterion alone", "The Baudhāyana–Pythagoras Theorem", "The angle sum property", "Thales' theorem"],
+                      answer: 1,
+                      explanation: "The proof applies the Baudhāyana–Pythagoras Theorem to the right triangles formed by the radius, half-chord and perpendicular distance: AC² = CF² + AF² and CD² = CG² + GD²."
+                    },
+                    {
+                      question: "In the proof of Theorem 8, why does AF > GD follow from AB > DE?",
+                      options: ["Because AF and GD are radii", "Because F and G are the midpoints of AB and DE, so each is half its chord", "Because the perpendiculars are equal", "It does not follow"],
+                      answer: 1,
+                      explanation: "The perpendicular from the centre bisects the chord, so AF is half of AB and GD is half of DE — hence AB > DE directly gives AF > GD."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-5-4",
+                  title: "4. Arcs, Inscribed Angles, and Concyclic Points",
+                  lab: { type: "inscribed-angle-sim" },
+                  theory: {
+                    intro: "Slide a point anywhere along the far side of a circle and the angle it makes with a fixed arc refuses to budge — always exactly half the angle at the centre.",
+                    sections: [
+                      {
+                        heading: "Arcs, Major and Minor",
+                        text: "An arc of a circle is a connected portion of the circle, defined by two end points and the curve joining them. Two points A and B split a circle into two arcs: the bigger is the major arc and the smaller the minor arc. The angle subtended by an arc at the centre is the angle swept as we move from OA to OB along that arc — if the angle at the centre is less than 180° it is a minor arc, and if greater than 180° it is a major arc."
+                      },
+                      {
+                        heading: "Theorem 9: The Angle at the Centre Is Double",
+                        text: "The angle subtended by an arc at the centre of the circle is double the angle subtended by that arc at any point on the circle outside the arc. A striking consequence follows: no matter where the point D is chosen on the circle outside arc AB, the angle ∠ADB stays the same — because it is always half of the fixed angle at the centre. These are called angles in the same segment."
+                      },
+                      {
+                        heading: "Theorem 10: Concyclic Points",
+                        text: "Points that lie on the same circle are called concyclic. Theorem 10 states that if a segment AB subtends equal angles at two points C and D lying on the same side of AB, then all four points lie on one circle. The proof draws the circle through A, B, C and shows D cannot be outside it (the exterior-angle inequality would force ∠ACB to exceed itself) nor inside it (the same contradiction arises), so D must lie on the circle — making A, B, C, D concyclic."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Checking That Inscribed Angles Stay Constant",
+                      objective: "To verify that the angle subtended by an arc at any point on the circle is half the angle at the centre and does not change as the point moves.",
+                      materials: ["Compass", "Ruler", "Protractor", "Paper"],
+                      steps: [
+                        "Draw a circle with centre O and mark two points A and B on it.",
+                        "Join OA and OB and measure the angle ∠AOB at the centre.",
+                        "Mark a point D on the major arc and join DA and DB; measure ∠ADB.",
+                        "Move to two other positions D₂ and D₃ on the same arc and measure the angles again.",
+                        "Compare each measured inscribed angle with half the central angle."
+                      ],
+                      observation: "Every inscribed angle measured comes out equal to exactly half of ∠AOB, and all three positions give the same value — confirming Theorem 9 and showing that angles in the same segment are equal."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What distinguishes a major arc from a minor arc?",
+                      options: ["The major arc is the smaller of the two", "The major arc is the bigger of the two arcs joining the endpoints", "Major arcs subtend angles less than 180° at the centre", "There is no difference"],
+                      answer: 1,
+                      explanation: "Two points split a circle into two arcs — the bigger one is the major arc (subtending more than 180° at the centre) and the smaller is the minor arc."
+                    },
+                    {
+                      question: "What does Theorem 9 state about the angle subtended by an arc?",
+                      options: ["The angle at the centre equals the angle at the circle", "The angle at the centre is double the angle subtended at any point on the circle outside the arc", "The angle at the centre is half the angle at the circle", "The angles are unrelated"],
+                      answer: 1,
+                      explanation: "Theorem 9 states that the angle subtended by an arc at the centre is double the angle it subtends at any point on the circle outside that arc."
+                    },
+                    {
+                      question: "If an arc subtends 100° at the centre, what angle does it subtend at a point on the circle outside the arc?",
+                      options: ["100°", "50°", "200°", "25°"],
+                      answer: 1,
+                      explanation: "By Theorem 9 the inscribed angle is half the central angle, so it measures 100° ÷ 2 = 50°."
+                    },
+                    {
+                      question: "What does it mean for points to be 'concyclic'?",
+                      options: ["They form a cycle when joined", "They all lie on the same circle", "They are equally spaced", "They lie on the same straight line"],
+                      answer: 1,
+                      explanation: "Points that all lie on the same circle are called concyclic — the chapter's Theorem 10 gives a condition for four points to be concyclic."
+                    },
+                    {
+                      question: "According to Theorem 10, when do four points A, B, C, D lie on the same circle?",
+                      options: ["When AB = CD", "When segment AB subtends equal angles at C and D, with C and D on the same side of AB", "When all four are equidistant from each other", "Whenever ABCD forms a quadrilateral"],
+                      answer: 1,
+                      explanation: "Theorem 10 states that if AB subtends equal angles at two points C and D lying on the same side of AB, then A, B, C and D are concyclic."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

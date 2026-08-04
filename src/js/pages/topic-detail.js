@@ -5337,6 +5337,100 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const circlesThroughPointsLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="circles-through-points-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a centre on the perpendicular bisector and see the circle through A and B.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Centre</h3>
+            <select id="sel-circles-through-points" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Midpoint of AB (smallest circle)</option>
+              <option value="40">A little above AB</option>
+              <option value="80">Further above AB</option>
+              <option value="-60">Below AB</option>
+              <option value="all">Show them all at once</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What This Shows</h3>
+            <div id="circles-through-points-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a centre above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const chordAngleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="chord-angle-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Rotate the second chord and watch the angle at the centre stay equal.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Position of the Second Chord</h3>
+            <select id="sel-chord-angle" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="90" selected>Rotated 90°</option>
+              <option value="150">Rotated 150°</option>
+              <option value="210">Rotated 210°</option>
+              <option value="280">Rotated 280°</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Angles at the Centre</h3>
+            <div id="chord-angle-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a position above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const chordDistanceLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="chord-distance-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a chord length and see how far it sits from the centre.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Chord Length (radius = 5)</h3>
+            <select id="sel-chord-distance" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="10">10 — the diameter</option>
+              <option value="8" selected>8</option>
+              <option value="6">6</option>
+              <option value="4">4</option>
+              <option value="compare">Compare 8 and 4 together</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Distance from the Centre</h3>
+            <div id="chord-distance-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a chord above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const inscribedAngleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="inscribed-angle-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Move the point D around the arc and watch the inscribed angle hold steady.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Position of Point D</h3>
+            <select id="sel-inscribed-angle" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="250" selected>D at 250°</option>
+              <option value="290">D at 290°</option>
+              <option value="330">D at 330°</option>
+              <option value="all">Show all three at once</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Centre Angle vs Inscribed Angle</h3>
+            <div id="inscribed-angle-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a position above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -7520,6 +7614,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'rational-simplify-sim') {
               labHtml = rationalSimplifyLabHtml;
               labDesc = 'Step through factoring and cancelling a rational expression.';
+            } else if (topicObj.lab.type === 'circles-through-points-sim') {
+              labHtml = circlesThroughPointsLabHtml;
+              labDesc = 'Pick a centre on the perpendicular bisector and see the circle through A and B.';
+            } else if (topicObj.lab.type === 'chord-angle-sim') {
+              labHtml = chordAngleLabHtml;
+              labDesc = 'Rotate an equal chord and watch the angle at the centre stay the same.';
+            } else if (topicObj.lab.type === 'chord-distance-sim') {
+              labHtml = chordDistanceLabHtml;
+              labDesc = 'Pick a chord length and see how far it sits from the centre.';
+            } else if (topicObj.lab.type === 'inscribed-angle-sim') {
+              labHtml = inscribedAngleLabHtml;
+              labDesc = 'Move a point around the arc and watch the inscribed angle hold steady.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -8183,6 +8289,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initCubeIdentityLab();
         } else if (topicObj.lab.type === 'rational-simplify-sim') {
           initRationalSimplifyLab();
+        } else if (topicObj.lab.type === 'circles-through-points-sim') {
+          initCirclesThroughPointsLab();
+        } else if (topicObj.lab.type === 'chord-angle-sim') {
+          initChordAngleLab();
+        } else if (topicObj.lab.type === 'chord-distance-sim') {
+          initChordDistanceLab();
+        } else if (topicObj.lab.type === 'inscribed-angle-sim') {
+          initInscribedAngleLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -26480,6 +26594,231 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(s.note, W / 2, H - 30);
 
         obs.innerHTML = `<strong>Step ${step}:</strong> ${s.note}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCirclesThroughPointsLab() {
+      const canvas = document.getElementById('circles-through-points-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-circles-through-points');
+      const obs = document.getElementById('circles-through-points-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cx = W / 2, cy = H / 2 + 20;
+        const ax = cx - 90, bx = cx + 90;
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5; ctx.setLineDash([5, 4]);
+        ctx.beginPath(); ctx.moveTo(cx, 20); ctx.lineTo(cx, H - 10); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'left';
+        ctx.fillText('perpendicular bisector of AB', cx + 8, 32);
+
+        const offsets = sel.value === 'all' ? [0, 40, 80, -60] : [parseFloat(sel.value)];
+        const cols = ['#22c55e', '#f59e0b', '#8b5cf6', '#ef4444'];
+
+        offsets.forEach((off, i) => {
+          const oy = cy - off;
+          const r = Math.hypot(bx - cx, cy - oy);
+          ctx.strokeStyle = cols[i % cols.length]; ctx.lineWidth = 2;
+          ctx.globalAlpha = sel.value === 'all' ? 0.75 : 1;
+          ctx.beginPath(); ctx.arc(cx, oy, r, 0, Math.PI * 2); ctx.stroke();
+          ctx.fillStyle = cols[i % cols.length];
+          ctx.beginPath(); ctx.arc(cx, oy, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.globalAlpha = 1;
+        });
+
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.moveTo(ax, cy); ctx.lineTo(bx, cy); ctx.stroke();
+        [[ax, 'A'], [bx, 'B']].forEach(([x, l]) => {
+          ctx.fillStyle = cssVar('--text-normal');
+          ctx.beginPath(); ctx.arc(x, cy, 6, 0, Math.PI * 2); ctx.fill();
+          ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(l, x, cy + 24);
+        });
+
+        obs.innerHTML = sel.value === 'all'
+          ? `<strong>Every centre lies on the perpendicular bisector.</strong> Four different centres give four different circles, and all of them pass through both A and B — one of infinitely many possible.`
+          : parseFloat(sel.value) === 0
+            ? `<strong>Centre at the midpoint of AB:</strong> this gives the smallest possible circle through A and B, where AB is a diameter and the radius is half the length of AB.`
+            : `<strong>Centre further from AB:</strong> the circle still passes through both A and B, but the radius is larger and the arc through them looks less curved.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initChordAngleLab() {
+      const canvas = document.getElementById('chord-angle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-chord-angle');
+      const obs = document.getElementById('chord-angle-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cx = W / 2, cy = H / 2 + 10, r = 110;
+        const spanDeg = 70;
+        const rot = parseFloat(sel.value);
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+        ctx.fillStyle = cssVar('--text-normal');
+        ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'right';
+        ctx.fillText('C', cx - 8, cy + 4);
+
+        function chord(startDeg, color, labels) {
+          const a1 = (startDeg - 90) * Math.PI / 180;
+          const a2 = (startDeg + spanDeg - 90) * Math.PI / 180;
+          const p1 = [cx + r * Math.cos(a1), cy + r * Math.sin(a1)];
+          const p2 = [cx + r * Math.cos(a2), cy + r * Math.sin(a2)];
+          ctx.strokeStyle = color; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(p1[0], p1[1]); ctx.lineTo(p2[0], p2[1]); ctx.stroke();
+          ctx.lineWidth = 1.5; ctx.globalAlpha = 0.8;
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(p1[0], p1[1]); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(p2[0], p2[1]); ctx.stroke();
+          ctx.globalAlpha = 1;
+          ctx.beginPath(); ctx.arc(cx, cy, 34, a1, a2); ctx.stroke();
+          ctx.font = 'bold 12px system-ui'; ctx.fillStyle = color; ctx.textAlign = 'center';
+          [[p1, labels[0]], [p2, labels[1]]].forEach(([p, l]) => {
+            ctx.beginPath(); ctx.arc(p[0], p[1], 5, 0, Math.PI * 2); ctx.fill();
+            ctx.fillText(l, p[0] + (p[0] > cx ? 14 : -14), p[1] + 4);
+          });
+          const mid = (a1 + a2) / 2;
+          ctx.fillText(`${spanDeg}°`, cx + 52 * Math.cos(mid), cy + 52 * Math.sin(mid) + 4);
+        }
+
+        chord(0, '#22c55e', ['A', 'B']);
+        chord(rot, '#f59e0b', ['D', 'E']);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText('AB = DE  ⇒  ∠ACB = ∠DCE', W / 2, 26);
+
+        obs.innerHTML = `<strong>Both chords subtend ${spanDeg}° at the centre.</strong> The chords AB and DE have equal length, so by SSS congruence (CA = CD, CB = CE as radii, AB = DE) triangles CAB and CDE are congruent — forcing the two central angles to be equal no matter how far the second chord is rotated.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initChordDistanceLab() {
+      const canvas = document.getElementById('chord-distance-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-chord-distance');
+      const obs = document.getElementById('chord-distance-obs');
+      const R = 5, scale = 26;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cx = W / 2, cy = H / 2 + 10, r = R * scale;
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+        ctx.fillStyle = cssVar('--text-normal');
+        ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2); ctx.fill();
+
+        const lens = sel.value === 'compare' ? [8, 4] : [parseFloat(sel.value)];
+        const cols = ['#22c55e', '#ef4444'];
+        const results = [];
+
+        lens.forEach((L, i) => {
+          const half = L / 2;
+          const d = Math.sqrt(R * R - half * half);
+          results.push([L, d]);
+          const yy = cy - d * scale * (i === 0 ? 1 : -1);
+          const hx = half * scale;
+          ctx.strokeStyle = cols[i]; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(cx - hx, yy); ctx.lineTo(cx + hx, yy); ctx.stroke();
+          ctx.setLineDash([4, 3]); ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx, yy); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.font = 'bold 11px system-ui'; ctx.fillStyle = cols[i]; ctx.textAlign = 'left';
+          ctx.fillText(`chord = ${L}`, cx + hx + 8, yy + 4);
+          if (d > 0.1) ctx.fillText(`d = ${d.toFixed(2)}`, cx + 8, (cy + yy) / 2 + 4);
+        });
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Circle of radius ${R}`, W / 2, 26);
+
+        if (sel.value === 'compare') {
+          obs.innerHTML = `<strong>Chord 8 sits ${results[0][1].toFixed(2)} from the centre; chord 4 sits ${results[1][1].toFixed(2)} away.</strong> The longer chord is clearly closer to the centre, exactly as Theorem 8 predicts.`;
+        } else {
+          const [L, d] = results[0];
+          obs.innerHTML = L === 10
+            ? `<strong>The diameter has distance 0 from the centre.</strong> As the longest possible chord, it passes through the centre itself — the extreme case of "longer chords lie closer".`
+            : `<strong>Chord of length ${L} lies ${d.toFixed(2)} from the centre.</strong> By the Baudhāyana–Pythagoras Theorem, d = √(${R}² − ${L / 2}²) = ${d.toFixed(2)}.`;
+        }
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initInscribedAngleLab() {
+      const canvas = document.getElementById('inscribed-angle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-inscribed-angle');
+      const obs = document.getElementById('inscribed-angle-obs');
+      const AT = 200, BT = 340;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cx = W / 2, cy = H / 2 + 14, r = 108;
+        const pt = deg => [cx + r * Math.cos(deg * Math.PI / 180), cy + r * Math.sin(deg * Math.PI / 180)];
+        const A = pt(AT), B = pt(BT);
+        const central = BT - AT;
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.arc(cx, cy, r, AT * Math.PI / 180, BT * Math.PI / 180); ctx.stroke();
+
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(A[0], A[1]); ctx.lineTo(cx, cy); ctx.lineTo(B[0], B[1]); ctx.stroke();
+        ctx.beginPath(); ctx.arc(cx, cy, 30, AT * Math.PI / 180, BT * Math.PI / 180); ctx.stroke();
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = '#f59e0b'; ctx.textAlign = 'center';
+        const midC = ((AT + BT) / 2) * Math.PI / 180;
+        ctx.fillText(`${central}°`, cx + 48 * Math.cos(midC), cy + 48 * Math.sin(midC) + 4);
+
+        const ds = sel.value === 'all' ? [250, 290, 330] : [parseFloat(sel.value)];
+        const cols = ['#8b5cf6', '#3b82f6', '#ef4444'];
+        ds.forEach((dd, i) => {
+          const D = pt(dd);
+          ctx.strokeStyle = cols[i % cols.length]; ctx.lineWidth = 1.8;
+          ctx.globalAlpha = sel.value === 'all' ? 0.8 : 1;
+          ctx.beginPath(); ctx.moveTo(A[0], A[1]); ctx.lineTo(D[0], D[1]); ctx.lineTo(B[0], B[1]); ctx.stroke();
+          ctx.fillStyle = cols[i % cols.length];
+          ctx.beginPath(); ctx.arc(D[0], D[1], 5, 0, Math.PI * 2); ctx.fill();
+          ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(`${(central / 2)}°`, D[0] + (D[0] > cx ? 22 : -22), D[1] + 4);
+          ctx.globalAlpha = 1;
+        });
+
+        [[A, 'A'], [B, 'B']].forEach(([p, l]) => {
+          ctx.fillStyle = cssVar('--text-normal');
+          ctx.beginPath(); ctx.arc(p[0], p[1], 5, 0, Math.PI * 2); ctx.fill();
+          ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(l, p[0] - 16, p[1] + 4);
+        });
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`Centre angle ${central}°  =  2 × inscribed angle ${central / 2}°`, W / 2, 26);
+
+        obs.innerHTML = sel.value === 'all'
+          ? `<strong>All three positions of D give the same ${central / 2}° angle.</strong> The arc subtends ${central}° at the centre, and Theorem 9 makes every inscribed angle exactly half of that — so angles in the same segment are equal.`
+          : `<strong>Arc AB subtends ${central}° at the centre and ${central / 2}° at D.</strong> The inscribed angle is exactly half the central angle, and it stays ${central / 2}° wherever D is placed on this arc.`;
       }
 
       sel.addEventListener('change', draw);
