@@ -5617,6 +5617,100 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const sequenceRuleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="sequence-rule-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a rule and see the terms it generates and how to test membership.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Rule</h3>
+            <select id="sel-sequence-rule" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="odd" selected>uₙ = 2n − 1 (odd numbers)</option>
+              <option value="s5">sₙ = 5n − 2</option>
+              <option value="t3">tₙ = 3n − 7</option>
+              <option value="rec">Recursive: t₁ = 1, tₙ = tₙ₋₁ + 3</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Terms and Membership</h3>
+            <div id="sequence-rule-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a rule above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const apPatternLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="ap-pattern-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Step through the stages and watch 4 squares get added each time.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Stage</h3>
+            <select id="sel-ap-pattern" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="1">Stage 1</option>
+              <option value="2">Stage 2</option>
+              <option value="3" selected>Stage 3</option>
+              <option value="4">Stage 4</option>
+              <option value="5">Stage 5</option>
+              <option value="6">Stage 6</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Squares at This Stage</h3>
+            <div id="ap-pattern-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a stage above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const naturalSumLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="natural-sum-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 See the two triangles of circles combine into one rectangle.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Sum 1 + 2 + … + n</h3>
+            <select id="sel-natural-sum" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="4">n = 4</option>
+              <option value="6" selected>n = 6</option>
+              <option value="8">n = 8</option>
+              <option value="10">n = 10</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>The Rectangle Argument</h3>
+            <div id="natural-sum-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a value above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const gpPatternLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="gp-pattern-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Compare how an AP and a GP grow from the same starting point.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Sequence</h3>
+            <select id="sel-gp-pattern" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="gp2" selected>GP: 3, 6, 12, 24 — ratio 2</option>
+              <option value="gp3">GP: 1, 3, 9, 27 — ratio 3</option>
+              <option value="gpneg">GP: 1, −1, 1, −1 — ratio −1</option>
+              <option value="compare">AP vs GP, side by side</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Common Ratio</h3>
+            <div id="gp-pattern-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a sequence above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -7836,6 +7930,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'tree-diagram-sim') {
               labHtml = treeDiagramLabHtml;
               labDesc = 'Highlight an event and see which branches of the tree diagram it covers.';
+            } else if (topicObj.lab.type === 'sequence-rule-sim') {
+              labHtml = sequenceRuleLabHtml;
+              labDesc = 'Pick a rule and see the terms it generates and how to test membership.';
+            } else if (topicObj.lab.type === 'ap-pattern-sim') {
+              labHtml = apPatternLabHtml;
+              labDesc = 'Step through a growing square pattern and watch the constant difference.';
+            } else if (topicObj.lab.type === 'natural-sum-sim') {
+              labHtml = naturalSumLabHtml;
+              labDesc = 'See two triangles of circles combine into one n × (n+1) rectangle.';
+            } else if (topicObj.lab.type === 'gp-pattern-sim') {
+              labHtml = gpPatternLabHtml;
+              labDesc = 'Compare geometric progressions and see how they outpace an AP.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -8523,6 +8629,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initTheoreticalProbabilityLab();
         } else if (topicObj.lab.type === 'tree-diagram-sim') {
           initTreeDiagramLab();
+        } else if (topicObj.lab.type === 'sequence-rule-sim') {
+          initSequenceRuleLab();
+        } else if (topicObj.lab.type === 'ap-pattern-sim') {
+          initApPatternLab();
+        } else if (topicObj.lab.type === 'natural-sum-sim') {
+          initNaturalSumLab();
+        } else if (topicObj.lab.type === 'gp-pattern-sim') {
+          initGpPatternLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -27527,6 +27641,248 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         obs.innerHTML = sel.value === 'none'
           ? `<strong>Sample space S = {HH, HT, TH, TT}, n(S) = 4.</strong> The tree ends in 4 leaves, one for each complete path — every outcome appears exactly once, and each has probability 1/4.`
           : `<strong>${active.length} of the 4 outcomes qualify: {${active.join(', ')}} → P = ${active.length}/4 = ${(active.length / 4).toFixed(2)}.</strong> An event is a subset of the sample space, so its probability is just the share of leaves it covers.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSequenceRuleLab() {
+      const canvas = document.getElementById('sequence-rule-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-sequence-rule');
+      const obs = document.getElementById('sequence-rule-obs');
+      const RULES = {
+        odd: { label: 'uₙ = 2n − 1', f: n => 2 * n - 1, test: 137, kind: 'explicit' },
+        s5: { label: 'sₙ = 5n − 2', f: n => 5 * n - 2, test: 308, kind: 'explicit' },
+        t3: { label: 'tₙ = 3n − 7', f: n => 3 * n - 7, test: 332, kind: 'explicit' },
+        rec: { label: 't₁ = 1, tₙ = tₙ₋₁ + 3', f: n => 3 * n - 2, test: 100, kind: 'recursive' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const r = RULES[sel.value];
+        const terms = [];
+        for (let n = 1; n <= 6; n++) terms.push(r.f(n));
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 20px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(r.label, W / 2, 42);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(r.kind === 'explicit' ? 'explicit rule — jumps straight to any term' : 'recursive rule — each term built from the previous one', W / 2, 64);
+
+        const bw = 74, gap = 10;
+        const totalW = 6 * bw + 5 * gap;
+        const sx = W / 2 - totalW / 2, sy = 96;
+        terms.forEach((t, i) => {
+          const x = sx + i * (bw + gap);
+          ctx.fillStyle = 'rgba(34,197,94,0.16)'; ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 1.8;
+          ctx.beginPath(); ctx.roundRect(x, sy, bw, 54, 7); ctx.fill(); ctx.stroke();
+          ctx.font = 'bold 18px system-ui'; ctx.fillStyle = '#22c55e';
+          ctx.textBaseline = 'middle'; ctx.fillText(`${t}`, x + bw / 2, sy + 28); ctx.textBaseline = 'alphabetic';
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText(`n = ${i + 1}`, x + bw / 2, sy + 70);
+          if (i > 0) {
+            ctx.fillStyle = '#f59e0b'; ctx.font = 'bold 11px system-ui';
+            ctx.fillText(`+${terms[i] - terms[i - 1]}`, x - gap / 2, sy - 8);
+          }
+        });
+
+        const solveN = (val) => {
+          for (let n = 1; n <= 100000; n++) { if (r.f(n) === val) return n; if (r.f(n) > val) break; }
+          return null;
+        };
+        const pos = solveN(r.test);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(`Is ${r.test} a term?`, W / 2, 216);
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = pos ? '#22c55e' : '#ef4444';
+        ctx.fillText(pos ? `Yes — it is the ${pos}th term` : `No — solving gives a non-whole position`, W / 2, 246);
+
+        const big = r.f(53);
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`The 53rd term is ${big} — found directly, without listing the first 52`, W / 2, 282);
+
+        obs.innerHTML = `<strong>${r.label} → ${terms.join(', ')}, …</strong> ${pos ? `Solving for ${r.test} gives the whole number n = ${pos}, so ${r.test} is the ${pos}th term.` : `Solving for ${r.test} gives a non-whole n, so it is not a term at all.`} The 53rd term is ${big}, computed directly from the rule.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initApPatternLab() {
+      const canvas = document.getElementById('ap-pattern-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-ap-pattern');
+      const obs = document.getElementById('ap-pattern-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const stage = parseInt(sel.value);
+        const count = 4 * stage - 3;
+        const cell = 17, gap = 3;
+
+        const cells = [[0, 0]];
+        for (let k = 1; k < stage; k++) {
+          cells.push([k, k], [-k, k], [k, -k], [-k, -k]);
+        }
+        const cx = W / 2, cy = 168;
+        cells.forEach(([gx, gy], i) => {
+          const x = cx + gx * (cell + gap) - cell / 2;
+          const y = cy + gy * (cell + gap) - cell / 2;
+          const ring = Math.max(Math.abs(gx), Math.abs(gy));
+          const isNew = ring === stage - 1 && stage > 1;
+          ctx.fillStyle = isNew ? '#f59e0b' : cssVar('--accent-color');
+          ctx.fillRect(x, y, cell, cell);
+          ctx.strokeStyle = cssVar('--bg-primary'); ctx.lineWidth = 1.2;
+          ctx.strokeRect(x, y, cell, cell);
+        });
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(`Stage ${stage}`, W / 2, 34);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`tₙ = 4n − 3  →  4 × ${stage} − 3 = ${count} squares`, W / 2, 60);
+
+        const seq = [];
+        for (let k = 1; k <= 6; k++) seq.push(4 * k - 3);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`Sequence: ${seq.join(', ')}   (constant difference 4)`, W / 2, H - 26);
+
+        obs.innerHTML = `<strong>Stage ${stage} has 4 × ${stage} − 3 = ${count} squares.</strong> ${stage > 1 ? 'The 4 highlighted squares are the ones added to the corners at this stage — ' : ''}the difference between consecutive stages is always the constant 4, which is exactly what makes this an arithmetic progression.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initNaturalSumLab() {
+      const canvas = document.getElementById('natural-sum-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-natural-sum');
+      const obs = document.getElementById('natural-sum-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const n = parseInt(sel.value);
+        const sum = n * (n + 1) / 2;
+
+        const cols = n + 1, rows = n;
+        const avail = Math.min((W - 120) / cols, (H - 150) / rows);
+        const d = Math.min(22, avail);
+        const gridW = cols * d, gridH = rows * d;
+        const ox = W / 2 - gridW / 2, oy = 92;
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const lower = c <= r;
+            ctx.fillStyle = lower ? '#22c55e' : '#f59e0b';
+            ctx.globalAlpha = 0.85;
+            ctx.beginPath();
+            ctx.arc(ox + c * d + d / 2, oy + r * d + d / 2, d * 0.36, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+          }
+        }
+
+        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 2;
+        ctx.beginPath();
+        for (let r = 0; r < rows; r++) {
+          const x = ox + (r + 1) * d, yTop = oy + r * d, yBot = oy + (r + 1) * d;
+          if (r === 0) ctx.moveTo(x, yTop);
+          else ctx.lineTo(x, yTop);
+          ctx.lineTo(x, yBot);
+          if (r < rows - 1) ctx.lineTo(ox + (r + 2) * d, yBot);
+        }
+        ctx.stroke();
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(`2 × (1 + 2 + … + ${n})  =  ${n + 1} × ${n}`, W / 2, 40);
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`S = ${n}(${n} + 1) ÷ 2 = ${sum}`, W / 2, 68);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(`green triangle = the sum, orange triangle = the same sum reversed`, W / 2, H - 22);
+
+        obs.innerHTML = `<strong>1 + 2 + … + ${n} = ${sum}.</strong> The two triangles of circles together fill a ${n + 1} × ${n} rectangle, so 2S = ${n + 1} × ${n} = ${(n + 1) * n} and S = ${sum} — the picture behind the formula n(n + 1)/2.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initGpPatternLab() {
+      const canvas = document.getElementById('gp-pattern-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-gp-pattern');
+      const obs = document.getElementById('gp-pattern-obs');
+      const SEQS = {
+        gp2: { a: 3, r: 2, label: 'tₙ = 3 × 2ⁿ⁻¹' },
+        gp3: { a: 1, r: 3, label: 'tₙ = 1 × 3ⁿ⁻¹' },
+        gpneg: { a: 1, r: -1, label: 'tₙ = 1 × (−1)ⁿ⁻¹' }
+      };
+
+      function bars(terms, ox, bw, colour, maxV, baseY, maxH) {
+        terms.forEach((t, i) => {
+          const h = Math.max(3, Math.abs(t) / maxV * maxH);
+          const x = ox + i * (bw + 8);
+          const y = t >= 0 ? baseY - h : baseY;
+          ctx.fillStyle = colour;
+          ctx.fillRect(x, y, bw, h);
+          ctx.font = 'bold 11px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(`${t}`, x + bw / 2, t >= 0 ? y - 6 : y + h + 14);
+        });
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        ctx.textAlign = 'center';
+
+        if (sel.value === 'compare') {
+          const ap = [3, 6, 9, 12, 15, 18];
+          const gp = [3, 6, 12, 24, 48, 96];
+          const maxV = 96, baseY = 250, maxH = 150, bw = 30;
+          bars(ap, 70, bw, '#3b82f6', maxV, baseY, maxH);
+          bars(gp, 330, bw, '#22c55e', maxV, baseY, maxH);
+          ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(50, baseY); ctx.lineTo(W - 30, baseY); ctx.stroke();
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = '#3b82f6';
+          ctx.fillText('AP: add 3 each time', 70 + 2.5 * (bw + 8), 288);
+          ctx.fillStyle = '#22c55e';
+          ctx.fillText('GP: multiply by 2 each time', 330 + 2.5 * (bw + 8), 288);
+          ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+          ctx.fillText('Same start, very different growth', W / 2, 36);
+          obs.innerHTML = `<strong>AP 3, 6, 9, 12, 15, 18 vs GP 3, 6, 12, 24, 48, 96.</strong> Both start at 3 and have a second term of 6, but the AP adds a constant 3 while the GP multiplies by a constant 2 — by the sixth term the GP has reached 96 against the AP's 18.`;
+          return;
+        }
+
+        const s = SEQS[sel.value];
+        const terms = [];
+        for (let i = 0; i < 6; i++) terms.push(s.a * Math.pow(s.r, i));
+        const maxV = Math.max(...terms.map(Math.abs));
+        const hasNeg = terms.some(t => t < 0);
+        const baseY = hasNeg ? 190 : 250;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(50, baseY); ctx.lineTo(W - 50, baseY); ctx.stroke();
+        bars(terms, 100, 46, '#22c55e', maxV, baseY, hasNeg ? 60 : 150);
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(s.label, W / 2, 36);
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = '#f59e0b';
+        ctx.fillText(`common ratio r = ${s.r}`, W / 2, 64);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        const ratios = terms.slice(1).map((t, i) => `${t}/${terms[i]}`).join(' = ');
+        ctx.fillText(`${ratios} = ${s.r}`, W / 2, H - 22);
+
+        obs.innerHTML = `<strong>${terms.join(', ')}, … with common ratio r = ${s.r}.</strong> Every consecutive pair has the same ratio, which is what makes this a geometric progression with nth term ${s.label}.`;
       }
 
       sel.addEventListener('change', draw);

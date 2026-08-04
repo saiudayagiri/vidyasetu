@@ -21475,6 +21475,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9m-8",
+              title: "Predicting What Comes Next: Exploring Sequences and Progressions",
+              topics: [
+                {
+                  id: "9m-8-1",
+                  title: "1. Explicit and Recursive Rules",
+                  lab: { type: "sequence-rule-sim" },
+                  theory: {
+                    intro: "There are two ways to describe a sequence: give a formula that jumps straight to any term you like, or give a rule that builds each term from the one before it.",
+                    sections: [
+                      {
+                        heading: "The Explicit Rule",
+                        text: "Using the notation tₙ (or sₙ or uₙ) we can write an explicit rule for the nth term. An explicit formula uses the term's position number n to calculate its value. For example, uₙ = 2n − 1 gives u₁ = 2 × 1 − 1 = 1, u₂ = 2 × 2 − 1 = 3, u₃ = 2 × 3 − 1 = 5 — the sequence of odd numbers."
+                      },
+                      {
+                        heading: "Why Explicit Rules Are Useful",
+                        text: "With an explicit formula we can find the 20th, 53rd or 300th term directly by substituting n — without knowing any previous terms. It also lets us check whether a number belongs to the sequence and find its position. For the odd number 137, solving 2n − 1 = 137 gives n = 69, so 137 is the 69th term. For sₙ = 5n − 2, solving 5n − 2 = 308 gives n = 62, so 308 is the 62nd term; but 5n − 2 = 471 gives n = 94.6, and since that is not a natural number, 471 is not a term of the sequence."
+                      },
+                      {
+                        heading: "The Recursive Rule",
+                        text: "There is another way to describe a sequence. Consider 1, 4, 7, 10, 13, … whose nth term is tₙ = 3n − 2. Each term is 3 more than the previous one, so t₂ = t₁ + 3, t₃ = t₂ + 3, and in general tₙ = tₙ₋₁ + 3 for n ≥ 2. Describing the sequence as t₁ = 1, tₙ = tₙ₋₁ + 3 is known as a recursive rule — it relates each term to previous terms rather than to its position."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Membership with an Explicit Rule",
+                      objective: "To use an explicit formula to find distant terms and to decide whether a given number belongs to a sequence.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "For the rule uₙ = 2n − 1, compute the 53rd, 108th and 1170th terms by substituting n.",
+                        "For the rule sₙ = 5n − 2, write out the first six terms.",
+                        "Solve 5n − 2 = 308 to find which position 308 occupies.",
+                        "Solve 5n − 2 = 471 and examine the value of n you obtain.",
+                        "Explain why n must be a natural number for the value to be a term of the sequence."
+                      ],
+                      observation: "The rule uₙ = 2n − 1 gives the 53rd term as 105 and the 1170th as 2339, computed instantly without listing earlier terms. Solving 5n − 2 = 308 gives the whole number n = 62, so 308 is the 62nd term — but 5n − 2 = 471 gives n = 94.6, which is not a natural number, so 471 is not in the sequence at all."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is an explicit rule for a sequence?",
+                      options: ["A rule relating each term to the previous term", "A formula that uses the position number n to calculate a term's value directly", "A list of the first ten terms", "A rule that only works for arithmetic progressions"],
+                      answer: 1,
+                      explanation: "An explicit rule such as uₙ = 2n − 1 uses the term's position n to compute its value directly, without needing any earlier terms."
+                    },
+                    {
+                      question: "Using uₙ = 2n − 1, what is the 53rd term?",
+                      options: ["53", "105", "106", "107"],
+                      answer: 1,
+                      explanation: "Substituting n = 53 gives u₅₃ = 2 × 53 − 1 = 106 − 1 = 105."
+                    },
+                    {
+                      question: "In the sequence sₙ = 5n − 2, which position does 308 occupy?",
+                      options: ["The 60th term", "The 62nd term", "The 64th term", "It is not a term of the sequence"],
+                      answer: 1,
+                      explanation: "Solving 5n − 2 = 308 gives 5n = 310, so n = 62 — a natural number, meaning 308 is the 62nd term."
+                    },
+                    {
+                      question: "Why is 471 NOT a term of the sequence sₙ = 5n − 2?",
+                      options: ["Because it is too large", "Because solving 5n − 2 = 471 gives n = 94.6, which is not a natural number", "Because the sequence only has 100 terms", "Because 471 is odd"],
+                      answer: 1,
+                      explanation: "Positions must be natural numbers. Since 5n − 2 = 471 yields n = 94.6, no whole position produces 471, so it is not a term."
+                    },
+                    {
+                      question: "What is the recursive rule for the sequence 1, 4, 7, 10, 13, …?",
+                      options: ["tₙ = 3n − 2 only", "t₁ = 1, tₙ = tₙ₋₁ + 3 for n ≥ 2", "tₙ = tₙ₋₁ × 3", "t₁ = 3, tₙ = tₙ₋₁ + 1"],
+                      answer: 1,
+                      explanation: "Each term is 3 more than the one before it, so the recursive rule is t₁ = 1 with tₙ = tₙ₋₁ + 3 for n ≥ 2."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-8-2",
+                  title: "2. Arithmetic Progressions",
+                  lab: { type: "ap-pattern-sim" },
+                  theory: {
+                    intro: "Add four squares to the corners of a pattern at every stage and the counts march up 1, 5, 9, 13 — a constant step that defines an arithmetic progression.",
+                    sections: [
+                      {
+                        heading: "A Growing Pattern of Squares",
+                        text: "Counting the tiny squares in a growing pattern at each of its first four stages gives the sequence 1, 5, 9, 13. At each stage, 4 squares get added to the corners of the previous pattern, so the counts can be written as 1, 1 + 4, 1 + 4 + 4, 1 + 4 + 4 + 4, …"
+                      },
+                      {
+                        heading: "Finding the nth Term",
+                        text: "Rewriting gives 1, 1 + 1 × 4, 1 + 2 × 4, 1 + 3 × 4, … so t₁ = 1, t₂ = 1 + 1 × 4, t₃ = 1 + 2 × 4, t₄ = 1 + 3 × 4. The nth term is therefore tₙ = 1 + (n − 1) × 4, which simplifies to tₙ = 4n − 3."
+                      },
+                      {
+                        heading: "Defining an Arithmetic Progression",
+                        text: "The first six terms are 1, 5, 9, 13, 17, 21, and the difference between successive terms is the constant value 4. Sequences in which the difference between consecutive terms is constant are known as arithmetic progressions, abbreviated as APs."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building an AP from a Growing Square Pattern",
+                      objective: "To generate an arithmetic progression from a visual pattern and derive its nth-term formula.",
+                      materials: ["Square tiles or graph paper", "Notebook and pen"],
+                      steps: [
+                        "Draw or build the first four stages of the pattern, adding 4 squares at the corners each time.",
+                        "Count the squares at each stage and record the sequence.",
+                        "Compute the difference between each pair of consecutive terms.",
+                        "Write each term in the form 1 + (something) × 4 and spot the pattern in the multiplier.",
+                        "Write down the nth-term rule and use it to predict Stage 20."
+                      ],
+                      observation: "The counts 1, 5, 9, 13 rise by a constant 4 each stage. Writing them as 1 + 0×4, 1 + 1×4, 1 + 2×4, 1 + 3×4 shows the multiplier is always n − 1, giving tₙ = 1 + (n − 1) × 4 = 4n − 3 — so Stage 20 has 4 × 20 − 3 = 77 squares."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What defines an arithmetic progression?",
+                      options: ["The ratio between consecutive terms is constant", "The difference between consecutive terms is constant", "Every term is a square number", "The terms always increase"],
+                      answer: 1,
+                      explanation: "An arithmetic progression (AP) is a sequence in which the difference between consecutive terms is a constant value."
+                    },
+                    {
+                      question: "For the growing square pattern giving 1, 5, 9, 13, what is the common difference?",
+                      options: ["1", "3", "4", "5"],
+                      answer: 2,
+                      explanation: "Each stage adds 4 squares to the corners of the previous pattern, so consecutive terms differ by the constant 4."
+                    },
+                    {
+                      question: "What is the nth term of the sequence 1, 5, 9, 13, …?",
+                      options: ["tₙ = 4n", "tₙ = 4n − 3", "tₙ = n + 4", "tₙ = 4n + 1"],
+                      answer: 1,
+                      explanation: "Writing terms as 1 + (n − 1) × 4 and simplifying gives tₙ = 4n − 3, which correctly yields 1, 5, 9, 13 for n = 1, 2, 3, 4."
+                    },
+                    {
+                      question: "Using tₙ = 4n − 3, how many squares are in Stage 20?",
+                      options: ["77", "80", "83", "17"],
+                      answer: 0,
+                      explanation: "Substituting n = 20 gives t₂₀ = 4 × 20 − 3 = 80 − 3 = 77 squares."
+                    },
+                    {
+                      question: "What are the first six terms of the sequence with tₙ = 4n − 3?",
+                      options: ["1, 5, 9, 13, 17, 21", "1, 4, 8, 12, 16, 20", "4, 8, 12, 16, 20, 24", "1, 5, 10, 15, 20, 25"],
+                      answer: 0,
+                      explanation: "Substituting n = 1 through 6 gives 1, 5, 9, 13, 17, 21 — each 4 more than the last."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-8-3",
+                  title: "3. Sum of the First n Natural Numbers",
+                  lab: { type: "natural-sum-sim" },
+                  theory: {
+                    intro: "Write the sum forwards, write it backwards underneath, and every column adds to the same number — a trick that collapses a long addition into a single multiplication.",
+                    sections: [
+                      {
+                        heading: "The Pairing Trick",
+                        text: "Let S = 1 + 2 + 3 + … + 10. We can also write S = 10 + 9 + 8 + … + 1. Placing these one below the other, each pair of corresponding numbers — 1 + 10, 2 + 9, 3 + 8, …, 10 + 1 — adds up to 11. Adding the two equations gives 2S = 11 added 10 times, so 2S = 110 and S = 55. The sum of the first 10 natural numbers is indeed 55."
+                      },
+                      {
+                        heading: "The General Formula",
+                        text: "The same method works for any n. Let S = 1 + 2 + … + n, and also S = n + (n − 1) + … + 1. Adding gives 2S = n(n + 1), so S = n(n + 1)/2."
+                      },
+                      {
+                        heading: "The Picture Behind the Formula",
+                        text: "The argument can also be seen pictorially. A diagram for 1 + 2 + 3 + 4 + 5 + 6 comprises two sets of circles — one above and one below a zigzag partition — each representing that sum. Together the circles form a 7 × 6 rectangular array, showing that 2 × (1 + 2 + 3 + 4 + 5 + 6) = 7 × 6, which is exactly the formula n(n + 1)/2 with n = 6."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Summing 1 to 100 with the Pairing Trick",
+                      objective: "To apply the reverse-and-add method to compute a long sum quickly and confirm it against the formula.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "Write S = 1 + 2 + 3 + … + 100 and beneath it S = 100 + 99 + … + 1.",
+                        "Add the two rows column by column and note what each column sums to.",
+                        "Count how many such columns there are and compute 2S.",
+                        "Halve the result to find S.",
+                        "Check your answer against the formula n(n + 1)/2 with n = 100."
+                      ],
+                      observation: "Every column sums to 101, and there are 100 columns, so 2S = 10100 and S = 5050. The formula n(n+1)/2 = 100 × 101 ÷ 2 = 5050 agrees exactly."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the formula for the sum of the first n natural numbers?",
+                      options: ["n(n + 1)", "n(n + 1)/2", "n²/2", "(n + 1)/2"],
+                      answer: 1,
+                      explanation: "Writing the sum forwards and backwards and adding gives 2S = n(n + 1), so S = n(n + 1)/2."
+                    },
+                    {
+                      question: "In the pairing trick for 1 + 2 + … + 10, what does each pair of corresponding numbers add up to?",
+                      options: ["10", "11", "55", "20"],
+                      answer: 1,
+                      explanation: "Pairing 1 with 10, 2 with 9, 3 with 8 and so on, each pair sums to 11 — and there are 10 such pairs."
+                    },
+                    {
+                      question: "What is the sum of the first 10 natural numbers?",
+                      options: ["50", "55", "45", "110"],
+                      answer: 1,
+                      explanation: "Since 2S = 11 × 10 = 110, we get S = 55."
+                    },
+                    {
+                      question: "What is the sum of the first 100 natural numbers?",
+                      options: ["5050", "5000", "10100", "4950"],
+                      answer: 0,
+                      explanation: "Using S = n(n + 1)/2 with n = 100 gives 100 × 101 ÷ 2 = 5050."
+                    },
+                    {
+                      question: "What rectangular array does the picture for 1 + 2 + 3 + 4 + 5 + 6 form?",
+                      options: ["6 × 6", "7 × 6", "7 × 7", "6 × 5"],
+                      answer: 1,
+                      explanation: "The two sets of circles together form a 7 × 6 array, showing 2 × (1 + 2 + … + 6) = 7 × 6, which matches n(n + 1) with n = 6."
+                    }
+                  ]
+                },
+                {
+                  id: "9m-8-4",
+                  title: "4. Geometric Progressions",
+                  lab: { type: "gp-pattern-sim" },
+                  theory: {
+                    intro: "Double the squares at every stage instead of adding a fixed number, and the sequence stops walking and starts sprinting: 3, 6, 12, 24.",
+                    sections: [
+                      {
+                        heading: "A Doubling Pattern",
+                        text: "Counting the green squares across four stages of a growing pattern gives the sequence 3, 6, 12, 24. At each stage the number of squares is doubled — that is, twice the number in the previous stage: 3, 3 + 3 = 6, 6 + 6 = 12, 12 + 12 = 24, …"
+                      },
+                      {
+                        heading: "Finding the nth Term",
+                        text: "These can be rewritten as 3, 3 × 2, 3 × 4, 3 × 8, … or as 3, 3 × 2, 3 × 2², 3 × 2³, … So t₁ = 3, t₂ = 3 × 2, t₃ = 3 × 2², t₄ = 3 × 2³, giving the nth term tₙ = 3 × 2ⁿ⁻¹. As a recursive formula, t₁ = 3 and tₙ = 2tₙ₋₁ for n ≥ 2."
+                      },
+                      {
+                        heading: "The Common Ratio",
+                        text: "The first six terms are 3, 6, 12, 24, 48, 96, each obtained by multiplying the previous term by 2. This constant multiplier is called the common ratio, and the ratios of consecutive pairs are all the same: 6/3 = 12/6 = 24/12 = 48/24 = 96/48 = 2. A sequence with a common ratio is a Geometric Progression (GP), written generally as a, ar, ar², ar³, …, arⁿ⁻¹, where a is the first term, r is the common ratio, and tₙ = arⁿ⁻¹."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Identifying Geometric Progressions by Their Ratios",
+                      objective: "To test whether given sequences are geometric progressions by computing ratios of consecutive terms.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "For the sequence 1, 2, 4, 8, 16, compute the ratio of each term to the one before it.",
+                        "Repeat for 1, 3, 9, 27, 81.",
+                        "Repeat for 1, −1, 1, −1, 1.",
+                        "Repeat for 5, 15/4, 45/16, 135/64.",
+                        "For each sequence that has a constant ratio, write the nth term in the form arⁿ⁻¹."
+                      ],
+                      observation: "All four are GPs: 1, 2, 4, 8, 16 has r = 2; 1, 3, 9, 27, 81 has r = 3; 1, −1, 1, −1 has r = −1; and 5, 15/4, 45/16, 135/64 has r = 3/4, since (15/4) ÷ 5 = 3/4 and (45/16) ÷ (15/4) = 3/4 — giving tₙ = 5 × (3/4)ⁿ⁻¹."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What defines a geometric progression?",
+                      options: ["The difference between consecutive terms is constant", "The ratio between consecutive terms is constant", "Every term is doubled", "The terms always grow larger"],
+                      answer: 1,
+                      explanation: "A GP is a sequence in which each term is obtained by multiplying the previous one by a fixed number — the common ratio."
+                    },
+                    {
+                      question: "What is the nth term of the sequence 3, 6, 12, 24, …?",
+                      options: ["tₙ = 3n", "tₙ = 3 × 2ⁿ⁻¹", "tₙ = 2 × 3ⁿ⁻¹", "tₙ = 3n − 1"],
+                      answer: 1,
+                      explanation: "Writing the terms as 3, 3 × 2, 3 × 2², 3 × 2³ shows the nth term is tₙ = 3 × 2ⁿ⁻¹."
+                    },
+                    {
+                      question: "What is the common ratio of the sequence 1, −1, 1, −1, 1, …?",
+                      options: ["1", "−1", "0", "It has no common ratio"],
+                      answer: 1,
+                      explanation: "Each term is the previous term multiplied by −1, so the common ratio is −1 — a GP whose terms alternate in sign."
+                    },
+                    {
+                      question: "In the general form a, ar, ar², …, arⁿ⁻¹, what do a and r represent?",
+                      options: ["a is the common ratio and r is the first term", "a is the first term and r is the common ratio", "Both are common differences", "a is the number of terms and r is the ratio"],
+                      answer: 1,
+                      explanation: "In a GP written as a, ar, ar², …, arⁿ⁻¹, the letter a stands for the first term and r for the common ratio."
+                    },
+                    {
+                      question: "What is the common ratio of the sequence 5, 15/4, 45/16, 135/64, …?",
+                      options: ["3/4", "4/3", "3", "15/4"],
+                      answer: 0,
+                      explanation: "Dividing consecutive terms gives (15/4) ÷ 5 = 3/4 and (45/16) ÷ (15/4) = 3/4 — a constant common ratio of 3/4."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
