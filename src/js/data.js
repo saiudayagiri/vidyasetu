@@ -19782,6 +19782,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9s-2",
+              title: "Cell: The Building Block of Life",
+              topics: [
+                {
+                  id: "9s-2-1",
+                  title: "1. How to Study Cells",
+                  lab: { type: "microscope-scale-sim" },
+                  theory: {
+                    intro: "Your eye can separate two dots only if they are at least 0.1 mm apart — which is precisely why cells stayed invisible until someone thought to put glass between us and them.",
+                    sections: [
+                      {
+                        heading: "The Limit of Resolution",
+                        text: "The ability of the human eye to see two very close objects as separate and distinct has a limit. Viewed from about 25 cm — the near point of the human eye — two points separated by about 0.1 mm can be seen as distinct; closer than that, they appear as a single point. This is called the limit of resolution of the human eye, which is 0.1 mm. A cell is usually far too small to be seen by the unaided eye."
+                      },
+                      {
+                        heading: "Microscopes and Magnification",
+                        text: "A convex lens, or a combination of lenses — an objective lens and an eyepiece — is used to magnify an object so it appears larger. Robert Hooke was the first person to observe a cell in 1665 using a self-designed microscope capable of about 200–300X magnification; examining a thin slice of cork, he saw small box-like compartments and named them 'cells'. Total magnification depends on the magnifying power of both lenses: if the eyepiece and the objective lens are each 10X, the total magnification is 100X."
+                      },
+                      {
+                        heading: "Estimating Cell Size, and Electron Microscopes",
+                        text: "Cell size can be estimated by measuring the diameter of the microscope's field of view and counting how many cells fit across it: estimated size = (diameter of visible field in µm) ÷ (number of cells along the diameter). Since 1 mm = 1000 µm, a 5 mm field is 5000 µm; if 25 onion cells lie along that diameter, each cell is 5000 ÷ 25 = 200 µm. Beyond light microscopes, electron microscopes use a beam of electrons instead of light to reveal cell structure at the nanometre scale — a nanometre being one-billionth of a metre."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Estimating the Size of an Onion Peel Cell",
+                      objective: "To estimate the real size of a cell by measuring the microscope's field of view and counting the cells across it.",
+                      materials: ["Light microscope", "Transparent ruler with mm markings", "Prepared onion peel slide"],
+                      steps: [
+                        "Place the ruler on the microscope stage, focus, and measure the diameter of the circular field of view in mm.",
+                        "Convert that diameter from mm to micrometres, using 1 mm = 1000 µm.",
+                        "Remove the ruler and place the onion peel slide on the stage.",
+                        "Focus on the slide and count the number of cells lying along the diameter in one straight line.",
+                        "Divide the field diameter in µm by the number of cells to estimate the size of one cell."
+                      ],
+                      observation: "A field of view 5 mm across is 5 × 1000 = 5000 µm. If 25 cells lie along that diameter, each onion peel cell measures about 5000 ÷ 25 = 200 µm — far below the eye's 0.1 mm resolution limit, which is why the microscope is needed at all."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the limit of resolution of the human eye?",
+                      options: ["0.1 mm", "1 mm", "0.1 µm", "1 nm"],
+                      answer: 0,
+                      explanation: "Viewed from about 25 cm, two points separated by about 0.1 mm can just be seen as distinct — closer than that they merge into one."
+                    },
+                    {
+                      question: "Who first observed cells, and in what year?",
+                      options: ["Robert Hooke in 1665", "Anton van Leeuwenhoek in 1700", "Robert Brown in 1831", "Rudolf Virchow in 1855"],
+                      answer: 0,
+                      explanation: "Robert Hooke was the first to observe a cell in 1665, using a self-designed microscope of about 200–300X magnification on a thin slice of cork."
+                    },
+                    {
+                      question: "If the eyepiece and objective lens are each 10X, what is the total magnification?",
+                      options: ["10X", "20X", "100X", "1000X"],
+                      answer: 2,
+                      explanation: "Total magnification is the product of the two magnifying powers: 10 × 10 = 100X."
+                    },
+                    {
+                      question: "A field of view is 5 mm across and 25 cells lie along its diameter. What is the size of one cell?",
+                      options: ["200 µm", "125 µm", "500 µm", "20 µm"],
+                      answer: 0,
+                      explanation: "5 mm = 5000 µm, and 5000 ÷ 25 = 200 µm per cell."
+                    },
+                    {
+                      question: "What does an electron microscope use instead of light?",
+                      options: ["Ultraviolet rays", "A beam of electrons", "X-rays", "Sound waves"],
+                      answer: 1,
+                      explanation: "Electron microscopes use a beam of electrons rather than light, revealing cell structure with great clarity at the nanometre scale."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-2-2",
+                  title: "2. The Cell Membrane and Osmosis",
+                  lab: { type: "osmosis-potato-sim" },
+                  theory: {
+                    intro: "Put one potato piece in plain water and another in salt solution, wait an hour, and one swells while the other shrinks — the cell membrane quietly choosing what may pass.",
+                    sections: [
+                      {
+                        heading: "A Selectively Permeable Boundary",
+                        text: "The cell membrane is a thin boundary that surrounds a cell and protects its contents. It defines the individuality of a cell and is also called the plasma membrane. The cell membrane is selectively permeable, which means it allows some substances to pass through while blocking others."
+                      },
+                      {
+                        heading: "The Potato Experiment",
+                        text: "Two roughly equal potato pieces are weighed and placed in beakers — Beaker A with plain water, Beaker B with 20 per cent salt or sugar solution — and left for about an hour. The piece in Beaker A swells and gains weight, while the piece in Beaker B shrinks and loses weight. This happens because the cell membrane allows water to move in and out of the cell but not the sugar or salt molecules, and water moves from an area with more water toward an area with less."
+                      },
+                      {
+                        heading: "The Cell Wall's Role",
+                        text: "Plant cells have an additional rigid outer covering called the cell wall, made primarily of cellulose, a type of carbohydrate. Unlike the selectively permeable membrane, the cell wall is permeable — water and some dissolved minerals pass through freely, which helps plant roots absorb water. In a concentrated solution, plant cells lose water by osmosis, yet they do not collapse: the rigid cell wall maintains their shape while the inner contents shrink and the cell membrane pulls away from the wall. Animal cells, such as cheek cells, have no cell wall, so they can change shape easily. Bacteria also have a cell wall for protection and structural support."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "The Potato Osmosis Experiment",
+                      objective: "To observe how water moves across a selectively permeable membrane in plain water versus a concentrated solution.",
+                      materials: ["A potato", "Kitchen knife", "Weighing balance", "Two beakers", "Plain water", "20 per cent salt or sugar solution"],
+                      steps: [
+                        "Carefully cut a potato into two pieces of roughly equal size.",
+                        "Measure and record the initial weight of both pieces.",
+                        "Put one piece into Beaker A containing plain water.",
+                        "Put the other piece into Beaker B containing 20 per cent salt or sugar solution.",
+                        "Leave both undisturbed for about an hour, then re-weigh each piece and find the change in weight."
+                      ],
+                      observation: "The piece in plain water swells and gains weight, while the piece in salt solution shrinks and loses weight. The cell membrane lets water pass but blocks salt and sugar molecules, so water moves from where there is more water toward where there is less."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does 'selectively permeable' mean for the cell membrane?",
+                      options: ["It blocks everything", "It allows some substances to pass through while blocking others", "It allows everything to pass", "It only allows salt through"],
+                      answer: 1,
+                      explanation: "A selectively permeable membrane lets certain substances cross while preventing others — for example, allowing water through but blocking salt and sugar molecules."
+                    },
+                    {
+                      question: "In the potato experiment, what happens to the piece placed in plain water?",
+                      options: ["It shrinks and loses weight", "It swells and gains weight", "It stays exactly the same", "It dissolves completely"],
+                      answer: 1,
+                      explanation: "Water moves into the potato piece from the surrounding plain water, so the piece swells and its weight increases."
+                    },
+                    {
+                      question: "Why does the potato piece in 20 per cent salt solution shrink?",
+                      options: ["Salt molecules enter the cells and push water out", "Water moves out of the cells toward the area with less water", "The potato dissolves in salt", "The cell wall breaks down"],
+                      answer: 1,
+                      explanation: "The membrane blocks the salt but lets water pass, so water leaves the cells toward the more concentrated solution — and the piece loses weight."
+                    },
+                    {
+                      question: "What is the plant cell wall primarily made of?",
+                      options: ["Protein", "Cellulose, a type of carbohydrate", "Fat", "Calcium"],
+                      answer: 1,
+                      explanation: "The plant cell wall is composed mainly of cellulose, a carbohydrate that gives it rigidity and strength."
+                    },
+                    {
+                      question: "Why does a plant cell keep its shape even when it loses water in a concentrated solution?",
+                      options: ["Its membrane becomes rigid", "Its rigid cell wall maintains the shape while the inner contents shrink", "Plant cells never lose water", "It absorbs salt to stay firm"],
+                      answer: 1,
+                      explanation: "The cell wall is rigid, so the overall shape is preserved even as the inner contents shrink and the cell membrane pulls away from the wall."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-2-3",
+                  title: "3. Prokaryotic and Eukaryotic Cells",
+                  lab: { type: "cell-type-compare-sim" },
+                  theory: {
+                    intro: "Some cells keep their genetic material sealed inside a nucleus; others let it float free in the cytoplasm — and that single difference splits all life into two great categories.",
+                    sections: [
+                      {
+                        heading: "The Three Basic Parts",
+                        text: "Most cells have three basic parts: a selectively permeable membrane called the plasma membrane, a semi-fluid jelly-like substance called the cytoplasm, and a prominent nucleus. Besides the nucleus, the cytoplasm contains several sub-cellular components called organelles, most of which are only visible with an electron microscope."
+                      },
+                      {
+                        heading: "Prokaryotic Cells",
+                        text: "A bacterial cell lacks a well-defined nucleus and membrane-bound organelles — organelles surrounded by their own membranes. Such cells are called prokaryotic cells, from pro meaning primitive and karyon meaning nucleus. In prokaryotic cells, most cellular activities take place directly in the cytoplasm, and the DNA is present as a single circular molecule associated with specific proteins."
+                      },
+                      {
+                        heading: "Eukaryotic Cells",
+                        text: "Plant and animal cells have a well-defined nucleus and several membrane-bound organelles. These are called eukaryotic cells, from eu meaning true and karyon meaning nucleus. Plant cells additionally possess a cell wall, chloroplasts and a large vacuole, which animal cells lack. Beyond both categories, viruses, viroids and prions are acellular infectious agents — they have no cells at all and are too small to be seen under a light microscope."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Bacterial, Plant and Animal Cells",
+                      objective: "To tabulate which structures are present in bacterial, plant and animal cells and identify what separates prokaryotes from eukaryotes.",
+                      materials: ["Diagrams of a bacterial, plant and animal cell", "Notebook and pen"],
+                      steps: [
+                        "Draw a table with rows for cell membrane, cell wall, cytoplasm, nucleus, chloroplast and membrane-bound organelles.",
+                        "Add three columns headed bacterial cell, plant cell and animal cell.",
+                        "Study each diagram and mark which structures are present in each cell type.",
+                        "Circle the row that separates prokaryotic cells from eukaryotic ones.",
+                        "Note which structures are unique to plant cells."
+                      ],
+                      observation: "All three cell types have a cell membrane and cytoplasm. Only the plant and animal cells have a well-defined nucleus and membrane-bound organelles — the defining eukaryotic feature — while the bacterial cell has neither. Both bacterial and plant cells have a cell wall, but chloroplasts appear only in the plant cell."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What are the three basic parts most cells have?",
+                      options: ["Cell wall, chloroplast and vacuole", "Plasma membrane, cytoplasm and nucleus", "Nucleus, ribosome and mitochondrion", "Membrane, cell wall and nucleoid"],
+                      answer: 1,
+                      explanation: "Most cells consist of a selectively permeable plasma membrane, a jelly-like cytoplasm, and a prominent nucleus."
+                    },
+                    {
+                      question: "What defines a prokaryotic cell?",
+                      options: ["It has a true nucleus", "It lacks a well-defined nucleus and membrane-bound organelles", "It always has chloroplasts", "It has no cytoplasm"],
+                      answer: 1,
+                      explanation: "Prokaryotic cells — such as bacterial cells — lack both a well-defined nucleus and membrane-bound organelles, so most activities occur directly in the cytoplasm."
+                    },
+                    {
+                      question: "What do the word parts in 'eukaryotic' mean?",
+                      options: ["eu = primitive, karyon = cell", "eu = true, karyon = nucleus", "eu = outer, karyon = wall", "eu = many, karyon = organelle"],
+                      answer: 1,
+                      explanation: "Eukaryotic comes from eu meaning true and karyon meaning nucleus — these cells have a genuine, well-defined nucleus."
+                    },
+                    {
+                      question: "How is DNA arranged in a prokaryotic cell?",
+                      options: ["In rod-shaped chromosomes inside a nucleus", "As a single circular molecule associated with specific proteins", "It has no DNA", "Scattered as loose fragments in the cell wall"],
+                      answer: 1,
+                      explanation: "Since prokaryotes have no true nucleus, their DNA exists as a single circular molecule associated with specific proteins."
+                    },
+                    {
+                      question: "What are viruses, viroids and prions described as?",
+                      options: ["Prokaryotic cells", "Eukaryotic cells", "Acellular infectious agents with no cells at all", "Membrane-bound organelles"],
+                      answer: 2,
+                      explanation: "They are acellular — having no cells — infectious agents, and are too small to be seen under a light microscope."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-2-4",
+                  title: "4. Cell Organelles and Their Functions",
+                  lab: { type: "organelle-function-sim" },
+                  theory: {
+                    intro: "A cell is less a bag of jelly than a working factory — with a control room, protein workshops, a shipping department, and a power plant, each sealed in its own membrane.",
+                    sections: [
+                      {
+                        heading: "The Nucleus — House of Coded Instructions",
+                        text: "The nucleus has a double-layered nuclear membrane with nuclear pores that allow exchange of material between the nucleus and the cytoplasm. Inside is the nucleolus, a dense round body where the synthesis of ribosomal subunits takes place; these move from the nucleus to the cytoplasm where subunits join to form a ribosome. The nucleus contains chromosomes, visible as rod-shaped structures, composed of DNA and specific proteins. Notably, Red Blood Cells in humans have no nucleus — the absence provides more space for haemoglobin so more oxygen can be carried, though it also means these cells survive only about 120 days."
+                      },
+                      {
+                        heading: "Ribosomes and the Endoplasmic Reticulum",
+                        text: "Ribosomes are the sites of protein synthesis — the cell's protein factories. The Endoplasmic Reticulum (ER) is a large organelle involved in the synthesis and transport of proteins, fats (lipids) and some hormones. Rough Endoplasmic Reticulum (RER) has ribosomes attached to its surface and is mainly involved in protein synthesis and protein transport, while Smooth Endoplasmic Reticulum (SER) lacks attached ribosomes."
+                      },
+                      {
+                        heading: "Why Eukaryotic Cells Need Organelles",
+                        text: "Membrane-bound organelles let a eukaryotic cell separate different chemical processes into their own compartments, so many activities can proceed at once without interfering with one another. Mitochondria are surrounded by two membranes. Plant cells additionally contain chloroplasts and a large vacuole. Together these organelles make the cell interior a coordinated working system rather than a single undivided space."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Mapping Organelles to Their Jobs",
+                      objective: "To match each cell organelle with the function it performs and identify which are unique to plant cells.",
+                      materials: ["Diagrams of plant and animal cells", "Notebook and pen"],
+                      steps: [
+                        "List the organelles visible in the diagrams: nucleus, ribosome, endoplasmic reticulum, mitochondrion, Golgi body, lysosome, chloroplast and vacuole.",
+                        "Beside each, write the function it performs in the cell.",
+                        "Mark which organelles appear in both plant and animal cells.",
+                        "Mark those found only in plant cells.",
+                        "Note which organelle is surrounded by two membranes."
+                      ],
+                      observation: "The nucleus, ribosomes, ER, mitochondria, Golgi body and lysosomes appear in both plant and animal cells, while chloroplasts and the large vacuole are features of plant cells. Mitochondria are surrounded by two membranes, and ribosomes — whether free or attached to rough ER — are the sites where proteins are made."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the function of ribosomes?",
+                      options: ["Digestion of waste", "Protein synthesis", "Photosynthesis", "Storage of water"],
+                      answer: 1,
+                      explanation: "Ribosomes are the sites of protein synthesis — the cell's protein factories."
+                    },
+                    {
+                      question: "What distinguishes Rough Endoplasmic Reticulum from Smooth ER?",
+                      options: ["RER has ribosomes attached to its surface", "RER has no membrane", "RER is found only in plants", "RER stores water"],
+                      answer: 0,
+                      explanation: "Rough ER gets its name and its role from the ribosomes attached to its surface, making it mainly responsible for protein synthesis and transport."
+                    },
+                    {
+                      question: "Why do human Red Blood Cells lack a nucleus?",
+                      options: ["To move faster through vessels", "To provide more space for haemoglobin so more oxygen can be carried", "Because they are prokaryotic", "To avoid infection"],
+                      answer: 1,
+                      explanation: "The absence of a nucleus leaves more room for haemoglobin, letting each cell transport more oxygen — though it also limits their lifespan to about 120 days."
+                    },
+                    {
+                      question: "What takes place in the nucleolus?",
+                      options: ["Photosynthesis", "Synthesis of ribosomal subunits", "Digestion of food", "Storage of DNA only"],
+                      answer: 1,
+                      explanation: "The nucleolus is a dense round body inside the nucleus where ribosomal subunits are synthesised before moving out to the cytoplasm."
+                    },
+                    {
+                      question: "What are chromosomes composed of?",
+                      options: ["Cellulose and starch", "DNA and specific proteins", "Lipids only", "Ribosomes"],
+                      answer: 1,
+                      explanation: "Chromosomes, visible as rod-shaped structures within the nucleus, are composed of DNA together with specific proteins."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

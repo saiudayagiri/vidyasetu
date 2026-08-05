@@ -5807,6 +5807,102 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const microscopeScaleLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="microscope-scale-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an object and see where it sits against the eye's resolution limit.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Object</h3>
+            <select id="sel-microscope-scale" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="fishegg">Fish egg — 1 mm</option>
+              <option value="onion" selected>Onion peel cell — 200 µm</option>
+              <option value="plantcell">Most plant and animal cells — 100 µm</option>
+              <option value="bacteria">Most bacteria — 1 µm</option>
+              <option value="virus">Viruses — 100 nm</option>
+              <option value="atom">Atoms — 0.1 nm</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Visible With What?</h3>
+            <div id="microscope-scale-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an object above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const osmosisPotatoLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="osmosis-potato-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Step through the potato experiment and watch water move.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Experiment Stage</h3>
+            <select id="sel-osmosis-potato" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="initial">Initial — both pieces equal</option>
+              <option value="final" selected>After one hour</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What Happened</h3>
+            <div id="osmosis-potato-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a stage above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const cellTypeCompareLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="cell-type-compare-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a structure and see which of the three cell types have it.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Structure</h3>
+            <select id="sel-cell-type-compare" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="membrane">Cell membrane</option>
+              <option value="cytoplasm">Cytoplasm</option>
+              <option value="wall">Cell wall</option>
+              <option value="nucleus" selected>Well-defined nucleus</option>
+              <option value="organelles">Membrane-bound organelles</option>
+              <option value="chloroplast">Chloroplast</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Present In</h3>
+            <div id="cell-type-compare-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a structure above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const organelleFunctionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="organelle-function-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick an organelle and see where it sits and what it does.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Organelle</h3>
+            <select id="sel-organelle-function" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="nucleus" selected>Nucleus</option>
+              <option value="nucleolus">Nucleolus</option>
+              <option value="ribosome">Ribosome</option>
+              <option value="rer">Rough ER</option>
+              <option value="ser">Smooth ER</option>
+              <option value="mito">Mitochondrion</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Function</h3>
+            <div id="organelle-function-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an organelle above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -8050,6 +8146,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'prediction-test-sim') {
               labHtml = predictionTestLabHtml;
               labDesc = 'Compare a vague claim with questions that make a prediction testable.';
+            } else if (topicObj.lab.type === 'microscope-scale-sim') {
+              labHtml = microscopeScaleLabHtml;
+              labDesc = 'See where objects sit against the eye’s resolution limit and which microscope is needed.';
+            } else if (topicObj.lab.type === 'osmosis-potato-sim') {
+              labHtml = osmosisPotatoLabHtml;
+              labDesc = 'Step through the potato osmosis experiment and watch water move.';
+            } else if (topicObj.lab.type === 'cell-type-compare-sim') {
+              labHtml = cellTypeCompareLabHtml;
+              labDesc = 'Compare which structures bacterial, plant and animal cells have.';
+            } else if (topicObj.lab.type === 'organelle-function-sim') {
+              labHtml = organelleFunctionLabHtml;
+              labDesc = 'Pick an organelle and see where it sits in the cell and what it does.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -8753,6 +8861,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initLawTheoryLab();
         } else if (topicObj.lab.type === 'prediction-test-sim') {
           initPredictionTestLab();
+        } else if (topicObj.lab.type === 'microscope-scale-sim') {
+          initMicroscopeScaleLab();
+        } else if (topicObj.lab.type === 'osmosis-potato-sim') {
+          initOsmosisPotatoLab();
+        } else if (topicObj.lab.type === 'cell-type-compare-sim') {
+          initCellTypeCompareLab();
+        } else if (topicObj.lab.type === 'organelle-function-sim') {
+          initOrganelleFunctionLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -28233,6 +28349,267 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         });
 
         obs.innerHTML = `<strong>${q.good ? 'Testable' : 'Not a useful scientific question'}.</strong> ${q.why}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMicroscopeScaleLab() {
+      const canvas = document.getElementById('microscope-scale-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-microscope-scale');
+      const obs = document.getElementById('microscope-scale-obs');
+      const OBJ = {
+        fishegg: { log: 0, label: 'Fish egg', size: '1 mm' },
+        onion: { log: -0.7, label: 'Onion peel cell', size: '200 µm' },
+        plantcell: { log: -1, label: 'Most plant and animal cells', size: '100 µm' },
+        bacteria: { log: -3, label: 'Most bacteria', size: '1 µm' },
+        virus: { log: -4, label: 'Viruses', size: '100 nm' },
+        atom: { log: -7, label: 'Atoms', size: '0.1 nm' }
+      };
+      const EYE_LOG = -1;
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const o = OBJ[sel.value];
+        const top = 70, bot = H - 60;
+        const toY = l => top + ((0 - l) / 7) * (bot - top);
+        const axX = 150;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(axX, top); ctx.lineTo(axX, bot); ctx.stroke();
+
+        [[0, '1 mm'], [-1, '100 µm'], [-2, '10 µm'], [-3, '1 µm'], [-4, '100 nm'], [-5, '10 nm'], [-6, '1 nm'], [-7, '0.1 nm']].forEach(([l, t]) => {
+          const y = toY(l);
+          ctx.beginPath(); ctx.moveTo(axX - 6, y); ctx.lineTo(axX + 6, y); ctx.stroke();
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'right';
+          ctx.fillText(t, axX - 12, y + 3);
+        });
+
+        const eyeY = toY(EYE_LOG);
+        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 1.8; ctx.setLineDash([5, 4]);
+        ctx.beginPath(); ctx.moveTo(axX, eyeY); ctx.lineTo(W - 40, eyeY); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.font = '11px system-ui'; ctx.fillStyle = '#ef4444'; ctx.textAlign = 'left';
+        ctx.fillText('limit of the unaided eye (0.1 mm)', axX + 12, eyeY - 8);
+
+        const y = toY(o.log);
+        ctx.fillStyle = '#22c55e';
+        ctx.beginPath(); ctx.arc(axX, y, 8, 0, Math.PI * 2); ctx.fill();
+        ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText(`${o.label} — ${o.size}`, axX + 20, y + 4);
+
+        const tool = o.log >= EYE_LOG ? 'the unaided eye' : (o.log >= -4 ? 'a light microscope' : 'an electron microscope');
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText('Size scale — from a fish egg down to atoms', W / 2, 34);
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(`Visible with ${tool}`, W / 2, H - 24);
+
+        obs.innerHTML = `<strong>${o.label} (${o.size}) — needs ${tool}.</strong> The unaided eye resolves nothing closer than 0.1 mm, so anything below that red line requires magnification; below about 100 nm even a light microscope is not enough and an electron microscope is needed.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initOsmosisPotatoLab() {
+      const canvas = document.getElementById('osmosis-potato-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-osmosis-potato');
+      const obs = document.getElementById('osmosis-potato-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const isFinal = sel.value === 'final';
+        ctx.textAlign = 'center';
+
+        function beaker(cx, label, liquid, potatoScale, arrowIn) {
+          const bw = 140, bh = 150, by = 110;
+          const bx = cx - bw / 2;
+          ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx, by + bh); ctx.lineTo(bx + bw, by + bh); ctx.lineTo(bx + bw, by); ctx.stroke();
+          ctx.fillStyle = liquid;
+          ctx.fillRect(bx + 2, by + 34, bw - 4, bh - 36);
+
+          const pw = 54 * potatoScale, ph = 40 * potatoScale;
+          ctx.fillStyle = '#d9a066';
+          ctx.beginPath(); ctx.roundRect(cx - pw / 2, by + bh / 2 - ph / 2 + 14, pw, ph, 8); ctx.fill();
+          ctx.strokeStyle = '#a3703f'; ctx.lineWidth = 1.5; ctx.stroke();
+
+          if (isFinal) {
+            ctx.strokeStyle = arrowIn ? '#22c55e' : '#ef4444'; ctx.lineWidth = 2.5;
+            const ax = cx + (arrowIn ? -52 : 52), ay = by + bh / 2 + 14;
+            const dir = arrowIn ? 1 : 1;
+            ctx.beginPath();
+            if (arrowIn) { ctx.moveTo(ax - 20, ay); ctx.lineTo(ax + 6, ay); }
+            else { ctx.moveTo(ax - 6, ay); ctx.lineTo(ax + 20, ay); }
+            ctx.stroke();
+            ctx.beginPath();
+            if (arrowIn) { ctx.moveTo(ax + 6, ay); ctx.lineTo(ax - 3, ay - 5); ctx.lineTo(ax - 3, ay + 5); }
+            else { ctx.moveTo(ax + 20, ay); ctx.lineTo(ax + 11, ay - 5); ctx.lineTo(ax + 11, ay + 5); }
+            ctx.closePath(); ctx.fillStyle = ctx.strokeStyle; ctx.fill();
+          }
+
+          ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+          ctx.fillText(label, cx, by - 14);
+        }
+
+        beaker(160, 'Beaker A — plain water', 'rgba(59,130,246,0.22)', isFinal ? 1.28 : 1, true);
+        beaker(440, 'Beaker B — 20% salt solution', 'rgba(245,158,11,0.22)', isFinal ? 0.72 : 1, false);
+
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(isFinal ? 'After about one hour' : 'Initial state — pieces of equal size', W / 2, 40);
+
+        if (isFinal) {
+          ctx.font = 'bold 13px system-ui'; ctx.fillStyle = '#22c55e';
+          ctx.fillText('swells, gains weight', 160, 292);
+          ctx.fillStyle = '#ef4444';
+          ctx.fillText('shrinks, loses weight', 440, 292);
+        }
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('The membrane lets water pass but blocks salt and sugar', W / 2, H - 18);
+
+        obs.innerHTML = isFinal
+          ? `<strong>Beaker A swells and gains weight; Beaker B shrinks and loses weight.</strong> The cell membrane allows water in and out but not the salt or sugar molecules, so water moves from where there is more water toward where there is less.`
+          : `<strong>Both pieces start equal in size and weight.</strong> One goes into plain water and the other into 20 per cent salt solution — after an hour their weights are measured again to find the change.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initCellTypeCompareLab() {
+      const canvas = document.getElementById('cell-type-compare-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-cell-type-compare');
+      const obs = document.getElementById('cell-type-compare-obs');
+      const S = {
+        membrane: { name: 'Cell membrane', b: true, p: true, a: true, note: 'Every cell has a plasma membrane defining its boundary.' },
+        cytoplasm: { name: 'Cytoplasm', b: true, p: true, a: true, note: 'All three cell types contain the jelly-like cytoplasm.' },
+        wall: { name: 'Cell wall', b: true, p: true, a: false, note: 'Bacterial and plant cells have a cell wall; animal cells do not, which is why they change shape easily.' },
+        nucleus: { name: 'Well-defined nucleus', b: false, p: true, a: true, note: 'This is the dividing line: bacterial cells lack a true nucleus (prokaryotic), while plant and animal cells have one (eukaryotic).' },
+        organelles: { name: 'Membrane-bound organelles', b: false, p: true, a: true, note: 'Only eukaryotic cells have organelles enclosed in their own membranes; in bacteria most activities happen directly in the cytoplasm.' },
+        chloroplast: { name: 'Chloroplast', b: false, p: true, a: false, note: 'Chloroplasts are unique to plant cells among these three.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const s = S[sel.value];
+        ctx.textAlign = 'center';
+
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(s.name, W / 2, 42);
+
+        const cells = [['Bacterial', s.b, 'prokaryotic'], ['Plant', s.p, 'eukaryotic'], ['Animal', s.a, 'eukaryotic']];
+        const bw = 160, gap = 18;
+        const totalW = 3 * bw + 2 * gap;
+        const sx = W / 2 - totalW / 2;
+        cells.forEach(([nm, has, kind], i) => {
+          const x = sx + i * (bw + gap);
+          ctx.fillStyle = has ? 'rgba(34,197,94,0.16)' : 'rgba(239,68,68,0.10)';
+          ctx.strokeStyle = has ? '#22c55e' : '#ef4444'; ctx.lineWidth = 2.2;
+          ctx.beginPath(); ctx.roundRect(x, 84, bw, 150, 12); ctx.fill(); ctx.stroke();
+
+          ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+          ctx.fillText(nm + ' cell', x + bw / 2, 116);
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText(kind, x + bw / 2, 136);
+
+          ctx.font = 'bold 38px system-ui'; ctx.fillStyle = has ? '#22c55e' : '#ef4444';
+          ctx.fillText(has ? '✓' : '✗', x + bw / 2, 190);
+          ctx.font = 'bold 12px system-ui';
+          ctx.fillText(has ? 'present' : 'absent', x + bw / 2, 216);
+        });
+
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('pro = primitive, eu = true, karyon = nucleus', W / 2, H - 22);
+
+        const present = cells.filter(c => c[1]).map(c => c[0].toLowerCase()).join(' and ');
+        obs.innerHTML = `<strong>${s.name}: present in the ${present} cell${cells.filter(c => c[1]).length > 1 ? 's' : ''}.</strong> ${s.note}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initOrganelleFunctionLab() {
+      const canvas = document.getElementById('organelle-function-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-organelle-function');
+      const obs = document.getElementById('organelle-function-obs');
+      const ORG = {
+        nucleus: { name: 'Nucleus', tag: 'House of coded instructions', fn: 'Has a double-layered nuclear membrane with pores allowing exchange with the cytoplasm; contains chromosomes made of DNA and specific proteins.' },
+        nucleolus: { name: 'Nucleolus', tag: 'Ribosome subunit workshop', fn: 'A dense round body inside the nucleus where ribosomal subunits are synthesised before moving out to the cytoplasm.' },
+        ribosome: { name: 'Ribosome', tag: 'Protein factory', fn: 'The site of protein synthesis — found free in the cytoplasm or attached to the rough endoplasmic reticulum.' },
+        rer: { name: 'Rough ER', tag: 'Manufacturing factory', fn: 'Endoplasmic reticulum with ribosomes attached to its surface, mainly involved in protein synthesis and protein transport.' },
+        ser: { name: 'Smooth ER', tag: 'Lipid and hormone work', fn: 'Endoplasmic reticulum without attached ribosomes, involved in the synthesis and transport of fats (lipids) and some hormones.' },
+        mito: { name: 'Mitochondrion', tag: 'Double-membraned organelle', fn: 'Surrounded by two membranes — one of the membrane-bound organelles that let a eukaryotic cell compartmentalise its chemical processes.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const o = ORG[sel.value];
+        const key = sel.value;
+        const cx = 190, cy = 176;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
+        ctx.fillStyle = 'rgba(148,163,184,0.05)';
+        ctx.beginPath(); ctx.ellipse(cx, cy, 140, 110, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+        const hi = (on) => on ? '#22c55e' : 'rgba(148,163,184,0.35)';
+
+        ctx.fillStyle = hi(key === 'nucleus' || key === 'nucleolus');
+        ctx.beginPath(); ctx.arc(cx - 20, cy - 10, 44, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = hi(key === 'nucleus'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx - 20, cy - 10, 48, 0, Math.PI * 2); ctx.stroke();
+        ctx.fillStyle = hi(key === 'nucleolus');
+        ctx.beginPath(); ctx.arc(cx - 20, cy - 10, 16, 0, Math.PI * 2); ctx.fill();
+
+        ctx.fillStyle = hi(key === 'ribosome' || key === 'rer');
+        [[cx + 62, cy - 52], [cx + 74, cy - 34], [cx + 58, cy - 18], [cx + 80, cy - 4]].forEach(([x, y]) => {
+          ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2); ctx.fill();
+        });
+
+        ctx.strokeStyle = hi(key === 'rer'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx + 44, cy - 60); ctx.quadraticCurveTo(cx + 96, cy - 30, cx + 44, cy + 4); ctx.stroke();
+        ctx.strokeStyle = hi(key === 'ser'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx + 30, cy + 30); ctx.quadraticCurveTo(cx + 92, cy + 46, cx + 34, cy + 70); ctx.stroke();
+
+        ctx.fillStyle = hi(key === 'mito');
+        ctx.beginPath(); ctx.ellipse(cx - 66, cy + 60, 30, 16, -0.35, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = key === 'mito' ? '#166534' : 'rgba(148,163,184,0.5)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.ellipse(cx - 66, cy + 60, 24, 10, -0.35, 0, Math.PI * 2); ctx.stroke();
+
+        const tx = 400;
+        ctx.textAlign = 'left';
+        ctx.font = 'bold 19px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(o.name, tx, 96);
+        ctx.font = 'italic 13px system-ui'; ctx.fillStyle = '#f59e0b';
+        ctx.fillText(o.tag, tx, 120);
+
+        ctx.font = '12.5px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        let line = '', y = 152;
+        o.fn.split(' ').forEach(w => {
+          if ((line + w).length > 26) { ctx.fillText(line, tx, y); line = w + ' '; y += 20; }
+          else line += w + ' ';
+        });
+        ctx.fillText(line, tx, y);
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText('The cell interior — a coordinated working system', W / 2, 36);
+
+        obs.innerHTML = `<strong>${o.name} — ${o.tag}.</strong> ${o.fn}`;
       }
 
       sel.addEventListener('change', draw);
