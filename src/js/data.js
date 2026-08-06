@@ -21192,6 +21192,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9s-7",
+              title: "Work, Energy, and Simple Machines",
+              topics: [
+                {
+                  id: "9s-7-1",
+                  title: "1. Work Done by a Constant Force",
+                  lab: { type: "work-done-sim" },
+                  theory: {
+                    intro: "Push a wall until your arms ache and, scientifically speaking, you have done no work at all. Science reserves the word for something narrower than everyday language does.",
+                    sections: [
+                      {
+                        heading: "Defining Work",
+                        text: "Lifting three wheat bags to the same height takes three times the work of lifting one — and so applying a larger force over the same distance does proportionally more work. Lifting one bag to three times the height also takes three times the work, so applying the same force over a larger distance does proportionally more work. This leads to the definition: work done on an object by a constant force = force applied × displacement in the direction of the force, or W = F × s. The SI unit of work is the joule (J): 1 J = 1 N × 1 m. Since 1 N = 1 kg m s⁻², 1 J = 1 kg m² s⁻². On a force-displacement graph, the work done equals the area under the graph."
+                      },
+                      {
+                        heading: "When Work Done Is Zero",
+                        text: "If the force acting on an object is zero, no work is done. The work done is also zero if there is no displacement, however large the force. Pushing hard against a rigid wall does no work on the wall, because the wall does not move — you feel tired only because your muscles repeatedly expand and contract, using up your body's internal energy. If a force acts perpendicular to the displacement, as when a girl carries a box horizontally while applying an upward force, the work done by that force is also zero."
+                      },
+                      {
+                        heading: "Positive and Negative Work",
+                        text: "When the displacement is in the same direction as the applied force, the work done is positive — pushing a wheelchair forward is an example. When the displacement is opposite to the force, the work done is negative: a goalkeeper stopping a football applies a force opposite to the ball's motion, so she does negative work on the ball. Work has no direction of its own; it is simply a number with a positive or negative sign."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Work Done by a Goalkeeper",
+                      objective: "To calculate the work done by a force acting opposite to the displacement.",
+                      materials: ["Notebook and calculator"],
+                      steps: [
+                        "Note that the goalkeeper's hand moved back by 15 cm while she applied a force of 200 N.",
+                        "Convert the displacement into metres.",
+                        "Decide the sign of the displacement, given that the ball moves opposite to the applied force.",
+                        "Apply W = force × displacement in the direction of the force.",
+                        "State whether the work done on the ball is positive or negative, and why."
+                      ],
+                      observation: "The displacement is taken as −0.15 m because the ball moves opposite to the applied force. W = 200 N × (−0.15 m) = −30 J. The work done by the goalkeeper on the ball is negative, since her force opposes the ball's motion."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How is the work done by a constant force defined?",
+                      options: ["Force ÷ displacement", "Force applied × displacement in the direction of the force", "Force × time", "Mass × acceleration"],
+                      answer: 1,
+                      explanation: "W = F × s, where s is the displacement in the direction of the applied force."
+                    },
+                    {
+                      question: "What is the SI unit of work?",
+                      options: ["The newton (N)", "The joule (J)", "The watt (W)", "The pascal (Pa)"],
+                      answer: 1,
+                      explanation: "1 joule of work is done when a force of 1 newton displaces an object by 1 metre in the direction of the force."
+                    },
+                    {
+                      question: "You push hard against a rigid wall. How much work do you do on the wall?",
+                      options: ["A large amount, since the force is large", "Zero, because there is no displacement", "Negative work", "It depends on how long you push"],
+                      answer: 1,
+                      explanation: "With s = 0 the work done is zero, however large the force. You feel tired only because your muscles use up your body's internal energy."
+                    },
+                    {
+                      question: "A goalkeeper applies 200 N over a displacement of 0.15 m opposite to her force. What work does she do on the ball?",
+                      options: ["+30 J", "−30 J", "+1333 J", "Zero"],
+                      answer: 1,
+                      explanation: "The displacement is opposite to the force, so it is taken as −0.15 m: W = 200 × (−0.15) = −30 J."
+                    },
+                    {
+                      question: "A girl carries a box horizontally while applying an upward force. What work does that force do on the box?",
+                      options: ["Positive work", "Negative work", "Zero, because force and displacement are perpendicular", "It cannot be determined"],
+                      answer: 2,
+                      explanation: "There is no displacement in the direction of the upward force, so the work done by that force is zero."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-7-2",
+                  title: "2. The Work-Energy Theorem and Kinetic Energy",
+                  lab: { type: "kinetic-energy-sim" },
+                  theory: {
+                    intro: "A thrown ball knocks down a wicket. Where did that capacity come from? From the fielder's arm — work done on the ball came back out as work done on the stumps.",
+                    sections: [
+                      {
+                        heading: "The Work-Energy Theorem",
+                        text: "An object having the capacity to do work is said to possess energy. A ball thrown by a fielder gains energy from the work done in throwing it, and can then knock over a wicket. A flowerpot raised to a height gains energy from the work done in raising it. When positive work is done on an object it gains energy, which it can then transfer to another object. The relation between the two is the work-energy theorem: work done on an object = change in its energy. The SI unit of energy is the same as that of work — the joule."
+                      },
+                      {
+                        heading: "Forms of Energy",
+                        text: "Energy exists in many forms — mechanical energy due to the motion or position of objects, thermal energy that makes things warm, light energy, sound energy, electrical energy, nuclear energy stored in the nuclei of atoms, and chemical energy stored in fuels and food. Energy can change from one form to another: electrical energy becomes light in a bulb and thermal energy in a water heater, while the chemical energy in food powers our muscles as mechanical energy."
+                      },
+                      {
+                        heading: "Kinetic Energy",
+                        text: "The energy possessed by an object due to its motion is called kinetic energy. Starting from v² = u² + 2as and W = F × s with F = ma gives W = ½m(v² − u²). If the object starts from rest, this work equals its final kinetic energy, so K = ½mv². Kinetic energy has no direction, and its unit is the joule. Because K depends on the square of the velocity, doubling the velocity of a vehicle makes its kinetic energy four times as large."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Kinetic Energy of a Fast Delivery",
+                      objective: "To calculate the kinetic energy of a cricket ball from its mass and velocity.",
+                      materials: ["Notebook and calculator"],
+                      steps: [
+                        "Note the mass of the cricket ball as 0.2 kg.",
+                        "Convert the velocity of 154.8 km h⁻¹ into metres per second by dividing by 3.6.",
+                        "Substitute the mass and velocity into K = ½mv².",
+                        "Compute the kinetic energy in joules.",
+                        "Predict what the kinetic energy would become if the same ball were bowled twice as fast."
+                      ],
+                      observation: "154.8 km h⁻¹ = 43 m s⁻¹, so K = ½ × 0.2 × 43² = 184.9 J. At twice the velocity the kinetic energy would be four times as large, since K depends on v²."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does the work-energy theorem state?",
+                      options: ["Work done = force × time", "Work done on an object = change in its energy", "Energy = mass × velocity", "Work done is always positive"],
+                      answer: 1,
+                      explanation: "Work done on an object appears as a change in its energy — the theorem also holds for systems of objects and for non-constant forces."
+                    },
+                    {
+                      question: "What is the formula for kinetic energy?",
+                      options: ["K = mgh", "K = ½mv²", "K = mv", "K = Fs"],
+                      answer: 1,
+                      explanation: "Starting from rest, the work done on an object equals ½mv², which is its kinetic energy."
+                    },
+                    {
+                      question: "If the velocity of a vehicle doubles, its kinetic energy becomes:",
+                      options: ["Twice as large", "Four times as large", "Half as large", "Unchanged"],
+                      answer: 1,
+                      explanation: "½m(2v)² = 4 × ½mv², because kinetic energy depends on the square of the velocity."
+                    },
+                    {
+                      question: "A 0.2 kg cricket ball is bowled at 43 m s⁻¹. What is its kinetic energy?",
+                      options: ["8.6 J", "184.9 J", "4.3 J", "369.8 J"],
+                      answer: 1,
+                      explanation: "K = ½ × 0.2 × 43² = 0.1 × 1849 = 184.9 J."
+                    },
+                    {
+                      question: "Which of these is a form of energy stored in fuels and food?",
+                      options: ["Chemical energy", "Sound energy", "Nuclear energy", "Light energy"],
+                      answer: 0,
+                      explanation: "Chemical energy is stored in the chemical bonds between atoms in fuels and food."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-7-3",
+                  title: "3. Potential Energy and its Conservation",
+                  lab: { type: "mechanical-energy-sim" },
+                  theory: {
+                    intro: "A pendulum released from a height climbs back to almost exactly that height on the far side. Something is being handed back and forth without ever being lost.",
+                    sections: [
+                      {
+                        heading: "Potential Energy",
+                        text: "When a stretched rubber band or a bent bow is released, it applies a force on the object in contact with it and sets it moving. That energy came from the work done to deform it. Energy can also be stored by changing the arrangement of objects in a system — separated unlike magnetic poles, separated electric charges, or a ball lifted away from the Earth all rush together and gain kinetic energy when released. The energy stored by an object as a result of its deformation, or in a system of objects due to their relative positions, is called potential energy."
+                      },
+                      {
+                        heading: "Gravitational Potential Energy",
+                        text: "Raising an object of mass m to a height h requires a force equal to mg, so the work done is W = mg × h = mgh. By the work-energy theorem this appears as the potential energy of the object: U = mgh, measured in joules. Dropping a heavy ball into a sand bed shows this directly — the depression is deepest when the ball is dropped from the greatest height, because the ball possesses more energy at greater height. This expression is valid only near the Earth's surface, where g can be treated as constant."
+                      },
+                      {
+                        heading: "Conservation of Mechanical Energy",
+                        text: "The sum of the kinetic and potential energy of an object is called its mechanical energy. For an object dropped from a height h, the potential energy at the top is mgh with zero kinetic energy, so the mechanical energy is mgh. After falling for a time t, the potential energy has fallen by ½mg²t² and the kinetic energy has risen by exactly the same amount, so the mechanical energy is still mgh. The lost potential energy is converted into kinetic energy while the mechanical energy remains constant — this is the conservation of mechanical energy, and it holds when no other external forces act."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "A Pendulum Trading Energy Back and Forth",
+                      objective: "To show that the mechanical energy of a swinging bob remains constant.",
+                      materials: ["A simple pendulum", "A white sheet of paper", "A wall and a support"],
+                      steps: [
+                        "Set up the simple pendulum and paste a sheet of paper on the wall behind it.",
+                        "Draw a horizontal line above the resting position of the bob.",
+                        "Take the bob to one side to a point P at the level of that line and release it.",
+                        "Watch the extreme points of the first couple of oscillations.",
+                        "Note whether the bob almost reaches the level of the line on the far side, and explain what happens to its energy at P, Q and R."
+                      ],
+                      observation: "At P the bob has potential energy mgh and no kinetic energy. At the lowest point Q the potential energy is zero and the energy is entirely kinetic. At R on the far side the bob stops and regains its potential energy, reaching almost the same height it started from — showing the mechanical energy stays constant. In real life the pendulum slowly stops because of friction at the support and air resistance."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is potential energy?",
+                      options: ["Energy due to motion", "Energy stored by deformation, or in a system of objects due to their relative positions", "Energy lost to friction", "Energy of vibrating molecules"],
+                      answer: 1,
+                      explanation: "A stretched band, a bent bow, separated magnets and a raised ball all store energy this way."
+                    },
+                    {
+                      question: "What is the formula for gravitational potential energy near the Earth's surface?",
+                      options: ["U = ½mv²", "U = mgh", "U = mg/h", "U = Fs/t"],
+                      answer: 1,
+                      explanation: "The work done in raising the object, mg × h, appears as its potential energy U = mgh."
+                    },
+                    {
+                      question: "A 0.2 kg ball is thrown 10 m above the ground. Taking g = 10 m s⁻², what is its potential energy at the top?",
+                      options: ["2 J", "20 J", "200 J", "0.2 J"],
+                      answer: 1,
+                      explanation: "U = mgh = 0.2 × 10 × 10 = 20 J."
+                    },
+                    {
+                      question: "What is mechanical energy?",
+                      options: ["Only kinetic energy", "Only potential energy", "The sum of kinetic and potential energy", "The difference between kinetic and potential energy"],
+                      answer: 2,
+                      explanation: "Mechanical energy is the sum of the kinetic and potential energy of an object."
+                    },
+                    {
+                      question: "As an object falls freely, what happens to its mechanical energy?",
+                      options: ["It increases", "It decreases", "It remains constant, with potential energy converting into kinetic energy", "It becomes zero at the ground"],
+                      answer: 2,
+                      explanation: "The potential energy lost equals the kinetic energy gained, so the mechanical energy stays constant — the conservation of mechanical energy."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-7-4",
+                  title: "4. Power and Simple Machines",
+                  lab: { type: "simple-machine-sim" },
+                  theory: {
+                    intro: "A ramp never reduces the work of getting a crate onto a platform — it just spreads that work over a longer push, which is the only thing that ever made a heavy job feel light.",
+                    sections: [
+                      {
+                        heading: "Power",
+                        text: "Running up a flight of stairs in one minute feels very different from walking up in five, even though the same work is done. Power is defined as the rate at which work is done: P = W ÷ t. The SI unit of power is the watt (W), where 1 W = 1 J s⁻¹. Doing more work in the same time, or the same work in less time, both require more power. One horsepower, a unit still used for engines and pumps, equals 746 W."
+                      },
+                      {
+                        heading: "Simple Machines and Mechanical Advantage",
+                        text: "The total work required for a task cannot be reduced, but it can be made easier by changing the magnitude or direction of the force applied. Devices that do this are called simple machines. The force we apply is the effort and the force to be overcome is the load, and the mechanical advantage is the ratio of the load to the effort. A fixed pulley does not reduce the magnitude of the force required — it only changes its direction, making it easier to pull downwards than to lift upwards — so its mechanical advantage is 1. A system of pulleys with a movable pulley can have a mechanical advantage greater than 1."
+                      },
+                      {
+                        heading: "Inclined Planes and Levers",
+                        text: "Pushing an object of weight mg up a smooth inclined plane of length L to a height h requires F′ × L = mgh, so the mechanical advantage is mg/F′ = L/h. Since L is larger than h, the effort is less than the weight — and making the plane longer and shallower reduces the effort further, at the cost of a longer push. A lever is a rigid bar that rotates about a fixed point called the fulcrum, with the load and the effort on either side; the distances from the fulcrum are the load arm and the effort arm. The end with the smaller force F₁ moves a larger distance d₁, so F₁ × d₁ = F₂ × d₂. Increasing the effort arm lets a small effort raise a large load — but a lever reduces the force required, not the total work done."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "The Mechanical Advantage of a Ramp",
+                      objective: "To find the mechanical advantage of a ramp used to raise an object over a step.",
+                      materials: ["Notebook and calculator", "The ramp of Fig. 7.29"],
+                      steps: [
+                        "Note that the step height AB is 30 cm and the ramp's horizontal width BC is 40 cm.",
+                        "Use the right-angled triangle property to find the ramp length AC.",
+                        "Apply mechanical advantage = L ÷ h.",
+                        "Compute the value and say whether it is greater or less than 1.",
+                        "Explain what happens to the effort if the ramp is made longer for the same step height."
+                      ],
+                      observation: "With AB = 30 cm and BC = 40 cm, the ramp length AC is 50 cm. Mechanical advantage = 50 ÷ 30 = 1.67. Since it is greater than 1, the effort needed is less than the object's weight — and making the ramp longer raises the mechanical advantage further, though the object must then be pushed over a greater distance."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How is power defined?",
+                      options: ["Work × time", "The rate at which work is done, P = W ÷ t", "Force × displacement", "Energy ÷ mass"],
+                      answer: 1,
+                      explanation: "Power is the work done divided by the time taken, measured in watts, where 1 W = 1 J s⁻¹."
+                    },
+                    {
+                      question: "A weightlifter lifts 75 kg by 2 m in 5 s, with g = 10 m s⁻². What power does she need?",
+                      options: ["150 W", "300 W", "750 W", "1500 W"],
+                      answer: 1,
+                      explanation: "Work = mgh = 75 × 10 × 2 = 1500 J, so power = 1500 ÷ 5 = 300 W."
+                    },
+                    {
+                      question: "What is the mechanical advantage of a fixed pulley?",
+                      options: ["Always greater than 1", "1, because it only changes the direction of the effort", "Less than 1", "It depends on the load"],
+                      answer: 1,
+                      explanation: "A fixed pulley does not reduce the magnitude of the force required — the effort and load are equal, so the mechanical advantage is 1. It provides convenience by changing the direction of the effort."
+                    },
+                    {
+                      question: "What is the mechanical advantage of an inclined plane of length L raising a load to height h?",
+                      options: ["h ÷ L", "L ÷ h", "L × h", "L + h"],
+                      answer: 1,
+                      explanation: "From F′ × L = mgh, the mechanical advantage is mg/F′ = L/h — and since L is larger than h, it is greater than 1."
+                    },
+                    {
+                      question: "For a lever, which relation connects the two ends?",
+                      options: ["F₁ + d₁ = F₂ + d₂", "F₁ × d₁ = F₂ × d₂", "F₁ ÷ d₁ = F₂ × d₂", "F₁ = F₂"],
+                      answer: 1,
+                      explanation: "The work done on one end is transferred to the other, so F₁ × d₁ = F₂ × d₂ — a lever reduces the force required but not the total work done."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

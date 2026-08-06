@@ -6087,6 +6087,99 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const workDoneLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="work-done-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Compare the force and the displacement to find the work done.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Situation</h3>
+            <select id="sel-work-done" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="wheelchair" selected>Pushing a wheelchair forward</option>
+              <option value="goalkeeper">Goalkeeper stopping a ball</option>
+              <option value="wall">Pushing a rigid wall</option>
+              <option value="box">Carrying a box while walking</option>
+              <option value="bag">Lifting a 5 kg wheat bag by 3 m</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Work Done</h3>
+            <div id="work-done-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a situation above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const kineticEnergyLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="kinetic-energy-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 See how kinetic energy grows with the square of the velocity.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Moving Object</h3>
+            <select id="sel-kinetic-energy" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="ball" selected>Cricket ball: 0.2 kg at 43 m s⁻¹</option>
+              <option value="ball2">The same ball bowled twice as fast</option>
+              <option value="cyclist">Cyclist: 60 kg at 5 m s⁻¹</option>
+              <option value="car">Car: 1000 kg at 20 m s⁻¹</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Kinetic Energy</h3>
+            <div id="kinetic-energy-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an object above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const mechanicalEnergyLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="mechanical-energy-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Follow a falling ball and watch potential energy become kinetic.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Position of the Ball</h3>
+            <select id="sel-mechanical-energy" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="20" selected>At the top, h = 20 m</option>
+              <option value="15">Fallen to h = 15 m</option>
+              <option value="10">Halfway down, h = 10 m</option>
+              <option value="0">Just before the ground, h = 0 m</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Energy Account</h3>
+            <div id="mechanical-energy-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a position above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const simpleMachineLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="simple-machine-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Work out the mechanical advantage of each simple machine.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Machine</h3>
+            <select id="sel-simple-machine" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="pulley" selected>Fixed pulley</option>
+              <option value="ramp">Ramp: 50 cm long, 30 cm high</option>
+              <option value="ramp2">A longer, shallower ramp</option>
+              <option value="lever">Lever</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Mechanical Advantage</h3>
+            <div id="simple-machine-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a machine above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const netForceLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -8551,6 +8644,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'kinematic-equation-sim') {
               labHtml = kinematicEquationLabHtml;
               labDesc = 'Apply each kinematic equation to the same motion and see them agree.';
+            } else if (topicObj.lab.type === 'work-done-sim') {
+              labHtml = workDoneLabHtml;
+              labDesc = 'Decide when a force does positive, negative or zero work.';
+            } else if (topicObj.lab.type === 'kinetic-energy-sim') {
+              labHtml = kineticEnergyLabHtml;
+              labDesc = 'Calculate kinetic energy and see why it depends on v².';
+            } else if (topicObj.lab.type === 'mechanical-energy-sim') {
+              labHtml = mechanicalEnergyLabHtml;
+              labDesc = 'Track potential and kinetic energy as a ball falls, and see the total stay constant.';
+            } else if (topicObj.lab.type === 'simple-machine-sim') {
+              labHtml = simpleMachineLabHtml;
+              labDesc = 'Compare the mechanical advantage of a pulley, a ramp and a lever.';
             } else if (topicObj.lab.type === 'net-force-sim') {
               labHtml = netForceLabHtml;
               labDesc = 'Combine two forces on a block and read off the net force.';
@@ -9302,6 +9407,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initMotionGraphLab();
         } else if (topicObj.lab.type === 'kinematic-equation-sim') {
           initKinematicEquationLab();
+        } else if (topicObj.lab.type === 'work-done-sim') {
+          initWorkDoneLab();
+        } else if (topicObj.lab.type === 'kinetic-energy-sim') {
+          initKineticEnergyLab();
+        } else if (topicObj.lab.type === 'mechanical-energy-sim') {
+          initMechanicalEnergyLab();
+        } else if (topicObj.lab.type === 'simple-machine-sim') {
+          initSimpleMachineLab();
         } else if (topicObj.lab.type === 'net-force-sim') {
           initNetForceLab();
         } else if (topicObj.lab.type === 'friction-nature-sim') {
@@ -29586,6 +29699,482 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       sel.addEventListener('change', draw);
       draw();
+    }
+
+    function initWorkDoneLab() {
+      const canvas = document.getElementById('work-done-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-work-done');
+      const obs = document.getElementById('work-done-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      // fdir / sdir are unit directions: 1 right, -1 left, -2 up, 2 down.
+      const CASES = {
+        wheelchair: {
+          title: 'Pushing a wheelchair forward', F: 100, s: 5, fdir: 1, sdir: 1,
+          verdict: 'positive', why: 'The displacement is in the same direction as the applied force.'
+        },
+        goalkeeper: {
+          title: 'A goalkeeper stopping a ball', F: 200, s: 0.15, fdir: 1, sdir: -1,
+          verdict: 'negative', why: 'The goalkeeper applies a force opposite to the direction of the ball’s motion, so the displacement is taken as negative.'
+        },
+        wall: {
+          title: 'Pushing a rigid wall', F: 300, s: 0, fdir: 1, sdir: 0,
+          verdict: 'zero', why: 'There is no displacement of the wall, so no work is done on it however hard you push. You feel tired because your muscles use up your body’s internal energy.'
+        },
+        box: {
+          title: 'Carrying a box while walking', F: 40, s: 4, fdir: -2, sdir: 1,
+          verdict: 'zero', why: 'The upward force and the horizontal displacement are perpendicular, so there is no displacement in the direction of the force.'
+        },
+        bag: {
+          title: 'Lifting a 5 kg wheat bag by 3 m', F: 49, s: 3, fdir: -2, sdir: -2,
+          verdict: 'positive', why: 'The applied force mg = 5 × 9.8 = 49 N acts upwards and the bag is displaced upwards through 3 m.'
+        }
+      };
+
+      function arrow(x, y, dir, len, colour, label, labelDX) {
+        const dx = dir === 1 ? 1 : dir === -1 ? -1 : 0;
+        const dy = dir === 2 ? 1 : dir === -2 ? -1 : 0;
+        const ex = x + dx * len, ey = y + dy * len;
+        ctx.strokeStyle = colour; ctx.fillStyle = colour; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(ex, ey); ctx.stroke();
+        const ang = Math.atan2(dy, dx);
+        ctx.beginPath();
+        ctx.moveTo(ex, ey);
+        ctx.lineTo(ex - 13 * Math.cos(ang - 0.4), ey - 13 * Math.sin(ang - 0.4));
+        ctx.lineTo(ex - 13 * Math.cos(ang + 0.4), ey - 13 * Math.sin(ang + 0.4));
+        ctx.closePath(); ctx.fill();
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, (x + ex) / 2 + (dx === 0 ? (labelDX || 62) : 0), (y + ey) / 2 + (dx === 0 ? 0 : -14));
+      }
+
+      function update() {
+        const c = CASES[sel.value];
+        const Wd = c.verdict === 'zero' ? 0 : c.F * c.s * (c.sdir === c.fdir ? 1 : -1);
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(c.title, W / 2, 26);
+
+        const bx = W / 2, by = 150;
+        ctx.fillStyle = '#4a5468';
+        ctx.fillRect(bx - 34, by - 26, 68, 52);
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(bx - 34, by - 26, 68, 52);
+        if (sel.value === 'wall') {
+          // A wall instead of a movable object.
+          ctx.fillStyle = '#6b6b6b';
+          ctx.fillRect(bx + 40, 70, 26, 150);
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText('rigid wall', bx + 74, 150);
+        }
+
+        // Horizontal forces start at the side of the block, vertical ones at its top.
+        if (c.fdir === -2) arrow(bx, by - 28, -2, 76, '#5aa9e6', 'force ' + c.F + ' N', 66);
+        else arrow(bx + (c.fdir === 1 ? 34 : -34), by, c.fdir, 90, '#5aa9e6', 'force ' + c.F + ' N');
+
+        if (c.sdir === 0) {
+          ctx.fillStyle = '#e08a5a';
+          ctx.font = 'bold 13px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('displacement = 0', bx, by + 76);
+        } else if (c.sdir === -2) {
+          arrow(bx - 110, by + 30, -2, 76, '#e08a5a', 'displacement ' + c.s + ' m', -68);
+        } else {
+          arrow(bx, by + 62, c.sdir, 90, '#e08a5a', 'displacement ' + c.s + ' m');
+        }
+
+        const colour = Wd > 0 ? '#4caf82' : Wd < 0 ? '#e0743a' : '#9aa0a6';
+        ctx.fillStyle = text;
+        ctx.font = '14px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('W = force × displacement in the direction of the force', W / 2, 250);
+        ctx.fillStyle = colour;
+        ctx.font = 'bold 20px sans-serif';
+        ctx.fillText(c.verdict === 'zero' ? 'W = 0 J' : 'W = ' + c.F + ' N × ' + (Wd < 0 ? '(−' + c.s + ' m)' : c.s + ' m') + ' = ' + Wd + ' J', W / 2, 284);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('The work done is ' + c.verdict + '.', W / 2, 310);
+
+        obs.innerHTML = '<strong>' + c.title + '</strong><br>' +
+          'Force = ' + c.F + ' N, displacement = ' + c.s + ' m<br>' +
+          'Work done = <strong>' + Wd + ' J</strong> — ' + c.verdict + '.<br><br>' + c.why;
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initKineticEnergyLab() {
+      const canvas = document.getElementById('kinetic-energy-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-kinetic-energy');
+      const obs = document.getElementById('kinetic-energy-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const OBJECTS = {
+        ball: { name: 'Cricket ball', m: 0.2, v: 43, note: 'One of the fastest deliveries bowled by an Indian cricketer — 154.8 km h⁻¹ is 43 m s⁻¹.' },
+        ball2: { name: 'The same ball, twice as fast', m: 0.2, v: 86, note: 'Doubling the velocity makes the kinetic energy four times as large, because K depends on v².' },
+        cyclist: { name: 'Cyclist', m: 60, v: 5, note: 'A far heavier object moving slowly can still carry a comparable kinetic energy.' },
+        car: { name: 'Car', m: 1000, v: 20, note: '20 m s⁻¹ is 72 km h⁻¹ — the speed reached by the car in Example 7.11.' }
+      };
+
+      function update() {
+        const o = OBJECTS[sel.value];
+        const K = 0.5 * o.m * o.v * o.v;
+        const vmax = o.v * 1.3;
+        const Kmax = 0.5 * o.m * vmax * vmax;
+        const ox = 80, oy = 250, pw = 420, ph = 175;
+        const px = v => ox + (v / vmax) * pw;
+        const py = k => oy - (k / Kmax) * ph;
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(o.name + ' — mass ' + o.m + ' kg', W / 2, 24);
+
+        ctx.strokeStyle = text;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(ox, oy - ph); ctx.lineTo(ox, oy); ctx.lineTo(ox + pw, oy);
+        ctx.stroke();
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('Velocity (m s⁻¹)', ox + pw / 2, oy + 34);
+        ctx.save();
+        ctx.translate(24, oy - ph / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('Kinetic energy (J)', 0, 0);
+        ctx.restore();
+        ctx.fillStyle = muted;
+        ctx.font = '11px sans-serif';
+        for (let i = 0; i <= 4; i++) {
+          const v = (vmax / 4) * i;
+          ctx.textAlign = 'center';
+          ctx.fillText(Math.round(v), px(v), oy + 15);
+          const k = (Kmax / 4) * i;
+          ctx.textAlign = 'right';
+          ctx.fillText(k >= 1000 ? Math.round(k / 1000) + 'k' : Math.round(k), ox - 6, py(k) + 4);
+        }
+
+        // K = 1/2 m v^2 is a parabola through the origin.
+        ctx.strokeStyle = '#4caf82';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        for (let i = 0; i <= 100; i++) {
+          const v = (vmax / 100) * i;
+          const k = 0.5 * o.m * v * v;
+          if (i === 0) ctx.moveTo(px(v), py(k)); else ctx.lineTo(px(v), py(k));
+        }
+        ctx.stroke();
+
+        ctx.setLineDash([5, 4]);
+        ctx.strokeStyle = '#e08a5a';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(px(o.v), oy); ctx.lineTo(px(o.v), py(K)); ctx.lineTo(ox, py(K));
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#e08a5a';
+        ctx.beginPath(); ctx.arc(px(o.v), py(K), 5, 0, Math.PI * 2); ctx.fill();
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(o.v + ' m s⁻¹  →  ' + (Math.round(K * 10) / 10) + ' J', ox + 12, 52);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('K = ½mv² — doubling v makes K four times as large.', ox + 12, 72);
+
+        obs.innerHTML = '<strong>' + o.name + '</strong><br>' +
+          'm = ' + o.m + ' kg, v = ' + o.v + ' m s⁻¹<br>' +
+          'K = ½mv² = ½ × ' + o.m + ' × ' + o.v + '² = <strong>' + (Math.round(K * 10) / 10) + ' J</strong><br><br>' + o.note;
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initMechanicalEnergyLab() {
+      const canvas = document.getElementById('mechanical-energy-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-mechanical-energy');
+      const obs = document.getElementById('mechanical-energy-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const m = 2, g = 10, H0 = 20;      // a 2 kg ball dropped from 20 m, taking g = 10 m s⁻²
+      const TOTAL = m * g * H0;          // 400 J throughout the fall
+
+      function update() {
+        const h = parseFloat(sel.value);
+        const U = m * g * h;
+        const K = TOTAL - U;
+        const v = Math.sqrt(2 * g * (H0 - h));
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('A 2 kg ball dropped from 20 m (g = 10 m s⁻²)', W / 2, 24);
+
+        // Vertical track with the ball at its current height.
+        const tx = 110, top = 60, bottom = 280;
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(tx, top); ctx.lineTo(tx, bottom); ctx.lineTo(tx + 70, bottom);
+        ctx.stroke();
+        const by = bottom - (h / H0) * (bottom - top);
+        ctx.strokeStyle = muted;
+        ctx.setLineDash([4, 4]);
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(tx, by); ctx.lineTo(tx + 70, by); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#d0433a';
+        ctx.beginPath(); ctx.arc(tx + 36, by, 14, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText('h = ' + h + ' m', tx - 8, by + 4);
+        ctx.fillText('ground', tx - 8, bottom + 4);
+
+        // Stacked energy bars, all against the same 400 J scale.
+        const bx = 250, bw = 90, bTop = 70, bH = 200;
+        function bar(x, value, colour, label) {
+          const hh = (value / TOTAL) * bH;
+          ctx.fillStyle = '#2a3550';
+          ctx.fillRect(x, bTop, bw, bH);
+          ctx.fillStyle = colour;
+          ctx.fillRect(x, bTop + bH - hh, bw, hh);
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(x, bTop, bw, bH);
+          ctx.fillStyle = text;
+          ctx.font = 'bold 13px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(label, x + bw / 2, bTop - 10);
+          ctx.fillText(Math.round(value) + ' J', x + bw / 2, bTop + bH + 20);
+        }
+        bar(bx, U, '#5aa9e6', 'Potential');
+        bar(bx + 110, K, '#e08a5a', 'Kinetic');
+        bar(bx + 220, TOTAL, '#4caf82', 'Total');
+
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('The total stays at ' + TOTAL + ' J at every height — mechanical energy is conserved.', W / 2, 318);
+
+        obs.innerHTML = '<strong>At h = ' + h + ' m</strong><br>' +
+          'U = mgh = 2 × 10 × ' + h + ' = <strong>' + U + ' J</strong><br>' +
+          'K = total − U = ' + TOTAL + ' − ' + U + ' = <strong>' + K + ' J</strong><br>' +
+          'v = √(2g × fallen height) = <strong>' + (Math.round(v * 10) / 10) + ' m s⁻¹</strong><br><br>' +
+          (h === H0
+            ? 'Mechanical energy = U + K = ' + TOTAL + ' J, all of it potential. Follow the ball down and watch this total stay the same.'
+            : 'Mechanical energy = U + K = ' + TOTAL + ' J, the same as at the top. The potential energy lost has become exactly that much kinetic energy.');
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initSimpleMachineLab() {
+      const canvas = document.getElementById('simple-machine-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-simple-machine');
+      const obs = document.getElementById('simple-machine-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      function title(t) {
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(t, W / 2, 24);
+      }
+
+      function drawPulley() {
+        title('A fixed pulley — load 200 N, effort 200 N');
+        const cx = 300, cy = 90, r = 34;
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx - 60, 50); ctx.lineTo(cx + 60, 50); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx, 50); ctx.lineTo(cx, cy - r); ctx.stroke();
+        ctx.fillStyle = '#4a5468';
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+        // Rope over the pulley, load on one side and effort on the other.
+        ctx.strokeStyle = '#c9b48a';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(cx - r, cy); ctx.lineTo(cx - r, 220);
+        ctx.moveTo(cx + r, cy); ctx.lineTo(cx + r, 250);
+        ctx.stroke();
+        ctx.fillStyle = '#4a5468';
+        ctx.fillRect(cx - r - 26, 220, 52, 40);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('200 N', cx - r, 244);
+        ctx.fillStyle = text;
+        ctx.fillText('load', cx - r, 282);
+
+        ctx.strokeStyle = '#e08a5a'; ctx.fillStyle = '#e08a5a';
+        ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(cx + r, 210); ctx.lineTo(cx + r, 268); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(cx + r, 274); ctx.lineTo(cx + r - 7, 262); ctx.lineTo(cx + r + 7, 262);
+        ctx.closePath(); ctx.fill();
+        ctx.font = 'bold 12px sans-serif';
+        ctx.fillText('effort 200 N', cx + r + 54, 244);
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.fillText('Mechanical advantage = 200 ÷ 200 = 1', W / 2, 312);
+      }
+
+      function drawRamp(L, h) {
+        const load = 300;
+        const effort = Math.round((load * h) / L);
+        title('A ramp ' + L + ' cm long raising a load over a step ' + h + ' cm high');
+        // Ramp triangle, drawn to scale on its own base.
+        const base = Math.sqrt(L * L - h * h);
+        const scale = Math.min(360 / base, 130 / h);
+        const x0 = 130, y0 = 250;
+        const x1 = x0 + base * scale, y1 = y0 - h * scale;
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(x0, y0); ctx.lineTo(x1, y0); ctx.lineTo(x1, y1); ctx.closePath();
+        ctx.stroke();
+        ctx.fillStyle = 'rgba(90,169,230,0.18)';
+        ctx.fill();
+        // The crate part way up the slope.
+        const t = 0.55;
+        const cxp = x0 + (x1 - x0) * t, cyp = y0 + (y1 - y0) * t;
+        ctx.fillStyle = '#a97c50';
+        ctx.fillRect(cxp - 18, cyp - 26, 36, 26);
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('L = ' + L + ' cm', (x0 + x1) / 2, (y0 + y1) / 2 - 34);
+        ctx.textAlign = 'left';
+        ctx.fillText('h = ' + h + ' cm', x1 + 10, (y0 + y1) / 2);
+        ctx.fillText('load = ' + load + ' N', x1 + 10, (y0 + y1) / 2 + 20);
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('MA = L ÷ h = ' + L + ' ÷ ' + h + ' = ' + (Math.round((L / h) * 100) / 100), W / 2, 292);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('Effort needed = load ÷ MA = ' + effort + ' N, pushed over a longer distance.', W / 2, 314);
+        return { L: L, h: h, load: load, effort: effort };
+      }
+
+      function drawLever() {
+        const F2 = 400, d2 = 15, d1 = 60;
+        const F1 = (F2 * d2) / d1;
+        title('A lever — load arm 15 cm, effort arm 60 cm');
+        const fx = 250, fy = 190;
+        // Fulcrum.
+        ctx.fillStyle = '#8f9bb3';
+        ctx.beginPath();
+        ctx.moveTo(fx - 20, fy + 34); ctx.lineTo(fx + 20, fy + 34); ctx.lineTo(fx, fy + 4);
+        ctx.closePath(); ctx.fill();
+        // Tilted bar.
+        ctx.save();
+        ctx.translate(fx, fy);
+        ctx.rotate(-0.13);
+        ctx.fillStyle = '#c9b48a';
+        ctx.fillRect(-90, -7, 340, 14);
+        ctx.restore();
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('fulcrum', fx, fy + 52);
+        // Load close to the fulcrum, effort far away.
+        ctx.fillStyle = '#6b6b6b';
+        ctx.beginPath(); ctx.arc(fx - 70, fy - 24, 22, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = text;
+        ctx.fillText('load ' + F2 + ' N', fx - 70, fy - 58);
+        ctx.fillText('d₂ = ' + d2 + ' cm', fx - 46, fy + 74);
+        ctx.strokeStyle = '#e08a5a'; ctx.fillStyle = '#e08a5a';
+        ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(fx + 230, fy - 76); ctx.lineTo(fx + 230, fy - 24); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(fx + 230, fy - 16); ctx.lineTo(fx + 223, fy - 30); ctx.lineTo(fx + 237, fy - 30);
+        ctx.closePath(); ctx.fill();
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('effort ' + F1 + ' N', fx + 230, fy - 88);
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('d₁ = ' + d1 + ' cm', fx + 130, fy + 74);
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 15px sans-serif';
+        ctx.fillText('F₁ × d₁ = ' + F1 + ' × ' + d1 + ' = ' + (F1 * d1) + ' = ' + F2 + ' × ' + d2 + ' = F₂ × d₂', W / 2, 296);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('Mechanical advantage = ' + F2 + ' ÷ ' + F1 + ' = ' + (F2 / F1), W / 2, 318);
+        return { F1: F1, F2: F2, d1: d1, d2: d2 };
+      }
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        if (v === 'pulley') {
+          drawPulley();
+          obs.innerHTML = '<strong>Fixed pulley</strong><br>' +
+            'load = 200 N, effort = 200 N<br>' +
+            'Mechanical advantage = 200 ÷ 200 = <strong>1</strong><br><br>' +
+            'A fixed pulley does not reduce the magnitude of the force required — it only changes its direction. It is easier to pull downwards than to lift a load upwards, so the pulley provides convenience rather than mechanical advantage.';
+        } else if (v === 'ramp' || v === 'ramp2') {
+          const r = v === 'ramp' ? drawRamp(50, 30) : drawRamp(100, 30);
+          obs.innerHTML = '<strong>Inclined plane</strong><br>' +
+            'L = ' + r.L + ' cm, h = ' + r.h + ' cm, load = ' + r.load + ' N<br>' +
+            'MA = L ÷ h = ' + r.L + ' ÷ ' + r.h + ' = <strong>' + (Math.round((r.L / r.h) * 100) / 100) + '</strong><br>' +
+            'Effort = load ÷ MA = <strong>' + r.effort + ' N</strong><br><br>' +
+            'Since L is larger than h, the effort is less than the weight. Making the plane longer and shallower reduces the effort further — but the object must be pushed over a greater distance, so the total work stays the same.';
+        } else {
+          const l = drawLever();
+          obs.innerHTML = '<strong>Lever</strong><br>' +
+            'load F₂ = ' + l.F2 + ' N at d₂ = ' + l.d2 + ' cm, effort arm d₁ = ' + l.d1 + ' cm<br>' +
+            'F₁ × d₁ = F₂ × d₂ gives F₁ = (' + l.F2 + ' × ' + l.d2 + ') ÷ ' + l.d1 + ' = <strong>' + l.F1 + ' N</strong><br>' +
+            'Mechanical advantage = ' + l.F2 + ' ÷ ' + l.F1 + ' = <strong>' + (l.F2 / l.F1) + '</strong><br><br>' +
+            'The effort end moves a larger distance while applying a smaller force. A lever reduces the force required to perform a task, but not the total work done.';
+        }
+      }
+
+      sel.addEventListener('change', update);
+      update();
     }
 
     function initNetForceLab() {
