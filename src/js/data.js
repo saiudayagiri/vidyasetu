@@ -20346,6 +20346,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9s-4",
+              title: "Describing Motion Around Us",
+              topics: [
+                {
+                  id: "9s-4-1",
+                  title: "1. Distance Travelled and Displacement",
+                  lab: { type: "distance-displacement-sim" },
+                  theory: {
+                    intro: "An athlete runs 160 metres up and back down a track — yet ends up only 40 metres from where she started. Both numbers are correct; they just measure different things.",
+                    sections: [
+                      {
+                        heading: "The Athlete on the Track",
+                        text: "Suppose an athlete starts running from point O at t = 0 s, reaches point B at t = 4 s, then reaches point A at t = 10 s, then runs back along the same path to point B, arriving at t = 16 s. The total distance travelled is OA + AB = 100 m + 60 m = 160 m. But the distance between her starting and stopping positions is OB = 40 m — quite different from the total distance travelled."
+                      },
+                      {
+                        heading: "Defining Displacement",
+                        text: "Displacement is the net change in the position of an object between two given instants of time. A complete description of displacement requires specifying both a direction and its numerical value with units. That numerical value is called its magnitude — the magnitude of displacement is the distance between the object's positions at the two instants, and the direction runs from the first position toward the second. To describe total distance travelled, only the numerical value is required, not the direction. The SI unit for both is the metre."
+                      },
+                      {
+                        heading: "Scalars and Vectors",
+                        text: "Physical quantities described completely by their numerical value alone are called scalars; those which require specifying both direction and magnitude are called vectors. So between t = 0 s and t = 16 s, the athlete's total distance travelled is 160 m while her displacement is 40 m in the positive direction — the two are not equal."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tracking an Athlete's Distance and Displacement",
+                      objective: "To compute both total distance travelled and displacement for a there-and-back journey and see why they differ.",
+                      materials: ["Notebook and pen", "A ruler to draw the track"],
+                      steps: [
+                        "Draw a straight line marked 0 m at O, 40 m at B and 100 m at A.",
+                        "Trace the athlete's path: O to A between t = 0 s and t = 10 s.",
+                        "Then trace A back to B between t = 10 s and t = 16 s.",
+                        "Add up every stretch actually covered to find the total distance travelled.",
+                        "Measure the straight-line gap between the start and stop positions to find the displacement, and state its direction."
+                      ],
+                      observation: "The athlete covers OA = 100 m then AB = 60 m, giving a total distance travelled of 160 m. Her start is at O and her stop at B, so the displacement is only 40 m in the positive direction — showing that a there-and-back journey makes distance and displacement disagree."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is displacement?",
+                      options: ["The total path length covered", "The net change in the position of an object between two instants of time", "The speed of an object", "The time taken for a journey"],
+                      answer: 1,
+                      explanation: "Displacement is the net change in position between two given instants, requiring both a magnitude and a direction to describe it fully."
+                    },
+                    {
+                      question: "The athlete runs O to A (100 m) then back to B (60 m). What is the total distance travelled?",
+                      options: ["40 m", "100 m", "160 m", "60 m"],
+                      answer: 2,
+                      explanation: "Total distance travelled adds up every stretch actually covered: OA + AB = 100 m + 60 m = 160 m."
+                    },
+                    {
+                      question: "For that same journey, what is the athlete's displacement?",
+                      options: ["160 m", "40 m in the positive direction", "100 m", "Zero"],
+                      answer: 1,
+                      explanation: "She starts at O and stops at B, so the net change in position is OB = 40 m in the positive direction."
+                    },
+                    {
+                      question: "What is the difference between a scalar and a vector?",
+                      options: ["Scalars need direction; vectors do not", "Scalars are described by numerical value alone; vectors require both magnitude and direction", "Vectors have no units", "There is no difference"],
+                      answer: 1,
+                      explanation: "Physical quantities specified completely by their numerical value are scalars, while those requiring both a direction and a magnitude are vectors."
+                    },
+                    {
+                      question: "What is the SI unit for both distance travelled and displacement?",
+                      options: ["The metre", "The second", "The metre per second", "The kilogram"],
+                      answer: 0,
+                      explanation: "Both quantities are measured in metres — they differ in whether direction must be specified, not in their unit."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-4-2",
+                  title: "2. Average Speed, Velocity and Acceleration",
+                  lab: { type: "speed-velocity-sim" },
+                  theory: {
+                    intro: "Speed tells you how fast; velocity tells you how fast and which way; acceleration tells you how quickly that velocity itself is changing.",
+                    sections: [
+                      {
+                        heading: "Average Speed",
+                        text: "The average speed of an object is the total distance travelled divided by the time interval during which that distance is covered. Since distance travelled has no direction but only a numerical value, average speed also has no direction. If an object moving in a straight line travels equal distances in equal intervals of time, it is in uniform motion and moves at constant speed; if it travels unequal distances in equal intervals, it is in non-uniform motion, moving with increasing or decreasing speed or a combination of both."
+                      },
+                      {
+                        heading: "Average Velocity",
+                        text: "Average velocity describes how fast the position of an object is changing and in which direction. The average velocity of an object in a time interval is the change in position — the displacement — divided by that time interval: average velocity = displacement ÷ time interval, or v_av = s ÷ t. To express average velocity you must specify both its magnitude and its direction."
+                      },
+                      {
+                        heading: "Average Acceleration",
+                        text: "When a vehicle suddenly starts from rest, or suddenly stops, you feel a jolt — the feeling of a change in velocity. The average acceleration of an object over a time interval is the change in velocity divided by that time interval: average acceleration = (final velocity − initial velocity) ÷ time interval, or a = (v − u) ÷ (t₂ − t₁). Its SI unit is m/s². For motion in a straight line, if the magnitude of velocity is increasing, the average acceleration is in the direction of the velocity; if the magnitude is decreasing, the acceleration is opposite to the velocity."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Computing Speed, Velocity and Acceleration",
+                      objective: "To calculate average speed, average velocity and average acceleration for the same journey and compare them.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "Using the athlete's run — 160 m of path in 16 s — compute her average speed.",
+                        "Using her displacement of 40 m over the same 16 s, compute her average velocity and state its direction.",
+                        "Compare the two results and explain why they differ.",
+                        "For a car whose velocity rises from u = 5 m/s to v = 25 m/s in 4 s, compute the average acceleration.",
+                        "State whether the acceleration points along the velocity or against it, and why."
+                      ],
+                      observation: "Average speed is 160 ÷ 16 = 10 m/s, while average velocity is only 40 ÷ 16 = 2.5 m/s in the positive direction — they differ because one uses path length and the other uses net position change. For the car, a = (25 − 5) ÷ 4 = 5 m/s², directed along the velocity because the speed is increasing."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How is average speed calculated?",
+                      options: ["Displacement divided by time interval", "Total distance travelled divided by the time interval", "Change in velocity divided by time", "Distance multiplied by time"],
+                      answer: 1,
+                      explanation: "Average speed = total distance travelled ÷ time interval, and since distance has no direction, average speed has none either."
+                    },
+                    {
+                      question: "How is average velocity calculated?",
+                      options: ["Total distance ÷ time interval", "Displacement ÷ time interval", "Final velocity − initial velocity", "Acceleration × time"],
+                      answer: 1,
+                      explanation: "Average velocity is the change in position (displacement) divided by the time interval, written v_av = s ÷ t, and it requires a direction."
+                    },
+                    {
+                      question: "An object travels equal distances in equal intervals of time. What kind of motion is this?",
+                      options: ["Non-uniform motion", "Uniform motion at constant speed", "Accelerated motion", "Circular motion"],
+                      answer: 1,
+                      explanation: "Travelling equal distances in equal intervals of time for all choices of interval means the object is in uniform motion in a straight line, moving at constant speed."
+                    },
+                    {
+                      question: "A car's velocity changes from 5 m/s to 25 m/s in 4 s. What is the average acceleration?",
+                      options: ["5 m/s²", "20 m/s²", "7.5 m/s²", "80 m/s²"],
+                      answer: 0,
+                      explanation: "a = (v − u) ÷ t = (25 − 5) ÷ 4 = 20 ÷ 4 = 5 m/s²."
+                    },
+                    {
+                      question: "When is average acceleration directed opposite to the velocity?",
+                      options: ["When the magnitude of velocity is increasing", "When the magnitude of velocity is decreasing", "Always", "Never"],
+                      answer: 1,
+                      explanation: "For straight-line motion, acceleration points along the velocity when speed is increasing, and opposite to the velocity when speed is decreasing."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-4-3",
+                  title: "3. Motion Graphs",
+                  lab: { type: "motion-graph-sim" },
+                  theory: {
+                    intro: "Draw motion on a graph and the numbers turn into shapes — a slope becomes a speed, a flat line becomes standing still, and an area becomes a distance.",
+                    sections: [
+                      {
+                        heading: "Position-Time Graphs",
+                        text: "A position-time graph plots an object's position against time. For an object in uniform motion, the graph is a straight line, and its slope gives the velocity — a steeper line means a greater speed. A horizontal line means the position is not changing, so the object is at rest. For non-uniform motion the position-time graph is curved rather than straight."
+                      },
+                      {
+                        heading: "Velocity-Time Graphs",
+                        text: "A velocity-time graph plots velocity against time. Its slope gives the acceleration: a straight sloping line indicates constant acceleration, while a horizontal line means the velocity is unchanging, so the acceleration is zero and the motion is uniform."
+                      },
+                      {
+                        heading: "Reading a Graph of Constant Acceleration",
+                        text: "When an object starts with an initial velocity u that is not zero and accelerates constantly, the velocity-time graph is a straight line beginning at height u on the velocity axis and rising to v at time t. The graph being a straight line indicates that the velocity changes with constant acceleration, and the slope of that line gives the acceleration."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Reading Velocity from a Position-Time Graph",
+                      objective: "To find velocity from the slope of a position-time graph and identify periods of rest.",
+                      materials: ["Graph paper", "Ruler", "Pencil"],
+                      steps: [
+                        "Plot a position-time graph for an object that moves steadily from 0 m to 40 m in 4 s.",
+                        "Extend the graph with a horizontal segment from 4 s to 8 s at 40 m.",
+                        "Compute the slope of the first segment to find the velocity during that stretch.",
+                        "Compute the slope of the horizontal segment.",
+                        "State what a zero slope tells you about the object's motion."
+                      ],
+                      observation: "The first segment rises 40 m over 4 s, so its slope — and therefore the velocity — is 10 m/s. The horizontal segment has zero slope, meaning the position is not changing at all, so the object is at rest during that interval."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does the slope of a position-time graph represent?",
+                      options: ["The acceleration", "The velocity", "The distance travelled", "The time interval"],
+                      answer: 1,
+                      explanation: "On a position-time graph the slope tells you how quickly position changes with time — that is, the velocity."
+                    },
+                    {
+                      question: "What does a horizontal line on a position-time graph mean?",
+                      options: ["The object is moving at constant speed", "The object is at rest, since its position is not changing", "The object is accelerating", "The object is moving backwards"],
+                      answer: 1,
+                      explanation: "A horizontal line has zero slope, so the position does not change with time and the object is at rest."
+                    },
+                    {
+                      question: "What does the slope of a velocity-time graph represent?",
+                      options: ["The velocity", "The acceleration", "The position", "The distance"],
+                      answer: 1,
+                      explanation: "On a velocity-time graph, the slope shows how quickly the velocity is changing — that is, the acceleration."
+                    },
+                    {
+                      question: "What kind of position-time graph does uniform motion produce?",
+                      options: ["A curved line", "A straight line", "A horizontal line always", "A circle"],
+                      answer: 1,
+                      explanation: "In uniform motion the object covers equal distances in equal times, so the position-time graph is a straight line whose slope gives the constant velocity."
+                    },
+                    {
+                      question: "On a velocity-time graph for constant acceleration with initial velocity u, where does the line begin?",
+                      options: ["At the origin always", "At height u on the velocity axis", "At height v on the velocity axis", "Below the time axis"],
+                      answer: 1,
+                      explanation: "The line starts at the initial velocity u on the velocity axis and rises steadily to v at time t, its straightness indicating constant acceleration."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-4-4",
+                  title: "4. Kinematic Equations and Circular Motion",
+                  lab: { type: "kinematic-equation-sim" },
+                  theory: {
+                    intro: "Three compact equations link initial speed, final speed, acceleration, time and displacement — so knowing any three lets you find the rest without watching the motion at all.",
+                    sections: [
+                      {
+                        heading: "The Three Kinematic Equations",
+                        text: "For motion in a straight line with constant acceleration, acceleration at each instant equals the average acceleration over any interval. Starting from a = (v − u) ÷ t, we get at = v − u, giving v = u + at (4.4a), which lets us calculate velocity at all times from the initial velocity and acceleration. The other two are s = ut + ½at² (4.4b) for displacement, and v² = u² + 2as (4.4c), which links velocity to displacement without needing time."
+                      },
+                      {
+                        heading: "Motion in a Plane",
+                        text: "Motion that is not confined to a straight line — such as a kicked ball or a satellite moving in a circular path — is called motion in two dimensions, or motion in a plane."
+                      },
+                      {
+                        heading: "Uniform Circular Motion",
+                        text: "When an object moves in a circular path, its motion is called circular motion. If the radius of the circular path is R, the distance travelled in making one complete revolution is 2πR — while the displacement over that full revolution is zero, since the object returns to its starting position. When an object moves in a circular path with constant speed, its motion is called uniform circular motion. In uniform circular motion the speed is constant, but the direction of motion keeps changing."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Applying the Kinematic Equations",
+                      objective: "To use each of the three kinematic equations on the same motion and check that they agree.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "Take an object starting at u = 0 m/s with constant acceleration a = 2 m/s² for t = 5 s.",
+                        "Use v = u + at to find the final velocity.",
+                        "Use s = ut + ½at² to find the displacement over those 5 s.",
+                        "Use v² = u² + 2as with your displacement to recover the final velocity independently.",
+                        "Confirm that the two values of v agree."
+                      ],
+                      observation: "The first equation gives v = 0 + 2 × 5 = 10 m/s. The second gives s = 0 + ½ × 2 × 25 = 25 m. Substituting into the third gives v² = 0 + 2 × 2 × 25 = 100, so v = 10 m/s — matching the first result exactly, since all three equations describe the same constant-acceleration motion."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Which kinematic equation gives velocity directly from initial velocity, acceleration and time?",
+                      options: ["v = u + at", "s = ut + ½at²", "v² = u² + 2as", "a = v ÷ t"],
+                      answer: 0,
+                      explanation: "Rearranging a = (v − u) ÷ t gives at = v − u, hence v = u + at — letting us find velocity at any time from u and a."
+                    },
+                    {
+                      question: "An object starts from rest with acceleration 2 m/s². What is its velocity after 5 s?",
+                      options: ["2 m/s", "10 m/s", "25 m/s", "5 m/s"],
+                      answer: 1,
+                      explanation: "Using v = u + at with u = 0: v = 0 + 2 × 5 = 10 m/s."
+                    },
+                    {
+                      question: "Which equation links velocity to displacement without involving time?",
+                      options: ["v = u + at", "s = ut + ½at²", "v² = u² + 2as", "a = (v − u) ÷ t"],
+                      answer: 2,
+                      explanation: "The equation v² = u² + 2as connects the velocities directly to the displacement, with no time term appearing."
+                    },
+                    {
+                      question: "What distance does an object travel in one complete revolution of a circle of radius R?",
+                      options: ["R", "2R", "πR", "2πR"],
+                      answer: 3,
+                      explanation: "One full revolution covers the whole circumference, which is 2πR — though the displacement over that revolution is zero."
+                    },
+                    {
+                      question: "What is uniform circular motion?",
+                      options: ["Motion in a circle where the speed keeps changing", "Motion in a circular path with constant speed", "Motion in a straight line", "Motion with zero acceleration"],
+                      answer: 1,
+                      explanation: "When an object moves along a circular path at constant speed, its motion is called uniform circular motion — the speed stays constant even though the direction keeps changing."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

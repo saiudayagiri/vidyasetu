@@ -5997,6 +5997,96 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const distanceDisplacementLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="distance-displacement-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Step through the athlete's run and watch distance and displacement diverge.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Time on the Track</h3>
+            <select id="sel-distance-displacement" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="4">t = 4 s — at B</option>
+              <option value="10">t = 10 s — at A</option>
+              <option value="16" selected>t = 16 s — back at B</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Distance vs Displacement</h3>
+            <div id="distance-displacement-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a time above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const speedVelocityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="speed-velocity-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a quantity and see how it is calculated for the same journey.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Quantity</h3>
+            <select id="sel-speed-velocity" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="speed" selected>Average speed</option>
+              <option value="velocity">Average velocity</option>
+              <option value="accel">Average acceleration</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Calculation</h3>
+            <div id="speed-velocity-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a quantity above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const motionGraphLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="motion-graph-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a motion and read its position-time or velocity-time graph.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Graph</h3>
+            <select id="sel-motion-graph" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="pt-uniform" selected>Position-time: uniform motion</option>
+              <option value="pt-rest">Position-time: object at rest</option>
+              <option value="vt-constant">Velocity-time: constant velocity</option>
+              <option value="vt-accel">Velocity-time: constant acceleration</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What the Slope Tells Us</h3>
+            <div id="motion-graph-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a graph above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const kinematicEquationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="kinematic-equation-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Apply each kinematic equation to the same motion and see them agree.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Equation</h3>
+            <select id="sel-kinematic-equation" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="v" selected>v = u + at</option>
+              <option value="s">s = ut + ½at²</option>
+              <option value="v2">v² = u² + 2as</option>
+              <option value="circle">Uniform circular motion</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Worked Result</h3>
+            <div id="kinematic-equation-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an equation above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -8264,6 +8354,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'animal-tissue-sim') {
               labHtml = animalTissueLabHtml;
               labDesc = 'Find the animal tissue behind everyday sensations and actions.';
+            } else if (topicObj.lab.type === 'distance-displacement-sim') {
+              labHtml = distanceDisplacementLabHtml;
+              labDesc = 'Step through a there-and-back run and watch distance and displacement diverge.';
+            } else if (topicObj.lab.type === 'speed-velocity-sim') {
+              labHtml = speedVelocityLabHtml;
+              labDesc = 'Compare average speed, average velocity and average acceleration.';
+            } else if (topicObj.lab.type === 'motion-graph-sim') {
+              labHtml = motionGraphLabHtml;
+              labDesc = 'Read position-time and velocity-time graphs and what their slopes mean.';
+            } else if (topicObj.lab.type === 'kinematic-equation-sim') {
+              labHtml = kinematicEquationLabHtml;
+              labDesc = 'Apply each kinematic equation to the same motion and see them agree.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -8983,6 +9085,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initPermanentTissueLab();
         } else if (topicObj.lab.type === 'animal-tissue-sim') {
           initAnimalTissueLab();
+        } else if (topicObj.lab.type === 'distance-displacement-sim') {
+          initDistanceDisplacementLab();
+        } else if (topicObj.lab.type === 'speed-velocity-sim') {
+          initSpeedVelocityLab();
+        } else if (topicObj.lab.type === 'motion-graph-sim') {
+          initMotionGraphLab();
+        } else if (topicObj.lab.type === 'kinematic-equation-sim') {
+          initKinematicEquationLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -29009,6 +29119,244 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         wrapText(ctx, a.fn, 330, 196, 26, 20);
 
         obs.innerHTML = `<strong>${a.tissue} — ${a.group.toLowerCase()} with a ${a.matrix}.</strong> ${a.fn}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initDistanceDisplacementLab() {
+      const canvas = document.getElementById('distance-displacement-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-distance-displacement');
+      const obs = document.getElementById('distance-displacement-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const t = parseInt(sel.value);
+        const pos = t === 4 ? 40 : t === 10 ? 100 : 40;
+        const dist = t === 4 ? 40 : t === 10 ? 100 : 160;
+        const disp = pos;
+
+        const lx = 70, lw = W - 140, ly = 150;
+        const toX = m => lx + (m / 100) * lw;
+
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(lx + lw, ly); ctx.stroke();
+        [0, 20, 40, 60, 80, 100].forEach(m => {
+          const x = toX(m);
+          ctx.beginPath(); ctx.moveTo(x, ly - 6); ctx.lineTo(x, ly + 6); ctx.stroke();
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText(`${m} m`, x, ly + 22);
+        });
+        [[0, 'O'], [40, 'B'], [100, 'A']].forEach(([m, l]) => {
+          ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+          ctx.fillText(l, toX(m), ly - 16);
+        });
+
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(toX(0), ly - 42); ctx.lineTo(toX(Math.min(100, t === 4 ? 40 : 100)), ly - 42); ctx.stroke();
+        if (t === 16) {
+          ctx.beginPath(); ctx.moveTo(toX(100), ly - 54); ctx.lineTo(toX(40), ly - 54); ctx.stroke();
+        }
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = '#f59e0b'; ctx.textAlign = 'center';
+        ctx.fillText(`total distance travelled = ${dist} m`, W / 2, ly - 68);
+
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(toX(0), ly + 48); ctx.lineTo(toX(disp), ly + 48); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(toX(disp), ly + 48); ctx.lineTo(toX(disp) - 10, ly + 42); ctx.lineTo(toX(disp) - 10, ly + 54); ctx.closePath(); ctx.fillStyle = '#22c55e'; ctx.fill();
+        ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(`displacement = ${disp} m`, W / 2, ly + 76);
+
+        ctx.fillStyle = '#3b82f6';
+        ctx.beginPath(); ctx.arc(toX(pos), ly, 9, 0, Math.PI * 2); ctx.fill();
+
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
+        ctx.fillText(`At t = ${t} s`, W / 2, 34);
+
+        obs.innerHTML = t === 16
+          ? `<strong>At t = 16 s: distance travelled 160 m, displacement 40 m.</strong> She ran OA = 100 m then back AB = 60 m, so the path length is 160 m — but her net change in position from O to B is only 40 m in the positive direction.`
+          : `<strong>At t = ${t} s: distance travelled ${dist} m, displacement ${disp} m.</strong> While she is still moving in one direction the two are equal — they only differ once she turns back.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initSpeedVelocityLab() {
+      const canvas = document.getElementById('speed-velocity-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-speed-velocity');
+      const obs = document.getElementById('speed-velocity-obs');
+      const Q = {
+        speed: { name: 'Average speed', formula: 'total distance travelled ÷ time interval', sub: '160 m ÷ 16 s', res: '10 m/s', dir: 'no direction — a scalar', col: '#f59e0b' },
+        velocity: { name: 'Average velocity', formula: 'displacement ÷ time interval', sub: '40 m ÷ 16 s', res: '2.5 m/s', dir: 'in the positive direction — a vector', col: '#22c55e' },
+        accel: { name: 'Average acceleration', formula: '(final velocity − initial velocity) ÷ time interval', sub: '(25 − 5) m/s ÷ 4 s', res: '5 m/s²', dir: 'along the velocity, since speed is increasing', col: '#8b5cf6' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const q = Q[sel.value];
+        ctx.textAlign = 'center';
+
+        ctx.font = 'bold 19px system-ui'; ctx.fillStyle = q.col;
+        ctx.fillText(q.name, W / 2, 50);
+
+        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        wrapText(ctx, q.formula, W / 2, 88, 46, 22);
+
+        ctx.fillStyle = 'rgba(148,163,184,0.10)';
+        ctx.strokeStyle = q.col; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.roundRect(W / 2 - 170, 128, 340, 62, 10); ctx.fill(); ctx.stroke();
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.textBaseline = 'middle'; ctx.fillText(q.sub, W / 2, 159); ctx.textBaseline = 'alphabetic';
+
+        ctx.font = 'bold 28px system-ui'; ctx.fillStyle = q.col;
+        ctx.fillText('= ' + q.res, W / 2, 236);
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        wrapText(ctx, q.dir, W / 2, 272, 48, 20);
+
+        obs.innerHTML = `<strong>${q.name} = ${q.formula} = ${q.sub} = ${q.res}.</strong> It has ${q.dir}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMotionGraphLab() {
+      const canvas = document.getElementById('motion-graph-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-motion-graph');
+      const obs = document.getElementById('motion-graph-obs');
+      const G = {
+        'pt-uniform': { yLab: 'position (m)', slope: 'velocity', val: '10 m/s', pts: [[0, 0], [4, 40]], note: 'A straight sloping line means uniform motion; its slope gives the constant velocity.' },
+        'pt-rest': { yLab: 'position (m)', slope: 'velocity', val: '0 m/s', pts: [[0, 40], [4, 40]], note: 'A horizontal line means position is not changing, so the object is at rest.' },
+        'vt-constant': { yLab: 'velocity (m/s)', slope: 'acceleration', val: '0 m/s²', pts: [[0, 20], [4, 20]], note: 'A horizontal velocity-time line means velocity is unchanging, so acceleration is zero.' },
+        'vt-accel': { yLab: 'velocity (m/s)', slope: 'acceleration', val: '5 m/s²', pts: [[0, 5], [4, 25]], note: 'A straight sloping velocity-time line means constant acceleration; its slope gives that acceleration.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const g = G[sel.value];
+        const ox = 90, oy = H - 68, gw = W - 190, gh = 190;
+        const maxY = 45, maxX = 4;
+        const toX = t => ox + (t / maxX) * gw;
+        const toY = v => oy - (v / maxY) * gh;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
+        for (let v = 0; v <= 40; v += 10) {
+          const y = toY(v);
+          ctx.beginPath(); ctx.moveTo(ox, y); ctx.lineTo(ox + gw, y); ctx.stroke();
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'right';
+          ctx.fillText(`${v}`, ox - 8, y + 3);
+        }
+        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(ox, toY(0)); ctx.lineTo(ox + gw, toY(0)); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(ox, toY(0)); ctx.lineTo(ox, toY(maxY)); ctx.stroke();
+        for (let t = 0; t <= 4; t++) {
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
+          ctx.fillText(`${t}`, toX(t), toY(0) + 18);
+        }
+        ctx.fillText('time (s)', ox + gw / 2, toY(0) + 40);
+        ctx.save(); ctx.translate(26, toY(maxY / 2)); ctx.rotate(-Math.PI / 2);
+        ctx.fillText(g.yLab, 0, 0); ctx.restore();
+
+        const col = sel.value.startsWith('pt') ? '#22c55e' : '#3b82f6';
+        ctx.strokeStyle = col; ctx.lineWidth = 3.5;
+        ctx.beginPath();
+        g.pts.forEach(([t, v], i) => { const x = toX(t), y = toY(v); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
+        ctx.stroke();
+        g.pts.forEach(([t, v]) => {
+          ctx.fillStyle = col;
+          ctx.beginPath(); ctx.arc(toX(t), toY(v), 5, 0, Math.PI * 2); ctx.fill();
+        });
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = col;
+        ctx.fillText(`slope = ${g.slope} = ${g.val}`, W / 2, 54);
+
+        obs.innerHTML = `<strong>Slope = ${g.slope} = ${g.val}.</strong> ${g.note}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initKinematicEquationLab() {
+      const canvas = document.getElementById('kinematic-equation-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-kinematic-equation');
+      const obs = document.getElementById('kinematic-equation-obs');
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const key = sel.value;
+        ctx.textAlign = 'center';
+
+        if (key === 'circle') {
+          const cx = W / 2, cy = 178, R = 82;
+          ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+          ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R, cy); ctx.stroke(); ctx.setLineDash([]);
+          ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText('R', cx + R / 2, cy - 8);
+          [0, 1, 2].forEach(i => {
+            const a = -Math.PI / 2 + i * (Math.PI * 2 / 3);
+            const x = cx + R * Math.cos(a), y = cy + R * Math.sin(a);
+            ctx.fillStyle = '#22c55e';
+            ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI * 2); ctx.fill();
+            ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2.5;
+            const tx = -Math.sin(a), ty = Math.cos(a);
+            ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + tx * 30, y + ty * 30); ctx.stroke();
+          });
+          ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+          ctx.fillText('Uniform circular motion', W / 2, 34);
+          ctx.font = 'bold 14px system-ui'; ctx.fillStyle = '#22c55e';
+          ctx.fillText('speed constant, direction always changing', W / 2, 58);
+          ctx.font = 'bold 15px system-ui'; ctx.fillStyle = '#f59e0b';
+          ctx.fillText('distance in one revolution = 2πR,  displacement = 0', W / 2, H - 26);
+          obs.innerHTML = `<strong>In uniform circular motion the speed is constant but the direction keeps changing.</strong> Over one complete revolution the distance travelled is the circumference 2πR, while the displacement is zero because the object returns to where it started.`;
+          return;
+        }
+
+        const EQ = {
+          v: { eq: 'v = u + at', sub: 'v = 0 + 2 × 5', res: 'v = 10 m/s', note: 'Finds the final velocity from initial velocity, acceleration and time.' },
+          s: { eq: 's = ut + ½at²', sub: 's = 0 + ½ × 2 × 5²', res: 's = 25 m', note: 'Finds the displacement covered during the motion.' },
+          v2: { eq: 'v² = u² + 2as', sub: 'v² = 0 + 2 × 2 × 25', res: 'v = 10 m/s', note: 'Links velocity to displacement with no time term — and recovers the same v = 10 m/s.' }
+        };
+        const e = EQ[key];
+
+        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText('An object starts from rest: u = 0 m/s, a = 2 m/s², t = 5 s', W / 2, 40);
+
+        ctx.font = 'bold 30px system-ui'; ctx.fillStyle = '#3b82f6';
+        ctx.fillText(e.eq, W / 2, 100);
+
+        ctx.fillStyle = 'rgba(148,163,184,0.10)';
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.6;
+        ctx.beginPath(); ctx.roundRect(W / 2 - 160, 130, 320, 56, 10); ctx.fill(); ctx.stroke();
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.textBaseline = 'middle'; ctx.fillText(e.sub, W / 2, 158); ctx.textBaseline = 'alphabetic';
+
+        ctx.font = 'bold 30px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(e.res, W / 2, 238);
+
+        ctx.font = '12.5px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        wrapText(ctx, e.note, W / 2, 276, 52, 20);
+
+        obs.innerHTML = `<strong>${e.eq} → ${e.sub} → ${e.res}.</strong> ${e.note}`;
       }
 
       sel.addEventListener('change', draw);
