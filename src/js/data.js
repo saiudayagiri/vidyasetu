@@ -20064,6 +20064,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9s-3",
+              title: "Tissues in Action",
+              topics: [
+                {
+                  id: "9s-3-1",
+                  title: "1. Why Plant and Animal Tissues Differ",
+                  lab: { type: "plant-animal-tissue-sim" },
+                  theory: {
+                    intro: "A tree must stand still and stay upright; an animal must bend, run and chase. That one difference in lifestyle shapes every tissue each of them builds.",
+                    sections: [
+                      {
+                        heading: "Support Versus Movement",
+                        text: "Most plants are fixed in one place and do not move from place to place like animals, so they need support to stay firm and upright — plant cells have a cell wall that provides rigidity and strength. In general animals can move, although some such as sponges are immobile. Without a rigid cell wall, animal cells can change shape easily, and this cellular flexibility eventually helps make their bodies suitable for locomotion."
+                      },
+                      {
+                        heading: "Different Modes of Nutrition",
+                        text: "Another major difference between plants and animals is their mode of nutrition. Animals have tissues that help them digest food obtained from different food sources, while plants have tissues that help them utilise solar energy for synthesising food components through photosynthesis. Both plants and animals have distinct tissues for transporting food and water to different parts of the body."
+                      },
+                      {
+                        heading: "Different Patterns of Growth",
+                        text: "The growth patterns in plants and animals also vary because the tissues responsible for growth differ in structure and function. Plants grow in three distinct ways: an increase in length (the height of the stem and the depth of the roots), an increase in girth (the thickness of the stem), and regrowth after branches are cut or after grazing by animals. This growth requires actively dividing cells that together form a tissue called meristematic tissue."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Plant and Animal Tissue Needs",
+                      objective: "To connect each structural difference between plants and animals to the kind of tissue it demands.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "Write down whether plants or animals generally move from place to place.",
+                        "Note which of them has a rigid cell wall, and what that wall provides.",
+                        "Write down how each obtains its food — digestion or photosynthesis.",
+                        "List the three ways in which plants grow.",
+                        "For each difference, name the advantage it gives that organism."
+                      ],
+                      observation: "Plants stay fixed and need the rigidity of the cell wall to remain upright, while animals lack that wall so their cells change shape easily — the flexibility that makes locomotion possible. Plants grow in length, in girth, and by regrowth after cutting or grazing, all driven by actively dividing meristematic tissue."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why do plant cells have a rigid cell wall?",
+                      options: ["To help them move faster", "Because plants are fixed in one place and need support to stay firm and upright", "To digest food", "To store water only"],
+                      answer: 1,
+                      explanation: "Most plants do not move from place to place, so they need the rigidity and strength the cell wall provides in order to stay firm and upright."
+                    },
+                    {
+                      question: "How does the absence of a cell wall help animal cells?",
+                      options: ["It makes them stronger", "It lets them change shape easily, giving the flexibility that suits bodies for locomotion", "It lets them photosynthesise", "It has no effect"],
+                      answer: 1,
+                      explanation: "Without a rigid cell wall animal cells can change shape easily, and this cellular flexibility eventually makes their bodies suitable for locomotion."
+                    },
+                    {
+                      question: "How does the mode of nutrition differ between plants and animals?",
+                      options: ["Both digest food the same way", "Animals have tissues to digest food, while plants have tissues to use solar energy for photosynthesis", "Plants digest food and animals photosynthesise", "Neither needs special tissues"],
+                      answer: 1,
+                      explanation: "Animals have tissues that digest food from various sources, while plants have tissues that use solar energy to synthesise food components through photosynthesis."
+                    },
+                    {
+                      question: "In which three ways do plants grow?",
+                      options: ["Only in height", "In length, in girth, and by regrowth after cutting or grazing", "Only in girth and width", "Only by producing seeds"],
+                      answer: 1,
+                      explanation: "Plants increase in length (stem height and root depth), increase in girth (stem thickness), and regrow after branches are cut or after grazing by animals."
+                    },
+                    {
+                      question: "What kind of tissue is responsible for growth in plants?",
+                      options: ["Permanent tissue", "Meristematic tissue, made of actively dividing cells", "Epidermal tissue", "Conducting tissue"],
+                      answer: 1,
+                      explanation: "Growth requires actively dividing cells, and these together form a tissue called meristematic tissue."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-3-2",
+                  title: "2. Meristematic Tissues in Plants",
+                  lab: { type: "meristem-type-sim" },
+                  theory: {
+                    intro: "Grass grows back after a cow has eaten it — not from the tip that was bitten off, but from a hidden band of dividing cells sitting low down at the nodes.",
+                    sections: [
+                      {
+                        heading: "Apical Meristem — Growth in Length",
+                        text: "The apical meristem is located at the root and shoot tips, and it increases the plant's length. This is what drives a small seedling into a tall tree and pushes roots deep into the soil."
+                      },
+                      {
+                        heading: "Lateral Meristem — Growth in Girth",
+                        text: "Plants not only grow in length but also increase in diameter or girth over time. This increase occurs due to actively dividing cells located along the circumference of the stem — a meristematic tissue called the lateral meristem."
+                      },
+                      {
+                        heading: "Intercalary Meristem — Regrowth",
+                        text: "The intercalary meristem is located at the base of leaves or at the nodes of the stem, and it is why grass grows again after being grazed. Together these three meristems — apical, lateral and intercalary — account for growth in length, girth and regrowth. Meristematic cells eventually undergo changes in structure and function to become permanent tissues, through the process of differentiation."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Observing Root Growth in an Onion Bulb",
+                      objective: "To observe growth driven by the apical meristem at the root tip.",
+                      materials: ["Two glass jars", "Water", "Two onion bulbs", "Scissors", "Ruler"],
+                      steps: [
+                        "Fill both jars with water and rest an onion bulb on each so its base touches the water.",
+                        "Leave both jars undisturbed and let the roots grow for a few days, measuring their length daily.",
+                        "Once roots have grown, cut the root tips off the onion in Jar B only.",
+                        "Continue measuring the root lengths in both jars each day.",
+                        "Compare how the roots in Jar A and Jar B grow after the cut."
+                      ],
+                      observation: "The roots in Jar A keep growing longer each day, while the cut roots in Jar B stop increasing in length — showing that the tissue responsible for growth in length, the apical meristem, sits right at the root tip that was removed."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Where is the apical meristem located and what does it do?",
+                      options: ["Along the stem circumference; increases girth", "At the root and shoot tips; increases length", "At the nodes; allows regrowth", "In the leaves; makes food"],
+                      answer: 1,
+                      explanation: "The apical meristem sits at the root and shoot tips, and it is responsible for increasing the plant's length."
+                    },
+                    {
+                      question: "Which meristem is responsible for a stem becoming thicker?",
+                      options: ["Apical meristem", "Lateral meristem", "Intercalary meristem", "Permanent tissue"],
+                      answer: 1,
+                      explanation: "The lateral meristem lies along the circumference of the stem, and its dividing cells increase the stem's diameter or girth."
+                    },
+                    {
+                      question: "Why does grass grow again after being grazed by animals?",
+                      options: ["Because of apical meristem at the leaf tips", "Because of intercalary meristem at the nodes of the stem", "Because of lateral meristem", "Because of xylem"],
+                      answer: 1,
+                      explanation: "The intercalary meristem is located at the base of leaves or at the nodes of the stem, so grazing does not remove it and regrowth can occur."
+                    },
+                    {
+                      question: "What are the three types of meristematic tissue?",
+                      options: ["Apical, lateral and intercalary", "Xylem, phloem and epidermis", "Parenchyma, collenchyma and sclerenchyma", "Bone, blood and cartilage"],
+                      answer: 0,
+                      explanation: "Plants have three meristems — apical for length, lateral for girth, and intercalary for regrowth."
+                    },
+                    {
+                      question: "What is the process by which meristematic tissue becomes permanent tissue?",
+                      options: ["Photosynthesis", "Differentiation", "Transpiration", "Respiration"],
+                      answer: 1,
+                      explanation: "Meristematic cells undergo changes in structure and function to become permanent tissues, and this process is called differentiation."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-3-3",
+                  title: "3. Permanent Tissues and Conduction",
+                  lab: { type: "permanent-tissue-sim" },
+                  theory: {
+                    intro: "Coconut husk is hard and brittle; a coriander stalk is soft and bends. Both are plant tissue — the difference is a substance called lignin.",
+                    sections: [
+                      {
+                        heading: "Simple Permanent Tissues",
+                        text: "Parenchyma consists of living cells with thin walls and is the general packing tissue of the plant. Collenchyma has thickened corners that give flexibility, allowing stems and leaf stalks to bend without breaking. Sclerenchyma cells have thick walls due to the deposition of lignin, making them hard and strong and forming the woody structure; most of these cells are dead, and this tissue is found in stems, leaf veins, and hard coverings of seeds and nuts such as coconut husk and walnut shell."
+                      },
+                      {
+                        heading: "Protective Tissue — Epidermis",
+                        text: "The epidermis forms the outermost protective layer. In roots, projections of epidermal cells are called root hair, which absorb water from the soil. In leaves, the epidermis contains pores called stomata, which aid transportation by creating a transpiration pull in the xylem."
+                      },
+                      {
+                        heading: "Conducting Tissues — Xylem and Phloem",
+                        text: "Xylem and phloem are called complex permanent tissues because they are made up of different types of cells working together. Xylem transports water and minerals from the roots to other parts of the plant and also provides strength; it consists of tracheids, vessels, xylem parenchyma and xylem fibres. Tracheids and vessels are tubular and thick-walled, and xylem parenchyma are the only living component. Phloem is mostly made of living cells and consists of sieve tubes, companion cells, phloem parenchyma and phloem fibres. Sieve tubes transport food from leaves to other parts of the plant, and their functions are regulated by companion cells, which are specialised parenchyma cells that monitor the loading and unloading of sugars."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Explaining Hard Husk Versus Soft Stalk",
+                      objective: "To relate the hardness or flexibility of plant parts to the tissue and the substance responsible.",
+                      materials: ["A piece of coconut husk", "A coriander leaf stalk", "Notebook and pen"],
+                      steps: [
+                        "Feel the coconut husk fibres and describe whether they are hard or flexible.",
+                        "Bend the coriander leaf stalk gently and describe how it behaves.",
+                        "Name the tissue responsible for each property.",
+                        "Identify the substance deposited in the thick walls of the harder tissue.",
+                        "Note whether the cells of that harder tissue are living or dead."
+                      ],
+                      observation: "The coconut husk fibres are hard and brittle because of sclerenchyma, whose thick walls carry deposits of lignin and whose cells are mostly dead. The coriander stalk bends without breaking because of collenchyma, whose thickened corners give flexibility while the cells remain living."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What makes sclerenchyma cells hard and strong?",
+                      options: ["Deposition of lignin in their thick walls", "A large central vacuole", "Chloroplasts", "Thin flexible walls"],
+                      answer: 0,
+                      explanation: "Sclerenchyma cells have thick walls due to the deposition of lignin, which makes them hard and strong and forms the woody structure."
+                    },
+                    {
+                      question: "Which tissue gives stems and leaf stalks the flexibility to bend without breaking?",
+                      options: ["Sclerenchyma", "Collenchyma", "Epidermis", "Xylem"],
+                      answer: 1,
+                      explanation: "Collenchyma provides flexibility, which is why soft leaf stalks such as coriander can bend rather than snap."
+                    },
+                    {
+                      question: "What do stomata in the leaf epidermis do?",
+                      options: ["Absorb minerals from soil", "Aid transportation by creating a transpiration pull in the xylem", "Store food", "Provide woody strength"],
+                      answer: 1,
+                      explanation: "Stomata are pores in the leaf epidermis that aid transportation by creating a transpiration pull in the xylem."
+                    },
+                    {
+                      question: "What does the xylem transport, and in which direction?",
+                      options: ["Food from leaves to other parts", "Water and minerals from the roots to other parts of the plant", "Oxygen from leaves to roots", "Hormones only"],
+                      answer: 1,
+                      explanation: "Xylem transports water and minerals from the roots to other parts of the plant, and also provides strength."
+                    },
+                    {
+                      question: "What is the main function of companion cells in the phloem?",
+                      options: ["To store lignin", "To monitor the loading and unloading of sugars in sieve tubes", "To absorb water from soil", "To carry out photosynthesis"],
+                      answer: 1,
+                      explanation: "Companion cells are specialised parenchyma cells whose main function is to monitor loading and unloading of sugars in the sieve tubes, regulating their cellular functions."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-3-4",
+                  title: "4. Animal Tissues",
+                  lab: { type: "animal-tissue-sim" },
+                  theory: {
+                    intro: "Blood is a liquid and bone is rock-hard, yet both are the same category of tissue — the difference lies entirely in the matrix between their cells.",
+                    sections: [
+                      {
+                        heading: "Connective Tissue",
+                        text: "A tissue that connects and supports other tissues is called a connective tissue. Both blood and bone are connective tissues, yet they differ in composition and consistency — blood is fluid while bone is hard — and this difference is due to the matrix, which is fluid in blood but hard, solid and rigid in bone. Bone gives strength, support and protection. Cartilage has a soft, jelly-like matrix and provides flexibility and cushioning. Other connective tissues include tendons, which connect muscles to bones, and ligaments, which connect bones to bones and prevent excessive movement."
+                      },
+                      {
+                        heading: "Epithelial and Muscular Tissue",
+                        text: "Epithelial tissues form coverings and linings in different parts of the body. Muscular tissue produces movement, and muscles are of both voluntary and involuntary kinds — but they cannot function independently, since they receive their instructions from nervous tissue."
+                      },
+                      {
+                        heading: "Nervous Tissue — The Control Network",
+                        text: "Actions such as recalling a song learned long ago are controlled by nervous tissue, which forms the body's control and coordination network. The brain acts as the control centre, coordinating activities, memory and responses across the body. During exercise, for instance, the brain sends instructions that the muscles carry out."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Identifying Connective Tissues by Everyday Actions",
+                      objective: "To match everyday physical sensations to the connective tissue responsible and its function.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "Touch your elbow gently and describe what you feel.",
+                        "Note whether the structure is hard and rigid or soft and flexible.",
+                        "State the function that structure performs for the body.",
+                        "Name the connective tissue responsible.",
+                        "Repeat for the flexible tip of your ear and for the tissue joining a muscle to a bone."
+                      ],
+                      observation: "The elbow feels hard and rigid — that is bone, which gives strength, support and protection. The ear tip is soft and flexible because cartilage has a jelly-like matrix providing flexibility and cushioning, while tendons connect muscles to bones and ligaments connect bone to bone."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why are both blood and bone classified as connective tissues despite being so different?",
+                      options: ["Both are liquid", "Both connect and support other tissues; they differ only in their matrix", "Both are made of nerve cells", "They are not both connective tissues"],
+                      answer: 1,
+                      explanation: "A connective tissue connects and supports other tissues. Blood and bone differ in consistency because the matrix is fluid in blood but hard, solid and rigid in bone."
+                    },
+                    {
+                      question: "What does cartilage provide, and what is its matrix like?",
+                      options: ["Rigidity, with a hard matrix", "Flexibility and cushioning, with a soft jelly-like matrix", "Movement, with a fluid matrix", "Protection, with no matrix"],
+                      answer: 1,
+                      explanation: "Cartilage has a soft, jelly-like matrix and provides flexibility and cushioning."
+                    },
+                    {
+                      question: "What is the difference between tendons and ligaments?",
+                      options: ["Tendons connect muscles to bones; ligaments connect bones to bones", "Tendons connect bones to bones; ligaments connect muscles to bones", "They are the same thing", "Neither connects anything"],
+                      answer: 0,
+                      explanation: "Tendons connect muscles to bones, while ligaments connect bones to bones and prevent excessive movement."
+                    },
+                    {
+                      question: "Which tissue forms the body's control and coordination network?",
+                      options: ["Muscular tissue", "Nervous tissue", "Epithelial tissue", "Connective tissue"],
+                      answer: 1,
+                      explanation: "Nervous tissue forms the control and coordination network, with the brain acting as the control centre for activities, memory and responses."
+                    },
+                    {
+                      question: "Can muscles function independently of the nervous tissue?",
+                      options: ["Yes, they act entirely on their own", "No — both voluntary and involuntary muscles receive instructions from nervous tissue", "Only involuntary muscles can", "Only during exercise"],
+                      answer: 1,
+                      explanation: "Muscles, both voluntary and involuntary, cannot function independently — they receive their instructions from the nervous tissue."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

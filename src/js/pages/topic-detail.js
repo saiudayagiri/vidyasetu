@@ -5903,6 +5903,100 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const plantAnimalTissueLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="plant-animal-tissue-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a feature and compare how plants and animals handle it.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Compare a Feature</h3>
+            <select id="sel-plant-animal-tissue" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="wall" selected>Cell wall and support</option>
+              <option value="move">Movement</option>
+              <option value="food">Mode of nutrition</option>
+              <option value="growth">Pattern of growth</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Plant vs Animal</h3>
+            <div id="plant-animal-tissue-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a feature above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const meristemTypeLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="meristem-type-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a meristem and see where it sits and what growth it drives.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Meristem</h3>
+            <select id="sel-meristem-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="apical" selected>Apical meristem</option>
+              <option value="lateral">Lateral meristem</option>
+              <option value="intercalary">Intercalary meristem</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Location and Effect</h3>
+            <div id="meristem-type-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a meristem above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const permanentTissueLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="permanent-tissue-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a tissue and see its cell structure and job.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Tissue</h3>
+            <select id="sel-permanent-tissue" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="parenchyma">Parenchyma</option>
+              <option value="collenchyma" selected>Collenchyma</option>
+              <option value="sclerenchyma">Sclerenchyma</option>
+              <option value="xylem">Xylem</option>
+              <option value="phloem">Phloem</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Structure and Function</h3>
+            <div id="permanent-tissue-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a tissue above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const animalTissueLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="animal-tissue-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a body part and find the tissue behind what you feel.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Structure</h3>
+            <select id="sel-animal-tissue" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="bone" selected>Your elbow — hard and rigid</option>
+              <option value="cartilage">Tip of your ear — soft, flexible</option>
+              <option value="blood">Blood — a flowing tissue</option>
+              <option value="tendon">Muscle joined to bone</option>
+              <option value="ligament">Bone joined to bone</option>
+              <option value="nervous">Recalling an old song</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Tissue Identified</h3>
+            <div id="animal-tissue-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a structure above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -8158,6 +8252,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'organelle-function-sim') {
               labHtml = organelleFunctionLabHtml;
               labDesc = 'Pick an organelle and see where it sits in the cell and what it does.';
+            } else if (topicObj.lab.type === 'plant-animal-tissue-sim') {
+              labHtml = plantAnimalTissueLabHtml;
+              labDesc = 'Compare how plants and animals solve support, movement, nutrition and growth.';
+            } else if (topicObj.lab.type === 'meristem-type-sim') {
+              labHtml = meristemTypeLabHtml;
+              labDesc = 'See where each meristem sits in the plant and what growth it drives.';
+            } else if (topicObj.lab.type === 'permanent-tissue-sim') {
+              labHtml = permanentTissueLabHtml;
+              labDesc = 'Pick a permanent tissue and see its cell structure and function.';
+            } else if (topicObj.lab.type === 'animal-tissue-sim') {
+              labHtml = animalTissueLabHtml;
+              labDesc = 'Find the animal tissue behind everyday sensations and actions.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -8869,6 +8975,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initCellTypeCompareLab();
         } else if (topicObj.lab.type === 'organelle-function-sim') {
           initOrganelleFunctionLab();
+        } else if (topicObj.lab.type === 'plant-animal-tissue-sim') {
+          initPlantAnimalTissueLab();
+        } else if (topicObj.lab.type === 'meristem-type-sim') {
+          initMeristemTypeLab();
+        } else if (topicObj.lab.type === 'permanent-tissue-sim') {
+          initPermanentTissueLab();
+        } else if (topicObj.lab.type === 'animal-tissue-sim') {
+          initAnimalTissueLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -28610,6 +28724,291 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText('The cell interior — a coordinated working system', W / 2, 36);
 
         obs.innerHTML = `<strong>${o.name} — ${o.tag}.</strong> ${o.fn}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function wrapText(ctx, text, x, y, maxChars, lineH) {
+      let line = '';
+      text.split(' ').forEach(w => {
+        if ((line + w).length > maxChars) { ctx.fillText(line, x, y); line = w + ' '; y += lineH; }
+        else line += w + ' ';
+      });
+      ctx.fillText(line, x, y);
+      return y;
+    }
+
+    function initPlantAnimalTissueLab() {
+      const canvas = document.getElementById('plant-animal-tissue-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-plant-animal-tissue');
+      const obs = document.getElementById('plant-animal-tissue-obs');
+      const F = {
+        wall: { title: 'Cell wall and support', plant: 'Has a rigid cell wall giving rigidity and strength, so the plant stays firm and upright.', animal: 'No rigid cell wall, so cells change shape easily.' },
+        move: { title: 'Movement', plant: 'Fixed in one place — does not move from place to place.', animal: 'Generally able to move; cellular flexibility suits the body for locomotion.' },
+        food: { title: 'Mode of nutrition', plant: 'Tissues use solar energy to synthesise food through photosynthesis.', animal: 'Tissues digest food obtained from different food sources.' },
+        growth: { title: 'Pattern of growth', plant: 'Grows in length, in girth, and regrows after cutting or grazing — driven by meristematic tissue.', animal: 'Growth tissues differ in structure and function from those of plants.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const f = F[sel.value];
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(f.title, W / 2, 40);
+
+        const bw = 250, gap = 30, by = 76, bh = 210;
+        const lx = W / 2 - bw - gap / 2, rx = W / 2 + gap / 2;
+
+        [[lx, 'PLANT', f.plant, '#22c55e'], [rx, 'ANIMAL', f.animal, '#f59e0b']].forEach(([x, name, txt, col]) => {
+          ctx.fillStyle = col === '#22c55e' ? 'rgba(34,197,94,0.12)' : 'rgba(245,158,11,0.12)';
+          ctx.strokeStyle = col; ctx.lineWidth = 2.2;
+          ctx.beginPath(); ctx.roundRect(x, by, bw, bh, 12); ctx.fill(); ctx.stroke();
+          ctx.font = 'bold 16px system-ui'; ctx.fillStyle = col;
+          ctx.fillText(name, x + bw / 2, by + 34);
+          ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+          wrapText(ctx, txt, x + bw / 2, by + 74, 30, 22);
+        });
+
+        obs.innerHTML = `<strong>${f.title}.</strong> Plants: ${f.plant} Animals: ${f.animal}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initMeristemTypeLab() {
+      const canvas = document.getElementById('meristem-type-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-meristem-type');
+      const obs = document.getElementById('meristem-type-obs');
+      const M = {
+        apical: { name: 'Apical meristem', where: 'at the root and shoot tips', effect: 'increases the length of the plant' },
+        lateral: { name: 'Lateral meristem', where: 'along the circumference of the stem', effect: 'increases the girth or thickness' },
+        intercalary: { name: 'Intercalary meristem', where: 'at the base of leaves and the nodes of the stem', effect: 'allows regrowth after cutting or grazing' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const key = sel.value;
+        const m = M[key];
+        const cx = 190, groundY = 250;
+
+        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(60, groundY); ctx.lineTo(320, groundY); ctx.stroke();
+
+        const hi = on => on ? '#22c55e' : 'rgba(148,163,184,0.30)';
+        const stemW = key === 'lateral' ? 22 : 14;
+
+        ctx.strokeStyle = hi(key === 'lateral'); ctx.lineWidth = stemW;
+        ctx.beginPath(); ctx.moveTo(cx, groundY); ctx.lineTo(cx, 118); ctx.stroke();
+
+        ctx.strokeStyle = hi(key === 'apical'); ctx.lineWidth = 5;
+        ctx.beginPath(); ctx.moveTo(cx, 118); ctx.lineTo(cx - 24, 88); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx, 118); ctx.lineTo(cx + 24, 88); ctx.stroke();
+        ctx.fillStyle = hi(key === 'apical');
+        ctx.beginPath(); ctx.arc(cx, 112, 10, 0, Math.PI * 2); ctx.fill();
+
+        ctx.strokeStyle = hi(key === 'apical'); ctx.lineWidth = 4;
+        [[-30, 40], [0, 55], [30, 40]].forEach(([dx, dy]) => {
+          ctx.beginPath(); ctx.moveTo(cx, groundY); ctx.lineTo(cx + dx, groundY + dy); ctx.stroke();
+        });
+
+        ctx.fillStyle = hi(key === 'intercalary');
+        [175, 210].forEach(y => { ctx.beginPath(); ctx.arc(cx, y, 8, 0, Math.PI * 2); ctx.fill(); });
+
+        ctx.textAlign = 'left';
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(m.name, 350, 120);
+        ctx.font = '12.5px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        const afterWhere = wrapText(ctx, 'Located ' + m.where, 350, 150, 27, 19);
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = '#f59e0b';
+        wrapText(ctx, 'It ' + m.effect, 350, afterWhere + 30, 26, 20);
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText('Three meristems drive three kinds of growth', W / 2, 36);
+
+        obs.innerHTML = `<strong>${m.name} — located ${m.where}.</strong> It ${m.effect}.`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPermanentTissueLab() {
+      const canvas = document.getElementById('permanent-tissue-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-permanent-tissue');
+      const obs = document.getElementById('permanent-tissue-obs');
+      const T = {
+        parenchyma: { name: 'Parenchyma', kind: 'Simple permanent tissue', living: 'Living cells', fn: 'Thin-walled packing tissue of the plant.' },
+        collenchyma: { name: 'Collenchyma', kind: 'Simple permanent tissue', living: 'Living cells', fn: 'Thickened corners give flexibility, letting stems and leaf stalks bend without breaking.' },
+        sclerenchyma: { name: 'Sclerenchyma', kind: 'Simple permanent tissue', living: 'Mostly dead cells', fn: 'Thick walls with lignin make it hard and strong — found in coconut husk and walnut shell.' },
+        xylem: { name: 'Xylem', kind: 'Complex permanent tissue', living: 'Only xylem parenchyma is living', fn: 'Transports water and minerals from roots upward, and provides strength. Made of tracheids, vessels, xylem parenchyma and fibres.' },
+        phloem: { name: 'Phloem', kind: 'Complex permanent tissue', living: 'Mostly living cells', fn: 'Sieve tubes carry food from leaves to other parts, regulated by companion cells.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const key = sel.value;
+        const t = T[key];
+        const cx = 165, cy = 190;
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 17px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(t.name, W / 2, 38);
+
+        const col = key === 'sclerenchyma' ? '#a16207' : key === 'xylem' ? '#3b82f6' : key === 'phloem' ? '#8b5cf6' : '#22c55e';
+
+        if (key === 'parenchyma' || key === 'collenchyma' || key === 'sclerenchyma') {
+          const wall = key === 'sclerenchyma' ? 9 : key === 'collenchyma' ? 4 : 1.6;
+          for (let r = 0; r < 2; r++) for (let c = 0; c < 3; c++) {
+            const x = cx - 96 + c * 66, y = cy - 40 + r * 62;
+            ctx.fillStyle = key === 'sclerenchyma' ? 'rgba(161,98,7,0.18)' : 'rgba(34,197,94,0.14)';
+            ctx.strokeStyle = col; ctx.lineWidth = wall;
+            ctx.beginPath(); ctx.roundRect(x, y, 58, 54, key === 'collenchyma' ? 14 : 6); ctx.fill(); ctx.stroke();
+          }
+        } else if (key === 'xylem') {
+          [-60, 0, 60].forEach(dx => {
+            ctx.fillStyle = 'rgba(59,130,246,0.16)'; ctx.strokeStyle = col; ctx.lineWidth = 4;
+            ctx.beginPath(); ctx.roundRect(cx + dx - 22, cy - 78, 44, 156, 6); ctx.fill(); ctx.stroke();
+          });
+          ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.moveTo(cx, cy + 96); ctx.lineTo(cx, cy - 96); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx, cy - 96); ctx.lineTo(cx - 7, cy - 84); ctx.lineTo(cx + 7, cy - 84); ctx.closePath(); ctx.fillStyle = '#3b82f6'; ctx.fill();
+        } else {
+          [-55, 15].forEach(dx => {
+            ctx.fillStyle = 'rgba(139,92,246,0.16)'; ctx.strokeStyle = col; ctx.lineWidth = 2.5;
+            ctx.beginPath(); ctx.roundRect(cx + dx - 26, cy - 76, 52, 152, 6); ctx.fill(); ctx.stroke();
+            [-38, 0, 38].forEach(dy => {
+              ctx.strokeStyle = col; ctx.lineWidth = 1.6;
+              ctx.beginPath(); ctx.moveTo(cx + dx - 26, cy + dy); ctx.lineTo(cx + dx + 26, cy + dy); ctx.stroke();
+            });
+          });
+          ctx.fillStyle = 'rgba(139,92,246,0.30)';
+          ctx.beginPath(); ctx.roundRect(cx + 52, cy - 50, 26, 100, 5); ctx.fill();
+          ctx.font = '9px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText('companion', cx + 65, cy + 66);
+        }
+
+        ctx.textAlign = 'left';
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = '#f59e0b';
+        ctx.fillText(t.kind, 320, 96);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(t.living, 320, 120);
+        ctx.font = '12.5px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        wrapText(ctx, t.fn, 320, 156, 27, 20);
+
+        obs.innerHTML = `<strong>${t.name} — ${t.kind.toLowerCase()}, ${t.living.toLowerCase()}.</strong> ${t.fn}`;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initAnimalTissueLab() {
+      const canvas = document.getElementById('animal-tissue-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-animal-tissue');
+      const obs = document.getElementById('animal-tissue-obs');
+      const A = {
+        bone: { tissue: 'Bone', group: 'Connective tissue', matrix: 'hard, solid and rigid matrix', fn: 'Gives strength, support and protection.' },
+        cartilage: { tissue: 'Cartilage', group: 'Connective tissue', matrix: 'soft, jelly-like matrix', fn: 'Provides flexibility and cushioning.' },
+        blood: { tissue: 'Blood', group: 'Connective tissue', matrix: 'fluid matrix', fn: 'A connective tissue like bone, differing only because its matrix is fluid.' },
+        tendon: { tissue: 'Tendon', group: 'Connective tissue', matrix: 'fibrous', fn: 'Connects muscles to bones.' },
+        ligament: { tissue: 'Ligament', group: 'Connective tissue', matrix: 'fibrous', fn: 'Connects bones to bones and prevents excessive movement.' },
+        nervous: { tissue: 'Nervous tissue', group: 'Control network', matrix: 'network of nerve cells', fn: 'Forms the body’s control and coordination network, with the brain as control centre for memory and responses.' }
+      };
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const a = A[sel.value];
+        const key = sel.value;
+        const cx = 165, cy = 195;
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 38);
+
+        if (key === 'blood') {
+          ctx.fillStyle = 'rgba(239,68,68,0.10)';
+          ctx.beginPath(); ctx.roundRect(cx - 110, cy - 46, 220, 92, 46); ctx.fill();
+          for (let i = 0; i < 14; i++) {
+            const x = cx - 96 + (i % 7) * 32, y = cy - 20 + Math.floor(i / 7) * 40;
+            ctx.fillStyle = '#ef4444';
+            ctx.beginPath(); ctx.ellipse(x, y, 11, 8, 0, 0, Math.PI * 2); ctx.fill();
+          }
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText('fluid matrix carrying cells', cx, cy + 74);
+        } else if (key === 'nervous') {
+          ctx.fillStyle = '#8b5cf6';
+          ctx.beginPath(); ctx.arc(cx - 60, cy, 22, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = '#8b5cf6'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(cx - 38, cy); ctx.lineTo(cx + 92, cy); ctx.stroke();
+          [[-1, -1], [-1, 1], [1, -1], [1, 1]].forEach(([sx, sy]) => {
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(cx - 76, cy); ctx.lineTo(cx - 76 + sx * 26, cy + sy * 26); ctx.stroke();
+          });
+          [[-1], [1]].forEach(([sy]) => {
+            ctx.beginPath(); ctx.moveTo(cx + 92, cy); ctx.lineTo(cx + 112, cy + sy * 18); ctx.stroke();
+          });
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText('nerve cell carrying signals', cx + 10, cy + 62);
+        } else if (key === 'cartilage') {
+          ctx.fillStyle = 'rgba(34,197,94,0.20)'; ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.roundRect(cx - 90, cy - 40, 180, 80, 34); ctx.fill(); ctx.stroke();
+          for (let i = 0; i < 6; i++) {
+            const x = cx - 66 + (i % 3) * 66, y = cy - 16 + Math.floor(i / 3) * 34;
+            ctx.fillStyle = '#166534';
+            ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI * 2); ctx.fill();
+          }
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText('cells in a soft jelly-like matrix', cx, cy + 66);
+        } else if (key === 'bone') {
+          ctx.fillStyle = 'rgba(148,163,184,0.30)'; ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.roundRect(cx - 90, cy - 26, 180, 52, 12); ctx.fill(); ctx.stroke();
+          [[-90, -1], [-90, 1], [90, -1], [90, 1]].forEach(([dx, sy]) => {
+            ctx.beginPath(); ctx.arc(cx + dx, cy + sy * 22, 22, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+          });
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText('hard, solid and rigid matrix', cx, cy + 78);
+        } else {
+          const isTendon = key === 'tendon';
+          ctx.fillStyle = 'rgba(148,163,184,0.30)'; ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.roundRect(cx - 118, cy - 20, 60, 40, 10); ctx.fill(); ctx.stroke();
+          ctx.beginPath(); ctx.roundRect(cx + 58, cy - 20, 60, 40, 10); ctx.fill(); ctx.stroke();
+          if (isTendon) {
+            ctx.fillStyle = 'rgba(239,68,68,0.35)';
+            ctx.beginPath(); ctx.ellipse(cx - 88, cy, 34, 26, 0, 0, Math.PI * 2); ctx.fill();
+          }
+          ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 8;
+          ctx.beginPath(); ctx.moveTo(cx - 56, cy); ctx.lineTo(cx + 56, cy); ctx.stroke();
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+          ctx.fillText(isTendon ? 'muscle — tendon — bone' : 'bone — ligament — bone', cx, cy + 60);
+        }
+
+        ctx.textAlign = 'left';
+        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText(a.tissue, 330, 116);
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = '#f59e0b';
+        ctx.fillText(a.group, 330, 140);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
+        ctx.fillText(a.matrix, 330, 162);
+        ctx.font = '12.5px system-ui'; ctx.fillStyle = cssVar('--text-normal');
+        wrapText(ctx, a.fn, 330, 196, 26, 20);
+
+        obs.innerHTML = `<strong>${a.tissue} — ${a.group.toLowerCase()} with a ${a.matrix}.</strong> ${a.fn}`;
       }
 
       sel.addEventListener('change', draw);
