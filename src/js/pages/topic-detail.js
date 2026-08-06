@@ -6087,6 +6087,99 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const mixtureClassifyLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="mixture-classify-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a mixture and see whether it stays uniform or separates.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Mixture</h3>
+            <select id="sel-mixture-classify" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="sugar" selected>Sugar in water</option>
+              <option value="vinegar">Vinegar (acetic acid in water)</option>
+              <option value="sand">Sand in water</option>
+              <option value="oil">Oil and water</option>
+              <option value="chalk">Chalk powder in water</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Classification</h3>
+            <div id="mixture-classify-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a mixture above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const concentrationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="concentration-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Work out the concentration of each solution step by step.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Solution</h3>
+            <select id="sel-concentration" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="mm10" selected>10 g solute in 90 g solvent (mass by mass)</option>
+              <option value="mm20">20 g solute in 80 g solvent (mass by mass)</option>
+              <option value="mv5">5 g glucose in 100 mL solution (mass by volume)</option>
+              <option value="mv2">2 g solute in 50 mL solution (mass by volume)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Concentration</h3>
+            <div id="concentration-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a solution above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const crystallizationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="crystallization-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Cool a saturated solution and read how much solute crystallises out.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Cool the Solution To</h3>
+            <select id="sel-crystallization" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="60" selected>60 °C (saturated, no cooling yet)</option>
+              <option value="40">40 °C</option>
+              <option value="20">20 °C</option>
+              <option value="gas">Compare: a gas dissolved in water</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Crystals Obtained</h3>
+            <div id="crystallization-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a temperature above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const mixtureSeparationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="mixture-separation-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Choose a separation method and see the apparatus at work.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Method</h3>
+            <select id="sel-mixture-separation" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="funnel" selected>Separating funnel (oil and water)</option>
+              <option value="sublimation">Sublimation</option>
+              <option value="sedimentation">Sedimentation (muddy water)</option>
+              <option value="centrifuge">Centrifugation (blood)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>How It Works</h3>
+            <div id="mixture-separation-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a method above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const reflexArcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -8366,6 +8459,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'kinematic-equation-sim') {
               labHtml = kinematicEquationLabHtml;
               labDesc = 'Apply each kinematic equation to the same motion and see them agree.';
+            } else if (topicObj.lab.type === 'mixture-classify-sim') {
+              labHtml = mixtureClassifyLabHtml;
+              labDesc = 'Compare homogeneous and heterogeneous mixtures side by side.';
+            } else if (topicObj.lab.type === 'concentration-sim') {
+              labHtml = concentrationLabHtml;
+              labDesc = 'Calculate mass by mass and mass by volume percentage concentrations.';
+            } else if (topicObj.lab.type === 'crystallization-sim') {
+              labHtml = crystallizationLabHtml;
+              labDesc = 'Cool a saturated solution along its solubility curve and collect the crystals.';
+            } else if (topicObj.lab.type === 'mixture-separation-sim') {
+              labHtml = mixtureSeparationLabHtml;
+              labDesc = 'Explore the apparatus used to separate heterogeneous mixtures.';
             } else if (topicObj.lab.type === 'reflex-arc') {
               labHtml = reflexArcLabHtml;
               labDesc = 'Trigger a reflex action and watch the nerve signal travel from receptor to effector.';
@@ -9093,6 +9198,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initMotionGraphLab();
         } else if (topicObj.lab.type === 'kinematic-equation-sim') {
           initKinematicEquationLab();
+        } else if (topicObj.lab.type === 'mixture-classify-sim') {
+          initMixtureClassifyLab();
+        } else if (topicObj.lab.type === 'concentration-sim') {
+          initConcentrationLab();
+        } else if (topicObj.lab.type === 'crystallization-sim') {
+          initCrystallizationLab();
+        } else if (topicObj.lab.type === 'mixture-separation-sim') {
+          initMixtureSeparationLab();
         } else if (topicObj.lab.type === 'reflex-arc') {
           initReflexArcLab();
         } else if (topicObj.lab.type === 'hormone-feedback') {
@@ -29361,6 +29474,674 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       sel.addEventListener('change', draw);
       draw();
+    }
+
+    function initMixtureClassifyLab() {
+      const canvas = document.getElementById('mixture-classify-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-mixture-classify');
+      const obs = document.getElementById('mixture-classify-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const DATA = {
+        sugar: {
+          name: 'Sugar in water', kind: 'Homogeneous (a solution)',
+          note: 'The sugar dissolves completely. The mixture is equally sweet in the first and the last sip, and nothing settles on standing.',
+          settles: false, layers: false, liquid: '#5aa9e6', particle: null
+        },
+        vinegar: {
+          name: 'Vinegar (acetic acid in water)', kind: 'Homogeneous (a solution)',
+          note: 'Acetic acid mixes uniformly with water, so no particles are visible and the composition is the same everywhere.',
+          settles: false, layers: false, liquid: '#d9c26a', particle: null
+        },
+        sand: {
+          name: 'Sand in water', kind: 'Heterogeneous',
+          note: 'The sand particles are easily visible in the water and settle at the bottom with time — the mixture is not uniform.',
+          settles: true, layers: false, liquid: '#5aa9e6', particle: '#b98b4f'
+        },
+        oil: {
+          name: 'Oil and water', kind: 'Heterogeneous (immiscible liquids)',
+          note: 'Oil and water do not mix. They form two separate layers, with the lighter oil above the water.',
+          settles: false, layers: true, liquid: '#5aa9e6', particle: null
+        },
+        chalk: {
+          name: 'Chalk powder in water', kind: 'Heterogeneous (a suspension)',
+          note: 'The chalk does not dissolve. Its particles are larger than those in a solution and stay suspended in the medium before settling.',
+          settles: true, layers: false, liquid: '#8fbfe0', particle: '#f0f0f0'
+        }
+      };
+
+      // Small deterministic pseudo-random generator so particle layout never jitters.
+      function rand(seed) {
+        let s = seed;
+        return function () { s = (s * 1103515245 + 12345) % 2147483648; return s / 2147483648; };
+      }
+
+      function beaker(x, y, w, h, label, d, stirred) {
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x, y + h);
+        ctx.lineTo(x + w, y + h);
+        ctx.lineTo(x + w, y);
+        ctx.stroke();
+
+        const top = y + 28;
+        if (d.layers) {
+          const mid = top + (y + h - top) * 0.42;
+          ctx.fillStyle = '#e0b64a';
+          ctx.fillRect(x + 2, top, w - 4, mid - top);
+          ctx.fillStyle = d.liquid;
+          ctx.fillRect(x + 2, mid, w - 4, y + h - mid - 2);
+          if (!stirred) {
+            ctx.strokeStyle = text;
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(x + 2, mid); ctx.lineTo(x + w - 2, mid);
+            ctx.stroke();
+            ctx.fillStyle = text;
+            ctx.font = '11px sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('oil', x + 6, top + 16);
+            ctx.fillText('water', x + 6, mid + 16);
+          }
+        } else {
+          ctx.fillStyle = d.liquid;
+          ctx.fillRect(x + 2, top, w - 4, y + h - top - 2);
+        }
+
+        if (d.particle) {
+          const r = rand(7);
+          ctx.fillStyle = d.particle;
+          for (let i = 0; i < 46; i++) {
+            const px = x + 8 + r() * (w - 16);
+            const py = stirred
+              ? top + 6 + r() * (y + h - top - 12)
+              : y + h - 6 - r() * 22;
+            ctx.beginPath();
+            ctx.arc(px, py, 2.6, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        ctx.fillStyle = text;
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, x + w / 2, y - 10);
+      }
+
+      function draw() {
+        const d = DATA[sel.value];
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(d.name, W / 2, 26);
+
+        beaker(110, 70, 140, 200, 'Just stirred', d, true);
+        beaker(350, 70, 140, 200, 'After standing', d, false);
+
+        ctx.fillStyle = (d.kind.indexOf('Homo') === 0) ? '#4caf82' : '#e08a5a';
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(d.kind, W / 2, 300);
+
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText(d.settles || d.layers ? 'Particles or layers are visible — composition is not uniform' : 'No particles visible — composition is uniform throughout', W / 2, 320);
+      }
+
+      function update() {
+        const d = DATA[sel.value];
+        draw();
+        obs.innerHTML = '<strong>' + d.name + '</strong><br>' +
+          'Type: <strong>' + d.kind + '</strong><br><br>' + d.note;
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initConcentrationLab() {
+      const canvas = document.getElementById('concentration-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-concentration');
+      const obs = document.getElementById('concentration-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const DATA = {
+        mm10: { mode: 'mm', solute: 10, solvent: 90, unit: 'g', label: '10 g solute in 90 g solvent' },
+        mm20: { mode: 'mm', solute: 20, solvent: 80, unit: 'g', label: '20 g solute in 80 g solvent' },
+        mv5: { mode: 'mv', solute: 5, volume: 100, unit: 'mL', label: '5 g glucose made up to 100 mL' },
+        mv2: { mode: 'mv', solute: 2, volume: 50, unit: 'mL', label: '2 g solute made up to 50 mL' }
+      };
+
+      function draw() {
+        const d = DATA[sel.value];
+        const total = d.mode === 'mm' ? d.solute + d.solvent : d.volume;
+        const pct = (d.solute / total) * 100;
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(d.label, W / 2, 26);
+
+        // Proportion bar representing the whole solution.
+        const bx = 60, by = 60, bw = W - 120, bh = 44;
+        const sw = bw * (d.solute / total);
+        ctx.fillStyle = '#3d6fbf';
+        ctx.fillRect(bx, by, sw, bh);
+        ctx.fillStyle = '#2a3550';
+        ctx.fillRect(bx + sw, by, bw - sw, bh);
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(bx, by, bw, bh);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        if (sw > 44) ctx.fillText(d.solute + ' g', bx + sw / 2, by + 27);
+        ctx.fillStyle = text;
+        ctx.fillText(d.mode === 'mm' ? d.solvent + ' g solvent' : 'rest of the solution', bx + sw + (bw - sw) / 2, by + 27);
+
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('solute', bx + sw / 2, by - 8);
+        ctx.textAlign = 'left';
+        ctx.fillText('whole solution = ' + total + ' ' + d.unit, bx, by + bh + 18);
+
+        // The formula, worked line by line.
+        ctx.textAlign = 'center';
+        ctx.fillStyle = text;
+        ctx.font = 'bold 14px sans-serif';
+        const title = d.mode === 'mm' ? 'Mass by mass percentage' : 'Mass by volume percentage';
+        ctx.fillText(title, W / 2, 160);
+        ctx.font = '14px sans-serif';
+        const numer = d.mode === 'mm' ? 'Mass of solute' : 'Mass of solute';
+        const denom = d.mode === 'mm' ? 'Mass of solution' : 'Volume of solution';
+        ctx.fillText('= (' + numer + ' ÷ ' + denom + ') × 100', W / 2, 186);
+        ctx.fillStyle = accent;
+        ctx.fillText('= (' + d.solute + ' ÷ ' + total + ') × 100', W / 2, 212);
+        ctx.font = 'bold 20px sans-serif';
+        ctx.fillText('= ' + (Math.round(pct * 100) / 100) + '% ' + (d.mode === 'mm' ? 'm/m' : 'm/v'), W / 2, 244);
+
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        if (d.mode === 'mm') {
+          ctx.fillText('Mass of solution = mass of solute + mass of solvent = ' + d.solute + ' + ' + d.solvent + ' = ' + total + ' g', W / 2, 280);
+          ctx.fillText('Used for homogeneous mixtures and for labelling packaged foods.', W / 2, 302);
+        } else {
+          ctx.fillText('The solute is weighed, then made up to a measured volume of solution.', W / 2, 280);
+          ctx.fillText('Used in medicines and laboratories, where volume is easier to measure than mass.', W / 2, 302);
+        }
+      }
+
+      function update() {
+        const d = DATA[sel.value];
+        const total = d.mode === 'mm' ? d.solute + d.solvent : d.volume;
+        const pct = Math.round((d.solute / total) * 10000) / 100;
+        draw();
+        obs.innerHTML = '<strong>' + d.label + '</strong><br>' +
+          (d.mode === 'mm'
+            ? 'Mass of solution = ' + d.solute + ' + ' + d.solvent + ' = ' + total + ' g<br>'
+            : 'Volume of solution = ' + total + ' mL<br>') +
+          '(' + d.solute + ' ÷ ' + total + ') × 100 = <strong>' + pct + '% ' + (d.mode === 'mm' ? 'm/m' : 'm/v') + '</strong><br><br>' +
+          (d.mode === 'mm'
+            ? 'Mass by mass percentage tells us how many grams of solute are present in 100 g of solution.'
+            : 'Mass by volume percentage tells us how many grams of solute are present in 100 mL of solution.');
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initCrystallizationLab() {
+      const canvas = document.getElementById('crystallization-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-crystallization');
+      const obs = document.getElementById('crystallization-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      // Sample solubility data for compound 'B', anchored on the textbook value
+      // of 287 g dissolving in 100 g of water at 60 °C.
+      const CURVE = [[0, 55], [20, 100], [40, 170], [60, 287], [80, 400]];
+      function solubilityAt(t) {
+        for (let i = 0; i < CURVE.length - 1; i++) {
+          if (t >= CURVE[i][0] && t <= CURVE[i + 1][0]) {
+            const f = (t - CURVE[i][0]) / (CURVE[i + 1][0] - CURVE[i][0]);
+            return CURVE[i][1] + f * (CURVE[i + 1][1] - CURVE[i][1]);
+          }
+        }
+        return CURVE[CURVE.length - 1][1];
+      }
+
+      const ox = 70, oy = 280, pw = 420, ph = 210;
+      const px = t => ox + (t / 90) * pw;
+      const py = s => oy - (s / 450) * ph;
+
+      function axes(ylabel) {
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1;
+        for (let t = 0; t <= 90; t += 15) {
+          ctx.globalAlpha = 0.25;
+          ctx.beginPath(); ctx.moveTo(px(t), oy); ctx.lineTo(px(t), oy - ph); ctx.stroke();
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = muted;
+          ctx.font = '11px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(t, px(t), oy + 16);
+        }
+        for (let s = 0; s <= 450; s += 100) {
+          ctx.globalAlpha = 0.25;
+          ctx.beginPath(); ctx.moveTo(ox, py(s)); ctx.lineTo(ox + pw, py(s)); ctx.stroke();
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = muted;
+          ctx.textAlign = 'right';
+          ctx.fillText(s, ox - 6, py(s) + 4);
+        }
+        ctx.strokeStyle = text;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(ox, oy - ph); ctx.lineTo(ox, oy); ctx.lineTo(ox + pw, oy);
+        ctx.stroke();
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Temperature (°C)', ox + pw / 2, oy + 36);
+        ctx.save();
+        ctx.translate(20, oy - ph / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText(ylabel, 0, 0);
+        ctx.restore();
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+
+        if (sel.value === 'gas') {
+          ctx.fillText('A gas dissolved in water', W / 2, 24);
+          axes('Solubility (g per 100 g water)');
+          ctx.strokeStyle = '#e08a5a';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          for (let t = 0; t <= 90; t += 2) {
+            const s = 400 * Math.exp(-t / 30);
+            if (t === 0) ctx.moveTo(px(t), py(s)); else ctx.lineTo(px(t), py(s));
+          }
+          ctx.stroke();
+          ctx.fillStyle = '#e08a5a';
+          ctx.font = 'bold 13px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText('Solubility falls as temperature rises', px(30), py(230));
+          return;
+        }
+
+        const T = parseFloat(sel.value);
+        const sT = solubilityAt(T);
+        const s60 = 287;
+        ctx.fillText('Solubility curve of compound ‘B’', W / 2, 24);
+        axes('Solubility (g per 100 g water)');
+
+        ctx.strokeStyle = '#4caf82';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        CURVE.forEach((p, i) => { if (i === 0) ctx.moveTo(px(p[0]), py(p[1])); else ctx.lineTo(px(p[0]), py(p[1])); });
+        ctx.stroke();
+
+        // Mark the starting saturated solution at 60 °C.
+        ctx.fillStyle = '#4caf82';
+        ctx.beginPath(); ctx.arc(px(60), py(s60), 5, 0, Math.PI * 2); ctx.fill();
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('287 g at 60 °C', px(60) + 8, py(s60) - 6);
+
+        if (T < 60) {
+          ctx.fillStyle = '#e08a5a';
+          ctx.beginPath(); ctx.arc(px(T), py(sT), 5, 0, Math.PI * 2); ctx.fill();
+          ctx.textAlign = 'right';
+          ctx.fillText(Math.round(sT) + ' g at ' + T + ' °C', px(T) - 8, py(sT) - 6);
+
+          // The vertical gap between the two solubilities is what crystallises out.
+          ctx.strokeStyle = '#e08a5a';
+          ctx.lineWidth = 2;
+          ctx.setLineDash([5, 4]);
+          ctx.beginPath();
+          ctx.moveTo(px(T), py(sT)); ctx.lineTo(px(T), py(s60));
+          ctx.lineTo(px(60), py(s60));
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.font = 'bold 13px sans-serif';
+          ctx.textAlign = 'left';
+          const cLabel = Math.round(s60 - sT) + ' g crystallises out';
+          const cx0 = px(T) + 8, cy0 = (py(sT) + py(s60)) / 2;
+          ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+          ctx.fillRect(cx0 - 4, cy0 - 13, ctx.measureText(cLabel).width + 8, 18);
+          ctx.fillStyle = '#e08a5a';
+          ctx.fillText(cLabel, cx0, cy0);
+        } else {
+          ctx.fillStyle = muted;
+          ctx.font = '13px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText('Saturated, but not yet cooled — nothing has crystallised.', px(10), py(400));
+        }
+      }
+
+      function update() {
+        draw();
+        if (sel.value === 'gas') {
+          obs.innerHTML = '<strong>Gases behave the opposite way.</strong><br><br>' +
+            'While the solubility of a solid solute in a liquid generally <em>increases</em> with temperature, ' +
+            'the solubility of a gas dissolved in a liquid generally <em>decreases</em> as the temperature rises. ' +
+            'That is why temperature must always be stated along with a solubility value.';
+          return;
+        }
+        const T = parseFloat(sel.value);
+        const sT = Math.round(solubilityAt(T));
+        if (T >= 60) {
+          obs.innerHTML = '<strong>Saturated solution at 60 °C</strong><br>' +
+            '287 g of compound ‘B’ has been dissolved in 100 g of water. No more will dissolve at this temperature.<br><br>' +
+            'Cool it and watch what happens.';
+        } else {
+          obs.innerHTML = '<strong>Cooled to ' + T + ' °C</strong><br>' +
+            'Solubility at 60 °C = 287 g<br>' +
+            'Solubility at ' + T + ' °C = ' + sT + ' g<br>' +
+            'Crystals obtained = 287 − ' + sT + ' = <strong>' + (287 - sT) + ' g</strong><br><br>' +
+            'As the solution cools its solubility falls, so the solvent can no longer hold all the dissolved solute — the surplus separates out as pure crystals.';
+        }
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initMixtureSeparationLab() {
+      const canvas = document.getElementById('mixture-separation-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-mixture-separation');
+      const obs = document.getElementById('mixture-separation-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      function title(t) {
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(t, W / 2, 24);
+      }
+
+      function drawFunnel() {
+        title('Separating funnel — mustard oil and water');
+        const cx = 200, top = 60, neck = 190, bot = 250;
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(cx - 70, top);
+        ctx.lineTo(cx - 70, top + 40);
+        ctx.lineTo(cx - 8, neck);
+        ctx.lineTo(cx - 8, bot);
+        ctx.lineTo(cx + 8, bot);
+        ctx.lineTo(cx + 8, neck);
+        ctx.lineTo(cx + 70, top + 40);
+        ctx.lineTo(cx + 70, top);
+        ctx.stroke();
+
+        // Oil floats above; water forms the lower layer.
+        const split = top + 78;
+        ctx.fillStyle = '#e0b64a';
+        ctx.beginPath();
+        ctx.moveTo(cx - 68, top + 6);
+        ctx.lineTo(cx + 68, top + 6);
+        ctx.lineTo(cx + 68, top + 40);
+        ctx.lineTo(cx + 26, split);
+        ctx.lineTo(cx - 26, split);
+        ctx.lineTo(cx - 68, top + 40);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = '#5aa9e6';
+        ctx.beginPath();
+        ctx.moveTo(cx - 26, split);
+        ctx.lineTo(cx + 26, split);
+        ctx.lineTo(cx + 7, neck);
+        ctx.lineTo(cx - 7, neck);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('mustard oil (upper layer)', cx + 78, top + 30);
+        ctx.fillText('water (lower layer)', cx + 78, split + 10);
+
+        // Stopcock.
+        ctx.strokeStyle = '#e08a5a';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(cx - 18, 220); ctx.lineTo(cx + 18, 220);
+        ctx.stroke();
+        ctx.fillStyle = '#e08a5a';
+        ctx.font = '11px sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText('stopcock', cx - 24, 224);
+
+        // Receiving flask below.
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(cx - 44, 300);
+        ctx.lineTo(cx - 12, 268);
+        ctx.lineTo(cx + 12, 268);
+        ctx.lineTo(cx + 44, 300);
+        ctx.stroke();
+        ctx.fillStyle = '#5aa9e6';
+        ctx.fillRect(cx - 38, 290, 76, 9);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('Water is collected first;', cx + 78, 275);
+        ctx.fillText('the oil stays behind in the funnel.', cx + 78, 293);
+      }
+
+      function drawSublimation() {
+        title('Sublimation — solid straight to vapour');
+        const cx = 260;
+        // Inverted funnel that catches the vapour.
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(cx - 80, 150);
+        ctx.lineTo(cx - 8, 70);
+        ctx.lineTo(cx - 8, 50);
+        ctx.moveTo(cx + 80, 150);
+        ctx.lineTo(cx + 8, 70);
+        ctx.lineTo(cx + 8, 50);
+        ctx.stroke();
+
+        // Deposit of resolidified solid on the cool inner surface.
+        ctx.strokeStyle = '#c9d4ff';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(cx - 70, 143); ctx.lineTo(cx - 14, 80);
+        ctx.moveTo(cx + 70, 143); ctx.lineTo(cx + 14, 80);
+        ctx.stroke();
+
+        // China dish holding the mixture.
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(cx - 60, 190); ctx.lineTo(cx - 46, 220);
+        ctx.lineTo(cx + 46, 220); ctx.lineTo(cx + 60, 190);
+        ctx.stroke();
+        ctx.fillStyle = '#b8b2a0';
+        ctx.fillRect(cx - 50, 206, 100, 12);
+
+        // Vapour arrows rising from the dish to the funnel.
+        ctx.strokeStyle = '#a0c8ff';
+        ctx.lineWidth = 2;
+        [-30, 0, 30].forEach(dx => {
+          ctx.beginPath();
+          ctx.moveTo(cx + dx, 196);
+          ctx.lineTo(cx + dx, 160);
+          ctx.lineTo(cx + dx - 4, 168);
+          ctx.moveTo(cx + dx, 160);
+          ctx.lineTo(cx + dx + 4, 168);
+          ctx.stroke();
+        });
+
+        // Burner flame.
+        ctx.fillStyle = '#e0743a';
+        ctx.beginPath();
+        ctx.moveTo(cx - 14, 260);
+        ctx.quadraticCurveTo(cx, 226, cx + 14, 260);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(cx - 20, 290); ctx.lineTo(cx + 20, 290);
+        ctx.moveTo(cx, 290); ctx.lineTo(cx, 262);
+        ctx.stroke();
+
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('vapour resolidifies here', cx + 90, 110);
+        ctx.fillText('mixture of a sublimable and', cx + 90, 200);
+        ctx.fillText('a non-sublimable solid', cx + 90, 218);
+        ctx.fillStyle = muted;
+        ctx.fillText('heat', cx + 26, 262);
+      }
+
+      function drawSedimentation() {
+        title('Sedimentation — muddy water left to stand');
+        const bx = 210, by = 70, bw = 180, bh = 210;
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(bx, by); ctx.lineTo(bx, by + bh);
+        ctx.lineTo(bx + bw, by + bh); ctx.lineTo(bx + bw, by);
+        ctx.stroke();
+
+        ctx.fillStyle = '#5aa9e6';
+        ctx.fillRect(bx + 2, by + 24, bw - 4, bh - 26 - 46);
+        ctx.fillStyle = '#8a6b45';
+        ctx.fillRect(bx + 2, by + bh - 48, bw - 4, 46);
+
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('clear water above', bx + bw + 14, by + 80);
+        ctx.fillText('heavier mud settles', bx + bw + 14, by + bh - 30);
+        ctx.fillText('at the bottom', bx + bw + 14, by + bh - 12);
+
+        ctx.fillStyle = muted;
+        ctx.textAlign = 'left';
+        ctx.fillText('The clear liquid can then be', 40, by + 150);
+        ctx.fillText('poured off carefully, leaving', 40, by + 168);
+        ctx.fillText('the sediment behind.', 40, by + 186);
+      }
+
+      function drawCentrifuge() {
+        title('Centrifugation — separating blood');
+        const cx = 300, cy = 165;
+        // Rotation path of the spinning tubes.
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([6, 5]);
+        ctx.beginPath();
+        ctx.arc(cx, cy, 118, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = muted;
+        ctx.beginPath(); ctx.arc(cx, cy, 12, 0, Math.PI * 2); ctx.fill();
+
+        // Two tubes swung out horizontal by the spin.
+        [-1, 1].forEach(side => {
+          const x0 = cx + side * 24, x1 = cx + side * 116;
+          const tTop = cy - 17, tBot = cy + 17;
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          ctx.moveTo(x0, tTop); ctx.lineTo(x1, tTop);
+          ctx.lineTo(x1, tBot); ctx.lineTo(x0, tBot);
+          ctx.stroke();
+          // Lighter plasma stays near the centre, heavier cells go to the outer end.
+          const mid = x0 + (x1 - x0) * 0.45;
+          ctx.fillStyle = '#e8d98a';
+          ctx.fillRect(Math.min(x0, mid) + (side > 0 ? 2 : 0), tTop + 2, Math.abs(mid - x0) - 2, 30);
+          ctx.fillStyle = '#c0392b';
+          ctx.fillRect(Math.min(mid, x1), tTop + 2, Math.abs(x1 - mid) - 2, 30);
+          // Centrifugal force arrow pointing outwards.
+          ctx.strokeStyle = '#e08a5a';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(cx + side * 70, cy + 34);
+          ctx.lineTo(cx + side * 108, cy + 34);
+          ctx.lineTo(cx + side * 100, cy + 29);
+          ctx.moveTo(cx + side * 108, cy + 34);
+          ctx.lineTo(cx + side * 100, cy + 39);
+          ctx.stroke();
+        });
+
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('plasma (lighter, stays inward)', cx, cy - 34);
+        ctx.fillStyle = '#c0392b';
+        ctx.fillText('red blood cells settle at the outer end', cx, 268);
+        ctx.fillStyle = '#e08a5a';
+        ctx.fillText('centrifugal force acts outwards', cx, 292);
+      }
+
+      const NOTES = {
+        funnel: '<strong>Separating funnel</strong><br>Oil and water are immiscible — they do not mix. Left to stand in a separating funnel, they form two distinct layers with mustard oil above and water below. Opening the stopcock slowly lets the lower water layer be collected, and closing it at the right moment leaves the oil behind.',
+        sublimation: '<strong>Sublimation</strong><br>Some solids change directly from the solid state to vapour on heating, without passing through the liquid state. Heating such a mixture drives off the sublimable solid as vapour, which resolidifies on the cool inner surface above, leaving the non-sublimable solid in the dish.',
+        sedimentation: '<strong>Sedimentation</strong><br>If a container of muddy water is left undisturbed, the heavier mud settles at the bottom and clear water is left above, which can then be poured off. If the water stays unclear even after standing, a technique such as centrifugation is needed.',
+        centrifuge: '<strong>Centrifugation</strong><br>The mixture is spun in tubes at high speed. The tubes swing out horizontal, and the centrifugal force — the outward force acting on a body in circular motion — drives the heavier particles to the outer end while the lighter liquid stays inward. It is widely used in laboratories to separate the components of blood, such as red blood cells and plasma.'
+      };
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        if (v === 'funnel') drawFunnel();
+        else if (v === 'sublimation') drawSublimation();
+        else if (v === 'sedimentation') drawSedimentation();
+        else drawCentrifuge();
+        obs.innerHTML = NOTES[v];
+      }
+
+      sel.addEventListener('change', update);
+      update();
     }
 
     function initReflexArcLab() {

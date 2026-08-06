@@ -20628,6 +20628,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9s-5",
+              title: "Exploring Mixtures and their Separation",
+              topics: [
+                {
+                  id: "9s-5-1",
+                  title: "1. Classifying Mixtures",
+                  lab: { type: "mixture-classify-sim" },
+                  theory: {
+                    intro: "The first sip of stirred sugar water tastes exactly like the last. Stir sand into water and it settles before you finish looking at it — two mixtures, two entirely different characters.",
+                    sections: [
+                      {
+                        heading: "Homogeneous Mixtures",
+                        text: "A mixture of sugar and water has a uniform composition throughout — a well-stirred mixture is equally sweet in the first and the last sip. Such a mixture is called a homogeneous mixture, or a solution. Other examples are vinegar (acetic acid in water) and aerated drinks like soda (carbon dioxide in water). A solution always remains homogeneous."
+                      },
+                      {
+                        heading: "Heterogeneous Mixtures",
+                        text: "A stirred mixture of sand and water is not uniform. The sand particles are easily visible in the water and settle with time. Such a mixture is called a heterogeneous mixture. Oil and water form another example — they separate into distinct layers rather than blending."
+                      },
+                      {
+                        heading: "Suspensions",
+                        text: "Heterogeneous mixtures in which solid particles do not dissolve but remain suspended throughout the bulk of the medium are called suspensions. The particles of the undissolved substance are larger in size than those in a solution, and particles of a suspension are visible to the naked eye. Sawdust suspended in water and tea leaves in water are further examples."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Salt, Chalk and Milk in Water",
+                      objective: "To classify three mixtures by whether their particles are visible and whether they settle.",
+                      materials: ["Three transparent beakers", "Water", "Common salt", "Chalk powder", "Milk", "A laser pointer"],
+                      steps: [
+                        "In beaker A, add one spatula of common salt to 50 mL of water and stir well.",
+                        "In beaker B, add one spatula of chalk powder to 50 mL of water and stir well.",
+                        "In beaker C, add a few drops of milk to 50 mL of water and stir well.",
+                        "Look at each beaker and record whether any particles are visible.",
+                        "Leave all three undisturbed for some time and note which ones settle."
+                      ],
+                      observation: "In beaker A the salt disappears completely and nothing settles — a homogeneous mixture or solution. In beaker B the chalk particles stay visible and settle over time — a heterogeneous mixture, specifically a suspension. Beaker C stays cloudy without the particles being individually visible."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is another name for a homogeneous mixture?",
+                      options: ["A suspension", "A solution", "A colloid", "A precipitate"],
+                      answer: 1,
+                      explanation: "A mixture with uniform composition throughout — such as sugar in water — is called a homogeneous mixture or, equivalently, a solution."
+                    },
+                    {
+                      question: "Which of these is a homogeneous mixture?",
+                      options: ["Sand in water", "Oil and water", "Vinegar (acetic acid in water)", "Chalk powder in water"],
+                      answer: 2,
+                      explanation: "Vinegar is acetic acid dissolved uniformly in water, making it homogeneous — unlike sand, oil or chalk powder in water, which are all heterogeneous."
+                    },
+                    {
+                      question: "What is a suspension?",
+                      options: ["A mixture where solute dissolves completely", "A heterogeneous mixture where solid particles do not dissolve but remain suspended in the medium", "Any liquid mixture", "A mixture of two gases"],
+                      answer: 1,
+                      explanation: "In a suspension the solid particles do not dissolve — they remain suspended throughout the bulk of the medium and are visible to the naked eye."
+                    },
+                    {
+                      question: "How do particles in a suspension compare with those in a solution?",
+                      options: ["They are smaller", "They are larger and visible to the naked eye", "They are exactly the same size", "Suspensions have no particles"],
+                      answer: 1,
+                      explanation: "The particles of the undissolved substance in a suspension are larger than those present in a solution, which is why they can be seen without a microscope."
+                    },
+                    {
+                      question: "Why does a well-stirred sugar solution taste equally sweet in the first and last sip?",
+                      options: ["Because sugar settles at the bottom", "Because it has a uniform composition throughout", "Because sugar floats on top", "Because the tongue adapts"],
+                      answer: 1,
+                      explanation: "A homogeneous mixture has uniform composition throughout, so every part of the solution contains the same proportion of dissolved sugar."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-5-2",
+                  title: "2. Concentration of a Solution",
+                  lab: { type: "concentration-sim" },
+                  theory: {
+                    intro: "A bottle labelled '5% glucose' is making a precise claim — five grams of glucose in every hundred millilitres of solution, no more and no less.",
+                    sections: [
+                      {
+                        heading: "Mass by Mass Percentage",
+                        text: "This method is commonly used to express the concentration of homogeneous mixtures. It tells us how many grams of solute are present in 100 grams of the total solution: Mass by mass percentage = (Mass of solute ÷ Mass of solution) × 100. For example, dissolving 10 g of solute in 90 g of solvent gives a solution of mass 10 + 90 = 100 g, so the concentration is (10 ÷ 100) × 100 = 10% m/m. This method is also used for heterogeneous mixtures such as milk powder and spice mixtures, and to label packaged foods."
+                      },
+                      {
+                        heading: "Mass by Volume Percentage",
+                        text: "This method is used where measuring the volume of a liquid is easier than weighing it — for example in medicines and laboratories. It tells us how many grams of solute are present in 100 millilitres of solution: Mass by volume percentage = (Mass of solute ÷ Volume of solution) × 100. A common example is 5% glucose solution: 5 g of glucose dissolved in water to make 100 mL of solution."
+                      },
+                      {
+                        heading: "Solubility",
+                        text: "The maximum amount of solute that dissolves in a fixed quantity of solvent (100 mL or 100 g) is called its solubility at a given temperature. A solution that cannot dissolve any more solute at that temperature is called a saturated solution. Temperature must be mentioned because the solubility of a solid solute in a liquid solvent generally increases with temperature — while for gases dissolved in liquids, solubility generally decreases as temperature rises. A graph of solubility against temperature is called a solubility curve."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Calculating Concentration Two Ways",
+                      objective: "To compute both mass by mass and mass by volume percentage for given solutions.",
+                      materials: ["Notebook and pen", "A calculator"],
+                      steps: [
+                        "For 10 g of solute dissolved in 90 g of solvent, first find the total mass of the solution.",
+                        "Apply the mass by mass formula and express the answer as % m/m.",
+                        "For 5 g of glucose made up to 100 mL of solution, identify the mass of solute and volume of solution.",
+                        "Apply the mass by volume formula and express the answer as % m/v.",
+                        "Note which method suits medicines and laboratories, and why."
+                      ],
+                      observation: "The first solution has total mass 10 + 90 = 100 g, giving (10 ÷ 100) × 100 = 10% m/m. The glucose solution gives (5 ÷ 100) × 100 = 5% m/v. Mass by volume is preferred in medicines and laboratories because measuring a liquid's volume is easier than weighing it."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the formula for mass by mass percentage?",
+                      options: ["(Mass of solute ÷ Mass of solvent) × 100", "(Mass of solute ÷ Mass of solution) × 100", "(Mass of solution ÷ Mass of solute) × 100", "(Mass of solute ÷ Volume of solution) × 100"],
+                      answer: 1,
+                      explanation: "Mass by mass percentage = (Mass of solute ÷ Mass of solution) × 100, telling us how many grams of solute are in 100 g of solution."
+                    },
+                    {
+                      question: "10 g of solute is dissolved in 90 g of solvent. What is the concentration in % m/m?",
+                      options: ["10% m/m", "11.1% m/m", "9% m/m", "90% m/m"],
+                      answer: 0,
+                      explanation: "The solution's total mass is 10 + 90 = 100 g, so the concentration is (10 ÷ 100) × 100 = 10% m/m."
+                    },
+                    {
+                      question: "5 g of glucose is dissolved to make 100 mL of solution. What is its mass by volume percentage?",
+                      options: ["5% m/v", "20% m/v", "0.05% m/v", "500% m/v"],
+                      answer: 0,
+                      explanation: "Mass by volume percentage = (5 g ÷ 100 mL) × 100 = 5% m/v."
+                    },
+                    {
+                      question: "Why is temperature always mentioned when stating solubility?",
+                      options: ["Because it has no real effect", "Because solubility of a solid in a liquid generally increases with temperature", "Because solubility is only measured in winter", "Because temperature changes the solute's mass"],
+                      answer: 1,
+                      explanation: "The solubility of a solid solute in a liquid solvent generally increases with temperature, so a solubility value is meaningless without stating the temperature."
+                    },
+                    {
+                      question: "How does the solubility of a gas in a liquid change as temperature rises?",
+                      options: ["It generally increases", "It generally decreases", "It stays constant", "It becomes zero"],
+                      answer: 1,
+                      explanation: "Unlike solids, gases dissolved in liquids generally become less soluble as the temperature increases."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-5-3",
+                  title: "3. Separating Homogeneous Mixtures",
+                  lab: { type: "crystallization-sim" },
+                  theory: {
+                    intro: "Cool a hot saturated solution and the solvent can no longer hold everything it was carrying — so the surplus walks out of solution as pure crystals.",
+                    sections: [
+                      {
+                        heading: "Crystallization",
+                        text: "If a saturated solution is prepared at a high temperature and then cooled, the solubility falls, and the solute that can no longer stay dissolved separates out as crystals. For instance, a saturated solution of compound B in water at 60 °C is made by dissolving 287 g of the compound; cooling this solution causes the excess to crystallise out. Crystallization is a method of separating a dissolved solid from a homogeneous mixture."
+                      },
+                      {
+                        heading: "Why Solubility Curves Matter",
+                        text: "A solubility curve plots solubility against temperature, with temperature on the x-axis and solubility in grams per 100 g of water on the y-axis. Different substances have different curves. Reading such a curve tells us how much solute will remain dissolved at a lower temperature — and therefore how much will crystallise out on cooling."
+                      },
+                      {
+                        heading: "Separating Miscible Substances",
+                        text: "Because a homogeneous mixture has its components uniformly mixed at the particle level, simple mechanical methods cannot separate them. Instead we exploit differences in physical properties — such as how solubility changes with temperature, which is exactly what crystallization relies upon."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Obtaining Crystals by Cooling a Saturated Solution",
+                      objective: "To separate a dissolved solid from its solution by exploiting the fall in solubility on cooling.",
+                      materials: ["Beaker", "Water", "A soluble salt such as copper sulfate", "Heat source", "Stirring rod"],
+                      steps: [
+                        "Warm some water in a beaker and keep adding the salt with stirring until no more dissolves.",
+                        "Confirm the solution is saturated by checking that further salt settles undissolved.",
+                        "Note the temperature at which the solution was saturated.",
+                        "Allow the solution to cool slowly and undisturbed.",
+                        "Observe what forms as the temperature falls, and explain why."
+                      ],
+                      observation: "As the hot saturated solution cools, its solubility falls, so the solvent can no longer hold all the dissolved solute — the surplus separates out as solid crystals, leaving the rest still in solution. This is the principle of crystallization."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is crystallization used for?",
+                      options: ["Separating two immiscible liquids", "Separating a dissolved solid from a homogeneous mixture", "Removing gases from a liquid", "Separating iron filings from sand"],
+                      answer: 1,
+                      explanation: "Crystallization separates a dissolved solid out of a solution, exploiting the fact that solubility falls as the solution cools."
+                    },
+                    {
+                      question: "Why do crystals form when a hot saturated solution is cooled?",
+                      options: ["The solvent evaporates entirely", "Solubility decreases with falling temperature, so the excess solute can no longer stay dissolved", "The solute becomes lighter", "Cooling creates new solute"],
+                      answer: 1,
+                      explanation: "Since the solubility of a solid generally decreases as temperature falls, the solvent can no longer hold all the dissolved solute and the surplus separates out as crystals."
+                    },
+                    {
+                      question: "What does a solubility curve plot?",
+                      options: ["Mass against volume", "Solubility in grams per 100 g of water against temperature", "Concentration against time", "Temperature against pressure"],
+                      answer: 1,
+                      explanation: "A solubility curve has temperature on the x-axis and solubility, in grams per 100 g of water, on the y-axis."
+                    },
+                    {
+                      question: "How much of compound B dissolves in water at 60 °C to make a saturated solution?",
+                      options: ["100 g", "287 g", "350 g", "50 g"],
+                      answer: 1,
+                      explanation: "The chapter's example uses a saturated solution of compound B prepared by dissolving 287 g in water at 60 °C."
+                    },
+                    {
+                      question: "Why can't simple mechanical methods separate a homogeneous mixture?",
+                      options: ["Because the components are uniformly mixed at the particle level", "Because homogeneous mixtures are too heavy", "Because they always contain gases", "They actually can be separated mechanically"],
+                      answer: 0,
+                      explanation: "In a homogeneous mixture the components are uniformly distributed at the particle level, so separation relies on differences in physical properties such as solubility rather than mechanical means."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-5-4",
+                  title: "4. Separating Heterogeneous Mixtures",
+                  lab: { type: "mixture-separation-sim" },
+                  theory: {
+                    intro: "Oil floats on water, camphor turns straight to vapour, and blood splits into layers when spun fast enough — each a different trick for pulling a mixture apart.",
+                    sections: [
+                      {
+                        heading: "Immiscible Liquids and the Separating Funnel",
+                        text: "When water falls into a container of oil, the two form separate layers — they do not mix and are called immiscible liquids. To separate them, the mixture is poured into a separating funnel and left to stand undisturbed until two distinct layers form, with mustard oil above and water below. Opening the stopcock slowly lets the lower layer of water be collected carefully into a container, leaving the oil behind."
+                      },
+                      {
+                        heading: "Sublimation",
+                        text: "Some solids change directly from the solid state to vapour on heating, without passing through the liquid state. This property allows such a substance to be separated from a mixture with a non-sublimable solid, by heating the mixture and collecting the vapour, which resolidifies on a cool surface."
+                      },
+                      {
+                        heading: "Sedimentation and Centrifugation",
+                        text: "If a container of muddy water is left undisturbed, the heavier mud settles at the bottom. When the water remains unclear even after standing, techniques such as centrifugation are used. Centrifugation involves spinning a mixture in a tube at high speed; the tubes become horizontal, and the centrifugal force — the outward force acting on a body moving in circular motion — causes the heavier particles to move outwards and settle at the bottom while the lighter liquid stays above. Centrifugation is widely used in laboratories to separate the components of blood, such as red blood cells and plasma, and in many chemical industries."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Separating Mustard Oil from Water",
+                      objective: "To separate two immiscible liquids using a separating funnel.",
+                      materials: ["Separating funnel", "Mustard oil", "Water", "Conical flask", "Stand"],
+                      steps: [
+                        "Pour the mixture of mustard oil and water into the separating funnel.",
+                        "Let it stand undisturbed and observe what happens.",
+                        "Identify which liquid forms the upper layer and which the lower.",
+                        "Open the stopcock slowly to collect the lower layer into a conical flask.",
+                        "Close the stopcock at the right moment so the two liquids stay separated."
+                      ],
+                      observation: "On standing, two distinct layers form, with mustard oil above and water below. Opening the stopcock lets the lower water layer drain out first, and closing it just as the boundary reaches the tap leaves the oil cleanly behind in the funnel."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What are immiscible liquids?",
+                      options: ["Liquids that mix completely", "Liquids that do not mix and form separate layers", "Liquids that always evaporate", "Liquids of the same density"],
+                      answer: 1,
+                      explanation: "Oil and water do not mix and settle into separate layers — such liquids are called immiscible."
+                    },
+                    {
+                      question: "Which apparatus is used to separate two immiscible liquids?",
+                      options: ["A separating funnel", "A centrifuge", "A condenser", "A filter paper"],
+                      answer: 0,
+                      explanation: "The mixture is left to stand in a separating funnel until two layers form, and the lower layer is drained off through the stopcock."
+                    },
+                    {
+                      question: "What is sublimation?",
+                      options: ["A solid melting into a liquid", "A solid changing directly into vapour without passing through the liquid state", "A liquid freezing", "A gas dissolving in a liquid"],
+                      answer: 1,
+                      explanation: "Sublimation is the direct change of a solid into vapour on heating, without an intermediate liquid stage — which allows such solids to be separated from non-sublimable ones."
+                    },
+                    {
+                      question: "What force causes heavier particles to settle during centrifugation?",
+                      options: ["Gravitational force alone", "Centrifugal force — the outward force acting on a body in circular motion", "Magnetic force", "Electrostatic force"],
+                      answer: 1,
+                      explanation: "Spinning the tube at high speed generates a centrifugal force, the outward force acting on a body moving in a circular path, which drives the heavier particles outward to the bottom of the tube."
+                    },
+                    {
+                      question: "What is centrifugation commonly used for in laboratories?",
+                      options: ["Separating gases from air", "Separating components of blood such as red blood cells and plasma", "Melting metals", "Growing crystals"],
+                      answer: 1,
+                      explanation: "Centrifugation is widely used in laboratories to separate the components of blood, such as red blood cells and plasma, as well as in many chemical industries."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
