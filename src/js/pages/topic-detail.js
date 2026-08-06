@@ -6087,6 +6087,98 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const netForceLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="net-force-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Combine two forces on a block and read the net force.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Arrangement</h3>
+            <select id="sel-net-force" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="a" selected>(a) 10 N right and 6 N right</option>
+              <option value="b">(b) 10 N right and 6 N left</option>
+              <option value="c">(c) 6 N right and 10 N left</option>
+              <option value="d">Tug of war: 10 N right and 10 N left</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Net Force</h3>
+            <div id="net-force-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an arrangement above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const frictionNatureLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="friction-nature-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Flick the coin stack across each surface and compare the friction.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Surface</h3>
+            <select id="sel-friction-nature" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="cement" selected>Cemented floor</option>
+              <option value="wood">Wooden table top</option>
+              <option value="laminate">Laminated table top</option>
+              <option value="marble">Polished marble or tiled floor</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What the Readings Show</h3>
+            <div id="friction-nature-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a surface above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const newtonSecondLawLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="newton-second-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Read each interval of the car's graph and apply F = ma.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Interval</h3>
+            <select id="sel-newton-second" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="i1" selected>0 s to 5 s (speeding up)</option>
+              <option value="i2">5 s to 10 s (constant velocity)</option>
+              <option value="i3">10 s to 15 s (slowing down)</option>
+              <option value="block">Example 6.5: pushing a 25 kg block</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Force Calculation</h3>
+            <div id="newton-second-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an interval above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const actionReactionLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="action-reaction-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Find both halves of the force pair, and which object each acts on.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Situation</h3>
+            <select id="sel-action-reaction" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="canoe" selected>Rowing a canoe</option>
+              <option value="rocket">A rocket lifting off</option>
+              <option value="balances">Two spring balances pulled apart</option>
+              <option value="fruit">The Earth and a falling fruit</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>The Force Pair</h3>
+            <div id="action-reaction-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a situation above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const mixtureClassifyLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -8459,6 +8551,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'kinematic-equation-sim') {
               labHtml = kinematicEquationLabHtml;
               labDesc = 'Apply each kinematic equation to the same motion and see them agree.';
+            } else if (topicObj.lab.type === 'net-force-sim') {
+              labHtml = netForceLabHtml;
+              labDesc = 'Combine two forces on a block and read off the net force.';
+            } else if (topicObj.lab.type === 'friction-nature-sim') {
+              labHtml = frictionNatureLabHtml;
+              labDesc = 'Compare the force of friction on four different surfaces.';
+            } else if (topicObj.lab.type === 'newton-second-law-sim') {
+              labHtml = newtonSecondLawLabHtml;
+              labDesc = 'Apply F = ma to each interval of a car’s velocity-time graph.';
+            } else if (topicObj.lab.type === 'action-reaction-sim') {
+              labHtml = actionReactionLabHtml;
+              labDesc = 'Identify both halves of a Newton’s third law force pair.';
             } else if (topicObj.lab.type === 'mixture-classify-sim') {
               labHtml = mixtureClassifyLabHtml;
               labDesc = 'Compare homogeneous and heterogeneous mixtures side by side.';
@@ -9198,6 +9302,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initMotionGraphLab();
         } else if (topicObj.lab.type === 'kinematic-equation-sim') {
           initKinematicEquationLab();
+        } else if (topicObj.lab.type === 'net-force-sim') {
+          initNetForceLab();
+        } else if (topicObj.lab.type === 'friction-nature-sim') {
+          initFrictionNatureLab();
+        } else if (topicObj.lab.type === 'newton-second-law-sim') {
+          initNewtonSecondLawLab();
+        } else if (topicObj.lab.type === 'action-reaction-sim') {
+          initActionReactionLab();
         } else if (topicObj.lab.type === 'mixture-classify-sim') {
           initMixtureClassifyLab();
         } else if (topicObj.lab.type === 'concentration-sim') {
@@ -29474,6 +29586,569 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       sel.addEventListener('change', draw);
       draw();
+    }
+
+    function initNetForceLab() {
+      const canvas = document.getElementById('net-force-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-net-force');
+      const obs = document.getElementById('net-force-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      // Each case gives the two forces as signed values: positive is to the right.
+      const CASES = {
+        a: { f1: 10, f2: 6, label: '(a) Both forces act towards the right' },
+        b: { f1: 10, f2: -6, label: '(b) 10 N right, 6 N left' },
+        c: { f1: -10, f2: 6, label: '(c) 6 N right, 10 N left' },
+        d: { f1: 10, f2: -10, label: 'Tug of war: equal and opposite forces' }
+      };
+
+      function arrow(x, y, len, color, label) {
+        const dir = len < 0 ? -1 : 1;
+        const L = Math.abs(len);
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + dir * L, y);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x + dir * L, y);
+        ctx.lineTo(x + dir * (L - 12), y - 7);
+        ctx.lineTo(x + dir * (L - 12), y + 7);
+        ctx.closePath();
+        ctx.fill();
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, x + dir * (L / 2), y - 14);
+      }
+
+      function update() {
+        const c = CASES[sel.value];
+        const net = c.f1 + c.f2;
+        const scale = 9;
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(c.label, W / 2, 26);
+
+        // The block, with the table it rests on.
+        const bx = W / 2, by = 120;
+        ctx.fillStyle = '#4a5468';
+        ctx.fillRect(bx - 40, by - 30, 80, 60);
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(bx - 40, by - 30, 80, 60);
+        ctx.beginPath();
+        ctx.moveTo(60, by + 30); ctx.lineTo(W - 60, by + 30);
+        ctx.stroke();
+
+        // Each force starts at the edge of the block and points outwards.
+        const start = f => (f > 0 ? bx + 40 : bx - 40);
+        arrow(start(c.f1), by - 12, c.f1 * scale, '#5aa9e6', Math.abs(c.f1) + ' N');
+        arrow(start(c.f2), by + 14, c.f2 * scale, '#e0b64a', Math.abs(c.f2) + ' N');
+
+        // Net force shown separately below.
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Net force', W / 2, 214);
+        if (net === 0) {
+          ctx.fillStyle = '#4caf82';
+          ctx.font = 'bold 17px sans-serif';
+          ctx.fillText('Zero — the forces are balanced', W / 2, 248);
+          ctx.fillStyle = muted;
+          ctx.font = '13px sans-serif';
+          ctx.fillText('The block does not move.', W / 2, 276);
+        } else {
+          arrow(W / 2 - (net * scale) / 2, 240, net * scale, '#4caf82', Math.abs(net) + ' N');
+          ctx.fillStyle = '#4caf82';
+          ctx.font = 'bold 16px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(Math.abs(net) + ' N towards the ' + (net > 0 ? 'right' : 'left'), W / 2, 282);
+        }
+
+        const sameDir = (c.f1 > 0) === (c.f2 > 0);
+        const m1 = Math.abs(c.f1), m2 = Math.abs(c.f2);
+        obs.innerHTML = '<strong>' + c.label + '</strong><br><br>' +
+          (sameDir
+            ? 'Forces in the same direction add up:<br>Net force = ' + m1 + ' N + ' + m2 + ' N = <strong>' + Math.abs(net) + ' N</strong> towards the ' + (net > 0 ? 'right' : 'left') + '.'
+            : net === 0
+              ? 'The forces are equal in magnitude and opposite in direction, so they are <strong>balanced</strong>. The net force is zero and the block does not move.'
+              : 'Opposite forces subtract:<br>Net force = ' + Math.max(m1, m2) + ' N − ' + Math.min(m1, m2) + ' N = <strong>' + Math.abs(net) + ' N</strong>, acting along the larger force, that is towards the ' + (net > 0 ? 'right' : 'left') + '.');
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initFrictionNatureLab() {
+      const canvas = document.getElementById('friction-nature-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-friction-nature');
+      const obs = document.getElementById('friction-nature-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      // Sample readings: rougher surfaces give a larger balance reading and a shorter slide.
+      const SURFACES = {
+        cement: { name: 'Cemented floor', reading: 5.0, dist: 12, colour: '#8d8d8d', rough: 1 },
+        wood: { name: 'Wooden table top', reading: 3.5, dist: 20, colour: '#a97c50', rough: 0.7 },
+        laminate: { name: 'Laminated table top', reading: 2.5, dist: 32, colour: '#c9b48a', rough: 0.4 },
+        marble: { name: 'Polished marble or tiled floor', reading: 1.5, dist: 55, colour: '#dfe6ef', rough: 0.12 }
+      };
+      const MAX_DIST = 60, MAX_READ = 6;
+
+      function update() {
+        const s = SURFACES[sel.value];
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(s.name, W / 2, 26);
+
+        // The track the stack of coins slides along.
+        const tx = 60, ty = 130, tw = W - 120;
+        ctx.fillStyle = s.colour;
+        ctx.fillRect(tx, ty, tw, 14);
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1;
+        // Texture marks stand in for how rough the surface is.
+        const marks = Math.round(4 + s.rough * 46);
+        for (let i = 0; i < marks; i++) {
+          const mx = tx + ((i + 0.5) / marks) * tw;
+          ctx.beginPath();
+          ctx.moveTo(mx, ty); ctx.lineTo(mx, ty + 14);
+          ctx.stroke();
+        }
+
+        // Coin stack at the point where it stopped.
+        const stop = tx + (s.dist / MAX_DIST) * tw;
+        ctx.fillStyle = '#d4b24a';
+        for (let i = 0; i < 4; i++) ctx.fillRect(stop - 12, ty - 8 - i * 6, 24, 5);
+        ctx.strokeStyle = '#4caf82';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(tx, ty + 34); ctx.lineTo(stop, ty + 34);
+        ctx.lineTo(stop - 8, ty + 30);
+        ctx.moveTo(stop, ty + 34);
+        ctx.lineTo(stop - 8, ty + 38);
+        ctx.stroke();
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('distance travelled ≈ ' + s.dist + ' cm', tx + 4, ty + 56);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('start', tx, ty + 78);
+
+        // Spring balance reading as a horizontal bar.
+        const rx = 130, ry = 240, rw = W - 200;
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText('Spring balance', rx - 12, ry + 4);
+        ctx.fillText('reading', rx - 12, ry + 20);
+        ctx.fillStyle = '#2a3550';
+        ctx.fillRect(rx, ry - 10, rw, 24);
+        ctx.fillStyle = '#e08a5a';
+        ctx.fillRect(rx, ry - 10, rw * (s.reading / MAX_READ), 24);
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(rx, ry - 10, rw, 24);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(s.reading.toFixed(1) + ' N', rx + 8, ry + 7);
+
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('A larger reading means a larger force of friction — and a shorter slide.', W / 2, 300);
+
+        obs.innerHTML = '<strong>' + s.name + '</strong><br>' +
+          'Spring balance reading ≈ <strong>' + s.reading.toFixed(1) + ' N</strong><br>' +
+          'Coin stack travels ≈ <strong>' + s.dist + ' cm</strong><br><br>' +
+          'The reading of the spring balance gives an approximate measure of the force of friction. ' +
+          'Where the force of friction is smaller, the velocity of the stack decreases more slowly and it travels a larger distance before coming to rest.';
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initNewtonSecondLawLab() {
+      const canvas = document.getElementById('newton-second-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-newton-second');
+      const obs = document.getElementById('newton-second-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const ox = 80, oy = 260, pw = 400, ph = 180;
+      const px = t => ox + (t / 15) * pw;
+      const py = v => oy - (v / 10) * ph;
+      const INTERVALS = {
+        i1: { t0: 0, t1: 5, u: 0, v: 10, label: '0 s to 5 s' },
+        i2: { t0: 5, t1: 10, u: 10, v: 10, label: '5 s to 10 s' },
+        i3: { t0: 10, t1: 15, u: 10, v: 0, label: '10 s to 15 s' }
+      };
+
+      function drawGraph(key) {
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('A 1500 kg sports car moving east', W / 2, 26);
+
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1;
+        for (let t = 0; t <= 15; t += 5) {
+          ctx.globalAlpha = 0.25;
+          ctx.beginPath(); ctx.moveTo(px(t), oy); ctx.lineTo(px(t), oy - ph); ctx.stroke();
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = muted;
+          ctx.font = '11px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(t.toFixed(1), px(t), oy + 16);
+        }
+        for (let v = 0; v <= 10; v += 2.5) {
+          ctx.globalAlpha = 0.25;
+          ctx.beginPath(); ctx.moveTo(ox, py(v)); ctx.lineTo(ox + pw, py(v)); ctx.stroke();
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = muted;
+          ctx.textAlign = 'right';
+          ctx.fillText(v.toFixed(1), ox - 6, py(v) + 4);
+        }
+        ctx.strokeStyle = text;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(ox, oy - ph); ctx.lineTo(ox, oy); ctx.lineTo(ox + pw, oy);
+        ctx.stroke();
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Time (s)', ox + pw / 2, oy + 36);
+        ctx.save();
+        ctx.translate(24, oy - ph / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('Velocity (m s⁻¹)', 0, 0);
+        ctx.restore();
+
+        // Whole graph in grey, then the chosen interval highlighted.
+        const pts = [[0, 0], [5, 10], [10, 10], [15, 0]];
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        pts.forEach((p, i) => { if (i === 0) ctx.moveTo(px(p[0]), py(p[1])); else ctx.lineTo(px(p[0]), py(p[1])); });
+        ctx.stroke();
+
+        const iv = INTERVALS[key];
+        ctx.strokeStyle = '#4caf82';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(px(iv.t0), py(iv.u));
+        ctx.lineTo(px(iv.t1), py(iv.v));
+        ctx.stroke();
+
+        const a = (iv.v - iv.u) / (iv.t1 - iv.t0);
+        const F = 1500 * a;
+        // Kept clear of the plotted line, in the empty band above the axes.
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(iv.label + '  —  highlighted below', ox + 6, 52);
+        ctx.fillText('a = ' + a + ' m s⁻²    F = ma = ' + F + ' N', ox + 6, 70);
+
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(F === 0 ? 'Constant velocity — no force acts on the car.'
+          : (F > 0 ? 'Force acts towards the east, along the motion.' : 'Negative sign — the force acts towards the west, opposing the motion.'), W / 2, 310);
+      }
+
+      function drawBlock() {
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Pushing a 25 kg block against 50 N of friction', W / 2, 26);
+
+        const bx = W / 2, by = 130;
+        ctx.fillStyle = '#4a5468';
+        ctx.fillRect(bx - 45, by - 32, 90, 64);
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(bx - 45, by - 32, 90, 64);
+        ctx.beginPath();
+        ctx.moveTo(60, by + 32); ctx.lineTo(W - 60, by + 32);
+        ctx.stroke();
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('25 kg', bx, by + 4);
+
+        function arr(x, y, len, colour, label) {
+          const dir = len < 0 ? -1 : 1, L = Math.abs(len);
+          ctx.strokeStyle = colour; ctx.fillStyle = colour; ctx.lineWidth = 4;
+          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + dir * L, y); ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(x + dir * L, y);
+          ctx.lineTo(x + dir * (L - 12), y - 7);
+          ctx.lineTo(x + dir * (L - 12), y + 7);
+          ctx.closePath(); ctx.fill();
+          ctx.font = 'bold 13px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(label, x + dir * (L / 2), y - 14);
+        }
+        arr(bx + 45, by - 12, 110, '#5aa9e6', 'applied 55 N');
+        arr(bx - 45, by + 16, -100, '#e08a5a', 'friction 50 N');
+
+        ctx.fillStyle = text;
+        ctx.font = '14px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Net force = 55 N − 50 N = 5 N', W / 2, 210);
+        ctx.fillText('a = F ÷ m = 5 N ÷ 25 kg = 0.2 m s⁻²', W / 2, 236);
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 16px sans-serif';
+        ctx.fillText('s = ut + ½at² = 0 + ½ × 0.2 × 2² = 0.4 m in 2 s', W / 2, 268);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('With a push of only 50 N the forces balance and the block stays stationary.', W / 2, 300);
+      }
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        if (sel.value === 'block') {
+          drawBlock();
+          obs.innerHTML = '<strong>Example 6.5 — a 25 kg block</strong><br>' +
+            'Pushed with 50 N: the applied force equals the 50 N of friction, so the forces are balanced, the net force is zero and the block stays stationary.<br><br>' +
+            'Pushed with 55 N: net force = 55 − 50 = 5 N.<br>' +
+            'a = F ÷ m = 5 ÷ 25 = 0.2 m s⁻²<br>' +
+            's = ut + ½at² = 0 + ½ × 0.2 × 2² = <strong>0.4 m</strong> in 2 s.';
+          return;
+        }
+        drawGraph(sel.value);
+        const iv = INTERVALS[sel.value];
+        const a = (iv.v - iv.u) / (iv.t1 - iv.t0);
+        const F = 1500 * a;
+        if (a === 0) {
+          obs.innerHTML = '<strong>' + iv.label + '</strong><br>' +
+            'The graph is a straight line parallel to the time axis, so the car moves with a constant velocity of 10 m s⁻¹.<br>' +
+            'a = 0, so F = 1500 × 0 = <strong>0 N</strong> — no force acts on the car.';
+        } else {
+          obs.innerHTML = '<strong>' + iv.label + '</strong><br>' +
+            'u = ' + iv.u + ' m s⁻¹, v = ' + iv.v + ' m s⁻¹, t = ' + (iv.t1 - iv.t0) + ' s<br>' +
+            'v = u + at gives a = (' + iv.v + ' − ' + iv.u + ') ÷ ' + (iv.t1 - iv.t0) + ' = ' + a + ' m s⁻²<br>' +
+            'F = ma = 1500 × ' + a + ' = <strong>' + F + ' N</strong><br><br>' +
+            (F > 0 ? 'The force acts towards the east, in the direction of motion.'
+              : 'The negative sign shows the force acts opposite to the direction of motion, that is towards the west.');
+        }
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initActionReactionLab() {
+      const canvas = document.getElementById('action-reaction-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-action-reaction');
+      const obs = document.getElementById('action-reaction-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      function arrow(x1, y1, x2, y2, colour, label, labelAbove) {
+        ctx.strokeStyle = colour; ctx.fillStyle = colour; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+        const ang = Math.atan2(y2 - y1, x2 - x1);
+        ctx.beginPath();
+        ctx.moveTo(x2, y2);
+        ctx.lineTo(x2 - 13 * Math.cos(ang - 0.4), y2 - 13 * Math.sin(ang - 0.4));
+        ctx.lineTo(x2 - 13 * Math.cos(ang + 0.4), y2 - 13 * Math.sin(ang + 0.4));
+        ctx.closePath(); ctx.fill();
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, (x1 + x2) / 2, (y1 + y2) / 2 + (labelAbove ? -12 : 22));
+      }
+
+      const ACTION = '#5aa9e6', REACTION = '#e08a5a';
+
+      function drawCanoe() {
+        // Canoe hull.
+        ctx.fillStyle = '#a97c50';
+        ctx.beginPath();
+        ctx.moveTo(180, 150);
+        ctx.quadraticCurveTo(300, 200, 420, 150);
+        ctx.lineTo(420, 138);
+        ctx.quadraticCurveTo(300, 182, 180, 138);
+        ctx.closePath();
+        ctx.fill();
+        // Water line.
+        ctx.strokeStyle = '#3d7fb5';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        for (let x = 40; x <= W - 40; x += 20) {
+          ctx.moveTo(x, 172); ctx.quadraticCurveTo(x + 10, 166, x + 20, 172);
+        }
+        ctx.stroke();
+        // Paddle.
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(330, 100); ctx.lineTo(290, 190); ctx.stroke();
+        ctx.fillStyle = '#c9b48a';
+        ctx.fillRect(276, 186, 26, 16);
+
+        arrow(272, 218, 190, 218, ACTION, 'paddle pushes water backwards', false);
+        arrow(330, 118, 430, 118, REACTION, 'water pushes paddle and canoe forward', true);
+      }
+
+      function drawRocket() {
+        const cx = 300;
+        ctx.fillStyle = '#cfd6e4';
+        ctx.beginPath();
+        ctx.moveTo(cx, 60);
+        ctx.lineTo(cx + 22, 130);
+        ctx.lineTo(cx + 22, 200);
+        ctx.lineTo(cx - 22, 200);
+        ctx.lineTo(cx - 22, 130);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = '#8f9bb3';
+        ctx.beginPath();
+        ctx.moveTo(cx - 22, 170); ctx.lineTo(cx - 46, 205); ctx.lineTo(cx - 22, 205); ctx.closePath(); ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(cx + 22, 170); ctx.lineTo(cx + 46, 205); ctx.lineTo(cx + 22, 205); ctx.closePath(); ctx.fill();
+        // Exhaust gas.
+        ctx.fillStyle = '#e0743a';
+        ctx.beginPath();
+        ctx.moveTo(cx - 18, 202);
+        ctx.quadraticCurveTo(cx, 280, cx + 18, 202);
+        ctx.closePath();
+        ctx.fill();
+
+        arrow(cx - 70, 210, cx - 70, 285, ACTION, '', false);
+        ctx.fillStyle = ACTION;
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText('engine expels gas', cx - 82, 240);
+        ctx.fillText('downwards', cx - 82, 256);
+        arrow(cx + 70, 210, cx + 70, 100, REACTION, '', false);
+        ctx.fillStyle = REACTION;
+        ctx.textAlign = 'left';
+        ctx.fillText('gas pushes the rocket', cx + 82, 150);
+        ctx.fillText('upwards, equally hard', cx + 82, 166);
+      }
+
+      function drawBalances() {
+        const y = 160;
+        [[130, 290], [310, 470]].forEach((b, i) => {
+          ctx.fillStyle = '#3a4358';
+          ctx.fillRect(b[0], y - 26, b[1] - b[0], 52);
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 2;
+          ctx.strokeRect(b[0], y - 26, b[1] - b[0], 52);
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 15px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('8 N', (b[0] + b[1]) / 2, y + 5);
+          ctx.fillStyle = muted;
+          ctx.font = '11px sans-serif';
+          ctx.fillText('balance ' + (i + 1), (b[0] + b[1]) / 2, y - 34);
+        });
+        // Hooks joining the two balances.
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(290, y); ctx.lineTo(310, y); ctx.stroke();
+
+        arrow(126, y + 52, 60, y + 52, ACTION, 'pull to the left', false);
+        arrow(474, y + 52, 540, y + 52, REACTION, 'equal pull to the right', false);
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Both scales read exactly the same, however hard you pull.', W / 2, 268);
+      }
+
+      function drawFruit() {
+        // The Earth.
+        ctx.fillStyle = '#3d7fb5';
+        ctx.beginPath();
+        ctx.arc(300, 330, 130, Math.PI, 2 * Math.PI);
+        ctx.fill();
+        ctx.fillStyle = '#4caf82';
+        ctx.beginPath();
+        ctx.arc(250, 218, 26, Math.PI * 1.1, Math.PI * 1.9);
+        ctx.fill();
+        // The fruit.
+        ctx.fillStyle = '#d0433a';
+        ctx.beginPath();
+        ctx.arc(300, 90, 20, 0, Math.PI * 2);
+        ctx.fill();
+
+        arrow(300, 116, 300, 182, ACTION, '', false);
+        arrow(240, 200, 240, 134, REACTION, '', false);
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillStyle = ACTION;
+        ctx.fillRect(330, 142, 12, 12);
+        ctx.fillText('force on the fruit by the Earth', 350, 152);
+        ctx.fillStyle = REACTION;
+        ctx.fillRect(330, 166, 12, 12);
+        ctx.fillText('force on the Earth by the fruit', 350, 176);
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Equal in magnitude — but a = F/m, and the Earth’s mass is enormous.', W / 2, 306);
+      }
+
+      const NOTES = {
+        canoe: '<strong>Rowing a canoe</strong><br>The canoeist pushes the water backwards with their paddle, and the water pushes the paddle forward with an equal force. The two forces act on different objects — the paddle and the water — so they do not cancel. The forward force on the paddle moves the canoe, and pushing harder makes it faster.',
+        rocket: '<strong>A rocket lifting off</strong><br>The engine produces gas and expels it downwards, and the gas exerts an equal and opposite force on the rocket upwards. Because this upward force is larger than the weight of the rocket, the net force is upward and the rocket lifts off. The Vikram lander of Chandrayaan-3 fired its engine along its direction of motion to slow down for a soft landing.',
+        balances: '<strong>Two spring balances</strong><br>Connect two identical spring balances by their hooks and pull. However much the force is varied, both scales read the same every time — showing that the forces the two exert on each other are equal in magnitude and opposite in direction.',
+        fruit: '<strong>The Earth and a falling fruit</strong><br>Newton’s third law applies to non-contact forces too. The Earth and the fruit apply equal and opposite gravitational forces on each other. The fruit visibly falls while the Earth does not appear to move, because a = F/m and the mass of the Earth is so large that its acceleration is far too small to notice.'
+      };
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText({
+          canoe: 'Rowing a canoe', rocket: 'A rocket lifting off',
+          balances: 'Two spring balances pulled apart', fruit: 'The Earth and a falling fruit'
+        }[v], W / 2, 26);
+        if (v === 'canoe') drawCanoe();
+        else if (v === 'rocket') drawRocket();
+        else if (v === 'balances') drawBalances();
+        else drawFruit();
+        obs.innerHTML = NOTES[v];
+      }
+
+      sel.addEventListener('change', update);
+      update();
     }
 
     function initMixtureClassifyLab() {

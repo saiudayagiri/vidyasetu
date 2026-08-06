@@ -20910,6 +20910,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9s-6",
+              title: "How Forces Affect Motion",
+              topics: [
+                {
+                  id: "9s-6-1",
+                  title: "1. Force and Net Force",
+                  lab: { type: "net-force-sim" },
+                  theory: {
+                    intro: "In a tug of war nobody moves while both teams pull equally hard. The moment one team pulls harder, the rope goes. Motion does not follow the forces — it follows what is left over after they compete.",
+                    sections: [
+                      {
+                        heading: "Force Has a Direction",
+                        text: "A force can make an object move from rest, change the speed and direction of motion of a moving object, and can even change the shape of an object. Whenever a force is described, its direction is specified along with its magnitude — like the force of friction acting opposite to motion, or the Earth attracting objects towards itself. The SI unit of force is the newton, written with a small ‘n’, and its symbol is N. If either the magnitude or the direction of a force changes, the effect of the force also changes. The magnitude of a force is measured with a spring balance."
+                      },
+                      {
+                        heading: "Balanced and Unbalanced Forces",
+                        text: "Situations seldom exist where only one force acts on an object. In a tug of war, if both teams pull the rope with equal force the rope does not move — two forces equal in magnitude but opposite in direction are called balanced forces. If one team pulls harder, the forces are no longer balanced and the rope moves in the direction of the larger force."
+                      },
+                      {
+                        heading: "Finding the Net Force",
+                        text: "If the forces applied on an object are not balanced, a non-zero net force acts on it. When two forces are opposite in direction but unequal in magnitude, the magnitude of the net force equals the difference between the two magnitudes and its direction is along the larger force. When two forces act in the same direction — as when two people push a stalled car — the net force is the sum of the two magnitudes, acting in that same direction. The motion of an object depends only on the net force."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Two Forces on a Block",
+                      objective: "To find the magnitude and direction of the net force for forces of 10 N and 6 N in three arrangements.",
+                      materials: ["Notebook and pen", "The three arrangements of Fig. 6.6"],
+                      steps: [
+                        "Case (a): both the 10 N and the 6 N forces act towards the right. Add or subtract?",
+                        "Case (b): the 10 N force acts right and the 6 N force acts left. Find the difference.",
+                        "Case (c): the 6 N force acts right and the 10 N force acts left. Find the difference and note the direction.",
+                        "State the direction of the net force in each case.",
+                        "Check which case would leave the block stationary if the two forces were equal instead."
+                      ],
+                      observation: "(a) Net force = 10 N + 6 N = 16 N towards the right. (b) Net force = 10 N − 6 N = 4 N towards the right. (c) Net force = 10 N − 6 N = 4 N towards the left — always along the larger force. Had the two forces been equal and opposite, they would have balanced and the net force would be zero."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the SI unit of force?",
+                      options: ["The joule (J)", "The newton (N)", "The kilogram (kg)", "The pascal (Pa)"],
+                      answer: 1,
+                      explanation: "Force is measured in newtons — written with a small ‘n’ in full but with a capital N as its symbol."
+                    },
+                    {
+                      question: "Two forces equal in magnitude but opposite in direction are called:",
+                      options: ["Unbalanced forces", "Balanced forces", "Net forces", "Frictional forces"],
+                      answer: 1,
+                      explanation: "Such forces cancel each other — as in a tug of war where both teams pull equally hard and the rope does not move."
+                    },
+                    {
+                      question: "Forces of 10 N and 6 N act on a block in opposite directions. What is the net force?",
+                      options: ["16 N along the 10 N force", "4 N along the 10 N force", "4 N along the 6 N force", "Zero"],
+                      answer: 1,
+                      explanation: "For opposite forces the net force is the difference, 10 − 6 = 4 N, acting in the direction of the larger force."
+                    },
+                    {
+                      question: "Two people push a stalled car in the same direction with 300 N and 250 N. What is the net force?",
+                      options: ["50 N", "550 N in the direction of the pushes", "275 N", "Zero"],
+                      answer: 1,
+                      explanation: "Forces acting in the same direction add up: 300 + 250 = 550 N, acting in that same direction."
+                    },
+                    {
+                      question: "Which instrument is used to measure the magnitude of a force?",
+                      options: ["A spring balance", "A thermometer", "A measuring cylinder", "A stopwatch"],
+                      answer: 0,
+                      explanation: "A spring balance measures not just the weight of an object but the magnitude of a force in general — it reads the force with which you pull on the spring inside."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-6-2",
+                  title: "2. The Force of Friction",
+                  lab: { type: "friction-nature-sim" },
+                  theory: {
+                    intro: "Push a heavy box and, for a while, nothing happens. Something invisible is pushing back exactly as hard as you are — right up until it can't any more.",
+                    sections: [
+                      {
+                        heading: "Friction Opposes Motion",
+                        text: "When you apply a force to an object resting on the floor, it may not move at all. This is due to the force of friction arising between the bottom surface of the object and the floor, acting in a direction opposite to the direction of the applied force. The object starts moving only when the force you apply is larger in magnitude than the force of friction, so that a net force acts on it in the direction of motion."
+                      },
+                      {
+                        heading: "Friction Depends on the Surfaces",
+                        text: "The force of friction depends upon the nature of the surfaces in contact. In Activity 6.1 a stack of coins is flicked with a stretched rubber band across a wooden table top, a cemented floor, a laminated table top, and a polished marble or tiled floor. In Activity 6.2 a spring balance pulls a wooden block along each of the same surfaces. A smaller reading of the spring balance indicates a smaller force of friction, and a larger reading a larger force of friction. When the force of friction is smaller, the velocity of the stack of coins decreases more slowly and it travels a larger distance before coming to rest."
+                      },
+                      {
+                        heading: "Other Forces on a Pushed Object",
+                        text: "Apart from the applied force and the force of friction, other forces may also act on an object being pushed. One is the gravitational force, or weight, acting downwards, and the other is the normal force exerted by the surface on which it is placed, acting upwards perpendicular to the surface. These two forces balance each other. Air also exerts a force of friction on a moving object, but its magnitude is often so small that it can be neglected."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Friction on Four Surfaces",
+                      objective: "To compare the force of friction on different surfaces using a spring balance and a sliding stack of coins.",
+                      materials: ["Four ₹10 coins", "A strong rubber band", "Adhesive tape", "A spring balance", "A wooden block", "Wooden table top, cemented floor, laminated table top and polished marble or tiled floor"],
+                      steps: [
+                        "Stack the four coins and secure them with tape around the sides.",
+                        "Hold the rubber band slightly stretched and flick the stack along each level surface, measuring how far it travels.",
+                        "Place the spring balance horizontally on each surface, attached to the wooden block.",
+                        "Pull with gradually increasing force and note the reading at which the block just begins to move.",
+                        "Compare the readings and the distances across all four surfaces."
+                      ],
+                      observation: "The readings differ from surface to surface. The reading is smallest for the surface on which the stack of coins travelled the largest distance, and largest for the surface on which it travelled the smallest distance — showing that a smaller force of friction lets the coins slow down more gradually and travel further."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "In which direction does the force of friction act on a pushed box?",
+                      options: ["In the same direction as the applied force", "Opposite to the direction of the applied force", "Vertically upwards", "Vertically downwards"],
+                      answer: 1,
+                      explanation: "Friction arises between the bottom surface of the box and the floor and acts opposite to the direction of the applied force."
+                    },
+                    {
+                      question: "When does a box at rest actually start moving?",
+                      options: ["As soon as any force is applied", "When the applied force is larger than the force of friction", "Only when friction becomes zero", "When the applied force equals the friction"],
+                      answer: 1,
+                      explanation: "The box starts moving when the applied force exceeds the force of friction, so that a net force acts in the direction of motion."
+                    },
+                    {
+                      question: "A smaller spring balance reading on a surface indicates:",
+                      options: ["A larger force of friction", "A smaller force of friction", "A heavier block", "No friction at all"],
+                      answer: 1,
+                      explanation: "The reading gives an approximate measure of the force of friction — a smaller reading means a smaller force of friction."
+                    },
+                    {
+                      question: "On which surface will a stack of coins travel the largest distance?",
+                      options: ["The one with the largest force of friction", "The one with the smallest force of friction", "Any rough surface", "It is the same on all surfaces"],
+                      answer: 1,
+                      explanation: "With a smaller force of friction the velocity decreases more slowly, so the coins travel further before coming to rest."
+                    },
+                    {
+                      question: "What is the normal force?",
+                      options: ["The force of friction along the surface", "The force exerted by the surface on the object, acting upwards perpendicular to it", "The weight of the object", "The applied push"],
+                      answer: 1,
+                      explanation: "The normal force is exerted by the surface on which the object is placed, acting upwards perpendicular to the surface, and it balances the weight acting downwards."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-6-3",
+                  title: "3. Newton's First and Second Laws",
+                  lab: { type: "newton-second-law-sim" },
+                  theory: {
+                    intro: "For ages it was believed that keeping something moving needed a constant push. Galileo argued otherwise; Newton wrote it down — and the whole idea of what force does had to be rebuilt.",
+                    sections: [
+                      {
+                        heading: "Newton's First Law of Motion",
+                        text: "An object at rest remains at rest, and an object in motion continues to move with a constant velocity, unless a net force acts upon the object. In other words, if the net force acting on an object is zero, the body cannot begin to move or change its velocity, and its acceleration is zero. Isaac Newton used the word ‘inertia’ to describe the tendency of objects to resist a change in their state of rest or uniform motion, and presented all three laws of motion in 1687."
+                      },
+                      {
+                        heading: "Newton's Second Law of Motion",
+                        text: "When a net force acts on an object, the object accelerates in the direction of the net force. The magnitude of the acceleration is proportional to the magnitude of the net force and inversely proportional to the mass of the object. Mathematically, a = F/m, or F = ma. One newton is defined as the force that produces an acceleration of 1 m s⁻² on an object of mass 1 kg, since 1 kg × 1 m s⁻² = 1 kg m s⁻² = 1 N. Under gravity, F = mg, where g = 9.8 m s⁻² near the Earth's surface and does not depend on the mass of the object."
+                      },
+                      {
+                        heading: "The Second Law in Everyday Life",
+                        text: "A fielder catching a fast-moving ball pulls their hands backwards with the ball. This increases the time over which the ball's high velocity reduces to zero, which reduces the magnitude of its acceleration and so requires a smaller force — minimising injury. Airbags work the same way, inflating into a soft cushion so that the passenger stops over a longer time. Conversely, a coconut brought down hard onto a stone stops in a very short time, so the ground must exert a very large force on it — and that large force breaks the shell."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding the Force on a Sports Car from its Graph",
+                      objective: "To apply F = ma to each interval of a velocity-time graph for a 1500 kg car moving east.",
+                      materials: ["The velocity-time graph of Fig. 6.21", "Notebook and calculator"],
+                      steps: [
+                        "For 0 s to 5 s, read u = 0 m s⁻¹ and v = 10 m s⁻¹, and use v = u + at to find the acceleration.",
+                        "Multiply by the mass 1500 kg to find the force, and state its direction.",
+                        "For 5 s to 10 s, note that the graph is parallel to the time axis and say what that means.",
+                        "For 10 s to 15 s, read u = 10 m s⁻¹ and v = 0 m s⁻¹ and find the acceleration.",
+                        "Find the force for the last interval and interpret the sign of your answer."
+                      ],
+                      observation: "0–5 s: a = 2 m s⁻², so F = 1500 × 2 = 3000 N towards the east. 5–10 s: the velocity is constant, so no force acts on the car. 10–15 s: a = −2 m s⁻², so F = −3000 N — the negative sign shows the force acts opposite to the motion, that is towards the west."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does Newton's first law of motion state?",
+                      options: ["Force equals mass times acceleration", "An object at rest stays at rest and an object in motion continues at constant velocity unless a net force acts on it", "Every action has an equal and opposite reaction", "Objects always come to rest eventually"],
+                      answer: 1,
+                      explanation: "Newton's first law says that without a net force, a body cannot begin to move or change its velocity — its acceleration is zero."
+                    },
+                    {
+                      question: "What word did Newton use for the tendency of objects to resist a change in their state of motion?",
+                      options: ["Momentum", "Inertia", "Friction", "Acceleration"],
+                      answer: 1,
+                      explanation: "Newton used the word ‘inertia’ for this tendency and built his first law of motion around the idea."
+                    },
+                    {
+                      question: "According to F = ma, one newton is the force that produces:",
+                      options: ["An acceleration of 1 m s⁻² on a mass of 1 kg", "A velocity of 1 m s⁻¹ on a mass of 1 kg", "An acceleration of 1 m s⁻² on a mass of 1 g", "A displacement of 1 m in 1 s"],
+                      answer: 0,
+                      explanation: "Substituting m = 1 kg and a = 1 m s⁻² into F = ma gives 1 kg m s⁻², which is defined as 1 N."
+                    },
+                    {
+                      question: "A 1500 kg car accelerates from 0 to 10 m s⁻¹ in 5 s. What force acts on it?",
+                      options: ["1500 N", "3000 N", "7500 N", "300 N"],
+                      answer: 1,
+                      explanation: "a = (10 − 0) ÷ 5 = 2 m s⁻², so F = ma = 1500 × 2 = 3000 N in the direction of motion."
+                    },
+                    {
+                      question: "Why does a fielder pull their hands back while catching a fast ball?",
+                      options: ["To grip the ball better", "To increase the time of stopping, reducing acceleration and hence the force", "To make the ball travel faster", "To increase the force on the ball"],
+                      answer: 1,
+                      explanation: "Increasing the time over which the ball's velocity falls to zero reduces its acceleration, so a smaller force is needed — which also minimises injury to the fielder."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-6-4",
+                  title: "4. Newton's Third Law of Motion",
+                  lab: { type: "action-reaction-sim" },
+                  theory: {
+                    intro: "The canoeist pushes the water backwards and the canoe goes forwards. The rocket throws gas down and climbs up. Every push, it turns out, comes with a push back.",
+                    sections: [
+                      {
+                        heading: "The Law of Force Pairs",
+                        text: "Whenever one object is exerting a force on a second object, the second object is simultaneously exerting an equal and opposite force on the first object. Two identical spring balances connected by their hooks and pulled in opposite directions always show the same reading, however hard you pull — showing that the forces they apply on each other are equal in magnitude. Forces always occur in pairs, but these two forces act on two different objects."
+                      },
+                      {
+                        heading: "Why the Pair Does Not Cancel",
+                        text: "When a canoeist pushes the water backwards with their paddle, the water pushes the paddle forward with an equal force. The two forces are equal in magnitude but act on different objects — the paddle and the water — so they do not cancel each other. The force on the paddle makes the paddle and canoe move forward, and pushing harder gives a larger forward force. If instead two equal and opposite forces act on the same object, they do balance each other."
+                      },
+                      {
+                        heading: "Rockets, Trees and Falling Fruit",
+                        text: "A rocket engine produces gas and expels it downwards; the gas exerts an equal and opposite force on the rocket upwards, and since this exceeds the weight of the rocket it lifts off. The Vikram lander of Chandrayaan-3 fired its engine along its direction of motion to slow down for a soft landing near the Moon's south pole. A person climbing a tree pushes down against the trunk with their legs, and friction pushes them upward by an equal force — which is why smooth trunks with less friction are harder to climb. Newton's third law applies to all forces, contact or non-contact: the Earth and a falling fruit pull on each other equally, but the Earth's enormous mass makes its acceleration far too small to notice."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Two Spring Balances Pulled Apart",
+                      objective: "To verify that two interacting objects exert equal and opposite forces on each other.",
+                      materials: ["Two identical spring balances", "A table", "An immovable support"],
+                      steps: [
+                        "Place both spring balances horizontally on a table and connect them by their hooks.",
+                        "Fix the free end of one balance to an immovable object or hold it steady.",
+                        "Predict what the two readings will be when you pull the free end of the other balance.",
+                        "Pull and read both scales while the balances are stationary.",
+                        "Repeat several times, varying the magnitude of the force you apply."
+                      ],
+                      observation: "The readings of the two spring balances are the same every time, whatever force is applied. This shows that the forces the two balances exert on each other are equal in magnitude and opposite in direction."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What does Newton's third law of motion state?",
+                      options: ["Force equals mass times acceleration", "Whenever one object exerts a force on a second object, the second exerts an equal and opposite force on the first", "Objects at rest stay at rest", "Friction always opposes motion"],
+                      answer: 1,
+                      explanation: "Forces always occur in pairs — the two objects push or pull on each other equally and oppositely at the same time."
+                    },
+                    {
+                      question: "Why do the two forces in an action-reaction pair not cancel each other?",
+                      options: ["Because one is always larger", "Because they act on two different objects", "Because they act at different times", "They do cancel each other"],
+                      answer: 1,
+                      explanation: "The pair acts on two different objects, so neither object has both forces on it. Only two equal and opposite forces on the same object balance."
+                    },
+                    {
+                      question: "How does a canoe move forward?",
+                      options: ["The paddle pushes the water backwards and the water pushes the paddle forward", "The canoe pulls itself along the water", "The wind pushes the canoe", "The water flows and carries it"],
+                      answer: 0,
+                      explanation: "The canoeist pushes water backwards with the paddle, and the water pushes the paddle — and hence the canoe — forward with an equal force."
+                    },
+                    {
+                      question: "Why does a rocket lift off?",
+                      options: ["The exhaust gas pushes against the ground", "The engine expels gas downwards and the gas pushes the rocket upwards with an equal force greater than its weight", "Air pressure lifts it", "It becomes lighter than air"],
+                      answer: 1,
+                      explanation: "The expelled gas exerts an equal and opposite upward force on the rocket; because this exceeds the rocket's weight, the net force is upward and it lifts off."
+                    },
+                    {
+                      question: "The Earth and a falling fruit pull on each other equally. Why does the Earth not visibly move?",
+                      options: ["The Earth is fixed in space", "The Earth's mass is so large that a = F/m makes its acceleration far too small to notice", "The force on the Earth is much smaller", "Gravity acts only downwards"],
+                      answer: 1,
+                      explanation: "The forces are equal in magnitude, but since a = F/m and the Earth's mass is enormous, its acceleration is extremely small and its effect too small to be noticed."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
