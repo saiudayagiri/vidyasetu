@@ -6087,6 +6087,99 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const biodiversityLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="biodiversity-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Find India's hotspots and the species found nowhere else.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a View</h3>
+            <select id="sel-biodiversity" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="hotspots" selected>India's biodiversity hotspots</option>
+              <option value="endemic">Endemic species of India</option>
+              <option value="criteria">The criteria used to classify</option>
+              <option value="why">Why classify at all?</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What It Shows</h3>
+            <div id="biodiversity-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a view above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const classificationTimelineLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="classification-timeline-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Step forward in time and see which organism forced each change.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a System</h3>
+            <select id="sel-classification-timeline" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>Aristotle, 4th century BCE</option>
+              <option value="1">Linnaeus, 1758 — two kingdoms</option>
+              <option value="2">Haeckel, 1866 — three kingdoms</option>
+              <option value="3">Copeland, 1938 — four kingdoms</option>
+              <option value="4">Whittaker, 1969 — five kingdoms</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What Changed</h3>
+            <div id="classification-timeline-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a system above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const fiveKingdomLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="five-kingdom-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Answer four questions and land in the right kingdom.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Organism</h3>
+            <select id="sel-five-kingdom" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="bacteria" selected>A bacterium</option>
+              <option value="amoeba">Amoeba</option>
+              <option value="mushroom">A mushroom</option>
+              <option value="fern">A fern</option>
+              <option value="frog">A frog</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Which Kingdom?</h3>
+            <div id="five-kingdom-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an organism above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const taxonomyLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="taxonomy-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Follow an organism down from kingdom to species.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Organism</h3>
+            <select id="sel-taxonomy" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="tiger" selected>Tiger</option>
+              <option value="pea">Pea plant</option>
+              <option value="naming">The rules for scientific names</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>The Full Address</h3>
+            <div id="taxonomy-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an organism above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const asexualModeLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -9019,6 +9112,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'kinematic-equation-sim') {
               labHtml = kinematicEquationLabHtml;
               labDesc = 'Apply each kinematic equation to the same motion and see them agree.';
+            } else if (topicObj.lab.type === 'biodiversity-sim') {
+              labHtml = biodiversityLabHtml;
+              labDesc = 'Explore India’s hotspots, endemic species and why classification is needed.';
+            } else if (topicObj.lab.type === 'classification-timeline-sim') {
+              labHtml = classificationTimelineLabHtml;
+              labDesc = 'Watch the kingdoms multiply as awkward organisms turn up.';
+            } else if (topicObj.lab.type === 'five-kingdom-sim') {
+              labHtml = fiveKingdomLabHtml;
+              labDesc = 'Run an organism through the five kingdom decision tree.';
+            } else if (topicObj.lab.type === 'taxonomy-sim') {
+              labHtml = taxonomyLabHtml;
+              labDesc = 'Follow the taxonomic hierarchy down to a scientific name.';
             } else if (topicObj.lab.type === 'asexual-mode-sim') {
               labHtml = asexualModeLabHtml;
               labDesc = 'Compare budding, spore formation and vegetative propagation.';
@@ -9830,6 +9935,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initMotionGraphLab();
         } else if (topicObj.lab.type === 'kinematic-equation-sim') {
           initKinematicEquationLab();
+        } else if (topicObj.lab.type === 'biodiversity-sim') {
+          initBiodiversityLab();
+        } else if (topicObj.lab.type === 'classification-timeline-sim') {
+          initClassificationTimelineLab();
+        } else if (topicObj.lab.type === 'five-kingdom-sim') {
+          initFiveKingdomLab();
+        } else if (topicObj.lab.type === 'taxonomy-sim') {
+          initTaxonomyLab();
         } else if (topicObj.lab.type === 'asexual-mode-sim') {
           initAsexualModeLab();
         } else if (topicObj.lab.type === 'meiosis-sim') {
@@ -30154,6 +30267,484 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       sel.addEventListener('change', draw);
       draw();
+    }
+
+    function initBiodiversityLab() {
+      const canvas = document.getElementById('biodiversity-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-biodiversity');
+      const obs = document.getElementById('biodiversity-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      // A rough outline of India, as fractions of the drawing box.
+      const OUTLINE = [[0.30, 0.02], [0.46, 0.05], [0.58, 0.02], [0.70, 0.10], [0.86, 0.14],
+        [0.92, 0.24], [0.84, 0.32], [0.88, 0.44], [0.80, 0.56], [0.70, 0.70],
+        [0.58, 0.86], [0.50, 0.98], [0.42, 0.86], [0.34, 0.66], [0.24, 0.50],
+        [0.16, 0.36], [0.10, 0.24], [0.18, 0.12]];
+      // Hotspot markers and endemic species, positioned on the same box.
+      const HOTSPOTS = [
+        { x: 0.30, y: 0.66, name: 'Western Ghats' },
+        { x: 0.82, y: 0.24, name: 'Indo-Burma / North East' },
+        { x: 0.50, y: 0.10, name: 'Himalayas' },
+        { x: 0.72, y: 0.94, name: 'Sundaland (Nicobar Is.)' }
+      ];
+      const ENDEMIC = [
+        { x: 0.30, y: 0.72, name: 'Nilgiri tahr' },
+        { x: 0.26, y: 0.60, name: 'Lion-tailed macaque' },
+        { x: 0.84, y: 0.26, name: 'Nepenthes khasiana' },
+        { x: 0.32, y: 0.80, name: 'Neelakurinji' }
+      ];
+
+      function drawMap(points, colour) {
+        const bx = 60, by = 46, bw = 230, bh = 260;
+        ctx.beginPath();
+        OUTLINE.forEach((p, i) => {
+          const x = bx + p[0] * bw, y = by + p[1] * bh;
+          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        });
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(90,169,230,0.16)';
+        ctx.fill();
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Label rows follow the markers top to bottom so the leader lines never cross.
+        points.slice().sort((a, b) => a.y - b.y).forEach((p, i) => {
+          const x = bx + p.x * bw, y = by + p.y * bh;
+          ctx.fillStyle = colour;
+          ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = colour;
+          ctx.lineWidth = 1.2;
+          const ly = 70 + i * 34;
+          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(340, ly); ctx.stroke();
+          ctx.fillStyle = text;
+          ctx.font = '13px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(p.name, 348, ly + 4);
+        });
+      }
+
+      function drawCriteria() {
+        const items = [
+          ['External features', 'shape, size, body organisation'],
+          ['Mode of nutrition', 'autotrophic or heterotrophic'],
+          ['Internal structures', 'skeleton, organs, tissues'],
+          ['Cell structure', 'unicellular or multicellular; prokaryote or eukaryote; cell wall'],
+          ['Ecological role', 'producer, consumer or decomposer'],
+          ['Reproduction', 'asexual and/or sexual'],
+          ['Genetic similarity', 'inherited features, studied using DNA']
+        ];
+        items.forEach((it, i) => {
+          const y = 62 + i * 34;
+          ctx.fillStyle = accent;
+          ctx.beginPath(); ctx.arc(46, y - 4, 5, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = text;
+          ctx.font = 'bold 13px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(it[0], 62, y);
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.fillText('— ' + it[1], 216, y);
+        });
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Scientists look at broad, visible features first, then at more detailed ones.', W / 2, 314);
+      }
+
+      function drawWhy() {
+        // Scattered books on the left, shelved books on the right.
+        ctx.fillStyle = text;
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Books scattered on the floor', 155, 60);
+        ctx.fillText('The same books, shelved', 445, 60);
+        const cols = ['#5aa9e6', '#e08a5a', '#4caf82', '#c08ad8', '#d8c06a'];
+        let seed = 5;
+        const rnd = () => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
+        for (let i = 0; i < 22; i++) {
+          ctx.save();
+          ctx.translate(60 + rnd() * 190, 100 + rnd() * 170);
+          ctx.rotate((rnd() - 0.5) * 2.4);
+          ctx.fillStyle = cols[i % cols.length];
+          ctx.fillRect(0, 0, 30, 9);
+          ctx.restore();
+        }
+        for (let r = 0; r < 4; r++) {
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(350, 110 + r * 46); ctx.lineTo(540, 110 + r * 46); ctx.stroke();
+          for (let i = 0; i < 11; i++) {
+            ctx.fillStyle = cols[(r + i) % cols.length];
+            ctx.fillRect(354 + i * 17, 110 + r * 46 - 30, 12, 30);
+          }
+        }
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Millions of organisms need the same treatment — that is what classification does.', W / 2, 314);
+      }
+
+      const NOTES = {
+        hotspots: '<strong>India’s biodiversity hotspots</strong><br>Regions that support a large number of endemic species and have undergone significant habitat loss are known as biodiversity hotspots. The Western Ghats, Indo-Burma (including North East India), the Himalayas and Sundaland (including the Nicobar Islands) are global examples. These areas are especially rich in the number and diversity of organisms, and protecting them matters because they support food webs and help ecosystems remain healthy.',
+        endemic: '<strong>Endemic species</strong><br>Species restricted to particular regions of the world, and not found naturally anywhere else, are called endemic species. The Nilgiri tahr, the lion-tailed macaque, the Indian pitcher plant <em>Nepenthes khasiana</em> and Neelakurinji are found only in India. India’s mountains, desert, rainforests, plateaus and long coastlines each have distinct soils and climates, and together these habitats support a wide variety of species.',
+        criteria: '<strong>Criteria for classification</strong><br>Scientists use a number of characteristics to group living organisms, looking at broad and easily visible features first and then at more detailed ones. These features help in understanding the similarities and differences among organisms — and similar features suggest that they have evolved from common ancestors.',
+        why: '<strong>Why classify?</strong><br>Imagine walking into a huge library where thousands of books are scattered all over the floor — without arranging them into subjects, authors or sections, finding any book would be difficult. In the same way, the Earth is home to millions of organisms. Biological classification makes their study organised and systematic, reveals similarities and differences, shows how organisms are related, helps identify and name newly discovered organisms, supports conservation by identifying threatened species, and lets scientists everywhere discuss organisms using a common system.'
+      };
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText({
+          hotspots: 'Biodiversity hotspots of India', endemic: 'Species found only in India',
+          criteria: 'The criteria used to classify living organisms', why: 'Why we classify'
+        }[v], W / 2, 26);
+        if (v === 'hotspots') drawMap(HOTSPOTS, '#e0743a');
+        else if (v === 'endemic') drawMap(ENDEMIC, '#4caf82');
+        else if (v === 'criteria') drawCriteria();
+        else drawWhy();
+        obs.innerHTML = NOTES[v];
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initClassificationTimelineLab() {
+      const canvas = document.getElementById('classification-timeline-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-classification-timeline');
+      const obs = document.getElementById('classification-timeline-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const SYSTEMS = [
+        {
+          who: 'Aristotle', when: '4th century BCE', title: 'An artificial system',
+          groups: ['Land', 'Water', 'Air'], colours: ['#a97c50', '#5aa9e6', '#c9d4ff'],
+          note: 'Aristotle grouped animals by their habitat — land, water and air — and also by external appearance. The system had limitations because it relied mainly on easily observable external characteristics.'
+        },
+        {
+          who: 'Carolus Linnaeus', when: '1758', title: 'Two kingdoms',
+          groups: ['Plantae', 'Animalia'], colours: ['#4caf82', '#e08a5a'],
+          note: 'Plantae were organisms that do not move from place to place and synthesise their own food; Animalia move and depend on other organisms for food. But this created confusion — where should Amoeba, Paramecium and bacteria go?'
+        },
+        {
+          who: 'Ernst Haeckel', when: '1866', title: 'Three kingdoms',
+          groups: ['Protista', 'Plantae', 'Animalia'], colours: ['#c08ad8', '#4caf82', '#e08a5a'],
+          note: 'Amoeba and Paramecium move like animals but are unicellular and heterotrophic, while plants and animals are multicellular. A third kingdom, Protista, was added for unicellular microscopic organisms.'
+        },
+        {
+          who: 'Herbert F. Copeland', when: '1938', title: 'Four kingdoms',
+          groups: ['Monera', 'Protista', 'Plantae', 'Animalia'], colours: ['#d8c06a', '#c08ad8', '#4caf82', '#e08a5a'],
+          note: 'As microscopes improved, scientists saw that an amoeba has a true membrane-bound nucleus but bacteria do not. Both are unicellular yet very different, so bacteria were placed in a separate kingdom, Monera.'
+        },
+        {
+          who: 'Robert H. Whittaker', when: '1969', title: 'Five kingdoms',
+          groups: ['Monera', 'Protista', 'Fungi', 'Plantae', 'Animalia'],
+          colours: ['#d8c06a', '#c08ad8', '#8fa4d8', '#4caf82', '#e08a5a'],
+          note: 'Fungi such as mushrooms do not move like plants but are heterotrophic, obtaining nutrients by absorption — many from dead and decaying matter, though some are symbiotic and some parasitic. They were given a kingdom of their own.'
+        }
+      ];
+
+      function update() {
+        const i = parseInt(sel.value, 10);
+        const s = SYSTEMS[i];
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(s.who + ' — ' + s.when, W / 2, 26);
+
+        // The timeline itself, with the chosen point highlighted.
+        const tx0 = 60, tx1 = W - 60;
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(tx0, 68); ctx.lineTo(tx1, 68); ctx.stroke();
+        SYSTEMS.forEach((sy, k) => {
+          const x = tx0 + (k / (SYSTEMS.length - 1)) * (tx1 - tx0);
+          ctx.fillStyle = k === i ? '#4caf82' : muted;
+          ctx.beginPath(); ctx.arc(x, 68, k === i ? 8 : 5, 0, Math.PI * 2); ctx.fill();
+          ctx.font = (k === i ? 'bold ' : '') + '10px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(sy.when, x, 54);
+        });
+
+        // The kingdoms of this system as labelled boxes.
+        const n = s.groups.length;
+        const bw = Math.min(110, (W - 100) / n - 12);
+        const total = n * bw + (n - 1) * 12;
+        const x0 = (W - total) / 2;
+        s.groups.forEach((g, k) => {
+          const x = x0 + k * (bw + 12);
+          ctx.fillStyle = s.colours[k];
+          ctx.globalAlpha = 0.85;
+          ctx.fillRect(x, 130, bw, 76);
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(x, 130, bw, 76);
+          ctx.fillStyle = '#12141a';
+          ctx.font = 'bold 13px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(g, x + bw / 2, 174);
+        });
+
+        ctx.fillStyle = text;
+        ctx.font = 'bold 14px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(s.title + ' — ' + n + (n === 1 ? ' group' : ' groups'), W / 2, 240);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        wrapText(ctx, s.note.split('.')[0] + '.', W / 2, 272, 76, 18);
+
+        obs.innerHTML = '<strong>' + s.who + ', ' + s.when + ' — ' + s.title + '</strong><br><br>' + s.note;
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initFiveKingdomLab() {
+      const canvas = document.getElementById('five-kingdom-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-five-kingdom');
+      const obs = document.getElementById('five-kingdom-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      // Each organism answers the four questions of the five kingdom key.
+      const ORGANISMS = {
+        bacteria: {
+          name: 'A bacterium', cell: 'Prokaryote', level: 'Unicellular', wall: 'Present',
+          nutrition: 'Autotrophic or heterotrophic', kingdom: 'Monera', colour: '#d8c06a',
+          note: 'Bacteria, archaea and cyanobacteria are single-celled prokaryotes. They are found in soil, water, air, hot springs and inside human bodies. Some are pathogens, but many are useful like Lactobacillus and Rhizobium, and some break down pollutants such as oil, pesticides and sewage.'
+        },
+        amoeba: {
+          name: 'Amoeba', cell: 'Eukaryote', level: 'Unicellular', wall: 'Absent',
+          nutrition: 'Heterotrophic', kingdom: 'Protista', colour: '#c08ad8',
+          note: 'Protista holds single-celled eukaryotes, without a cell wall or with one made of cellulose, living in water or moist places. Amoeba, Paramecium, Chlamydomonas and Euglena are examples — some autotrophic, some heterotrophic, and an important link in aquatic food chains.'
+        },
+        mushroom: {
+          name: 'A mushroom', cell: 'Eukaryote', level: 'Multicellular', wall: 'Present — chitin',
+          nutrition: 'Heterotrophic — absorbs', kingdom: 'Fungi', colour: '#8fa4d8',
+          note: 'Fungi are mostly multicellular eukaryotes with cell walls of chitin. They absorb nutrients from dead or decaying matter through fine filaments forming a mycelium. Most are saprophytes and act as decomposers, breaking complex organic matter into simpler substances available in soil as minerals.'
+        },
+        fern: {
+          name: 'A fern', cell: 'Eukaryote', level: 'Multicellular', wall: 'Present — cellulose',
+          nutrition: 'Autotrophic', kingdom: 'Plantae', colour: '#4caf82',
+          note: 'Plants are multicellular autotrophs with rigid cellulose cell walls. A fern belongs to the class Pteridophyta: it has vascular tissues, xylem and phloem, to transport water and food, but it still requires aquatic conditions for reproduction and does not produce seeds.'
+        },
+        frog: {
+          name: 'A frog', cell: 'Eukaryote', level: 'Multicellular', wall: 'Absent',
+          nutrition: 'Heterotrophic', kingdom: 'Animalia', colour: '#e08a5a',
+          note: 'Animals are multicellular heterotrophic eukaryotes without cell walls. Most show locomotion, rapid response to stimuli and coordinated behaviour. A frog has a notochord in its development, so it is a chordate — specifically a vertebrate.'
+        }
+      };
+
+      function update() {
+        const o = ORGANISMS[sel.value];
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(o.name, W / 2, 26);
+
+        // Four questions answered in sequence, then the kingdom.
+        const steps = [
+          ['Cell type', o.cell], ['Level of organisation', o.level],
+          ['Cell wall', o.wall], ['Mode of nutrition', o.nutrition]
+        ];
+        steps.forEach((s, i) => {
+          const y = 62 + i * 48;
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.textAlign = 'right';
+          ctx.fillText(s[0], 250, y + 4);
+          ctx.fillStyle = 'rgba(90,169,230,0.18)';
+          ctx.fillRect(266, y - 15, 250, 30);
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 1.2;
+          ctx.strokeRect(266, y - 15, 250, 30);
+          ctx.fillStyle = text;
+          ctx.font = 'bold 13px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(s[1], 391, y + 4);
+          if (i < 3) {
+            ctx.strokeStyle = '#4caf82';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(391, y + 16); ctx.lineTo(391, y + 28);
+            ctx.moveTo(391, y + 32); ctx.lineTo(386, y + 24);
+            ctx.moveTo(391, y + 32); ctx.lineTo(396, y + 24);
+            ctx.stroke();
+          }
+        });
+
+        ctx.fillStyle = o.colour;
+        ctx.fillRect(200, 262, 200, 46);
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(200, 262, 200, 46);
+        ctx.fillStyle = '#12141a';
+        ctx.font = 'bold 20px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(o.kingdom, 300, 292);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('Kingdom', 416, 292);
+
+        obs.innerHTML = '<strong>' + o.name + ' → Kingdom ' + o.kingdom + '</strong><br>' +
+          'Cell type: ' + o.cell + '<br>Level of organisation: ' + o.level + '<br>' +
+          'Cell wall: ' + o.wall + '<br>Mode of nutrition: ' + o.nutrition + '<br><br>' + o.note;
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initTaxonomyLab() {
+      const canvas = document.getElementById('taxonomy-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-taxonomy');
+      const obs = document.getElementById('taxonomy-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const LEVELS = ['Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus', 'Species'];
+      const TAXA = {
+        tiger: {
+          name: 'Tiger', sci: 'Panthera tigris',
+          values: ['Animalia', 'Chordata', 'Mammalia', 'Carnivora', 'Felidae', 'Panthera', 'P. tigris'],
+          note: 'The tiger’s sub-phylum is Vertebrata. Its genus, <em>Panthera</em>, also holds <em>Panthera leo</em>, the lion — the roaring cats, which share the ability to roar and a similar skull structure.'
+        },
+        pea: {
+          name: 'Pea plant', sci: 'Pisum sativum',
+          values: ['Plantae', 'Magnoliophyta', 'Magnoliopsida', 'Fabales', 'Fabaceae', 'Pisum', 'P. sativum'],
+          note: 'Every lower group is part of the group above it, and at each lower level the organisms share more common features.'
+        }
+      };
+
+      function drawPyramid(t) {
+        // A pyramid narrowing from kingdom at the top to species at the base.
+        const top = 54, rowH = 33, cx = 300;
+        LEVELS.forEach((lv, i) => {
+          const wHalf = 40 + (LEVELS.length - 1 - i) * 22;
+          const y = top + i * rowH;
+          ctx.fillStyle = 'rgba(90,169,230,' + (0.12 + i * 0.06) + ')';
+          ctx.fillRect(cx - wHalf, y, wHalf * 2, rowH - 5);
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 1.2;
+          ctx.strokeRect(cx - wHalf, y, wHalf * 2, rowH - 5);
+          ctx.fillStyle = text;
+          ctx.font = 'bold 13px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(t.values[i], cx, y + 19);
+          ctx.fillStyle = muted;
+          ctx.font = '11px sans-serif';
+          ctx.textAlign = 'right';
+          ctx.fillText(lv, cx - wHalf - 8, y + 19);
+        });
+        ctx.fillStyle = accent;
+        ctx.font = 'italic bold 17px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(t.sci, cx, 306);
+      }
+
+      function drawNaming() {
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('A tiger is bagh in Hindi, puli in Tamil, tiger in English, tigre in French.', W / 2, 62);
+        ctx.fillStyle = accent;
+        ctx.font = 'italic bold 30px sans-serif';
+        ctx.fillText('Panthera tigris', W / 2, 112);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('— everywhere on Earth', W / 2, 136);
+
+        // Pointers to the two halves of the name.
+        ctx.strokeStyle = '#4caf82';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(248, 122); ctx.lineTo(210, 158); ctx.stroke();
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText('genus — capital letter, first', 206, 162);
+        ctx.strokeStyle = '#e08a5a';
+        ctx.beginPath(); ctx.moveTo(352, 122); ctx.lineTo(392, 158); ctx.stroke();
+        ctx.fillStyle = '#e08a5a';
+        ctx.textAlign = 'left';
+        ctx.fillText('species — lower case, second', 396, 162);
+
+        const rules = [
+          '1. The name has two parts — genus and species.',
+          '2. The genus name is capitalised and comes first; the species name is in lower case.',
+          '3. Printed names are in italics; handwritten names are underlined.'
+        ];
+        rules.forEach((r, i) => {
+          ctx.fillStyle = text;
+          ctx.font = '13px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(r, W / 2, 208 + i * 30);
+        });
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('Mangifera indica — the mango — follows exactly the same rules.', W / 2, 306);
+      }
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        if (v === 'naming') {
+          ctx.fillText('Binomial nomenclature', W / 2, 26);
+          drawNaming();
+          obs.innerHTML = '<strong>The rules for scientific names</strong><br>' +
+            'To avoid confusion between common names in different languages, scientists use a universal system called binomial nomenclature, introduced by Carolus Linnaeus in the 18th century. Every organism has a two-part name written in Latin or a Latinised form.<br><br>' +
+            '1. The name has two parts — genus and species.<br>' +
+            '2. The genus name begins with a capital letter and comes first; the species name follows in lower case.<br>' +
+            '3. The name is written in italics when printed, or underlined when handwritten.';
+          return;
+        }
+        const t = TAXA[v];
+        ctx.fillText(t.name + ' — from kingdom down to species', W / 2, 26);
+        drawPyramid(t);
+        obs.innerHTML = '<strong>' + t.name + ' — <em>' + t.sci + '</em></strong><br>' +
+          LEVELS.map((lv, i) => lv + ': ' + t.values[i]).join('<br>') + '<br><br>' + t.note +
+          '<br><br>The arrangement works like an address — just as a house address helps us locate a place exactly, classification helps scientists identify, compare and study organisms accurately.';
+      }
+
+      sel.addEventListener('change', update);
+      update();
     }
 
     function initAsexualModeLab() {

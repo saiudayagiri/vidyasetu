@@ -22602,6 +22602,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9s-12",
+              title: "Patterns in Life: Diversity and Classification",
+              topics: [
+                {
+                  id: "9s-12-1",
+                  title: "1. Biodiversity and the Need for Classification",
+                  lab: { type: "biodiversity-sim" },
+                  theory: {
+                    intro: "Imagine a library where thousands of books lie scattered across the floor. Finding one particular title would be hopeless — and the Earth holds millions of organisms.",
+                    sections: [
+                      {
+                        heading: "India as a Biodiversity Hotspot",
+                        text: "India's natural landscape is diverse — mountains in the north, desert in the west, rainforests in the North East, plateaus in the south, and long coastlines along the Arabian Sea and the Bay of Bengal, each with distinct soils and climates. Species restricted to particular regions of the world and found naturally nowhere else are called endemic species: the Nilgiri tahr, the lion-tailed macaque, the Indian pitcher plant Nepenthes khasiana and Neelakurinji are found only in India. Regions that support a large number of endemic species and have undergone significant habitat loss are known as biodiversity hotspots — the Western Ghats, Indo-Burma including North East India, the Himalayas and Sundaland including the Nicobar Islands are global examples."
+                      },
+                      {
+                        heading: "How Biodiversity Evolved",
+                        text: "The biodiversity we see today was not always the same. Small differences among individuals affected their chances of survival and reproduction by helping them adapt to changed conditions. These differences accumulated over many generations and gave rise to new forms of life. Today's diversity is therefore the outcome of continuous change over a vast span of time, shaped by interactions between organisms and their surroundings — and studying it is possible only through the systematic framework that classification provides."
+                      },
+                      {
+                        heading: "Criteria and the Need for Classification",
+                        text: "Scientists first look at broad, easily visible features and then at more detailed ones. The criteria used include external features such as shape, size and body organisation; mode of nutrition, autotrophic or heterotrophic; internal structures such as skeletal patterns, organs and tissues; cell structure, whether unicellular or multicellular, eukaryote or prokaryote, with or without a cell wall; ecological role as producer, consumer or decomposer; reproduction, asexual or sexual; and genetic similarity, studied in detail using DNA. Similar features suggest evolution from common ancestors. This scientific system of grouping is called biological classification, and it makes study systematic, reveals similarities and differences, shows how organisms are related, helps name newly discovered organisms, supports conservation by identifying threatened species, and lets scientists worldwide discuss organisms using a common system."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "The Hornbills of Pakke Tiger Reserve",
+                      objective: "To see why classifying closely related species matters for studying biodiversity.",
+                      materials: ["The Pakke Tiger Reserve case study", "Notebook and pen"],
+                      steps: [
+                        "Note that scientists have recorded nearly 300 bird species at Pakke, out of about 1,300 in all of India.",
+                        "List the four hornbill species found there — Rufous-necked, Oriental Pied, Great and Wreathed.",
+                        "Note that these large birds nest only in large, old trees with suitable cavities and feed on specific fruits.",
+                        "Discuss what features could help scientists distinguish four similar-looking hornbills.",
+                        "Predict what would happen if the large, old trees disappeared from the forest."
+                      ],
+                      observation: "Different hornbill species occupy different parts of the forest depending on tree size and fruit availability, so distinguishing them lets scientists ask precise questions about how species are distributed and which plants and animals are closely linked. Without the large old trees the hornbills would lose their nesting cavities, and the species that depend on them would decline."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What are endemic species?",
+                      options: ["Species found all over the world", "Species restricted to a particular region and found naturally nowhere else", "Species that have gone extinct", "Species introduced from other countries"],
+                      answer: 1,
+                      explanation: "The Nilgiri tahr, lion-tailed macaque, Nepenthes khasiana and Neelakurinji are all found only in India."
+                    },
+                    {
+                      question: "What is a biodiversity hotspot?",
+                      options: ["Any hot region of the world", "A region supporting many endemic species that has undergone significant habitat loss", "A protected national park", "A region with only one species"],
+                      answer: 1,
+                      explanation: "The Western Ghats, Indo-Burma, the Himalayas and Sundaland are global hotspots — especially rich in the number and diversity of organisms and especially important for conservation."
+                    },
+                    {
+                      question: "Which of these is a criterion used to classify living organisms?",
+                      options: ["The colour of the observer's notebook", "Mode of nutrition — autotrophic or heterotrophic", "The month of discovery", "The country of discovery"],
+                      answer: 1,
+                      explanation: "Mode of nutrition is one of the standard criteria, alongside external features, internal structures, cell structure, ecological role, reproduction and genetic similarity."
+                    },
+                    {
+                      question: "What do similar features in different organisms suggest?",
+                      options: ["That they live in the same country", "That they have evolved from common ancestors", "That they are the same species", "That they are unrelated"],
+                      answer: 1,
+                      explanation: "Shared features are evidence of shared ancestry, which is why classification reflects evolutionary relationships."
+                    },
+                    {
+                      question: "Which of these is a benefit of biological classification?",
+                      options: ["It makes organisms easier to hunt", "It lets scientists all over the world discuss organisms using a common system", "It reduces the number of species", "It replaces the need for observation"],
+                      answer: 1,
+                      explanation: "Classification also organises study, shows similarities, differences and relationships, aids naming of new organisms, and supports conservation."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-12-2",
+                  title: "2. Classification Systems Over Time",
+                  lab: { type: "classification-timeline-sim" },
+                  theory: {
+                    intro: "Amoeba moves like an animal but is a single cell. Every time an organism refused to fit, the system of classification had to grow another kingdom.",
+                    sections: [
+                      {
+                        heading: "From Aristotle to Two Kingdoms",
+                        text: "Around the 4th century BCE, Aristotle grouped animals by their habitat — land, water and air — and also by their external appearance. This artificial system had limitations because it relied mainly on easily observable external characteristics. In the 18th century, Carolus Linnaeus introduced the two kingdom system, dividing all living organisms into Plantae, organisms that do not move from place to place and synthesise their own food, and Animalia, organisms that move and depend on others for food."
+                      },
+                      {
+                        heading: "Three and Four Kingdoms",
+                        text: "The two kingdom system created confusion: where should Amoeba, Paramecium and bacteria be placed? Amoeba and Paramecium move like animals but are unicellular and heterotrophic, whereas plants and animals are multicellular. Ernst Haeckel therefore added a third kingdom, Protista, in 1866, to include unicellular microscopic organisms. As microscopes improved, scientists noticed that an amoeba has a true membrane-bound nucleus while bacteria do not, so Herbert F. Copeland placed bacteria in a separate kingdom, Monera, in 1938 — giving a four kingdom system of Monera, Protista, Plantae and Animalia."
+                      },
+                      {
+                        heading: "The Five Kingdom System",
+                        text: "Later, scientists noticed that fungi such as mushrooms do not move like plants but are heterotrophic, obtaining nutrients by absorption — many from dead and decaying matter, though some are symbiotic and some parasitic. Fungi were therefore placed in a separate kingdom, and in 1969 Robert H. Whittaker's five kingdom classification grouped life into Monera, Protista, Fungi, Plantae and Animalia. The criteria for this system are cell type (prokaryote or eukaryote), cell structure (presence or absence of a cell wall), level of organisation (unicellular or multicellular) and mode of nutrition (autotrophic or heterotrophic)."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tracing Why Each Kingdom Was Added",
+                      objective: "To connect each new classification system to the organism that did not fit the old one.",
+                      materials: ["Notebook and pen", "The timeline of Fig. 12.4"],
+                      steps: [
+                        "Write down Aristotle's basis for grouping animals and state its main limitation.",
+                        "State the definitions of Plantae and Animalia in the two kingdom system.",
+                        "Explain why Amoeba and Paramecium did not fit either kingdom, and name the kingdom added for them.",
+                        "Explain the difference between an amoeba and a bacterium that led to Monera being separated.",
+                        "Explain what made fungi different enough from plants to need their own kingdom."
+                      ],
+                      observation: "Aristotle grouped animals by habitat, but external features alone proved unreliable. Amoeba and Paramecium move like animals yet are unicellular and heterotrophic, so Protista was added. Amoeba has a true nucleus while bacteria do not, so Monera was separated. Fungi do not move like plants but are heterotrophic, absorbing nutrients, so they were given a kingdom of their own — completing the five kingdom system."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "On what basis did Aristotle group animals?",
+                      options: ["Their cell type", "Their habitat — land, water and air — and external appearance", "Their DNA", "Their mode of reproduction"],
+                      answer: 1,
+                      explanation: "His system was limited because it relied mainly on easily observable external characteristics."
+                    },
+                    {
+                      question: "Who introduced the two kingdom system, dividing life into Plantae and Animalia?",
+                      options: ["Aristotle", "Carolus Linnaeus", "Ernst Haeckel", "Robert Whittaker"],
+                      answer: 1,
+                      explanation: "Linnaeus introduced the two kingdom system in 1758."
+                    },
+                    {
+                      question: "Why was the kingdom Protista added?",
+                      options: ["To hold multicellular fungi", "To include unicellular microscopic organisms like Amoeba and Paramecium, which fitted neither plants nor animals", "To separate bacteria from amoeba", "To classify viruses"],
+                      answer: 1,
+                      explanation: "Amoeba and Paramecium move like animals but are unicellular and heterotrophic, so Ernst Haeckel added Protista in 1866."
+                    },
+                    {
+                      question: "What distinction led to bacteria being placed in a separate kingdom, Monera?",
+                      options: ["Bacteria are multicellular", "Bacteria lack a true membrane-bound nucleus while amoeba has one", "Bacteria are autotrophic", "Bacteria have no cell wall"],
+                      answer: 1,
+                      explanation: "Improved microscopes revealed that bacteria are prokaryotes, so Copeland separated them into Monera in 1938."
+                    },
+                    {
+                      question: "Who proposed the five kingdom classification, and in which year?",
+                      options: ["Linnaeus, 1758", "Haeckel, 1866", "Copeland, 1938", "Robert H. Whittaker, 1969"],
+                      answer: 3,
+                      explanation: "Whittaker's 1969 system grouped life into Monera, Protista, Fungi, Plantae and Animalia."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-12-3",
+                  title: "3. The Five Kingdoms",
+                  lab: { type: "five-kingdom-sim" },
+                  theory: {
+                    intro: "Four questions — is the cell nucleated, is the body one cell or many, is there a cell wall, and where does the food come from — sort every living thing into one of five kingdoms.",
+                    sections: [
+                      {
+                        heading: "Monera and Protista",
+                        text: "Kingdom Monera holds unicellular prokaryotes — bacteria, archaea and cyanobacteria. Bacteria are found everywhere, including soil, water, air, hot springs and other extreme environments, and inside human bodies; they live in the gut of ruminants and produce biogas from their dung. Some bacteria are pathogens but many are useful, such as Lactobacillus and Rhizobium, and some break down pollutants like oil, pesticides and sewage. Cyanobacteria are autotrophs and decomposers. Kingdom Protista holds single-celled eukaryotes, without a cell wall or with one made of cellulose — microscopic, highly diverse, living in water or moist places. Amoeba, Paramecium, Chlamydomonas and Euglena are examples. Some are autotrophic and others heterotrophic; they are an important link in aquatic food chains, some producing oxygen and others acting as decomposers."
+                      },
+                      {
+                        heading: "Fungi and Plantae",
+                        text: "Fungi are mostly multicellular eukaryotes with cell walls made of chitin. They do not make their own food, absorbing nutrients from dead or decaying matter through fine filaments that together form a network called a mycelium. Most fungi are saprophytes and act as decomposers, breaking down complex organic matter into simpler substances available in soil as minerals; some are symbiotic and some parasitic. Yeast, though unicellular, is placed under fungi because its cell wall is made of chitin. Kingdom Plantae holds multicellular autotrophic eukaryotes with rigid cell walls made mainly of cellulose. It is divided into five classes: Thallophyta (algae such as Spirogyra, with an undifferentiated thallus), Bryophyta (mosses and liverworts, with rhizoids, surviving in moist shady places), Pteridophyta (ferns, with vascular tissues xylem and phloem but needing water for reproduction and producing no seeds), Gymnosperms (pines and cycads, with naked seeds on cones and no need for water at fertilisation) and Angiosperms (flowering plants, with flowers and fruits, the most diverse plant group on Earth)."
+                      },
+                      {
+                        heading: "Animalia",
+                        text: "Animals are multicellular, heterotrophic eukaryotes that depend on other organisms for food. Most show locomotion, rapid response to stimuli and coordinated behaviour, letting them search for food, avoid predators and interact with their surroundings. A major criterion for classifying them is the presence or absence of a notochord, a flexible rod-shaped structure, dividing animals into non-chordata (invertebrata) and chordata; the chordata are further divided into protochordata and vertebrata. Among the invertebrates, sponges (Porifera) are multicellular but lack tissues and organs, with pores letting water flow through to bring food and oxygen to individual cells. Cnidarians such as Hydra, jellyfish and corals have tissue-level organisation and capture prey with tentacles, though a single opening serves for both food intake and waste removal. Flatworms (Platyhelminthes) show bilateral symmetry, allowing directional movement."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Making a Hay Infusion to See Protists",
+                      objective: "To observe living single-celled eukaryotes under a microscope.",
+                      materials: ["Mown grass, straw or fodder", "A small glass bottle", "Stagnant or pond water", "Muslin cloth and thread", "A dropper, slides and a microscope", "Lab coat, mask and gloves"],
+                      steps: [
+                        "Fill one fourth of the bottle with the grass, straw or fodder.",
+                        "Fill the bottle with stagnant or pond water and mix it with the plant material.",
+                        "Cover the bottle with muslin cloth, tie it with thread, and leave it undisturbed for a week.",
+                        "Open the mouth just enough to insert a dropper and take a drop of the water.",
+                        "Put the drop on a clean slide and observe it under the microscope."
+                      ],
+                      observation: "Moving single-celled organisms appear in the drop — Amoeba, Paramecium and Euglena among them, all members of the kingdom Protista. The infusion may smell bad, so wear a lab coat, mask and gloves and autoclave it before discarding."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Which kingdom holds unicellular prokaryotes such as bacteria and cyanobacteria?",
+                      options: ["Protista", "Monera", "Fungi", "Plantae"],
+                      answer: 1,
+                      explanation: "Monera holds bacteria, archaea and cyanobacteria — single-celled organisms without a true nucleus."
+                    },
+                    {
+                      question: "What are fungal cell walls made of?",
+                      options: ["Cellulose", "Chitin", "Protein", "They have no cell wall"],
+                      answer: 1,
+                      explanation: "Fungal cell walls are made of chitin, which is why unicellular yeast is placed under Fungi rather than Protista."
+                    },
+                    {
+                      question: "Which class of plants has naked seeds borne on cones and does not need water for fertilisation?",
+                      options: ["Thallophyta", "Bryophyta", "Gymnosperms", "Angiosperms"],
+                      answer: 2,
+                      explanation: "Gymnos means naked and spermos means seed — pines and cycads bear exposed seeds on cones, with needle-like leaves that reduce water loss."
+                    },
+                    {
+                      question: "What is the major criterion used to divide animals into two large groups?",
+                      options: ["The presence or absence of a notochord", "Whether they fly", "Their colour", "Whether they are aquatic"],
+                      answer: 0,
+                      explanation: "The notochord, a flexible rod-shaped structure, separates non-chordata (invertebrata) from chordata, which are further divided into protochordata and vertebrata."
+                    },
+                    {
+                      question: "Which animal group is multicellular but lacks tissues and organs?",
+                      options: ["Cnidaria", "Porifera (sponges)", "Platyhelminthes", "Chordata"],
+                      answer: 1,
+                      explanation: "Sponges have numerous pores through which water flows continuously, bringing food and oxygen directly to individual cells and carrying waste away."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-12-4",
+                  title: "4. Hierarchy and Scientific Names",
+                  lab: { type: "taxonomy-sim" },
+                  theory: {
+                    intro: "A tiger is bagh in Hindi, puli in Tamil, tigre in French. Panthera tigris in every language on Earth.",
+                    sections: [
+                      {
+                        heading: "The Hierarchy of Classification",
+                        text: "Classification follows a step-by-step order, starting from very broad groups and moving towards smaller, more specific ones: Kingdom, Phylum, Class, Order, Family, Genus, Species. At each lower level organisms share more common features, and every lower group is part of the group above it. The arrangement works like an address — just as a house address helps locate a place exactly, classification helps scientists identify, compare and study organisms accurately and understand how they are related. The tiger runs Animalia, Chordata (sub-phylum Vertebrata), Mammalia, Carnivora, Felidae, Panthera, P. tigris; the pea runs Plantae, Magnoliophyta, Magnoliopsida, Fabales, Fabaceae, Pisum, P. sativum."
+                      },
+                      {
+                        heading: "Binomial Nomenclature",
+                        text: "To avoid confusion between common names in different languages, scientists use a universal system called binomial nomenclature, introduced by Carolus Linnaeus in the 18th century. Every organism has a scientific name of two parts, written in Latin or a Latinised form: the tiger is Panthera tigris and the mango is Mangifera indica. The first word is the name of the genus and the second the name of the species. A genus groups closely related species sharing common features — Panthera tigris (tiger) and Panthera leo (lion) both belong to Panthera, the roaring cats, which share the ability to roar and a similar skull structure. The species name indicates a group of similar individuals capable of interbreeding and producing offspring."
+                      },
+                      {
+                        heading: "The Rules for Writing a Scientific Name",
+                        text: "There are three rules. First, the name has two parts — genus and species. Second, the genus name begins with a capital letter and comes first, followed by the species name written entirely in lower case. Third, the scientific name is written in italics when printed, or underlined when handwritten. Together the genus and species names form a unique scientific name used worldwide."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Writing a Scientific Name Correctly",
+                      objective: "To apply the rules of binomial nomenclature.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "Write down the two parts a scientific name must have.",
+                        "Write the tiger's scientific name, applying the capitalisation rule.",
+                        "Write the mango's scientific name the same way.",
+                        "Show how each would be written by hand rather than printed.",
+                        "Explain why Panthera tigris and Panthera leo share their first word."
+                      ],
+                      observation: "The names are Panthera tigris and Mangifera indica — genus capitalised and first, species in lower case, both in italics when printed and underlined when handwritten. Tiger and lion share the genus Panthera because they are closely related species with common features, including the ability to roar and a similar skull structure."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the correct order of the levels of classification?",
+                      options: ["Species, Genus, Family, Order, Class, Phylum, Kingdom", "Kingdom, Phylum, Class, Order, Family, Genus, Species", "Kingdom, Class, Phylum, Family, Order, Genus, Species", "Genus, Species, Family, Class, Order, Phylum, Kingdom"],
+                      answer: 1,
+                      explanation: "The hierarchy runs from the broadest group, Kingdom, down to the most specific, Species, with organisms sharing more features at each lower level."
+                    },
+                    {
+                      question: "Who introduced binomial nomenclature?",
+                      options: ["Aristotle", "Carolus Linnaeus", "Ernst Haeckel", "Charles Darwin"],
+                      answer: 1,
+                      explanation: "Linnaeus introduced this universal two-part naming system in the 18th century."
+                    },
+                    {
+                      question: "In Panthera tigris, what does the first word represent?",
+                      options: ["The species", "The genus", "The family", "The kingdom"],
+                      answer: 1,
+                      explanation: "The first word is the genus and the second the species; a genus groups closely related species sharing common features."
+                    },
+                    {
+                      question: "How should a scientific name be written by hand?",
+                      options: ["In capitals throughout", "Underlined", "In italics", "In brackets"],
+                      answer: 1,
+                      explanation: "Scientific names are italicised when printed and underlined when handwritten."
+                    },
+                    {
+                      question: "What is the scientific name of the mango?",
+                      options: ["Panthera tigris", "Mangifera indica", "Pisum sativum", "Panthera leo"],
+                      answer: 1,
+                      explanation: "Mangifera is the genus and indica the species — written in italics with only the genus capitalised."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
