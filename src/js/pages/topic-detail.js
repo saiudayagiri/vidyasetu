@@ -6087,6 +6087,102 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const chemicalLawLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="chemical-law-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Weigh the reaction before and after, and check the fixed ratios.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Demonstration</h3>
+            <select id="sel-chemical-law" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="mass" selected>Conservation of mass</option>
+              <option value="water">Constant proportions: water (1:8)</option>
+              <option value="nacl">Constant proportions: NaCl (23:35.5)</option>
+              <option value="co">Constant proportions: CO (3:4)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What the Law Says</h3>
+            <div id="chemical-law-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a demonstration above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const covalentBondLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="covalent-bond-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Bring two atoms together and count the shared pairs.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Molecule</h3>
+            <select id="sel-covalent-bond" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="H2" selected>Hydrogen, H₂</option>
+              <option value="Cl2">Chlorine, Cl₂</option>
+              <option value="O2">Oxygen, O₂</option>
+              <option value="N2">Nitrogen, N₂</option>
+              <option value="HCl">Hydrogen chloride, HCl</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>The Bond Formed</h3>
+            <div id="covalent-bond-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a molecule above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const ionicBondLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="ionic-bond-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Transfer the electron, form the ions, and test the compound.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Step</h3>
+            <select id="sel-ionic-bond" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="atoms" selected>The two neutral atoms</option>
+              <option value="ions">After the electron transfer</option>
+              <option value="lattice">The sodium chloride crystal</option>
+              <option value="properties">Ionic versus covalent properties</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What Happens</h3>
+            <div id="ionic-bond-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a step above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const formulaMassLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="formula-mass-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Criss-cross the valencies, then add up the atomic masses.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Compound</h3>
+            <select id="sel-formula-mass" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="H2O" selected>Water, H₂O</option>
+              <option value="CO2">Carbon dioxide, CO₂</option>
+              <option value="CCl4">Carbon tetrachloride, CCl₄</option>
+              <option value="CaCl2">Calcium chloride, CaCl₂</option>
+              <option value="Al2O3">Aluminium oxide, Al₂O₃</option>
+              <option value="Na2O">Sodium oxide, Na₂O</option>
+              <option value="CaNO3">Calcium nitrate, Ca(NO₃)₂</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Formula and Mass</h3>
+            <div id="formula-mass-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a compound above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const atomicModelLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -8739,6 +8835,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'kinematic-equation-sim') {
               labHtml = kinematicEquationLabHtml;
               labDesc = 'Apply each kinematic equation to the same motion and see them agree.';
+            } else if (topicObj.lab.type === 'chemical-law-sim') {
+              labHtml = chemicalLawLabHtml;
+              labDesc = 'Check conservation of mass and the fixed mass ratios in compounds.';
+            } else if (topicObj.lab.type === 'covalent-bond-sim') {
+              labHtml = covalentBondLabHtml;
+              labDesc = 'Share electrons between atoms and count the shared pairs.';
+            } else if (topicObj.lab.type === 'ionic-bond-sim') {
+              labHtml = ionicBondLabHtml;
+              labDesc = 'Transfer an electron, form the ions, and compare ionic with covalent compounds.';
+            } else if (topicObj.lab.type === 'formula-mass-sim') {
+              labHtml = formulaMassLabHtml;
+              labDesc = 'Criss-cross valencies to build formulae and add up their masses.';
             } else if (topicObj.lab.type === 'atomic-model-sim') {
               labHtml = atomicModelLabHtml;
               labDesc = 'Step through the atomic models and see what each one explained.';
@@ -9514,6 +9622,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initMotionGraphLab();
         } else if (topicObj.lab.type === 'kinematic-equation-sim') {
           initKinematicEquationLab();
+        } else if (topicObj.lab.type === 'chemical-law-sim') {
+          initChemicalLawLab();
+        } else if (topicObj.lab.type === 'covalent-bond-sim') {
+          initCovalentBondLab();
+        } else if (topicObj.lab.type === 'ionic-bond-sim') {
+          initIonicBondLab();
+        } else if (topicObj.lab.type === 'formula-mass-sim') {
+          initFormulaMassLab();
         } else if (topicObj.lab.type === 'atomic-model-sim') {
           initAtomicModelLab();
         } else if (topicObj.lab.type === 'gold-foil-sim') {
@@ -29814,6 +29930,554 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       sel.addEventListener('change', draw);
       draw();
+    }
+
+    function initChemicalLawLab() {
+      const canvas = document.getElementById('chemical-law-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-chemical-law');
+      const obs = document.getElementById('chemical-law-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const RATIOS = {
+        water: { name: 'Water', a: 'Hydrogen', b: 'Oxygen', ra: 1, rb: 8, sample: 9, unit: 'g of water' },
+        nacl: { name: 'Sodium chloride', a: 'Sodium', b: 'Chlorine', ra: 23, rb: 35.5, sample: 117, unit: 'g of NaCl' },
+        co: { name: 'Carbon monoxide', a: 'Carbon', b: 'Oxygen', ra: 3, rb: 4, sample: 21, unit: 'g of CO' }
+      };
+
+      function flask(x, y, label, colour) {
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(x - 12, y - 46);
+        ctx.lineTo(x - 12, y - 26);
+        ctx.lineTo(x - 34, y);
+        ctx.lineTo(x + 34, y);
+        ctx.lineTo(x + 12, y - 26);
+        ctx.lineTo(x + 12, y - 46);
+        ctx.stroke();
+        ctx.fillStyle = colour;
+        ctx.beginPath();
+        ctx.moveTo(x - 30, y - 6);
+        ctx.lineTo(x + 30, y - 6);
+        ctx.lineTo(x + 30, y - 2);
+        ctx.lineTo(x - 30, y - 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillRect(x - 30, y - 16, 60, 14);
+        ctx.fillStyle = text;
+        ctx.font = '11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, x, y + 18);
+      }
+
+      function balance(cx, cy, reading, caption) {
+        ctx.fillStyle = '#3a4358';
+        ctx.fillRect(cx - 90, cy, 180, 34);
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(cx - 90, cy, 180, 34);
+        ctx.fillStyle = '#7ee0a8';
+        ctx.font = 'bold 17px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(reading, cx, cy + 23);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText(caption, cx, cy + 54);
+      }
+
+      function drawMass() {
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Sodium sulfate + Barium chloride on a weighing balance', W / 2, 26);
+
+        flask(110, 120, 'A', '#5aa9e6');
+        flask(200, 120, 'B', '#c9d4ff');
+        ctx.fillStyle = muted;
+        ctx.font = '11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('A: sodium sulfate    B: barium chloride', 155, 62);
+        balance(155, 150, '20.0 g', 'before mixing');
+
+        ctx.strokeStyle = '#4caf82';
+        ctx.fillStyle = '#4caf82';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(272, 150); ctx.lineTo(318, 150); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(326, 150); ctx.lineTo(314, 144); ctx.lineTo(314, 156);
+        ctx.closePath(); ctx.fill();
+
+        flask(400, 120, 'A', '#e8e8e8');
+        flask(490, 120, 'B', 'rgba(0,0,0,0)');
+        ctx.fillStyle = muted;
+        ctx.font = '11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('A: reaction mixture    B: empty', 445, 62);
+        balance(445, 150, '20.0 g', 'after mixing');
+
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Sodium sulfate + Barium chloride → Barium sulfate + Sodium chloride', W / 2, 250);
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 15px sans-serif';
+        ctx.fillText('The reading does not change — mass is conserved', W / 2, 284);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('A white precipitate of barium sulfate forms, but no matter is created or destroyed.', W / 2, 310);
+      }
+
+      function drawRatio(key) {
+        const r = RATIOS[key];
+        const total = r.ra + r.rb;
+        const ma = (r.ra / total) * r.sample;
+        const mb = (r.rb / total) * r.sample;
+
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(r.name + ' always contains ' + r.a + ' and ' + r.b + ' in the ratio ' + r.ra + ':' + r.rb, W / 2, 26);
+
+        // The same fixed split, drawn for three different sample sizes.
+        [1, 2, 3].forEach((mult, i) => {
+          const y = 80 + i * 62;
+          const bx = 110, bw = 400;
+          const wa = bw * (r.ra / total);
+          ctx.fillStyle = '#5aa9e6';
+          ctx.fillRect(bx, y, wa, 32);
+          ctx.fillStyle = '#e08a5a';
+          ctx.fillRect(bx + wa, y, bw - wa, 32);
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(bx, y, bw, 32);
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.textAlign = 'center';
+          if (wa > 40) ctx.fillText(Math.round(ma * mult * 10) / 10 + ' g', bx + wa / 2, y + 20);
+          ctx.fillText(Math.round(mb * mult * 10) / 10 + ' g', bx + wa + (bw - wa) / 2, y + 20);
+          ctx.fillStyle = text;
+          ctx.font = '12px sans-serif';
+          ctx.textAlign = 'right';
+          ctx.fillText(Math.round(r.sample * mult * 10) / 10 + ' ' + r.unit, bx - 10, y + 20);
+        });
+
+        ctx.fillStyle = '#5aa9e6';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(r.a, 110, 68);
+        ctx.fillStyle = '#e08a5a';
+        ctx.textAlign = 'right';
+        ctx.fillText(r.b, 510, 68);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Whatever the sample size, and whatever its source, the proportion never changes.', W / 2, 300);
+      }
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        if (v === 'mass') {
+          drawMass();
+          obs.innerHTML = '<strong>Law of Conservation of Mass</strong><br>' +
+            'Mass before mixing = mass after mixing.<br><br>' +
+            'Matter can neither be created nor destroyed in a chemical reaction. Antoine Lavoisier proposed this in 1789: in every operation an equal quantity of matter exists both before and after the operation. ' +
+            'Keeping both flasks on the balance avoids the error caused by solution left clinging to the walls during transfer.';
+          return;
+        }
+        drawRatio(v);
+        const r = RATIOS[v];
+        const total = r.ra + r.rb;
+        obs.innerHTML = '<strong>' + r.name + '</strong><br>' +
+          r.a + ' : ' + r.b + ' = <strong>' + r.ra + ' : ' + r.rb + '</strong> by mass<br>' +
+          'In ' + r.sample + ' ' + r.unit + ' there are ' + (Math.round((r.ra / total) * r.sample * 10) / 10) + ' g of ' + r.a.toLowerCase() +
+          ' and ' + (Math.round((r.rb / total) * r.sample * 10) / 10) + ' g of ' + r.b.toLowerCase() + '.<br><br>' +
+          'By the Law of Constant Proportions, the elements in a compound combine in a fixed ratio by mass irrespective of the source of the compound. Doubling or tripling the sample doubles or triples both masses, leaving the ratio untouched.';
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initCovalentBondLab() {
+      const canvas = document.getElementById('covalent-bond-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-covalent-bond');
+      const obs = document.getElementById('covalent-bond-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      // valence = electrons in the outer shell, need = electrons still required.
+      const MOL = {
+        H2: { name: 'Hydrogen molecule, H₂', l: 'H', r: 'H', lv: 1, rv: 1, need: 1, shared: 1, bond: 'single', line: 'H—H', cap: 2 },
+        Cl2: { name: 'Chlorine molecule, Cl₂', l: 'Cl', r: 'Cl', lv: 7, rv: 7, need: 1, shared: 1, bond: 'single', line: 'Cl—Cl', cap: 8 },
+        O2: { name: 'Oxygen molecule, O₂', l: 'O', r: 'O', lv: 6, rv: 6, need: 2, shared: 2, bond: 'double', line: 'O=O', cap: 8 },
+        N2: { name: 'Nitrogen molecule, N₂', l: 'N', r: 'N', lv: 5, rv: 5, need: 3, shared: 3, bond: 'triple', line: 'N≡N', cap: 8 },
+        HCl: { name: 'Hydrogen chloride, HCl', l: 'H', r: 'Cl', lv: 1, rv: 7, need: 1, shared: 1, bond: 'single', line: 'H—Cl', cap: 8 }
+      };
+
+      function atom(cx, cy, r, sym, valence, shared, mirrored) {
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+        ctx.fillStyle = text;
+        ctx.font = 'bold 17px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(sym, cx, cy + 6);
+        // Unshared valence electrons around the ring; shared ones are drawn at the join.
+        const own = valence - shared;
+        for (let i = 0; i < own; i++) {
+          const a = Math.PI / 2 + (mirrored ? -1 : 1) * (Math.PI / 2 + (i * Math.PI * 1.5) / Math.max(own, 1));
+          ctx.fillStyle = mirrored ? '#e08a5a' : '#5aa9e6';
+          ctx.beginPath();
+          ctx.arc(cx + r * Math.cos(a), cy + r * Math.sin(a), 5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function update() {
+        const m = MOL[sel.value];
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(m.name, W / 2, 26);
+
+        const cy = 150, r = 58, lx = 250, rx = 350;
+        atom(lx, cy, r, m.l, m.lv, m.shared, false);
+        atom(rx, cy, r, m.r, m.rv, m.shared, true);
+
+        // The shared pairs sit in the overlap between the two atoms.
+        for (let i = 0; i < m.shared; i++) {
+          const off = (i - (m.shared - 1) / 2) * 22;
+          ctx.fillStyle = '#5aa9e6';
+          ctx.beginPath(); ctx.arc(295, cy + off, 5, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#e08a5a';
+          ctx.beginPath(); ctx.arc(307, cy + off, 5, 0, Math.PI * 2); ctx.fill();
+        }
+
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(m.shared + (m.shared === 1 ? ' shared pair' : ' shared pairs') + ' of electrons', W / 2, 240);
+        ctx.fillStyle = text;
+        ctx.font = 'bold 26px sans-serif';
+        ctx.fillText(m.line, W / 2, 280);
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.fillText('a ' + m.bond + ' covalent bond', W / 2, 306);
+
+        obs.innerHTML = '<strong>' + m.name + '</strong><br>' +
+          m.l + ' has ' + m.lv + ' valence electron' + (m.lv === 1 ? '' : 's') + ' and needs ' + m.need + ' more.<br>' +
+          m.r + ' has ' + m.rv + ' valence electron' + (m.rv === 1 ? '' : 's') + ' and needs ' + m.need + ' more.<br>' +
+          'Each atom shares ' + m.shared + ' electron' + (m.shared === 1 ? '' : 's') + ', giving <strong>' + m.shared +
+          (m.shared === 1 ? ' shared pair' : ' shared pairs') + '</strong> — a <strong>' + m.bond + ' bond</strong>, written ' + m.line + '.<br><br>' +
+          'The shared pair attracts both nuclei and makes the molecule stable. This interaction through a shared pair of electrons is a covalent bond.';
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initIonicBondLab() {
+      const canvas = document.getElementById('ionic-bond-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-ionic-bond');
+      const obs = document.getElementById('ionic-bond-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      function species(cx, cy, label, config, charge, colour) {
+        const rings = config.length;
+        for (let i = 0; i < rings; i++) {
+          const r = 26 + i * 22;
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 1.2;
+          ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+          for (let k = 0; k < config[i]; k++) {
+            const a = (2 * Math.PI * k) / config[i] - Math.PI / 2;
+            ctx.fillStyle = colour;
+            ctx.beginPath(); ctx.arc(cx + r * Math.cos(a), cy + r * Math.sin(a), 4.5, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+        ctx.fillStyle = '#d0433a';
+        ctx.beginPath(); ctx.arc(cx, cy, 15, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, cx, cy + 4);
+        ctx.fillStyle = text;
+        ctx.font = 'bold 13px sans-serif';
+        ctx.fillText(charge, cx, cy + 26 + rings * 22 + 18);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText(config.join(', '), cx, cy + 26 + rings * 22 + 36);
+      }
+
+      function drawAtoms() {
+        species(160, 140, 'Na', [2, 8, 1], 'Sodium atom (neutral)', '#5aa9e6');
+        species(440, 140, 'Cl', [2, 8, 7], 'Chlorine atom (neutral)', '#e08a5a');
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('11 protons, 11 electrons', 160, 296);
+        ctx.fillText('17 protons, 17 electrons', 440, 296);
+      }
+
+      function drawIons() {
+        species(160, 140, 'Na', [2, 8], 'Sodium cation, Na⁺', '#5aa9e6');
+        species(440, 140, 'Cl', [2, 8, 8], 'Chloride anion, Cl⁻', '#e08a5a');
+        // The transferred electron travelling from sodium to chlorine.
+        ctx.strokeStyle = '#4caf82'; ctx.fillStyle = '#4caf82';
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(240, 100); ctx.lineTo(350, 100); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(358, 100); ctx.lineTo(346, 94); ctx.lineTo(346, 106);
+        ctx.closePath(); ctx.fill();
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('one electron transferred', 299, 88);
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.fillText('11 protons, 10 electrons', 160, 296);
+        ctx.fillText('17 protons, 18 electrons', 440, 296);
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.fillText('Na⁺ and Cl⁻ are now held by an ionic bond', W / 2, 318);
+      }
+
+      function drawLattice() {
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        // A 5x5 slice of the alternating 3-D arrangement.
+        const x0 = 190, y0 = 70, step = 46;
+        for (let i = 0; i < 5; i++) {
+          for (let k = 0; k < 5; k++) {
+            const x = x0 + k * step, y = y0 + i * step;
+            const isNa = (i + k) % 2 === 0;
+            ctx.fillStyle = isNa ? '#5aa9e6' : '#e08a5a';
+            ctx.beginPath(); ctx.arc(x, y, isNa ? 11 : 15, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1;
+        for (let i = 0; i < 5; i++) {
+          ctx.beginPath(); ctx.moveTo(x0, y0 + i * step); ctx.lineTo(x0 + 4 * step, y0 + i * step); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x0 + i * step, y0); ctx.lineTo(x0 + i * step, y0 + 4 * step); ctx.stroke();
+        }
+        ctx.fillStyle = '#5aa9e6';
+        ctx.beginPath(); ctx.arc(70, 120, 11, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('Na⁺', 90, 125);
+        ctx.fillStyle = '#e08a5a';
+        ctx.beginPath(); ctx.arc(70, 160, 15, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = text;
+        ctx.fillText('Cl⁻', 90, 165);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Each ion is surrounded by six of the opposite kind in the 3-D crystal.', W / 2, 306);
+      }
+
+      function drawProperties() {
+        const rows = [
+          ['Soluble in water', 'yes', 'usually not'],
+          ['Soluble in kerosene, petrol', 'no', 'yes'],
+          ['Conducts as a solid', 'no', 'no'],
+          ['Conducts dissolved in water', 'yes', 'no'],
+          ['Melting and boiling points', 'high', 'low']
+        ];
+        ctx.fillStyle = text;
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('Property', 40, 70);
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#5aa9e6';
+        ctx.fillText('Ionic', 380, 62);
+        ctx.fillStyle = '#e08a5a';
+        ctx.fillText('Covalent', 510, 62);
+        ctx.font = '10px sans-serif';
+        ctx.fillStyle = muted;
+        ctx.fillText('NaCl, CuSO₄', 380, 78);
+        ctx.fillText('camphor, sugar', 510, 78);
+        rows.forEach((r, i) => {
+          const y = 106 + i * 38;
+          ctx.strokeStyle = muted;
+          ctx.globalAlpha = 0.3;
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(40, y + 10); ctx.lineTo(W - 30, y + 10); ctx.stroke();
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = text;
+          ctx.font = '13px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(r[0], 40, y);
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#5aa9e6';
+          ctx.font = 'bold 13px sans-serif';
+          ctx.fillText(r[1], 380, y);
+          ctx.fillStyle = '#e08a5a';
+          ctx.fillText(r[2], 510, y);
+        });
+      }
+
+      const NOTES = {
+        atoms: '<strong>Two neutral atoms</strong><br>Sodium (Z = 11) has the configuration 2, 8, 1 — a single valence electron it can lose to become stable. Chlorine (Z = 17) is 2, 8, 7 and needs one electron to complete its octet. Both are electrically neutral, with equal numbers of protons and electrons.',
+        ions: '<strong>After the transfer</strong><br>Sodium loses its valence electron, leaving 11 protons and 10 electrons, so it becomes the positively charged sodium cation Na⁺. Chlorine gains that electron, giving 17 protons against 18 electrons, so it becomes the chloride anion Cl⁻. Cations and anions are collectively called ions, and the electrostatic force of attraction between their opposite charges is the ionic bond.',
+        lattice: '<strong>The sodium chloride crystal</strong><br>Ionic compounds usually do not remain as single units. They form 3-D crystals in which ions are arranged in a repeating pattern: each Na⁺ is surrounded by six Cl⁻ ions and each Cl⁻ by six Na⁺ ions. This regular repeating pattern is the crystal structure, represented as a crystal lattice with the ions drawn as points.',
+        properties: '<strong>Ionic versus covalent</strong><br>Ionic compounds dissolve in water but not in kerosene or petrol; most covalent compounds do the reverse. Ionic solids do not conduct because their ions are held in fixed positions — only in solution are the ions free to move and carry current. Sugar dissolves but gives no ions, so it does not conduct. Strong inter-ionic attractions also give ionic compounds high melting and boiling points, while covalent compounds melt and boil at low temperatures.'
+      };
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText({
+          atoms: 'Sodium and chlorine before the transfer', ions: 'Sodium cation and chloride anion',
+          lattice: 'The sodium chloride crystal lattice', properties: 'Comparing ionic and covalent compounds'
+        }[v], W / 2, 26);
+        if (v === 'atoms') drawAtoms();
+        else if (v === 'ions') drawIons();
+        else if (v === 'lattice') drawLattice();
+        else drawProperties();
+        obs.innerHTML = NOTES[v];
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initFormulaMassLab() {
+      const canvas = document.getElementById('formula-mass-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-formula-mass');
+      const obs = document.getElementById('formula-mass-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      // left/right symbol with its valency or charge number, and the mass sum working.
+      const COMPOUNDS = {
+        H2O: {
+          name: 'Water', kind: 'covalent', l: 'H', r: 'O', lv: 1, rv: 2, formula: 'H₂O',
+          parts: [['H', 1, 2], ['O', 16, 1]], mass: 18
+        },
+        CO2: {
+          name: 'Carbon dioxide', kind: 'covalent', l: 'C', r: 'O', lv: 4, rv: 2, formula: 'CO₂',
+          parts: [['C', 12, 1], ['O', 16, 2]], mass: 44, reduced: 'C₂O₄ reduces to CO₂'
+        },
+        CCl4: {
+          name: 'Carbon tetrachloride', kind: 'covalent', l: 'C', r: 'Cl', lv: 4, rv: 1, formula: 'CCl₄',
+          parts: [['C', 12, 1], ['Cl', 35.5, 4]], mass: 154
+        },
+        CaCl2: {
+          name: 'Calcium chloride', kind: 'ionic', l: 'Ca', r: 'Cl', lv: 2, rv: 1, formula: 'CaCl₂',
+          parts: [['Ca', 40, 1], ['Cl', 35.5, 2]], mass: 111
+        },
+        Al2O3: {
+          name: 'Aluminium oxide', kind: 'ionic', l: 'Al', r: 'O', lv: 3, rv: 2, formula: 'Al₂O₃',
+          parts: [['Al', 27, 2], ['O', 16, 3]], mass: 102
+        },
+        Na2O: {
+          name: 'Sodium oxide', kind: 'ionic', l: 'Na', r: 'O', lv: 1, rv: 2, formula: 'Na₂O',
+          parts: [['Na', 23, 2], ['O', 16, 1]], mass: 62
+        },
+        CaNO3: {
+          name: 'Calcium nitrate', kind: 'ionic', l: 'Ca', r: 'NO₃', lv: 2, rv: 1, formula: 'Ca(NO₃)₂',
+          parts: [['Ca', 40, 1], ['N', 14, 2], ['O', 16, 6]], mass: 164
+        }
+      };
+
+      function update() {
+        const c = COMPOUNDS[sel.value];
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(c.name + ' — ' + (c.kind === 'ionic' ? 'an ionic compound' : 'a covalent compound'), W / 2, 26);
+
+        // The criss-cross: symbols on top, valency or charge below, arrows swapping them.
+        const lx = 210, rx = 390, symY = 84, valY = 130;
+        ctx.fillStyle = text;
+        ctx.font = 'bold 24px sans-serif';
+        ctx.fillText(c.l, lx, symY);
+        ctx.fillText(c.r, rx, symY);
+        ctx.font = 'bold 20px sans-serif';
+        ctx.fillStyle = '#5aa9e6';
+        ctx.fillText(c.lv + (c.kind === 'ionic' ? '+' : ''), lx, valY);
+        ctx.fillStyle = '#e08a5a';
+        ctx.fillText(c.rv + (c.kind === 'ionic' ? '−' : ''), rx, valY);
+        ctx.fillStyle = muted;
+        ctx.font = '11px sans-serif';
+        ctx.fillText(c.kind === 'ionic' ? 'charge' : 'valency', lx, valY + 20);
+        ctx.fillText(c.kind === 'ionic' ? 'charge' : 'valency', rx, valY + 20);
+
+        ctx.strokeStyle = '#4caf82';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(lx + 22, valY - 8); ctx.lineTo(rx - 22, symY - 8);
+        ctx.moveTo(rx - 22, valY - 8); ctx.lineTo(lx + 22, symY - 8);
+        ctx.stroke();
+
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 30px sans-serif';
+        ctx.fillText(c.formula, W / 2, 196);
+        if (c.reduced) {
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.fillText(c.reduced, W / 2, 216);
+        }
+
+        // Adding up the atomic masses.
+        const workings = c.parts.map(p => p[1] + ' × ' + p[2]).join('  +  ');
+        ctx.fillStyle = text;
+        ctx.font = '14px sans-serif';
+        ctx.fillText(c.kind === 'ionic' ? 'Formula unit mass' : 'Molecular mass', W / 2, 248);
+        ctx.fillText('= ' + workings, W / 2, 274);
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 20px sans-serif';
+        ctx.fillText('= ' + c.mass + ' u', W / 2, 306);
+
+        obs.innerHTML = '<strong>' + c.name + ' — ' + c.formula + '</strong><br>' +
+          (c.kind === 'ionic'
+            ? 'Cation ' + c.l + ' carries ' + c.lv + '+ and anion ' + c.r + ' carries ' + c.rv + '−. Crossing over the charge numbers gives ' + c.formula + '.'
+            : c.l + ' has valency ' + c.lv + ' and ' + c.r + ' has valency ' + c.rv + '. Crossing over the valencies gives ' + c.formula + '.') +
+          (c.reduced ? '<br><em>' + c.reduced + ', since the formula gives the simplest ratio.</em>' : '') +
+          '<br><br>' + (c.kind === 'ionic' ? 'Formula unit mass' : 'Molecular mass') + ' = ' +
+          c.parts.map(p => p[1] + ' u × ' + p[2]).join(' + ') + ' = <strong>' + c.mass + ' u</strong><br><br>' +
+          (c.kind === 'ionic'
+            ? 'Ionic compounds do not form molecules — their ions form 3-D crystals — so we take the simplest whole-number ratio of ions, a formula unit, and find its mass.'
+            : 'The mass of a molecule is found by simply adding up the masses of the atoms present in it.');
+      }
+
+      sel.addEventListener('change', update);
+      update();
     }
 
     function initAtomicModelLab() {

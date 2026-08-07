@@ -21756,6 +21756,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9s-9",
+              title: "Atomic Foundations of Matter",
+              topics: [
+                {
+                  id: "9s-9-1",
+                  title: "1. The Laws of Chemical Combination",
+                  lab: { type: "chemical-law-sim" },
+                  theory: {
+                    intro: "Water from a river, a borewell or the ocean, purified and taken apart, always gives hydrogen and oxygen in exactly the same 1:8 ratio by mass. Nature keeps its accounts precisely.",
+                    sections: [
+                      {
+                        heading: "The Law of Conservation of Mass",
+                        text: "When solutions of sodium sulfate and barium chloride are mixed in a closed pair of flasks on a weighing balance, a white precipitate of barium sulfate forms along with sodium chloride — yet the reading on the balance does not change. The total mass remains the same before and after a chemical reaction, so matter can neither be created nor destroyed in a chemical reaction. This is the Law of Conservation of Mass, proposed by Antoine Lavoisier in 1789. Lavoisier, known as the Father of Modern Chemistry, put it as: in every operation an equal quantity of matter exists both before and after the operation."
+                      },
+                      {
+                        heading: "The Law of Constant Proportions",
+                        text: "Soon after Lavoisier, Joseph Proust proposed that in any compound formed by two or more elements, the elements combine in a fixed ratio by mass, irrespective of the source of the compound. Water collected from rivers, borewells or the ocean, purified and analysed, always contains hydrogen and oxygen in a mass ratio of 1:8 — so 9 g of purified water always yields 1 g of hydrogen and 8 g of oxygen. This is the Law of Constant Proportions, also called the Law of Definite Proportions or Proust's Law. Proust showed the same for copper carbonate, which always contains copper, carbon and oxygen in the same proportion by mass however it was prepared."
+                      },
+                      {
+                        heading: "Dalton's Atomic Theory",
+                        text: "These two laws formed the basis of Dalton's atomic theory, which explains why substances combine in fixed proportions and why there is no loss or gain of mass in a reaction. Dalton postulated that all matter is made up of very tiny particles called atoms; that atoms are indivisible and cannot be created or destroyed in a chemical reaction; that atoms of a given element are identical in mass and chemical properties while atoms of different elements differ; that atoms combine in the ratio of simple whole numbers to form compounds; and that the relative number and kinds of atoms are constant in a given compound. During a chemical reaction atoms merely rearrange, rather than being created or destroyed."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Verifying Conservation of Mass",
+                      objective: "To show that the total mass is unchanged by a chemical reaction.",
+                      materials: ["Two 100 mL conical flasks", "1% m/v sodium sulfate solution", "1% m/v barium chloride solution", "A digital weighing balance"],
+                      steps: [
+                        "Place two clean, dry conical flasks marked A and B on the balance and press tare to set the reading to zero.",
+                        "Pour about 10 mL of sodium sulfate solution into flask A and about 10 mL of barium chloride solution into flask B.",
+                        "Leave both flasks on the balance undisturbed and record the total mass.",
+                        "Transfer the solution from B to A and mix carefully, noting what you observe.",
+                        "Place both flasks back on the balance and compare the reading with the one before mixing."
+                      ],
+                      observation: "A white precipitate of barium sulfate forms along with sodium chloride, but the balance reading is unchanged. Keeping both flasks on the balance avoids the error caused by solution left clinging to the walls during transfer. Mass is conserved during the chemical change."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Who proposed the Law of Conservation of Mass, and in which year?",
+                      options: ["Joseph Proust, 1799", "Antoine Lavoisier, 1789", "John Dalton, 1808", "J. J. Thomson, 1897"],
+                      answer: 1,
+                      explanation: "Lavoisier, the Father of Modern Chemistry, proposed in 1789 that matter can neither be created nor destroyed in a chemical reaction."
+                    },
+                    {
+                      question: "In what mass ratio do hydrogen and oxygen always combine in water?",
+                      options: ["1:8", "8:1", "1:16", "2:1"],
+                      answer: 0,
+                      explanation: "Water from any source contains hydrogen and oxygen in a mass ratio of 1:8, so 9 g of water yields 1 g of hydrogen and 8 g of oxygen."
+                    },
+                    {
+                      question: "Sodium chloride contains sodium and chlorine in the mass ratio 23:35.5. How much chlorine reacts completely with 46 g of sodium?",
+                      options: ["35.5 g", "71 g", "23 g", "82 g"],
+                      answer: 1,
+                      explanation: "Mass of chlorine = (35.5 ÷ 23) × 46 = 71 g."
+                    },
+                    {
+                      question: "Which of these is a postulate of Dalton's atomic theory?",
+                      options: ["Atoms of the same element differ in mass", "Atoms combine in the ratio of simple whole numbers to form compounds", "Atoms can be created in a chemical reaction", "Atoms are made of protons and neutrons"],
+                      answer: 1,
+                      explanation: "Dalton postulated that atoms combine in simple whole-number ratios, and that they are indivisible and neither created nor destroyed in a reaction."
+                    },
+                    {
+                      question: "What is another name for the Law of Constant Proportions?",
+                      options: ["Lavoisier's Law", "The Law of Definite Proportions, or Proust's Law", "The Law of Conservation of Mass", "Bohr's Law"],
+                      answer: 1,
+                      explanation: "Proposed by Joseph Proust, it is also called the Law of Definite Proportions or Proust's Law."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-9-2",
+                  title: "2. Covalent Bonding",
+                  lab: { type: "covalent-bond-sim" },
+                  theory: {
+                    intro: "Neither hydrogen atom can spare an electron, and both need one. The way out is older than chemistry itself: share, and both are satisfied at once.",
+                    sections: [
+                      {
+                        heading: "Molecules and the Covalent Bond",
+                        text: "Atoms of an element can combine to form a molecule of that element — a hydrogen molecule consists of two hydrogen atoms. Atoms of different elements combine to form a molecule of a compound, as one hydrogen atom and one chlorine atom form hydrogen chloride. A molecule is an electrically neutral entity consisting of more than one atom that is capable of independent existence and shows all the properties of that substance. Hydrogen has one electron in its K-shell, which can hold two, so it needs one more to become stable. Two hydrogen atoms each share one electron to form H₂; the shared pair attracts both nuclei and makes the molecule stable. This interaction through a shared pair of electrons is called a covalent bond, and two atoms sharing one electron each are joined by a single bond, drawn as H—H."
+                      },
+                      {
+                        heading: "Single and Double Bonds",
+                        text: "A chlorine atom has seven valence electrons and requires one more to attain a stable configuration, so two chlorine atoms share one electron each to form Cl₂, represented as Cl—Cl. An oxygen atom has six valence electrons and requires two more to complete its octet, so two oxygen atoms share two electrons each. The two atoms are then joined by two pairs of shared electrons and are held together by a double bond, drawn as O=O."
+                      },
+                      {
+                        heading: "Molecules of Compounds",
+                        text: "When atoms of two different elements combine, the same sharing applies. In hydrogen chloride, hydrogen needs one electron to fill its K-shell and chlorine needs one to complete its octet, so they share one electron each, forming a single covalent bond between them. Writing the electronic configurations of the combining atoms first, and then finding how many electrons each must share, gives the structure of the molecule."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Drawing the Nitrogen and Fluorine Molecules",
+                      objective: "To predict the bonding in N₂ and F₂ from the valence electrons.",
+                      materials: ["Notebook and pencil"],
+                      steps: [
+                        "Note that nitrogen has five valence electrons and work out how many more it needs for an octet.",
+                        "Decide how many electrons each nitrogen atom must share, and draw the structure of N₂.",
+                        "Write the electronic configuration of fluorine, whose atomic number is 9.",
+                        "Work out how many electrons a fluorine atom needs to complete its octet.",
+                        "Draw the structure of F₂ and name the type of bond in each molecule."
+                      ],
+                      observation: "Nitrogen needs three more electrons, so the two atoms share three electrons each — three shared pairs, a triple bond, N≡N. Fluorine's configuration is 2, 7, so it needs just one electron; the two atoms share one electron each, giving a single bond, F—F."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a covalent bond?",
+                      options: ["An attraction between oppositely charged ions", "An interaction between atoms through a shared pair of electrons", "A transfer of electrons from one atom to another", "A force between nuclei"],
+                      answer: 1,
+                      explanation: "In a covalent bond the shared pair of electrons attracts both nuclei and holds the atoms together as a molecule."
+                    },
+                    {
+                      question: "Why do two hydrogen atoms form a molecule?",
+                      options: ["Each has one electron and needs one more, since the K-shell holds two", "Each has eight electrons already", "One gives its electron to the other", "They repel and then join"],
+                      answer: 0,
+                      explanation: "The K-shell can hold two electrons, so each hydrogen atom needs one more — sharing one electron each satisfies both."
+                    },
+                    {
+                      question: "How many pairs of electrons are shared in an oxygen molecule?",
+                      options: ["One", "Two", "Three", "Four"],
+                      answer: 1,
+                      explanation: "Oxygen has six valence electrons and needs two more, so two oxygen atoms share two electrons each — two shared pairs, a double bond, O=O."
+                    },
+                    {
+                      question: "What is a molecule?",
+                      options: ["Any single atom", "An electrically neutral entity of more than one atom that can exist independently and shows all the properties of the substance", "A charged particle", "A crystal of ions"],
+                      answer: 1,
+                      explanation: "This is the definition given in the chapter — a molecule is neutral, has more than one atom, and shows all the properties of that substance."
+                    },
+                    {
+                      question: "Nitrogen has five valence electrons. What kind of bond joins the two atoms in N₂?",
+                      options: ["A single bond", "A double bond", "A triple bond", "An ionic bond"],
+                      answer: 2,
+                      explanation: "Each nitrogen atom needs three more electrons for an octet, so the two share three electrons each — three shared pairs make a triple bond."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-9-3",
+                  title: "3. Ionic Bonding and Compound Properties",
+                  lab: { type: "ionic-bond-sim" },
+                  theory: {
+                    intro: "Sodium has one electron too many for comfort and chlorine one too few. Rather than share, one simply hands it over — and the two are then held together by the charges left behind.",
+                    sections: [
+                      {
+                        heading: "Forming Ions",
+                        text: "If the valence shell of an atom has fewer than four electrons, it generally donates them to achieve a stable configuration, while atoms with more than four valence electrons usually gain or share electrons to complete an octet. Sodium has atomic number 11 and one valence electron; on losing it, sodium has 11 protons but only 10 electrons, so it becomes a positively charged species called a sodium cation, Na⁺. A chlorine atom has seven valence electrons and attains a stable configuration by gaining one, acquiring a negative charge as the chloride anion, Cl⁻. Cations and anions are collectively called ions."
+                      },
+                      {
+                        heading: "The Ionic Bond and the Crystal Lattice",
+                        text: "Once the sodium and chloride ions are formed, they are held together by the electrostatic force of attraction due to their opposite charges. This electrostatic force of attraction between oppositely charged ions is called an ionic bond. Ionic compounds usually do not remain as single units but form three-dimensional crystals in which ions are arranged in a repeating pattern: in sodium chloride each Na⁺ is surrounded by six Cl⁻ ions and each Cl⁻ by six Na⁺ ions. This regular repeating 3-D pattern is the crystal structure, represented as a crystal lattice with the ions drawn as points."
+                      },
+                      {
+                        heading: "Properties of Ionic and Covalent Compounds",
+                        text: "Ionic compounds such as sodium chloride and copper sulfate are generally soluble in water but insoluble in solvents like kerosene and petrol, whereas most covalent compounds such as camphor and naphthalene are insoluble in water but dissolve in kerosene and petrol. Ionic compounds do not conduct electricity in the solid state because their ions are held in fixed positions by strong forces; they conduct only when dissolved in water, where the ions become free to move. Covalent compounds such as sugar may dissolve in water but do not provide ions, so they do not conduct. Ionic compounds generally have high melting and boiling points due to strong inter-ionic attractions, while covalent compounds usually have low melting and boiling points."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Testing Solubility and Conductivity",
+                      objective: "To group compounds by their solubility and electrical conductivity, and so identify their bonding.",
+                      materials: ["Camphor, sodium chloride, copper sulfate, sugar and naphthalene", "Water, kerosene and petrol", "Two carbon or metal electrodes on a cardboard", "A 9 V battery and a bulb", "A beaker"],
+                      steps: [
+                        "Try dissolving each sample separately in water, in kerosene and in petrol, and record the results.",
+                        "Connect the electrodes through the bulb to the 9 V battery, without touching the electrodes.",
+                        "Test the electrical conductivity of each solid sample and note whether the bulb glows.",
+                        "Transfer each sample's aqueous solution to the beaker in turn and test its conductivity.",
+                        "Group together the compounds showing similar properties."
+                      ],
+                      observation: "Sodium chloride and copper sulfate dissolve in water but not in kerosene or petrol, and their solutions light the bulb although the solids do not — they are ionic. Camphor and naphthalene do the opposite, dissolving in kerosene and petrol and never conducting. Sugar dissolves in water but gives no ions, so its solution does not conduct — it is covalent. Petrol and kerosene are flammable, so handle them carefully."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is an ionic bond?",
+                      options: ["A shared pair of electrons", "The electrostatic force of attraction between oppositely charged ions", "A force between two nuclei", "A bond between two metals"],
+                      answer: 1,
+                      explanation: "Once the cation and anion form, the electrostatic attraction between their opposite charges holds them together as an ionic bond."
+                    },
+                    {
+                      question: "Why does a sodium atom become Na⁺?",
+                      options: ["It gains an electron", "It loses its single valence electron, leaving 11 protons and 10 electrons", "It loses a proton", "It shares an electron"],
+                      answer: 1,
+                      explanation: "Losing the one valence electron leaves 11 protons against 10 electrons, so the sodium cation carries a single positive charge."
+                    },
+                    {
+                      question: "Why do ionic compounds not conduct electricity in the solid state?",
+                      options: ["They contain no ions", "Their ions are held in fixed positions by strong forces and are not free to move", "They are covalent in the solid state", "Solids never conduct"],
+                      answer: 1,
+                      explanation: "Conduction needs free-moving ions, which happens only when the compound is dissolved in water (or melted)."
+                    },
+                    {
+                      question: "In a sodium chloride crystal, how many chloride ions surround each sodium ion?",
+                      options: ["Two", "Four", "Six", "Eight"],
+                      answer: 2,
+                      explanation: "In the 3-D crystal structure each Na⁺ is surrounded by six Cl⁻ ions, and each Cl⁻ by six Na⁺ ions."
+                    },
+                    {
+                      question: "Which pair of properties belongs to ionic compounds?",
+                      options: ["Soluble in kerosene, low melting point", "Soluble in water, high melting and boiling points", "Insoluble in water, conducts as a solid", "Soluble in petrol, never conducts"],
+                      answer: 1,
+                      explanation: "Ionic compounds are generally water-soluble and have high melting and boiling points because of strong inter-ionic attractions."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-9-4",
+                  title: "4. Chemical Formulae and Molecular Mass",
+                  lab: { type: "formula-mass-sim" },
+                  theory: {
+                    intro: "Write the two symbols, put their valencies underneath, and swap them over. A whole compound's formula falls out in one crossing stroke.",
+                    sections: [
+                      {
+                        heading: "Formulae of Covalent Compounds",
+                        text: "To write the chemical formula of a covalent compound: write the symbols of the constituent elements, write their valencies underneath, and cross over the valencies, writing them as subscripts after the symbols. Hydrogen and chlorine both have valency 1, giving HCl — a valency of one after crossing over is not written. Hydrogen has valency 1 and sulfur 2, giving H₂S. Carbon has valency 4 and chlorine 1, giving CCl₄."
+                      },
+                      {
+                        heading: "Formulae of Ionic Compounds",
+                        text: "For an ionic compound, write the symbol of the cation first followed by the anion, write the charges underneath rather than as superscripts, and cross over the numbers of the charges to obtain the formula. Ca²⁺ with Cl⁻ gives CaCl₂ — two chloride ions for each calcium ion, so the positive and negative charges balance and the structure is neutral. Al³⁺ with O²⁻ gives Al₂O₃. Since the formula gives the simplest ratio, subscripts are divided by any common factor: Mg²⁺ with O²⁻ gives Mg₂O₂, which is written simply as MgO. The same method works with polyatomic ions — Ca²⁺ with CO₃²⁻ gives CaCO₃, and Mg²⁺ with OH⁻ gives Mg(OH)₂."
+                      },
+                      {
+                        heading: "Molecular Mass and Formula Unit Mass",
+                        text: "The mass of a molecule of a covalent compound is found simply by adding up the masses of the atoms present in it. For water, with H = 1 u and O = 16 u, the molecular mass of H₂O = (1 × 2) + (16 × 1) = 18 u. For carbon dioxide, with C = 12 u, the molecular mass of CO₂ = (12 × 1) + (16 × 2) = 44 u. Ionic compounds do not form molecules, since their ions form 3-D crystals; instead the collection of the simplest whole number ratio of ions is called a formula unit, and the mass of a formula unit is the formula unit mass. For sodium oxide with Na = 23 u, Na₂O = (23 × 2) + (16 × 1) = 62 u, and for calcium nitrate with Ca = 40 u and N = 14 u, Ca(NO₃)₂ = 40 + {14 + (16 × 3)} × 2 = 164 u."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Calculating Formula Unit Mass",
+                      objective: "To compute the formula unit mass of calcium nitrate step by step.",
+                      materials: ["Notebook and calculator", "Atomic masses: Ca = 40 u, N = 14 u, O = 16 u"],
+                      steps: [
+                        "Write the formula of calcium nitrate and identify what the brackets enclose.",
+                        "Find the mass of one nitrate group, NO₃.",
+                        "Multiply that by the number outside the bracket.",
+                        "Add the mass of the calcium ion.",
+                        "State the total as the formula unit mass, and say why it is not called a molecular mass."
+                      ],
+                      observation: "One NO₃ group is 14 + (16 × 3) = 62 u; two of them give 124 u; adding calcium's 40 u gives 164 u. It is a formula unit mass rather than a molecular mass because ionic compounds do not form molecules — their ions form 3-D crystals."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Carbon has valency 4 and chlorine 1. What is the formula of carbon tetrachloride?",
+                      options: ["CCl", "C₄Cl", "CCl₄", "C₄Cl₄"],
+                      answer: 2,
+                      explanation: "Crossing over the valencies puts 1 under carbon and 4 under chlorine, giving CCl₄ — and a subscript of one is not written."
+                    },
+                    {
+                      question: "What is the formula of the compound formed by Ca²⁺ and Cl⁻?",
+                      options: ["CaCl", "CaCl₂", "Ca₂Cl", "Ca₂Cl₂"],
+                      answer: 1,
+                      explanation: "Crossing over the charge numbers gives two chloride ions for each calcium ion, CaCl₂, so the charges balance."
+                    },
+                    {
+                      question: "Why is the compound of Mg²⁺ and O²⁻ written as MgO and not Mg₂O₂?",
+                      options: ["Because magnesium has valency 1", "Because the formula gives the simplest ratio, so the subscripts are divided by their common factor", "Because oxygen has no charge", "Because MgO is a covalent compound"],
+                      answer: 1,
+                      explanation: "The chemical formula gives the simplest whole-number ratio of the elements, so Mg₂O₂ reduces to MgO."
+                    },
+                    {
+                      question: "What is the molecular mass of carbon dioxide (C = 12 u, O = 16 u)?",
+                      options: ["28 u", "44 u", "32 u", "48 u"],
+                      answer: 1,
+                      explanation: "CO₂ = (12 × 1) + (16 × 2) = 12 + 32 = 44 u."
+                    },
+                    {
+                      question: "Why do we speak of a formula unit mass rather than a molecular mass for ionic compounds?",
+                      options: ["Because their masses are larger", "Because ionic compounds do not form molecules — their ions form 3-D crystals", "Because they contain no atoms", "Because their formulae have brackets"],
+                      answer: 1,
+                      explanation: "In ionic compounds the ions form 3-D crystals, so we take the simplest whole-number ratio of ions — a formula unit — and its mass is the formula unit mass."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
