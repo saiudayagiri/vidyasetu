@@ -21474,6 +21474,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9s-8",
+              title: "Journey Inside the Atom",
+              topics: [
+                {
+                  id: "9s-8-1",
+                  title: "1. Early Ideas and Thomson's Model",
+                  lab: { type: "atomic-model-sim" },
+                  theory: {
+                    intro: "Two thousand years before anyone could test it, thinkers in India and Greece arrived at the same idea: cut matter finely enough and you reach something you cannot cut again.",
+                    sections: [
+                      {
+                        heading: "Parmanus and Atomos",
+                        text: "Acharya Kanada suggested that if matter (dravya) is divided repeatedly, you reach a stage of smallest particles that can no longer be divided. He called these parmanus, and his ideas are recorded in the Sanskrit text Vaisesika Sutras. A parmanu is infinitely small and cannot be perceived by the senses; combinations form dyads (two parmanus) and triads (three), and out of these the whole material universe is created. The Greek philosophers Leucippus and Democritus proposed a similar idea, calling these indivisible particles atomos, which means indivisible. The concept of the atom thus began as an imaginary idea rather than from experimental observation. In 1808 John Dalton proposed his atomic theory, based on the scientific experiments of the time — the first scientific description of how matter is made."
+                      },
+                      {
+                        heading: "The Discovery of the Electron",
+                        text: "Until the late 19th century atoms were thought to be indivisible, until radioactivity showed that atoms must be composed of smaller particles. In 1897 J. J. Thomson studied the conduction of electric current through gases at very low pressure, using a glass tube with two electrodes and a high voltage. He observed rays moving from the cathode (negative electrode) to the anode (positive electrode), called cathode rays. Studying them in electric and magnetic fields, he concluded they are streams of negatively charged particles of much smaller mass than atoms — later called electrons. Their nature was independent of the cathode material and the gas used, showing that electrons are present in every element. The charge of an electron, −1.602 × 10⁻¹⁹ C, is taken as −1 by convention."
+                      },
+                      {
+                        heading: "Thomson's Model of the Atom",
+                        text: "Thomson faced a puzzle: atoms are neutral, so where is the positive charge? He proposed that the atom is a sphere of positive charge with electrons distributed throughout it. This was compared to a pudding with plums embedded in it — the plum pudding model — or to a watermelon, where the red pulp represents the positively charged matter and the seeds represent electrons spread through the atom. Though later replaced, it was the first genuine attempt to describe how the atom's positive and negative charges stay balanced."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Building Thomson's Atom from Clay and Beads",
+                      objective: "To model a neutral atom and test what happens when the charges do not balance.",
+                      materials: ["Modelling clay", "Small beads", "A notebook"],
+                      steps: [
+                        "Shape the clay into a sphere to represent the positive charge.",
+                        "Press beads into it to represent electrons distributed throughout.",
+                        "Count the beads and decide what positive charge the clay must carry for the atom to be neutral.",
+                        "Ask what would happen if the positive charge on the clay were less than the total negative charge of the beads.",
+                        "Ask whether the model would still represent a neutral atom if the clay itself carried a little negative charge."
+                      ],
+                      observation: "A neutral atom needs the positive charge of the sphere to exactly balance the total negative charge of the electrons. If the clay's positive charge were less, the model would carry a net negative charge and no longer represent a neutral atom — and if the clay itself were negatively charged it could not represent Thomson's positive sphere at all."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What did Acharya Kanada call the smallest indivisible particles of matter?",
+                      options: ["Atomos", "Parmanus", "Electrons", "Nucleons"],
+                      answer: 1,
+                      explanation: "Kanada's parmanus are described in the Vaisesika Sutras; combinations of them form dyads and triads and, from these, all matter."
+                    },
+                    {
+                      question: "Who proposed the first scientific atomic theory, in 1808?",
+                      options: ["Democritus", "John Dalton", "J. J. Thomson", "Ernest Rutherford"],
+                      answer: 1,
+                      explanation: "Dalton's theory, based on the experiments of his time, proposed that all matter is composed of indivisible particles called atoms."
+                    },
+                    {
+                      question: "What did J. J. Thomson discover in 1897 while studying cathode rays?",
+                      options: ["The proton", "The neutron", "The electron", "The nucleus"],
+                      answer: 2,
+                      explanation: "Cathode rays proved to be streams of negatively charged particles of much smaller mass than atoms — the electrons."
+                    },
+                    {
+                      question: "Why did Thomson conclude that electrons are present in all atoms?",
+                      options: ["Because they were visible under a microscope", "Because the nature of cathode rays did not depend on the cathode material or the gas used", "Because all atoms are neutral", "Because they were heavier than atoms"],
+                      answer: 1,
+                      explanation: "Since the rays were the same whatever the cathode material or the gas in the tube, electrons must be a fundamental component of every element."
+                    },
+                    {
+                      question: "In Thomson's plum pudding model, what represents the positive charge?",
+                      options: ["A tiny central nucleus", "A sphere of positive charge spread through the atom", "The electrons themselves", "An outer shell"],
+                      answer: 1,
+                      explanation: "Thomson pictured a sphere of positive charge with electrons distributed throughout it, like plums in a pudding or seeds in a watermelon."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-8-2",
+                  title: "2. The Gold Foil Experiment",
+                  lab: { type: "gold-foil-sim" },
+                  theory: {
+                    intro: "Fire tiny bullets at a sheet of gold and almost all sail through. But a few come straight back at you — and a whole model of the atom collapses.",
+                    sections: [
+                      {
+                        heading: "The Experiment",
+                        text: "In 1911 Geiger and Marsden, working under Ernest Rutherford, tested Thomson's model by aiming a narrow beam of alpha particles at an extremely thin sheet of gold foil. Alpha (α) particles are tiny, positively charged particles emitted from certain radioactive elements — an alpha particle is in fact the nucleus of a helium atom, containing two protons and two neutrons. According to Thomson's model the positive charge was spread out evenly, so the alpha particles were expected to pass straight through or be deflected only slightly. To their surprise, while most particles passed through undeflected, some were sharply deflected and a few even bounced back. This deflection from the straight path is called scattering, which is why the experiment is also called the α-ray scattering experiment."
+                      },
+                      {
+                        heading: "Rutherford's Model",
+                        text: "Rutherford concluded that the positive charge of an atom is not spread throughout but is concentrated in an extremely small region called the nucleus. Most of an atom is empty space, since most α-particles passed through undeflected. The nucleus is dense and contains all the positive charge and most of the mass of the atom. The electrons revolve around the nucleus somewhat like planets orbiting the Sun, which is why this is called the planetary model. The nucleus is about 10⁵ times smaller than the atom: the diameter of an atom is about 10⁻¹⁰ m and that of the nucleus about 10⁻¹⁵ m. If an atom were the size of a cricket ground about 100 m across, the nucleus would be a black pepper grain a few millimetres wide at the centre."
+                      },
+                      {
+                        heading: "Limitations, and the Proton",
+                        text: "Rutherford's model could not explain the stability of the atom. A particle moving in a circular path is constantly changing direction, which means it is accelerating; an accelerating charged electron should lose energy, spiral inward and eventually fall into the nucleus, so atoms would collapse. Since atoms are in fact stable, a new explanation was needed. Rutherford also showed that the positive charge of the nucleus comes from particles called protons, much heavier than electrons and carrying a charge equal and opposite to theirs. For an atom to be electrically neutral the number of protons must equal the number of electrons — helium has 2 of each and sodium 11 of each."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Predicting the Result with a Thicker Foil",
+                      objective: "To reason about how foil thickness would change the scattering observations.",
+                      materials: ["Notebook and pencil", "Fig. 8.4 of the gold foil experiment"],
+                      steps: [
+                        "Recall what fraction of the α-particles passed straight through the thin foil.",
+                        "Consider how many layers of atoms an α-particle meets in a thin foil compared with a thick one.",
+                        "Predict how the number of undeflected particles would change with a thicker foil.",
+                        "Predict how the number of sharply deflected and back-scattered particles would change.",
+                        "Draw a simple diagram showing the expected observations for both thicknesses."
+                      ],
+                      observation: "A thicker foil means many more layers of atoms in the path, so the chance of an α-particle passing close to a nucleus rises. Fewer particles would pass straight through undeflected and more would be scattered through large angles or bounced back."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is an alpha particle?",
+                      options: ["An electron", "The nucleus of a helium atom, with two protons and two neutrons", "A neutron", "A gold atom"],
+                      answer: 1,
+                      explanation: "α-particles are tiny, positively charged particles emitted from radioactive elements — in fact helium nuclei."
+                    },
+                    {
+                      question: "What was the surprising observation in the gold foil experiment?",
+                      options: ["All particles were absorbed", "All particles bounced back", "Some particles were sharply deflected and a few bounced back", "The foil melted"],
+                      answer: 2,
+                      explanation: "Most passed through undeflected, but the sharp deflections and back-scattering could not be explained by Thomson's model."
+                    },
+                    {
+                      question: "What did Rutherford conclude about the positive charge of an atom?",
+                      options: ["It is spread evenly through the atom", "It is concentrated in an extremely small, dense region called the nucleus", "It resides in the electrons", "There is no positive charge"],
+                      answer: 1,
+                      explanation: "The rare large-angle deflections showed the positive charge and most of the mass must be packed into a tiny central nucleus."
+                    },
+                    {
+                      question: "About how much smaller is the nucleus than the whole atom?",
+                      options: ["10 times", "1000 times", "10⁵ times", "They are the same size"],
+                      answer: 2,
+                      explanation: "The atom is about 10⁻¹⁰ m across and the nucleus about 10⁻¹⁵ m — roughly one lakh times smaller."
+                    },
+                    {
+                      question: "What was the main limitation of Rutherford's model?",
+                      options: ["It could not explain the stability of the atom", "It did not include electrons", "It denied the existence of the nucleus", "It could not explain radioactivity"],
+                      answer: 0,
+                      explanation: "An electron revolving in a circle is accelerating, so it should lose energy, spiral inward and fall into the nucleus — yet atoms are stable."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-8-3",
+                  title: "3. Subatomic Particles, Atomic Number and Mass Number",
+                  lab: { type: "atom-counter-sim" },
+                  theory: {
+                    intro: "Helium has twice hydrogen's protons but four times its mass. That stubborn factor of two hid a whole particle for twenty years.",
+                    sections: [
+                      {
+                        heading: "The Neutron",
+                        text: "Most of the mass of an atom is concentrated in its nucleus; the revolving electrons are so light that their mass can be ignored. But a helium atom has two protons and about four times the mass of hydrogen, not double — suggesting something else in the nucleus adds mass without adding charge. In 1932 James Chadwick, a student of Rutherford, discovered a subatomic particle with a mass nearly equal to that of a proton but with no electrical charge. It was named the neutron, symbol n. Neutrons are found in the nucleus of all atoms except hydrogen. The relative charges are −1 for the electron (e⁻), +1 for the proton (p⁺) and 0 for the neutron (n⁰)."
+                      },
+                      {
+                        heading: "Atomic Number",
+                        text: "The number of protons in the nucleus of an atom of an element is known as its atomic number, designated by the symbol Z. This number determines the identity of an element and its chemical behaviour. Since the atom as a whole is neutral, the number of protons equals the number of electrons — hydrogen has one proton and one electron, so its atomic number is 1, while helium with atomic number 2 has 2 protons and 2 electrons. Elements with different atomic numbers are distinct from one another, so the atomic number uniquely identifies an element."
+                      },
+                      {
+                        heading: "Mass Number and Notation",
+                        text: "The total number of protons and neutrons present in the nucleus of an atom is called its mass number, denoted by A; the protons and neutrons together are called nucleons. Mass number = number of protons + number of neutrons. Since a neutron has roughly the mass of a proton, helium's mass is accounted for by two protons and two neutrons. Hydrogen has 1 proton and 0 neutrons so A = 1; helium has 2 and 2 so A = 4; lithium has 3 protons and 4 neutrons so A = 7. In standard notation the mass number is written above and the atomic number below the symbol — carbon, with Z = 6 and A = 12, is written as ¹²₆C. Lighter atoms often have equal numbers of protons and neutrons, but heavier nuclei need far more neutrons: iron has 26 protons and 30 neutrons, and uranium has 92 protons and 146 neutrons."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Counting Nucleons",
+                      objective: "To find the numbers of protons, neutrons and electrons from an element's atomic and mass numbers.",
+                      materials: ["Notebook and pen"],
+                      steps: [
+                        "An atom has atomic number 26 and 56 nucleons. Write down what each of those numbers tells you.",
+                        "Find its numbers of protons, electrons and neutrons.",
+                        "A nucleus contains 20 protons and has mass number 41. Find its number of neutrons.",
+                        "An atom has 18 neutrons and atomic number 17. Find its mass number.",
+                        "Check each answer against mass number = protons + neutrons."
+                      ],
+                      observation: "Z = 26 means 26 protons and, since the atom is neutral, 26 electrons; with 56 nucleons the neutrons number 56 − 26 = 30. For the second atom, 41 − 20 = 21 neutrons. For the third, A = 17 + 18 = 35."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Who discovered the neutron, and in which year?",
+                      options: ["Rutherford, 1911", "Thomson, 1897", "James Chadwick, 1932", "Bohr, 1913"],
+                      answer: 2,
+                      explanation: "Chadwick, working under Rutherford at the Cavendish Laboratory, discovered the neutron in 1932 and won the Nobel Prize in Physics in 1935."
+                    },
+                    {
+                      question: "What is the atomic number of an element?",
+                      options: ["The number of neutrons in its nucleus", "The number of protons in its nucleus", "The total number of nucleons", "The number of shells"],
+                      answer: 1,
+                      explanation: "The atomic number Z is the number of protons, and it uniquely identifies the element and determines its chemical behaviour."
+                    },
+                    {
+                      question: "What is the mass number of an atom?",
+                      options: ["The number of protons only", "The number of electrons plus protons", "The total number of protons and neutrons in the nucleus", "The mass in grams"],
+                      answer: 2,
+                      explanation: "Mass number A = number of protons + number of neutrons; together these are called nucleons."
+                    },
+                    {
+                      question: "An atom has atomic number 26 and 56 nucleons. How many neutrons does it have?",
+                      options: ["26", "30", "56", "82"],
+                      answer: 1,
+                      explanation: "Neutrons = mass number − atomic number = 56 − 26 = 30."
+                    },
+                    {
+                      question: "Which atom has no neutrons in its nucleus?",
+                      options: ["Helium", "Hydrogen (protium)", "Lithium", "Carbon"],
+                      answer: 1,
+                      explanation: "Neutrons are found in the nucleus of all atoms except hydrogen, whose commonest isotope has just one proton."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-8-4",
+                  title: "4. Electron Shells, Valency and Isotopes",
+                  lab: { type: "electron-shell-sim" },
+                  theory: {
+                    intro: "Why sodium burns and neon does nothing comes down to a single number: how many electrons are sitting in the outermost shell.",
+                    sections: [
+                      {
+                        heading: "Bohr's Model and Electron Distribution",
+                        text: "To explain why atoms are stable, Niels Bohr proposed in 1913 that electrons do not move randomly but follow fixed circular paths called stationary states, orbits or shells, in each of which an electron has a definite energy — so these are also called energy levels. They are labelled K, L, M, N or n = 1, 2, 3, 4. Bohr and Bury gave the filling rules: the maximum number of electrons in a shell is 2n², so K holds 2, L holds 8 and M holds 18; the outermost shell can hold at most 8 electrons; and shells are filled stepwise from the one nearest the nucleus outward, the L-shell filling only after the K-shell is complete. The distribution of electrons among the shells is called the electronic configuration of the atom."
+                      },
+                      {
+                        heading: "Valency",
+                        text: "The outermost shell containing electrons is called the valence shell and the electrons in it are the valence electrons. A valence shell with 8 electrons is called an octet; elements with a complete octet — or 2 electrons in the case of helium — are largely unreactive and stable, while atoms with incomplete valence shells are usually more reactive and lose, gain or share electrons to complete their octet. The number of electrons gained, lost or shared to complete the octet is the valency. Generally, with fewer than four valence electrons an atom tends to lose them, and with more than four it tends to gain. Sodium's configuration is 2, 8, 1, so it loses one electron and its valency is 1. Oxygen is 2, 6, so it gains two and its valency is 2. Carbon is 2, 4 and can neither easily gain nor lose, so it shares four electrons and its valency is 4."
+                      },
+                      {
+                        heading: "Isotopes and Average Atomic Mass",
+                        text: "Atoms of the same element can have the same number of protons but different numbers of neutrons, and hence different mass numbers. These twin atoms are called isotopes. Natural hydrogen is a mixture of protium (¹₁H, about 99.98%), deuterium (²₁H, about 0.015%) and tritium (³₁H, in traces); carbon has the isotopes ¹²₆C, ¹³₆C and ¹⁴₆C. Isotopes have similar chemical properties because they have the same number of electrons and the same electronic configuration, though their physical properties such as boiling and melting points differ. Chlorine occurs as ³⁵Cl and ³⁷Cl in a 3:1 ratio — about 75% and 25% — so its weighted average atomic mass is (35 × 75/100) + (37 × 25/100) = 142/4 = 35.5 u. Useful isotopes include ²³⁵₉₂U as nuclear reactor fuel, ⁶⁰₂₇Co in cancer radiation therapy, ¹³¹₅₃I for goitre and thyroid cancer, and ¹⁴₆C for dating fossils and artefacts."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Working Out the Average Atomic Mass of Chlorine",
+                      objective: "To compare a simple average with a weighted average atomic mass.",
+                      materials: ["Notebook and calculator"],
+                      steps: [
+                        "Note that chlorine has isotopes of mass 35 u and 37 u occurring in the ratio 3:1.",
+                        "Calculate the simple arithmetic mean of the two masses.",
+                        "Convert the 3:1 ratio into percentage abundances.",
+                        "Multiply each isotope's mass by its percentage abundance and add the results.",
+                        "Compare the two answers and explain which one nature actually gives."
+                      ],
+                      observation: "The simple mean is (35 + 37) ÷ 2 = 36 u, but the isotopes do not occur equally. With 75% ³⁵Cl and 25% ³⁷Cl the weighted average is (35 × 75/100) + (37 × 25/100) = 105/4 + 37/4 = 142/4 = 35.5 u — the value that reflects nature."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the maximum number of electrons a shell can hold?",
+                      options: ["8", "2n², where n is the shell number", "2 always", "18"],
+                      answer: 1,
+                      explanation: "The Bohr-Bury rule gives 2n²: 2 for the K-shell, 8 for the L-shell and 18 for the M-shell — though the outermost shell can hold at most 8."
+                    },
+                    {
+                      question: "Sodium has the electronic configuration 2, 8, 1. What is its valency?",
+                      options: ["1", "2", "7", "8"],
+                      answer: 0,
+                      explanation: "With one valence electron, sodium completes its octet by losing that single electron, so its valency is 1."
+                    },
+                    {
+                      question: "Carbon has the configuration 2, 4. Why is its valency 4?",
+                      options: ["It loses four electrons easily", "It gains four electrons easily", "It cannot easily gain or lose four electrons, so it shares four to complete its octet", "It already has a complete octet"],
+                      answer: 2,
+                      explanation: "With exactly four valence electrons, carbon neither gains nor loses easily — it shares four electrons with other atoms."
+                    },
+                    {
+                      question: "What are isotopes?",
+                      options: ["Atoms of different elements with the same mass number", "Atoms of the same element with the same atomic number but different mass numbers", "Atoms with no neutrons", "Atoms with extra electrons"],
+                      answer: 1,
+                      explanation: "Isotopes have the same number of protons but different numbers of neutrons, so their mass numbers differ."
+                    },
+                    {
+                      question: "Chlorine occurs as ³⁵Cl and ³⁷Cl in the ratio 3:1. What is its average atomic mass?",
+                      options: ["36 u", "35.5 u", "37 u", "35 u"],
+                      answer: 1,
+                      explanation: "The weighted average is (35 × 75/100) + (37 × 25/100) = 142/4 = 35.5 u — not the simple mean of 36 u, because the isotopes do not occur equally."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

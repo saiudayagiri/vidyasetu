@@ -6087,6 +6087,101 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const atomicModelLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="atomic-model-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Step through the models and see what each one got right.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Model</h3>
+            <select id="sel-atomic-model" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="dalton" selected>Dalton's indivisible atom (1808)</option>
+              <option value="thomson">Thomson's plum pudding (1897)</option>
+              <option value="rutherford">Rutherford's nuclear atom (1911)</option>
+              <option value="bohr">Bohr's shells (1913)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What It Said</h3>
+            <div id="atomic-model-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a model above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const goldFoilLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="gold-foil-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Compare what Thomson's model predicted with what actually happened.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a View</h3>
+            <select id="sel-gold-foil" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="expected" selected>Expected from Thomson's model</option>
+              <option value="observed">What Geiger and Marsden observed</option>
+              <option value="thick">A thicker foil</option>
+              <option value="scale">The nucleus to scale</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What It Shows</h3>
+            <div id="gold-foil-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a view above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const atomCounterLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="atom-counter-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Read off protons, neutrons and electrons from Z and A.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Atom</h3>
+            <select id="sel-atom-counter" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="H" selected>Hydrogen</option>
+              <option value="He">Helium</option>
+              <option value="Li">Lithium</option>
+              <option value="C">Carbon</option>
+              <option value="Fe">Iron</option>
+              <option value="U">Uranium</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Inside the Atom</h3>
+            <div id="atom-counter-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an atom above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const electronShellLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="electron-shell-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Fill the shells and work out the valency.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose an Element</h3>
+            <select id="sel-electron-shell" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="6" selected>Carbon (Z = 6)</option>
+              <option value="8">Oxygen (Z = 8)</option>
+              <option value="10">Neon (Z = 10)</option>
+              <option value="11">Sodium (Z = 11)</option>
+              <option value="17">Chlorine (Z = 17)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Configuration and Valency</h3>
+            <div id="electron-shell-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an element above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const workDoneLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -8644,6 +8739,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'kinematic-equation-sim') {
               labHtml = kinematicEquationLabHtml;
               labDesc = 'Apply each kinematic equation to the same motion and see them agree.';
+            } else if (topicObj.lab.type === 'atomic-model-sim') {
+              labHtml = atomicModelLabHtml;
+              labDesc = 'Step through the atomic models and see what each one explained.';
+            } else if (topicObj.lab.type === 'gold-foil-sim') {
+              labHtml = goldFoilLabHtml;
+              labDesc = 'Fire alpha particles at gold foil and compare prediction with observation.';
+            } else if (topicObj.lab.type === 'atom-counter-sim') {
+              labHtml = atomCounterLabHtml;
+              labDesc = 'Count protons, neutrons and electrons from the atomic and mass numbers.';
+            } else if (topicObj.lab.type === 'electron-shell-sim') {
+              labHtml = electronShellLabHtml;
+              labDesc = 'Fill the K, L and M shells and read off the valency.';
             } else if (topicObj.lab.type === 'work-done-sim') {
               labHtml = workDoneLabHtml;
               labDesc = 'Decide when a force does positive, negative or zero work.';
@@ -9407,6 +9514,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initMotionGraphLab();
         } else if (topicObj.lab.type === 'kinematic-equation-sim') {
           initKinematicEquationLab();
+        } else if (topicObj.lab.type === 'atomic-model-sim') {
+          initAtomicModelLab();
+        } else if (topicObj.lab.type === 'gold-foil-sim') {
+          initGoldFoilLab();
+        } else if (topicObj.lab.type === 'atom-counter-sim') {
+          initAtomCounterLab();
+        } else if (topicObj.lab.type === 'electron-shell-sim') {
+          initElectronShellLab();
         } else if (topicObj.lab.type === 'work-done-sim') {
           initWorkDoneLab();
         } else if (topicObj.lab.type === 'kinetic-energy-sim') {
@@ -29699,6 +29814,464 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       sel.addEventListener('change', draw);
       draw();
+    }
+
+    function initAtomicModelLab() {
+      const canvas = document.getElementById('atomic-model-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-atomic-model');
+      const obs = document.getElementById('atomic-model-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+      const cx = 300, cy = 165;
+
+      function electron(x, y) {
+        ctx.fillStyle = '#5aa9e6';
+        ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 8px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('−', x, y + 3);
+      }
+
+      function drawDalton() {
+        ctx.fillStyle = '#6b7688';
+        ctx.beginPath(); ctx.arc(cx, cy, 78, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 14px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('solid, indivisible', cx, cy - 4);
+        ctx.fillText('atom', cx, cy + 16);
+      }
+
+      function drawThomson() {
+        ctx.fillStyle = 'rgba(208,67,58,0.55)';
+        ctx.beginPath(); ctx.arc(cx, cy, 88, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = '#d0433a';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        // Electrons scattered through the positive sphere, like seeds in a watermelon.
+        const spots = [[-52, -30], [-14, -56], [30, -40], [58, -6], [36, 40], [-6, 58], [-46, 32], [0, 0], [-30, -4], [22, 8]];
+        spots.forEach(s => electron(cx + s[0], cy + s[1]));
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('sphere of positive charge', cx + 100, cy - 10);
+        ctx.fillStyle = '#5aa9e6';
+        ctx.fillText('electrons spread throughout', cx + 100, cy + 12);
+      }
+
+      function drawRutherford() {
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4, 4]);
+        [50, 82, 114].forEach(r => { ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke(); });
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#d0433a';
+        ctx.beginPath(); ctx.arc(cx, cy, 12, 0, Math.PI * 2); ctx.fill();
+        electron(cx + 50, cy);
+        electron(cx - 58, cy + 58);
+        electron(cx + 40, cy - 107);
+        ctx.fillStyle = text;
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('tiny dense nucleus', cx + 20, cy - 16);
+        ctx.fillStyle = muted;
+        ctx.fillText('most of the atom is empty space', cx + 130, cy + 90);
+      }
+
+      function drawBohr() {
+        const shells = [46, 76, 106];
+        const names = ['K (n=1)', 'L (n=2)', 'M (n=3)'];
+        const counts = [2, 8, 4];
+        ctx.strokeStyle = '#4caf82';
+        ctx.lineWidth = 1.5;
+        shells.forEach((r, i) => {
+          ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+          ctx.fillStyle = '#4caf82';
+          ctx.font = '11px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(names[i], cx, cy - r - 6);
+          for (let k = 0; k < counts[i]; k++) {
+            const a = (2 * Math.PI * k) / counts[i] + 0.3;
+            electron(cx + r * Math.cos(a), cy + r * Math.sin(a));
+          }
+        });
+        ctx.fillStyle = '#d0433a';
+        ctx.beginPath(); ctx.arc(cx, cy, 13, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('electrons only in fixed shells', 20, 300);
+      }
+
+      const NOTES = {
+        dalton: '<strong>Dalton, 1808</strong><br>All matter is composed of indivisible particles called atoms — the fundamental building blocks of matter that cannot be broken down further. This was the first scientific description of how matter is made, and the starting point for everything that followed.<br><br><em>Left open:</em> what atoms are made of, and why atoms of different elements differ.',
+        thomson: '<strong>Thomson, 1897</strong><br>Cathode ray experiments revealed the electron. Since atoms are neutral, Thomson proposed a sphere of positive charge with electrons distributed throughout — the plum pudding model, like seeds in a watermelon.<br><br><em>Left open:</em> it could not explain why some α-particles were deflected through large angles in the gold foil experiment.',
+        rutherford: '<strong>Rutherford, 1911</strong><br>The gold foil experiment showed the positive charge is concentrated in an extremely small, dense nucleus holding most of the atom’s mass, with electrons revolving around it like planets around the Sun. Most of the atom is empty space.<br><br><em>Left open:</em> a revolving electron is accelerating, so it should lose energy and spiral into the nucleus — yet atoms are stable.',
+        bohr: '<strong>Bohr, 1913</strong><br>Electrons do not move randomly but follow fixed circular paths called stationary states, orbits or shells, labelled K, L, M, N or n = 1, 2, 3, 4. In each shell an electron has a definite energy, so the shells are also called energy levels, and electrons can revolve only in these allowed shells — which explains why atoms are stable.'
+      };
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText({
+          dalton: 'Dalton’s indivisible atom (1808)', thomson: 'Thomson’s plum pudding model (1897)',
+          rutherford: 'Rutherford’s nuclear atom (1911)', bohr: 'Bohr’s shell model (1913)'
+        }[v], W / 2, 26);
+        if (v === 'dalton') drawDalton();
+        else if (v === 'thomson') drawThomson();
+        else if (v === 'rutherford') drawRutherford();
+        else drawBohr();
+        obs.innerHTML = NOTES[v];
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initGoldFoilLab() {
+      const canvas = document.getElementById('gold-foil-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-gold-foil');
+      const obs = document.getElementById('gold-foil-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const foilX = 330;
+
+      function drawSource() {
+        ctx.fillStyle = '#4a5468';
+        ctx.fillRect(30, 140, 56, 52);
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('α-source', 58, 210);
+      }
+
+      function drawFoil(thick) {
+        ctx.fillStyle = '#d4b24a';
+        ctx.fillRect(foilX, 60, thick ? 22 : 7, 220);
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(thick ? 'thicker gold foil' : 'thin gold foil', foilX + 10, 300);
+      }
+
+      // Each ray is [start y, deflection angle in radians].
+      function rays(list) {
+        list.forEach(r => {
+          const y0 = r[0], ang = r[1];
+          ctx.strokeStyle = ang === 0 ? '#5aa9e6' : '#e0743a';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(90, y0);
+          ctx.lineTo(foilX, y0);
+          if (Math.abs(ang) > 2) {
+            // Back-scattered: the particle returns towards the source.
+            ctx.lineTo(150, y0 - 55);
+          } else {
+            ctx.lineTo(W - 30, y0 + Math.tan(ang) * (W - 30 - foilX));
+          }
+          ctx.stroke();
+        });
+      }
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+
+        if (v === 'scale') {
+          ctx.fillText('If the atom were a cricket ground 100 m across…', W / 2, 26);
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(W / 2, 180, 118, 0, Math.PI * 2); ctx.stroke();
+          ctx.fillStyle = 'rgba(90,169,230,0.10)';
+          ctx.fill();
+          ctx.fillStyle = '#d0433a';
+          ctx.beginPath(); ctx.arc(W / 2, 180, 2.5, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = text;
+          ctx.font = '13px sans-serif';
+          ctx.fillText('…the nucleus would be a black pepper grain at the centre', W / 2, 315);
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.fillText('atom ≈ 10⁻¹⁰ m across    nucleus ≈ 10⁻¹⁵ m across', W / 2, 60);
+          obs.innerHTML = '<strong>The nucleus to scale</strong><br>' +
+            'Diameter of an atom ≈ 10⁻¹⁰ m<br>Diameter of the nucleus ≈ 10⁻¹⁵ m<br>' +
+            'The nucleus is about <strong>10⁵ times smaller</strong> than the atom.<br><br>' +
+            'If an atom were the size of a cricket ground about 100 m across, the nucleus would be just a tiny black pepper grain a few millimetres wide at the centre — nearly all of the atom is empty space.';
+          return;
+        }
+
+        ctx.fillText({
+          expected: 'Expected from Thomson’s model', observed: 'What Geiger and Marsden observed',
+          thick: 'The same experiment with a thicker foil'
+        }[v], W / 2, 26);
+        drawSource();
+        drawFoil(v === 'thick');
+
+        if (v === 'expected') {
+          rays([[100, 0], [125, 0], [150, 0], [175, 0], [200, 0], [225, 0], [250, 0]]);
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.fillText('All particles pass straight through, or bend only very slightly.', W / 2, 320);
+        } else if (v === 'observed') {
+          rays([[100, 0], [125, 0], [150, 0], [180, 0.32], [205, 0], [230, -0.38], [255, 0], [160, 3]]);
+          ctx.fillStyle = '#e0743a';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.fillText('a few bounce straight back', 160, 92);
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.fillText('Most pass through undeflected — but some are sharply deflected.', W / 2, 320);
+        } else {
+          rays([[100, 0], [128, 0.4], [152, -0.3], [180, 0.5], [205, 0], [230, -0.45], [255, 0.25], [160, 3]]);
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.fillText('More layers of atoms — more chances of passing close to a nucleus.', W / 2, 320);
+        }
+
+        obs.innerHTML = {
+          expected: '<strong>Thomson’s prediction</strong><br>If the positive charge were spread out evenly through the atom, the α-particles should pass straight through the gold foil or be deflected only slightly. Nothing in that model could turn a fast, heavy, positively charged particle sharply around.',
+          observed: '<strong>The actual result</strong><br>Most α-particles passed through undeflected, but some were sharply deflected and a few even bounced back. This deflection from the straight path is called scattering, so the experiment is also called the α-ray scattering experiment. Thomson’s model could not explain it — the positive charge and most of the mass had to be concentrated in a tiny nucleus.',
+          thick: '<strong>A thicker foil</strong><br>A thicker foil means many more layers of atoms in the path of each α-particle, so the chance of passing close to a nucleus rises. Fewer particles would pass straight through undeflected, and more would be scattered through large angles or bounced back.'
+        }[v];
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initAtomCounterLab() {
+      const canvas = document.getElementById('atom-counter-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-atom-counter');
+      const obs = document.getElementById('atom-counter-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const ATOMS = {
+        H: { name: 'Hydrogen', sym: 'H', Z: 1, A: 1 },
+        He: { name: 'Helium', sym: 'He', Z: 2, A: 4 },
+        Li: { name: 'Lithium', sym: 'Li', Z: 3, A: 7 },
+        C: { name: 'Carbon', sym: 'C', Z: 6, A: 12 },
+        Fe: { name: 'Iron', sym: 'Fe', Z: 26, A: 56 },
+        U: { name: 'Uranium', sym: 'U', Z: 92, A: 238 }
+      };
+
+      function update() {
+        const a = ATOMS[sel.value];
+        const n = a.A - a.Z;
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(a.name, W / 2, 26);
+
+        // Standard notation, mass number above the atomic number.
+        ctx.fillStyle = text;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText(String(a.A), 152, 78);
+        ctx.fillText(String(a.Z), 152, 100);
+        ctx.font = 'bold 34px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(a.sym, 158, 96);
+        ctx.fillStyle = muted;
+        ctx.font = '11px sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText('mass number A', 148, 62);
+        ctx.fillText('atomic number Z', 148, 116);
+
+        // Nucleus: protons and neutrons packed together, drawn up to a readable cap.
+        const ncx = 400, ncy = 110, shown = Math.min(a.A, 24);
+        for (let i = 0; i < shown; i++) {
+          const ring = i < 6 ? 0 : i < 16 ? 1 : 2;
+          const inRing = ring === 0 ? 6 : ring === 1 ? 10 : 8;
+          const idx = ring === 0 ? i : ring === 1 ? i - 6 : i - 16;
+          const r = ring === 0 ? 12 : ring === 1 ? 26 : 40;
+          const ang = (2 * Math.PI * idx) / inRing;
+          const isProton = i < Math.round((a.Z / a.A) * shown);
+          ctx.fillStyle = isProton ? '#d0433a' : '#8f9bb3';
+          ctx.beginPath();
+          ctx.arc(ncx + r * Math.cos(ang), ncy + r * Math.sin(ang), 7, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.fillStyle = muted;
+        ctx.font = '11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(a.A > 24 ? 'nucleus (shown in proportion)' : 'nucleus', ncx, ncy + 68);
+
+        // Counts as three labelled rows.
+        const rows = [
+          ['Protons (p⁺)', a.Z, '#d0433a'],
+          ['Neutrons (n⁰)', n, '#8f9bb3'],
+          ['Electrons (e⁻)', a.Z, '#5aa9e6']
+        ];
+        rows.forEach((r, i) => {
+          const y = 200 + i * 34;
+          ctx.fillStyle = r[2];
+          ctx.beginPath(); ctx.arc(150, y - 5, 8, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = text;
+          ctx.font = '14px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(r[0], 168, y);
+          ctx.font = 'bold 15px sans-serif';
+          ctx.fillText(String(r[1]), 330, y);
+        });
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Neutrons = A − Z = ' + a.A + ' − ' + a.Z + ' = ' + n, W / 2, 312);
+
+        const plural = k => k === 1 ? '' : 's';
+        obs.innerHTML = '<strong>' + a.name + ' (' + a.sym + ')</strong><br>' +
+          'Atomic number Z = <strong>' + a.Z + '</strong> → ' + a.Z + ' proton' + plural(a.Z) + '<br>' +
+          'Mass number A = <strong>' + a.A + '</strong> → ' + a.A + ' nucleon' + plural(a.A) + '<br>' +
+          'Neutrons = A − Z = ' + a.A + ' − ' + a.Z + ' = <strong>' + n + '</strong><br>' +
+          'Electrons = ' + a.Z + ', since the atom is neutral<br><br>' +
+          (n === 0
+            ? 'Hydrogen is the one atom with no neutron in its nucleus.'
+            : n === a.Z
+              ? 'Lighter atoms often have equal numbers of protons and neutrons.'
+              : n > a.Z * 1.5
+                ? 'By the time we reach heavy elements, the nucleus needs many more neutrons than protons to stay bound together.'
+                : 'As atoms get heavier, their nuclei carry more neutrons than protons.');
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initElectronShellLab() {
+      const canvas = document.getElementById('electron-shell-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-electron-shell');
+      const obs = document.getElementById('electron-shell-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const NAMES = { 6: 'Carbon', 8: 'Oxygen', 10: 'Neon', 11: 'Sodium', 17: 'Chlorine' };
+
+      // Fill K, L, M in order, with the outermost shell capped at 8 electrons.
+      function configure(Z) {
+        const caps = [2, 8, 8];
+        const shells = [];
+        let left = Z;
+        for (let i = 0; i < caps.length && left > 0; i++) {
+          const put = Math.min(left, caps[i]);
+          shells.push(put);
+          left -= put;
+        }
+        return shells;
+      }
+
+      function valency(shells) {
+        const v = shells[shells.length - 1];
+        const full = shells.length === 1 ? 2 : 8;
+        if (v === full) return { n: 0, how: 'needs nothing — its octet is already complete' };
+        if (v < 4) return { n: v, how: 'loses ' + v + (v === 1 ? ' electron' : ' electrons') };
+        if (v > 4) return { n: full - v, how: 'gains ' + (full - v) + ((full - v) === 1 ? ' electron' : ' electrons') };
+        return { n: 4, how: 'shares 4 electrons' };
+      }
+
+      function update() {
+        const Z = parseInt(sel.value, 10);
+        const shells = configure(Z);
+        const val = valency(shells);
+        const cx = 220, cy = 175;
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(NAMES[Z] + ' (Z = ' + Z + ')', W / 2, 26);
+
+        ctx.fillStyle = '#d0433a';
+        ctx.beginPath(); ctx.arc(cx, cy, 16, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.fillText(Z + 'p', cx, cy + 4);
+
+        const labels = ['K', 'L', 'M'];
+        shells.forEach((count, i) => {
+          const r = 42 + i * 34;
+          ctx.strokeStyle = i === shells.length - 1 ? '#4caf82' : muted;
+          ctx.lineWidth = i === shells.length - 1 ? 2.5 : 1.5;
+          ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+          for (let k = 0; k < count; k++) {
+            const ang = (2 * Math.PI * k) / count - Math.PI / 2;
+            const ex = cx + r * Math.cos(ang), ey = cy + r * Math.sin(ang);
+            ctx.fillStyle = '#5aa9e6';
+            ctx.beginPath(); ctx.arc(ex, ey, 6, 0, Math.PI * 2); ctx.fill();
+          }
+          ctx.fillStyle = i === shells.length - 1 ? '#4caf82' : muted;
+          ctx.font = 'bold 11px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(labels[i] + ' : ' + count, cx, cy - r - 6);
+        });
+
+        ctx.fillStyle = text;
+        ctx.font = '14px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('Electronic configuration', 390, 100);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 22px sans-serif';
+        ctx.fillText(shells.join(', '), 390, 132);
+        ctx.fillStyle = text;
+        ctx.font = '14px sans-serif';
+        ctx.fillText('Valence electrons: ' + shells[shells.length - 1], 390, 176);
+        ctx.fillText(val.n === 0 ? 'Its octet is' : 'To complete its octet it', 390, 206);
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 14px sans-serif';
+        ctx.fillText(val.n === 0 ? 'already complete' : val.how, 390, 228);
+        ctx.fillStyle = text;
+        ctx.font = 'bold 17px sans-serif';
+        ctx.fillText('Valency = ' + val.n, 390, 266);
+
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Maximum electrons in a shell = 2n²  (K = 2, L = 8, M = 18), outermost at most 8', W / 2, 314);
+
+        obs.innerHTML = '<strong>' + NAMES[Z] + ' (Z = ' + Z + ')</strong><br>' +
+          'Electronic configuration: <strong>' + shells.join(', ') + '</strong><br>' +
+          'Valence shell: ' + labels[shells.length - 1] + ', holding ' + shells[shells.length - 1] + (shells[shells.length - 1] === 1 ? ' electron' : ' electrons') + '<br>' +
+          (val.n === 0 ? 'Its octet is already complete.<br>' : 'It ' + val.how + ' to complete its octet.<br>') +
+          'Valency = <strong>' + val.n + '</strong><br><br>' +
+          (val.n === 0
+            ? 'A complete octet makes this element largely unreactive and stable — it neither loses nor gains electrons.'
+            : 'Atoms with incomplete valence shells are usually more reactive, losing, gaining or sharing electrons to complete their octet.');
+      }
+
+      sel.addEventListener('change', update);
+      update();
     }
 
     function initWorkDoneLab() {
