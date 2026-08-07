@@ -22038,6 +22038,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9s-10",
+              title: "Sound Waves: Characteristics and Applications",
+              topics: [
+                {
+                  id: "9s-10-1",
+                  title: "1. Producing and Propagating Sound",
+                  lab: { type: "sound-medium-sim" },
+                  theory: {
+                    intro: "Two astronauts on a spacewalk can see each other's tools clanging together and hear absolutely nothing. Sound needs something to travel through, and space has almost none of it.",
+                    sections: [
+                      {
+                        heading: "Sound Comes from Vibration",
+                        text: "A tuning fork is a U-shaped metal bar with a stem, usually made of steel or aluminium; the sides of the U are called prongs or tines. Struck gently against a rubber pad and held near the ear, it produces a sound; touched to a water surface, its prong sends waves across the water. These observations support the idea that sound is produced by vibrating objects. Sound is a form of energy, and energy can neither be created nor destroyed — it only changes from one form to another."
+                      },
+                      {
+                        heading: "Sound Travels through Solids, Liquids and Gases",
+                        text: "Knocking on a desk can be heard across the room through the air, and is heard even more clearly with an ear pressed against the desk — so sound travels through solids. Two metal spoons tapped together under water in a bucket can still be heard, so sound travels through liquids too. Sound can propagate through solids, liquids and gases, and the material through which it propagates is called a medium."
+                      },
+                      {
+                        heading: "Sound Cannot Travel in a Vacuum",
+                        text: "A space where there is no medium is called a vacuum. In the vacuum bell jar experiment, an electric bell is switched on inside a bell jar and its loudness noted. As air is sucked out with a vacuum pump the sound becomes fainter, and once a near vacuum is reached almost no sound is heard even though the bell can be seen ringing; letting the air back in restores the sound. Sound therefore needs a medium to propagate. In outer space there is a near vacuum, which is why astronauts on spacewalks cannot directly hear each other and must communicate through devices fitted into their spacesuits."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Listening through a Desk and through Water",
+                      objective: "To show that sound travels through solids and liquids as well as air.",
+                      materials: ["A classroom desk", "A large tub or bucket of water", "Two metal spoons"],
+                      steps: [
+                        "Stand on the opposite side of a desk from a friend and listen as they gently knock on it, with your ear in the air.",
+                        "Now press your ear against the desk, close your other ear, and listen again.",
+                        "Tap two metal spoons against one another in the air and listen to the sound.",
+                        "Submerge both spoons in the water, without touching the sides or bottom of the bucket, and tap them together again.",
+                        "Note in each case which materials the sound must have travelled through to reach you."
+                      ],
+                      observation: "The knock is heard more clearly with the ear pressed to the desk, showing that sound travels through solids. The submerged spoons can still be heard, the sound having reached you through the water and then the air — so sound travels through liquids as well."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What produces sound?",
+                      options: ["Heating an object", "A vibrating object", "Light falling on an object", "Compressing a solid"],
+                      answer: 1,
+                      explanation: "A struck tuning fork sends waves across a water surface it touches, showing that its prongs are vibrating — sound is produced by vibrating objects."
+                    },
+                    {
+                      question: "What is a medium?",
+                      options: ["A space with no matter", "The material through which sound propagates", "The source of the sound", "The loudness of a sound"],
+                      answer: 1,
+                      explanation: "Sound propagates from its source to the listener through a medium, which can be a solid, a liquid or a gas."
+                    },
+                    {
+                      question: "What happens in the vacuum bell jar experiment as air is pumped out?",
+                      options: ["The sound gets louder", "The sound becomes fainter until almost nothing is heard", "The bell stops ringing", "Nothing changes"],
+                      answer: 1,
+                      explanation: "The bell can still be seen ringing, but almost no sound is heard once a near vacuum is reached — sound cannot propagate in a vacuum."
+                    },
+                    {
+                      question: "Why can astronauts on a spacewalk not hear each other directly?",
+                      options: ["Their helmets are soundproof", "There is a near vacuum in outer space, so sound cannot propagate", "Sound travels too slowly in space", "They speak too quietly"],
+                      answer: 1,
+                      explanation: "With almost no medium in outer space, sound cannot travel — so astronauts communicate through devices fitted into their spacesuits."
+                    },
+                    {
+                      question: "What are the two sides of a tuning fork's U called?",
+                      options: ["Stems", "Prongs or tines", "Arms or levers", "Blades"],
+                      answer: 1,
+                      explanation: "The sides of the U are the prongs or tines, which are struck on a soft rubber pad to make them vibrate."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-10-2",
+                  title: "2. Sound Waves and their Graph",
+                  lab: { type: "sound-wave-sim" },
+                  theory: {
+                    intro: "Push a slinky and a squeeze runs down its length — but the mark you drew on one coil never goes anywhere. The disturbance travels; the medium only jiggles in place.",
+                    sections: [
+                      {
+                        heading: "The Slinky Analogy",
+                        text: "Lay a slinky out and give one end a sharp push and pull. A disturbance travels along it towards the far end, and doing this repeatedly makes a series of disturbances. You see regions where the turns are closer together than usual and other regions where they are more spread out, and these regions appear to travel along the slinky. The mark you drew on one turn does not travel — it only oscillates about its position of rest, parallel to the direction of the disturbance. Each turn oscillates about its own position while the disturbance travels from one end to the other."
+                      },
+                      {
+                        heading: "Compressions and Rarefactions",
+                        text: "In a long tube of air with a piston at one end, the air has a uniform average density while the piston is still. As the piston moves forward it pushes the nearby air particles ahead, compressing the air and increasing its density in a small region — this region of higher density is called a compression (C). The compressed particles collide with those further ahead, passing the compression forward. As the piston moves back it leaves a region of lower density, called a rarefaction (R). Sound thus propagates as a series of compressions and rarefactions travelling through the medium."
+                      },
+                      {
+                        heading: "Graphing a Sound Wave",
+                        text: "As a sound wave propagates, at any given instant the density of the medium varies periodically with distance from the source. Plotting distance on the x-axis and density on the y-axis, with the average density marked as a horizontal dashed line, gives a wave-shaped graph. In a compression the density rises above the average density, and the highest point represents the maximum density; in a rarefaction the density falls below the average, and the lowest point represents the minimum density. The highest point is called the crest and the lowest point the trough of the wave."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Watching a Disturbance Travel along a Slinky",
+                      objective: "To see that the medium oscillates in place while the disturbance travels.",
+                      materials: ["A slinky", "A marker", "A friend to hold the far end"],
+                      steps: [
+                        "Mark one turn of the slinky with the marker and lay the slinky out horizontally.",
+                        "Have your friend hold one end fixed while you hold the other, keeping the slinky slightly stretched.",
+                        "Give your end a sharp push towards your friend and quickly pull it back, and watch what travels along.",
+                        "Now push and pull repeatedly in quick succession and observe the series of disturbances.",
+                        "Watch the marked turn closely and describe how it moves compared with the disturbance."
+                      ],
+                      observation: "Regions where the turns bunch closer together and regions where they spread out travel along the slinky. The mark does not travel — it only oscillates about its rest position, parallel to the direction of the disturbance, just as air particles do when sound passes."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a compression in a sound wave?",
+                      options: ["A region of lower density than average", "A region of higher density than average", "The distance between two crests", "The speed of the wave"],
+                      answer: 1,
+                      explanation: "The forward motion of the piston pushes air particles together, producing a region of higher density than the average — a compression."
+                    },
+                    {
+                      question: "In the slinky experiment, what does the marked turn do?",
+                      options: ["It travels the whole length of the slinky", "It oscillates about its rest position, parallel to the disturbance", "It stays completely still", "It moves perpendicular to the slinky"],
+                      answer: 1,
+                      explanation: "Each turn oscillates about its own position while only the disturbance travels along the slinky."
+                    },
+                    {
+                      question: "On a density-distance graph of a sound wave, what is the highest point called?",
+                      options: ["The trough", "The crest", "The amplitude", "The wavelength"],
+                      answer: 1,
+                      explanation: "The highest point, representing maximum density in a compression, is the crest; the lowest point, minimum density in a rarefaction, is the trough."
+                    },
+                    {
+                      question: "What does a trough on the graph correspond to in the medium?",
+                      options: ["A compression", "A rarefaction, where the density is lowest", "The source of the sound", "A vacuum"],
+                      answer: 1,
+                      explanation: "In a rarefaction the density falls below the average density, and the lowest point of the graph represents that minimum density."
+                    },
+                    {
+                      question: "What is plotted on the axes of the graphical representation described in the chapter?",
+                      options: ["Time against loudness", "Distance on the x-axis and density of the medium on the y-axis", "Frequency against amplitude", "Speed against distance"],
+                      answer: 1,
+                      explanation: "The graph shows the periodic variation of density with distance at a given instant, with the average density marked as a horizontal dashed line."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-10-3",
+                  title: "3. Wavelength, Frequency and Speed",
+                  lab: { type: "wave-property-sim" },
+                  theory: {
+                    intro: "The lowest note you can hear stretches seventeen metres from crest to crest. The highest is shorter than your thumb. Both reach you at exactly the same speed.",
+                    sections: [
+                      {
+                        heading: "Wavelength, Frequency and Time Period",
+                        text: "The distance between two consecutive crests, or two consecutive troughs, is called the wavelength, usually written λ, with the metre as its SI unit. The number of density oscillations at a fixed point per unit time is the frequency, written ν, whose SI unit is per second, also called the hertz (Hz). The time taken for one complete density oscillation at a fixed point is the time period T, measured in seconds. The two are inversely related: ν = 1/T, so a shorter time period means a higher frequency. If there are 10 density oscillations in 2 seconds, the frequency is 10 ÷ 2 = 5 Hz and the time period is 2 ÷ 10 = 0.2 s."
+                      },
+                      {
+                        heading: "Amplitude and Intensity",
+                        text: "The amplitude of a sound wave is the maximum change in the density of air in a compression, or a rarefaction, compared with the average density. A larger change in density means a larger amplitude, and a wave with a larger amplitude carries more energy. The amount of sound energy passing through a unit area perpendicular to the direction of propagation in unit time is called the intensity of sound. As a sound wave travels away from its source it spreads over a larger area, so the same energy is spread more thinly and the intensity decreases with distance."
+                      },
+                      {
+                        heading: "The Speed of Sound",
+                        text: "The speed of sound is the distance a point on the wave, such as a crest, travels in unit time. One wavelength is covered in one time period, so v = λ/T, and since ν = 1/T this gives v = λ × ν — speed = wavelength × frequency. The speed depends on the medium: sound travels fastest in solids, slower in liquids and slowest in gases, being about 4–5 times faster in water and typically 15–20 times faster in solids than in air. In air the speed also rises with temperature and humidity — about 331 m s⁻¹ in dry air at 0 °C and nearly 344 m s⁻¹ at 22 °C. If the frequency of the source changes, the wavelength changes while the speed stays constant."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Wavelengths at the Edges of Human Hearing",
+                      objective: "To find the wavelengths in air corresponding to the limits of the audible range.",
+                      materials: ["Notebook and calculator", "Speed of sound in air = 344 m s⁻¹"],
+                      steps: [
+                        "Write down the relation between speed, frequency and wavelength.",
+                        "Rearrange it to give wavelength in terms of speed and frequency.",
+                        "Substitute ν = 20 Hz and find the wavelength.",
+                        "Substitute ν = 20 kHz = 20000 Hz and find the wavelength.",
+                        "Compare the two answers and comment on the range of sizes involved."
+                      ],
+                      observation: "λ = v ÷ ν. At 20 Hz, λ = 344 ÷ 20 = 17.2 m. At 20000 Hz, λ = 344 ÷ 20000 = 0.0172 m, or 1.72 cm. The lowest audible note has a wavelength a thousand times longer than the highest."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the wavelength of a sound wave?",
+                      options: ["The height of a crest", "The distance between two consecutive crests or two consecutive troughs", "The number of oscillations per second", "The speed divided by the time period"],
+                      answer: 1,
+                      explanation: "Wavelength, written λ and measured in metres, is the distance between two consecutive crests or two consecutive troughs."
+                    },
+                    {
+                      question: "How are frequency and time period related?",
+                      options: ["ν = T", "ν = 1/T", "ν = T²", "They are unrelated"],
+                      answer: 1,
+                      explanation: "They are inversely related — a shorter time period corresponds to a higher frequency."
+                    },
+                    {
+                      question: "There are 10 density oscillations in 2 seconds. What is the frequency?",
+                      options: ["5 Hz", "20 Hz", "0.2 Hz", "10 Hz"],
+                      answer: 0,
+                      explanation: "Frequency = number of oscillations ÷ time taken = 10 ÷ 2 = 5 Hz, and the time period is 2 ÷ 10 = 0.2 s."
+                    },
+                    {
+                      question: "Taking the speed of sound in air as 344 m s⁻¹, what is the wavelength of a 20 Hz sound?",
+                      options: ["17.2 m", "1.72 cm", "6880 m", "0.058 m"],
+                      answer: 0,
+                      explanation: "λ = v ÷ ν = 344 ÷ 20 = 17.2 m."
+                    },
+                    {
+                      question: "In which medium does sound travel fastest?",
+                      options: ["Gases", "Liquids", "Solids", "It is the same in all"],
+                      answer: 2,
+                      explanation: "Sound travels fastest in solids — typically 15–20 times faster than in air — slower in liquids, and slowest in gases."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-10-4",
+                  title: "4. Pitch, Echo and Ultrasound",
+                  lab: { type: "echo-sonar-sim" },
+                  theory: {
+                    intro: "Shout at a cliff and your voice comes back — but only if the cliff is at least seventeen metres away. Any closer and your ear cannot tell the echo from the shout.",
+                    sections: [
+                      {
+                        heading: "Pitch and Loudness",
+                        text: "The physical properties of sound can be measured, but how we experience sound is subjective. How frequency is perceived by humans is called pitch: shrill sounds like a whistle or a siren have high pitch, while deep sounds like thunder have low pitch. Humans perceive the amplitude of a sound wave as loudness — larger amplitude sounds louder — and loudness decreases as we move farther from the source. Intensity is a measurable quantity, whereas loudness depends on the listener's hearing ability. The human audible range is 20 Hz to 20 kHz, varying between people and decreasing with age. Sound below 20 Hz is infrasonic and above 20 kHz is ultrasonic; dogs, cats, bats and dolphins can detect ultrasound while elephants can detect infrasound. Loudness is measured in decibels (dB) — rustling leaves are a few dB, normal conversation about 60 dB, and firecrackers can exceed 100 dB. Unwanted or harmful sound is called noise."
+                      },
+                      {
+                        heading: "Echo and Reverberation",
+                        text: "Sound waves bounce off obstacles, following the same laws of reflection as light: the incident and reflected directions make equal angles with the normal at the point of incidence, and all three lie in the same plane. Hearing your voice again after shouting near a cliff or in a long corridor is an echo. Two sounds are heard as separate only if the gap between them is at least 0.1 s. Taking the speed of sound as 340 m s⁻¹, sound covers 340 × 0.1 = 34 m in that time — but this is the distance to the surface and back, so the minimum echo distance is 17 m. Echoes are stronger from hard, smooth surfaces; soft surfaces such as curtains absorb sound and rough surfaces scatter it. Multiple reflections in a large hall make sound persist after the source stops, a phenomenon called reverberation, which occurs when reflections arrive with a time difference of less than 0.05 s."
+                      },
+                      {
+                        heading: "Ultrasound, Echolocation and Sonar",
+                        text: "Infrasonic waves are used for detecting earthquakes, volcanic eruptions and severe storms, since they travel long distances through air and the Earth. Ultrasonic waves are used to image internal organs without surgery, in ultrasonography; to break kidney stones into smaller pieces; for ultrasonic welding and cleaning delicate machine parts; and for detecting defects inside metal blocks. Bats emit short bursts of ultrasonic waves and sense the echoes to locate obstacles and prey in the dark — this is echolocation, also used by dolphins, whales and some birds. Humans apply the same principle in sonar (sound navigation and ranging), sending ultrasonic waves into water and analysing the reflected waves to find the distance, direction and speed of underwater objects such as submarines or shipwrecks."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Finding a Distance from an Echo",
+                      objective: "To calculate distances from the time taken by reflected sound.",
+                      materials: ["Notebook and calculator"],
+                      steps: [
+                        "You clap in an empty corridor and hear the echo after 0.5 s; note the speed of sound as 340 m s⁻¹.",
+                        "Work out the total distance the sound travelled in that time.",
+                        "Remember that the sound went to the wall and back, and halve the distance.",
+                        "Now take a sonar signal in seawater returning after 0.90 s at 1530 m s⁻¹, and find the time to reach the object.",
+                        "Calculate how far away the object is."
+                      ],
+                      observation: "For the clap, distance from the wall = (340 × 0.5) ÷ 2 = 85 m. For the sonar signal, the one-way time is 0.90 ÷ 2 = 0.45 s, so the object is 1530 × 0.45 = 688.5 m away."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the human audible range of frequencies?",
+                      options: ["2 Hz to 2000 Hz", "20 Hz to 20000 Hz", "200 Hz to 200000 Hz", "0 Hz to 100 Hz"],
+                      answer: 1,
+                      explanation: "Humans can hear from about 20 Hz to 20 kHz, though the range varies between people and decreases with age."
+                    },
+                    {
+                      question: "What is the minimum distance of a reflecting surface for an echo to be heard, taking the speed of sound as 340 m s⁻¹?",
+                      options: ["34 m", "17 m", "3.4 m", "68 m"],
+                      answer: 1,
+                      explanation: "In 0.1 s sound covers 340 × 0.1 = 34 m, but that is to the surface and back, so the minimum distance is 17 m."
+                    },
+                    {
+                      question: "You clap and hear an echo after 0.5 s, with the speed of sound 340 m s⁻¹. How far is the wall?",
+                      options: ["170 m", "85 m", "340 m", "42.5 m"],
+                      answer: 1,
+                      explanation: "The sound travels to the wall and back, so distance = (340 × 0.5) ÷ 2 = 85 m."
+                    },
+                    {
+                      question: "What is reverberation?",
+                      options: ["A single clear echo", "Sound persisting after the source stops, due to multiple reflections", "Sound being absorbed by curtains", "The reduction of intensity with distance"],
+                      answer: 1,
+                      explanation: "Multiple reflections in a large hall make sound persist after the source stops — this occurs when reflections arrive less than 0.05 s apart."
+                    },
+                    {
+                      question: "What is echolocation?",
+                      options: ["Producing sound with vocal cords", "Locating objects using reflected sound waves", "Measuring loudness in decibels", "Absorbing sound with soft panels"],
+                      answer: 1,
+                      explanation: "Bats emit ultrasonic bursts and sense the echoes to locate obstacles and prey; dolphins, whales and some birds also use echolocation, and sonar applies the same principle underwater."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

@@ -6087,6 +6087,98 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const soundMediumLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="sound-medium-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pump the air out of the bell jar and listen to what happens.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Air Left in the Jar</h3>
+            <select id="sel-sound-medium" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="100" selected>Full of air</option>
+              <option value="50">Half pumped out</option>
+              <option value="10">Almost all pumped out</option>
+              <option value="0">A near vacuum</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What You Hear</h3>
+            <div id="sound-medium-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a setting above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const soundWaveLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="sound-wave-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Match the compressions and rarefactions to the crests and troughs.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Wave</h3>
+            <select id="sel-sound-wave" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="long" selected>Long wavelength</option>
+              <option value="short">Short wavelength</option>
+              <option value="loud">Large amplitude (louder)</option>
+              <option value="soft">Small amplitude (softer)</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Reading the Graph</h3>
+            <div id="sound-wave-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a wave above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const wavePropertyLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="wave-property-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Apply v = λν and see how wavelength changes with frequency.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Sound</h3>
+            <select id="sel-wave-property" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="low" selected>20 Hz — the lowest we can hear</option>
+              <option value="mid">344 Hz — a musical note</option>
+              <option value="high">20 kHz — the highest we can hear</option>
+              <option value="water">A 1000 Hz note travelling in water</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Wavelength</h3>
+            <div id="wave-property-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a sound above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const echoSonarLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="echo-sonar-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Time the returning sound and work backwards to the distance.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Situation</h3>
+            <select id="sel-echo-sonar" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="echo" selected>A clap echoing after 0.5 s</option>
+              <option value="min">The minimum echo distance</option>
+              <option value="sonar">A sonar signal returning after 0.90 s</option>
+              <option value="bat">A bat using echolocation</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Working Out the Distance</h3>
+            <div id="echo-sonar-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a situation above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const chemicalLawLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -8835,6 +8927,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'kinematic-equation-sim') {
               labHtml = kinematicEquationLabHtml;
               labDesc = 'Apply each kinematic equation to the same motion and see them agree.';
+            } else if (topicObj.lab.type === 'sound-medium-sim') {
+              labHtml = soundMediumLabHtml;
+              labDesc = 'Pump the air out of a bell jar and hear why sound needs a medium.';
+            } else if (topicObj.lab.type === 'sound-wave-sim') {
+              labHtml = soundWaveLabHtml;
+              labDesc = 'Line up compressions and rarefactions with crests and troughs.';
+            } else if (topicObj.lab.type === 'wave-property-sim') {
+              labHtml = wavePropertyLabHtml;
+              labDesc = 'Apply v = λν across the whole audible range.';
+            } else if (topicObj.lab.type === 'echo-sonar-sim') {
+              labHtml = echoSonarLabHtml;
+              labDesc = 'Turn an echo delay into a distance, from a corridor to a submarine.';
             } else if (topicObj.lab.type === 'chemical-law-sim') {
               labHtml = chemicalLawLabHtml;
               labDesc = 'Check conservation of mass and the fixed mass ratios in compounds.';
@@ -9622,6 +9726,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initMotionGraphLab();
         } else if (topicObj.lab.type === 'kinematic-equation-sim') {
           initKinematicEquationLab();
+        } else if (topicObj.lab.type === 'sound-medium-sim') {
+          initSoundMediumLab();
+        } else if (topicObj.lab.type === 'sound-wave-sim') {
+          initSoundWaveLab();
+        } else if (topicObj.lab.type === 'wave-property-sim') {
+          initWavePropertyLab();
+        } else if (topicObj.lab.type === 'echo-sonar-sim') {
+          initEchoSonarLab();
         } else if (topicObj.lab.type === 'chemical-law-sim') {
           initChemicalLawLab();
         } else if (topicObj.lab.type === 'covalent-bond-sim') {
@@ -29930,6 +30042,504 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       sel.addEventListener('change', draw);
       draw();
+    }
+
+    function initSoundMediumLab() {
+      const canvas = document.getElementById('sound-medium-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-sound-medium');
+      const obs = document.getElementById('sound-medium-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      function rand(seed) {
+        let s = seed;
+        return function () { s = (s * 1103515245 + 12345) % 2147483648; return s / 2147483648; };
+      }
+
+      function update() {
+        const pct = parseInt(sel.value, 10);
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('The vacuum bell jar experiment', W / 2, 26);
+
+        const jx = 210, jTop = 60, jBot = 250, jw = 180;
+        // Air particles inside the jar, thinning out as air is pumped away.
+        const r = rand(11);
+        const n = Math.round((pct / 100) * 120);
+        ctx.fillStyle = '#6d86b8';
+        for (let i = 0; i < n; i++) {
+          const px = jx + 8 + r() * (jw - 16);
+          const py = jTop + 14 + r() * (jBot - jTop - 22);
+          ctx.beginPath(); ctx.arc(px, py, 2.2, 0, Math.PI * 2); ctx.fill();
+        }
+
+        // The bell jar itself.
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(jx, jBot);
+        ctx.lineTo(jx, jTop + 26);
+        ctx.quadraticCurveTo(jx, jTop, jx + jw / 2, jTop);
+        ctx.quadraticCurveTo(jx + jw, jTop, jx + jw, jTop + 26);
+        ctx.lineTo(jx + jw, jBot);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(jx - 24, jBot); ctx.lineTo(jx + jw + 24, jBot);
+        ctx.stroke();
+
+        // Electric bell, always visibly ringing.
+        const bx = jx + jw / 2, by = 175;
+        ctx.fillStyle = '#8f9bb3';
+        ctx.beginPath();
+        ctx.arc(bx, by, 26, Math.PI, 2 * Math.PI);
+        ctx.fill();
+        ctx.fillRect(bx - 26, by, 52, 6);
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(bx, by - 26); ctx.lineTo(bx, by - 50); ctx.stroke();
+        ctx.fillStyle = text;
+        ctx.font = '11px sans-serif';
+        ctx.fillText('electric bell (still ringing)', bx, by + 30);
+
+        // Sound waves radiating out, fainter as the air thins.
+        ctx.strokeStyle = '#4caf82';
+        const arcs = Math.round((pct / 100) * 4);
+        for (let i = 1; i <= arcs; i++) {
+          ctx.globalAlpha = 0.25 + 0.6 * (pct / 100) * (1 - (i - 1) / 4);
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(bx, by - 10, 40 + i * 18, -Math.PI * 0.85, -Math.PI * 0.15);
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+
+        // Vacuum pump connection.
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(jx + jw / 2, jBot); ctx.lineTo(jx + jw / 2, jBot + 34);
+        ctx.lineTo(jx + jw + 60, jBot + 34);
+        ctx.stroke();
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('to vacuum pump', jx + jw + 66, jBot + 38);
+
+        const labels = { 100: 'loud', 50: 'quieter', 10: 'very faint', 0: 'almost silent' };
+        ctx.fillStyle = pct === 0 ? '#e0743a' : '#4caf82';
+        ctx.font = 'bold 17px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Sound heard: ' + labels[pct], W / 2, 314);
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('Air left: ' + pct + '%', 30, 90);
+
+        obs.innerHTML = '<strong>Air left in the jar: ' + pct + '%</strong><br>' +
+          'Sound heard: <strong>' + labels[pct] + '</strong><br><br>' +
+          (pct === 0
+            ? 'Once a near vacuum is reached, almost no sound can be heard even though the bell can be seen ringing. Sound cannot propagate in a vacuum — it needs a medium, which can be a solid, a liquid or a gas. This is why astronauts on spacewalks cannot hear each other directly.'
+            : 'As air is sucked out of the jar the sound becomes fainter, because fewer air particles remain to pass the compressions and rarefactions along. Letting the air back in makes the sound as loud as before.');
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initSoundWaveLab() {
+      const canvas = document.getElementById('sound-wave-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-sound-wave');
+      const obs = document.getElementById('sound-wave-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const CASES = {
+        long: { cycles: 2.5, amp: 1, title: 'A long wavelength' },
+        short: { cycles: 5, amp: 1, title: 'A short wavelength' },
+        loud: { cycles: 3, amp: 1.45, title: 'A large amplitude — a louder sound' },
+        soft: { cycles: 3, amp: 0.5, title: 'A small amplitude — a softer sound' }
+      };
+
+      function update() {
+        const c = CASES[sel.value];
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(c.title, W / 2, 24);
+
+        const x0 = 60, x1 = W - 40, span = x1 - x0;
+        const period = span / c.cycles;
+
+        // Particle picture: dots bunched at compressions, spread at rarefactions.
+        const bandY = 46, bandH = 62;
+        for (let i = 0; i < 900; i++) {
+          const base = x0 + (i / 900) * span;
+          const phase = (2 * Math.PI * (base - x0)) / period;
+          // Displace each particle towards the nearest compression.
+          const px = base + Math.sin(phase) * (period / 10) * c.amp;
+          const py = bandY + 6 + ((i * 37) % 100) / 100 * (bandH - 12);
+          ctx.fillStyle = '#6d86b8';
+          ctx.beginPath(); ctx.arc(px, py, 1.6, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(x0, bandY, span, bandH);
+
+        // C and R markers above the band. Particles bunch half a period along
+        // from the start, so compressions sit at period/2 + n·period.
+        for (let k = 0; k < Math.ceil(c.cycles * 2) + 1; k++) {
+          const xc = x0 + (k / 2) * period;
+          if (xc > x1 - 6) break;
+          const isC = k % 2 === 1;
+          ctx.fillStyle = isC ? '#4caf82' : '#e08a5a';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(isC ? 'C' : 'R', xc, bandY - 6);
+        }
+
+        // Density-distance graph beneath.
+        const axisY = 220, amp = 52 * c.amp;
+        ctx.strokeStyle = muted;
+        ctx.setLineDash([5, 4]);
+        ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(x0, axisY); ctx.lineTo(x1, axisY); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = muted;
+        ctx.font = '11px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('average density', x0 + 2, axisY - 6);
+
+        // Density peaks where the particles bunch, so the curve is +cos.
+        ctx.strokeStyle = '#5aa9e6';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        for (let x = x0; x <= x1; x += 2) {
+          const y = axisY + amp * Math.cos((2 * Math.PI * (x - x0)) / period);
+          if (x === x0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        // Wavelength marker between two consecutive crests.
+        const cx1 = x0 + period / 2, cx2 = x0 + period * 1.5;
+        if (cx2 < x1) {
+          ctx.strokeStyle = '#4caf82';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(cx1, axisY - amp - 14); ctx.lineTo(cx2, axisY - amp - 14);
+          ctx.moveTo(cx1, axisY - amp - 20); ctx.lineTo(cx1, axisY - amp - 8);
+          ctx.moveTo(cx2, axisY - amp - 20); ctx.lineTo(cx2, axisY - amp - 8);
+          ctx.stroke();
+          ctx.fillStyle = '#4caf82';
+          ctx.font = 'bold 13px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('λ', (cx1 + cx2) / 2, axisY - amp - 20);
+        }
+        // Amplitude marker, drawn at the nearest crest to the right edge.
+        const ax = x0 + period * (Math.floor((x1 - 30 - x0 - period / 2) / period) + 0.5);
+        ctx.strokeStyle = '#e08a5a';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(ax, axisY); ctx.lineTo(ax, axisY - amp);
+        ctx.stroke();
+        ctx.fillStyle = '#e08a5a';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('amplitude', ax + 6, axisY - amp / 2);
+
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Crest = maximum density (a compression)   •   Trough = minimum density (a rarefaction)', W / 2, 300);
+        ctx.fillStyle = muted;
+        ctx.fillText('Distance →', W / 2, 320);
+
+        obs.innerHTML = '<strong>' + c.title + '</strong><br><br>' +
+          (sel.value === 'long' || sel.value === 'short'
+            ? 'The wavelength λ is the distance between two consecutive crests, or two consecutive troughs. A shorter wavelength packs more compressions and rarefactions into the same distance, which at a fixed speed means a higher frequency.'
+            : 'The amplitude is the maximum change in the density of air in a compression, or a rarefaction, compared with the average density. A larger change in density means a larger amplitude, and a wave with a larger amplitude carries more energy — which we perceive as a louder sound.');
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initWavePropertyLab() {
+      const canvas = document.getElementById('wave-property-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-wave-property');
+      const obs = document.getElementById('wave-property-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const CASES = {
+        low: { f: 20, v: 344, medium: 'air at 22 °C', note: 'The lowest frequency most people can hear.' },
+        mid: { f: 344, v: 344, medium: 'air at 22 °C', note: 'At this frequency the wavelength works out to exactly 1 m in air.' },
+        high: { f: 20000, v: 344, medium: 'air at 22 °C', note: 'The highest frequency most people can hear — its wavelength is shorter than a matchstick.' },
+        water: { f: 1000, v: 1500, medium: 'water', note: 'Sound travels about 4–5 times faster in water than in air, so the same note has a much longer wavelength there.' }
+      };
+
+      function fmt(x) {
+        if (x >= 1) return (Math.round(x * 1000) / 1000) + ' m';
+        return (Math.round(x * 100000) / 1000) + ' cm';
+      }
+
+      function update() {
+        const c = CASES[sel.value];
+        const lam = c.v / c.f;
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(c.f + ' Hz in ' + c.medium, W / 2, 26);
+
+        // A wave drawn with a length proportional to log wavelength, so all four fit.
+        const x0 = 50, x1 = W - 50, span = x1 - x0;
+        const cycles = Math.min(24, Math.max(1.2, 3 * Math.pow(lam, -0.45)));
+        const period = span / cycles;
+        const axisY = 130, amp = 42;
+        ctx.strokeStyle = muted;
+        ctx.setLineDash([5, 4]);
+        ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.moveTo(x0, axisY); ctx.lineTo(x1, axisY); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.strokeStyle = '#5aa9e6';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        for (let x = x0; x <= x1; x += 1.5) {
+          const y = axisY - amp * Math.cos((2 * Math.PI * (x - x0)) / period);
+          if (x === x0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        if (period < span) {
+          ctx.strokeStyle = '#4caf82';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(x0, axisY - amp - 16); ctx.lineTo(x0 + period, axisY - amp - 16);
+          ctx.moveTo(x0, axisY - amp - 22); ctx.lineTo(x0, axisY - amp - 10);
+          ctx.moveTo(x0 + period, axisY - amp - 22); ctx.lineTo(x0 + period, axisY - amp - 10);
+          ctx.stroke();
+          ctx.fillStyle = '#4caf82';
+          ctx.font = 'bold 13px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('λ = ' + fmt(lam), x0 + period / 2 + 40, axisY - amp - 24);
+        }
+
+        ctx.fillStyle = text;
+        ctx.font = '14px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('speed = wavelength × frequency,  so  λ = v ÷ ν', W / 2, 216);
+        ctx.fillStyle = accent;
+        ctx.fillText('λ = ' + c.v + ' m s⁻¹ ÷ ' + c.f + ' Hz', W / 2, 244);
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 22px sans-serif';
+        ctx.fillText('λ = ' + fmt(lam), W / 2, 278);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('Time period T = 1 ÷ ν = ' + (Math.round((1 / c.f) * 1e6) / 1e6) + ' s', W / 2, 306);
+
+        obs.innerHTML = '<strong>' + c.f + ' Hz in ' + c.medium + '</strong><br>' +
+          'v = ' + c.v + ' m s⁻¹, ν = ' + c.f + ' Hz<br>' +
+          'λ = v ÷ ν = ' + c.v + ' ÷ ' + c.f + ' = <strong>' + fmt(lam) + '</strong><br>' +
+          'T = 1 ÷ ν = ' + (Math.round((1 / c.f) * 1e6) / 1e6) + ' s<br><br>' + c.note;
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initEchoSonarLab() {
+      const canvas = document.getElementById('echo-sonar-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-echo-sonar');
+      const obs = document.getElementById('echo-sonar-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      function pathArrows(y1, y2, colour, labelOut, labelBack) {
+        // Outgoing pulse along the top, returning pulse along the bottom.
+        ctx.strokeStyle = colour; ctx.fillStyle = colour;
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(140, y1); ctx.lineTo(430, y1); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(438, y1); ctx.lineTo(426, y1 - 6); ctx.lineTo(426, y1 + 6);
+        ctx.closePath(); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(430, y2); ctx.lineTo(148, y2); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(140, y2); ctx.lineTo(152, y2 - 6); ctx.lineTo(152, y2 + 6);
+        ctx.closePath(); ctx.fill();
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(labelOut, 285, y1 - 10);
+        ctx.fillText(labelBack, 285, y2 + 20);
+      }
+
+      function drawEcho(t, v, label) {
+        const d = (v * t) / 2;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, W / 2, 26);
+
+        // Listener and wall.
+        ctx.fillStyle = '#8f9bb3';
+        ctx.beginPath(); ctx.arc(105, 130, 14, 0, Math.PI * 2); ctx.fill();
+        ctx.fillRect(97, 146, 16, 40);
+        ctx.fillStyle = '#6b6b6b';
+        ctx.fillRect(450, 70, 26, 170);
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('wall', 463, 258);
+
+        pathArrows(110, 180, '#4caf82', 'sound travels out', 'echo returns');
+
+        ctx.fillStyle = text;
+        ctx.font = '14px sans-serif';
+        ctx.fillText('Total distance = speed × time = ' + v + ' × ' + t + ' = ' + (v * t) + ' m', W / 2, 244);
+        ctx.fillText('That is to the wall and back, so halve it:', W / 2, 268);
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 20px sans-serif';
+        ctx.fillText('distance = ' + d + ' m', W / 2, 300);
+        return d;
+      }
+
+      function drawMin() {
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('How close can a wall be and still give an echo?', W / 2, 26);
+        ctx.fillStyle = text;
+        ctx.font = '14px sans-serif';
+        ctx.fillText('Two sounds are heard separately only if they arrive at least 0.1 s apart.', W / 2, 76);
+        ctx.fillText('In 0.1 s sound covers 340 m s⁻¹ × 0.1 s = 34 m', W / 2, 122);
+        ctx.fillText('but that is to the wall and back —', W / 2, 152);
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 26px sans-serif';
+        ctx.fillText('minimum echo distance = 17 m', W / 2, 196);
+
+        // A scale bar showing the too-close and far-enough regions.
+        const bx = 90, bw = W - 180, by = 236;
+        ctx.fillStyle = '#e0743a';
+        ctx.fillRect(bx, by, bw * 0.34, 22);
+        ctx.fillStyle = '#4caf82';
+        ctx.fillRect(bx + bw * 0.34, by, bw * 0.66, 22);
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(bx, by, bw, 22);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.fillText('no clear echo', bx + bw * 0.17, by + 15);
+        ctx.fillText('echo can be heard', bx + bw * 0.67, by + 15);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('17 m', bx + bw * 0.34, by + 38);
+        ctx.fillText('0 m', bx, by + 38);
+      }
+
+      function drawBat() {
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Echolocation — a bat hunting in the dark', W / 2, 26);
+
+        // Bat on the left, moth on the right.
+        ctx.fillStyle = '#8f9bb3';
+        ctx.beginPath();
+        ctx.moveTo(110, 150);
+        ctx.lineTo(60, 118); ctx.lineTo(78, 150); ctx.lineTo(60, 178);
+        ctx.closePath(); ctx.fill();
+        ctx.beginPath(); ctx.arc(112, 150, 13, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('bat', 92, 202);
+        ctx.fillStyle = '#c9b48a';
+        ctx.beginPath(); ctx.arc(470, 150, 12, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = text;
+        ctx.fillText('prey', 470, 190);
+
+        ctx.strokeStyle = '#4caf82';
+        ctx.lineWidth = 2;
+        for (let i = 1; i <= 3; i++) {
+          ctx.beginPath();
+          ctx.arc(126, 150, 26 + i * 22, -0.7, 0.7);
+          ctx.stroke();
+        }
+        ctx.strokeStyle = '#e08a5a';
+        for (let i = 1; i <= 3; i++) {
+          ctx.beginPath();
+          ctx.arc(456, 150, 26 + i * 22, Math.PI - 0.7, Math.PI + 0.7);
+          ctx.stroke();
+        }
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.fillText('ultrasonic bursts sent out', 220, 96);
+        ctx.fillStyle = '#e08a5a';
+        ctx.fillText('echoes reflected back', 380, 220);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('By sensing the echoes the bat determines the position of obstacles and prey.', W / 2, 292);
+        ctx.fillText('Dolphins, whales and some birds use echolocation too — and sonar works the same way.', W / 2, 312);
+      }
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        if (v === 'echo') {
+          const d = drawEcho(0.5, 340, 'A clap in a corridor, echo heard after 0.5 s');
+          obs.innerHTML = '<strong>A clap echoing after 0.5 s</strong><br>' +
+            'Speed of sound in air = 340 m s⁻¹<br>' +
+            'Total distance = 340 × 0.5 = 170 m<br>' +
+            'The sound travels to the wall and back, so<br>' +
+            'distance from the wall = 170 ÷ 2 = <strong>' + d + ' m</strong>';
+        } else if (v === 'sonar') {
+          const d = drawEcho(0.90, 1530, 'A sonar signal in seawater, returning after 0.90 s');
+          obs.innerHTML = '<strong>A sonar signal returning after 0.90 s</strong><br>' +
+            'Speed of sound in seawater = 1530 m s⁻¹<br>' +
+            'Time to reach the object = 0.90 ÷ 2 = 0.45 s<br>' +
+            'Distance = 1530 × 0.45 = <strong>' + d + ' m</strong><br><br>' +
+            'In sonar — sound navigation and ranging — ultrasonic waves are sent into water and the reflected waves are analysed to find the distance, direction and speed of underwater objects such as submarines or shipwrecks.';
+        } else if (v === 'min') {
+          drawMin();
+          obs.innerHTML = '<strong>The minimum echo distance</strong><br>' +
+            'Two sounds are heard as separate only if the gap between them is at least 0.1 s.<br>' +
+            'distance = 340 m s⁻¹ × 0.1 s = 34 m<br>' +
+            'That is the distance to the surface and back, so the minimum echo distance is <strong>17 m</strong>.<br><br>' +
+            'In a small room the wall reflections arrive too quickly for the brain to separate them from the original sound. Echoes are also stronger from hard, smooth surfaces — soft surfaces such as curtains absorb sound and rough surfaces scatter it.';
+        } else {
+          drawBat();
+          obs.innerHTML = '<strong>Echolocation</strong><br>' +
+            'Bats are nocturnal creatures that fly and hunt in the dark without colliding into objects. Most bats emit short bursts of ultrasonic waves, which reflect from nearby objects; by sensing the echoes the bat can determine the position of obstacles and prey.<br><br>' +
+            'This ability to locate objects using reflected sound waves is called echolocation. Dolphins, whales and some birds use it too, and humans have adapted the same principle for underwater exploration through sonar.';
+        }
+      }
+
+      sel.addEventListener('change', update);
+      update();
     }
 
     function initChemicalLawLab() {
