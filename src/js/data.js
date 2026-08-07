@@ -22320,6 +22320,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9s-11",
+              title: "Reproduction: How Life Continues",
+              topics: [
+                {
+                  id: "9s-11-1",
+                  title: "1. Asexual Reproduction",
+                  lab: { type: "asexual-mode-sim" },
+                  theory: {
+                    intro: "A single Bryophyllum leaf, dropped on damp soil, sprouts a row of tiny plants along its edge — each one an exact copy of the plant it fell from.",
+                    sections: [
+                      {
+                        heading: "One Parent, Identical Offspring",
+                        text: "In asexual reproduction a single parent produces offspring that are almost exact copies of itself. It is seen in many unicellular organisms such as bacteria, amoeba and yeast, in simple multicellular organisms such as hydra and sponges, and in many plants. Plants with fleshy underground stems such as potato and ginger sprout new plants without producing seeds; money plant and sugarcane stem cuttings grow into new plants; and Bryophyllum leaves sprout tiny plantlets. All of these are examples of vegetative propagation — new plants arising from the vegetative, or growing, parts of a plant. Because only one parent is involved, the individuals produced are genetically identical."
+                      },
+                      {
+                        heading: "Budding and Spore Formation",
+                        text: "In yeast, small round outgrowths called buds emerge from the parent cells. In hydra, repeated cell division at a specific site on the parent body produces a small outgrowth called a bud, which enlarges and separates from the parent to live independently — this process is called budding, and several buds may grow on one hydra at once. Moulds growing on damp bread show thread-like hyphae with round sacs at the tip containing tiny spores. Spores are produced in huge numbers — millions from one mould colony — and are lightweight and usually single-celled, floating easily on air currents until moisture and nutrients let them germinate quickly into a new individual."
+                      },
+                      {
+                        heading: "Mitosis, Clones and Agriculture",
+                        text: "The central process behind all of these is mitosis, a type of cell division producing two daughter cells each having the same number of chromosomes, identical to the parent cell. The offspring are therefore genetically identical to the parent and are called clones. The method is fast and helps organisms increase their population quickly when conditions are favourable. Horticulturists have adapted it into methods such as cutting, grafting, layering and tissue culture, which let farmers cultivate desirable crops on a large scale. Louis Pasteur's experiments proved that new life always comes from pre-existing life, founding the germ theory of disease and strengthening the cell theory."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Growing Mould on Bread",
+                      objective: "To observe spore formation in fungi.",
+                      materials: ["A slice of bread or a roti", "A plastic box or steel dabba", "Cotton and tissue paper", "Pre-boiled water", "A magnifying glass and a microscope", "Cotton blue stain"],
+                      steps: [
+                        "Lightly moisten the bread or roti with a few drops of water.",
+                        "Line the box with cotton, cover it with tissue paper, moisten it with pre-boiled water, and place the bread on it.",
+                        "Keep the moist chamber in a warm, dark place away from direct sunlight, adding water if it dries out.",
+                        "Observe daily without touching the bread, and after three days look at the surface with a magnifying glass.",
+                        "Transfer a little mould to a slide with a needle, add cotton blue stain, and observe it under the microscope."
+                      ],
+                      observation: "Thread-like hyphae appear, with round sacs at their tips holding tiny spores. The mould grew from spores already present in the air, which settled on the moist bread — the chamber was kept warm because spores need warmth and moisture to grow, which is also why we refrigerate perishable food."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is vegetative propagation?",
+                      options: ["Reproduction by seeds", "New plants arising from the vegetative or growing parts of a plant", "Fusion of two gametes", "Reproduction by spores only"],
+                      answer: 1,
+                      explanation: "Potato and ginger stems, money plant and sugarcane cuttings, and Bryophyllum leaves all produce new plants from vegetative parts, involving only one parent."
+                    },
+                    {
+                      question: "What is budding?",
+                      options: ["A parent splitting into two equal halves", "An outgrowth forming on the parent body that enlarges and separates to live independently", "The fusion of gametes", "The release of spores into the air"],
+                      answer: 1,
+                      explanation: "In hydra, repeated cell division at a specific site produces a bud that enlarges and separates from the parent — several may grow at once."
+                    },
+                    {
+                      question: "Which type of cell division underlies asexual reproduction?",
+                      options: ["Meiosis", "Mitosis", "Fertilisation", "Germination"],
+                      answer: 1,
+                      explanation: "Mitosis produces two daughter cells with the same number of chromosomes as the parent, so the offspring are genetically identical."
+                    },
+                    {
+                      question: "What are genetically identical offspring called?",
+                      options: ["Gametes", "Clones", "Zygotes", "Hybrids"],
+                      answer: 1,
+                      explanation: "Because asexual reproduction involves only one parent and mitosis, the offspring are identical copies called clones."
+                    },
+                    {
+                      question: "Why are fungal spores so effective at spreading?",
+                      options: ["They are large and heavy", "They are produced in huge numbers, lightweight and usually single-celled, so they float on air currents", "They need no moisture at all", "They are produced by two parents"],
+                      answer: 1,
+                      explanation: "Millions of spores from one mould colony drift on air currents, waiting for moisture and nutrients to germinate quickly into a new individual."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-11-2",
+                  title: "2. Sexual Reproduction and Meiosis",
+                  lab: { type: "meiosis-sim" },
+                  theory: {
+                    intro: "If every child inherited a full set of chromosomes from each parent, the number would double every generation. One special kind of cell division stops that from happening.",
+                    sections: [
+                      {
+                        heading: "Why Meiosis Is Needed",
+                        text: "Sexual reproduction involves two parents, both contributing to the genetic material of the offspring. But if each generation received the full set of chromosomes from both parents, the chromosome number would double every generation. This problem is solved by a special type of cell division known as meiosis. Chromosomes are thread-like structures present in the nucleus of a cell, carrying genetic information. Humans have 23 pairs of chromosomes — one of each pair from each of two different individuals — giving 46 in all."
+                      },
+                      {
+                        heading: "How Meiosis Works",
+                        text: "Meiosis forms gametes by reducing the chromosome number of a parent cell (diploid) to half (haploid) in the daughter cells. These haploid cells are used only for reproduction and are called gametes: in animals the male gametes are sperm and the female gametes are eggs, while in plants the pollen grain contains male gametes and delivers them to an ovule containing the female gametes. During meiosis the chromosomes of each pair separate, so each gamete receives only one chromosome from each pair — every human gamete therefore has 23 chromosomes, each carrying genetic information for many characters."
+                      },
+                      {
+                        heading: "Variation",
+                        text: "Because each pair separates independently, gametes can carry many different combinations of characters. Offspring inherit a mix of characteristics from the two individuals, and this mixing leads to small differences between parents and their young. Accumulated over many generations, such differences help living beings adapt to changing environments and sometimes even give rise to new kinds of species. When a sperm and egg combine, the zygote has the same number of chromosomes as the parents."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Counting Gamete Combinations with Beads",
+                      objective: "To see how independently separating chromosome pairs create variation.",
+                      materials: ["Three pairs of beads of different colours", "A notebook"],
+                      steps: [
+                        "Let each pair of beads represent two contrasting characters carried on one pair of chromosomes.",
+                        "Separate each pair so that one bead of each colour goes into a gamete.",
+                        "List every different combination of the three colours you can make.",
+                        "Count the total number of combinations.",
+                        "Extend the reasoning to the 23 pairs a human gamete actually carries."
+                      ],
+                      observation: "With three pairs there are 2 × 2 × 2 = 8 possible combinations, because each pair separates independently of the others. With 23 pairs the number of possible combinations is enormous, which is why gametes — and so offspring — differ from one another."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "How many chromosomes does a human body cell contain?",
+                      options: ["23", "46", "92", "22"],
+                      answer: 1,
+                      explanation: "Humans have 23 pairs of chromosomes, one of each pair from each parent, making 46 in total."
+                    },
+                    {
+                      question: "What does meiosis do to the chromosome number?",
+                      options: ["Doubles it", "Reduces the diploid number to half, giving haploid cells", "Leaves it unchanged", "Removes it entirely"],
+                      answer: 1,
+                      explanation: "Meiosis halves the chromosome number so that gametes are haploid — 23 chromosomes in humans."
+                    },
+                    {
+                      question: "Why is halving the chromosome number necessary in sexual reproduction?",
+                      options: ["To make cells smaller", "Otherwise the chromosome number would double in every generation", "To speed up reproduction", "To make the gametes identical"],
+                      answer: 1,
+                      explanation: "If each generation received a full set from both parents, the number would double every time — meiosis keeps it constant."
+                    },
+                    {
+                      question: "What are the haploid cells produced by meiosis called?",
+                      options: ["Clones", "Gametes", "Zygotes", "Spores"],
+                      answer: 1,
+                      explanation: "These haploid cells are used only for reproduction — sperm and eggs in animals, and the gametes carried by pollen and ovules in plants."
+                    },
+                    {
+                      question: "Why does sexual reproduction create variation?",
+                      options: ["Because mitosis copies the parent exactly", "Because each chromosome pair separates independently, so gametes carry many different combinations", "Because gametes have no chromosomes", "Because only one parent is involved"],
+                      answer: 1,
+                      explanation: "Offspring inherit a mix of characteristics from two individuals; accumulated over generations, these differences help species adapt to changing environments."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-11-3",
+                  title: "3. Reproduction in Flowering Plants",
+                  lab: { type: "flower-repro-sim" },
+                  theory: {
+                    intro: "A wind-pollinated grass releases a million pollen grains to set perhaps a hundred seeds. A sunflower releases far fewer — and does far better. Both strategies work, for very different reasons.",
+                    sections: [
+                      {
+                        heading: "The Parts of a Flower",
+                        text: "Flowering plants, also called angiosperms, are the most diverse group of plants on Earth, and flowers are their reproductive organs. A complete flower has four parts. The sepal is the outermost whorl, the green covering that protects the flower in the bud stage. The petals are the coloured projections. The stamen is the male part, consisting of a filament and an anther which produces pollen grains containing male gametes. The pistil is the female part with three subparts — the stigma at the tip, which may be flat and sticky; the style, a thin long tube connecting the stigma to the ovary; and the ovary, which contains ovules, each holding an egg cell."
+                      },
+                      {
+                        heading: "Pollination Strategies",
+                        text: "Pollination — the transfer of pollen from stamen to stigma — depends on external agents called pollinators: wind, water, insects or birds. Wind pollination is seen in wheat, maize and rice, where pollen grains are light and small, produced in large numbers, and the stigma is long and feathery to trap them. In aquatic plants such as Vallisneria and Hydrilla, currents carry the pollen. Sunflower, hibiscus and marigold are pollinated by insects such as bees and butterflies; their flowers are brightly coloured, produce nectar and give off fragrance, and their pollen grains are large, sticky or spiny so they attach to the insect's body. Some flowers, such as those of the coral tree and hibiscus, are pollinated by birds such as the Indian white-eye and sunbirds."
+                      },
+                      {
+                        heading: "Fertilisation and Seed Formation",
+                        text: "Once pollen reaches a compatible stigma, it produces a pollen tube that grows down through the style into the ovary. The male gamete moves through this tube to the ovule, where it fuses with the egg cell. This fusion of gametes is called fertilisation and marks the beginning of a new life. The fertilised egg is called a zygote, which later develops into an embryo. Meanwhile the ovary surrounding the ovules enlarges and develops into a fruit, while the ovules develop into seeds inside it. Seeds are dispersed by wind, water or animals, and when water, air and temperature are favourable the seed germinates into a new plant."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Two Pollination Strategies",
+                      objective: "To compare the pollen-to-seed ratio of wind and insect pollination.",
+                      materials: ["The data of Table 11.3", "Notebook and calculator"],
+                      steps: [
+                        "Note that wind-pollinated grasses release about 5,00,000–10,00,000 pollen grains per flower and form about 50–200 seeds.",
+                        "Note that insect-pollinated plants release about 20,000–40,000 pollen grains and form about 800–1,000 seeds.",
+                        "Work out the approximate pollen-to-seed ratio for each strategy.",
+                        "Compare the two strategies for efficiency of pollination and seed formation.",
+                        "Explain why producing a very large number of pollen grains can still be an effective strategy."
+                      ],
+                      observation: "Wind pollination needs thousands of pollen grains for every seed formed, while insect pollination needs only tens — insects are far more efficient because they carry pollen directly from flower to flower. Wind pollination still works because the sheer number of grains released makes it likely that at least some reach a compatible stigma, without the plant needing to invest in nectar, colour or scent."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Which part of a flower produces pollen grains?",
+                      options: ["The stigma", "The anther of the stamen", "The ovary", "The sepal"],
+                      answer: 1,
+                      explanation: "The stamen is the male part, made of a filament and an anther; the anther produces pollen grains containing male gametes."
+                    },
+                    {
+                      question: "What are the three subparts of the pistil?",
+                      options: ["Filament, anther and style", "Stigma, style and ovary", "Sepal, petal and ovule", "Ovary, embryo and seed"],
+                      answer: 1,
+                      explanation: "The pistil is the female part: the stigma at the tip, the style connecting it to the ovary, and the ovary containing the ovules."
+                    },
+                    {
+                      question: "What feature helps wind-pollinated flowers such as maize catch pollen?",
+                      options: ["Bright colours and nectar", "A long, feathery stigma", "Large sticky pollen grains", "A strong fragrance"],
+                      answer: 1,
+                      explanation: "Wind-pollinated plants have light, small pollen produced in large numbers, and a long feathery stigma to trap it."
+                    },
+                    {
+                      question: "What happens after a pollen grain lands on a compatible stigma?",
+                      options: ["The stigma falls off", "A pollen tube grows down the style to the ovule, where the male gamete fuses with the egg cell", "The ovary immediately becomes a seed", "The flower closes"],
+                      answer: 1,
+                      explanation: "This fusion of gametes is fertilisation; the fertilised egg is the zygote, which develops into an embryo."
+                    },
+                    {
+                      question: "After fertilisation, what do the ovary and the ovules become?",
+                      options: ["The ovary becomes a seed and the ovules a fruit", "The ovary becomes a fruit and the ovules become seeds", "Both become fruits", "Both wither away"],
+                      answer: 1,
+                      explanation: "The ovary enlarges into a fruit while the ovules inside develop into seeds."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-11-4",
+                  title: "4. Reproduction in Human Beings",
+                  lab: { type: "human-repro-sim" },
+                  theory: {
+                    intro: "Millions of sperm set out; one large, well-stocked egg waits. The asymmetry between the two gametes runs through almost the whole animal kingdom.",
+                    sections: [
+                      {
+                        heading: "The Male Reproductive System",
+                        text: "Sperm are produced in two oval-shaped organs called testes, held in a pouch of skin called the scrotum. The scrotum keeps the testes slightly cooler than normal body temperature, which is necessary for sperm formation. The testes also produce a hormone that controls sperm production and causes the physical changes seen in boys during puberty. From the testes, sperm travel through a long tube called the vas deferens, which opens into the urethra — a common passage for urine and sperm. Glands such as the seminal vesicles and the prostate add fluids that nourish the sperm and help them remain active and move. Each sperm has a head containing genetic material and a long tail that helps it swim towards the egg."
+                      },
+                      {
+                        heading: "The Female Reproductive System",
+                        text: "The female reproductive system has a pair of ovaries, oviducts (fallopian tubes), a uterus and a vagina. The ovaries produce the female germ cells (eggs) and also release hormones, which bring about the changes of puberty. The oviducts connect each ovary to the uterus, a bag-like structure where a foetus develops. The uterus opens into the vagina through a narrow passage called the cervix."
+                      },
+                      {
+                        heading: "Gametes, Ovulation and Fertilisation",
+                        text: "The formation of gametes is called gametogenesis and takes place in the testes and the ovaries by meiosis: human cells have 46 chromosomes but sperm and eggs have only 23, so that the zygote has the same number as the parents. In males gametogenesis produces numerous tiny, motile, active sperm; in females it produces a single large egg. Sperm are very small, produced in millions, have no stored nutrients and are actively motile, while the egg is large, produced in small numbers, carries stored nutrients and is non-motile. At birth a girl's ovaries already hold millions of immature eggs, and from puberty onwards usually one mature egg is released each month — this is ovulation. Before ovulation the inner lining of the uterus thickens, and the released egg travels from the ovary into the oviduct, where a sperm may fuse with it to form a zygote."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing Sperm and Egg",
+                      objective: "To tabulate how the two human gametes differ.",
+                      materials: ["Notebook and pen", "Table 11.5"],
+                      steps: [
+                        "Draw a table with columns for the feature, the sperm and the egg.",
+                        "Compare the two gametes for size.",
+                        "Compare the numbers produced.",
+                        "Note whether each carries stored nutrients.",
+                        "Record whether each is motile, and suggest why the difference matters."
+                      ],
+                      observation: "The sperm is very small, produced in millions, has no stored nutrients and is actively motile; the egg is large, produced in small numbers, carries stored nutrients and is non-motile. The sperm's job is to travel and deliver genetic material, while the egg supplies the nutrients the early embryo will need. This asymmetry is seen across most animals."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "Why are the testes held in the scrotum, outside the body?",
+                      options: ["To make them easier to protect", "Because the scrotum keeps them slightly cooler than body temperature, which is necessary for sperm formation", "To connect them to the bladder", "To store sperm"],
+                      answer: 1,
+                      explanation: "Sperm formation needs a temperature slightly below normal body temperature, which the scrotum maintains."
+                    },
+                    {
+                      question: "Which tube carries sperm from the testes towards the urethra?",
+                      options: ["The oviduct", "The vas deferens", "The cervix", "The urethra itself"],
+                      answer: 1,
+                      explanation: "Sperm travel from the testes along the vas deferens, which opens into the urethra — a common passage for urine and sperm."
+                    },
+                    {
+                      question: "Where does a foetus develop?",
+                      options: ["In the ovary", "In the oviduct", "In the uterus", "In the cervix"],
+                      answer: 2,
+                      explanation: "The uterus is a bag-like structure where the foetus develops; it opens into the vagina through the cervix."
+                    },
+                    {
+                      question: "How many chromosomes does a human sperm or egg carry?",
+                      options: ["46", "23", "92", "22"],
+                      answer: 1,
+                      explanation: "Gametogenesis by meiosis halves the 46 chromosomes of body cells to 23, so the zygote formed at fertilisation again has 46."
+                    },
+                    {
+                      question: "What is ovulation?",
+                      options: ["The thickening of the uterine lining", "The release of a mature egg from an ovary, usually once a month", "The fusion of sperm and egg", "The formation of a foetus"],
+                      answer: 1,
+                      explanation: "From puberty onwards, usually one mature egg is released each month from one of the ovaries and travels into the oviduct."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

@@ -6087,6 +6087,98 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const asexualModeLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="asexual-mode-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Compare the ways a single parent can make copies of itself.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Mode</h3>
+            <select id="sel-asexual-mode" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="budding" selected>Budding in yeast and hydra</option>
+              <option value="spore">Spore formation in moulds</option>
+              <option value="vegetative">Vegetative propagation</option>
+              <option value="grafting">Grafting, cutting and layering</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>How It Works</h3>
+            <div id="asexual-mode-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a mode above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const meiosisLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="meiosis-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Halve the chromosomes, then put them back together.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Stage</h3>
+            <select id="sel-meiosis" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="parent" selected>The parent cell (diploid, 46)</option>
+              <option value="gametes">After meiosis: gametes (haploid, 23)</option>
+              <option value="zygote">Fertilisation: back to 46</option>
+              <option value="variation">Why gametes are all different</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Chromosome Count</h3>
+            <div id="meiosis-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a stage above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const flowerReproLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="flower-repro-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Trace pollen from the anther all the way to a seed.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Step</h3>
+            <select id="sel-flower-repro" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="parts" selected>The parts of a flower</option>
+              <option value="pollen">Pollination and the pollen tube</option>
+              <option value="fruit">Fertilisation to fruit and seed</option>
+              <option value="strategy">Wind versus insect pollination</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What Happens</h3>
+            <div id="flower-repro-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a step above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const humanReproLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="human-repro-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Follow the gametes from where they are made to where they meet.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a View</h3>
+            <select id="sel-human-repro" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="male" selected>The male reproductive system</option>
+              <option value="female">The female reproductive system</option>
+              <option value="gametes">Sperm compared with egg</option>
+              <option value="fertilisation">Ovulation and fertilisation</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>The Parts and their Jobs</h3>
+            <div id="human-repro-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a view above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const soundMediumLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -8927,6 +9019,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'kinematic-equation-sim') {
               labHtml = kinematicEquationLabHtml;
               labDesc = 'Apply each kinematic equation to the same motion and see them agree.';
+            } else if (topicObj.lab.type === 'asexual-mode-sim') {
+              labHtml = asexualModeLabHtml;
+              labDesc = 'Compare budding, spore formation and vegetative propagation.';
+            } else if (topicObj.lab.type === 'meiosis-sim') {
+              labHtml = meiosisLabHtml;
+              labDesc = 'Halve the chromosome number and see why it has to happen.';
+            } else if (topicObj.lab.type === 'flower-repro-sim') {
+              labHtml = flowerReproLabHtml;
+              labDesc = 'Trace pollen from anther to stigma, and ovule to seed.';
+            } else if (topicObj.lab.type === 'human-repro-sim') {
+              labHtml = humanReproLabHtml;
+              labDesc = 'Explore the human reproductive systems and how the gametes meet.';
             } else if (topicObj.lab.type === 'sound-medium-sim') {
               labHtml = soundMediumLabHtml;
               labDesc = 'Pump the air out of a bell jar and hear why sound needs a medium.';
@@ -9726,6 +9830,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initMotionGraphLab();
         } else if (topicObj.lab.type === 'kinematic-equation-sim') {
           initKinematicEquationLab();
+        } else if (topicObj.lab.type === 'asexual-mode-sim') {
+          initAsexualModeLab();
+        } else if (topicObj.lab.type === 'meiosis-sim') {
+          initMeiosisLab();
+        } else if (topicObj.lab.type === 'flower-repro-sim') {
+          initFlowerReproLab();
+        } else if (topicObj.lab.type === 'human-repro-sim') {
+          initHumanReproLab();
         } else if (topicObj.lab.type === 'sound-medium-sim') {
           initSoundMediumLab();
         } else if (topicObj.lab.type === 'sound-wave-sim') {
@@ -30042,6 +30154,743 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       sel.addEventListener('change', draw);
       draw();
+    }
+
+    function initAsexualModeLab() {
+      const canvas = document.getElementById('asexual-mode-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-asexual-mode');
+      const obs = document.getElementById('asexual-mode-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      function stageLabel(x, y, label) {
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, x, y);
+      }
+
+      function drawBudding() {
+        // Three stages of a bud growing and detaching.
+        const cy = 150;
+        [[130, 0], [300, 0.55], [470, 1]].forEach((s, i) => {
+          const cx = s[0], t = s[1];
+          ctx.fillStyle = '#7fb98a';
+          ctx.beginPath(); ctx.arc(cx, cy, 42, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          ctx.fillStyle = '#4a6b52';
+          ctx.beginPath(); ctx.arc(cx, cy, 12, 0, Math.PI * 2); ctx.fill();
+          if (t > 0) {
+            const br = 10 + 16 * t;
+            const bx = cx + 42 + (t > 0.8 ? 26 : 6) + br * 0.4;
+            ctx.fillStyle = '#7fb98a';
+            ctx.beginPath(); ctx.arc(bx, cy - 20, br, 0, Math.PI * 2); ctx.fill();
+            ctx.strokeStyle = muted;
+            ctx.stroke();
+            ctx.fillStyle = '#4a6b52';
+            ctx.beginPath(); ctx.arc(bx, cy - 20, br * 0.28, 0, Math.PI * 2); ctx.fill();
+          }
+          stageLabel(cx, cy + 76, ['parent cell', 'bud grows', 'bud separates'][i]);
+        });
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Repeated cell division at one site produces a bud that enlarges and separates.', W / 2, 274);
+      }
+
+      function drawSpore() {
+        // Hypha with a sac of spores bursting.
+        ctx.strokeStyle = '#a08c60';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(90, 250); ctx.lineTo(200, 250);
+        ctx.moveTo(140, 250); ctx.lineTo(140, 140);
+        ctx.moveTo(300, 250); ctx.lineTo(300, 120);
+        ctx.moveTo(200, 250); ctx.lineTo(420, 250);
+        ctx.stroke();
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('hyphae', 96, 274);
+
+        // Intact sac on the left, releasing sac on the right.
+        ctx.fillStyle = '#8d7ab8';
+        ctx.beginPath(); ctx.arc(140, 122, 26, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#e6ddf7';
+        for (let i = 0; i < 9; i++) {
+          const a = (2 * Math.PI * i) / 9;
+          ctx.beginPath(); ctx.arc(140 + 13 * Math.cos(a), 122 + 13 * Math.sin(a), 3.4, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.fillStyle = text;
+        ctx.textAlign = 'center';
+        ctx.fillText('sac full of spores', 140, 82);
+
+        ctx.strokeStyle = '#8d7ab8';
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(300, 102, 24, 0.5, Math.PI * 2 - 0.5); ctx.stroke();
+        const seeds = [[330, 70], [360, 52], [396, 74], [420, 46], [452, 82], [478, 58], [345, 104], [400, 112], [462, 118]];
+        ctx.fillStyle = '#e6ddf7';
+        seeds.forEach(s => { ctx.beginPath(); ctx.arc(s[0], s[1], 3.4, 0, Math.PI * 2); ctx.fill(); });
+        ctx.fillStyle = text;
+        ctx.fillText('spores drift away on air currents', 400, 148);
+        ctx.font = '13px sans-serif';
+        ctx.fillText('Millions of lightweight spores from one colony, each able to start a new individual.', W / 2, 300);
+      }
+
+      function drawVegetative() {
+        // A Bryophyllum leaf sprouting plantlets along its edge.
+        ctx.fillStyle = '#5f9e6a';
+        ctx.beginPath();
+        ctx.ellipse(300, 190, 150, 56, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#3f6b47';
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(150, 190); ctx.lineTo(450, 190); ctx.stroke();
+        for (let i = -4; i <= 4; i++) {
+          const x = 300 + i * 32;
+          const y = 190 - Math.sqrt(Math.max(0, 1 - Math.pow((x - 300) / 150, 2))) * 56;
+          ctx.strokeStyle = '#7fc98a';
+          ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y - 18); ctx.stroke();
+          ctx.fillStyle = '#7fc98a';
+          ctx.beginPath(); ctx.ellipse(x - 6, y - 20, 7, 4, -0.5, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.ellipse(x + 6, y - 20, 7, 4, 0.5, 0, Math.PI * 2); ctx.fill();
+        }
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Bryophyllum leaf sprouting tiny plantlets along its edge', W / 2, 274);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('Potato and ginger stems, and money plant and sugarcane cuttings, do the same thing.', W / 2, 298);
+      }
+
+      function drawGrafting() {
+        // Rooted stock on the left, scion inserted into a slit.
+        ctx.strokeStyle = '#8a6b45';
+        ctx.lineWidth = 12;
+        ctx.beginPath(); ctx.moveTo(200, 280); ctx.lineTo(200, 140); ctx.stroke();
+        ctx.lineWidth = 3;
+        [[-1, 0], [1, 0], [-1, 1], [1, 1]].forEach(r => {
+          ctx.beginPath();
+          ctx.moveTo(200, 280);
+          ctx.lineTo(200 + r[0] * (26 + r[1] * 20), 300);
+          ctx.stroke();
+        });
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Plant A: healthy rooted stock', 200, 318);
+
+        ctx.strokeStyle = '#a3854f';
+        ctx.lineWidth = 8;
+        ctx.beginPath(); ctx.moveTo(200, 140); ctx.lineTo(256, 84); ctx.stroke();
+        ctx.fillStyle = '#d86b8f';
+        ctx.beginPath(); ctx.arc(266, 74, 15, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = text;
+        ctx.textAlign = 'left';
+        ctx.fillText('Plant B: stem piece with the desired variety', 290, 78);
+
+        ctx.strokeStyle = '#e08a5a';
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(206, 134, 20, 0, Math.PI * 2); ctx.stroke();
+        ctx.fillStyle = '#e08a5a';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.fillText('graft, wrapped until it heals', 240, 148);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('In layering, a flexible twig is buried in soil until roots form, then cut from the parent.', W / 2, 224);
+      }
+
+      const NOTES = {
+        budding: '<strong>Budding</strong><br>In yeast, small round outgrowths — buds — emerge from the parent cells. In hydra, repeated cell division at a specific site on the parent body produces a bud that enlarges and separates from the parent to live independently. In hydra one can often see many buds growing on the parent’s body at the same time.',
+        spore: '<strong>Spore formation</strong><br>Moulds show thread-like hyphae with round sacs at the tip holding tiny spores. Spores are produced in huge numbers — millions from one mould colony — and are lightweight and usually single-celled, so they float easily on air currents, waiting for moisture and nutrients to germinate quickly into a new individual. That is where the mould on damp bread comes from.',
+        vegetative: '<strong>Vegetative propagation</strong><br>New plants arise from the vegetative, or growing, parts of a plant. Potato and ginger have fleshy underground stems that sprout new plants without seeds; money plant and sugarcane stem cuttings grow into new plants; and Bryophyllum leaves sprout tiny plantlets along their edges. Only one parent is involved, so the new plants are genetically identical.',
+        grafting: '<strong>Grafting, cutting and layering</strong><br>Horticulturists have adapted asexual reproduction into methods such as cutting, grafting, layering and tissue culture. In grafting, a stem piece from Plant B is fitted into a slit in a healthy rooted Plant A and wrapped until the wound heals. These methods let farmers propagate desirable crops efficiently and on a large scale.'
+      };
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText({
+          budding: 'Budding — yeast and hydra', spore: 'Spore formation in moulds',
+          vegetative: 'Vegetative propagation', grafting: 'Grafting a desired variety onto a rooted plant'
+        }[v], W / 2, 26);
+        if (v === 'budding') drawBudding();
+        else if (v === 'spore') drawSpore();
+        else if (v === 'vegetative') drawVegetative();
+        else drawGrafting();
+        obs.innerHTML = NOTES[v] + '<br><br>All of these rely on <strong>mitosis</strong>, so the offspring are genetically identical to the parent and are called <strong>clones</strong>.';
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initMeiosisLab() {
+      const canvas = document.getElementById('meiosis-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-meiosis');
+      const obs = document.getElementById('meiosis-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      const PAIR_COLOURS = ['#5aa9e6', '#e08a5a', '#4caf82'];
+
+      function chrom(x, y, colour, h) {
+        ctx.strokeStyle = colour;
+        ctx.lineWidth = 5;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(x, y); ctx.lineTo(x, y + (h || 34));
+        ctx.stroke();
+        ctx.lineCap = 'butt';
+      }
+
+      function cell(cx, cy, r, label, sub) {
+        ctx.fillStyle = 'rgba(120,140,190,0.14)';
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fillStyle = text;
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, cx, cy + r + 20);
+        if (sub) {
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.fillText(sub, cx, cy + r + 38);
+        }
+      }
+
+      function drawParent() {
+        cell(300, 150, 76, 'Parent cell — diploid', '46 chromosomes = 23 pairs');
+        // Three sample pairs, each pair sharing a colour.
+        PAIR_COLOURS.forEach((c, i) => {
+          chrom(268 + i * 22, 122, c);
+          chrom(278 + i * 22, 122, c);
+        });
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('(three pairs shown, standing for all 23)', 300, 268);
+      }
+
+      function drawGametes() {
+        cell(150, 140, 54, 'Gamete', '23 chromosomes');
+        cell(300, 140, 54, 'Gamete', '23 chromosomes');
+        cell(450, 140, 54, 'Gamete', '23 chromosomes');
+        // Each gamete gets one chromosome from every pair.
+        [[150, [0, 1, 0]], [300, [1, 1, 1]], [450, [1, 0, 1]]].forEach(g => {
+          PAIR_COLOURS.forEach((c, i) => {
+            chrom(g[0] - 22 + i * 22, 122, c, 28);
+          });
+        });
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Meiosis: each pair separates, so every gamete gets one of each', W / 2, 250);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('46  →  23', W / 2, 276);
+      }
+
+      function drawZygote() {
+        cell(130, 130, 46, 'Sperm', '23');
+        cell(300, 130, 46, 'Egg', '23');
+        PAIR_COLOURS.forEach((c, i) => {
+          chrom(108 + i * 22, 116, c, 28);
+          chrom(278 + i * 22, 116, c, 28);
+        });
+        ctx.strokeStyle = '#4caf82'; ctx.fillStyle = '#4caf82';
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(360, 130); ctx.lineTo(410, 130); ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(418, 130); ctx.lineTo(406, 124); ctx.lineTo(406, 136);
+        ctx.closePath(); ctx.fill();
+        cell(490, 130, 56, 'Zygote', '46 chromosomes again');
+        PAIR_COLOURS.forEach((c, i) => {
+          chrom(458 + i * 22, 114, c, 30);
+          chrom(468 + i * 22, 114, c, 30);
+        });
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('23 + 23 = 46 — the zygote has the same number of chromosomes as the parents.', W / 2, 250);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('Without meiosis, the number would double in every generation.', W / 2, 276);
+      }
+
+      function drawVariation() {
+        ctx.fillStyle = text;
+        ctx.font = '13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('With three pairs, each separating independently, a gamete can be any of these:', W / 2, 58);
+        // All 2^3 combinations laid out in a grid.
+        for (let n = 0; n < 8; n++) {
+          const col = n % 4, row = Math.floor(n / 4);
+          const cx = 120 + col * 120, cy = 118 + row * 92;
+          ctx.fillStyle = 'rgba(120,140,190,0.14)';
+          ctx.beginPath(); ctx.arc(cx, cy, 38, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+          PAIR_COLOURS.forEach((c, i) => {
+            // Bit i of n chooses which member of pair i this gamete carries.
+            const light = (n >> i) & 1;
+            ctx.globalAlpha = light ? 1 : 0.45;
+            chrom(cx - 22 + i * 22, cy - 14, c, 26);
+            ctx.globalAlpha = 1;
+          });
+        }
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 14px sans-serif';
+        ctx.fillText('2 × 2 × 2 = 8 combinations from just three pairs', W / 2, 302);
+      }
+
+      const NOTES = {
+        parent: '<strong>The parent cell</strong><br>Chromosomes are thread-like structures in the nucleus that carry genetic information. Humans have 23 pairs — one chromosome of each pair from each of two different individuals — making 46 in all. A cell with the full set is called diploid.',
+        gametes: '<strong>After meiosis</strong><br>Meiosis is a special type of cell division that forms gametes. The chromosome number of the parent cell (diploid) is reduced to half (haploid) in the daughter cells. During meiosis the chromosomes of each pair separate, so each gamete receives only one chromosome from each pair — every human gamete has 23 chromosomes. In animals the male gametes are sperm and the female gametes are eggs.',
+        zygote: '<strong>Fertilisation</strong><br>When a sperm with 23 chromosomes fuses with an egg carrying 23, the zygote has 46 — the same number as the parents. This is exactly why the halving had to happen: if each generation received the full set from both parents, the chromosome number would double every generation.',
+        variation: '<strong>Why gametes differ</strong><br>Each pair separates independently of the others, so gametes can carry many different combinations of characters. With just three pairs there are 8 possible combinations; with 23 pairs the number is enormous. This is why offspring inherit a mix of characteristics and differ slightly from their parents — and, accumulated over many generations, such differences help living beings adapt to changing environments.'
+      };
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText({
+          parent: 'A human body cell: 46 chromosomes', gametes: 'Meiosis halves the chromosome number',
+          zygote: 'Fertilisation restores the full set', variation: 'Independent separation creates variation'
+        }[v], W / 2, 26);
+        if (v === 'parent') drawParent();
+        else if (v === 'gametes') drawGametes();
+        else if (v === 'zygote') drawZygote();
+        else drawVariation();
+        obs.innerHTML = NOTES[v];
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initFlowerReproLab() {
+      const canvas = document.getElementById('flower-repro-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-flower-repro');
+      const obs = document.getElementById('flower-repro-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      function label(x, y, tx, ty, str, colour) {
+        ctx.strokeStyle = colour || muted;
+        ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(tx, ty); ctx.stroke();
+        ctx.fillStyle = colour || text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = tx > x ? 'left' : 'right';
+        ctx.fillText(str, tx + (tx > x ? 5 : -5), ty + 4);
+      }
+
+      // A stylised half-flower: pistil in the centre, one stamen to the left.
+      function drawFlower(showTube, showFruit) {
+        const cx = 300, base = 268;
+        // Petals.
+        ctx.fillStyle = '#e08ab5';
+        [[-1, 0.9], [1, 0.9], [-1, 0.4], [1, 0.4]].forEach(p => {
+          ctx.beginPath();
+          ctx.ellipse(cx + p[0] * 74, base - 44 * p[1], 46, 20, p[0] * 0.5, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        // Sepals.
+        ctx.fillStyle = '#4f8a58';
+        [[-1], [1]].forEach(p => {
+          ctx.beginPath();
+          ctx.ellipse(cx + p[0] * 52, base - 4, 34, 12, p[0] * 0.35, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        // Ovary and style.
+        ctx.fillStyle = showFruit ? '#d8632f' : '#7fb98a';
+        ctx.beginPath();
+        ctx.ellipse(cx, base - 34, showFruit ? 44 : 28, showFruit ? 38 : 26, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#5f9e6a';
+        ctx.lineWidth = 6;
+        ctx.beginPath(); ctx.moveTo(cx, base - 58); ctx.lineTo(cx, 116); ctx.stroke();
+        ctx.fillStyle = '#c9b48a';
+        ctx.beginPath(); ctx.ellipse(cx, 108, 20, 9, 0, 0, Math.PI * 2); ctx.fill();
+        // Ovules inside the ovary.
+        [-12, 0, 12].forEach(dy => {
+          ctx.fillStyle = showFruit ? '#f2d8a8' : '#e8f0d8';
+          ctx.beginPath(); ctx.arc(cx, base - 34 + dy, showFruit ? 8 : 6, 0, Math.PI * 2); ctx.fill();
+        });
+        // One stamen.
+        ctx.strokeStyle = '#c9b48a';
+        ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(cx - 40, base - 40); ctx.lineTo(cx - 92, 140); ctx.stroke();
+        ctx.fillStyle = '#e0c04a';
+        ctx.beginPath(); ctx.ellipse(cx - 96, 130, 16, 9, -0.5, 0, Math.PI * 2); ctx.fill();
+
+        if (showTube) {
+          // Pollen grain on the stigma and the tube growing down the style.
+          ctx.fillStyle = '#e0c04a';
+          ctx.beginPath(); ctx.arc(cx + 8, 100, 6, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = '#e0743a';
+          ctx.lineWidth = 3;
+          ctx.setLineDash([6, 3]);
+          ctx.beginPath();
+          ctx.moveTo(cx + 6, 108); ctx.lineTo(cx + 4, base - 46);
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = '#e0743a';
+          ctx.beginPath(); ctx.arc(cx + 2, base - 40, 5, 0, Math.PI * 2); ctx.fill();
+        }
+      }
+
+      function drawParts() {
+        drawFlower(false, false);
+        label(300, 108, 418, 74, 'stigma');
+        label(300, 150, 418, 116, 'style');
+        label(322, 228, 418, 174, 'ovary');
+        label(300, 246, 418, 216, 'ovule (holds the egg)');
+        label(204, 130, 130, 96, 'anther');
+        label(240, 190, 150, 176, 'filament');
+        label(374, 224, 470, 262, 'petal');
+        label(352, 264, 452, 300, 'sepal');
+        ctx.fillStyle = '#5aa9e6';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('stamen = male part', 30, 240);
+        ctx.fillStyle = '#e08ab5';
+        ctx.fillText('pistil = female part', 30, 260);
+      }
+
+      function drawStrategy() {
+        const rows = [
+          ['Pollen grains per flower', '5,00,000 – 10,00,000', '20,000 – 40,000'],
+          ['Seeds formed', '50 – 200', '800 – 1,000'],
+          ['Pollen grains', 'light and small', 'large, sticky or spiny'],
+          ['Stigma', 'long and feathery', 'sticky'],
+          ['Flower', 'plain, no nectar', 'coloured, scented, nectar']
+        ];
+        ctx.fillStyle = text;
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('Feature', 30, 66);
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#5aa9e6';
+        ctx.fillText('Wind', 350, 58);
+        ctx.fillStyle = '#e08a5a';
+        ctx.fillText('Insect', 500, 58);
+        ctx.font = '10px sans-serif';
+        ctx.fillStyle = muted;
+        ctx.fillText('maize, wheat', 350, 74);
+        ctx.fillText('sunflower', 500, 74);
+        rows.forEach((r, i) => {
+          const y = 108 + i * 36;
+          ctx.strokeStyle = muted;
+          ctx.globalAlpha = 0.3;
+          ctx.beginPath(); ctx.moveTo(30, y + 10); ctx.lineTo(W - 20, y + 10); ctx.stroke();
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = text;
+          ctx.font = '12px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(r[0], 30, y);
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#5aa9e6';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.fillText(r[1], 350, y);
+          ctx.fillStyle = '#e08a5a';
+          ctx.fillText(r[2], 500, y);
+        });
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Wind pollination needs thousands of grains per seed; insects manage with tens.', W / 2, 312);
+      }
+
+      const NOTES = {
+        parts: '<strong>The parts of a flower</strong><br>A complete flower has four parts. The <strong>sepal</strong> is the outermost whorl, protecting the flower in bud. The <strong>petals</strong> are the coloured projections. The <strong>stamen</strong> is the male part — a filament topped by an anther that produces pollen grains containing male gametes. The <strong>pistil</strong> is the female part, with the stigma at the tip, the style connecting it to the ovary, and the ovary containing ovules, each holding an egg cell.',
+        pollen: '<strong>Pollination and the pollen tube</strong><br>Pollination is the transfer of pollen from the stamen to the stigma, carried by wind, water, insects or birds. Once the pollen reaches a compatible stigma it produces a pollen tube that grows down through the style into the ovary, and the male gamete moves through this tube to the ovule.',
+        fruit: '<strong>Fertilisation, fruit and seed</strong><br>At the ovule the male gamete fuses with the egg cell. This fusion of gametes is called fertilisation, and it marks the beginning of a new life. The fertilised egg is the zygote, which develops into an embryo. Meanwhile the ovary enlarges into a fruit while the ovules develop into seeds inside it. Seeds are dispersed by wind, water or animals, and germinate when water, air and temperature are favourable.',
+        strategy: '<strong>Wind versus insect pollination</strong><br>Wind-pollinated grasses release 5–10 lakh pollen grains per flower to form only 50–200 seeds, while insect-pollinated plants release 20,000–40,000 grains and form 800–1,000 seeds. Insects are far more efficient because they carry pollen directly from flower to flower. Wind pollination still works because the sheer number of grains makes it likely some reach a compatible stigma — without the plant investing in colour, scent or nectar.'
+      };
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText({
+          parts: 'The parts of a flower', pollen: 'The pollen tube grows down the style',
+          fruit: 'The ovary becomes a fruit, the ovules become seeds', strategy: 'Two pollination strategies compared'
+        }[v], W / 2, 26);
+        if (v === 'parts') drawParts();
+        else if (v === 'pollen') {
+          drawFlower(true, false);
+          label(308, 100, 400, 76, 'pollen grain on the stigma', '#e0c04a');
+          label(304, 180, 404, 158, 'pollen tube growing down', '#e0743a');
+          label(302, 234, 402, 224, 'male gamete reaches the ovule', '#e0743a');
+        } else if (v === 'fruit') {
+          drawFlower(false, true);
+          label(340, 230, 424, 196, 'ovary → fruit', '#d8632f');
+          label(300, 246, 410, 250, 'ovules → seeds', '#e0c04a');
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('The zygote inside develops into an embryo.', W / 2, 314);
+        } else drawStrategy();
+        obs.innerHTML = NOTES[v];
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initHumanReproLab() {
+      const canvas = document.getElementById('human-repro-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-human-repro');
+      const obs = document.getElementById('human-repro-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      function tag(x, y, tx, ty, str) {
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(tx, ty); ctx.stroke();
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = tx > x ? 'left' : 'right';
+        ctx.fillText(str, tx + (tx > x ? 5 : -5), ty + 4);
+      }
+
+      function drawMale() {
+        const cx = 250;
+        // Testis in the scrotum, vas deferens looping up to the urethra.
+        ctx.fillStyle = '#c98a8a';
+        ctx.beginPath(); ctx.ellipse(cx, 250, 26, 20, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.ellipse(cx, 250, 36, 30, 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.strokeStyle = '#8fa4d8';
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.moveTo(cx + 20, 232);
+        ctx.quadraticCurveTo(cx + 70, 170, cx + 24, 128);
+        ctx.stroke();
+        ctx.fillStyle = '#d8c07a';
+        ctx.beginPath(); ctx.ellipse(cx + 40, 116, 26, 15, -0.3, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#b8a0c8';
+        ctx.beginPath(); ctx.ellipse(cx + 4, 138, 22, 15, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = '#8fa4d8';
+        ctx.lineWidth = 6;
+        ctx.beginPath(); ctx.moveTo(cx - 4, 152); ctx.lineTo(cx - 66, 216); ctx.stroke();
+
+        tag(cx, 250, 150, 288, 'testis (makes sperm)');
+        tag(cx + 34, 278, 190, 306, 'scrotum, keeps it cool');
+        tag(cx + 52, 178, 400, 200, 'vas deferens');
+        tag(cx + 58, 112, 420, 96, 'seminal vesicle');
+        tag(cx + 14, 140, 420, 140, 'prostate gland');
+        tag(cx - 40, 190, 130, 170, 'urethra');
+      }
+
+      function drawFemale() {
+        const cx = 300;
+        // Uterus with fallopian tubes and ovaries either side.
+        ctx.fillStyle = '#d8a0b0';
+        ctx.beginPath();
+        ctx.moveTo(cx - 44, 130);
+        ctx.quadraticCurveTo(cx, 108, cx + 44, 130);
+        ctx.lineTo(cx + 22, 214);
+        ctx.lineTo(cx - 22, 214);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = '#a8707f';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.strokeStyle = '#c98a9a';
+        ctx.lineWidth = 6;
+        [-1, 1].forEach(s => {
+          ctx.beginPath();
+          ctx.moveTo(cx + s * 42, 132);
+          ctx.quadraticCurveTo(cx + s * 100, 108, cx + s * 116, 152);
+          ctx.stroke();
+          ctx.fillStyle = '#e0b06a';
+          ctx.beginPath(); ctx.ellipse(cx + s * 124, 166, 20, 14, s * 0.3, 0, Math.PI * 2); ctx.fill();
+        });
+        ctx.fillStyle = '#c98a9a';
+        ctx.fillRect(cx - 14, 214, 28, 22);
+        ctx.fillStyle = '#d8a0b0';
+        ctx.fillRect(cx - 20, 236, 40, 46);
+
+        tag(cx + 124, 166, 470, 210, 'ovary (makes eggs)');
+        tag(cx + 86, 118, 430, 86, 'fallopian tube (oviduct)');
+        tag(cx, 170, 130, 150, 'uterus');
+        tag(cx - 12, 224, 130, 234, 'cervix');
+        tag(cx - 18, 262, 130, 282, 'vagina');
+      }
+
+      function drawGametes() {
+        // Sperm on the left, egg on the right, drawn roughly to relative scale.
+        ctx.fillStyle = '#8fa4d8';
+        ctx.beginPath(); ctx.ellipse(140, 130, 15, 10, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = '#8fa4d8';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(154, 130);
+        for (let i = 0; i <= 60; i++) {
+          const x = 154 + i * 1.6;
+          ctx.lineTo(x, 130 + Math.sin(i / 5) * 8);
+        }
+        ctx.stroke();
+        ctx.fillStyle = text;
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Sperm', 190, 96);
+
+        ctx.fillStyle = '#e0b06a';
+        ctx.beginPath(); ctx.arc(450, 130, 46, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#c07f3a';
+        ctx.beginPath(); ctx.arc(450, 130, 15, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = text;
+        ctx.fillText('Egg', 450, 70);
+
+        const rows = [['Size', 'very small', 'large'], ['Number produced', 'millions', 'few'],
+          ['Stored nutrients', 'absent', 'present'], ['Motility', 'actively motile', 'non-motile']];
+        rows.forEach((r, i) => {
+          const y = 214 + i * 28;
+          ctx.fillStyle = text;
+          ctx.font = '12px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(r[0], 60, y);
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#8fa4d8';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.fillText(r[1], 320, y);
+          ctx.fillStyle = '#e0b06a';
+          ctx.fillText(r[2], 480, y);
+          ctx.strokeStyle = muted;
+          ctx.globalAlpha = 0.25;
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(56, y + 8); ctx.lineTo(W - 30, y + 8); ctx.stroke();
+          ctx.globalAlpha = 1;
+        });
+      }
+
+      function drawFertilisation() {
+        // Ovary releasing an egg into the oviduct, sperm arriving.
+        ctx.fillStyle = '#e0b06a';
+        ctx.beginPath(); ctx.ellipse(110, 190, 30, 22, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('ovary', 110, 232);
+        ctx.strokeStyle = '#c98a9a';
+        ctx.lineWidth = 26;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(146, 176);
+        ctx.quadraticCurveTo(280, 120, 420, 180);
+        ctx.stroke();
+        ctx.lineCap = 'butt';
+        ctx.fillStyle = muted;
+        ctx.fillText('oviduct (fallopian tube)', 285, 106);
+
+        ctx.fillStyle = '#e0b06a';
+        ctx.beginPath(); ctx.arc(285, 148, 15, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = text;
+        ctx.fillText('egg', 285, 186);
+
+        // Sperm swimming in from the uterus side.
+        ctx.strokeStyle = '#8fa4d8';
+        ctx.lineWidth = 2;
+        [0, 1, 2, 3].forEach(i => {
+          const sx = 360 + i * 22, sy = 168 + (i % 2) * 12;
+          ctx.beginPath();
+          ctx.moveTo(sx, sy);
+          for (let k = 0; k <= 14; k++) ctx.lineTo(sx + k * 1.6, sy + Math.sin(k / 2.4) * 4);
+          ctx.stroke();
+          ctx.fillStyle = '#8fa4d8';
+          ctx.beginPath(); ctx.arc(sx - 4, sy, 4, 0, Math.PI * 2); ctx.fill();
+        });
+        ctx.fillStyle = '#8fa4d8';
+        ctx.font = '12px sans-serif';
+        ctx.fillText('millions of sperm swim up', 330, 232);
+
+        ctx.fillStyle = '#d8a0b0';
+        ctx.beginPath();
+        ctx.moveTo(430, 190);
+        ctx.quadraticCurveTo(470, 176, 506, 200);
+        ctx.lineTo(486, 268);
+        ctx.lineTo(450, 268);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = text;
+        ctx.fillText('uterus — its lining thickens', 440, 292);
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.fillText('If a sperm fuses with the egg, a zygote is formed.', W / 2, 318);
+      }
+
+      const NOTES = {
+        male: '<strong>The male reproductive system</strong><br>Sperm are produced in two oval-shaped <strong>testes</strong>, held in a pouch of skin called the <strong>scrotum</strong>, which keeps them slightly cooler than body temperature — necessary for sperm formation. The testes also produce a hormone controlling sperm production and the changes of puberty. Sperm travel along the <strong>vas deferens</strong>, which opens into the <strong>urethra</strong>, a common passage for urine and sperm. The <strong>seminal vesicles</strong> and <strong>prostate</strong> add fluids that nourish the sperm and keep them active.',
+        female: '<strong>The female reproductive system</strong><br>A pair of <strong>ovaries</strong> produce the eggs and release hormones that bring about the changes of puberty. The <strong>oviducts</strong>, or fallopian tubes, connect each ovary to the <strong>uterus</strong>, a bag-like structure where a foetus develops. The uterus opens into the <strong>vagina</strong> through a narrow passage called the <strong>cervix</strong>.',
+        gametes: '<strong>Sperm compared with egg</strong><br>Gametogenesis in the testes produces numerous tiny, motile, active sperm, while in the ovaries it produces a single large egg. The sperm is very small, made in millions, has no stored nutrients and is actively motile; the egg is large, made in small numbers, carries stored nutrients and is non-motile. This asymmetry between male and female gametes is seen across most animals.',
+        fertilisation: '<strong>Ovulation and fertilisation</strong><br>At birth a girl’s ovaries already hold millions of immature eggs. From puberty onwards, usually one mature egg is released each month from one of the ovaries — this is <strong>ovulation</strong>. Before it, the inner lining of the uterus thickens. The egg travels from the ovary into the oviduct, where millions of sperm may reach it; if one succeeds in fusing with the egg, a <strong>zygote</strong> is formed, which develops into an embryo and then a foetus in the uterus.'
+      };
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText({
+          male: 'The male reproductive system', female: 'The female reproductive system',
+          gametes: 'Sperm and egg compared', fertilisation: 'Ovulation and fertilisation'
+        }[v], W / 2, 26);
+        if (v === 'male') drawMale();
+        else if (v === 'female') drawFemale();
+        else if (v === 'gametes') drawGametes();
+        else drawFertilisation();
+        obs.innerHTML = NOTES[v];
+      }
+
+      sel.addEventListener('change', update);
+      update();
     }
 
     function initSoundMediumLab() {
