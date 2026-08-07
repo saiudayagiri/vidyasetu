@@ -22884,6 +22884,288 @@ export const curriculumData = {
                   ]
                 }
               ]
+            },
+            {
+              id: "9s-13",
+              title: "Earth as a System: Energy, Matter, and Life",
+              topics: [
+                {
+                  id: "9s-13-1",
+                  title: "1. Solar Radiation and Uneven Heating",
+                  lab: { type: "solar-heating-sim" },
+                  theory: {
+                    intro: "The same Sun shines on the equator and on the poles. The difference is the angle — and that difference alone drives every wind and current on the planet.",
+                    sections: [
+                      {
+                        heading: "The Solar Spectrum",
+                        text: "Solar radiation is the main source of energy on the Earth. It arrives as electromagnetic waves, which travel through a vacuum at the speed of light, 3 × 10⁸ m s⁻¹ — unlike sound waves, which are mechanical and need a medium. Electromagnetic waves cover a wide range of frequencies, from high frequency, short wavelength gamma rays and X-rays to low frequency, long wavelength infrared and radio waves. About 99 per cent of the Sun's energy reaching Earth falls in the ultraviolet, visible and infrared range. Short wavelength UV is mostly absorbed by the ozone layer in the upper atmosphere; visible light reaches the surface and provides energy for photosynthesis while partly warming land and water; infrared radiation warms the surface, which re-radiates the heat back into the atmosphere. Gamma rays and X-rays are mostly filtered out by the upper atmosphere, while microwaves and radio waves carry too little energy to warm the Earth significantly."
+                      },
+                      {
+                        heading: "Albedo",
+                        text: "Different materials absorb and heat up differently under sunlight. Land heats up faster than water, with some variation depending on the material and the colour of the soil. Dark surfaces absorb more sunlight while light-coloured surfaces reflect more and stay comparatively cooler — dark roads heat up quickly, and dark clothes feel hotter than white ones in summer. The fraction of solar radiation reflected by a surface is called its albedo, from a Latin word meaning whiteness. High albedo surfaces stay cool because they reflect more light, while low albedo surfaces heat up more quickly because they reflect less and absorb more."
+                      },
+                      {
+                        heading: "Latitude and the Earth's Shape",
+                        text: "Because the Earth is spherical, the Sun's rays strike different latitudes at different angles. Radiation falling on the equatorial region is concentrated over a smaller area, while the same amount of radiation is spread over a larger area in the polar regions. This is why equatorial regions remain relatively warm throughout the year while polar regions are much colder. The spherical shape and the tilt of the Earth's axis also give rise to seasons and to the changing length of daytime through the year. Solar radiation is therefore not evenly distributed across the globe, and this uneven heating of the surface drives global winds and ocean currents."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Comparing the Albedo of Everyday Surfaces",
+                      objective: "To relate the reflectivity of a surface to how much it heats up.",
+                      materials: ["Notebook and pen", "Reference books or authentic websites"],
+                      steps: [
+                        "List surfaces you meet every day — fresh snow, sand, grass, water, a tarred road.",
+                        "Look up an approximate albedo value for each from an authentic source.",
+                        "Arrange them in order from highest albedo to lowest.",
+                        "Predict which of them would feel hottest on a sunny afternoon.",
+                        "Explain your prediction in terms of reflection and absorption."
+                      ],
+                      observation: "Fresh snow has a very high albedo and stays cool, while a dark tarred road has a very low albedo and becomes very hot. High albedo surfaces reflect most of the sunlight falling on them; low albedo surfaces reflect little and absorb the rest, so they heat up quickly."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is the speed of electromagnetic waves in a vacuum?",
+                      options: ["344 m s⁻¹", "3 × 10⁸ m s⁻¹", "1530 m s⁻¹", "3 × 10⁵ m s⁻¹"],
+                      answer: 1,
+                      explanation: "Electromagnetic waves travel through a vacuum at the speed of light, 3 × 10⁸ m s⁻¹ — unlike sound, which is mechanical and needs a medium."
+                    },
+                    {
+                      question: "In which parts of the spectrum does about 99 per cent of the Sun's energy reaching Earth lie?",
+                      options: ["Gamma rays and X-rays", "Ultraviolet, visible and infrared", "Microwaves and radio waves", "Radio waves only"],
+                      answer: 1,
+                      explanation: "These three regions shape the Earth's climate and support life; gamma rays and X-rays are mostly filtered by the upper atmosphere."
+                    },
+                    {
+                      question: "What is albedo?",
+                      options: ["The heat stored by a surface", "The fraction of solar radiation reflected by a surface", "The temperature of the atmosphere", "The angle of the Sun's rays"],
+                      answer: 1,
+                      explanation: "The word comes from Latin for whiteness — high albedo surfaces reflect more light and stay cool, low albedo surfaces absorb more and heat up."
+                    },
+                    {
+                      question: "Why are polar regions much colder than equatorial regions?",
+                      options: ["The Sun is further away from the poles", "The same radiation is spread over a larger area at the poles because the Earth is spherical", "There is no sunlight at the poles", "The poles reflect no light"],
+                      answer: 1,
+                      explanation: "Rays strike different latitudes at different angles; at the equator radiation is concentrated over a smaller area, at the poles spread over a larger one."
+                    },
+                    {
+                      question: "Which part of the solar spectrum provides the energy for photosynthesis?",
+                      options: ["Gamma rays", "Visible light", "Radio waves", "X-rays"],
+                      answer: 1,
+                      explanation: "Visible light reaches the Earth's surface and provides the energy for photosynthesis, the primary source of food for most organisms."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-13-2",
+                  title: "2. The Atmosphere and its Layers",
+                  lab: { type: "atmosphere-layer-sim" },
+                  theory: {
+                    intro: "Climb through the atmosphere and the temperature falls steadily — then, at twelve kilometres, it starts rising again. That reversal is why all our weather stays below it.",
+                    sections: [
+                      {
+                        heading: "What the Atmosphere Is Made Of",
+                        text: "The air surrounding the Earth is called the atmosphere, and it is held in place by the force of Earth's gravity. It consists mainly of nitrogen (78%) and oxygen (21%), along with small amounts of argon, carbon dioxide, water vapour and other gases. The atmosphere has a layered structure, and this structure is important because it helps explain key weather patterns."
+                      },
+                      {
+                        heading: "The Troposphere and the Stratosphere",
+                        text: "Nearly all weather phenomena take place in the troposphere, which has an average height of about 12 km and is heated from the Earth's surface. In this layer the temperature decreases with height, at roughly 6.5 °C per kilometre, and as the warm air rises it drives winds and storms. The height of the troposphere is greatest above the equator and lowest above the polar regions. In the stratosphere, from about 12 to 50 km, the ozone layer absorbs UV rays and heats the atmosphere, so temperature rises with height. This increase calms the layer by preventing vertical mixing of air, which keeps weather confined to the troposphere."
+                      },
+                      {
+                        heading: "The Upper Layers",
+                        text: "Above the stratosphere lie the mesosphere, thermosphere and exosphere, but these play only a minor role in regulating climate at the Earth's surface. At about 100 km above the Earth begins the region we call outer space. Together, these atmospheric layers show how the atmosphere regulates the flow of energy, shaping weather, climate and life."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Reading the Temperature Profile",
+                      objective: "To explain why the temperature trend reverses at the top of the troposphere.",
+                      materials: ["Notebook and pen", "The layer diagram of Fig. 13.7"],
+                      steps: [
+                        "Note the average height of the troposphere and the rate at which temperature falls within it.",
+                        "Calculate roughly how much colder it is at the top of the troposphere than at the surface.",
+                        "State what heats the troposphere, and what heats the stratosphere.",
+                        "Explain why the temperature rises with height in the stratosphere.",
+                        "Say why this rise keeps weather confined to the troposphere."
+                      ],
+                      observation: "The troposphere is about 12 km tall and cools at roughly 6.5 °C per kilometre, so its top is around 78 °C colder than the surface. It is heated from below, by the Earth's surface, so warm air rises and drives weather. The stratosphere is heated from within by ozone absorbing UV, so its temperature rises with height — and warm air above cold air does not rise, which suppresses vertical mixing and keeps weather below."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What are the two main gases in the atmosphere, and in what proportions?",
+                      options: ["Oxygen 78% and nitrogen 21%", "Nitrogen 78% and oxygen 21%", "Carbon dioxide 78% and oxygen 21%", "Nitrogen 50% and oxygen 50%"],
+                      answer: 1,
+                      explanation: "Nitrogen makes up about 78% and oxygen about 21%, with small amounts of argon, carbon dioxide, water vapour and other gases."
+                    },
+                    {
+                      question: "In which layer do nearly all weather phenomena take place?",
+                      options: ["The stratosphere", "The troposphere", "The mesosphere", "The exosphere"],
+                      answer: 1,
+                      explanation: "The troposphere, about 12 km tall on average, is heated from the Earth's surface, and its rising warm air drives winds and storms."
+                    },
+                    {
+                      question: "How does temperature change with height in the troposphere?",
+                      options: ["It rises by about 6.5 °C per km", "It decreases by about 6.5 °C per km", "It stays constant", "It first rises then falls"],
+                      answer: 1,
+                      explanation: "Because the layer is heated from below by the Earth's surface, temperature falls with height at roughly 6.5 °C per kilometre."
+                    },
+                    {
+                      question: "Why does temperature rise with height in the stratosphere?",
+                      options: ["It is closer to the Sun", "The ozone layer absorbs UV rays and heats the atmosphere", "Warm air from below collects there", "Because of friction with meteors"],
+                      answer: 1,
+                      explanation: "Ozone in the stratosphere, between about 12 and 50 km, absorbs UV radiation and warms the layer from within."
+                    },
+                    {
+                      question: "Why is weather confined to the troposphere?",
+                      options: ["Because there is no air above it", "Because the temperature rise in the stratosphere calms the layer by preventing vertical mixing", "Because the ozone layer blocks clouds", "Because aircraft fly there"],
+                      answer: 1,
+                      explanation: "The increase in temperature with height in the stratosphere suppresses vertical mixing of air, keeping weather below it."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-13-3",
+                  title: "3. Winds and Ocean Currents",
+                  lab: { type: "wind-current-sim" },
+                  theory: {
+                    intro: "By day the air climbs the mountain slope; by night it slides back down into the valley. The same imbalance, scaled up to a whole planet, moves the oceans.",
+                    sections: [
+                      {
+                        heading: "Local Winds",
+                        text: "Wind is the movement of air from a region of high pressure to a region of low pressure, and these pressure differences are mainly caused by the uneven heating of the Earth's surface. In mountainous regions the slopes and the valley floor do not heat and cool at the same rate. During the day the slopes facing the Sun heat more rapidly than the valley floor, so the air over them becomes warm and rises, creating a low pressure region, and cooler air from the valley moves up the slopes to replace it — this is a valley breeze. After sunset the situation reverses: the slopes lose heat faster and become cooler, the air over them becomes cooler and denser and flows down into the valley, giving a mountain breeze. Such daily changes of wind direction are commonly experienced in hilly regions like Shimla and Dehradun, and they influence weather, agriculture and daily life."
+                      },
+                      {
+                        heading: "Planetary Winds",
+                        text: "Uneven heating of the Earth between the equator and the poles creates belts of low and high pressure. This large scale pressure difference sets the air in motion over long distances, giving rise to planetary winds. Near the equator, intense heating drives air upward, and this circulation forms part of the Earth's overall atmospheric circulation."
+                      },
+                      {
+                        heading: "Ocean Currents",
+                        text: "Ocean currents are the continuous movement of large masses of ocean water. Strong planetary winds drag the surface water because of friction, setting surface currents in motion. Differences in temperature and salinity, the rotation of the Earth and the distribution of land masses also influence the movement. Warm equatorial waters travel over the surface towards the poles while colder, denser waters flow slowly back towards the equator at deeper levels. Water of lower salinity, being less dense, tends to remain near the surface, while denser, higher-salinity water sinks. The Earth's rotation deflects these moving water masses into large circular patterns called gyres, which rotate clockwise in the Northern Hemisphere and counter clockwise in the Southern Hemisphere, with continents blocking and redirecting them further. By transporting heat from the equator towards the poles, ocean currents such as the North Atlantic Drift reduce temperature differences across the planet."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tracking a Breeze through the Day",
+                      objective: "To explain why the wind in a hill valley reverses between day and night.",
+                      materials: ["Notebook and pen", "Figures 13.8a and 13.8b"],
+                      steps: [
+                        "Note which surface heats faster during the day — the sunlit slope or the valley floor.",
+                        "Describe what happens to the air over the warmer surface, and the pressure it leaves behind.",
+                        "State the direction the replacement air moves, and name the breeze.",
+                        "Now note which surface cools faster after sunset.",
+                        "Describe the resulting air movement and name that breeze."
+                      ],
+                      observation: "By day the sunlit slopes heat faster, the air over them warms and rises leaving low pressure, and cooler valley air flows up the slopes — a valley breeze. After sunset the slopes lose heat faster, the air over them becomes cooler and denser and flows down into the valley — a mountain breeze."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What causes wind?",
+                      options: ["The rotation of the Earth alone", "Air moving from high pressure to low pressure, caused mainly by uneven heating", "The Moon's gravity", "Ocean currents"],
+                      answer: 1,
+                      explanation: "Pressure differences arise mainly from the uneven heating of the Earth's surface by the Sun."
+                    },
+                    {
+                      question: "What is a valley breeze?",
+                      options: ["Cool air flowing down the slopes at night", "Cooler valley air moving up the sunlit slopes during the day", "Wind blowing along the valley floor", "A planetary wind"],
+                      answer: 1,
+                      explanation: "By day the slopes heat faster, the warm air rises leaving low pressure, and cooler air from the valley moves up to replace it."
+                    },
+                    {
+                      question: "What is a mountain breeze?",
+                      options: ["Air rising up the slopes at noon", "Cooler, denser air flowing down from the slopes into the valley after sunset", "A breeze from the sea", "A gyre"],
+                      answer: 1,
+                      explanation: "After sunset the slopes lose heat faster than the valley floor, so the air over them cools, becomes denser and flows downhill."
+                    },
+                    {
+                      question: "What are gyres?",
+                      options: ["Belts of high pressure", "Large circular patterns of ocean currents formed by the Earth's rotation deflecting moving water", "Deep ocean trenches", "Local winds in hill regions"],
+                      answer: 1,
+                      explanation: "Gyres rotate clockwise in the Northern Hemisphere and counter clockwise in the Southern Hemisphere, with continents further modifying their paths."
+                    },
+                    {
+                      question: "How do ocean currents affect the Earth's climate?",
+                      options: ["They have no effect", "By transporting heat from the equator towards the poles, reducing temperature differences", "By making the oceans saltier", "By blocking sunlight"],
+                      answer: 1,
+                      explanation: "The North Atlantic Drift is an example — warm surface water carried polewards moderates temperatures across the planet."
+                    }
+                  ]
+                },
+                {
+                  id: "9s-13-4",
+                  title: "4. Biogeochemical Cycles and Human Impact",
+                  lab: { type: "biogeochemical-sim" },
+                  theory: {
+                    intro: "Carbon makes up nearly half the dry weight of every living thing — yet the atmosphere holds only about one per cent of the planet's carbon. The rest is in constant circulation.",
+                    sections: [
+                      {
+                        heading: "Water and Carbon",
+                        text: "The cyclic movement of matter and energy between the abiotic and biotic components of the Earth is called a biogeochemical cycle, and it keeps essential nutrients such as carbon, nitrogen and oxygen available to support life. In the water cycle, water evaporates from rivers, lakes and oceans, condenses to form clouds, returns as precipitation and flows back to the ocean, with some seeping through soil and rock as groundwater; along the way it dissolves minerals and transports nutrients to the oceans. Carbon forms the backbone of life — every protein, carbohydrate, fat and DNA molecule contains it — and circulates between the atmosphere as CO₂, the biosphere, the geosphere as carbonate rocks and fossil fuels, and the hydrosphere. In the fast cycle, over days to years, plants convert atmospheric CO₂ into glucose by photosynthesis and respiration returns it; when organisms die, decomposition returns CO₂ to the air. In the slow cycle, over millions of years, buried plants and animals become coal, oil and gas. Carbon makes up about 49% of the dry weight of living organisms, and 71% of global carbon is held in the oceans while the atmosphere holds only about 1%."
+                      },
+                      {
+                        heading: "Nitrogen and Oxygen",
+                        text: "Nitrogen is essential for the synthesis of proteins and nucleic acids, and the atmosphere is its largest reservoir — but nitrogen gas is rather non-reactive and must first be converted into soluble compounds. Nitrogen-fixing bacteria such as Rhizobium in the root nodules of legumes and Azotobacter in the soil convert atmospheric N₂ into ammonia. Nitrifying bacteria such as Nitrosomonas convert ammonia into nitrite, and Nitrobacter convert nitrite into nitrate — the process of nitrification. Plants assimilate these compounds from the soil and animals obtain nitrogen by eating plants or other animals. When organisms die or produce waste, decomposers return nitrogen compounds such as ammonia to the soil, which is ammonification. Denitrifying bacteria such as Pseudomonas convert some nitrates back into nitrogen gas — denitrification — completing the cycle. Lightning also fixes a small amount of nitrogen. About 21% of the atmosphere is free oxygen, released by photosynthesis and consumed by respiration and industrial processes."
+                      },
+                      {
+                        heading: "Human Impact",
+                        text: "Rising CO₂ from fossil fuels leads to extreme weather and biodiversity loss. Excess atmospheric CO₂ increases ocean absorption, making sea water more acidic and threatening plankton and coral reefs, while warmer ocean water reduces the ocean's capacity to act as a carbon sink. Burning fossil fuels and deforestation saturate natural sinks like forests and oceans. Overuse of fertilisers adds excessive nitrates to rivers and lakes, causing algal blooms that deplete oxygen and kill fish — a process called eutrophication. Deforestation reduces photosynthesis and transpiration, which can lower local rainfall, alters surface albedo, increases soil erosion and destroys habitats. Vehicular emissions react with sunlight to form ground level smog and ground level ozone, which is harmful to health, unlike the protective ozone of the stratosphere. Global cooperation has helped before: the Montreal Protocol has begun the recovery of the ozone layer, though the Kyoto Protocol and the Paris Agreement have been less successful. Conserving energy, switching to renewable sources, planting trees, saving water and practising sustainable farming can help restore the balance."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Tracing the Steps of the Nitrogen Cycle",
+                      objective: "To put the five steps of the nitrogen cycle in order with the organisms responsible.",
+                      materials: ["Notebook and pen", "Figure 13.15"],
+                      steps: [
+                        "Write down why atmospheric nitrogen gas cannot be used directly by plants and animals.",
+                        "Name the bacteria that fix atmospheric N₂ into ammonia, and where they live.",
+                        "Name the two bacteria involved in nitrification and the compounds they produce.",
+                        "Describe how plants and animals obtain their nitrogen.",
+                        "Name the process and the bacteria that return nitrogen gas to the atmosphere."
+                      ],
+                      observation: "N₂ is rather non-reactive, so it must first be converted into soluble compounds. Rhizobium in legume root nodules and Azotobacter in the soil fix it into ammonia. Nitrosomonas converts ammonia to nitrite and Nitrobacter converts nitrite to nitrate. Plants assimilate these from the soil and animals get nitrogen by eating plants or other animals; decomposers return ammonia in ammonification, and Pseudomonas returns nitrogen gas by denitrification."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "What is a biogeochemical cycle?",
+                      options: ["The movement of the Earth around the Sun", "The cyclic movement of matter and energy between the abiotic and biotic components of the Earth", "The circulation of blood in animals", "The rotation of ocean gyres"],
+                      answer: 1,
+                      explanation: "These cycles ensure that essential nutrients such as carbon, nitrogen and oxygen are recycled and remain available to support life."
+                    },
+                    {
+                      question: "Which bacteria fix atmospheric nitrogen into ammonia?",
+                      options: ["Nitrosomonas and Nitrobacter", "Rhizobium and Azotobacter", "Pseudomonas", "Lactobacillus"],
+                      answer: 1,
+                      explanation: "Rhizobium lives in the root nodules of legumes and Azotobacter in the soil; Nitrosomonas and Nitrobacter carry out nitrification instead."
+                    },
+                    {
+                      question: "What is denitrification?",
+                      options: ["Converting nitrogen gas into ammonia", "Converting ammonia into nitrite", "Converting some nitrates back into nitrogen gas", "Plants absorbing nitrates from the soil"],
+                      answer: 2,
+                      explanation: "Denitrifying bacteria such as Pseudomonas return nitrogen gas to the atmosphere, completing the cycle."
+                    },
+                    {
+                      question: "What is eutrophication?",
+                      options: ["The recovery of the ozone layer", "Excess nitrates causing algal blooms that deplete oxygen and kill fish", "The burial of dead organisms into fossil fuels", "The formation of gyres"],
+                      answer: 1,
+                      explanation: "The overuse of fertilisers adds excessive nitrogen as nitrates to rivers and lakes, threatening water bodies and coastal fisheries."
+                    },
+                    {
+                      question: "Roughly how much of the world's carbon is held in the oceans?",
+                      options: ["1%", "49%", "71%", "21%"],
+                      answer: 2,
+                      explanation: "71% of global carbon is in the oceans, which regulate atmospheric CO₂; the atmosphere itself holds only about 1%."
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },

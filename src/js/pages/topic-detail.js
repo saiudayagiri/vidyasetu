@@ -6087,6 +6087,96 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const solarHeatingLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="solar-heating-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 See what reaches the surface, and what happens to it there.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a View</h3>
+            <select id="sel-solar-heating" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="spectrum" selected>The electromagnetic spectrum</option>
+              <option value="albedo">Albedo of different surfaces</option>
+              <option value="latitude">Why the poles are colder</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What It Shows</h3>
+            <div id="solar-heating-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a view above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const atmosphereLayerLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="atmosphere-layer-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Climb through the layers and watch the temperature turn around.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Layer</h3>
+            <select id="sel-atmosphere-layer" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="tropo" selected>Troposphere (0 – 12 km)</option>
+              <option value="strato">Stratosphere (12 – 50 km)</option>
+              <option value="upper">Mesosphere and above</option>
+              <option value="composition">What the air is made of</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>About this Layer</h3>
+            <div id="atmosphere-layer-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a layer above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const windCurrentLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="wind-current-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Watch the air and water move when one side heats more than the other.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Situation</h3>
+            <select id="sel-wind-current" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="valley" selected>Valley breeze — daytime</option>
+              <option value="mountain">Mountain breeze — after sunset</option>
+              <option value="gyre">Ocean gyres</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What Drives It</h3>
+            <div id="wind-current-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a situation above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const biogeochemicalLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="biogeochemical-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Follow each element around its loop, and see where we break it.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Cycle</h3>
+            <select id="sel-biogeochemical" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="water" selected>The water cycle</option>
+              <option value="carbon">The carbon cycle</option>
+              <option value="nitrogen">The nitrogen cycle</option>
+              <option value="impact">Human impact</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>How It Works</h3>
+            <div id="biogeochemical-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a cycle above.</div>
+          </div>
+        </div>
+      </div>`;
+
     const biodiversityLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -9112,6 +9202,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'kinematic-equation-sim') {
               labHtml = kinematicEquationLabHtml;
               labDesc = 'Apply each kinematic equation to the same motion and see them agree.';
+            } else if (topicObj.lab.type === 'solar-heating-sim') {
+              labHtml = solarHeatingLabHtml;
+              labDesc = 'Explore the solar spectrum, albedo and why latitude matters.';
+            } else if (topicObj.lab.type === 'atmosphere-layer-sim') {
+              labHtml = atmosphereLayerLabHtml;
+              labDesc = 'Climb through the atmosphere and read its temperature profile.';
+            } else if (topicObj.lab.type === 'wind-current-sim') {
+              labHtml = windCurrentLabHtml;
+              labDesc = 'See how uneven heating sets air and ocean water in motion.';
+            } else if (topicObj.lab.type === 'biogeochemical-sim') {
+              labHtml = biogeochemicalLabHtml;
+              labDesc = 'Follow water, carbon and nitrogen around their cycles.';
             } else if (topicObj.lab.type === 'biodiversity-sim') {
               labHtml = biodiversityLabHtml;
               labDesc = 'Explore India’s hotspots, endemic species and why classification is needed.';
@@ -9935,6 +10037,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initMotionGraphLab();
         } else if (topicObj.lab.type === 'kinematic-equation-sim') {
           initKinematicEquationLab();
+        } else if (topicObj.lab.type === 'solar-heating-sim') {
+          initSolarHeatingLab();
+        } else if (topicObj.lab.type === 'atmosphere-layer-sim') {
+          initAtmosphereLayerLab();
+        } else if (topicObj.lab.type === 'wind-current-sim') {
+          initWindCurrentLab();
+        } else if (topicObj.lab.type === 'biogeochemical-sim') {
+          initBiogeochemicalLab();
         } else if (topicObj.lab.type === 'biodiversity-sim') {
           initBiodiversityLab();
         } else if (topicObj.lab.type === 'classification-timeline-sim') {
@@ -30267,6 +30377,567 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       sel.addEventListener('change', draw);
       draw();
+    }
+
+    function initSolarHeatingLab() {
+      const canvas = document.getElementById('solar-heating-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-solar-heating');
+      const obs = document.getElementById('solar-heating-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      function drawSpectrum() {
+        const bands = [
+          ['Gamma', '#8a4fd8'], ['X-rays', '#5a6fd8'], ['UV', '#5aa9e6'],
+          ['Visible', '#4caf82'], ['IR', '#e0a04a'], ['Microwave', '#e0743a'], ['Radio', '#c04a4a']
+        ];
+        const bx = 40, bw = (W - 80) / bands.length, by = 92;
+        bands.forEach((b, i) => {
+          ctx.fillStyle = b[1];
+          ctx.fillRect(bx + i * bw, by, bw - 2, 46);
+          ctx.fillStyle = '#12141a';
+          ctx.font = 'bold 11px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(b[0], bx + i * bw + bw / 2, by + 28);
+        });
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('higher frequency, shorter wavelength', bx, by - 12);
+        ctx.textAlign = 'right';
+        ctx.fillText('lower frequency, longer wavelength', W - 40, by - 12);
+
+        // The three bands that actually matter for Earth's climate.
+        const startI = 2, endI = 4;
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2.5;
+        ctx.strokeRect(bx + startI * bw - 2, by - 5, (endI - startI + 1) * bw, 56);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('about 99% of the Sun’s energy reaching Earth', bx + (startI + 1.5) * bw, by + 70);
+
+        const notes = [
+          ['UV', 'mostly absorbed by the ozone layer'],
+          ['Visible', 'reaches the surface, powers photosynthesis'],
+          ['Infrared', 'warms the surface, which re-radiates the heat'],
+          ['Gamma, X-rays', 'mostly filtered by the upper atmosphere'],
+          ['Microwave, radio', 'carry too little energy to warm the Earth']
+        ];
+        notes.forEach((n, i) => {
+          const y = 194 + i * 26;
+          ctx.fillStyle = text;
+          ctx.font = 'bold 12px sans-serif';
+          ctx.textAlign = 'right';
+          ctx.fillText(n[0], 190, y);
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText('— ' + n[1], 200, y);
+        });
+      }
+
+      function drawAlbedo() {
+        // Surfaces ranked by albedo, each with reflected and absorbed arrows.
+        const items = [
+          ['Fresh snow', 0.85, '#f2f6ff'], ['Sand', 0.4, '#e0cb8a'],
+          ['Grass', 0.25, '#5f9e6a'], ['Water', 0.08, '#3d7fb5'], ['Tarred road', 0.05, '#3a3a3a']
+        ];
+        items.forEach((it, i) => {
+          const y = 68 + i * 48;
+          ctx.fillStyle = it[2];
+          ctx.fillRect(150, y, 60, 30);
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 1.2;
+          ctx.strokeRect(150, y, 60, 30);
+          ctx.fillStyle = text;
+          ctx.font = '13px sans-serif';
+          ctx.textAlign = 'right';
+          ctx.fillText(it[0], 140, y + 20);
+          // Reflected fraction as a bar.
+          ctx.fillStyle = '#e0c04a';
+          ctx.fillRect(230, y + 2, 250 * it[1], 12);
+          ctx.fillStyle = '#c04a4a';
+          ctx.fillRect(230, y + 17, 250 * (1 - it[1]), 12);
+          ctx.fillStyle = text;
+          ctx.font = 'bold 12px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText('albedo ' + it[1], 492, y + 22);
+        });
+        ctx.fillStyle = '#e0c04a';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('reflected', 230, 58);
+        ctx.fillStyle = '#c04a4a';
+        ctx.fillText('absorbed', 316, 58);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('High albedo surfaces stay cool; low albedo surfaces heat up quickly.', W / 2, 314);
+      }
+
+      function drawLatitude() {
+        // A quarter of the globe with parallel sunbeams striking at two latitudes.
+        const cx = 210, cy = 175, r = 108;
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+        ctx.fillStyle = 'rgba(90,169,230,0.14)';
+        ctx.fill();
+
+        ctx.strokeStyle = '#e0c04a';
+        ctx.lineWidth = 2;
+        for (let i = -5; i <= 5; i++) {
+          const y = cy + i * 20;
+          ctx.beginPath(); ctx.moveTo(30, y); ctx.lineTo(cx - Math.sqrt(Math.max(0, r * r - Math.pow(y - cy, 2))), y); ctx.stroke();
+        }
+
+        // Patch struck at the equator versus near the pole.
+        ctx.strokeStyle = '#4caf82';
+        ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI - 0.22, Math.PI + 0.22); ctx.stroke();
+        ctx.strokeStyle = '#e0743a';
+        ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI + 1.05, Math.PI + 1.49); ctx.stroke();
+
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('equator: rays nearly head-on,', 340, 158);
+        ctx.fillText('energy concentrated on a small area', 340, 176);
+        ctx.fillStyle = '#e0743a';
+        ctx.fillText('pole: rays glance across,', 340, 218);
+        ctx.fillText('the same energy spread over a larger area', 340, 236);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('This uneven heating between equator and poles drives global winds and ocean currents.', W / 2, 314);
+      }
+
+      const NOTES = {
+        spectrum: '<strong>The electromagnetic spectrum</strong><br>Solar radiation reaches the Earth as electromagnetic waves travelling through vacuum at 3 × 10⁸ m s⁻¹. About 99 per cent of the Sun’s energy arriving here falls in the ultraviolet, visible and infrared range, and these three regions shape the Earth’s climate and support life. Short wavelength UV is mostly absorbed by the ozone layer; visible light reaches the surface and powers photosynthesis; infrared warms the surface, which then re-radiates the heat into the atmosphere.',
+        albedo: '<strong>Albedo</strong><br>The fraction of solar radiation reflected by a surface is called its albedo — the word comes from Latin for whiteness. High albedo surfaces stay cool because they reflect more light, while low albedo surfaces heat up quickly because they reflect less and absorb more. This is why dark coloured roads heat up faster than light coloured surfaces, and why dark clothes feel hotter than white ones in summer.',
+        latitude: '<strong>Latitude and the Earth’s shape</strong><br>Because the Earth is spherical, the Sun’s rays strike different latitudes at different angles. The radiation falling on the equatorial region is concentrated over a smaller area, while in the polar region the same radiation is spread over a larger area. This is why equatorial regions remain relatively warm all year and polar regions are much colder — and this uneven heating is what drives global winds and ocean currents.'
+      };
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText({
+          spectrum: 'The electromagnetic spectrum', albedo: 'How much sunlight each surface reflects',
+          latitude: 'The same rays, spread differently'
+        }[v], W / 2, 26);
+        if (v === 'spectrum') drawSpectrum();
+        else if (v === 'albedo') drawAlbedo();
+        else drawLatitude();
+        obs.innerHTML = NOTES[v];
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initAtmosphereLayerLab() {
+      const canvas = document.getElementById('atmosphere-layer-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-atmosphere-layer');
+      const obs = document.getElementById('atmosphere-layer-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      // Layer boundaries in km, drawn on a compressed vertical scale.
+      const LAYERS = [
+        { key: 'tropo', name: 'Troposphere', from: 0, to: 12, colour: '#5aa9e6' },
+        { key: 'strato', name: 'Stratosphere', from: 12, to: 50, colour: '#7f8ed8' },
+        { key: 'upper', name: 'Mesosphere', from: 50, to: 85, colour: '#a97fc8' },
+        { key: 'upper', name: 'Thermosphere', from: 85, to: 95, colour: '#c87fa8' },
+        { key: 'upper', name: 'Exosphere', from: 95, to: 100, colour: '#d89f8f' }
+      ];
+      const top = 60, bottom = 280;
+      const ky = k => bottom - (k / 100) * (bottom - top);
+
+      function drawLayers(active) {
+        LAYERS.forEach(l => {
+          const y1 = ky(l.to), y2 = ky(l.from);
+          ctx.globalAlpha = (active === 'composition' || l.key === active) ? 0.85 : 0.22;
+          ctx.fillStyle = l.colour;
+          ctx.fillRect(90, y1, 200, y2 - y1);
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 1;
+          ctx.strokeRect(90, y1, 200, y2 - y1);
+          if (y2 - y1 > 15) {
+            ctx.fillStyle = '#12141a';
+            ctx.font = 'bold 12px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(l.name, 190, (y1 + y2) / 2 + 4);
+          }
+        });
+        [0, 12, 50, 100].forEach(k => {
+          ctx.fillStyle = muted;
+          ctx.font = '11px sans-serif';
+          ctx.textAlign = 'right';
+          ctx.fillText(k + ' km', 84, ky(k) + 4);
+        });
+        ctx.fillStyle = '#4a6b52';
+        ctx.fillRect(90, bottom, 200, 12);
+      }
+
+      function drawTempProfile() {
+        // Temperature falls through the troposphere, rises through the stratosphere.
+        const px0 = 330, px1 = 560;
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(px0, top); ctx.lineTo(px0, bottom); ctx.lineTo(px1, bottom);
+        ctx.stroke();
+        ctx.fillStyle = text;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('temperature →', (px0 + px1) / 2, bottom + 24);
+        ctx.save();
+        ctx.translate(px0 - 22, (top + bottom) / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('height →', 0, 0);
+        ctx.restore();
+
+        ctx.strokeStyle = '#e0743a';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(px1 - 30, ky(0));
+        ctx.lineTo(px0 + 30, ky(12));
+        ctx.lineTo(px1 - 50, ky(50));
+        ctx.lineTo(px0 + 40, ky(85));
+        ctx.lineTo(px1 - 40, ky(100));
+        ctx.stroke();
+        ctx.fillStyle = muted;
+        ctx.font = '11px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('falls ~6.5 °C/km', px0 + 34, ky(6));
+        ctx.fillText('rises — ozone absorbs UV', px0 + 20, ky(32));
+      }
+
+      function drawComposition() {
+        const gases = [['Nitrogen', 78, '#5aa9e6'], ['Oxygen', 21, '#4caf82'], ['Argon, CO₂, water vapour and others', 1, '#e0a04a']];
+        let start = -Math.PI / 2;
+        const cx = 430, cy = 160, r = 84;
+        gases.forEach(g => {
+          const ang = (g[1] / 100) * Math.PI * 2;
+          ctx.fillStyle = g[2];
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.arc(cx, cy, r, start, start + ang);
+          ctx.closePath();
+          ctx.fill();
+          start += ang;
+        });
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+        gases.forEach((g, i) => {
+          const y = 262 + i * 22;
+          ctx.fillStyle = g[2];
+          ctx.fillRect(324, y - 9, 12, 12);
+          ctx.fillStyle = text;
+          ctx.font = '12px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(g[0] + ' — ' + g[1] + '%', 344, y);
+        });
+      }
+
+      const NOTES = {
+        tropo: '<strong>Troposphere (0 – 12 km)</strong><br>Nearly all weather phenomena take place here. The layer is heated from the Earth’s surface, so temperature decreases with height at roughly 6.5 °C per kilometre, and as the warm air rises it drives winds and storms. The troposphere is tallest above the equator and lowest above the polar regions.',
+        strato: '<strong>Stratosphere (12 – 50 km)</strong><br>The ozone layer sits here. Ozone absorbs UV rays and heats the atmosphere, so temperature <em>rises</em> with height. This increase calms the layer because there is no vertical mixing of air — which is exactly why weather stays confined to the troposphere below.',
+        upper: '<strong>Mesosphere, thermosphere and exosphere</strong><br>Above the stratosphere lie the mesosphere, thermosphere and exosphere. They play only a minor role in regulating climate at the Earth’s surface. At about 100 km above the Earth begins the region we call outer space.',
+        composition: '<strong>What the air is made of</strong><br>The atmosphere is held in place by the force of Earth’s gravity. It consists mainly of nitrogen (78%) and oxygen (21%), along with small amounts of argon, carbon dioxide, water vapour and other gases. Its layered structure is important because it helps explain key weather patterns and shows how the atmosphere regulates the flow of energy.'
+      };
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(v === 'composition' ? 'Composition of the atmosphere' : 'Layers of the Earth’s atmosphere', W / 2, 26);
+        drawLayers(v);
+        if (v === 'composition') drawComposition();
+        else drawTempProfile();
+        obs.innerHTML = NOTES[v];
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initWindCurrentLab() {
+      const canvas = document.getElementById('wind-current-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-wind-current');
+      const obs = document.getElementById('wind-current-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      function arrow(x1, y1, x2, y2, colour) {
+        ctx.strokeStyle = colour; ctx.fillStyle = colour;
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+        const ang = Math.atan2(y2 - y1, x2 - x1);
+        ctx.beginPath();
+        ctx.moveTo(x2, y2);
+        ctx.lineTo(x2 - 12 * Math.cos(ang - 0.4), y2 - 12 * Math.sin(ang - 0.4));
+        ctx.lineTo(x2 - 12 * Math.cos(ang + 0.4), y2 - 12 * Math.sin(ang + 0.4));
+        ctx.closePath(); ctx.fill();
+      }
+
+      function drawSlope(day) {
+        // Two mountains with a valley between them.
+        ctx.fillStyle = '#5a5f6b';
+        ctx.beginPath();
+        ctx.moveTo(20, 290); ctx.lineTo(160, 96); ctx.lineTo(300, 290);
+        ctx.closePath(); ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(300, 290); ctx.lineTo(440, 96); ctx.lineTo(580, 290);
+        ctx.closePath(); ctx.fill();
+        ctx.fillStyle = '#4a6b52';
+        ctx.fillRect(20, 290, 560, 18);
+
+        if (day) {
+          // Sunlit slopes heat, air rises, valley air flows up.
+          ctx.fillStyle = '#e0c04a';
+          ctx.beginPath(); ctx.arc(300, 66, 22, 0, Math.PI * 2); ctx.fill();
+          arrow(160, 96, 160, 52, '#e0743a');
+          arrow(440, 96, 440, 52, '#e0743a');
+          arrow(290, 262, 200, 160, '#5aa9e6');
+          arrow(310, 262, 400, 160, '#5aa9e6');
+          ctx.fillStyle = '#e0743a';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('warm air rising', 160, 44);
+          ctx.fillText('low pressure', 440, 44);
+          ctx.fillStyle = '#5aa9e6';
+          ctx.fillText('valley breeze — cooler air moves up the slopes', 300, 286);
+        } else {
+          // Slopes cool, dense air slides into the valley.
+          ctx.fillStyle = '#2c3550';
+          ctx.beginPath(); ctx.arc(300, 66, 18, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = muted;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+          arrow(200, 160, 288, 262, '#5aa9e6');
+          arrow(400, 160, 312, 262, '#5aa9e6');
+          ctx.fillStyle = '#5aa9e6';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('cool, dense air sinking', 160, 128);
+          ctx.fillText('mountain breeze — air flows down into the valley', 300, 286);
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.fillText('slopes lose heat faster; the valley floor stays warmer', 300, 60);
+        }
+      }
+
+      function drawGyres() {
+        // Two ocean basins with gyres turning opposite ways.
+        ctx.fillStyle = 'rgba(61,127,181,0.28)';
+        ctx.fillRect(60, 56, W - 120, 220);
+        ctx.strokeStyle = muted;
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(60, 56, W - 120, 220);
+        ctx.strokeStyle = muted;
+        ctx.setLineDash([6, 5]);
+        ctx.beginPath(); ctx.moveTo(60, 166); ctx.lineTo(W - 60, 166); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('equator', 66, 162);
+
+        [[190, 112, true], [410, 112, true], [190, 222, false], [410, 222, false]].forEach(g => {
+          const cx = g[0], cy = g[1], cw = g[2];
+          ctx.strokeStyle = cw ? '#e0743a' : '#5aa9e6';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.arc(cx, cy, 38, cw ? 0.4 : Math.PI - 0.4, cw ? Math.PI * 2 : Math.PI * 3 - 0.8, false);
+          ctx.stroke();
+          const a = cw ? 0.4 : Math.PI - 0.4;
+          const hx = cx + 38 * Math.cos(a), hy = cy + 38 * Math.sin(a);
+          ctx.fillStyle = cw ? '#e0743a' : '#5aa9e6';
+          ctx.beginPath();
+          ctx.moveTo(hx, hy);
+          ctx.lineTo(hx + (cw ? 10 : -10), hy - 12);
+          ctx.lineTo(hx + (cw ? -2 : 2), hy - 14);
+          ctx.closePath(); ctx.fill();
+        });
+        ctx.fillStyle = '#e0743a';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Northern Hemisphere — gyres turn clockwise', W / 2, 76);
+        ctx.fillStyle = '#5aa9e6';
+        ctx.fillText('Southern Hemisphere — counter clockwise', W / 2, 268);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('Warm water travels poleward at the surface; colder, denser water returns at depth.', W / 2, 308);
+      }
+
+      const NOTES = {
+        valley: '<strong>Valley breeze — daytime</strong><br>In mountainous regions the slopes and the valley floor do not heat at the same rate. During the day the slopes facing the Sun heat more rapidly, so the air over them becomes warm and rises, creating a low pressure region. Cooler air from the valley moves up the slopes to replace the rising warm air — this flow is called a valley breeze.',
+        mountain: '<strong>Mountain breeze — after sunset</strong><br>After sunset the situation reverses. The mountain slopes lose heat faster and become cooler, while the valley floor remains relatively warmer. The air over the slopes becomes cooler and denser and flows down into the valley — a mountain breeze. Such daily changes of wind direction are commonly experienced in hilly regions like Shimla and Dehradun, and they help regulate temperature and moisture for soil and crops.',
+        gyre: '<strong>Ocean gyres</strong><br>Strong planetary winds drag surface water because of friction, setting currents in motion; temperature and salinity differences, the Earth’s rotation and the land masses all shape the flow. Warm equatorial water travels poleward at the surface while colder, denser water returns towards the equator at depth. The Earth’s rotation deflects these water masses into large circular patterns called gyres — clockwise in the Northern Hemisphere and counter clockwise in the Southern. By carrying heat from the equator towards the poles, currents such as the North Atlantic Drift reduce temperature differences across the planet.'
+      };
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText({
+          valley: 'Valley breeze — the slopes heat first', mountain: 'Mountain breeze — the slopes cool first',
+          gyre: 'Ocean gyres'
+        }[v], W / 2, 26);
+        if (v === 'gyre') drawGyres();
+        else drawSlope(v === 'valley');
+        obs.innerHTML = NOTES[v];
+      }
+
+      sel.addEventListener('change', update);
+      update();
+    }
+
+    function initBiogeochemicalLab() {
+      const canvas = document.getElementById('biogeochemical-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-biogeochemical');
+      const obs = document.getElementById('biogeochemical-obs');
+      const W = canvas.width, H = canvas.height;
+      const text = cssVar('--text-normal', '#e6e6e6');
+      const muted = cssVar('--text-muted', '#9aa0a6');
+      const accent = cssVar('--accent-primary', '#6c8cff');
+
+      // Each cycle is a ring of labelled nodes joined by arrows.
+      const CYCLES = {
+        water: {
+          colour: '#5aa9e6',
+          nodes: ['Evaporation', 'Condensation', 'Precipitation', 'Run off', 'Groundwater', 'Ocean'],
+          note: 'Water evaporates from rivers, lakes and oceans and condenses to form clouds. It returns as precipitation — rain, hail or snow — and finally flows back to the ocean, while some seeps through soil and rock as groundwater. Along the way water dissolves minerals from soil and rocks, supports all terrestrial organisms, and transports nutrients to the oceans to support marine life.'
+        },
+        carbon: {
+          colour: '#4caf82',
+          nodes: ['CO₂ in the air', 'Photosynthesis', 'Plants', 'Animals', 'Respiration', 'Decomposition', 'Fossil fuels'],
+          note: 'In the fast cycle, over days to years, plants convert atmospheric CO₂ into glucose by photosynthesis; respiration returns CO₂ to the air, and decomposition returns it when organisms die. In the slow cycle, over millions of years, buried plants and animals become coal, oil and gas. Carbon is about 49% of the dry weight of living organisms; 71% of global carbon is held in the oceans and only about 1% in the atmosphere.'
+        },
+        nitrogen: {
+          colour: '#c08ad8',
+          nodes: ['Atmospheric N₂', 'Nitrogen fixation', 'Ammonia', 'Nitrification', 'Nitrate', 'Assimilation', 'Ammonification', 'Denitrification'],
+          note: 'Nitrogen gas is rather non-reactive and must be converted before living beings can use it. Rhizobium in legume root nodules and Azotobacter in the soil fix N₂ into ammonia. Nitrosomonas converts ammonia to nitrite and Nitrobacter converts nitrite to nitrate — nitrification. Plants assimilate these compounds and animals obtain nitrogen by eating plants or other animals. Decomposers return ammonia to the soil in ammonification, and Pseudomonas returns nitrogen gas by denitrification. Lightning also fixes a small amount of nitrogen.'
+        }
+      };
+
+      function drawCycle(c) {
+        const cx = 300, cy = 176, r = 108;
+        const n = c.nodes.length;
+        // The ring of arrows.
+        for (let i = 0; i < n; i++) {
+          const a0 = (2 * Math.PI * i) / n - Math.PI / 2 + 0.22;
+          const a1 = (2 * Math.PI * (i + 1)) / n - Math.PI / 2 - 0.22;
+          ctx.strokeStyle = c.colour;
+          ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.arc(cx, cy, r, a0, a1); ctx.stroke();
+          const hx = cx + r * Math.cos(a1), hy = cy + r * Math.sin(a1);
+          const tan = a1 + Math.PI / 2;
+          ctx.fillStyle = c.colour;
+          ctx.beginPath();
+          ctx.moveTo(hx + 8 * Math.cos(tan), hy + 8 * Math.sin(tan));
+          ctx.lineTo(hx - 5 * Math.cos(tan) + 5 * Math.cos(a1), hy - 5 * Math.sin(tan) + 5 * Math.sin(a1));
+          ctx.lineTo(hx - 5 * Math.cos(tan) - 5 * Math.cos(a1), hy - 5 * Math.sin(tan) - 5 * Math.sin(a1));
+          ctx.closePath(); ctx.fill();
+        }
+        // The node labels, pushed outside the ring.
+        c.nodes.forEach((label, i) => {
+          const a = (2 * Math.PI * i) / n - Math.PI / 2;
+          const lx = cx + (r + 34) * Math.cos(a), ly = cy + (r + 34) * Math.sin(a);
+          ctx.fillStyle = text;
+          ctx.font = 'bold 12px sans-serif';
+          ctx.textAlign = Math.abs(Math.cos(a)) < 0.25 ? 'center' : (Math.cos(a) > 0 ? 'left' : 'right');
+          ctx.fillText(label, lx, ly + 4);
+          ctx.fillStyle = c.colour;
+          ctx.beginPath();
+          ctx.arc(cx + r * Math.cos(a), cy + r * Math.sin(a), 5, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      function drawImpact() {
+        const rows = [
+          ['Burning fossil fuels', 'excess CO₂ → greenhouse warming, acidic oceans'],
+          ['Deforestation', 'less photosynthesis, less rain, more soil erosion'],
+          ['Fertiliser overuse', 'nitrates → algal blooms → eutrophication'],
+          ['Vehicular emissions', 'ground level smog and harmful ground level ozone']
+        ];
+        rows.forEach((r, i) => {
+          const y = 76 + i * 46;
+          ctx.fillStyle = '#e0743a';
+          ctx.fillRect(40, y - 15, 6, 30);
+          ctx.fillStyle = text;
+          ctx.font = 'bold 13px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(r[0], 58, y - 2);
+          ctx.fillStyle = muted;
+          ctx.font = '12px sans-serif';
+          ctx.fillText(r[1], 58, y + 16);
+        });
+        ctx.fillStyle = '#4caf82';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('What helps', W / 2, 282);
+        ctx.fillStyle = muted;
+        ctx.font = '12px sans-serif';
+        ctx.fillText('renewable energy · planting trees · saving water · sustainable farming · global cooperation', W / 2, 304);
+      }
+
+      function update() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
+        ctx.fillRect(0, 0, W, H);
+        const v = sel.value;
+        ctx.fillStyle = accent;
+        ctx.font = 'bold 15px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText({
+          water: 'The water cycle', carbon: 'The carbon cycle',
+          nitrogen: 'The nitrogen cycle', impact: 'How human activity disrupts the cycles'
+        }[v], W / 2, 26);
+        if (v === 'impact') {
+          drawImpact();
+          obs.innerHTML = '<strong>Human impact</strong><br>Rising CO₂ from fossil fuels leads to extreme weather and biodiversity loss. Excess atmospheric CO₂ increases ocean absorption, making sea water more acidic and threatening plankton and coral reefs, while warmer water reduces the ocean’s capacity to act as a carbon sink. Overuse of fertilisers adds excessive nitrates to rivers and lakes, causing algal blooms that deplete oxygen and kill fish — eutrophication. Deforestation reduces photosynthesis and transpiration, alters albedo, increases soil erosion and destroys habitats.<br><br>The Montreal Protocol has begun the recovery of the ozone layer through global cooperation. Conserving energy, switching to renewables, planting trees, saving water and sustainable farming all help restore the balance.';
+          return;
+        }
+        const c = CYCLES[v];
+        drawCycle(c);
+        obs.innerHTML = '<strong>' + { water: 'The water cycle', carbon: 'The carbon cycle', nitrogen: 'The nitrogen cycle' }[v] + '</strong><br><br>' + c.note;
+      }
+
+      sel.addEventListener('change', update);
+      update();
     }
 
     function initBiodiversityLab() {
