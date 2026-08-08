@@ -345,7 +345,7 @@ function getInlineLabHtml(type) {
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
           <canvas id="scimethod-canvas" width="600" height="300"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a everyday mystery and click "Investigate!" to walk through the scientific method step-by-step.</span></div>
+          <div class="canvas-instruction-bar"><span>💡 Pick an everyday mystery, then move through the five steps one click at a time — take as long as you like on each one.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
@@ -355,7 +355,11 @@ function getInlineLabHtml(type) {
               <option value="plant">Why is my plant wilting?</option>
               <option value="bulb">Why isn't the bulb glowing?</option>
             </select>
-            <button id="btn-scimethod-investigate" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Investigate! 🔍</button>
+            <div style="display:flex;gap:0.5rem;">
+              <button id="btn-scimethod-back" style="flex:0 0 36%;justify-content:center;background:var(--bg-primary);color:var(--text-normal);border:1px solid var(--border-color);padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">◀ Back</button>
+              <button id="btn-scimethod-investigate" style="flex:1;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Investigate! 🔍</button>
+            </div>
+            <div id="scimethod-progress" style="margin-top:0.6rem;font-size:0.85rem;color:var(--text-muted);text-align:center;">Not started yet — 5 steps to go</div>
           </div>
           <div class="sim-calculator">
             <h3>Investigation Log</h3>
@@ -367,13 +371,14 @@ function getInlineLabHtml(type) {
     const plantGroupingLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="plantgroup-canvas" width="600" height="300"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Switch between Monocot and Dicot to see how seed, root and venation are all connected.</span></div>
+          <canvas id="plantgroup-canvas" width="600" height="430"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Compare the seed, leaf and root side by side — or spotlight just one type at a time.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
             <h3>Choose a Plant Type</h3>
             <select id="sel-plantgroup-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="both">Compare both side by side</option>
               <option value="monocot">Monocot (e.g. Maize)</option>
               <option value="dicot">Dicot (e.g. Chickpea)</option>
             </select>
@@ -388,8 +393,8 @@ function getInlineLabHtml(type) {
     const camelAdaptationLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="camel-canvas" width="600" height="300"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Switch between the hot-desert and cold-desert camel to compare their adaptations.</span></div>
+          <canvas id="camel-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Switch between the hot-desert and cold-desert camel — every labelled feature is an adaptation to its habitat.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
@@ -9488,7 +9493,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
         }
 
+        const quizPoolSize = (chapterObj.topics || []).reduce((n, t) => n + ((t.quiz || []).length), 0);
+        const quizCtaHtml = quizPoolSize === 0 ? '' : `
+          <div class="topic-quiz-cta">
+            <button id="goto-quiz-btn" class="nav-topic-btn next" style="width: 100%; justify-content: center; align-items: center; gap: 0.6rem; padding: 1rem; font-size: 1.05rem; font-weight: 700; background: var(--primary-color); color: white; border: none; border-radius: var(--radius-md); cursor: pointer;">
+              <span>📝</span>
+              <span>Finished reading? Take the chapter quiz — ${quizPoolSize} questions</span>
+            </button>
+          </div>
+        `;
+
         topicNavHtml = `
+          ${quizCtaHtml}
           <div class="topic-navigation-bar">
             <div>
               ${prevTopic ? `
@@ -9518,6 +9534,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ${topicNavHtml}
         </div>
       `;
+
+      // "Take the chapter quiz" shortcut at the foot of the lesson.
+      const gotoQuizBtn = document.getElementById('goto-quiz-btn');
+      if (gotoQuizBtn) {
+        gotoQuizBtn.addEventListener('click', () => {
+          switchTab('quiz');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
 
       // Initialize the simulation canvas
       if (topicObj.lab) {
@@ -10307,13 +10332,24 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
               <div>
                 <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-normal);">Select Number of Questions:</label>
                 <div style="display: flex; gap: 0.5rem;">
-                  ${[5, 10, 'All'].map(cnt => {
-                    const active = quizSelectedTotalCount === cnt || (cnt === 'All' && quizSelectedTotalCount === 999);
-                    return `
-                      <button class="config-count-btn nav-topic-btn" data-count="${cnt}" style="flex: 1; justify-content: center; text-align: center; border-color: ${active ? 'var(--secondary-color)' : 'var(--border-color)'}; background: ${active ? 'var(--secondary-glow)' : 'transparent'}">${cnt}</button>
+                  ${(() => {
+                    // Only offer counts this chapter can actually fill, so "10" and
+                    // "All" can never quietly serve the same handful of questions.
+                    const poolSize = getChapterQuestionPool().length;
+                    const opts = [5, 10, 15, 20].filter(n => n < poolSize);
+                    opts.push('All');
+                    return opts.map(cnt => {
+                      const active = cnt === 'All'
+                        ? (quizSelectedTotalCount === 999 || quizSelectedTotalCount >= poolSize)
+                        : quizSelectedTotalCount === cnt;
+                      const label = cnt === 'All' ? `All (${poolSize})` : cnt;
+                      return `
+                      <button class="config-count-btn nav-topic-btn" data-count="${cnt}" style="flex: 1; justify-content: center; text-align: center; border-color: ${active ? 'var(--secondary-color)' : 'var(--border-color)'}; background: ${active ? 'var(--secondary-glow)' : 'transparent'}">${label}</button>
                     `;
-                  }).join('')}
+                    }).join('');
+                  })()}
                 </div>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0.5rem 0 0;">This chapter has ${getChapterQuestionPool().length} questions in all.</p>
               </div>
               <div style="margin-top: 1.25rem;">
                 <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-normal);">Question Progression:</label>
@@ -11528,58 +11564,102 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             ctx.fillText("25°C", W/2 + 48, 230);
           }
         } else if (currentReaction === 'electrolysis') {
+          // --- Electrodes, drawn tall enough to emerge above the collecting tubes.
           ctx.fillStyle = '#334155';
-          ctx.fillRect(W/2 - 25, 140, 10, 100);
-          ctx.fillRect(W/2 + 15, 140, 10, 100);
-          
-          ctx.fillStyle = cssVar('--text-muted', '#000000');
-          ctx.font = 'bold 9px system-ui';
-          ctx.fillText("Cathode (-)", W/2 - 48, 130);
-          ctx.fillText("Anode (+)", W/2 + 10, 130);
-          
-          // Circuit wiring
-          ctx.strokeStyle = '#64748b';
-          ctx.lineWidth = 2;
+          ctx.fillRect(W/2 - 25, 88, 10, 152);
+          ctx.fillRect(W/2 + 15, 88, 10, 152);
+
+          // --- A complete circuit routed right around the apparatus:
+          //     battery (left) → bottom → switch (right) → anode → electrolyte → cathode.
+          const TOP = 46, BOT = 300, LFT = 52, RGT = 548;
+          const CATH = W/2 - 20, ANOD = W/2 + 20;
+          const battY = 168, swY = 168;          // battery and switch sit mid-height
+          const wire = '#8fa1b8';
+
+          ctx.strokeStyle = wire; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
           ctx.beginPath();
-          ctx.moveTo(W/2 - 20, 140);
-          ctx.lineTo(W/2 - 20, 60);
-          ctx.lineTo(W/2 - 40, 60);
-          
-          ctx.moveTo(W/2 + 20, 140);
-          ctx.lineTo(W/2 + 20, 60);
-          ctx.lineTo(W/2 + 50, 60);
+          // cathode lead up and across to the left rail
+          ctx.moveTo(CATH, 88); ctx.lineTo(CATH, TOP); ctx.lineTo(LFT, TOP);
+          // down the left rail to the battery
+          ctx.lineTo(LFT, battY - 22);
+          ctx.stroke();
+          ctx.beginPath();
+          // out of the battery, down and along the bottom, up the right rail to the switch
+          ctx.moveTo(LFT, battY + 22); ctx.lineTo(LFT, BOT);
+          ctx.lineTo(RGT, BOT); ctx.lineTo(RGT, swY + 20);
+          ctx.stroke();
+          ctx.beginPath();
+          // out of the switch, up the right rail and across to the anode
+          ctx.moveTo(RGT, swY - 20); ctx.lineTo(RGT, TOP);
+          ctx.lineTo(ANOD, TOP); ctx.lineTo(ANOD, 88);
           ctx.stroke();
 
-          // Battery
-          ctx.fillStyle = '#94a3b8';
-          ctx.fillRect(W/2 - 40, 50, 40, 20);
-          ctx.fillStyle = '#0f172a';
-          ctx.fillRect(W/2 - 40, 50, 5, 20); // Negative
-          ctx.fillRect(W/2, 56, 4, 8); // Positive
-          ctx.fillStyle = cssVar('--text-muted', '#000000');
-          ctx.font = '10px system-ui';
-          ctx.fillText("Battery", W/2 - 35, 45);
+          // --- Battery symbol: two cells, long plate positive, short plate negative.
+          const plates = [[-16, 14, 3], [-8, 8, 5], [0, 14, 3], [8, 8, 5]];
+          plates.forEach(p => {
+            ctx.strokeStyle = '#dbe4f0';
+            ctx.lineWidth = p[2];
+            ctx.beginPath();
+            ctx.moveTo(LFT - p[1], battY + p[0]);
+            ctx.lineTo(LFT + p[1], battY + p[0]);
+            ctx.stroke();
+          });
+          ctx.fillStyle = '#dbe4f0';
+          ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('−', LFT + 26, battY - 14);
+          ctx.fillText('+', LFT + 26, battY + 22);
+          ctx.fillStyle = cssVar('--text-muted', '#94a3b8');
+          ctx.font = 'bold 10px system-ui';
+          ctx.fillText('6 V', LFT, battY + 40);
+          ctx.fillText('battery', LFT, battY + 52);
 
-          // Switch
+          // --- Knife switch that visibly closes when the power is turned on.
+          ctx.strokeStyle = wire; ctx.lineWidth = 3;
           ctx.beginPath();
-          ctx.moveTo(W/2 + 50, 60);
-          if (reactionActive) {
-            ctx.lineTo(W/2 + 80, 60);
-          } else {
-            ctx.lineTo(W/2 + 75, 45);
-          }
+          ctx.moveTo(RGT, swY + 20);
+          if (reactionActive) ctx.lineTo(RGT, swY - 20);
+          else ctx.lineTo(RGT + 20, swY - 12);
           ctx.stroke();
-          
-          ctx.beginPath();
-          ctx.moveTo(W/2 + 80, 60);
-          ctx.lineTo(W/2 + 100, 60);
-          ctx.stroke();
-
           ctx.fillStyle = '#ef4444';
           ctx.beginPath();
-          ctx.arc(W/2 + 50, 60, 3, 0, 2*Math.PI);
-          ctx.arc(W/2 + 80, 60, 3, 0, 2*Math.PI);
+          ctx.arc(RGT, swY + 20, 3.5, 0, 2*Math.PI);
+          ctx.arc(RGT, swY - 20, 3.5, 0, 2*Math.PI);
           ctx.fill();
+          ctx.fillStyle = reactionActive ? '#22c55e' : cssVar('--text-muted', '#94a3b8');
+          ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(reactionActive ? 'switch' : 'switch', RGT, swY + 42);
+          ctx.fillText(reactionActive ? 'CLOSED' : 'OPEN', RGT, swY + 54);
+
+          // --- Conventional current, flowing only while the circuit is closed.
+          if (reactionActive) {
+            const arrow = (x, y, dx, dy) => {
+              ctx.save();
+              ctx.translate(x, y);
+              ctx.rotate(Math.atan2(dy, dx));
+              ctx.fillStyle = '#22c55e';
+              ctx.beginPath();
+              ctx.moveTo(7, 0); ctx.lineTo(-4, -5); ctx.lineTo(-4, 5);
+              ctx.closePath(); ctx.fill();
+              ctx.restore();
+            };
+            arrow(LFT, 250, 0, 1);            // down the left rail
+            arrow(300, BOT, 1, 0);            // along the bottom
+            arrow(RGT, 250, 0, -1);           // up the right rail
+            arrow(430, TOP, -1, 0);           // across the top towards the anode
+            arrow(CATH, 66, 0, -1);           // back out of the cathode
+            arrow(LFT + 110, TOP, -1, 0);
+            ctx.fillStyle = '#22c55e';
+            ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'left';
+            ctx.fillText('conventional current', LFT + 12, BOT - 10);
+          }
+
+          // --- Terminal labels, clear of the tubes.
+          ctx.font = 'bold 11px system-ui';
+          ctx.fillStyle = '#93c5fd'; ctx.textAlign = 'right';
+          ctx.fillText('Cathode (−)', W/2 - 40, 120);
+          ctx.fillStyle = '#fca5a5'; ctx.textAlign = 'left';
+          ctx.fillText('Anode (+)', W/2 + 40, 120);
+          ctx.textAlign = 'center';
 
           ctx.fillStyle = 'rgba(59, 130, 246, 0.15)';
           
@@ -16758,6 +16838,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const ctx = canvas.getContext('2d');
       const sel = document.getElementById('sel-scimethod-mystery');
       const btn = document.getElementById('btn-scimethod-investigate');
+      const back = document.getElementById('btn-scimethod-back');
+      const progress = document.getElementById('scimethod-progress');
       const obs = document.getElementById('scimethod-obs');
       let step = -1;
 
@@ -16821,7 +16903,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           ctx.fillText(n.label, n.x, n.y + 45);
           if (step === i) {
             ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 3;
-            ctx.beginPath(); ctx.arc(n.x, n.y, 30 + Math.sin(Date.now() / 100) * 3, 0, 2 * Math.PI); ctx.stroke();
+            ctx.beginPath(); ctx.arc(n.x, n.y, 32, 0, 2 * Math.PI); ctx.stroke();
           }
         });
         ctx.textAlign = 'left';
@@ -16830,20 +16912,36 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.fillText(scenario.title, 20, 25);
       }
 
-      btn.addEventListener('click', () => {
+      // The student advances one step per click, so there is no time pressure
+      // to finish reading before the next step appears.
+      function render() {
         const scenario = scenarios[sel.value];
-        step = 0;
-        let s = 0;
-        const timer = setInterval(() => {
-          step = s;
-          draw();
-          obs.innerHTML = `<strong>Step ${s + 1}/5:</strong><br>${scenario.steps[s]}`;
-          s++;
-          if (s > 4) { clearInterval(timer); }
-        }, 900);
+        draw();
+        if (step < 0) {
+          obs.innerHTML = 'Choose a mystery and click <strong>Investigate</strong> to begin.';
+          btn.textContent = 'Investigate! 🔍';
+          progress.textContent = 'Not started yet — 5 steps to go';
+        } else {
+          obs.innerHTML = `<strong>Step ${step + 1} of 5 — ${nodes[step].label}</strong><br>${scenario.steps[step]}`;
+          btn.textContent = step < nodes.length - 1 ? 'Next step ▶' : 'Start again ↺';
+          progress.textContent = step < nodes.length - 1
+            ? `Step ${step + 1} of 5 — read it, then click Next when you are ready`
+            : 'Step 5 of 5 — investigation complete';
+        }
+        back.disabled = step <= 0;
+        back.style.opacity = step <= 0 ? '0.45' : '1';
+        back.style.cursor = step <= 0 ? 'default' : 'pointer';
+      }
+
+      btn.addEventListener('click', () => {
+        if (step < 0) step = 0;
+        else if (step < nodes.length - 1) step++;
+        else step = -1;
+        render();
       });
-      sel.addEventListener('change', () => { step = -1; draw(); obs.innerHTML = 'Choose a mystery and click Investigate to begin.'; });
-      draw();
+      back.addEventListener('click', () => { if (step > 0) { step--; render(); } });
+      sel.addEventListener('change', () => { step = -1; render(); });
+      render();
     }
 
     function initPlantGroupingLab() {
@@ -16853,75 +16951,243 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const sel = document.getElementById('sel-plantgroup-type');
       const obs = document.getElementById('plantgroup-obs');
 
-      function drawSeed(cx, cy, isDicot) {
-        ctx.fillStyle = '#d97706';
-        if (isDicot) {
-          ctx.beginPath(); ctx.ellipse(cx - 12, cy, 16, 22, 0, 0, 2 * Math.PI); ctx.fill();
-          ctx.beginPath(); ctx.ellipse(cx + 12, cy, 16, 22, 0, 0, 2 * Math.PI); ctx.fill();
-          ctx.strokeStyle = '#78350f'; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.moveTo(cx, cy - 22); ctx.lineTo(cx, cy + 22); ctx.stroke();
-        } else {
-          ctx.beginPath(); ctx.ellipse(cx, cy, 16, 24, 0, 0, 2 * Math.PI); ctx.fill();
-        }
-        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
-        ctx.fillText(isDicot ? '2 cotyledons' : '1 cotyledon', cx, cy + 45);
+      const SEED_FILL = '#e0a13a', SEED_EDGE = '#8a5a1a';
+      const LEAF_FILL = 'rgba(74,180,96,0.28)', LEAF_EDGE = '#2f9e51', VEIN = '#2f9e51';
+      const ROOT = '#a97a45';
+
+      function caption(cx, y, str, strong) {
+        ctx.fillStyle = strong ? cssVar('--text-normal', '#e6e6e6') : cssVar('--text-muted', '#9aa0a6');
+        ctx.font = (strong ? 'bold ' : '') + '12px system-ui';
+        ctx.textAlign = 'center';
+        ctx.fillText(str, cx, y);
       }
 
-      function drawLeaf(cx, cy, isDicot) {
-        ctx.fillStyle = 'rgba(34,197,94,0.3)';
-        ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2;
-        if (isDicot) {
-          ctx.beginPath(); ctx.ellipse(cx, cy, 30, 40, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(cx, cy - 38); ctx.lineTo(cx, cy + 38); ctx.stroke();
-          for (let i = -30; i <= 30; i += 15) {
-            ctx.beginPath(); ctx.moveTo(cx, cy + i); ctx.lineTo(cx - 22, cy + i - 10); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(cx, cy + i); ctx.lineTo(cx + 22, cy + i - 10); ctx.stroke();
-          }
-        } else {
-          ctx.beginPath(); ctx.ellipse(cx, cy, 14, 42, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
-          for (let i = -8; i <= 8; i += 8) {
-            ctx.beginPath(); ctx.moveTo(cx + i, cy - 40); ctx.lineTo(cx + i, cy + 40); ctx.stroke();
-          }
-        }
-        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
-        ctx.fillText(isDicot ? 'Reticulate venation' : 'Parallel venation', cx, cy + 60);
+      // ---- Seeds -------------------------------------------------------
+      // A maize grain: one solid body that does not split.
+      function monocotSeed(cx, cy) {
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - 30);
+        ctx.bezierCurveTo(cx + 25, cy - 22, cx + 23, cy + 16, cx + 9, cy + 29);
+        ctx.quadraticCurveTo(cx, cy + 34, cx - 9, cy + 29);
+        ctx.bezierCurveTo(cx - 23, cy + 16, cx - 25, cy - 22, cx, cy - 30);
+        ctx.closePath();
+        ctx.fillStyle = SEED_FILL; ctx.fill();
+        ctx.strokeStyle = SEED_EDGE; ctx.lineWidth = 2; ctx.stroke();
+        // The single cotyledon fills the grain; the embryo sits low inside it.
+        ctx.fillStyle = '#6f9e4a';
+        ctx.beginPath(); ctx.ellipse(cx, cy + 9, 8, 13, 0, 0, 2 * Math.PI); ctx.fill();
+        ctx.strokeStyle = '#3f6b2a'; ctx.lineWidth = 1.5; ctx.stroke();
+        ctx.fillStyle = cssVar('--text-muted', '#9aa0a6');
+        ctx.font = '10px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText('embryo', cx + 16, cy + 13);
+        ctx.strokeStyle = cssVar('--text-muted', '#9aa0a6'); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(cx + 8, cy + 9); ctx.lineTo(cx + 14, cy + 9); ctx.stroke();
       }
 
-      function drawRoot(cx, cy, isDicot) {
-        ctx.strokeStyle = '#a16207'; ctx.lineWidth = 2;
-        if (isDicot) {
-          ctx.lineWidth = 5;
-          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx, cy + 55); ctx.stroke();
-          ctx.lineWidth = 2;
-          for (let i = 10; i <= 45; i += 12) {
-            ctx.beginPath(); ctx.moveTo(cx, cy + i); ctx.lineTo(cx - 15, cy + i + 10); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(cx, cy + i); ctx.lineTo(cx + 15, cy + i + 10); ctx.stroke();
-          }
-        } else {
-          for (let i = -3; i <= 3; i++) {
-            ctx.beginPath(); ctx.moveTo(cx, cy);
-            ctx.quadraticCurveTo(cx + i * 8, cy + 30, cx + i * 12, cy + 55);
+      // A chickpea seed prised open into its two halves.
+      function dicotSeed(cx, cy) {
+        [-1, 1].forEach(dir => {
+          const ox = cx + dir * 11;
+          ctx.beginPath();
+          ctx.moveTo(ox, cy - 28);
+          ctx.bezierCurveTo(ox + dir * 26, cy - 22, ox + dir * 26, cy + 18, ox, cy + 28);
+          ctx.closePath();
+          ctx.fillStyle = SEED_FILL; ctx.fill();
+          ctx.strokeStyle = SEED_EDGE; ctx.lineWidth = 2; ctx.stroke();
+        });
+        // Embryo lying in the split between the two cotyledons.
+        ctx.strokeStyle = '#3f6b2a'; ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy + 20);
+        ctx.quadraticCurveTo(cx - 3, cy + 2, cx, cy - 14);
+        ctx.stroke();
+        ctx.fillStyle = cssVar('--text-muted', '#9aa0a6');
+        ctx.font = '10px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText('splits in two', cx + 36, cy + 4);
+      }
+
+      // ---- Leaves ------------------------------------------------------
+      // A grass blade: long and tapering, veins running side by side to the tip.
+      function monocotLeaf(cx, cy) {
+        const top = cy - 58, bot = cy + 54, hw = 18;
+        ctx.beginPath();
+        ctx.moveTo(cx, top);
+        ctx.bezierCurveTo(cx + hw, top + 44, cx + hw - 2, bot - 22, cx + 6, bot);
+        ctx.lineTo(cx - 6, bot);
+        ctx.bezierCurveTo(cx - hw + 2, bot - 22, cx - hw, top + 44, cx, top);
+        ctx.closePath();
+        ctx.fillStyle = LEAF_FILL; ctx.fill();
+        ctx.strokeStyle = LEAF_EDGE; ctx.lineWidth = 2; ctx.stroke();
+        ctx.strokeStyle = VEIN; ctx.lineWidth = 1.4;
+        for (let k = -2; k <= 2; k++) {
+          const f = k / 2.6;
+          ctx.beginPath();
+          ctx.moveTo(cx + f * 5, bot - 4);
+          ctx.quadraticCurveTo(cx + f * hw * 0.92, cy - 6, cx, top + 8);
+          ctx.stroke();
+        }
+      }
+
+      // A broad leaf: midrib, curving side veins, and cross-links making a net.
+      function dicotLeaf(cx, cy) {
+        const top = cy - 54, bot = cy + 52;
+        ctx.beginPath();
+        ctx.moveTo(cx, top);
+        ctx.bezierCurveTo(cx + 46, top + 28, cx + 42, bot - 20, cx, bot);
+        ctx.bezierCurveTo(cx - 42, bot - 20, cx - 46, top + 28, cx, top);
+        ctx.closePath();
+        ctx.fillStyle = LEAF_FILL; ctx.fill();
+        ctx.strokeStyle = LEAF_EDGE; ctx.lineWidth = 2; ctx.stroke();
+
+        ctx.strokeStyle = VEIN; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx, top + 6); ctx.lineTo(cx, bot - 4); ctx.stroke();
+
+        // Secondary veins fan out from the midrib and sweep towards the tip.
+        const qp = (p0, p1, p2, t) => ({
+          x: (1 - t) * (1 - t) * p0.x + 2 * (1 - t) * t * p1.x + t * t * p2.x,
+          y: (1 - t) * (1 - t) * p0.y + 2 * (1 - t) * t * p1.y + t * t * p2.y
+        });
+        [-1, 1].forEach(side => {
+          const veins = [];
+          for (let i = 0; i < 4; i++) {
+            const yb = bot - 16 - i * 22;
+            const reach = 34 - i * 5;
+            const p0 = { x: cx, y: yb };
+            const p1 = { x: cx + side * reach * 0.6, y: yb - 4 };
+            const p2 = { x: cx + side * reach, y: yb - 24 };
+            ctx.lineWidth = 1.6;
+            ctx.beginPath();
+            ctx.moveTo(p0.x, p0.y);
+            ctx.quadraticCurveTo(p1.x, p1.y, p2.x, p2.y);
             ctx.stroke();
+            veins.push([p0, p1, p2]);
           }
+          // Cross-links between neighbouring veins turn the pattern into a net.
+          ctx.lineWidth = 1;
+          for (let i = 0; i < veins.length - 1; i++) {
+            [[0.5, 0.28], [0.82, 0.62]].forEach(pair => {
+              const a = qp(veins[i][0], veins[i][1], veins[i][2], pair[0]);
+              const b = qp(veins[i + 1][0], veins[i + 1][1], veins[i + 1][2], pair[1]);
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.quadraticCurveTo((a.x + b.x) / 2 + side * 3, (a.y + b.y) / 2, b.x, b.y);
+              ctx.stroke();
+            });
+          }
+        });
+      }
+
+      // ---- Roots -------------------------------------------------------
+      // Many thin roots of similar thickness, all from the same point.
+      function fibrousRoot(cx, cy) {
+        ctx.strokeStyle = ROOT; ctx.lineCap = 'round';
+        ctx.lineWidth = 5;
+        ctx.beginPath(); ctx.moveTo(cx, cy - 14); ctx.lineTo(cx, cy); ctx.stroke();
+        ctx.lineWidth = 2.4;
+        for (let i = -4; i <= 4; i++) {
+          const f = i / 4;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.quadraticCurveTo(cx + f * 30, cy + 26, cx + f * 46, cy + 56);
+          ctx.stroke();
+          ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          ctx.moveTo(cx + f * 22, cy + 30);
+          ctx.quadraticCurveTo(cx + f * 34, cy + 38, cx + f * 30, cy + 50);
+          ctx.stroke();
+          ctx.lineWidth = 2.4;
         }
-        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
-        ctx.fillText(isDicot ? 'Taproot' : 'Fibrous root', cx, cy + 75);
+        ctx.lineCap = 'butt';
+      }
+
+      // One thick main root running straight down, with thin side branches.
+      function tapRoot(cx, cy) {
+        ctx.strokeStyle = ROOT; ctx.lineCap = 'round';
+        ctx.lineWidth = 5;
+        ctx.beginPath(); ctx.moveTo(cx, cy - 14); ctx.lineTo(cx, cy); ctx.stroke();
+        // Tapering main root drawn as a filled wedge.
+        ctx.beginPath();
+        ctx.moveTo(cx - 7, cy);
+        ctx.quadraticCurveTo(cx - 4, cy + 40, cx, cy + 62);
+        ctx.quadraticCurveTo(cx + 4, cy + 40, cx + 7, cy);
+        ctx.closePath();
+        ctx.fillStyle = ROOT; ctx.fill();
+        ctx.lineWidth = 1.6;
+        for (let i = 0; i < 4; i++) {
+          const y = cy + 12 + i * 13;
+          const len = 22 - i * 4;
+          [-1, 1].forEach(side => {
+            ctx.beginPath();
+            ctx.moveTo(cx + side * 5, y);
+            ctx.quadraticCurveTo(cx + side * (len * 0.7), y + 6, cx + side * len, y + 15);
+            ctx.stroke();
+          });
+        }
+        ctx.lineCap = 'butt';
+      }
+
+      function drawColumn(cx, isDicot, dim) {
+        ctx.save();
+        ctx.globalAlpha = dim ? 0.25 : 1;
+        if (isDicot) { dicotSeed(cx, 104); dicotLeaf(cx, 248); tapRoot(cx, 344); }
+        else { monocotSeed(cx, 104); monocotLeaf(cx, 248); fibrousRoot(cx, 344); }
+        caption(cx, 152, isDicot ? '2 cotyledons' : '1 cotyledon', !dim);
+        caption(cx, 322, isDicot ? 'Reticulate (net) venation' : 'Parallel venation', !dim);
+        caption(cx, 420, isDicot ? 'Taproot' : 'Fibrous root', !dim);
+        ctx.restore();
       }
 
       function draw() {
         const W = canvas.width, H = canvas.height;
         ctx.clearRect(0, 0, W, H);
-        const isDicot = sel.value === 'dicot';
-        drawSeed(100, 70, isDicot);
-        drawLeaf(300, 100, isDicot);
-        drawRoot(500, 60, isDicot);
-        ctx.textAlign = 'left';
-        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 13px system-ui';
-        ctx.fillText(isDicot ? 'Dicot (e.g. Chickpea)' : 'Monocot (e.g. Maize)', 20, 25);
+        const mode = sel.value;
+        const LX = 200, RX = 442;
 
-        obs.innerHTML = isDicot
-          ? `<strong>Dicot plant (e.g. Chickpea):</strong><br>• Seed splits into <strong>2 cotyledons</strong><br>• Leaves show <strong>reticulate</strong> (net-like) venation<br>• Root system is a <strong>taproot</strong> (one main root)<br>• Other examples: mustard, hibiscus, kidney beans`
-          : `<strong>Monocot plant (e.g. Maize):</strong><br>• Seed has just <strong>1 cotyledon</strong><br>• Leaves show <strong>parallel</strong> venation<br>• Root system is <strong>fibrous</strong> (many similar thin roots)<br>• Other examples: wheat, grass, lemongrass`;
+        // Panel behind the column being spotlighted.
+        if (mode !== 'both') {
+          ctx.fillStyle = 'rgba(120,160,220,0.10)';
+          const px = mode === 'dicot' ? RX - 108 : LX - 108;
+          ctx.fillRect(px, 44, 216, H - 56);
+          ctx.strokeStyle = cssVar('--border-color', '#3a3f4b');
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(px, 44, 216, H - 56);
+        }
+
+        ctx.textAlign = 'left';
+        ctx.fillStyle = cssVar('--accent-color', '#6c8cff');
+        ctx.font = 'bold 13px system-ui';
+        ctx.fillText('Two great groups of flowering plants', 16, 26);
+
+        // Row labels down the left edge.
+        ctx.fillStyle = cssVar('--text-muted', '#9aa0a6');
+        ctx.font = 'bold 11px system-ui';
+        ctx.textAlign = 'left';
+        ctx.fillText('SEED', 14, 108);
+        ctx.fillText('LEAF', 14, 252);
+        ctx.fillText('ROOT', 14, 380);
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = mode === 'dicot' ? cssVar('--text-muted', '#9aa0a6') : cssVar('--text-normal', '#e6e6e6');
+        ctx.fillText('Monocot — maize', LX, 62);
+        ctx.fillStyle = mode === 'monocot' ? cssVar('--text-muted', '#9aa0a6') : cssVar('--text-normal', '#e6e6e6');
+        ctx.fillText('Dicot — chickpea', RX, 62);
+
+        drawColumn(LX, false, mode === 'dicot');
+        drawColumn(RX, true, mode === 'monocot');
+
+        // Divider between the two columns.
+        ctx.strokeStyle = cssVar('--border-color', '#3a3f4b');
+        ctx.globalAlpha = 0.5;
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(321, 48); ctx.lineTo(321, H - 16); ctx.stroke();
+        ctx.globalAlpha = 1;
+
+        const mono = `<strong>Monocot plant (e.g. Maize):</strong><br>• Seed has just <strong>1 cotyledon</strong> and does not split<br>• Leaves show <strong>parallel</strong> venation — veins run side by side to the tip<br>• Root system is <strong>fibrous</strong> — many similar thin roots from one point<br>• Other examples: wheat, grass, lemongrass`;
+        const di = `<strong>Dicot plant (e.g. Chickpea):</strong><br>• Seed splits into <strong>2 cotyledons</strong><br>• Leaves show <strong>reticulate</strong> venation — side veins branch and join into a net<br>• Root system is a <strong>taproot</strong> — one thick main root with thin side roots<br>• Other examples: mustard, hibiscus, kidney beans`;
+        obs.innerHTML = mode === 'monocot' ? mono
+          : mode === 'dicot' ? di
+            : mono + '<br><br>' + di;
       }
 
       sel.addEventListener('change', draw);
@@ -16935,65 +17201,235 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const sel = document.getElementById('sel-camel-type');
       const obs = document.getElementById('camel-obs');
 
+      const COAT = '#c99a63', COAT_DARK = '#a97a45', COAT_SHADE = '#b98a53';
+      const groundY = 274;
+
+      function callout(ax, ay, tx, ty, lines, colour) {
+        ctx.strokeStyle = colour; ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.moveTo(ax, ay); ctx.lineTo(tx, ty);
+        ctx.stroke();
+        ctx.fillStyle = colour;
+        ctx.beginPath(); ctx.arc(ax, ay, 3.5, 0, 2 * Math.PI); ctx.fill();
+
+        ctx.font = 'bold 11px system-ui';
+        const right = tx < ax;
+        const px = tx + (right ? -6 : 6);
+        // A dark plate keeps the label readable over pale sand or snow.
+        const wide = Math.max(...lines.map(l => ctx.measureText(l).width));
+        const bx0 = right ? px - wide - 6 : px - 6;
+        ctx.fillStyle = 'rgba(10,14,24,0.74)';
+        ctx.beginPath();
+        ctx.roundRect(bx0, ty - 13, wide + 12, lines.length * 14 + 6, 5);
+        ctx.fill();
+
+        ctx.fillStyle = colour;
+        ctx.textAlign = right ? 'right' : 'left';
+        lines.forEach((ln, i) => ctx.fillText(ln, px, ty + i * 14));
+      }
+
+      function drawCamel(isHot) {
+        const legLen = isHot ? 84 : 54;
+        const bellyY = groundY - legLen;
+        const bx = 300, by = bellyY - 30;
+        const hoofW = isHot ? 15 : 9;
+
+        // --- Far pair of legs, drawn first and darker so they read as behind.
+        function leg(x, shade) {
+          ctx.strokeStyle = shade; ctx.lineWidth = 9; ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(x, bellyY - 6);
+          ctx.lineTo(x - 5, bellyY + legLen * 0.45);          // knee
+          ctx.lineTo(x + 4, groundY - 6);
+          ctx.stroke();
+          ctx.fillStyle = '#6b4a24';
+          ctx.beginPath();
+          ctx.ellipse(x + 4, groundY - 3, hoofW, 5.5, 0, 0, 2 * Math.PI);
+          ctx.fill();
+        }
+        leg(bx - 32, COAT_DARK);
+        leg(bx + 44, COAT_DARK);
+
+        // --- Body: a barrel, deeper at the chest than at the rump.
+        ctx.fillStyle = COAT;
+        ctx.beginPath();
+        ctx.moveTo(bx - 78, by + 4);
+        ctx.bezierCurveTo(bx - 84, by + 34, bx - 40, by + 44, bx + 6, by + 44);
+        ctx.bezierCurveTo(bx + 52, by + 44, bx + 80, by + 32, bx + 82, by - 2);
+        ctx.bezierCurveTo(bx + 80, by - 28, bx + 40, by - 34, bx - 10, by - 32);
+        ctx.bezierCurveTo(bx - 52, by - 30, bx - 74, by - 20, bx - 78, by + 4);
+        ctx.closePath();
+        ctx.fill();
+
+        // --- Humps rising out of the back.
+        ctx.fillStyle = COAT;
+        if (isHot) {
+          ctx.beginPath();
+          ctx.moveTo(bx - 34, by - 30);
+          ctx.bezierCurveTo(bx - 22, by - 86, bx + 26, by - 86, bx + 38, by - 26);
+          ctx.closePath(); ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.moveTo(bx - 52, by - 26);
+          ctx.bezierCurveTo(bx - 44, by - 74, bx - 6, by - 74, bx - 2, by - 30);
+          ctx.closePath(); ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(bx + 2, by - 30);
+          ctx.bezierCurveTo(bx + 8, by - 76, bx + 46, by - 74, bx + 52, by - 22);
+          ctx.closePath(); ctx.fill();
+        }
+
+        // --- Neck sweeping up from the chest, tapering towards the head.
+        const nx0 = bx + 62, ny0 = by - 18;
+        const hx = bx + 138, hy = by - 104;
+        ctx.fillStyle = COAT;
+        ctx.beginPath();
+        ctx.moveTo(nx0 - 12, ny0 + 20);
+        ctx.bezierCurveTo(bx + 70, by - 60, bx + 96, by - 92, hx - 8, hy + 10);
+        ctx.lineTo(hx + 8, hy + 4);
+        ctx.bezierCurveTo(bx + 112, by - 78, bx + 92, by - 44, nx0 + 20, ny0 + 26);
+        ctx.closePath();
+        ctx.fill();
+
+        // --- Head: skull, muzzle, ear, eye.
+        ctx.fillStyle = COAT;
+        ctx.beginPath();
+        ctx.ellipse(hx, hy, 20, 14, -0.35, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(hx + 20, hy - 10, 14, 8, -0.25, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.fillStyle = COAT_SHADE;
+        ctx.beginPath();
+        ctx.moveTo(hx - 6, hy - 12);
+        ctx.lineTo(hx - 14, hy - 26);
+        ctx.lineTo(hx + 2, hy - 18);
+        ctx.closePath(); ctx.fill();                          // ear
+        ctx.fillStyle = '#2c2118';
+        ctx.beginPath(); ctx.arc(hx + 4, hy - 8, 2.6, 0, 2 * Math.PI); ctx.fill();   // eye
+        ctx.beginPath(); ctx.arc(hx + 31, hy - 14, 1.8, 0, 2 * Math.PI); ctx.fill(); // nostril
+        ctx.strokeStyle = '#8a6236'; ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.moveTo(hx + 20, hy - 4); ctx.quadraticCurveTo(hx + 28, hy - 3, hx + 32, hy - 8);
+        ctx.stroke();                                          // mouth
+
+        // --- Near pair of legs, in the lighter coat colour.
+        leg(bx - 8, COAT);
+        leg(bx + 20, COAT);
+
+        // --- Tail.
+        ctx.strokeStyle = COAT_DARK; ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(bx - 76, by - 6);
+        ctx.quadraticCurveTo(bx - 96, by + 6, bx - 92, by + 30);
+        ctx.stroke();
+        ctx.lineWidth = 6; ctx.strokeStyle = '#7a5628';
+        ctx.beginPath();
+        ctx.moveTo(bx - 92, by + 26); ctx.lineTo(bx - 90, by + 38);
+        ctx.stroke();
+
+        // --- The cold-desert camel's shaggy winter coat.
+        if (!isHot) {
+          ctx.strokeStyle = '#8b5e34'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+          for (let i = 0; i < 16; i++) {
+            const t = i / 15;
+            const x = bx - 70 + t * 140;
+            const y = by + 40 - Math.abs(t - 0.5) * 14;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x - 4, y + 12);
+            ctx.stroke();
+          }
+          for (let i = 0; i < 9; i++) {
+            const t = i / 8;
+            const x = bx + 64 + t * 62, y = by - 22 - t * 70;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x - 11, y + 8);
+            ctx.stroke();
+          }
+        }
+        ctx.lineCap = 'butt';
+        return { bx: bx, by: by, bellyY: bellyY, hx: hx, hy: hy, legLen: legLen };
+      }
+
       function draw() {
         const W = canvas.width, H = canvas.height;
         ctx.clearRect(0, 0, W, H);
         const isHot = sel.value === 'hot';
-        // Ground
-        ctx.fillStyle = isHot ? '#fde68a' : '#e2e8f0';
-        ctx.fillRect(0, 230, W, 70);
 
-        const bodyX = W / 2, bodyY = 160;
-        const legLen = isHot ? 75 : 45;
-
-        // Legs
-        ctx.strokeStyle = '#a16207'; ctx.lineWidth = 8; ctx.lineCap = 'round';
-        [-40, -10, 20, 50].forEach(dx => {
-          ctx.beginPath(); ctx.moveTo(bodyX + dx, bodyY + 30); ctx.lineTo(bodyX + dx, bodyY + 30 + legLen); ctx.stroke();
-        });
-        // Hooves (wide for hot desert)
-        ctx.fillStyle = '#78350f';
-        const hoofW = isHot ? 22 : 12;
-        [-40, -10, 20, 50].forEach(dx => {
-          ctx.beginPath(); ctx.ellipse(bodyX + dx, bodyY + 30 + legLen, hoofW / 2, 5, 0, 0, 2 * Math.PI); ctx.fill();
-        });
-
-        // Body
-        ctx.fillStyle = '#d2a679';
-        ctx.beginPath(); ctx.ellipse(bodyX, bodyY + 30, 70, 30, 0, 0, 2 * Math.PI); ctx.fill();
-
-        // Humps
-        ctx.fillStyle = '#c68a52';
+        // --- Habitat behind the animal.
         if (isHot) {
-          ctx.beginPath(); ctx.ellipse(bodyX, bodyY - 10, 28, 28, 0, 0, 2 * Math.PI); ctx.fill();
+          ctx.fillStyle = '#e8b84a';
+          ctx.beginPath(); ctx.arc(564, 36, 16, 0, 2 * Math.PI); ctx.fill();
+          ctx.globalAlpha = 0.25;
+          ctx.beginPath(); ctx.arc(564, 36, 25, 0, 2 * Math.PI); ctx.fill();
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = '#d9b36a';
+          ctx.beginPath();
+          ctx.moveTo(0, groundY);
+          ctx.bezierCurveTo(120, groundY - 46, 210, groundY - 6, 330, groundY - 26);
+          ctx.bezierCurveTo(450, groundY - 46, 530, groundY - 4, W, groundY - 22);
+          ctx.lineTo(W, groundY); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = '#f0d492';
+          ctx.fillRect(0, groundY, W, H - groundY);
         } else {
-          ctx.beginPath(); ctx.ellipse(bodyX - 25, bodyY - 5, 20, 20, 0, 0, 2 * Math.PI); ctx.fill();
-          ctx.beginPath(); ctx.ellipse(bodyX + 25, bodyY - 5, 20, 20, 0, 0, 2 * Math.PI); ctx.fill();
+          ctx.fillStyle = '#8e9bb0';
+          ctx.beginPath();
+          ctx.moveTo(0, groundY);
+          ctx.lineTo(88, groundY - 118); ctx.lineTo(176, groundY);
+          ctx.moveTo(150, groundY);
+          ctx.lineTo(250, groundY - 96); ctx.lineTo(350, groundY);
+          ctx.moveTo(400, groundY);
+          ctx.lineTo(492, groundY - 110); ctx.lineTo(584, groundY);
+          ctx.fill();
+          ctx.fillStyle = '#eef3fa';
+          [[88, 118], [250, 96], [492, 110]].forEach(m => {
+            ctx.beginPath();
+            ctx.moveTo(m[0], groundY - m[1]);
+            ctx.lineTo(m[0] - 24, groundY - m[1] + 30);
+            ctx.lineTo(m[0] - 10, groundY - m[1] + 24);
+            ctx.lineTo(m[0] + 4, groundY - m[1] + 32);
+            ctx.lineTo(m[0] + 16, groundY - m[1] + 22);
+            ctx.lineTo(m[0] + 26, groundY - m[1] + 30);
+            ctx.closePath(); ctx.fill();
+          });
+          ctx.fillStyle = '#dfe7f2';
+          ctx.fillRect(0, groundY, W, H - groundY);
+          ctx.fillStyle = '#ffffff';
+          [[60, 60], [180, 42], [420, 54], [520, 86], [330, 70]].forEach(s => {
+            ctx.beginPath(); ctx.arc(s[0], s[1], 2.4, 0, 2 * Math.PI); ctx.fill();
+          });
         }
 
-        // Neck + head
-        ctx.fillStyle = '#d2a679';
-        ctx.beginPath(); ctx.moveTo(bodyX + 60, bodyY + 10); ctx.lineTo(bodyX + 95, bodyY - 55); ctx.lineTo(bodyX + 110, bodyY - 55); ctx.lineTo(bodyX + 80, bodyY + 25); ctx.closePath(); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(bodyX + 100, bodyY - 60, 16, 12, 0, 0, 2 * Math.PI); ctx.fill();
+        const c = drawCamel(isHot);
 
-        // Long hair for cold desert camel
-        if (!isHot) {
-          ctx.strokeStyle = '#8b5e34'; ctx.lineWidth = 2;
-          for (let i = 0; i < 8; i++) {
-            const t = i / 7;
-            const nx = bodyX + 60 + t * 40, ny = bodyY + 10 - t * 65;
-            ctx.beginPath(); ctx.moveTo(nx, ny); ctx.lineTo(nx - 8, ny + 10); ctx.stroke();
-          }
+        // --- Labelled adaptations.
+        const warm = '#e0743a', cool = '#4a9ae0';
+        if (isHot) {
+          callout(c.bx, c.by - 68, 158, 74, ['One hump —', 'stores fat as food'], warm);
+          callout(c.bx + 20, c.bellyY + c.legLen * 0.5, 158, 196, ['Long legs lift the body', 'away from the hot sand'], warm);
+          callout(c.bx + 24, groundY - 3, 446, 248, ['Wide, flat hooves', 'don’t sink into sand'], warm);
+          callout(c.hx + 30, c.hy - 14, 480, 150, ['Nostrils close', 'in a sandstorm'], warm);
+        } else {
+          callout(c.bx - 26, c.by - 62, 158, 66, ['Two humps —', 'they shrink in winter'], cool);
+          callout(c.bx - 20, c.by + 48, 158, 212, ['Long shaggy hair', 'keeps the cold out'], cool);
+          callout(c.bx + 20, c.bellyY + c.legLen * 0.5, 442, 200, ['Shorter legs —', 'steadier on rocky ground'], cool);
+          callout(c.hx + 12, c.hy + 8, 462, 100, ['Thick coat right up', 'the neck and head'], cool);
         }
 
-        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'left';
-        ctx.fillText(isHot ? 'Hot Desert Camel (Rajasthan)' : 'Cold Desert Camel (Ladakh)', 20, 25);
-        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '11px system-ui';
-        ctx.fillText(isHot ? '1 hump • long legs • wide hooves' : '2 humps • shorter legs • long hair', 20, 45);
+        ctx.textAlign = 'left';
+        ctx.fillStyle = cssVar('--accent-color', '#6c8cff');
+        ctx.font = 'bold 14px system-ui';
+        ctx.fillText(isHot ? 'Hot desert camel — Rajasthan' : 'Cold desert camel — Ladakh', 16, 26);
+        ctx.fillStyle = cssVar('--text-muted', '#9aa0a6');
+        ctx.font = '11px system-ui';
+        ctx.fillText(isHot ? 'Hot days, very little water, deep loose sand'
+          : 'Freezing winters, rocky ground, thin dry air', 16, 44);
 
         obs.innerHTML = isHot
-          ? `<strong>Hot Desert Camel Adaptations:</strong><br>• <strong>Long legs & wide hooves</strong> — walk on sand without sinking<br>• <strong>One hump</strong> — stores food for scarce times<br>• Excretes very little water, doesn't sweat — survives days without drinking`
-          : `<strong>Cold Desert Camel Adaptations:</strong><br>• <strong>Shorter legs</strong> — more stable on rocky mountain terrain<br>• <strong>Two humps</strong> — shrink in winter as stored food is used<br>• <strong>Long hair</strong> from head to neck — survives cold winters`;
+          ? `<strong>Hot desert camel (Rajasthan)</strong><br>• <strong>Long legs</strong> — hold the body high above the burning sand<br>• <strong>Wide, flat hooves</strong> — spread its weight so it does not sink in<br>• <strong>One hump</strong> — stores fat as food for times when there is nothing to eat<br>• <strong>Closable nostrils and long eyelashes</strong> — keep blowing sand out<br>• It hardly sweats and passes very little urine, so it can go days without drinking`
+          : `<strong>Cold desert camel (Ladakh)</strong><br>• <strong>Shorter, sturdier legs</strong> — steadier on rocky mountain ground<br>• <strong>Two humps</strong> — store fat, and visibly shrink through winter as it is used up<br>• <strong>Long shaggy hair</strong> over the body, neck and head — traps warmth in freezing winters<br>• <strong>Narrow hooves</strong> — grip stony ground rather than spreading on sand<br>• Both camels are the same kind of animal, shaped differently by the habitat they live in`;
       }
 
       sel.addEventListener('change', draw);

@@ -1961,6 +1961,22 @@ footer {
   border-top: 1px solid var(--border-color);
   gap: 1.5rem;
 }
+
+.topic-quiz-cta {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+/* When the quiz call-to-action is present it already draws the divider,
+   so the nav bar below it should not draw a second one. */
+.topic-quiz-cta + .topic-navigation-bar {
+  margin-top: 1.25rem;
+  padding-top: 0;
+  border-top: none;
+}
+.topic-quiz-cta #goto-quiz-btn:hover {
+  filter: brightness(1.08);
+}
 @media (max-width: 640px) {
   .topic-navigation-bar {
     flex-direction: column;

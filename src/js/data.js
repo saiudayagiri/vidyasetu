@@ -81,6 +81,66 @@ export const curriculumData = {
                       options: ["Because science is confusing and has no order", "Because every new discovery adds a piece, and sometimes pieces need to be moved as understanding improves", "Because scientists literally solve puzzles for fun", "Because there is only one correct answer in science"],
                       answer: 1,
                       explanation: "Each new scientific discovery adds to our understanding (like a puzzle piece), and sometimes new evidence shows that an earlier idea was wrong and needs to be corrected — just like moving a puzzle piece to its right place."
+                    },
+                    {
+                      question: "What is the most important thing for learning science?",
+                      options: ["An expensive laboratory", "Curiosity — asking questions and finding out how things work", "Memorising the whole textbook", "A powerful microscope"],
+                      answer: 1,
+                      explanation: "Science is a way of thinking, observing and doing. The most important thing for learning it is curiosity — asking questions about the world and trying to find out how things work."
+                    },
+                    {
+                      question: "Put these steps of the scientific method in the right order: test, observe, guess, question.",
+                      options: ["Guess → observe → question → test", "Observe → question → guess → test", "Question → guess → test → observe", "Test → guess → question → observe"],
+                      answer: 1,
+                      explanation: "First we observe something interesting, which makes us wonder and ask a question. Then we make a guess (hypothesis), and finally we test that guess through experiments or more observations."
+                    },
+                    {
+                      question: "Another word for a scientific 'guess' is:",
+                      options: ["A conclusion", "A hypothesis", "An observation", "A result"],
+                      answer: 1,
+                      explanation: "A hypothesis is a possible answer to our question — a guess that we can then go and test."
+                    },
+                    {
+                      question: "What is the last step of the scientific method?",
+                      options: ["Making a guess", "Analysing the results to see whether they answer the question", "Observing something new", "Asking a question"],
+                      answer: 1,
+                      explanation: "After testing, we analyse the results to see if they actually answer our question. If the guess was wrong, we form a new one and test again."
+                    },
+                    {
+                      question: "Your plant's leaves are drooping. Which of these is an OBSERVATION rather than a guess?",
+                      options: ["Maybe it needs more water", "The leaves are drooping and turning yellow", "Perhaps it is getting too much sun", "It might have a disease"],
+                      answer: 1,
+                      explanation: "An observation is what you actually notice with your senses. 'Maybe it needs more water' is a guess (hypothesis) that you would then have to test."
+                    },
+                    {
+                      question: "Why is it useful to test only ONE guess at a time?",
+                      options: ["It makes the experiment take longer", "So you know exactly which idea the result supports or rules out", "Because scientists are not allowed to have two ideas", "It makes the answer more mysterious"],
+                      answer: 1,
+                      explanation: "If you change many things at once you cannot tell which one caused the result. Testing one guess at a time tells you clearly whether that particular idea was right."
+                    },
+                    {
+                      question: "A bulb does not glow when you switch it on. You replace it with a bulb you know works, and it lights up. What does this tell you?",
+                      options: ["The wiring must be broken", "The original bulb had fused — the guess was correct", "The switch is faulty", "Nothing can be concluded"],
+                      answer: 1,
+                      explanation: "The test supported the hypothesis. If the new bulb had also failed to glow, you would guess again — perhaps the switch or the wiring — and test that instead."
+                    },
+                    {
+                      question: "Which of these is NOT a good reason to trust a scientific idea?",
+                      options: ["It has been tested many times with the same result", "Careful observations support it", "Someone important said so, without any evidence", "Other scientists have repeated the experiment"],
+                      answer: 2,
+                      explanation: "In science, ideas are trusted because evidence supports them — not because of who said them. Any idea, however famous its source, has to stand up to testing."
+                    },
+                    {
+                      question: "Sometimes a new discovery shows that an old scientific idea was wrong. What happens then?",
+                      options: ["The new discovery is ignored", "Our understanding is corrected and updated", "Science stops working", "The old idea is kept because it is older"],
+                      answer: 1,
+                      explanation: "New discoveries often change our understanding of the world. Correcting an idea when the evidence points elsewhere is a strength of science, not a failure."
+                    },
+                    {
+                      question: "Which of these questions could you actually investigate with an experiment?",
+                      options: ["Which is the most beautiful colour?", "Does a paper plane fly further with wider wings?", "Which festival is the happiest?", "Is chocolate nicer than ice cream?"],
+                      answer: 1,
+                      explanation: "A scientific question can be tested by observation or experiment and gives the same answer for everyone. Questions about beauty or preference are matters of opinion, not investigation."
                     }
                   ]
                 }
