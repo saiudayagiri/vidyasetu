@@ -27237,6 +27237,72 @@ export const curriculumData = {
             options: ["Cerebrum", "Medulla oblongata", "Cerebellum", "Pons"],
             answer: 2,
             explanation: "The cerebellum is responsible for body balance, posture, and coordinating precise voluntary movements."
+          },
+          {
+            question: "Which part of a neuron receives nerve impulses?",
+            options: ["Axon", "Dendrites", "Myelin sheath", "Axon terminals"],
+            answer: 1,
+            explanation: "Dendrites are the short receiving projections; the axon carries the impulse away from the cell body."
+          },
+          {
+            question: "What is the function of the myelin sheath?",
+            options: ["It generates the impulse", "It insulates the axon and speeds up transmission", "It stores neurotransmitters", "It connects two neurons"],
+            answer: 1,
+            explanation: "The fatty myelin layer around the axon acts as insulation, allowing impulses to travel much faster."
+          },
+          {
+            question: "How does an impulse cross from one neuron to the next?",
+            options: ["The axons touch directly", "Chemicals released at the axon terminals cross the synapse", "By a spark jumping the gap", "Through the myelin sheath"],
+            answer: 1,
+            explanation: "At the synapse the electrical impulse triggers the release of neurotransmitters, which carry the signal across the gap."
+          },
+          {
+            question: "Put the parts of a reflex arc in the correct order.",
+            options: ["Receptor → motor neuron → relay neuron → sensory neuron → effector", "Receptor → sensory neuron → relay neuron → motor neuron → effector", "Effector → sensory neuron → brain → motor neuron → receptor", "Receptor → brain → spinal cord → effector"],
+            answer: 1,
+            explanation: "The stimulus is detected by the receptor and the response is carried out by the effector; the relay neuron in the spinal cord links the sensory and motor neurons."
+          },
+          {
+            question: "Why is a reflex action faster than a voluntary one?",
+            options: ["The impulse travels along thicker nerves", "The response is completed through the spinal cord before the brain has processed it", "Reflexes do not use neurons", "The brain works faster for reflexes"],
+            answer: 1,
+            explanation: "The spinal cord completes the circuit directly. The brain is informed for awareness and learning, but only after the response has already happened."
+          },
+          {
+            question: "Which of these is NOT a reflex action?",
+            options: ["Blinking when something approaches the eye", "Sneezing", "Solving a mathematics problem", "The knee-jerk response"],
+            answer: 2,
+            explanation: "Reflexes are sudden, involuntary and need no conscious thought; solving a problem is a deliberate, voluntary act of the cerebrum."
+          },
+          {
+            question: "Which part of the brain is the seat of thinking, memory and reasoning?",
+            options: ["Cerebellum", "Cerebrum", "Medulla oblongata", "Midbrain"],
+            answer: 1,
+            explanation: "The cerebrum is the largest part of the forebrain and also holds the centres for hunger, thirst and body temperature."
+          },
+          {
+            question: "Damage to which part of the brain would stop breathing and heartbeat?",
+            options: ["Cerebrum", "Cerebellum", "Medulla oblongata", "Midbrain"],
+            answer: 2,
+            explanation: "The medulla oblongata in the hindbrain controls vital involuntary actions — breathing, heartbeat, blood pressure and swallowing."
+          },
+          {
+            question: "Involuntary reflexes connected with sight and hearing are controlled by the:",
+            options: ["Forebrain", "Midbrain", "Cerebellum", "Spinal cord"],
+            answer: 1,
+            explanation: "The midbrain handles involuntary reflex actions relating to sight and hearing, such as the pupil narrowing in bright light."
+          },
+          {
+            question: "Which three structures protect the human brain?",
+            options: ["Skin, muscle and fat", "The cranium, the meninges and cerebrospinal fluid", "The spinal cord and vertebrae only", "Myelin, dendrites and axons"],
+            answer: 1,
+            explanation: "The bony cranium, the membranes called meninges, and the fluid cushion of cerebrospinal fluid together shield the brain from shock."
+          },
+          {
+            question: "How long can the axon of a neuron be?",
+            options: ["A few micrometres", "Up to about 1 metre", "Up to 10 metres", "Exactly 1 centimetre"],
+            answer: 1,
+            explanation: "Axons can run up to about a metre in length, carrying impulses over long distances in the body."
           }
         ]
       },
@@ -27275,6 +27341,90 @@ export const curriculumData = {
             options: ["Auxin", "Gibberellin", "Cytokinin", "Ethylene"],
             answer: 3,
             explanation: "Ethylene is a gaseous plant hormone that promotes fruit ripening."
+          },
+          {
+            question: "Why are endocrine glands described as ductless?",
+            options: ["They have no secretions", "They pour their hormones straight into the bloodstream instead of through tubes", "They are found outside the body", "They work only during childhood"],
+            answer: 1,
+            explanation: "Endocrine glands release hormones directly into the blood, which then carries them to their target organs."
+          },
+          {
+            question: "Excess growth hormone during childhood causes:",
+            options: ["Dwarfism", "Gigantism", "Goitre", "Diabetes"],
+            answer: 1,
+            explanation: "The pituitary is the master gland; too much of its growth hormone causes gigantism and too little causes dwarfism."
+          },
+          {
+            question: "Which mineral is essential for the thyroid gland to make thyroxine?",
+            options: ["Iron", "Iodine", "Calcium", "Zinc"],
+            answer: 1,
+            explanation: "Thyroxine regulates metabolism and its synthesis requires iodine, which is why iodised salt is recommended."
+          },
+          {
+            question: "Which pair of hormones from the pancreas regulate blood sugar?",
+            options: ["Insulin and thyroxine", "Insulin and glucagon", "Adrenaline and insulin", "Testosterone and oestrogen"],
+            answer: 1,
+            explanation: "Insulin lowers blood sugar and glucagon raises it. A deficiency of insulin causes diabetes mellitus."
+          },
+          {
+            question: "Adrenaline prepares the body for emergencies by:",
+            options: ["Lowering the heart rate", "Increasing heart rate and blood pressure", "Slowing breathing", "Reducing blood sugar"],
+            answer: 1,
+            explanation: "The adrenal gland's fight-or-flight hormone raises heart rate and blood pressure so the body can respond fast."
+          },
+          {
+            question: "A plant shoot bending towards light is caused mainly by:",
+            options: ["Abscisic acid", "Auxin causing cells to elongate on the shaded side", "Ethylene", "Cytokinin"],
+            answer: 1,
+            explanation: "Auxins promote cell elongation; more elongation on the darker side tips the shoot towards the light — phototropism."
+          },
+          {
+            question: "Which plant hormone promotes cell division and delays the ageing of leaves?",
+            options: ["Auxin", "Cytokinin", "Gibberellin", "Abscisic acid"],
+            answer: 1,
+            explanation: "Cytokinins drive cell division and keep leaves green for longer."
+          },
+          {
+            question: "Which hormone is called the stress hormone of plants and closes stomata during drought?",
+            options: ["Gibberellin", "Abscisic acid", "Auxin", "Ethylene"],
+            answer: 1,
+            explanation: "Abscisic acid inhibits growth, promotes stomatal closure to save water, and promotes leaf fall."
+          },
+          {
+            question: "Roots growing towards a source of water show:",
+            options: ["Phototropism", "Hydrotropism", "Geotropism", "Thigmotropism"],
+            answer: 1,
+            explanation: "Hydrotropism is directional growth in response to water; geotropism is the response to gravity."
+          },
+          {
+            question: "Which plant hormone promotes stem elongation, seed germination and flowering?",
+            options: ["Gibberellin", "Abscisic acid", "Ethylene", "Cytokinin"],
+            answer: 0,
+            explanation: "Gibberellins are best known for causing dramatic stem elongation and for breaking seed dormancy."
+          },
+          {
+            question: "A shoot grows away from gravity while a root grows towards it. This is:",
+            options: ["Phototropism", "Geotropism", "Hydrotropism", "Chemotropism"],
+            answer: 1,
+            explanation: "Geotropism is growth in response to gravity — negative in shoots and positive in roots."
+          },
+          {
+            question: "Which gland is called the master gland, and why?",
+            options: ["Thyroid, because it controls metabolism", "Pituitary, because its hormones control growth and other glands", "Pancreas, because it controls sugar", "Adrenal, because it handles emergencies"],
+            answer: 1,
+            explanation: "The pituitary secretes growth hormone and directs several other endocrine glands, which is why it is called the master gland."
+          },
+          {
+            question: "How do plant hormones differ from animal hormones in the way they travel?",
+            options: ["Plant hormones are carried in blood", "Plants have no bloodstream, so hormones diffuse from the region where they are made", "Plant hormones travel through nerves", "Plant hormones do not move at all"],
+            answer: 1,
+            explanation: "Animals use a bloodstream and endocrine glands; plants simply make the hormone near where it is needed and let it diffuse."
+          },
+          {
+            question: "Which hormone is responsible for the male secondary sexual characters?",
+            options: ["Oestrogen", "Testosterone", "Insulin", "Thyroxine"],
+            answer: 1,
+            explanation: "The testes produce testosterone, which brings about the male secondary sexual characters at puberty."
           }
         ]
       }
@@ -27313,6 +27463,72 @@ export const curriculumData = {
             options: ["Fruit", "Seed", "Embryo", "Pollen tube"],
             answer: 1,
             explanation: "The ovule develops into a seed. The ovary develops into a fruit."
+          },
+          {
+            question: "Plasmodium reproduces by dividing its nucleus into many at once. This is:",
+            options: ["Binary fission", "Multiple fission", "Budding", "Fragmentation"],
+            answer: 1,
+            explanation: "In multiple fission a single parent gives rise to many daughter cells at one time; Amoeba and Leishmania instead use binary fission."
+          },
+          {
+            question: "Spirogyra breaks into pieces, each of which grows into a new individual. This is:",
+            options: ["Regeneration", "Fragmentation", "Budding", "Fission"],
+            answer: 1,
+            explanation: "Fragmentation is the breaking up of a simple multicellular organism into fragments that each mature into a new organism."
+          },
+          {
+            question: "A cut piece of Planaria grows into a whole animal using specialised cells. This is:",
+            options: ["Fragmentation", "Regeneration", "Budding", "Vegetative propagation"],
+            answer: 1,
+            explanation: "Regeneration uses specialised cells to rebuild the missing parts, and is seen in Hydra and Planaria."
+          },
+          {
+            question: "Which of these organisms reproduces by budding?",
+            options: ["Amoeba", "Yeast", "Spirogyra", "Plasmodium"],
+            answer: 1,
+            explanation: "In budding an outgrowth forms on the parent and then detaches — seen in both yeast and Hydra."
+          },
+          {
+            question: "Why are the offspring of asexual reproduction called clones?",
+            options: ["They are always smaller", "Only one parent is involved, so they are genetically identical to it", "They cannot reproduce", "They live shorter lives"],
+            answer: 1,
+            explanation: "With a single parent and no fusion of gametes, the offspring carry the same genetic material as the parent."
+          },
+          {
+            question: "Which part of the flower attracts pollinators?",
+            options: ["Sepals", "Petals", "Anther", "Ovary"],
+            answer: 1,
+            explanation: "Petals are usually brightly coloured to attract pollinators, while sepals protect the flower while it is in bud."
+          },
+          {
+            question: "A flower with both stamens and carpel is described as:",
+            options: ["Unisexual", "Bisexual", "Sterile", "Asexual"],
+            answer: 1,
+            explanation: "Hibiscus and mustard are bisexual; papaya and watermelon bear unisexual flowers with only one of the two."
+          },
+          {
+            question: "What is the difference between pollination and fertilisation?",
+            options: ["They are the same thing", "Pollination is the transfer of pollen to the stigma; fertilisation is the fusion of the gametes", "Pollination happens after fertilisation", "Fertilisation happens in the anther"],
+            answer: 1,
+            explanation: "After pollination the pollen germinates and grows a pollen tube down the style so that the male gamete can reach and fuse with the egg."
+          },
+          {
+            question: "Which part of the carpel is sticky so that pollen adheres to it?",
+            options: ["Ovary", "Stigma", "Style", "Filament"],
+            answer: 1,
+            explanation: "The stigma sits at the top of the carpel and is sticky to trap arriving pollen grains."
+          },
+          {
+            question: "Pollen grains are produced in the:",
+            options: ["Filament", "Anther", "Stigma", "Ovule"],
+            answer: 1,
+            explanation: "The stamen is the male part, made of a filament supporting the anther, and the anther produces the pollen."
+          },
+          {
+            question: "Growing a whole field of sugarcane from cuttings gives plants that are very similar. Why?",
+            options: ["They receive the same water", "Vegetative propagation is asexual, so all the plants are clones of the parent", "Sugarcane cannot vary", "The soil controls their traits"],
+            answer: 1,
+            explanation: "Since only one parent is involved, variation arises only from rare copying errors, so the crop is nearly uniform."
           }
         ]
       },
@@ -27349,6 +27565,96 @@ export const curriculumData = {
             options: ["Oral pills", "Copper-T", "Condoms", "Tubectomy"],
             answer: 2,
             explanation: "Condoms are the only contraceptive method that provides a physical barrier against STDs."
+          },
+          {
+            question: "Why are the testes located in the scrotum, outside the abdominal cavity?",
+            options: ["To make them easier to protect", "Sperm formation needs a temperature 2–3 °C below body temperature", "To connect them to the bladder", "To store the sperm"],
+            answer: 1,
+            explanation: "The scrotum keeps the testes slightly cooler than the rest of the body, which sperm production requires."
+          },
+          {
+            question: "Where are sperm stored and matured after they are produced?",
+            options: ["In the vas deferens", "In the epididymis", "In the prostate", "In the urethra"],
+            answer: 1,
+            explanation: "Sperm pass from the testes into the epididymis, where they are stored and complete their maturation."
+          },
+          {
+            question: "What is semen?",
+            options: ["Sperm alone", "Sperm together with the seminal fluid from the seminal vesicles and prostate", "The fluid from the prostate only", "The male hormone"],
+            answer: 1,
+            explanation: "The seminal vesicles and prostate add fluid that nourishes the sperm and helps them move; sperm plus that fluid is semen."
+          },
+          {
+            question: "Which hormones are produced by the ovaries?",
+            options: ["Testosterone and insulin", "Oestrogen and progesterone", "Adrenaline and thyroxine", "Growth hormone and glucagon"],
+            answer: 1,
+            explanation: "Besides releasing an egg roughly every 28 days, the ovaries produce oestrogen and progesterone."
+          },
+          {
+            question: "In the menstrual cycle, ovulation typically occurs on about:",
+            options: ["Day 1", "Day 5", "Day 14", "Day 28"],
+            answer: 2,
+            explanation: "Days 1–5 are menstruation, days 6–13 the lining regenerates and an egg matures, ovulation is around day 14, and the lining then thickens."
+          },
+          {
+            question: "What is the endometrium?",
+            options: ["The outer covering of the ovary", "The inner lining of the uterus that thickens each month", "The birth canal", "The tube where fertilisation occurs"],
+            answer: 1,
+            explanation: "The endometrium thickens to receive an embryo; if no fertilisation occurs it is shed during menstruation."
+          },
+          {
+            question: "Which contraceptive method works by preventing ovulation?",
+            options: ["Condoms", "Oral pills", "Copper-T", "Vasectomy"],
+            answer: 1,
+            explanation: "Oral contraceptive pills are chemical methods that stop an egg being released; Copper-T is an intrauterine device and vasectomy is surgical."
+          },
+          {
+            question: "Vasectomy and tubectomy are examples of:",
+            options: ["Barrier methods", "Surgical methods", "Chemical methods", "Natural methods"],
+            answer: 1,
+            explanation: "Vasectomy in males and tubectomy in females are surgical methods of contraception."
+          },
+          {
+            question: "Which of these sexually transmitted diseases currently has no cure?",
+            options: ["Gonorrhoea", "Syphilis", "HIV/AIDS", "All are curable"],
+            answer: 2,
+            explanation: "Bacterial STDs such as gonorrhoea and syphilis are treatable, but the viral disease HIV/AIDS has no cure — which is why prevention matters."
+          },
+          {
+            question: "Where does the embryo implant and develop?",
+            options: ["In the fallopian tube", "In the uterus", "In the ovary", "In the cervix"],
+            answer: 1,
+            explanation: "Fertilisation happens in the fallopian tube, but the embryo travels on to implant in the thickened lining of the uterus."
+          },
+          {
+            question: "Roughly how often does an ovary release an egg?",
+            options: ["Every day", "About every 28 days", "About every 6 months", "Only once in a lifetime"],
+            answer: 1,
+            explanation: "One egg is usually released about every 28 days, in step with the menstrual cycle."
+          },
+          {
+            question: "What happens during days 1–5 of the menstrual cycle?",
+            options: ["Ovulation occurs", "The unfertilised egg and the thickened lining are shed", "The lining thickens", "The embryo implants"],
+            answer: 1,
+            explanation: "If the egg is not fertilised, menstruation sheds it along with the uterine lining, and the cycle begins again."
+          },
+          {
+            question: "Which structure is described as the birth canal?",
+            options: ["The uterus", "The vagina", "The fallopian tube", "The ovary"],
+            answer: 1,
+            explanation: "The uterus opens through the cervix into the vagina, which serves as the birth canal."
+          },
+          {
+            question: "Why is avoiding multiple partners recommended alongside barrier contraception?",
+            options: ["It improves fertility", "It lowers the risk of sexually transmitted diseases", "It is required by law", "It has no effect on health"],
+            answer: 1,
+            explanation: "STDs spread through sexual contact, so both barrier methods and limiting partners reduce the risk of infection."
+          },
+          {
+            question: "Which tubes carry sperm from the epididymis towards the urethra?",
+            options: ["Fallopian tubes", "Vas deferens", "Ureters", "Bronchi"],
+            answer: 1,
+            explanation: "The vas deferens carries sperm onward to the urethra, where the seminal fluid is added."
           }
         ]
       }
@@ -27431,6 +27737,150 @@ export const curriculumData = {
             options: ["Genes physically stretch the plant's cells", "Genes code for proteins/enzymes that control processes (like hormone production) which in turn produce the trait", "Genes have no real effect on physical traits", "Height is controlled only by soil and water, not genes"],
             answer: 1,
             explanation: "Genes carry information to make proteins. For plant height, a gene's efficiency affects how much of a growth hormone an enzyme produces — more hormone means a taller plant. Genes act indirectly, through the proteins/enzymes they encode."
+          },
+          {
+            question: "Why did Mendel choose the garden pea for his experiments?",
+            options: ["It grows very slowly", "It has clear contrasting characters, a short generation time and can self-pollinate", "It has only one gene", "It produces very few seeds"],
+            answer: 1,
+            explanation: "Contrasting pairs such as round/wrinkled seeds, a quick life cycle and self-pollination let him control crosses precisely and count the offspring."
+          },
+          {
+            question: "What are alleles?",
+            options: ["Two different genes", "Different forms of the same gene, such as T and t", "Segments of protein", "Pairs of chromosomes"],
+            answer: 1,
+            explanation: "T for tall and t for dwarf are two alleles of the single gene controlling height."
+          },
+          {
+            question: "What is the difference between genotype and phenotype?",
+            options: ["They mean the same", "Genotype is the genetic make-up; phenotype is the visible trait", "Genotype is visible; phenotype is hidden", "Phenotype applies only to plants"],
+            answer: 1,
+            explanation: "Tt and TT are different genotypes, but both give the same tall phenotype because T is dominant."
+          },
+          {
+            question: "In the F1 of a TT × tt cross, all plants are tall and none are of medium height. What does this show?",
+            options: ["The traits blend together", "Only one parental trait is expressed — inheritance is not a blending of the two", "The dwarf trait has been destroyed", "Height is not inherited"],
+            answer: 1,
+            explanation: "The absence of intermediate plants shows that one allele is simply dominant over the other, rather than the two mixing."
+          },
+          {
+            question: "What is the genotypic ratio in the F2 of a monohybrid cross?",
+            options: ["3 : 1", "1 TT : 2 Tt : 1 tt", "9 : 3 : 3 : 1", "1 : 1"],
+            answer: 1,
+            explanation: "The genotypic ratio is 1 : 2 : 1, which produces the familiar 3 tall : 1 dwarf phenotypic ratio."
+          },
+          {
+            question: "The short trait vanishes in F1 but returns in F2. What does this prove?",
+            options: ["It was lost and re-created", "It was inherited by the F1 plants but not expressed — hidden, not lost", "F2 plants mutated", "Short plants come from the soil"],
+            answer: 1,
+            explanation: "The F1 plants carried the recessive allele all along; it simply could not show while the dominant allele was present."
+          },
+          {
+            question: "What does Mendel's law of independent assortment state?",
+            options: ["Dominant traits always win", "Alleles of different genes segregate independently during gamete formation", "All traits are inherited together", "Only one trait can be inherited at a time"],
+            answer: 1,
+            explanation: "The appearance of new F2 combinations such as round-green shows that seed shape and seed colour are inherited independently."
+          },
+          {
+            question: "What is the F2 phenotypic ratio of a dihybrid cross?",
+            options: ["3 : 1", "1 : 2 : 1", "9 : 3 : 3 : 1", "1 : 1 : 1 : 1"],
+            answer: 2,
+            explanation: "RrYy × RrYy gives 9 round-yellow : 3 round-green : 3 wrinkled-yellow : 1 wrinkled-green."
+          },
+          {
+            question: "How many pairs of autosomes do humans have?",
+            options: ["23", "22", "46", "44"],
+            answer: 1,
+            explanation: "Humans have 22 pairs of autosomes plus one pair of sex chromosomes, making 23 pairs in all."
+          },
+          {
+            question: "Why can the mother never determine the sex of the child?",
+            options: ["Her chromosomes are inactive", "She can only contribute an X chromosome, so the father's X or Y decides the outcome", "She contributes no chromosomes", "The uterus decides"],
+            answer: 1,
+            explanation: "Every egg carries an X. An X-bearing sperm gives XX (female) and a Y-bearing sperm gives XY (male)."
+          },
+          {
+            question: "In some reptiles, what determines the sex of the offspring?",
+            options: ["The X and Y chromosomes", "The temperature at which the fertilised eggs develop", "The size of the egg", "The age of the mother"],
+            answer: 1,
+            explanation: "Not all species determine sex genetically — in certain reptiles the incubation temperature of the eggs decides it."
+          },
+          {
+            question: "Why does asexual reproduction generate so little variation?",
+            options: ["Its offspring never survive", "There is only one parent, so variation arises only from minor DNA copying errors", "It uses two parents", "Variation is deliberately removed"],
+            answer: 1,
+            explanation: "Without the mixing of two parents' genetic material, successive generations stay very similar — as in a field of sugarcane grown from cuttings."
+          },
+          {
+            question: "What is a gene?",
+            options: ["A whole chromosome", "A segment of DNA that is the unit of inheritance", "A type of protein", "A pair of alleles"],
+            answer: 1,
+            explanation: "Genes are stretches of DNA carrying the information needed to make particular proteins."
+          },
+          {
+            question: "An organism with the genotype Tt is described as:",
+            options: ["Homozygous dominant", "Heterozygous", "Homozygous recessive", "Pure-breeding"],
+            answer: 1,
+            explanation: "Two different alleles of the same gene make the individual heterozygous; TT and tt are homozygous."
+          },
+          {
+            question: "A recessive trait shows up only when the individual is:",
+            options: ["Heterozygous", "Homozygous for the recessive allele", "Homozygous dominant", "Carrying one dominant allele"],
+            answer: 1,
+            explanation: "The dominant allele masks the recessive one, so tt is needed for the recessive trait to appear."
+          },
+          {
+            question: "Free and attached earlobes in humans are an example of:",
+            options: ["An acquired characteristic", "A simple inherited trait traceable through a family", "A disease", "A trait caused by diet"],
+            answer: 1,
+            explanation: "Earlobe attachment is inherited from the parents, much like the contrasting characters Mendel studied in peas."
+          },
+          {
+            question: "Why do variations accumulate over many generations?",
+            options: ["Because organisms choose to change", "Each round of reproduction adds small variations on top of those already inherited", "Because the environment rewrites DNA directly", "They do not accumulate"],
+            answer: 1,
+            explanation: "New variations are passed on together with the existing differences, so diversity builds up generation after generation."
+          },
+          {
+            question: "What does Mendel's law of segregation state?",
+            options: ["Alleles blend together in the offspring", "The two alleles of a gene separate during gamete formation, so each gamete carries only one", "Dominant alleles are always lost", "Genes never separate"],
+            answer: 1,
+            explanation: "Each gamete receives just one allele of each gene, which is why the recessive trait can reappear in the F2 generation."
+          },
+          {
+            question: "In humans, which chromosome pair is the only mismatched one?",
+            options: ["The first pair of autosomes", "The sex chromosomes in males, X with a shorter Y", "All pairs are mismatched", "The sex chromosomes in females"],
+            answer: 1,
+            explanation: "Females have a matched XX pair; males have an X paired with a much shorter Y, making it the only mismatched pair."
+          },
+          {
+            question: "A pure-breeding round-yellow pea (RRYY) is crossed with a wrinkled-green one (rryy). What is the F1?",
+            options: ["All wrinkled-green", "All round-yellow", "9 : 3 : 3 : 1", "Half round-yellow, half wrinkled-green"],
+            answer: 1,
+            explanation: "Round and yellow are the dominant traits, so every F1 plant is round-yellow with the genotype RrYy."
+          },
+          {
+            question: "Two new combinations, round-green and wrinkled-yellow, appear in the F2. What does this show?",
+            options: ["A mistake in the experiment", "Seed shape and seed colour are inherited independently of each other", "The parents were impure", "Traits blend in F2"],
+            answer: 1,
+            explanation: "Neither combination existed in the original parents, so the two characters must be assorting independently."
+          },
+          {
+            question: "If a gene's alteration makes an enzyme less efficient, what happens to the trait it controls?",
+            options: ["Nothing changes", "Less of the product is made — for example less growth hormone, so a shorter plant", "The trait disappears entirely", "A new gene is created"],
+            answer: 1,
+            explanation: "Genes act through the proteins they encode; a less efficient enzyme produces less hormone and therefore a shorter plant."
+          },
+          {
+            question: "Which is the best evidence that a trait is inherited rather than acquired?",
+            options: ["It appears in one individual only", "It can be traced through generations of a family in a predictable pattern", "It develops after an injury", "It changes with the weather"],
+            answer: 1,
+            explanation: "Inherited traits pass from parents to children in the regular ratios that Mendel first described."
+          },
+          {
+            question: "What fraction of the F2 generation of a monohybrid cross shows the recessive trait?",
+            options: ["One half", "One quarter", "Three quarters", "None"],
+            answer: 1,
+            explanation: "The 3 : 1 phenotypic ratio means one in four F2 plants — the tt individuals — show the recessive trait."
           }
         ]
       }
