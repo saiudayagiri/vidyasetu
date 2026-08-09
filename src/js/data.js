@@ -26727,6 +26727,78 @@ export const curriculumData = {
             options: ["CnH2n+2", "CnH2n", "CnH2n-2", "CnH2n+1"],
             answer: 1,
             explanation: "Alkenes have the general formula CnH2n (e.g., ethene C2H4, propene C3H6). Alkanes are CnH2n+2 and alkynes are CnH2n-2."
+          },
+          {
+            question: "Why does carbon form covalent bonds rather than losing or gaining 4 electrons?",
+            options: ["Carbon has no valence electrons", "Gaining 4 electrons would leave 6 protons holding 10 electrons, and losing 4 would need enormous energy", "Carbon is a metal", "Carbon already has a complete octet"],
+            answer: 1,
+            explanation: "Both ion routes are prohibitively difficult, so carbon shares its 4 valence electrons instead — the shared pair then belongs to both atoms."
+          },
+          {
+            question: "How many electrons are shared in a triple bond?",
+            options: ["Two", "Four", "Six", "Eight"],
+            answer: 2,
+            explanation: "A triple bond is three shared pairs, so six electrons in all — as in ethyne, C₂H₂."
+          },
+          {
+            question: "Why does diamond not conduct electricity while graphite does?",
+            options: ["Diamond is too hard", "Diamond has no free electrons; in graphite each carbon bonds to only three others, leaving one free electron per atom", "Graphite is a metal", "Diamond is not made of carbon"],
+            answer: 1,
+            explanation: "Each carbon in diamond is bonded to four others in a rigid 3-D tetrahedral network with no spare electrons, whereas graphite's free electrons move between its layers."
+          },
+          {
+            question: "Why is graphite smooth and slippery enough to be used as a lubricant?",
+            options: ["It is a liquid", "Its flat hexagonal layers are held together only by weak forces and slide over one another", "It melts on contact", "It contains oil"],
+            answer: 1,
+            explanation: "The strong bonding is within each layer; the weak van der Waals forces between layers let them slip, which is also why graphite marks paper in a pencil."
+          },
+          {
+            question: "Diamond and graphite have very different physical properties but identical chemical properties. Why?",
+            options: ["They are different elements", "They are allotropes — different physical forms of the same element, carbon", "One is a compound", "Their atoms have different masses"],
+            answer: 1,
+            explanation: "Allotropes are different structural forms of one element, so their chemistry is the same even though their structures — and hence physical properties — differ completely."
+          },
+          {
+            question: "Silicon can also catenate, but only up to 7 or 8 atoms. What makes carbon's catenation so much better?",
+            options: ["Carbon is heavier", "The C—C bond is exceptionally strong and stable because of carbon's small atomic size", "Silicon has fewer valence electrons", "Carbon is a metal"],
+            answer: 1,
+            explanation: "Carbon's small size gives very strong, stable bonds, letting it build long chains, branches and rings — and so millions of compounds."
+          },
+          {
+            question: "What does tetravalency of carbon mean?",
+            options: ["It has four allotropes", "It has a valency of 4, so it can bond with four other atoms at once", "It forms four bonds only with hydrogen", "It has four electron shells"],
+            answer: 1,
+            explanation: "With four valence electrons to share, carbon bonds simultaneously with four other atoms — hydrogen, oxygen, nitrogen, sulphur, chlorine and more."
+          },
+          {
+            question: "n-butane and isobutane both have the formula C₄H₁₀ but different structures. They are:",
+            options: ["Allotropes", "Structural isomers", "Homologues", "Different elements"],
+            answer: 1,
+            explanation: "Isomers share a molecular formula but differ in how the atoms are arranged — here a straight chain versus a branched one."
+          },
+          {
+            question: "Which of these is a saturated hydrocarbon?",
+            options: ["Ethene, C₂H₄", "Ethane, C₂H₆", "Ethyne, C₂H₂", "Propene, C₃H₆"],
+            answer: 1,
+            explanation: "Alkanes such as ethane contain only single bonds and follow CnH2n+2, so they are saturated. Alkenes and alkynes are unsaturated."
+          },
+          {
+            question: "What is the formula of the alkyne with three carbon atoms?",
+            options: ["C₃H₈", "C₃H₆", "C₃H₄", "C₃H₂"],
+            answer: 2,
+            explanation: "Alkynes follow CnH2n−2, so for n = 3 the formula is C₃H₄ — propyne."
+          },
+          {
+            question: "What determines the chemical properties of a carbon compound more than the length of its carbon chain?",
+            options: ["Its colour", "Its functional group", "Its melting point", "The number of hydrogen atoms only"],
+            answer: 1,
+            explanation: "Functional groups — heteroatoms such as O, N, S, Cl or groups containing them that replace hydrogen — decide how the compound behaves chemically."
+          },
+          {
+            question: "Which allotrope of carbon is arranged as flat hexagonal layers?",
+            options: ["Diamond", "Graphite", "Fullerene", "Coal"],
+            answer: 1,
+            explanation: "In graphite each carbon is bonded to three others within flat hexagonal sheets, which are then stacked."
           }
         ]
       },
@@ -26781,6 +26853,90 @@ export const curriculumData = {
             options: ["Hard water is too cold for soap", "Soap reacts with Ca2+/Mg2+ ions to form insoluble scum", "Hard water contains excess soap", "Soap molecules break down in hard water"],
             answer: 1,
             explanation: "Hard water contains dissolved Ca2+ and Mg2+ ions that react with soap to form insoluble precipitates (scum), making soap ineffective."
+          },
+          {
+            question: "Saturated hydrocarbons burn with a clean blue flame, but unsaturated ones burn with:",
+            options: ["No flame at all", "A yellow, sooty flame", "A green flame", "A colourless flame"],
+            answer: 1,
+            explanation: "The higher proportion of carbon in unsaturated compounds leaves unburnt carbon particles, giving the yellow sooty flame."
+          },
+          {
+            question: "Which reagent converts ethanol into ethanoic acid?",
+            options: ["Concentrated H₂SO₄", "Alkaline KMnO₄ or acidified K₂Cr₂O₇", "Sodium metal", "Nickel catalyst"],
+            answer: 1,
+            explanation: "CH₃CH₂OH + [O] → CH₃COOH. These oxidising agents add oxygen, so they are called oxidising agents in this controlled oxidation."
+          },
+          {
+            question: "What is produced when ethanol reacts with sodium metal?",
+            options: ["Ethene and water", "Sodium ethoxide and hydrogen gas", "Ethanoic acid and hydrogen", "Sodium carbonate and water"],
+            answer: 1,
+            explanation: "2Na + 2C₂H₅OH → 2C₂H₅ONa + H₂. The evolution of hydrogen is a test for the alcohol group."
+          },
+          {
+            question: "Heating ethanol with excess concentrated H₂SO₄ at 443 K gives:",
+            options: ["Ethanoic acid", "Ethene", "Ethyne", "Sodium ethoxide"],
+            answer: 1,
+            explanation: "The acid acts as a dehydrating agent, removing water: C₂H₅OH → C₂H₄ + H₂O."
+          },
+          {
+            question: "Why is denatured alcohol unfit to drink?",
+            options: ["It is too dilute", "Methanol is added to it, and methanol is extremely toxic", "It contains water", "It has been boiled"],
+            answer: 1,
+            explanation: "Denatured alcohol is industrial ethanol mixed with methanol and a blue dye. Even small quantities of methanol cause blindness and death."
+          },
+          {
+            question: "Pure ethanoic acid is called glacial acetic acid because:",
+            options: ["It is always kept frozen", "Its melting point is 290 K, so it freezes in cold weather", "It looks like ice at all times", "It is made from ice"],
+            answer: 1,
+            explanation: "With a melting point of 290 K (about 17 °C), pure ethanoic acid solidifies on a cold day, giving it an ice-like appearance."
+          },
+          {
+            question: "Vinegar is a solution of ethanoic acid in water of roughly what strength?",
+            options: ["0.5–1%", "5–8%", "25–30%", "50%"],
+            answer: 1,
+            explanation: "A 5–8% solution of ethanoic acid in water is sold as vinegar."
+          },
+          {
+            question: "The reaction CH₃COOH + C₂H₅OH → CH₃COOC₂H₅ + H₂O is called:",
+            options: ["Saponification", "Esterification", "Hydrogenation", "Substitution"],
+            answer: 1,
+            explanation: "An acid and an alcohol give an ester, which has a characteristically sweet or fruity smell."
+          },
+          {
+            question: "The reaction of an ester with sodium hydroxide, which forms the basis of soap-making, is called:",
+            options: ["Esterification", "Saponification", "Combustion", "Oxidation"],
+            answer: 1,
+            explanation: "Ester + NaOH → alcohol + sodium salt of the carboxylic acid. That sodium salt is soap."
+          },
+          {
+            question: "Ethanoic acid reacts with sodium carbonate to give a gas that turns lime water milky. The gas is:",
+            options: ["Hydrogen", "Carbon dioxide", "Oxygen", "Sulphur dioxide"],
+            answer: 1,
+            explanation: "2CH₃COOH + Na₂CO₃ → 2CH₃COONa + H₂O + CO₂. Turning lime water milky is the standard test for CO₂."
+          },
+          {
+            question: "Which end of a soap molecule embeds itself in an oil droplet?",
+            options: ["The ionic, hydrophilic end", "The hydrocarbon, hydrophobic end", "Both ends equally", "Neither end"],
+            answer: 1,
+            explanation: "The hydrophobic tail is attracted to oil and grease while the hydrophilic head faces the water, forming a micelle that traps the dirt."
+          },
+          {
+            question: "Detergents work in hard water where soaps fail because:",
+            options: ["They are stronger acids", "Their calcium and magnesium salts are soluble", "They dissolve the hardness", "They are used in larger amounts"],
+            answer: 1,
+            explanation: "Because their Ca and Mg salts stay soluble, no scum forms. Their drawback is that many detergents are non-biodegradable."
+          },
+          {
+            question: "Vegetable oil is converted to vanaspati ghee by adding hydrogen over a nickel catalyst. This reaction is:",
+            options: ["A substitution reaction", "An addition reaction", "An oxidation reaction", "A saponification reaction"],
+            answer: 1,
+            explanation: "Unsaturated compounds add hydrogen across their double bonds in the presence of Ni or Pd to become saturated — hydrogenation."
+          },
+          {
+            question: "Why is a micelle able to wash away oily dirt?",
+            options: ["It dissolves the oil chemically", "The oil is trapped inside a sphere whose outer surface is water-attracting, so it can be rinsed off", "It burns the oil", "It makes the oil heavier"],
+            answer: 1,
+            explanation: "Hydrophobic tails bury themselves in the oil droplet while hydrophilic heads face outwards into the water, letting the whole droplet be carried away."
           }
         ]
       }
@@ -26837,6 +26993,78 @@ export const curriculumData = {
             options: ["Cilia", "Tentacles", "Pseudopodia", "Oral groove"],
             answer: 2,
             explanation: "Amoeba uses pseudopodia (false feet) to surround and engulf food particles (phagocytosis)."
+          },
+          {
+            question: "Write the overall equation for photosynthesis.",
+            options: ["C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O", "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂", "6CO₂ + 6O₂ → C₆H₁₂O₆", "C₆H₁₂O₆ → 6CO₂ + 6H₂O"],
+            answer: 1,
+            explanation: "Using light energy trapped by chlorophyll, carbon dioxide and water are converted into glucose, releasing oxygen."
+          },
+          {
+            question: "The splitting of water molecules during photosynthesis is called:",
+            options: ["Carbon fixation", "Photolysis", "Translocation", "Transpiration"],
+            answer: 1,
+            explanation: "2H₂O → 2H₂ + O₂. The hydrogen released is then used to reduce carbon dioxide to carbohydrate."
+          },
+          {
+            question: "Which cells control the opening and closing of a stoma?",
+            options: ["Epidermal cells", "Kidney-shaped guard cells", "Palisade cells", "Companion cells"],
+            answer: 1,
+            explanation: "Two kidney-shaped guard cells flank each stomatal pore and regulate its opening for gas exchange."
+          },
+          {
+            question: "Which type of nutrition does a fungus growing on decaying bread show?",
+            options: ["Holozoic", "Saprophytic", "Parasitic", "Autotrophic"],
+            answer: 1,
+            explanation: "Saprophytes secrete enzymes onto dead or decaying organic matter and absorb the digested products."
+          },
+          {
+            question: "Cuscuta and tapeworm both obtain nutrition from a living host. This is:",
+            options: ["Saprophytic nutrition", "Parasitic nutrition", "Holozoic nutrition", "Autotrophic nutrition"],
+            answer: 1,
+            explanation: "Parasites derive their nutrition from a living host organism, usually harming it in the process."
+          },
+          {
+            question: "Put the steps of holozoic nutrition in order.",
+            options: ["Digestion → ingestion → absorption → assimilation → egestion", "Ingestion → digestion → absorption → assimilation → egestion", "Absorption → ingestion → digestion → egestion → assimilation", "Ingestion → absorption → digestion → assimilation → egestion"],
+            answer: 1,
+            explanation: "Whole food is taken in, broken down, absorbed, used by the cells, and the undigested remainder is egested."
+          },
+          {
+            question: "Paramecium sweeps food into its oral groove using:",
+            options: ["Pseudopodia", "Cilia", "Flagella", "Tentacles"],
+            answer: 1,
+            explanation: "Fine hair-like cilia beat to move food particles towards the oral groove."
+          },
+          {
+            question: "What is the role of hydrochloric acid in the stomach?",
+            options: ["It digests fat", "It creates an acidic pH of about 2, kills bacteria and lets pepsin work", "It neutralises the food", "It absorbs nutrients"],
+            answer: 1,
+            explanation: "The acid provides the acidic medium pepsin needs and destroys many bacteria; mucus protects the stomach lining from it."
+          },
+          {
+            question: "Which enzyme in the stomach begins protein digestion?",
+            options: ["Amylase", "Pepsin", "Lipase", "Trypsin"],
+            answer: 1,
+            explanation: "Pepsin breaks proteins down into peptides in the acidic environment of the stomach."
+          },
+          {
+            question: "What is the function of bile in digestion?",
+            options: ["It digests protein", "It emulsifies fats, breaking large globules into smaller ones", "It absorbs vitamins", "It neutralises saliva"],
+            answer: 1,
+            explanation: "Bile from the liver emulsifies fat so that lipase can act on a much larger surface area."
+          },
+          {
+            question: "Why do villi hugely increase the efficiency of the small intestine?",
+            options: ["They produce enzymes", "Their finger-like projections greatly increase the surface area for absorption, and each has a capillary network", "They push food along", "They store fat"],
+            answer: 1,
+            explanation: "Absorption depends on surface area; the villi lining the roughly 6.5 m long small intestine provide an enormous one."
+          },
+          {
+            question: "Which gland supplies trypsin, lipase and amylase to the small intestine?",
+            options: ["The liver", "The pancreas", "The salivary glands", "The gall bladder"],
+            answer: 1,
+            explanation: "Pancreatic juice contains trypsin for proteins, lipase for fats and amylase for carbohydrates."
           }
         ]
       },
@@ -26883,6 +27111,90 @@ export const curriculumData = {
             options: ["Pulmonary artery", "Aorta", "Vena cava", "Pulmonary vein"],
             answer: 3,
             explanation: "Pulmonary veins carry oxygenated blood from the lungs to the left atrium. This is the only vein that carries oxygenated blood."
+          },
+          {
+            question: "Where does glycolysis take place, and what does it produce?",
+            options: ["In mitochondria, giving CO₂ and water", "In the cytoplasm, giving 2 pyruvate and 2 ATP from one glucose", "In the nucleus, giving ATP only", "In the alveoli, giving lactic acid"],
+            answer: 1,
+            explanation: "Glycolysis is the common first step of all respiration: glucose (6C) → 2 pyruvate (3C) + 2 ATP, in the cytoplasm."
+          },
+          {
+            question: "Roughly how many ATP molecules does aerobic respiration yield per glucose molecule?",
+            options: ["2", "4", "38", "100"],
+            answer: 2,
+            explanation: "Glycolysis gives 2 ATP and the mitochondrial stage about 36 more, for a total of about 38 ATP — far more than anaerobic respiration's 2."
+          },
+          {
+            question: "Which end product of anaerobic respiration in human muscles causes cramps?",
+            options: ["Ethanol", "Lactic acid", "Carbon dioxide", "Pyruvate"],
+            answer: 1,
+            explanation: "When oxygen runs short, pyruvate is converted to lactic acid, whose build-up causes muscle cramps."
+          },
+          {
+            question: "Approximately how many alveoli are present in each lung?",
+            options: ["3 thousand", "3 million", "300 million", "3 billion"],
+            answer: 2,
+            explanation: "About 300 million alveoli per lung give a total surface area of roughly 100 m² for gas exchange."
+          },
+          {
+            question: "Put the human air passage in the correct order.",
+            options: ["Nostrils → trachea → larynx → bronchi → alveoli", "Nostrils → nasal cavity → pharynx → larynx → trachea → bronchi → bronchioles → alveoli", "Nostrils → bronchi → trachea → alveoli", "Nostrils → alveoli → bronchioles → trachea"],
+            answer: 1,
+            explanation: "Air travels down through the pharynx and larynx into the trachea, which branches into bronchi, then bronchioles, ending at the alveoli."
+          },
+          {
+            question: "Which side of the heart handles deoxygenated blood?",
+            options: ["The left side", "The right side", "Both sides equally", "Neither — blood mixes freely"],
+            answer: 1,
+            explanation: "The right side receives and pumps deoxygenated blood, the left side oxygenated blood, and the septum keeps the two apart."
+          },
+          {
+            question: "What is double circulation?",
+            options: ["Blood passing through the heart once per cycle", "Blood passing through the heart twice per cycle — a pulmonary and a systemic circuit", "Two hearts working together", "Blood flowing in two directions in the same vessel"],
+            answer: 1,
+            explanation: "Pulmonary circulation takes blood heart → lungs → heart for oxygenation, and systemic circulation takes it heart → body → heart to deliver that oxygen."
+          },
+          {
+            question: "Which blood component is responsible for clotting?",
+            options: ["Plasma", "Red blood cells", "White blood cells", "Platelets"],
+            answer: 3,
+            explanation: "Platelets bring about clotting; RBCs carry oxygen using haemoglobin and WBCs provide immune defence."
+          },
+          {
+            question: "A blood pressure of 120/80 mmHg refers to:",
+            options: ["Pulse and breathing rate", "Systolic and diastolic pressure", "Oxygen and carbon dioxide levels", "Volume of blood in each ventricle"],
+            answer: 1,
+            explanation: "The higher figure is the systolic pressure during ventricular contraction, the lower the diastolic pressure during relaxation. Persistently high values are hypertension."
+          },
+          {
+            question: "What drives the upward movement of water in xylem?",
+            options: ["Pumping by the roots only", "Transpiration pull created as water evaporates from leaf stomata", "Gravity", "Active transport using ATP"],
+            answer: 1,
+            explanation: "Evaporation from the leaves creates a suction that draws the water column up through the hollow, dead xylem tubes."
+          },
+          {
+            question: "How does phloem differ from xylem?",
+            options: ["Phloem is made of dead cells", "Phloem is made of living cells, moves food in both directions, and uses ATP", "Phloem carries only water", "Phloem moves material upwards only"],
+            answer: 1,
+            explanation: "Translocation through the living sieve tubes and companion cells carries dissolved sugars from source to sink, and loading sucrose requires energy."
+          },
+          {
+            question: "Which lists the parts of a nephron in the correct order?",
+            options: ["PCT → Bowman's capsule → loop of Henle → DCT", "Bowman's capsule → PCT → loop of Henle → DCT → collecting duct", "Glomerulus → DCT → PCT → loop of Henle", "Collecting duct → loop of Henle → Bowman's capsule"],
+            answer: 1,
+            explanation: "Filtrate forms in Bowman's capsule around the glomerulus, then passes through the proximal tubule, loop of Henle, distal tubule and collecting duct."
+          },
+          {
+            question: "During glomerular filtration, which substances are held back in the blood?",
+            options: ["Glucose and water", "Proteins and blood cells", "Urea and salts", "All small molecules"],
+            answer: 1,
+            explanation: "Blood is filtered under high pressure; small molecules pass into the tubule while proteins and blood cells are too large and stay behind."
+          },
+          {
+            question: "How do plants get rid of their wastes?",
+            options: ["Through kidneys", "By storing waste in cellular vacuoles, shedding leaves, and secreting it out", "Through their stomata only", "They produce no waste"],
+            answer: 1,
+            explanation: "Plants have no excretory organs; they store wastes in vacuoles, lose them when leaves are shed, and secrete some as gums and resins."
           }
         ]
       }
