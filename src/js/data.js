@@ -26286,6 +26286,60 @@ export const curriculumData = {
                       options: ["Sulphur", "Phosphorus", "Iodine", "Carbon"],
                       answer: 2,
                       explanation: "Iodine is a non-metal that forms shiny violet-grey crystals, showing metallic lustre."
+                    },
+                    {
+                      question: "The property that lets a metal be beaten into thin sheets is called:",
+                      options: ["Ductility", "Malleability", "Sonority", "Lustre"],
+                      answer: 1,
+                      explanation: "Malleability is being beaten into sheets; ductility is being drawn into wires. Gold and silver are the most malleable metals."
+                    },
+                    {
+                      question: "1 g of gold can be drawn into a wire about 2 km long. Which property is this?",
+                      options: ["Malleability", "Ductility", "Hardness", "Conductivity"],
+                      answer: 1,
+                      explanation: "Ductility is the ability to be drawn into thin wires, and gold is exceptionally ductile."
+                    },
+                    {
+                      question: "Which pair are the best conductors of electricity among metals?",
+                      options: ["Lead and mercury", "Silver and copper", "Iron and zinc", "Sodium and potassium"],
+                      answer: 1,
+                      explanation: "Silver and copper are the best conductors, while lead and mercury are comparatively poor ones."
+                    },
+                    {
+                      question: "Why are current-carrying wires coated with PVC or rubber?",
+                      options: ["To make them look better", "Because these are insulators that prevent electric shocks", "To make the wire stronger", "To improve conduction"],
+                      answer: 1,
+                      explanation: "PVC (polyvinylchloride) and rubber are non-metallic insulators, so they stop the current reaching anyone handling the wire."
+                    },
+                    {
+                      question: "Which metals have melting points so low that they would melt on your palm?",
+                      options: ["Iron and copper", "Gallium and caesium", "Lead and tin", "Zinc and aluminium"],
+                      answer: 1,
+                      explanation: "Metals generally have high melting points, but gallium and caesium are notable exceptions."
+                    },
+                    {
+                      question: "Which non-metal is the hardest natural substance known?",
+                      options: ["Graphite", "Diamond", "Sulphur", "Iodine"],
+                      answer: 1,
+                      explanation: "Diamond, an allotrope of carbon, is the hardest natural substance and has a very high melting point — an exception to non-metals being soft."
+                    },
+                    {
+                      question: "Graphite is unusual among non-metals because it:",
+                      options: ["Is malleable", "Is an excellent conductor of electricity", "Is a liquid", "Has metallic sound"],
+                      answer: 1,
+                      explanation: "Graphite, the other common allotrope of carbon, conducts electricity well even though non-metals are normally insulators."
+                    },
+                    {
+                      question: "Lithium, sodium and potassium can be cut with a knife. This shows that:",
+                      options: ["They are non-metals", "Not all metals are hard — the alkali metals are soft", "They are not pure", "They have high melting points"],
+                      answer: 1,
+                      explanation: "The alkali metals are soft enough to be cut with a knife, an important exception to the rule that metals are hard."
+                    },
+                    {
+                      question: "The ringing sound metals make when struck is called:",
+                      options: ["Lustre", "Sonority", "Ductility", "Resonance"],
+                      answer: 1,
+                      explanation: "Metals are sonorous — they produce a ringing sound when struck, which is why bells are made of metal."
                     }
                   ]
                 },
@@ -26336,6 +26390,60 @@ export const curriculumData = {
                       options: ["1:3", "3:1", "1:1", "2:3"],
                       answer: 1,
                       explanation: "Aqua Regia is a mixture of concentrated HCl and concentrated HNO3 in a 3:1 ratio."
+                    },
+                    {
+                      question: "Metal oxides are generally which in nature?",
+                      options: ["Acidic", "Basic", "Neutral", "Amphoteric"],
+                      answer: 1,
+                      explanation: "Almost all metals combine with oxygen to form metal oxides, and these are basic in nature."
+                    },
+                    {
+                      question: "Why are sodium and potassium stored submerged in kerosene oil?",
+                      options: ["To keep them clean", "They react so violently with oxygen that they catch fire in the open air", "To keep them cool", "To stop them dissolving in water vapour"],
+                      answer: 1,
+                      explanation: "Both react vigorously with the oxygen of the air and can catch fire instantly, so kerosene keeps the air away from them."
+                    },
+                    {
+                      question: "Al₂O₃ reacts with both HCl and NaOH. Such an oxide is called:",
+                      options: ["Basic", "Amphoteric", "Acidic", "Neutral"],
+                      answer: 1,
+                      explanation: "Amphoteric oxides react with both acids and bases to give salt and water. Al₂O₃ + 6HCl → 2AlCl₃ + 3H₂O and Al₂O₃ + 2NaOH → 2NaAlO₂ + H₂O."
+                    },
+                    {
+                      question: "Calcium reacting with water starts to float. Why?",
+                      options: ["Calcium is lighter than water", "Bubbles of hydrogen gas stick to the metal surface", "It melts and spreads out", "It forms an oily layer"],
+                      answer: 1,
+                      explanation: "Hydrogen bubbles cling to the calcium and carry it up. Magnesium behaves the same way in hot water."
+                    },
+                    {
+                      question: "Which metals react with steam but not with cold water?",
+                      options: ["Sodium and potassium", "Aluminium, iron and zinc", "Copper and silver", "Gold and platinum"],
+                      answer: 1,
+                      explanation: "3Fe(s) + 4H₂O(g) → Fe₃O₄(s) + 4H₂(g)↑. Sodium and potassium react even with cold water, while copper, silver and gold do not react with water at all."
+                    },
+                    {
+                      question: "Why is hydrogen gas usually NOT evolved when a metal reacts with nitric acid?",
+                      options: ["Nitric acid is too weak", "HNO₃ is a strong oxidising agent and oxidises the hydrogen produced into water", "Metals do not react with HNO₃", "The hydrogen dissolves in the acid"],
+                      answer: 1,
+                      explanation: "The nitric acid itself is reduced to nitrogen oxides. Only magnesium and manganese with very dilute HNO₃ give hydrogen."
+                    },
+                    {
+                      question: "What makes aqua regia able to dissolve gold, which neither of its acids can do alone?",
+                      options: ["It is heated strongly", "It is a freshly prepared 3:1 mixture of concentrated HCl and HNO₃", "It contains sulphuric acid", "It is diluted with water"],
+                      answer: 1,
+                      explanation: "Aqua regia — Latin for royal water — is a highly corrosive, fuming mixture able to dissolve even gold and platinum."
+                    },
+                    {
+                      question: "Metal + dilute acid gives which two products?",
+                      options: ["Metal oxide and water", "Salt and hydrogen gas", "Salt and oxygen", "Metal hydroxide and hydrogen"],
+                      answer: 1,
+                      explanation: "The general reaction is metal + dilute acid → salt + hydrogen gas↑."
+                    },
+                    {
+                      question: "When copper is heated in air it turns black. What has formed?",
+                      options: ["Copper carbonate", "Copper oxide", "Copper sulphide", "Copper hydroxide"],
+                      answer: 1,
+                      explanation: "2Cu + O₂ → 2CuO. The black coating is copper(II) oxide."
                     }
                   ]
                 },
@@ -26390,6 +26498,60 @@ export const curriculumData = {
                       options: ["Zinc", "Iron", "Copper", "Magnesium"],
                       answer: 2,
                       explanation: "Copper is lower than Hydrogen in the reactivity series, meaning it cannot reduce hydrogen ions to release Hydrogen gas."
+                    },
+                    {
+                      question: "Which metal sits at the top of the reactivity series?",
+                      options: ["Sodium", "Potassium", "Calcium", "Gold"],
+                      answer: 1,
+                      explanation: "The series runs K, Na, Ca, Mg, Al, Zn, Fe, Pb, [H], Cu, Hg, Ag, Au — potassium is the most reactive and gold the least."
+                    },
+                    {
+                      question: "How was the reactivity series worked out experimentally?",
+                      options: ["By measuring melting points", "By displacement reactions — a more reactive metal displaces a less reactive one from its salt solution", "By weighing the metals", "By testing their colours"],
+                      answer: 1,
+                      explanation: "Metal A + salt of B → salt of A + metal B works only when A is more reactive than B, which lets the metals be ranked."
+                    },
+                    {
+                      question: "In forming NaCl, what does the sodium atom (2,8,1) do?",
+                      options: ["Gains one electron", "Loses its one valence electron to become Na⁺ (2,8)", "Shares one electron", "Loses two electrons"],
+                      answer: 1,
+                      explanation: "Na (2,8,1) → Na⁺ (2,8) + e⁻, and the chlorine atom accepts that electron: Cl (2,8,7) + e⁻ → Cl⁻ (2,8,8)."
+                    },
+                    {
+                      question: "How many chlorine atoms does one magnesium atom transfer electrons to in MgCl₂?",
+                      options: ["One", "Two", "Three", "Four"],
+                      answer: 1,
+                      explanation: "Magnesium (2,8,2) has two valence electrons and gives one to each of two chlorine atoms, forming Mg²⁺ and two Cl⁻ ions."
+                    },
+                    {
+                      question: "Why do ionic compounds have very high melting and boiling points?",
+                      options: ["Their molecules are heavy", "Strong electrostatic forces between the ions need a great deal of thermal energy to break", "They contain metals", "They are crystalline"],
+                      answer: 1,
+                      explanation: "Breaking the strong inter-ionic bonds requires massive thermal energy — NaCl melts only at 1074 K."
+                    },
+                    {
+                      question: "Why do ionic compounds conduct electricity when molten or dissolved, but not as solids?",
+                      options: ["Heat creates new ions", "In the solid the ions are fixed in a rigid crystal; melting or dissolving frees them to move", "Solids never conduct", "Water itself conducts the current"],
+                      answer: 1,
+                      explanation: "Conduction needs charge carriers that can move. Only when the rigid lattice breaks down can the ions travel to the electrodes."
+                    },
+                    {
+                      question: "Ionic compounds are generally soluble in:",
+                      options: ["Kerosene", "Water and other polar solvents", "Petrol", "Organic solvents generally"],
+                      answer: 1,
+                      explanation: "They dissolve in polar solvents such as water but are insoluble in organic solvents like kerosene and petrol."
+                    },
+                    {
+                      question: "Why are ionic solids brittle?",
+                      options: ["They contain trapped air", "The rigid arrangement of ions breaks apart when pressure is applied", "They are made of soft metals", "They absorb moisture"],
+                      answer: 1,
+                      explanation: "Ionic compounds are solid and hard because of the strong electrostatic attraction, but that rigid structure shatters rather than bending under pressure."
+                    },
+                    {
+                      question: "Zinc is placed above copper in the reactivity series. What happens when a zinc strip is put into copper sulphate solution?",
+                      options: ["Nothing happens", "Zinc displaces copper, which deposits out, and the blue colour fades", "Copper displaces zinc", "The solution turns deeper blue"],
+                      answer: 1,
+                      explanation: "The more reactive metal displaces the less reactive one from its salt solution — this is exactly the experiment used to build the series."
                     }
                   ]
                 },
@@ -26439,6 +26601,66 @@ export const curriculumData = {
                       options: ["Copper", "Zinc", "Tin", "Aluminium"],
                       answer: 1,
                       explanation: "Galvanisation uses a coating of Zinc (Zn) to protect iron from corrosion."
+                    },
+                    {
+                      question: "The sand and soil impurities present in a mined ore are called:",
+                      options: ["Slag", "Gangue", "Flux", "Anode mud"],
+                      answer: 1,
+                      explanation: "Gangue is the earthy impurity that must be removed from the ore before the metal can be extracted."
+                    },
+                    {
+                      question: "What is roasting?",
+                      options: ["Heating a carbonate ore in limited air", "Heating a sulphide ore strongly in excess air", "Reducing an oxide with carbon", "Electrolysing a molten chloride"],
+                      answer: 1,
+                      explanation: "2ZnS + 3O₂ + Heat → 2ZnO + 2SO₂. Roasting converts a sulphide ore to its oxide using plenty of air."
+                    },
+                    {
+                      question: "What is calcination?",
+                      options: ["Heating a sulphide ore in excess air", "Heating a carbonate ore strongly in limited air", "Coating iron with zinc", "Purifying a metal electrically"],
+                      answer: 1,
+                      explanation: "ZnCO₃ + Heat → ZnO + CO₂. Calcination converts a carbonate ore to its oxide with only a limited supply of air."
+                    },
+                    {
+                      question: "Cinnabar (HgS) is a low-reactivity ore. How is mercury obtained from it?",
+                      options: ["By electrolysis of molten HgS", "By roasting it to HgO, which then decomposes to mercury on further heating", "By reducing it with carbon", "By dissolving it in acid"],
+                      answer: 1,
+                      explanation: "2HgS + 3O₂ → 2HgO + 2SO₂, then 2HgO + Heat → 2Hg(l) + O₂(g). Low-reactivity metals need only heating in air."
+                    },
+                    {
+                      question: "Why are sodium, calcium, magnesium and aluminium extracted by electrolysis rather than by reduction with carbon?",
+                      options: ["Carbon is too expensive", "They have a greater affinity for oxygen than carbon does, so carbon cannot reduce their oxides", "They are found as sulphides", "Their oxides are gases"],
+                      answer: 1,
+                      explanation: "These highly reactive metals hold their oxygen too strongly for carbon to take it away, so they are obtained by electrolysis of their molten chlorides."
+                    },
+                    {
+                      question: "In the electrolytic refining of copper, what is used as the cathode?",
+                      options: ["Impure copper", "A thin sheet of pure copper", "A carbon rod", "Zinc metal"],
+                      answer: 1,
+                      explanation: "Impure copper is the anode and pure copper the cathode, with acidified CuSO₄ as the electrolyte; copper transfers from anode to cathode."
+                    },
+                    {
+                      question: "The insoluble impurities that settle below the anode during electrolytic refining are called:",
+                      options: ["Gangue", "Anode mud", "Slag", "Flux"],
+                      answer: 1,
+                      explanation: "Soluble impurities pass into the solution while insoluble ones collect under the anode as anode mud."
+                    },
+                    {
+                      question: "Rust is chemically:",
+                      options: ["Iron sulphide", "Hydrated ferric oxide, Fe₂O₃·xH₂O", "Iron carbonate", "Ferrous chloride"],
+                      answer: 1,
+                      explanation: "Rusting produces a reddish-brown flaky layer of hydrated ferric oxide."
+                    },
+                    {
+                      question: "Why does galvanisation protect iron even after the zinc coating is scratched?",
+                      options: ["The scratch reseals itself", "Zinc is more reactive and corrodes in place of the iron — sacrificial protection", "The zinc is very thick", "Scratches do not expose the iron"],
+                      answer: 1,
+                      explanation: "Being higher in the reactivity series, the zinc is attacked first, so the iron underneath is spared."
+                    },
+                    {
+                      question: "Pure iron is soft, but adding about 0.05% carbon makes it hard and strong. This is an example of:",
+                      options: ["Galvanisation", "Alloying", "Roasting", "Refining"],
+                      answer: 1,
+                      explanation: "Alloying means mixing a metal with other elements to change its properties — here iron becomes steel."
                     }
                   ]
                 }
