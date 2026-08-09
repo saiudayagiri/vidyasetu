@@ -25544,6 +25544,60 @@ export const curriculumData = {
           options: ["Aqua", "Aqueous solution", "Solid", "Gas"],
           answer: 1,
           explanation: "(aq) means the reactant or product is present as a solution in water (aqueous)."
+        },
+        {
+          question: "Which law makes it necessary to balance every chemical equation?",
+          options: ["The law of constant proportions", "The law of conservation of mass", "The law of multiple proportions", "Newton's third law"],
+          answer: 1,
+          explanation: "Mass can neither be created nor destroyed in a chemical reaction, so the number of atoms of each element must be the same before and after the reaction."
+        },
+        {
+          question: "In the equation 3Fe + 4H₂O → Fe₃O₄ + 4H₂, how many hydrogen atoms are on each side?",
+          options: ["4 on the left, 4 on the right", "8 on both sides", "4 on both sides", "8 on the left, 4 on the right"],
+          answer: 1,
+          explanation: "4H₂O supplies 4 × 2 = 8 hydrogen atoms, and 4H₂ contains 4 × 2 = 8 hydrogen atoms. The equation is balanced."
+        },
+        {
+          question: "While balancing an equation, which of these are you NOT allowed to change?",
+          options: ["The coefficient written in front of a formula", "The subscripts inside a chemical formula", "The order in which reactants are written", "The physical state symbols"],
+          answer: 1,
+          explanation: "Changing a subscript changes the substance itself — H₂O₄ is not water. Only the coefficients in front of formulae may be adjusted."
+        },
+        {
+          question: "What is a skeletal chemical equation?",
+          options: ["An equation with state symbols added", "An unbalanced equation written with symbols and formulae", "A word equation", "An equation showing only the products"],
+          answer: 1,
+          explanation: "Mg + O₂ → MgO is a skeletal equation: it uses correct formulae but the atoms are not yet balanced on the two sides."
+        },
+        {
+          question: "Which is the correctly balanced equation for hydrogen reacting with chlorine?",
+          options: ["H + Cl → HCl", "H₂ + Cl₂ → HCl", "H₂ + Cl₂ → 2HCl", "2H₂ + Cl₂ → 2HCl"],
+          answer: 2,
+          explanation: "H₂ + Cl₂ → 2HCl gives 2 hydrogen and 2 chlorine atoms on each side."
+        },
+        {
+          question: "Balance: Na + H₂O → NaOH + H₂. What are the correct coefficients?",
+          options: ["Na + H₂O → NaOH + H₂", "2Na + 2H₂O → 2NaOH + H₂", "2Na + H₂O → 2NaOH + H₂", "Na + 2H₂O → NaOH + 2H₂"],
+          answer: 1,
+          explanation: "2Na + 2H₂O → 2NaOH + H₂ gives 2 Na, 4 H and 2 O on both sides."
+        },
+        {
+          question: "In the equation 3Fe(s) + 4H₂O(g) → Fe₃O₄(s) + 4H₂(g), what does (g) after H₂O tell us?",
+          options: ["The water is liquid", "The water is present as steam, a gas", "The water is dissolved in another liquid", "The water is frozen"],
+          answer: 1,
+          explanation: "(g) marks a gas — here the water is used as steam. State symbols make the equation more informative: (s) solid, (l) liquid, (g) gas, (aq) aqueous."
+        },
+        {
+          question: "Why is the word equation 'Magnesium + Oxygen → Magnesium oxide' less useful than a symbolic one?",
+          options: ["It is longer to write", "It does not show how many atoms or molecules of each substance take part", "Word equations are always wrong", "It cannot show the direction of the reaction"],
+          answer: 1,
+          explanation: "A symbolic, balanced equation tells us the formulae and the relative numbers of particles involved — information a word equation cannot carry."
+        },
+        {
+          question: "In a chemical equation, what does the arrow (→) indicate?",
+          options: ["That the reaction gives out heat", "The direction in which the reaction proceeds, from reactants to products", "That the equation is balanced", "That a gas is released"],
+          answer: 1,
+          explanation: "Reactants are on the left, products on the right, and the arrow points towards the products showing the direction of the change."
         }
       ]
     },
@@ -25593,6 +25647,66 @@ export const curriculumData = {
           options: ["C", "ZnO", "Zn", "CO"],
           answer: 1,
           explanation: "Zinc oxide (ZnO) loses oxygen to become Zn. Therefore, ZnO is reduced. (Carbon gains oxygen, so it is oxidised)."
+        },
+        {
+          question: "CaO(s) + H₂O(l) → Ca(OH)₂(aq) + Heat. What type of reaction is this?",
+          options: ["Decomposition, and endothermic", "Combination, and exothermic", "Displacement, and exothermic", "Double displacement, and endothermic"],
+          answer: 1,
+          explanation: "Two reactants give a single product, so it is a combination reaction; heat is released along with the product, so it is exothermic. The Ca(OH)₂ formed is slaked lime, used for whitewashing."
+        },
+        {
+          question: "Why is respiration described as an exothermic reaction?",
+          options: ["Because it needs sunlight", "Because glucose combines with oxygen and releases energy", "Because it happens inside the body", "Because it produces water"],
+          answer: 1,
+          explanation: "C₆H₁₂O₆(aq) + 6O₂(aq) → 6CO₂(aq) + 6H₂O(l) + energy. The energy released keeps the body working, which is why respiration is exothermic."
+        },
+        {
+          question: "Heating green ferrous sulphate crystals gives a characteristic smell of burning sulphur. Which products are formed?",
+          options: ["FeO, SO₂ and H₂", "Fe₂O₃, SO₂ and SO₃", "FeS and O₂", "Fe and SO₄"],
+          answer: 1,
+          explanation: "2FeSO₄(s) → Fe₂O₃(s) + SO₂(g) + SO₃(g) on heating. The crystals first lose their water of crystallisation, which is why the green colour fades."
+        },
+        {
+          question: "In which industry is the thermal decomposition CaCO₃ → CaO + CO₂ especially important?",
+          options: ["Textile manufacture", "Cement manufacture", "Paper manufacture", "Fertiliser manufacture"],
+          answer: 1,
+          explanation: "Heating limestone gives quick lime (CaO), which is used in the manufacture of cement, among many other uses."
+        },
+        {
+          question: "Heating lead nitrate produces brown fumes. What gas are these fumes?",
+          options: ["Bromine vapour", "Nitrogen dioxide", "Sulphur dioxide", "Carbon dioxide"],
+          answer: 1,
+          explanation: "2Pb(NO₃)₂(s) → 2PbO(s) + 4NO₂(g) + O₂(g). The brown fumes are nitrogen dioxide."
+        },
+        {
+          question: "White silver chloride turns grey when left in sunlight. What is happening?",
+          options: ["It is absorbing water", "It decomposes into silver and chlorine", "It is being oxidised by air", "It is combining with sunlight"],
+          answer: 1,
+          explanation: "2AgCl(s) → 2Ag(s) + Cl₂(g) in sunlight. The grey colour is silver metal. Silver bromide behaves the same way, and both reactions are used in black and white photography."
+        },
+        {
+          question: "Why are decomposition reactions generally endothermic?",
+          options: ["They always give out light", "Energy as heat, light or electricity is needed to break the reactant down", "They only happen in the cold", "They produce more products than reactants"],
+          answer: 1,
+          explanation: "A single reactant has to be broken apart, and that requires energy to be supplied — so energy is absorbed."
+        },
+        {
+          question: "An iron nail is left in blue copper sulphate solution for 20 minutes. What is observed?",
+          options: ["Nothing changes", "The nail turns brownish and the blue colour fades", "The solution turns deeper blue", "The nail dissolves completely"],
+          answer: 1,
+          explanation: "Fe(s) + CuSO₄(aq) → FeSO₄(aq) + Cu(s). Iron is more reactive, so it displaces copper, which deposits on the nail as a brown coating while the blue solution becomes pale green."
+        },
+        {
+          question: "Which of these is a double displacement reaction?",
+          options: ["Zn + CuSO₄ → ZnSO₄ + Cu", "Na₂SO₄ + BaCl₂ → BaSO₄ + 2NaCl", "CaCO₃ → CaO + CO₂", "2Mg + O₂ → 2MgO"],
+          answer: 1,
+          explanation: "The ions are exchanged between the two reactants. Because an insoluble white BaSO₄ forms, it is also a precipitation reaction."
+        },
+        {
+          question: "In CuO + H₂ → Cu + H₂O, which statement is correct?",
+          options: ["CuO is oxidised and H₂ is reduced", "CuO is reduced and H₂ is oxidised", "Both are oxidised", "Neither is oxidised nor reduced"],
+          answer: 1,
+          explanation: "CuO loses oxygen, so it is reduced; hydrogen gains oxygen, so it is oxidised. Since both happen together, this is a redox reaction."
         }
       ]
     },
@@ -25624,6 +25738,66 @@ export const curriculumData = {
           ],
           answer: 1,
           explanation: "Nitrogen is an inert gas that prevents the fats and oils in the chips from reacting with oxygen (oxidising), thereby preventing rancidity."
+        },
+        {
+          question: "What is corrosion?",
+          options: ["A metal melting at high temperature", "A metal being attacked by substances around it such as moisture and acids", "A metal being cut into pieces", "A metal conducting electricity"],
+          answer: 1,
+          explanation: "When moisture, acids and other substances in the surroundings attack a metal, the metal is said to corrode."
+        },
+        {
+          question: "What is the reddish brown coating that forms on iron articles called?",
+          options: ["Patina", "Rust", "Tarnish", "Scale"],
+          answer: 1,
+          explanation: "Iron articles are shiny when new but become coated with reddish brown rust when left exposed for some time."
+        },
+        {
+          question: "The black coating that forms on silver is:",
+          options: ["Silver oxide", "Silver sulphide", "Silver chloride", "Silver carbonate"],
+          answer: 1,
+          explanation: "The black coating on silver is silver sulphide — another everyday example of corrosion."
+        },
+        {
+          question: "The green coating that appears on copper is:",
+          options: ["Copper sulphide", "Basic copper carbonate", "Copper oxide", "Copper chloride"],
+          answer: 1,
+          explanation: "Copper corrodes to form a green coating of basic copper carbonate."
+        },
+        {
+          question: "Why is corrosion a serious economic problem?",
+          options: ["It makes metals lighter", "It damages car bodies, bridges, railings and ships, costing huge sums to replace", "It changes the colour of metals only", "It makes metals conduct better"],
+          answer: 1,
+          explanation: "Corrosion damages objects made of metals, especially iron, and replacing that damaged iron costs enormous amounts of money."
+        },
+        {
+          question: "What happens when fats and oils in food are oxidised?",
+          options: ["They become sweeter", "They become rancid, and their smell and taste change", "They turn into water", "They become harder"],
+          answer: 1,
+          explanation: "Oxidation of fats and oils makes food rancid — the characteristic change of smell and taste in stale fried food."
+        },
+        {
+          question: "Substances added to food to slow down oxidation are called:",
+          options: ["Preservatives only", "Antioxidants", "Emulsifiers", "Stabilisers"],
+          answer: 1,
+          explanation: "Antioxidants are added to foods containing fats and oils specifically to prevent them from being oxidised."
+        },
+        {
+          question: "Why does storing food in air-tight containers help prevent rancidity?",
+          options: ["It keeps the food cold", "It limits contact with oxygen, slowing down oxidation", "It kills all bacteria", "It adds antioxidants automatically"],
+          answer: 1,
+          explanation: "Rancidity is caused by oxidation, so cutting down the food's exposure to air slows the process."
+        },
+        {
+          question: "Nitrogen is chosen for flushing food packets rather than oxygen or carbon dioxide because it is:",
+          options: ["Heavier than air", "Largely unreactive, so it does not oxidise the food", "Sweet smelling", "A good conductor of heat"],
+          answer: 1,
+          explanation: "Nitrogen does not readily react with the fats and oils, so it displaces the oxygen without spoiling the food itself."
+        },
+        {
+          question: "Both rusting and rancidity are examples of which kind of chemical change?",
+          options: ["Reduction", "Oxidation", "Neutralisation", "Precipitation"],
+          answer: 1,
+          explanation: "In rusting, iron is oxidised; in rancidity, fats and oils are oxidised. Both show the everyday effects of oxidation."
         }
       ]
     }
@@ -25680,6 +25854,60 @@ export const curriculumData = {
                       options: ["Calcium Chloride", "Calcium Carbonate", "Calcium Oxide", "Calcium Bicarbonate"],
                       answer: 1,
                       explanation: "Lime water Ca(OH)2 reacts with CO2 to precipitate Calcium Carbonate (CaCO3), which makes the solution turn milky."
+                    },
+                    {
+                      question: "Litmus solution is a natural indicator extracted from:",
+                      options: ["Rose petals", "Lichen", "Turmeric roots", "Red cabbage"],
+                      answer: 1,
+                      explanation: "Litmus is extracted from lichen and is purple in colour when neutral — turning red in acid and blue in base."
+                    },
+                    {
+                      question: "Onion and vanilla extract lose their characteristic smell in a basic solution. Such substances are called:",
+                      options: ["Natural indicators", "Olfactory indicators", "Synthetic indicators", "Universal indicators"],
+                      answer: 1,
+                      explanation: "Olfactory indicators are substances whose odour changes in acidic or basic media — they retain their smell in acid but lose it in base."
+                    },
+                    {
+                      question: "Methyl orange shows which colour in an acidic solution?",
+                      options: ["Yellow", "Red", "Colourless", "Green"],
+                      answer: 1,
+                      explanation: "Methyl orange is red in acid and yellow in base, while phenolphthalein is colourless in acid and deep pink in base."
+                    },
+                    {
+                      question: "Turmeric stains on a white shirt turn red-brown when soap is rubbed on them. Why?",
+                      options: ["Soap is acidic", "Soap is basic, and turmeric is a natural indicator that turns red-brown with a base", "Soap bleaches the cloth", "The water is hard"],
+                      answer: 1,
+                      explanation: "Turmeric acts as a natural indicator. Soap solution is basic, so the yellow turmeric stain turns red-brown."
+                    },
+                    {
+                      question: "Which gas is released when zinc reacts with dilute sulphuric acid?",
+                      options: ["Oxygen", "Hydrogen", "Carbon dioxide", "Sulphur dioxide"],
+                      answer: 1,
+                      explanation: "Zn(s) + H₂SO₄(aq) → ZnSO₄(aq) + H₂(g)↑. Acid + metal gives a salt and hydrogen gas."
+                    },
+                    {
+                      question: "How is the hydrogen gas released by an acid-metal reaction tested?",
+                      options: ["It turns lime water milky", "It burns with a pop sound when a candle is brought near", "It relights a glowing splint", "It turns litmus red"],
+                      answer: 1,
+                      explanation: "Hydrogen burns with a characteristic 'pop' sound. Turning lime water milky is the test for carbon dioxide instead."
+                    },
+                    {
+                      question: "Sodium hydroxide reacts with zinc on heating to give hydrogen and:",
+                      options: ["Sodium zincate", "Zinc oxide", "Zinc chloride", "Sodium zinc carbonate"],
+                      answer: 0,
+                      explanation: "2NaOH(aq) + Zn(s) + Heat → Na₂ZnO₂(s) (sodium zincate) + H₂(g)↑. Zinc is amphoteric, so it reacts with bases as well as acids."
+                    },
+                    {
+                      question: "Na₂CO₃ + 2HCl → 2NaCl + H₂O + CO₂. What general rule does this illustrate?",
+                      options: ["Metal + acid → salt + hydrogen", "Metal carbonate + acid → salt + water + carbon dioxide", "Acid + base → salt + water", "Metal oxide + acid → salt only"],
+                      answer: 1,
+                      explanation: "Acids react with metal carbonates and hydrogencarbonates to produce a salt, water and carbon dioxide gas."
+                    },
+                    {
+                      question: "Why does the milkiness of lime water disappear when excess CO₂ is passed through it?",
+                      options: ["The CaCO₃ evaporates", "The insoluble CaCO₃ converts to soluble calcium hydrogencarbonate", "The lime water becomes acidic and stops reacting", "The water boils away"],
+                      answer: 1,
+                      explanation: "The white precipitate of calcium carbonate reacts with more CO₂ and water to give soluble calcium hydrogencarbonate, so the solution becomes clear again."
                     }
                   ]
                 },
@@ -25740,6 +25968,54 @@ export const curriculumData = {
                       ],
                       answer: 1,
                       explanation: "Always add acid slowly to water to distribute the heat generated safely. Adding water to concentrated acid can cause dangerous splashing."
+                    },
+                    {
+                      question: "Which ion is responsible for the acidic behaviour of all acids in water?",
+                      options: ["OH⁻", "H₃O⁺ (or H⁺)", "Cl⁻", "Na⁺"],
+                      answer: 1,
+                      explanation: "All acids release hydronium ions in the presence of water: HCl + H₂O → H₃O⁺ + Cl⁻. These ions are what make a solution acidic."
+                    },
+                    {
+                      question: "What is an alkali?",
+                      options: ["Any acid that conducts electricity", "A base that is soluble in water", "A salt formed by neutralisation", "An indicator that turns pink"],
+                      answer: 1,
+                      explanation: "Bases soluble in water are called alkalis; they produce hydroxide ions, as in NaOH(s) + H₂O → Na⁺(aq) + OH⁻(aq)."
+                    },
+                    {
+                      question: "Why does an aqueous acid solution light a bulb while a glucose solution does not?",
+                      options: ["Glucose is too thick", "Acids dissociate into ions that carry current, while glucose does not", "Glucose absorbs the electricity", "The bulb is faulty with glucose"],
+                      answer: 1,
+                      explanation: "Conduction needs free-moving ions. Acids and bases dissociate into ions in water; glucose and alcohol solutions do not, so they do not conduct."
+                    },
+                    {
+                      question: "Why must water NEVER be poured into concentrated acid?",
+                      options: ["The acid becomes too dilute", "The dilution is highly exothermic, and the sudden heat can make the mixture splash out and crack the container", "The acid stops working", "It produces poisonous gas"],
+                      answer: 1,
+                      explanation: "Mixing acid with water releases a great deal of heat. Adding acid slowly to water spreads that heat safely; the reverse causes dangerous splashing and burns."
+                    },
+                    {
+                      question: "Write the ionic essence of any neutralisation reaction.",
+                      options: ["Na⁺ + Cl⁻ → NaCl", "H⁺(aq) + OH⁻(aq) → H₂O(l)", "H₂ + O₂ → H₂O", "HCl → H⁺ + Cl⁻"],
+                      answer: 1,
+                      explanation: "In every neutralisation, the H⁺ ions of the acid combine with the OH⁻ ions of the base to form water, leaving the salt in solution."
+                    },
+                    {
+                      question: "HCl(aq) + NaOH(aq) → ? Complete the reaction.",
+                      options: ["NaCl(aq) + H₂(g)", "NaCl(aq) + H₂O(l)", "NaClO(aq) + H₂O(l)", "Na₂O(s) + HCl₂(aq)"],
+                      answer: 1,
+                      explanation: "Acid + base → salt + water. Here hydrochloric acid and sodium hydroxide give sodium chloride and water."
+                    },
+                    {
+                      question: "Dry HCl gas is passed over dry blue litmus paper and then over moist blue litmus paper. What is seen?",
+                      options: ["Both turn red", "Neither turns red", "Only the moist paper turns red", "Only the dry paper turns red"],
+                      answer: 2,
+                      explanation: "Without water the HCl cannot dissociate to give H⁺ ions, so the dry paper is unaffected. Moisture allows dissociation, so the damp paper turns red."
+                    },
+                    {
+                      question: "Why is dilution of a concentrated acid described as exothermic?",
+                      options: ["It absorbs heat from the surroundings", "It releases a large amount of heat", "It gives off a gas", "It changes colour"],
+                      answer: 1,
+                      explanation: "Heat is given out as the acid mixes with water — enough to be dangerous if the mixing is done the wrong way round."
                     }
                   ]
                 },
@@ -25789,6 +26065,66 @@ export const curriculumData = {
                       options: ["7.0", "5.5", "8.5", "3.0"],
                       answer: 1,
                       explanation: "Acids from food sugars corrode the calcium hydroxyapatite enamel when pH falls below 5.5."
+                    },
+                    {
+                      question: "What does the 'p' in pH stand for?",
+                      options: ["Pressure", "Potenz, the German word for power", "Percentage", "Proton"],
+                      answer: 1,
+                      explanation: "p is from the German potenz meaning power, and H stands for hydrogen ion concentration."
+                    },
+                    {
+                      question: "A solution turns universal indicator green. What is its pH and nature?",
+                      options: ["pH 1, strongly acidic", "pH 7, neutral", "pH 13, strongly basic", "pH 4, weakly acidic"],
+                      answer: 1,
+                      explanation: "Universal indicator is green at pH 7. Red shows pH 1–2 (strong acid) and violet shows pH 13–14 (strong base)."
+                    },
+                    {
+                      question: "As the pH of a solution decreases from 7 towards 0, the concentration of H⁺ ions:",
+                      options: ["Decreases", "Increases", "Stays the same", "Becomes zero"],
+                      answer: 1,
+                      explanation: "A lower pH means a higher hydrogen ion concentration and therefore a stronger acid."
+                    },
+                    {
+                      question: "Which acid does the stomach produce to help digest food?",
+                      options: ["Sulphuric acid", "Hydrochloric acid", "Nitric acid", "Acetic acid"],
+                      answer: 1,
+                      explanation: "The stomach produces hydrochloric acid at a pH of about 1.5 to 2.0."
+                    },
+                    {
+                      question: "Milk of magnesia is taken to cure indigestion because it is:",
+                      options: ["A strong acid", "A mild base that neutralises excess stomach acid", "A salt that absorbs food", "An indicator"],
+                      answer: 1,
+                      explanation: "Antacids such as magnesium hydroxide are mild bases; they neutralise the excess hydrochloric acid produced during indigestion."
+                    },
+                    {
+                      question: "Tooth enamel is made of:",
+                      options: ["Calcium carbonate", "Calcium hydroxyapatite", "Calcium sulphate", "Calcium chloride"],
+                      answer: 1,
+                      explanation: "Calcium hydroxyapatite is the hardest substance in the body, and it is corroded by acids produced by bacteria in the mouth."
+                    },
+                    {
+                      question: "Aquatic life is threatened when acid rain drops river water pH below:",
+                      options: ["7.0", "5.6", "3.0", "6.9"],
+                      answer: 1,
+                      explanation: "The survival of aquatic life becomes difficult once the pH of river water falls below 5.6."
+                    },
+                    {
+                      question: "Which acid is present in tamarind?",
+                      options: ["Citric acid", "Tartaric acid", "Oxalic acid", "Lactic acid"],
+                      answer: 1,
+                      explanation: "Tamarind contains tartaric acid. Citric acid is in oranges and lemons, oxalic acid in tomatoes, and lactic acid in sour milk."
+                    },
+                    {
+                      question: "A nettle sting or an ant bite hurts because it injects:",
+                      options: ["Acetic acid", "Methanoic acid", "Citric acid", "Lactic acid"],
+                      answer: 1,
+                      explanation: "Ant and nettle stings contain methanoic acid, which is why rubbing a mild base on the skin gives relief."
+                    },
+                    {
+                      question: "Within what pH range does the human body function best?",
+                      options: ["1.0 to 2.0", "7.0 to 7.8", "5.0 to 5.5", "9.0 to 10.0"],
+                      answer: 1,
+                      explanation: "Our body works within the narrow pH range of 7.0 to 7.8 — close to neutral, slightly on the basic side."
                     }
                   ]
                 },
@@ -25838,6 +26174,66 @@ export const curriculumData = {
                       options: ["Hydrogen gas", "Oxygen gas", "Chlorine gas", "Carbon Dioxide gas"],
                       answer: 2,
                       explanation: "Chlorine gas (Cl2↑) carries a negative charge in solution and is released at the positive Anode electrode."
+                    },
+                    {
+                      question: "What is brine?",
+                      options: ["Molten sodium chloride", "An aqueous solution of sodium chloride", "A solution of sodium hydroxide", "Dilute hydrochloric acid"],
+                      answer: 1,
+                      explanation: "Brine is common salt dissolved in water. Passing electricity through it decomposes it in the chlor-alkali process."
+                    },
+                    {
+                      question: "Why is the chlor-alkali process given that name?",
+                      options: ["It uses chlorine and alkali as raw materials", "Its products are chlorine and an alkali, sodium hydroxide", "It was discovered by a scientist named Chlor", "It works only in alkaline conditions"],
+                      answer: 1,
+                      explanation: "Chlor comes from the chlorine produced and alkali from the sodium hydroxide produced."
+                    },
+                    {
+                      question: "Which gas is released at the cathode in the chlor-alkali process?",
+                      options: ["Chlorine", "Hydrogen", "Oxygen", "Carbon dioxide"],
+                      answer: 1,
+                      explanation: "2NaCl(aq) + 2H₂O(l) → 2NaOH(aq) + Cl₂(g) at the anode + H₂(g) at the cathode."
+                    },
+                    {
+                      question: "Bleaching powder is prepared by passing chlorine over:",
+                      options: ["Quick lime", "Dry slaked lime", "Washing soda", "Gypsum"],
+                      answer: 1,
+                      explanation: "Ca(OH)₂ + Cl₂ → Ca(OCl)₂ + H₂O. It is used for bleaching cotton and wood pulp and for sterilising drinking water."
+                    },
+                    {
+                      question: "What is the chemical name of baking soda?",
+                      options: ["Sodium carbonate", "Sodium hydrogencarbonate", "Sodium hydroxide", "Calcium carbonate"],
+                      answer: 1,
+                      explanation: "Baking soda is NaHCO₃, sodium hydrogencarbonate, prepared by the Solvay process from brine, ammonia, carbon dioxide and water."
+                    },
+                    {
+                      question: "Why does baking soda make cakes and bread spongy?",
+                      options: ["It melts and leaves holes", "On heating it releases carbon dioxide, which makes the dough rise", "It absorbs water from the dough", "It reacts with flour to form air"],
+                      answer: 1,
+                      explanation: "2NaHCO₃ + Heat → Na₂CO₃ + H₂O + CO₂↑. The escaping carbon dioxide raises the dough and leaves it spongy."
+                    },
+                    {
+                      question: "Washing soda is Na₂CO₃·10H₂O. What are the ten water molecules called?",
+                      options: ["Water of hydration in solution", "Water of crystallisation", "Free moisture", "Condensed water"],
+                      answer: 1,
+                      explanation: "Water molecules built into the crystal structure are called water of crystallisation. Washing soda is used to remove the permanent hardness of water."
+                    },
+                    {
+                      question: "Plaster of Paris is prepared by heating gypsum at:",
+                      options: ["273 K", "373 K", "573 K", "1000 K"],
+                      answer: 1,
+                      explanation: "Gypsum (CaSO₄·2H₂O) heated at 373 K gives Plaster of Paris (CaSO₄·½H₂O). Heating above this drives off all the water and gives 'dead burnt plaster'."
+                    },
+                    {
+                      question: "Why does Plaster of Paris set into a hard mass when mixed with water?",
+                      options: ["It dries out and shrinks", "It rehydrates back into gypsum", "It reacts with air", "It dissolves and recrystallises as salt"],
+                      answer: 1,
+                      explanation: "CaSO₄·½H₂O + 1½H₂O → CaSO₄·2H₂O. Taking the water back turns it into a hard mass of gypsum, which is why it is used for plaster casts."
+                    },
+                    {
+                      question: "Which of these is NOT a use of the sodium hydroxide made by the chlor-alkali process?",
+                      options: ["Making soap", "Paper making", "Refining petroleum", "Disinfecting drinking water"],
+                      answer: 3,
+                      explanation: "Water disinfection is a use of the chlorine produced, not the sodium hydroxide."
                     }
                   ]
                 }
