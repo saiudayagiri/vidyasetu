@@ -3974,6 +3974,85 @@ function getInlineLabHtml(type) {
         </div>
       </div>`;
 
+    const scienceJourneyStageLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="journey-stage-canvas" width="600" height="320"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a grade and see how the way we do science deepens step by step.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Stage</h3>
+            <select id="sel-journey-stage" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="g6">Grade 6 — Wonder</option>
+              <option value="g7">Grade 7 — Evolving Science</option>
+              <option value="g8" selected>Grade 8 — Investigation</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>What Changes</h3>
+            <div id="journey-stage-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a stage above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const scienceJourneyMapLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="journey-map-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pick a stop on this year's journey and see what it covers.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Choose a Stop</h3>
+            <select id="sel-journey-map" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="0" selected>1. Microbes in a drop of water</option>
+              <option value="1">2. Keeping healthy</option>
+              <option value="2">3. Electric current</option>
+              <option value="3">4. Force</option>
+              <option value="4">5. Pressure, winds and cyclones</option>
+              <option value="5">6. Particles in matter</option>
+              <option value="6">7. Elements, compounds, mixtures</option>
+              <option value="7">8. Solutions</option>
+              <option value="8">9. Light, mirrors and lenses</option>
+              <option value="9">10. Phases of the Moon</option>
+              <option value="10">11. Calendars</option>
+              <option value="11">12. Ecosystems and Earth's climate</option>
+            </select>
+          </div>
+          <div class="sim-calculator">
+            <h3>This Stop</h3>
+            <div id="journey-map-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a stop above.</div>
+          </div>
+        </div>
+      </div>`;
+
+    const puriInvestigationLabHtml = `
+      <div class="visual-lab-container">
+        <div class="sim-canvas-wrapper">
+          <canvas id="puri-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Change ONE variable at a time and watch what the puri does.</span></div>
+        </div>
+        <div class="sim-settings-pane">
+          <div class="settings-group-card">
+            <h3>Variable You Change</h3>
+            <select id="sel-puri-var" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="thickness" selected>Thickness of the rolled dough</option>
+              <option value="oil">Temperature of the oil</option>
+              <option value="drop">How the dough is dropped in</option>
+            </select>
+          </div>
+          <div class="settings-group-card">
+            <h3>Setting</h3>
+            <select id="sel-puri-level" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);"></select>
+          </div>
+          <div class="sim-calculator">
+            <h3>Observations</h3>
+            <div id="puri-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a variable and a setting.</div>
+          </div>
+        </div>
+      </div>`;
+
     const healthDimensionsLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
@@ -8931,6 +9010,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             } else if (topicObj.lab.type === 'microscope-magnification-sim') {
               labHtml = microscopeMagnificationLabHtml;
               labDesc = 'Pick a viewing tool and see how much it magnifies a tiny object.';
+            } else if (topicObj.lab.type === 'science-journey-stage-sim') {
+              labHtml = scienceJourneyStageLabHtml;
+              labDesc = 'Pick a grade and see how the way we do science deepens step by step.';
+            } else if (topicObj.lab.type === 'science-journey-map-sim') {
+              labHtml = scienceJourneyMapLabHtml;
+              labDesc = "Pick a stop on this year's journey and see what it covers.";
+            } else if (topicObj.lab.type === 'puri-investigation-sim') {
+              labHtml = puriInvestigationLabHtml;
+              labDesc = 'Change one variable at a time and watch what the puri does.';
             } else if (topicObj.lab.type === 'health-dimensions-sim') {
               labHtml = healthDimensionsLabHtml;
               labDesc = 'Pick a habit and see which dimension(s) of health it affects.';
@@ -9878,6 +9966,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           initFermentationLab();
         } else if (topicObj.lab.type === 'microscope-magnification-sim') {
           initMicroscopeMagnificationLab();
+        } else if (topicObj.lab.type === 'science-journey-stage-sim') {
+          initScienceJourneyStageLab();
+        } else if (topicObj.lab.type === 'science-journey-map-sim') {
+          initScienceJourneyMapLab();
+        } else if (topicObj.lab.type === 'puri-investigation-sim') {
+          initPuriInvestigationLab();
         } else if (topicObj.lab.type === 'health-dimensions-sim') {
           initHealthDimensionsLab();
         } else if (topicObj.lab.type === 'disease-transmission-sim') {
@@ -26064,6 +26158,260 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initScienceJourneyStageLab() {
+      const canvas = document.getElementById('journey-stage-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-journey-stage');
+      const obs = document.getElementById('journey-stage-obs');
+      const STAGES = [
+        { key: 'g6', grade: 'Grade 6', word: 'Wonder', line: 'Science begins with wonder — simple "Why?" and "How?" questions about the world around us.' },
+        { key: 'g7', grade: 'Grade 7', word: 'Evolving', line: 'Science is always evolving: each answer opens new questions, and our ideas can slowly change as we explore deeper.' },
+        { key: 'g8', grade: 'Grade 8', word: 'Investigation', line: 'Wonder and evolution come together. We ask focused questions, design simple experiments to answer them, and use our observations to improve our understanding.' }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const activeIdx = STAGES.findIndex(st => st.key === sel.value);
+        const xs = [120, 300, 480], cy = 150;
+
+        ctx.strokeStyle = cssVar('--border-color', '#ccc'); ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(xs[0], cy); ctx.lineTo(xs[2], cy); ctx.stroke();
+
+        ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#222');
+        ctx.fillText('From wonder to investigation', W / 2, 32);
+
+        STAGES.forEach((st, i) => {
+          const on = i === activeIdx, done = i < activeIdx;
+          const r = on ? 40 : 30;
+          ctx.beginPath(); ctx.arc(xs[i], cy, r, 0, Math.PI * 2);
+          ctx.fillStyle = on ? 'rgba(34,197,94,0.22)' : (done ? 'rgba(148,163,184,0.18)' : 'transparent');
+          ctx.fill();
+          ctx.lineWidth = on ? 3 : 2;
+          ctx.strokeStyle = on ? '#22c55e' : cssVar('--border-color', '#ccc');
+          ctx.stroke();
+
+          ctx.fillStyle = on ? '#22c55e' : cssVar('--text-muted', '#888');
+          ctx.font = on ? 'bold 14px system-ui' : '13px system-ui';
+          ctx.fillText(st.word, xs[i], cy + 4);
+          ctx.fillStyle = cssVar('--text-normal', '#222');
+          ctx.font = 'bold 13px system-ui';
+          ctx.fillText(st.grade, xs[i], cy + r + 22);
+        });
+
+        // The root (grounded observation) and the kite (soaring curiosity)
+        ctx.strokeStyle = '#a16207'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(60, 262); ctx.lineTo(60, 292);
+        ctx.moveTo(60, 292); ctx.lineTo(46, 306);
+        ctx.moveTo(60, 292); ctx.lineTo(74, 306);
+        ctx.moveTo(60, 278); ctx.lineTo(48, 288);
+        ctx.stroke();
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#888'); ctx.textAlign = 'left';
+        ctx.fillText('Root: stay grounded in real observations', 88, 292);
+
+        ctx.strokeStyle = '#0ea5e9'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(548, 56); ctx.lineTo(566, 74); ctx.lineTo(548, 92); ctx.lineTo(530, 74); ctx.closePath();
+        ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(548, 92); ctx.quadraticCurveTo(542, 104, 552, 112); ctx.stroke();
+        ctx.textAlign = 'right';
+        ctx.fillText('Kite: let ideas soar', 516, 78);
+        ctx.textAlign = 'center';
+
+        const st = STAGES[activeIdx];
+        obs.innerHTML = '<strong>' + st.grade + ' — ' + st.word + '.</strong> ' + st.line;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initScienceJourneyMapLab() {
+      const canvas = document.getElementById('journey-map-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const sel = document.getElementById('sel-journey-map');
+      const obs = document.getElementById('journey-map-obs');
+      const STOPS = [
+        { short: 'Microbes', desc: 'A single drop of water hides a world of tiny organisms — some help us digest food or make medicines, others cause infections.' },
+        { short: 'Health', desc: 'Nutritious food, exercise, medicines and vaccines are how we stay healthy and fight infections.' },
+        { short: 'Current', desc: 'The heating effect of electric current keeps us warm, while the magnetic effect makes motors run and machines work.' },
+        { short: 'Force', desc: 'Forces make objects speed up, slow down or change direction — why a thrown ball falls back, and why brakes stop a car.' },
+        { short: 'Pressure', desc: 'Pressure is how a force is spread over an object. A small pressure difference gives a breeze; a large one gives strong winds and cyclones.' },
+        { short: 'Particles', desc: 'Everything is made of tiny particles. In solids they cannot move much; in gases they move around freely.' },
+        { short: 'Materials', desc: 'Materials are classified as elements (pure substances), compounds (elements bonded together) and mixtures (separable physically).' },
+        { short: 'Solutions', desc: 'Once we know how particles combine or mix, we can understand solutions — such as how sugar dissolves in tea.' },
+        { short: 'Light', desc: 'Light reflects off flat and curved mirrors and bends through lenses — explaining the image in a shiny spoon and how corrective glasses work.' },
+        { short: 'Moon', desc: 'Rough surfaces reflect light, and so does the Moon. The relative positions of Earth, Moon and Sun light a slightly different part each night.' },
+        { short: 'Calendars', desc: 'Watching the periodic cycles of the Moon, along with sunrises and sunsets, allowed humans to build the first calendars.' },
+        { short: 'Earth', desc: "Ecosystems link every living thing to air, water, sunlight and one another — and Earth is 'just right' for life, a balance human activity can disturb." }
+      ];
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const idx = parseInt(sel.value, 10);
+
+        ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = cssVar('--text-normal', '#222');
+        ctx.fillText("This year's journey: from a drop of water to the whole planet", W / 2, 30);
+
+        const rowY = [110, 210];
+        const perRow = 6, gap = 92, x0 = 62;
+        const pos = STOPS.map((_, i) => {
+          const row = Math.floor(i / perRow);
+          const col = i % perRow;
+          const x = row === 0 ? x0 + col * gap : x0 + (perRow - 1 - col) * gap;
+          return [x, rowY[row]];
+        });
+
+        ctx.strokeStyle = cssVar('--border-color', '#ccc'); ctx.lineWidth = 2;
+        ctx.beginPath();
+        pos.forEach(([x, y], i) => { if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); });
+        ctx.stroke();
+
+        pos.forEach(([x, y], i) => {
+          const on = i === idx;
+          ctx.beginPath(); ctx.arc(x, y, on ? 22 : 14, 0, Math.PI * 2);
+          ctx.fillStyle = on ? 'rgba(34,197,94,0.22)' : cssVar('--bg-primary', '#fff');
+          ctx.fill();
+          ctx.lineWidth = on ? 3 : 1.5;
+          ctx.strokeStyle = on ? '#22c55e' : cssVar('--border-color', '#ccc');
+          ctx.stroke();
+          ctx.fillStyle = on ? '#22c55e' : cssVar('--text-muted', '#888');
+          ctx.font = on ? 'bold 12px system-ui' : '11px system-ui';
+          ctx.fillText(String(i + 1), x, y + 4);
+          ctx.fillStyle = cssVar('--text-normal', '#222');
+          ctx.font = on ? 'bold 11px system-ui' : '11px system-ui';
+          ctx.fillText(STOPS[i].short, x, y + (on ? 40 : 32));
+        });
+
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#888');
+        ctx.fillText('Each stop grows out of the one before it', W / 2, 300);
+
+        obs.innerHTML = '<strong>' + (idx + 1) + '. ' + STOPS[idx].short + '.</strong> ' + STOPS[idx].desc;
+      }
+
+      sel.addEventListener('change', draw);
+      draw();
+    }
+
+    function initPuriInvestigationLab() {
+      const canvas = document.getElementById('puri-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const selVar = document.getElementById('sel-puri-var');
+      const selLevel = document.getElementById('sel-puri-level');
+      const obs = document.getElementById('puri-obs');
+
+      // Baseline: medium-thick atta dough, hot oil, slid in at an angle.
+      const SETTINGS = {
+        thickness: {
+          label: 'Thickness of the rolled dough',
+          held: 'oil kept hot, dough slid in at the same angle, same flour',
+          levels: [
+            { v: 'thin', name: 'Rolled very thin', puff: 1, secs: 4, thinSide: true, note: 'A thin circle heats through quickly, so steam builds fast and the puri balloons.' },
+            { v: 'medium', name: 'Rolled medium (baseline)', puff: 0.8, secs: 6, thinSide: true, note: 'The usual puri: it puffs well, and one side still comes out thinner than the other.' },
+            { v: 'thick', name: 'Rolled thick', puff: 0.25, secs: 0, thinSide: false, note: 'A very thick layer of dough does not puff properly, and no thin side forms — one of the checks the chapter suggests making.' }
+          ]
+        },
+        oil: {
+          label: 'Temperature of the oil',
+          held: 'same dough thickness, same size circle, dropped the same way',
+          levels: [
+            { v: 'cool', name: 'Not very hot oil', puff: 0.1, secs: 0, thinSide: false, note: 'The puri soaks up oil instead of puffing — too little heat to turn the moisture into steam quickly.' },
+            { v: 'hot', name: 'Hot oil (baseline)', puff: 0.9, secs: 5, thinSide: true, note: 'Steam forms fast enough to lift the top layer away from the bottom one, so the puri balloons.' },
+            { v: 'boiling', name: 'Boiling hot oil', puff: 1, secs: 2, thinSide: true, note: 'It puffs almost at once but browns very quickly, and the oil splatters — worth writing in your notes.' }
+          ]
+        },
+        drop: {
+          label: 'How the dough is dropped in',
+          held: 'same thickness, same flour, same oil temperature',
+          levels: [
+            { v: 'angle', name: 'Slid in at an angle (baseline)', puff: 0.9, secs: 5, thinSide: true, note: 'The dough spreads evenly across the surface, and the puri puffs in a rounded balloon.' },
+            { v: 'vertical', name: 'Dropped in vertically', puff: 0.5, secs: 8, thinSide: true, note: 'It sinks before the surface sets, so it puffs late and unevenly.' },
+            { v: 'slow', name: 'Slid in very slowly', puff: 0.35, secs: 9, thinSide: false, note: 'Part of the dough cooks before the rest touches the oil, so the puff is patchy.' }
+          ]
+        }
+      };
+
+      function fillLevels() {
+        const cfg = SETTINGS[selVar.value];
+        selLevel.innerHTML = cfg.levels.map((l, i) =>
+          '<option value="' + i + '"' + (i === (selVar.value === 'thickness' ? 1 : 0) ? ' selected' : '') + '>' + l.name + '</option>'
+        ).join('');
+      }
+
+      function draw() {
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+        const cfg = SETTINGS[selVar.value];
+        const lv = cfg.levels[parseInt(selLevel.value, 10) || 0];
+
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal', '#222');
+        ctx.fillText('Changing: ' + cfg.label, W / 2, 28);
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#888');
+        ctx.fillText('Everything else held the same — ' + cfg.held, W / 2, 48);
+
+        // Kadhai with oil
+        const cx = W / 2, panY = 192, panR = 108;
+        ctx.beginPath();
+        ctx.arc(cx, panY, panR, 0, Math.PI, false);
+        ctx.strokeStyle = cssVar('--text-muted', '#888'); ctx.lineWidth = 4; ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(cx - panR, panY); ctx.lineTo(cx + panR, panY);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(cx, panY, panR - 6, 0, Math.PI, false);
+        ctx.fillStyle = 'rgba(234,179,8,0.28)'; ctx.fill();
+        ctx.font = '12px system-ui'; ctx.fillStyle = '#a16207';
+        ctx.fillText('oil', cx - panR + 34, panY + 46);
+
+        // The puri: a flat disc that swells into a balloon as puff grows
+        const oilLine = panY + 6;
+        const puriW = 74, lift = lv.puff * 46;
+        ctx.beginPath();
+        ctx.moveTo(cx - puriW, oilLine);
+        ctx.quadraticCurveTo(cx, oilLine - 14 - lift, cx + puriW, oilLine);
+        ctx.quadraticCurveTo(cx, oilLine + 12, cx - puriW, oilLine);
+        ctx.closePath();
+        ctx.fillStyle = lv.puff > 0.6 ? '#f5cf7a' : '#e0b76a';
+        ctx.fill();
+        ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2; ctx.stroke();
+
+        if (lv.puff > 0.6) {
+          ctx.strokeStyle = 'rgba(180,83,9,0.55)'; ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(cx - puriW + 8, oilLine - 2);
+          ctx.quadraticCurveTo(cx, oilLine - 8 - lift * 0.35, cx + puriW - 8, oilLine - 2);
+          ctx.stroke();
+          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#888');
+          ctx.fillText('thin upper layer', cx, oilLine - 22 - lift);
+        }
+
+        const verdict = lv.puff > 0.6 ? 'Puffed up' : (lv.puff > 0.3 ? 'Puffed only partly' : 'Did not puff');
+        ctx.font = 'bold 15px system-ui';
+        ctx.fillStyle = lv.puff > 0.6 ? '#22c55e' : (lv.puff > 0.3 ? '#eab308' : '#ef4444');
+        ctx.fillText(verdict + '  ·  ' + (lv.secs ? lv.secs + ' s' : 'no puff'), cx, 322);
+
+        obs.innerHTML =
+          '<strong>' + lv.name + '</strong><br>' +
+          'Puffed up? <strong>' + (lv.puff > 0.6 ? 'Yes' : 'No') + '</strong><br>' +
+          'Time to puff: <strong>' + (lv.secs ? lv.secs + ' s' : 'did not puff') + '</strong><br>' +
+          'One side thinner? <strong>' + (lv.thinSide ? 'Yes' : 'No') + '</strong><br>' +
+          '<span style="color:var(--text-muted);">' + lv.note + '</span>';
+      }
+
+      selVar.addEventListener('change', () => { fillLevels(); draw(); });
+      selLevel.addEventListener('change', draw);
+      fillLevels();
       draw();
     }
 

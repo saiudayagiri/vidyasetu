@@ -16509,221 +16509,338 @@ export const curriculumData = {
           chapters: [
             {
               id: "8s-1",
-              title: "Cell - Structure and Functions",
+              title: "Exploring the Investigative World of Science",
               topics: [
                 {
                   id: "8s-1-1",
-                  title: "Plant Cell vs Animal Cell",
+                  title: "1. From Wonder to Investigation",
+                  lab: { type: "science-journey-stage-sim" },
                   theory: {
-                    intro: "A cell is the fundamental structural and functional unit of all living organisms. While both plant and animal cells share common structures, they have critical differences due to their different modes of life.",
+                    intro: "Grade 8 opens with an invitation rather than a lesson. Science, the chapter says, is not a pile of facts to be memorised — it is a way of working. The aim this year is not just to learn new facts, but to learn how to find new facts.",
                     sections: [
                       {
-                        heading: "Cell Wall - The Plant Armor",
-                        text: "Plant cells have an outer rigid boundary called the cell wall made of cellulose, which surrounds the cell membrane. It provides shape, rigidity, and protection against high wind speed, temperature variations, and atmospheric moisture. Animal cells completely lack a cell wall."
+                        heading: "Probe and Ponder: Questions That Spark Curiosity",
+                        text: "Every chapter of this book opens with a set of questions that are not meant for any exam — they are invitations to explore. Why is one side of a puri thinner than the other? Are there more grains of sand on all the beaches and deserts of the world, or more stars in our galaxy? Since Grade 6 we have observed the incredible diversity of plants and animals, from the different shapes of leaves to the many kinds of insects — why has nature created such a vast variety? The book then asks you to write down a question of your own, because your own curiosity is the real starting point."
                       },
                       {
-                        heading: "Plastids & Chloroplasts",
-                        text: "Plants manufacture their own food via photosynthesis. For this, they possess green plastids called chloroplasts, which contain chlorophyll. Animal cells do not have plastids."
+                        heading: "Three Grades, Three Steps",
+                        text: "In Grade 6 we discovered how science begins with wonder — with simple 'Why?' and 'How?' questions about the world around us. In Grade 7 we learnt that science is always evolving: each answer opens new questions, and our ideas can slowly change as we explore deeper. Now, in Grade 8, we take the next step and enter the Investigative World of Science, where wonder and evolution come together to form the heart of how science works."
+                      },
+                      {
+                        heading: "What Investigation Means",
+                        text: "Investigation in science means more than just looking at something and asking simple questions. Now you can ask more focused questions, design ways to do simple experiments that answer those questions, and then use your observations to improve your understanding. Step by step we learn to use questions as starting points — to observe carefully, experiment thoughtfully, and explain clearly what we see. The puzzles range from everyday life, such as why does dough rise, to the bigger mysteries of Earth and beyond, such as is the world getting warmer."
+                      },
+                      {
+                        heading: "The Root and the Kite",
+                        text: "The page numbers of this book carry two symbols. At the bottom of every left-hand page there is a root, standing for the deep, solid foundation of knowledge that keeps us connected to our environment, our traditions, and our cultural and natural heritage. In the top corner of every right-hand page there is a kite soaring in the sky, reminding us that curiosity must take flight if we are to explore the unknown. Together the root and the kite ask you to stay grounded in real observations while letting your ideas soar — because investigation works best when careful observation is balanced with creative thinking."
                       }
                     ]
                   },
-                  slides: [
-                    { title: "What is a Cell?", bullets: ["Discovered by Robert Hooke in 1665 using a simple cork.", "The building block of life — just like bricks make a building."] },
-                    { title: "Key Differences: Cell Wall", bullets: ["Plant Cells have a rigid outer Cell Wall (protection + support).", "Animal Cells do NOT have a Cell Wall."] }
-                  ],
                   activities: [
                     {
-                      title: "Observing Onion Peel Cells",
-                      objective: "To prepare a slide of onion peel and observe plant cells under a microscope.",
-                      materials: ["Onion", "Slide & Coverslip", "Safranin stain / Iodine", "Microscope"],
+                      title: "Write Your Own Probe-and-Ponder Question",
+                      objective: "To practise turning an everyday observation into a question that could actually be investigated.",
+                      materials: ["A notebook and pen", "Your own surroundings — kitchen, street, garden or classroom"],
                       steps: [
-                        "Peel a small thin transparent membrane from the inner side of an onion peel using forceps.",
-                        "Place this peel on a glass slide with a drop of water.",
-                        "Add a drop of Safranin stain, place a coverslip, and observe under low power."
+                        "Spend ten minutes simply observing one ordinary place, without trying to explain anything.",
+                        "Write down three things you noticed that you cannot fully explain.",
+                        "For each one, write a 'Why?' or 'How?' question, then rewrite it as a more focused question that names exactly what you would change and what you would look at.",
+                        "Mark the one question you could actually test at home with things you already have."
                       ],
-                      observation: "Rectangular compartment-like cells are visible. The cell wall is prominent, and a dark nucleus is seen located near the periphery."
+                      observation: "The broad questions ('Why does food spoil?') are interesting but hard to test. The focused versions ('Does bread kept in a closed box spoil faster than bread left open?') name a change and an observation, which is what makes them investigable."
                     }
                   ],
                   quiz: [
                     {
-                      question: "Which of the following is present in a plant cell but absent in an animal cell?",
-                      options: ["Cell Membrane", "Mitochondria", "Cell Wall", "Nucleus"],
-                      answer: 2,
-                      explanation: "The Cell Wall is an additional protective cover present only in plant cells."
+                      question: "What does the Grade 8 book say is the main aim of this year?",
+                      options: ["To memorise more facts than last year", "To learn how to find new facts, not just learn them", "To finish the syllabus early", "To prepare only for examinations"],
+                      answer: 1,
+                      explanation: "The chapter states plainly that the goal is learning how to find new facts."
                     },
                     {
-                      question: "What is the plant cell wall made of?",
-                      options: ["Chitin", "Cellulose", "Protein", "Fat"],
+                      question: "In Grade 6, science was described as beginning with:",
+                      options: ["Experiments", "Wonder, and simple Why and How questions", "Measurement", "Classification"],
                       answer: 1,
-                      explanation: "The rigid cellulose wall lies outside the cell membrane and gives the cell its shape."
+                      explanation: "Simple questions about the world around us are where the journey started."
                     },
                     {
-                      question: "Which of these does the cell wall protect a plant against?",
-                      options: ["Only sunlight", "High wind speed, temperature variations and atmospheric moisture", "Only insects", "Only water loss"],
+                      question: "What was the main idea learnt in Grade 7?",
+                      options: ["Science is fixed and final", "Science is always evolving, and each answer opens new questions", "Science is only about experiments", "Science needs no observation"],
                       answer: 1,
-                      explanation: "Its rigidity is what lets plants stand firm without a skeleton."
+                      explanation: "Our ideas can slowly change as we explore deeper."
                     },
                     {
-                      question: "Which green plastids allow plants to make their own food?",
-                      options: ["Mitochondria", "Chloroplasts, which contain chlorophyll", "Ribosomes", "Vacuoles"],
+                      question: "The Investigative World of Science brings together:",
+                      options: ["Memory and speed", "Wonder and evolution", "Reading and writing", "Theory and examinations"],
                       answer: 1,
-                      explanation: "Animal cells have no plastids at all, so they cannot photosynthesise."
+                      explanation: "These two ideas from Grades 6 and 7 form the heart of how science works."
                     },
                     {
-                      question: "Which process do chloroplasts make possible?",
-                      options: ["Respiration", "Photosynthesis", "Digestion", "Excretion"],
+                      question: "The root symbol at the bottom of left-hand pages stands for:",
+                      options: ["Growth in height", "The deep, solid foundation of knowledge and our connection to environment and heritage", "Plants studied this year", "The end of a chapter"],
                       answer: 1,
-                      explanation: "Chlorophyll inside the chloroplast traps light energy so the plant can manufacture its own food."
+                      explanation: "It keeps us connected to our environment, traditions, and cultural and natural heritage."
                     },
                     {
-                      question: "Which structure lies immediately inside the plant cell wall?",
-                      options: ["The nucleus", "The cell membrane", "The chloroplast", "The vacuole"],
+                      question: "The kite in the top corner of right-hand pages reminds us that:",
+                      options: ["Science is a game", "Curiosity must take flight if we are to explore the unknown", "Wind is important", "Every chapter has an activity"],
                       answer: 1,
-                      explanation: "The cell wall surrounds the cell membrane, adding an extra rigid layer that animal cells lack."
+                      explanation: "The root and the kite together ask for grounded observation plus soaring ideas."
                     },
                     {
-                      question: "Why do animal cells not need a cell wall?",
-                      options: ["They are smaller", "They must change shape and move, which a rigid wall would prevent", "They have no cytoplasm", "They live in water"],
+                      question: "According to the chapter, investigation works best when we balance:",
+                      options: ["Speed with accuracy", "Careful observation with creative thinking", "Reading with writing", "Theory with memorising"],
                       answer: 1,
-                      explanation: "Flexibility matters more for animals, while plants need support to stay upright."
+                      explanation: "That balance is exactly what the root and the kite represent."
                     },
                     {
-                      question: "Which of these is found in BOTH plant and animal cells?",
-                      options: ["Cell wall", "Cell membrane", "Chloroplast", "Plastids"],
+                      question: "Which of these is one of the chapter's opening Probe and Ponder questions?",
+                      options: ["What is the formula for speed?", "Are there more grains of sand on Earth's beaches and deserts, or more stars in our galaxy?", "How many chapters are in this book?", "When was the book printed?"],
                       answer: 1,
-                      explanation: "The cell membrane is common to all cells; the wall and plastids are extras found in plant cells."
+                      explanation: "These questions are not meant for any exam — they are invitations to explore."
                     },
                     {
-                      question: "Chlorophyll gives plant cells their:",
-                      options: ["Rigidity", "Green colour", "Ability to move", "Thick wall"],
+                      question: "The Probe and Ponder page ends by asking students to:",
+                      options: ["Copy the questions neatly", "Write a question of their own that makes them curious", "Answer all the questions in writing", "Skip to the next chapter"],
                       answer: 1,
-                      explanation: "The green pigment inside chloroplasts is what makes leaves look green."
+                      explanation: "Your own curiosity is treated as the real starting point of investigation."
                     },
                     {
-                      question: "An unlabelled cell under a microscope shows a rigid outer boundary and green bodies inside. It is:",
-                      options: ["An animal cell", "A plant cell", "A virus", "A bacterium"],
+                      question: "How does the chapter describe a more focused scientific question?",
+                      options: ["A longer question", "One that can be answered by designing a simple experiment", "One with a yes or no answer only", "One taken from the textbook"],
                       answer: 1,
-                      explanation: "Both the cell wall and the chloroplasts point clearly to a plant cell."
+                      explanation: "Observations from that experiment are then used to improve our understanding."
                     },
                     {
-                      question: "Which statement is correct?",
-                      options: ["All cells have a cell wall", "Only plant cells have a cell wall", "Only animal cells have a cell wall", "Neither has a cell wall"],
+                      question: "Which pair of puzzles does the chapter offer as examples of what we might investigate?",
+                      options: ["Grammar rules and spellings", "Why dough rises, and whether the world is getting warmer", "Two textbook exercises", "Only laboratory reactions"],
                       answer: 1,
-                      explanation: "Animal cells completely lack a cell wall, which is one of the clearest differences between the two."
+                      explanation: "The range runs from everyday life to the bigger mysteries of Earth and beyond."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-1-2",
+                  title: "2. A Preview of This Year's Journey",
+                  lab: { type: "science-journey-map-sim" },
+                  theory: {
+                    intro: "The chapter takes a brief look at the stops on this year's journey — an investigative adventure that runs from the tiny microbes we cannot see all the way to planet-wide challenges we cannot ignore.",
+                    sections: [
+                      {
+                        heading: "From a Drop of Water to Staying Healthy",
+                        text: "We start by examining something as small as a single drop of water and uncover a hidden world of tiny organisms, unseen but deeply linked to us. Some are invisible helpers that help us digest our food or produce medicines; others are harmful and cause infections. That raises the next question — what does our body need to stay healthy, and how do we fight these infections? We find out how nutritious food, exercise, medicines and vaccines help us stay healthy."
+                      },
+                      {
+                        heading: "Electricity, Force and Pressure",
+                        text: "Science plays a major role in improving our lives. We use electric current in many ways: the heating effect of electric current keeps us warm, while the magnetic effect helps motors run and machines function. These phenomena depend on fundamental forces, so we then study the forces themselves — those that make objects speed up, slow down, or change direction. Forces explain why a ball thrown up in the air falls back to the ground, and why a car stops when the brakes are applied. This leads to pressure, which is how a force is distributed over an object. The same ideas decide how air moves: a small difference in pressure gives a gentle breeze, while a stronger pressure difference can lead to strong winds and sometimes even cyclones, which affect daily life, agriculture and safety."
+                      },
+                      {
+                        heading: "Particles, Materials and Solutions",
+                        text: "To understand how air can exert pressure, or why water boils at a certain temperature, we zoom into materials and look at the particles they are made of and how those particles move. Everything around us is made of tiny particles: in solids the particles cannot move much, while in gases they move around freely. Classifying things is an important feature of science, so we also classify materials into elements (pure substances), compounds (two or more elements bonded together) and mixtures (combinations that can be separated physically). Once we know how particles combine or mix, we can understand solutions — for example, how sugar dissolves in tea to make it sweet."
+                      },
+                      {
+                        heading: "Light, the Moon and Calendars",
+                        text: "From particles and mixtures we move into the world of light. We study how light rays reflect off flat and curved mirrors and bend when passing through lenses — which explains the image you see in a shiny metal spoon, and how corrective glasses help many of us see clearly. It is not just a polished mirror that reflects light: rough surfaces reflect light as well, and so does the Moon. Depending on the relative positions of the Earth, Moon and Sun, a slightly different part of the Moon is illuminated each night, giving the phases of the Moon. Watching these periodic cycles allowed humans to make the first calendars, combining careful observations of sunrises, sunsets and lunar cycles."
+                      },
+                      {
+                        heading: "Ecosystems and an Earth That Is Just Right",
+                        text: "Here on Earth there are complex patterns of relationships between living organisms and their environments. Every living being — from the tiniest insect to the largest whale, from blades of grass to tall trees — depends on and responds to air, water, sunlight and the other organisms around it, forming the ecosystems that support life. In the final chapter we put it all together and ask what makes Earth 'just right' for life. The Earth lies at the perfect distance from the Sun, where water remains liquid, and it has an atmosphere that provides the oxygen we breathe while shielding us from harmful ultraviolet rays. But human activities can cause small changes in the temperature of the Earth, disrupting climate patterns with dangerous consequences. At the heart of both the problem and any possible solution is us."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "Map the Year on One Page",
+                      objective: "To see how this year's separate-looking chapters are actually connected to one another.",
+                      materials: ["A large sheet of paper", "Coloured pens"],
+                      steps: [
+                        "Write the fourteen stops of the year around the edge of the sheet: microbes, health, electric current, force, pressure and cyclones, particles, elements and compounds and mixtures, solutions, light and mirrors, lenses, phases of the Moon, calendars, ecosystems, and Earth's climate.",
+                        "Draw a line between any two stops that you think depend on each other, and write one sentence on the line saying why.",
+                        "Look for the longest chain of connected stops you can build.",
+                        "Circle the stop that seems to connect to the most others."
+                      ],
+                      observation: "Pressure connects to both force and to winds and cyclones; particles connect to pressure, to boiling, and to mixtures and solutions. The chapters look separate in the contents page, but the ideas run straight through them."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "This year's journey is described as running from:",
+                      options: ["Simple sums to hard sums", "The tiny microbes we cannot see to planet-wide challenges we cannot ignore", "Physics to chemistry only", "The Moon to the Sun"],
+                      answer: 1,
+                      explanation: "The first stop is a single drop of water and the last is the health of the whole planet."
                     },
                     {
-                      question: "Cellulose, which forms the plant cell wall, is a type of:",
-                      options: ["Protein", "Carbohydrate", "Fat", "Mineral"],
+                      question: "Which of these is described as work done by helpful microorganisms?",
+                      options: ["Causing infections", "Helping us digest our food and producing medicines", "Making water boil", "Reflecting light"],
                       answer: 1,
-                      explanation: "Cellulose is a carbohydrate that gives the wall its rigidity and strength."
+                      explanation: "Other microorganisms are harmful and cause infections."
                     },
                     {
-                      question: "Which of these would you NOT expect to find in an animal cell?",
-                      options: ["Cytoplasm", "Chloroplast", "Cell membrane", "Nucleus"],
+                      question: "Which four things does the chapter list as helping us stay healthy and fight infection?",
+                      options: ["Sleep, sunlight, water and air", "Nutritious food, exercise, medicines and vaccines", "Books, pens, paper and time", "Heat, light, sound and force"],
                       answer: 1,
-                      explanation: "Animal cells have no plastids of any kind, so they cannot make their own food."
+                      explanation: "These follow directly from the study of harmful microorganisms."
                     },
                     {
-                      question: "Plastids that are green are specifically called:",
-                      options: ["Leucoplasts", "Chloroplasts", "Chromoplasts", "Vacuoles"],
+                      question: "Which effect of electric current helps motors run?",
+                      options: ["The heating effect", "The magnetic effect", "The chemical effect", "The lighting effect"],
                       answer: 1,
-                      explanation: "They contain chlorophyll, the pigment that traps light energy for photosynthesis."
+                      explanation: "The heating effect of electric current is what keeps us warm."
                     },
                     {
-                      question: "Which feature best explains why a plant can stand upright without a skeleton?",
-                      options: ["Its chloroplasts", "Its rigid cellulose cell walls", "Its nucleus", "Its cell membrane"],
+                      question: "Forces are described as things that make objects:",
+                      options: ["Change colour","Speed up, slow down, or change direction","Get heavier","Become invisible"],
                       answer: 1,
-                      explanation: "The wall provides shape and rigidity, letting cells stay firm and compactly arranged."
+                      explanation: "This explains why a thrown ball falls back and why brakes stop a car."
                     },
                     {
-                      question: "A cell is examined and found to have a cell membrane and nucleus but no cell wall and no plastids. It is:",
-                      options: ["A plant cell", "An animal cell", "A bacterial cell", "A virus"],
+                      question: "Pressure is described as:",
+                      options: ["The size of a force","How a force is distributed over an object","The speed of an object","The weight of air"],
                       answer: 1,
-                      explanation: "The absence of both a cell wall and plastids identifies it as an animal cell."
+                      explanation: "The same idea explains how air moves and how winds form."
                     },
                     {
-                      question: "Where exactly is the cell wall located in a plant cell?",
-                      options: ["Inside the nucleus", "Outside the cell membrane", "Inside the cytoplasm", "Around the chloroplast"],
+                      question: "A stronger difference in air pressure can lead to:",
+                      options: ["A gentle breeze","Strong winds and sometimes cyclones","Complete stillness","Lower temperature only"],
                       answer: 1,
-                      explanation: "It forms an additional outer boundary surrounding the cell membrane."
+                      explanation: "A small pressure difference gives only a gentle breeze."
                     },
                     {
-                      question: "Why can plants survive fluctuations in wind and temperature that would damage bare cells?",
-                      options: ["They have more nuclei", "The cell wall protects against high wind speed, temperature variation and atmospheric moisture", "They move away", "They have thicker membranes"],
+                      question: "In which state of matter can particles move around freely?",
+                      options: ["Solid","Gas","Neither","Both equally"],
                       answer: 1,
-                      explanation: "That protective role is one of the cell wall's main functions."
+                      explanation: "In solids the particles cannot move much."
                     },
                     {
-                      question: "Animals must obtain food from their surroundings because their cells:",
-                      options: ["Have no cytoplasm", "Lack chloroplasts and so cannot photosynthesise", "Have a cell wall", "Are too small"],
+                      question: "A compound is described as:",
+                      options: ["A pure substance made of one element","Two or more elements bonded together","A combination that can be separated physically","A type of solution"],
                       answer: 1,
-                      explanation: "Without chlorophyll-containing plastids, an animal cell cannot manufacture its own food."
+                      explanation: "Elements are pure substances and mixtures can be separated physically."
                     },
                     {
-                      question: "Which pair correctly matches a structure to the cells that have it?",
-                      options: ["Cell wall — animal cells only", "Chloroplast — plant cells only", "Cell membrane — plant cells only", "Nucleus — animal cells only"],
+                      question: "Why do we see different phases of the Moon?",
+                      options: ["The Moon changes shape","A slightly different part of the Moon is lit depending on the relative positions of Earth, Moon and Sun","Clouds cover parts of it","The Moon makes its own light"],
                       answer: 1,
-                      explanation: "The cell membrane and nucleus are common to both; the wall and chloroplasts are exclusive to plant cells."
+                      explanation: "Watching these periodic cycles allowed humans to make the first calendars."
                     },
                     {
-                      question: "Which structure controls the activities of a cell?",
-                      options: ["The cell wall", "The nucleus", "The chloroplast", "The cytoplasm"],
+                      question: "What makes Earth 'just right' for life?",
+                      options: ["Its size alone","Its distance from the Sun that keeps water liquid, plus an atmosphere giving oxygen and shielding us from ultraviolet rays","Its speed of rotation only","Its single Moon"],
                       answer: 1,
-                      explanation: "The nucleus is present in both plant and animal cells and directs the cell's activities."
+                      explanation: "Human activities can disturb this balance by changing Earth's temperature."
+                    }
+                  ]
+                },
+                {
+                  id: "8s-1-3",
+                  title: "3. Investigating Like a Scientist: The Puri Experiment",
+                  lab: { type: "puri-investigation-sim" },
+                  theory: {
+                    intro: "To show what investigation actually looks like, the chapter returns to its opening question: why is one side of a puri thinner than the other? You do not need a fancy laboratory — even your kitchen at home is a wonderful place to observe and ask questions.",
+                    sections: [
+                      {
+                        heading: "Starting With a Scientific Question",
+                        text: "Have you noticed how a puri or a batura puffs up when placed in hot oil, or how a phulka swells when put directly on the flame? Why does it puff up like a balloon, and why is one side thinner than the other? These are questions a scientist might ask — and so can you. The investigation begins by turning the wondering into a scientific question: what are the different things that may change the way a puri puffs up when fried?"
+                      },
+                      {
+                        heading: "What We Can Change: The Variables We Control",
+                        text: "To answer such a question we first work out what we can change or control in the experiment. For the puri we could change the thickness of the rolled dough, its size, the type of flour used (atta, maida and so on), the temperature of the hot oil, and the way the rolled dough is dropped into the oil — vertically, at an angle, or slid in slowly. All of these are things we can decide before the experiment begins."
+                      },
+                      {
+                        heading: "What We Can Observe: The Things We Measure",
+                        text: "To make sense of the changes we also need to decide what to observe or measure. Some observations have just yes or no answers, and in other cases there is a number we can record. We could check whether the puri puffs up at all (yes or no), measure the time it takes to puff up (in seconds), or check whether a very thick layer of dough still gives a thin side to the puri."
+                      },
+                      {
+                        heading: "Change Only One Thing at a Time",
+                        text: "While doing such experiments it is better to change only one thing at a time, keeping all other conditions the same. For example, if we want to see the effect of boiling hot, hot, and not very hot oil, we would use circles of dough of the same thickness and drop them in the same way. It is also a good idea to keep notes of everything you see and sense while experimenting — did the oil splatter, smell, or smoke? After one round of experiments you will think of more questions: do puris puff better when made fresh or from stored dough? What happens if you prick a hole in the puri before frying?"
+                      },
+                      {
+                        heading: "This Is Systematic Investigation",
+                        text: "This is exactly how all scientific experiments are done, from the simplest to the most complicated — it is the idea of systematic investigation. And just so you know, even this simple everyday observation of a puri puffing is not really completely understood by scientists today. So whether it is the puffing of a puri or the shrinking bright part of the Moon after purnima, let your careful observations guide your explorations into the investigative world of science."
+                      }
+                    ]
+                  },
+                  activities: [
+                    {
+                      title: "The Puri Investigation (Kitchen Experiment, With an Adult)",
+                      objective: "To plan and run a fair test on a single variable, and to record observations systematically.",
+                      materials: ["Dough of one kind of flour", "A rolling pin", "Cooking oil and a kadhai", "A clock or phone timer", "A notebook", "An adult to do all the frying"],
+                      steps: [
+                        "Choose ONE thing to change. For example, the thickness of the rolled dough: roll three puris, thin, medium and thick.",
+                        "Keep everything else the same — same flour, same size circle, same oil temperature, same way of sliding the dough in.",
+                        "For each puri record: did it puff up (yes or no), how many seconds it took to puff, and whether one side came out thinner.",
+                        "Write down anything else you noticed — splatter, smell, smoke, colour.",
+                        "Now write down two new questions your results made you want to ask."
+                      ],
+                      observation: "Because only thickness changed, any difference in puffing can reasonably be linked to thickness. Had the oil temperature also been changed, no such conclusion could be drawn — which is exactly why one variable is changed at a time."
+                    }
+                  ],
+                  quiz: [
+                    {
+                      question: "The chapter uses which everyday question to demonstrate scientific investigation?",
+                      options: ["Why does ice melt?", "Why is one side of a puri thinner than the other?", "Why is the sky blue?", "Why do plants grow?"],
+                      answer: 1,
+                      explanation: "It is one of the Probe and Ponder questions from the chapter's first page."
                     },
                     {
-                      question: "The jelly-like substance filling a cell is called the:",
-                      options: ["Cell wall", "Cytoplasm", "Nucleus", "Plastid"],
+                      question: "According to the chapter, where can simple experiments be done?",
+                      options: ["Only in a fancy laboratory", "Even in your kitchen at home", "Only in a school lab", "Only outdoors"],
                       answer: 1,
-                      explanation: "Organelles are suspended within the cytoplasm, where many cell activities take place."
+                      explanation: "All you need is curiosity, careful observation and asking what happens if."
                     },
                     {
-                      question: "A cell wall differs from a cell membrane because it is:",
-                      options: ["Thinner and flexible", "Rigid and made of cellulose", "Made of fat", "Found only in animals"],
+                      question: "Which of these is something we can CONTROL in the puri experiment?",
+                      options: ["Whether the puri puffs up", "The temperature of the hot oil", "The time taken to puff", "Whether one side is thinner"],
                       answer: 1,
-                      explanation: "The membrane beneath it is thin and flexible in both plant and animal cells."
+                      explanation: "Thickness, size, flour type and the way the dough is dropped are also things we control."
                     },
                     {
-                      question: "Why can a plant make its own food while an animal cannot?",
-                      options: ["Plants have a nucleus", "Plants have chloroplasts containing chlorophyll", "Plants have cytoplasm", "Plants are larger"],
+                      question: "Which of these is something we OBSERVE or MEASURE?",
+                      options: ["The type of flour used", "The number of seconds the puri takes to puff up", "The size of the rolled circle", "The way the dough is dropped in"],
                       answer: 1,
-                      explanation: "Chlorophyll traps light energy so that photosynthesis can take place."
+                      explanation: "Some observations are yes or no, and others give a number we can record."
                     },
                     {
-                      question: "Which pair of structures would you find ONLY in a plant cell?",
-                      options: ["Nucleus and cytoplasm", "Cell wall and chloroplasts", "Cell membrane and nucleus", "Cytoplasm and cell membrane"],
+                      question: "Why should only one thing be changed at a time?",
+                      options: ["It is quicker", "So that any difference can be linked to that one change", "Because the book says so", "To use less oil"],
                       answer: 1,
-                      explanation: "Animal cells lack both a cell wall and plastids of any kind."
+                      explanation: "All other conditions are kept the same to make the test fair."
                     },
                     {
-                      question: "Cellulose gives the plant cell wall its:",
-                      options: ["Green colour", "Rigidity and strength", "Ability to divide", "Flexibility"],
+                      question: "To test boiling hot, hot and not very hot oil fairly, you must keep:",
+                      options: ["The oil quantity different each time", "The dough thickness and the way of dropping the same", "The flour different each time", "The timing unrecorded"],
                       answer: 1,
-                      explanation: "That rigidity keeps plant cells firm and compactly arranged."
+                      explanation: "Only the oil temperature should differ between the three trials."
                     },
                     {
-                      question: "Which of these best describes chloroplasts?",
-                      options: ["Colourless plastids", "Green plastids containing chlorophyll", "Part of the cell wall", "The control centre"],
+                      question: "Why is it a good idea to keep notes during an experiment?",
+                      options: ["To fill the notebook", "To record everything seen and sensed, such as splatter, smell or smoke", "Because notes are marked", "To copy later"],
                       answer: 1,
-                      explanation: "They are the site where the plant manufactures its own food."
+                      explanation: "Details noticed in passing often turn into the next question."
                     },
                     {
-                      question: "A drawing shows a cell with an irregular, flexible outline and no green bodies. It is most likely:",
-                      options: ["A plant cell", "An animal cell", "A leaf cell", "An onion peel cell"],
+                      question: "What happens after one round of experiments?",
+                      options: ["The investigation ends", "New questions come up, such as fresh versus stored dough", "The results are forgotten", "The question is answered forever"],
                       answer: 1,
-                      explanation: "Without a rigid cell wall, animal cells can take irregular shapes."
+                      explanation: "Pricking a hole in the puri before frying is another follow-up question the chapter suggests."
                     },
                     {
-                      question: "Onion peel cells appear firm and box-like under a microscope because:",
-                      options: ["They contain chlorophyll", "They have rigid cell walls", "They have no nucleus", "They are dead"],
+                      question: "The step-by-step way of doing experiments described here is called:",
+                      options: ["Random testing", "Systematic investigation", "Observation only", "Trial and error"],
                       answer: 1,
-                      explanation: "The cell wall gives shape and lets the cells sit compactly against one another."
+                      explanation: "All scientific experiments, from the simplest to the most complicated, are done this way."
                     },
                     {
-                      question: "What would happen to a plant with no cell walls?",
-                      options: ["It would grow faster", "It would lose its rigidity and could not stand upright", "It would photosynthesise more", "Nothing would change"],
+                      question: "What does the chapter reveal about the puffing of a puri?",
+                      options: ["It was explained long ago", "It is not really completely understood by scientists even today", "It cannot be investigated", "It has only one cause"],
                       answer: 1,
-                      explanation: "The wall provides the support that lets plants stay firm against wind and weather."
+                      explanation: "An everyday observation can still be an open scientific question."
+                    },
+                    {
+                      question: "Which observation would have a yes or no answer rather than a number?",
+                      options: ["Time taken to puff up", "Whether the puri puffed up at all", "Thickness of the dough in millimetres", "Temperature of the oil"],
+                      answer: 1,
+                      explanation: "Both kinds of observation are useful, and the chapter suggests recording both."
                     }
                   ]
                 }
