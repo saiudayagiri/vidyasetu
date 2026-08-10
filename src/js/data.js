@@ -13745,7 +13745,7 @@ export const curriculumData = {
                     },
                     {
                       question: "According to the chapter's data, which of these three has the HIGHEST melting point?",
-                      options: ["Ice (0°C)", "Urea (133°C)", "Iron (1538°C)"],
+                      options: ["Ice (0°C)", "Urea (133°C)", "Iron (1538°C)", "Wax (about 60°C)"],
                       answer: 2,
                       explanation: "Iron has the highest melting point (1538°C) among the three, reflecting the very strong interparticle attractions between iron atoms."
                     },
@@ -29096,6 +29096,60 @@ export const curriculumData = {
             options: ["HCF = 6, LCM = 360", "HCF = 12, LCM = 180", "HCF = 6, LCM = 720", "HCF = 2, LCM = 360"],
             answer: 0,
             explanation: "HCF uses the smallest power of each common factor: 2¹×3¹ = 6. LCM uses the greatest power of every prime involved: 2³×3²×5¹ = 360."
+          },
+          {
+            question: "Express 32760 as a product of primes in exponent form.",
+            options: ["2³ × 3² × 5 × 7 × 13", "2² × 3³ × 5 × 7 × 13", "2³ × 3² × 5² × 7 × 13", "2⁴ × 3² × 5 × 7 × 11"],
+            answer: 0,
+            explanation: "32760 = 2 × 2 × 2 × 3 × 3 × 5 × 7 × 13, which is written as 2³ × 3² × 5 × 7 × 13."
+          },
+          {
+            question: "For any two positive integers a and b, which relation always holds?",
+            options: ["HCF × LCM = a + b", "HCF × LCM = a × b", "HCF + LCM = a × b", "HCF ÷ LCM = a × b"],
+            answer: 1,
+            explanation: "The product of the HCF and the LCM of two numbers always equals the product of the numbers themselves."
+          },
+          {
+            question: "The HCF of two numbers is 9 and their LCM is 90. If one number is 18, the other is:",
+            options: ["45", "27", "36", "81"],
+            answer: 0,
+            explanation: "HCF × LCM = product of numbers, so 9 × 90 = 18 × x, giving x = 810/18 = 45."
+          },
+          {
+            question: "Find the HCF of 12 = 2² × 3 and 18 = 2 × 3².",
+            options: ["36", "6", "2", "3"],
+            answer: 1,
+            explanation: "Take the smallest power of each common prime: 2¹ × 3¹ = 6."
+          },
+          {
+            question: "Find the LCM of 12 = 2² × 3 and 18 = 2 × 3².",
+            options: ["36", "6", "72", "54"],
+            answer: 0,
+            explanation: "Take the greatest power of every prime involved: 2² × 3² = 4 × 9 = 36."
+          },
+          {
+            question: "Why can 4ⁿ never end in the digit 0?",
+            options: ["Because 4 is even", "Its prime factorisation contains only 2s, and a number ending in 0 must have both 2 and 5 as factors", "Because 4 is a perfect square", "It can end in 0 for large n"],
+            answer: 1,
+            explanation: "Ending in 0 means being divisible by 10 = 2 × 5, but by the uniqueness of prime factorisation 4ⁿ = 2²ⁿ has no factor 5."
+          },
+          {
+            question: "Two bells ring at intervals of 9 and 12 minutes. If they ring together now, after how long will they ring together again?",
+            options: ["21 minutes", "36 minutes", "108 minutes", "3 minutes"],
+            answer: 1,
+            explanation: "The answer is the LCM: 9 = 3², 12 = 2² × 3, so LCM = 2² × 3² = 36 minutes."
+          },
+          {
+            question: "What makes the Fundamental Theorem of Arithmetic so powerful?",
+            options: ["It lists all the primes", "The prime factorisation of a composite number is unique apart from the order of factors", "It proves every number is prime", "It only works for even numbers"],
+            answer: 1,
+            explanation: "Uniqueness means that questions about divisibility, HCF and LCM can always be settled by comparing prime factorisations."
+          },
+          {
+            question: "The HCF of two coprime numbers is:",
+            options: ["Their product", "1", "The smaller number", "0"],
+            answer: 1,
+            explanation: "Coprime numbers share no prime factor, so the only common factor is 1 — and their LCM is simply their product."
           }
         ]
       },
@@ -29144,6 +29198,60 @@ export const curriculumData = {
             options: ["Rational", "Irrational", "A whole number", "Cannot be determined"],
             answer: 1,
             explanation: "If 3 + 2√5 were rational, then (that value - 3)/2 = √5 would also be rational, contradicting the proven irrationality of √5. So 3 + 2√5 is irrational."
+          },
+          {
+            question: "In the proof that √2 is irrational, what assumption is made at the start?",
+            options: ["That √2 is irrational", "That √2 is rational and equals a/b with a and b coprime", "That 2 is not prime", "That a and b are both even"],
+            answer: 1,
+            explanation: "This is proof by contradiction — we assume the opposite of what we want to prove and show it leads to an impossibility."
+          },
+          {
+            question: "In that proof, squaring b√2 = a gives 2b² = a². What does this tell us about a?",
+            options: ["a is odd", "2 divides a², so by the theorem 2 divides a", "a equals b", "a is prime"],
+            answer: 1,
+            explanation: "If a prime p divides a², then p divides a — so 2 divides a and we can write a = 2c."
+          },
+          {
+            question: "How does the proof of √2's irrationality reach its contradiction?",
+            options: ["a becomes negative", "Both a and b turn out to have 2 as a common factor, contradicting that they were coprime", "b becomes zero", "√2 becomes negative"],
+            answer: 1,
+            explanation: "Substituting a = 2c shows that 2 also divides b, but a and b were assumed to have no common factor — an impossibility."
+          },
+          {
+            question: "The sum of a rational and an irrational number is:",
+            options: ["Always rational", "Always irrational", "Sometimes rational", "Always an integer"],
+            answer: 1,
+            explanation: "If the sum were rational, subtracting the rational part would make the irrational number rational too — a contradiction."
+          },
+          {
+            question: "Which of these numbers is rational?",
+            options: ["√7", "2 + √3", "√2 × √8", "5/√3"],
+            answer: 2,
+            explanation: "√2 × √8 = √16 = 4, which is rational. The product of two irrationals is not always irrational."
+          },
+          {
+            question: "The product of a non-zero rational number and an irrational number is:",
+            options: ["Always rational", "Always irrational", "Always zero", "Sometimes an integer"],
+            answer: 1,
+            explanation: "3√2 and 5/√7 are both irrational — dividing out the rational factor would otherwise make the irrational number rational."
+          },
+          {
+            question: "3 is prime and 3 divides 81. Which conclusion follows from the theorem?",
+            options: ["3 divides 9, since 81 = 9²", "3 divides 27 only", "9 divides 3", "Nothing follows"],
+            answer: 0,
+            explanation: "If p divides a², then p divides a. Here a = 9, so 3 must divide 9 — which it does."
+          },
+          {
+            question: "What does it mean for two integers a and b to be coprime?",
+            options: ["Both are prime numbers", "They have no common factor other than 1", "They are consecutive", "Their sum is prime"],
+            answer: 1,
+            explanation: "In the irrationality proof, a/b is written in lowest terms, which means a and b are coprime."
+          },
+          {
+            question: "Is √3 − √3 rational or irrational?",
+            options: ["Irrational", "Rational, since it equals 0", "Undefined", "It cannot be decided"],
+            answer: 1,
+            explanation: "The difference of two irrational numbers can be rational — here the result is 0, a rational number."
           }
         ]
       }
@@ -29201,6 +29309,60 @@ export const curriculumData = {
             options: ["p(x) has exactly 1 zero", "p(x) has exactly 2 zeroes", "p(x) has no real zeroes", "p(x) is not a valid polynomial"],
             answer: 2,
             explanation: "If the parabola lies entirely above or entirely below the x-axis, it never crosses y = 0, so the polynomial has no real zeroes."
+          },
+          {
+            question: "What is the zero of the linear polynomial 3x − 12?",
+            options: ["3", "4", "−4", "12"],
+            answer: 1,
+            explanation: "For ax + b the zero is x = −b/a = 12/3 = 4. Check: 3(4) − 12 = 0."
+          },
+          {
+            question: "The graph of a quadratic polynomial is called a:",
+            options: ["Straight line", "Parabola", "Circle", "Hyperbola"],
+            answer: 1,
+            explanation: "A degree-2 polynomial graphs as a U-shaped parabola, opening upwards if a > 0 and downwards if a < 0."
+          },
+          {
+            question: "How many zeroes does a linear polynomial have?",
+            options: ["None", "Exactly one", "Exactly two", "Infinitely many"],
+            answer: 1,
+            explanation: "Its graph is a straight line that crosses the x-axis at exactly one point, (−b/a, 0)."
+          },
+          {
+            question: "A real number k is a zero of p(x) if:",
+            options: ["p(k) = k", "p(k) = 0", "p(0) = k", "k = 0"],
+            answer: 1,
+            explanation: "The zeroes are precisely the values that make the polynomial evaluate to zero, which is why they are where the graph meets the x-axis."
+          },
+          {
+            question: "The graph of a quadratic polynomial cuts the x-axis at two distinct points. How many real zeroes does it have?",
+            options: ["None", "One", "Two", "Three"],
+            answer: 2,
+            explanation: "Each intersection with the x-axis corresponds to one real zero."
+          },
+          {
+            question: "For which values of a does the parabola y = ax² + bx + c open downwards?",
+            options: ["a > 0", "a < 0", "a = 0", "Any value of a"],
+            answer: 1,
+            explanation: "A negative leading coefficient turns the U upside down; a = 0 would make it linear rather than quadratic."
+          },
+          {
+            question: "If p(2) = 0 for a polynomial p(x), which is true?",
+            options: ["The graph passes through (0, 2)", "The graph passes through (2, 0), so 2 is a zero", "p(x) has degree 2", "p(x) is linear"],
+            answer: 1,
+            explanation: "A zero at x = 2 means the curve meets the x-axis at the point (2, 0)."
+          },
+          {
+            question: "A cubic polynomial can have at most how many zeroes?",
+            options: ["Two", "Three", "Four", "Infinitely many"],
+            answer: 1,
+            explanation: "A polynomial of degree n has at most n zeroes, so a cubic has at most three."
+          },
+          {
+            question: "The graph of y = p(x) is a straight line parallel to the x-axis but not on it. How many zeroes does p(x) have?",
+            options: ["One", "None", "Two", "Infinitely many"],
+            answer: 1,
+            explanation: "Such a graph never meets the x-axis, so the polynomial — a non-zero constant — has no zeroes."
           }
         ]
       },
@@ -29255,6 +29417,60 @@ export const curriculumData = {
             options: ["-4, matching -d/a = -8/2 = -4", "4, matching d/a", "-8, matching -d", "8, matching d/a"],
             answer: 0,
             explanation: "Product = 4 × (-2) × (1/2) = -4. Using the formula -d/a = -(8)/2 = -4 — they match."
+          },
+          {
+            question: "For p(x) = ax² + bx + c, the product of the zeroes equals:",
+            options: ["−b/a", "c/a", "−c/a", "b/a"],
+            answer: 1,
+            explanation: "αβ = c/a, the constant term divided by the coefficient of x²; the sum is −b/a."
+          },
+          {
+            question: "Find the sum of the zeroes of x² + 7x + 10.",
+            options: ["7", "−7", "10", "−10"],
+            answer: 1,
+            explanation: "Sum = −b/a = −7/1 = −7. Indeed the zeroes are −2 and −5, which add to −7."
+          },
+          {
+            question: "Find the product of the zeroes of 3x² − 5x + 2.",
+            options: ["5/3", "2/3", "−2/3", "3/2"],
+            answer: 1,
+            explanation: "Product = c/a = 2/3."
+          },
+          {
+            question: "A quadratic polynomial has zeroes with sum 5 and product 6. One such polynomial is:",
+            options: ["x² + 5x + 6", "x² − 5x + 6", "x² − 5x − 6", "x² + 6x + 5"],
+            answer: 1,
+            explanation: "p(x) = k[x² − (sum)x + product] = x² − 5x + 6 when k = 1. Its zeroes are 2 and 3."
+          },
+          {
+            question: "The zeroes of x² − 2x − 8 are:",
+            options: ["2 and −4", "4 and −2", "−4 and −2", "8 and −1"],
+            answer: 1,
+            explanation: "Splitting the middle term: x² − 4x + 2x − 8 = (x − 4)(x + 2), so the zeroes are 4 and −2. Their sum is 2 = −b/a and product −8 = c/a."
+          },
+          {
+            question: "In p(x) = k[x² − Sx + P], what does k represent?",
+            options: ["A zero of the polynomial", "Any non-zero real constant, so infinitely many such polynomials exist", "The sum of the zeroes", "The degree"],
+            answer: 1,
+            explanation: "Scaling by any non-zero k leaves the zeroes unchanged, so the given sum and product do not determine a unique polynomial."
+          },
+          {
+            question: "For a cubic ax³ + bx² + cx + d with zeroes α, β, γ, the sum α + β + γ equals:",
+            options: ["−b/a", "c/a", "−d/a", "d/a"],
+            answer: 0,
+            explanation: "For 2x³ − 5x² − 14x + 8 with zeroes 4, −2 and ½, the sum is 5/2 = −(−5)/2 ✓."
+          },
+          {
+            question: "One zero of x² − 4 is 2. What is the other?",
+            options: ["2", "−2", "4", "0"],
+            answer: 1,
+            explanation: "The product of the zeroes is c/a = −4, so the other zero is −4/2 = −2."
+          },
+          {
+            question: "If both zeroes of a quadratic are equal, its graph:",
+            options: ["Cuts the x-axis at two points", "Touches the x-axis at exactly one point", "Never meets the x-axis", "Is a straight line"],
+            answer: 1,
+            explanation: "Coincident zeroes mean the parabola just touches the axis at its vertex rather than crossing it."
           }
         ]
       }
@@ -29307,6 +29523,60 @@ export const curriculumData = {
             options: ["3 boys, 7 girls", "4 boys, 6 girls", "5 boys, 5 girls", "6 boys, 4 girls"],
             answer: 0,
             explanation: "Let boys = x, girls = y. x + y = 10 and y = x + 4. Substituting: x + (x+4) = 10, so 2x = 6, x = 3. Then y = 7."
+          },
+          {
+            question: "If a₁/a₂ = b₁/b₂ = c₁/c₂, the two lines are:",
+            options: ["Intersecting", "Coincident, with infinitely many solutions", "Parallel, with no solution", "Perpendicular"],
+            answer: 1,
+            explanation: "All three ratios equal means the two equations describe the very same line, so every point on it is a solution."
+          },
+          {
+            question: "If a₁/a₂ = b₁/b₂ ≠ c₁/c₂, the pair of equations has:",
+            options: ["A unique solution", "No solution — the lines are parallel", "Infinitely many solutions", "Exactly two solutions"],
+            answer: 1,
+            explanation: "Equal coefficient ratios but a different constant ratio give parallel lines that never meet, so the system is inconsistent."
+          },
+          {
+            question: "A system of linear equations is called consistent when it has:",
+            options: ["No solution", "At least one solution", "Exactly two solutions", "Only integer solutions"],
+            answer: 1,
+            explanation: "Both intersecting lines (one solution) and coincident lines (infinitely many) give consistent systems; only parallel lines are inconsistent."
+          },
+          {
+            question: "For x − 2y = 0 and 3x + 4y − 20 = 0, what do the ratios show?",
+            options: ["a₁/a₂ = b₁/b₂, so the lines are parallel", "1/3 ≠ −1/2, so the lines intersect at exactly one point", "The lines are coincident", "There is no solution"],
+            answer: 1,
+            explanation: "Since a₁/a₂ ≠ b₁/b₂, the lines meet at a single point and the system has a unique solution."
+          },
+          {
+            question: "The graph of a linear equation in two variables is always:",
+            options: ["A parabola", "A straight line", "A circle", "A pair of lines"],
+            answer: 1,
+            explanation: "That is why a pair of such equations is represented by two straight lines in a plane."
+          },
+          {
+            question: "How many possibilities are there for two straight lines drawn in the same plane?",
+            options: ["Two", "Three — intersecting, parallel or coincident", "Four", "Infinitely many"],
+            answer: 1,
+            explanation: "They either cross at one point, never meet, or lie exactly on top of each other."
+          },
+          {
+            question: "The point where two intersecting lines meet represents:",
+            options: ["A point with no meaning", "The unique solution of the pair of equations", "The y-intercept", "The origin"],
+            answer: 1,
+            explanation: "That point satisfies both equations simultaneously, so its coordinates are the solution."
+          },
+          {
+            question: "For 2x + 3y = 9 and 4x + 6y = 18, the pair has:",
+            options: ["A unique solution", "Infinitely many solutions", "No solution", "Exactly two solutions"],
+            answer: 1,
+            explanation: "2/4 = 3/6 = 9/18 = ½, so all three ratios are equal and the lines are coincident."
+          },
+          {
+            question: "The sum of two numbers is 20 and their difference is 4. Using a graphical or algebraic method, the numbers are:",
+            options: ["10 and 10", "12 and 8", "14 and 6", "16 and 4"],
+            answer: 1,
+            explanation: "x + y = 20 and x − y = 4 give 2x = 24, so x = 12 and y = 8."
           }
         ]
       },
@@ -29351,6 +29621,60 @@ export const curriculumData = {
             options: ["Unique solution x=1, y=2", "You get 0 = 9, a false statement — no solution", "Infinitely many solutions", "You get 0 = 0"],
             answer: 1,
             explanation: "Multiplying the first equation by 2 gives 4x+6y=16. Subtracting the second equation (4x+6y=7) gives 0=9, which is false — so the pair of equations has no solution (the lines are parallel)."
+          },
+          {
+            question: "In the substitution method, what is the first step?",
+            options: ["Add the two equations", "Express one variable in terms of the other from one equation", "Multiply both equations by constants", "Draw the graphs"],
+            answer: 1,
+            explanation: "That expression is then substituted into the other equation, reducing it to a single equation in one variable."
+          },
+          {
+            question: "Solve by substitution: x + y = 14 and x − y = 4. What is y?",
+            options: ["9", "5", "4", "10"],
+            answer: 1,
+            explanation: "From the first, x = 14 − y. Substituting: (14 − y) − y = 4, so 14 − 2y = 4, giving y = 5 and x = 9."
+          },
+          {
+            question: "In the elimination method, why do we multiply an equation by a constant?",
+            options: ["To make the numbers larger", "To make the coefficients of one variable numerically equal so that variable can be eliminated", "To change the solution", "To convert it to a graph"],
+            answer: 1,
+            explanation: "Once the coefficients match, adding or subtracting the equations removes that variable entirely."
+          },
+          {
+            question: "Solve by elimination: 3x + 4y = 10 and 2x − 2y = 2. What is x?",
+            options: ["1", "2", "3", "4"],
+            answer: 1,
+            explanation: "Multiply the second by 2: 4x − 4y = 4. Adding to the first gives 7x = 14, so x = 2 and y = 1."
+          },
+          {
+            question: "While solving a pair by elimination you obtain 0 = 0. This means the system has:",
+            options: ["No solution", "Infinitely many solutions", "Exactly one solution", "Exactly two solutions"],
+            answer: 1,
+            explanation: "A statement that is always true means the two equations are equivalent — the lines are coincident."
+          },
+          {
+            question: "The cost of 2 pens and 3 pencils is ₹18, and 3 pens and 2 pencils cost ₹22. What is the cost of one pen?",
+            options: ["₹3", "₹6", "₹4", "₹5"],
+            answer: 1,
+            explanation: "2p + 3q = 18 and 3p + 2q = 22. Adding gives 5p + 5q = 40, so p + q = 8; subtracting gives p − q = 4. Hence p = 6 and q = 2."
+          },
+          {
+            question: "Which method is usually most convenient when one variable already has coefficient 1?",
+            options: ["Elimination", "Substitution", "Graphical", "Cross-multiplication"],
+            answer: 1,
+            explanation: "A coefficient of 1 makes it easy to express that variable in terms of the other and substitute."
+          },
+          {
+            question: "A father is three times as old as his son. In 12 years he will be twice as old. What is the son's present age?",
+            options: ["10 years", "12 years", "14 years", "16 years"],
+            answer: 1,
+            explanation: "Let the son be x, so the father is 3x. Then 3x + 12 = 2(x + 12), giving 3x + 12 = 2x + 24 and x = 12."
+          },
+          {
+            question: "After eliminating one variable, what is the next step?",
+            options: ["Stop, the problem is solved", "Solve the resulting single-variable equation, then substitute back to find the other variable", "Draw the graph", "Multiply again"],
+            answer: 1,
+            explanation: "The value found is put back into either original equation to obtain the second variable."
           }
         ]
       }
