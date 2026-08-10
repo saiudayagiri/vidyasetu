@@ -15185,6 +15185,24 @@ export const curriculumData = {
                       options: ["They make objects look bigger and closer", "They provide a wider field of view of the traffic behind, even though objects appear smaller/farther than they really are", "They are cheaper to manufacture", "Convex mirrors cannot be used for this purpose"],
                       answer: 1,
                       explanation: "Because convex mirrors always show a diminished, erect image, they capture a much wider area of the road behind — which is why vehicles use them for side-view mirrors, despite objects appearing closer than they seem."
+                    },
+                    {
+                      question: "Which everyday object behaves like a concave mirror?",
+                      options: ["The back of a spoon", "The inner side of a spoon", "A flat window", "A glass marble"],
+                      answer: 1,
+                      explanation: "A concave mirror curves inward; the outer side of the spoon acts as a convex mirror."
+                    },
+                    {
+                      question: "As an object moves further from a concave mirror, its image:",
+                      options: ["Stays erect and enlarged", "Becomes inverted and then progressively smaller", "Disappears", "Becomes larger and larger"],
+                      answer: 1,
+                      explanation: "Close to the mirror the image is erect and enlarged, but beyond a point it flips and shrinks."
+                    },
+                    {
+                      question: "A convex mirror always produces an image that is:",
+                      options: ["Inverted and enlarged", "Erect and diminished", "Erect and enlarged", "Inverted and the same size"],
+                      answer: 1,
+                      explanation: "This holds whatever the distance, which is why convex mirrors give a wide field of view."
                     }
                   ]
                 },
@@ -15254,6 +15272,24 @@ export const curriculumData = {
                       options: ["Only to plane mirrors", "They apply to both plane mirrors AND spherical (concave/convex) mirrors", "Only to concave mirrors", "They don't apply to any mirrors"],
                       answer: 1,
                       explanation: "The laws of reflection are universal — they apply to plane mirrors as well as concave and convex spherical mirrors, even though the curved shape causes additional converging/diverging effects."
+                    },
+                    {
+                      question: "What is the normal in the context of reflection?",
+                      options: ["The reflected ray", "A line drawn perpendicular to the mirror at the point where light strikes", "The mirror surface", "The incident ray"],
+                      answer: 1,
+                      explanation: "Both the angle of incidence and the angle of reflection are measured from this line."
+                    },
+                    {
+                      question: "State the first law of reflection.",
+                      options: ["The rays are always parallel", "The angle of incidence equals the angle of reflection", "Light always bends", "The normal bisects the mirror"],
+                      answer: 1,
+                      explanation: "If light falls exactly along the normal, both angles are zero and it reflects straight back."
+                    },
+                    {
+                      question: "Bending the paper along which a reflected beam travels makes the beam vanish from view. What does this show?",
+                      options: ["Light stops travelling", "The incident ray, the normal and the reflected ray all lie in one plane", "Paper absorbs light", "The mirror moved"],
+                      answer: 1,
+                      explanation: "This is the second law of reflection, and flattening the paper brings the beam back into view."
                     }
                   ]
                 },
@@ -15323,6 +15359,24 @@ export const curriculumData = {
                       options: ["A device that blocks sunlight completely", "A device using mirrors and/or lenses to concentrate sunlight into a small area for uses like generating steam or heating", "A type of plane mirror", "A device that only works with artificial light"],
                       answer: 1,
                       explanation: "Solar concentrators use mirrors and lenses to focus sunlight into a small area, generating enough concentrated heat for applications like steam-based electricity generation or industrial furnaces."
+                    },
+                    {
+                      question: "Parallel beams striking a plane mirror reflect:",
+                      options: ["Converging to a point", "Still parallel to one another", "Diverging widely", "Back along the same path"],
+                      answer: 1,
+                      explanation: "Only curved mirrors change the beams' convergence."
+                    },
+                    {
+                      question: "A concave mirror makes parallel beams:",
+                      options: ["Diverge", "Converge and meet", "Stay parallel", "Disappear"],
+                      answer: 1,
+                      explanation: "A convex mirror does the opposite, spreading the beams apart."
+                    },
+                    {
+                      question: "What is a solar concentrator?",
+                      options: ["A device that stores sunlight", "A device using mirrors and lenses to focus sunlight into a small area", "A type of solar panel", "A cooling device"],
+                      answer: 1,
+                      explanation: "The concentrated sunlight can heat liquid to produce steam for generating electricity."
                     }
                   ]
                 },
@@ -15392,6 +15446,24 @@ export const curriculumData = {
                       options: ["It has no magnifying effect at all", "Its curved (outward-bulging) surface bends light so that text beneath it appears larger, just like a simple convex lens", "Water drops only work as concave lenses", "This has nothing to do with how lenses work"],
                       answer: 1,
                       explanation: "The water drop's curved surface bends light rays similarly to a convex lens, magnifying the appearance of the text directly beneath it — a simple, everyday demonstration of lens behavior."
+                    },
+                    {
+                      question: "What is a lens?",
+                      options: ["Any flat piece of glass", "A piece of transparent material with curved surfaces", "A curved mirror", "A coloured filter"],
+                      answer: 1,
+                      explanation: "A water drop on a glass strip acts as a simple lens, magnifying the text beneath it."
+                    },
+                    {
+                      question: "A convex lens is also called a:",
+                      options: ["Diverging lens", "Converging lens", "Plane lens", "Reflecting lens"],
+                      answer: 1,
+                      explanation: "It bends parallel beams together, while a concave lens spreads them apart."
+                    },
+                    {
+                      question: "What happens to parallel light passing through a thin flat glass plate?",
+                      options: ["It converges", "It passes straight through unchanged", "It diverges", "It reflects back"],
+                      answer: 1,
+                      explanation: "Curvature is what makes a lens bend light, so a flat plate has no such effect."
                     }
                   ]
                 }
@@ -15467,6 +15539,24 @@ export const curriculumData = {
                       options: ["One day", "One week", "About one month", "One year"],
                       answer: 2,
                       explanation: "The complete cycle of Moon phases, from one Full Moon to the next, takes about one month (approximately 29.5 days)."
+                    },
+                    {
+                      question: "Why does the Moon shine?",
+                      options: ["It produces its own light", "It reflects sunlight", "It glows from heat", "It reflects Earth's light"],
+                      answer: 1,
+                      explanation: "The half facing the Sun is lit while the half facing away is dark."
+                    },
+                    {
+                      question: "What is the waning period of the Moon called in the Indian calendar?",
+                      options: ["Shukla Paksha", "Krishna Paksha", "Purnima", "Amavasya"],
+                      answer: 1,
+                      explanation: "The bright portion shrinks over about two weeks from Full Moon until it disappears."
+                    },
+                    {
+                      question: "When more than half of the lit portion is visible, the phase is called:",
+                      options: ["Crescent", "Gibbous", "New Moon", "Quarter"],
+                      answer: 1,
+                      explanation: "Less than half visible is the crescent phase."
                     }
                   ]
                 },
@@ -15536,6 +15626,24 @@ export const curriculumData = {
                       options: ["Eclipses actually do occur every month without exception", "The Moon's orbit is slightly tilted relative to Earth's orbit around the Sun, so perfect alignment for an eclipse doesn't happen every month", "Eclipses are entirely random with no predictable pattern", "Eclipses only happen once per century"],
                       answer: 1,
                       explanation: "Because the Moon's orbital plane is slightly tilted compared to Earth's orbital plane around the Sun, the Sun, Earth, and Moon are rarely perfectly aligned — so eclipses only happen on the occasions when this tilt permits exact alignment."
+                    },
+                    {
+                      question: "On a Full Moon day, where is the Moon relative to the Sun?",
+                      options: ["Beside it", "Nearly opposite it, rising in the East as the Sun sets", "Between Earth and the Sun", "Directly overhead at noon"],
+                      answer: 1,
+                      explanation: "The whole illuminated half then faces Earth."
+                    },
+                    {
+                      question: "What actually causes the phases of the Moon?",
+                      options: ["Earth's shadow falling on the Moon", "The changing relative positions of the Sun, Moon and Earth as the Moon orbits", "Clouds", "The Moon's rotation alone"],
+                      answer: 1,
+                      explanation: "Believing Earth's shadow causes the phases is a common misconception."
+                    },
+                    {
+                      question: "A solar eclipse can only occur on which day?",
+                      options: ["Full Moon", "New Moon", "Any day", "The first quarter"],
+                      answer: 1,
+                      explanation: "A lunar eclipse can only occur at Full Moon, when Earth lies between the Sun and Moon."
                     }
                   ]
                 },
@@ -15605,6 +15713,24 @@ export const curriculumData = {
                       options: ["Year, Month, Day", "Day, Year, Month", "Day, Month, Year", "Month, Day, Year"],
                       answer: 2,
                       explanation: "The natural order from shortest to longest is: Day (~24 hours, from Earth's rotation) → Month (~29.5 days, from the Moon's phase cycle) → Year (~365.25 days, from Earth's revolution around the Sun)."
+                    },
+                    {
+                      question: "What causes the Sun's apparent daily motion from east to west?",
+                      options: ["The Sun orbiting Earth", "Earth's rotation on its axis", "The Moon's pull", "Earth's revolution"],
+                      answer: 1,
+                      explanation: "One full cycle of this apparent motion defines the day."
+                    },
+                    {
+                      question: "The natural basis for a month is:",
+                      options: ["Earth's rotation", "The cycle of the Moon's phases, about 29.5 days", "Earth's orbit", "The seasons"],
+                      answer: 1,
+                      explanation: "It is longer than a day but shorter than a year."
+                    },
+                    {
+                      question: "How long does Earth take to complete one revolution around the Sun?",
+                      options: ["365 days exactly", "Nearly 365 and a quarter days", "360 days", "354 days"],
+                      answer: 1,
+                      explanation: "That period also covers one complete cycle of the seasons, defining a solar year."
                     }
                   ]
                 },
@@ -15674,6 +15800,24 @@ export const curriculumData = {
                       options: ["Every year", "Every 2-3 years", "Every 50 years", "Never — luni-solar calendars require no adjustment"],
                       answer: 1,
                       explanation: "Since the lunar year falls about 11 days short of the solar year each year, this gap accumulates to nearly a full month every 2-3 years, which is when a leap month is inserted."
+                    },
+                    {
+                      question: "How many days are there in a lunar year of 12 lunar months?",
+                      options: ["365", "354", "360", "384"],
+                      answer: 1,
+                      explanation: "Twelve cycles of about 29.5 days give roughly 354 days, about 11 days short of a solar year."
+                    },
+                    {
+                      question: "The Gregorian calendar is an example of a:",
+                      options: ["Lunar calendar", "Solar calendar", "Luni-solar calendar", "Sidereal calendar"],
+                      answer: 1,
+                      explanation: "Its months are adjusted so that they add up to 365 days, keeping the seasons in step."
+                    },
+                    {
+                      question: "How does a luni-solar calendar stay aligned with the seasons?",
+                      options: ["It ignores the Moon", "It counts months by the Moon but inserts a leap month every two or three years", "It has 13 months always", "It uses only the Sun"],
+                      answer: 1,
+                      explanation: "Without that correction the lunar year would drift about 11 days each year."
                     }
                   ]
                 }
@@ -15749,6 +15893,24 @@ export const curriculumData = {
                       options: ["The habitat would function perfectly with no issues", "All individuals would compete for identical resources (food, water, space), potentially causing scarcity", "This situation is common in nature and causes no problems", "The organism would not need any resources at all"],
                       answer: 1,
                       explanation: "If every organism in a habitat were identical, they would all require exactly the same resources, leading to intense competition and possible resource scarcity — one reason why diverse communities are the norm in nature."
+                    },
+                    {
+                      question: "What is a habitat?",
+                      options: ["A group of one species", "The place where an organism lives", "All living things on Earth", "A food chain"],
+                      answer: 1,
+                      explanation: "A pond, a forest or even the bark of a tree can all be habitats."
+                    },
+                    {
+                      question: "Which of these is an abiotic component of a habitat?",
+                      options: ["Fish", "Water", "Trees", "Birds"],
+                      answer: 1,
+                      explanation: "Abiotic components are the non-living parts, while biotic components are the living ones."
+                    },
+                    {
+                      question: "What is a population?",
+                      options: ["All the organisms in a habitat", "A group of the same type of organism living together in a habitat at a given time", "Two species interacting", "A food web"],
+                      answer: 1,
+                      explanation: "Different populations sharing the same habitat together form a community."
                     }
                   ]
                 },
@@ -15818,6 +15980,24 @@ export const curriculumData = {
                       options: ["Biotic components have no effect on abiotic components", "Plants release oxygen through photosynthesis, and their roots hold soil in place, preventing erosion", "Only abiotic components can influence biotic ones, never the reverse", "Abiotic components are entirely independent of all biotic components"],
                       answer: 1,
                       explanation: "The dependence goes both ways: plants (biotic) release oxygen via photosynthesis and their roots physically hold soil (abiotic) in place, demonstrating how biotic components actively shape abiotic conditions."
+                    },
+                    {
+                      question: "Earthworms living in moist soil is an example of which interaction?",
+                      options: ["Biotic-biotic", "Biotic-abiotic", "Abiotic-abiotic", "No interaction"],
+                      answer: 1,
+                      explanation: "Such interactions influence life processes like nutrition, respiration and reproduction."
+                    },
+                    {
+                      question: "What is an ecosystem?",
+                      options: ["Only the living things in an area", "Biotic and abiotic components of a habitat interacting together", "A single population", "A type of habitat"],
+                      answer: 1,
+                      explanation: "Neither the living nor the non-living parts alone make an ecosystem — it is their interaction."
+                    },
+                    {
+                      question: "Which abiotic factors do plants need to produce food?",
+                      options: ["Only soil", "Sunlight, carbon dioxide and water", "Only oxygen", "Only temperature"],
+                      answer: 1,
+                      explanation: "The dependence runs both ways, since living things also shape the abiotic conditions around them."
                     }
                   ]
                 },
@@ -15887,6 +16067,24 @@ export const curriculumData = {
                       options: ["A food web is identical to a single food chain", "A food web is a network of interlinked food chains, showing that organisms are typically eaten by and eat multiple different species", "A food web only includes plants", "A food web has no connection to feeding relationships"],
                       answer: 1,
                       explanation: "A food web connects multiple overlapping food chains, since real organisms are usually eaten by more than one predator and eat more than one type of prey — giving a fuller picture than a single linear food chain."
+                    },
+                    {
+                      question: "In the chain Grass → Grasshopper → Frog → Snake → Eagle, what is the grass?",
+                      options: ["A consumer", "A producer", "A decomposer", "A predator"],
+                      answer: 1,
+                      explanation: "Producers make their own food; everything else in the chain depends on them."
+                    },
+                    {
+                      question: "Which trophic level do herbivores such as hares occupy?",
+                      options: ["The first", "The second", "The third", "The fourth"],
+                      answer: 1,
+                      explanation: "Producers form the first trophic level and small carnivores the third."
+                    },
+                    {
+                      question: "What is a food web?",
+                      options: ["A single food chain", "A network of many interconnected food chains", "A list of producers", "The total energy in an ecosystem"],
+                      answer: 1,
+                      explanation: "In reality organisms eat and are eaten by several others, so the chains interlink."
                     }
                   ]
                 },
@@ -15956,6 +16154,24 @@ export const curriculumData = {
                       options: ["Completely fixed and unchangeable", "Dynamic — it can be disrupted by both natural and human-made changes", "Ecosystems have no concept of balance", "Balance only applies to aquatic ecosystems"],
                       answer: 1,
                       explanation: "Ecosystem balance is dynamic, not fixed — it depends on ongoing interactions among organisms and their environment, and can be disrupted by natural events or human activities."
+                    },
+                    {
+                      question: "What are decomposers also called?",
+                      options: ["Producers", "Saprotrophs", "Herbivores", "Predators"],
+                      answer: 1,
+                      explanation: "Fungi and bacteria break down dead plants and animals, returning nutrients to the soil."
+                    },
+                    {
+                      question: "Pollution kills pond plants, so less oxygen is produced and fish die. This illustrates:",
+                      options: ["An isolated event", "A cascading effect through the ecosystem", "Competition", "Decomposition"],
+                      answer: 1,
+                      explanation: "A single change can trigger a whole chain reaction through the connected populations."
+                    },
+                    {
+                      question: "India's export of frog legs in the 1980s led to:",
+                      options: ["More frogs", "More agricultural pests, since frogs eat insects", "Fewer insects", "Better harvests"],
+                      answer: 1,
+                      explanation: "Farmers then used more synthetic pesticides, harming the environment further."
                     }
                   ]
                 }
@@ -16031,6 +16247,24 @@ export const curriculumData = {
                       options: ["Mars has definitely never had any water", "Mars may have once had liquid water and conditions that could have supported simple life forms, though no proof of life has been found", "Mars currently supports abundant life", "Scientists have found definitive proof of past life on Mars"],
                       answer: 1,
                       explanation: "While no direct proof of life has been found on Mars, scientists believe it may have once had liquid water and conditions capable of supporting simple life — an area of continuing scientific interest."
+                    },
+                    {
+                      question: "What is the habitable zone?",
+                      options: ["The area near a planet's equator", "The range of distances from a star where water can stay liquid", "The atmosphere of a planet", "The core of a planet"],
+                      answer: 1,
+                      explanation: "Too close and water evaporates; too far and it freezes."
+                    },
+                    {
+                      question: "Why is Venus hotter than Mercury despite being further from the Sun?",
+                      options: ["It spins faster", "Its atmosphere is almost entirely carbon dioxide, producing a runaway greenhouse effect", "It is larger", "It has no atmosphere"],
+                      answer: 1,
+                      explanation: "Venus averages about 450 °C against Mercury's 170 °C."
+                    },
+                    {
+                      question: "Why is Earth called the Blue Planet?",
+                      options: ["Its atmosphere is blue", "Most of its surface is covered by water, so it looks blue from space", "It reflects blue starlight", "Its core is blue"],
+                      answer: 1,
+                      explanation: "Mars, by contrast, lies at the very edge of the Sun's habitable zone."
                     }
                   ]
                 },
@@ -16100,6 +16334,24 @@ export const curriculumData = {
                       options: ["It has no protective role", "It pushes away harmful high-energy particles (cosmic rays and solar wind) that could damage the atmosphere and ozone layer", "It only affects compass needles, with no other function", "It generates the greenhouse effect"],
                       answer: 1,
                       explanation: "Earth's magnetic field deflects harmful cosmic rays and solar wind particles away from the planet, protecting the atmosphere (and therefore the ozone layer and life) from damage."
+                    },
+                    {
+                      question: "Why does Earth's size matter for life?",
+                      options: ["It affects the length of the day", "Its gravity must be strong enough to hold an atmosphere but not so strong as to crush life", "It changes the seasons", "It determines the orbit"],
+                      answer: 1,
+                      explanation: "A much smaller Earth with the same density would have too weak a gravitational pull to keep its gases."
+                    },
+                    {
+                      question: "What is ozone?",
+                      options: ["A two-atom oxygen molecule", "A three-atom oxygen molecule", "A form of nitrogen", "Carbon dioxide"],
+                      answer: 1,
+                      explanation: "The ozone layer shields the surface by blocking harmful ultraviolet radiation."
+                    },
+                    {
+                      question: "What is thought to produce Earth's magnetic field?",
+                      options: ["The Moon's pull", "The movement of molten iron in Earth's core", "The atmosphere", "Ocean currents"],
+                      answer: 1,
+                      explanation: "That field deflects the high-energy cosmic particles constantly bombarding the planet."
                     }
                   ]
                 },
@@ -16169,6 +16421,24 @@ export const curriculumData = {
                       options: ["The spheres are completely independent and don't affect each other", "A disruption in one sphere (like deforestation) can cascade to affect rainfall, soil, air quality, and animal life in the others", "Only the biosphere matters for maintaining life", "Balance between spheres has no real-world importance"],
                       answer: 1,
                       explanation: "Earth's habitability depends on the dynamic balance and interaction between all four spheres — disrupting one, such as through deforestation, can have cascading effects across the others."
+                    },
+                    {
+                      question: "Roughly what fraction of Earth's surface is covered by water?",
+                      options: ["30%", "70%", "50%", "90%"],
+                      answer: 1,
+                      explanation: "That water, together with the atmosphere, is central to sustaining life."
+                    },
+                    {
+                      question: "What does the geosphere consist of?",
+                      options: ["All the water on Earth", "The solid parts of Earth — rocks, soil and minerals", "The air", "All living things"],
+                      answer: 1,
+                      explanation: "Soil is rich in nutrients such as nitrogen and potassium from the slow breakdown of rock."
+                    },
+                    {
+                      question: "What is the biosphere?",
+                      options: ["Only the forests", "All living beings together with the places they live", "The atmosphere only", "The oceans"],
+                      answer: 1,
+                      explanation: "It spans land, water and air, and a disturbance in one sphere can cascade across the others."
                     }
                   ]
                 },
@@ -16238,6 +16508,24 @@ export const curriculumData = {
                       options: ["Pollen grains are female gametes and ovules are male gametes", "Pollen grains (from the anther) are male gametes, and ovules (deep inside the flower) are female gametes", "Both pollen grains and ovules are asexual reproductive structures", "Pollen and ovules have no role in plant reproduction"],
                       answer: 1,
                       explanation: "In sexual reproduction in flowering plants, pollen grains produced in the anther serve as male gametes, while ovules located deep within the flower serve as female gametes."
+                    },
+                    {
+                      question: "What do genes act as for a living cell?",
+                      options: ["A source of energy", "An instruction manual guiding how cells develop", "A waste product", "A protective covering"],
+                      answer: 1,
+                      explanation: "These instructions are passed from parents to offspring."
+                    },
+                    {
+                      question: "How many parents are involved in asexual reproduction?",
+                      options: ["Two", "One", "Three", "It varies"],
+                      answer: 1,
+                      explanation: "The offspring are exact genetic copies of that single parent."
+                    },
+                    {
+                      question: "How much genetic material does each gamete carry?",
+                      options: ["All of a parent's", "Half of a parent's", "Twice a parent's", "None"],
+                      answer: 1,
+                      explanation: "When two gametes join, the offspring receives a full set made from both parents."
                     }
                   ]
                 }
