@@ -18429,6 +18429,24 @@ export const curriculumData = {
                       options: ["23", "27", "50", "51"],
                       answer: 3,
                       explanation: "Using the formula a+b+1 = 23+27+1 = 51, the product increases by 51 when both factors are increased by 1."
+                    },
+                    {
+                      question: "State the distributive property.",
+                      options: ["a(b+c) = ab + c", "a(b+c) = ab + ac", "a(b+c) = a + bc", "a(b+c) = abc"],
+                      answer: 1,
+                      explanation: "It can be pictured as a grid of a rows split into b and c columns."
+                    },
+                    {
+                      question: "If both factors of ab are increased by 1, the product increases by:",
+                      options: ["1", "a + b + 1", "ab", "2"],
+                      answer: 1,
+                      explanation: "(a+1)(b+1) = ab + a + b + 1, so the increase is a + b + 1."
+                    },
+                    {
+                      question: "If a is increased by 1 and b decreased by 1, the change in the product is:",
+                      options: ["Always positive", "b − a − 1, which may be positive, negative or zero", "Always negative", "Always zero"],
+                      answer: 1,
+                      explanation: "(a+1)(b−1) = ab + b − a − 1, so the sign depends on how a and b compare."
                     }
                   ]
                 },
@@ -18498,6 +18516,24 @@ export const curriculumData = {
                       options: ["Because this is simply a mistake in the method", "Because subtracting only the two 60×5 rectangles once each removes the small 5×5 square's area twice, requiring it to be added back once", "Because 60²−5² is actually the correct simpler formula", "There is no geometric reasoning behind this identity"],
                       answer: 1,
                       explanation: "Geometrically, removing both 60×5 rectangles from the 60×60 square subtracts the small 5×5 corner square's area twice (once in each rectangle), so it must be added back once to get the correct area of the 55×55 square."
+                    },
+                    {
+                      question: "Use an identity to compute 104².",
+                      options: ["10416", "10816", "10016", "11016"],
+                      answer: 1,
+                      explanation: "(100+4)² = 10000 + 2(100)(4) + 16 = 10816."
+                    },
+                    {
+                      question: "Expand (a − b)².",
+                      options: ["a² − b²", "a² − 2ab + b²", "a² + 2ab + b²", "a² − b² + 2ab"],
+                      answer: 1,
+                      explanation: "Removing two a×b rectangles from the a² square subtracts the b² corner twice, so it is added back."
+                    },
+                    {
+                      question: "Compute 99² using the square-of-a-difference identity.",
+                      options: ["9801", "9081", "9701", "9901"],
+                      answer: 0,
+                      explanation: "Using the identity: (100−1)² = 10000 − 200 + 1 = 9801."
                     }
                   ]
                 },
@@ -18567,6 +18603,24 @@ export const curriculumData = {
                       options: ["b must always equal a for the trick to work", "A small b that rounds a to a nearby 'nice' number (like a multiple of 10 or 100) makes the multiplication (a+b)(a−b) much simpler", "b has no effect on how easy the calculation is", "Larger values of b always make the calculation easier"],
                       answer: 1,
                       explanation: "Picking a small b that shifts a to a round, easy-to-multiply number (such as 197 shifting to 200 with b=3) makes the resulting multiplication far simpler than squaring the original number directly."
+                    },
+                    {
+                      question: "Factorise a² − b².",
+                      options: ["(a − b)²", "(a + b)(a − b)", "(a + b)²", "a² + b²"],
+                      answer: 1,
+                      explanation: "Expanding (a+b)(a−b) gives a² − ab + ba − b², and the middle terms cancel."
+                    },
+                    {
+                      question: "Sridharacharya rearranged the difference of squares into which form?",
+                      options: ["a² = (a+b)(a−b) − b²", "a² = (a+b)(a−b) + b²", "a² = (a+b)² − b²", "a² = a(a−b) + b"],
+                      answer: 1,
+                      explanation: "This lets any square be computed from a nearby, easier multiplication."
+                    },
+                    {
+                      question: "Use a² = (a+b)(a−b) + b² with b = 2 to find 48².",
+                      options: ["2204", "2304", "2400", "2404"],
+                      answer: 1,
+                      explanation: "With a = 48 and b = 2: 50 × 46 = 2300, and adding b² = 4 gives 2304."
                     }
                   ]
                 },
@@ -18636,6 +18690,24 @@ export const curriculumData = {
                       options: ["k²+2", "k²+2k", "2k+2", "k²−2k"],
                       answer: 1,
                       explanation: "k(k+2) = k×k + k×2 = k²+2k, matching the simplified form of all the other equivalent expressions for this pattern."
+                    },
+                    {
+                      question: "Expand and simplify (k+1)² − 1.",
+                      options: ["k² + 1", "k² + 2k", "k² − 1", "k² + 2k + 2"],
+                      answer: 1,
+                      explanation: "(k+1)² = k² + 2k + 1, so subtracting 1 leaves k² + 2k."
+                    },
+                    {
+                      question: "Simplify k(k+1) + k.",
+                      options: ["k² + 1", "k² + 2k", "k² + k", "2k + 1"],
+                      answer: 1,
+                      explanation: "k² + k + k = k² + 2k, the same as the other counting methods give."
+                    },
+                    {
+                      question: "What does it show when four different counting methods all simplify to k² + 2k?",
+                      options: ["Three of them are wrong", "The same quantity can be expressed in several algebraically equivalent ways", "The pattern is impossible", "Only one method is valid"],
+                      answer: 1,
+                      explanation: "Simplifying each expression reveals that they describe the identical quantity."
                     }
                   ]
                 }
@@ -18711,6 +18783,24 @@ export const curriculumData = {
                       options: ["Image size alone always determines whether images look similar", "The two images have width-to-height ratios that reduce to the same simplest form, while the third does not", "This has nothing to do with ratios at all", "All resized images always look identical in shape"],
                       answer: 1,
                       explanation: "Images look genuinely similar in shape when their width-to-height ratios are proportional (same simplest form) — a difference in simplest form causes a visible distortion in shape, regardless of overall size."
+                    },
+                    {
+                      question: "Reduce the ratio 60:40 to its simplest form.",
+                      options: ["6:4", "3:2", "2:3", "30:20"],
+                      answer: 1,
+                      explanation: "Dividing both terms by their HCF of 20 gives 3:2."
+                    },
+                    {
+                      question: "What does the ratio a:b mean?",
+                      options: ["a is bigger than b", "For every a units of the first quantity there are b units of the second", "a plus b units in total", "a divided by b units"],
+                      answer: 1,
+                      explanation: "The numbers a and b are called the terms of the ratio."
+                    },
+                    {
+                      question: "Two images look similar rather than distorted when their width-to-height ratios are:",
+                      options: ["Different", "Proportional to each other", "Both whole numbers", "Both greater than 1"],
+                      answer: 1,
+                      explanation: "Proportional ratios preserve the shape while allowing the size to change."
                     }
                   ]
                 },
@@ -18780,6 +18870,24 @@ export const curriculumData = {
                       options: ["Yes, since both people age by the same amount", "No — the new ratio is 12:39, which simplifies to 4:13, a different ratio", "Yes, age ratios never change over time", "The ratio becomes exactly 2:20"],
                       answer: 1,
                       explanation: "Nine years later, the ages become 12 and 39 (12:39, simplest form 4:13) — since both ages increased by the same ADDITIVE amount (9 years), not the same multiplicative factor, the ratio changes."
+                    },
+                    {
+                      question: "6 glasses of lemonade need 10 spoons of sugar. How many spoons for 18 glasses?",
+                      options: ["20", "30", "24", "36"],
+                      answer: 1,
+                      explanation: "The first term is multiplied by 3, so the second must be too: 10 × 3 = 30."
+                    },
+                    {
+                      question: "If ratios proportional to 14:21 include 6:?, what is the missing term?",
+                      options: ["7", "9", "12", "3"],
+                      answer: 1,
+                      explanation: "The scale factor is 6 ÷ 14 = 3/7, so 21 × 3/7 = 9."
+                    },
+                    {
+                      question: "Why does adding the same amount to both terms break proportionality?",
+                      options: ["It does not break it", "Because proportionality requires both terms to be multiplied, not increased, by the same amount", "Because addition is harder", "Because the terms must stay whole"],
+                      answer: 1,
+                      explanation: "Only a common multiplicative factor leaves a ratio unchanged."
                     }
                   ]
                 },
@@ -18849,6 +18957,24 @@ export const curriculumData = {
                       options: ["10 kg", "20 kg", "30 kg", "35 kg"],
                       answer: 2,
                       explanation: "With 3+1=4 total groups, each group is 40÷4=10kg; sand (3 groups) is 3×10=30kg and cement (1 group) is 1×10=10kg."
+                    },
+                    {
+                      question: "Share 12 counters in the ratio 3:1. How many does the first person get?",
+                      options: ["3", "9", "4", "6"],
+                      answer: 1,
+                      explanation: "There are 3 + 1 = 4 groups of 3 counters each, so the first person gets 3 × 3 = 9."
+                    },
+                    {
+                      question: "To divide a quantity x in the ratio m:n, the first part equals:",
+                      options: ["x ÷ m", "m × [x/(m+n)]", "x − n", "m × n"],
+                      answer: 1,
+                      explanation: "The total is split into m + n equal groups, and the first person takes m of them."
+                    },
+                    {
+                      question: "₹42,000 profit is split in the ratio 3:1. What is the larger share?",
+                      options: ["₹10,500", "₹31,500", "₹21,000", "₹14,000"],
+                      answer: 1,
+                      explanation: "There are 4 groups of ₹10,500, and the larger share takes 3 of them."
                     }
                   ]
                 },
@@ -18918,6 +19044,24 @@ export const curriculumData = {
                       options: ["Unit conversion is never actually necessary", "Comparing or combining ratios requires the quantities to be measured in consistent units first", "Units have no effect on the mathematics of ratios", "Only temperature conversions matter for proportional reasoning"],
                       answer: 1,
                       explanation: "Ratios and proportions only make sense when comparing quantities in consistent units — converting mismatched units into a common system is often the necessary first step before any proportional reasoning can be applied correctly."
+                    },
+                    {
+                      question: "How many square feet are there in 1 square metre?",
+                      options: ["3.281", "10.764", "43,560", "1000"],
+                      answer: 1,
+                      explanation: "1 metre is 3.281 feet, and squaring that gives about 10.764 square feet."
+                    },
+                    {
+                      question: "Convert 25 °C to Fahrenheit.",
+                      options: ["45 °F", "77 °F", "57 °F", "98 °F"],
+                      answer: 1,
+                      explanation: "F = (9/5) × 25 + 32 = 45 + 32 = 77 °F."
+                    },
+                    {
+                      question: "Why is temperature conversion not a simple ratio?",
+                      options: ["Temperatures are too large", "Because 0 °C corresponds to 32 °F, not 0 °F, so an offset is needed", "Because degrees are not numbers", "Because it uses fractions"],
+                      answer: 1,
+                      explanation: "The formula needs both a multiplier and an added constant."
                     }
                   ]
                 }
@@ -18993,6 +19137,24 @@ export const curriculumData = {
                       options: ["This is only true for specific values of y, not in general", "Because 20/100 + 5/100 = 25/100, so adding the fractional parts gives exactly 25% for any y", "Percentages cannot be added together at all", "This equation is actually false in general"],
                       answer: 1,
                       explanation: "Since percentages are fractions with denominator 100, adding 20/100 and 5/100 always gives 25/100 (=25%), regardless of the value of y — this is simply fraction addition with a common denominator."
+                    },
+                    {
+                      question: "What does 'per cent' literally mean?",
+                      options: ["Per hundred years", "Out of a hundred", "Per part", "One hundred times"],
+                      answer: 1,
+                      explanation: "It comes from the Latin per centum, so 25% means 25 out of every 100."
+                    },
+                    {
+                      question: "Which fraction equals 25%?",
+                      options: ["1/2", "1/4", "1/5", "2/5"],
+                      answer: 1,
+                      explanation: "25/100 reduces to 1/4, so finding 25% of a number is the same as taking a quarter of it."
+                    },
+                    {
+                      question: "20% of a value is always:",
+                      options: ["Half of 10% of it", "Double 10% of it", "The same as 10% of it", "A quarter of it"],
+                      answer: 1,
+                      explanation: "Doubling the 10% figure is a quick way to find 20% mentally."
                     }
                   ]
                 },
@@ -19062,6 +19224,24 @@ export const curriculumData = {
                       options: ["The total quantity never actually matters", "Because the same percentage of different totals can represent very different actual amounts", "Percentages are always identical regardless of the total", "This consideration only matters for percentages above 50%"],
                       answer: 1,
                       explanation: "A percentage represents a proportion of a specific quantity — comparing raw percentages without considering the underlying totals can be misleading, since the actual amounts they represent can differ significantly."
+                    },
+                    {
+                      question: "How do you compute y% of a quantity s?",
+                      options: ["y × s", "(y/100) × s", "s/y", "100 × s / y"],
+                      answer: 1,
+                      explanation: "This can also be set up as the proportion y:100 :: amount:s."
+                    },
+                    {
+                      question: "What is 80% of 75?",
+                      options: ["55", "60", "65", "70"],
+                      answer: 1,
+                      explanation: "Computing the percentage: (80/100) × 75 = 0.8 × 75 = 60."
+                    },
+                    {
+                      question: "Madhu ate 120 g of biscuits with 25% sugar. How much sugar was that?",
+                      options: ["25 g", "30 g", "35 g", "40 g"],
+                      answer: 1,
+                      explanation: "Taking a quarter of the quantity: (25/100) × 120 = 30 g of sugar."
                     }
                   ]
                 },
@@ -19131,6 +19311,24 @@ export const curriculumData = {
                       options: ["English, since she lost fewer marks (8 vs 10)", "Science, since her percentage score (87.5%) was higher than English's (84%)", "They performed identically", "This cannot be determined without knowing the difficulty of each test"],
                       answer: 1,
                       explanation: "Converting both scores to percentages (84% for English, 87.5% for Science) allows a fair comparison despite the different maximum marks — showing Eesha performed proportionally better in Science."
+                    },
+                    {
+                      question: "How is percentage increase calculated?",
+                      options: ["(new amount / original) × 100", "(amount of increase / original amount) × 100", "(original / increase) × 100", "new amount − original"],
+                      answer: 1,
+                      explanation: "Tomatoes rising from ₹30 to ₹42 is an increase of ₹12, giving (12/30) × 100 = 40%."
+                    },
+                    {
+                      question: "Saying a population is 165% of an earlier figure is the same as saying it:",
+                      options: ["Fell by 65%", "Increased by 65%", "Increased by 165%", "Stayed the same"],
+                      answer: 1,
+                      explanation: "The extra 65 percentage points above 100% is the increase."
+                    },
+                    {
+                      question: "Which is the better score: 42 out of 50, or 70 out of 80?",
+                      options: ["42/50, at 84%", "70/80, at 87.5%", "They are equal", "It cannot be compared"],
+                      answer: 1,
+                      explanation: "Converting both to percentages makes a fair comparison possible across different totals."
                     }
                   ]
                 },
@@ -19200,6 +19398,24 @@ export const curriculumData = {
                       options: ["This never actually happens — profit percentage is always identical either way", "Because the base amount (cost price vs. selling price) used in the (profit/base)×100 formula is different, so the two percentages answer different questions", "Profit percentage can only ever be calculated one way", "The selling price and cost price are always exactly equal"],
                       answer: 1,
                       explanation: "Profit percentage against cost price answers 'how much did I gain relative to what I spent', while profit percentage against revenue answers 'what fraction of my sales was profit' — since these use different base amounts in the denominator, they naturally give different percentage values for the same transaction."
+                    },
+                    {
+                      question: "An item is bought for ₹350 and sold for ₹300. What is the loss?",
+                      options: ["₹300", "₹50", "₹650", "₹14.28"],
+                      answer: 1,
+                      explanation: "Loss = CP − SP = 350 − 300 = ₹50, which is about 14.28% of the cost price."
+                    },
+                    {
+                      question: "What is the marked price?",
+                      options: ["The price the seller paid", "The price a shop initially quotes, often the MRP", "The final amount paid", "The profit made"],
+                      answer: 1,
+                      explanation: "A discount reduces the marked price to the actual selling price."
+                    },
+                    {
+                      question: "A ₹1,800 cooker has a 35% discount. What is the selling price?",
+                      options: ["₹630", "₹1,170", "₹1,265", "₹1,435"],
+                      answer: 1,
+                      explanation: "The discount is 0.35 × 1800 = ₹630, so the customer pays 1800 − 630 = ₹1,170."
                     }
                   ]
                 }
@@ -19275,6 +19491,24 @@ export const curriculumData = {
                       options: ["Area 16 sq cm; diagonal-square area 16 sq cm", "Area 16 sq cm; diagonal-square area 32 sq cm", "Area 8 sq cm; diagonal-square area 16 sq cm", "Area 16 sq cm; diagonal-square area 64 sq cm"],
                       answer: 1,
                       explanation: "The original square has area 4×4=16 sq cm; a square built on its diagonal has exactly double that area, 32 sq cm."
+                    },
+                    {
+                      question: "Why does doubling a square's side NOT double its area?",
+                      options: ["It halves the area", "It makes the area four times as large", "It leaves the area unchanged", "It triples the area"],
+                      answer: 1,
+                      explanation: "Area depends on the square of the side, so doubling the side multiplies the area by 2 × 2 = 4."
+                    },
+                    {
+                      question: "What does Baudhāyana's Verse 1.9 state?",
+                      options: ["The diagonal equals the side", "The diagonal of a square produces a square of double the area", "The area equals the perimeter", "The diagonal halves the square"],
+                      answer: 1,
+                      explanation: "Building a square on the diagonal is how the area is doubled."
+                    },
+                    {
+                      question: "How can a square's area be halved using this idea?",
+                      options: ["Halve the side", "Build a square whose diagonal equals the original square's side", "Quarter the side", "Double the diagonal"],
+                      answer: 1,
+                      explanation: "The relationship between a square and its diagonal works in both directions."
                     }
                   ]
                 },
@@ -19344,6 +19578,24 @@ export const curriculumData = {
                       options: ["9 cm", "13 cm", "15 cm", "20 cm"],
                       answer: 2,
                       explanation: "Using a²+b²=c²: 8²+b²=17², so 64+b²=289, giving b²=225, so b=15 cm."
+                    },
+                    {
+                      question: "State Baudhāyana's rule from Verse 1.12 in modern form.",
+                      options: ["a + b = c", "a² + b² = c²", "a² − b² = c²", "ab = c²"],
+                      answer: 1,
+                      explanation: "The square on the diagonal equals the sum of the squares on the two sides."
+                    },
+                    {
+                      question: "A right triangle has shorter sides 3 cm and 4 cm. What is its hypotenuse?",
+                      options: ["7 cm", "5 cm", "12 cm", "25 cm"],
+                      answer: 1,
+                      explanation: "Applying the theorem: 3² + 4² = 9 + 16 = 25, so c = 5 cm."
+                    },
+                    {
+                      question: "A right triangle has a hypotenuse of 13 cm and one side of 5 cm. What is the other side?",
+                      options: ["8 cm", "12 cm", "18 cm", "144 cm"],
+                      answer: 1,
+                      explanation: "5² + b² = 13² gives 25 + b² = 169, so b² = 144 and b = 12 cm."
                     }
                   ]
                 },
@@ -19413,6 +19665,24 @@ export const curriculumData = {
                       options: ["There are actually only a handful of them", "Because any known triple can be scaled by any positive integer k to produce a new, valid triple, and there are infinitely many choices of k", "Because Baudhāyana listed infinitely many triples directly", "This has never actually been proven"],
                       answer: 1,
                       explanation: "Since scaling ANY valid Baudhāyana triple by ANY positive integer k always produces another valid triple, and there are infinitely many positive integers, this guarantees infinitely many Baudhāyana triples exist."
+                    },
+                    {
+                      question: "Which of these is a Baudhāyana triple listed in Verse 1.13?",
+                      options: ["(2,3,4)", "(5,12,13)", "(6,7,8)", "(4,5,6)"],
+                      answer: 1,
+                      explanation: "5² + 12² = 25 + 144 = 169 = 13²."
+                    },
+                    {
+                      question: "If (a,b,c) is a triple, why is (ka,kb,kc) also a triple?",
+                      options: ["It is a coincidence", "Because (ka)² + (kb)² = k²(a²+b²) = k²c² = (kc)²", "Because k is always 2", "Only for k = 1"],
+                      answer: 1,
+                      explanation: "This scaling guarantees that infinitely many triples exist."
+                    },
+                    {
+                      question: "Why is (9,12,15) NOT a primitive triple?",
+                      options: ["It does not satisfy the equation", "All three numbers share the common factor 3", "It has no common factor", "It contains an odd number"],
+                      answer: 1,
+                      explanation: "A primitive triple has no common factor greater than 1, as with (3,4,5)."
                     }
                   ]
                 },
@@ -19482,6 +19752,24 @@ export const curriculumData = {
                       options: ["(7, 24, 25)", "(24, 25, 7)", "(49, 24, 25)", "(25, 24, 7)"],
                       answer: 0,
                       explanation: "With n=25 (since 2×25−1=49): (25−1)²+49=25², i.e., 24²+7²=25², generating the triple (7,24,25)."
+                    },
+                    {
+                      question: "The sum of the first n odd numbers equals:",
+                      options: ["2n", "n²", "n(n+1)/2", "n³"],
+                      answer: 1,
+                      explanation: "Separating the last odd number gives (n−1)² + (2n−1) = n²."
+                    },
+                    {
+                      question: "When does (n−1)² + (2n−1) = n² produce a Baudhāyana triple?",
+                      options: ["Always", "When the nth odd number 2n−1 is itself a perfect square", "When n is even", "Never"],
+                      answer: 1,
+                      explanation: "Then the equation becomes a sum of two squares equal to a third square."
+                    },
+                    {
+                      question: "Using 25 = 5², which is the 13th odd number, which triple is generated?",
+                      options: ["(3,4,5)", "(5,12,13)", "(8,15,17)", "(7,24,25)"],
+                      answer: 1,
+                      explanation: "Substituting n = 13 gives 12² + 5² = 13²."
                     }
                   ]
                 }
@@ -19557,6 +19845,24 @@ export const curriculumData = {
                       options: ["20 cm", "50 cm", "200 cm (2 m)", "1,000 cm (10 m)"],
                       answer: 3,
                       explanation: "20 cm × 50 = 1,000 cm, which is 10 metres — the actual length of the wall."
+                    },
+                    {
+                      question: "What is a Representative Fraction?",
+                      options: ["The fraction of a map that is shaded", "The ratio between a distance on the map and the corresponding real distance", "The size of the paper", "The number of colours used"],
+                      answer: 1,
+                      explanation: "An RF of 1:1000 means 1 cm on the map represents 1000 cm on the ground."
+                    },
+                    {
+                      question: "On a 1:60,00,000 map, 1 cm represents how much real distance?",
+                      options: ["6 km", "60 km", "600 km", "6000 km"],
+                      answer: 1,
+                      explanation: "60,00,000 cm is 60 km, which is why such scales suit country maps."
+                    },
+                    {
+                      question: "Which scale would suit a classroom sketch?",
+                      options: ["1:60,00,000", "1:50", "1:1,00,000", "1:10,000"],
+                      answer: 1,
+                      explanation: "A large-scale ratio like 1:50 means 1 cm represents just 50 cm."
                     }
                   ]
                 },
@@ -19626,6 +19932,24 @@ export const curriculumData = {
                       options: ["12 bags", "13.5 bags", "16.5 bags", "18 bags"],
                       answer: 2,
                       explanation: "Adding all three terms: 3+4.5+9 = 16.5 bags of concrete in total."
+                    },
+                    {
+                      question: "When can a ratio have more than two terms?",
+                      options: ["Never", "When all the quantities change together by the same factor", "Only for three terms", "Only in recipes"],
+                      answer: 1,
+                      explanation: "A spice mix or a concrete mixture can be described by a multi-term ratio."
+                    },
+                    {
+                      question: "If a:b:c:d is proportional to p:q:r:s, then:",
+                      options: ["a + p = b + q", "a/p = b/q = c/r = d/s", "a × p = b × q", "Only a/p = b/q"],
+                      answer: 1,
+                      explanation: "Every corresponding pair of terms shares the same scale factor."
+                    },
+                    {
+                      question: "A concrete mix is cement:sand:gravel = 1:1.5:3. With 3 bags of cement, how much gravel is needed?",
+                      options: ["3 bags", "9 bags", "4.5 bags", "6 bags"],
+                      answer: 1,
+                      explanation: "Multiplying every term by 3 gives 3:4.5:9."
                     }
                   ]
                 },
@@ -19695,6 +20019,24 @@ export const curriculumData = {
                       options: ["This is a coincidence and doesn't always happen", "Because each part's fraction of the total ratio-sum, when added together, always equals 1 (the whole), by definition", "The parts are calculated completely independently with no guaranteed relationship", "This only works for ratios with exactly 2 terms"],
                       answer: 1,
                       explanation: "Since each part is (term/total ratio-sum) × x, and the terms themselves sum to the total ratio-sum, adding all the parts together always gives back exactly x — this is guaranteed by how the formula is constructed."
+                    },
+                    {
+                      question: "To make 50 mL of paint with red:blue:white = 2:3:5, how much blue is needed?",
+                      options: ["10 mL", "15 mL", "25 mL", "20 mL"],
+                      answer: 1,
+                      explanation: "The ratio-sum is 10, so blue = 50 × (3/10) = 15 mL."
+                    },
+                    {
+                      question: "₹900 is shared between three people in the ratio 2:3:4. What does the middle share come to?",
+                      options: ["₹200", "₹300", "₹400", "₹450"],
+                      answer: 1,
+                      explanation: "The ratio-sum is 9, so each part is ₹100 and the middle share is 3 × 100 = ₹300."
+                    },
+                    {
+                      question: "To divide a whole x in the ratio a:b:c, the first part is:",
+                      options: ["x ÷ a", "x × [a/(a+b+c)]", "x − b − c", "a × b × c"],
+                      answer: 1,
+                      explanation: "The whole is split into a + b + c equal groups, and the first share takes a of them."
                     }
                   ]
                 },
@@ -19764,6 +20106,24 @@ export const curriculumData = {
                       options: ["Simplifying the ratio changes the final angles", "It makes the arithmetic easier (smaller numbers), without changing the final proportional angles, since the ratio remains equivalent", "Simplification is not actually necessary or helpful", "Only simplified ratios can be used to create pie charts at all"],
                       answer: 1,
                       explanation: "Simplifying the ratio doesn't change the underlying proportions (it's still an equivalent ratio) — it just makes the angle calculations simpler by working with smaller numbers."
+                    },
+                    {
+                      question: "In a pie chart, what is each slice's angle proportional to?",
+                      options: ["The number of categories", "The quantity it represents", "The radius", "The colour used"],
+                      answer: 1,
+                      explanation: "The whole circle of 360° is divided in the same ratio as the data."
+                    },
+                    {
+                      question: "Reduce the ratio 12:10:8:6:4 to its simplest form.",
+                      options: ["6:5:4:3:2", "4:3:2:1:1", "3:2:2:1:1", "12:10:8:6:4"],
+                      answer: 0,
+                      explanation: "Dividing every term by the HCF of 2 gives 6:5:4:3:2."
+                    },
+                    {
+                      question: "With a simplified ratio-sum of 20 parts, how many degrees does each part represent?",
+                      options: ["10°", "18°", "20°", "36°"],
+                      answer: 1,
+                      explanation: "Dividing the circle: 360° ÷ 20 = 18° per part, so a 6-part slice takes 108°."
                     }
                   ]
                 }
