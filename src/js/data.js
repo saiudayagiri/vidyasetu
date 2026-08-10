@@ -10393,6 +10393,24 @@ export const curriculumData = {
                       options: ["Guessing based on a picture", "Using linear pairs: since ∠a+∠b=180° and ∠a+∠d=180° (both linear pairs with ∠a), ∠b must equal ∠d", "Using a protractor on every possible angle", "Assuming it without any reasoning"],
                       answer: 1,
                       explanation: "By reasoning that both ∠b and ∠d form a linear pair (summing to 180°) with the same angle ∠a, we can conclude ∠b = ∠d — this logical justification is called a proof."
+                    },
+                    {
+                      question: "How many angles are formed where two lines intersect?",
+                      options: ["Two", "Four", "Six", "Eight"],
+                      answer: 1,
+                      explanation: "They are usually labelled a, b, c and d going around the point."
+                    },
+                    {
+                      question: "One angle of a linear pair measures 65 degrees. What is the other?",
+                      options: ["25 degrees", "115 degrees", "65 degrees", "125 degrees"],
+                      answer: 1,
+                      explanation: "A linear pair adds up to 180 degrees, so 180 - 65 = 115."
+                    },
+                    {
+                      question: "If two intersecting lines form four equal angles, each angle must be:",
+                      options: ["60 degrees", "90 degrees", "45 degrees", "120 degrees"],
+                      answer: 1,
+                      explanation: "All four must total 360 degrees, so each equal angle is 360 / 4 = 90."
                     }
                   ]
                 },
@@ -10465,6 +10483,24 @@ export const curriculumData = {
                       options: ["That those lines are perpendicular to all other lines", "That those lines form a second set of parallel lines, distinct from a first set marked with single arrowheads", "That those lines are the longest in the figure", "That those lines intersect at exactly two points"],
                       answer: 1,
                       explanation: "When a figure has more than one set of parallel lines, each set gets its own distinct arrowhead notation — a single arrow for the first set, a double arrow for the second, and so on."
+                    },
+                    {
+                      question: "Parallel lines are best described as lines that:",
+                      options: ["Meet at a right angle", "Lie in the same plane and never meet however far extended", "Meet at one point", "Are always horizontal"],
+                      answer: 1,
+                      explanation: "Piano keys and railway sleepers give everyday examples."
+                    },
+                    {
+                      question: "In a square sheet of paper, the adjacent edges are:",
+                      options: ["Parallel", "Perpendicular", "Equal in length only", "Curved"],
+                      answer: 1,
+                      explanation: "The opposite edges of the same sheet are parallel to each other."
+                    },
+                    {
+                      question: "How is a pair of parallel lines marked in a figure?",
+                      options: ["With a small square", "With a single arrowhead on each line", "With a dot", "With a curve"],
+                      answer: 1,
+                      explanation: "A second pair in the same figure is marked with double arrowheads."
                     }
                   ]
                 },
@@ -10542,6 +10578,24 @@ export const curriculumData = {
                       options: ["They are always equal to each other", "They always add up to 180°", "They always add up to 90°", "One is always exactly twice the other"],
                       answer: 1,
                       explanation: "The interior angles on the same side of the transversal, formed with a pair of parallel lines, always add up to 180°."
+                    },
+                    {
+                      question: "A transversal crossing two lines forms how many angles in total?",
+                      options: ["Four", "Eight", "Six", "Twelve"],
+                      answer: 1,
+                      explanation: "Four angles are formed at each of the two crossing points."
+                    },
+                    {
+                      question: "If the corresponding angles made by a transversal are equal, then the two lines are:",
+                      options: ["Perpendicular", "Parallel", "Intersecting", "Equal in length"],
+                      answer: 1,
+                      explanation: "The converse is also true for a transversal crossing parallel lines."
+                    },
+                    {
+                      question: "Two parallel lines are cut by a transversal. One interior angle on a side is 110 degrees. The other on the same side is:",
+                      options: ["110 degrees", "70 degrees", "90 degrees", "20 degrees"],
+                      answer: 1,
+                      explanation: "Interior angles on the same side add up to 180 degrees, so 180 - 110 = 70."
                     }
                   ]
                 },
@@ -10614,6 +10668,24 @@ export const curriculumData = {
                       options: ["All 8 angles must be measured separately", "Just one of the 8 angles — the rest follow from corresponding, vertically opposite, and linear pair relationships", "Only the angles at one of the two intersection points can ever be found", "It is impossible to find all 8 from just one angle"],
                       answer: 1,
                       explanation: "Given parallel lines, knowing just one angle lets us find all others using corresponding angles, vertically opposite angles, and linear pairs in a chain of reasoning."
+                    },
+                    {
+                      question: "Sliding a set square along a ruler to draw two lines perpendicular to line l produces two lines that are:",
+                      options: ["Perpendicular to each other", "Parallel to each other", "Intersecting", "Curved"],
+                      answer: 1,
+                      explanation: "Both make the same 90 degree angle with l, so they never meet."
+                    },
+                    {
+                      question: "Parallel lines l and m are cut by transversal t, and one angle is 135 degrees. Its linear pair measures:",
+                      options: ["135 degrees", "45 degrees", "55 degrees", "90 degrees"],
+                      answer: 1,
+                      explanation: "A linear pair totals 180, so 180 - 135 = 45 degrees."
+                    },
+                    {
+                      question: "If angle a is 120 degrees, its linear pair angle b is 60 degrees, and the corresponding angle f is 70 degrees, then lines l and m are:",
+                      options: ["Parallel", "Not parallel", "Perpendicular", "Identical"],
+                      answer: 1,
+                      explanation: "Corresponding angles would have to be equal, but 60 is not 70."
                     }
                   ]
                 }
@@ -10693,6 +10765,24 @@ export const curriculumData = {
                       options: ["Always odd", "Always even", "Depends on how many numbers are added", "Cannot be determined"],
                       answer: 1,
                       explanation: "Every even number contributes only complete pairs with no leftover, so combining any number of even numbers always results in an even sum."
+                    },
+                    {
+                      question: "The word parity describes whether a number is:",
+                      options: ["Large or small", "Even or odd", "Positive or negative", "Prime or composite"],
+                      answer: 1,
+                      explanation: "An even number splits into pairs with nothing left over."
+                    },
+                    {
+                      question: "Can five odd numbers add up to 30?",
+                      options: ["Yes, easily", "No, because five odd numbers always give an odd total", "Yes, only with repeats", "Only if they are consecutive"],
+                      answer: 1,
+                      explanation: "Pairs of odd numbers combine evenly, but the fifth one leaves an unpaired leftover."
+                    },
+                    {
+                      question: "Adding any collection of even numbers together always gives:",
+                      options: ["An odd number", "An even number", "Sometimes odd, sometimes even", "Zero"],
+                      answer: 1,
+                      explanation: "Each even number contributes only complete pairs."
                     }
                   ]
                 },
@@ -10761,6 +10851,24 @@ export const curriculumData = {
                       options: ["When m is odd, regardless of n", "Only when BOTH m and n are odd", "When m + n is even", "It is never guaranteed to be odd"],
                       answer: 1,
                       explanation: "The product m × n is odd only when both m and n are odd; if either one is even, the product is even."
+                    },
+                    {
+                      question: "A grid has m rows and n columns. How many small squares does it have?",
+                      options: ["m + n", "m x n", "2m + 2n", "m - n"],
+                      answer: 1,
+                      explanation: "Its parity is even whenever either m or n is even."
+                    },
+                    {
+                      question: "Which expression generates every even number as n takes the values 1, 2, 3, ...?",
+                      options: ["n + 2", "2n", "n squared", "3n"],
+                      answer: 1,
+                      explanation: "Every even number has a factor of 2."
+                    },
+                    {
+                      question: "What is the parity of the expression 3n + 4?",
+                      options: ["Always even", "It depends on the value of n", "Always odd", "Always zero"],
+                      answer: 1,
+                      explanation: "Substituting n = 1 gives 7 while n = 2 gives 10."
                     }
                   ]
                 },
@@ -10834,6 +10942,24 @@ export const curriculumData = {
                       options: ["25", "50", "75", "225"],
                       answer: 2,
                       explanation: "The magic sum always equals 3 times the centre number: 3 × 25 = 75."
+                    },
+                    {
+                      question: "What is the magic sum of a 3 by 3 magic square using the numbers 1 to 9?",
+                      options: ["12", "15", "18", "45"],
+                      answer: 1,
+                      explanation: "Every row, column and diagonal of that square adds to the same total."
+                    },
+                    {
+                      question: "Which number must occupy the centre of a 1-to-9 magic square?",
+                      options: ["1", "5", "9", "3"],
+                      answer: 1,
+                      explanation: "Testing shows that 9 and 1 cannot sit in the centre."
+                    },
+                    {
+                      question: "Where can 1 and 9 never be placed in a 1-to-9 magic square?",
+                      options: ["In the centre only", "In a corner", "On the edges", "Anywhere"],
+                      answer: 1,
+                      explanation: "They must always occupy one of the four middle-of-edge positions."
                     }
                   ]
                 },
@@ -10906,6 +11032,24 @@ export const curriculumData = {
                       options: ["3", "5", "1", "9"],
                       answer: 1,
                       explanation: "T = 5 gives 5 + 5 + 5 = 15, which fits the pattern UT with U = 1 and T = 5 — the units digit of the sum (5) matches T."
+                    },
+                    {
+                      question: "In Prakrit and Sanskrit poetry, a long syllable is counted as:",
+                      options: ["1 beat", "2 beats", "3 beats", "Half a beat"],
+                      answer: 1,
+                      explanation: "A short syllable counts as 1 beat, and rhythms are built from these."
+                    },
+                    {
+                      question: "Who first gave the rhythm-counting method around 700 CE?",
+                      options: ["Pingala", "Virahanka", "Brahmagupta", "Baudhayana"],
+                      answer: 1,
+                      explanation: "He built on the earlier work of Pingala from about 300 BCE."
+                    },
+                    {
+                      question: "In a cryptarithm, each letter stands for:",
+                      options: ["A word", "A digit from 0 to 9", "An operation", "A fraction"],
+                      answer: 1,
+                      explanation: "The puzzle is to work out which digit each letter represents."
                     }
                   ]
                 }
@@ -10985,6 +11129,24 @@ export const curriculumData = {
                       options: ["Both arcs centred at A with any radius", "An arc of radius 5 cm from A, and an arc of radius 6 cm from B (or vice versa)", "One arc of radius 4 cm from the midpoint of AB", "Arcs are not needed if a protractor is used"],
                       answer: 1,
                       explanation: "Since AC must be 5 cm and BC must be 6 cm, drawing a 5 cm arc from A and a 6 cm arc from B pinpoints their intersection as the correct third vertex C."
+                    },
+                    {
+                      question: "Why is a compass better than a ruler alone for constructing a triangle with given sides?",
+                      options: ["It draws straighter lines", "It marks all points at an exact distance, avoiding trial and error", "It measures angles", "It is faster to carry"],
+                      answer: 1,
+                      explanation: "Arcs of the given radii cross exactly at the third vertex."
+                    },
+                    {
+                      question: "Can a triangle have sides 10 cm, 15 cm and 30 cm?",
+                      options: ["Yes", "No, because 10 + 15 is less than 30", "Yes, if drawn carefully", "Only with a compass"],
+                      answer: 1,
+                      explanation: "The direct path between two vertices must be shorter than the path through the third."
+                    },
+                    {
+                      question: "The triangle inequality says that the sum of any two sides is:",
+                      options: ["Equal to the third side", "Greater than the third side", "Less than the third side", "Twice the third side"],
+                      answer: 1,
+                      explanation: "It follows from the fact that a straight path is always the shortest one."
                     }
                   ]
                 },
@@ -11053,6 +11215,24 @@ export const curriculumData = {
                       options: ["There is no difference, both use compass arcs only", "SAS marks C at a fixed distance along one new arm; ASA finds C as the intersection point of two rays drawn from both base vertices", "ASA never needs a protractor", "SAS always produces more than one possible triangle"],
                       answer: 1,
                       explanation: "In SAS, C is marked directly by measuring the second given side's length along the arm of the constructed angle. In ASA, C only emerges where the two rays — one from each base vertex — happen to cross."
+                    },
+                    {
+                      question: "SAS construction uses:",
+                      options: ["Three sides", "Two sides and the angle between them", "Two angles and a side", "Three angles"],
+                      answer: 1,
+                      explanation: "The two given sides simply meet at the fixed angle."
+                    },
+                    {
+                      question: "To construct a triangle with AB = 5 cm, angle A = 45 degrees and angle B = 80 degrees, you are using:",
+                      options: ["SSS", "ASA", "SAS", "RHS"],
+                      answer: 1,
+                      explanation: "Two angles and the side included between them are given."
+                    },
+                    {
+                      question: "An SAS construction always works as long as the given angle is:",
+                      options: ["Exactly 90 degrees", "Strictly between 0 and 180 degrees", "Less than 45 degrees", "Greater than 90 degrees"],
+                      answer: 1,
+                      explanation: "Outside that range the two sides cannot form a closed figure."
                     }
                   ]
                 },
@@ -11122,6 +11302,24 @@ export const curriculumData = {
                       options: ["120° — an obtuse triangle", "60° — and since one angle is already 90°, this is a right-angled triangle", "90° — an equilateral triangle", "It cannot be determined"],
                       answer: 1,
                       explanation: "By the angle sum property, the third angle is 180° − 90° − 30° = 60°. Since one of the three angles is exactly 90°, this is a right-angled triangle."
+                    },
+                    {
+                      question: "In triangle ABC, angle B is 50 degrees and angle C is 70 degrees. What is angle A?",
+                      options: ["50 degrees", "60 degrees", "70 degrees", "120 degrees"],
+                      answer: 1,
+                      explanation: "The three angles add to 180 degrees, so 180 - 50 - 70 = 60."
+                    },
+                    {
+                      question: "How is the angle sum property proved in the chapter?",
+                      options: ["By measuring many triangles", "By drawing a line through a vertex parallel to the opposite side", "By folding paper only", "By using a compass"],
+                      answer: 1,
+                      explanation: "The two new angles formed there equal the triangle's two base angles."
+                    },
+                    {
+                      question: "In a triangle with angle A = 50 degrees and angle B = 60 degrees, the exterior angle at C measures:",
+                      options: ["50 degrees", "110 degrees", "70 degrees", "120 degrees"],
+                      answer: 1,
+                      explanation: "An exterior angle equals the sum of the two opposite interior angles: 50 + 60 = 110."
                     }
                   ]
                 },
@@ -11194,6 +11392,24 @@ export const curriculumData = {
                       options: ["Altitudes never exist for obtuse triangles", "Because the perpendicular foot can fall beyond the endpoint of the base, requiring the base to be extended to meet it", "Obtuse triangles have no vertices", "The altitude is always equal to a side in this case"],
                       answer: 1,
                       explanation: "In an obtuse triangle, the perpendicular dropped from certain vertices meets the line containing the opposite side only beyond the triangle itself, so the base line must be extended for the altitude's foot to be marked."
+                    },
+                    {
+                      question: "An altitude of a triangle is:",
+                      options: ["Any line from a vertex", "The perpendicular segment from a vertex to the opposite side", "The longest side", "A line joining two midpoints"],
+                      answer: 1,
+                      explanation: "It measures the height of that vertex above the opposite side."
+                    },
+                    {
+                      question: "In which triangle does the foot of an altitude fall outside the triangle?",
+                      options: ["Acute-angled", "Obtuse-angled", "Equilateral", "Right-angled only"],
+                      answer: 1,
+                      explanation: "The base has to be extended before the foot can be marked."
+                    },
+                    {
+                      question: "A triangle with all three sides of different lengths is called:",
+                      options: ["Equilateral", "Scalene", "Isosceles", "Right-angled"],
+                      answer: 1,
+                      explanation: "An isosceles triangle has exactly two equal sides."
                     }
                   ]
                 }
@@ -11272,6 +11488,24 @@ export const curriculumData = {
                       options: ["It doesn't need to be converted", "So the multiplication rule (multiply numerator, keep denominator) can be applied directly and cleanly to a single fraction", "Mixed fractions cannot be multiplied at all", "Only whole numbers can be converted this way"],
                       answer: 1,
                       explanation: "The multiplication rule works on a single fraction's numerator and denominator. Converting the mixed number into one improper fraction (5/4) lets the rule apply directly, without separately handling a whole-number part and a fractional part."
+                    },
+                    {
+                      question: "A tortoise walks 1/4 km every hour. How far does it walk in 3 hours?",
+                      options: ["1/12 km", "3/4 km", "4/3 km", "3 km"],
+                      answer: 1,
+                      explanation: "Multiplication is repeated addition: 1/4 + 1/4 + 1/4 = 3/4."
+                    },
+                    {
+                      question: "Aaron walks at 3 km per hour. How far does he go in 1/5 of an hour?",
+                      options: ["1/15 km", "3/5 km", "5/3 km", "15 km"],
+                      answer: 1,
+                      explanation: "He covers one fifth of 3 km, which is 3/5 km."
+                    },
+                    {
+                      question: "One hour of internet time costs Rs 8. What does 1 and 1/4 hours cost?",
+                      options: ["Rs 9", "Rs 10", "Rs 12", "Rs 32"],
+                      answer: 1,
+                      explanation: "Converting to 5/4 and multiplying: 5/4 x 8 = 10."
                     }
                   ]
                 },
@@ -11345,6 +11579,24 @@ export const curriculumData = {
                       options: ["It doesn't, this is just a coincidence", "Because dividing rows by one denominator and columns by the other creates exactly that many equal small parts, and shading numerator1 × numerator2 of them gives the product region", "Because all grids automatically show fraction products", "Because the whole must always be split into exactly 100 parts"],
                       answer: 1,
                       explanation: "Splitting the square into rows (by one denominator) and columns (by the other) creates denominator1 × denominator2 equal parts. Shading numerator1 rows' worth by numerator2 columns' worth marks exactly numerator1 × numerator2 of those parts — matching the multiplication rule."
+                    },
+                    {
+                      question: "What is 1/2 x 1/4?",
+                      options: ["1/6", "1/8", "2/4", "1/2"],
+                      answer: 1,
+                      explanation: "Half of a quarter of a unit square is one eighth of it."
+                    },
+                    {
+                      question: "What is 3/4 x 2/5?",
+                      options: ["5/9", "3/10", "6/9", "1/2"],
+                      answer: 1,
+                      explanation: "Multiplying across gives 6/20, which simplifies to 3/10."
+                    },
+                    {
+                      question: "The general rule for multiplying two fractions is:",
+                      options: ["Add numerators, add denominators", "Multiply numerators together and denominators together", "Cross multiply", "Invert the second fraction"],
+                      answer: 1,
+                      explanation: "The grid or area model always produces this shortcut."
                     }
                   ]
                 },
@@ -11418,6 +11670,24 @@ export const curriculumData = {
                       options: ["Euclid, in 'The Elements'", "Brahmagupta, in the Brāhmasphuṭasiddhānta (628 CE)", "Fibonacci, in Liber Abaci", "Baudhāyana, in the Śhulbasūtra"],
                       answer: 1,
                       explanation: "The general division-of-fractions rule, a/b ÷ c/d = a/b × d/c, was first explicitly stated by Brahmagupta in his 628 CE work, the Brāhmasphuṭasiddhānta."
+                    },
+                    {
+                      question: "What is the reciprocal of 2/3?",
+                      options: ["2/3", "3/2", "1/3", "6"],
+                      answer: 1,
+                      explanation: "Swapping numerator and denominator gives the number that multiplies it to 1."
+                    },
+                    {
+                      question: "What is 6 divided by 1/4?",
+                      options: ["1.5", "24", "6", "2.4"],
+                      answer: 1,
+                      explanation: "Dividing by a fraction smaller than 1 gives a quotient larger than the dividend."
+                    },
+                    {
+                      question: "To divide a/b by c/d you should:",
+                      options: ["Multiply a/b by c/d", "Multiply a/b by d/c", "Add the fractions", "Subtract the fractions"],
+                      answer: 1,
+                      explanation: "This reciprocal-and-multiply rule was stated by Brahmagupta."
                     }
                   ]
                 },
@@ -11486,6 +11756,24 @@ export const curriculumData = {
                       options: ["Only addition of whole numbers", "Dividing a quantity by a fraction (or a whole number), using the reciprocal-and-multiply technique", "Squaring numbers", "Averaging several numbers together"],
                       answer: 1,
                       explanation: "All three problems require dividing a total quantity (milk, area, or a full day) by a rate or share expressed as a fraction — solved in every case using the reciprocal-and-multiply division rule."
+                    },
+                    {
+                      question: "Leena used 1/4 litre of milk for 5 equal cups of tea. How much milk is in each cup?",
+                      options: ["1/9 litre", "1/20 litre", "5/4 litre", "1/5 litre"],
+                      answer: 1,
+                      explanation: "Dividing 1/4 by 5 means multiplying by 1/5, giving 1/20."
+                    },
+                    {
+                      question: "Baudhayana's brick problem comes from a text used for:",
+                      options: ["Trade accounts", "Constructing altars", "Astronomy tables", "Poetry"],
+                      answer: 1,
+                      explanation: "The Shulbasutra is an ancient geometry text from about 800 BCE."
+                    },
+                    {
+                      question: "The four fountains puzzle was posed by:",
+                      options: ["Brahmagupta", "Chaturveda Prithudakasvami", "Virahanka", "Pingala"],
+                      answer: 1,
+                      explanation: "It dates from around 860 CE and asks how fast a cistern fills."
                     }
                   ]
                 }
