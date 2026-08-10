@@ -1745,6 +1745,30 @@ export const curriculumData = {
                       options: ["96.8 degrees Fahrenheit", "98.6 degrees Fahrenheit", "100 degrees Fahrenheit", "37 degrees Fahrenheit"],
                       answer: 1,
                       explanation: "The Fahrenheit scale is no longer much used in scientific work."
+                    },
+                    {
+                      question: "What does a thermometer measure?",
+                      options: ["Mass", "Temperature", "Volume", "Length"],
+                      answer: 1,
+                      explanation: "It gives a reliable measure of how hot or cold a body is."
+                    },
+                    {
+                      question: "Which two common kinds of thermometer are described?",
+                      options: ["Digital and analogue", "Clinical and laboratory", "Wall and pocket", "Infrared and mercury only"],
+                      answer: 1,
+                      explanation: "Clinical thermometers measure body temperature while laboratory ones are used in experiments."
+                    },
+                    {
+                      question: "A hotter body has a temperature that is:",
+                      options: ["Lower", "Higher", "The same", "Zero"],
+                      answer: 1,
+                      explanation: "Temperature is what lets us compare hotness reliably."
+                    },
+                    {
+                      question: "Which temperature scale is most commonly used in everyday life?",
+                      options: ["Kelvin", "Celsius", "Fahrenheit", "Newton"],
+                      answer: 1,
+                      explanation: "Its unit is written as degree Celsius."
                     }
                   ]
                 },
@@ -1854,6 +1878,30 @@ export const curriculumData = {
                       options: ["Tilted at an angle", "Vertically", "Horizontally", "Upside down"],
                       answer: 1,
                       explanation: "Your eye must also be directly in line with the liquid level."
+                    },
+                    {
+                      question: "The liquid inside a laboratory thermometer is usually:",
+                      options: ["Water", "Coloured alcohol or mercury", "Oil", "Air"],
+                      answer: 1,
+                      explanation: "It rises or falls in the sealed tube as the temperature changes."
+                    },
+                    {
+                      question: "Why should you check a thermometer's range before using it?",
+                      options: ["To know its price", "Because it can only measure temperatures within that range", "To find its length", "To clean it"],
+                      answer: 1,
+                      explanation: "A typical laboratory thermometer runs from about -10 to 110 degrees Celsius."
+                    },
+                    {
+                      question: "What is the temperature of ice while it is melting?",
+                      options: ["Rising steadily", "Constant", "Falling", "Doubling"],
+                      answer: 1,
+                      explanation: "Boiling water behaves the same way, staying constant while it boils."
+                    },
+                    {
+                      question: "Wall-mounted thermometers are used to measure:",
+                      options: ["Body temperature", "Approximate room temperature", "Water temperature", "Soil temperature"],
+                      answer: 1,
+                      explanation: "Weather reports give the day's maximum and minimum air temperatures."
                     }
                   ]
                 }
@@ -2281,6 +2329,24 @@ export const curriculumData = {
                       options: ["The particles are large", "The unwanted particles are present in very large quantities", "The mixture is dry", "The particles differ in colour"],
                       answer: 1,
                       explanation: "It is only practical for small amounts that are easy to spot."
+                    },
+                    {
+                      question: "Which property does handpicking depend on?",
+                      options: ["Weight only", "Visible differences in size, colour or shape", "Magnetism", "Solubility"],
+                      answer: 1,
+                      explanation: "The unwanted particles must be easy to see and few in number."
+                    },
+                    {
+                      question: "A machine that can thresh and winnow at the same time is called a:",
+                      options: ["Sieve", "Thresher", "Strainer", "Churner"],
+                      answer: 1,
+                      explanation: "Traditionally the stalks were beaten on a wooden log instead."
+                    },
+                    {
+                      question: "Which method separates a mixture using the difference in weight of its parts and moving air?",
+                      options: ["Sieving", "Winnowing", "Handpicking", "Filtration"],
+                      answer: 1,
+                      explanation: "The lighter husk is carried away while heavier grain falls straight down."
                     }
                   ]
                 },
@@ -2403,6 +2469,30 @@ export const curriculumData = {
                       options: ["Handpicking", "Magnetic separation", "Sieving", "Winnowing"],
                       answer: 1,
                       explanation: "Industries use large magnets on conveyor belts for the same purpose."
+                    },
+                    {
+                      question: "Which method would separate sand from water?",
+                      options: ["Winnowing", "Sedimentation followed by decantation", "Magnetic separation", "Churning"],
+                      answer: 1,
+                      explanation: "The heavier insoluble sand settles and the water is poured off."
+                    },
+                    {
+                      question: "Which method separates a soluble solid from its solution?",
+                      options: ["Filtration", "Evaporation", "Decantation", "Sieving"],
+                      answer: 1,
+                      explanation: "Heating drives off the liquid and leaves the solid behind."
+                    },
+                    {
+                      question: "A cloth can act as a simple filter because:",
+                      options: ["It absorbs water", "It has small pores between its woven threads", "It is soft", "It is coloured"],
+                      answer: 1,
+                      explanation: "Filter paper has much finer pores for smaller particles."
+                    },
+                    {
+                      question: "Magnetic separation works only when:",
+                      options: ["The mixture is dry", "One component is attracted to a magnet", "The particles differ in size", "The mixture is a liquid"],
+                      answer: 1,
+                      explanation: "Iron can be picked out of sawdust in exactly this way."
                     }
                   ]
                 }
@@ -4564,6 +4654,24 @@ export const curriculumData = {
                       options: ["Because 5 is a lucky number", "Because groups of 5 are much faster and easier to count up at a glance than counting many individual marks one by one", "Because only 5 responses are ever allowed", "There is no particular reason"],
                       answer: 1,
                       explanation: "Grouping tally marks in 5s allows the final count to be found quickly by counting in fives (5, 10, 15, ...) plus any leftover single marks, rather than counting every individual mark one at a time."
+                    },
+                    {
+                      question: "Why is asking one or two classmates not enough to find the most popular game?",
+                      options: ["They may lie", "Every student's preference is needed before the answer is clear", "It takes too long", "Games change often"],
+                      answer: 1,
+                      explanation: "Data has to be collected and organised before conclusions can be drawn."
+                    },
+                    {
+                      question: "In tally marks, how is a group of five recorded?",
+                      options: ["Five separate marks", "Four marks with a line drawn across them", "A circle", "The digit 5"],
+                      answer: 1,
+                      explanation: "Grouping in fives makes the final count much quicker."
+                    },
+                    {
+                      question: "Tally marks are useful mainly because they:",
+                      options: ["Look neat", "Let you record and count responses quickly", "Save paper", "Avoid mistakes completely"],
+                      answer: 1,
+                      explanation: "Counting groups of five is faster than counting every mark one by one."
                     }
                   ]
                 },
@@ -4629,6 +4737,24 @@ export const curriculumData = {
                       options: ["A title in red text", "A key stating what value one symbol represents", "Exactly 10 rows of data", "A picture of a person"],
                       answer: 1,
                       explanation: "Without a key stating the value of one symbol, a pictograph's symbols are meaningless — the key is essential for correctly interpreting the data shown."
+                    },
+                    {
+                      question: "In a pictograph, what does the key tell you?",
+                      options: ["The title of the graph", "How many things each symbol represents", "Who collected the data", "The order of rows"],
+                      answer: 1,
+                      explanation: "The value of a row is the number of symbols multiplied by the key value."
+                    },
+                    {
+                      question: "A pictograph uses the key one symbol equals 10 children. A row has 4 symbols. The value is:",
+                      options: ["4", "40", "14", "10"],
+                      answer: 1,
+                      explanation: "Multiplying 4 by 10 gives 40 children."
+                    },
+                    {
+                      question: "Why is a larger scale used when data values are big?",
+                      options: ["It looks better", "Otherwise far too many symbols would have to be drawn", "Small scales are wrong", "It saves ink only"],
+                      answer: 1,
+                      explanation: "A key such as one symbol equals 5 students keeps the pictograph manageable."
                     }
                   ]
                 },
@@ -4698,6 +4824,24 @@ export const curriculumData = {
                       options: ["They can be any random width", "They should have uniform width and equal spacing between them, so only their length/height varies meaningfully", "They must all be the exact same colour as the background", "They must be drawn in alphabetical order only"],
                       answer: 1,
                       explanation: "Uniform bar width and equal spacing ensure that ONLY the length or height of each bar (representing the data value) varies — making fair, accurate visual comparisons possible."
+                    },
+                    {
+                      question: "In a bar graph, the bars must have:",
+                      options: ["Different widths", "Uniform width and equal spacing", "No spacing", "Curved tops"],
+                      answer: 1,
+                      explanation: "The length or height of each bar shows its data value."
+                    },
+                    {
+                      question: "A bar graph drawn with vertical bars is specifically called a:",
+                      options: ["Pictograph", "Column graph", "Line graph", "Tally chart"],
+                      answer: 1,
+                      explanation: "It is named after the columns that hold up a building's roof."
+                    },
+                    {
+                      question: "A bar graph uses the scale one unit of length equals 100 vehicles. A bar 7 units long shows:",
+                      options: ["7 vehicles", "700 vehicles", "107 vehicles", "70 vehicles"],
+                      answer: 1,
+                      explanation: "Multiply the measured length by the scale value."
                     }
                   ]
                 },
@@ -4766,6 +4910,24 @@ export const curriculumData = {
                       options: ["The graph becomes too large to fit on a page", "Small but real differences between data values may become difficult or impossible to see on the graph", "The graph becomes more accurate", "There is no possible downside"],
                       answer: 1,
                       explanation: "If the scale is too coarse, bars representing genuinely different values may end up looking almost the same length, hiding meaningful differences in the data."
+                    },
+                    {
+                      question: "A scale that is too small makes a graph:",
+                      options: ["Overflow the page", "Hide small differences between values", "Easier to read", "More accurate"],
+                      answer: 1,
+                      explanation: "A scale that is too large makes the graph overflow instead."
+                    },
+                    {
+                      question: "Why does a column graph suit a comparison of mountain heights?",
+                      options: ["Mountains are wide", "Bars growing upward match the idea of height naturally", "Columns are easier to draw", "Tables cannot show heights"],
+                      answer: 1,
+                      explanation: "The comparison then feels natural to the reader."
+                    },
+                    {
+                      question: "A good data presentation should be:",
+                      options: ["Colourful above all", "Easy to understand, accurate and visually appealing", "As detailed as possible", "Free of labels"],
+                      answer: 1,
+                      explanation: "Clear titles, labelled axes and a visible key all help."
                     }
                   ]
                 }
@@ -4836,6 +4998,24 @@ export const curriculumData = {
                       options: ["It means the two numbers are equal", "It means the factor divides the other number exactly, with no remainder", "It means the factor is always bigger than the other number", "It means the numbers cannot be multiplied together"],
                       answer: 1,
                       explanation: "A factor (or divisor) of a number is a number that divides it exactly, leaving no remainder — for example, 4 is a factor of 12 because 12 ÷ 4 = 3 exactly."
+                    },
+                    {
+                      question: "In the idli-vada game, what is the first idli-vada number?",
+                      options: ["8", "15", "10", "30"],
+                      answer: 1,
+                      explanation: "It is the first number that is a multiple of both 3 and 5."
+                    },
+                    {
+                      question: "Numbers that are multiples of two different numbers are called their:",
+                      options: ["Common factors", "Common multiples", "Prime numbers", "Co-primes"],
+                      answer: 1,
+                      explanation: "15, 30 and 45 are common multiples of 3 and 5."
+                    },
+                    {
+                      question: "In the jump game, which jump sizes land exactly on the treasure number?",
+                      options: ["Any size", "Sizes that are factors of the treasure number", "Only 1", "Only even sizes"],
+                      answer: 1,
+                      explanation: "A factor divides the number exactly, with no remainder."
                     }
                   ]
                 },
@@ -4905,6 +5085,24 @@ export const curriculumData = {
                       options: ["Any two prime numbers", "Pairs of prime numbers that differ by exactly 2, like 17 and 19", "Prime numbers that are identical", "Prime numbers greater than 100"],
                       answer: 1,
                       explanation: "Twin primes are pairs of prime numbers with a difference of exactly 2, such as (3,5), (11,13), or (17,19)."
+                    },
+                    {
+                      question: "A prime number has exactly how many factors?",
+                      options: ["One", "Two", "Three", "Many"],
+                      answer: 1,
+                      explanation: "The two factors are 1 and the number itself."
+                    },
+                    {
+                      question: "Why can 7 figs only be arranged as 1 by 7?",
+                      options: ["7 is odd", "7 has only two factors", "Figs cannot be split", "7 is small"],
+                      answer: 1,
+                      explanation: "12, by contrast, can be arranged as 1x12, 2x6 or 3x4."
+                    },
+                    {
+                      question: "Who developed the sieve method for finding primes about 2200 years ago?",
+                      options: ["Euclid", "Eratosthenes", "Pythagoras", "Archimedes"],
+                      answer: 1,
+                      explanation: "The method crosses out multiples step by step, leaving the primes."
                     }
                   ]
                 },
@@ -4973,6 +5171,24 @@ export const curriculumData = {
                       options: ["It isn't more reliable, both methods are identical", "Because checking just one factor pair (like 56=14×4) can miss a shared factor that only shows up in a DIFFERENT factor pair (like 56=7×8) — prime factorisation captures ALL factors at once", "Because prime factorisation is always faster to compute", "Because only prime factorisation works for numbers under 100"],
                       answer: 1,
                       explanation: "As seen with 56 and 63, checking only one arbitrary factor pair can miss a genuinely shared factor (7) that becomes visible only in a different pairing — the complete prime factorisation guarantees every shared factor is caught."
+                    },
+                    {
+                      question: "Two numbers are co-prime when they share:",
+                      options: ["No factors at all", "No common factor other than 1", "Only even factors", "The same prime factors"],
+                      answer: 1,
+                      explanation: "4 and 9 are co-prime, while 15 and 39 are not."
+                    },
+                    {
+                      question: "In the thread art, the thread visits every peg when the number of pegs and the thread-gap are:",
+                      options: ["Equal", "Co-prime", "Both even", "Both prime"],
+                      answer: 1,
+                      explanation: "Otherwise the thread returns early and misses some pegs."
+                    },
+                    {
+                      question: "What is the prime factorisation of 63?",
+                      options: ["7 x 9", "3 x 3 x 7", "21 x 3", "63 x 1"],
+                      answer: 1,
+                      explanation: "Every composite number breaks into a unique product of primes."
                     }
                   ]
                 },
@@ -5042,6 +5258,24 @@ export const curriculumData = {
                       options: ["2", "4", "5", "8"],
                       answer: 2,
                       explanation: "Any number ending in 0 or 5 is divisible by 5 — but ending in 5 (an odd digit) means it is NOT divisible by 2, 4, or 8."
+                    },
+                    {
+                      question: "A number is divisible by 5 exactly when it ends in:",
+                      options: ["0 only", "0 or 5", "5 only", "Any odd digit"],
+                      answer: 1,
+                      explanation: "Multiples of 5 run 5, 10, 15, 20, 25 and so on."
+                    },
+                    {
+                      question: "To test divisibility by 4, you look at:",
+                      options: ["The last digit", "The last two digits", "The first digit", "The sum of the digits"],
+                      answer: 1,
+                      explanation: "12 and 22 share a last digit, yet only 12 is divisible by 4."
+                    },
+                    {
+                      question: "Why do these shortcuts work?",
+                      options: ["By coincidence", "Because 10, 100 and 1000 are themselves divisible by 2, 4 and 8", "Because all numbers are even", "Because of place value names"],
+                      answer: 1,
+                      explanation: "The higher place values always contribute an exact multiple."
                     }
                   ]
                 }
@@ -5125,6 +5359,30 @@ export const curriculumData = {
                       options: ["Akshi, because her track has a larger perimeter", "Toshi, because although her track is smaller, she ran more rounds (7 vs 5), covering 1260 m vs Akshi's 1100 m", "Both covered exactly the same distance", "Akshi, because she ran more rounds"],
                       answer: 1,
                       explanation: "Akshi's 220 m track × 5 rounds = 1100 m, while Toshi's 180 m track × 7 rounds = 1260 m — so Toshi ran farther overall."
+                    },
+                    {
+                      question: "What is the perimeter of a rectangle 12 cm long and 8 cm wide?",
+                      options: ["20 cm", "40 cm", "96 cm", "48 cm"],
+                      answer: 1,
+                      explanation: "Perimeter = 2 x (length + breadth) = 2 x 20 = 40 cm."
+                    },
+                    {
+                      question: "What is the perimeter of a square of side 1 m?",
+                      options: ["1 m", "4 m", "2 m", "8 m"],
+                      answer: 1,
+                      explanation: "Perimeter of a square = 4 x side."
+                    },
+                    {
+                      question: "A triangle has sides 4 cm, 5 cm and 7 cm. Its perimeter is:",
+                      options: ["11 cm", "16 cm", "20 cm", "14 cm"],
+                      answer: 1,
+                      explanation: "The perimeter of a triangle is the sum of its three sides."
+                    },
+                    {
+                      question: "The perimeter of a regular polygon equals:",
+                      options: ["Number of sides plus side length", "Number of sides multiplied by the length of one side", "Twice the side length", "Four times the side length"],
+                      answer: 1,
+                      explanation: "All its sides are equal, so multiplying is enough."
                     }
                   ]
                 },
@@ -5197,6 +5455,30 @@ export const curriculumData = {
                       options: ["1 × 24 (very elongated)", "2 × 12", "3 × 8", "4 × 6 (closest to a square)"],
                       answer: 3,
                       explanation: "The 4 × 6 rectangle, being closest in shape to a square, has the smallest perimeter (20 units) among all whole-number rectangles of area 24."
+                    },
+                    {
+                      question: "A floor is 5 m long and 4 m wide. Its area is:",
+                      options: ["9 sq m", "20 sq m", "18 sq m", "54 sq m"],
+                      answer: 1,
+                      explanation: "Area of a rectangle = length x width."
+                    },
+                    {
+                      question: "A square carpet of side 3 m is laid on a floor of area 20 sq m. The uncovered area is:",
+                      options: ["9 sq m", "11 sq m", "17 sq m", "6 sq m"],
+                      answer: 1,
+                      explanation: "The carpet covers 3 x 3 = 9 sq m, so 20 - 9 = 11 sq m remains."
+                    },
+                    {
+                      question: "When estimating area on squared paper, a part covering more than half a square is counted as:",
+                      options: ["Nothing", "One full square", "Half a square", "Two squares"],
+                      answer: 1,
+                      explanation: "Portions smaller than half a square are ignored."
+                    },
+                    {
+                      question: "Why are squares rather than circles used to measure area?",
+                      options: ["Squares are bigger", "Squares pack together with no gaps", "Circles are harder to draw", "Circles have no area"],
+                      answer: 1,
+                      explanation: "Circles always leave gaps however they are arranged."
                     }
                   ]
                 },
@@ -5270,6 +5552,30 @@ export const curriculumData = {
                       options: ["Equal to the full area of ABCD", "One-quarter of the area of ABCD", "Half of the area of ABCD", "Twice the area of ABCD"],
                       answer: 2,
                       explanation: "Since triangle AEF is half of rectangle AFED and triangle BEF is half of rectangle BFEC, their sum (triangle ABE) is half of the combined rectangle ABCD."
+                    },
+                    {
+                      question: "Cutting a rectangle along its diagonal gives two triangles that:",
+                      options: ["Have different areas", "Have exactly the same area", "Are not equal in shape", "Together exceed the rectangle"],
+                      answer: 1,
+                      explanation: "Each triangle's area is half the area of the rectangle."
+                    },
+                    {
+                      question: "The area of a triangle whose base and height match a rectangle's sides is:",
+                      options: ["The same as the rectangle", "Half the rectangle's area", "Twice the rectangle's area", "One quarter of it"],
+                      answer: 1,
+                      explanation: "The two triangles from a diagonal cut fill the whole rectangle."
+                    },
+                    {
+                      question: "How can the area of an irregular figure be found?",
+                      options: ["By guessing", "By splitting it into rectangles and triangles and adding their areas", "By measuring its perimeter", "It cannot be found"],
+                      answer: 1,
+                      explanation: "Each simpler piece has an area we already know how to calculate."
+                    },
+                    {
+                      question: "In a tangram, if shape D is exactly covered by shapes C and E together, then D has:",
+                      options: ["Half the area of C", "Twice the area of C", "The same area as C", "No area"],
+                      answer: 1,
+                      explanation: "Placing shapes over one another compares areas without any calculation."
                     }
                   ]
                 }
