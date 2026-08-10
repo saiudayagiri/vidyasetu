@@ -22937,6 +22937,30 @@ export const curriculumData = {
                       options: ["Lavoisier's Law", "The Law of Definite Proportions, or Proust's Law", "The Law of Conservation of Mass", "Bohr's Law"],
                       answer: 1,
                       explanation: "Proposed by Joseph Proust, it is also called the Law of Definite Proportions or Proust's Law."
+                    },
+                    {
+                      question: "Why are both flasks kept on the balance during the sodium sulfate experiment?",
+                      options: ["To save space", "To avoid error from solution left clinging to the walls during transfer", "To keep them warm", "To speed the reaction"],
+                      answer: 1,
+                      explanation: "Any liquid stuck in the second flask would still be on the balance, so the measured mass stays honest."
+                    },
+                    {
+                      question: "What is the white precipitate formed in that reaction?",
+                      options: ["Sodium chloride", "Barium sulfate", "Barium chloride", "Sodium sulfate"],
+                      answer: 1,
+                      explanation: "Barium sulfate is insoluble, so it appears as a white solid while sodium chloride stays in solution."
+                    },
+                    {
+                      question: "Proust showed that copper carbonate always contains its elements in the same proportion. What does this demonstrate?",
+                      options: ["Conservation of mass", "The Law of Constant Proportions", "Dalton's fifth postulate", "The law of gravity"],
+                      answer: 1,
+                      explanation: "However the compound is prepared or wherever it is found, the mass ratio of its elements is fixed."
+                    },
+                    {
+                      question: "Which of Dalton's postulates explains why mass is conserved in a reaction?",
+                      options: ["Atoms of different elements have different masses", "Atoms are indivisible and cannot be created or destroyed in a chemical reaction", "Atoms combine in whole-number ratios", "All matter is made of atoms"],
+                      answer: 1,
+                      explanation: "During a reaction atoms merely rearrange, so nothing is gained or lost."
                     }
                   ]
                 },
@@ -23006,6 +23030,30 @@ export const curriculumData = {
                       options: ["A single bond", "A double bond", "A triple bond", "An ionic bond"],
                       answer: 2,
                       explanation: "Each nitrogen atom needs three more electrons for an octet, so the two share three electrons each — three shared pairs make a triple bond."
+                    },
+                    {
+                      question: "How many electrons does a single covalent bond involve in total?",
+                      options: ["One", "Two, one from each atom", "Three", "Four"],
+                      answer: 1,
+                      explanation: "The shared pair attracts both nuclei and holds the atoms together."
+                    },
+                    {
+                      question: "Why does a hydrogen atom need only one more electron to become stable?",
+                      options: ["Because it needs an octet", "Because the K-shell holds a maximum of two electrons", "Because it has seven electrons", "Because it is a gas"],
+                      answer: 1,
+                      explanation: "Hydrogen has one electron in its K-shell, and that shell is full with two."
+                    },
+                    {
+                      question: "How is a double bond represented in a structural formula?",
+                      options: ["A single line", "Two lines between the atoms, as in O=O", "A dotted line", "A circle"],
+                      answer: 1,
+                      explanation: "Each line represents one shared pair of electrons."
+                    },
+                    {
+                      question: "In hydrogen chloride, how many electrons does each atom contribute to the bond?",
+                      options: ["Hydrogen two, chlorine one", "One each", "Chlorine seven, hydrogen one", "None"],
+                      answer: 1,
+                      explanation: "Sharing one electron each lets hydrogen fill its K-shell and chlorine complete its octet."
                     }
                   ]
                 },
@@ -23075,6 +23123,30 @@ export const curriculumData = {
                       options: ["Soluble in kerosene, low melting point", "Soluble in water, high melting and boiling points", "Insoluble in water, conducts as a solid", "Soluble in petrol, never conducts"],
                       answer: 1,
                       explanation: "Ionic compounds are generally water-soluble and have high melting and boiling points because of strong inter-ionic attractions."
+                    },
+                    {
+                      question: "How many electrons does a magnesium atom (2, 8, 2) lose to become stable?",
+                      options: ["One", "Two", "Three", "Eight"],
+                      answer: 1,
+                      explanation: "Losing both valence electrons gives Mg²⁺, and the two electrons go to two chlorine atoms in MgCl₂."
+                    },
+                    {
+                      question: "Which term covers both cations and anions?",
+                      options: ["Molecules", "Ions", "Atoms", "Isotopes"],
+                      answer: 1,
+                      explanation: "A cation carries a positive charge and an anion a negative one; together they are called ions."
+                    },
+                    {
+                      question: "Why does sugar dissolve in water without conducting electricity?",
+                      options: ["It does not dissolve", "It is covalent and provides no ions in solution", "It is ionic but weak", "Water blocks the current"],
+                      answer: 1,
+                      explanation: "Conduction needs free-moving ions, and dissolved sugar molecules stay intact."
+                    },
+                    {
+                      question: "Camphor and naphthalene dissolve in kerosene but not in water. This tells us they are:",
+                      options: ["Ionic compounds", "Covalent compounds", "Metals", "Salts"],
+                      answer: 1,
+                      explanation: "Ionic compounds behave the opposite way — soluble in water but not in kerosene or petrol."
                     }
                   ]
                 },
@@ -23144,6 +23216,30 @@ export const curriculumData = {
                       options: ["Because their masses are larger", "Because ionic compounds do not form molecules — their ions form 3-D crystals", "Because they contain no atoms", "Because their formulae have brackets"],
                       answer: 1,
                       explanation: "In ionic compounds the ions form 3-D crystals, so we take the simplest whole-number ratio of ions — a formula unit — and its mass is the formula unit mass."
+                    },
+                    {
+                      question: "When crossing over valencies, what happens if a subscript works out to 1?",
+                      options: ["It is written as 1", "It is not written at all", "The formula is invalid", "It becomes 0"],
+                      answer: 1,
+                      explanation: "That is why hydrogen chloride is written HCl rather than H₁Cl₁."
+                    },
+                    {
+                      question: "Why is Mg₂O₂ written simply as MgO?",
+                      options: ["Magnesium has valency 1", "Because a chemical formula gives the simplest whole-number ratio", "Oxygen has no charge", "It is a printing convention"],
+                      answer: 1,
+                      explanation: "Dividing both subscripts by their common factor of 2 gives the simplest ratio."
+                    },
+                    {
+                      question: "Calculate the molecular mass of ammonia, NH₃, with N = 14 u and H = 1 u.",
+                      options: ["15 u", "17 u", "18 u", "14 u"],
+                      answer: 1,
+                      explanation: "Adding the atomic masses: 14 + (1 × 3) = 17 u."
+                    },
+                    {
+                      question: "Why is the cation always written first in the formula of an ionic compound?",
+                      options: ["It is heavier", "It is the convention for writing ionic formulae", "It has more electrons", "It is always a metal"],
+                      answer: 1,
+                      explanation: "The symbol of the cation comes first, followed by the anion, before the charges are crossed over."
                     }
                   ]
                 }
@@ -23219,6 +23315,30 @@ export const curriculumData = {
                       options: ["Stems", "Prongs or tines", "Arms or levers", "Blades"],
                       answer: 1,
                       explanation: "The sides of the U are the prongs or tines, which are struck on a soft rubber pad to make them vibrate."
+                    },
+                    {
+                      question: "Why is a tuning fork struck on a rubber pad rather than a hard surface?",
+                      options: ["To make it louder", "To avoid damaging the fork", "To change its frequency", "To stop the vibration"],
+                      answer: 1,
+                      explanation: "A hard surface can damage the prongs, so a soft pad is used instead."
+                    },
+                    {
+                      question: "What is seen when a vibrating prong touches a water surface?",
+                      options: ["The water freezes", "Waves form on the surface, showing the prong is vibrating", "Nothing happens", "The water heats up"],
+                      answer: 1,
+                      explanation: "This is direct evidence that the sound is produced by vibration."
+                    },
+                    {
+                      question: "Sound is heard more clearly with an ear pressed to a desk than through the air. This shows that:",
+                      options: ["Air blocks sound", "Sound travels through solids", "Desks amplify sound", "Sound needs no medium"],
+                      answer: 1,
+                      explanation: "Solids transmit the vibrations well, which is why the knock is clearer through the wood."
+                    },
+                    {
+                      question: "Astronauts on a spacewalk communicate through devices in their suits because:",
+                      options: ["Radio is faster", "There is a near vacuum in space, so sound cannot propagate", "Their helmets block sound", "They are too far apart"],
+                      answer: 1,
+                      explanation: "With almost no medium, the compressions and rarefactions of sound have nothing to travel through."
                     }
                   ]
                 },
@@ -23288,6 +23408,30 @@ export const curriculumData = {
                       options: ["Time against loudness", "Distance on the x-axis and density of the medium on the y-axis", "Frequency against amplitude", "Speed against distance"],
                       answer: 1,
                       explanation: "The graph shows the periodic variation of density with distance at a given instant, with the average density marked as a horizontal dashed line."
+                    },
+                    {
+                      question: "In the slinky experiment, what happens to the marked turn?",
+                      options: ["It travels the whole length", "It oscillates about its rest position, parallel to the disturbance", "It stays perfectly still", "It moves at right angles"],
+                      answer: 1,
+                      explanation: "Only the disturbance travels along the slinky; each turn oscillates about its own position."
+                    },
+                    {
+                      question: "What produces a rarefaction in the air-filled tube?",
+                      options: ["The piston moving forward", "The piston moving backward, leaving a region of lower density", "Heating the tube", "Sealing the tube"],
+                      answer: 1,
+                      explanation: "The forward stroke gives a compression and the backward stroke a rarefaction."
+                    },
+                    {
+                      question: "How does a compression pass along the medium?",
+                      options: ["The particles travel with it", "Compressed particles collide with those ahead, passing the compression forward", "The tube moves", "It does not move"],
+                      answer: 1,
+                      explanation: "The disturbance is handed on from particle to particle while the particles themselves stay near their own positions."
+                    },
+                    {
+                      question: "On the density-distance graph, what does the horizontal dashed line represent?",
+                      options: ["Maximum density", "The average density of the medium", "Zero density", "The wavelength"],
+                      answer: 1,
+                      explanation: "Crests rise above it in compressions and troughs fall below it in rarefactions."
                     }
                   ]
                 },
@@ -23357,6 +23501,36 @@ export const curriculumData = {
                       options: ["Gases", "Liquids", "Solids", "It is the same in all"],
                       answer: 2,
                       explanation: "Sound travels fastest in solids — typically 15–20 times faster than in air — slower in liquids, and slowest in gases."
+                    },
+                    {
+                      question: "A sound wave has a time period of 0.01 s. What is its frequency?",
+                      options: ["0.01 Hz", "100 Hz", "10 Hz", "1000 Hz"],
+                      answer: 1,
+                      explanation: "ν = 1/T = 1/0.01 = 100 Hz."
+                    },
+                    {
+                      question: "If a source's frequency doubles while the medium stays the same, the wavelength:",
+                      options: ["Doubles", "Halves", "Stays the same", "Becomes zero"],
+                      answer: 1,
+                      explanation: "Since v = λν and the speed depends only on the medium, a higher frequency means a shorter wavelength."
+                    },
+                    {
+                      question: "What is the SI unit of frequency?",
+                      options: ["Metre", "Hertz", "Second", "Decibel"],
+                      answer: 1,
+                      explanation: "One hertz is one oscillation per second."
+                    },
+                    {
+                      question: "Why does the intensity of sound decrease with distance from the source?",
+                      options: ["The sound slows down", "The same energy spreads over a larger and larger area", "The frequency falls", "The air absorbs it entirely"],
+                      answer: 1,
+                      explanation: "Energy is conserved, so spreading it over a bigger area means less passes through each unit of area."
+                    },
+                    {
+                      question: "A wave has wavelength 2 m and frequency 170 Hz. What is its speed?",
+                      options: ["85 m/s", "340 m/s", "172 m/s", "0.012 m/s"],
+                      answer: 1,
+                      explanation: "v = λν = 2 × 170 = 340 m s⁻¹."
                     }
                   ]
                 },
@@ -23426,6 +23600,36 @@ export const curriculumData = {
                       options: ["Producing sound with vocal cords", "Locating objects using reflected sound waves", "Measuring loudness in decibels", "Absorbing sound with soft panels"],
                       answer: 1,
                       explanation: "Bats emit ultrasonic bursts and sense the echoes to locate obstacles and prey; dolphins, whales and some birds also use echolocation, and sonar applies the same principle underwater."
+                    },
+                    {
+                      question: "Which animals can detect infrasound?",
+                      options: ["Bats", "Elephants", "Dolphins", "Cats"],
+                      answer: 1,
+                      explanation: "Dogs, cats, bats and dolphins detect ultrasound, while elephants detect infrasound."
+                    },
+                    {
+                      question: "Roughly how loud is normal conversation?",
+                      options: ["A few dB", "About 60 dB", "Over 100 dB", "0 dB"],
+                      answer: 1,
+                      explanation: "Rustling leaves are a few decibels and firecrackers can exceed 100 dB."
+                    },
+                    {
+                      question: "What is noise?",
+                      options: ["Any loud sound", "Unwanted or harmful sound", "Sound above 20 kHz", "Sound below 20 Hz"],
+                      answer: 1,
+                      explanation: "Exposure to sound above recommended limits, especially for long periods, is a health hazard."
+                    },
+                    {
+                      question: "An echo is a result of which property of sound?",
+                      options: ["Refraction", "Reflection from a hard surface", "Absorption", "Diffraction"],
+                      answer: 1,
+                      explanation: "Sound obeys the same laws of reflection as light."
+                    },
+                    {
+                      question: "Why can no echo be heard in a small room?",
+                      options: ["Rooms absorb all sound", "The reflections return in less than 0.1 s, so the ear cannot separate them from the original", "Sound does not reflect indoors", "The walls are too soft"],
+                      answer: 1,
+                      explanation: "Two sounds are heard as distinct only when they arrive at least 0.1 s apart."
                     }
                   ]
                 }
@@ -23501,6 +23705,30 @@ export const curriculumData = {
                       options: ["They are large and heavy", "They are produced in huge numbers, lightweight and usually single-celled, so they float on air currents", "They need no moisture at all", "They are produced by two parents"],
                       answer: 1,
                       explanation: "Millions of spores from one mould colony drift on air currents, waiting for moisture and nutrients to germinate quickly into a new individual."
+                    },
+                    {
+                      question: "Which organism reproduces by multiple fission?",
+                      options: ["Amoeba", "Plasmodium", "Hydra", "Spirogyra"],
+                      answer: 1,
+                      explanation: "In multiple fission the nucleus divides into many at once, producing several daughter cells together."
+                    },
+                    {
+                      question: "Why does a field of sugarcane grown from cuttings show very little variation?",
+                      options: ["The soil is uniform", "All the plants are clones produced asexually from one parent", "Sugarcane cannot vary", "They are watered equally"],
+                      answer: 1,
+                      explanation: "With a single parent and mitosis, variation arises only from rare copying errors."
+                    },
+                    {
+                      question: "Which of these is a method horticulturists use to propagate plants asexually?",
+                      options: ["Pollination", "Grafting", "Fertilisation", "Seed dispersal"],
+                      answer: 1,
+                      explanation: "Cutting, grafting, layering and tissue culture are all methods based on asexual reproduction."
+                    },
+                    {
+                      question: "Whose experiments proved that new life always comes from pre-existing life?",
+                      options: ["Robert Hooke", "Louis Pasteur", "Charles Darwin", "Gregor Mendel"],
+                      answer: 1,
+                      explanation: "His work founded the germ theory of disease and strengthened the cell theory."
                     }
                   ]
                 },
@@ -23570,6 +23798,30 @@ export const curriculumData = {
                       options: ["Because mitosis copies the parent exactly", "Because each chromosome pair separates independently, so gametes carry many different combinations", "Because gametes have no chromosomes", "Because only one parent is involved"],
                       answer: 1,
                       explanation: "Offspring inherit a mix of characteristics from two individuals; accumulated over generations, these differences help species adapt to changing environments."
+                    },
+                    {
+                      question: "How many chromosomes does a human gamete carry?",
+                      options: ["46", "23", "22", "44"],
+                      answer: 1,
+                      explanation: "Meiosis halves the diploid number of 46 to the haploid number of 23."
+                    },
+                    {
+                      question: "In plants, what delivers the male gametes to the ovule?",
+                      options: ["The sepal", "The pollen grain", "The stigma", "The root"],
+                      answer: 1,
+                      explanation: "The pollen grain carries the male gametes to an ovule, which contains the female gametes."
+                    },
+                    {
+                      question: "Why must the chromosome number be halved before fertilisation?",
+                      options: ["To make the gametes smaller", "Otherwise the number would double in every generation", "To speed up reproduction", "To remove damaged chromosomes"],
+                      answer: 1,
+                      explanation: "Meiosis halves the diploid number so that when two gametes fuse, the zygote is back to the parental number of 46."
+                    },
+                    {
+                      question: "With 3 chromosome pairs separating independently, how many gamete combinations are possible?",
+                      options: ["3", "8", "6", "9"],
+                      answer: 1,
+                      explanation: "2 × 2 × 2 = 8, because each pair separates independently of the others."
                     }
                   ]
                 },
@@ -23639,6 +23891,30 @@ export const curriculumData = {
                       options: ["The ovary becomes a seed and the ovules a fruit", "The ovary becomes a fruit and the ovules become seeds", "Both become fruits", "Both wither away"],
                       answer: 1,
                       explanation: "The ovary enlarges into a fruit while the ovules inside develop into seeds."
+                    },
+                    {
+                      question: "What protects a flower while it is still in bud?",
+                      options: ["The petals", "The sepals, the outermost whorl", "The stamen", "The style"],
+                      answer: 1,
+                      explanation: "The green sepals cover and protect the developing flower."
+                    },
+                    {
+                      question: "Which plants are pollinated by water?",
+                      options: ["Wheat and maize", "Vallisneria and Hydrilla", "Sunflower and hibiscus", "Coral tree"],
+                      answer: 1,
+                      explanation: "In these aquatic plants, currents carry the pollen from one flower to another."
+                    },
+                    {
+                      question: "Why are insect-pollinated pollen grains large, sticky or spiny?",
+                      options: ["To travel further in wind", "So they attach to the insect's body", "To resist water", "To weigh more"],
+                      answer: 1,
+                      explanation: "The stigma of such flowers is also sticky, so the pollen transfers when the insect lands."
+                    },
+                    {
+                      question: "Which birds are named in the chapter as pollinators?",
+                      options: ["Crows and sparrows", "Indian white-eye and sunbirds", "Parrots", "Pigeons"],
+                      answer: 1,
+                      explanation: "They pollinate flowers such as those of the coral tree and hibiscus."
                     }
                   ]
                 },
@@ -23708,6 +23984,30 @@ export const curriculumData = {
                       options: ["The thickening of the uterine lining", "The release of a mature egg from an ovary, usually once a month", "The fusion of sperm and egg", "The formation of a foetus"],
                       answer: 1,
                       explanation: "From puberty onwards, usually one mature egg is released each month from one of the ovaries and travels into the oviduct."
+                    },
+                    {
+                      question: "What is the function of the seminal vesicles and prostate?",
+                      options: ["To produce sperm", "To add fluids that nourish the sperm and help them move", "To store eggs", "To carry urine"],
+                      answer: 1,
+                      explanation: "Sperm together with this seminal fluid make up semen."
+                    },
+                    {
+                      question: "Which part of a sperm contains its genetic material?",
+                      options: ["The tail", "The head", "The middle piece only", "The whole cell equally"],
+                      answer: 1,
+                      explanation: "The long tail is for swimming towards the egg."
+                    },
+                    {
+                      question: "At birth, a girl's ovaries already contain:",
+                      options: ["No eggs", "Millions of immature eggs", "Exactly 400 eggs", "One egg"],
+                      answer: 1,
+                      explanation: "From puberty onwards, usually one matures and is released each month."
+                    },
+                    {
+                      question: "Why is the egg described as non-motile while the sperm is actively motile?",
+                      options: ["The egg is dead", "The sperm must travel to the egg, while the egg supplies stored nutrients instead", "Eggs cannot move ever", "Both are motile"],
+                      answer: 1,
+                      explanation: "This asymmetry between male and female gametes is seen across most animals."
                     }
                   ]
                 }
@@ -23783,6 +24083,30 @@ export const curriculumData = {
                       options: ["It makes organisms easier to hunt", "It lets scientists all over the world discuss organisms using a common system", "It reduces the number of species", "It replaces the need for observation"],
                       answer: 1,
                       explanation: "Classification also organises study, shows similarities, differences and relationships, aids naming of new organisms, and supports conservation."
+                    },
+                    {
+                      question: "Which of these is an endemic species of India?",
+                      options: ["Tiger", "Nilgiri tahr", "Elephant", "Peacock"],
+                      answer: 1,
+                      explanation: "The Nilgiri tahr, lion-tailed macaque, Nepenthes khasiana and Neelakurinji are all found only in India."
+                    },
+                    {
+                      question: "What two conditions make a region a biodiversity hotspot?",
+                      options: ["Large size and high rainfall", "Many endemic species and significant habitat loss", "High mountains and forests", "Warm climate and rivers"],
+                      answer: 1,
+                      explanation: "Both conditions must hold, which is why hotspots are priorities for conservation."
+                    },
+                    {
+                      question: "How did today's biodiversity come about?",
+                      options: ["It was always the same", "Small differences accumulated over many generations as organisms adapted", "It appeared suddenly", "It was designed"],
+                      answer: 1,
+                      explanation: "Continuous change over a vast span of time, shaped by interactions with the surroundings, produced the diversity we see."
+                    },
+                    {
+                      question: "Which criterion for classification relies on studying DNA?",
+                      options: ["External features", "Genetic similarity", "Ecological role", "Mode of nutrition"],
+                      answer: 1,
+                      explanation: "Similar inherited features suggest that organisms evolved from common ancestors."
                     }
                   ]
                 },
@@ -23852,6 +24176,30 @@ export const curriculumData = {
                       options: ["Linnaeus, 1758", "Haeckel, 1866", "Copeland, 1938", "Robert H. Whittaker, 1969"],
                       answer: 3,
                       explanation: "Whittaker's 1969 system grouped life into Monera, Protista, Fungi, Plantae and Animalia."
+                    },
+                    {
+                      question: "What was the main limitation of Aristotle's classification?",
+                      options: ["It used DNA", "It relied mainly on easily observable external characteristics", "It had too many groups", "It ignored animals"],
+                      answer: 1,
+                      explanation: "Grouping by habitat and appearance put quite unrelated organisms together."
+                    },
+                    {
+                      question: "How did Linnaeus define the kingdom Plantae?",
+                      options: ["Organisms that move and eat others", "Organisms that do not move from place to place and synthesise their own food", "All green organisms", "All multicellular organisms"],
+                      answer: 1,
+                      explanation: "Animalia, by contrast, move about and depend on others for food."
+                    },
+                    {
+                      question: "Which organism caused the most trouble for the two-kingdom system?",
+                      options: ["The oak tree", "Amoeba, which moves like an animal but is unicellular and heterotrophic", "The tiger", "Moss"],
+                      answer: 1,
+                      explanation: "Organisms like Amoeba and Paramecium fitted neither kingdom, so Protista was added."
+                    },
+                    {
+                      question: "In which year did Copeland separate bacteria into the kingdom Monera?",
+                      options: ["1758", "1938", "1866", "1969"],
+                      answer: 1,
+                      explanation: "Improved microscopes had shown that bacteria lack the true nucleus that an amoeba has."
                     }
                   ]
                 },
@@ -23921,6 +24269,36 @@ export const curriculumData = {
                       options: ["Cnidaria", "Porifera (sponges)", "Platyhelminthes", "Chordata"],
                       answer: 1,
                       explanation: "Sponges have numerous pores through which water flows continuously, bringing food and oxygen directly to individual cells and carrying waste away."
+                    },
+                    {
+                      question: "Which bacteria are named in the chapter as useful?",
+                      options: ["Salmonella and E. coli", "Lactobacillus and Rhizobium", "Streptococcus", "None are useful"],
+                      answer: 1,
+                      explanation: "Some bacteria are pathogens, but many are useful and some even break down pollutants such as oil and sewage."
+                    },
+                    {
+                      question: "What is a mycelium?",
+                      options: ["A fungal spore", "The network formed by a fungus's fine filaments", "A type of root", "A plant cell wall"],
+                      answer: 1,
+                      explanation: "Fungi absorb nutrients from dead or decaying matter through this network."
+                    },
+                    {
+                      question: "Which class of plants has an undifferentiated body called a thallus?",
+                      options: ["Bryophyta", "Thallophyta, such as Spirogyra", "Pteridophyta", "Angiosperms"],
+                      answer: 1,
+                      explanation: "Thallos means undifferentiated body and phyton means plant."
+                    },
+                    {
+                      question: "Bryophytes such as mosses have root-like structures called:",
+                      options: ["Tap roots", "Rhizoids", "Tracheids", "Stomata"],
+                      answer: 1,
+                      explanation: "They also have simple stem-like and leaf-like structures and survive in moist, shady places."
+                    },
+                    {
+                      question: "Cnidarians capture prey using tentacles. What is their key advance over sponges?",
+                      options: ["A backbone", "Tissue-level organisation, so specialised cells can perform specific functions", "A skeleton", "Bilateral symmetry"],
+                      answer: 1,
+                      explanation: "Sponges are multicellular but lack tissues, relying on water currents to bring food to individual cells."
                     }
                   ]
                 },
@@ -23990,6 +24368,36 @@ export const curriculumData = {
                       options: ["Panthera tigris", "Mangifera indica", "Pisum sativum", "Panthera leo"],
                       answer: 1,
                       explanation: "Mangifera is the genus and indica the species — written in italics with only the genus capitalised."
+                    },
+                    {
+                      question: "How many levels are there in the classification hierarchy from Kingdom to Species?",
+                      options: ["Five", "Seven", "Nine", "Three"],
+                      answer: 1,
+                      explanation: "Kingdom, Phylum, Class, Order, Family, Genus, Species — each lower level shares more common features."
+                    },
+                    {
+                      question: "To which family does the tiger belong?",
+                      options: ["Canidae", "Felidae", "Ursidae", "Chordata"],
+                      answer: 1,
+                      explanation: "Its full classification runs Animalia, Chordata, Mammalia, Carnivora, Felidae, Panthera, P. tigris."
+                    },
+                    {
+                      question: "Why is classification compared to an address?",
+                      options: ["Both are written on envelopes", "Just as an address locates a place exactly, classification locates an organism precisely among all others", "Both use numbers", "Both change often"],
+                      answer: 1,
+                      explanation: "Each level narrows down the group, exactly as a house address narrows from country to street."
+                    },
+                    {
+                      question: "Which two species share the genus Panthera?",
+                      options: ["Tiger and dog", "Tiger and lion", "Lion and cat", "Tiger and leopard only"],
+                      answer: 1,
+                      explanation: "Panthera tigris and Panthera leo are the roaring cats, sharing the ability to roar and a similar skull structure."
+                    },
+                    {
+                      question: "In which order do the pea plant's classification levels run?",
+                      options: ["Pisum, Fabaceae, Plantae", "Plantae, Magnoliophyta, Magnoliopsida, Fabales, Fabaceae, Pisum, P. sativum", "P. sativum, Pisum, Plantae", "Fabales, Plantae, Pisum"],
+                      answer: 1,
+                      explanation: "The hierarchy always runs from the broadest group down to the species."
                     }
                   ]
                 }
@@ -24065,6 +24473,30 @@ export const curriculumData = {
                       options: ["Gamma rays", "Visible light", "Radio waves", "X-rays"],
                       answer: 1,
                       explanation: "Visible light reaches the Earth's surface and provides the energy for photosynthesis, the primary source of food for most organisms."
+                    },
+                    {
+                      question: "How do electromagnetic waves differ from sound waves?",
+                      options: ["They are slower", "They travel through a vacuum, while sound needs a medium", "They cannot be reflected", "They have no frequency"],
+                      answer: 1,
+                      explanation: "Sound waves are mechanical and require a medium; electromagnetic waves do not."
+                    },
+                    {
+                      question: "Which surface has the highest albedo?",
+                      options: ["A tarred road", "Fresh snow", "Grass", "Water"],
+                      answer: 1,
+                      explanation: "High albedo means most sunlight is reflected, so the surface stays cool."
+                    },
+                    {
+                      question: "Why do dark coloured clothes feel hotter in summer?",
+                      options: ["They are thicker", "Dark surfaces have low albedo and absorb more sunlight", "They trap air", "They are heavier"],
+                      answer: 1,
+                      explanation: "Light coloured surfaces reflect more and remain comparatively cooler."
+                    },
+                    {
+                      question: "What happens to gamma rays and X-rays from the Sun?",
+                      options: ["They reach the ground", "They are mostly filtered by the Earth's upper atmosphere", "They warm the oceans", "They cause the blue sky"],
+                      answer: 1,
+                      explanation: "These high-energy waves would be harmful to life if they reached the surface."
                     }
                   ]
                 },
@@ -24134,6 +24566,30 @@ export const curriculumData = {
                       options: ["Because there is no air above it", "Because the temperature rise in the stratosphere calms the layer by preventing vertical mixing", "Because the ozone layer blocks clouds", "Because aircraft fly there"],
                       answer: 1,
                       explanation: "The increase in temperature with height in the stratosphere suppresses vertical mixing of air, keeping weather below it."
+                    },
+                    {
+                      question: "Which gas makes up about 21 per cent of the atmosphere?",
+                      options: ["Nitrogen", "Oxygen", "Argon", "Carbon dioxide"],
+                      answer: 1,
+                      explanation: "Nitrogen accounts for about 78 per cent and oxygen about 21 per cent."
+                    },
+                    {
+                      question: "What holds the atmosphere in place around the Earth?",
+                      options: ["Magnetic force", "The force of Earth's gravity", "Air pressure", "The ozone layer"],
+                      answer: 1,
+                      explanation: "Without gravity the gases would escape into space."
+                    },
+                    {
+                      question: "Where is the troposphere tallest?",
+                      options: ["Above the poles", "Above the equator", "It is the same everywhere", "Above mountains"],
+                      answer: 1,
+                      explanation: "Its height is greatest over the equator and lowest over the polar regions."
+                    },
+                    {
+                      question: "At roughly what height does outer space begin?",
+                      options: ["12 km", "100 km", "50 km", "1000 km"],
+                      answer: 1,
+                      explanation: "Above the stratosphere lie the mesosphere, thermosphere and exosphere, and beyond about 100 km is outer space."
                     }
                   ]
                 },
@@ -24203,6 +24659,30 @@ export const curriculumData = {
                       options: ["They have no effect", "By transporting heat from the equator towards the poles, reducing temperature differences", "By making the oceans saltier", "By blocking sunlight"],
                       answer: 1,
                       explanation: "The North Atlantic Drift is an example — warm surface water carried polewards moderates temperatures across the planet."
+                    },
+                    {
+                      question: "What is wind?",
+                      options: ["Movement of water", "Movement of air from high pressure to low pressure", "Movement of the Earth", "Heating of the ground"],
+                      answer: 1,
+                      explanation: "These pressure differences are caused mainly by the uneven heating of the Earth's surface."
+                    },
+                    {
+                      question: "Why does the valley breeze blow up the slopes during the day?",
+                      options: ["The valley heats faster", "The sunlit slopes heat faster, so warm air rises and cooler valley air moves up to replace it", "Wind always blows uphill", "The sun pulls the air"],
+                      answer: 1,
+                      explanation: "After sunset the pattern reverses and a mountain breeze flows down into the valley."
+                    },
+                    {
+                      question: "Besides wind, which factors influence ocean currents?",
+                      options: ["Only the Moon", "Temperature and salinity differences, the Earth's rotation and the land masses", "Only rainfall", "Only the Sun"],
+                      answer: 1,
+                      explanation: "Warm surface water travels poleward while colder, denser water returns at depth."
+                    },
+                    {
+                      question: "Water of lower salinity tends to:",
+                      options: ["Sink to the bottom", "Remain near the surface, being less dense", "Freeze first", "Evaporate faster"],
+                      answer: 1,
+                      explanation: "Denser, higher-salinity water sinks and moves at deeper levels in the ocean."
                     }
                   ]
                 },
@@ -24272,6 +24752,36 @@ export const curriculumData = {
                       options: ["1%", "49%", "71%", "21%"],
                       answer: 2,
                       explanation: "71% of global carbon is in the oceans, which regulate atmospheric CO₂; the atmosphere itself holds only about 1%."
+                    },
+                    {
+                      question: "Which cycle links the cryosphere, hydrosphere, atmosphere, geosphere and biosphere?",
+                      options: ["The carbon cycle", "The water cycle", "The nitrogen cycle", "The oxygen cycle"],
+                      answer: 1,
+                      explanation: "Glaciers, rivers, moisture, soil and crops are all connected through the movement of water."
+                    },
+                    {
+                      question: "How long does the slow carbon cycle take?",
+                      options: ["Days to years", "Millions of years", "One season", "A decade"],
+                      answer: 1,
+                      explanation: "Buried plants and animals become coal, oil and gas over that timescale, while the fast cycle runs over days to years."
+                    },
+                    {
+                      question: "Which bacteria convert nitrite into nitrate?",
+                      options: ["Rhizobium", "Nitrobacter", "Pseudomonas", "Azotobacter"],
+                      answer: 1,
+                      explanation: "Nitrosomonas converts ammonia to nitrite and Nitrobacter converts nitrite to nitrate — together, nitrification."
+                    },
+                    {
+                      question: "Besides bacteria, what else fixes atmospheric nitrogen naturally?",
+                      options: ["Rainfall", "Lightning", "Wind", "Sunlight"],
+                      answer: 1,
+                      explanation: "Lightning fixes a small amount of nitrogen as nitrogen oxides."
+                    },
+                    {
+                      question: "What percentage of the dry weight of living organisms is carbon?",
+                      options: ["about 10%", "about 49%", "about 71%", "about 90%"],
+                      answer: 1,
+                      explanation: "Carbon forms the backbone of every protein, carbohydrate, fat and DNA molecule."
                     }
                   ]
                 }
