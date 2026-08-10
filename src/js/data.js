@@ -1221,6 +1221,66 @@ export const curriculumData = {
                       options: ["It's impossible to measure a curved length", "Lay a flexible thread along the curve, mark its length, then straighten and measure it with a scale", "Estimate it by eye only", "Use a kilometre stone"],
                       answer: 1,
                       explanation: "For curved lines, a thread is laid along the curved path, then straightened out and measured against a metre scale — this converts a curved measurement into a straight-line one."
+                    },
+                    {
+                      question: "Every measurement has two parts: a number and:",
+                      options: ["A guess", "A unit", "A name", "A tool"],
+                      answer: 1,
+                      explanation: "Saying just '13' does not tell anyone how long something is."
+                    },
+                    {
+                      question: "Why are body-based units like the handspan unreliable?",
+                      options: ["They are too small", "They differ from person to person", "They are hard to remember", "They are illegal"],
+                      answer: 1,
+                      explanation: "Standard units let everyone communicate measurements clearly."
+                    },
+                    {
+                      question: "What is the SI unit of length?",
+                      options: ["Centimetre", "Metre", "Kilometre", "Millimetre"],
+                      answer: 1,
+                      explanation: "The International System of Units gives one common standard for the world."
+                    },
+                    {
+                      question: "How many millimetres make one centimetre?",
+                      options: ["100", "10", "1000", "5"],
+                      answer: 1,
+                      explanation: "Millimetres are used for measuring very small lengths."
+                    },
+                    {
+                      question: "How many metres make one kilometre?",
+                      options: ["100", "1000", "10", "10000"],
+                      answer: 1,
+                      explanation: "Kilometres are used for large distances such as those between towns."
+                    },
+                    {
+                      question: "Where should your eye be when reading a scale?",
+                      options: ["To the left of the mark", "Directly above the point being read", "At any angle", "Below the scale"],
+                      answer: 1,
+                      explanation: "Looking from the side gives an incorrect reading."
+                    },
+                    {
+                      question: "If the zero mark of a scale is broken or worn, you should:",
+                      options: ["Throw the scale away", "Start from another full mark and subtract that reading", "Guess the length", "Use your handspan"],
+                      answer: 1,
+                      explanation: "The difference between the two readings still gives the correct length."
+                    },
+                    {
+                      question: "How can the length of a curved line be measured?",
+                      options: ["With a straight ruler directly", "By laying a thread along it and then measuring the thread", "By guessing", "By counting steps"],
+                      answer: 1,
+                      explanation: "This turns a curved measurement into a straight-line one."
+                    },
+                    {
+                      question: "Angula, dhanusa and yojana were units used in:",
+                      options: ["Ancient Egypt", "India's own historical measurement systems", "Modern Europe", "Outer space missions"],
+                      answer: 1,
+                      explanation: "Angula was based on the width of a finger."
+                    },
+                    {
+                      question: "A scale should be placed:",
+                      options: ["At an angle to the object", "In direct contact and along the object's length", "Slightly above the object", "Anywhere nearby"],
+                      answer: 1,
+                      explanation: "Correct placement avoids errors in the reading."
                     }
                   ]
                 },
@@ -1290,6 +1350,54 @@ export const curriculumData = {
                       options: ["Yes, an object is always either definitely moving or definitely at rest", "No — it depends entirely on which reference point you choose", "Only scientists can determine this", "Motion and rest are the same thing"],
                       answer: 1,
                       explanation: "Whether something is in motion or at rest always depends on the chosen reference point — the same object can be 'at rest' relative to one reference point and 'in motion' relative to another."
+                    },
+                    {
+                      question: "A fixed object or point used to describe position is called a:",
+                      options: ["Landmark only", "Reference point", "Measuring point", "Milestone"],
+                      answer: 1,
+                      explanation: "Kilometre stones use a city like Delhi as the reference point."
+                    },
+                    {
+                      question: "An object is said to be in motion if its position:",
+                      options: ["Never changes", "Changes with respect to a reference point over time", "Is far away", "Is measured in metres"],
+                      answer: 1,
+                      explanation: "If the position does not change, the object is at rest."
+                    },
+                    {
+                      question: "Passengers seated in a moving bus are at rest with respect to:",
+                      options: ["The road", "The bus", "A tree outside", "A passing car"],
+                      answer: 1,
+                      explanation: "With respect to the road, the same passengers are in motion."
+                    },
+                    {
+                      question: "Movement along a straight line is called:",
+                      options: ["Circular motion", "Linear motion", "Oscillatory motion", "Random motion"],
+                      answer: 1,
+                      explanation: "An orange falling from a tree shows linear motion."
+                    },
+                    {
+                      question: "A stone whirled on a string shows:",
+                      options: ["Linear motion", "Circular motion", "Oscillatory motion", "No motion"],
+                      answer: 1,
+                      explanation: "A merry-go-round is another example."
+                    },
+                    {
+                      question: "Motion to and fro about a fixed point is called:",
+                      options: ["Linear motion", "Oscillatory motion", "Circular motion", "Straight motion"],
+                      answer: 1,
+                      explanation: "A swing moving back and forth is a good example."
+                    },
+                    {
+                      question: "Why can two people disagree about whether something is moving?",
+                      options: ["One of them is wrong", "They may be using different reference points", "Motion is a matter of opinion", "Measurements always differ"],
+                      answer: 1,
+                      explanation: "Both can be correct once the reference point is stated."
+                    },
+                    {
+                      question: "A box pushed straight across the floor shows which type of motion?",
+                      options: ["Circular", "Linear", "Oscillatory", "Vibratory"],
+                      answer: 1,
+                      explanation: "Its path is a straight line."
                     }
                   ]
                 }
@@ -1359,6 +1467,42 @@ export const curriculumData = {
                       options: ["All shiny materials are metals, no exceptions", "Shine can be added artificially through coating or polishing, so lustre alone doesn't prove something is a metal", "Plastic is always a type of metal", "Lustre is not a real property of materials"],
                       answer: 1,
                       explanation: "As the saying goes, 'all that glitters is not gold' — materials can be coated with plastic, wax, or polish to look shiny without actually being metals."
+                    },
+                    {
+                      question: "Arranging objects into groups based on a common property is called:",
+                      options: ["Measurement", "Classification", "Observation", "Testing"],
+                      answer: 1,
+                      explanation: "Objects can be grouped by shape, colour, hardness or shine."
+                    },
+                    {
+                      question: "Materials with shiny surfaces are described as:",
+                      options: ["Lustrous", "Dull", "Opaque", "Soft"],
+                      answer: 1,
+                      explanation: "Iron, copper, zinc, aluminium and gold are lustrous metals."
+                    },
+                    {
+                      question: "Why can a metal look dull even though it is lustrous?",
+                      options: ["It is not really a metal", "Air and moisture affect its surface", "It has been washed", "It is too old to shine"],
+                      answer: 1,
+                      explanation: "A freshly cut surface shows the lustre clearly again."
+                    },
+                    {
+                      question: "Materials that are difficult to compress or scratch are called:",
+                      options: ["Soft", "Hard", "Lustrous", "Transparent"],
+                      answer: 1,
+                      explanation: "Stone and iron are hard materials."
+                    },
+                    {
+                      question: "Rubber is harder than sponge but softer than iron. This shows that hardness is:",
+                      options: ["Fixed for every material", "Relative, depending on what it is compared with", "Impossible to judge", "The same as lustre"],
+                      answer: 1,
+                      explanation: "There is no single fixed line between hard and soft."
+                    },
+                    {
+                      question: "The material chosen to make an object depends mainly on:",
+                      options: ["Its colour", "The purpose the object has to serve", "Its price only", "Its age"],
+                      answer: 1,
+                      explanation: "A tumbler must hold water, so it cannot be made of cloth."
                     }
                   ]
                 },
@@ -1437,6 +1581,54 @@ export const curriculumData = {
                       options: ["Mass: metre; Volume: gram", "Mass: gram/kilogram; Volume: litre/millilitre", "Mass: litre; Volume: kilogram", "Mass and volume use the same units"],
                       answer: 1,
                       explanation: "Mass is measured in grams (g) and kilograms (kg). Volume is measured in litres (L) and millilitres (mL), with the formal SI unit being cubic metre (m³), where 1 m³ = 1000 L."
+                    },
+                    {
+                      question: "Materials through which things can be seen clearly are called:",
+                      options: ["Translucent", "Transparent", "Opaque", "Lustrous"],
+                      answer: 1,
+                      explanation: "Glass, water and cellophane paper are transparent."
+                    },
+                    {
+                      question: "Butter paper and frosted glass are examples of materials that are:",
+                      options: ["Transparent", "Translucent", "Opaque", "Soluble"],
+                      answer: 1,
+                      explanation: "Objects can be seen through them, but only hazily."
+                    },
+                    {
+                      question: "A material that completely mixes into water on stirring is said to be:",
+                      options: ["Insoluble", "Soluble", "Opaque", "Lustrous"],
+                      answer: 1,
+                      explanation: "Sugar and salt dissolve in water this way."
+                    },
+                    {
+                      question: "Which of these is insoluble in water?",
+                      options: ["Sugar", "Sand", "Salt", "Glucose"],
+                      answer: 1,
+                      explanation: "Chalk powder and sawdust are also insoluble."
+                    },
+                    {
+                      question: "What are the SI units used for mass?",
+                      options: ["Litre and millilitre", "Gram and kilogram", "Metre and centimetre", "Degree Celsius"],
+                      answer: 1,
+                      explanation: "An object with more mass is heavier."
+                    },
+                    {
+                      question: "The space occupied by a substance is called its:",
+                      options: ["Mass", "Volume", "Density", "Area"],
+                      answer: 1,
+                      explanation: "It is commonly measured in litres and millilitres."
+                    },
+                    {
+                      question: "Anything that has mass and occupies space is called:",
+                      options: ["A metal", "Matter", "A mixture", "A solution"],
+                      answer: 1,
+                      explanation: "Water, sand, pebbles and even air are all matter."
+                    },
+                    {
+                      question: "How many litres make one cubic metre?",
+                      options: ["100", "1000", "10", "10000"],
+                      answer: 1,
+                      explanation: "The cubic metre is the formal SI unit of volume."
                     }
                   ]
                 }
@@ -1517,6 +1709,42 @@ export const curriculumData = {
                       options: ["Digital thermometers are cheaper to manufacture only", "Mercury is toxic and hard to safely dispose of if the thermometer breaks; digital thermometers avoid this risk", "Mercury thermometers give inaccurate readings", "There is no real difference between them"],
                       answer: 1,
                       explanation: "Mercury is an extremely toxic substance, making broken mercury thermometers a health hazard. Digital thermometers, using heat sensors, avoid this danger and are also easier to read."
+                    },
+                    {
+                      question: "Why is touch not a reliable way to judge hotness?",
+                      options: ["Hands are always cold", "The same water can feel warm to one hand and cool to the other", "Touch is too slow", "Skin cannot feel heat"],
+                      answer: 1,
+                      explanation: "The hands-in-warm-and-cold-water experiment shows this clearly."
+                    },
+                    {
+                      question: "A reliable measure of the hotness or coldness of a body is its:",
+                      options: ["Mass", "Temperature", "Volume", "Lustre"],
+                      answer: 1,
+                      explanation: "It is measured with a thermometer."
+                    },
+                    {
+                      question: "Which thermometer measures temperature without touching the body?",
+                      options: ["Clinical mercury thermometer", "Infrared thermometer", "Laboratory thermometer", "Wall thermometer"],
+                      answer: 1,
+                      explanation: "This is useful during disease outbreaks because it reduces the risk of spreading infection."
+                    },
+                    {
+                      question: "Why are digital clinical thermometers safer than old mercury ones?",
+                      options: ["They are cheaper", "Mercury is toxic if the thermometer breaks", "They are larger", "They need no battery"],
+                      answer: 1,
+                      explanation: "Digital ones use heat sensors and run on batteries."
+                    },
+                    {
+                      question: "Which is the SI unit of temperature?",
+                      options: ["Degree Celsius", "Kelvin", "Degree Fahrenheit", "Calorie"],
+                      answer: 1,
+                      explanation: "No degree symbol is used with the kelvin."
+                    },
+                    {
+                      question: "A body temperature of 37.0 degrees Celsius equals:",
+                      options: ["96.8 degrees Fahrenheit", "98.6 degrees Fahrenheit", "100 degrees Fahrenheit", "37 degrees Fahrenheit"],
+                      answer: 1,
+                      explanation: "The Fahrenheit scale is no longer much used in scientific work."
                     }
                   ]
                 },
@@ -1590,6 +1818,42 @@ export const curriculumData = {
                       options: ["From above, looking down", "Directly in line with the level of the liquid column", "From below, looking up", "Eye position doesn't matter for thermometers"],
                       answer: 1,
                       explanation: "Just like with a length-measuring scale, your eye must be directly in line with the reading you're taking — viewing from an angle causes an incorrect reading."
+                    },
+                    {
+                      question: "A typical laboratory thermometer has a range of about:",
+                      options: ["0 to 50 degrees Celsius", "-10 to 110 degrees Celsius", "35 to 42 degrees Celsius", "-100 to 100 degrees Celsius"],
+                      answer: 1,
+                      explanation: "You should always check the range marked on the particular thermometer."
+                    },
+                    {
+                      question: "Between 0 and 10 degrees Celsius there are 10 small divisions. The smallest value it can measure is:",
+                      options: ["0.1 degree", "1 degree", "10 degrees", "5 degrees"],
+                      answer: 1,
+                      explanation: "Dividing 10 degrees by 10 divisions gives 1 degree per division."
+                    },
+                    {
+                      question: "While measuring the temperature of a liquid, the bulb should:",
+                      options: ["Touch the bottom of the container", "Stay clear of the bottom and sides", "Rest on the side wall", "Be kept above the liquid"],
+                      answer: 1,
+                      explanation: "Touching the container gives the container's temperature instead."
+                    },
+                    {
+                      question: "When should a laboratory thermometer be read?",
+                      options: ["After removing it from the liquid", "While the bulb is still immersed in the liquid", "After a minute of cooling", "Only when it is dry"],
+                      answer: 1,
+                      explanation: "The reading starts falling as soon as the bulb is taken out."
+                    },
+                    {
+                      question: "What happens to the temperature of water while it is boiling?",
+                      options: ["It keeps rising", "It stays constant", "It falls", "It doubles"],
+                      answer: 1,
+                      explanation: "The temperature of melting ice stays constant in the same way."
+                    },
+                    {
+                      question: "How should a laboratory thermometer be held?",
+                      options: ["Tilted at an angle", "Vertically", "Horizontally", "Upside down"],
+                      answer: 1,
+                      explanation: "Your eye must also be directly in line with the liquid level."
                     }
                   ]
                 }
@@ -1661,6 +1925,36 @@ export const curriculumData = {
                       options: ["The temperature of water", "The amount of water vapour present in the air", "A type of cloud", "The speed of evaporation"],
                       answer: 1,
                       explanation: "Humidity refers to the amount of water vapour in the air — higher humidity means more water vapour is present."
+                    },
+                    {
+                      question: "Water disappearing from a wet floor changes into:",
+                      options: ["Ice", "Water vapour", "Steam droplets", "Air"],
+                      answer: 1,
+                      explanation: "Water vapour is an invisible gas."
+                    },
+                    {
+                      question: "Why does steam look visible while water vapour does not?",
+                      options: ["Steam is hotter", "Steam contains tiny water droplets", "Vapour is coloured", "Steam is a solid"],
+                      answer: 1,
+                      explanation: "The true gaseous state cannot be seen."
+                    },
+                    {
+                      question: "Droplets appearing on the outside of a cold glass are formed by:",
+                      options: ["Water leaking through the glass", "Water vapour in the air condensing", "Ice melting outside", "Rain"],
+                      answer: 1,
+                      explanation: "The marked water level inside does not drop, proving nothing leaked."
+                    },
+                    {
+                      question: "The amount of water vapour present in air is called:",
+                      options: ["Evaporation", "Humidity", "Condensation", "Pressure"],
+                      answer: 1,
+                      explanation: "Higher humidity means more water vapour in the air."
+                    },
+                    {
+                      question: "Changing from a gas back into a liquid is called:",
+                      options: ["Evaporation", "Condensation", "Melting", "Freezing"],
+                      answer: 1,
+                      explanation: "Cooling the vapour is what causes the change."
                     }
                   ]
                 },
@@ -1726,6 +2020,42 @@ export const curriculumData = {
                       options: ["Air", "Wax (like a candle)", "Sunlight", "Sound"],
                       answer: 1,
                       explanation: "Candle wax is a classic example — it melts into a liquid when heated and can be cooled back into a solid, just like water and ice."
+                    },
+                    {
+                      question: "Which state of water keeps a fixed shape whatever the container?",
+                      options: ["Water vapour", "Ice", "Liquid water", "All three"],
+                      answer: 1,
+                      explanation: "A solid neither flows nor spreads."
+                    },
+                    {
+                      question: "Liquid water takes the shape of its container, but keeps a constant:",
+                      options: ["Shape", "Volume", "Colour", "Temperature"],
+                      answer: 1,
+                      explanation: "It flows and spreads while occupying the same volume."
+                    },
+                    {
+                      question: "Water vapour differs from liquid water because it:",
+                      options: ["Has a fixed shape", "Spreads out to fill all the space available", "Cannot be heated", "Has no mass"],
+                      answer: 1,
+                      explanation: "A gas has neither a fixed shape nor a fixed volume."
+                    },
+                    {
+                      question: "Changing ice into water requires you to:",
+                      options: ["Remove heat", "Supply heat", "Add salt", "Stir it"],
+                      answer: 1,
+                      explanation: "Cooling is needed for the reverse change from water to ice."
+                    },
+                    {
+                      question: "Water freezing into ice in a freezer is an example of:",
+                      options: ["Melting", "Freezing", "Evaporation", "Condensation"],
+                      answer: 1,
+                      explanation: "Freezing is the change from liquid to solid."
+                    },
+                    {
+                      question: "Candle wax melting when heated shows that:",
+                      options: ["Only water can melt", "Other substances also change state with heat", "Wax is a liquid", "Melting needs cooling"],
+                      answer: 1,
+                      explanation: "The melted wax can be cooled back into a solid."
                     }
                   ]
                 },
@@ -1794,6 +2124,42 @@ export const curriculumData = {
                       options: ["Rain physically prevents clothes from drying by adding water to them only", "The air already contains a lot of water vapour (high humidity), which slows further evaporation", "The temperature is always freezing on rainy days", "Clothes never dry on rainy days at all"],
                       answer: 1,
                       explanation: "When humidity is high, the air is already close to holding as much water vapour as it can, so evaporation from wet clothes happens much more slowly."
+                    },
+                    {
+                      question: "Water spread on a plate evaporates faster than the same amount in a bottle cap because of the greater:",
+                      options: ["Temperature", "Exposed surface area", "Wind", "Humidity"],
+                      answer: 1,
+                      explanation: "A larger exposed area lets more water escape as vapour."
+                    },
+                    {
+                      question: "Clothes dry faster on a sunny day because heat:",
+                      options: ["Slows evaporation", "Speeds up evaporation", "Causes condensation", "Adds humidity"],
+                      answer: 1,
+                      explanation: "Water in shade evaporates more slowly."
+                    },
+                    {
+                      question: "Why does water in an earthen pot feel cooler?",
+                      options: ["Clay is cold", "Water seeps through the pores and evaporates, cooling what remains", "The pot blocks sunlight", "Clay adds minerals"],
+                      answer: 1,
+                      explanation: "Evaporation has a cooling effect."
+                    },
+                    {
+                      question: "Why does a fan make us feel cooler?",
+                      options: ["It lowers the room temperature", "It speeds up the evaporation of sweat from our skin", "It removes humidity completely", "It blows cold air"],
+                      answer: 1,
+                      explanation: "The evaporating sweat carries heat away from the body."
+                    },
+                    {
+                      question: "Clouds are formed when rising water vapour:",
+                      options: ["Warms up", "Cools and condenses into tiny droplets", "Freezes into hail", "Disappears"],
+                      answer: 1,
+                      explanation: "The droplets usually form around tiny dust particles."
+                    },
+                    {
+                      question: "Which factor speeds up evaporation by increasing air movement?",
+                      options: ["Humidity", "Wind", "Shade", "Cold"],
+                      answer: 1,
+                      explanation: "More air movement carries the vapour away faster."
                     }
                   ]
                 }
