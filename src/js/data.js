@@ -4912,6 +4912,84 @@ export const curriculumData = {
                       options: ["Science is a fixed set of facts", "Science is an ever-evolving way of exploring, questioning and taking responsibility", "Science is only for laboratories", "Science has answered every question"],
                       answer: 1,
                       explanation: "The chapter's title itself points to science as something continually evolving."
+                    },
+                    {
+                      question: "Science is described at the start of the chapter as:",
+                      options: ["A collection of facts to memorise", "A way of thinking that welcomes curiosity", "A list of experiments", "A school subject only"],
+                      answer: 1,
+                      explanation: "It stays open to the unknown rather than treating knowledge as finished."
+                    },
+                    {
+                      question: "This year's journey moves from asking 'what' to asking:",
+                      options: ["Who and when", "How and why", "Where and when", "What else"],
+                      answer: 1,
+                      explanation: "Deeper questions about mechanisms and causes replace simple naming."
+                    },
+                    {
+                      question: "Which subject areas do this year's chapters cover?",
+                      options: ["Only physics", "Physics, chemistry, biology and earth science", "Only biology", "Only chemistry and physics"],
+                      answer: 1,
+                      explanation: "Though they appear as separate chapters, they are deeply interconnected."
+                    },
+                    {
+                      question: "What does the chapter say about the boundaries between these areas of science?",
+                      options: ["They are strict and separate", "An idea from one area often inspires questions in another", "Each must be studied alone", "Only physics matters"],
+                      answer: 1,
+                      explanation: "Interconnection is a central theme of the year."
+                    },
+                    {
+                      question: "Which chapter topic would help explain why some fruits taste sour?",
+                      options: ["Electricity and circuits", "The properties of materials around us", "Measuring time and motion", "Eclipses"],
+                      answer: 1,
+                      explanation: "The same chapter also looks at how stains behave."
+                    },
+                    {
+                      question: "Studying the Earth-Moon-Sun system this year includes learning about:",
+                      options: ["Rusting", "Eclipses", "Circuits", "Digestion"],
+                      answer: 1,
+                      explanation: "It is the earth-science part of the year's journey."
+                    },
+                    {
+                      question: "The 'Question the Answer' activity asks you to:",
+                      options: ["Answer questions faster", "Invent questions that could lead to a given answer", "Copy questions from the book", "Avoid questions"],
+                      answer: 1,
+                      explanation: "Working backwards this way practises scientific curiosity."
+                    },
+                    {
+                      question: "Life processes in animals and plants are studied in the branch of science called:",
+                      options: ["Physics", "Biology", "Chemistry", "Astronomy"],
+                      answer: 1,
+                      explanation: "The year also covers physics, chemistry and earth science topics."
+                    },
+                    {
+                      question: "Heat flow and measuring time and motion belong mainly to:",
+                      options: ["Biology", "Physics", "Chemistry", "Earth science"],
+                      answer: 1,
+                      explanation: "These sit alongside the chemistry and biology chapters of the same year."
+                    },
+                    {
+                      question: "Which statement about exploration matches the chapter?",
+                      options: ["It ends once facts are learnt", "It is an ongoing process of discovery", "It happens only in laboratories", "It requires expensive equipment"],
+                      answer: 1,
+                      explanation: "Activities and experiments keep the process going."
+                    },
+                    {
+                      question: "Building a more sustainable world is described as:",
+                      options: ["Outside the scope of science", "A real role that science plays", "A job for governments only", "Impossible"],
+                      answer: 1,
+                      explanation: "This is part of the responsibility that comes with being a science explorer."
+                    },
+                    {
+                      question: "Reversible and irreversible changes are one of the year's topics. An example of a reversible change is:",
+                      options: ["Burning paper", "Melting ice", "Rusting iron", "Cooking an egg"],
+                      answer: 1,
+                      explanation: "Melted ice can be refrozen, so no new substance is permanently formed."
+                    },
+                    {
+                      question: "Why does the chapter encourage stepping out of the classroom?",
+                      options: ["Classrooms are uncomfortable", "So we can experience the world through activities and experiments", "To avoid studying", "Because books are wrong"],
+                      answer: 1,
+                      explanation: "Direct experience is what turns curiosity into scientific exploration."
                     }
                   ]
                 }
