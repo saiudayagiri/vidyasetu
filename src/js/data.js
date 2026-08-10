@@ -29727,6 +29727,60 @@ export const curriculumData = {
             options: ["12 m", "25 m", "-12.5 m", "15 m"],
             answer: 0,
             explanation: "x = [-1 ± √(1+2400)]/4 = [-1 ± 49]/4, giving x = 12 or x = -12.5. Since breadth can't be negative, breadth = 12 m (and length = 2(12)+1 = 25 m)."
+          },
+          {
+            question: "What is the standard form of a quadratic equation?",
+            options: ["ax + b = 0", "ax² + bx + c = 0, with a ≠ 0", "ax³ + bx² + c = 0", "ax² + bx + c = 0, with a = 0"],
+            answer: 1,
+            explanation: "The coefficient a must be non-zero, otherwise the equation would be linear rather than quadratic."
+          },
+          {
+            question: "To solve 2x² − 5x + 3 = 0 by splitting the middle term, which pair of numbers do you need?",
+            options: ["Two numbers with sum 2 and product 3", "Two numbers with sum −5 and product 6", "Two numbers with sum 5 and product −6", "Two numbers with sum 3 and product −5"],
+            answer: 1,
+            explanation: "We need sum = b = −5 and product = ac = 2 × 3 = 6, which gives −2 and −3."
+          },
+          {
+            question: "The roots of x² − 3x − 10 = 0 are 5 and −2. What is their sum, and does it match −b/a?",
+            options: ["3, and yes it matches", "−3, and no", "10, and yes", "−10, and no"],
+            answer: 0,
+            explanation: "5 + (−2) = 3, and −b/a = −(−3)/1 = 3, so the relationship holds."
+          },
+          {
+            question: "State the quadratic formula.",
+            options: ["x = [−b ± √(b² − 4ac)] / 2a", "x = [b ± √(b² + 4ac)] / 2a", "x = [−b ± √(b² − 4ac)] / a", "x = −b/2a"],
+            answer: 0,
+            explanation: "The ± sign is what produces the two roots, and the expression under the root is the discriminant."
+          },
+          {
+            question: "Solve x² − 7x + 12 = 0 by factorisation.",
+            options: ["x = 3 or 4", "x = −3 or −4", "x = 2 or 6", "x = 1 or 12"],
+            answer: 0,
+            explanation: "x² − 3x − 4x + 12 = (x − 3)(x − 4) = 0, so x = 3 or x = 4."
+          },
+          {
+            question: "Two numbers have sum 27 and product 182. Which equation models this?",
+            options: ["x² + 27x + 182 = 0", "x² − 27x + 182 = 0", "x² − 27x − 182 = 0", "x² + 182x + 27 = 0"],
+            answer: 1,
+            explanation: "If one number is x, the other is 27 − x, so x(27 − x) = 182 gives x² − 27x + 182 = 0, whose roots are 13 and 14."
+          },
+          {
+            question: "Using the quadratic formula on x² − 4x + 1 = 0, the roots are:",
+            options: ["2 ± √3", "4 ± √3", "2 ± √5", "−2 ± √3"],
+            answer: 0,
+            explanation: "x = [4 ± √(16 − 4)]/2 = [4 ± √12]/2 = [4 ± 2√3]/2 = 2 ± √3."
+          },
+          {
+            question: "Why must a negative root sometimes be rejected in a word problem?",
+            options: ["Negative numbers are not real roots", "A physical quantity such as a length or an age cannot be negative", "The formula gives only one root", "It makes the arithmetic harder"],
+            answer: 1,
+            explanation: "Both values satisfy the equation mathematically, but only the one that makes sense in the context is an acceptable answer."
+          },
+          {
+            question: "A quadratic equation can have at most how many roots?",
+            options: ["One", "Two", "Three", "Infinitely many"],
+            answer: 1,
+            explanation: "A degree-2 polynomial equation has at most two roots, which may be distinct, equal, or non-real."
           }
         ]
       },
@@ -29771,6 +29825,84 @@ export const curriculumData = {
             options: ["D = 0; two equal real roots", "D > 0; two distinct real roots", "D < 0; no real roots", "D = 48; two distinct roots"],
             answer: 0,
             explanation: "D = (4√3)² - 4(3)(4) = 48 - 48 = 0. Since D = 0, the equation has two equal real roots, both equal to -b/2a = 4√3/6 = 2√3/3 ≈ 1.15."
+          },
+          {
+            question: "If D > 0 for a quadratic equation, its roots are:",
+            options: ["Real and equal", "Real and distinct", "Non-real", "Always integers"],
+            answer: 1,
+            explanation: "A positive discriminant means the parabola cuts the x-axis at two separate points, giving two different real roots."
+          },
+          {
+            question: "Find the discriminant of 2x² − 4x + 3 = 0 and state the nature of its roots.",
+            options: ["D = 8, two distinct real roots", "D = −8, no real roots", "D = 0, equal roots", "D = 40, two real roots"],
+            answer: 1,
+            explanation: "D = (−4)² − 4(2)(3) = 16 − 24 = −8. A negative discriminant means the equation has no real roots."
+          },
+          {
+            question: "For what value of k does kx² − 2kx + 6 = 0 have equal roots (k ≠ 0)?",
+            options: ["k = 6", "k = 4", "k = 2", "k = 3"],
+            answer: 0,
+            explanation: "Equal roots need D = 0: 4k² − 24k = 0, so 4k(k − 6) = 0. Since k ≠ 0, k = 6."
+          },
+          {
+            question: "A rectangular mango grove has length twice its breadth and area 800 m². Is it possible?",
+            options: ["No, D is negative", "Yes — 2x² = 800 gives x = 20 m, so 20 m by 40 m", "Yes, but only 10 m by 20 m", "No, the area is too large"],
+            answer: 1,
+            explanation: "x(2x) = 800 gives x² = 400, so the breadth is 20 m and the length 40 m."
+          },
+          {
+            question: "Two friends' ages sum to 20 years and four years ago the product of their ages was 48. Is this possible?",
+            options: ["Yes, they are 8 and 12", "No — the resulting equation has a negative discriminant", "Yes, they are 6 and 14", "Yes, they are 10 and 10"],
+            answer: 1,
+            explanation: "With ages x and 20 − x, (x − 4)(16 − x) = 48 gives x² − 20x + 112 = 0, and D = 400 − 448 = −48 < 0, so no such ages exist."
+          },
+          {
+            question: "When D = 0, both roots equal:",
+            options: ["−b/a", "−b/2a", "c/a", "b/2a"],
+            answer: 1,
+            explanation: "With the square root term vanishing, the formula reduces to the single value x = −b/2a."
+          },
+          {
+            question: "How does the graph of a quadratic look when the equation has no real roots?",
+            options: ["It touches the x-axis once", "It lies entirely above or entirely below the x-axis", "It cuts the x-axis twice", "It is a straight line"],
+            answer: 1,
+            explanation: "No real roots means the parabola never meets the x-axis at all."
+          },
+          {
+            question: "The discriminant of x² + 4x + 4 = 0 is:",
+            options: ["16", "0", "32", "−16"],
+            answer: 1,
+            explanation: "D = 16 − 4(1)(4) = 0, so the equation has two equal roots, both x = −2."
+          },
+          {
+            question: "Which statement about the discriminant is correct?",
+            options: ["It gives the roots directly", "It tells us the nature of the roots without solving the equation", "It is always positive", "It equals the sum of the roots"],
+            answer: 1,
+            explanation: "D = b² − 4ac lets us classify the roots as distinct real, equal, or non-real before doing any further work."
+          },
+          {
+            question: "For which values of k does x² + kx + 4 = 0 have two distinct real roots?",
+            options: ["−4 < k < 4", "k > 4 or k < −4", "k = 4 only", "All values of k"],
+            answer: 1,
+            explanation: "D = k² − 16 > 0 requires k² > 16, so k > 4 or k < −4."
+          },
+          {
+            question: "The equation x² + 1 = 0 has:",
+            options: ["Two distinct real roots", "No real roots, since D = −4", "Two equal roots", "One real root"],
+            answer: 1,
+            explanation: "With a = 1, b = 0 and c = 1, D = 0 − 4 = −4 < 0, so there are no real roots."
+          },
+          {
+            question: "If a quadratic equation has real roots, its discriminant must be:",
+            options: ["Negative", "Greater than or equal to zero", "Exactly zero", "Exactly one"],
+            answer: 1,
+            explanation: "D ≥ 0 covers both cases — distinct roots when D > 0 and equal roots when D = 0."
+          },
+          {
+            question: "For 4x² − 12x + 9 = 0, the nature of the roots is:",
+            options: ["Two distinct real roots", "Two equal real roots", "No real roots", "Three roots"],
+            answer: 1,
+            explanation: "D = 144 − 4(4)(9) = 144 − 144 = 0, so both roots equal −b/2a = 12/8 = 1.5."
           }
         ]
       }
@@ -29817,6 +29949,60 @@ export const curriculumData = {
             options: ["Yes, with a=150 and d=50", "No, the costs don't increase uniformly", "Yes, but only for the first 5 metres", "No, this is a geometric progression"],
             answer: 0,
             explanation: "Each metre's cost is a fixed amount (₹50) more than the previous one's, so the costs 150, 200, 250, 300, ... form an AP with first term 150 and common difference 50."
+          },
+          {
+            question: "What is the common difference of the AP 3, 1, −1, −3, …?",
+            options: ["2", "−2", "−1", "−3"],
+            answer: 1,
+            explanation: "d = any term minus the one before it: 1 − 3 = −2. A common difference may be positive, negative or zero."
+          },
+          {
+            question: "State the formula for the nth term of an AP.",
+            options: ["aₙ = a + nd", "aₙ = a + (n − 1)d", "aₙ = na + d", "aₙ = a − (n − 1)d"],
+            answer: 1,
+            explanation: "The first term needs no addition, the second one d, the third 2d — so the nth term needs (n − 1)d."
+          },
+          {
+            question: "Find the 11th term of the AP 5, 8, 11, …",
+            options: ["33", "35", "38", "30"],
+            answer: 1,
+            explanation: "a = 5, d = 3, so a₁₁ = 5 + (11 − 1)(3) = 5 + 30 = 35."
+          },
+          {
+            question: "Which of these lists is an AP?",
+            options: ["2, 4, 8, 16, …", "1, 4, 9, 16, …", "7, 4, 1, −2, …", "1, 1/2, 1/3, 1/4, …"],
+            answer: 2,
+            explanation: "Only the third has a constant difference between successive terms, namely −3."
+          },
+          {
+            question: "The 10th term of an AP is 31 and its first term is 4. What is the common difference?",
+            options: ["2", "3", "4", "5"],
+            answer: 1,
+            explanation: "31 = 4 + 9d gives 9d = 27, so d = 3."
+          },
+          {
+            question: "How many terms are there in the AP 7, 13, 19, …, 205?",
+            options: ["32", "33", "34", "35"],
+            answer: 2,
+            explanation: "205 = 7 + (n − 1)(6) gives 198 = 6(n − 1), so n − 1 = 33 and n = 34."
+          },
+          {
+            question: "Is 0 a term of the AP 21, 18, 15, …?",
+            options: ["Yes, it is the 8th term", "No, because solving gives a non-integer value of n", "Yes, it is the 7th term", "Yes, it is the 22nd term"],
+            answer: 1,
+            explanation: "0 = 21 + (n − 1)(−3) gives n − 1 = 7, so n = 8 — the 8th term is indeed 0. Careful checking of n matters in such questions."
+          },
+          {
+            question: "If the common difference of an AP is zero, the sequence is:",
+            options: ["Increasing", "Constant — every term is the same", "Decreasing", "Not an AP"],
+            answer: 1,
+            explanation: "d may be zero, in which case every term equals the first, and the list is still an AP."
+          },
+          {
+            question: "The general form of an AP is:",
+            options: ["a, ar, ar², ar³, …", "a, a + d, a + 2d, a + 3d, …", "a, a², a³, …", "a, a/d, a/2d, …"],
+            answer: 1,
+            explanation: "Each term is obtained by adding the fixed common difference d to the previous one."
           }
         ]
       },
@@ -29855,6 +30041,96 @@ export const curriculumData = {
             options: ["₹12,600", "₹10,500", "₹2,100", "₹21,000"],
             answer: 0,
             explanation: "This is the sum of an AP with a=100, d=50, n=21. S₂₁ = (21/2)[2(100)+20(50)] = (21/2)(1200) = 12,600."
+          },
+          {
+            question: "State the formula for the sum of the first n terms of an AP.",
+            options: ["Sₙ = n(a + d)", "Sₙ = (n/2)[2a + (n − 1)d]", "Sₙ = (n/2)(a − l)", "Sₙ = na + d"],
+            answer: 1,
+            explanation: "If the last term l is known, the equivalent shorter form Sₙ = (n/2)(a + l) can be used instead."
+          },
+          {
+            question: "Find the sum of the first 22 terms of the AP 8, 3, −2, …",
+            options: ["−979", "979", "−89", "−1958"],
+            answer: 0,
+            explanation: "a = 8, d = −5, n = 22: S₂₂ = 11[16 + 21(−5)] = 11(16 − 105) = 11(−89) = −979."
+          },
+          {
+            question: "The sum of the first n natural numbers is given by:",
+            options: ["n(n + 1)", "n(n + 1)/2", "n²", "(n + 1)/2"],
+            answer: 1,
+            explanation: "This is the AP 1, 2, 3, … with a = 1 and d = 1, so Sₙ = (n/2)(1 + n) = n(n + 1)/2. For n = 100 this gives 5050."
+          },
+          {
+            question: "Find the sum of the first 10 terms of the AP 2, 7, 12, …",
+            options: ["245", "225", "265", "200"],
+            answer: 0,
+            explanation: "S₁₀ = (10/2)[2(2) + 9(5)] = 5[4 + 45] = 5 × 49 = 245."
+          },
+          {
+            question: "How can the nth term be recovered from the sums?",
+            options: ["aₙ = Sₙ + Sₙ₋₁", "aₙ = Sₙ − Sₙ₋₁", "aₙ = Sₙ ÷ n", "aₙ = Sₙ × n"],
+            answer: 1,
+            explanation: "The sum to n terms minus the sum to (n − 1) terms leaves exactly the nth term."
+          },
+          {
+            question: "An AP has first term 5 and last term 45, with 9 terms. Its sum is:",
+            options: ["225", "200", "405", "250"],
+            answer: 0,
+            explanation: "Using Sₙ = (n/2)(a + l) = (9/2)(5 + 45) = 4.5 × 50 = 225."
+          },
+          {
+            question: "Find the sum of the first 15 multiples of 8.",
+            options: ["960", "480", "1200", "840"],
+            answer: 0,
+            explanation: "This is the AP 8, 16, 24, … with a = 8 and d = 8: S₁₅ = (15/2)[16 + 14(8)] = 7.5 × 128 = 960."
+          },
+          {
+            question: "Which form of the sum formula is most convenient when the last term is known?",
+            options: ["Sₙ = (n/2)[2a + (n − 1)d]", "Sₙ = (n/2)(a + l)", "aₙ = a + (n − 1)d", "Sₙ = n × aₙ"],
+            answer: 1,
+            explanation: "Knowing the first and last terms means the average of the two, multiplied by the number of terms, gives the sum directly."
+          },
+          {
+            question: "Find the sum of the first 20 odd numbers: 1 + 3 + 5 + …",
+            options: ["400", "380", "441", "200"],
+            answer: 0,
+            explanation: "a = 1, d = 2, n = 20: S₂₀ = (20/2)[2 + 19(2)] = 10 × 40 = 400 — the sum of the first n odd numbers is always n²."
+          },
+          {
+            question: "How many terms of the AP 9, 17, 25, … are needed to make a sum of 636?",
+            options: ["10", "12", "14", "16"],
+            answer: 1,
+            explanation: "636 = (n/2)[18 + (n − 1)8] gives 1272 = n(8n + 10), so 8n² + 10n − 1272 = 0 and n = 12."
+          },
+          {
+            question: "The sum of the first n terms of an AP is 3n² + 5n. What is its first term?",
+            options: ["3", "8", "5", "11"],
+            answer: 1,
+            explanation: "a₁ = S₁ = 3(1)² + 5(1) = 8."
+          },
+          {
+            question: "In an AP, S₁₀ = 100 and S₅ = 30. What is the sum of terms 6 to 10?",
+            options: ["130", "70", "50", "60"],
+            answer: 1,
+            explanation: "The sum of the 6th to 10th terms is S₁₀ − S₅ = 100 − 30 = 70."
+          },
+          {
+            question: "Find the sum: 1 + 2 + 3 + … + 50.",
+            options: ["1225", "1275", "2550", "1250"],
+            answer: 1,
+            explanation: "n(n + 1)/2 = 50 × 51/2 = 1275."
+          },
+          {
+            question: "The sum of the first 7 terms of an AP is 49 and the first term is 1. What is the 7th term?",
+            options: ["11", "13", "15", "9"],
+            answer: 1,
+            explanation: "Using Sₙ = (n/2)(a + l): 49 = (7/2)(1 + l), so 14 = 1 + l and l = 13."
+          },
+          {
+            question: "Why is the AP sum formula sometimes written as n × (average of first and last term)?",
+            options: ["It is a coincidence", "Because Sₙ = (n/2)(a + l), and (a + l)/2 is exactly that average", "Because all terms are equal", "It only works for even n"],
+            answer: 1,
+            explanation: "The terms are evenly spaced, so their average equals the average of the first and last — a neat way to remember the formula."
           }
         ]
       }
@@ -29901,6 +30177,54 @@ export const curriculumData = {
             options: ["It gets trisected", "It gets bisected (cut into two equal halves)", "Nothing — the line doesn't reach the third side", "It becomes perpendicular to the line"],
             answer: 1,
             explanation: "By the Basic Proportionality Theorem, since the line is parallel to one side and passes through the midpoint of another, it must divide the third side in the ratio 1:1 — i.e., it bisects it."
+          },
+          {
+            question: "Two polygons with the same number of sides are similar if:",
+            options: ["Their areas are equal", "Their corresponding angles are equal AND their corresponding sides are in the same ratio", "Only their angles are equal", "Only their sides are proportional"],
+            answer: 1,
+            explanation: "Both conditions are required for polygons in general; for triangles alone, either one on its own turns out to be enough."
+          },
+          {
+            question: "Which of these are always similar to one another?",
+            options: ["All rectangles", "All circles", "All triangles", "All rhombuses"],
+            answer: 1,
+            explanation: "All circles, all squares and all equilateral triangles are similar, but rectangles can have different shape ratios."
+          },
+          {
+            question: "State the Basic Proportionality Theorem.",
+            options: ["Parallel lines are always equal in length", "A line drawn parallel to one side of a triangle divides the other two sides in the same ratio", "The sides of a triangle are always proportional", "Opposite angles of a triangle are equal"],
+            answer: 1,
+            explanation: "In ΔABC with DE parallel to BC, AD/DB = AE/EC. This is also called Thales' theorem."
+          },
+          {
+            question: "In ΔABC, DE ∥ BC with AD = 2 cm, DB = 3 cm and AE = 4 cm. Find EC.",
+            options: ["5 cm", "6 cm", "8 cm", "2.67 cm"],
+            answer: 1,
+            explanation: "AD/DB = AE/EC gives 2/3 = 4/EC, so EC = 12/2 = 6 cm."
+          },
+          {
+            question: "What does the converse of the Basic Proportionality Theorem let you prove?",
+            options: ["That two triangles are congruent", "That a line is parallel to the third side, if it divides two sides in the same ratio", "That the angles are equal", "That the triangle is equilateral"],
+            answer: 1,
+            explanation: "It runs the theorem backwards: equal ratios imply parallelism."
+          },
+          {
+            question: "In ΔPQR, PE = 4 cm, QE = 4.5 cm, PF = 8 cm and RF = 9 cm. Is EF ∥ QR?",
+            options: ["No, the ratios differ", "Yes, since 4/4.5 = 8/9", "It cannot be determined", "Only if the triangle is isosceles"],
+            answer: 1,
+            explanation: "Both ratios equal 8/9, so by the converse of BPT the line EF is parallel to QR."
+          },
+          {
+            question: "Are all equilateral triangles similar?",
+            options: ["No, only if they are the same size", "Yes, since all their angles are 60° and their sides are always in proportion", "Only if they are right-angled", "Only two at a time"],
+            answer: 1,
+            explanation: "Equal angles and proportional sides are guaranteed regardless of size, so any two equilateral triangles are similar."
+          },
+          {
+            question: "Similar figures have the same shape but:",
+            options: ["Must also be the same size", "May be different in size", "Must have equal areas", "Must be congruent"],
+            answer: 1,
+            explanation: "Congruent figures are both the same shape and the same size; similar figures need only match in shape."
           }
         ]
       },
@@ -29943,6 +30267,102 @@ export const curriculumData = {
             options: ["The triangles are congruent", "The triangles are similar by the SSS similarity criterion", "The triangles are neither similar nor congruent", "Only one pair of angles is equal"],
             answer: 1,
             explanation: "The SSS similarity criterion states that if the corresponding sides of two triangles are all in the same ratio, then their corresponding angles are equal and the triangles are similar."
+          },
+          {
+            question: "Why is the AAA criterion usually shortened to AA?",
+            options: ["Because two angles are easier to draw", "If two angles match, the third must also match by the angle sum property", "Because AAA is incorrect", "Because triangles have only two angles"],
+            answer: 1,
+            explanation: "The angles of a triangle add to 180°, so matching two pairs forces the third pair to match as well."
+          },
+          {
+            question: "The SAS similarity criterion requires:",
+            options: ["All three sides proportional", "One pair of equal angles with the sides including those angles proportional", "Two pairs of equal angles", "Two equal sides and one equal angle"],
+            answer: 1,
+            explanation: "The equal angle must be the one contained between the two proportional sides."
+          },
+          {
+            question: "Two triangles have angles 50°, 60°, 70° and 50°, 60°, 70°. They are:",
+            options: ["Congruent", "Similar by AA", "Neither similar nor congruent", "Similar by SSS"],
+            answer: 1,
+            explanation: "Equal corresponding angles guarantee similarity, but say nothing about size — so they need not be congruent."
+          },
+          {
+            question: "Two triangles have sides 3, 4, 5 and 6, 8, 10. Which criterion proves similarity?",
+            options: ["AA", "SSS similarity, since all ratios equal 1/2", "SAS", "They are not similar"],
+            answer: 1,
+            explanation: "3/6 = 4/8 = 5/10 = 1/2, so all three pairs of sides are proportional."
+          },
+          {
+            question: "If two triangles are similar with ratio of sides 2:3, the ratio of their corresponding altitudes is:",
+            options: ["4:9", "2:3", "3:2", "1:1"],
+            answer: 1,
+            explanation: "All corresponding linear measurements in similar triangles — sides, altitudes, medians — share the same ratio."
+          },
+          {
+            question: "Are all congruent triangles similar?",
+            options: ["No, never", "Yes, congruence is the special case of similarity with ratio 1:1", "Only right-angled ones", "Only if they are equilateral"],
+            answer: 1,
+            explanation: "Congruent triangles have equal angles and sides in the ratio 1:1, which satisfies the definition of similarity."
+          },
+          {
+            question: "Are all similar triangles congruent?",
+            options: ["Yes, always", "No — they have the same shape but may differ in size", "Only if they are isosceles", "Only if the ratio is 2:1"],
+            answer: 1,
+            explanation: "Similarity requires only proportional sides; congruence additionally requires the ratio to be exactly 1."
+          },
+          {
+            question: "In similar triangles ABC and PQR, which sides correspond if ∠A = ∠P and ∠B = ∠Q?",
+            options: ["AB with QR", "AB with PQ, BC with QR and AC with PR", "AB with PR", "The order does not matter"],
+            answer: 1,
+            explanation: "Correspondence follows the order of the equal angles, which is why the naming of similar triangles must be written carefully."
+          },
+          {
+            question: "A vertical pole 6 m tall casts a 4 m shadow while a tower casts a 28 m shadow at the same time. How tall is the tower?",
+            options: ["36 m", "42 m", "18.7 m", "48 m"],
+            answer: 1,
+            explanation: "The two triangles are similar, so 6/4 = h/28, giving h = 42 m."
+          },
+          {
+            question: "In a right triangle, the altitude to the hypotenuse creates two triangles that are:",
+            options: ["Congruent to each other", "Similar to each other and to the original triangle", "Equilateral", "Unrelated"],
+            answer: 1,
+            explanation: "Each smaller triangle shares an angle with the original and has a right angle, so AA similarity applies three times over."
+          },
+          {
+            question: "If ΔABC ~ ΔDEF and AB = 4, DE = 6, what is the ratio of their corresponding sides?",
+            options: ["3:2", "2:3", "4:6:2", "1:2"],
+            answer: 1,
+            explanation: "The scale factor is AB:DE = 4:6 = 2:3, and every pair of corresponding sides shares it."
+          },
+          {
+            question: "Which of the following pairs of triangles must be similar?",
+            options: ["Two isosceles triangles", "Two right-angled triangles sharing another equal angle", "Two triangles with equal perimeters", "Two triangles with equal areas"],
+            answer: 1,
+            explanation: "The right angles match and one more angle matches, so AA similarity gives the result."
+          },
+          {
+            question: "Two triangles have sides 2, 3, 4 and 4, 6, 7. Are they similar?",
+            options: ["Yes, by SSS", "No, since 2/4 = 3/6 but 4/7 differs", "Yes, by SAS", "Yes, by AA"],
+            answer: 1,
+            explanation: "All three ratios must be equal for SSS similarity; here the third pair breaks the pattern."
+          },
+          {
+            question: "In ΔABC, DE ∥ BC divides AB in the ratio 1:2. What is the ratio AE:EC?",
+            options: ["2:1", "1:2", "1:3", "3:1"],
+            answer: 1,
+            explanation: "By the Basic Proportionality Theorem the other side is divided in the same ratio, 1:2."
+          },
+          {
+            question: "Which additional information, with one pair of equal angles, proves similarity by SAS?",
+            options: ["The third sides are equal", "The two sides containing those angles are proportional", "The perimeters are equal", "The areas are equal"],
+            answer: 1,
+            explanation: "The proportional sides must be the ones enclosing the equal angle for the SAS criterion to apply."
+          },
+          {
+            question: "If ΔPQR ~ ΔXYZ with a scale factor of 3, and PQ = 5 cm, then XY equals:",
+            options: ["5/3 cm", "15 cm", "8 cm", "3 cm"],
+            answer: 1,
+            explanation: "Multiplying every corresponding length by the scale factor gives XY = 5 × 3 = 15 cm."
           }
         ]
       }
@@ -30001,6 +30421,156 @@ export const curriculumData = {
             options: ["(0, 9)", "(0, 4)", "(0, 5)", "(0, -9)"],
             answer: 0,
             explanation: "A point on the y-axis is (0,y). Setting distance to A equal to distance to B: 36+25+y²-10y = 16+9+y²-6y, which simplifies to 4y=36, so y=9. The point is (0, 9)."
+          },
+          {
+            question: "State the distance formula for points P(x₁, y₁) and Q(x₂, y₂).",
+            options: ["√[(x₂ + x₁)² + (y₂ + y₁)²]", "√[(x₂ − x₁)² + (y₂ − y₁)²]", "(x₂ − x₁) + (y₂ − y₁)", "√[(x₂ − x₁) + (y₂ − y₁)]"],
+            answer: 1,
+            explanation: "It follows directly from Pythagoras' theorem applied to the right triangle formed by the horizontal and vertical gaps."
+          },
+          {
+            question: "Find the distance between (3, 4) and the origin.",
+            options: ["7", "5", "12", "25"],
+            answer: 1,
+            explanation: "d = √(x² + y²) = √(9 + 16) = √25 = 5."
+          },
+          {
+            question: "Find the distance between the points (2, 3) and (6, 6).",
+            options: ["4", "5", "7", "√13"],
+            answer: 1,
+            explanation: "d = √[(6 − 2)² + (6 − 3)²] = √(16 + 9) = √25 = 5."
+          },
+          {
+            question: "The distance of the point (5, −7) from the y-axis is:",
+            options: ["7", "5", "−7", "√74"],
+            answer: 1,
+            explanation: "Distance from the y-axis is the magnitude of the x-coordinate, and distance from the x-axis is the magnitude of the y-coordinate."
+          },
+          {
+            question: "State the midpoint formula for the segment joining (x₁, y₁) and (x₂, y₂).",
+            options: ["((x₁ − x₂)/2, (y₁ − y₂)/2)", "((x₁ + x₂)/2, (y₁ + y₂)/2)", "(x₁x₂/2, y₁y₂/2)", "(x₁ + x₂, y₁ + y₂)"],
+            answer: 1,
+            explanation: "The midpoint is the section formula with the ratio 1:1, which reduces to the average of the coordinates."
+          },
+          {
+            question: "The point P divides the segment joining A(x₁,y₁) and B(x₂,y₂) in the ratio m₁:m₂. Its x-coordinate is:",
+            options: ["(m₁x₁ + m₂x₂)/(m₁ + m₂)", "(m₁x₂ + m₂x₁)/(m₁ + m₂)", "(x₁ + x₂)/(m₁ + m₂)", "m₁x₂ − m₂x₁"],
+            answer: 1,
+            explanation: "Note the cross pattern: m₁ multiplies the second point's coordinate and m₂ the first point's."
+          },
+          {
+            question: "Find the point dividing the segment from (4, −3) to (8, 5) internally in the ratio 3:1.",
+            options: ["(6, 1)", "(7, 3)", "(5, −1)", "(8, 5)"],
+            answer: 1,
+            explanation: "x = (3×8 + 1×4)/4 = 28/4 = 7 and y = (3×5 + 1×(−3))/4 = 12/4 = 3."
+          },
+          {
+            question: "Three points are collinear if:",
+            options: ["They form a right triangle", "The sum of two of the distances between them equals the third", "All distances are equal", "They lie on the axes"],
+            answer: 1,
+            explanation: "If AB + BC = AC then B lies on the segment AC, so no triangle is formed."
+          },
+          {
+            question: "A triangle whose two sides are equal in length is:",
+            options: ["Equilateral", "Isosceles", "Scalene", "Right-angled"],
+            answer: 1,
+            explanation: "Computing the three side lengths with the distance formula is the standard way to classify a triangle given its vertices."
+          },
+          {
+            question: "Find the midpoint of the segment joining (4, −2) and (8, 6).",
+            options: ["(12, 4)", "(6, 2)", "(2, 4)", "(6, 4)"],
+            answer: 1,
+            explanation: "((4 + 8)/2, (−2 + 6)/2) = (6, 2)."
+          },
+          {
+            question: "Do P(3, 2), Q(−2, −3) and R(2, 3) form a triangle?",
+            options: ["No, they are collinear", "Yes, and it is scalene since all three sides differ", "Yes, and it is equilateral", "Yes, and it is right-angled isosceles"],
+            answer: 1,
+            explanation: "PQ = √50, QR = √52 and PR = √2 are all different, and no two distances add to the third — so a scalene triangle is formed."
+          },
+          {
+            question: "A point on the x-axis has coordinates of the form:",
+            options: ["(0, y)", "(x, 0)", "(x, x)", "(0, 0)"],
+            answer: 1,
+            explanation: "Every point on the x-axis has y = 0, just as every point on the y-axis has x = 0."
+          },
+          {
+            question: "The distance of P(2, 3) from the x-axis is:",
+            options: ["2", "3", "5", "√13"],
+            answer: 1,
+            explanation: "Distance from the x-axis is |y| = 3."
+          },
+          {
+            question: "If the midpoint of the segment joining (1, 2) and (x, 6) is (4, 4), find x.",
+            options: ["5", "7", "3", "8"],
+            answer: 1,
+            explanation: "(1 + x)/2 = 4 gives 1 + x = 8, so x = 7."
+          },
+          {
+            question: "In which quadrant does the point (−3, −5) lie?",
+            options: ["First", "Second", "Third", "Fourth"],
+            answer: 2,
+            explanation: "Both coordinates are negative, which places the point in the third quadrant."
+          },
+          {
+            question: "The vertices of a square are given. What must be true of its diagonals?",
+            options: ["They are unequal", "They are equal in length and bisect each other", "They are perpendicular but unequal", "They do not intersect"],
+            answer: 1,
+            explanation: "Checking that all four sides are equal and both diagonals are equal is how a square is verified using the distance formula."
+          },
+          {
+            question: "Find the distance between (−4, 0) and (3, 0).",
+            options: ["1", "7", "−7", "√7"],
+            answer: 1,
+            explanation: "Both points lie on the x-axis, so the distance is simply |3 − (−4)| = 7."
+          },
+          {
+            question: "The section formula with ratio 1:1 gives:",
+            options: ["The endpoint B", "The midpoint of the segment", "The origin", "A point outside the segment"],
+            answer: 1,
+            explanation: "Equal parts on either side means the dividing point is exactly halfway along."
+          },
+          {
+            question: "Point P divides AB in the ratio 2:3. Which part of the segment is longer?",
+            options: ["AP", "PB", "They are equal", "It cannot be determined"],
+            answer: 1,
+            explanation: "The ratio AP:PB = 2:3 means PB is the larger of the two parts."
+          },
+          {
+            question: "Which theorem is the distance formula derived from?",
+            options: ["Thales' theorem", "Pythagoras' theorem", "The Basic Proportionality Theorem", "The angle sum property"],
+            answer: 1,
+            explanation: "The horizontal and vertical differences form the two legs of a right triangle whose hypotenuse is the required distance."
+          },
+          {
+            question: "If a point is equidistant from two given points, it lies on:",
+            options: ["The line joining them", "The perpendicular bisector of the segment joining them", "A circle through them", "The x-axis"],
+            answer: 1,
+            explanation: "Setting the two distances equal and simplifying always produces the equation of the perpendicular bisector."
+          },
+          {
+            question: "The distance between (0, 0) and (a, b) is:",
+            options: ["a + b", "√(a² + b²)", "ab", "a² + b²"],
+            answer: 1,
+            explanation: "This is the distance formula applied with the origin as one of the points."
+          },
+          {
+            question: "Two points have the same y-coordinate. The segment joining them is:",
+            options: ["Vertical", "Horizontal", "Slanted at 45°", "A single point"],
+            answer: 1,
+            explanation: "With no change in y, the segment runs parallel to the x-axis and its length is just the difference of the x-coordinates."
+          },
+          {
+            question: "Find the point that divides the segment from (0, 0) to (10, 20) in the ratio 1:4.",
+            options: ["(2, 4)", "(2.5, 5)", "(8, 16)", "(5, 10)"],
+            answer: 0,
+            explanation: "x = (1×10 + 4×0)/5 = 2 and y = (1×20 + 4×0)/5 = 4."
+          },
+          {
+            question: "If three points A, B and C satisfy AB = BC = CA, the triangle is:",
+            options: ["Scalene", "Equilateral", "Right-angled", "Isosceles but not equilateral"],
+            answer: 1,
+            explanation: "All three sides being equal is precisely the definition of an equilateral triangle."
           }
         ]
       }
