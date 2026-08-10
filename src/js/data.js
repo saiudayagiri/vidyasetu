@@ -12266,6 +12266,60 @@ export const curriculumData = {
                       options: ["All cells have a cell wall", "Only plant cells have a cell wall", "Only animal cells have a cell wall", "Neither has a cell wall"],
                       answer: 1,
                       explanation: "Animal cells completely lack a cell wall, which is one of the clearest differences between the two."
+                    },
+                    {
+                      question: "Cellulose, which forms the plant cell wall, is a type of:",
+                      options: ["Protein", "Carbohydrate", "Fat", "Mineral"],
+                      answer: 1,
+                      explanation: "Cellulose is a carbohydrate that gives the wall its rigidity and strength."
+                    },
+                    {
+                      question: "Which of these would you NOT expect to find in an animal cell?",
+                      options: ["Cytoplasm", "Chloroplast", "Cell membrane", "Nucleus"],
+                      answer: 1,
+                      explanation: "Animal cells have no plastids of any kind, so they cannot make their own food."
+                    },
+                    {
+                      question: "Plastids that are green are specifically called:",
+                      options: ["Leucoplasts", "Chloroplasts", "Chromoplasts", "Vacuoles"],
+                      answer: 1,
+                      explanation: "They contain chlorophyll, the pigment that traps light energy for photosynthesis."
+                    },
+                    {
+                      question: "Which feature best explains why a plant can stand upright without a skeleton?",
+                      options: ["Its chloroplasts", "Its rigid cellulose cell walls", "Its nucleus", "Its cell membrane"],
+                      answer: 1,
+                      explanation: "The wall provides shape and rigidity, letting cells stay firm and compactly arranged."
+                    },
+                    {
+                      question: "A cell is examined and found to have a cell membrane and nucleus but no cell wall and no plastids. It is:",
+                      options: ["A plant cell", "An animal cell", "A bacterial cell", "A virus"],
+                      answer: 1,
+                      explanation: "The absence of both a cell wall and plastids identifies it as an animal cell."
+                    },
+                    {
+                      question: "Where exactly is the cell wall located in a plant cell?",
+                      options: ["Inside the nucleus", "Outside the cell membrane", "Inside the cytoplasm", "Around the chloroplast"],
+                      answer: 1,
+                      explanation: "It forms an additional outer boundary surrounding the cell membrane."
+                    },
+                    {
+                      question: "Why can plants survive fluctuations in wind and temperature that would damage bare cells?",
+                      options: ["They have more nuclei", "The cell wall protects against high wind speed, temperature variation and atmospheric moisture", "They move away", "They have thicker membranes"],
+                      answer: 1,
+                      explanation: "That protective role is one of the cell wall's main functions."
+                    },
+                    {
+                      question: "Animals must obtain food from their surroundings because their cells:",
+                      options: ["Have no cytoplasm", "Lack chloroplasts and so cannot photosynthesise", "Have a cell wall", "Are too small"],
+                      answer: 1,
+                      explanation: "Without chlorophyll-containing plastids, an animal cell cannot manufacture its own food."
+                    },
+                    {
+                      question: "Which pair correctly matches a structure to the cells that have it?",
+                      options: ["Cell wall — animal cells only", "Chloroplast — plant cells only", "Cell membrane — plant cells only", "Nucleus — animal cells only"],
+                      answer: 1,
+                      explanation: "The cell membrane and nucleus are common to both; the wall and chloroplasts are exclusive to plant cells."
                     }
                   ]
                 }
