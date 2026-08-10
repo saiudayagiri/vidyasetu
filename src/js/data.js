@@ -141,6 +141,96 @@ export const curriculumData = {
                       options: ["Which is the most beautiful colour?", "Does a paper plane fly further with wider wings?", "Which festival is the happiest?", "Is chocolate nicer than ice cream?"],
                       answer: 1,
                       explanation: "A scientific question can be tested by observation or experiment and gives the same answer for everyone. Questions about beauty or preference are matters of opinion, not investigation."
+                    },
+                    {
+                      question: "A cook wonders why the dal spilled out of the cooker and checks whether there was too much water. The cook is:",
+                      options: ["Only guessing", "Using the scientific method", "Wasting time", "Following a recipe"],
+                      answer: 1,
+                      explanation: "Anyone who observes, questions, guesses and tests is working like a scientist."
+                    },
+                    {
+                      question: "Why do scientists around the world often work in large teams?",
+                      options: ["Science is boring alone", "Sharing ideas and help makes discovery easier and more fun", "Rules require it", "Teams work faster only"],
+                      answer: 1,
+                      explanation: "If you cannot find an answer yourself, asking others is a good next step."
+                    },
+                    {
+                      question: "A bicycle repair person tries to find where the air is leaking from a flat tyre. Which step of the scientific method is this?",
+                      options: ["Making an observation", "Testing a guess", "Analysing results", "Writing a report"],
+                      answer: 1,
+                      explanation: "The guess about a leak is being checked directly."
+                    },
+                    {
+                      question: "Which of these will you explore in this science book?",
+                      options: ["Only magnets", "Living things, food, water, materials, magnets and outer space", "Only outer space", "Only measurement"],
+                      answer: 1,
+                      explanation: "The book covers a wide range of topics across science."
+                    },
+                    {
+                      question: "What does the pen example show about a wrong guess?",
+                      options: ["The experiment has failed", "You simply make a new guess and test that instead", "Science cannot help", "The pen must be thrown away"],
+                      answer: 1,
+                      explanation: "If the refill is not empty, the next guess might be that the ink dried up."
+                    },
+                    {
+                      question: "An electrician checks whether a bulb or the switch is faulty. This is an example of:",
+                      options: ["Random repair", "Testing one possible cause at a time", "Guessing without testing", "Copying an answer"],
+                      answer: 1,
+                      explanation: "Testing one thing at a time shows clearly which guess was right."
+                    },
+                    {
+                      question: "What does it mean when a jigsaw piece has to be moved in the science puzzle?",
+                      options: ["The puzzle is spoilt", "A new discovery has changed our earlier understanding", "Science has failed", "The pieces were lost"],
+                      answer: 1,
+                      explanation: "Scientific understanding keeps improving as evidence grows."
+                    },
+                    {
+                      question: "Which of these is a hypothesis rather than an observation?",
+                      options: ["The pen is not writing", "Maybe the ink has finished", "The pen is blue", "The pen is in my bag"],
+                      answer: 1,
+                      explanation: "A hypothesis is a possible answer that still has to be tested."
+                    },
+                    {
+                      question: "After testing a guess, the next step is to:",
+                      options: ["Forget about it", "Analyse the results to see whether they answer the question", "Start a new topic", "Ask a teacher for the answer"],
+                      answer: 1,
+                      explanation: "Analysis tells you whether the guess was correct."
+                    },
+                    {
+                      question: "Science is best described as:",
+                      options: ["A list of facts to memorise", "A step-by-step process for finding answers to questions", "A set of fixed rules", "A collection of opinions"],
+                      answer: 1,
+                      explanation: "Facts matter, but the method of finding them matters more."
+                    },
+                    {
+                      question: "Studying grains of sand as well as mountains shows that science:",
+                      options: ["Only studies big things", "Has something new to discover at every scale", "Ignores small things", "Is only about rocks"],
+                      answer: 1,
+                      explanation: "Every discovery, large or small, adds a piece to the puzzle."
+                    },
+                    {
+                      question: "Which question makes a good starting point for the scientific method?",
+                      options: ["Which colour is prettiest?", "Why did my pen stop writing?", "Who is the nicest person?", "Which song is best?"],
+                      answer: 1,
+                      explanation: "A good question can be investigated with a test or observation."
+                    },
+                    {
+                      question: "An observation that makes us wonder usually leads to:",
+                      options: ["A conclusion straight away", "A question", "An experiment result", "A finished puzzle"],
+                      answer: 1,
+                      explanation: "The question then leads to a guess that can be tested."
+                    },
+                    {
+                      question: "Testing a guess can be done by:",
+                      options: ["Experiments or more careful observations", "Only expensive equipment", "Only asking an expert", "Only reading a book"],
+                      answer: 1,
+                      explanation: "Both experiments and observations count as tests."
+                    },
+                    {
+                      question: "The best attitude for learning science is:",
+                      options: ["Memorising every fact", "Staying curious and willing to test ideas", "Never asking questions", "Accepting all answers"],
+                      answer: 1,
+                      explanation: "Curiosity is what starts the whole process off."
                     }
                   ]
                 }
@@ -220,6 +310,66 @@ export const curriculumData = {
                       options: ["It is a monocot with parallel venation and fibrous roots", "It is a dicot with reticulate venation and a taproot", "It cannot be a flowering plant", "It will definitely be a tree"],
                       answer: 1,
                       explanation: "Splitting into two parts means it has two cotyledons — a dicot. Dicots typically have reticulate leaf venation and a taproot system."
+                    },
+                    {
+                      question: "Which group of plants has hard, thick, brown, woody stems?",
+                      options: ["Herbs", "Trees", "Shrubs", "Creepers"],
+                      answer: 1,
+                      explanation: "Their branches usually start higher up on the stem."
+                    },
+                    {
+                      question: "A net-like pattern of veins on a leaf is called:",
+                      options: ["Parallel venation", "Reticulate venation", "Fibrous venation", "Taproot venation"],
+                      answer: 1,
+                      explanation: "Hibiscus leaves show this pattern."
+                    },
+                    {
+                      question: "Which root type has one main root with small side roots?",
+                      options: ["Fibrous root", "Taproot", "Prop root", "Cling root"],
+                      answer: 1,
+                      explanation: "Mustard, hibiscus and chickpea have taproots."
+                    },
+                    {
+                      question: "A bunch of similar-sized thin roots arising together is called:",
+                      options: ["Taproot", "Fibrous root", "Main root", "Side root"],
+                      answer: 1,
+                      explanation: "Grasses and maize show this kind of root system."
+                    },
+                    {
+                      question: "A chickpea seed splits into two parts. Each part is called:",
+                      options: ["A leaf", "A cotyledon", "A root", "A stem"],
+                      answer: 1,
+                      explanation: "Maize, by contrast, has just one thin cotyledon."
+                    },
+                    {
+                      question: "A seed with two cotyledons belongs to a plant called a:",
+                      options: ["Monocot", "Dicot", "Shrub", "Herb"],
+                      answer: 1,
+                      explanation: "Dicot plants usually have reticulate venation and taproots."
+                    },
+                    {
+                      question: "Maize has one cotyledon, so it is a:",
+                      options: ["Dicot", "Monocot", "Shrub", "Tree"],
+                      answer: 1,
+                      explanation: "Monocots usually show parallel venation and fibrous roots."
+                    },
+                    {
+                      question: "Which plants are short with soft, green stems?",
+                      options: ["Trees", "Herbs", "Shrubs", "Climbers"],
+                      answer: 1,
+                      explanation: "Shrubs are taller than herbs and have branches near the base."
+                    },
+                    {
+                      question: "Parallel venation is usually found together with:",
+                      options: ["A taproot system", "A fibrous root system", "No roots", "A woody stem"],
+                      answer: 1,
+                      explanation: "This combination is typical of monocot plants."
+                    },
+                    {
+                      question: "What is the safest way to tell whether a plant is a monocot or a dicot?",
+                      options: ["Look at its height", "Check its seed, leaf venation and root type together", "Count its flowers", "Measure its stem"],
+                      answer: 1,
+                      explanation: "Several features together give a much more reliable answer than one alone."
                     }
                   ]
                 },
@@ -300,6 +450,66 @@ export const curriculumData = {
                       options: ["Ways to increase tourism only", "Efforts to conserve India's biodiversity", "Types of animal movement", "Types of plant grouping"],
                       answer: 1,
                       explanation: "These are government conservation initiatives aimed at protecting endangered species and their habitats, helping preserve India's biodiversity."
+                    },
+                    {
+                      question: "The place where a plant or animal lives is called its:",
+                      options: ["Adaptation", "Habitat", "Biodiversity", "Region"],
+                      answer: 1,
+                      explanation: "A habitat supplies food, water, air and shelter."
+                    },
+                    {
+                      question: "Special features that help a living thing survive in its surroundings are called:",
+                      options: ["Habits", "Adaptations", "Habitats", "Instincts"],
+                      answer: 1,
+                      explanation: "Camels in hot and cold deserts show very different adaptations."
+                    },
+                    {
+                      question: "Which of these is an aquatic habitat?",
+                      options: ["A desert", "A pond", "A forest floor", "A grassland"],
+                      answer: 1,
+                      explanation: "Terrestrial habitats are on land, while aquatic habitats are in water."
+                    },
+                    {
+                      question: "A fish moves through water using its:",
+                      options: ["Legs", "Fins and tail", "Wings", "Claws"],
+                      answer: 1,
+                      explanation: "Different animals use different body parts to move about."
+                    },
+                    {
+                      question: "Which animal walks using legs and also flies using wings?",
+                      options: ["Snake", "Pigeon", "Fish", "Snail"],
+                      answer: 1,
+                      explanation: "A housefly does the same."
+                    },
+                    {
+                      question: "Project Tiger was launched in which year?",
+                      options: ["1947", "1973", "1990", "2005"],
+                      answer: 1,
+                      explanation: "It is one of India's major conservation efforts."
+                    },
+                    {
+                      question: "What happens when a habitat is damaged?",
+                      options: ["Nothing changes", "Plants and animals lose their homes, food and resources", "Only trees are affected", "Animals adapt instantly"],
+                      answer: 1,
+                      explanation: "This leads to a loss of biodiversity."
+                    },
+                    {
+                      question: "A camel in a hot desert has long legs mainly to:",
+                      options: ["Run faster than others", "Keep its body away from the hot sand", "Reach tall trees", "Swim better"],
+                      answer: 1,
+                      explanation: "Cold desert camels have very different features."
+                    },
+                    {
+                      question: "Biodiversity means:",
+                      options: ["The number of people in a place", "The variety of living things in a place", "The size of a habitat", "The weather of a region"],
+                      answer: 1,
+                      explanation: "Conserving habitats is how biodiversity is protected."
+                    },
+                    {
+                      question: "A snake moves by:",
+                      options: ["Walking on legs", "Crawling with its body", "Flying", "Swimming with fins"],
+                      answer: 1,
+                      explanation: "Animals without legs still find effective ways to move."
                     }
                   ]
                 }
