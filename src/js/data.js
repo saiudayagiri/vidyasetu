@@ -29150,6 +29150,24 @@ export const curriculumData = {
             options: ["Their product", "1", "The smaller number", "0"],
             answer: 1,
             explanation: "Coprime numbers share no prime factor, so the only common factor is 1 — and their LCM is simply their product."
+          },
+          {
+            question: "Which of these numbers is composite?",
+            options: ["17", "51", "23", "31"],
+            answer: 1,
+            explanation: "51 = 3 × 17, so it has factors other than 1 and itself; the others are prime."
+          },
+          {
+            question: "The LCM of two numbers is always:",
+            options: ["Smaller than the HCF", "A multiple of their HCF", "Equal to their sum", "A prime number"],
+            answer: 1,
+            explanation: "Since HCF × LCM = a × b, the HCF always divides the LCM."
+          },
+          {
+            question: "What is the smallest number that is exactly divisible by both 15 and 20?",
+            options: ["5", "60", "300", "35"],
+            answer: 1,
+            explanation: "This is the LCM: 15 = 3 × 5 and 20 = 2² × 5, so LCM = 2² × 3 × 5 = 60."
           }
         ]
       },
@@ -29363,6 +29381,24 @@ export const curriculumData = {
             options: ["One", "None", "Two", "Infinitely many"],
             answer: 1,
             explanation: "Such a graph never meets the x-axis, so the polynomial — a non-zero constant — has no zeroes."
+          },
+          {
+            question: "What is the degree of the polynomial 5x³ − 2x + 7?",
+            options: ["1", "3", "5", "7"],
+            answer: 1,
+            explanation: "The degree is the highest power of x present, which here is 3."
+          },
+          {
+            question: "Which of these is a quadratic polynomial?",
+            options: ["2x + 5", "x² − 3x + 1", "x³ + 2", "7"],
+            answer: 1,
+            explanation: "A quadratic has degree exactly 2, so its graph is a parabola."
+          },
+          {
+            question: "For p(x) = x² − 4, what is p(2)?",
+            options: ["4", "0", "−4", "2"],
+            answer: 1,
+            explanation: "p(2) = 4 − 4 = 0, which means 2 is a zero of the polynomial."
           }
         ]
       },
@@ -29577,6 +29613,30 @@ export const curriculumData = {
             options: ["10 and 10", "12 and 8", "14 and 6", "16 and 4"],
             answer: 1,
             explanation: "x + y = 20 and x − y = 4 give 2x = 24, so x = 12 and y = 8."
+          },
+          {
+            question: "The pair 5x − 4y + 8 = 0 and 7x + 6y − 9 = 0 represents lines that are:",
+            options: ["Parallel", "Intersecting at one point", "Coincident", "Perpendicular"],
+            answer: 1,
+            explanation: "5/7 ≠ −4/6, so a₁/a₂ ≠ b₁/b₂ and the lines cross at exactly one point."
+          },
+          {
+            question: "For 6x − 3y + 10 = 0 and 2x − y + 9 = 0, what do the ratios tell us?",
+            options: ["Unique solution", "6/2 = −3/−1 = 3 but 10/9 differs, so the lines are parallel with no solution", "Infinitely many solutions", "The lines are perpendicular"],
+            answer: 1,
+            explanation: "Equal coefficient ratios with a different constant ratio always means parallel lines."
+          },
+          {
+            question: "A system with no solution is described as:",
+            options: ["Consistent", "Inconsistent", "Dependent", "Undefined"],
+            answer: 1,
+            explanation: "Only parallel lines give an inconsistent system; intersecting and coincident lines are both consistent."
+          },
+          {
+            question: "How many solutions does a pair of coincident lines have?",
+            options: ["None", "Exactly one", "Infinitely many", "Exactly two"],
+            answer: 2,
+            explanation: "The two equations describe the same line, so every point on it satisfies both."
           }
         ]
       },
@@ -31218,6 +31278,12 @@ export const curriculumData = {
             options: ["They share all three sides equally", "They share the hypotenuse OP, have equal radii, and both contain a right angle (RHS)", "Their angles are all 60°", "They are not congruent"],
             answer: 1,
             explanation: "RHS congruence is exactly what proves that the two tangent lengths are equal."
+          },
+          {
+            question: "A chord passing through the centre of a circle is called a:",
+            options: ["Tangent", "Diameter", "Secant only", "Arc"],
+            answer: 1,
+            explanation: "The diameter is the longest chord of a circle, equal to twice the radius."
           }
         ]
       }
@@ -31478,6 +31544,162 @@ export const curriculumData = {
             options: ["True", "False — you add only the curved surfaces that remain visible", "True, only for cones and cylinders", "False — you must subtract both flat faces"],
             answer: 1,
             explanation: "Where the two solids are joined, their flat faces disappear inside the combined solid. So we add only the curved surface areas (and any other faces still exposed), never the full individual total surface areas."
+          },
+          {
+            question: "How is the volume of a combined solid found?",
+            options: ["By adding only the visible parts", "By simply adding the volumes of the individual solids", "By subtracting the smaller volume", "By multiplying the volumes"],
+            answer: 1,
+            explanation: "Unlike surface area, no volume is hidden when solids are joined, so the volumes add directly."
+          },
+          {
+            question: "What is the curved surface area of a hemisphere of radius r?",
+            options: ["4πr²", "2πr²", "3πr²", "πr²"],
+            answer: 1,
+            explanation: "A sphere has CSA 4πr², so half of it is 2πr². Adding the flat circular face πr² gives a total surface area of 3πr²."
+          },
+          {
+            question: "What is the volume of a hemisphere of radius r?",
+            options: ["(4/3)πr³", "(2/3)πr³", "(1/3)πr³", "πr³"],
+            answer: 1,
+            explanation: "Half the volume of a sphere, (4/3)πr³, is (2/3)πr³."
+          },
+          {
+            question: "What is the volume of a cone of radius r and height h?",
+            options: ["πr²h", "(1/3)πr²h", "(2/3)πr²h", "2πrh"],
+            answer: 1,
+            explanation: "A cone holds exactly one third of the cylinder that shares its base and height."
+          },
+          {
+            question: "The curved surface area of a cone is πrl. What does l represent?",
+            options: ["The height", "The slant height", "The radius", "The diameter"],
+            answer: 1,
+            explanation: "The slant height is found from l = √(r² + h²) using Pythagoras' theorem."
+          },
+          {
+            question: "Two cubes of volume 64 cm³ each are joined end to end. What is the edge of each cube?",
+            options: ["8 cm", "4 cm", "16 cm", "2 cm"],
+            answer: 1,
+            explanation: "Since a³ = 64, the edge is 4 cm — giving a cuboid measuring 8 × 4 × 4 cm."
+          },
+          {
+            question: "For the cuboid formed by joining two 4 cm cubes, what is the surface area?",
+            options: ["192 cm²", "160 cm²", "128 cm²", "256 cm²"],
+            answer: 1,
+            explanation: "2(lb + bh + hl) = 2(8×4 + 4×4 + 4×8) = 2(32 + 16 + 32) = 160 cm²."
+          },
+          {
+            question: "A cone stands on a hemisphere, both of radius 1 cm, with the cone's height equal to its radius. What is the total volume?",
+            options: ["π cm³", "π cm³ where volume = (1/3)π + (2/3)π", "2π cm³", "(4/3)π cm³"],
+            answer: 1,
+            explanation: "Cone volume = (1/3)π(1)²(1) = π/3 and hemisphere = (2/3)π(1)³ = 2π/3; the total is π cm³."
+          },
+          {
+            question: "Why do we not include the joining faces when computing the surface area of a combined solid?",
+            options: ["They are too small", "They are hidden inside and no longer form part of the outer surface", "They are curved", "They cancel out mathematically"],
+            answer: 1,
+            explanation: "Surface area measures only the outside of the finished solid, and the joined faces are sealed within it."
+          },
+          {
+            question: "What is the volume of a cylinder of radius r and height h?",
+            options: ["2πrh", "πr²h", "(1/3)πr²h", "πr²"],
+            answer: 1,
+            explanation: "Base area πr² multiplied by height h gives the volume; the curved surface area is 2πrh."
+          },
+          {
+            question: "A capsule is a cylinder with a hemisphere at each end. Its total surface area is:",
+            options: ["CSA of cylinder only", "CSA of cylinder + CSA of both hemispheres", "TSA of cylinder + TSA of both hemispheres", "Volume of all three parts"],
+            answer: 1,
+            explanation: "The circular ends of the cylinder are covered by the hemispheres, so only the curved surfaces remain exposed."
+          },
+          {
+            question: "A cone of radius 3.5 cm sits on a hemisphere of the same radius, with total height 15.5 cm. What is the cone's height?",
+            options: ["15.5 cm", "12 cm", "11 cm", "7 cm"],
+            answer: 1,
+            explanation: "The hemisphere contributes its radius, 3.5 cm, to the height, so the cone's height is 15.5 − 3.5 = 12 cm."
+          },
+          {
+            question: "If a solid metal sphere is melted and recast into small spheres, which quantity stays the same?",
+            options: ["The surface area", "The volume", "The radius", "The diameter"],
+            answer: 1,
+            explanation: "Melting and recasting conserves the amount of material, so total volume is unchanged even though the surface area increases."
+          },
+          {
+            question: "The total surface area of a solid hemisphere is:",
+            options: ["2πr²", "3πr²", "4πr²", "πr²"],
+            answer: 1,
+            explanation: "The curved part contributes 2πr² and the flat circular base πr², giving 3πr² in all."
+          },
+          {
+            question: "A cone has radius 3 cm and height 4 cm. What is its slant height?",
+            options: ["7 cm", "5 cm", "12 cm", "√7 cm"],
+            answer: 1,
+            explanation: "l = √(r² + h²) = √(9 + 16) = √25 = 5 cm."
+          },
+          {
+            question: "What is the surface area of a sphere of radius r?",
+            options: ["2πr²", "4πr²", "3πr²", "(4/3)πr³"],
+            answer: 1,
+            explanation: "4πr² is the surface area; (4/3)πr³ is the volume."
+          },
+          {
+            question: "A cylindrical vessel of radius 7 cm and height 10 cm holds how much water? (Use π = 22/7)",
+            options: ["440 cm³", "1540 cm³", "220 cm³", "770 cm³"],
+            answer: 1,
+            explanation: "V = πr²h = (22/7)(49)(10) = 1540 cm³."
+          },
+          {
+            question: "A solid cylinder is topped by a cone of the same radius. Which surfaces make up the total surface area?",
+            options: ["CSA of cone + CSA of cylinder + base circle of cylinder", "TSA of cone + TSA of cylinder", "CSA of cone only", "Volume of both"],
+            answer: 0,
+            explanation: "The cylinder's top circle is covered by the cone's base, so only the two curved surfaces and the bottom circle remain exposed."
+          },
+          {
+            question: "The total surface area of a cone is:",
+            options: ["πrl", "πr(l + r)", "2πrl", "πr²h"],
+            answer: 1,
+            explanation: "Curved surface πrl plus the base circle πr² gives πr(l + r)."
+          },
+          {
+            question: "A hemispherical bowl of radius 10.5 cm is to be painted inside. Which area is needed?",
+            options: ["3πr²", "2πr², the curved surface only", "4πr²", "πr²"],
+            answer: 1,
+            explanation: "Only the inner curved surface is painted, so 2πr² is used rather than the total surface area."
+          },
+          {
+            question: "If a cone and a cylinder share the same base and height, the ratio of their volumes is:",
+            options: ["1:2", "1:3", "2:3", "3:1"],
+            answer: 1,
+            explanation: "The cone's volume (1/3)πr²h is exactly one third of the cylinder's πr²h."
+          },
+          {
+            question: "A cube of side 6 cm has what total surface area?",
+            options: ["36 cm²", "216 cm²", "144 cm²", "108 cm²"],
+            answer: 1,
+            explanation: "A cube has 6 square faces, so TSA = 6a² = 6 × 36 = 216 cm²."
+          },
+          {
+            question: "Why does joining two solids increase the total volume but not always the total surface area proportionally?",
+            options: ["Volume is always larger", "Volumes simply add, while some surfaces are lost where the solids meet", "Surface area is meaningless for combinations", "Both behave the same way"],
+            answer: 1,
+            explanation: "Nothing is lost from the interior, but the touching faces stop being part of the exterior."
+          },
+          {
+            question: "A cuboid measures 5 × 4 × 3 cm. What is its volume?",
+            options: ["12 cm³", "60 cm³", "94 cm³", "47 cm³"],
+            answer: 1,
+            explanation: "Volume = l × b × h = 5 × 4 × 3 = 60 cm³."
+          },
+          {
+            question: "The curved surface area of a cylinder of radius r and height h is:",
+            options: ["πr²h", "2πrh", "2πr(r + h)", "πrh"],
+            answer: 1,
+            explanation: "Unrolling the curved surface gives a rectangle of width 2πr and height h; adding the two circular ends gives the total surface area 2πr(r + h)."
+          },
+          {
+            question: "A sphere of radius r just fits inside a cube. What is the cube's edge?",
+            options: ["r", "2r", "3r", "r√2"],
+            answer: 1,
+            explanation: "The sphere's diameter, 2r, must equal the edge of the cube for a snug fit."
           }
         ]
       }
@@ -31549,6 +31771,156 @@ export const curriculumData = {
             options: ["149.03 cm", "145 cm", "150 cm", "147.5 cm"],
             answer: 0,
             explanation: "Median = l + [(n/2 - cf)/f] × h = 145 + [(25.5-11)/18] × 5 = 145 + 4.03 = 149.03 cm."
+          },
+          {
+            question: "In the direct method for the mean of grouped data, what is xᵢ?",
+            options: ["The frequency", "The class mark, or midpoint of the class interval", "The class size", "The lower limit"],
+            answer: 1,
+            explanation: "Each class is represented by its midpoint, and x̄ = Σfᵢxᵢ / Σfᵢ."
+          },
+          {
+            question: "How is the class mark of the interval 10–20 calculated?",
+            options: ["10", "15", "20", "30"],
+            answer: 1,
+            explanation: "The class mark is the average of the two limits: (10 + 20)/2 = 15."
+          },
+          {
+            question: "What is the modal class of a grouped frequency distribution?",
+            options: ["The first class", "The class with the highest frequency", "The middle class", "The class with the lowest frequency"],
+            answer: 1,
+            explanation: "The mode formula is then applied within that class using the frequencies of the classes on either side."
+          },
+          {
+            question: "In the mode formula, what does f₀ stand for?",
+            options: ["The frequency of the modal class", "The frequency of the class before the modal class", "The frequency of the class after it", "The total frequency"],
+            answer: 1,
+            explanation: "f₁ is the modal class frequency, f₀ the one before it and f₂ the one after."
+          },
+          {
+            question: "What is the cumulative frequency of a class?",
+            options: ["Its own frequency", "The running total of frequencies up to that class", "The largest frequency", "The class mark"],
+            answer: 1,
+            explanation: "This running total is what allows the median class to be located."
+          },
+          {
+            question: "How is the median class identified?",
+            options: ["It is the class with the largest frequency", "It is the class whose cumulative frequency first exceeds n/2", "It is the middle class in the table", "It is the last class"],
+            answer: 1,
+            explanation: "Since the median is the middle observation, we look for where the running total first passes half the total number of observations."
+          },
+          {
+            question: "In a distribution the mean is 30 and the median is 28. Using the empirical relationship, the mode is approximately:",
+            options: ["26", "24", "32", "29"],
+            answer: 1,
+            explanation: "Mode = 3 × Median − 2 × Mean = 84 − 60 = 24."
+          },
+          {
+            question: "In the step-deviation method, what is uᵢ?",
+            options: ["xᵢ − a", "(xᵢ − a)/h", "fᵢxᵢ", "h/xᵢ"],
+            answer: 1,
+            explanation: "Dividing the deviation by the class size h keeps the numbers small, which is why the method is convenient for large data values."
+          },
+          {
+            question: "Which measure of central tendency is most affected by a few extremely large values?",
+            options: ["The mode", "The mean", "The median", "All are equally affected"],
+            answer: 1,
+            explanation: "The mean uses every value in its calculation, so outliers pull it noticeably; the median depends only on position."
+          },
+          {
+            question: "In a 'more than' type cumulative frequency table, which limits are listed?",
+            options: ["Upper limits", "Lower limits", "Class marks", "Frequencies"],
+            answer: 1,
+            explanation: "The 'more than' table lists lower limits and shows how many observations lie at or above each one."
+          },
+          {
+            question: "What does h represent in the mode and median formulas?",
+            options: ["The highest frequency", "The class size or width of the interval", "The number of classes", "The cumulative frequency"],
+            answer: 1,
+            explanation: "The class size scales the fraction so that the answer lands correctly within the class."
+          },
+          {
+            question: "For the modal class 3–5 with f₁ = 8, f₀ = 7, f₂ = 2 and h = 2, what is the mode?",
+            options: ["3.29", "3.286", "4.0", "3.5"],
+            answer: 1,
+            explanation: "Mode = 3 + [(8 − 7)/(16 − 7 − 2)] × 2 = 3 + (1/7)(2) = 3.286."
+          },
+          {
+            question: "Which measure of central tendency can be found for data that is only categorical, such as favourite colours?",
+            options: ["The mean", "The mode", "The median", "All three"],
+            answer: 1,
+            explanation: "The mode is simply the most frequent category, so it needs no arithmetic on the values themselves."
+          },
+          {
+            question: "The mean of 5 numbers is 20. What is their sum?",
+            options: ["25", "100", "4", "20"],
+            answer: 1,
+            explanation: "Sum = mean × number of observations = 20 × 5 = 100."
+          },
+          {
+            question: "Why is the assumed mean method used?",
+            options: ["It gives a different answer", "It reduces the size of the numbers being handled, making the arithmetic easier", "It is the only correct method", "It works without frequencies"],
+            answer: 1,
+            explanation: "All three methods give the same mean; the assumed mean and step-deviation methods just simplify the calculation."
+          },
+          {
+            question: "In a cumulative frequency table, the last cumulative frequency always equals:",
+            options: ["The largest class frequency", "n, the total number of observations", "The class size", "Zero"],
+            answer: 1,
+            explanation: "By the last class, every observation has been counted into the running total."
+          },
+          {
+            question: "The median of the data 3, 5, 7, 9, 11 is:",
+            options: ["5", "7", "9", "35"],
+            answer: 1,
+            explanation: "With an odd number of ordered values, the median is the middle one — here the third value, 7."
+          },
+          {
+            question: "What does the median represent?",
+            options: ["The most frequent value", "The middle value when the data is arranged in order", "The average of all values", "The largest value"],
+            answer: 1,
+            explanation: "Half the observations lie below the median and half above it."
+          },
+          {
+            question: "A distribution has mean 25 and mode 25. What is its median, by the empirical relationship?",
+            options: ["20", "25", "30", "12.5"],
+            answer: 1,
+            explanation: "When mean and mode coincide the distribution is symmetric, and Mode = 3Median − 2Mean gives Median = 25."
+          },
+          {
+            question: "In the median formula, what does cf stand for?",
+            options: ["The class frequency", "The cumulative frequency of the class before the median class", "The total frequency", "The class mark"],
+            answer: 1,
+            explanation: "Subtracting cf from n/2 tells us how far into the median class the middle observation lies."
+          },
+          {
+            question: "Which method for the mean requires the class sizes to be equal?",
+            options: ["The direct method", "The step-deviation method", "The assumed mean method", "None of them"],
+            answer: 1,
+            explanation: "Dividing every deviation by a single h only makes sense when all the classes share that width."
+          },
+          {
+            question: "For the data 2, 4, 4, 6, 8, what is the mode?",
+            options: ["2", "4", "6", "4.8"],
+            answer: 1,
+            explanation: "4 occurs twice while every other value occurs once, so it is the most frequent value."
+          },
+          {
+            question: "Grouped data loses some information compared with raw data because:",
+            options: ["The frequencies are wrong", "Individual values are replaced by class marks, so exact values are no longer known", "The total changes", "It cannot be averaged"],
+            answer: 1,
+            explanation: "This is why the mean of grouped data is an estimate rather than an exact figure."
+          },
+          {
+            question: "Which measure of central tendency is best for finding the most popular shoe size in a shop?",
+            options: ["The mean", "The mode", "The median", "The range"],
+            answer: 1,
+            explanation: "The mode identifies the most frequently occurring value, which is exactly what 'most popular' means."
+          },
+          {
+            question: "The mean of the first five natural numbers is:",
+            options: ["2", "3", "5", "15"],
+            answer: 1,
+            explanation: "(1 + 2 + 3 + 4 + 5)/5 = 15/5 = 3."
           }
         ]
       }
@@ -31613,6 +31985,150 @@ export const curriculumData = {
             options: ["1/6", "1/3", "1/2", "2/3"],
             answer: 2,
             explanation: "The odd numbers on a die are 1, 3, 5 — 3 out of 6 equally likely outcomes. P = 3/6 = 1/2."
+          },
+          {
+            question: "State the formula for theoretical probability.",
+            options: ["Total outcomes ÷ favourable outcomes", "Favourable outcomes ÷ total possible outcomes", "Favourable outcomes × total outcomes", "1 ÷ favourable outcomes"],
+            answer: 1,
+            explanation: "This assumes all outcomes are equally likely, as with a fair coin or an unbiased die."
+          },
+          {
+            question: "What is the range of values a probability can take?",
+            options: ["−1 to 1", "0 to 1", "0 to 100", "Any real number"],
+            answer: 1,
+            explanation: "0 ≤ P(E) ≤ 1 always; a probability can never be negative or exceed 1."
+          },
+          {
+            question: "What is the probability of a sure event?",
+            options: ["0", "1", "0.5", "It varies"],
+            answer: 1,
+            explanation: "An event certain to happen has probability 1, and an impossible event has probability 0."
+          },
+          {
+            question: "P(E) + P(not E) equals:",
+            options: ["0", "1", "2", "P(E)"],
+            answer: 1,
+            explanation: "Complementary events cover all possibilities between them, so their probabilities add to 1."
+          },
+          {
+            question: "A die is thrown once. What is the probability of getting a number greater than 4?",
+            options: ["1/6", "1/3", "1/2", "2/3"],
+            answer: 1,
+            explanation: "The favourable outcomes are 5 and 6, so P = 2/6 = 1/3."
+          },
+          {
+            question: "One card is drawn from a well-shuffled deck of 52. What is the probability that it is a red card?",
+            options: ["1/4", "1/2", "1/13", "3/4"],
+            answer: 1,
+            explanation: "There are 26 red cards (hearts and diamonds) out of 52, so P = 26/52 = 1/2."
+          },
+          {
+            question: "What is the probability of drawing a king from a standard deck?",
+            options: ["1/52", "1/13", "1/4", "4/13"],
+            answer: 1,
+            explanation: "There are 4 kings among 52 cards, so P = 4/52 = 1/13."
+          },
+          {
+            question: "Two coins are tossed together. What is the probability of getting exactly two heads?",
+            options: ["1/2", "1/4", "3/4", "1"],
+            answer: 1,
+            explanation: "The four equally likely outcomes are HH, HT, TH, TT, so only one of them is favourable."
+          },
+          {
+            question: "A bag has 3 red and 5 blue balls. What is the probability of drawing a red ball?",
+            options: ["5/8", "3/8", "3/5", "1/3"],
+            answer: 1,
+            explanation: "There are 3 favourable outcomes out of 8 balls in total."
+          },
+          {
+            question: "What is an elementary event?",
+            options: ["An event with no outcomes", "An event having exactly one outcome of the experiment", "An event that is certain", "An event with equal probability"],
+            answer: 1,
+            explanation: "The probabilities of all the elementary events of an experiment add up to 1."
+          },
+          {
+            question: "If the probability of winning a game is 0.3, what is the probability of losing it?",
+            options: ["0.3", "0.7", "1.3", "0"],
+            answer: 1,
+            explanation: "Winning and losing are complementary, so P(lose) = 1 − 0.3 = 0.7."
+          },
+          {
+            question: "Which of these values could NOT be a probability?",
+            options: ["0.7", "3/2", "0", "1"],
+            answer: 1,
+            explanation: "3/2 = 1.5 is greater than 1, and probability never exceeds 1."
+          },
+          {
+            question: "A die is thrown once. What is the probability of getting a number greater than 6?",
+            options: ["1/6", "0", "1", "1/2"],
+            answer: 1,
+            explanation: "No face shows more than 6, so this is an impossible event with probability 0."
+          },
+          {
+            question: "Two coins are tossed. What is the probability of getting at least one head?",
+            options: ["1/4", "3/4", "1/2", "1"],
+            answer: 1,
+            explanation: "Of HH, HT, TH, TT, three contain at least one head, so P = 3/4."
+          },
+          {
+            question: "A bag contains only lemon-flavoured candies. What is the probability of drawing an orange one?",
+            options: ["1", "0", "1/2", "It cannot be found"],
+            answer: 1,
+            explanation: "There are no favourable outcomes, so this is an impossible event with probability 0."
+          },
+          {
+            question: "What is the probability of drawing a face card from a standard deck?",
+            options: ["1/13", "3/13", "1/4", "12/13"],
+            answer: 1,
+            explanation: "There are 12 face cards (J, Q, K in four suits), so P = 12/52 = 3/13."
+          },
+          {
+            question: "A die is thrown. What is the probability of getting a prime number?",
+            options: ["1/6", "1/2", "1/3", "2/3"],
+            answer: 1,
+            explanation: "The primes on a die are 2, 3 and 5, so P = 3/6 = 1/2."
+          },
+          {
+            question: "Three coins are tossed together. How many possible outcomes are there?",
+            options: ["3", "8", "6", "9"],
+            answer: 1,
+            explanation: "Each coin has 2 outcomes, so there are 2 × 2 × 2 = 8 equally likely outcomes in all."
+          },
+          {
+            question: "A bag has 5 white and 7 black balls. What is the probability of NOT drawing a white ball?",
+            options: ["5/12", "7/12", "1/2", "5/7"],
+            answer: 1,
+            explanation: "P(not white) = 1 − 5/12 = 7/12, which is also just the 7 black balls out of 12."
+          },
+          {
+            question: "If an experiment has 20 equally likely outcomes and 5 favour event E, then P(E) is:",
+            options: ["1/5", "1/4", "4", "5/15"],
+            answer: 1,
+            explanation: "P(E) = favourable ÷ total = 5/20, which simplifies to 1/4."
+          },
+          {
+            question: "What must the sum of the probabilities of all elementary events of an experiment be?",
+            options: ["0", "1", "The number of outcomes", "It varies"],
+            answer: 1,
+            explanation: "Together the elementary events cover every possibility exactly once, so their probabilities total 1."
+          },
+          {
+            question: "In a leap year chosen at random, what does 'equally likely outcomes' mean?",
+            options: ["Some outcomes are more common", "Every outcome has the same chance of occurring", "There is only one outcome", "The outcomes are unknown"],
+            answer: 1,
+            explanation: "Theoretical probability assumes this — as with a fair coin or an unbiased die."
+          },
+          {
+            question: "A card is drawn from a deck. What is the probability it is a spade?",
+            options: ["1/2", "1/4", "1/13", "3/4"],
+            answer: 1,
+            explanation: "There are 13 spades among 52 cards, so P = 13/52 = 1/4."
+          },
+          {
+            question: "Which pair of events is complementary when a die is rolled?",
+            options: ["Getting a 2 and getting a 3", "Getting an even number and getting an odd number", "Getting a prime and getting a 5", "Getting a 1 and getting a 6"],
+            answer: 1,
+            explanation: "Every roll is either even or odd and never both, so the two probabilities sum to 1."
           }
         ]
       }
