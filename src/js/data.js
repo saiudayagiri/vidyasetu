@@ -2239,6 +2239,48 @@ export const curriculumData = {
                       options: ["Winnowing", "Sieving — flour passes through the holes, bigger particles stay on top", "Handpicking only", "Filtration"],
                       answer: 1,
                       explanation: "Sieving is ideal when mixture components differ in particle size — fine flour passes through the sieve's holes while bigger bran/stone particles are held back."
+                    },
+                    {
+                      question: "Picking small stones out of rice by hand is called:",
+                      options: ["Sieving", "Handpicking", "Winnowing", "Threshing"],
+                      answer: 1,
+                      explanation: "It works when the unwanted particles are few and easy to see."
+                    },
+                    {
+                      question: "Separating grains from harvested stalks is called:",
+                      options: ["Winnowing", "Threshing", "Sieving", "Filtration"],
+                      answer: 1,
+                      explanation: "It is done by beating the stalks or by using a machine called a thresher."
+                    },
+                    {
+                      question: "Separating lighter husk from heavier grain using wind is called:",
+                      options: ["Handpicking", "Winnowing", "Sieving", "Decantation"],
+                      answer: 1,
+                      explanation: "Farmers let the grain fall from a height so the wind carries the husk away."
+                    },
+                    {
+                      question: "A sieve separates a mixture based on differences in:",
+                      options: ["Colour", "Particle size", "Weight only", "Smell"],
+                      answer: 1,
+                      explanation: "Fine particles pass through the holes while bigger ones stay behind."
+                    },
+                    {
+                      question: "Rubbing roasted peanuts between the palms and blowing air is an example of:",
+                      options: ["Threshing", "Winnowing", "Sieving", "Filtration"],
+                      answer: 1,
+                      explanation: "The light skins are blown away while the heavier peanuts remain."
+                    },
+                    {
+                      question: "Sieving will not work if:",
+                      options: ["The mixture is dry", "The particles are all about the same size", "The sieve is clean", "The mixture is small"],
+                      answer: 1,
+                      explanation: "The holes must be smaller than the bigger particles for it to work."
+                    },
+                    {
+                      question: "Handpicking is not suitable when:",
+                      options: ["The particles are large", "The unwanted particles are present in very large quantities", "The mixture is dry", "The particles differ in colour"],
+                      answer: 1,
+                      explanation: "It is only practical for small amounts that are easy to spot."
                     }
                   ]
                 },
@@ -2313,6 +2355,54 @@ export const curriculumData = {
                       options: ["Sieving, since sawdust and nails are different sizes", "Winnowing, using wind", "Magnetic separation — moving a magnet through the mixture attracts the iron nails", "Evaporation"],
                       answer: 2,
                       explanation: "Since iron is a magnetic material and sawdust is not, moving a magnet through the mixture quickly and efficiently attracts and removes all the iron nails — this is magnetic separation."
+                    },
+                    {
+                      question: "Heavier insoluble particles settling at the bottom of a liquid is called:",
+                      options: ["Decantation", "Sedimentation", "Filtration", "Evaporation"],
+                      answer: 1,
+                      explanation: "Tea leaves settle this way when the tea is left undisturbed."
+                    },
+                    {
+                      question: "Gently pouring off the clear liquid after the solid has settled is called:",
+                      options: ["Sedimentation", "Decantation", "Filtration", "Churning"],
+                      answer: 1,
+                      explanation: "The same method is used when washing rice and pulses."
+                    },
+                    {
+                      question: "Pouring tea through a strainer is an example of:",
+                      options: ["Sedimentation", "Filtration", "Evaporation", "Winnowing"],
+                      answer: 1,
+                      explanation: "The filter has small pores that hold back the solid particles."
+                    },
+                    {
+                      question: "Which is used to filter very fine particles such as mud from water?",
+                      options: ["A cloth", "A filter paper folded into a cone", "A sieve", "A strainer"],
+                      answer: 1,
+                      explanation: "Its pores are much finer than those of woven cloth."
+                    },
+                    {
+                      question: "To get salt back from salt solution, we use:",
+                      options: ["Filtration", "Evaporation", "Decantation", "Churning"],
+                      answer: 1,
+                      explanation: "Heating drives off the water and leaves the solid salt behind."
+                    },
+                    {
+                      question: "How is salt traditionally obtained from seawater?",
+                      options: ["By filtering it", "By letting it evaporate in shallow pits under sunlight", "By boiling it in factories only", "By freezing it"],
+                      answer: 1,
+                      explanation: "Over several days the water evaporates and the salt is left behind."
+                    },
+                    {
+                      question: "Separating butter from curd using a churner is called:",
+                      options: ["Filtration", "Churning", "Sedimentation", "Sieving"],
+                      answer: 1,
+                      explanation: "The lighter butter floats to the top, leaving buttermilk behind."
+                    },
+                    {
+                      question: "Picking iron nails out of sawdust with a magnet is called:",
+                      options: ["Handpicking", "Magnetic separation", "Sieving", "Winnowing"],
+                      answer: 1,
+                      explanation: "Industries use large magnets on conveyor belts for the same purpose."
                     }
                   ]
                 }
@@ -2388,6 +2478,48 @@ export const curriculumData = {
                       options: ["It stops moving even for a second", "It cannot show the characteristics of life anymore, even when food, air and water are available", "It grows very slowly", "It doesn't reproduce for one day"],
                       answer: 1,
                       explanation: "Death is when a living being is no longer able to exhibit the essential characteristics of life, despite all necessary resources being available."
+                    },
+                    {
+                      question: "Which of these shows that plants can move?",
+                      options: ["They grow taller", "Drosera traps insects by moving its sticky projections", "They stay in one place", "They have roots"],
+                      answer: 1,
+                      explanation: "Flowers opening and climbers winding around supports are other examples."
+                    },
+                    {
+                      question: "Plants respire through tiny pores on their leaves called:",
+                      options: ["Veins", "Stomata", "Roots", "Cells"],
+                      answer: 1,
+                      explanation: "Respiration is a characteristic of all living things."
+                    },
+                    {
+                      question: "Removal of waste products from the body is called:",
+                      options: ["Respiration", "Excretion", "Nutrition", "Reproduction"],
+                      answer: 1,
+                      explanation: "Sweat and urine are excretion products in animals."
+                    },
+                    {
+                      question: "Why is reproduction necessary for living beings?",
+                      options: ["To make them grow", "For the continuity of life", "To help them move", "To provide energy"],
+                      answer: 1,
+                      explanation: "Living things produce new ones of their own kind."
+                    },
+                    {
+                      question: "Which of these is NOT a characteristic of living things?",
+                      options: ["Growth", "Being made in a factory", "Respiration", "Response to stimuli"],
+                      answer: 1,
+                      explanation: "A pencil or chair never has a young one of its own kind."
+                    },
+                    {
+                      question: "Death occurs when a living being:",
+                      options: ["Stops moving briefly", "Can no longer show the characteristics of life despite having resources", "Sleeps", "Loses water"],
+                      answer: 1,
+                      explanation: "It is the natural end of the life of every living organism."
+                    },
+                    {
+                      question: "Plants get rid of excess water and minerals as:",
+                      options: ["Sweat", "Small droplets and other secretions", "Urine", "Air"],
+                      answer: 1,
+                      explanation: "This is the plant form of excretion."
                     }
                   ]
                 },
@@ -2463,6 +2595,48 @@ export const curriculumData = {
                       options: ["Flower → Seed → Fruit → Germination", "Seed → Germination → Leaves → Flowers → Fruit (with new seeds)", "Fruit → Flower → Seed → Germination → Leaves", "Germination → Seed → Fruit → Flower"],
                       answer: 1,
                       explanation: "The life cycle proceeds: seed germinates into a seedling, which grows leaves, then flowers, then fruit containing new seeds — and those seeds can start the cycle again."
+                    },
+                    {
+                      question: "Seeds in a pot with no water do not germinate. This shows that germination needs:",
+                      options: ["Sunlight", "Water", "Darkness", "Fertiliser"],
+                      answer: 1,
+                      explanation: "Water softens the seed coat so the embryo can grow."
+                    },
+                    {
+                      question: "Why do seeds fail to germinate in waterlogged soil?",
+                      options: ["There is too much light", "Excess water blocks out the air the roots need", "The soil is too soft", "Water washes away the seeds"],
+                      answer: 1,
+                      explanation: "Seeds need air found in the spaces between soil particles."
+                    },
+                    {
+                      question: "What is the outer covering of a seed called?",
+                      options: ["Embryo", "Seed coat", "Cotyledon", "Shoot"],
+                      answer: 1,
+                      explanation: "Water softens it so the tiny embryo inside can develop."
+                    },
+                    {
+                      question: "If a germinated seedling is turned upside down, the root:",
+                      options: ["Grows upward", "Bends and still grows downward", "Stops growing", "Turns into a shoot"],
+                      answer: 1,
+                      explanation: "The shoot similarly bends and continues to grow upward."
+                    },
+                    {
+                      question: "When light comes from only one direction, the shoot:",
+                      options: ["Grows away from the light", "Grows or bends towards the light", "Stops growing", "Grows downward"],
+                      answer: 1,
+                      explanation: "The root still continues to grow downward."
+                    },
+                    {
+                      question: "What is the correct order in a bean plant's life cycle?",
+                      options: ["Seed, flower, leaf, fruit", "Seed, germination, leaves, flowers, fruit", "Fruit, seed, flower, leaf", "Germination, seed, fruit, leaf"],
+                      answer: 1,
+                      explanation: "The pod that forms contains new seeds which start the cycle again."
+                    },
+                    {
+                      question: "Most seeds, including bean seeds, germinate:",
+                      options: ["Only in bright light", "In either light or darkness, provided water and air are present", "Only in complete darkness", "Only in cold conditions"],
+                      answer: 1,
+                      explanation: "Water and air matter far more than light for germination."
                     }
                   ]
                 },
@@ -2529,6 +2703,48 @@ export const curriculumData = {
                       options: ["It stays exactly the same at every stage", "Early stages (egg, tadpole) are fully aquatic; later stages (froglet, adult) live both in water and on land", "It starts on land and moves to water only as an adult", "Frogs never live in water at any stage"],
                       answer: 1,
                       explanation: "Frog eggs and tadpoles live entirely in water, but as tadpoles become froglets and then adults, they gradually gain the ability to live on land as well as in water."
+                    },
+                    {
+                      question: "How many stages are there in a mosquito's life cycle?",
+                      options: ["Two", "Four", "Three", "Five"],
+                      answer: 1,
+                      explanation: "They are egg, larva, pupa and adult."
+                    },
+                    {
+                      question: "Where does a mosquito lay its eggs?",
+                      options: ["On dry leaves", "On or near stagnant water", "In sand", "On tree bark"],
+                      answer: 1,
+                      explanation: "The larva that hatches lives in the water."
+                    },
+                    {
+                      question: "The worm-like stage of a mosquito that lives in water is the:",
+                      options: ["Egg", "Larva", "Pupa", "Adult"],
+                      answer: 1,
+                      explanation: "It later grows into a differently shaped pupa."
+                    },
+                    {
+                      question: "A jelly-like cluster of frog eggs is called:",
+                      options: ["Spawn", "Larva", "Pupa", "Tadpole"],
+                      answer: 1,
+                      explanation: "It is usually found floating near the edges of a pond."
+                    },
+                    {
+                      question: "A young tadpole first swims using:",
+                      options: ["Four legs", "A tail, with no legs at all", "Wings", "Fins only"],
+                      answer: 1,
+                      explanation: "Hind legs appear later while the tail gradually shortens."
+                    },
+                    {
+                      question: "Which stage comes between tadpole and adult frog?",
+                      options: ["Pupa", "Froglet", "Larva", "Spawn"],
+                      answer: 1,
+                      explanation: "The frog's life cycle also has four main stages."
+                    },
+                    {
+                      question: "An adult frog is able to live:",
+                      options: ["Only in water", "Both on land and in water", "Only on land", "Only underground"],
+                      answer: 1,
+                      explanation: "This is a major change from the fully aquatic tadpole stage."
                     }
                   ]
                 }
@@ -2599,6 +2815,48 @@ export const curriculumData = {
                       options: ["A solar panel", "A windmill", "A water tank", "A stepwell"],
                       answer: 1,
                       explanation: "A windmill works on the same principle as a firki — wind rotates its wings/blades — but at a much larger scale, used to run flour mills, pull water from wells, or generate electricity."
+                    },
+                    {
+                      question: "Which gas makes up about 78 percent of air by volume?",
+                      options: ["Oxygen", "Nitrogen", "Carbon dioxide", "Argon"],
+                      answer: 1,
+                      explanation: "Oxygen makes up about 21 percent."
+                    },
+                    {
+                      question: "How much of air is oxygen by volume?",
+                      options: ["78 percent", "21 percent", "1 percent", "50 percent"],
+                      answer: 1,
+                      explanation: "The remaining 1 percent includes argon and carbon dioxide."
+                    },
+                    {
+                      question: "Moving air is called:",
+                      options: ["Water vapour", "Wind", "Humidity", "Pressure"],
+                      answer: 1,
+                      explanation: "It may blow fast as a storm or gently as a breeze."
+                    },
+                    {
+                      question: "Why is air even more essential than food or water?",
+                      options: ["It is free", "We cannot survive without oxygen for even a few minutes", "It weighs nothing", "It is everywhere"],
+                      answer: 1,
+                      explanation: "We can survive a few days without food or water."
+                    },
+                    {
+                      question: "Most of the water on Earth is unfit for drinking because it is:",
+                      options: ["Frozen", "Saline", "Muddy", "Underground"],
+                      answer: 1,
+                      explanation: "Oceans and seas hold the bulk of the planet's water."
+                    },
+                    {
+                      question: "About how much of Earth's surface is covered by water?",
+                      options: ["One-third", "Two-thirds", "One-tenth", "All of it"],
+                      answer: 1,
+                      explanation: "Only a small fraction of it is usable freshwater."
+                    },
+                    {
+                      question: "Where is usable freshwater found?",
+                      options: ["Only in oceans", "In ice sheets, snow, rivers, lakes and underground", "Only in rain", "Only in wells"],
+                      answer: 1,
+                      explanation: "Even so, only a small part of it is easily available for use."
                     }
                   ]
                 },
@@ -2667,6 +2925,48 @@ export const curriculumData = {
                       options: ["They have no effect on soil", "They decay and enrich the soil with nutrients that new plants can use to grow — a form of natural recycling", "They make the soil unusable", "They turn into rocks"],
                       answer: 1,
                       explanation: "Decaying leaves add nutrients back into the soil, which new plants then use to grow — this natural recycling process helps keep forest soil fertile."
+                    },
+                    {
+                      question: "What is the main source of energy on Earth?",
+                      options: ["The Moon", "The Sun", "Wind", "Coal"],
+                      answer: 1,
+                      explanation: "Plants use sunlight to make food, and animals get energy from plants."
+                    },
+                    {
+                      question: "A cow grazing in sunlight gets its energy from:",
+                      options: ["Sunlight directly", "The grass it eats, which needed sunlight to grow", "The soil", "The air"],
+                      answer: 1,
+                      explanation: "The energy still traces back to the Sun."
+                    },
+                    {
+                      question: "Forests are important because they:",
+                      options: ["Only provide wood", "Provide food and shelter to countless wild animals, birds and insects", "Store water only", "Grow quickly"],
+                      answer: 1,
+                      explanation: "Every species there depends on others for survival."
+                    },
+                    {
+                      question: "Why is losing forest cover so serious?",
+                      options: ["Forests are pretty", "Regrowing a forest takes many years", "Trees are expensive", "Forests block roads"],
+                      answer: 1,
+                      explanation: "Large-scale tree-cutting has reduced forest cover significantly."
+                    },
+                    {
+                      question: "Soil is formed by:",
+                      options: ["Rain alone", "The disintegration of rocks by the Sun, water and living organisms", "Farmers mixing sand", "Wind only"],
+                      answer: 1,
+                      explanation: "The process takes thousands of years."
+                    },
+                    {
+                      question: "Which creature naturally helps loosen and turn the soil?",
+                      options: ["Ant", "Earthworm", "Snail", "Beetle"],
+                      answer: 1,
+                      explanation: "This improves the soil for growing plants."
+                    },
+                    {
+                      question: "Rocks are useful mainly for:",
+                      options: ["Making food", "Construction of houses, roads and dams", "Cleaning water", "Making cloth"],
+                      answer: 1,
+                      explanation: "Different rocks and minerals suit different purposes."
                     }
                   ]
                 },
@@ -2736,6 +3036,48 @@ export const curriculumData = {
                       options: ["A natural resource", "A human-made resource, created from natural resources", "A fossil fuel", "A renewable resource only"],
                       answer: 1,
                       explanation: "The bicycle itself is a human-made resource — built by people using natural resources (metals, rubber, etc.) as raw materials."
+                    },
+                    {
+                      question: "Which of these are together called fossil fuels?",
+                      options: ["Wood, coal and paper", "Petroleum, natural gas and coal", "Solar and wind energy", "Water and air"],
+                      answer: 1,
+                      explanation: "They formed from the remains of microorganisms and plants buried over millions of years."
+                    },
+                    {
+                      question: "Petrol, diesel and kerosene are obtained from:",
+                      options: ["Coal", "Petroleum", "Natural gas", "Wood"],
+                      answer: 1,
+                      explanation: "They are the most common vehicle fuels."
+                    },
+                    {
+                      question: "Things obtained directly from nature are called:",
+                      options: ["Human-made resources", "Natural resources", "Manufactured goods", "Renewable goods"],
+                      answer: 1,
+                      explanation: "Air, water, sunlight, forests, soil and minerals are all examples."
+                    },
+                    {
+                      question: "Which of these is a human-made resource?",
+                      options: ["Sunlight", "A bicycle", "Soil", "A forest"],
+                      answer: 1,
+                      explanation: "It is built from natural resources such as metals and rubber."
+                    },
+                    {
+                      question: "Resources that nature restores within a reasonable time are called:",
+                      options: ["Non-renewable", "Renewable", "Fossil fuels", "Minerals"],
+                      answer: 1,
+                      explanation: "Air, water and forests are renewable resources."
+                    },
+                    {
+                      question: "Why are fossil fuels called non-renewable?",
+                      options: ["They are expensive", "They take millions of years to form and exist in limited amounts", "They are hard to find", "They burn quickly"],
+                      answer: 1,
+                      explanation: "Once used up, they cannot be replaced within a human lifetime."
+                    },
+                    {
+                      question: "Natural gas is commonly used for:",
+                      options: ["Making cloth", "Cooking and generating electricity", "Making glass only", "Cooling homes"],
+                      answer: 1,
+                      explanation: "It is one of the three fossil fuels."
                     }
                   ]
                 }
@@ -2819,6 +3161,48 @@ export const curriculumData = {
                       options: ["The star Sirius in Canis Major", "The star cluster Pleiades in Taurus", "The Pole Star in Ursa Minor", "The three belt stars of Orion"],
                       answer: 1,
                       explanation: "Kṛittikā is the Indian name for the star cluster Pleiades, found within the constellation Taurus."
+                    },
+                    {
+                      question: "Stars are objects that:",
+                      options: ["Reflect sunlight", "Shine with their own light", "Move around planets", "Are made of ice"],
+                      answer: 1,
+                      explanation: "How bright a star looks depends on its size, temperature and distance."
+                    },
+                    {
+                      question: "A group of stars forming a recognisable pattern in the sky is called:",
+                      options: ["A galaxy", "A constellation", "A solar system", "A comet"],
+                      answer: 1,
+                      explanation: "Different cultures named the same patterns after their own stories."
+                    },
+                    {
+                      question: "The easiest way to identify Orion is by:",
+                      options: ["Its red colour", "The three stars in a row forming his belt", "Its size", "Its twinkling"],
+                      answer: 1,
+                      explanation: "Orion is pictured as a hunter in the night sky."
+                    },
+                    {
+                      question: "Which is the brightest star in the entire night sky?",
+                      options: ["Polaris", "Sirius", "Betelgeuse", "Vega"],
+                      answer: 1,
+                      explanation: "It lies in the constellation Canis Major."
+                    },
+                    {
+                      question: "The Big Dipper lies in the constellation:",
+                      options: ["Ursa Minor", "Ursa Major", "Taurus", "Orion"],
+                      answer: 1,
+                      explanation: "In India this constellation is known as Saptarishi."
+                    },
+                    {
+                      question: "The Pole Star appears to stay almost stationary because it lies:",
+                      options: ["Closest to Earth", "Almost directly above the Earth's North Pole", "In the Milky Way", "Near the Sun"],
+                      answer: 1,
+                      explanation: "All the other stars appear to circle around it."
+                    },
+                    {
+                      question: "What is light pollution?",
+                      options: ["Smoke from factories", "Excessive artificial light at night", "Bright sunlight", "Dust in the air"],
+                      answer: 1,
+                      explanation: "It makes it hard to see more than a few stars in big cities."
                     }
                   ]
                 },
@@ -2899,6 +3283,48 @@ export const curriculumData = {
                       options: ["It was discovered for the first time", "The IAU redefined what counts as a 'planet', and Pluto was reclassified as a dwarf planet", "It was found to be a moon of Neptune", "It was renamed as the ninth planet"],
                       answer: 1,
                       explanation: "In 2006, after finding more small objects similar to Pluto, the International Astronomical Union (IAU) redefined the criteria for a 'planet' — under the new definition, Pluto and similar objects became known as dwarf planets."
+                    },
+                    {
+                      question: "The Sun is best described as:",
+                      options: ["A planet", "A star", "A moon", "A comet"],
+                      answer: 1,
+                      explanation: "It is an extremely hot ball of gases and the star closest to us."
+                    },
+                    {
+                      question: "About how many times bigger than Earth is the Sun in diameter?",
+                      options: ["10 times", "100 times", "2 times", "1000 times"],
+                      answer: 1,
+                      explanation: "It looks small only because it is very far away."
+                    },
+                    {
+                      question: "How long does the Earth take to complete one revolution around the Sun?",
+                      options: ["24 hours", "About one year", "27 days", "One month"],
+                      answer: 1,
+                      explanation: "One rotation on its own axis takes about 24 hours."
+                    },
+                    {
+                      question: "Which planet is nearest to the Sun?",
+                      options: ["Venus", "Mercury", "Earth", "Mars"],
+                      answer: 1,
+                      explanation: "The order continues with Venus, Earth, Mars and the outer planets."
+                    },
+                    {
+                      question: "Which four planets are small with solid rocky surfaces?",
+                      options: ["Jupiter, Saturn, Uranus, Neptune", "Mercury, Venus, Earth, Mars", "Earth, Mars, Jupiter, Saturn", "Venus, Mars, Saturn, Neptune"],
+                      answer: 1,
+                      explanation: "The outer four are much larger and made mostly of gas and ice."
+                    },
+                    {
+                      question: "Venus is often called the Morning Star or Evening Star because it:",
+                      options: ["Is really a star", "Shines very brightly at dawn and dusk", "Rises only in the morning", "Is closest to Earth"],
+                      answer: 1,
+                      explanation: "It is the brightest object in our sky after the Sun and the Moon."
+                    },
+                    {
+                      question: "How can a planet be told apart from a star with the naked eye?",
+                      options: ["Planets are always red", "Stars twinkle a lot while planets do not", "Planets are bigger", "Stars move faster"],
+                      answer: 1,
+                      explanation: "Mercury, Mars, Jupiter and Saturn can all be seen without a telescope."
                     }
                   ]
                 },
@@ -2964,6 +3390,48 @@ export const curriculumData = {
                       options: ["It is a cloud of dust; our Solar System is just outside it", "It is our home galaxy, containing millions to billions of stars, and our Solar System is one small part of it", "It is another name for our Solar System", "It is a comet that passes Earth every 76 years"],
                       answer: 1,
                       explanation: "The Milky Way is our home galaxy — a collection of millions to billions of stars — and our entire Solar System is just a small part of it."
+                    },
+                    {
+                      question: "Natural satellites of planets are called:",
+                      options: ["Comets", "Moons", "Asteroids", "Stars"],
+                      answer: 1,
+                      explanation: "Earth has one Moon while Mars has two."
+                    },
+                    {
+                      question: "About how far away is the Moon from the Earth?",
+                      options: ["38,400 km", "3,84,000 km", "38,40,000 km", "3,840 km"],
+                      answer: 1,
+                      explanation: "It is our nearest neighbour in space."
+                    },
+                    {
+                      question: "The Moon takes about how long to complete one revolution around the Earth?",
+                      options: ["24 hours", "27 days", "1 year", "365 days"],
+                      answer: 1,
+                      explanation: "It is roughly a quarter of Earth's diameter."
+                    },
+                    {
+                      question: "Chandrayaan-3's Vikram lander soft-landed near the Moon's:",
+                      options: ["North pole", "South pole", "Equator", "Far side centre"],
+                      answer: 1,
+                      explanation: "It landed successfully on 23 August 2023."
+                    },
+                    {
+                      question: "Asteroids are found mostly in a belt between:",
+                      options: ["Earth and Mars", "Mars and Jupiter", "Saturn and Uranus", "Venus and Earth"],
+                      answer: 1,
+                      explanation: "They are small, rocky and irregularly shaped objects."
+                    },
+                    {
+                      question: "What forms a comet's tail?",
+                      options: ["Dust picked up in space", "Frozen material evaporating as it nears the Sun", "Burning rock", "Light from stars"],
+                      answer: 1,
+                      explanation: "Comets are made of dust, gases, rocks and ice."
+                    },
+                    {
+                      question: "The faint band of light seen across a dark night sky is:",
+                      options: ["A comet", "The Milky Way Galaxy", "An asteroid belt", "A constellation"],
+                      answer: 1,
+                      explanation: "A galaxy contains millions to billions of stars."
                     }
                   ]
                 }
