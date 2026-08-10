@@ -21725,6 +21725,36 @@ export const curriculumData = {
                       options: ["A spring balance", "A thermometer", "A measuring cylinder", "A stopwatch"],
                       answer: 0,
                       explanation: "A spring balance measures not just the weight of an object but the magnitude of a force in general — it reads the force with which you pull on the spring inside."
+                    },
+                    {
+                      question: "Which of these is NOT an effect a force can produce?",
+                      options: ["Making an object move from rest", "Changing the shape of an object", "Changing the colour of an object", "Changing the direction of motion"],
+                      answer: 2,
+                      explanation: "A force can start motion, change speed or direction, or deform an object — but not change its colour."
+                    },
+                    {
+                      question: "Why is force called a quantity that needs a direction?",
+                      options: ["Because it is always downward", "Because its effect changes if either its magnitude or its direction changes", "Because it is measured in newtons", "Because it is invisible"],
+                      answer: 1,
+                      explanation: "Like displacement and velocity, force must be described by both a magnitude and a direction."
+                    },
+                    {
+                      question: "Two forces of 8 N and 5 N act on a block in the same direction. What is the net force?",
+                      options: ["3 N", "13 N", "40 N", "1.6 N"],
+                      answer: 1,
+                      explanation: "Forces in the same direction add: 8 + 5 = 13 N, acting in that same direction."
+                    },
+                    {
+                      question: "In a tug of war neither team moves. What can you say about the forces?",
+                      options: ["No forces are acting", "They are balanced — equal in magnitude and opposite in direction", "One team is much stronger", "The rope has no mass"],
+                      answer: 1,
+                      explanation: "Balanced forces give a net force of zero, so the rope stays where it is."
+                    },
+                    {
+                      question: "The motion of an object depends on:",
+                      options: ["Every individual force acting on it", "Only the net force", "Only the largest force", "Only the applied force"],
+                      answer: 1,
+                      explanation: "Many forces may act at once, but it is the single net force that determines how the object moves."
                     }
                   ]
                 },
@@ -21794,6 +21824,36 @@ export const curriculumData = {
                       options: ["The force of friction along the surface", "The force exerted by the surface on the object, acting upwards perpendicular to it", "The weight of the object", "The applied push"],
                       answer: 1,
                       explanation: "The normal force is exerted by the surface on which the object is placed, acting upwards perpendicular to the surface, and it balances the weight acting downwards."
+                    },
+                    {
+                      question: "Why does a heavy box sometimes not move even when you push it hard?",
+                      options: ["It is too heavy to move at all", "Friction opposes your push, and your force has not yet exceeded it", "There is no force on it", "The floor is frictionless"],
+                      answer: 1,
+                      explanation: "The box starts moving only when the applied force is larger than the force of friction."
+                    },
+                    {
+                      question: "In Activity 6.1, what is used to launch the stack of coins across each surface?",
+                      options: ["A spring balance", "A stretched rubber band", "A magnet", "A slope"],
+                      answer: 1,
+                      explanation: "The coins are taped together and flicked with a stretched rubber band so that each surface receives a comparable push."
+                    },
+                    {
+                      question: "Which surface would you expect to give the largest spring balance reading?",
+                      options: ["Polished marble", "A cemented floor", "A laminated table top", "All are the same"],
+                      answer: 1,
+                      explanation: "The rougher the surface, the greater the force of friction and the larger the reading needed to start the block moving."
+                    },
+                    {
+                      question: "Why is air resistance often neglected when studying a box being pushed along the floor?",
+                      options: ["Air exerts no force at all", "Its magnitude is usually so small compared with the other forces that it can be ignored", "It acts upwards", "It only affects fast objects"],
+                      answer: 1,
+                      explanation: "Air does exert a frictional force on a moving box, but in many everyday cases it is negligible."
+                    },
+                    {
+                      question: "A box slides and then comes to rest after you stop pushing. Why?",
+                      options: ["It runs out of energy stored inside it", "Friction acts opposite to the motion and brings it to rest", "Gravity pulls it backwards", "The normal force stops it"],
+                      answer: 1,
+                      explanation: "To keep an object moving you must continuously apply a force to counter friction."
                     }
                   ]
                 },
@@ -21863,6 +21923,42 @@ export const curriculumData = {
                       options: ["To grip the ball better", "To increase the time of stopping, reducing acceleration and hence the force", "To make the ball travel faster", "To increase the force on the ball"],
                       answer: 1,
                       explanation: "Increasing the time over which the ball's velocity falls to zero reduces its acceleration, so a smaller force is needed — which also minimises injury to the fielder."
+                    },
+                    {
+                      question: "If the net force on an object is zero, its acceleration is:",
+                      options: ["Constant but non-zero", "Zero", "Equal to its velocity", "Undefined"],
+                      answer: 1,
+                      explanation: "By the first law, with no net force the body cannot begin to move or change its velocity."
+                    },
+                    {
+                      question: "A 5 kg object experiences a net force of 20 N. What is its acceleration?",
+                      options: ["100 m s⁻²", "4 m s⁻²", "0.25 m s⁻²", "25 m s⁻²"],
+                      answer: 1,
+                      explanation: "a = F/m = 20/5 = 4 m s⁻², in the direction of the net force."
+                    },
+                    {
+                      question: "Two objects receive the same force. Which accelerates more?",
+                      options: ["The heavier one", "The lighter one, since acceleration is inversely proportional to mass", "Both equally", "Neither accelerates"],
+                      answer: 1,
+                      explanation: "a = F/m, so for a fixed force the smaller mass gains the larger acceleration."
+                    },
+                    {
+                      question: "What is the value of g near the Earth's surface, and does it depend on the object's mass?",
+                      options: ["9.8 m s⁻², and it does depend on mass", "9.8 m s⁻², and it does not depend on mass", "10 m s⁻², and it depends on mass", "It varies with the object"],
+                      answer: 1,
+                      explanation: "The acceleration due to the gravitational force by the Earth is the same for all masses near the surface."
+                    },
+                    {
+                      question: "Why are airbags fitted in vehicles?",
+                      options: ["To cushion the steering wheel", "To increase the time over which a passenger stops, reducing the acceleration and hence the force", "To make the car heavier", "To hold the passenger in place only"],
+                      answer: 1,
+                      explanation: "A longer stopping time means smaller acceleration and therefore a smaller and safer force on the body."
+                    },
+                    {
+                      question: "Why does a coconut break when brought down hard on a stone?",
+                      options: ["Stone is harder than coconut", "It stops in a very short time, so the ground must exert a very large force on it", "Coconuts are naturally weak", "The stone is heated"],
+                      answer: 1,
+                      explanation: "A rapid change of velocity means a large acceleration, which by F = ma requires a large force."
                     }
                   ]
                 },
@@ -21932,6 +22028,36 @@ export const curriculumData = {
                       options: ["The Earth is fixed in space", "The Earth's mass is so large that a = F/m makes its acceleration far too small to notice", "The force on the Earth is much smaller", "Gravity acts only downwards"],
                       answer: 1,
                       explanation: "The forces are equal in magnitude, but since a = F/m and the Earth's mass is enormous, its acceleration is extremely small and its effect too small to be noticed."
+                    },
+                    {
+                      question: "Two identical spring balances are hooked together and pulled. What do the readings show?",
+                      options: ["The one being pulled reads more", "Both read the same, however hard you pull", "The fixed one reads zero", "The readings vary randomly"],
+                      answer: 1,
+                      explanation: "Equal readings show that the forces the two exert on each other are equal in magnitude and opposite in direction."
+                    },
+                    {
+                      question: "Why is it harder to climb a smooth tree trunk than a rough one?",
+                      options: ["Smooth trunks are taller", "Less friction means a smaller upward push on the climber's legs", "Smooth trunks are heavier", "Gravity is stronger there"],
+                      answer: 1,
+                      explanation: "The legs push down on the trunk and friction pushes the person up by an equal force, so less friction means less lift."
+                    },
+                    {
+                      question: "An inflated balloon released from a straw on a thread shoots forward. Why?",
+                      options: ["The thread pulls it", "The escaping air pushes the balloon in the opposite direction with an equal force", "The straw is light", "Air pressure outside is lower"],
+                      answer: 1,
+                      explanation: "The shrinking balloon expels air one way and the air pushes the balloon the other way — the same principle as a rocket."
+                    },
+                    {
+                      question: "How did the Vikram lander of Chandrayaan-3 slow down for its landing?",
+                      options: ["It used a parachute", "It fired its engine along the direction of motion, so the exhaust pushed it backwards", "It switched off its engine", "It used friction with the Moon's air"],
+                      answer: 1,
+                      explanation: "Firing forwards produces a backward force on the spacecraft, slowing it for a soft landing."
+                    },
+                    {
+                      question: "Does Newton's third law apply only to contact forces?",
+                      options: ["Yes, only to contact forces", "No — it applies to all forces, contact or non-contact", "Only to gravitational forces", "Only in laboratories"],
+                      answer: 1,
+                      explanation: "Two magnets, two charged balloons and the Earth-and-fruit pair all show equal and opposite forces."
                     }
                   ]
                 }
@@ -22007,6 +22133,36 @@ export const curriculumData = {
                       options: ["Positive work", "Negative work", "Zero, because force and displacement are perpendicular", "It cannot be determined"],
                       answer: 2,
                       explanation: "There is no displacement in the direction of the upward force, so the work done by that force is zero."
+                    },
+                    {
+                      question: "How much work is done lifting a 5 kg bag through 1 m, taking g = 9.8 m s⁻²?",
+                      options: ["5 J", "49 J", "0.51 J", "9.8 J"],
+                      answer: 1,
+                      explanation: "The applied force is mg = 49 N and the displacement is 1 m, so W = 49 × 1 = 49 J."
+                    },
+                    {
+                      question: "On a force-displacement graph, the work done is given by:",
+                      options: ["The slope of the line", "The area under the graph", "The intercept", "The length of the line"],
+                      answer: 1,
+                      explanation: "This works even when the force is not constant, by finding the area between the initial and final positions."
+                    },
+                    {
+                      question: "1 joule is equivalent to:",
+                      options: ["1 N ÷ 1 m", "1 N × 1 m", "1 kg × 1 m", "1 N × 1 s"],
+                      answer: 1,
+                      explanation: "Since 1 N = 1 kg m s⁻², one joule is also 1 kg m² s⁻²."
+                    },
+                    {
+                      question: "A person holds a heavy suitcase still. How much work is done on the suitcase?",
+                      options: ["A large amount", "Zero, since there is no displacement", "Negative work", "It depends on the weight"],
+                      answer: 1,
+                      explanation: "Without displacement the work is zero, however tiring holding it may feel."
+                    },
+                    {
+                      question: "Which best describes negative work?",
+                      options: ["Work done slowly", "Work done when the displacement is opposite to the applied force", "Work done downward", "Work that destroys energy"],
+                      answer: 1,
+                      explanation: "A goalkeeper stopping a ball applies a force against the ball's motion, so she does negative work on it."
                     }
                   ]
                 },
@@ -22076,6 +22232,36 @@ export const curriculumData = {
                       options: ["Chemical energy", "Sound energy", "Nuclear energy", "Light energy"],
                       answer: 0,
                       explanation: "Chemical energy is stored in the chemical bonds between atoms in fuels and food."
+                    },
+                    {
+                      question: "Where did the thrown cricket ball get the energy to knock over a wicket?",
+                      options: ["From the wicket", "From the work done on it by the fielder", "From the air", "It had no energy"],
+                      answer: 1,
+                      explanation: "Positive work done on an object gives it energy, which it can then use to do work on something else."
+                    },
+                    {
+                      question: "What is the SI unit of energy?",
+                      options: ["Newton", "Joule", "Watt", "Pascal"],
+                      answer: 1,
+                      explanation: "Energy shares its unit with work, because work done appears as a change in energy."
+                    },
+                    {
+                      question: "Electrical energy becomes light in a bulb and heat in a water heater. This shows that energy:",
+                      options: ["Is destroyed", "Can be converted from one form to another", "Only exists as heat", "Is created by the appliance"],
+                      answer: 1,
+                      explanation: "Energy changes form; the total is conserved rather than created or destroyed."
+                    },
+                    {
+                      question: "A 2 kg object moves at 3 m s⁻¹. What is its kinetic energy?",
+                      options: ["6 J", "9 J", "18 J", "3 J"],
+                      answer: 1,
+                      explanation: "K = ½mv² = ½ × 2 × 9 = 9 J."
+                    },
+                    {
+                      question: "Besides doing mechanical work, how else can energy be transferred?",
+                      options: ["It cannot be transferred any other way", "As heat, by radiation, in electric circuits, and by sound waves", "Only by sound", "Only through wires"],
+                      answer: 1,
+                      explanation: "The Sun's energy reaches the Earth by radiation, with no contact at all."
                     }
                   ]
                 },
@@ -22145,6 +22331,36 @@ export const curriculumData = {
                       options: ["It increases", "It decreases", "It remains constant, with potential energy converting into kinetic energy", "It becomes zero at the ground"],
                       answer: 2,
                       explanation: "The potential energy lost equals the kinetic energy gained, so the mechanical energy stays constant — the conservation of mechanical energy."
+                    },
+                    {
+                      question: "A stretched rubber band stores energy because of its:",
+                      options: ["Motion", "Deformation, or change in shape", "Temperature", "Colour"],
+                      answer: 1,
+                      explanation: "Work done to deform the band is stored and released when it returns to its original shape."
+                    },
+                    {
+                      question: "Separated unlike magnetic poles rush together when released. This shows that a system can store energy due to:",
+                      options: ["Its temperature", "The relative positions of its objects", "Its colour", "Its mass alone"],
+                      answer: 1,
+                      explanation: "Systems interacting through gravitational, electric or magnetic forces can all store potential energy this way."
+                    },
+                    {
+                      question: "A 2 kg object is lifted 5 m. Taking g = 10 m s⁻², what is its potential energy?",
+                      options: ["10 J", "100 J", "20 J", "50 J"],
+                      answer: 1,
+                      explanation: "U = mgh = 2 × 10 × 5 = 100 J."
+                    },
+                    {
+                      question: "Why is the depression in sand deeper when a ball is dropped from a greater height?",
+                      options: ["The ball becomes heavier", "It has more potential energy at the greater height, and so more energy to transfer", "The sand softens", "Air resistance helps"],
+                      answer: 1,
+                      explanation: "Greater height means more work was done to raise the ball, and that energy creates the deeper depression."
+                    },
+                    {
+                      question: "Why does a real pendulum eventually stop swinging?",
+                      options: ["Mechanical energy is destroyed", "Energy is lost to friction at the support and to air resistance", "Gravity weakens", "Its mass decreases"],
+                      answer: 1,
+                      explanation: "In the absence of these losses the bob would keep returning to the same height indefinitely."
                     }
                   ]
                 },
@@ -22214,6 +22430,36 @@ export const curriculumData = {
                       options: ["F₁ + d₁ = F₂ + d₂", "F₁ × d₁ = F₂ × d₂", "F₁ ÷ d₁ = F₂ × d₂", "F₁ = F₂"],
                       answer: 1,
                       explanation: "The work done on one end is transferred to the other, so F₁ × d₁ = F₂ × d₂ — a lever reduces the force required but not the total work done."
+                    },
+                    {
+                      question: "How many joules are in one watt-second?",
+                      options: ["1000", "1", "3600", "60"],
+                      answer: 1,
+                      explanation: "1 W = 1 J s⁻¹, so one watt sustained for one second transfers exactly one joule."
+                    },
+                    {
+                      question: "Two people do the same work, one in 2 minutes and one in 5. Who develops more power?",
+                      options: ["The slower one", "The one who finishes in 2 minutes", "Both the same", "Neither"],
+                      answer: 1,
+                      explanation: "Doing the same work in less time requires more power, since P = W ÷ t."
+                    },
+                    {
+                      question: "One horsepower is equal to about:",
+                      options: ["100 W", "746 W", "1000 W", "1 W"],
+                      answer: 1,
+                      explanation: "The unit dates from the time when engine power was compared with the power of actual horses."
+                    },
+                    {
+                      question: "What does mechanical advantage measure?",
+                      options: ["The total work saved", "The ratio of the load to the effort", "The speed of the machine", "The energy lost"],
+                      answer: 1,
+                      explanation: "A mechanical advantage greater than 1 means the effort needed is less than the load."
+                    },
+                    {
+                      question: "A ramp is made longer for the same step height. What happens to the effort needed?",
+                      options: ["It increases", "It decreases, but the object must be pushed over a greater distance", "It stays the same", "The work done falls"],
+                      answer: 1,
+                      explanation: "MA = L/h rises with a longer ramp, but the total work is unchanged."
                     }
                   ]
                 }
@@ -22289,6 +22535,36 @@ export const curriculumData = {
                       options: ["A tiny central nucleus", "A sphere of positive charge spread through the atom", "The electrons themselves", "An outer shell"],
                       answer: 1,
                       explanation: "Thomson pictured a sphere of positive charge with electrons distributed throughout it, like plums in a pudding or seeds in a watermelon."
+                    },
+                    {
+                      question: "According to Kanada, what forms when parmanus combine?",
+                      options: ["Only single particles", "Dyads and triads, and from these the whole material universe", "Nothing at all", "Only living things"],
+                      answer: 1,
+                      explanation: "His ideas are recorded in the Sanskrit text Vaisesika Sutras."
+                    },
+                    {
+                      question: "What does the Greek word atomos mean?",
+                      options: ["Small", "Indivisible", "Round", "Heavy"],
+                      answer: 1,
+                      explanation: "Leucippus and Democritus used it for particles they believed could not be cut further."
+                    },
+                    {
+                      question: "How did the concept of the atom originally arise?",
+                      options: ["From careful experiments", "As an imaginary idea rather than from experimental observation", "From microscope images", "From chemical analysis"],
+                      answer: 1,
+                      explanation: "Only much later, in 1808, did Dalton base an atomic theory on actual scientific experiments."
+                    },
+                    {
+                      question: "Which discovery first showed that atoms are not indivisible?",
+                      options: ["The gold foil experiment", "Radioactivity, which showed atoms emit smaller particles", "The invention of the microscope", "Bohr's model"],
+                      answer: 1,
+                      explanation: "Certain elements were found to emit invisible energy and particles, proving atoms have internal parts."
+                    },
+                    {
+                      question: "What did Thomson find about cathode rays regardless of the gas or cathode used?",
+                      options: ["They changed with each gas", "Their nature was always the same, showing electrons are present in every element", "They disappeared", "They were positively charged"],
+                      answer: 1,
+                      explanation: "This independence is what proved electrons to be a fundamental component of all atoms."
                     }
                   ]
                 },
@@ -22358,6 +22634,36 @@ export const curriculumData = {
                       options: ["It could not explain the stability of the atom", "It did not include electrons", "It denied the existence of the nucleus", "It could not explain radioactivity"],
                       answer: 0,
                       explanation: "An electron revolving in a circle is accelerating, so it should lose energy, spiral inward and fall into the nucleus — yet atoms are stable."
+                    },
+                    {
+                      question: "Why is the gold foil experiment also called the α-ray scattering experiment?",
+                      options: ["The foil scattered light", "Scattering is the name for the deflection of particles from their straight path", "The rays were scattered by air", "The gold scattered"],
+                      answer: 1,
+                      explanation: "Most particles passed straight through, but some were deflected — that deflection is scattering."
+                    },
+                    {
+                      question: "What did the fact that most α-particles passed straight through tell Rutherford?",
+                      options: ["The foil was very thin", "Most of an atom is empty space", "Gold has no nucleus", "The particles were slow"],
+                      answer: 1,
+                      explanation: "If atoms were solid throughout, few particles could have passed undeflected."
+                    },
+                    {
+                      question: "Why is the nucleus described as dense?",
+                      options: ["It is very large", "It contains all the positive charge and most of the mass in a tiny volume", "It is made of gold", "It has many electrons"],
+                      answer: 1,
+                      explanation: "The nucleus is about 10⁵ times smaller than the atom yet holds nearly all its mass."
+                    },
+                    {
+                      question: "Why is Rutherford's model called the planetary model?",
+                      options: ["It was discovered using telescopes", "Electrons revolve around the nucleus much as planets orbit the Sun", "It applies only in space", "The nucleus is star-shaped"],
+                      answer: 1,
+                      explanation: "The comparison captures a small massive centre with lighter bodies moving around it."
+                    },
+                    {
+                      question: "Who actually performed the gold foil experiment, and in which year?",
+                      options: ["Rutherford alone, in 1897", "Geiger and Marsden under Rutherford, in 1911", "Thomson, in 1905", "Chadwick, in 1932"],
+                      answer: 1,
+                      explanation: "The experiment tested Thomson's model and led to Rutherford's nuclear model of the atom."
                     }
                   ]
                 },
@@ -22427,6 +22733,36 @@ export const curriculumData = {
                       options: ["Helium", "Hydrogen (protium)", "Lithium", "Carbon"],
                       answer: 1,
                       explanation: "Neutrons are found in the nucleus of all atoms except hydrogen, whose commonest isotope has just one proton."
+                    },
+                    {
+                      question: "Why was it puzzling that helium has twice hydrogen's protons but four times its mass?",
+                      options: ["Helium is a gas", "It suggested something else in the nucleus adds mass without adding charge", "Hydrogen is unstable", "Protons vary in mass"],
+                      answer: 1,
+                      explanation: "The missing mass was explained when Chadwick discovered the neutron in 1932."
+                    },
+                    {
+                      question: "What is the relative charge of a neutron?",
+                      options: ["+1", "0", "−1", "+2"],
+                      answer: 1,
+                      explanation: "The electron is −1, the proton +1 and the neutron 0."
+                    },
+                    {
+                      question: "Which particle determines the identity of an element?",
+                      options: ["The neutron", "The proton, whose number is the atomic number", "The electron", "The nucleon"],
+                      answer: 1,
+                      explanation: "Two atoms with different numbers of protons are always different elements."
+                    },
+                    {
+                      question: "An atom has 20 protons and 21 neutrons. What is its mass number?",
+                      options: ["20", "41", "21", "1"],
+                      answer: 1,
+                      explanation: "Mass number = protons + neutrons = 20 + 21 = 41."
+                    },
+                    {
+                      question: "Uranium has 92 protons and 146 neutrons. What does this illustrate?",
+                      options: ["Light atoms have more neutrons", "Heavier nuclei need many more neutrons than protons to stay bound", "Neutrons are unnecessary", "Protons repel nothing"],
+                      answer: 1,
+                      explanation: "Lighter atoms such as carbon and oxygen have roughly equal numbers of each."
                     }
                   ]
                 },
@@ -22496,6 +22832,36 @@ export const curriculumData = {
                       options: ["36 u", "35.5 u", "37 u", "35 u"],
                       answer: 1,
                       explanation: "The weighted average is (35 × 75/100) + (37 × 25/100) = 142/4 = 35.5 u — not the simple mean of 36 u, because the isotopes do not occur equally."
+                    },
+                    {
+                      question: "How many electrons can the M-shell hold, according to the 2n² rule?",
+                      options: ["8", "18", "32", "2"],
+                      answer: 1,
+                      explanation: "2n² with n = 3 gives 18, although the outermost shell can never hold more than 8."
+                    },
+                    {
+                      question: "In what order are the shells filled?",
+                      options: ["Outermost first", "Stepwise from the shell nearest the nucleus outward", "At random", "All at once"],
+                      answer: 1,
+                      explanation: "The L-shell begins to fill only after the K-shell is complete."
+                    },
+                    {
+                      question: "What is an octet?",
+                      options: ["Eight shells", "Eight electrons in the valence shell", "Eight protons", "Eight neutrons"],
+                      answer: 1,
+                      explanation: "Elements with a complete octet — or 2 electrons in helium's case — are largely unreactive."
+                    },
+                    {
+                      question: "Which isotope of hydrogen is by far the most abundant?",
+                      options: ["Deuterium", "Protium", "Tritium", "They are equally common"],
+                      answer: 1,
+                      explanation: "Protium makes up about 99.98 per cent of naturally occurring hydrogen."
+                    },
+                    {
+                      question: "Why do all the isotopes of an element have the same chemical properties?",
+                      options: ["They have the same mass", "They have the same number of electrons and the same electronic configuration", "They have the same neutrons", "They are the same size"],
+                      answer: 1,
+                      explanation: "Chemical behaviour depends on the valence electrons, which isotopes share; their physical properties such as melting point do differ."
                     }
                   ]
                 }
