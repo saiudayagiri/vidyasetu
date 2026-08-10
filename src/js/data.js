@@ -27927,6 +27927,90 @@ export const curriculumData = {
             options: ["R = f", "R = 2f", "R = f/2", "R = 4f"],
             answer: 1,
             explanation: "The radius of curvature is twice the focal length (R = 2f)."
+          },
+          {
+            question: "State the first law of reflection.",
+            options: ["The reflected ray is always perpendicular to the surface", "The angle of incidence equals the angle of reflection", "Light always bends towards the normal", "The image is always real"],
+            answer: 1,
+            explanation: "∠i = ∠r, and this holds for curved reflecting surfaces just as it does for plane ones."
+          },
+          {
+            question: "What is the pole of a spherical mirror?",
+            options: ["The centre of the sphere the mirror is part of", "The centre of the reflecting surface itself", "The point where parallel rays meet", "The edge of the mirror"],
+            answer: 1,
+            explanation: "The pole P is the centre of the mirror's reflecting surface; the centre of curvature C is the centre of the sphere."
+          },
+          {
+            question: "A concave mirror is also described as a:",
+            options: ["Diverging mirror", "Converging mirror", "Plane mirror", "Dispersing mirror"],
+            answer: 1,
+            explanation: "A concave mirror curves inwards and brings parallel rays together, so it converges light; a convex mirror diverges it."
+          },
+          {
+            question: "An object is placed at the centre of curvature of a concave mirror. The image is:",
+            options: ["At infinity and highly enlarged", "At C, the same size, real and inverted", "Behind the mirror, virtual", "Between F and C, diminished"],
+            answer: 1,
+            explanation: "With the object at C the image also forms at C, the same size as the object, and is real and inverted."
+          },
+          {
+            question: "Which mirror position gives an enlarged, virtual and erect image, as used in a shaving mirror?",
+            options: ["Object beyond C", "Object between the pole and the focus of a concave mirror", "Object at C", "Object at infinity"],
+            answer: 1,
+            explanation: "Only when the object lies between P and F does a concave mirror form a magnified, erect, virtual image behind the mirror."
+          },
+          {
+            question: "An object 4 cm tall gives a 2 cm tall image. What is the magnitude of the magnification?",
+            options: ["0.5", "2", "4", "8"],
+            answer: 0,
+            explanation: "m = height of image ÷ height of object = 2 ÷ 4 = 0.5, so the image is half the size of the object."
+          },
+          {
+            question: "A negative magnification tells you that the image is:",
+            options: ["Virtual and erect", "Real and inverted", "Always diminished", "Formed behind the mirror"],
+            answer: 1,
+            explanation: "m = −v/u; a negative value means the image is real and inverted, while a positive value means virtual and erect."
+          },
+          {
+            question: "An object is placed 20 cm from a concave mirror of focal length 10 cm. Using 1/v + 1/u = 1/f, where is the image?",
+            options: ["10 cm in front", "20 cm in front, the same size", "30 cm in front", "Behind the mirror"],
+            answer: 1,
+            explanation: "With the object at 2f = 20 cm (which is C), the image also forms at 20 cm — the same size, real and inverted."
+          },
+          {
+            question: "Why are convex mirrors used as rear-view mirrors in vehicles?",
+            options: ["They magnify the image", "They always give an erect, diminished image and so cover a wide field of view", "They form real images", "They cost less"],
+            answer: 1,
+            explanation: "A diverging convex mirror always produces a small, erect, virtual image, letting the driver see a much wider area behind."
+          },
+          {
+            question: "A mirror has a radius of curvature of 30 cm. Its focal length is:",
+            options: ["60 cm", "15 cm", "30 cm", "7.5 cm"],
+            answer: 1,
+            explanation: "f = R/2 = 30/2 = 15 cm."
+          },
+          {
+            question: "The second law of reflection states that the incident ray, the normal and the reflected ray:",
+            options: ["Are always parallel", "All lie in the same plane", "Meet at the centre of curvature", "Are perpendicular to each other"],
+            answer: 1,
+            explanation: "All three lie in one plane — the plane containing the normal at the point of incidence."
+          },
+          {
+            question: "Where must an object be placed before a concave mirror to get a highly enlarged real image at infinity?",
+            options: ["At C", "At the principal focus F", "Between P and F", "Beyond C"],
+            answer: 1,
+            explanation: "Rays from an object at F emerge parallel after reflection, so the image is formed at infinity and is highly enlarged."
+          },
+          {
+            question: "An object is at infinity in front of a concave mirror. The image formed is:",
+            options: ["At C, same size", "At F, point-sized and real", "Behind the mirror, virtual", "At infinity"],
+            answer: 1,
+            explanation: "Parallel rays from a distant object converge at the principal focus, giving a point-sized real image there."
+          },
+          {
+            question: "Which of these is always true of the image in a convex mirror?",
+            options: ["It is real and inverted", "It is virtual, erect and diminished", "It is enlarged", "It forms in front of the mirror"],
+            answer: 1,
+            explanation: "Whatever the object position, a diverging convex mirror gives a small, erect, virtual image behind the mirror."
           }
         ]
       },
@@ -27967,6 +28051,78 @@ export const curriculumData = {
             options: ["+2.0 m", "+0.5 m", "-0.5 m", "+50 m"],
             answer: 1,
             explanation: "Power P = 1/f. So f = 1/P = 1/2.0 = 0.5 m (or 50 cm)."
+          },
+          {
+            question: "Why does refraction happen at all?",
+            options: ["Light gets tired", "The speed of light changes as it enters a different medium", "The light changes colour", "Air pushes the light aside"],
+            answer: 1,
+            explanation: "It is the change in the speed of light between media that makes the ray bend at the boundary."
+          },
+          {
+            question: "A ray of light passes from glass into air. It bends:",
+            options: ["Towards the normal", "Away from the normal", "Along the normal", "Not at all"],
+            answer: 1,
+            explanation: "Going from a denser to a rarer medium the ray bends away from the normal; the reverse happens entering a denser medium."
+          },
+          {
+            question: "The refractive index of glass is about 1.5. What does this mean?",
+            options: ["Glass is 1.5 times heavier than vacuum", "Light travels 1.5 times slower in glass than in vacuum", "Glass bends light by 1.5 degrees", "Glass transmits 1.5% of light"],
+            answer: 1,
+            explanation: "n = c/v, so a refractive index of 1.5 means the speed of light in glass is 1/1.5 of its speed in vacuum."
+          },
+          {
+            question: "What is the speed of light in vacuum?",
+            options: ["3 × 10⁵ m/s", "3 × 10⁸ m/s", "3 × 10⁶ m/s", "1.5 × 10⁸ m/s"],
+            answer: 1,
+            explanation: "Light travels fastest in vacuum, at 3 × 10⁸ m s⁻¹, and more slowly in any material medium."
+          },
+          {
+            question: "A medium with a higher refractive index is described as:",
+            options: ["Optically rarer", "Optically denser", "Transparent", "Opaque"],
+            answer: 1,
+            explanation: "Optical density is about how much the medium slows light, which is exactly what the refractive index measures."
+          },
+          {
+            question: "Which lens is thicker at the middle than at the edges?",
+            options: ["Concave lens", "Convex lens", "Both", "Neither"],
+            answer: 1,
+            explanation: "A convex lens is thick in the middle and converges light; a concave lens is thin in the middle and diverges it."
+          },
+          {
+            question: "When is a convex lens used as a magnifying glass?",
+            options: ["When the object is beyond 2F", "When the object lies between the optical centre and the principal focus", "When the object is at F", "When the object is at infinity"],
+            answer: 1,
+            explanation: "In that position the lens forms an enlarged, virtual, erect image — exactly what a magnifying glass provides."
+          },
+          {
+            question: "What is the lens formula?",
+            options: ["1/v + 1/u = 1/f", "1/v − 1/u = 1/f", "v + u = f", "1/f = v/u"],
+            answer: 1,
+            explanation: "For lenses the relation is 1/v − 1/u = 1/f, and the magnification is m = v/u."
+          },
+          {
+            question: "A concave lens always has a power that is:",
+            options: ["Positive", "Negative", "Zero", "Equal to its focal length"],
+            answer: 1,
+            explanation: "Diverging lenses have negative focal lengths, so their power P = 1/f is negative; converging lenses have positive power."
+          },
+          {
+            question: "A lens has a focal length of 25 cm. What is its power?",
+            options: ["+0.25 D", "+4 D", "+25 D", "+2.5 D"],
+            answer: 1,
+            explanation: "f must be in metres: 25 cm = 0.25 m, so P = 1/0.25 = +4 D."
+          },
+          {
+            question: "What is the SI unit of the power of a lens?",
+            options: ["Watt", "Dioptre", "Metre", "Newton"],
+            answer: 1,
+            explanation: "Power is measured in dioptres (D), where P = 1/f with f in metres."
+          },
+          {
+            question: "Snell's law relates which two angles?",
+            options: ["Incidence and reflection", "Incidence and refraction", "Refraction and reflection", "Incidence and dispersion"],
+            answer: 1,
+            explanation: "Snell's law connects the angle of incidence with the angle of refraction for a given pair of media."
           }
         ]
       }
@@ -28005,6 +28161,96 @@ export const curriculumData = {
             options: ["10 cm", "15 cm", "25 cm", "50 cm"],
             answer: 2,
             explanation: "The near point for a normal eye is 25 cm."
+          },
+          {
+            question: "Which part of the eye does most of the bending of incoming light?",
+            options: ["The crystalline lens", "The cornea", "The retina", "The iris"],
+            answer: 1,
+            explanation: "The transparent curved cornea provides about two-thirds of the total refraction; the lens then fine-focuses the image."
+          },
+          {
+            question: "What controls the size of the pupil?",
+            options: ["The cornea", "The iris", "The ciliary muscles", "The optic nerve"],
+            answer: 1,
+            explanation: "The coloured muscular iris widens the pupil in dim light and narrows it in bright light to regulate how much light enters."
+          },
+          {
+            question: "Which receptors on the retina let us see colour?",
+            options: ["Rods", "Cones", "Both equally", "Neither"],
+            answer: 1,
+            explanation: "Cones respond in bright light and give colour vision; rods work in dim light but give no colour."
+          },
+          {
+            question: "How does the eye change its focal length to see objects at different distances?",
+            options: ["The retina moves", "Ciliary muscles change the curvature of the flexible lens", "The pupil changes size", "The eyeball rotates"],
+            answer: 1,
+            explanation: "This ability is called the power of accommodation — the ciliary muscles make the lens more or less curved."
+          },
+          {
+            question: "In myopia, where does the image of a distant object form?",
+            options: ["Behind the retina", "In front of the retina", "Exactly on the retina", "On the cornea"],
+            answer: 1,
+            explanation: "The eyeball is too long or the lens too curved, so distant objects focus short of the retina and appear blurred."
+          },
+          {
+            question: "Hypermetropia is corrected using which lens, and why?",
+            options: ["A concave lens, to diverge the light", "A convex lens, to converge the light sooner", "A plane mirror", "A prism"],
+            answer: 1,
+            explanation: "In far-sightedness the image would form behind the retina, so a converging convex lens brings it forward onto the retina."
+          },
+          {
+            question: "A person cannot see distant objects clearly. Which lens corrects this?",
+            options: ["Convex", "Concave", "Cylindrical", "Bifocal"],
+            answer: 1,
+            explanation: "Myopia needs a diverging concave lens so that the image moves back onto the retina."
+          },
+          {
+            question: "What is the far point of a normal human eye?",
+            options: ["25 cm", "1 metre", "Infinity", "10 metres"],
+            answer: 2,
+            explanation: "A normal eye can focus from its near point of 25 cm all the way out to infinity."
+          },
+          {
+            question: "Which structure carries the visual signal from the eye to the brain?",
+            options: ["The cornea", "The optic nerve", "The iris", "The ciliary muscle"],
+            answer: 1,
+            explanation: "Light-sensitive cells on the retina generate signals that the optic nerve carries to the brain."
+          },
+          {
+            question: "In a dim room the pupil:",
+            options: ["Constricts", "Dilates to let in more light", "Stays the same", "Closes completely"],
+            answer: 1,
+            explanation: "The iris opens the pupil wide in dim light and narrows it in bright light to protect the retina."
+          },
+          {
+            question: "Presbyopia, common in old age, arises because:",
+            options: ["The retina detaches", "The eye lens gradually loses its flexibility, weakening accommodation", "The cornea becomes opaque", "The pupil stops working"],
+            answer: 1,
+            explanation: "As the lens stiffens with age the near point recedes, so close work becomes difficult."
+          },
+          {
+            question: "Which two structures together focus light onto the retina?",
+            options: ["Iris and pupil", "Cornea and crystalline lens", "Retina and optic nerve", "Rods and cones"],
+            answer: 1,
+            explanation: "The cornea does most of the bending and the flexible biconvex lens makes the fine adjustment."
+          },
+          {
+            question: "A person with myopia has an eyeball that is:",
+            options: ["Too short", "Too long, or a lens that is too curved", "Perfectly normal", "Missing a lens"],
+            answer: 1,
+            explanation: "Either fault makes distant rays converge in front of the retina, blurring far-away objects."
+          },
+          {
+            question: "Which cells on the retina allow vision in dim light?",
+            options: ["Cones", "Rods", "Both equally", "Neither"],
+            answer: 1,
+            explanation: "Rods are sensitive in dim light but do not distinguish colour; cones need bright light and detect red, green and blue."
+          },
+          {
+            question: "Why does a person moving from bright sunlight into a dark room see nothing at first?",
+            options: ["The retina switches off", "The pupil takes time to dilate and the rods need time to adjust", "The lens becomes opaque", "The optic nerve stops working"],
+            answer: 1,
+            explanation: "The iris must open the pupil and the light-sensitive cells must adapt, which takes a short while."
           }
         ]
       },
@@ -28041,6 +28287,72 @@ export const curriculumData = {
             options: ["The sea reflects blue", "Blue light is scattered most by atmospheric particles", "The Sun emits mainly blue light", "Ozone is blue"],
             answer: 1,
             explanation: "Atmospheric gas molecules scatter shorter wavelengths (blue) much more than longer wavelengths (Rayleigh scattering)."
+          },
+          {
+            question: "Which colour of the spectrum is bent the most by a prism?",
+            options: ["Red", "Violet", "Green", "Yellow"],
+            answer: 1,
+            explanation: "Violet has the shortest wavelength and is deviated most; red has the longest and is deviated least."
+          },
+          {
+            question: "How did Newton show that white light really is a mixture of colours?",
+            options: ["By using a coloured filter", "By using a second, inverted prism to recombine the spectrum into white light", "By measuring the temperature", "By splitting light with a mirror"],
+            answer: 1,
+            explanation: "If a second prism placed the other way round can put the colours back together into white light, the colours must have been present in the white light all along."
+          },
+          {
+            question: "Why do stars twinkle but planets do not?",
+            options: ["Stars are hotter", "Stars are effectively point sources, so atmospheric refraction makes their light fluctuate; planets are extended sources", "Planets are closer to the Sun", "Stars move faster"],
+            answer: 1,
+            explanation: "Light from a point-like star passes through varying air layers and wavers, while the many points of an extended planet average out."
+          },
+          {
+            question: "Atmospheric refraction makes the Sun visible about how long before actual sunrise?",
+            options: ["10 seconds", "About 2 minutes", "About 20 minutes", "1 hour"],
+            answer: 1,
+            explanation: "The same effect delays sunset by about 2 minutes, lengthening the apparent day by roughly 4 minutes in total."
+          },
+          {
+            question: "In Rayleigh scattering, the amount of scattering is proportional to:",
+            options: ["Wavelength", "1/wavelength⁴", "Wavelength²", "The speed of light"],
+            answer: 1,
+            explanation: "Because scattering goes as 1/λ⁴, short-wavelength blue light is scattered far more strongly than red."
+          },
+          {
+            question: "Why does the Sun look red at sunrise and sunset?",
+            options: ["The Sun cools down", "Light travels through the maximum thickness of atmosphere, so blue is scattered away and mostly red reaches us", "Dust turns it red", "The Sun is closer then"],
+            answer: 1,
+            explanation: "Near the horizon sunlight takes the longest path through the air, and by the time it reaches us the shorter wavelengths have been scattered out."
+          },
+          {
+            question: "A beam of light becomes visible in a dusty room. This is:",
+            options: ["Dispersion", "The Tyndall effect", "Refraction", "Total internal reflection"],
+            answer: 1,
+            explanation: "The Tyndall effect is scattering by colloidal-sized particles, seen in dust, fog and a milk-and-water mixture."
+          },
+          {
+            question: "Blue light is scattered roughly how many times more than red by air molecules?",
+            options: ["About 2 times", "About 10 times", "About 100 times", "The same amount"],
+            answer: 1,
+            explanation: "Because of the 1/λ⁴ dependence, blue is scattered around ten times more strongly, which is why the sky looks blue from every direction."
+          },
+          {
+            question: "What is dispersion?",
+            options: ["Light bending at a surface", "The splitting of white light into its component colours", "Light bouncing off a surface", "Light being absorbed"],
+            answer: 1,
+            explanation: "Different colours travel at slightly different speeds in glass, so a prism separates white light into the VIBGYOR spectrum."
+          },
+          {
+            question: "What is the correct order of colours in the spectrum, from least deviated to most?",
+            options: ["Violet to red", "Red to violet", "Green to red", "Blue to yellow"],
+            answer: 1,
+            explanation: "Red is deviated least and violet most, giving the familiar VIBGYOR sequence with red at one end."
+          },
+          {
+            question: "If the Earth had no atmosphere, the daytime sky would appear:",
+            options: ["Even bluer", "Dark, because there would be nothing to scatter sunlight", "Bright red", "Green"],
+            answer: 1,
+            explanation: "The blue sky exists only because air molecules scatter sunlight towards us; with no air there would be no scattering."
           }
         ]
       }
@@ -28087,6 +28399,96 @@ export const curriculumData = {
             options: ["11 ohm", "1 ohm", "0.5 ohm", "6 ohm"],
             answer: 1,
             explanation: "1/Rp = 1/2 + 1/3 + 1/6 = 6/6 = 1. So Rp = 1 ohm."
+          },
+          {
+            question: "What is the SI unit of electric current, and how is it defined?",
+            options: ["Volt, 1 V = 1 J/C", "Ampere, 1 A = 1 C/s", "Ohm, 1 Ω = 1 V/A", "Watt, 1 W = 1 J/s"],
+            answer: 1,
+            explanation: "Current is the rate of flow of charge, I = Q/t, so one ampere is one coulomb per second."
+          },
+          {
+            question: "How should an ammeter and a voltmeter be connected in a circuit?",
+            options: ["Both in series", "Ammeter in series, voltmeter in parallel", "Ammeter in parallel, voltmeter in series", "Both in parallel"],
+            answer: 1,
+            explanation: "The ammeter must carry the current it measures, so it goes in series; the voltmeter measures the potential difference across a component, so it goes in parallel."
+          },
+          {
+            question: "A charge of 30 C flows past a point in 10 s. What is the current?",
+            options: ["0.33 A", "3 A", "300 A", "20 A"],
+            answer: 1,
+            explanation: "I = Q/t = 30/10 = 3 A."
+          },
+          {
+            question: "Potential difference is defined as:",
+            options: ["Charge per unit time", "Work done per unit charge", "Current per unit resistance", "Energy per unit time"],
+            answer: 1,
+            explanation: "V = W/Q, measured in volts, where 1 V = 1 J/C."
+          },
+          {
+            question: "The V–I graph for an ohmic conductor is:",
+            options: ["A curve through the origin", "A straight line through the origin whose slope is the resistance", "A horizontal line", "A parabola"],
+            answer: 1,
+            explanation: "Ohm's law V = IR at constant temperature gives a straight line, and its slope equals the resistance."
+          },
+          {
+            question: "How does the resistance of a wire change if its length is doubled?",
+            options: ["It halves", "It doubles", "It stays the same", "It becomes four times"],
+            answer: 1,
+            explanation: "R = ρl/A, so resistance is directly proportional to length."
+          },
+          {
+            question: "A thicker wire of the same material and length has:",
+            options: ["Higher resistance", "Lower resistance, since R is inversely proportional to area", "The same resistance", "Zero resistance"],
+            answer: 1,
+            explanation: "Increasing the cross-sectional area A gives the charges more room to flow, so R = ρl/A falls."
+          },
+          {
+            question: "Why is nichrome, rather than copper, used in the heating element of an electric iron?",
+            options: ["It is cheaper", "It has a high resistivity and a high melting point and does not oxidise easily", "It conducts better", "It is lighter"],
+            answer: 1,
+            explanation: "Alloys such as nichrome and manganin have much higher resistivity than pure metals, so they produce the heat needed."
+          },
+          {
+            question: "Two resistors of 4 Ω and 6 Ω are joined in series. The equivalent resistance is:",
+            options: ["2.4 Ω", "10 Ω", "1.2 Ω", "5 Ω"],
+            answer: 1,
+            explanation: "In series Rs = R₁ + R₂ = 4 + 6 = 10 Ω, and the same current passes through both."
+          },
+          {
+            question: "Why is household wiring done in parallel rather than in series?",
+            options: ["It uses less wire", "Each appliance gets the full voltage and keeps working even if another fails", "It is safer against shocks", "It reduces the total current"],
+            answer: 1,
+            explanation: "In series a single failure breaks the whole circuit; in parallel the same voltage is across every appliance and each works independently."
+          },
+          {
+            question: "A potential difference of 12 V drives a current of 4 A. What is the resistance?",
+            options: ["48 Ω", "3 Ω", "0.33 Ω", "16 Ω"],
+            answer: 1,
+            explanation: "From V = IR, R = V/I = 12/4 = 3 Ω."
+          },
+          {
+            question: "Which quantity in R = ρl/A depends only on the material of the wire?",
+            options: ["l", "A", "ρ, the resistivity", "R"],
+            answer: 2,
+            explanation: "Resistivity is a property of the material itself; length and area are properties of the particular piece of wire."
+          },
+          {
+            question: "In a series circuit, what is the same through every component?",
+            options: ["The voltage", "The current", "The resistance", "The power"],
+            answer: 1,
+            explanation: "There is only one path, so the same current flows through each component; the voltage divides between them."
+          },
+          {
+            question: "Adding another resistor in parallel to a circuit makes the total resistance:",
+            options: ["Increase", "Decrease", "Stay the same", "Become zero"],
+            answer: 1,
+            explanation: "Each extra parallel branch offers another path for current, so the equivalent resistance falls below the smallest individual resistance."
+          },
+          {
+            question: "Ohm's law holds only if which quantity is kept constant?",
+            options: ["The current", "The temperature", "The length of the wire", "The voltage"],
+            answer: 1,
+            explanation: "V = IR applies at constant temperature; if a conductor heats up, its resistance changes and the graph is no longer straight."
           }
         ]
       },
@@ -28119,6 +28521,72 @@ export const curriculumData = {
             options: ["44 W", "1100 W", "225 W", "1000 W"],
             answer: 1,
             explanation: "P = VI = 220 x 5 = 1100 W."
+          },
+          {
+            question: "State Joule's law of heating.",
+            options: ["H = VIt only", "H = I²Rt", "H = IR²t", "H = I²R/t"],
+            answer: 1,
+            explanation: "The heat produced is proportional to the square of the current, the resistance, and the time for which the current flows."
+          },
+          {
+            question: "If the current through a resistor is doubled, the heat produced in the same time becomes:",
+            options: ["Twice as much", "Four times as much", "Half as much", "Unchanged"],
+            answer: 1,
+            explanation: "Since H = I²Rt depends on the square of the current, doubling I multiplies the heat by four."
+          },
+          {
+            question: "Why does an electric fuse melt when the current becomes too large?",
+            options: ["It is made of copper", "It is made of an alloy with a low melting point, so excess current melts it and breaks the circuit", "It absorbs the extra voltage", "It cools the circuit"],
+            answer: 1,
+            explanation: "The fuse is a deliberate weak link — it melts first and disconnects the supply before the appliance or wiring is damaged."
+          },
+          {
+            question: "Which metal is used for the filament of an electric bulb?",
+            options: ["Nichrome", "Tungsten", "Copper", "Aluminium"],
+            answer: 1,
+            explanation: "Tungsten has a very high melting point, so it can glow white-hot without melting."
+          },
+          {
+            question: "Which of these is NOT an expression for electric power?",
+            options: ["P = VI", "P = I²R", "P = V²/R", "P = V/I"],
+            answer: 3,
+            explanation: "V/I gives resistance, not power. The three valid forms follow from combining P = VI with Ohm's law."
+          },
+          {
+            question: "How many joules are there in 1 kilowatt-hour?",
+            options: ["1000 J", "3.6 × 10⁶ J", "3600 J", "10⁶ J"],
+            answer: 1,
+            explanation: "1 kWh = 1000 W × 3600 s = 3.6 × 10⁶ J. This commercial unit is what we call one 'Unit' on an electricity bill."
+          },
+          {
+            question: "A 100 W bulb runs 10 hours a day for 30 days. How many units of energy does it use?",
+            options: ["3 units", "30 units", "300 units", "3000 units"],
+            answer: 1,
+            explanation: "0.1 kW × 10 h × 30 = 30 kWh, which is 30 units. At ₹5 per unit that is ₹150."
+          },
+          {
+            question: "A 60 W bulb is connected to 220 V. Roughly what current does it draw?",
+            options: ["0.27 A", "3.7 A", "13.2 A", "0.6 A"],
+            answer: 0,
+            explanation: "I = P/V = 60/220 ≈ 0.27 A."
+          },
+          {
+            question: "Two bulbs, 40 W and 100 W, are designed for the same voltage. Which has the greater resistance?",
+            options: ["The 100 W bulb", "The 40 W bulb", "Both are equal", "It cannot be decided"],
+            answer: 1,
+            explanation: "Since P = V²/R at fixed V, lower power means higher resistance — so the 40 W bulb has the greater resistance."
+          },
+          {
+            question: "Which appliance does NOT primarily depend on the heating effect of current?",
+            options: ["Electric toaster", "Electric iron", "Electric fan", "Electric heater"],
+            answer: 2,
+            explanation: "A fan uses the magnetic effect of current in its motor; the others deliberately convert electrical energy into heat."
+          },
+          {
+            question: "The energy consumed by an appliance is calculated as:",
+            options: ["Power ÷ time", "Power × time", "Voltage × resistance", "Current ÷ time"],
+            answer: 1,
+            explanation: "Energy = power × time, which is why bills are charged in kilowatt-hours."
           }
         ]
       }
@@ -28155,6 +28623,102 @@ export const curriculumData = {
             options: ["Induced current", "Magnetic field around wire", "Force on current-carrying conductor in magnetic field", "Potential difference"],
             answer: 2,
             explanation: "Fleming's Left-Hand Rule determines the direction of force on a current-carrying conductor in a magnetic field."
+          },
+          {
+            question: "Outside a bar magnet, the field lines run:",
+            options: ["From south to north", "From north to south", "In closed circles around the magnet", "Straight into the magnet"],
+            answer: 1,
+            explanation: "Field lines emerge from the north pole and enter the south pole outside the magnet, completing the loop from S to N inside it."
+          },
+          {
+            question: "Why can two magnetic field lines never cross?",
+            options: ["They repel each other", "At the crossing point the field would have two directions at once, which is impossible", "They are drawn too close", "Crossing would destroy the magnet"],
+            answer: 1,
+            explanation: "The tangent to a field line gives the direction of the field at that point, and the field can have only one direction at any point."
+          },
+          {
+            question: "What did Oersted's experiment demonstrate?",
+            options: ["Magnets attract iron", "A current-carrying wire produces a magnetic field, since a nearby compass needle deflects", "Electricity flows through a compass", "Magnets can generate current"],
+            answer: 1,
+            explanation: "Reversing the current reverses the deflection, showing that the current itself creates the magnetic field."
+          },
+          {
+            question: "What is the shape of the magnetic field around a long straight current-carrying wire?",
+            options: ["Straight lines parallel to the wire", "Concentric circles around the wire", "Ellipses", "A uniform field"],
+            answer: 1,
+            explanation: "The right-hand thumb rule gives the direction: thumb along the current, curled fingers along the circular field lines."
+          },
+          {
+            question: "Where is the magnetic field of a solenoid strong and nearly uniform?",
+            options: ["Outside it", "Inside it", "At the ends only", "Nowhere"],
+            answer: 1,
+            explanation: "A solenoid's field inside is uniform and resembles that of a bar magnet, while the field outside is weak."
+          },
+          {
+            question: "What turns a solenoid into an electromagnet?",
+            options: ["Increasing the voltage only", "Placing a soft iron core inside it", "Winding the coil the other way", "Using thinner wire"],
+            answer: 1,
+            explanation: "The soft iron core greatly strengthens the field, and unlike a permanent magnet it can be switched on and off."
+          },
+          {
+            question: "Which is NOT an advantage of an electromagnet over a permanent magnet?",
+            options: ["It can be switched on and off", "Its strength can be adjusted", "Its polarity can be reversed", "It works without any power supply"],
+            answer: 3,
+            explanation: "An electromagnet needs a current to work — that dependence is its one drawback."
+          },
+          {
+            question: "In Fleming's left-hand rule, what does the middle finger represent?",
+            options: ["The magnetic field", "The current", "The force", "The motion of the magnet"],
+            answer: 1,
+            explanation: "Forefinger = field, middle finger = current, thumb = force or motion."
+          },
+          {
+            question: "An electric motor converts:",
+            options: ["Mechanical energy into electrical energy", "Electrical energy into mechanical energy", "Heat into electricity", "Chemical energy into light"],
+            answer: 1,
+            explanation: "Current in a coil placed between magnets experiences a force, which turns the coil — electrical energy becomes motion."
+          },
+          {
+            question: "What is the job of the split ring commutator in a motor?",
+            options: ["To increase the voltage", "To reverse the current in the coil every half rotation so the coil keeps turning the same way", "To cool the motor", "To hold the magnets"],
+            answer: 1,
+            explanation: "Without this reversal, the force would drive the coil back the other way after half a turn instead of continuing to rotate."
+          },
+          {
+            question: "In a diagram of a magnetic field, closely spaced field lines indicate:",
+            options: ["A weak field", "A strong field", "No field", "A reversing field"],
+            answer: 1,
+            explanation: "The closer the lines, the greater the strength of the magnetic field in that region."
+          },
+          {
+            question: "Inside a bar magnet, the direction of the field lines is:",
+            options: ["From north to south", "From south to north", "There are no lines inside", "Randomly directed"],
+            answer: 1,
+            explanation: "The lines form closed loops: N to S outside the magnet and S to N inside it."
+          },
+          {
+            question: "In the right-hand thumb rule for a straight wire, what does the thumb point along?",
+            options: ["The magnetic field", "The direction of the current", "The force", "The motion of the wire"],
+            answer: 1,
+            explanation: "With the thumb along the current, the curled fingers give the direction of the circular magnetic field lines."
+          },
+          {
+            question: "Where is the magnetic field of a circular current-carrying loop strongest?",
+            options: ["At the edge of the loop", "At its centre, where the field is strong and nearly uniform", "Far away from the loop", "It has no field"],
+            answer: 1,
+            explanation: "Contributions from every part of the loop add together at the centre, producing a strong, nearly uniform field there."
+          },
+          {
+            question: "A current-carrying conductor placed in a magnetic field experiences the greatest force when the current is:",
+            options: ["Parallel to the field", "Perpendicular to the field", "At 45° to the field", "Zero"],
+            answer: 1,
+            explanation: "The force is largest when the current and field are at right angles, and zero when they are parallel."
+          },
+          {
+            question: "Which device applies the force on a current-carrying conductor in a magnetic field?",
+            options: ["Electric generator", "Electric motor", "Transformer", "Fuse"],
+            answer: 1,
+            explanation: "A motor uses that force to turn a coil, converting electrical energy into mechanical energy."
           }
         ]
       },
@@ -28191,6 +28755,72 @@ export const curriculumData = {
             options: ["Live wire inside appliance", "Metallic body/casing of appliance", "Neutral wire at meter", "Fuse box only"],
             answer: 1,
             explanation: "Earth wire connects to the metallic body, providing a safe path for current to ground if live wire accidentally touches."
+          },
+          {
+            question: "What is needed to induce a current in a conductor?",
+            options: ["A steady magnet held still nearby", "Relative motion between the magnet and the conductor", "A very strong magnet only", "A high resistance"],
+            answer: 1,
+            explanation: "Electromagnetic induction requires a changing magnetic situation — moving the magnet or the conductor induces the current."
+          },
+          {
+            question: "In Fleming's right-hand rule, the middle finger points along the:",
+            options: ["Magnetic field", "Motion of the conductor", "Induced current", "Force"],
+            answer: 2,
+            explanation: "Forefinger = field, thumb = motion, middle finger = induced current. This is the generator rule."
+          },
+          {
+            question: "An electric generator converts:",
+            options: ["Electrical energy into mechanical energy", "Mechanical energy into electrical energy", "Heat into mechanical energy", "Chemical energy into electrical energy"],
+            answer: 1,
+            explanation: "It is the reverse of a motor: moving a coil in a magnetic field induces a current."
+          },
+          {
+            question: "What distinguishes an AC generator from a DC generator?",
+            options: ["AC uses slip rings; DC uses a split ring commutator", "AC uses no magnets", "DC has no coil", "AC produces no current"],
+            answer: 0,
+            explanation: "Slip rings let the current reverse each half turn, giving alternating current; a split ring commutator keeps the output in one direction."
+          },
+          {
+            question: "Why is AC preferred for transmitting electricity over long distances?",
+            options: ["It is safer to touch", "Its voltage can easily be stepped up and down using transformers, which makes transmission efficient", "It travels faster", "It needs no wires"],
+            answer: 1,
+            explanation: "Transmitting at high voltage reduces energy loss, and only AC can be transformed up and down so conveniently."
+          },
+          {
+            question: "In Indian domestic supply, what is the potential of the live wire and the colour convention?",
+            options: ["About 0 V, black", "About 220 V, red", "About 220 V, green", "About 110 V, red"],
+            answer: 1,
+            explanation: "Live is at about 220 V (red), neutral is at about 0 V (black), and earth (green) is the safety wire to the ground."
+          },
+          {
+            question: "Why are all domestic appliances connected in parallel?",
+            options: ["To share the voltage between them", "So each receives the full 220 V and can be operated independently", "To reduce the total current", "To make the wiring cheaper"],
+            answer: 1,
+            explanation: "In series they would share the voltage and one failure would stop everything; in parallel each appliance is independent."
+          },
+          {
+            question: "What causes a short circuit?",
+            options: ["Too many appliances on one socket", "The live wire coming into direct contact with the neutral wire, so a very large current flows", "A loose earth wire", "Low voltage supply"],
+            answer: 1,
+            explanation: "The current bypasses the appliance through a path of almost no resistance, and the resulting surge can start a fire."
+          },
+          {
+            question: "What is overloading?",
+            options: ["Using an appliance for too long", "Drawing too much current by running too many appliances on one circuit", "Connecting the earth wire wrongly", "Using a fuse of too high a rating"],
+            answer: 1,
+            explanation: "The total current exceeds what the wiring is rated for, which is why fuses and MCBs are fitted to break the circuit."
+          },
+          {
+            question: "Why are separate circuits with 5 A and 15 A ratings used in a house?",
+            options: ["To use different coloured wires", "Lighting needs only a small current, while heavy appliances need much more", "To reduce the electricity bill", "To separate AC from DC"],
+            answer: 1,
+            explanation: "Rating each circuit for its expected load means the fuse protects it properly without tripping needlessly."
+          },
+          {
+            question: "How does earthing protect a user?",
+            options: ["It lowers the voltage of the supply", "If the live wire touches the metal body, the current flows safely to the ground instead of through the user", "It stops the appliance working", "It increases the resistance"],
+            answer: 1,
+            explanation: "The earth wire gives the leaking current a low-resistance path to the ground, preventing a dangerous shock."
           }
         ]
       }
@@ -28243,6 +28873,168 @@ export const curriculumData = {
             options: ["DDT", "Polythene bag", "Cattle dung", "Aluminium can"],
             answer: 2,
             explanation: "Cattle dung is biodegradable — decomposed by bacteria/fungi into simpler substances."
+          },
+          {
+            question: "Which of these is an abiotic component of an ecosystem?",
+            options: ["Bacteria", "Rainfall", "Green plants", "Herbivores"],
+            answer: 1,
+            explanation: "Abiotic factors are the non-living ones — temperature, rainfall, wind, soil, minerals, light and water."
+          },
+          {
+            question: "Why are green plants called producers?",
+            options: ["They produce oxygen only", "They make their own food by photosynthesis and support all other trophic levels", "They produce seeds", "They are the most numerous"],
+            answer: 1,
+            explanation: "Autotrophs capture energy and make food, and every consumer above them depends on that food."
+          },
+          {
+            question: "What role do bacteria and fungi play in an ecosystem?",
+            options: ["Producers", "Decomposers that break down dead organisms and recycle nutrients", "Primary consumers", "Top carnivores"],
+            answer: 1,
+            explanation: "Without decomposers, nutrients locked in dead bodies would never return to the soil for plants to reuse."
+          },
+          {
+            question: "In the chain Grass → Grasshopper → Frog → Snake → Hawk, the frog is a:",
+            options: ["Producer", "Primary consumer", "Secondary consumer", "Decomposer"],
+            answer: 2,
+            explanation: "The grasshopper is the primary consumer (herbivore) and the frog, which eats it, is the secondary consumer."
+          },
+          {
+            question: "According to the 10% law, what happens to the other 90% of the energy?",
+            options: ["It is destroyed", "It is used in life processes or lost as heat", "It passes to the decomposers directly", "It returns to the Sun"],
+            answer: 1,
+            explanation: "Only about a tenth of the energy at one trophic level is available to the next; the rest is spent on living and lost as heat."
+          },
+          {
+            question: "If producers hold 10,000 J, how much energy reaches the tertiary consumers?",
+            options: ["1000 J", "100 J", "10 J", "1 J"],
+            answer: 2,
+            explanation: "10,000 → 1,000 (primary) → 100 (secondary) → 10 J (tertiary), losing 90% at each step."
+          },
+          {
+            question: "Why are food chains usually limited to four or five trophic levels?",
+            options: ["Animals cannot digest more", "So little energy remains after repeated 90% losses that it cannot support another level", "There are not enough species", "Predators refuse to eat"],
+            answer: 1,
+            explanation: "The 10% law means the energy available shrinks tenfold at every step, and soon there is too little to sustain another level."
+          },
+          {
+            question: "What is biological magnification?",
+            options: ["Organisms growing larger at higher levels", "Non-biodegradable chemicals such as DDT concentrating as they pass up the trophic levels", "Populations increasing over time", "Magnifying microbes under a lens"],
+            answer: 1,
+            explanation: "Because these chemicals are not broken down or excreted, top predators — including humans — accumulate the highest concentrations."
+          },
+          {
+            question: "Where is the protective ozone layer found?",
+            options: ["In the troposphere", "In the stratosphere", "At ground level", "In the ionosphere"],
+            answer: 1,
+            explanation: "Stratospheric ozone absorbs harmful ultraviolet radiation before it reaches the Earth's surface."
+          },
+          {
+            question: "Roughly how many ozone molecules can a single chlorine atom from a CFC destroy?",
+            options: ["10", "1,000", "About 100,000", "Just one"],
+            answer: 2,
+            explanation: "The chlorine acts in a chain reaction, which is why even small amounts of CFCs did so much damage."
+          },
+          {
+            question: "What was the Montreal Protocol of 1987?",
+            options: ["A ban on plastics", "An international agreement to phase out CFCs", "A treaty on nuclear testing", "A rule about food waste"],
+            answer: 1,
+            explanation: "By phasing out CFCs worldwide it allowed the ozone layer to begin recovering — a rare example of successful global cooperation."
+          },
+          {
+            question: "Which of the 3 Rs comes first, and why?",
+            options: ["Recycle, because it saves materials", "Reduce, because using less in the first place creates no waste to handle", "Reuse, because it is easiest", "They are in no particular order"],
+            answer: 1,
+            explanation: "Reduce, reuse, recycle are in order of effectiveness — waste that is never generated needs no processing at all."
+          },
+          {
+            question: "Which pair of disposal methods suit biodegradable waste?",
+            options: ["Landfill and incineration", "Composting and biogas generation", "Recycling and melting", "Burying in plastic"],
+            answer: 1,
+            explanation: "Food waste, paper, cotton and cattle dung can be decomposed by microbes, so composting and biogas put them to use."
+          },
+          {
+            question: "What is a food web?",
+            options: ["A single straight food chain", "A network of interconnected food chains in an ecosystem", "A list of producers", "The total energy of an ecosystem"],
+            answer: 1,
+            explanation: "In reality most organisms eat and are eaten by several others, so the chains interlink into a web."
+          },
+          {
+            question: "Which organisms occupy the first trophic level?",
+            options: ["Herbivores", "Producers", "Carnivores", "Decomposers"],
+            answer: 1,
+            explanation: "Producers capture the Sun's energy and form the base of every food chain."
+          },
+          {
+            question: "Why does DDT accumulate most in top predators?",
+            options: ["They eat more food overall", "It is non-biodegradable, so it concentrates further at each trophic level", "They live longer only", "They absorb it from water directly"],
+            answer: 1,
+            explanation: "Each level consumes many organisms from the level below, and the chemical is not broken down or excreted — so it builds up."
+          },
+          {
+            question: "Which of these is non-biodegradable?",
+            options: ["Paper", "Cotton cloth", "Polythene", "Vegetable peel"],
+            answer: 2,
+            explanation: "Plastics, polythene, glass and pesticides resist decomposition and persist for decades or centuries."
+          },
+          {
+            question: "Where do CFCs mainly come from?",
+            options: ["Burning coal", "Refrigerators, air conditioners and aerosol sprays", "Car exhausts", "Farm fertilisers"],
+            answer: 1,
+            explanation: "These were once widely used as refrigerants and propellants until their effect on ozone was understood."
+          },
+          {
+            question: "What does the ozone layer protect us from?",
+            options: ["Infrared radiation", "Harmful ultraviolet radiation", "Visible light", "Radio waves"],
+            answer: 1,
+            explanation: "UV radiation damages living tissue and causes skin cancer, so the ozone shield is vital to life on land."
+          },
+          {
+            question: "In an ecosystem, a hawk that eats snakes is a:",
+            options: ["Primary consumer", "Secondary consumer", "Tertiary consumer or top carnivore", "Producer"],
+            answer: 2,
+            explanation: "It sits at the top of the chain, feeding on other carnivores."
+          },
+          {
+            question: "Why should waste be segregated into biodegradable and non-biodegradable at home?",
+            options: ["It looks tidier", "The two need entirely different disposal routes — composting versus recycling or safe disposal", "It reduces the amount of waste", "It is required for collection charges"],
+            answer: 1,
+            explanation: "Mixing them means biodegradable waste cannot be composted and recyclables are contaminated."
+          },
+          {
+            question: "What happens to the energy flow in an ecosystem?",
+            options: ["It is cyclic, returning to the producers", "It is one-way, from the Sun through the trophic levels and finally lost as heat", "It doubles at each level", "It stays constant"],
+            answer: 1,
+            explanation: "Unlike nutrients, which cycle, energy flows in one direction and is steadily lost as heat at every transfer."
+          },
+          {
+            question: "Which activity best illustrates 'Reuse'?",
+            options: ["Melting plastic bottles to make new ones", "Using an empty jam jar to store spices", "Composting kitchen waste", "Buying fewer items"],
+            answer: 1,
+            explanation: "Reuse means using an article again as it is, without reprocessing — unlike recycling, which needs energy to remake the material."
+          },
+          {
+            question: "Cattle dung is used in biogas plants because it is:",
+            options: ["Non-biodegradable", "Biodegradable, so microbes can break it down and release usable gas", "Rich in plastics", "Free of microbes"],
+            answer: 1,
+            explanation: "Bacteria decompose the dung anaerobically, producing biogas while leaving a nutrient-rich slurry for the fields."
+          },
+          {
+            question: "Which trophic level always has the most energy available to it?",
+            options: ["Tertiary consumers", "Producers", "Secondary consumers", "Decomposers"],
+            answer: 1,
+            explanation: "Energy is lost at every transfer, so the producers, closest to the original solar input, always hold the most."
+          },
+          {
+            question: "Why is the ozone layer slowly recovering today?",
+            options: ["CFCs break down naturally within a year", "The Montreal Protocol phased out CFC production worldwide", "More oxygen is being released", "The Sun emits less UV now"],
+            answer: 1,
+            explanation: "International agreement to stop making CFCs allowed the layer to begin repairing itself — though the process takes decades."
+          },
+          {
+            question: "Which of these is a biotic component of an ecosystem?",
+            options: ["Soil minerals", "Wind", "Decomposers", "Sunlight"],
+            answer: 2,
+            explanation: "Biotic components are the living ones — producers, consumers and decomposers."
           }
         ]
       }
