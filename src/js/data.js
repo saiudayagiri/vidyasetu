@@ -8968,6 +8968,24 @@ export const curriculumData = {
                       options: ["It isn't useful, exact numbers are always better", "Because comparing to something familiar makes an abstract large number concrete and easier to genuinely understand", "Because familiar objects are always exactly 1 metre tall", "Comparisons are only used for small numbers"],
                       answer: 1,
                       explanation: "Relating an unfamiliar large measurement to something familiar (like a person's height or number of building floors) helps build real intuition for how large that measurement actually is."
+                    },
+                    {
+                      question: "Which is the smallest 6-digit number?",
+                      options: ["99,999", "1,00,000", "10,000", "9,99,999"],
+                      answer: 1,
+                      explanation: "This number is called one lakh."
+                    },
+                    {
+                      question: "Roughly how many days are there in a 100-year lifetime?",
+                      options: ["3,650", "36,500", "365", "3,65,000"],
+                      answer: 1,
+                      explanation: "So even one new variety of rice a day would cover far fewer than a lakh varieties."
+                    },
+                    {
+                      question: "In the Indian place value system, the first comma from the right is placed:",
+                      options: ["After every 3 digits", "After the hundreds digit", "After the tens digit", "Only at the end"],
+                      answer: 1,
+                      explanation: "After that, commas come after every 2 digits going left."
                     }
                   ]
                 },
@@ -9037,6 +9055,24 @@ export const curriculumData = {
                       options: ["Yes, the Indian version is a bigger number", "No — both represent the exact same value; only the comma placement and naming convention differ", "Yes, the International version is smaller", "They cannot represent the same number"],
                       answer: 1,
                       explanation: "Removing the commas from both versions gives back the identical digit string 9876501234 — the underlying value is unchanged; only how it's grouped and named differs between the two systems."
+                    },
+                    {
+                      question: "How many zeroes follow the 1 in one crore?",
+                      options: ["5", "7", "6", "9"],
+                      answer: 1,
+                      explanation: "One crore is a hundred lakhs, written 1,00,00,000."
+                    },
+                    {
+                      question: "One arab is equal to:",
+                      options: ["Ten crores", "A hundred crores", "A thousand lakhs", "Ten lakhs"],
+                      answer: 1,
+                      explanation: "It is written as 1,00,00,00,000."
+                    },
+                    {
+                      question: "How does the International system group digits from the right?",
+                      options: ["3-2-2-2", "3-3-3", "2-2-2", "4-4-4"],
+                      answer: 1,
+                      explanation: "The Indian system instead groups them as 3-2-2-2."
                     }
                   ]
                 },
@@ -9106,6 +9142,24 @@ export const curriculumData = {
                       options: ["It replaces the need to ever calculate the exact answer", "It gives a quick sense of the expected size of the answer, which can then be checked against the exact calculation", "It always gives the exact same number as the real sum", "There is no benefit to estimating first"],
                       answer: 1,
                       explanation: "A quick rounded estimate gives an expected ballpark for the answer, which is useful for sanity-checking the exact calculation once it's performed."
+                    },
+                    {
+                      question: "A principal needs sweets for 732 people and orders 750. This is an example of:",
+                      options: ["Rounding down", "Rounding up", "Exact counting", "Estimation error"],
+                      answer: 1,
+                      explanation: "Rounding up is useful when it is better to have a little extra."
+                    },
+                    {
+                      question: "Rounded to the nearest thousand, 6,748 becomes:",
+                      options: ["6,000", "7,000", "6,700", "6,750"],
+                      answer: 1,
+                      explanation: "748 is more than half of a thousand, so the number rounds up."
+                    },
+                    {
+                      question: "What are the 'nearest neighbours' of a large number?",
+                      options: ["The numbers just before and after it", "Its closest round values at different place values", "Its factors", "Its multiples"],
+                      answer: 1,
+                      explanation: "These include the nearest thousand, ten thousand, lakh and beyond."
                     }
                   ]
                 },
@@ -9174,6 +9228,24 @@ export const curriculumData = {
                       options: ["1 lakh people", "50 lakh people", "5 lakh people", "1 crore people"],
                       answer: 1,
                       explanation: "1 lakh buses × 50 people per bus = 1,00,000 × 50 = 50,00,000 = 50 lakh people."
+                    },
+                    {
+                      question: "Using the shortcut for multiplying by 5, what is 248 × 5?",
+                      options: ["1,140", "1,240", "2,480", "620"],
+                      answer: 1,
+                      explanation: "Halve 248 to get 124, then multiply by 10: 124 × 10 = 1,240."
+                    },
+                    {
+                      question: "Multiplying by 25 is the same as:",
+                      options: ["Dividing by 2 then multiplying by 10", "Dividing by 4 then multiplying by 100", "Multiplying by 5 twice only", "Dividing by 25"],
+                      answer: 1,
+                      explanation: "For example, 116 × 25 = (116 / 4) × 100 = 29 × 100 = 2,900."
+                    },
+                    {
+                      question: "The product of two 2-digit numbers always has how many digits?",
+                      options: ["Exactly 4", "3 or 4", "Exactly 3", "2 or 3"],
+                      answer: 1,
+                      explanation: "The smallest case 10 × 10 = 100 has 3 digits and the largest 99 × 99 = 9,801 has 4."
                     }
                   ]
                 }
@@ -9244,6 +9316,24 @@ export const curriculumData = {
                       options: ["Long division", "A concrete mental model that reveals the comparison without needing to compute exact values", "A calculator", "Guessing randomly"],
                       answer: 1,
                       explanation: "Imagining a real situation (like marbles) turns an abstract numeric comparison into an intuitive one, often making the answer clear without needing to calculate exact totals."
+                    },
+                    {
+                      question: "What is the value of the expression 18 divided by 3?",
+                      options: ["3", "6", "9", "15"],
+                      answer: 1,
+                      explanation: "Every arithmetic expression evaluates to a single number, its value."
+                    },
+                    {
+                      question: "Which of these is an arithmetic expression?",
+                      options: ["A number line", "12 x 5", "The digit 7 alone described in words", "A shape"],
+                      answer: 1,
+                      explanation: "It is a mathematical phrase such as 13 + 2 or 20 - 4 that has a value."
+                    },
+                    {
+                      question: "Two expressions can be compared using:",
+                      options: ["Only the = sign", "The signs =, < and >", "Only the > sign", "No signs"],
+                      answer: 1,
+                      explanation: "Often the comparison can be reasoned out without calculating both sides fully."
                     }
                   ]
                 },
@@ -9313,6 +9403,24 @@ export const curriculumData = {
                       options: ["Both expressions give the same, correct answer", "Without brackets, evaluating left to right (100−15+56=141) gives an absurd result — more money back than he paid; the brackets force adding the two costs together FIRST before subtracting", "Brackets are never needed in real-world problems", "Because 100 must always be written first"],
                       answer: 1,
                       explanation: "Evaluating strictly left-to-right without brackets gives 100−15+56=141, an impossible result (more change than the amount paid) — the brackets correctly group the total cost (15+56=71) to be subtracted from 100 all at once, giving the correct ₹29."
+                    },
+                    {
+                      question: "What is the correct value of 30 + 5 x 4?",
+                      options: ["140", "50", "35", "120"],
+                      answer: 1,
+                      explanation: "The multiplication forms a single term, so it is 30 + 20 = 50."
+                    },
+                    {
+                      question: "To find the terms of an expression, every subtraction is first rewritten as:",
+                      options: ["A multiplication", "Adding a negative number", "A division", "A bracket"],
+                      answer: 1,
+                      explanation: "Terms are then the parts separated by the plus signs."
+                    },
+                    {
+                      question: "In the expression 7 + 4 x 3 + 2, how many terms are there?",
+                      options: ["2", "3", "4", "5"],
+                      answer: 1,
+                      explanation: "The terms are 7, 4 x 3 and 2, because only plus signs separate terms."
                     }
                   ]
                 },
@@ -9382,6 +9490,24 @@ export const curriculumData = {
                       options: ["No, negative terms break the property", "Yes — both 6+(−4) and (−4)+6 equal 2, confirming the property holds even with negative terms", "Only if both terms are negative", "The property only applies to whole numbers greater than 10"],
                       answer: 1,
                       explanation: "Both orderings, 6+(−4) and (−4)+6, evaluate to 2 — confirming that the commutative property holds true regardless of whether some terms are negative."
+                    },
+                    {
+                      question: "A drone rises 6 m then descends 4 m. Which expression gives its final height?",
+                      options: ["6 x (-4)", "6 + (-4)", "6 - (-4)", "(-6) + 4"],
+                      answer: 1,
+                      explanation: "Its value is 2 m, and swapping the terms gives the same answer."
+                    },
+                    {
+                      question: "What is the value of (-7) + 10 + (-11)?",
+                      options: ["-8", "8", "-28", "14"],
+                      answer: 1,
+                      explanation: "Grouping the first two or the last two terms first gives the same result."
+                    },
+                    {
+                      question: "Which everyday pair shows that order sometimes DOES matter?",
+                      options: ["Hat and shoes", "Socks and shoes", "Two shirts", "Cap and watch"],
+                      answer: 1,
+                      explanation: "Socks must go on before shoes, unlike addition where order never matters."
                     }
                   ]
                 },
@@ -9450,6 +9576,24 @@ export const curriculumData = {
                       options: ["1", "2", "3", "4"],
                       answer: 2,
                       explanation: "The expression has three terms separated by '+' signs: 3×45 (one term, since it has no internal '+'), 60, and 10."
+                    },
+                    {
+                      question: "Four dosas cost ₹23 each and a ₹5 tip is added. What is the total?",
+                      options: ["₹92", "₹97", "₹112", "₹28"],
+                      answer: 1,
+                      explanation: "The expression 4 x 23 + 5 has terms 92 and 5, giving 97."
+                    },
+                    {
+                      question: "What is the first step in the general rule for evaluating an expression?",
+                      options: ["Add from left to right", "Convert every subtraction into adding the inverse", "Multiply everything", "Remove all brackets"],
+                      answer: 1,
+                      explanation: "The terms are identified only after that conversion."
+                    },
+                    {
+                      question: "Why can fully-evaluated terms be added in any order?",
+                      options: ["Because they are small", "Because addition is commutative and associative", "Because of brackets", "Because they are positive"],
+                      answer: 1,
+                      explanation: "Order and grouping never change the value of a sum."
                     }
                   ]
                 }
@@ -9520,6 +9664,24 @@ export const curriculumData = {
                       options: ["Two point seventy centimetres", "Two and seven-tenths centimetres", "Twenty-seven centimetres", "Two sevenths centimetres"],
                       answer: 1,
                       explanation: "2 7/10 cm is read as 'two and seven-tenths centimetres' — 2 whole units plus 7 tenths of the next unit."
+                    },
+                    {
+                      question: "Why is '2 7/10 cm' more useful than 'between 2 cm and 3 cm'?",
+                      options: ["It is shorter to write", "It states the length precisely instead of giving a range", "It uses no fractions", "It avoids decimals"],
+                      answer: 1,
+                      explanation: "Real precision needs a smaller unit than the whole centimetre."
+                    },
+                    {
+                      question: "Dividing the gap between two consecutive whole numbers into 10 equal parts gives:",
+                      options: ["Halves", "Tenths", "Hundredths", "Quarters"],
+                      answer: 1,
+                      explanation: "Each small part represents one tenth of a unit, which is how a standard ruler is marked."
+                    },
+                    {
+                      question: "Saying a screw is 'between 2 cm and 3 cm' is:",
+                      options: ["Perfectly precise", "Less precise than saying 2.7 cm", "More precise than 2.7 cm", "Meaningless"],
+                      answer: 1,
+                      explanation: "Smaller units are needed whenever whole units are not precise enough."
                     }
                   ]
                 },
@@ -9589,6 +9751,24 @@ export const curriculumData = {
                       options: ["It has no historical origin", "From the Latin 'decem' (ten), related to the Sanskrit 'daśha' and similar words for 10 across many Indian languages", "From the word 'decide'", "From a place name"],
                       answer: 1,
                       explanation: "The word 'decimal' comes from the Latin 'decem' meaning ten, cognate with the Sanskrit 'daśha' and similar words for 10 found across many Indian languages."
+                    },
+                    {
+                      question: "Each place value in our number system is how many times the place to its right?",
+                      options: ["2 times", "10 times", "100 times", "5 times"],
+                      answer: 1,
+                      explanation: "This same pattern continues past the ones place into tenths and hundredths."
+                    },
+                    {
+                      question: "Which of these has the same value as 0.2?",
+                      options: ["0.02", "0.200", "2.0", "0.0002"],
+                      answer: 1,
+                      explanation: "The extra zeros just mean 0 hundredths and 0 thousandths."
+                    },
+                    {
+                      question: "Why does the decimal system split a unit into 10 parts rather than 4 or 8?",
+                      options: ["10 is the largest digit", "It matches the place value system already built on 10", "Smaller splits are impossible", "It is easier to draw"],
+                      answer: 1,
+                      explanation: "The consistency keeps whole numbers and decimals in one system."
                     }
                   ]
                 },
@@ -9658,6 +9838,24 @@ export const curriculumData = {
                       options: ["1.009 is greater", "1.090 is greater, since at the hundredths place, 9 (in 1.090) is greater than 0 (in 1.009)", "They are equal", "Cannot be determined"],
                       answer: 1,
                       explanation: "Both share the same units (1) and tenths (0) digits, but at the hundredths place, 1.090 has 9 while 1.009 has 0 — making 1.090 the larger number."
+                    },
+                    {
+                      question: "Which is greater, 6.456 or 6.465?",
+                      options: ["6.456", "6.465", "They are equal", "Cannot be decided"],
+                      answer: 1,
+                      explanation: "The units and tenths digits tie, and then 6 hundredths beats 5 hundredths."
+                    },
+                    {
+                      question: "Among 0.9, 1.1, 1.01 and 1.11, which is closest to 1?",
+                      options: ["0.9", "1.01", "1.1", "1.11"],
+                      answer: 1,
+                      explanation: "It is only 0.01 away, while 0.9 and 1.1 are each 0.1 away."
+                    },
+                    {
+                      question: "To locate 1.4 on a number line you divide the segment from 1 to 2 into:",
+                      options: ["4 equal parts", "10 equal parts", "14 equal parts", "2 equal parts"],
+                      answer: 1,
+                      explanation: "Counting 4 of those parts from 1 lands exactly on 1.4."
                     }
                   ]
                 },
@@ -9726,6 +9924,24 @@ export const curriculumData = {
                       options: ["161.036", "162.036", "162.936", "161.936"],
                       answer: 1,
                       explanation: "75.345 + 86.691 = 162.036, as shown by the detailed place-value addition (adding matching tens, ones, tenths, hundredths, and thousandths, with appropriate regrouping)."
+                    },
+                    {
+                      question: "Priya needs 2.7 m of cloth and Shylaja needs 3.5 m. How much do they need together?",
+                      options: ["5.2 m", "6.2 m", "6.12 m", "5.12 m"],
+                      answer: 1,
+                      explanation: "2.7 + 3.5 = 6.2, just as 2 7/10 + 3 5/10 = 6 2/10."
+                    },
+                    {
+                      question: "How much longer is 3.5 m than 2.7 m?",
+                      options: ["0.2 m", "0.8 m", "1.2 m", "1.8 m"],
+                      answer: 1,
+                      explanation: "3.5 - 2.7 = 0.8, matching 3 5/10 - 2 7/10 = 8/10."
+                    },
+                    {
+                      question: "When adding decimals in columns, which digits must line up?",
+                      options: ["The last digits", "Digits of the same place value, so the decimal points align", "The first digits", "Any digits"],
+                      answer: 1,
+                      explanation: "Tenths add with tenths and hundredths with hundredths, with regrouping as needed."
                     }
                   ]
                 }
@@ -9805,6 +10021,24 @@ export const curriculumData = {
                       options: ["q + q", "4 × q", "q × q", "2 × q"],
                       answer: 1,
                       explanation: "A square has 4 equal sides, so its perimeter is 4 times its sidelength: 4 × q."
+                    },
+                    {
+                      question: "Shabnam is 3 years older than Aftab. If a is Aftab's age, Shabnam's age s is:",
+                      options: ["s = a - 3", "s = a + 3", "s = 3a", "s = a / 3"],
+                      answer: 1,
+                      explanation: "A letter-number saves writing the phrase 'Aftab's age' every time."
+                    },
+                    {
+                      question: "Each L-shape uses 2 matchsticks. How many are needed for 45 L's?",
+                      options: ["45", "90", "47", "135"],
+                      answer: 1,
+                      explanation: "Multiplying, 45 x 2 = 90 matchsticks in all."
+                    },
+                    {
+                      question: "Coconuts cost ₹35 each and jaggery ₹60 per kg. For c coconuts and j kg of jaggery the total cost is:",
+                      options: ["35 + 60", "35c + 60j", "c + j", "60c + 35j"],
+                      answer: 1,
+                      explanation: "Each letter-number is multiplied by its own rate."
                     }
                   ]
                 },
@@ -9877,6 +10111,24 @@ export const curriculumData = {
                       options: ["9", "18", "36", "63"],
                       answer: 1,
                       explanation: "3d means 3 × d. At d = 6: 3 × 6 = 18."
+                    },
+                    {
+                      question: "What is the value of 68 - (18 + 13)?",
+                      options: ["37", "63", "99", "23"],
+                      answer: 1,
+                      explanation: "Solving the bracket first gives 68 - 31 = 37."
+                    },
+                    {
+                      question: "What is the value of 7k when k = 4?",
+                      options: ["11", "28", "74", "3"],
+                      answer: 1,
+                      explanation: "7k is shorthand for 7 x k, so 7 x 4 = 28."
+                    },
+                    {
+                      question: "How is 4 x n normally written in algebra?",
+                      options: ["n4", "4n", "4 + n", "n/4"],
+                      answer: 1,
+                      explanation: "The number is written first and the multiplication sign is dropped."
                     }
                   ]
                 },
@@ -9953,6 +10205,24 @@ export const curriculumData = {
                       options: ["21p − 9q", "21p + 9q", "21pq", "9p − 21q"],
                       answer: 0,
                       explanation: "Adding and grouping like terms: (7+8+6)p + (−3−4−2)q = 21p − 9q."
+                    },
+                    {
+                      question: "Simplify 5c + 3c + 10c.",
+                      options: ["15c", "18c", "18", "8c"],
+                      answer: 1,
+                      explanation: "All three are like terms, so their coefficients add: 5 + 3 + 10 = 18."
+                    },
+                    {
+                      question: "The perimeter of a rectangle with length l and breadth b simplifies to:",
+                      options: ["l + b", "2l + 2b", "lb", "4l"],
+                      answer: 1,
+                      explanation: "l + b + l + b regroups as l + l + b + b."
+                    },
+                    {
+                      question: "A rectangle of height v split into widths 4 and 3 has area 4v + 3v. This equals:",
+                      options: ["12v", "7v", "7", "43v"],
+                      answer: 1,
+                      explanation: "Using the combined width 7 directly gives the same area."
                     }
                   ]
                 },
@@ -10026,6 +10296,24 @@ export const curriculumData = {
                       options: ["Design A", "Design B", "Design C", "None of them"],
                       answer: 1,
                       explanation: "Based on the position-to-design mapping in the pattern, a remainder of 2 on division by 3 corresponds to Design B."
+                    },
+                    {
+                      question: "In a 2x2 block of calendar dates with top-left date a, the date directly below a is:",
+                      options: ["a + 1", "a + 7", "a + 8", "a + 2"],
+                      answer: 1,
+                      explanation: "The date to its right is a + 1 and the diagonal one is a + 8."
+                    },
+                    {
+                      question: "Why are the two diagonal sums of a 2x2 calendar block always equal?",
+                      options: ["By coincidence", "Because a + (a + 8) equals (a + 1) + (a + 7)", "Because dates are odd", "Because months differ"],
+                      answer: 1,
+                      explanation: "Both sums come to 2a + 8."
+                    },
+                    {
+                      question: "A matchstick triangle pattern starts with 3 sticks and adds 2 at each step. How many sticks are needed at step 10?",
+                      options: ["20", "21", "23", "30"],
+                      answer: 1,
+                      explanation: "Nine more steps add 18 sticks: 3 + 2 x 9 = 21."
                     }
                   ]
                 }
