@@ -24863,6 +24863,24 @@ export const curriculumData = {
                       options: ["To the right of the origin", "To the left of the origin", "Above the origin", "Below the origin"],
                       answer: 1,
                       explanation: "By convention, distances to the left of the origin along the x-axis are negative, while distances to the right are positive."
+                    },
+                    {
+                      question: "What are the coordinates of the origin?",
+                      options: ["(1, 1)", "(0, 0)", "(0, 1)", "(1, 0)"],
+                      answer: 1,
+                      explanation: "The origin O is the point where the x-axis and y-axis cross."
+                    },
+                    {
+                      question: "A point (0, −4) lies where?",
+                      options: ["On the x-axis, left of O", "On the y-axis, below O", "In the first quadrant", "At the origin"],
+                      answer: 1,
+                      explanation: "A point of the form (0, y) lies on the y-axis; a negative y places it below the origin."
+                    },
+                    {
+                      question: "Who mapped the sky using celestial coordinates measured from the ecliptic around 499 CE?",
+                      options: ["Brahmagupta", "Āryabhaṭa", "Bhāskara", "Descartes"],
+                      answer: 1,
+                      explanation: "Brahmagupta, around 628 CE, formalised zero and negative numbers as algebraic entities."
                     }
                   ]
                 },
@@ -24932,6 +24950,24 @@ export const curriculumData = {
                       options: ["They always coincide", "They coincide only when x = y", "They never coincide", "They coincide only when both are negative"],
                       answer: 1,
                       explanation: "If x ≠ y, then (x, y) ≠ (y, x) — they are different points. They coincide if and only if x = y, in which case both notations describe the same point."
+                    },
+                    {
+                      question: "In which quadrant does the point (−5, 3) lie?",
+                      options: ["First", "Second", "Third", "Fourth"],
+                      answer: 1,
+                      explanation: "A negative x with a positive y places the point in Quadrant II."
+                    },
+                    {
+                      question: "For a point P = (x, y), what does the value of y represent?",
+                      options: ["Distance from the origin", "The perpendicular distance of P from the x-axis", "The perpendicular distance from the y-axis", "The slope"],
+                      answer: 1,
+                      explanation: "x is the perpendicular distance from the y-axis and y the perpendicular distance from the x-axis."
+                    },
+                    {
+                      question: "Is (2, 7) the same point as (7, 2)?",
+                      options: ["Yes, always", "No — order matters, and they coincide only when the two coordinates are equal", "Yes, if both are positive", "Only in Quadrant I"],
+                      answer: 1,
+                      explanation: "(3, 3) is the one kind of case where swapping makes no difference."
                     }
                   ]
                 },
@@ -25001,6 +25037,24 @@ export const curriculumData = {
                       options: ["Because negative distances are allowed", "Because the difference is squared, which always gives a non-negative result — we are only measuring the size of the shift along the axis", "Because x₂ is always larger than x₁", "The sign does actually change the answer"],
                       answer: 1,
                       explanation: "The formula squares each difference, so a negative shift gives the same squared value as a positive one — we are measuring only the magnitude of the shift along each axis, not its direction."
+                    },
+                    {
+                      question: "Find the distance between (2, 5) and (9, 5).",
+                      options: ["5", "7", "11", "14"],
+                      answer: 1,
+                      explanation: "The y-coordinates match, so the distance is simply |9 − 2| = 7."
+                    },
+                    {
+                      question: "Find the distance between A(3, 4) and D(7, 1).",
+                      options: ["4", "5", "7", "25"],
+                      answer: 1,
+                      explanation: "The horizontal shift is 4 and the vertical shift is 3, so the distance is √(16 + 9) = 5."
+                    },
+                    {
+                      question: "Why does it not matter whether (x₂ − x₁) comes out negative?",
+                      options: ["Negatives are ignored in mathematics", "Because the difference is squared, which removes the sign", "Because distance can be negative", "Because we always subtract the smaller first"],
+                      answer: 1,
+                      explanation: "Squaring measures only the magnitude of the shift along each axis, not its direction."
                     }
                   ]
                 },
@@ -25070,6 +25124,24 @@ export const curriculumData = {
                       options: ["If its distance from the origin is greater than r", "If its distance from the origin is less than r", "If its distance from the origin equals r", "Points can never lie inside a circle"],
                       answer: 1,
                       explanation: "Computing the point's distance from the origin using the distance formula: if that distance is less than the radius r, the point lies inside the circle; if equal, on the circle; if greater, outside."
+                    },
+                    {
+                      question: "Find the midpoint of the segment joining (2, 6) and (8, 4).",
+                      options: ["(10, 10)", "(5, 5)", "(6, 2)", "(3, 5)"],
+                      answer: 1,
+                      explanation: "The midpoint's coordinates are the averages of the endpoints': ((2+8)/2, (6+4)/2) = (5, 5)."
+                    },
+                    {
+                      question: "How can three points be tested for collinearity using distances?",
+                      options: ["Check that all three distances are equal", "Check whether the largest distance equals the sum of the other two", "Check that they lie on the axes", "Check that the midpoints coincide"],
+                      answer: 1,
+                      explanation: "If the point in the middle lies on the segment joining the outer two, the distances add exactly."
+                    },
+                    {
+                      question: "A circle is centred at the origin with radius 5. Where does the point (3, 4) lie?",
+                      options: ["Inside the circle", "On the circle", "Outside the circle", "At the centre"],
+                      answer: 1,
+                      explanation: "Its distance from the origin is √(9 + 16) = 5, which equals the radius."
                     }
                   ]
                 }
@@ -25145,6 +25217,24 @@ export const curriculumData = {
                       options: ["x and y", "4 and 5", "3 only", "4x and 5y"],
                       answer: 1,
                       explanation: "The coefficients are the numbers multiplying the variables — here 4 (of x) and 5 (of y). The variables are x and y, the terms are 4x, 5y and 3, and 3 is the constant."
+                    },
+                    {
+                      question: "What is the degree of the polynomial 5y³ + y² + 2y − 1?",
+                      options: ["1", "3", "2", "5"],
+                      answer: 1,
+                      explanation: "The degree is the highest power of the variable, which here is 3 — making it a cubic polynomial."
+                    },
+                    {
+                      question: "Which of these is a quadratic polynomial?",
+                      options: ["4x", "x² + 5x + 1", "3z + 7", "5y³ + 1"],
+                      answer: 1,
+                      explanation: "A quadratic polynomial has degree 2."
+                    },
+                    {
+                      question: "In the expression 4x + 5y + 3, what is the coefficient of y?",
+                      options: ["3", "5", "4", "1"],
+                      answer: 1,
+                      explanation: "The coefficient is the number multiplying the variable, so for 5y it is 5."
                     }
                   ]
                 },
@@ -25214,6 +25304,24 @@ export const curriculumData = {
                       options: ["15 tiles", "29 tiles", "30 tiles", "31 tiles"],
                       answer: 1,
                       explanation: "Substituting n = 15 into the rule gives 2 × 15 − 1 = 30 − 1 = 29 tiles."
+                    },
+                    {
+                      question: "A chess club charges ₹200 to join plus ₹50 per match. What is the cost for m matches?",
+                      options: ["200m + 50", "200 + 50m", "250m", "50 + 200m"],
+                      answer: 1,
+                      explanation: "The fixed joining fee is the constant term and the per-match charge multiplies m."
+                    },
+                    {
+                      question: "What is the defining feature of a linear polynomial's values at consecutive integers?",
+                      options: ["They double each time", "The difference between successive values is constant", "They increase by squares", "They repeat"],
+                      answer: 1,
+                      explanation: "The perimeter of a square, 4x, increases by the same amount for each unit increase in the side."
+                    },
+                    {
+                      question: "The tile pattern gives 1, 3, 5, 7, … squares. What is the rule for stage n?",
+                      options: ["n + 2", "2n − 1", "2n + 1", "n²"],
+                      answer: 1,
+                      explanation: "Substituting n = 1 gives 1, n = 2 gives 3, and so on — a linear polynomial with constant difference 2."
                     }
                   ]
                 },
@@ -25283,6 +25391,24 @@ export const curriculumData = {
                       options: ["8 days", "10 days", "12 days", "20 days"],
                       answer: 2,
                       explanation: "The amount left on day n is ₹(100 − 5n). Setting 100 − 5n = 40 gives 5n = 60, so n = 12 days."
+                    },
+                    {
+                      question: "For C(d) = 100 + 60d, what is the cost of a 4 km journey?",
+                      options: ["₹160", "₹340", "₹400", "₹240"],
+                      answer: 1,
+                      explanation: "C(4) = 100 + 60 × 4 = 100 + 240 = ₹340."
+                    },
+                    {
+                      question: "In h(t) = 3 − 0.5t, what happens as t increases by one month?",
+                      options: ["The height rises by 0.5 m", "The height falls by 0.5 m", "The height stays the same", "The height halves"],
+                      answer: 1,
+                      explanation: "A negative coefficient of t produces linear decay at a constant rate."
+                    },
+                    {
+                      question: "Treating 2x + 3 as an input-output machine, what is the output for x = −6?",
+                      options: ["−15", "−9", "9", "−3"],
+                      answer: 1,
+                      explanation: "2 × (−6) + 3 = −12 + 3 = −9."
                     }
                   ]
                 },
@@ -25352,6 +25478,24 @@ export const curriculumData = {
                       options: ["(0, 1) and (3, 7)", "(0, 2) and (1, 3)", "(1, 0) and (7, 3)", "(0, 0) and (2, 1)"],
                       answer: 0,
                       explanation: "When x = 0, y = 2 × 0 + 1 = 1 giving (0, 1); when x = 3, y = 2 × 3 + 1 = 7 giving (3, 7). Both points satisfy the equation, so the line can be drawn through them."
+                    },
+                    {
+                      question: "How many points are needed to plot the line y = ax + b?",
+                      options: ["One", "Two", "Three", "Infinitely many"],
+                      answer: 1,
+                      explanation: "Two points determine a straight line, so finding any two solutions is enough."
+                    },
+                    {
+                      question: "In y = 2x + 5, what does the 5 represent?",
+                      options: ["The slope", "The y-intercept, so the line cuts the y-axis at (0, 5)", "The x-intercept", "A point on the line"],
+                      answer: 1,
+                      explanation: "In y = ax + b, a is the slope and b is the y-intercept."
+                    },
+                    {
+                      question: "A telecom bill is ₹350 for 10 GB and ₹550 for 20 GB. What is the cost per GB?",
+                      options: ["₹35", "₹20", "₹55", "₹15"],
+                      answer: 1,
+                      explanation: "The bill rises ₹200 for 10 extra GB, so a = 20, and the fixed fee is then 350 − 200 = ₹150."
                     }
                   ]
                 }
@@ -25427,6 +25571,24 @@ export const curriculumData = {
                       options: ["The natural numbers, from 'zero'", "The integers, from the German word Zahlen meaning numbers", "The rational numbers, from 'zeta'", "The irrational numbers, from 'Z-series'"],
                       answer: 1,
                       explanation: "The integers — positive natural numbers, their negative counterparts, and zero — are denoted by Z, taken from the German word Zahlen, meaning numbers."
+                    },
+                    {
+                      question: "According to Brahmagupta's rules, what is a − 0?",
+                      options: ["0", "a", "−a", "1"],
+                      answer: 1,
+                      explanation: "Subtracting zero from a number leaves the number unchanged, just as adding zero does."
+                    },
+                    {
+                      question: "Brahmagupta grounded negative numbers in commerce. What did he call debts?",
+                      options: ["Dhana", "Ṛiṇa", "Śhūnya", "Zahlen"],
+                      answer: 1,
+                      explanation: "Fortunes (dhana) were positive numbers and debts (ṛiṇa) negative ones."
+                    },
+                    {
+                      question: "What distinguished Indian śhūnya from earlier Babylonian and Mayan placeholders?",
+                      options: ["It was written differently", "It was treated as a number in its own right, not merely an empty column", "It was larger", "It was used only in astronomy"],
+                      answer: 1,
+                      explanation: "Brahmagupta laid down the fundamental laws of arithmetic with śhūnya."
                     }
                   ]
                 },
@@ -25496,6 +25658,24 @@ export const curriculumData = {
                       options: ["3/2", "1/2", "2/3", "5/2"],
                       answer: 0,
                       explanation: "3/2 = 1.5 lies exactly between 1 and 2, and is the average of the two integers."
+                    },
+                    {
+                      question: "Which rational number lies between 1 and 3/2?",
+                      options: ["2", "5/4", "1/2", "3"],
+                      answer: 1,
+                      explanation: "Their average is (1 + 3/2)/2 = (5/2)/2 = 5/4."
+                    },
+                    {
+                      question: "How many rational numbers lie between any two distinct rational numbers?",
+                      options: ["Exactly one", "Infinitely many", "Exactly two", "None"],
+                      answer: 1,
+                      explanation: "Averaging can be repeated endlessly, which is what the density property means."
+                    },
+                    {
+                      question: "The average of two rational numbers a and b is:",
+                      options: ["a × b", "(a + b)/2", "a − b", "b/a"],
+                      answer: 1,
+                      explanation: "This always lies strictly between the two, which is why it proves the density property."
                     }
                   ]
                 },
@@ -25565,6 +25745,24 @@ export const curriculumData = {
                       options: ["A single very precise fraction", "An infinite sum, such as π = 4 × (1 − 1/3 + 1/5 − 1/7 + …)", "A larger unit of measurement", "A geometric construction with compass alone"],
                       answer: 1,
                       explanation: "Mādhava realised that no single fraction could express an irrational number, and discovered the infinite series π = 4 × (1 − 1/3 + 1/5 − 1/7 + …)."
+                    },
+                    {
+                      question: "Who proved that √2 is irrational, around 400 BCE?",
+                      options: ["Baudhāyana", "Hippasus", "Heron", "Brahmagupta"],
+                      answer: 1,
+                      explanation: "He assumed the opposite — that √2 = p/q in simplest form — and derived a contradiction."
+                    },
+                    {
+                      question: "In that proof, what does 2 = p²/q² imply about p?",
+                      options: ["p is odd", "p² is even, so p must be even", "p equals q", "p is prime"],
+                      answer: 1,
+                      explanation: "This eventually forces both p and q to be even, contradicting the assumption that they are co-prime."
+                    },
+                    {
+                      question: "How is √2 constructed on the number line?",
+                      options: ["By trial and error", "By drawing a unit perpendicular at A on OA = 1 and using the hypotenuse OB", "By dividing the unit into halves", "It cannot be constructed"],
+                      answer: 1,
+                      explanation: "OB = √2 by the theorem, and an arc of radius OB centred at O then marks √2 on the line."
                     }
                   ]
                 },
@@ -25634,6 +25832,24 @@ export const curriculumData = {
                       options: ["20 = 4 × 5, so it repeats", "20 = 2² × 5, so multiplying numerator and denominator by 5 gives 15/100 = 0.15", "20 is even, so it always terminates", "3 is prime, so it terminates"],
                       answer: 1,
                       explanation: "Since 20 = 2² × 5 contains only 2s and 5s, multiplying top and bottom by 5 converts the denominator into 100: 3/20 = 15/100 = 0.15, a terminating decimal."
+                    },
+                    {
+                      question: "Which two outcomes are possible when a rational number is written as a decimal?",
+                      options: ["It terminates or becomes irrational", "It terminates or repeats", "It always terminates", "It always repeats"],
+                      answer: 1,
+                      explanation: "Dividing the numerator by the denominator gives exactly one of these two results."
+                    },
+                    {
+                      question: "Why must the decimal expansion of 1/7 eventually repeat?",
+                      options: ["Because 7 is prime", "Because only the remainders 1 to 6 are possible, so one must recur", "Because 1/7 is irrational", "Because the division never ends"],
+                      answer: 1,
+                      explanation: "With finitely many possible remainders, a remainder must repeat and the digits then cycle."
+                    },
+                    {
+                      question: "For p/q in lowest terms, the decimal terminates precisely when the prime factors of q are:",
+                      options: ["Only 3 and 7", "Only 2 and 5", "Any primes", "Only odd primes"],
+                      answer: 1,
+                      explanation: "Only then can the denominator be converted into a power of 10."
                     }
                   ]
                 }
@@ -25709,6 +25925,24 @@ export const curriculumData = {
                       options: ["(a − b)² = a² + 2ab − b²", "(a − b)² = a² − 2ab + b²", "(a − b)² = a² − b²", "(a − b)² = a² + b²"],
                       answer: 1,
                       explanation: "Substituting −b for b gives (a − b)² = a² + 2a(−b) + (−b)² = a² − 2ab + b², since (−b)² = b²."
+                    },
+                    {
+                      question: "What is the difference between an identity and an equation?",
+                      options: ["There is none", "An identity is true for all values of its variables, while an equation need not be", "An identity has no solution", "An equation is always true"],
+                      answer: 1,
+                      explanation: "x² − 1 = 24 holds only for x = 5 or −5, so it is an equation rather than an identity."
+                    },
+                    {
+                      question: "Expand (a + b)².",
+                      options: ["a² + b²", "a² + 2ab + b²", "a² − 2ab + b²", "2a + 2b"],
+                      answer: 1,
+                      explanation: "The square on the segment (a + b) splits into two squares and two equal rectangles."
+                    },
+                    {
+                      question: "Use an identity to find 102².",
+                      options: ["10404", "10004", "10204", "11004"],
+                      answer: 1,
+                      explanation: "(100 + 2)² = 10000 + 2(100)(2) + 4 = 10404."
                     }
                   ]
                 },
@@ -25778,6 +26012,24 @@ export const curriculumData = {
                       options: ["a² − b² = (a − b)²", "a² − b² = (a + b)(a − b)", "a² − b² = a² + b²", "a² − b² = 2ab"],
                       answer: 1,
                       explanation: "The difference of squares factors as a² − b² = (a + b)(a − b), which can also be rearranged as a² = (a + b)(a − b) + b²."
+                    },
+                    {
+                      question: "Factorise x² + 4x + 4.",
+                      options: ["(x + 4)²", "(x + 2)²", "(x + 2)(x − 2)", "(x + 1)(x + 4)"],
+                      answer: 1,
+                      explanation: "It matches a² + 2ab + b² with a = x and b = 2, since 4x = 2(x)(2)."
+                    },
+                    {
+                      question: "What is the first step in factorising 50p² + 60pq + 18q²?",
+                      options: ["Use the difference of squares", "Take out the common factor 2", "Divide by p", "Add and subtract a term"],
+                      answer: 1,
+                      explanation: "2(25p² + 30pq + 9q²) then matches the perfect-square pattern with a = 5p and b = 3q."
+                    },
+                    {
+                      question: "Factorise 49 − x².",
+                      options: ["(7 − x)²", "(7 + x)(7 − x)", "(x − 7)²", "(49 − x)(1 + x)"],
+                      answer: 1,
+                      explanation: "This is the difference of squares, a² − b² = (a + b)(a − b), with a = 7 and b = x."
                     }
                   ]
                 },
@@ -25847,6 +26099,24 @@ export const curriculumData = {
                       options: ["a³", "3a²b", "3ab²", "b³"],
                       answer: 1,
                       explanation: "Each cuboid of dimensions a × a × b has volume a²b, and there are three of them, contributing the term 3a²b."
+                    },
+                    {
+                      question: "Expand (a + b + c)².",
+                      options: ["a² + b² + c²", "a² + b² + c² + 2ab + 2bc + 2ac", "a² + b² + c² + abc", "(a + b)² + c"],
+                      answer: 1,
+                      explanation: "Replacing b + c by d and expanding (a + d)² leads to the three squares plus the three double products."
+                    },
+                    {
+                      question: "Expand (a + b)³.",
+                      options: ["a³ + b³", "a³ + 3a²b + 3ab² + b³", "a³ + b³ + 3ab", "3a³ + 3b³"],
+                      answer: 1,
+                      explanation: "The cube of edge (a + b) splits into two cubes and six rectangular boxes, three of each kind."
+                    },
+                    {
+                      question: "Using the three-term identity, 119² = (100 + 10 + 9)² equals:",
+                      options: ["14161", "10000", "14400", "13161"],
+                      answer: 1,
+                      explanation: "10000 + 100 + 81 + 2000 + 1800 + 180 = 14161."
                     }
                   ]
                 },
@@ -25916,6 +26186,24 @@ export const curriculumData = {
                       options: ["Add the numerator and denominator", "Factorise the numerator and denominator, then cancel common factors", "Always divide by x", "Convert it to a decimal"],
                       answer: 1,
                       explanation: "The standard approach is to factorise both the numerator and the denominator — often using algebraic identities — and then cancel any common non-zero factors."
+                    },
+                    {
+                      question: "What is the first step in simplifying a rational algebraic expression?",
+                      options: ["Cancel any terms that look alike", "Factorise the numerator and the denominator", "Multiply out the brackets", "Add the fractions"],
+                      answer: 1,
+                      explanation: "Only after factorising can common factors be safely identified and cancelled."
+                    },
+                    {
+                      question: "Factorise x² − 7x + 12.",
+                      options: ["(x − 3)(x − 4)", "(x + 3)(x + 4)", "(x − 6)(x − 2)", "(x − 12)(x + 1)"],
+                      answer: 1,
+                      explanation: "We need two numbers with sum −7 and product 12, namely −3 and −4."
+                    },
+                    {
+                      question: "Why may the factor (x − 4) be cancelled in that worked example?",
+                      options: ["Cancelling is always allowed", "Because it is known to be non-zero, since the denominator is not zero", "Because it appears twice", "Because x is positive"],
+                      answer: 1,
+                      explanation: "Cancelling a factor that could be zero would be invalid, so the non-zero condition matters."
                     }
                   ]
                 }
@@ -25991,6 +26279,24 @@ export const curriculumData = {
                       options: ["Exactly one", "Exactly two", "Infinitely many", "None"],
                       answer: 2,
                       explanation: "Since every point on the perpendicular bisector of AB can serve as a centre, and that line contains infinitely many points, infinitely many circles pass through any two given points."
+                    },
+                    {
+                      question: "What is a locus of points?",
+                      options: ["A single fixed point", "The set of all points satisfying a given condition", "A straight line only", "The centre of a circle"],
+                      answer: 1,
+                      explanation: "A circle is the locus of points in a plane that are equidistant from a given point."
+                    },
+                    {
+                      question: "What kind of rotational symmetry does a circle have?",
+                      options: ["Only half-turn symmetry", "Complete rotational symmetry — it looks the same after any rotation", "Four-fold symmetry", "None"],
+                      answer: 1,
+                      explanation: "This is why a rotating wheel looks unchanged at all times."
+                    },
+                    {
+                      question: "If a circle passes through A and B, where must its centre lie?",
+                      options: ["At the midpoint of AB", "On the perpendicular bisector of AB, since OA = OB", "At A", "Anywhere in the plane"],
+                      answer: 1,
+                      explanation: "Every point equidistant from A and B lies on that perpendicular bisector, which is why infinitely many such circles exist."
                     }
                   ]
                 },
@@ -26060,6 +26366,24 @@ export const curriculumData = {
                       options: ["The perpendicular from the centre to a chord bisects the chord", "Every chord passes through the centre", "All chords are equal in length", "The chord bisects the radius"],
                       answer: 0,
                       explanation: "The converse states that the perpendicular drawn from the centre of a circle to a chord bisects that chord."
+                    },
+                    {
+                      question: "Equal chords of a circle subtend what at the centre?",
+                      options: ["Different angles", "Equal angles", "Right angles", "Straight angles"],
+                      answer: 1,
+                      explanation: "The two triangles formed have all three sides equal, so the angles at the centre match."
+                    },
+                    {
+                      question: "The line joining the centre to the midpoint of a chord is:",
+                      options: ["Parallel to the chord", "Perpendicular to the chord", "Equal to the radius", "Half the chord"],
+                      answer: 1,
+                      explanation: "Triangle CAB is isosceles, so the median from C to the midpoint of AB is also an altitude."
+                    },
+                    {
+                      question: "A chord of length 8 cm lies in a circle of radius 5 cm. How far is it from the centre?",
+                      options: ["4 cm", "3 cm", "5 cm", "6 cm"],
+                      answer: 1,
+                      explanation: "The perpendicular from the centre bisects the chord, so the distance is √(25 − 16) = 3 cm."
                     }
                   ]
                 },
@@ -26129,6 +26453,24 @@ export const curriculumData = {
                       options: ["Because AF and GD are radii", "Because F and G are the midpoints of AB and DE, so each is half its chord", "Because the perpendiculars are equal", "It does not follow"],
                       answer: 1,
                       explanation: "The perpendicular from the centre bisects the chord, so AF is half of AB and GD is half of DE — hence AB > DE directly gives AF > GD."
+                    },
+                    {
+                      question: "Chords of equal length in a circle are:",
+                      options: ["At different distances from the centre", "Equidistant from the centre", "Always parallel", "Always diameters"],
+                      answer: 1,
+                      explanation: "Equal length and equal distance from the centre are two ways of saying the same thing."
+                    },
+                    {
+                      question: "Of two chords in a circle, the longer one is:",
+                      options: ["Further from the centre", "Closer to the centre", "At the same distance", "Always a diameter"],
+                      answer: 1,
+                      explanation: "As a chord grows longer, its perpendicular distance from the centre shrinks."
+                    },
+                    {
+                      question: "Which chord of a circle is the longest possible?",
+                      options: ["Any chord through the centre region", "The diameter, which passes through the centre", "A chord near the edge", "They are all equal"],
+                      answer: 1,
+                      explanation: "Its distance from the centre is zero, which by the theorem makes it the longest."
                     }
                   ]
                 },
@@ -26198,6 +26540,24 @@ export const curriculumData = {
                       options: ["When AB = CD", "When segment AB subtends equal angles at C and D, with C and D on the same side of AB", "When all four are equidistant from each other", "Whenever ABCD forms a quadrilateral"],
                       answer: 1,
                       explanation: "Theorem 10 states that if AB subtends equal angles at two points C and D lying on the same side of AB, then A, B, C and D are concyclic."
+                    },
+                    {
+                      question: "Two points A and B divide a circle into two arcs. The larger one is called the:",
+                      options: ["Minor arc", "Major arc", "Semicircle", "Chord"],
+                      answer: 1,
+                      explanation: "An arc is a connected portion of the circle defined by two end points and the curve joining them."
+                    },
+                    {
+                      question: "An arc subtends 80° at the centre. What angle does it subtend at a point on the circle outside the arc?",
+                      options: ["80°", "40°", "160°", "20°"],
+                      answer: 1,
+                      explanation: "The angle at the centre is double the angle at any point on the remaining part of the circle."
+                    },
+                    {
+                      question: "What does it mean for points to be concyclic?",
+                      options: ["They form a square", "They all lie on the same circle", "They are equidistant from each other", "They lie on a straight line"],
+                      answer: 1,
+                      explanation: "If a segment AB subtends equal angles at C and D on the same side of AB, then A, B, C and D are concyclic."
                     }
                   ]
                 }
@@ -26273,6 +26633,24 @@ export const curriculumData = {
                       options: ["Yes, larger circles have larger ratios", "Yes, smaller circles have larger ratios", "No, it is the same constant for every circle", "It varies unpredictably"],
                       answer: 2,
                       explanation: "The whole significance of the C/D ratio is that it does not change with the size of the circle — it is a fixed constant, π, for circles of every scale."
+                    },
+                    {
+                      question: "What does the C/D ratio of a circle represent?",
+                      options: ["Its area divided by radius", "Its circumference divided by its diameter", "Its diameter divided by radius", "Its perimeter squared"],
+                      answer: 1,
+                      explanation: "This ratio is the same whatever the size of the circle, and we now call it π."
+                    },
+                    {
+                      question: "Inscribing a regular hexagon in a circle shows that:",
+                      options: ["π equals 3 exactly", "π is greater than 3, since the hexagon's perimeter is 3 times the diameter and the circle is longer", "π is less than 3", "π is irrational"],
+                      answer: 1,
+                      explanation: "The hexagon's perimeter is 6r = 3d, and the circle must be longer than the polygon inside it."
+                    },
+                    {
+                      question: "What does π bridge, according to the chapter?",
+                      options: ["Algebra and statistics", "The straight-edged world of polygons and the infinite curves of nature", "Numbers and letters", "Physics and chemistry"],
+                      answer: 1,
+                      explanation: "It connects many different areas of mathematics."
                     }
                   ]
                 },
@@ -26342,6 +26720,24 @@ export const curriculumData = {
                       options: ["To make the race look better", "Because outer-lane runners cover a longer distance on the curves due to their larger radius", "Because outer lanes are rougher", "Because the straights differ in length between lanes"],
                       answer: 1,
                       explanation: "Runners cover identical distances on the straights, but an outer lane's semicircles have a larger radius and therefore greater arc length — staggers compensate for exactly this difference."
+                    },
+                    {
+                      question: "What is the circumference of a circle of diameter d?",
+                      options: ["πd/2", "πd", "2πd", "πd²"],
+                      answer: 1,
+                      explanation: "Since d = 2r, this is the same as 2πr."
+                    },
+                    {
+                      question: "A standard 400 m track has two straight sections of what length each?",
+                      options: ["100 m", "84.39 m", "36.5 m", "168.78 m"],
+                      answer: 1,
+                      explanation: "The two straights total 168.78 m, and the two semicircular ends make up the rest."
+                    },
+                    {
+                      question: "Why do runners in outer lanes start further forward?",
+                      options: ["To make the race fairer to spectators", "Because the outer curves are longer, so staggers equalise the total distance", "Because they run slower", "It is only tradition"],
+                      answer: 1,
+                      explanation: "The larger the radius of the curve, the greater the arc length that must be covered."
                     }
                   ]
                 },
@@ -26411,6 +26807,24 @@ export const curriculumData = {
                       options: ["a²", "(√3/2)a²", "(√3/4)a²", "(1/2)a²"],
                       answer: 2,
                       explanation: "With s = 3a/2, Heron's formula yields √[(3a/2)(a/2)(a/2)(a/2)] = (√3/4)a², which agrees with the half-base-times-height calculation."
+                    },
+                    {
+                      question: "What is the area of a parallelogram with base b and height h?",
+                      options: ["bh/2", "bh", "2bh", "b + h"],
+                      answer: 1,
+                      explanation: "The parallelogram can be rearranged into a rectangle of the same base and height."
+                    },
+                    {
+                      question: "In Heron's formula, what is s?",
+                      options: ["The shortest side", "The semi-perimeter, (a + b + c)/2", "The sum of the sides", "The area"],
+                      answer: 1,
+                      explanation: "The area is then √[s(s − a)(s − b)(s − c)]."
+                    },
+                    {
+                      question: "Find the area of a triangle with sides 3, 4 and 5 using Heron's formula.",
+                      options: ["12", "6", "7.5", "10"],
+                      answer: 1,
+                      explanation: "s = 6, so the area is √[6 × 3 × 2 × 1] = √36 = 6."
                     }
                   ]
                 },
@@ -26480,6 +26894,24 @@ export const curriculumData = {
                       options: ["It is about 3.16, very close to π ≈ 3.1416", "It is about 4, quite far off", "It is exactly π", "It is about 2.5"],
                       answer: 0,
                       explanation: "256/81 ≈ 3.16, remarkably close to the modern value π ≈ 3.1416 for a formula devised around 1500 BCE."
+                    },
+                    {
+                      question: "For every square, what is the ratio P² : A?",
+                      options: ["4 : 1", "16 : 1", "8 : 1", "1 : 16"],
+                      answer: 1,
+                      explanation: "P = 4a and A = a², so P² : A = 16a² : a² = 16 : 1, whatever the size."
+                    },
+                    {
+                      question: "Why must C² : A be a fixed constant for circles?",
+                      options: ["Because circles have no corners", "Because the ratio of perimeter squared to area is fixed for any one shape, whatever its size", "Because π is irrational", "Because area is always larger"],
+                      answer: 1,
+                      explanation: "The same reasoning that fixes 16 : 1 for squares applies to circles too."
+                    },
+                    {
+                      question: "The Egyptian approximation A ≈ (8d/9)² corresponds to what value of π?",
+                      options: ["3.0", "About 3.16", "3.1416", "22/7"],
+                      answer: 1,
+                      explanation: "Rewriting it as A ≈ (256/81)r² gives π ≈ 3.16, remarkably close for around 1500 BCE."
                     }
                   ]
                 }
@@ -26555,6 +26987,24 @@ export const curriculumData = {
                       options: ["It stays fixed at 0.5", "It moves smoothly along the scale from impossible toward certain", "It drops toward 0", "It jumps randomly"],
                       answer: 1,
                       explanation: "With 0 purple cards the probability is 0 and with all six purple it is 1 — as the count rises, the probability slides steadily along the scale from less likely, through even chance, to more likely."
+                    },
+                    {
+                      question: "A probability of 0.75 corresponds to what percentage chance?",
+                      options: ["7.5%", "75%", "0.75%", "25%"],
+                      answer: 1,
+                      explanation: "A probability of 0.75 means the event is more likely than not — a 75 per cent chance."
+                    },
+                    {
+                      question: "What is the probability of rolling a number greater than 6 on a standard die?",
+                      options: ["1/6", "0", "1", "1/2"],
+                      answer: 1,
+                      explanation: "No face shows more than 6, so the event is impossible."
+                    },
+                    {
+                      question: "In a deck of six cards with an unknown number of purple cards, what is the highest possible probability of drawing purple?",
+                      options: ["0.5", "1, if all six cards are purple", "1/6", "0"],
+                      answer: 1,
+                      explanation: "The probability slides from 0, when there are no purple cards, to 1 when they all are."
                     }
                   ]
                 },
@@ -26624,6 +27074,24 @@ export const curriculumData = {
                       options: ["It is easier to compute than theory", "It lets you work with observed outcomes rather than theoretical predictions", "It always gives exact answers", "It requires no data at all"],
                       answer: 1,
                       explanation: "Relative frequency is grounded in what actually happened in the data, making it the natural tool when you are analysing real observed outcomes."
+                    },
+                    {
+                      question: "What is a sample space?",
+                      options: ["The number of trials", "The set of all possible outcomes of an experiment", "The favourable outcomes only", "The result of one trial"],
+                      answer: 1,
+                      explanation: "Each individual result of an experiment is called an outcome."
+                    },
+                    {
+                      question: "A die is rolled 50 times and shows 4 on 8 occasions. What is the experimental probability of a 4?",
+                      options: ["8", "0.16", "1/6", "50/8"],
+                      answer: 1,
+                      explanation: "Experimental probability = 8 ÷ 50 = 0.16."
+                    },
+                    {
+                      question: "Another name for that same quantity, 8/50, is:",
+                      options: ["Theoretical probability", "Relative frequency", "Sample space", "Certainty"],
+                      answer: 1,
+                      explanation: "Relative frequency describes probability based on actual observed data."
                     }
                   ]
                 },
@@ -26693,6 +27161,24 @@ export const curriculumData = {
                       options: ["Theoretical needs no experiment or data, while experimental is computed from actual trials", "They are exactly the same thing", "Theoretical always requires more data", "Experimental can only be used for coins"],
                       answer: 0,
                       explanation: "Theoretical probability is derived by counting outcomes in an ideal fair situation, whereas experimental probability comes from counting what actually happened across real trials."
+                    },
+                    {
+                      question: "Theoretical probability assumes that:",
+                      options: ["Trials are repeated many times", "All possible outcomes are equally likely", "The experiment is unfair", "Outcomes are unknown"],
+                      answer: 1,
+                      explanation: "It describes what we expect in an ideal, perfectly fair situation."
+                    },
+                    {
+                      question: "What is the theoretical probability of rolling a 4 on a standard die?",
+                      options: ["1/4", "1/6", "4/6", "1/2"],
+                      answer: 1,
+                      explanation: "There is one favourable outcome out of six equally likely ones."
+                    },
+                    {
+                      question: "A letter is picked at random from 'PROBABILITY'. What is the probability of picking a B?",
+                      options: ["1/11", "2/11", "2/10", "1/2"],
+                      answer: 1,
+                      explanation: "The word has 11 letters of which 2 are B."
                     }
                   ]
                 },
@@ -26762,6 +27248,24 @@ export const curriculumData = {
                       options: ["1/4", "1/2", "3/4", "1/3"],
                       answer: 1,
                       explanation: "Two outcomes qualify — HT and TH — out of the four possible, giving 2/4 = 1/2 or 50%."
+                    },
+                    {
+                      question: "What must a sample space include?",
+                      options: ["Only the favourable outcomes", "Every possible outcome, with none left out", "Only the first outcome", "The number of trials"],
+                      answer: 1,
+                      explanation: "Each possible outcome is an element of the sample space S."
+                    },
+                    {
+                      question: "What is an event?",
+                      options: ["The whole sample space only", "A single result, or a combination of results, that might happen", "The number of trials", "The probability value"],
+                      answer: 1,
+                      explanation: "It amounts to choosing particular outcomes from all the things that could happen."
+                    },
+                    {
+                      question: "When tossing a coin twice, how many branches does the completed tree diagram end with?",
+                      options: ["Two", "Four", "Three", "Eight"],
+                      answer: 1,
+                      explanation: "Each toss splits into two, giving HH, HT, TH and TT as the four possible outcomes."
                     }
                   ]
                 }
@@ -26837,6 +27341,24 @@ export const curriculumData = {
                       options: ["tₙ = 3n − 2 only", "t₁ = 1, tₙ = tₙ₋₁ + 3 for n ≥ 2", "tₙ = tₙ₋₁ × 3", "t₁ = 3, tₙ = tₙ₋₁ + 1"],
                       answer: 1,
                       explanation: "Each term is 3 more than the one before it, so the recursive rule is t₁ = 1 with tₙ = tₙ₋₁ + 3 for n ≥ 2."
+                    },
+                    {
+                      question: "What is the advantage of an explicit rule over a recursive one?",
+                      options: ["It is shorter to write", "Any term can be found directly from its position, without knowing previous terms", "It works only for short sequences", "It needs no formula"],
+                      answer: 1,
+                      explanation: "Substituting n = 300 gives the 300th term immediately."
+                    },
+                    {
+                      question: "For tₙ = 3n − 2, what is the 20th term?",
+                      options: ["58", "56", "60", "62"],
+                      answer: 0,
+                      explanation: "Substituting n = 20 into the rule gives 3 × 20 − 2 = 58."
+                    },
+                    {
+                      question: "A recursive rule defines a term using:",
+                      options: ["Its position number only", "The previous term", "The first term only", "The last term"],
+                      answer: 1,
+                      explanation: "For 1, 4, 7, 10, … the rule is t₁ = 1 with tₙ = tₙ₋₁ + 3."
                     }
                   ]
                 },
@@ -26906,6 +27428,24 @@ export const curriculumData = {
                       options: ["1, 5, 9, 13, 17, 21", "1, 4, 8, 12, 16, 20", "4, 8, 12, 16, 20, 24", "1, 5, 10, 15, 20, 25"],
                       answer: 0,
                       explanation: "Substituting n = 1 through 6 gives 1, 5, 9, 13, 17, 21 — each 4 more than the last."
+                    },
+                    {
+                      question: "In the AP 1, 5, 9, 13, … what is the common difference?",
+                      options: ["1", "4", "5", "3"],
+                      answer: 1,
+                      explanation: "Each term is 4 more than the one before, and that constant is the common difference."
+                    },
+                    {
+                      question: "For the AP 1, 5, 9, 13, … what is the nth term?",
+                      options: ["4n", "4n − 3", "4n + 1", "n + 4"],
+                      answer: 1,
+                      explanation: "tₙ = 1 + (n − 1) × 4 = 4n − 3."
+                    },
+                    {
+                      question: "Is 29 a term of the AP 1, 5, 9, 13, …?",
+                      options: ["No", "Yes, it is the 8th term", "Yes, it is the 7th term", "It cannot be decided"],
+                      answer: 1,
+                      explanation: "4n − 3 = 29 gives 4n = 32, so n = 8 — a whole number, so 29 does belong to the sequence."
                     }
                   ]
                 },
@@ -26975,6 +27515,24 @@ export const curriculumData = {
                       options: ["6 × 6", "7 × 6", "7 × 7", "6 × 5"],
                       answer: 1,
                       explanation: "The two sets of circles together form a 7 × 6 array, showing 2 × (1 + 2 + … + 6) = 7 × 6, which matches n(n + 1) with n = 6."
+                    },
+                    {
+                      question: "What is the sum 1 + 2 + 3 + … + 10?",
+                      options: ["50", "55", "45", "100"],
+                      answer: 1,
+                      explanation: "Using n(n + 1)/2 with n = 10 gives 10 × 11 ÷ 2 = 55."
+                    },
+                    {
+                      question: "In the pairing trick, what does each pair of corresponding numbers add up to?",
+                      options: ["n", "n + 1", "2n", "n − 1"],
+                      answer: 1,
+                      explanation: "Writing the sum forwards and backwards makes every pair add to n + 1, and there are n such pairs."
+                    },
+                    {
+                      question: "Find the sum of the first 100 natural numbers.",
+                      options: ["5050", "10100", "5000", "1010"],
+                      answer: 0,
+                      explanation: "Using n(n + 1)/2 with n = 100 gives 100 × 101 ÷ 2 = 5050."
                     }
                   ]
                 },
@@ -27044,6 +27602,24 @@ export const curriculumData = {
                       options: ["3/4", "4/3", "3", "15/4"],
                       answer: 0,
                       explanation: "Dividing consecutive terms gives (15/4) ÷ 5 = 3/4 and (45/16) ÷ (15/4) = 3/4 — a constant common ratio of 3/4."
+                    },
+                    {
+                      question: "In a GP, how is each term obtained from the previous one?",
+                      options: ["By adding a constant", "By multiplying by a constant ratio", "By squaring it", "By halving it"],
+                      answer: 1,
+                      explanation: "That constant multiplier is called the common ratio of the progression."
+                    },
+                    {
+                      question: "For the GP 3, 6, 12, 24, … what is the nth term?",
+                      options: ["3n", "3 × 2ⁿ⁻¹", "2 × 3ⁿ", "3 + 2n"],
+                      answer: 1,
+                      explanation: "Each term is the previous one doubled, so tₙ = 3 × 2ⁿ⁻¹."
+                    },
+                    {
+                      question: "What is the common ratio of the GP 3, 6, 12, 24, …?",
+                      options: ["3", "2", "6", "1/2"],
+                      answer: 1,
+                      explanation: "Dividing any term by the one before it gives 2 every time."
                     }
                   ]
                 }
