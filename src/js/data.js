@@ -1281,6 +1281,18 @@ export const curriculumData = {
                       options: ["At an angle to the object", "In direct contact and along the object's length", "Slightly above the object", "Anywhere nearby"],
                       answer: 1,
                       explanation: "Correct placement avoids errors in the reading."
+                    },
+                    {
+                      question: "Which unit would you use to measure the distance between two cities?",
+                      options: ["Millimetre", "Kilometre", "Centimetre", "Metre only"],
+                      answer: 1,
+                      explanation: "Kilometres are convenient for large distances."
+                    },
+                    {
+                      question: "How many centimetres make one metre?",
+                      options: ["10", "100", "1000", "50"],
+                      answer: 1,
+                      explanation: "One centimetre is further divided into 10 millimetres."
                     }
                   ]
                 },
@@ -1503,6 +1515,48 @@ export const curriculumData = {
                       options: ["Its colour", "The purpose the object has to serve", "Its price only", "Its age"],
                       answer: 1,
                       explanation: "A tumbler must hold water, so it cannot be made of cloth."
+                    },
+                    {
+                      question: "Which of these is a lustrous material?",
+                      options: ["Wood", "Copper", "Cloth", "Chalk"],
+                      answer: 1,
+                      explanation: "Most lustrous materials are metals."
+                    },
+                    {
+                      question: "Which of these is a hard material?",
+                      options: ["Sponge", "Stone", "Cloth", "An eraser"],
+                      answer: 1,
+                      explanation: "Hard materials are difficult to compress or scratch."
+                    },
+                    {
+                      question: "Sponge and an eraser are examples of materials that are:",
+                      options: ["Hard", "Soft", "Lustrous", "Transparent"],
+                      answer: 1,
+                      explanation: "They compress or scratch easily."
+                    },
+                    {
+                      question: "Why can classification be done in more than one way?",
+                      options: ["Rules keep changing", "Objects can be grouped by different properties such as colour, shape or hardness", "Only experts can classify", "Classification is random"],
+                      answer: 1,
+                      explanation: "The property chosen depends on the purpose of the grouping."
+                    },
+                    {
+                      question: "A freshly cut metal surface looks shinier than an old one because:",
+                      options: ["Cutting adds shine", "Air and moisture had dulled the older surface", "The inside is a different metal", "Light reflects only from cuts"],
+                      answer: 1,
+                      explanation: "Lustre is a property of the metal itself."
+                    },
+                    {
+                      question: "A tumbler is not made of cloth because the material must:",
+                      options: ["Look attractive", "Be able to hold water", "Be cheap", "Be light"],
+                      answer: 1,
+                      explanation: "The material is chosen to suit the object's purpose."
+                    },
+                    {
+                      question: "Which property describes how easily a material can be scratched?",
+                      options: ["Lustre", "Hardness", "Transparency", "Solubility"],
+                      answer: 1,
+                      explanation: "Materials that scratch easily are called soft."
                     }
                   ]
                 },
@@ -5383,6 +5437,24 @@ export const curriculumData = {
                       options: ["Number of sides plus side length", "Number of sides multiplied by the length of one side", "Twice the side length", "Four times the side length"],
                       answer: 1,
                       explanation: "All its sides are equal, so multiplying is enough."
+                    },
+                    {
+                      question: "Akshi needs lace all around a tablecloth 3 m by 2 m. How much lace is needed?",
+                      options: ["6 m", "10 m", "5 m", "12 m"],
+                      answer: 1,
+                      explanation: "Perimeter = 2 x (3 + 2) = 10 m."
+                    },
+                    {
+                      question: "Usha takes three rounds of a square park of side 75 m. How far does she walk?",
+                      options: ["300 m", "900 m", "225 m", "600 m"],
+                      answer: 1,
+                      explanation: "One round is 4 x 75 = 300 m, so three rounds make 900 m."
+                    },
+                    {
+                      question: "The perimeter of an equilateral triangle equals:",
+                      options: ["The length of one side", "3 times the length of one side", "4 times the side", "Half the side"],
+                      answer: 1,
+                      explanation: "All three of its sides are equal in length."
                     }
                   ]
                 },
@@ -5655,6 +5727,30 @@ export const curriculumData = {
                       options: ["It doesn't help at all", "It clearly shows the fractional unit (1/4) being used and how many of them (3) make up the fraction", "It changes the value of the fraction", "It only works for fractions less than 1"],
                       answer: 1,
                       explanation: "Reading a fraction as 'so many times' its fractional unit makes explicit both the size of each unit and the count of units, making the overall size of the fraction easier to picture."
+                    },
+                    {
+                      question: "When one whole is divided into equal parts, each part is called a:",
+                      options: ["Numerator", "Fractional unit", "Mixed number", "Denominator"],
+                      answer: 1,
+                      explanation: "Examples include 1/2, 1/3, 1/4 and 1/100."
+                    },
+                    {
+                      question: "Which is larger, 1/4 or 1/6?",
+                      options: ["1/6", "1/4", "They are equal", "It cannot be decided"],
+                      answer: 1,
+                      explanation: "A bigger denominator means the whole is cut into more, and therefore smaller, parts."
+                    },
+                    {
+                      question: "Three pieces each of size 1/4 together make:",
+                      options: ["1/12", "3/4", "4/3", "3/12"],
+                      answer: 1,
+                      explanation: "Counting fractional units is how any fractional quantity is described."
+                    },
+                    {
+                      question: "In the Rig Veda, the fraction 3/4 is referred to as:",
+                      options: ["Mukkaal", "Tri-pada", "Teen paav", "Ardha"],
+                      answer: 1,
+                      explanation: "The same meaning survives in words used in Indian languages today."
                     }
                   ]
                 },
@@ -5727,6 +5823,30 @@ export const curriculumData = {
                       options: ["3/10", "4/5, since 4/5 equals 8/10, which is farther from 0 than 3/10", "They are the same distance from 0", "Neither can be placed on a number line"],
                       answer: 1,
                       explanation: "4/5 = 8/10, which is much farther along the number line from 0 than 3/10 is."
+                    },
+                    {
+                      question: "If the unit length on a number line is divided into 5 equal parts, each part has length:",
+                      options: ["1/2", "1/5", "5", "2/5"],
+                      answer: 1,
+                      explanation: "The second mark from 0 is then at 2/5."
+                    },
+                    {
+                      question: "In a fraction greater than 1, the numerator is:",
+                      options: ["Smaller than the denominator", "Larger than the denominator", "Equal to the denominator", "Always 1"],
+                      answer: 1,
+                      explanation: "Such a length reaches beyond 1 unit on the number line."
+                    },
+                    {
+                      question: "Write 8/3 as a mixed number.",
+                      options: ["3 and 2/3", "2 and 2/3", "2 and 1/3", "8 and 1/3"],
+                      answer: 1,
+                      explanation: "8/3 is 2 wholes with 2/3 left over."
+                    },
+                    {
+                      question: "Write 3 and 1/4 as a single fraction.",
+                      options: ["7/4", "13/4", "12/4", "31/4"],
+                      answer: 1,
+                      explanation: "Three wholes make 12/4, and adding the extra 1/4 gives 13/4."
                     }
                   ]
                 },
@@ -5799,6 +5919,30 @@ export const curriculumData = {
                       options: ["its numerator is 1", "its numerator and denominator have no common factor other than 1", "its denominator is a prime number", "it is greater than 1"],
                       answer: 1,
                       explanation: "A fraction is in lowest terms (simplest form) exactly when its numerator and denominator share no common factor besides 1."
+                    },
+                    {
+                      question: "Which of these is equivalent to 1/2?",
+                      options: ["2/3", "4/8", "3/4", "1/4"],
+                      answer: 1,
+                      explanation: "The fraction wall shows that 1/2, 2/4 and 4/8 are the same length."
+                    },
+                    {
+                      question: "How do you obtain an equivalent fraction?",
+                      options: ["Add the same number to both parts", "Multiply or divide both numerator and denominator by the same number", "Swap the two parts", "Add 1 to the numerator"],
+                      answer: 1,
+                      explanation: "The value of the fraction stays exactly the same."
+                    },
+                    {
+                      question: "Express 18/24 in its lowest terms.",
+                      options: ["9/12", "3/4", "2/3", "6/8"],
+                      answer: 1,
+                      explanation: "Dividing both by their highest common factor 6 gives 3/4."
+                    },
+                    {
+                      question: "Which is greater, 3/4 or 7/10?",
+                      options: ["7/10", "3/4", "They are equal", "Cannot be compared"],
+                      answer: 1,
+                      explanation: "Using a common denominator of 40, 3/4 = 30/40 and 7/10 = 28/40."
                     }
                   ]
                 },
@@ -5872,6 +6016,30 @@ export const curriculumData = {
                       options: ["The number itself", "Zero", "One", "It is undefined"],
                       answer: 1,
                       explanation: "Brahmagupta stated that subtracting a number from itself always gives zero — this holds for fractions just as it does for whole numbers."
+                    },
+                    {
+                      question: "What is 2/5 + 1/5?",
+                      options: ["3/10", "3/5", "2/10", "1/5"],
+                      answer: 1,
+                      explanation: "When the denominators match, only the numerators are added."
+                    },
+                    {
+                      question: "What is the first step in adding 1/2 and 1/3?",
+                      options: ["Add the numerators", "Convert them to equivalent fractions with a common denominator", "Multiply them", "Subtract them"],
+                      answer: 1,
+                      explanation: "The product of the denominators always gives one usable common denominator."
+                    },
+                    {
+                      question: "What is 3/4 minus 2/3?",
+                      options: ["1/1", "1/12", "5/12", "1/7"],
+                      answer: 1,
+                      explanation: "Using a denominator of 12, 9/12 - 8/12 = 1/12."
+                    },
+                    {
+                      question: "Who gave the first general rules for adding and subtracting any fractions?",
+                      options: ["Aryabhata", "Brahmagupta", "Bhaskara", "Kaprekar"],
+                      answer: 1,
+                      explanation: "He set them out in 628 CE, and they travelled from India across the world."
                     }
                   ]
                 }
@@ -5951,6 +6119,36 @@ export const curriculumData = {
                       options: ["A full circle", "A half circle", "A square", "A straight diagonal line"],
                       answer: 1,
                       explanation: "Each hump of the wavy wave figure is constructed as a half circle using the compass."
+                    },
+                    {
+                      question: "A circle is the set of all points that are:",
+                      options: ["Inside a boundary", "The same distance from a fixed centre", "On a straight line", "Equally spaced apart"],
+                      answer: 1,
+                      explanation: "That fixed distance is called the radius."
+                    },
+                    {
+                      question: "The fixed point at the middle of a circle is called its:",
+                      options: ["Radius", "Centre", "Diameter", "Arc"],
+                      answer: 1,
+                      explanation: "Every point on the circle is the same distance from it."
+                    },
+                    {
+                      question: "To draw a circle of radius 4 cm, you first:",
+                      options: ["Draw a 4 cm line", "Open the compass against a ruler to 4 cm", "Mark four points", "Fold the paper"],
+                      answer: 1,
+                      explanation: "The compass tip is then placed at the centre and turned."
+                    },
+                    {
+                      question: "Which of these counts as a curve?",
+                      options: ["Only circles", "Any figure traced with one continuous motion, including straight lines", "Only wavy lines", "Only closed shapes"],
+                      answer: 1,
+                      explanation: "Curves may be open, like a wavy line, or closed, like a blob."
+                    },
+                    {
+                      question: "A wavy wave design is built from:",
+                      options: ["Full circles", "Half circles along a central line", "Squares", "Triangles"],
+                      answer: 1,
+                      explanation: "The challenge is working out where to place each compass point."
                     }
                   ]
                 },
@@ -6025,6 +6223,36 @@ export const curriculumData = {
                       options: ["Opposite sides equal; opposite angles equal", "All sides equal; all angles 90°", "All angles equal; diagonals unequal", "Two pairs of parallel sides only"],
                       answer: 1,
                       explanation: "A square satisfies: (S1) all four sides are equal in length, and (S2) all four angles measure 90°."
+                    },
+                    {
+                      question: "Which two properties define a rectangle?",
+                      options: ["All sides equal and all angles 90 degrees", "Opposite sides equal and all angles 90 degrees", "All sides equal only", "Opposite sides equal only"],
+                      answer: 1,
+                      explanation: "A square is a special rectangle in which all four sides are also equal."
+                    },
+                    {
+                      question: "Which is NOT a valid name for rectangle ABCD?",
+                      options: ["BCDA", "ABDC", "DCBA", "CDAB"],
+                      answer: 1,
+                      explanation: "The corners must be listed in order of travel around the shape."
+                    },
+                    {
+                      question: "Is a rotated square still a square?",
+                      options: ["No, it becomes a rhombus", "Yes, because rotation changes neither sides nor angles", "Only if rotated by 90 degrees", "No, it becomes a rectangle"],
+                      answer: 1,
+                      explanation: "The same reasoning applies to a rotated rectangle."
+                    },
+                    {
+                      question: "In constructing square PQRS of side 6 cm, the second step is to:",
+                      options: ["Draw the diagonal", "Construct a line perpendicular to PQ through P", "Mark R directly", "Draw a circle"],
+                      answer: 1,
+                      explanation: "Point S is then marked 6 cm along that perpendicular."
+                    },
+                    {
+                      question: "A square is best described as:",
+                      options: ["A rectangle with all sides equal", "A rectangle with unequal sides", "Not a rectangle at all", "Any four-sided shape"],
+                      answer: 1,
+                      explanation: "It satisfies both the rectangle properties and the equal-side property."
                     }
                   ]
                 },
@@ -6098,6 +6326,36 @@ export const curriculumData = {
                       options: ["Any rectangle", "Only a square", "Only a very long, thin rectangle", "No quadrilateral can do this"],
                       answer: 1,
                       explanation: "Only in a square (where adjacent sides are equal) does a diagonal split every corner angle into two exactly equal halves; in a general rectangle, the split is usually into two unequal angles."
+                    },
+                    {
+                      question: "The lines joining opposite corners of a rectangle are called its:",
+                      options: ["Sides", "Diagonals", "Radii", "Perpendiculars"],
+                      answer: 1,
+                      explanation: "Both diagonals of a rectangle are always equal in length."
+                    },
+                    {
+                      question: "In a square, each diagonal splits a corner angle into two angles of:",
+                      options: ["30 degrees", "45 degrees", "60 degrees", "90 degrees"],
+                      answer: 1,
+                      explanation: "A general rectangle usually splits the corner into two unequal angles."
+                    },
+                    {
+                      question: "To find the unknown corner using a known side and a 7 cm diagonal, you draw:",
+                      options: ["A 7 cm straight line by trial", "A circle of radius 7 cm centred at the known corner", "A square of side 7 cm", "A perpendicular of 7 cm"],
+                      answer: 1,
+                      explanation: "Where the circle crosses the perpendicular is exactly the required corner."
+                    },
+                    {
+                      question: "To find a point 5 cm from both B and C, you draw:",
+                      options: ["One arc only", "Arcs of radius 5 cm centred at B and at C, and take their crossing point", "A straight line", "A circle of radius 10 cm"],
+                      answer: 1,
+                      explanation: "The intersection of the two arcs satisfies both conditions at once."
+                    },
+                    {
+                      question: "Both diagonals of a rectangle are:",
+                      options: ["Different in length", "Equal in length", "Perpendicular always", "Equal to a side"],
+                      answer: 1,
+                      explanation: "This is true of every rectangle, including the square."
                     }
                   ]
                 }
@@ -6181,6 +6439,66 @@ export const curriculumData = {
                       options: ["Just one, unchanged", "Two — the original hole and its mirror-image reflection across the fold line", "Four, one in each corner", "It depends on the paper's colour"],
                       answer: 1,
                       explanation: "Punching through both folded layers creates two holes once unfolded — one at the original position, and one at its mirror-image position across the fold (the line of symmetry)."
+                    },
+                    {
+                      question: "A line of symmetry is a line along which a figure can be folded so that:",
+                      options: ["The halves look roughly similar", "The two halves match up and cover each other exactly", "The figure is cut in two", "The area is halved"],
+                      answer: 1,
+                      explanation: "Not every figure has such a line."
+                    },
+                    {
+                      question: "How many lines of symmetry does a square have?",
+                      options: ["2", "4", "1", "8"],
+                      answer: 1,
+                      explanation: "They are the vertical, the horizontal and the two diagonals."
+                    },
+                    {
+                      question: "Is a diagonal of a non-square rectangle a line of symmetry?",
+                      options: ["Yes, always", "No, the two halves do not overlap exactly", "Only for large rectangles", "Only if drawn carefully"],
+                      answer: 1,
+                      explanation: "This is one clear difference between a square and a general rectangle."
+                    },
+                    {
+                      question: "Folding a figure along a line of symmetry can also be described as:",
+                      options: ["Rotating it", "Reflecting one half onto the other", "Enlarging it", "Sliding it"],
+                      answer: 1,
+                      explanation: "Each point lands exactly on its matching point across the fold."
+                    },
+                    {
+                      question: "Pressing paint between the two halves of a folded paper produces:",
+                      options: ["A random shape", "A symmetric ink-blot pattern", "A rotated shape", "No pattern"],
+                      answer: 1,
+                      explanation: "Cutting along a fold and unfolding gives symmetric shapes in the same way."
+                    },
+                    {
+                      question: "How many lines of symmetry does a general parallelogram that is not a rectangle have?",
+                      options: ["Two", "None", "One", "Four"],
+                      answer: 1,
+                      explanation: "Not every figure has a line of symmetry at all."
+                    },
+                    {
+                      question: "Punching holes through folded paper produces holes that are:",
+                      options: ["Randomly placed", "Mirrored across the fold", "All in one half", "Different in size"],
+                      answer: 1,
+                      explanation: "The fold acts as the line of symmetry for the resulting pattern."
+                    },
+                    {
+                      question: "Reflecting corner B of a square across a vertical line of symmetry sends it to:",
+                      options: ["Corner C", "Corner A", "Corner B itself", "The centre"],
+                      answer: 1,
+                      explanation: "The right-hand corners land exactly on the left-hand ones."
+                    },
+                    {
+                      question: "A figure with no line of symmetry:",
+                      options: ["Cannot exist", "Is perfectly possible", "Must be a circle", "Must be a square"],
+                      answer: 1,
+                      explanation: "Many everyday shapes have no line of symmetry at all."
+                    },
+                    {
+                      question: "An equilateral triangle has how many lines of symmetry?",
+                      options: ["1", "3", "2", "6"],
+                      answer: 1,
+                      explanation: "One passes through each vertex and the midpoint of the opposite side."
                     }
                   ]
                 },
@@ -6254,6 +6572,66 @@ export const curriculumData = {
                       options: ["Only 360°", "Exactly 4", "Every possible angle — infinitely many", "None, since a circle has no rotational symmetry"],
                       answer: 2,
                       explanation: "A circle looks exactly the same after being rotated by ANY angle about its centre, so it has infinitely many angles of symmetry — every angle works."
+                    },
+                    {
+                      question: "A figure has rotational symmetry if, after turning about a point, it:",
+                      options: ["Changes shape", "Looks exactly the same as before", "Becomes larger", "Flips over"],
+                      answer: 1,
+                      explanation: "The fixed point it turns about is called the centre of rotation."
+                    },
+                    {
+                      question: "What are the angles of symmetry of a paper windmill with four arms?",
+                      options: ["45, 90, 135, 180 degrees", "90, 180, 270 and 360 degrees", "60, 120, 180 degrees", "Only 360 degrees"],
+                      answer: 1,
+                      explanation: "Rotating any figure by a full 360 degrees always brings it back to its original position."
+                    },
+                    {
+                      question: "A figure with 3 evenly spaced radial arms has angles of symmetry at:",
+                      options: ["90, 180, 270 degrees", "120, 240 and 360 degrees", "60, 120, 180 degrees", "45 and 90 degrees"],
+                      answer: 1,
+                      explanation: "With n arms, the angles are the multiples of 360 divided by n."
+                    },
+                    {
+                      question: "Why does a circle look the same after any rotation about its centre?",
+                      options: ["It has four arms", "Every point on it stays the same distance from the centre", "It has no sides", "It is drawn with a compass"],
+                      answer: 1,
+                      explanation: "That is what gives a circle infinitely many angles of symmetry."
+                    },
+                    {
+                      question: "Every diameter of a circle is:",
+                      options: ["A line of symmetry", "An angle of symmetry", "A radius", "A chord only"],
+                      answer: 1,
+                      explanation: "This gives the circle infinitely many lines of symmetry."
+                    },
+                    {
+                      question: "Does a paper windmill have a line of symmetry?",
+                      options: ["Yes, four of them", "No, folding never makes its halves overlap", "Yes, one", "Only when spinning"],
+                      answer: 1,
+                      explanation: "It has rotational symmetry even though it has no line of symmetry."
+                    },
+                    {
+                      question: "The point about which a figure is rotated is called the:",
+                      options: ["Vertex", "Centre of rotation", "Line of symmetry", "Axis of reflection"],
+                      answer: 1,
+                      explanation: "For the windmill, it is the point at its centre."
+                    },
+                    {
+                      question: "A figure with 6 evenly spaced arms has how many angles of symmetry?",
+                      options: ["3", "6", "12", "2"],
+                      answer: 1,
+                      explanation: "Each one is a multiple of 360 divided by 6, that is 60 degrees."
+                    },
+                    {
+                      question: "Which figure is described as the most symmetric of all?",
+                      options: ["The square", "The circle", "The equilateral triangle", "The rectangle"],
+                      answer: 1,
+                      explanation: "It has infinitely many lines and angles of symmetry."
+                    },
+                    {
+                      question: "Rotating any figure by 360 degrees:",
+                      options: ["Changes it", "Always brings it back to its original position", "Reflects it", "Doubles it"],
+                      answer: 1,
+                      explanation: "That is why 360 degrees is an angle of symmetry for every figure."
                     }
                   ]
                 }
@@ -6341,6 +6719,30 @@ export const curriculumData = {
                       options: ["Floor −3 is lower, so −3 < −4", "Floor −4 is lower, so −4 < −3", "They are the same floor", "Negative floors cannot be compared"],
                       answer: 1,
                       explanation: "Floor −4 is below Floor −3 (further from the ground), so −4 < −3."
+                    },
+                    {
+                      question: "In the Building of Fun, the ground floor entrance is called:",
+                      options: ["Floor 1", "Floor 0", "Floor -1", "The base floor"],
+                      answer: 1,
+                      explanation: "Floors above it are positive and floors below it are negative."
+                    },
+                    {
+                      question: "Gurmit presses + twice and then - three times. The combined movement is:",
+                      options: ["+5", "-1", "+1", "-5"],
+                      answer: 1,
+                      explanation: "(+2) + (-3) = -1, so he ends one floor below where he started."
+                    },
+                    {
+                      question: "What is the inverse of +3?",
+                      options: ["+3", "-3", "0", "1/3"],
+                      answer: 1,
+                      explanation: "Adding a number and its inverse always gives 0."
+                    },
+                    {
+                      question: "Which statement is true?",
+                      options: ["Every negative number is greater than 0", "Every negative number is less than 0", "Negative numbers equal 0", "Negatives are greater than positives"],
+                      answer: 1,
+                      explanation: "All negative-numbered floors lie below Floor 0."
                     }
                   ]
                 },
@@ -6418,6 +6820,30 @@ export const curriculumData = {
                       options: ["+7", "−3", "−7", "+3"],
                       answer: 2,
                       explanation: "Target Floor − Starting Floor = Movement: (−5) − (+2) = −7."
+                    },
+                    {
+                      question: "Going from Floor +2 to Floor +5 needs which movement?",
+                      options: ["-3", "+3", "+7", "+2"],
+                      answer: 1,
+                      explanation: "Target Floor minus Starting Floor gives (+5) - (+2) = +3."
+                    },
+                    {
+                      question: "What is (-1) - (-2)?",
+                      options: ["-3", "+1", "-1", "+3"],
+                      answer: 1,
+                      explanation: "You need to move one floor up, so the answer is +1."
+                    },
+                    {
+                      question: "What is (+40) + (+60) in the mine shaft example?",
+                      options: ["+20", "+100", "-100", "+4060"],
+                      answer: 1,
+                      explanation: "Starting Level plus Movement gives the Target Level."
+                    },
+                    {
+                      question: "Rewriting (+6) - (-9) as an addition gives:",
+                      options: ["(+6) + (-9)", "(+6) + (+9)", "(-6) + (+9)", "(+6) - (+9)"],
+                      answer: 1,
+                      explanation: "Any subtraction becomes an addition of the inverse."
                     }
                   ]
                 },
@@ -6491,6 +6917,30 @@ export const curriculumData = {
                       options: ["Floor +8", "Floor +5", "Floor +2", "Floor −2"],
                       answer: 2,
                       explanation: "The 3 negative tokens cancel 3 of the 5 positive tokens as zero pairs, leaving 2 positive tokens: (+5) + (−3) = +2, so the attendant is on Floor +2."
+                    },
+                    {
+                      question: "A positive token and a negative token together form:",
+                      options: ["A double", "A zero pair", "A negative", "A positive"],
+                      answer: 1,
+                      explanation: "Their combined value is exactly zero, so they cancel out."
+                    },
+                    {
+                      question: "Using tokens, what is (+5) + (-8)?",
+                      options: ["+3", "-3", "+13", "-13"],
+                      answer: 1,
+                      explanation: "Cancelling 5 zero pairs leaves 3 negative tokens."
+                    },
+                    {
+                      question: "What is (-7) - (-5)?",
+                      options: ["-12", "-2", "+2", "+12"],
+                      answer: 1,
+                      explanation: "Removing 5 negative tokens from 7 leaves 2 negative tokens."
+                    },
+                    {
+                      question: "Why can extra zero pairs be added before subtracting?",
+                      options: ["To make the numbers larger", "Because a zero pair never changes the overall value", "To change the sign", "To simplify the answer"],
+                      answer: 1,
+                      explanation: "This makes it possible to remove more tokens than were first laid out."
                     }
                   ]
                 },
@@ -6563,6 +7013,30 @@ export const curriculumData = {
                       options: ["100°C", "37°C", "0°C", "−273°C"],
                       answer: 2,
                       explanation: "0°C is defined as the freezing point of water, serving as the reference point for the Celsius temperature scale."
+                    },
+                    {
+                      question: "In banking, money deposited acts like which kind of number?",
+                      options: ["Negative", "Positive", "Zero", "A fraction"],
+                      answer: 1,
+                      explanation: "Debits, or money withdrawn, act like negative numbers."
+                    },
+                    {
+                      question: "Heights of geographical features are measured from:",
+                      options: ["The ocean floor", "Sea level, taken as 0 m", "Mount Everest", "The Earth's centre"],
+                      answer: 1,
+                      explanation: "Depths below sea level are written as negative numbers."
+                    },
+                    {
+                      question: "About how high is Mount Everest?",
+                      options: ["+4,848 m", "+8,848 m", "-8,848 m", "+18,848 m"],
+                      answer: 1,
+                      explanation: "It is the highest point on Earth's surface."
+                    },
+                    {
+                      question: "Which ancient Indian text discussed credit, debit and negative balance around 300 BCE?",
+                      options: ["The Rig Veda", "Kautilya's Arthashastra", "The Bakshali manuscript", "Brahmagupta's work"],
+                      answer: 1,
+                      explanation: "The Bakshali manuscript later used negative numbers explicitly in accounting."
                     }
                   ]
                 }
