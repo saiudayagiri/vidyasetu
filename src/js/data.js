@@ -30624,6 +30624,72 @@ export const curriculumData = {
             options: ["0°", "30°", "45°", "60°"],
             answer: 0,
             explanation: "Testing each: at A=0°, sin(0°)=0=2sin(0°) — true. At A=30°, sin60°≈0.866 but 2sin30°=1 — not equal. So only A=0° satisfies the equation."
+          },
+          {
+            question: "In a right triangle, sin θ is defined as:",
+            options: ["Adjacent / Hypotenuse", "Opposite / Hypotenuse", "Opposite / Adjacent", "Hypotenuse / Opposite"],
+            answer: 1,
+            explanation: "sin is opposite over hypotenuse, cos is adjacent over hypotenuse, and tan is opposite over adjacent."
+          },
+          {
+            question: "Which side of a right triangle is always the longest?",
+            options: ["The base", "The hypotenuse, opposite the right angle", "The perpendicular", "It varies"],
+            answer: 1,
+            explanation: "The hypotenuse lies opposite the largest angle, the 90° angle, so it is always the longest side."
+          },
+          {
+            question: "What is the value of sin 30° + cos 60°?",
+            options: ["1/2", "1", "√3/2", "0"],
+            answer: 1,
+            explanation: "sin 30° = 1/2 and cos 60° = 1/2, so the sum is 1."
+          },
+          {
+            question: "Which trigonometric ratio is NOT defined at 90°?",
+            options: ["sin 90°", "cos 90°", "tan 90°", "All are defined"],
+            answer: 2,
+            explanation: "tan 90° = sin 90°/cos 90° = 1/0, which is not defined."
+          },
+          {
+            question: "If cos A = 4/5, what is sin A?",
+            options: ["5/4", "3/5", "4/3", "1/5"],
+            answer: 1,
+            explanation: "sin²A = 1 − 16/25 = 9/25, so sin A = 3/5. This is the familiar 3-4-5 right triangle."
+          },
+          {
+            question: "What is the value of tan 60° × tan 30°?",
+            options: ["√3", "1", "1/3", "3"],
+            answer: 1,
+            explanation: "√3 × 1/√3 = 1. In fact tan θ and tan(90° − θ) are always reciprocals."
+          },
+          {
+            question: "cosec A is the reciprocal of which ratio?",
+            options: ["cos A", "sin A", "tan A", "sec A"],
+            answer: 1,
+            explanation: "cosec = 1/sin, sec = 1/cos and cot = 1/tan."
+          },
+          {
+            question: "What is the value of sin 45° × cos 45°?",
+            options: ["1", "1/2", "√2", "1/√2"],
+            answer: 1,
+            explanation: "(1/√2) × (1/√2) = 1/2."
+          },
+          {
+            question: "As angle A increases from 0° to 90°, the value of sin A:",
+            options: ["Decreases from 1 to 0", "Increases from 0 to 1", "Stays constant", "Becomes undefined"],
+            answer: 1,
+            explanation: "sin 0° = 0 and sin 90° = 1, with the value rising steadily in between; cos A does the opposite."
+          },
+          {
+            question: "In a right triangle, if tan A = 1, then angle A is:",
+            options: ["30°", "45°", "60°", "90°"],
+            answer: 1,
+            explanation: "tan 45° = 1, which happens when the opposite and adjacent sides are equal."
+          },
+          {
+            question: "What is the value of cos 0° − sin 90°?",
+            options: ["1", "0", "−1", "2"],
+            answer: 1,
+            explanation: "cos 0° = 1 and sin 90° = 1, so the difference is 0."
           }
         ]
       },
@@ -30658,6 +30724,78 @@ export const curriculumData = {
             options: ["cos A = √(1 - sin²A)", "cos A = 1 - sin A", "cos A = sin A - 1", "cos A = 1/sin A"],
             answer: 0,
             explanation: "From the identity sin²A + cos²A = 1, we get cos²A = 1 - sin²A, so cos A = √(1 - sin²A)."
+          },
+          {
+            question: "Which theorem are the fundamental trigonometric identities derived from?",
+            options: ["Thales' theorem", "Pythagoras' theorem", "The Basic Proportionality Theorem", "The angle sum property"],
+            answer: 1,
+            explanation: "Dividing a² + b² = c² by c², a² or b² in turn produces the three standard identities."
+          },
+          {
+            question: "What is the value of sec²A − tan²A?",
+            options: ["0", "1", "2", "sec A"],
+            answer: 1,
+            explanation: "Rearranging 1 + tan²A = sec²A gives sec²A − tan²A = 1 for every valid A."
+          },
+          {
+            question: "What is the value of cosec²A − cot²A?",
+            options: ["0", "1", "−1", "cot A"],
+            answer: 1,
+            explanation: "From 1 + cot²A = cosec²A, the difference is always 1."
+          },
+          {
+            question: "Simplify (1 − cos²A).",
+            options: ["sin²A", "tan²A", "sec²A", "cot²A"],
+            answer: 0,
+            explanation: "Rearranging sin²A + cos²A = 1 gives sin²A = 1 − cos²A."
+          },
+          {
+            question: "Why is the identity 1 + tan²A = sec²A not valid at A = 90°?",
+            options: ["It gives a negative value", "Because tan 90° and sec 90° are themselves not defined", "Because sin 90° = 1", "It is valid at 90°"],
+            answer: 1,
+            explanation: "Both involve dividing by cos 90° = 0, so the identity is stated only for 0° ≤ A < 90°."
+          },
+          {
+            question: "What is the value of 5 cosec²A − 5 cot²A?",
+            options: ["0", "5", "10", "25"],
+            answer: 1,
+            explanation: "5(cosec²A − cot²A) = 5 × 1 = 5."
+          },
+          {
+            question: "Express tan A in terms of sin A and cos A.",
+            options: ["sin A × cos A", "sin A / cos A", "cos A / sin A", "1/(sin A cos A)"],
+            answer: 1,
+            explanation: "tan A = opposite/adjacent = (opposite/hypotenuse) ÷ (adjacent/hypotenuse) = sin A / cos A."
+          },
+          {
+            question: "If sin A = cos A, what is the value of A between 0° and 90°?",
+            options: ["0°", "30°", "45°", "60°"],
+            answer: 2,
+            explanation: "At 45° both equal 1/√2, which is also why tan 45° = 1."
+          },
+          {
+            question: "Simplify (sin²A + cos²A) + (sec²A − tan²A).",
+            options: ["1", "2", "0", "sin A"],
+            answer: 1,
+            explanation: "Each bracket equals 1, so the sum is 2."
+          },
+          {
+            question: "If sec A = 2, what is cos A?",
+            options: ["2", "1/2", "√3/2", "1"],
+            answer: 1,
+            explanation: "sec A = 1/cos A, so cos A = 1/2 — which means A = 60°."
+          },
+          {
+            question: "Express cot A in terms of cos A and sin A.",
+            options: ["sin A / cos A", "cos A / sin A", "1/(sin A cos A)", "sin A × cos A"],
+            answer: 1,
+            explanation: "cot A is the reciprocal of tan A = sin A/cos A, so cot A = cos A/sin A."
+          },
+          {
+            question: "Simplify sin A × cosec A.",
+            options: ["0", "1", "sin²A", "2"],
+            answer: 1,
+            explanation: "Since cosec A = 1/sin A, the product is always 1."
           }
         ]
       }
@@ -30724,6 +30862,156 @@ export const curriculumData = {
             options: ["20 m", "40 m", "20√3 m", "40√3 m"],
             answer: 2,
             explanation: "If h is the height and x the shorter shadow, tan 60° = h/x gives h = x√3. tan 30° = h/(x+40) gives x√3·√3 = x + 40, so 3x = x + 40, x = 20. Then h = 20√3 m."
+          },
+          {
+            question: "What is the line of sight?",
+            options: ["The horizontal line through the observer", "The line from the observer's eye to the point being viewed", "The vertical height of the object", "The shadow of the object"],
+            answer: 1,
+            explanation: "The angles of elevation and depression are both measured between this line and the horizontal."
+          },
+          {
+            question: "When is the angle called an angle of depression?",
+            options: ["When the object is above the horizontal", "When the object is below the horizontal, so we lower our head", "When the object is at eye level", "When the object is behind us"],
+            answer: 1,
+            explanation: "Looking down at a boat from a cliff top gives an angle of depression; looking up at a tower gives an angle of elevation."
+          },
+          {
+            question: "The angle of elevation of the top of a 30 m tower from a point on the ground is 45°. How far is the point from the foot of the tower?",
+            options: ["15 m", "30 m", "30√3 m", "60 m"],
+            answer: 1,
+            explanation: "tan 45° = 1 = 30/d, so d = 30 m. At 45° the horizontal distance always equals the height."
+          },
+          {
+            question: "A ladder leans against a wall making 60° with the ground and reaches 6 m up the wall. How long is the ladder?",
+            options: ["3 m", "4√3 m", "6√3 m", "12 m"],
+            answer: 1,
+            explanation: "sin 60° = 6/L gives L = 6/(√3/2) = 12/√3 = 4√3 m."
+          },
+          {
+            question: "Which ratio is most useful when you know the horizontal distance and want the vertical height?",
+            options: ["sin", "cos", "tan", "cosec"],
+            answer: 2,
+            explanation: "tan θ = opposite/adjacent = height/horizontal distance, so it links exactly those two quantities."
+          },
+          {
+            question: "As the angle of elevation of the sun increases, the shadow of a tower:",
+            options: ["Gets longer", "Gets shorter", "Stays the same", "Disappears"],
+            answer: 1,
+            explanation: "A higher sun means a steeper line of sight, and since tan θ = h/shadow, a larger θ gives a shorter shadow for a fixed h."
+          },
+          {
+            question: "From the top of a 50 m building, the angle of depression of a car is 45°. How far is the car from the base?",
+            options: ["25 m", "50 m", "50√3 m", "100 m"],
+            answer: 1,
+            explanation: "The angle of depression equals the angle of elevation from the car, and tan 45° = 1 gives distance = height = 50 m."
+          },
+          {
+            question: "Why is the angle of depression from a point equal to the angle of elevation back to it?",
+            options: ["They are vertically opposite angles", "They are alternate angles between the two parallel horizontal lines", "They are supplementary", "They are not equal"],
+            answer: 1,
+            explanation: "The horizontal at the observer and the horizontal at the object are parallel, so the line of sight cuts them at equal alternate angles."
+          },
+          {
+            question: "What is the first step in solving any height and distance problem?",
+            options: ["Apply the sine rule", "Draw a clear diagram marking the known angles, known lengths and the unknown", "Guess the answer", "Convert all angles to radians"],
+            answer: 1,
+            explanation: "A labelled diagram makes it obvious which right triangle to use and which ratio relates the known side to the unknown one."
+          },
+          {
+            question: "A 20 m rope from the top of a pole to the ground makes 30° with the ground. How tall is the pole?",
+            options: ["5 m", "10 m", "10√3 m", "20 m"],
+            answer: 1,
+            explanation: "sin 30° = h/20, so h = 20 × 1/2 = 10 m."
+          },
+          {
+            question: "A kite flies at a height of 60 m with the taut string making 60° with the ground. How long is the string?",
+            options: ["30 m", "40√3 m", "60√3 m", "120 m"],
+            answer: 1,
+            explanation: "sin 60° = 60/L gives L = 60 ÷ (√3/2) = 120/√3 = 40√3 m."
+          },
+          {
+            question: "An observer 1.5 m tall stands 28.5 m from a chimney and sees its top at 45°. How tall is the chimney?",
+            options: ["28.5 m", "30 m", "27 m", "43 m"],
+            answer: 1,
+            explanation: "At 45° the height above eye level equals the horizontal distance, 28.5 m; adding the observer's own 1.5 m gives 30 m."
+          },
+          {
+            question: "The angle of elevation of a tower top from 30 m away is 30°. How tall is the tower?",
+            options: ["30√3 m", "10√3 m", "15 m", "60 m"],
+            answer: 1,
+            explanation: "tan 30° = h/30 gives h = 30/√3 = 10√3 m."
+          },
+          {
+            question: "Why must the observer's own height be added in some elevation problems?",
+            options: ["It never needs to be added", "Because the angle is measured from the eye, so the triangle gives only the height above eye level", "To make the answer larger", "Because the ground is uneven"],
+            answer: 1,
+            explanation: "The right triangle sits on the horizontal through the observer's eye, so the object's full height is that result plus the eye height."
+          },
+          {
+            question: "A tower is 100 m tall and a point on the ground is 100√3 m away. What is the angle of elevation?",
+            options: ["60°", "30°", "45°", "90°"],
+            answer: 1,
+            explanation: "tan θ = 100/(100√3) = 1/√3, so θ = 30°."
+          },
+          {
+            question: "Two people stand on opposite sides of a tower. Their angles of elevation of the top are 30° and 60°. Who is closer?",
+            options: ["The one at 30°", "The one at 60°", "They are equally far", "It cannot be decided"],
+            answer: 1,
+            explanation: "A larger angle of elevation means a steeper line of sight, which happens when you are nearer the tower."
+          },
+          {
+            question: "The angle of elevation of the sun is 45° and a pole's shadow is 8 m. How tall is the pole?",
+            options: ["4 m", "8 m", "8√3 m", "16 m"],
+            answer: 1,
+            explanation: "tan 45° = 1, so the height equals the shadow length, 8 m."
+          },
+          {
+            question: "In these problems, the object, the ground and the line of sight together form:",
+            options: ["An equilateral triangle", "A right-angled triangle", "An isosceles triangle always", "A quadrilateral"],
+            answer: 1,
+            explanation: "The vertical object meets the horizontal ground at 90°, which is what makes the trigonometric ratios usable."
+          },
+          {
+            question: "A boat is seen at an angle of depression of 30° from a 45 m high lighthouse. How far is the boat?",
+            options: ["45 m", "45√3 m", "15√3 m", "90 m"],
+            answer: 1,
+            explanation: "tan 30° = 45/d gives d = 45√3 m ≈ 77.9 m."
+          },
+          {
+            question: "If the height of a tower and the length of its shadow are equal, the sun's elevation is:",
+            options: ["30°", "45°", "60°", "90°"],
+            answer: 1,
+            explanation: "tan θ = h/h = 1, and tan 45° = 1."
+          },
+          {
+            question: "A vertical pole and a taller tower cast shadows at the same moment. Their triangles are:",
+            options: ["Congruent", "Similar, since the sun's rays make equal angles", "Unrelated", "Always right-angled isosceles"],
+            answer: 1,
+            explanation: "The same angle of elevation for both makes the triangles similar, which is why shadow ratios can be used to find heights."
+          },
+          {
+            question: "Which ratio would you use knowing the hypotenuse (a rope or string) and needing the height?",
+            options: ["tan", "sin", "cot", "sec"],
+            answer: 1,
+            explanation: "sin θ = opposite/hypotenuse links exactly the height and the sloping length."
+          },
+          {
+            question: "An angle of elevation of 0° would mean the object is:",
+            options: ["Directly overhead", "At the same level as the observer's eye", "Below the observer", "Very far above"],
+            answer: 1,
+            explanation: "With the line of sight along the horizontal, there is no elevation at all."
+          },
+          {
+            question: "The angle of elevation of the top of a building from a point increases as you:",
+            options: ["Walk away from the building", "Walk towards the building", "Stay still", "Climb down"],
+            answer: 1,
+            explanation: "Reducing the horizontal distance while the height stays fixed increases tan θ, and hence θ."
+          },
+          {
+            question: "From the top of a hill, two boats are seen at angles of depression 30° and 45°. Which boat is nearer the hill?",
+            options: ["The one at 30°", "The one at 45°", "They are equidistant", "It cannot be decided"],
+            answer: 1,
+            explanation: "A steeper line of sight means a nearer object, so the boat at 45° is closer."
           }
         ]
       }
@@ -30792,6 +31080,144 @@ export const curriculumData = {
             options: ["1 cm", "3 cm", "4 cm", "9 cm"],
             answer: 1,
             explanation: "radius² = 5² - 4² = 25 - 16 = 9, so radius = 3 cm."
+          },
+          {
+            question: "How many points does a tangent share with a circle?",
+            options: ["None", "Exactly one, the point of contact", "Two", "Infinitely many"],
+            answer: 1,
+            explanation: "A tangent touches the circle at a single point; a line meeting it at two points is a secant."
+          },
+          {
+            question: "State the relationship between a tangent and the radius at the point of contact.",
+            options: ["They are parallel", "The tangent is perpendicular to the radius", "They make a 45° angle", "They are equal in length"],
+            answer: 1,
+            explanation: "This is Theorem 10.1, and it is what turns most tangent problems into right-triangle problems."
+          },
+          {
+            question: "How many tangents can be drawn from a point inside a circle?",
+            options: ["Zero", "One", "Two", "Infinitely many"],
+            answer: 0,
+            explanation: "A point inside gives no tangents, a point on the circle gives exactly one, and an external point gives exactly two."
+          },
+          {
+            question: "Tangents PA and PB are drawn from an external point P. Which is always true?",
+            options: ["PA > PB", "PA = PB", "PA + PB = the diameter", "PA ⊥ PB"],
+            answer: 1,
+            explanation: "Theorem 10.2: the lengths of tangents drawn from an external point to a circle are equal."
+          },
+          {
+            question: "A tangent is a special case of which line?",
+            options: ["A diameter", "A secant, when the two ends of its chord coincide", "A chord", "A radius"],
+            answer: 1,
+            explanation: "As a secant's two intersection points move together they merge into the single point of contact of a tangent."
+          },
+          {
+            question: "A tangent PQ touches a circle of radius 5 cm at P, and OQ = 13 cm. Find PQ.",
+            options: ["8 cm", "12 cm", "18 cm", "√194 cm"],
+            answer: 1,
+            explanation: "OP ⊥ PQ, so PQ = √(13² − 5²) = √(169 − 25) = √144 = 12 cm."
+          },
+          {
+            question: "TP and TQ are tangents from T to a circle with centre O. What is ∠OPT?",
+            options: ["45°", "90°", "60°", "It varies"],
+            answer: 1,
+            explanation: "The radius OP meets the tangent TP at the point of contact, so the angle between them is always a right angle."
+          },
+          {
+            question: "In the quadrilateral OPTQ formed by two tangents and two radii, what do the four angles add up to?",
+            options: ["180°", "360°", "270°", "540°"],
+            answer: 1,
+            explanation: "It is a quadrilateral, so its angles sum to 360° — which is why ∠PTQ + ∠POQ = 180° when the two radius angles are 90° each."
+          },
+          {
+            question: "A circle can have at most how many parallel tangents?",
+            options: ["One", "Two", "Four", "Infinitely many"],
+            answer: 1,
+            explanation: "Two tangents at the opposite ends of a diameter are parallel; no third tangent can be parallel to them."
+          },
+          {
+            question: "The tangent length from Q is 24 cm and OQ = 25 cm. Find the radius.",
+            options: ["1 cm", "7 cm", "12 cm", "49 cm"],
+            answer: 1,
+            explanation: "r = √(25² − 24²) = √(625 − 576) = √49 = 7 cm."
+          },
+          {
+            question: "TP and TQ are tangents with ∠POQ = 110°. Find ∠PTQ.",
+            options: ["55°", "70°", "110°", "90°"],
+            answer: 1,
+            explanation: "In quadrilateral OPTQ the two radius-tangent angles are 90° each, so ∠PTQ = 360° − 90° − 90° − 110° = 70°."
+          },
+          {
+            question: "Tangents PA and PB from P are inclined at 80°. Find ∠POA.",
+            options: ["40°", "50°", "80°", "100°"],
+            answer: 1,
+            explanation: "∠APO = 40° (half of 80°) and ∠OAP = 90°, so ∠POA = 180° − 90° − 40° = 50°."
+          },
+          {
+            question: "A line meeting a circle at two points is called a:",
+            options: ["Tangent", "Secant", "Radius", "Arc"],
+            answer: 1,
+            explanation: "A secant cuts across the circle; a tangent only touches it at one point."
+          },
+          {
+            question: "How many tangents can be drawn to a circle at a single given point on it?",
+            options: ["Zero", "Exactly one", "Two", "Infinitely many"],
+            answer: 1,
+            explanation: "There is only one tangent at any point of a circle, and it is perpendicular to the radius there."
+          },
+          {
+            question: "The line joining the centre to an external point bisects:",
+            options: ["The circle", "The angle between the two tangents from that point", "The radius", "The tangent length"],
+            answer: 1,
+            explanation: "The two tangent triangles are congruent, so OP bisects both the angle at P and the angle at the centre."
+          },
+          {
+            question: "A tangent to a circle of radius 6 cm is drawn from a point 10 cm from the centre. The tangent length is:",
+            options: ["4 cm", "8 cm", "16 cm", "√136 cm"],
+            answer: 1,
+            explanation: "√(10² − 6²) = √(100 − 36) = √64 = 8 cm."
+          },
+          {
+            question: "Which statement is FALSE?",
+            options: ["A tangent is perpendicular to the radius at the point of contact", "Tangents from an external point are equal", "A tangent can cut a circle at two points", "A circle has infinitely many tangents"],
+            answer: 2,
+            explanation: "By definition a tangent meets the circle at exactly one point, so it can never cut it at two."
+          },
+          {
+            question: "Two concentric circles have radii 5 cm and 3 cm. A chord of the larger circle touches the smaller one. Its length is:",
+            options: ["4 cm", "8 cm", "10 cm", "6 cm"],
+            answer: 1,
+            explanation: "The chord is a tangent to the inner circle, so half of it is √(25 − 9) = 4 cm, making the full chord 8 cm."
+          },
+          {
+            question: "If two tangents to a circle are parallel, the points of contact are:",
+            options: ["The same point", "The endpoints of a diameter", "Any two points", "Adjacent points"],
+            answer: 1,
+            explanation: "Both radii must be perpendicular to the same direction, so together they form a straight line through the centre."
+          },
+          {
+            question: "The point where a tangent meets the circle is called the:",
+            options: ["Centre", "Point of contact", "Vertex", "Midpoint"],
+            answer: 1,
+            explanation: "The radius drawn to this point is always perpendicular to the tangent there."
+          },
+          {
+            question: "A quadrilateral is formed by two tangents from P and the two radii. If ∠PTQ = 60°, then ∠POQ is:",
+            options: ["60°", "120°", "90°", "30°"],
+            answer: 1,
+            explanation: "The two right angles use up 180°, so the remaining two angles must add to 180°: ∠POQ = 180° − 60° = 120°."
+          },
+          {
+            question: "Which is the correct order of tangent counts for a point inside, on, and outside a circle?",
+            options: ["1, 2, 0", "0, 1, 2", "2, 1, 0", "0, 2, 1"],
+            answer: 1,
+            explanation: "No tangent can be drawn from inside, exactly one from a point on the circle, and exactly two from an external point."
+          },
+          {
+            question: "Why are the two tangent triangles from an external point congruent?",
+            options: ["They share all three sides equally", "They share the hypotenuse OP, have equal radii, and both contain a right angle (RHS)", "Their angles are all 60°", "They are not congruent"],
+            answer: 1,
+            explanation: "RHS congruence is exactly what proves that the two tangent lengths are equal."
           }
         ]
       }
@@ -30850,6 +31276,156 @@ export const curriculumData = {
             options: ["∠AOB", "180° - ∠AOB", "360° - ∠AOB", "90° - ∠AOB"],
             answer: 2,
             explanation: "The minor and major sectors together make the full circle (360°), so the major sector's angle is 360° - ∠AOB."
+          },
+          {
+            question: "What is a sector of a circle?",
+            options: ["The region between a chord and an arc", "The region enclosed by two radii and the corresponding arc", "Half the circle", "The boundary of the circle"],
+            answer: 1,
+            explanation: "A pizza slice is a sector; the region cut off by a chord instead is called a segment."
+          },
+          {
+            question: "State the formula for the area of a sector of angle θ in a circle of radius r.",
+            options: ["(θ/180) × πr²", "(θ/360) × πr²", "(θ/360) × 2πr", "θ × πr²"],
+            answer: 1,
+            explanation: "The sector is the fraction θ/360 of the whole circle, so its area is that fraction of πr²."
+          },
+          {
+            question: "What is the length of an arc subtending angle θ at the centre?",
+            options: ["(θ/360) × πr²", "(θ/360) × 2πr", "(θ/180) × πr", "2πr"],
+            answer: 1,
+            explanation: "The arc is the same fraction θ/360 of the full circumference 2πr."
+          },
+          {
+            question: "How is the area of a minor segment found?",
+            options: ["Sector area + triangle area", "Sector area − area of the triangle formed by the two radii and the chord", "Circle area − sector area", "Half the sector area"],
+            answer: 1,
+            explanation: "Removing the triangle from the sector leaves exactly the region between the chord and the arc."
+          },
+          {
+            question: "Find the area of a semicircle of radius 7 cm. (Use π = 22/7)",
+            options: ["154 cm²", "77 cm²", "44 cm²", "88 cm²"],
+            answer: 1,
+            explanation: "Half of πr² = (1/2)(22/7)(49) = 77 cm²."
+          },
+          {
+            question: "Find the area of a quadrant of a circle of radius 14 cm. (Use π = 22/7)",
+            options: ["616 cm²", "154 cm²", "308 cm²", "44 cm²"],
+            answer: 1,
+            explanation: "A quadrant is a 90° sector: (90/360) × (22/7) × 196 = 616/4 = 154 cm²."
+          },
+          {
+            question: "Through what angle does the minute hand of a clock turn in 15 minutes?",
+            options: ["45°", "90°", "180°", "360°"],
+            answer: 1,
+            explanation: "The minute hand sweeps 360° in 60 minutes, so 6° per minute — giving 90° in 15 minutes."
+          },
+          {
+            question: "The area of a sector is one-sixth of the area of its circle. What is its central angle?",
+            options: ["30°", "60°", "90°", "120°"],
+            answer: 1,
+            explanation: "θ/360 = 1/6, so θ = 60°."
+          },
+          {
+            question: "Which region is bounded by a chord and its corresponding arc?",
+            options: ["A sector", "A segment", "A quadrant", "A semicircle"],
+            answer: 1,
+            explanation: "A chord divides the circle into a minor segment and a major segment."
+          },
+          {
+            question: "The perimeter of a sector consists of:",
+            options: ["The arc only", "Two radii plus the arc", "The chord plus the arc", "The whole circumference"],
+            answer: 1,
+            explanation: "Walking around a sector takes you out along one radius, around the arc, and back along the other radius."
+          },
+          {
+            question: "Find the area of a 60° sector of a circle of radius 6 cm. (Use π = 22/7)",
+            options: ["132/7 cm²", "132/21 cm²", "36 cm²", "22 cm²"],
+            answer: 0,
+            explanation: "(60/360) × (22/7) × 36 = (1/6) × 792/7 = 132/7 ≈ 18.86 cm²."
+          },
+          {
+            question: "A circle has circumference 22 cm. What is the area of its quadrant? (Use π = 22/7)",
+            options: ["77/8 cm²", "38.5 cm²", "19.25 cm²", "11 cm²"],
+            answer: 0,
+            explanation: "2πr = 22 gives r = 3.5 cm, so the quadrant area is (1/4)(22/7)(12.25) = 77/8 = 9.625 cm²."
+          },
+          {
+            question: "A 14 cm long minute hand sweeps how much area in 5 minutes? (Use π = 22/7)",
+            options: ["154/3 cm²", "616 cm²", "51.33 cm²", "77 cm²"],
+            answer: 0,
+            explanation: "5 minutes is 30°, so the area is (30/360)(22/7)(196) = 616/12 = 154/3 ≈ 51.33 cm²."
+          },
+          {
+            question: "A chord subtends a right angle at the centre of a circle of radius 10 cm. What is the area of the corresponding sector? (Use π = 3.14)",
+            options: ["78.5 cm²", "314 cm²", "50 cm²", "157 cm²"],
+            answer: 0,
+            explanation: "(90/360)(3.14)(100) = 314/4 = 78.5 cm². Subtracting the 50 cm² triangle gives the minor segment area, 28.5 cm²."
+          },
+          {
+            question: "The area of a circle of radius r is πr². What is its circumference?",
+            options: ["πr", "2πr", "πr²/2", "4πr"],
+            answer: 1,
+            explanation: "Circumference is 2πr, and the arc of a sector is the fraction θ/360 of it."
+          },
+          {
+            question: "The angle of a semicircular sector is:",
+            options: ["90°", "180°", "270°", "360°"],
+            answer: 1,
+            explanation: "A semicircle is half of the full 360°, and its area is (180/360)πr² = πr²/2."
+          },
+          {
+            question: "Doubling the radius of a circle multiplies its area by:",
+            options: ["2", "4", "3", "8"],
+            answer: 1,
+            explanation: "Area depends on r², so doubling r gives (2r)² = 4r² — four times the area."
+          },
+          {
+            question: "The area of a major segment equals:",
+            options: ["Circle area − minor segment area", "Sector area + triangle area", "Half the circle", "Circle area − sector area"],
+            answer: 0,
+            explanation: "The chord splits the circle into two segments, so subtracting the minor one from the whole leaves the major one."
+          },
+          {
+            question: "A 90° sector of a circle is also called a:",
+            options: ["Semicircle", "Quadrant", "Segment", "Chord"],
+            answer: 1,
+            explanation: "A quadrant is one quarter of a circle, formed by two perpendicular radii and the arc between them."
+          },
+          {
+            question: "For a sector of angle 180°, the segment and the sector are:",
+            options: ["Different regions", "The same region, since the chord becomes the diameter", "Impossible to define", "Both equal to the whole circle"],
+            answer: 1,
+            explanation: "With a straight-line chord through the centre, the region bounded by the chord and arc is exactly the semicircular sector."
+          },
+          {
+            question: "In 20 minutes, through what angle does the minute hand of a clock turn?",
+            options: ["60°", "120°", "180°", "240°"],
+            answer: 1,
+            explanation: "At 6° per minute, 20 minutes gives 120°."
+          },
+          {
+            question: "The area of a sector is (θ/360)πr². What fraction of the circle is a 120° sector?",
+            options: ["One half", "One third", "One quarter", "Two thirds"],
+            answer: 1,
+            explanation: "120/360 = 1/3, so the sector is one third of the circle."
+          },
+          {
+            question: "Two sectors of the same circle have angles 45° and 135°. The ratio of their areas is:",
+            options: ["1:2", "1:3", "1:4", "3:1"],
+            answer: 1,
+            explanation: "Areas are proportional to their angles, so the ratio is 45:135 = 1:3."
+          },
+          {
+            question: "The region between two concentric circles is called:",
+            options: ["A sector", "An annulus or ring", "A segment", "A quadrant"],
+            answer: 1,
+            explanation: "Its area is the difference of the two circle areas, πR² − πr²."
+          },
+          {
+            question: "If the arc length of a sector equals its radius, the sector's central angle is roughly:",
+            options: ["30°", "57°", "90°", "180°"],
+            answer: 1,
+            explanation: "(θ/360)(2πr) = r gives θ = 360/(2π) ≈ 57.3° — this angle is called one radian."
           }
         ]
       }
