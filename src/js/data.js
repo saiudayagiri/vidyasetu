@@ -12206,6 +12206,66 @@ export const curriculumData = {
                       options: ["Cell Membrane", "Mitochondria", "Cell Wall", "Nucleus"],
                       answer: 2,
                       explanation: "The Cell Wall is an additional protective cover present only in plant cells."
+                    },
+                    {
+                      question: "What is the plant cell wall made of?",
+                      options: ["Chitin", "Cellulose", "Protein", "Fat"],
+                      answer: 1,
+                      explanation: "The rigid cellulose wall lies outside the cell membrane and gives the cell its shape."
+                    },
+                    {
+                      question: "Which of these does the cell wall protect a plant against?",
+                      options: ["Only sunlight", "High wind speed, temperature variations and atmospheric moisture", "Only insects", "Only water loss"],
+                      answer: 1,
+                      explanation: "Its rigidity is what lets plants stand firm without a skeleton."
+                    },
+                    {
+                      question: "Which green plastids allow plants to make their own food?",
+                      options: ["Mitochondria", "Chloroplasts, which contain chlorophyll", "Ribosomes", "Vacuoles"],
+                      answer: 1,
+                      explanation: "Animal cells have no plastids at all, so they cannot photosynthesise."
+                    },
+                    {
+                      question: "Which process do chloroplasts make possible?",
+                      options: ["Respiration", "Photosynthesis", "Digestion", "Excretion"],
+                      answer: 1,
+                      explanation: "Chlorophyll inside the chloroplast traps light energy so the plant can manufacture its own food."
+                    },
+                    {
+                      question: "Which structure lies immediately inside the plant cell wall?",
+                      options: ["The nucleus", "The cell membrane", "The chloroplast", "The vacuole"],
+                      answer: 1,
+                      explanation: "The cell wall surrounds the cell membrane, adding an extra rigid layer that animal cells lack."
+                    },
+                    {
+                      question: "Why do animal cells not need a cell wall?",
+                      options: ["They are smaller", "They must change shape and move, which a rigid wall would prevent", "They have no cytoplasm", "They live in water"],
+                      answer: 1,
+                      explanation: "Flexibility matters more for animals, while plants need support to stay upright."
+                    },
+                    {
+                      question: "Which of these is found in BOTH plant and animal cells?",
+                      options: ["Cell wall", "Cell membrane", "Chloroplast", "Plastids"],
+                      answer: 1,
+                      explanation: "The cell membrane is common to all cells; the wall and plastids are extras found in plant cells."
+                    },
+                    {
+                      question: "Chlorophyll gives plant cells their:",
+                      options: ["Rigidity", "Green colour", "Ability to move", "Thick wall"],
+                      answer: 1,
+                      explanation: "The green pigment inside chloroplasts is what makes leaves look green."
+                    },
+                    {
+                      question: "An unlabelled cell under a microscope shows a rigid outer boundary and green bodies inside. It is:",
+                      options: ["An animal cell", "A plant cell", "A virus", "A bacterium"],
+                      answer: 1,
+                      explanation: "Both the cell wall and the chloroplasts point clearly to a plant cell."
+                    },
+                    {
+                      question: "Which statement is correct?",
+                      options: ["All cells have a cell wall", "Only plant cells have a cell wall", "Only animal cells have a cell wall", "Neither has a cell wall"],
+                      answer: 1,
+                      explanation: "Animal cells completely lack a cell wall, which is one of the clearest differences between the two."
                     }
                   ]
                 }
@@ -12281,6 +12341,24 @@ export const curriculumData = {
                       options: ["To let the cell dissolve over time", "To allow essential materials to enter and waste materials to exit the cell", "Porosity has no functional purpose", "To prevent all substances from entering or leaving"],
                       answer: 1,
                       explanation: "The cell membrane must allow the controlled entry of materials essential for life processes and the exit of waste — a purely solid barrier would prevent the cell from exchanging anything with its surroundings."
+                    },
+                    {
+                      question: "Which part of the cell lies between the cell membrane and the nucleus?",
+                      options: ["The cell wall", "The cytoplasm", "The plastid", "The vacuole"],
+                      answer: 1,
+                      explanation: "The cytoplasm is the space where most of the cell's activities take place."
+                    },
+                    {
+                      question: "Put the levels of organisation in the correct order.",
+                      options: ["Organ → tissue → cell → organ system", "Cell → tissue → organ → organ system → organism", "Tissue → cell → organism → organ", "Cell → organ → tissue → organism"],
+                      answer: 1,
+                      explanation: "A group of similar cells forms a tissue, tissues form an organ, and organs work together as an organ system."
+                    },
+                    {
+                      question: "Why must the cell membrane be porous?",
+                      options: ["To make the cell lighter", "To let essential materials in and waste out", "To hold the cell wall", "To trap sunlight"],
+                      answer: 1,
+                      explanation: "A completely sealed membrane would stop the cell exchanging anything with its surroundings."
                     }
                   ]
                 },
@@ -12350,6 +12428,24 @@ export const curriculumData = {
                       options: ["All microorganisms are actually unicellular", "Different types of microbes vary — bacteria and Amoeba are unicellular, while some fungi and algae are multicellular", "All microorganisms are actually multicellular", "This classification does not apply to microorganisms"],
                       answer: 1,
                       explanation: "Microorganisms show real diversity in cell count: bacteria and Amoeba are made of just one cell (unicellular), while some fungi and algae are made of many cells (multicellular)."
+                    },
+                    {
+                      question: "What does the word 'microorganism' literally mean?",
+                      options: ["A dangerous being", "A very small living being", "A single cell", "A plant-like organism"],
+                      answer: 1,
+                      explanation: "Micro means very small and organism means living being."
+                    },
+                    {
+                      question: "Which microbe seen in pond water moves with an irregular, changing shape?",
+                      options: ["Paramecium", "Amoeba", "Algae", "Yeast"],
+                      answer: 1,
+                      explanation: "Amoeba is single-celled and changes shape as it moves."
+                    },
+                    {
+                      question: "Why are viruses described as acellular?",
+                      options: ["They are very small", "They are not made of cells at all", "They cannot move", "They live in water"],
+                      answer: 1,
+                      explanation: "They multiply only after entering a living cell, which is why they are treated as a special case."
                     }
                   ]
                 },
@@ -12419,6 +12515,24 @@ export const curriculumData = {
                       options: ["They consume most of Earth's oxygen", "They produce more than half of Earth's oxygen supply through photosynthesis", "They have no role in oxygen production", "They only survive in extremely polluted water"],
                       answer: 1,
                       explanation: "Microalgae are microscopic plant-like organisms that photosynthesize, releasing oxygen — together producing more than half of the Earth's total oxygen supply."
+                    },
+                    {
+                      question: "Which gas released by yeast makes dough rise?",
+                      options: ["Oxygen", "Carbon dioxide", "Nitrogen", "Hydrogen"],
+                      answer: 1,
+                      explanation: "Yeast respires and breaks down food for energy, and the CO₂ bubbles make the dough soft and fluffy."
+                    },
+                    {
+                      question: "Which acid produced by Lactobacillus makes curd sour?",
+                      options: ["Acetic acid", "Lactic acid", "Citric acid", "Tartaric acid"],
+                      answer: 1,
+                      explanation: "These bacteria feed on the lactose in milk and ferment it into lactic acid rather than alcohol."
+                    },
+                    {
+                      question: "Rhizobium bacteria live in the root nodules of which plants?",
+                      options: ["Grasses", "Legumes such as peas, beans and lentils", "Cacti", "Mosses"],
+                      answer: 1,
+                      explanation: "They fix nitrogen and enrich the soil, which is why legumes are valuable in crop rotation."
                     }
                   ]
                 },
@@ -12488,6 +12602,24 @@ export const curriculumData = {
                       options: ["About 2 times more powerful", "About 10 times more powerful", "About 2,500 to 10,000 times more powerful", "Electron microscopes are actually less powerful"],
                       answer: 2,
                       explanation: "An electron microscope magnifies about 10,00,000 (1,000,000) times, compared to a light microscope's 100-400 times — roughly 2,500 to 10,000 times more powerful, revealing subcellular details invisible to light microscopes."
+                    },
+                    {
+                      question: "Why is a lens called a lens?",
+                      options: ["After its inventor", "Because its shape resembles a lentil seed", "Because it is made of glass", "From a Greek word for light"],
+                      answer: 1,
+                      explanation: "A curved piece of glass, thick in the middle and thin at the edges, makes small things look bigger."
+                    },
+                    {
+                      question: "What did Robert Hooke publish in 1665?",
+                      options: ["The Origin of Species", "Micrographia", "Principia", "The Cell Theory"],
+                      answer: 1,
+                      explanation: "It contained detailed drawings made with his microscope, which magnified 200 to 300 times."
+                    },
+                    {
+                      question: "Roughly how much can an electron microscope magnify a cell?",
+                      options: ["400 times", "About 10,00,000 times", "1000 times", "100 times"],
+                      answer: 1,
+                      explanation: "Standard light microscopes reach only 100 to 400 times, so subcellular components need an electron microscope."
                     }
                   ]
                 }
@@ -12563,6 +12695,24 @@ export const curriculumData = {
                       options: ["Social well-being is not actually part of the WHO definition", "Because a person's relationships and social life directly affect how healthy and well they feel overall", "Physical health always guarantees social well-being", "Social well-being only matters for elderly people"],
                       answer: 1,
                       explanation: "The WHO explicitly includes social well-being because relationships, social connection, and community matter for a person's overall health — not just their physical body."
+                    },
+                    {
+                      question: "How does the WHO define health?",
+                      options: ["The absence of disease", "A state of complete physical, mental and social well-being, not merely the absence of disease", "Being physically fit", "Having no symptoms"],
+                      answer: 1,
+                      explanation: "The definition deliberately goes beyond the body to include mental and social well-being."
+                    },
+                    {
+                      question: "Which habit supports good health according to the chapter?",
+                      options: ["Eating mostly processed and sugary food", "Eating a balanced diet rich in fruits, vegetables and whole grains", "Avoiding all physical activity", "Sleeping very little"],
+                      answer: 1,
+                      explanation: "Staying physically active through play, walking, running or cycling matters too."
+                    },
+                    {
+                      question: "Why does a littered playground affect health?",
+                      options: ["It looks untidy only", "Polluted, unhygienic surroundings attract disease-carrying insects and increase illness", "It reduces sunlight", "It makes the ground hard"],
+                      answer: 1,
+                      explanation: "A clean environment is part of what keeps a community healthy."
                     }
                   ]
                 },
@@ -12632,6 +12782,24 @@ export const curriculumData = {
                       options: ["By distributing free antibiotics to all children", "By increasing toilet construction and use, reducing open defecation and cases of diarrhoea and infections", "By closing all schools temporarily", "By banning all street food"],
                       answer: 1,
                       explanation: "The campaign helped more people build and use toilets, significantly reducing open defecation — which in turn reduced diarrhoea and infection cases among children."
+                    },
+                    {
+                      question: "What is a pathogen?",
+                      options: ["Any microorganism", "A disease-causing organism such as a bacterium, virus, fungus, worm or protozoan", "A type of vaccine", "A body cell"],
+                      answer: 1,
+                      explanation: "A disease is a condition that affects the normal working of the body or mind."
+                    },
+                    {
+                      question: "Malaria spreads through mosquitoes. What are such disease-carrying organisms called?",
+                      options: ["Hosts", "Vectors", "Pathogens", "Antibodies"],
+                      answer: 1,
+                      explanation: "Vectors carry pathogens from one person to another without necessarily falling ill themselves."
+                    },
+                    {
+                      question: "Which of these is an example of spread by indirect contact?",
+                      options: ["Coughing near someone", "Sharing a personal item such as a towel", "Shaking hands", "A mosquito bite"],
+                      answer: 1,
+                      explanation: "Direct contact means touching, while indirect contact involves an object that has been handled by an infected person."
                     }
                   ]
                 },
@@ -12701,6 +12869,24 @@ export const curriculumData = {
                       options: ["The complete eradication of smallpox worldwide by 1979", "The invention of antibiotics", "The discovery of bacteria", "The elimination of all communicable diseases"],
                       answer: 0,
                       explanation: "Mass vaccination campaigns built on Jenner's discovery eventually led to smallpox being completely eradicated worldwide by 1979 — one of the greatest achievements in public health history."
+                    },
+                    {
+                      question: "Which of these is a non-communicable disease?",
+                      options: ["Malaria", "Diabetes", "Influenza", "Tuberculosis"],
+                      answer: 1,
+                      explanation: "Cancer, diabetes and asthma are not caused by pathogens but are linked to lifestyle, diet and environment."
+                    },
+                    {
+                      question: "A disease lasting more than three months is described as:",
+                      options: ["Acute", "Chronic", "Communicable", "Infectious"],
+                      answer: 1,
+                      explanation: "Chronic non-communicable diseases are now a major health concern in India."
+                    },
+                    {
+                      question: "How do vaccines protect us?",
+                      options: ["They kill all germs in the body", "They train the immune system to recognise and attack a germ before we fall ill", "They replace the immune system", "They cure any disease"],
+                      answer: 1,
+                      explanation: "This is called acquired immunity, and Edward Jenner's cowpox experiment was the first step towards it."
                     }
                   ]
                 },
@@ -12770,6 +12956,24 @@ export const curriculumData = {
                       options: ["Antibiotics only work against viral infections, not bacterial ones", "These diseases are caused by viruses, and antibiotics only target bacteria", "The common cold and COVID-19 do not actually require any treatment", "Antibiotics work against all pathogens equally"],
                       answer: 1,
                       explanation: "The common cold and COVID-19 are caused by viruses, and antibiotics specifically target structures found in bacterial cells — they have no effect on viruses."
+                    },
+                    {
+                      question: "Antibiotics work only against which kind of infection?",
+                      options: ["Viral", "Bacterial", "Fungal", "All infections"],
+                      answer: 1,
+                      explanation: "They target processes specific to bacterial cells, so they do nothing against a virus such as the common cold."
+                    },
+                    {
+                      question: "Who discovered penicillin, and in what year?",
+                      options: ["Edward Jenner, 1796", "Alexander Fleming, 1928", "Louis Pasteur, 1860", "Robert Hooke, 1665"],
+                      answer: 1,
+                      explanation: "He noticed that a mould on a contaminated petri dish had stopped bacteria growing nearby."
+                    },
+                    {
+                      question: "What causes antibiotic resistance?",
+                      options: ["Taking antibiotics with food", "Bacteria surviving and multiplying despite treatment, especially when antibiotics are taken unnecessarily or incorrectly", "Using too many vaccines", "Washing hands too often"],
+                      answer: 1,
+                      explanation: "This is why a prescribed course should always be completed and antibiotics never taken for viral illnesses."
                     }
                   ]
                 }
@@ -12845,6 +13049,24 @@ export const curriculumData = {
                       options: ["The heating effect of electric current", "The magnetic effect of electric current", "Electromagnetic induction", "The Voltaic effect"],
                       answer: 1,
                       explanation: "This phenomenon — where flowing electric current produces a magnetic field around the conductor — is called the magnetic effect of electric current."
+                    },
+                    {
+                      question: "What happens to a compass needle placed under a wire when the circuit is switched on?",
+                      options: ["Nothing", "It deflects from its original direction", "It melts", "It spins forever"],
+                      answer: 1,
+                      explanation: "Switching the circuit off returns the needle to normal, showing the current is the cause."
+                    },
+                    {
+                      question: "What is a magnetic field?",
+                      options: ["The wire itself", "The region around a magnet or current-carrying wire where its magnetic effect can be felt", "The battery", "The compass needle"],
+                      answer: 1,
+                      explanation: "A deflecting compass needle is one way of detecting that field."
+                    },
+                    {
+                      question: "Who discovered the link between electricity and magnetism, and when?",
+                      options: ["Faraday, 1831", "Hans Christian Oersted, 1820", "Volta, 1800", "Ampere, 1825"],
+                      answer: 1,
+                      explanation: "He noticed during a demonstration that a nearby compass needle deflected whenever a circuit was opened or closed."
                     }
                   ]
                 },
@@ -12914,6 +13136,24 @@ export const curriculumData = {
                       options: ["Sunlight hitting the atmosphere", "The movement of liquid iron in Earth's core, which creates electric currents", "Ocean currents", "The rotation of the Moon"],
                       answer: 1,
                       explanation: "Deep inside Earth, the movement of liquid iron in the core creates electric currents, which generate Earth's magnetic field — used by migratory animals for navigation and shielding life from space particles."
+                    },
+                    {
+                      question: "How can an electromagnet be made stronger?",
+                      options: ["By using a shorter wire", "By using more cells or more turns of the coil", "By removing the iron core", "By reversing the compass"],
+                      answer: 1,
+                      explanation: "Both a larger current and more turns increase the strength of the magnetic field."
+                    },
+                    {
+                      question: "What effect does inserting an iron nail into the coil have?",
+                      options: ["It weakens the magnet", "It makes the magnet much stronger", "It stops the current", "It reverses the poles"],
+                      answer: 1,
+                      explanation: "The compass deflection increases noticeably once the iron core is in place."
+                    },
+                    {
+                      question: "Why are lifting electromagnets useful in scrap yards?",
+                      options: ["They are cheaper than cranes", "Switching the current on lifts iron objects and switching it off releases them", "They never lose strength", "They work without electricity"],
+                      answer: 1,
+                      explanation: "That on-off control is something a permanent magnet cannot offer."
                     }
                   ]
                 },
@@ -12983,6 +13223,24 @@ export const curriculumData = {
                       options: ["To make appliances brighter", "To minimise risks like melted plugs/sockets or fires caused by overheating", "To increase the current flowing through wires", "Safety devices have nothing to do with heating"],
                       answer: 1,
                       explanation: "Overheating in wires or appliances can melt plastic parts or even cause fires, so safety devices are included in household circuits to minimise these risks."
+                    },
+                    {
+                      question: "Which wire offers much higher resistance, nichrome or copper?",
+                      options: ["Copper", "Nichrome", "They are equal", "Neither has resistance"],
+                      answer: 1,
+                      explanation: "That high resistance is why nichrome is used in heating elements."
+                    },
+                    {
+                      question: "Which factor does NOT affect the heat generated in a wire?",
+                      options: ["The material of the wire", "The colour of the wire", "The current flowing", "The time for which current flows"],
+                      answer: 1,
+                      explanation: "Material, thickness, length, current and duration all matter; colour does not."
+                    },
+                    {
+                      question: "Which appliance does NOT rely on the heating effect of current?",
+                      options: ["Electric iron", "Electric kettle", "Electric fan", "Immersion rod"],
+                      answer: 2,
+                      explanation: "A fan uses the magnetic effect in its motor, while the others deliberately produce heat."
                     }
                   ]
                 },
@@ -13052,6 +13310,24 @@ export const curriculumData = {
                       options: ["They are always heavier and slower", "They replace liquid/paste electrolytes with solid materials, offering improved safety, faster charging, and longer life", "They cannot be recharged at all", "They only work in laptops, not phones"],
                       answer: 1,
                       explanation: "Solid-state batteries replace the liquid or paste-like electrolyte with a solid material, which scientists expect will make them safer, faster-charging, and longer-lasting than current lithium-ion batteries."
+                    },
+                    {
+                      question: "What are the two electrodes of a voltaic cell made of?",
+                      options: ["The same metal", "Two different materials", "Two carbon rods", "Plastic"],
+                      answer: 1,
+                      explanation: "A chemical reaction between the different electrodes and the electrolyte generates the current."
+                    },
+                    {
+                      question: "Why is a dry cell called 'dry'?",
+                      options: ["It contains no chemicals", "Its electrolyte is a thick moist paste rather than a liquid", "It works only in dry weather", "It has no electrodes"],
+                      answer: 1,
+                      explanation: "A dry cell has a zinc container as the negative terminal and a central carbon rod as the positive one."
+                    },
+                    {
+                      question: "What is the main advantage of rechargeable batteries?",
+                      options: ["They are lighter", "They can be recharged and reused many times, reducing waste and cost", "They never run out", "They need no electricity"],
+                      answer: 1,
+                      explanation: "They range from tiny watch batteries to the large packs used in electric vehicles."
                     }
                   ]
                 }
@@ -13127,6 +13403,24 @@ export const curriculumData = {
                       options: ["No forces are acting on it at all", "The forces acting on it are balancing one another", "It is impossible for any force to act on a resting object", "The object has no mass"],
                       answer: 1,
                       explanation: "An object at rest may still have multiple forces acting on it — if these forces balance each other out, the net effect is no change in motion, so the object stays at rest."
+                    },
+                    {
+                      question: "What is a force?",
+                      options: ["A type of energy", "A push or pull resulting from an interaction between two objects", "A property of a single object", "A kind of motion"],
+                      answer: 1,
+                      explanation: "At least two objects must interact for a force to come into play."
+                    },
+                    {
+                      question: "Which of these can a force NOT do?",
+                      options: ["Change an object's speed", "Change an object's colour", "Change an object's direction", "Change an object's shape"],
+                      answer: 1,
+                      explanation: "A force can start motion, change speed or direction, or deform an object."
+                    },
+                    {
+                      question: "When you push a table, why do you feel a force on your hand?",
+                      options: ["The table is heavy", "Because whenever two objects interact, each experiences a force from the other", "Your muscles are tired", "The floor pushes back"],
+                      answer: 1,
+                      explanation: "The moment you stop pushing, that force on your hand disappears too."
                     }
                   ]
                 },
@@ -13196,6 +13490,24 @@ export const curriculumData = {
                       options: ["To make them look more attractive", "To reduce the friction (drag) exerted by air or water as they move through it", "To increase their weight", "Shape has no effect on their movement"],
                       answer: 1,
                       explanation: "Air and water exert friction (drag) on objects moving through them, so vehicles are specially shaped to minimize this fluid friction and move more efficiently."
+                    },
+                    {
+                      question: "What are contact forces?",
+                      options: ["Forces acting at a distance", "Forces that act only when objects are in physical contact", "Only magnetic forces", "Forces inside the body"],
+                      answer: 1,
+                      explanation: "Contact can be direct, as with your hands, or indirect, as through a stick or rope."
+                    },
+                    {
+                      question: "A ball rolling on a floor gradually stops. Which force is responsible?",
+                      options: ["Gravitational force", "Friction", "Magnetic force", "Buoyant force"],
+                      answer: 1,
+                      explanation: "Friction comes into play whenever an object moves or tries to move over another surface."
+                    },
+                    {
+                      question: "On which surface would a rolling ball stop soonest?",
+                      options: ["Glass", "Sand", "Ceramic tile", "Polished marble"],
+                      answer: 1,
+                      explanation: "Rougher surfaces produce greater friction, bringing the object to rest sooner."
                     }
                   ]
                 },
@@ -13265,6 +13577,24 @@ export const curriculumData = {
                       options: ["They only act when objects are touching", "They are all classified as non-contact forces, acting without physical contact", "They are all types of muscular force", "They only exist on Earth"],
                       answer: 1,
                       explanation: "All three — magnetic, electrostatic, and gravitational force — can act on objects from a distance without requiring physical contact, which is why they are grouped together as non-contact forces."
+                    },
+                    {
+                      question: "What happens when the North poles of two magnets are brought together?",
+                      options: ["They attract", "They repel", "Nothing happens", "They stick together"],
+                      answer: 1,
+                      explanation: "Like poles repel and unlike poles attract, and this happens without the magnets touching."
+                    },
+                    {
+                      question: "A plastic comb rubbed on hair picks up small pieces of paper. Which force is at work?",
+                      options: ["Magnetic force", "Electrostatic force", "Muscular force", "Buoyant force"],
+                      answer: 1,
+                      explanation: "Rubbing builds up static charges, and a charged object attracts uncharged ones even without contact."
+                    },
+                    {
+                      question: "Why is gravity classified as a non-contact force?",
+                      options: ["It is very weak", "It acts on objects without touching them", "It acts only on metals", "It works only on Earth"],
+                      answer: 1,
+                      explanation: "Magnetic, electrostatic and gravitational forces all act at a distance."
                     }
                   ]
                 },
@@ -13334,6 +13664,30 @@ export const curriculumData = {
                       options: ["When the object has no mass at all", "When the weight of the liquid displaced by the object equals the object's own weight", "Only when the object is made of wood", "Objects never float according to this principle"],
                       answer: 1,
                       explanation: "Archimedes' Principle states that an object floats when the weight of the liquid it displaces equals its own weight — if the displaced liquid weighs less than the object, the object sinks instead."
+                    },
+                    {
+                      question: "What is the difference between mass and weight?",
+                      options: ["They are the same", "Mass is the amount of matter in kilograms; weight is the gravitational force in newtons", "Weight is measured in kilograms", "Mass changes with location"],
+                      answer: 1,
+                      explanation: "Mass stays the same everywhere, but weight changes with the strength of gravity."
+                    },
+                    {
+                      question: "A 1 kg mass weighs 10 N on Earth. What does it weigh on the Moon?",
+                      options: ["10 N", "1.6 N", "3.8 N", "25.4 N"],
+                      answer: 1,
+                      explanation: "The Moon's gravitational pull is much weaker than Earth's, so the same mass weighs far less."
+                    },
+                    {
+                      question: "On which of these does a 1 kg mass weigh the most?",
+                      options: ["Earth", "Jupiter", "Mars", "Venus"],
+                      answer: 1,
+                      explanation: "Jupiter's much stronger gravity gives 25.4 N, compared with 10 N on Earth."
+                    },
+                    {
+                      question: "What is upthrust?",
+                      options: ["The downward pull of gravity", "The upward force a liquid exerts on an object placed in it", "Friction in water", "The weight of the object"],
+                      answer: 1,
+                      explanation: "If the buoyant force equals the gravitational force the object floats; if gravity wins, it sinks."
                     }
                   ]
                 }
