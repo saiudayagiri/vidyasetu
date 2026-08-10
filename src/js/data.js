@@ -588,6 +588,54 @@ export const curriculumData = {
                       options: ["It has no real use and can be skipped", "It helps the body get rid of undigested food and ensures smooth passage of stools", "It is actually a type of protein", "It replaces the need for water"],
                       answer: 1,
                       explanation: "Roughage doesn't provide nutrients, but it plays an essential role in digestion by helping move undigested food through the digestive system smoothly."
+                    },
+                    {
+                      question: "Which nutrient is the body's primary source of energy?",
+                      options: ["Protein", "Carbohydrate", "Vitamin", "Roughage"],
+                      answer: 1,
+                      explanation: "Cereals such as wheat, rice and maize are rich in carbohydrates."
+                    },
+                    {
+                      question: "Why do marathon runners drink glucose water?",
+                      options: ["It builds muscle", "It gives instant energy", "It removes waste", "It protects from disease"],
+                      answer: 1,
+                      explanation: "Glucose is a carbohydrate that the body can use very quickly."
+                    },
+                    {
+                      question: "Which nutrient helps in the growth and repair of the body?",
+                      options: ["Fat", "Protein", "Vitamin C", "Roughage"],
+                      answer: 1,
+                      explanation: "Pulses, beans, milk, egg and fish are good sources."
+                    },
+                    {
+                      question: "Deficiency of Vitamin A causes:",
+                      options: ["Scurvy", "Night blindness", "Beriberi", "Rickets"],
+                      answer: 1,
+                      explanation: "Papaya, carrot, mango and milk are good sources of Vitamin A."
+                    },
+                    {
+                      question: "Bleeding gums and slow wound healing are symptoms of:",
+                      options: ["Beriberi", "Scurvy", "Goitre", "Anaemia"],
+                      answer: 1,
+                      explanation: "Scurvy is caused by a lack of Vitamin C, found in amla, guava and citrus fruits."
+                    },
+                    {
+                      question: "Which mineral is a component of blood, and whose lack causes anaemia?",
+                      options: ["Calcium", "Iron", "Iodine", "Sodium"],
+                      answer: 1,
+                      explanation: "Green leafy vegetables and beetroot are good sources of iron."
+                    },
+                    {
+                      question: "Swelling at the front of the neck, called goitre, is caused by a lack of:",
+                      options: ["Iron", "Iodine", "Calcium", "Vitamin D"],
+                      answer: 1,
+                      explanation: "Iodised salt was introduced in India to prevent it."
+                    },
+                    {
+                      question: "Which nutrient does roughage provide?",
+                      options: ["Protein", "None at all", "Fat", "Vitamins"],
+                      answer: 1,
+                      explanation: "It provides no nutrients but helps the body get rid of undigested food."
                     }
                   ]
                 },
@@ -655,6 +703,42 @@ export const curriculumData = {
                       options: ["Peanuts are a fake food item", "A single food item can contain more than one nutrient", "The tests must be wrong", "Peanuts only contain fat, not protein"],
                       answer: 1,
                       explanation: "This shows that real foods often contain multiple nutrients simultaneously — peanuts are a good source of both fat and protein, which is exactly why testing (not assuming) is important."
+                    },
+                    {
+                      question: "A food turns blue-black with iodine solution. This shows the presence of:",
+                      options: ["Fat", "Starch", "Protein", "Water"],
+                      answer: 1,
+                      explanation: "Potato and boiled rice give this result, while cucumber does not."
+                    },
+                    {
+                      question: "An oily, translucent patch on paper shows the presence of:",
+                      options: ["Starch", "Fat", "Protein", "Vitamin C"],
+                      answer: 1,
+                      explanation: "Butter, coconut and peanuts all leave such a patch."
+                    },
+                    {
+                      question: "In the protein test, the mixture turns which colour?",
+                      options: ["Blue-black", "Violet", "Green", "Red"],
+                      answer: 1,
+                      explanation: "Copper sulfate and caustic soda solutions are added to the food paste."
+                    },
+                    {
+                      question: "Which two solutions are used in the test for protein?",
+                      options: ["Iodine and water", "Copper sulfate and caustic soda", "Vinegar and lime water", "Salt and sugar solutions"],
+                      answer: 1,
+                      explanation: "The teacher demonstrates this test because the chemicals need care."
+                    },
+                    {
+                      question: "Peanuts test positive for:",
+                      options: ["Only fat", "Both fat and protein", "Only protein", "Only starch"],
+                      answer: 1,
+                      explanation: "Many foods contain more than one nutrient."
+                    },
+                    {
+                      question: "Why should foods be tested rather than judged by appearance?",
+                      options: ["Tests are quicker", "Appearance alone can be misleading about which nutrients are present", "Tests are compulsory", "Appearance changes daily"],
+                      answer: 1,
+                      explanation: "The peanut result is a good example of this."
                     }
                   ]
                 },
@@ -721,6 +805,42 @@ export const curriculumData = {
                       options: ["The number of dishes made from one food item", "The total distance a food item travels from the producer/farm to the consumer's plate", "The number of nutrients in a food", "The weight of food transported"],
                       answer: 1,
                       explanation: "Food miles refer to the distance food travels from where it's grown to where it's eaten. Reducing food miles cuts pollution and transport costs, supports local farmers, and keeps food fresher."
+                    },
+                    {
+                      question: "A balanced diet is one that contains:",
+                      options: ["Only proteins", "All essential nutrients, roughage and water in the right amounts", "Only fruits and vegetables", "The largest amount of food"],
+                      answer: 1,
+                      explanation: "What counts as balanced depends on age, activity and health."
+                    },
+                    {
+                      question: "Why do a growing child and a grandparent need different diets?",
+                      options: ["Food tastes differ", "Nutrient requirements vary with age, activity and health", "Older people eat less always", "Children dislike vegetables"],
+                      answer: 1,
+                      explanation: "A balanced diet is matched to the person's needs."
+                    },
+                    {
+                      question: "Compared with roasted chana, potato wafers have:",
+                      options: ["More protein", "Much more fat and much less protein and fibre", "More fibre", "Less energy"],
+                      answer: 1,
+                      explanation: "Wafers have 35 g fat per 100 g against 6.26 g in roasted chana."
+                    },
+                    {
+                      question: "Junk foods are described as high in calories but low in:",
+                      options: ["Sugar", "Protein and dietary fibre", "Fat", "Energy"],
+                      answer: 1,
+                      explanation: "Candy bars and carbonated drinks fall into the same category."
+                    },
+                    {
+                      question: "Jowar, bajra, ragi and sanwa are together known as:",
+                      options: ["Pulses", "Millets", "Oilseeds", "Spices"],
+                      answer: 1,
+                      explanation: "They are rich in vitamins, minerals and fibre, earning the name nutri-cereals."
+                    },
+                    {
+                      question: "The total distance a food item travels from producer to consumer is called its:",
+                      options: ["Food chain", "Food miles", "Food cost", "Shelf life"],
+                      answer: 1,
+                      explanation: "Eating locally grown food reduces transport cost and pollution."
                     }
                   ]
                 }
@@ -786,6 +906,48 @@ export const curriculumData = {
                       options: ["True", "False — poles always exist in pairs, no matter how small the piece", "True, but only for U-shaped magnets", "True, but only in a laboratory"],
                       answer: 1,
                       explanation: "It is impossible to obtain a magnet with a single, isolated pole. Every piece of a broken magnet still has both a North and a South pole."
+                    },
+                    {
+                      question: "Which of these is a magnetic material?",
+                      options: ["Wood", "Iron", "Plastic", "Glass"],
+                      answer: 1,
+                      explanation: "Nickel and cobalt are two other magnetic metals."
+                    },
+                    {
+                      question: "Where do most iron filings stick on a bar magnet?",
+                      options: ["In the middle", "Near the two ends", "All over evenly", "Only on one end"],
+                      answer: 1,
+                      explanation: "These ends are the poles of the magnet."
+                    },
+                    {
+                      question: "What happens if a bar magnet is broken into two pieces?",
+                      options: ["One piece has only a North pole", "Each piece has both a North and a South pole", "The magnetism disappears", "Only the larger piece stays magnetic"],
+                      answer: 1,
+                      explanation: "Poles always exist in pairs, however small the piece."
+                    },
+                    {
+                      question: "Which of these is a non-magnetic material?",
+                      options: ["Cobalt", "Rubber", "Nickel", "Iron"],
+                      answer: 1,
+                      explanation: "Non-magnetic materials are not attracted towards a magnet."
+                    },
+                    {
+                      question: "The simplest way to test whether an object is magnetic is to:",
+                      options: ["Weigh it", "Bring a magnet near it and see if it is attracted", "Heat it", "Put it in water"],
+                      answer: 1,
+                      explanation: "Attraction shows that the material is magnetic."
+                    },
+                    {
+                      question: "A magnet can never have:",
+                      options: ["Two poles", "A single pole on its own", "A North pole", "A South pole"],
+                      answer: 1,
+                      explanation: "Breaking a magnet always produces new pairs of poles."
+                    },
+                    {
+                      question: "The two ends of a magnet are called its:",
+                      options: ["Edges", "Poles", "Sides", "Faces"],
+                      answer: 1,
+                      explanation: "They are named the North pole and the South pole."
                     }
                   ]
                 },
@@ -843,6 +1005,48 @@ export const curriculumData = {
                       options: ["Magnetic compass box", "Matsya-yantra (machchh-yantra)", "Lodestone map", "Iron filing chart"],
                       answer: 1,
                       explanation: "The matsya-yantra (or machchh-yantra) was an early Indian navigational device — a magnetised, fish-shaped iron piece kept floating in a vessel of oil, used long before the modern compass box."
+                    },
+                    {
+                      question: "A bar magnet suspended freely at its middle always comes to rest along the:",
+                      options: ["East-West direction", "North-South direction", "Vertical direction", "Direction it was released"],
+                      answer: 1,
+                      explanation: "This happens however many times you spin it."
+                    },
+                    {
+                      question: "Why does a freely suspended magnet point North-South?",
+                      options: ["Because of the wind", "Because the Earth itself behaves like a magnet", "Because of gravity", "Because of the thread"],
+                      answer: 1,
+                      explanation: "The end pointing North is called the North-seeking pole."
+                    },
+                    {
+                      question: "In a magnetic compass, the needle that points North is usually painted:",
+                      options: ["Blue", "Red", "Green", "Black"],
+                      answer: 1,
+                      explanation: "The needle is balanced on a pin so that it can rotate freely."
+                    },
+                    {
+                      question: "How do you magnetise a sewing needle to make a compass?",
+                      options: ["Heat it in a flame", "Rub one pole of a strong magnet along it in the same direction 30-40 times", "Dip it in water", "Bend it"],
+                      answer: 1,
+                      explanation: "The magnetised needle is then floated on cork in water."
+                    },
+                    {
+                      question: "Which of these is needed for a compass needle to work?",
+                      options: ["It must be heavy", "It must be free to rotate", "It must be painted", "It must be long"],
+                      answer: 1,
+                      explanation: "A needle that cannot turn cannot settle along North-South."
+                    },
+                    {
+                      question: "To use a compass, you first place it down and wait until:",
+                      options: ["The dial spins", "The needle settles in the North-South direction", "The box is warm", "The needle stops shining"],
+                      answer: 1,
+                      explanation: "Then the box is rotated so the markings line up with the needle."
+                    },
+                    {
+                      question: "Before the modern compass box, Indian sailors used a floating magnetised piece of:",
+                      options: ["Wood", "Iron", "Copper", "Stone"],
+                      answer: 1,
+                      explanation: "A fish-shaped iron piece floating in oil served the same purpose."
                     }
                   ]
                 },
@@ -895,6 +1099,48 @@ export const curriculumData = {
                       options: ["Near a mobile phone for easy access", "In pairs with unlike poles on the same side, with a piece of soft iron across the ends", "Heated slightly to 'activate' them", "Dropped occasionally to 'reset' them"],
                       answer: 1,
                       explanation: "Magnets should be stored in pairs with unlike poles together (with soft iron pieces bridging the ends), and should never be heated, dropped, or hammered, as these can weaken their magnetism."
+                    },
+                    {
+                      question: "Two North poles brought close to each other will:",
+                      options: ["Attract", "Repel", "Do nothing", "Stick together"],
+                      answer: 1,
+                      explanation: "Only unlike poles attract each other."
+                    },
+                    {
+                      question: "Which behaviour proves that a bar really is a magnet?",
+                      options: ["It attracts iron", "It repels one pole of a known magnet", "It is shiny", "It is heavy"],
+                      answer: 1,
+                      explanation: "A plain iron bar is only ever attracted, never repelled."
+                    },
+                    {
+                      question: "If a plain iron bar is brought near either pole of a magnet, it is:",
+                      options: ["Repelled by both", "Attracted by both", "Attracted by one and repelled by the other", "Unaffected"],
+                      answer: 1,
+                      explanation: "That is why attraction alone cannot identify a magnet."
+                    },
+                    {
+                      question: "Placing a sheet of cardboard between a magnet and a compass needle:",
+                      options: ["Stops the deflection completely", "Leaves the deflection almost unchanged", "Reverses the needle", "Breaks the magnet"],
+                      answer: 1,
+                      explanation: "The magnetic effect passes through non-magnetic materials."
+                    },
+                    {
+                      question: "How should magnets be stored to keep them strong?",
+                      options: ["Singly in a hot place", "In pairs with unlike poles on the same side, with soft iron across the ends", "Stuck to a mobile phone", "In water"],
+                      answer: 1,
+                      explanation: "Heating, dropping and hammering all weaken a magnet."
+                    },
+                    {
+                      question: "Magnets should be kept away from:",
+                      options: ["Wooden boxes", "Mobile phones and remote controls", "Paper", "Cloth"],
+                      answer: 1,
+                      explanation: "Strong magnetic fields can affect such devices."
+                    },
+                    {
+                      question: "Which rule best predicts how two magnets will behave?",
+                      options: ["All poles attract", "Like poles repel and unlike poles attract", "All poles repel", "Poles have no effect"],
+                      answer: 1,
+                      explanation: "It is the single most useful rule for magnets."
                     }
                   ]
                 }
