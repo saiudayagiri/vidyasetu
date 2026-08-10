@@ -11848,6 +11848,24 @@ export const curriculumData = {
                       options: ["Only their length", "Both their length AND their breadth must match", "Their colour and position", "Rectangles cannot be congruent to each other"],
                       answer: 1,
                       explanation: "Two rectangles are congruent only when both dimensions — length and breadth — match exactly; matching just one dimension isn't sufficient."
+                    },
+                    {
+                      question: "Two figures are congruent when they:",
+                      options: ["Have the same colour", "Have the same shape and size and can be superimposed exactly", "Have equal areas only", "Look similar"],
+                      answer: 1,
+                      explanation: "One is an exact copy of the other."
+                    },
+                    {
+                      question: "Two circles are congruent exactly when they have the same:",
+                      options: ["Centre", "Radius", "Colour", "Position"],
+                      answer: 1,
+                      explanation: "No other measurement is needed for circles."
+                    },
+                    {
+                      question: "Knowing only the two arm lengths of a two-armed symbol is not enough because:",
+                      options: ["The arms may bend", "The angle between the arms can still differ", "Lengths cannot be measured", "Arms must be equal"],
+                      answer: 1,
+                      explanation: "Many different figures share the same two arm lengths."
                     }
                   ]
                 },
@@ -11917,6 +11935,24 @@ export const curriculumData = {
                       options: ["It's always correct, order doesn't matter", "Because swapping B and C in the naming changes which sides are implied equal (like AC=XY), which may not actually be true", "Because triangle names must always be in alphabetical order", "Because congruence statements never use vertex order"],
                       answer: 1,
                       explanation: "The correspondence convention means position matters — writing ∆ACB ≅ ∆XYZ would incorrectly imply AC=XY and CB=YZ, which aren't necessarily the true equal sides; the correct restatement would be ∆ACB ≅ ∆XZY."
+                    },
+                    {
+                      question: "The SSS condition says two triangles are congruent when:",
+                      options: ["Two sides match", "All three pairs of sides are equal", "All angles match", "One side and one angle match"],
+                      answer: 1,
+                      explanation: "Any triangle built from the same three sidelengths must be congruent to another."
+                    },
+                    {
+                      question: "In the statement triangle ABC is congruent to triangle XYZ, vertex B corresponds to:",
+                      options: ["X", "Y", "Z", "Any of them"],
+                      answer: 1,
+                      explanation: "The order of the letters records which vertices match up."
+                    },
+                    {
+                      question: "Drawing circles of radius 4 cm and 8 cm from the ends of a 6 cm base gives:",
+                      options: ["One intersection point", "Two possible intersection points", "No intersection", "Three points"],
+                      answer: 1,
+                      explanation: "The two triangles formed are congruent to each other."
                     }
                   ]
                 },
@@ -11981,6 +12017,24 @@ export const curriculumData = {
                       options: ["It doesn't matter at all", "Because the correspondence tells us exactly which specific angles and sides are equal to each other — a wrong correspondence gives false equalities", "Because triangles without correct correspondence are not really triangles", "Correspondence only matters for circles, not triangles"],
                       answer: 1,
                       explanation: "Congruence alone doesn't specify which parts match which — the correspondence is what tells us precisely which angles and sides can be treated as equal, so getting it wrong can lead to incorrect conclusions."
+                    },
+                    {
+                      question: "In rectangle ABCD, why are triangles ABD and CDB congruent?",
+                      options: ["They look alike", "They share BD, and AB = CD and AD = CB, satisfying SSS", "They have equal areas", "All rectangles split equally"],
+                      answer: 1,
+                      explanation: "The common side plus two pairs of equal opposite sides gives three matching sides."
+                    },
+                    {
+                      question: "The most concrete way to check a proposed correspondence is to:",
+                      options: ["Measure the angles only", "Cut out or trace both triangles and try to superimpose them", "Guess", "Compare areas"],
+                      answer: 1,
+                      explanation: "Superimposition shows directly whether the claimed matching works."
+                    },
+                    {
+                      question: "Why does getting the correspondence right matter?",
+                      options: ["It makes the diagram neater", "A wrong matching can lead to incorrect conclusions about equal sides and angles", "It is only a convention", "It changes the shape"],
+                      answer: 1,
+                      explanation: "The letters record exactly which parts are claimed to be equal."
                     }
                   ]
                 },
@@ -12050,6 +12104,24 @@ export const curriculumData = {
                       options: ["The Eiffel Tower's elevator", "The Louvre Museum pyramid's glass panes and the Howrah Bridge's truss framework", "A circular water tank", "A rectangular football field"],
                       answer: 1,
                       explanation: "The chapter highlights the Louvre pyramid, the Pyramids of Giza, dome designs, rangoli patterns, and the Howrah Bridge (Rabindra Setu) as real-world examples featuring congruent triangles."
+                    },
+                    {
+                      question: "In an isosceles triangle with AB = AC, the base angles B and C are:",
+                      options: ["Always 60 degrees", "Equal to each other", "Always right angles", "Always different"],
+                      answer: 1,
+                      explanation: "The altitude from A splits it into two congruent triangles."
+                    },
+                    {
+                      question: "Each angle of an equilateral triangle measures:",
+                      options: ["45 degrees", "60 degrees", "90 degrees", "30 degrees"],
+                      answer: 1,
+                      explanation: "All three sides are equal, so all three angles are equal and sum to 180."
+                    },
+                    {
+                      question: "Congruent triangles can be seen in the glass panes of:",
+                      options: ["The Taj Mahal dome", "The Louvre Museum pyramid", "The Qutub Minar", "A circular stadium"],
+                      answer: 1,
+                      explanation: "The Egyptian pyramids show the same pattern in stone."
                     }
                   ]
                 }
@@ -12124,6 +12196,24 @@ export const curriculumData = {
                       options: ["8", "−8", "6", "−6"],
                       answer: 1,
                       explanation: "(−4) × 2 requires removing 2 positive tokens from the bag 4 times (using zero pairs), leaving 8 negative tokens behind — so (−4) × 2 = −8."
+                    },
+                    {
+                      question: "In the token model, what does a red token stand for?",
+                      options: ["A positive unit", "A negative unit", "Zero", "A fraction"],
+                      answer: 1,
+                      explanation: "Green tokens stand for positive units."
+                    },
+                    {
+                      question: "What is 4 x (-2) in the token model?",
+                      options: ["8", "-8", "-6", "2"],
+                      answer: 1,
+                      explanation: "Two red tokens are placed into the bag four times, leaving 8 negative tokens."
+                    },
+                    {
+                      question: "When the multiplier is negative, tokens are:",
+                      options: ["Placed into the bag", "Removed from the bag", "Doubled", "Ignored"],
+                      answer: 1,
+                      explanation: "Zero pairs are added first so that there is something to remove."
                     }
                   ]
                 },
@@ -12193,6 +12283,24 @@ export const curriculumData = {
                       options: ["No, commutativity only works for positive integers", "Yes — multiplication is commutative for all integers, regardless of sign", "Only sometimes, depending on the specific numbers", "Commutativity does not apply to multiplication at all"],
                       answer: 1,
                       explanation: "Multiplication of integers is commutative for any integers a and b — swapping the multiplier and multiplicand never changes the product, whatever their signs."
+                    },
+                    {
+                      question: "What is (-4) x (-2)?",
+                      options: ["-8", "8", "-6", "6"],
+                      answer: 1,
+                      explanation: "Removing 2 negative tokens four times leaves 8 positive tokens behind."
+                    },
+                    {
+                      question: "Following the pattern 4x3=12, 3x3=9, 2x3=6, 1x3=3, 0x3=0, what is (-1) x 3?",
+                      options: ["3", "-3", "0", "-1"],
+                      answer: 1,
+                      explanation: "Each step down in the multiplier lowers the product by 3."
+                    },
+                    {
+                      question: "Brahmagupta described positive and negative quantities using the words:",
+                      options: ["Big and small", "Fortune and debt", "Light and dark", "Full and empty"],
+                      answer: 1,
+                      explanation: "He stated the sign rules in his 628 CE text."
                     }
                   ]
                 },
@@ -12257,6 +12365,24 @@ export const curriculumData = {
                       options: ["₹195 profit", "₹320 profit", "₹125 loss", "₹445 profit"],
                       answer: 0,
                       explanation: "40×8 + 25×(−5) = 320 + (−125) = 195 — a profit of ₹195."
+                    },
+                    {
+                      question: "An exam gives +5 for a correct answer and -2 for a wrong one. Mala has 30 correct and 20 wrong. Her score is:",
+                      options: ["150", "110", "190", "130"],
+                      answer: 1,
+                      explanation: "30 x 5 + 20 x (-2) = 150 - 40 = 110 marks."
+                    },
+                    {
+                      question: "An elevator descends 3 metres per minute for 60 minutes. Its change in position is:",
+                      options: ["+180 m", "-180 m", "-20 m", "-63 m"],
+                      answer: 1,
+                      explanation: "60 x (-3) = -180 metres, meaning 180 m below the starting point."
+                    },
+                    {
+                      question: "Why are positions below ground written as negative integers?",
+                      options: ["To make them smaller", "To show direction opposite to positions above ground", "Because they are underground", "To avoid decimals"],
+                      answer: 1,
+                      explanation: "The sign records the direction of movement from the reference level."
                     }
                   ]
                 },
@@ -12322,6 +12448,24 @@ export const curriculumData = {
                       options: ["25 × ? = −100", "? × (−100) = 25", "−100 × 25 = ?", "It cannot be reframed"],
                       answer: 0,
                       explanation: "Any division a ÷ b can be reframed as 'b × ? = a' — for (−100) ÷ 25, this becomes 25 × ? = −100, which is solved by finding ? = −4."
+                    },
+                    {
+                      question: "What is (-100) divided by 25?",
+                      options: ["4", "-4", "-25", "25"],
+                      answer: 1,
+                      explanation: "It asks what must multiply 25 to give -100, and 25 x (-4) = -100."
+                    },
+                    {
+                      question: "What is (-100) divided by (-4)?",
+                      options: ["-25", "25", "-4", "4"],
+                      answer: 1,
+                      explanation: "A negative divided by a negative gives a positive quotient."
+                    },
+                    {
+                      question: "Dividing a positive integer by a negative integer gives a result that is:",
+                      options: ["Positive", "Negative", "Zero", "Undefined"],
+                      answer: 1,
+                      explanation: "The rule mirrors the sign rules for multiplication."
                     }
                   ]
                 }
@@ -12393,6 +12537,24 @@ export const curriculumData = {
                       options: ["As many times as it appears in the larger number", "The MINIMUM number of times it appears across both factorisations", "Always exactly once", "The maximum number of times it appears in either number"],
                       answer: 1,
                       explanation: "For the HCF, each shared prime factor is included the smaller (minimum) number of times it appears between the two factorisations — ensuring the result divides both numbers exactly."
+                    },
+                    {
+                      question: "A 12 ft by 16 ft room is tiled with square tiles that fit exactly along both walls. The largest tile side is:",
+                      options: ["2 ft", "4 ft", "6 ft", "12 ft"],
+                      answer: 1,
+                      explanation: "The HCF of 12 and 16 is 4, the greatest common factor."
+                    },
+                    {
+                      question: "Using prime factorisation, the HCF is built from:",
+                      options: ["Every prime that appears in either number", "Only the primes common to both, with the smaller power", "The largest prime only", "The sum of the primes"],
+                      answer: 1,
+                      explanation: "This avoids listing every factor of large numbers."
+                    },
+                    {
+                      question: "What is the HCF of 24 and 36?",
+                      options: ["6", "12", "4", "72"],
+                      answer: 1,
+                      explanation: "24 = 2 cubed x 3 and 36 = 2 squared x 3 squared, so the HCF is 2 squared x 3 = 12."
                     }
                   ]
                 },
@@ -12458,6 +12620,24 @@ export const curriculumData = {
                       options: ["720", "1440", "2880", "360"],
                       answer: 1,
                       explanation: "Taking five 2s (max of 5,3), two 3s (max of 1,2), and one 5 (max of 0,1): LCM = 2⁵×3²×5 = 32×9×5 = 1440."
+                    },
+                    {
+                      question: "Anshu's strips are 6 cm and Guna's are 8 cm. The shortest toran both can make exactly is:",
+                      options: ["14 cm", "24 cm", "48 cm", "12 cm"],
+                      answer: 1,
+                      explanation: "24 is the lowest common multiple of 6 and 8."
+                    },
+                    {
+                      question: "Using prime factorisation, the LCM takes every prime that appears, raised to:",
+                      options: ["The smaller power", "The greater power", "Power one", "The sum of the powers"],
+                      answer: 1,
+                      explanation: "That guarantees the result is a multiple of both numbers."
+                    },
+                    {
+                      question: "What is the LCM of 4 and 10?",
+                      options: ["40", "20", "14", "2"],
+                      answer: 1,
+                      explanation: "4 = 2 squared and 10 = 2 x 5, so the LCM is 2 squared x 5 = 20."
                     }
                   ]
                 },
@@ -12526,6 +12706,24 @@ export const curriculumData = {
                       options: ["10", "20", "40", "100"],
                       answer: 1,
                       explanation: "Doubling both 270 and 50 adds one more factor of 2 to each, so the HCF also gains that extra factor of 2: HCF(540,100) = 2 × HCF(270,50) = 2×10 = 20."
+                    },
+                    {
+                      question: "What is the HCF of 6 and 18?",
+                      options: ["3", "6", "18", "2"],
+                      answer: 1,
+                      explanation: "Since 6 is a factor of 18, the HCF is simply the smaller number."
+                    },
+                    {
+                      question: "What is the LCM of 3 and 24?",
+                      options: ["3", "24", "72", "27"],
+                      answer: 1,
+                      explanation: "Since 24 is already a multiple of 3, the LCM is the larger number."
+                    },
+                    {
+                      question: "If both numbers in an HCF calculation are doubled, the HCF:",
+                      options: ["Stays the same", "Doubles", "Halves", "Becomes 2"],
+                      answer: 1,
+                      explanation: "Doubling adds an extra factor of 2 to both prime factorisations."
                     }
                   ]
                 },
@@ -12590,6 +12788,24 @@ export const curriculumData = {
                       options: ["It doesn't, they often disagree", "Because it IS prime factorisation, just applied to both numbers simultaneously, stripping out shared prime factors one at a time", "Because it uses a completely different mathematical principle", "It only works by coincidence"],
                       answer: 1,
                       explanation: "The ladder method performs the same prime factorisation process, but does it on both numbers at once, extracting each shared prime factor step by step until none remain — giving an identical result to computing both full factorisations separately."
+                    },
+                    {
+                      question: "What is the HCF of 84 and 180?",
+                      options: ["6", "12", "4", "24"],
+                      answer: 1,
+                      explanation: "The ladder procedure divides both by 2, 2 and 3, giving 2 x 2 x 3 = 12."
+                    },
+                    {
+                      question: "In the ladder procedure, each row divides both numbers by:",
+                      options: ["Any number", "A common prime factor", "The larger number", "2 only"],
+                      answer: 1,
+                      explanation: "The process stops when the two quotients share no common factor."
+                    },
+                    {
+                      question: "The ladder procedure is really:",
+                      options: ["Guesswork", "Prime factorisation carried out on both numbers at once", "Long division", "A multiplication table"],
+                      answer: 1,
+                      explanation: "Each step strips one shared prime factor from both numbers."
                     }
                   ]
                 }
@@ -12665,6 +12881,24 @@ export const curriculumData = {
                       options: ["7.581 sq cm", "75.81 sq cm", "758.1 sq cm", "7581 sq cm"],
                       answer: 1,
                       explanation: "57 × 133 = 7581; with 1+1=2 total decimal places, the area is 75.81 sq cm."
+                    },
+                    {
+                      question: "What is 9.5 x 5?",
+                      options: ["4.75", "47.5", "475", "0.475"],
+                      answer: 1,
+                      explanation: "Writing 9.5 as 95/10 gives 475/10 = 47.5."
+                    },
+                    {
+                      question: "If 596 x 248 = 147808, what is 5.96 x 2.48?",
+                      options: ["1478.08", "14.7808", "147.808", "1.478"],
+                      answer: 1,
+                      explanation: "There are 4 decimal places in total, so the point moves 4 places from the right."
+                    },
+                    {
+                      question: "Where is the decimal point placed in a decimal product?",
+                      options: ["After the first digit", "So the answer has as many decimal places as both factors together", "At the end", "Before the first digit"],
+                      answer: 1,
+                      explanation: "Each decimal is really a fraction with a denominator of 10, 100 and so on."
                     }
                   ]
                 },
@@ -12729,6 +12963,24 @@ export const curriculumData = {
                       options: ["Larger than both", "Smaller than both, since both numbers are between 0 and 1", "Equal to both", "Cannot be predicted without calculating"],
                       answer: 1,
                       explanation: "Since both 0.2 and 0.9 are between 0 and 1, their product will be smaller than both — following Situation 2's pattern."
+                    },
+                    {
+                      question: "When both numbers being multiplied are greater than 1, the product is:",
+                      options: ["Smaller than both", "Larger than both", "Equal to one of them", "Always a whole number"],
+                      answer: 1,
+                      explanation: "For example, 3.4 x 6.5 = 22.1."
+                    },
+                    {
+                      question: "What is 0.75 x 0.4?",
+                      options: ["3.0", "0.3", "0.03", "0.75"],
+                      answer: 1,
+                      explanation: "Both factors are between 0 and 1, so the product is smaller than either of them."
+                    },
+                    {
+                      question: "Multiplying by a number less than 1 is like:",
+                      options: ["Repeated addition", "Taking a part of the other number", "Dividing by 10", "Adding a fraction"],
+                      answer: 1,
+                      explanation: "0.75 acts exactly like the fraction 3/4."
                     }
                   ]
                 },
@@ -12794,6 +13046,24 @@ export const curriculumData = {
                       options: ["Round the divisor to the nearest whole number", "Convert the divisor into a whole number by multiplying it (and the dividend) by an appropriate power of 10", "Ignore the decimal point entirely", "Divide only the whole-number parts"],
                       answer: 1,
                       explanation: "The key first step is scaling both the divisor and dividend by the same power of 10 so the divisor becomes a whole number, after which standard division can proceed."
+                    },
+                    {
+                      question: "What is 126 divided by 2.5?",
+                      options: ["5.04", "50.4", "504", "25.2"],
+                      answer: 1,
+                      explanation: "Writing 2.5 as 25/10 gives 126 x 10/25 = 1260/25 = 50.4."
+                    },
+                    {
+                      question: "What is 4.68 divided by 0.13?",
+                      options: ["3.6", "36", "360", "0.36"],
+                      answer: 1,
+                      explanation: "Multiplying both numbers by 100 gives 468 divided by 13 = 36."
+                    },
+                    {
+                      question: "When the divisor is a decimal, the first step is to:",
+                      options: ["Round it off", "Multiply both dividend and divisor by the same power of 10", "Ignore the decimal point", "Divide by 10"],
+                      answer: 1,
+                      explanation: "That turns the divisor into a whole number without changing the quotient."
                     }
                   ]
                 },
@@ -12862,6 +13132,24 @@ export const curriculumData = {
                       options: ["It shows long division is broken", "It reveals that not every division of whole numbers gives a simple, finite decimal — some produce non-terminating (though often repeating) decimals", "It means these numbers cannot be divided at all", "It only applies to the number 3 and 7 specifically"],
                       answer: 1,
                       explanation: "This discovery is an important conceptual step: it shows decimals aren't always neatly finite, opening the door to understanding repeating and non-terminating decimals more deeply in later study."
+                    },
+                    {
+                      question: "What happens when 10 is divided by 3 using long division?",
+                      options: ["It ends after two steps", "It never terminates, with the digit 3 repeating", "The remainder becomes 0", "It gives a whole number"],
+                      answer: 1,
+                      explanation: "Each step leaves a remainder of 1, which regenerates the same step."
+                    },
+                    {
+                      question: "The remainders when dividing 1 by 7 are 1, 3, 2, 6, 4, 5 and then:",
+                      options: ["0", "Back to 1, forming a repeating cycle", "7", "They stop"],
+                      answer: 1,
+                      explanation: "Because the remainders repeat, so do the digits of the quotient."
+                    },
+                    {
+                      question: "A decimal expansion that never ends is called:",
+                      options: ["A terminating decimal", "A non-terminating decimal", "A whole number", "An improper fraction"],
+                      answer: 1,
+                      explanation: "Such divisions are a stepping stone to studying number types later."
                     }
                   ]
                 }
