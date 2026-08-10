@@ -4840,6 +4840,78 @@ export const curriculumData = {
                       options: ["To test memorisation of facts", "To practice inventing creative questions for a given answer, building the skill of curious, imaginative thinking", "To find the one correct question for each answer", "To avoid asking questions altogether"],
                       answer: 1,
                       explanation: "This activity flips the usual question-answer structure, encouraging creative question-generation as a valuable scientific skill in itself."
+                    },
+                    {
+                      question: "What kinds of questions does a Grade 7 science explorer try to ask?",
+                      options: ["Only questions with yes or no answers", "Deeper ones — how things work, why events happen, what patterns exist in nature", "Questions only teachers can answer", "Questions already answered in the textbook"],
+                      answer: 1,
+                      explanation: "Exploration means stepping out of the classroom to experience the world for yourself."
+                    },
+                    {
+                      question: "Why is being a science explorer described as a responsibility?",
+                      options: ["Experiments can be dangerous", "Human activities are deeply linked to the natural world and the society we live in", "Science is expensive", "Scientists must obey rules"],
+                      answer: 1,
+                      explanation: "Science plays a real role in addressing environmental challenges."
+                    },
+                    {
+                      question: "Which of these topics is NOT previewed for the year's journey?",
+                      options: ["Electricity and circuits", "The chemistry of distant stars", "Heat flow", "Life processes in plants"],
+                      answer: 1,
+                      explanation: "The year covers materials, electricity, metals and non-metals, changes, heat, life processes, measurement and more."
+                    },
+                    {
+                      question: "Which everyday question fits the chapter's spirit of exploration?",
+                      options: ["What is the capital of a state?", "Why are some fruits sour?", "When was the textbook printed?", "How many pages are in this chapter?"],
+                      answer: 1,
+                      explanation: "Curiosity about ordinary things is what turns observation into science."
+                    },
+                    {
+                      question: "Careful observation is described in the chapter as:",
+                      options: ["A minor detail", "A valuable scientific skill in itself", "Something only experts do", "Less useful than experiments"],
+                      answer: 1,
+                      explanation: "Noticing carefully is the starting point of every scientific investigation."
+                    },
+                    {
+                      question: "Science helps address environmental challenges mainly by:",
+                      options: ["Ignoring human activity", "Understanding how human activities connect to the natural world", "Replacing nature", "Predicting the future exactly"],
+                      answer: 1,
+                      explanation: "That connection between people, society and nature is what makes the responsibility real."
+                    },
+                    {
+                      question: "Which attitude best describes a science explorer?",
+                      options: ["Accepting facts without question", "Asking why and looking for patterns", "Memorising answers", "Avoiding mistakes at all costs"],
+                      answer: 1,
+                      explanation: "Exploration is about questioning and pattern-finding rather than collecting facts alone."
+                    },
+                    {
+                      question: "Studying why some stains are hard to remove belongs to which part of the year's journey?",
+                      options: ["Electricity", "The properties of materials around us", "Life processes", "Measuring time"],
+                      answer: 1,
+                      explanation: "The chapter previews materials, including why fruits are sour and how stains behave."
+                    },
+                    {
+                      question: "Learning about reversible and irreversible changes helps us understand:",
+                      options: ["Only laboratory reactions", "Everyday changes such as cooking, rusting and melting", "Only physics", "Nothing practical"],
+                      answer: 1,
+                      explanation: "These changes are part of the year's exploration of how materials behave."
+                    },
+                    {
+                      question: "What makes exploration different from simply reading a textbook?",
+                      options: ["It is faster", "It involves experiencing and investigating the world directly", "It needs no thinking", "It avoids questions"],
+                      answer: 1,
+                      explanation: "Stepping out of the classroom is exactly what the chapter encourages."
+                    },
+                    {
+                      question: "Which pair of chapters would help you understand a torch?",
+                      options: ["Heat flow and life processes", "Electricity and circuits, together with metals and non-metals", "Measuring time and motion", "Light and plants"],
+                      answer: 1,
+                      explanation: "Circuits explain the current path and metals explain why the wires conduct."
+                    },
+                    {
+                      question: "Which statement best captures the chapter's message?",
+                      options: ["Science is a fixed set of facts", "Science is an ever-evolving way of exploring, questioning and taking responsibility", "Science is only for laboratories", "Science has answered every question"],
+                      answer: 1,
+                      explanation: "The chapter's title itself points to science as something continually evolving."
                     }
                   ]
                 }
@@ -4915,6 +4987,30 @@ export const curriculumData = {
                       options: ["A synthetic chemical made only in factories", "A natural substance obtained from lichens, available as a solution or paper strips", "A type of acid", "A mineral found in rocks"],
                       answer: 1,
                       explanation: "Litmus is a natural dye obtained from lichens (organisms formed from a fungus and an alga), available in solution or paper-strip form."
+                    },
+                    {
+                      question: "Litmus is obtained from which organisms?",
+                      options: ["Algae", "Lichens", "Mosses", "Ferns"],
+                      answer: 1,
+                      explanation: "It is supplied as blue and red paper strips, or as a solution."
+                    },
+                    {
+                      question: "A substance turns red litmus paper blue. It is:",
+                      options: ["Acidic", "Basic", "Neutral", "An indicator"],
+                      answer: 1,
+                      explanation: "Soap solution and baking soda solution behave this way."
+                    },
+                    {
+                      question: "What colour is turmeric paper naturally?",
+                      options: ["Red", "Yellow", "Blue", "Green"],
+                      answer: 1,
+                      explanation: "It turns red with basic substances, but acidic and neutral ones cause no change."
+                    },
+                    {
+                      question: "Why can turmeric not distinguish an acid from a neutral substance?",
+                      options: ["It fades in both", "Neither causes any colour change on turmeric paper", "It turns red for both", "It is not an indicator"],
+                      answer: 1,
+                      explanation: "Turmeric can only identify basic substances."
                     }
                   ]
                 },
@@ -4983,6 +5079,30 @@ export const curriculumData = {
                       options: ["Tasting is always required", "Unknown substances could be harmful or toxic — tasting should only ever be done with known, safe, edible items", "Taste never reveals anything about acids", "This caution doesn't actually matter"],
                       answer: 1,
                       explanation: "Since taste-testing is only meaningful (and safe) for substances already known to be edible, tasting unknown or unlabelled substances risks real harm and should always be avoided."
+                    },
+                    {
+                      question: "Which acid is present in lemon juice?",
+                      options: ["Tartaric acid", "Citric acid", "Acetic acid", "Formic acid"],
+                      answer: 1,
+                      explanation: "Tamarind contains tartaric acid and vinegar contains acetic acid."
+                    },
+                    {
+                      question: "How do basic substances feel when rubbed between the fingers?",
+                      options: ["Gritty", "Soapy or slippery", "Sticky", "Powdery"],
+                      answer: 1,
+                      explanation: "Bases also generally taste bitter, though bitterness alone does not prove something is basic."
+                    },
+                    {
+                      question: "Bitter gourd tastes bitter. Does that make it basic?",
+                      options: ["Yes, all bitter things are basic", "No — bitterness alone does not guarantee a substance is basic", "Yes, if it is a vegetable", "Only when cooked"],
+                      answer: 1,
+                      explanation: "Taste can be a clue but is not a reliable test, and tasting unknown substances is dangerous."
+                    },
+                    {
+                      question: "What is an olfactory indicator?",
+                      options: ["One that changes colour", "One whose odour changes in the presence of acids or bases", "One that changes temperature", "One that dissolves"],
+                      answer: 1,
+                      explanation: "Cloth strips soaked in onion odour lose their smell when exposed to certain substances."
                     }
                   ]
                 },
@@ -5048,6 +5168,24 @@ export const curriculumData = {
                       options: ["Heat is absorbed from the surroundings", "Heat is released (evolved) as a product of the reaction", "No heat change occurs at all", "This varies unpredictably with no pattern"],
                       answer: 1,
                       explanation: "Neutralisation reactions release (evolve) heat as one of their products, alongside the formation of salt and water."
+                    },
+                    {
+                      question: "What is formed in a neutralisation reaction?",
+                      options: ["Only water", "A salt and water, with heat released", "Only a gas", "An acid and a base"],
+                      answer: 1,
+                      explanation: "The resulting solution is neither acidic nor basic."
+                    },
+                    {
+                      question: "Adding lime water drop by drop to red litmus in lemon juice turns it blue. Why?",
+                      options: ["The litmus is faulty", "The base has neutralised the acid, so the solution is no longer acidic", "The lemon juice evaporated", "Lime water is red"],
+                      answer: 1,
+                      explanation: "This colour change is direct evidence that neutralisation has occurred."
+                    },
+                    {
+                      question: "Is lime water an acid or a base?",
+                      options: ["An acid", "A base", "Neutral", "An indicator"],
+                      answer: 1,
+                      explanation: "That is why adding it can cancel out the acidity of lemon juice."
                     }
                   ]
                 },
@@ -5116,6 +5254,24 @@ export const curriculumData = {
                       options: ["They all involve heating substances", "They all rely on neutralisation — combining an acid with a base (or vice versa) to cancel out harmful acidic or basic effects", "They involve no chemistry at all", "They only work with litmus paper present"],
                       answer: 1,
                       explanation: "All three situations apply the same neutralisation principle — pairing an acid with a base to cancel out an unwanted acidic or basic condition."
+                    },
+                    {
+                      question: "Which acid does an ant inject when it bites?",
+                      options: ["Citric acid", "Formic acid", "Tartaric acid", "Acetic acid"],
+                      answer: 1,
+                      explanation: "Rubbing moist baking soda, a base, on the bite neutralises it and relieves the pain."
+                    },
+                    {
+                      question: "Excessive chemical fertiliser makes soil too acidic. What is added to correct it?",
+                      options: ["More fertiliser", "Lime, which is basic", "Vinegar", "Salt"],
+                      answer: 1,
+                      explanation: "If soil is too basic instead, organic matter such as manure is added."
+                    },
+                    {
+                      question: "Why is a basic substance added to acidic factory waste before release?",
+                      options: ["To change its colour", "To neutralise the acidity and protect fish and aquatic life", "To make it evaporate", "To make it heavier"],
+                      answer: 1,
+                      explanation: "Neutralisation chemistry here supports environmental protection."
                     }
                   ]
                 }
@@ -5190,6 +5346,24 @@ export const curriculumData = {
                       options: ["It never makes any difference", "To provide energy to the circuit for a longer time and/or with more power", "To make the torch heavier only", "Multiple cells always cancel each other out"],
                       answer: 1,
                       explanation: "Connecting multiple cells together (forming a battery) supplies more energy and/or a longer duration of power to the device."
+                    },
+                    {
+                      question: "How is the positive terminal of an electric cell marked?",
+                      options: ["A flat metal disc", "A small protruding metal cap", "A red dot", "A wire"],
+                      answer: 1,
+                      explanation: "The flat metal disc is the negative terminal."
+                    },
+                    {
+                      question: "What is a battery?",
+                      options: ["A single cell", "Two or more cells connected, positive terminal to negative terminal", "A type of lamp", "A switch"],
+                      answer: 1,
+                      explanation: "Connecting cells this way provides power for longer or with more strength."
+                    },
+                    {
+                      question: "How does an LED differ from an incandescent lamp?",
+                      options: ["It has a thicker filament", "It has no filament at all", "It uses no electricity", "It is always brighter"],
+                      answer: 1,
+                      explanation: "An incandescent lamp glows because its thin filament is heated by the current."
                     }
                   ]
                 },
@@ -5259,6 +5433,24 @@ export const curriculumData = {
                       options: ["It has become brighter than usual", "Its filament has broken, stopping the flow of current and preventing the lamp from glowing", "It is working perfectly", "It has changed into an LED"],
                       answer: 1,
                       explanation: "A 'fused' lamp has a broken filament, which interrupts the current path so the lamp cannot glow even when properly connected in a circuit."
+                    },
+                    {
+                      question: "When does a lamp glow in a circuit?",
+                      options: ["When one terminal is connected", "When both its terminals connect to the two cell terminals, forming a closed path", "When the wires touch each other", "When the cell is new"],
+                      answer: 1,
+                      explanation: "If any part of that path is broken, the current stops and the lamp goes out."
+                    },
+                    {
+                      question: "Does it matter which way round an incandescent lamp is connected?",
+                      options: ["Yes, it only works one way", "No — it glows either way as long as the circuit is complete", "Only with two cells", "Only with a switch"],
+                      answer: 1,
+                      explanation: "An LED, by contrast, works in only one direction."
+                    },
+                    {
+                      question: "Which wire of an LED must connect to the positive terminal?",
+                      options: ["The shorter wire", "The longer wire", "Either wire", "Both wires"],
+                      answer: 1,
+                      explanation: "Reversing the connection means the LED will not glow at all."
                     }
                   ]
                 },
@@ -5328,6 +5520,24 @@ export const curriculumData = {
                       options: ["The lamp is broken", "The safety pin doesn't touch the second drawing pin, leaving a gap that breaks the circuit and stops current flow", "OFF position generates reverse current", "The cell runs out of energy instantly"],
                       answer: 1,
                       explanation: "In the OFF position, the gap between the safety pin and the second drawing pin breaks the circuit, preventing current from flowing and the lamp from glowing."
+                    },
+                    {
+                      question: "What does a switch do in the ON position?",
+                      options: ["Breaks the circuit", "Closes the gap so the circuit is complete and current flows", "Stores electricity", "Increases the voltage"],
+                      answer: 1,
+                      explanation: "In the OFF position the gap remains, so no current can flow."
+                    },
+                    {
+                      question: "Why are standard symbols used in circuit diagrams?",
+                      options: ["They look neater", "So people from different countries and industries can read circuits consistently", "They are quicker to draw only", "They are required by law"],
+                      answer: 1,
+                      explanation: "Bodies such as the IEC, ANSI and IEEE establish these standards."
+                    },
+                    {
+                      question: "What is a circuit diagram?",
+                      options: ["A photograph of a circuit", "A symbol-based representation of an electrical circuit", "A list of components", "A wiring plan for a house"],
+                      answer: 1,
+                      explanation: "Symbols replace realistic pictures, making circuits far easier to draw and understand."
                     }
                   ]
                 },
@@ -5396,6 +5606,24 @@ export const curriculumData = {
                       options: ["A metal key", "A rubber eraser", "Aluminium foil", "A metal spoon"],
                       answer: 1,
                       explanation: "A rubber eraser does not allow current to pass through it, making it an insulator — unlike metal objects (keys, foil, spoons), which are good conductors."
+                    },
+                    {
+                      question: "What is a conduction tester used for?",
+                      options: ["Measuring voltage", "Finding out whether a material lets current pass", "Charging a cell", "Making a switch"],
+                      answer: 1,
+                      explanation: "Touching the two free wire ends together first confirms the tester itself works."
+                    },
+                    {
+                      question: "Which of these is a good conductor of electricity?",
+                      options: ["Rubber", "Copper", "Plastic", "Wood"],
+                      answer: 1,
+                      explanation: "Metals such as copper, iron and aluminium conduct well; rubber, plastic and wood are insulators."
+                    },
+                    {
+                      question: "Why is the copper core of a wire covered in plastic?",
+                      options: ["To make it stronger", "Because plastic is an insulator that keeps the current inside the wire and people safe", "To make it heavier", "To improve conduction"],
+                      answer: 1,
+                      explanation: "The metal carries the current while the insulator contains it."
                     }
                   ]
                 }
@@ -5471,6 +5699,30 @@ export const curriculumData = {
                       options: ["Because they conduct electricity well", "Because they break into pieces when hammered, instead of flattening into sheets", "Because they are extremely soft", "Because they produce ringing sounds"],
                       answer: 1,
                       explanation: "Unlike malleable metals, coal and sulfur shatter into pieces under hammering — this breaking behaviour defines brittleness."
+                    },
+                    {
+                      question: "What is metallic lustre?",
+                      options: ["The hardness of a metal", "The characteristic shine of a metal surface", "The sound a metal makes", "The ability to bend"],
+                      answer: 1,
+                      explanation: "Copper, aluminium and iron are all lustrous when clean."
+                    },
+                    {
+                      question: "Which property lets a metal be beaten into thin sheets?",
+                      options: ["Ductility", "Malleability", "Sonority", "Brittleness"],
+                      answer: 1,
+                      explanation: "Gold and silver are the most malleable metals."
+                    },
+                    {
+                      question: "Which property lets a metal be drawn into wires?",
+                      options: ["Malleability", "Ductility", "Sonority", "Lustre"],
+                      answer: 1,
+                      explanation: "One gram of gold can be drawn into a remarkably long wire."
+                    },
+                    {
+                      question: "What is sonority?",
+                      options: ["The shine of a metal", "The ringing sound a metal makes when struck", "The ability to conduct heat", "Resistance to rust"],
+                      answer: 1,
+                      explanation: "School bells and ghungroos rely on this property, while coal and wood give dull sounds."
                     }
                   ]
                 },
@@ -5536,6 +5788,24 @@ export const curriculumData = {
                       options: ["Rubber makes them work faster", "Rubber is a poor conductor of electricity (an insulator), protecting them from electric shocks", "Rubber conducts electricity very well, which is helpful", "There is no safety reason for this"],
                       answer: 1,
                       explanation: "Rubber is an excellent electrical insulator, so wearing rubber gloves and shoes protects electricians from being shocked by electric current while working."
+                    },
+                    {
+                      question: "A metal spoon and a wooden spoon are put in hot water. What is observed?",
+                      options: ["Both heat equally", "The metal spoon's upper end becomes noticeably hotter", "The wooden spoon heats faster", "Neither heats"],
+                      answer: 1,
+                      explanation: "Heat transfers efficiently through metals but poorly through wood."
+                    },
+                    {
+                      question: "Which of these makes a conduction tester's bulb glow?",
+                      options: ["Sulfur", "An aluminium object", "Rubber", "Wood"],
+                      answer: 1,
+                      explanation: "Aluminium, iron and copper are good conductors; sulfur, coal, wood, stone, rubber and nylon are not."
+                    },
+                    {
+                      question: "Why do electricians use tools with plastic or rubber handles?",
+                      options: ["To make them lighter", "Because those insulators protect them from electric shock", "To improve grip only", "To conduct better"],
+                      answer: 1,
+                      explanation: "The insulating handle stops current passing into the user's hand."
                     }
                   ]
                 },
@@ -5604,6 +5874,24 @@ export const curriculumData = {
                       options: ["Acidic", "Basic — it turns red litmus paper blue", "Neutral", "It cannot be tested with litmus"],
                       answer: 1,
                       explanation: "Magnesium oxide's solution turns red litmus paper blue, confirming it is basic — reflecting the general pattern that metal oxides are basic in nature."
+                    },
+                    {
+                      question: "The rusting experiment shows that iron rusts only when exposed to:",
+                      options: ["Dry air alone", "Both air and water together", "Water alone", "Neither"],
+                      answer: 1,
+                      explanation: "Nails in dry air or in water sealed from air showed no brown deposit."
+                    },
+                    {
+                      question: "What colour coating does copper develop on corroding?",
+                      options: ["Black", "Green", "White", "Red"],
+                      answer: 1,
+                      explanation: "Silver develops a black coating, and both are examples of corrosion."
+                    },
+                    {
+                      question: "Burning magnesium ribbon produces a white powder. Testing its solution with litmus shows it:",
+                      options: ["Turns blue litmus red", "Turns red litmus blue, so it is basic", "Causes no change", "Turns litmus green"],
+                      answer: 1,
+                      explanation: "Metal oxides are generally basic in nature."
                     }
                   ]
                 },
@@ -5672,6 +5960,30 @@ export const curriculumData = {
                       options: ["Iron used for building bridges", "Oxygen essential for breathing, and carbon as the building block of all life forms", "Aluminium used for cooking utensils", "Copper used for electrical wiring"],
                       answer: 1,
                       explanation: "Oxygen (needed for breathing) and carbon (the fundamental building block of proteins, fats, and carbohydrates in all life) are both essential non-metals — unlike the metal examples listed, which are metallic uses."
+                    },
+                    {
+                      question: "Burning sulfur produces a gas that dissolves in water to give:",
+                      options: ["A basic solution", "An acidic solution of sulfurous acid", "A neutral solution", "No solution"],
+                      answer: 1,
+                      explanation: "Non-metal oxides are generally acidic, unlike the basic oxides that metals form."
+                    },
+                    {
+                      question: "Why are plastic, glass and wood classed as neither metals nor non-metals?",
+                      options: ["They are too soft", "They are not elements", "They are man-made", "They do not conduct"],
+                      answer: 1,
+                      explanation: "An element is a substance made of only one kind of particle."
+                    },
+                    {
+                      question: "Which non-metal is described as the fundamental building block of all life forms?",
+                      options: ["Oxygen", "Carbon", "Nitrogen", "Hydrogen"],
+                      answer: 1,
+                      explanation: "Proteins, fats and carbohydrates are all built around carbon."
+                    },
+                    {
+                      question: "Nitrogen is especially important for:",
+                      options: ["Making wires", "Manufacturing fertilisers", "Making bells", "Building bridges"],
+                      answer: 1,
+                      explanation: "Non-metals lack the shine and strength of metals but are vital in everyday life."
                     }
                   ]
                 }
