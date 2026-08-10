@@ -13225,6 +13225,24 @@ export const curriculumData = {
                       options: ["5 guavas each; equivalent to finding the total", "6 guavas each; equivalent to finding the arithmetic mean (30÷5=6)", "30 guavas each; equivalent to multiplying", "10 guavas each; equivalent to finding the median"],
                       answer: 1,
                       explanation: "30÷5=6 guavas per person — this equal-sharing calculation is exactly the same as computing the arithmetic mean of the group's collection."
+                    },
+                    {
+                      question: "Why can comparing two players by total runs be misleading?",
+                      options: ["Totals are hard to add", "They may have played a different number of matches", "Runs are not comparable", "Totals change daily"],
+                      answer: 1,
+                      explanation: "An average per match makes the comparison fair."
+                    },
+                    {
+                      question: "Shubman scored 110 runs in 5 matches. What is his mean score per match?",
+                      options: ["20", "22", "25", "110"],
+                      answer: 1,
+                      explanation: "The mean is the sum of values divided by the number of values: 110 / 5 = 22."
+                    },
+                    {
+                      question: "Five members collected 3, 8, 10, 5 and 4 guavas. Sharing them equally gives each:",
+                      options: ["5 guavas", "6 guavas", "7 guavas", "30 guavas"],
+                      answer: 1,
+                      explanation: "The total is 30, and 30 / 5 = 6, which is also the arithmetic mean."
                     }
                   ]
                 },
@@ -13294,6 +13312,24 @@ export const curriculumData = {
                       options: ["It doesn't actually resist outliers", "Because the median depends only on which value occupies the middle POSITION after sorting, not on how extreme the outlier's actual value is", "Because the median is always larger than the mean", "Medians cannot be calculated when outliers are present"],
                       answer: 1,
                       explanation: "Since the median only cares about position (which value is in the middle after sorting), an outlier can be extremely far from the rest of the data without shifting the median much — unlike the mean, which directly incorporates every value's magnitude."
+                    },
+                    {
+                      question: "A value far away from the rest of a dataset is called:",
+                      options: ["The median", "An outlier", "The mean", "The range"],
+                      answer: 1,
+                      explanation: "A single outlier can drag the mean away from most of the data."
+                    },
+                    {
+                      question: "What is the median of the heights 118, 165, 170, 173 and 175 cm?",
+                      options: ["160.2 cm", "170 cm", "173 cm", "118 cm"],
+                      answer: 1,
+                      explanation: "After sorting, the middle of five values is the third one."
+                    },
+                    {
+                      question: "Why does the median resist outliers?",
+                      options: ["It ignores small values", "It depends only on the middle position after sorting, not on extreme sizes", "It is always larger", "It uses only two values"],
+                      answer: 1,
+                      explanation: "The mean, by contrast, incorporates the magnitude of every value."
                     }
                   ]
                 },
@@ -13362,6 +13398,24 @@ export const curriculumData = {
                       options: ["It uses less ink", "It makes direct, month-by-month (or category-by-category) comparison between the two datasets much easier than viewing two separate graphs", "It hides the data more effectively", "There is no real advantage"],
                       answer: 1,
                       explanation: "Placing corresponding bars side by side within the same graph lets viewers directly compare the two datasets category by category, without needing to mentally cross-reference two separate graphs."
+                    },
+                    {
+                      question: "A double column graph is useful because it:",
+                      options: ["Uses fewer numbers", "Places the two bars for each month side by side for direct comparison", "Needs no axis labels", "Shows only totals"],
+                      answer: 1,
+                      explanation: "Different colours distinguish the two sets of data."
+                    },
+                    {
+                      question: "What does comparing the two bar heights within one cluster tell you?",
+                      options: ["The total of both", "Which group was higher that month and roughly by how much", "The average only", "Nothing useful"],
+                      answer: 1,
+                      explanation: "This is exactly what a single combined graph makes easy."
+                    },
+                    {
+                      question: "Step 1 of reading a complex graph is to:",
+                      options: ["Draw conclusions", "Identify what is given, such as what each axis represents", "Calculate the mean", "Compare with another graph"],
+                      answer: 1,
+                      explanation: "Only after that should you start interpreting the data."
                     }
                   ]
                 },
@@ -13426,6 +13480,24 @@ export const curriculumData = {
                       options: ["Nothing beyond showing raw numbers", "Tell interesting stories, and also expose or help solve mysteries hidden within the numbers", "Only be useful for mathematicians", "Data can never be organized meaningfully"],
                       answer: 1,
                       explanation: "The chapter compares well-organised data to a well-told story — it can reveal genuine insights, patterns, or even 'mysteries' that raw, unorganised numbers would hide."
+                    },
+                    {
+                      question: "A good data detective checks which values before drawing conclusions?",
+                      options: ["Only the mean", "The mean, median, minimum, maximum and range", "Only the largest value", "Only the graph title"],
+                      answer: 1,
+                      explanation: "Relying on a single number can hide important features of the data."
+                    },
+                    {
+                      question: "Marking the mean on each dot plot helps you:",
+                      options: ["Count the dots", "Compare groups quickly while still seeing the spread", "Hide outliers", "Sort the data"],
+                      answer: 1,
+                      explanation: "The dots still show how the values are distributed around it."
+                    },
+                    {
+                      question: "Organising raw numbers into graphs and plots reveals:",
+                      options: ["Nothing new", "Patterns and stories that unorganised numbers would hide", "Only errors", "Fewer details"],
+                      answer: 1,
+                      explanation: "That is why data is visualised before being interpreted."
                     }
                   ]
                 }
@@ -13501,6 +13573,24 @@ export const curriculumData = {
                       options: ["Anywhere in the plane", "On the same perpendicular bisector line AB, since a line segment has only ONE perpendicular bisector", "Only at the midpoint of XY", "C and D cannot exist"],
                       answer: 1,
                       explanation: "Since any point equidistant from X and Y lies on XY's unique perpendicular bisector, C and D (both satisfying this equidistant condition) must lie on the same line AB."
+                    },
+                    {
+                      question: "The perpendicular bisector of a segment XY passes through:",
+                      options: ["One endpoint", "The midpoint of XY, at a right angle", "A point outside", "The longer half"],
+                      answer: 1,
+                      explanation: "It is drawn by taking equal-radius arcs from X and Y."
+                    },
+                    {
+                      question: "Points A and B in the construction satisfy:",
+                      options: ["AX = BX only", "AX = AY = BX = BY", "AB = XY", "AX = XY"],
+                      answer: 1,
+                      explanation: "Equal arcs from X and Y guarantee these equal distances."
+                    },
+                    {
+                      question: "Which congruence condition proves triangle ABX is congruent to triangle ABY?",
+                      options: ["SAS", "SSS", "ASA", "RHS"],
+                      answer: 1,
+                      explanation: "AX = AY, BX = BY, and AB is common to both triangles."
                     }
                   ]
                 },
@@ -13570,6 +13660,24 @@ export const curriculumData = {
                       options: ["90°", "22.5°", "67.5°", "180°"],
                       answer: 1,
                       explanation: "Bisecting (halving) a 45° angle gives 45°÷2=22.5°."
+                    },
+                    {
+                      question: "An 8-petalled design needs each adjacent pair of lines to be how far apart?",
+                      options: ["30 degrees", "45 degrees", "60 degrees", "90 degrees"],
+                      answer: 1,
+                      explanation: "360 divided by 8 gives 45 degrees per petal."
+                    },
+                    {
+                      question: "In bisecting angle XOY, the first step is to mark A and B so that:",
+                      options: ["OA is longer than OB", "OA equals OB", "AB equals OA", "A lies on B"],
+                      answer: 1,
+                      explanation: "A single compass arc from O ensures the two distances match."
+                    },
+                    {
+                      question: "Which congruence condition proves the angle bisector construction works?",
+                      options: ["SAS", "SSS", "ASA", "AAA"],
+                      answer: 1,
+                      explanation: "OA = OB, AC = BC, and OC is shared by both triangles."
                     }
                   ]
                 },
@@ -13639,6 +13747,24 @@ export const curriculumData = {
                       options: ["A type of calculator", "Ancient Chinese puzzles made of 7 pieces cut from a square, rearrangeable into many figures", "A kind of graph paper", "A measuring tool"],
                       answer: 1,
                       explanation: "Tangrams are traditional Chinese puzzles consisting of 7 pieces from a divided square, which can be rearranged (with no gaps or overlaps) into a wide variety of shapes."
+                    },
+                    {
+                      question: "A tangram puzzle is made of how many pieces cut from one square?",
+                      options: ["5", "7", "9", "4"],
+                      answer: 1,
+                      explanation: "Every piece must be used exactly once in each figure."
+                    },
+                    {
+                      question: "How many unit squares does a 4 by 6 grid contain?",
+                      options: ["10", "24", "20", "46"],
+                      answer: 1,
+                      explanation: "Each 2 by 1 domino covers 2 of them, so 12 dominoes are needed."
+                    },
+                    {
+                      question: "When both the number of rows and columns are even, a reliable tiling strategy is to:",
+                      options: ["Start from the centre", "Fill each column with vertical dominoes stacked top to bottom", "Use only horizontal dominoes at random", "Leave one square empty"],
+                      answer: 1,
+                      explanation: "An even number of rows means each column is filled exactly."
                     }
                   ]
                 },
@@ -13707,6 +13833,24 @@ export const curriculumData = {
                       options: ["It means the argument is just a guess", "It provides a rigorous, general reason why NO possible arrangement of dominoes could ever work, without needing to check every arrangement individually", "It means tiling is always possible", "Such arguments don't really prove anything"],
                       answer: 1,
                       explanation: "A rigorous impossibility argument (like checkerboard colour-counting) shows that EVERY possible tiling attempt must fail for a structural reason, which is far stronger than just failing to find a tiling after some attempts."
+                    },
+                    {
+                      question: "In a checkerboard colouring, every 2 by 1 domino always covers:",
+                      options: ["Two black squares", "One black and one white square", "Two white squares", "Three squares"],
+                      answer: 1,
+                      explanation: "That is true wherever the domino is placed."
+                    },
+                    {
+                      question: "If removing squares leaves unequal numbers of black and white squares, then tiling is:",
+                      options: ["Still possible", "Impossible", "Possible only with rotation", "Possible with larger tiles"],
+                      answer: 1,
+                      explanation: "A full tiling would need equal numbers of each colour."
+                    },
+                    {
+                      question: "Why is the checkerboard argument better than simply trying and failing?",
+                      options: ["It is faster to draw", "It proves tiling is impossible rather than just suggesting it", "It uses fewer colours", "It works only for squares"],
+                      answer: 1,
+                      explanation: "Failing a few attempts never rules out every arrangement."
                     }
                   ]
                 }
@@ -13782,6 +13926,24 @@ export const curriculumData = {
                       options: ["Making the equation longer", "Finding the value(s) of the unknown letter-number for which the LHS truly equals the RHS", "Erasing the equation", "Adding more unknowns to the equation"],
                       answer: 1,
                       explanation: "Solving an equation means determining what value(s) the unknown must take so that the LHS and RHS are genuinely equal."
+                    },
+                    {
+                      question: "A scale balances 3 bread slices of 2 units each against 2 eggs. The equation is:",
+                      options: ["e = 6", "2e = 6", "3e = 2", "e + 2 = 6"],
+                      answer: 1,
+                      explanation: "Three slices weigh 6 units, matching the two eggs together."
+                    },
+                    {
+                      question: "A matchstick pattern uses 2n + 1 sticks at position n. Which position uses 99 sticks?",
+                      options: ["48", "49", "50", "98"],
+                      answer: 1,
+                      explanation: "Solving 2n + 1 = 99 gives 2n = 98 and so n = 49."
+                    },
+                    {
+                      question: "What is an equation?",
+                      options: ["Any algebraic expression", "A statement of equality between two expressions joined by an equals sign", "A number sentence with no letters", "A formula only"],
+                      answer: 1,
+                      explanation: "The parts on either side are called the LHS and the RHS."
                     }
                   ]
                 },
@@ -13850,6 +14012,24 @@ export const curriculumData = {
                       options: ["It doesn't actually preserve equality", "Because if two quantities are equal, applying the identical operation to both keeps them equal to each other, even though their shared value may change", "Only addition preserves equality, not other operations", "This principle only applies to whole numbers"],
                       answer: 1,
                       explanation: "If LHS=RHS, applying the same operation to both keeps them equal — their common value might change, but they remain equal to EACH OTHER."
+                    },
+                    {
+                      question: "What is the drawback of the trial and error method?",
+                      options: ["It never works", "It can take many guesses before reaching the solution", "It gives wrong answers", "It needs a calculator"],
+                      answer: 1,
+                      explanation: "Solving 2n + 1 = 99 by guessing may take several attempts before reaching n = 49."
+                    },
+                    {
+                      question: "The balance principle says that an equation stays true when you:",
+                      options: ["Change one side only", "Perform the same operation on both sides", "Remove a term", "Swap the sides randomly"],
+                      answer: 1,
+                      explanation: "It works exactly like removing equal weights from both plates of a scale."
+                    },
+                    {
+                      question: "Multiplication and division are described as:",
+                      options: ["Unrelated operations", "Inverse operations", "The same operation", "Only for whole numbers"],
+                      answer: 1,
+                      explanation: "Dividing both sides by 7 undoes a multiplication by 7."
                     }
                   ]
                 },
@@ -13919,6 +14099,24 @@ export const curriculumData = {
                       options: ["y = 55", "y = 6, since 11×6=66", "y = 77", "y = 6.6"],
                       answer: 1,
                       explanation: "Dividing both sides by 11 gives y=66÷11=6, and indeed 11×6=66 confirms this."
+                    },
+                    {
+                      question: "To solve 5x - 4 = 7, the first step is to:",
+                      options: ["Divide both sides by 5", "Add 4 to both sides", "Subtract 7", "Multiply by 4"],
+                      answer: 1,
+                      explanation: "That gives 5x = 11, isolating the term with x."
+                    },
+                    {
+                      question: "What is the solution of 5x - 4 = 7?",
+                      options: ["x = 3", "x = 11/5", "x = 5", "x = 11"],
+                      answer: 1,
+                      explanation: "Dividing 5x = 11 by 5 gives x = 11/5."
+                    },
+                    {
+                      question: "Why should a solution be substituted back into the original equation?",
+                      options: ["To make it longer", "To check that the LHS really equals the RHS", "Because the rule says so", "To find another solution"],
+                      answer: 1,
+                      explanation: "Substitution is a reliable way to catch mistakes."
                     }
                   ]
                 },
@@ -13987,6 +14185,24 @@ export const curriculumData = {
                       options: ["Immediately divide both sides by the coefficient", "Subtract one of the unknown terms from both sides to gather all unknown terms onto a single side", "Ignore one side of the equation", "Multiply both sides by the unknown"],
                       answer: 1,
                       explanation: "The key first step is consolidating all unknown terms onto one side (by subtracting one of them from both sides), reducing the problem to the familiar single-side-unknown case."
+                    },
+                    {
+                      question: "To solve 6y + 7 = 4y + 21, the first step is to:",
+                      options: ["Divide by 6", "Subtract 4y from both sides", "Add 21", "Multiply by y"],
+                      answer: 1,
+                      explanation: "That leaves 2y + 7 = 21, with the unknown on one side only."
+                    },
+                    {
+                      question: "What is the solution of 6y + 7 = 4y + 21?",
+                      options: ["y = 4", "y = 7", "y = 14", "y = 21"],
+                      answer: 1,
+                      explanation: "From 2y = 14 we get y = 7, and both sides then equal 49."
+                    },
+                    {
+                      question: "Why can 'a number plus 4' never equal 'the same number plus 5'?",
+                      options: ["The number must be negative", "Adding 4 and adding 5 always give different results", "Only for large numbers", "It can, for zero"],
+                      answer: 1,
+                      explanation: "Such an equation simply has no solution."
                     }
                   ]
                 }
