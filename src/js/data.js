@@ -7474,6 +7474,24 @@ export const curriculumData = {
                       options: ["It has no role in digestion", "It neutralises acid from the stomach and breaks down fats into tiny droplets, making fat digestion easier", "It only affects the mouth", "It makes food more acidic"],
                       answer: 1,
                       explanation: "Bile is mildly basic, so it neutralises the acidic food arriving from the stomach, and it also breaks fats into tiny droplets to make them easier to digest."
+                    },
+                    {
+                      question: "The alimentary canal runs from the:",
+                      options: ["Stomach to the anus", "Mouth to the anus", "Mouth to the stomach", "Nose to the stomach"],
+                      answer: 1,
+                      explanation: "It is the long tube in which complex food is broken into simpler forms."
+                    },
+                    {
+                      question: "The wave-like contraction and relaxation that pushes food down the food pipe is called:",
+                      options: ["Digestion", "Peristalsis", "Absorption", "Egestion"],
+                      answer: 1,
+                      explanation: "The tongue first pushes the chewed food into the oesophagus."
+                    },
+                    {
+                      question: "Which is the longest part of the alimentary canal?",
+                      options: ["The stomach", "The small intestine", "The large intestine", "The oesophagus"],
+                      answer: 1,
+                      explanation: "Despite its name it is almost 6 metres long and receives digestive juices."
                     }
                   ]
                 },
@@ -7542,6 +7560,24 @@ export const curriculumData = {
                       options: ["They are always harmful and should be eliminated", "They help break down fibre and undigested food, producing essential nutrients and supporting digestive health", "They have no function at all", "They only cause disease"],
                       answer: 1,
                       explanation: "Beneficial bacteria in the large intestine break down fibre and undigested food, producing nutrients and helping to keep the digestive system healthy."
+                    },
+                    {
+                      question: "Digested nutrients pass into the blood through the small intestine's:",
+                      options: ["Muscular walls", "Finger-like projections", "Glands", "Folds only"],
+                      answer: 1,
+                      explanation: "This passage of nutrients into the blood is called absorption."
+                    },
+                    {
+                      question: "A cow bringing swallowed grass back to the mouth to chew again is called:",
+                      options: ["Grazing", "Chewing the cud", "Egestion", "Absorption"],
+                      answer: 1,
+                      explanation: "Such grass-eating animals are known as ruminants."
+                    },
+                    {
+                      question: "Birds have no teeth, so food is ground in the:",
+                      options: ["Crop", "Gizzard", "Beak", "Liver"],
+                      answer: 1,
+                      explanation: "Its muscular walls contract and relax, often helped by swallowed grit."
                     }
                   ]
                 },
@@ -7611,6 +7647,24 @@ export const curriculumData = {
                       options: ["In the windpipe", "In the alveoli, the small balloon-like sacs at the end of the lungs' branching tubes", "In the nostrils", "In the rib cage"],
                       answer: 1,
                       explanation: "Gas exchange occurs specifically in the alveoli — tiny, thin-walled sacs surrounded by blood vessels, where oxygen enters the blood and carbon dioxide is released."
+                    },
+                    {
+                      question: "What traps dust and dirt as air enters the nostrils?",
+                      options: ["The lungs", "Tiny hairs and mucus", "The windpipe alone", "The diaphragm"],
+                      answer: 1,
+                      explanation: "Cleaned air then travels on through the nasal passage."
+                    },
+                    {
+                      question: "In the balloon-and-bottle model, the rubber sheet at the base represents the:",
+                      options: ["Windpipe", "Diaphragm", "Ribs", "Nostrils"],
+                      answer: 1,
+                      explanation: "Pulling it down makes the balloons expand, just as the lungs do during inhalation."
+                    },
+                    {
+                      question: "Exhaled breath turns lime water milky, showing it contains more:",
+                      options: ["Oxygen", "Carbon dioxide", "Nitrogen", "Water only"],
+                      answer: 1,
+                      explanation: "Ordinary air passed through lime water causes no such change."
                     }
                   ]
                 },
@@ -7679,6 +7733,24 @@ export const curriculumData = {
                       options: ["It only produces digestive juices", "It transports nutrients, oxygen, and other substances to all parts of the body via the heart, blood, and blood vessels, while removing waste", "It is responsible only for breathing", "It has no connection to respiration or digestion"],
                       answer: 1,
                       explanation: "The circulatory system (heart, blood, and blood vessels) delivers nutrients and oxygen throughout the body and carries away waste products, working closely with both the digestive and respiratory systems."
+                    },
+                    {
+                      question: "In respiration, oxygen breaks down glucose to release:",
+                      options: ["Only water", "Carbon dioxide, water and energy", "Only carbon dioxide", "Starch"],
+                      answer: 1,
+                      explanation: "Breathing supplies the oxygen that makes this release of energy possible."
+                    },
+                    {
+                      question: "The circulatory system consists of:",
+                      options: ["Lungs and windpipe", "Heart, blood and blood vessels", "Stomach and intestines", "Gills and skin"],
+                      answer: 1,
+                      explanation: "It carries nutrients and oxygen to the body and takes wastes away."
+                    },
+                    {
+                      question: "Most aquatic animals such as fish breathe using:",
+                      options: ["Lungs", "Gills", "Skin only", "Spiracles"],
+                      answer: 1,
+                      explanation: "Gills are richly supplied with blood for taking in oxygen dissolved in water."
                     }
                   ]
                 }
@@ -7754,6 +7826,24 @@ export const curriculumData = {
                       options: ["Leaves have no special role in food production", "Leaves are the primary site where starch (food) is produced through photosynthesis, using chlorophyll and sunlight", "Leaves only store food produced elsewhere", "Leaves absorb food directly from the soil"],
                       answer: 1,
                       explanation: "Leaves are broad, flat, and rich in chlorophyll, making them the primary site where plants manufacture their food (starch) via photosynthesis — earning them the nickname 'food factories'."
+                    },
+                    {
+                      question: "Comparing three potted plants shows the best growth in the one with:",
+                      options: ["Only sunlight", "Both sunlight and water", "Only water", "Neither"],
+                      answer: 1,
+                      explanation: "Both factors together are needed for healthy growth."
+                    },
+                    {
+                      question: "Plants store the food made in their leaves as:",
+                      options: ["Protein", "Starch", "Fat", "Salt"],
+                      answer: 1,
+                      explanation: "Starch is a type of carbohydrate."
+                    },
+                    {
+                      question: "Green patches of a sunlit leaf turn blue-black with iodine, but non-green patches do not. This shows:",
+                      options: ["Iodine only works on green", "Chlorophyll is essential for starch production", "Sunlight is unnecessary", "Leaves store protein"],
+                      answer: 1,
+                      explanation: "A leaf from a plant kept in the dark shows no blue-black colour at all."
                     }
                   ]
                 },
@@ -7823,6 +7913,24 @@ export const curriculumData = {
                       options: ["It is immediately released into the air", "It serves as an instant energy source and can also be converted into starch for storage", "It is converted directly into carbon dioxide", "It has no further use once produced"],
                       answer: 1,
                       explanation: "Glucose produced during photosynthesis can be used immediately for energy, or converted into starch for longer-term storage within the plant."
+                    },
+                    {
+                      question: "Caustic soda is used in the leaf experiment because it:",
+                      options: ["Adds carbon dioxide", "Absorbs carbon dioxide from the air", "Blocks sunlight", "Kills the leaf"],
+                      answer: 1,
+                      explanation: "The half inside the bottle makes no starch, showing carbon dioxide is essential."
+                    },
+                    {
+                      question: "Photosynthesis requires sunlight, chlorophyll, water and:",
+                      options: ["Oxygen", "Carbon dioxide", "Nitrogen", "Starch"],
+                      answer: 1,
+                      explanation: "The leaf is the primary site where this process takes place."
+                    },
+                    {
+                      question: "The gas bubbles collected from an aquatic plant in sunlight are:",
+                      options: ["Carbon dioxide", "Oxygen", "Nitrogen", "Hydrogen"],
+                      answer: 1,
+                      explanation: "Oxygen is released as a product of photosynthesis."
                     }
                   ]
                 },
@@ -7892,6 +8000,24 @@ export const curriculumData = {
                       options: ["They have no connection to either process", "They allow the exchange of gases (carbon dioxide and oxygen) needed for both photosynthesis and respiration to occur", "They only matter for water transport", "They only function during the night"],
                       answer: 1,
                       explanation: "Stomata allow carbon dioxide to enter (for photosynthesis) and oxygen to enter (for respiration), while also allowing the corresponding gases to exit — making them essential for both processes."
+                    },
+                    {
+                      question: "Tiny pores on the surface of a leaf that allow gas exchange are called:",
+                      options: ["Veins", "Stomata", "Xylem", "Phloem"],
+                      answer: 1,
+                      explanation: "They can be seen by examining a leaf peel under a microscope."
+                    },
+                    {
+                      question: "A twig kept in red-inked water shows red streaks in its stem. This traces the:",
+                      options: ["Phloem", "Xylem", "Stomata", "Roots only"],
+                      answer: 1,
+                      explanation: "Xylem carries water and minerals absorbed by the roots upward."
+                    },
+                    {
+                      question: "Food made in the leaves is carried to the rest of the plant by the:",
+                      options: ["Xylem", "Phloem", "Stomata", "Bark"],
+                      answer: 1,
+                      explanation: "It is a separate set of tubes from those that carry water."
                     }
                   ]
                 },
@@ -7960,6 +8086,24 @@ export const curriculumData = {
                       options: ["They are completely unrelated processes", "Respiration is essentially the reverse of photosynthesis — photosynthesis builds glucose and releases oxygen, while respiration breaks down glucose using oxygen", "They both produce the exact same products", "Only one of the two processes actually occurs in plants"],
                       answer: 1,
                       explanation: "Photosynthesis uses carbon dioxide and water to build glucose and release oxygen, while respiration does the reverse — breaking down glucose using oxygen to release carbon dioxide, water, and energy."
+                    },
+                    {
+                      question: "Lime water turns milky in the germinating-seed experiment because the seeds:",
+                      options: ["Photosynthesise", "Respire, releasing carbon dioxide", "Absorb water", "Produce starch"],
+                      answer: 1,
+                      explanation: "The flask was kept in the dark, so photosynthesis could not occur."
+                    },
+                    {
+                      question: "Which parts of a plant carry out respiration?",
+                      options: ["Only the leaves", "All parts, including roots and stems", "Only green parts", "Only the roots"],
+                      answer: 1,
+                      explanation: "Leaves are special only because they also carry out photosynthesis."
+                    },
+                    {
+                      question: "Respiration in plants and animals is:",
+                      options: ["Completely different processes", "Essentially the same process of releasing energy from glucose", "Only found in animals", "Dependent on sunlight"],
+                      answer: 1,
+                      explanation: "Both break down glucose using oxygen to give carbon dioxide, water and energy."
                     }
                   ]
                 }
@@ -8034,6 +8178,24 @@ export const curriculumData = {
                       options: ["That light only travels through solids", "That the laser beam travels along a clearly straight path, confirming light travels in a straight line", "That water always changes the direction of light", "That milk creates its own light"],
                       answer: 1,
                       explanation: "Adding milk to water scatters some light, making the laser beam's path visible — and that visible path is a straight line, confirming light travels in straight lines."
+                    },
+                    {
+                      question: "Which of these is a luminous object?",
+                      options: ["The Moon", "A firefly", "A mirror", "A book"],
+                      answer: 1,
+                      explanation: "Luminous objects emit their own light, while non-luminous ones only reflect it."
+                    },
+                    {
+                      question: "In the three-matchbox experiment, the bright spot disappears when:",
+                      options: ["The torch is brighter", "One box is moved out of line", "The screen is closer", "The room is dark"],
+                      answer: 1,
+                      explanation: "Light can only reach the screen when all three holes lie along a straight line."
+                    },
+                    {
+                      question: "Why is a drop of milk added to the water in the laser experiment?",
+                      options: ["To bend the beam", "To scatter light so the beam becomes visible", "To cool the water", "To slow the light"],
+                      answer: 1,
+                      explanation: "The visible beam is then seen to travel along a straight path."
                     }
                   ]
                 },
@@ -8103,6 +8265,24 @@ export const curriculumData = {
                       options: ["No, transparent materials never create any shadow", "Yes, even some transparent materials can create a faint shadow, since they don't let through absolutely 100% of light", "Only opaque materials can create shadows", "Transparent materials create the darkest shadows of all"],
                       answer: 1,
                       explanation: "Even highly transparent materials rarely transmit 100% of incoming light, so they can sometimes cast a very faint shadow, unlike the sharp, dark shadow cast by opaque objects."
+                    },
+                    {
+                      question: "A material that lets light pass through only partially is called:",
+                      options: ["Transparent", "Translucent", "Opaque", "Luminous"],
+                      answer: 1,
+                      explanation: "Glass is transparent while a sheet of butter paper is translucent."
+                    },
+                    {
+                      question: "What three things are needed to form a shadow?",
+                      options: ["A mirror, a lamp and a wall", "A light source, an opaque object and a screen", "Only an object", "Sunlight alone"],
+                      answer: 1,
+                      explanation: "The object blocks the straight-line path of the light, leaving a dark patch."
+                    },
+                    {
+                      question: "Which object casts the darkest shadow?",
+                      options: ["A transparent one", "An opaque one", "A translucent one", "A luminous one"],
+                      answer: 1,
+                      explanation: "Translucent objects give lighter shadows because some light gets through."
                     }
                   ]
                 },
@@ -8172,6 +8352,24 @@ export const curriculumData = {
                       options: ["It is simply a stylistic design choice with no functional purpose", "So that drivers viewing it through their rear-view mirrors see it laterally inverted back into normal, readable text", "Ambulances always display text backwards for no particular reason", "It makes the ambulance appear faster"],
                       answer: 1,
                       explanation: "Since a plane mirror laterally inverts images, writing 'AMBULANCE' in reverse on the vehicle's front makes it appear correctly readable when viewed through another driver's rear-view mirror."
+                    },
+                    {
+                      question: "Tilting a mirror in sunlight moves the bright spot on the wall. This shows light is:",
+                      options: ["Absorbed", "Reflected", "Refracted", "Scattered"],
+                      answer: 1,
+                      explanation: "The direction of the reflected light changes with the mirror's position."
+                    },
+                    {
+                      question: "The image in a plane mirror appears to be:",
+                      options: ["On the mirror surface", "Behind the mirror, at the same distance as the object in front", "In front of the mirror", "Much smaller"],
+                      answer: 1,
+                      explanation: "It is the same size as the object and appears erect."
+                    },
+                    {
+                      question: "Raising your left arm makes your mirror image appear to raise its right arm. This is:",
+                      options: ["Reflection", "Lateral inversion", "Refraction", "Magnification"],
+                      answer: 1,
+                      explanation: "This apparent left-right reversal always occurs in a plane mirror."
                     }
                   ]
                 },
@@ -8241,6 +8439,24 @@ export const curriculumData = {
                       options: ["The mirrors physically change shape each time", "The small coloured objects (like bangle pieces) shift position with each turn, and the three-mirror reflections (reflections of reflections) create new symmetrical arrangements", "Kaleidoscopes always show the exact same pattern", "The patterns are pre-printed inside the tube"],
                       answer: 1,
                       explanation: "As the kaleidoscope is turned, the loose coloured pieces inside shift to new positions, and since the three mirrors create multiple reflections of these pieces, a new symmetrical pattern forms each time."
+                    },
+                    {
+                      question: "The image formed by a pinhole camera is:",
+                      options: ["Erect and enlarged", "Inverted", "The same way up", "Not formed at all"],
+                      answer: 1,
+                      explanation: "Light rays from the object pass straight through the tiny hole and cross over."
+                    },
+                    {
+                      question: "Sliding the inner box of a pinhole camera changes the:",
+                      options: ["Brightness only", "Size of the image on the screen", "Colour of the image", "Direction of light"],
+                      answer: 1,
+                      explanation: "The translucent screen shows the image formed by rays through the pinhole."
+                    },
+                    {
+                      question: "A periscope uses two plane mirrors arranged in the shape of the letter:",
+                      options: ["L", "Z", "T", "V"],
+                      answer: 1,
+                      explanation: "This lets submarines and soldiers in bunkers see objects not directly visible."
                     }
                   ]
                 }
@@ -8316,6 +8532,24 @@ export const curriculumData = {
                       options: ["The Pole Star does not actually exist", "The Earth's axis of rotation points very close to the direction of the Pole Star, so it appears fixed while the Earth (and our view) rotates around that axis", "The Pole Star is much closer to Earth than other stars", "All stars actually orbit the Pole Star physically"],
                       answer: 1,
                       explanation: "Since the Earth's rotational axis points nearly toward the Pole Star, it appears to stay in roughly the same spot in the sky, while the Earth's rotation makes all other stars appear to circle around it."
+                    },
+                    {
+                      question: "The Sun appears to move across the sky because:",
+                      options: ["The Sun orbits the Earth daily", "The Earth rotates on its own axis", "The Sun swings on its axis", "The Moon pushes it"],
+                      answer: 1,
+                      explanation: "The merry-go-round experience shows why a fixed object seems to move the other way."
+                    },
+                    {
+                      question: "The Earth completes one rotation on its axis in about:",
+                      options: ["12 hours", "24 hours", "365 days", "30 days"],
+                      answer: 1,
+                      explanation: "The axis is an imaginary line through the North and South Poles."
+                    },
+                    {
+                      question: "For a person on the Equator, the noon Sun is:",
+                      options: ["In the East", "Overhead", "In the West", "Below the horizon"],
+                      answer: 1,
+                      explanation: "The Sun appears in the East in the morning and sets in the West."
                     }
                   ]
                 },
@@ -8384,6 +8618,24 @@ export const curriculumData = {
                       options: ["To build calendars for religious festivals only", "To mark the arrival of the monsoon rains, based on the appearance of certain star patterns", "They did not observe the night sky at all", "To track ocean tides"],
                       answer: 1,
                       explanation: "The Bhil and Pawara communities of the Tapi Valley traditionally used the appearance of specific star patterns in the sky as a marker for the arrival of the monsoon season."
+                    },
+                    {
+                      question: "Revolution is the motion of an object:",
+                      options: ["Around its own axis", "Around another object", "In a straight line", "Up and down"],
+                      answer: 1,
+                      explanation: "The Earth revolves around the Sun while also rotating on its axis."
+                    },
+                    {
+                      question: "The night sky changes through the year because the Earth:",
+                      options: ["Stops rotating", "Revolves, so we face different parts of space", "Changes its tilt daily", "Moves closer to stars"],
+                      answer: 1,
+                      explanation: "Different constellations therefore become visible in different months."
+                    },
+                    {
+                      question: "Some communities treat the appearance of certain stars as:",
+                      options: ["A bad omen only", "A natural calendar marking seasons", "A sign of eclipses", "Proof the Earth is still"],
+                      answer: 1,
+                      explanation: "Predictable star visibility makes such markers reliable year after year."
                     }
                   ]
                 },
@@ -8453,6 +8705,24 @@ export const curriculumData = {
                       options: ["The Equator has no sunlight at all", "At the Equator, day and night remain close to 12 hours each year-round, with little seasonal variation in sunlight intensity", "The Equator experiences the most extreme seasons of anywhere on Earth", "Seasons do not exist anywhere on Earth"],
                       answer: 1,
                       explanation: "Locations near the Equator experience roughly 12 hours of daylight and 12 hours of night throughout the year, with little variation in sunlight intensity, making seasonal changes far less pronounced than at higher latitudes."
+                    },
+                    {
+                      question: "Seasons occur mainly because the Earth's axis is:",
+                      options: ["Perfectly upright", "Tilted, and stays tilted the same way through its orbit", "Constantly changing direction", "Rotating faster in summer"],
+                      answer: 1,
+                      explanation: "The tilt combined with revolution causes the seasons."
+                    },
+                    {
+                      question: "A hemisphere tilted toward the Sun receives sunlight that is:",
+                      options: ["Spread over a larger area", "More intense and lasts for more hours", "Weaker and shorter", "Unchanged"],
+                      answer: 1,
+                      explanation: "That is why it experiences summer."
+                    },
+                    {
+                      question: "The longest day in the Northern Hemisphere falls around:",
+                      options: ["21 March", "21 June", "23 September", "22 December"],
+                      answer: 1,
+                      explanation: "The shortest day, the winter solstice, falls around 22 December."
                     }
                   ]
                 },
@@ -8522,6 +8792,24 @@ export const curriculumData = {
                       options: ["Lunar eclipses do not actually have a limited visible area", "The Earth's shadow (which causes a lunar eclipse) is far larger than the Moon's shadow (which causes a solar eclipse), so more of the Earth can be within view of the eclipsed Moon at once", "Solar eclipses are actually visible from the whole Earth too", "This has nothing to do with the size of the shadows involved"],
                       answer: 1,
                       explanation: "Since the Earth is much larger than the Moon, its shadow (cast during a lunar eclipse) is correspondingly larger and more far-reaching than the Moon's small shadow during a solar eclipse — allowing far more of the Earth's night side to witness a lunar eclipse simultaneously."
+                    },
+                    {
+                      question: "The Moon can cover the Sun because apparent size depends on:",
+                      options: ["Actual size only", "Both actual size and distance from the observer", "Brightness", "Colour"],
+                      answer: 1,
+                      explanation: "A thumb at arm's length can hide a distant person's head for the same reason."
+                    },
+                    {
+                      question: "During a solar eclipse, which body lies in the middle?",
+                      options: ["The Earth", "The Moon", "The Sun", "None"],
+                      answer: 1,
+                      explanation: "The Moon blocks sunlight from reaching parts of the Earth's surface."
+                    },
+                    {
+                      question: "A lunar eclipse happens when:",
+                      options: ["The Moon is between Sun and Earth", "The Earth is between the Sun and the Moon", "The Sun is between Earth and Moon", "The Moon stops rotating"],
+                      answer: 1,
+                      explanation: "We then see the Earth's shadow fall across the Moon's disc."
                     }
                   ]
                 }
