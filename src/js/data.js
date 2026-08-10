@@ -13763,6 +13763,30 @@ export const curriculumData = {
                       options: ["The sharp edge weighs less", "The sharp edge concentrates the same force onto a much smaller area, producing higher pressure", "Blunt edges are actually sharper", "There is no real difference between the two edges"],
                       answer: 1,
                       explanation: "The sharp edge has a much smaller surface area than the blunt edge, so the same applied force produces far higher pressure at the sharp edge, making cutting easier."
+                    },
+                    {
+                      question: "How is pressure defined?",
+                      options: ["Force × area", "Force ÷ area", "Area ÷ force", "Force + area"],
+                      answer: 1,
+                      explanation: "The same force spread over a smaller area produces a greater pressure."
+                    },
+                    {
+                      question: "What is the SI unit of pressure?",
+                      options: ["Newton", "Pascal (N/m²)", "Kilogram", "Joule"],
+                      answer: 1,
+                      explanation: "Since force is in newtons and area in square metres, pressure is measured in newton per square metre."
+                    },
+                    {
+                      question: "A force of 100 N acts on a board of area 2 m². What is the pressure?",
+                      options: ["200 Pa", "50 Pa", "102 Pa", "0.02 Pa"],
+                      answer: 1,
+                      explanation: "Pressure = 100 ÷ 2 = 50 Pa."
+                    },
+                    {
+                      question: "Why is a bag with broad straps more comfortable than one with narrow straps?",
+                      options: ["It is lighter", "The same weight is spread over a larger area, reducing the pressure", "It holds less", "The straps are softer"],
+                      answer: 1,
+                      explanation: "Pressure falls as the contact area increases, even though the force is unchanged."
                     }
                   ]
                 },
@@ -13832,6 +13856,24 @@ export const curriculumData = {
                       options: ["It uses a magnetic force", "Pressing it out most of the air creates lower pressure inside, while higher atmospheric pressure outside holds it in place", "Suckers use an adhesive chemical", "There is no scientific explanation for this"],
                       answer: 1,
                       explanation: "Pressing the sucker pushes out most of the air inside, reducing the pressure there — since atmospheric pressure outside is now higher than the pressure inside, it pushes the sucker firmly against the surface."
+                    },
+                    {
+                      question: "What does the pressure of a liquid at a point depend on?",
+                      options: ["The width of the container", "The height of the liquid column above it", "The weight of the container", "The shape of the pipe"],
+                      answer: 1,
+                      explanation: "Two pipes of different diameters filled to the same height give the same bulge, showing the column height is what matters."
+                    },
+                    {
+                      question: "A bottle with holes at the same height all around sprays water from every hole. What does this show?",
+                      options: ["Water is heavy", "Liquids exert pressure in all directions, not just downwards", "The bottle is weak", "Air pushes the water"],
+                      answer: 1,
+                      explanation: "Liquid pressure acts sideways on the walls as well as downwards on the base."
+                    },
+                    {
+                      question: "What is atmospheric pressure?",
+                      options: ["The pressure of water on the seabed", "The pressure exerted by the envelope of air surrounding the Earth", "The pressure inside a balloon", "Pressure inside the body"],
+                      answer: 1,
+                      explanation: "The force exerted by the column of air above us is surprisingly large."
                     }
                   ]
                 },
@@ -13901,6 +13943,24 @@ export const curriculumData = {
                       options: ["To let more wind damage the interior", "To reduce the pressure difference between inside the house and above the roof, helping prevent the roof from blowing off", "Open windows have no effect on roof safety", "To cool down the house faster"],
                       answer: 1,
                       explanation: "Keeping doors and windows open lets high-speed wind pass through the house, reducing the pressure difference between the inside and the low-pressure area above the roof — this helps prevent the roof from being blown away."
+                    },
+                    {
+                      question: "In which direction does air flow between two connected balloons?",
+                      options: ["From low to high pressure", "From high pressure to low pressure until both are equal", "In both directions equally", "It does not flow"],
+                      answer: 1,
+                      explanation: "Wind is simply air moving from a region of higher pressure to one of lower pressure."
+                    },
+                    {
+                      question: "Blowing between two hanging balloons makes them move:",
+                      options: ["Apart", "Towards each other", "Upwards", "Not at all"],
+                      answer: 1,
+                      explanation: "Fast-moving air creates a low-pressure region between them, and the higher surrounding pressure pushes them together."
+                    },
+                    {
+                      question: "Why can a storm lift the roof off a house?",
+                      options: ["The rain makes it heavy", "Fast wind above the roof lowers the pressure there, while the pressure inside stays higher", "The roof expands", "Lightning strikes it"],
+                      answer: 1,
+                      explanation: "That pressure difference pushes the roof upward from below."
                     }
                   ]
                 },
@@ -13970,6 +14030,24 @@ export const curriculumData = {
                       options: ["It is actually the safest position", "It increases contact area with the ground, which is discouraged — a low crouching position minimizing ground contact is safer", "Lying down attracts lightning directly", "There is no safety guidance about body position during lightning"],
                       answer: 1,
                       explanation: "Safety guidance recommends minimizing contact with the ground and crouching low in an open area, rather than lying flat, to reduce the risk if lightning strikes nearby."
+                    },
+                    {
+                      question: "What starts the formation of a thunderstorm?",
+                      options: ["Cold air sinking", "Warm moist air rising as the land heats, creating a low-pressure area", "Rain falling", "Wind from the sea only"],
+                      answer: 1,
+                      explanation: "Cooler air rushes in to replace the rising air, setting up a continuous circulation."
+                    },
+                    {
+                      question: "Why does lightning occur?",
+                      options: ["Clouds collide", "Charge builds up until air's insulating property breaks down, allowing a sudden flow of charge", "The Sun heats the clouds", "Rain conducts electricity"],
+                      answer: 1,
+                      explanation: "Air normally acts as an electrical insulator keeping opposite charges apart."
+                    },
+                    {
+                      question: "What makes a cyclone intensify over warm ocean water?",
+                      options: ["Cold water sinking", "Condensing water vapour releases heat, warming the rising air and lowering the pressure further", "Strong sunlight only", "Ocean currents"],
+                      answer: 1,
+                      explanation: "This feedback creates an ever-lower pressure centre, drawing in more and faster wind."
                     }
                   ]
                 }
@@ -14045,6 +14123,24 @@ export const curriculumData = {
                       options: ["The color of the substance", "The strength of interparticle attractions holding its constituent particles together", "The substance's smell", "Whether the substance is natural or artificial"],
                       answer: 1,
                       explanation: "The strength of the interparticle attractions — which depends on the substance's nature and the distance between particles — ultimately determines its physical state."
+                    },
+                    {
+                      question: "Grinding chalk into powder is which kind of change?",
+                      options: ["A chemical change", "A physical change, since every speck is still chalk", "A change of state", "No change at all"],
+                      answer: 1,
+                      explanation: "The substance itself is unaltered, however fine the powder becomes."
+                    },
+                    {
+                      question: "Sugar stirred into water disappears from view but the water tastes sweet throughout. Why?",
+                      options: ["The sugar has evaporated", "The sugar breaks into particles too small to see, spread evenly through the water", "The water changes chemically", "The taste is imagined"],
+                      answer: 1,
+                      explanation: "This is direct evidence that matter is made of very tiny particles."
+                    },
+                    {
+                      question: "What are interparticle attractions?",
+                      options: ["Forces pushing particles apart", "Attractive forces holding the constituent particles of matter together", "The weight of particles", "The speed of particles"],
+                      answer: 1,
+                      explanation: "Their strength depends on the nature of the substance and the distance between the particles."
                     }
                   ]
                 },
@@ -14114,6 +14210,24 @@ export const curriculumData = {
                       options: ["The forces are unusually strong", "The forces are relatively weak, so less thermal energy is needed to overcome them", "Melting point has no relationship to interparticle forces", "Low melting point means the substance has no particles"],
                       answer: 1,
                       explanation: "A low melting point indicates weaker interparticle forces of attraction — less thermal energy (lower temperature) is needed to make the particles vibrate enough to break free and melt."
+                    },
+                    {
+                      question: "How do particles behave in a solid?",
+                      options: ["They move freely", "They vibrate about fixed positions but cannot move from place to place", "They fly apart", "They stay perfectly still"],
+                      answer: 1,
+                      explanation: "Tight packing and very strong interparticle attractions hold them in place."
+                    },
+                    {
+                      question: "What happens to particles as a solid is heated towards its melting point?",
+                      options: ["They stop moving", "They vibrate more vigorously until they begin leaving their fixed positions", "They become larger", "They change chemically"],
+                      answer: 1,
+                      explanation: "Once the vibrations overcome the interparticle attractions, the solid melts."
+                    },
+                    {
+                      question: "A solid with a very high melting point must have:",
+                      options: ["Weak interparticle attractions", "Strong interparticle attractions", "No particles", "Large particles"],
+                      answer: 1,
+                      explanation: "Ice melts at 0 °C, urea at 133 °C and iron at 1538 °C, reflecting increasingly strong attractions."
                     }
                   ]
                 },
@@ -14183,6 +14297,24 @@ export const curriculumData = {
                       options: ["Gas particles are much larger than solid particles", "Gas particles are far apart and move freely in all directions, unlike the tightly-held particles in solids", "Gases actually have the strongest interparticle attraction of all three states", "There is no real difference in interparticle attraction between the three states"],
                       answer: 1,
                       explanation: "In gases, particles are spread far apart and move freely in all directions, so the attractive forces between them are negligible — this is why gases have neither a fixed shape nor volume."
+                    },
+                    {
+                      question: "Water poured into differently shaped containers keeps the same volume. What does this show?",
+                      options: ["Liquids have a fixed shape", "Liquids have a fixed volume but no fixed shape", "Liquids cannot be measured", "Liquids are solids"],
+                      answer: 1,
+                      explanation: "The particles move freely enough to take the container's shape but stay close enough to keep the volume fixed."
+                    },
+                    {
+                      question: "What is the boiling point of a liquid?",
+                      options: ["The temperature at which it freezes", "The temperature at which it turns to vapour at atmospheric pressure", "Room temperature", "The temperature at which it evaporates"],
+                      answer: 1,
+                      explanation: "At the boiling point vapour forms rapidly both at the surface and within the liquid."
+                    },
+                    {
+                      question: "Smoke released into a jar spreads to fill it completely. This is because:",
+                      options: ["Smoke is heavy", "Interparticle attractions in gases are very weak, so gases have no fixed shape or volume", "The jar is warm", "Smoke is a liquid"],
+                      answer: 1,
+                      explanation: "Gas particles spread out to occupy all the available space."
                     }
                   ]
                 },
@@ -14252,6 +14384,24 @@ export const curriculumData = {
                       options: ["Sand particles are held together too strongly to be pulled apart by water particles, unlike sugar", "Sand is actually a liquid", "There is no real difference between how sugar and sand behave in water", "Water cannot exert any force on sand particles"],
                       answer: 0,
                       explanation: "Sand's constituent particles are held together by forces too strong for water particles to pull apart, so sand remains insoluble and simply settles, unlike sugar which dissolves and disperses."
+                    },
+                    {
+                      question: "Why can air in a syringe be compressed but water cannot?",
+                      options: ["Water is heavier", "Gas particles have much more space between them than liquid particles", "Water is colder", "The syringe leaks"],
+                      answer: 1,
+                      explanation: "Compressibility is direct evidence of how much space lies between the particles."
+                    },
+                    {
+                      question: "When sugar dissolves in water, the final volume is:",
+                      options: ["Greater than the sum of the two", "Less than the sum of the two", "Exactly the sum", "Zero"],
+                      answer: 1,
+                      explanation: "Sugar particles fit into the spaces between the water particles, so the level drops back somewhat."
+                    },
+                    {
+                      question: "Potassium permanganate spreading through still water demonstrates:",
+                      options: ["Evaporation", "Diffusion, because particles are in constant motion", "Condensation", "Sublimation"],
+                      answer: 1,
+                      explanation: "The pink streaks spread until the whole volume is uniformly coloured, without any stirring."
                     }
                   ]
                 }
@@ -14327,6 +14477,24 @@ export const curriculumData = {
                       options: ["Nitrogen actually supports combustion strongly", "It is still a major component of the uniform gas mixture that makes up air, even though it does not participate in combustion", "Nitrogen is not actually present in air", "Air is made up entirely of nitrogen"],
                       answer: 1,
                       explanation: "Nitrogen makes up the largest share of air (about 78%) as part of this uniform gas mixture, even though — unlike oxygen — it does not take part in combustion."
+                    },
+                    {
+                      question: "What is a mixture?",
+                      options: ["Two substances that react chemically", "Two or more substances mixed so that each retains its own properties", "A single pure substance", "An element"],
+                      answer: 1,
+                      explanation: "The components of a mixture do not combine chemically."
+                    },
+                    {
+                      question: "Why is sugar dissolved in water called a uniform mixture?",
+                      options: ["It is sweet", "Its components cannot be distinguished even under a microscope", "It is a liquid", "It contains only one substance"],
+                      answer: 1,
+                      explanation: "Alloys such as stainless steel are also uniform mixtures."
+                    },
+                    {
+                      question: "Roughly what percentage of air is nitrogen?",
+                      options: ["21%", "78%", "50%", "1%"],
+                      answer: 1,
+                      explanation: "Oxygen makes up about 21%, with argon, carbon dioxide and water vapour in smaller amounts."
                     }
                   ]
                 },
@@ -14396,6 +14564,24 @@ export const curriculumData = {
                       options: ["50 known elements, 20 gases", "118 known elements, 11 gases", "200 known elements, 50 gases", "100 known elements, 5 gases"],
                       answer: 1,
                       explanation: "There are 118 known elements; only 11 of them (all non-metals, like oxygen, helium, and nitrogen) exist as gases at room temperature."
+                    },
+                    {
+                      question: "How is a pure substance defined in science?",
+                      options: ["Something clean", "Matter consisting of only one type of particle, which cannot be separated by physical means", "Anything natural", "A mixture of two elements"],
+                      answer: 1,
+                      explanation: "This is a stricter definition than the everyday meaning of the word 'pure'."
+                    },
+                    {
+                      question: "In the electrolysis of acidified water, which gas gives a 'pop' with a burning candle?",
+                      options: ["Oxygen", "Hydrogen", "Nitrogen", "Carbon dioxide"],
+                      answer: 1,
+                      explanation: "The other test tube collects oxygen, which makes the flame burn more brightly."
+                    },
+                    {
+                      question: "What is an element?",
+                      options: ["Any pure liquid", "A pure substance made of identical atoms that cannot be broken into simpler substances", "A mixture of atoms", "A compound of two metals"],
+                      answer: 1,
+                      explanation: "Elements are classified as metals, non-metals and metalloids."
                     }
                   ]
                 },
@@ -14465,6 +14651,24 @@ export const curriculumData = {
                       options: ["This is a contradiction that cannot be explained", "It demonstrates that a compound's properties are completely different from those of its constituent elements", "Water does not actually contain hydrogen and oxygen", "Fire has nothing to do with chemistry"],
                       answer: 1,
                       explanation: "This striking example shows one of the defining features of compounds: their properties bear no resemblance to their constituent elements — hydrogen (flammable) and oxygen (supports burning) combine to form water, which extinguishes fire."
+                    },
+                    {
+                      question: "How do the elements in a compound combine?",
+                      options: ["In any ratio", "Chemically, in a fixed ratio", "Physically, without reacting", "Only when heated"],
+                      answer: 1,
+                      explanation: "The resulting compound has properties completely different from its constituent elements."
+                    },
+                    {
+                      question: "Sodium is a reactive metal and chlorine a hazardous gas. What do they form together?",
+                      options: ["A mixture of both", "Sodium chloride, harmless common salt", "Two separate gases", "An alloy"],
+                      answer: 1,
+                      explanation: "This is a striking example of a compound having entirely new properties."
+                    },
+                    {
+                      question: "Heating sugar leaves a black residue and water droplets. What does this show?",
+                      options: ["Sugar is an element", "Sugar is a compound that decomposes into carbon and water", "Sugar evaporates", "Sugar is a mixture"],
+                      answer: 1,
+                      explanation: "Charcoal (carbon) is left behind while the hydrogen and oxygen leave as water."
                     }
                   ]
                 },
@@ -14534,6 +14738,24 @@ export const curriculumData = {
                       options: ["Mixtures and compounds behave identically", "Sample A (a mixture) retains its components' individual properties, while Sample B (a compound) has entirely new properties and cannot be separated by physical means", "Only Sample B is affected by acid", "Iron and sulfur cannot form either a mixture or a compound"],
                       answer: 1,
                       explanation: "The comparison shows the defining difference between mixtures and compounds: a mixture (Sample A) keeps the original properties of its components and can be physically separated, while a compound (Sample B) has entirely new properties and cannot be separated by physical means."
+                    },
+                    {
+                      question: "In the iron and sulfur mixture, what happens when a magnet is passed over it?",
+                      options: ["Nothing", "The iron filings are attracted and separated out", "The sulfur is attracted", "Both are attracted"],
+                      answer: 1,
+                      explanation: "Iron keeps its magnetic property in a mixture, which is how the two can be separated."
+                    },
+                    {
+                      question: "What is formed when iron and sulfur are heated together with stirring?",
+                      options: ["A finer mixture", "Iron sulfide, a compound with uniform colour and texture", "Two separate layers", "Pure iron"],
+                      answer: 1,
+                      explanation: "The black mass is a new substance with entirely new properties."
+                    },
+                    {
+                      question: "A magnet has no effect on Sample B. Why?",
+                      options: ["The magnet is weak", "The iron has combined chemically and lost its individual magnetic property", "Sulfur blocks the magnet", "Sample B is too hot"],
+                      answer: 1,
+                      explanation: "This is the key evidence that Sample B is a compound rather than a mixture."
                     }
                   ]
                 }
@@ -14609,6 +14831,24 @@ export const curriculumData = {
                       options: ["Dilute solutions always contain gases", "A dilute solution has less solute relative to solvent; a concentrated solution has more — these are relative terms", "Concentrated solutions cannot exist", "There is no real difference between the two"],
                       answer: 1,
                       explanation: "Dilute and concentrated describe the relative amount of solute in a solution — less solute makes it dilute, more solute makes it concentrated, always compared relative to another solution."
+                    },
+                    {
+                      question: "In a salt solution, which is the solute and which the solvent?",
+                      options: ["Water is the solute", "Salt is the solute and water is the solvent", "Both are solvents", "Salt is the solvent"],
+                      answer: 1,
+                      explanation: "When a solid dissolves in a liquid, the solid is the solute and the liquid the solvent."
+                    },
+                    {
+                      question: "What is a saturated solution?",
+                      options: ["One with very little solute", "One in which no more solute will dissolve at that temperature", "One that has been heated", "One that is coloured"],
+                      answer: 1,
+                      explanation: "Before that point is reached the solution is described as unsaturated."
+                    },
+                    {
+                      question: "What does concentration measure?",
+                      options: ["The temperature of a solution", "The amount of solute present in a fixed quantity of solution", "The volume of the solvent", "The colour intensity"],
+                      answer: 1,
+                      explanation: "Dilute and concentrated are relative terms comparing one solution with another."
                     }
                   ]
                 },
@@ -14678,6 +14918,24 @@ export const curriculumData = {
                       options: ["Non-uniform, since gas particles settle at the bottom", "Uniform, since the gases dissolve evenly throughout the water", "Neither — gases don't form mixtures with water", "It depends on the color of the gas"],
                       answer: 1,
                       explanation: "Dissolved gases distribute evenly throughout water, making it a uniform mixture — meeting the definition of a solution, just like dissolved solids."
+                    },
+                    {
+                      question: "What happens to the solubility of most solids as temperature rises?",
+                      options: ["It decreases", "It increases, so more solute dissolves", "It stays the same", "The solute evaporates"],
+                      answer: 1,
+                      explanation: "Heating a saturated baking soda solution makes the undissolved solid dissolve, leaving it unsaturated again."
+                    },
+                    {
+                      question: "What happens to the solubility of gases as temperature rises?",
+                      options: ["It increases", "It generally decreases", "It stays the same", "Gases do not dissolve"],
+                      answer: 1,
+                      explanation: "This is why warm water holds less dissolved oxygen, which matters greatly for aquatic life."
+                    },
+                    {
+                      question: "Why is dissolved oxygen in water important?",
+                      options: ["It makes water taste better", "It sustains all aquatic life", "It keeps water cool", "It prevents freezing"],
+                      answer: 1,
+                      explanation: "Oxygen dissolves only to a small extent, so changes in temperature have a real effect on aquatic organisms."
                     }
                   ]
                 },
@@ -14747,6 +15005,24 @@ export const curriculumData = {
                       options: ["Aluminium weighs exactly 2.7 grams", "Aluminium is 2.7 times as dense as water", "Aluminium has 2.7 times the volume of water", "This number has no real meaning"],
                       answer: 1,
                       explanation: "Relative density of 2.7 means aluminium's density is 2.7 times greater than the density of water — a unitless comparison ratio."
+                    },
+                    {
+                      question: "How is density defined?",
+                      options: ["Mass × volume", "Mass ÷ volume", "Volume ÷ mass", "Mass + volume"],
+                      answer: 1,
+                      explanation: "A crowded bus has a high density of people in the same way that a dense material packs more mass into each unit of volume."
+                    },
+                    {
+                      question: "An aluminium block has mass 27 g and volume 10 cm³. What is its density?",
+                      options: ["270 g/cm³", "2.7 g/cm³", "0.37 g/cm³", "37 g/cm³"],
+                      answer: 1,
+                      explanation: "Density = 27 ÷ 10 = 2.7 g/cm³."
+                    },
+                    {
+                      question: "Why has relative density no unit?",
+                      options: ["It is very small", "It is a ratio of two densities, so the units cancel", "It is measured in grams", "It is always 1"],
+                      answer: 1,
+                      explanation: "Aluminium's relative density of 2.7 simply means it is 2.7 times as dense as water."
                     }
                   ]
                 },
@@ -14816,6 +15092,24 @@ export const curriculumData = {
                       options: ["Salt has no effect on water's density", "Dissolved salt increases the water's density; if it exceeds the egg's density, the egg will float", "Salt makes the egg lighter directly", "This is not actually possible"],
                       answer: 1,
                       explanation: "Adding salt increases the density of the water. Once the salty water's density exceeds the egg's density, the egg is buoyed up and floats instead of sinking."
+                    },
+                    {
+                      question: "What generally happens to a substance's density when it is heated?",
+                      options: ["It increases", "It decreases, as the particles spread further apart", "It stays the same", "It becomes zero"],
+                      answer: 1,
+                      explanation: "The mass is unchanged but the volume grows, so mass ÷ volume falls."
+                    },
+                    {
+                      question: "Why does pressure affect the density of gases far more than that of liquids?",
+                      options: ["Gases are heavier", "Gas particles have large spaces between them, so they compress easily, while liquids are nearly incompressible", "Liquids have no density", "Gases are colder"],
+                      answer: 1,
+                      explanation: "Squeezing gas particles closer raises the density noticeably."
+                    },
+                    {
+                      question: "At what temperature is water densest?",
+                      options: ["0 °C", "4 °C", "10 °C", "100 °C"],
+                      answer: 1,
+                      explanation: "As water cools below 4 °C and freezes, its particles arrange into a structure taking up more space, so ice is less dense and floats."
                     }
                   ]
                 }
