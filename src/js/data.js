@@ -3508,6 +3508,24 @@ export const curriculumData = {
                       options: ["The theory of evolution", "The theory of gravitation, which enabled launching satellites and sending rockets to the Moon and Mars", "The invention of the telescope", "The discovery of electricity"],
                       answer: 1,
                       explanation: "The chapter notes that understanding patterns in the motion of stars, planets, and satellites led humankind to develop the theory of gravitation, enabling space travel."
+                    },
+                    {
+                      question: "Mathematics aims not just to find patterns but also to:",
+                      options: ["Memorise them", "Explain why they exist", "Draw them neatly", "Count them"],
+                      answer: 1,
+                      explanation: "This is why mathematics is thought of as both an art and a science."
+                    },
+                    {
+                      question: "The branch of mathematics that studies patterns in whole numbers is called:",
+                      options: ["Geometry", "Number theory", "Algebra", "Statistics"],
+                      answer: 1,
+                      explanation: "Whole numbers are 0, 1, 2, 3, 4 and so on."
+                    },
+                    {
+                      question: "Which sequence lists the counting numbers?",
+                      options: ["1, 1, 1, 1, ...", "1, 2, 3, 4, ...", "1, 3, 5, 7, ...", "2, 4, 6, 8, ..."],
+                      answer: 1,
+                      explanation: "Number sequences are among the most fascinating patterns studied."
                     }
                   ]
                 },
@@ -3577,6 +3595,24 @@ export const curriculumData = {
                       options: ["Only for making the notebook look nice", "Helping to understand mathematical patterns and the relationships between different sequences", "Replacing the need to know the actual numbers", "It has no real mathematical use"],
                       answer: 1,
                       explanation: "Pictures make abstract number patterns concrete and visible, which helps in understanding both the sequences themselves and the surprising relationships between different sequences."
+                    },
+                    {
+                      question: "Triangular numbers begin:",
+                      options: ["1, 2, 3, 4", "1, 3, 6, 10", "1, 4, 9, 16", "1, 7, 19, 37"],
+                      answer: 1,
+                      explanation: "Each one adds a new row of dots to the triangle."
+                    },
+                    {
+                      question: "Which sequence gives the hexagonal numbers?",
+                      options: ["1, 3, 6, 10", "1, 7, 19, 37", "1, 4, 9, 16", "1, 2, 4, 8"],
+                      answer: 1,
+                      explanation: "The dots form a hexagon growing outward ring by ring from a central dot."
+                    },
+                    {
+                      question: "The sequence 1, 2, 4, 8, 16 is made of:",
+                      options: ["Square numbers", "Powers of 2", "Triangular numbers", "Odd numbers"],
+                      answer: 1,
+                      explanation: "Each term is double the one before it."
                     }
                   ]
                 },
@@ -3646,6 +3682,24 @@ export const curriculumData = {
                       options: ["55", "90", "100", "110"],
                       answer: 2,
                       explanation: "The sum of the first n odd numbers is always n². For n=10, this is 10² = 100."
+                    },
+                    {
+                      question: "What is 1 + 3 + 5 + 7?",
+                      options: ["12", "16", "15", "20"],
+                      answer: 1,
+                      explanation: "The sum of the first four odd numbers is the square number 16."
+                    },
+                    {
+                      question: "The sum of the first n odd numbers is always:",
+                      options: ["n", "2n", "n squared", "n plus 1"],
+                      answer: 1,
+                      explanation: "A square grid of dots splits into nested L-shaped bands of odd size."
+                    },
+                    {
+                      question: "What is 1 + 2 + 3 + 2 + 1?",
+                      options: ["8", "9", "10", "6"],
+                      answer: 1,
+                      explanation: "Counting up and back down again always gives a square number."
                     }
                   ]
                 },
@@ -3714,6 +3768,24 @@ export const curriculumData = {
                       options: ["Even numbers", "Square numbers", "Triangular numbers", "Powers of 3"],
                       answer: 2,
                       explanation: "The number of lines connecting every pair of points in K2, K3, K4, K5, ... follows the triangular number sequence (1, 3, 6, 10, ...), since connecting n points pairwise requires 1+2+...+(n-1) lines."
+                    },
+                    {
+                      question: "A regular polygon has:",
+                      options: ["Equal sides only", "Equal sides and equal angles", "Equal angles only", "Three sides always"],
+                      answer: 1,
+                      explanation: "The sequence starts with the triangle, which has 3 sides."
+                    },
+                    {
+                      question: "How many sides does a hexagon have?",
+                      options: ["5", "6", "7", "8"],
+                      answer: 1,
+                      explanation: "The regular polygon sequence continues 3, 4, 5, 6, 7, 8 and so on."
+                    },
+                    {
+                      question: "Counting the connecting lines in the Complete Graphs sequence gives:",
+                      options: ["Square numbers", "Triangular numbers", "Powers of 2", "Odd numbers"],
+                      answer: 1,
+                      explanation: "Joining n points pairwise needs 1 + 2 + ... + (n - 1) lines."
                     }
                   ]
                 }
@@ -3792,6 +3864,24 @@ export const curriculumData = {
                       options: ["Infinitely many", "Exactly one", "Exactly two", "Zero, unless a ruler is used"],
                       answer: 1,
                       explanation: "Any two distinct points determine exactly one unique straight line that passes through both of them."
+                    },
+                    {
+                      question: "A point has:",
+                      options: ["Length only", "No length, breadth or height", "Breadth only", "A fixed size"],
+                      answer: 1,
+                      explanation: "It marks a precise location and is named with a capital letter."
+                    },
+                    {
+                      question: "The shortest path connecting two points A and B is called:",
+                      options: ["Line AB", "Line segment AB", "Ray AB", "Angle AB"],
+                      answer: 1,
+                      explanation: "A crease made by folding paper is a good model for it."
+                    },
+                    {
+                      question: "A ray differs from a line because it:",
+                      options: ["Has two end points", "Starts at one point and goes on endlessly in one direction", "Is shorter", "Is curved"],
+                      answer: 1,
+                      explanation: "A beam of light from a torch is a good model of a ray."
                     }
                   ]
                 },
@@ -3860,6 +3950,24 @@ export const curriculumData = {
                       options: ["The sharp tips of the blades", "The pivot point (hinge) where the two blades are joined", "The handles", "There is no vertex in a pair of scissors"],
                       answer: 1,
                       explanation: "The vertex of the angle formed by scissors is the pivot or hinge point where the two blades are joined and rotate relative to one another."
+                    },
+                    {
+                      question: "An angle is formed by:",
+                      options: ["Two points", "Two rays with a common starting point", "Two line segments of equal length", "A curve"],
+                      answer: 1,
+                      explanation: "The common point is called the vertex."
+                    },
+                    {
+                      question: "In the angle named DBE, which letter names the vertex?",
+                      options: ["D", "B", "E", "Any of them"],
+                      answer: 1,
+                      explanation: "The vertex letter is always written in the middle."
+                    },
+                    {
+                      question: "The size of an angle depends on:",
+                      options: ["The length of its arms", "The amount of rotation between the arms", "How it is drawn", "The paper size"],
+                      answer: 1,
+                      explanation: "Opening a book cover wider creates a larger angle, however long the cover is."
                     }
                   ]
                 },
@@ -3929,6 +4037,24 @@ export const curriculumData = {
                       options: ["45°", "90°", "180°", "360°"],
                       answer: 1,
                       explanation: "Since two right angles together make a straight angle (180°), each right angle measures half of that: 180° ÷ 2 = 90°."
+                    },
+                    {
+                      question: "A full turn measures:",
+                      options: ["90 degrees", "360 degrees", "180 degrees", "270 degrees"],
+                      answer: 1,
+                      explanation: "It is divided into 360 equal parts, each of 1 degree."
+                    },
+                    {
+                      question: "Why is 360 a convenient number of parts?",
+                      options: ["It is a big number", "It is the smallest number divisible by every number from 1 to 10 except 7", "It is a square number", "It matches the number of weeks"],
+                      answer: 1,
+                      explanation: "Ancient calendars also used 360-day years."
+                    },
+                    {
+                      question: "A common protractor is a half circle divided into:",
+                      options: ["360 equal parts", "180 equal parts", "90 equal parts", "100 equal parts"],
+                      answer: 1,
+                      explanation: "It has a long mark every 10 degrees with a medium mark every 5 degrees."
                     }
                   ]
                 },
@@ -3998,6 +4124,24 @@ export const curriculumData = {
                       options: ["Parallel lines", "Perpendicular lines", "Intersecting curves", "Reflex lines"],
                       answer: 1,
                       explanation: "Lines that meet at exactly a right angle (90°) are called perpendicular lines."
+                    },
+                    {
+                      question: "An acute angle measures:",
+                      options: ["Exactly 90 degrees", "More than 0 and less than 90 degrees", "More than 90 degrees", "Exactly 180 degrees"],
+                      answer: 1,
+                      explanation: "The word acute comes from the Latin for sharp."
+                    },
+                    {
+                      question: "An angle of 130 degrees is:",
+                      options: ["Acute", "Obtuse", "Right", "Reflex"],
+                      answer: 1,
+                      explanation: "Obtuse angles lie between 90 and 180 degrees."
+                    },
+                    {
+                      question: "A reflex angle measures:",
+                      options: ["Less than 90 degrees", "More than 180 and less than 360 degrees", "Exactly 180 degrees", "Exactly 360 degrees"],
+                      answer: 1,
+                      explanation: "It covers the larger turn on the outside of the two arms."
                     }
                   ]
                 }
@@ -4072,6 +4216,24 @@ export const curriculumData = {
                       options: ["The numbers themselves", "Which cells become supercells, and how many supercells there are", "Nothing changes when numbers are rearranged", "Only the colour of the grid"],
                       answer: 1,
                       explanation: "Since being a supercell depends entirely on comparison with neighbours, rearranging the same numbers into different positions changes which (and how many) cells qualify as supercells."
+                    },
+                    {
+                      question: "A cell in a grid is a supercell when its number is:",
+                      options: ["The smallest around", "Greater than all its neighbouring cells", "Even", "In the corner"],
+                      answer: 1,
+                      explanation: "Neighbours are the cells to the left, right, above and below, where they exist."
+                    },
+                    {
+                      question: "Which cell is always a supercell?",
+                      options: ["The first cell", "The one holding the largest number in the grid", "The last cell", "The middle cell"],
+                      answer: 1,
+                      explanation: "Nothing in the grid can be bigger than it."
+                    },
+                    {
+                      question: "Can the cell holding the smallest number ever be a supercell?",
+                      options: ["Yes, sometimes", "No, never", "Only in a row", "Only in a corner"],
+                      answer: 1,
+                      explanation: "It can never be greater than any of its neighbours."
                     }
                   ]
                 },
@@ -4141,6 +4303,24 @@ export const curriculumData = {
                       options: ["It produces a different number entirely", "It produces 6174 again (7641 − 1467 = 6174), so the process stays there forever", "The process cannot be applied to 6174", "It always returns to the original starting number"],
                       answer: 1,
                       explanation: "For 6174, the largest digit arrangement is 7641 and the smallest is 1467; their difference, 7641 − 1467, equals 6174 again — so once reached, the routine stays fixed at 6174 forever."
+                    },
+                    {
+                      question: "Which of these numbers is a palindrome?",
+                      options: ["123", "848", "910", "457"],
+                      answer: 1,
+                      explanation: "It reads the same from left to right as from right to left."
+                    },
+                    {
+                      question: "Who discovered the special properties of the number 6174?",
+                      options: ["Srinivasa Ramanujan", "D. R. Kaprekar", "Aryabhata", "Lothar Collatz"],
+                      answer: 1,
+                      explanation: "He was a mathematics teacher in Devlali, Maharashtra, and found it in 1949."
+                    },
+                    {
+                      question: "In Kaprekar's process, what is 7641 minus 1467?",
+                      options: ["6174", "6714", "5174", "1467"],
+                      answer: 1,
+                      explanation: "Once the process reaches 6174, it stays there forever."
                     }
                   ]
                 },
@@ -4209,6 +4389,24 @@ export const curriculumData = {
                       options: ["It makes the problem harder on purpose", "Round numbers (like thousands) are much easier to add or subtract mentally than arbitrary numbers", "It only works for even numbers", "It changes the actual value of the target number"],
                       answer: 1,
                       explanation: "Round numbers like 25,000 or 13,000 are far easier to combine mentally than arbitrary numbers, so breaking a target into such round pieces makes big mental calculations manageable."
+                    },
+                    {
+                      question: "Why is the date 11/02/2011 interesting?",
+                      options: ["It has repeated digits", "It reads the same forwards and backwards", "It is a leap day", "All digits are odd"],
+                      answer: 1,
+                      explanation: "Such a date is called a palindromic date."
+                    },
+                    {
+                      question: "Splitting a number into round pieces such as 25,000 and 13,000 helps because:",
+                      options: ["Round numbers are prettier", "Adding large round numbers mentally is much easier", "It avoids errors always", "It uses fewer digits"],
+                      answer: 1,
+                      explanation: "Building 38,800 from such pieces is far easier than adding arbitrary numbers."
+                    },
+                    {
+                      question: "Asking whether a pattern is always, sometimes or never true is useful because:",
+                      options: ["It saves time", "It turns an observation into real mathematical understanding", "Examples are unreliable", "Patterns are usually false"],
+                      answer: 1,
+                      explanation: "The answer has to be justified with reasoning, not just more examples."
                     }
                   ]
                 },
@@ -4278,6 +4476,24 @@ export const curriculumData = {
                       options: ["It isn't a real skill, exact answers are always required", "Because reasonable estimates use logical reasoning (like extrapolating from a known smaller count) to get a useful answer when an exact count isn't necessary or practical", "Because estimates are always exactly correct", "Because it replaces the need for any other mathematics"],
                       answer: 1,
                       explanation: "Good estimation uses logical reasoning — such as scaling up from a known smaller sample — to arrive at a reasonably accurate figure, which is often all that's needed, saving the effort of finding an exact count."
+                    },
+                    {
+                      question: "In the Collatz process, what do you do with an even number?",
+                      options: ["Multiply it by 3 and add 1", "Take half of it", "Subtract 1", "Double it"],
+                      answer: 1,
+                      explanation: "An odd number is multiplied by 3 with 1 added."
+                    },
+                    {
+                      question: "Starting from 12, the Collatz sequence eventually reaches:",
+                      options: ["0", "1", "6", "12"],
+                      answer: 1,
+                      explanation: "The sequence runs 12, 6, 3, 10, 5, 16, 8, 4, 2, 1."
+                    },
+                    {
+                      question: "In the Game of 21, a player can force a win by always saying numbers in the pattern:",
+                      options: ["2, 4, 6, 8", "1, 5, 9, 13, 17, 21", "3, 6, 9, 12", "1, 2, 3, 4"],
+                      answer: 1,
+                      explanation: "Each of these is 4 more than the one before it."
                     }
                   ]
                 }
