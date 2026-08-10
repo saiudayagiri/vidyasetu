@@ -16661,6 +16661,24 @@ export const curriculumData = {
                       options: ["1225 + 35 = 1260", "1225 + 71 = 1296", "1225 + 36 = 1261", "1225 + 72 = 1297"],
                       answer: 1,
                       explanation: "Each perfect square is the previous one plus the next odd number; the 36th odd number is 2(36)−1 = 71, so 36² = 1225 + 71 = 1296."
+                    },
+                    {
+                      question: "Which of these could NOT be a perfect square?",
+                      options: ["36", "47", "64", "81"],
+                      answer: 1,
+                      explanation: "Perfect squares always end in 0, 1, 4, 5, 6 or 9 — never in 2, 3, 7 or 8."
+                    },
+                    {
+                      question: "In the locker puzzle, why do only square-numbered lockers end up open?",
+                      options: ["They are toggled most often", "Only squares have an odd number of factors, since one factor is repeated", "They are toggled first", "They are never toggled"],
+                      answer: 1,
+                      explanation: "A locker ends open only if toggled an odd number of times, which needs an odd factor count."
+                    },
+                    {
+                      question: "Testing 36 by subtracting 1, 3, 5, 7, … how many subtractions reach exactly 0?",
+                      options: ["5", "6", "7", "36"],
+                      answer: 1,
+                      explanation: "36 − 1 − 3 − 5 − 7 − 9 − 11 = 0 after six steps, confirming 36 = 6²."
                     }
                   ]
                 },
@@ -16730,6 +16748,24 @@ export const curriculumData = {
                       options: ["Between 14 and 15, closer to 15", "Between 15 and 16, closer to 16", "Between 16 and 17, closer to 16", "Between 10 and 20, closer to 10"],
                       answer: 1,
                       explanation: "Since 15² = 225 and 16² = 256, √250 lies between 15 and 16 — and because 250 is much closer to 256 than to 225, √250 is approximately 16 (though technically just under it)."
+                    },
+                    {
+                      question: "Both 7 and −7 are square roots of 49. Which is called the principal square root?",
+                      options: ["−7", "7, the positive one", "Both equally", "Neither"],
+                      answer: 1,
+                      explanation: "Squaring either value gives 49, but √ conventionally denotes the positive root."
+                    },
+                    {
+                      question: "Using prime factorisation, 324 = 2×2×3×3×3×3. What is √324?",
+                      options: ["12", "18", "24", "36"],
+                      answer: 1,
+                      explanation: "The factors split into two identical groups (2×3×3)×(2×3×3) = 18 × 18."
+                    },
+                    {
+                      question: "Between which two consecutive whole numbers does √150 lie?",
+                      options: ["10 and 11", "12 and 13", "14 and 15", "11 and 12"],
+                      answer: 1,
+                      explanation: "12² = 144 and 13² = 169, so √150 lies between 12 and 13."
                     }
                   ]
                 },
@@ -16799,6 +16835,24 @@ export const curriculumData = {
                       options: ["3³ = 27", "4³ = 64", "5³ = 125", "6³ = 216"],
                       answer: 1,
                       explanation: "The sum of 4 consecutive odd numbers starting appropriately (13+15+17+19) equals 64, which is 4³ — matching the established pattern where n consecutive odd numbers sum to n³."
+                    },
+                    {
+                      question: "What is 4³?",
+                      options: ["12", "64", "16", "81"],
+                      answer: 1,
+                      explanation: "4 × 4 × 4 = 64, so 64 is a perfect cube."
+                    },
+                    {
+                      question: "Why is 1729 called the Hardy-Ramanujan number?",
+                      options: ["It is a perfect cube", "It is the smallest number expressible as the sum of two cubes in two different ways", "It is prime", "It is a perfect square"],
+                      answer: 1,
+                      explanation: "1729 = 1³ + 12³ = 9³ + 10³."
+                    },
+                    {
+                      question: "Which sum of consecutive odd numbers equals 27?",
+                      options: ["1 + 3 + 5", "7 + 9 + 11", "3 + 5 + 7", "13 + 15"],
+                      answer: 1,
+                      explanation: "Each perfect cube n³ is the sum of n consecutive odd numbers, so 3³ needs three of them."
                     }
                   ]
                 },
@@ -16867,6 +16921,24 @@ export const curriculumData = {
                       options: ["Ancient Egyptians, around 3000 BCE", "The Babylonians, around 1700 BCE", "Aryabhata, around 499 CE", "Modern mathematicians, in the 1900s"],
                       answer: 1,
                       explanation: "The Babylonians compiled the earliest known lists of perfect squares and cubes on clay tablets around 1700 BCE, using them for land measurement and architectural design."
+                    },
+                    {
+                      question: "What is ∛125?",
+                      options: ["3", "5", "25", "15"],
+                      answer: 1,
+                      explanation: "Since 5 × 5 × 5 = 125, the cube root of 125 is 5."
+                    },
+                    {
+                      question: "Who compiled the earliest known lists of perfect squares and cubes, and when?",
+                      options: ["The Egyptians, 3000 BCE", "The Babylonians, around 1700 BCE", "The Greeks, 500 BCE", "The Romans, 100 CE"],
+                      answer: 1,
+                      explanation: "The lists were written on clay tablets and used for land measurement and architectural design."
+                    },
+                    {
+                      question: "The mathematical word 'root' comes from which Sanskrit word?",
+                      options: ["Shunya", "Mula", "Ganita", "Bija"],
+                      answer: 1,
+                      explanation: "Mula means the root of a plant, a basis or an origin."
                     }
                   ]
                 }
@@ -16942,6 +17014,24 @@ export const curriculumData = {
                       options: ["0.007 cm", "0.128 cm", "0.512 cm", "1.28 cm"],
                       answer: 1,
                       explanation: "2⁷ = 128, so the thickness is 0.001 cm × 128 = 0.128 cm, exactly matching the value given in the fold-thickness table."
+                    },
+                    {
+                      question: "Each fold of a paper does what to its thickness?",
+                      options: ["Adds a fixed amount", "Doubles it", "Halves it", "Squares it"],
+                      answer: 1,
+                      explanation: "Starting at 0.001 cm, ten folds give about 1.024 cm."
+                    },
+                    {
+                      question: "Folding ten more times multiplies the thickness by:",
+                      options: ["10", "1024", "100", "20"],
+                      answer: 1,
+                      explanation: "2 multiplied by itself ten times is 1024, whatever the starting thickness."
+                    },
+                    {
+                      question: "The thickness after folding n times is the initial thickness multiplied by:",
+                      options: ["2n", "2ⁿ", "n²", "n + 2"],
+                      answer: 1,
+                      explanation: "Each fold doubles the value, so n folds multiply it by 2ⁿ."
                     }
                   ]
                 },
@@ -17011,6 +17101,24 @@ export const curriculumData = {
                       options: ["3⁴ = 81", "3⁶ = 729", "3⁷ = 2187", "7³ = 343"],
                       answer: 2,
                       explanation: "There are 7 levels of 'multiply by 3' in total (daughters, baskets, keys, rooms, tables, necklaces, diamonds), giving 3⁷ = 2187 diamonds."
+                    },
+                    {
+                      question: "In 5⁴, which number is the base and which the exponent?",
+                      options: ["5 is the exponent, 4 the base", "5 is the base, 4 the exponent", "Both are bases", "Both are exponents"],
+                      answer: 1,
+                      explanation: "5⁴ means 5 × 5 × 5 × 5 = 625."
+                    },
+                    {
+                      question: "Simplify p⁴ × p⁶.",
+                      options: ["p²⁴", "p¹⁰", "p²", "24p"],
+                      answer: 1,
+                      explanation: "When multiplying powers of the same base, the exponents are added."
+                    },
+                    {
+                      question: "Simplify (4³)².",
+                      options: ["4⁵", "4⁶", "4⁹", "8³"],
+                      answer: 1,
+                      explanation: "Raising a power to another power multiplies the exponents, giving 4⁶ = 4096."
                     }
                   ]
                 },
@@ -17080,6 +17188,24 @@ export const curriculumData = {
                       options: ["4¹ = 4", "4⁻¹ = 1/4", "0", "-4"],
                       answer: 0,
                       explanation: "Moving down the power line, exponent 1 (giving 4¹=4) comes immediately before exponent 0 (giving 4⁰=1) — each step divides the previous value by the base, 4."
+                    },
+                    {
+                      question: "Simplify 2⁷ ÷ 2³.",
+                      options: ["2¹⁰", "2⁴", "2²¹", "1"],
+                      answer: 1,
+                      explanation: "When dividing powers of the same base, the exponents are subtracted."
+                    },
+                    {
+                      question: "What is the value of x⁰ for any non-zero x?",
+                      options: ["0", "1", "x", "Undefined"],
+                      answer: 1,
+                      explanation: "Applying the division rule with equal exponents gives x⁰ = xᵃ ÷ xᵃ = 1."
+                    },
+                    {
+                      question: "What does 10⁻³ equal?",
+                      options: ["−1000", "1/1000", "−0.001 exactly as a negative", "30"],
+                      answer: 1,
+                      explanation: "A negative exponent means the reciprocal: n⁻ᵃ = 1/nᵃ."
                     }
                   ]
                 },
@@ -17149,6 +17275,24 @@ export const curriculumData = {
                       options: ["(4×10⁴)+(7×10³)+(5×10²)+(6×10¹)+(1×10⁰)", "(4×10⁵)+(7×10⁴)+(5×10³)+(6×10²)+(1×10¹)", "4+7+5+6+1", "47561×10⁰"],
                       answer: 0,
                       explanation: "Each digit of 47561 is multiplied by the power of 10 matching its place value: 4×10⁴ (ten-thousands), 7×10³ (thousands), 5×10² (hundreds), 6×10¹ (tens), and 1×10⁰ (units)."
+                    },
+                    {
+                      question: "Write 5900 in scientific notation.",
+                      options: ["59 × 10²", "5.9 × 10³", "0.59 × 10⁴", "5.9 × 10²"],
+                      answer: 1,
+                      explanation: "The coefficient must satisfy 1 ≤ x < 10, so 5.9 × 10³ is the standard form."
+                    },
+                    {
+                      question: "In scientific notation x × 10ʸ, what must be true of x?",
+                      options: ["It must be a whole number", "It must satisfy 1 ≤ x < 10", "It must be less than 1", "It must be positive and even"],
+                      answer: 1,
+                      explanation: "That restriction is what makes the form standard and unambiguous."
+                    },
+                    {
+                      question: "Mumbai's population is written as 2 × 10⁷. Changing the 7 to an 8 would:",
+                      options: ["Add one crore", "Multiply the population by 10", "Double it", "Have no effect"],
+                      answer: 1,
+                      explanation: "Changing the exponent has a far bigger effect than changing the coefficient."
                     }
                   ]
                 }
@@ -17224,6 +17368,24 @@ export const curriculumData = {
                       options: ["About 100 years old", "About 1,000 years old", "Tens of thousands of years old (Lebombo ~44,000 years, Ishango ~20,000-35,000 years)", "About 500 years old"],
                       answer: 2,
                       explanation: "The Lebombo bone is estimated at around 44,000 years old, and the Ishango bone between 20,000-35,000 years old — among the oldest known mathematical artefacts in human history."
+                    },
+                    {
+                      question: "What is one-to-one mapping in early counting?",
+                      options: ["Counting in groups of ten", "Matching each object to a stick, pebble or tally mark", "Using written numerals", "Adding numbers together"],
+                      answer: 1,
+                      explanation: "It works for any size of collection but becomes unwieldy for large numbers."
+                    },
+                    {
+                      question: "The Gumulgal people built number names by counting in:",
+                      options: ["Fives", "Twos", "Tens", "Twenties"],
+                      answer: 1,
+                      explanation: "For them 5 was 'two-two-one', and distant groups independently arrived at similar systems."
+                    },
+                    {
+                      question: "How is 14 written in Roman numerals?",
+                      options: ["XIIII", "XIV", "VIX", "XVI"],
+                      answer: 1,
+                      explanation: "The system combines and repeats symbols, and uses subtraction: X + IV = 10 + 4."
                     }
                   ]
                 },
@@ -17293,6 +17455,24 @@ export const curriculumData = {
                       options: ["It doesn't actually make arithmetic any easier", "It allows automatic regrouping — whenever a landmark number occurs n times, it converts neatly into one of the next higher landmark number, similar to carrying over in addition", "It eliminates the need for addition entirely", "It only works for very small numbers"],
                       answer: 1,
                       explanation: "Because each landmark number is a fixed multiple of the previous one, arithmetic operations like addition become systematic: whenever a landmark number accumulates n copies, it can be regrouped into the next higher landmark number — exactly like carrying over a digit."
+                    },
+                    {
+                      question: "What were the Egyptian landmark numbers?",
+                      options: ["Powers of 2", "Powers of 10 — 1, 10, 100, 1000", "Powers of 60", "Powers of 20"],
+                      answer: 1,
+                      explanation: "A number such as 324 was written by repeating the symbols for those landmarks."
+                    },
+                    {
+                      question: "What makes a number system a base-n system?",
+                      options: ["It uses n symbols only", "Its first landmark is 1 and each next landmark is the previous one multiplied by n", "It counts to n", "It has n digits"],
+                      answer: 1,
+                      explanation: "Our own system is base-10 because each landmark is ten times the one before."
+                    },
+                    {
+                      question: "In our base-10 system, what is the landmark number after 100?",
+                      options: ["200", "1000", "110", "10000"],
+                      answer: 1,
+                      explanation: "Each landmark is the previous one multiplied by the base, so 100 × 10 = 1000."
                     }
                   ]
                 },
@@ -17361,6 +17541,24 @@ export const curriculumData = {
                       options: ["It has no real significance", "It allows any number, however large, to be represented using only a small, fixed set of reusable symbols, based on their position", "It only works for very small numbers", "It eliminates the need for a base entirely"],
                       answer: 1,
                       explanation: "Place value solves the fundamental challenge of representing an unending sequence of numbers — by using position to indicate landmark numbers, it needs only a handful of symbols to represent any number, no matter how large."
+                    },
+                    {
+                      question: "What base did the Mesopotamians eventually use?",
+                      options: ["Base 10", "Base 60", "Base 20", "Base 2"],
+                      answer: 1,
+                      explanation: "Their landmark numbers were 1, 60, 3600 and so on."
+                    },
+                    {
+                      question: "What important advance did the Mayan number system include?",
+                      options: ["A base of 10", "A placeholder symbol for zero", "Negative numbers", "Fractions"],
+                      answer: 1,
+                      explanation: "Their system was roughly base-20 and used position to determine value."
+                    },
+                    {
+                      question: "What defines a place value system?",
+                      options: ["It uses many symbols", "The position of each symbol determines its landmark number", "It counts in tens", "It has no zero"],
+                      answer: 1,
+                      explanation: "This lets a small fixed set of symbols represent any number, however large."
                     }
                   ]
                 },
@@ -17430,6 +17628,24 @@ export const curriculumData = {
                       options: ["5 hundreds", "5 tens", "5 units (ones), since 10⁰ = 1", "5 thousands"],
                       answer: 2,
                       explanation: "Since 10⁰ = 1, the term (5×10⁰) simply represents 5 units (the ones place) — the rightmost digit in the number 375."
+                    },
+                    {
+                      question: "How many symbols does the Hindu number system use?",
+                      options: ["Nine", "Ten, from 0 to 9", "Twelve", "Twenty"],
+                      answer: 1,
+                      explanation: "Being base-10 and positional, those ten symbols suffice for any number."
+                    },
+                    {
+                      question: "Which mathematician used the arithmetic properties of zero in 499 CE?",
+                      options: ["Brahmagupta", "Aryabhata", "Al-Khwārizmī", "Fibonacci"],
+                      answer: 1,
+                      explanation: "The Hindu system had a symbol for 0 by at least 200 BCE, and zero was later treated as a number in its own right."
+                    },
+                    {
+                      question: "Who championed the Hindu number system in Europe around 1200 CE?",
+                      options: ["Al-Kindi", "Fibonacci", "Aryabhata", "Ramanujan"],
+                      answer: 1,
+                      explanation: "It had reached the Arab world by about 800 CE, popularised by Al-Khwārizmī and Al-Kindi."
                     }
                   ]
                 }
@@ -17505,6 +17721,24 @@ export const curriculumData = {
                       options: ["70°", "80°", "90°", "100°"],
                       answer: 1,
                       explanation: "Since all four angles must sum to 360°: 360° - (100°+85°+95°) = 360° - 280° = 80°."
+                    },
+                    {
+                      question: "What is the angle sum of any quadrilateral?",
+                      options: ["180°", "360°", "540°", "720°"],
+                      answer: 1,
+                      explanation: "A diagonal splits it into two triangles, each contributing 180°."
+                    },
+                    {
+                      question: "Which property defines a rectangle?",
+                      options: ["All sides equal", "All angles are right angles and opposite sides are equal", "Diagonals perpendicular", "One pair of parallel sides"],
+                      answer: 1,
+                      explanation: "Congruent triangles can then be used to prove its diagonals are equal."
+                    },
+                    {
+                      question: "Three angles of a quadrilateral are 90°, 80° and 100°. What is the fourth?",
+                      options: ["80°", "90°", "100°", "110°"],
+                      answer: 1,
+                      explanation: "360° − (90° + 80° + 100°) = 360° − 270° = 90°."
                     }
                   ]
                 },
@@ -17574,6 +17808,24 @@ export const curriculumData = {
                       options: ["SSS", "AAS", "There is no way to prove this", "HL"],
                       answer: 1,
                       explanation: "By identifying equal alternate angles (from parallel sides) and a shared side, the AAS congruence condition proves that the two triangles formed by a diagonal are congruent, showing opposite sides of the parallelogram are equal."
+                    },
+                    {
+                      question: "What defines a parallelogram?",
+                      options: ["All sides equal", "Both pairs of opposite sides parallel", "All angles equal", "Diagonals equal"],
+                      answer: 1,
+                      explanation: "Every rectangle is therefore also a parallelogram."
+                    },
+                    {
+                      question: "In a parallelogram, adjacent angles always:",
+                      options: ["Are equal", "Add up to 180°", "Add up to 90°", "Are right angles"],
+                      answer: 1,
+                      explanation: "Opposite angles, by contrast, are always equal."
+                    },
+                    {
+                      question: "One angle of a parallelogram is 70°. What are the other three?",
+                      options: ["70°, 70°, 70°", "110°, 70°, 110°", "90°, 110°, 90°", "20°, 70°, 20°"],
+                      answer: 1,
+                      explanation: "Opposite angles are equal and adjacent angles are supplementary, so knowing one gives all four."
                     }
                   ]
                 },
@@ -17643,6 +17895,24 @@ export const curriculumData = {
                       options: ["A square is neither a rectangle nor a rhombus", "A square is both a rectangle (all angles 90°) AND a rhombus (all sides equal), sitting at their intersection", "A square is a rectangle but never a rhombus", "A square is a rhombus but never a rectangle"],
                       answer: 1,
                       explanation: "A square satisfies both the rectangle definition (all angles 90°) and the rhombus definition (all sides equal), making it the special shape that lies at the intersection of both categories."
+                    },
+                    {
+                      question: "What defines a rhombus?",
+                      options: ["All angles equal", "All four sides equal in length", "One pair of parallel sides", "Equal diagonals"],
+                      answer: 1,
+                      explanation: "It has all the parallelogram properties plus two special diagonal properties."
+                    },
+                    {
+                      question: "Why is a square both a rectangle and a rhombus?",
+                      options: ["It has four sides", "All its angles are 90° and all its sides are equal", "Its diagonals are equal", "It is a parallelogram"],
+                      answer: 1,
+                      explanation: "It sits at the intersection of both categories in the quadrilateral family."
+                    },
+                    {
+                      question: "The diagonals of a rhombus:",
+                      options: ["Are always equal", "Bisect its angles and are perpendicular to each other", "Are parallel", "Do not intersect"],
+                      answer: 1,
+                      explanation: "These are the two extra properties a rhombus has beyond those of a parallelogram."
                     }
                   ]
                 },
@@ -17712,6 +17982,24 @@ export const curriculumData = {
                       options: ["Parallelogram", "Trapezium", "Kite", "Rectangle"],
                       answer: 2,
                       explanation: "A general kite has no pairs of parallel sides — unlike the parallelogram family (which has both pairs parallel) or the trapezium (which has at least one pair parallel)."
+                    },
+                    {
+                      question: "What distinguishes a kite from a rhombus?",
+                      options: ["A kite has no equal sides", "A kite has two distinct pairs of adjacent equal sides, not four equal sides", "A kite has parallel sides", "A kite has right angles"],
+                      answer: 1,
+                      explanation: "In kite ABCD, AB = BC and CD = DA."
+                    },
+                    {
+                      question: "How is a trapezium defined?",
+                      options: ["Both pairs of opposite sides parallel", "At least one pair of parallel opposite sides", "All sides equal", "All angles right angles"],
+                      answer: 1,
+                      explanation: "It relaxes the parallelogram's requirement that both pairs be parallel."
+                    },
+                    {
+                      question: "Which quadrilateral does NOT have both pairs of opposite sides parallel?",
+                      options: ["Square", "Kite", "Rectangle", "Rhombus"],
+                      answer: 1,
+                      explanation: "Kites and general trapeziums break from the parallelogram family in exactly this way."
                     }
                   ]
                 }
@@ -17787,6 +18075,24 @@ export const curriculumData = {
                       options: ["It is purely a coincidence with no explanation", "Because every sign switch changes the value by an even amount, and any one combination can be reached from any other through a sequence of such switches", "Because only 4 of the 8 combinations are actually different", "Because the numbers must always be consecutive for this to work"],
                       answer: 1,
                       explanation: "Since switching any single sign always changes the result by an even amount, and all 8 combinations can be reached from one another through a sequence of sign switches, they must all share the same parity."
+                    },
+                    {
+                      question: "Which numbers can always be written as the sum of two consecutive numbers?",
+                      options: ["All even numbers", "All odd numbers", "All multiples of 3", "All square numbers"],
+                      answer: 1,
+                      explanation: "For example 7 = 3 + 4 and 15 = 7 + 8."
+                    },
+                    {
+                      question: "Placing + and − signs between four consecutive numbers always gives:",
+                      options: ["An odd result", "An even result", "Zero", "A positive result"],
+                      answer: 1,
+                      explanation: "All eight sign arrangements of 3, 4, 5, 6 produce even values."
+                    },
+                    {
+                      question: "Why does switching one sign never change the parity of the result?",
+                      options: ["The numbers are consecutive", "Changing +b to −b alters the value by 2b, which is always even", "The sum is always zero", "Signs do not affect parity"],
+                      answer: 1,
+                      explanation: "Since every switch shifts the result by an even amount, the parity is preserved."
                     }
                   ]
                 },
@@ -17856,6 +18162,24 @@ export const curriculumData = {
                       options: ["Digital root 9, meaning 8888 is divisible by 9", "Digital root 5 (8+8+8+8=32, then 3+2=5), meaning 8888 is NOT divisible by 9", "Digital root 8, meaning 8888 is divisible by 8", "Digital root 0, meaning 8888 is divisible by 9"],
                       answer: 1,
                       explanation: "8+8+8+8=32, and 3+2=5, so the digital root of 8888 is 5 — since this is not 9, 8888 is not divisible by 9 (and the digital root 5 tells us the actual remainder)."
+                    },
+                    {
+                      question: "Why does the digit-sum test for 9 work?",
+                      options: ["9 is odd", "Every power of 10 is exactly 1 more than a multiple of 9", "9 is a square", "10 is divisible by 9"],
+                      answer: 1,
+                      explanation: "So a number equals a multiple of 9 plus the sum of its digits."
+                    },
+                    {
+                      question: "What is the digital root of a number?",
+                      options: ["Its largest digit", "The single digit reached by repeatedly adding its digits", "Its square root", "Its first digit"],
+                      answer: 1,
+                      explanation: "The digital root gives the remainder when the number is divided by 9."
+                    },
+                    {
+                      question: "A number is divisible by 3 if:",
+                      options: ["It ends in 3", "The sum of its digits is divisible by 3", "It is odd", "It ends in 0"],
+                      answer: 1,
+                      explanation: "Since every multiple of 9 is also a multiple of 3, the same reasoning applies."
                     }
                   ]
                 },
@@ -17925,6 +18249,24 @@ export const curriculumData = {
                       options: ["Yes, since its alternating sum is 0", "No, since its alternating sum (3−2+5=6) is not a multiple of 11", "Yes, since 523 ends in an odd digit", "Cannot be determined using the alternating sum method"],
                       answer: 1,
                       explanation: "The alternating sum for 523 is 3 (units) − 2 (tens) + 5 (hundreds) = 6, which is not a multiple of 11, confirming 523 is not divisible by 11."
+                    },
+                    {
+                      question: "What pattern do powers of 10 show relative to multiples of 11?",
+                      options: ["They are always multiples of 11", "They alternate between one more and one less than a multiple of 11", "They are always one more", "They are unrelated"],
+                      answer: 1,
+                      explanation: "1 is one more, 10 is one less, 100 is one more, and so on."
+                    },
+                    {
+                      question: "In the divisibility test for 11, how do digits contribute?",
+                      options: ["All positively", "With alternating signs by position — units +, tens −, hundreds +", "All negatively", "By their squares"],
+                      answer: 1,
+                      explanation: "The alternating pattern of the powers of 10 is what produces the alternating signs."
+                    },
+                    {
+                      question: "Test 462 for divisibility by 11.",
+                      options: ["It is not divisible", "It is divisible, since 2 − 6 + 4 = 0", "It is divisible, since 4 + 6 + 2 = 12", "It cannot be tested"],
+                      answer: 1,
+                      explanation: "An alternating sum of 0 is a multiple of 11, so 462 is divisible by 11."
                     }
                   ]
                 },
@@ -17994,6 +18336,24 @@ export const curriculumData = {
                       options: ["Random guessing until something works", "Systematic testing of candidates combined with logical elimination based on digit and place-value constraints", "Cryptarithms cannot actually be solved logically", "Using a calculator to try every possible number"],
                       answer: 1,
                       explanation: "Cryptarithms are solved through systematic reasoning — testing candidates against constraints like the number of digits in a result and whether letters can share the same digit value — rather than random guessing."
+                    },
+                    {
+                      question: "In a cryptarithm, what does each letter represent?",
+                      options: ["Any number", "A single digit, with each digit represented by at most one letter", "A word", "An operation"],
+                      answer: 1,
+                      explanation: "The first digit of a number is also never allowed to be 0."
+                    },
+                    {
+                      question: "Why can the first letter of a number in a cryptarithm never be 0?",
+                      options: ["Zero is not a digit", "A number does not begin with a leading zero", "Zero is reserved", "It would repeat"],
+                      answer: 1,
+                      explanation: "This constraint is often what narrows the possibilities down."
+                    },
+                    {
+                      question: "How are cryptarithms best solved?",
+                      options: ["By guessing randomly", "By using patterns, properties and logical elimination of possibilities", "By trial of every combination", "By using a calculator"],
+                      answer: 1,
+                      explanation: "Checking constraints such as the number of digits in a product rules out most candidates quickly."
                     }
                   ]
                 }
