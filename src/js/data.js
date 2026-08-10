@@ -6054,6 +6054,24 @@ export const curriculumData = {
                       options: ["Whether the change can be seen with the naked eye", "Whether NO new substance is formed, even though properties like shape, size, or state may change", "Whether the change happens quickly", "Whether the change involves heat"],
                       answer: 1,
                       explanation: "The defining feature of a physical change is that the substance's identity is preserved — no new substance forms, even if appearance changes."
+                    },
+                    {
+                      question: "Crushing chalk into powder is which kind of change?",
+                      options: ["Chemical, because the chalk looks different", "Physical, because the powder is still chalk", "Irreversible chemical change", "Combustion"],
+                      answer: 1,
+                      explanation: "Only the size of the pieces changed; the substance itself is unchanged."
+                    },
+                    {
+                      question: "Which of these changes does NOT produce a new substance?",
+                      options: ["Rusting of iron", "Folding a sheet of paper", "Burning magnesium", "Curdling of milk"],
+                      answer: 1,
+                      explanation: "Folding alters only shape, so it is a physical change."
+                    },
+                    {
+                      question: "Letting the air out of a balloon changes its size and shape. The rubber is:",
+                      options: ["Turned into a new material", "Still the same substance", "Chemically decomposed", "Burnt"],
+                      answer: 1,
+                      explanation: "Examining the rubber afterwards shows it is unchanged, so this is a physical change."
                     }
                   ]
                 },
@@ -6123,6 +6141,24 @@ export const curriculumData = {
                       options: ["Because it only changes the shape of the iron", "Because it forms a genuinely new substance — iron oxide (rust) — which wasn't present before", "Because rusting can be easily reversed", "Rusting is not actually a real chemical process"],
                       answer: 1,
                       explanation: "Rusting forms iron oxide, a new substance distinct from the original iron — this formation of a new substance is exactly what defines a chemical change."
+                    },
+                    {
+                      question: "Blowing breath into lime water turns it milky because the breath contains:",
+                      options: ["Oxygen", "Carbon dioxide", "Nitrogen", "Water vapour only"],
+                      answer: 1,
+                      explanation: "The carbon dioxide reacts with lime water to form a white substance."
+                    },
+                    {
+                      question: "Mixing vinegar with baking soda produces bubbles of:",
+                      options: ["Oxygen", "Carbon dioxide", "Hydrogen", "Nitrogen"],
+                      answer: 1,
+                      explanation: "Passing the gas through lime water turns it milky, confirming carbon dioxide."
+                    },
+                    {
+                      question: "Why is rusting classed as a chemical change?",
+                      options: ["The iron only changes colour", "A new brown substance, iron oxide, is formed", "The iron becomes lighter", "It can be reversed easily"],
+                      answer: 1,
+                      explanation: "Formation of a new substance is the defining test of a chemical change."
                     }
                   ]
                 },
@@ -6192,6 +6228,30 @@ export const curriculumData = {
                       options: ["Paper is not actually combustible", "Room temperature air doesn't provide enough heat to raise the paper to its ignition temperature", "Oxygen isn't actually needed for paper to burn", "This is impossible to explain"],
                       answer: 1,
                       explanation: "Even with fuel (paper) and oxygen present, combustion also requires enough HEAT to reach the ignition temperature — ordinary room temperature isn't hot enough, so the paper doesn't spontaneously combust."
+                    },
+                    {
+                      question: "Burning magnesium ribbon forms magnesium oxide and releases:",
+                      options: ["Only sound", "Heat and light", "Only water", "Carbon dioxide"],
+                      answer: 1,
+                      explanation: "A reaction with oxygen that gives out heat and light is called combustion."
+                    },
+                    {
+                      question: "A burning candle covered with a glass tumbler goes out because:",
+                      options: ["The candle runs out of wax", "The oxygen supply inside is used up", "The glass absorbs the flame", "The wick becomes wet"],
+                      answer: 1,
+                      explanation: "Combustion cannot continue once oxygen is cut off."
+                    },
+                    {
+                      question: "What are the three requirements shown by the fire triangle?",
+                      options: ["Fuel, water and air", "Combustible material, oxygen and heat to reach ignition temperature", "Heat, light and sound", "Fuel, ash and smoke"],
+                      answer: 1,
+                      explanation: "Paper in ordinary air has fuel and oxygen but not enough heat, so it does not catch fire on its own."
+                    },
+                    {
+                      question: "What is ignition temperature?",
+                      options: ["The temperature of a flame", "The minimum temperature at which a substance catches fire", "The boiling point", "The melting point"],
+                      answer: 1,
+                      explanation: "Different combustible materials have different ignition temperatures."
                     }
                   ]
                 },
@@ -6260,6 +6320,24 @@ export const curriculumData = {
                       options: ["Through simple physical erosion alone, with no chemical change", "Through a chemical change where iron in the rock reacts with water/air over time to form red iron oxide", "The rock is naturally red and never changes", "This has nothing to do with weathering"],
                       answer: 1,
                       explanation: "The red colouring is a genuine chemical change — iron within the basalt reacts with water or air over a long time to form iron oxide, which is red, illustrating chemical weathering."
+                    },
+                    {
+                      question: "Which of these changes is irreversible?",
+                      options: ["Melting ice", "Chopping vegetables", "Evaporating water", "Folding paper"],
+                      answer: 1,
+                      explanation: "Melted ice can be refrozen and vapour can be condensed, but chopped pieces cannot be rejoined."
+                    },
+                    {
+                      question: "Milk turning into curd is best described as:",
+                      options: ["An undesirable physical change", "A desirable chemical change", "A reversible change", "No change at all"],
+                      answer: 1,
+                      explanation: "Food decaying during storage, by contrast, is an undesirable change."
+                    },
+                    {
+                      question: "Water freezing inside a crack and splitting a rock is an example of:",
+                      options: ["Chemical weathering", "Physical weathering", "Erosion by wind", "Neither"],
+                      answer: 1,
+                      explanation: "Temperature swings and growing tree roots also cause physical weathering."
                     }
                   ]
                 }
@@ -6335,6 +6413,24 @@ export const curriculumData = {
                       options: ["Due to eating too many vegetables", "Due to increased oily secretions from the skin during adolescence, which can clog skin pores and lead to infections", "Acne has no connection to adolescence", "Due to a lack of physical activity only"],
                       answer: 1,
                       explanation: "Acne occurs because adolescence increases oily secretions from the skin, which can clog pores and lead to the small, reddish pimples characteristic of this skin condition."
+                    },
+                    {
+                      question: "Adolescence generally begins at about which age?",
+                      options: ["5 years", "10 years", "16 years", "20 years"],
+                      answer: 1,
+                      explanation: "It lasts until roughly 19 years, bridging childhood and adulthood."
+                    },
+                    {
+                      question: "Which of these is a secondary sexual characteristic?",
+                      options: ["Increase in height alone", "Voice change and growth of facial hair", "Gaining weight", "Growth of nails"],
+                      answer: 1,
+                      explanation: "They are not directly involved in reproduction but help distinguish males from females."
+                    },
+                    {
+                      question: "Until about 10 to 12 years of age, most bodily changes relate mainly to:",
+                      options: ["Voice and hair", "Height and weight", "Emotions only", "Bone thickness"],
+                      answer: 1,
+                      explanation: "Other noticeable changes begin only after this age."
                     }
                   ]
                 },
@@ -6402,6 +6498,24 @@ export const curriculumData = {
                       options: ["Thrown directly into any open area", "Wrapped in newspaper and disposed of inside a dustbin", "Flushed down the toilet", "Burned immediately wherever found"],
                       answer: 1,
                       explanation: "Proper disposal involves wrapping used sanitary pads in newspaper and placing them in a dustbin, to ensure community health and environmental cleanliness."
+                    },
+                    {
+                      question: "The menstrual cycle generally recurs every:",
+                      options: ["7 days", "28 to 30 days", "3 months", "1 year"],
+                      answer: 1,
+                      explanation: "Many healthy girls have cycles somewhat shorter or longer than this."
+                    },
+                    {
+                      question: "Isolating a menstruating girl from the household is:",
+                      options: ["A necessary hygiene measure", "A harmful myth that causes shame and fear", "Medically recommended", "A modern practice"],
+                      answer: 1,
+                      explanation: "Such taboos have no scientific basis and cause unnecessary distress."
+                    },
+                    {
+                      question: "What does the Menstrual Hygiene Scheme provide?",
+                      options: ["Free school uniforms", "Sanitary pads free or at reduced price to adolescent girls in rural areas", "Free medical checkups only", "Cooking gas"],
+                      answer: 1,
+                      explanation: "It also supports awareness about menstrual hygiene."
                     }
                   ]
                 },
@@ -6471,6 +6585,24 @@ export const curriculumData = {
                       options: ["To report cyberbullying only", "To help deal with drug addiction and support drug addicts", "To provide nutrition advice", "To report menstrual hygiene product shortages"],
                       answer: 1,
                       explanation: "The National De-addiction Helpline, numbered 14446, was launched by the Government of India specifically to deal with drug addiction and support those affected by it."
+                    },
+                    {
+                      question: "Mood swings and stronger emotions during adolescence are:",
+                      options: ["A sign of illness", "A common part of this stage of growth", "Always harmful", "Caused by diet alone"],
+                      answer: 1,
+                      explanation: "They can also channel into creative activities."
+                    },
+                    {
+                      question: "Why does an adolescent need a specially nutritious diet?",
+                      options: ["To reduce sleep", "Because this is a period of rapid growth", "To stop hormones", "To change height permanently"],
+                      answer: 1,
+                      explanation: "Proteins and carbohydrates support growth and performance, and fats, vitamins and minerals are also essential."
+                    },
+                    {
+                      question: "Harassment through digital devices, such as spreading rumours online, is called:",
+                      options: ["Peer pressure", "Cyberbullying", "Networking", "Gossip only"],
+                      answer: 1,
+                      explanation: "Being thoughtful and responsible on social media helps prevent it."
                     }
                   ]
                 },
@@ -6538,6 +6670,24 @@ export const curriculumData = {
                       options: ["Changes in diet alone", "Hormones — chemicals produced in the body that regulate growth, development, and mood", "Changes in the weather", "Changes in school curriculum"],
                       answer: 1,
                       explanation: "Nearly all the diverse changes of adolescence — physical, reproductive, and emotional — are ultimately driven by hormones, the body's internal chemical messengers."
+                    },
+                    {
+                      question: "Hormones are best described as:",
+                      options: ["Foods", "Chemicals produced in our bodies that regulate changes", "Types of bones", "Blood cells"],
+                      answer: 1,
+                      explanation: "They are responsible for many of the changes seen during puberty."
+                    },
+                    {
+                      question: "When are hormones released?",
+                      options: ["Continuously at a fixed rate", "At an appropriate time, in response to signals from the brain", "Only during sleep", "Only after meals"],
+                      answer: 1,
+                      explanation: "This is why some hormones influence mood and behaviour."
+                    },
+                    {
+                      question: "Adolescence brings changes that are:",
+                      options: ["Only physical", "Physical, biological and emotional", "Only emotional", "Only temporary"],
+                      answer: 1,
+                      explanation: "It is the whole period of change from childhood to adulthood."
                     }
                   ]
                 }
@@ -6613,6 +6763,24 @@ export const curriculumData = {
                       options: ["Wool actively generates heat", "Wool traps air in its pores, and since air is a poor conductor of heat, it reduces heat flow away from our bodies", "Wool is a good conductor of heat", "Wool reflects all incoming heat"],
                       answer: 1,
                       explanation: "Woollen fabric traps air within its pores; since air is a poor conductor of heat, this trapped air reduces the flow of heat from our bodies to the surroundings, keeping us warm."
+                    },
+                    {
+                      question: "In the falling-pins experiment, which pin falls first?",
+                      options: ["The one farthest from the flame", "The one closest to the flame", "All at the same time", "The middle one"],
+                      answer: 1,
+                      explanation: "Heat reaches the nearer wax first, so the pins fall in order along the strip."
+                    },
+                    {
+                      question: "In conduction, heat travels:",
+                      options: ["By the bulk movement of the material", "From the hotter part to the colder part, particle passing it to neighbour", "Only through empty space", "Only in liquids"],
+                      answer: 1,
+                      explanation: "Each heated particle passes energy on to the particle beside it."
+                    },
+                    {
+                      question: "Why are cooking utensils made of metal?",
+                      options: ["Metals are cheap", "Metals are good conductors, so heat passes through easily", "Metals are light", "Metals do not melt"],
+                      answer: 1,
+                      explanation: "Wood, glass and clay are poor conductors and are used where heat should be blocked."
                     }
                   ]
                 },
@@ -6682,6 +6850,24 @@ export const curriculumData = {
                       options: ["It never actually reverses", "At night, land cools faster than water, so warmer air rises above the sea instead, drawing cooler air from land towards the sea", "The Earth's rotation directly causes this reversal", "Land breeze and sea breeze are the same thing"],
                       answer: 1,
                       explanation: "At night, land cools faster than the sea, so the sea's warmer air rises, pulling cooler land air towards the sea — reversing the daytime sea breeze into a land breeze."
+                    },
+                    {
+                      question: "A paper cup above a candle rises because the heated air:",
+                      options: ["Becomes heavier", "Expands, becomes lighter and rises", "Turns solid", "Stops moving"],
+                      answer: 1,
+                      explanation: "Cooler, denser air then moves in to take its place."
+                    },
+                    {
+                      question: "In the potassium permanganate experiment, the coloured streak:",
+                      options: ["Sinks in the middle", "Rises in the middle and sinks along the sides", "Stays still", "Spreads evenly at once"],
+                      answer: 1,
+                      explanation: "This traces the convection current set up in the heated water."
+                    },
+                    {
+                      question: "During the day, cool air moves from sea to land. This is called:",
+                      options: ["Land breeze", "Sea breeze", "Monsoon", "Conduction"],
+                      answer: 1,
+                      explanation: "At night the direction reverses because land cools faster than water."
                     }
                   ]
                 },
@@ -6750,6 +6936,24 @@ export const curriculumData = {
                       options: ["Conduction", "Convection", "Radiation", "All three require a medium"],
                       answer: 2,
                       explanation: "Radiation is unique among the three heat transfer processes in that it does not require any material medium — this is how the Sun's heat reaches Earth through the vacuum of space."
+                    },
+                    {
+                      question: "Heat transfer that needs no medium at all is called:",
+                      options: ["Conduction", "Radiation", "Convection", "Insulation"],
+                      answer: 1,
+                      explanation: "The Sun's heat reaches us this way."
+                    },
+                    {
+                      question: "Why are light-coloured clothes comfortable in summer?",
+                      options: ["They are thinner", "They reflect most of the heat falling on them", "They absorb more heat", "They conduct heat away"],
+                      answer: 1,
+                      explanation: "Dark surfaces absorb more heat, which suits colder weather."
+                    },
+                    {
+                      question: "When water is heated in a pan, heat travels from flame to utensil by:",
+                      options: ["Convection", "Conduction", "Radiation", "No transfer"],
+                      answer: 1,
+                      explanation: "The water inside then heats by convection while radiation warms the surrounding air."
                     }
                   ]
                 },
@@ -6818,6 +7022,24 @@ export const curriculumData = {
                       options: ["A type of underground water pipe", "A tall, cone-shaped structure of ice, built by spraying stream water into cold winter air, which melts slowly in spring to provide water for farming", "A machine that purifies water", "A type of aquifer found only in Ladakh"],
                       answer: 1,
                       explanation: "An ice stupa is a human-made, cone-shaped ice structure formed by spraying mountain-stream water into freezing winter air; it melts gradually during spring, providing a water source for farming through the summer."
+                    },
+                    {
+                      question: "Water vapour entering the air from trees and plants comes from:",
+                      options: ["Infiltration", "Transpiration", "Condensation", "Precipitation"],
+                      answer: 1,
+                      explanation: "Evaporation from oceans, rivers and lakes adds to the same vapour."
+                    },
+                    {
+                      question: "What is infiltration?",
+                      options: ["Water flowing into rivers", "Water seeping into the ground", "Water evaporating", "Water freezing"],
+                      answer: 1,
+                      explanation: "It happens fastest through gravel and much more slowly through clay."
+                    },
+                    {
+                      question: "Why is groundwater being depleted?",
+                      options: ["Rain has stopped", "Growing population needs plus concrete surfaces that limit infiltration", "Rivers are drying only", "Too much rainwater harvesting"],
+                      answer: 1,
+                      explanation: "Recharge pits and rainwater harvesting help replenish it."
                     }
                   ]
                 }
@@ -6892,6 +7114,24 @@ export const curriculumData = {
                       options: ["Atomic clocks are less accurate than pendulum clocks", "Atomic clocks lose only about one second in millions of years, while pendulum clocks could drift by 10 seconds a day", "Both are equally precise", "Atomic clocks do not use repeating processes at all"],
                       answer: 1,
                       explanation: "Atomic clocks are vastly more precise, losing only about one second over millions of years, compared to early pendulum clocks that could drift by around 10 seconds per day."
+                    },
+                    {
+                      question: "Which natural cycles did early humans use for timekeeping?",
+                      options: ["Only the tides", "Sunrise and sunset, phases of the Moon and changing seasons", "Only the seasons", "Bird migration only"],
+                      answer: 1,
+                      explanation: "These repeat at definite intervals, which makes them useful clocks."
+                    },
+                    {
+                      question: "Who invented the pendulum clock?",
+                      options: ["Galileo Galilei", "Christiaan Huygens", "Isaac Newton", "Albert Einstein"],
+                      answer: 1,
+                      explanation: "It was far more accurate than the mechanical clocks that came before it."
+                    },
+                    {
+                      question: "How many seconds are there in one hour?",
+                      options: ["600", "3600", "360", "6000"],
+                      answer: 1,
+                      explanation: "Since 60 s = 1 min and 60 min = 1 h, one hour is 60 × 60 = 3600 s."
                     }
                   ]
                 },
@@ -6961,6 +7201,24 @@ export const curriculumData = {
                       options: ["It has no practical use", "It allows the pendulum to be used as a reliable time-measuring device, as in pendulum clocks", "It only matters for very short pendulums", "It was only used for decoration"],
                       answer: 1,
                       explanation: "Since a pendulum of fixed length always takes the same time per oscillation, counting oscillations gives a reliable way to measure elapsed time — the basis of the pendulum clock."
+                    },
+                    {
+                      question: "What is the bob of a simple pendulum?",
+                      options: ["The thread", "The small metallic ball at the end of the thread", "The support", "The stand"],
+                      answer: 1,
+                      explanation: "At rest the bob hangs at its mean position."
+                    },
+                    {
+                      question: "One complete oscillation of a pendulum is the journey:",
+                      options: ["From O to A only", "From O to A to B and back to O", "From A to B only", "Half a swing"],
+                      answer: 1,
+                      explanation: "The time taken for this whole journey is the time period."
+                    },
+                    {
+                      question: "The time period of a simple pendulum depends on:",
+                      options: ["The mass of the bob", "Its length", "The colour of the bob", "How hard it is pushed"],
+                      answer: 1,
+                      explanation: "Pendulums of the same length share the same time period at a given place."
                     }
                   ]
                 },
@@ -7030,6 +7288,30 @@ export const curriculumData = {
                       options: ["Because objects always move at exactly one constant speed", "Because an object may move slower or faster at different points during its journey, so this calculation only gives the overall average", "Because average speed and actual speed are unrelated concepts", "Because this formula is only an estimate with no real meaning"],
                       answer: 1,
                       explanation: "Since an object's speed can vary throughout a journey (moving faster or slower at different times), dividing total distance by total time gives only the average speed over the whole journey, not the speed at every instant."
+                    },
+                    {
+                      question: "Speed is defined as:",
+                      options: ["Distance multiplied by time", "Distance covered in unit time", "Time divided by distance", "Total distance only"],
+                      answer: 1,
+                      explanation: "Covering more distance in the same time means moving faster."
+                    },
+                    {
+                      question: "A cyclist covers 300 m in 60 s. What is the speed?",
+                      options: ["3 m/s", "5 m/s", "6 m/s", "60 m/s"],
+                      answer: 1,
+                      explanation: "Speed = Distance divided by Time = 300 / 60 = 5 m/s."
+                    },
+                    {
+                      question: "A bus travels at 50 km/h for 2 hours. How far does it go?",
+                      options: ["25 km", "100 km", "52 km", "150 km"],
+                      answer: 1,
+                      explanation: "Distance = Speed × Time = 50 × 2 = 100 km."
+                    },
+                    {
+                      question: "A train covers 180 km at 90 km/h. How long does it take?",
+                      options: ["1 h", "2 h", "3 h", "0.5 h"],
+                      answer: 1,
+                      explanation: "Time = Distance ÷ Speed = 180 ÷ 90 = 2 hours."
                     }
                   ]
                 },
@@ -7099,6 +7381,24 @@ export const curriculumData = {
                       options: ["Because no object can ever move at all", "Because real objects rarely move at a perfectly constant speed over long distances or times, so average speed is generally used instead", "Because uniform motion is purely a mathematical fiction with no real examples", "Because non-uniform motion does not actually exist"],
                       answer: 1,
                       explanation: "In practice, moving objects rarely maintain a perfectly constant speed for long — hence uniform motion is treated as an ideal case, and average speed is used to describe most real journeys."
+                    },
+                    {
+                      question: "Motion along a straight line is called:",
+                      options: ["Circular motion", "Linear motion", "Oscillatory motion", "Random motion"],
+                      answer: 1,
+                      explanation: "A train running along a straight track between stations is an example."
+                    },
+                    {
+                      question: "An object covering equal distances in equal intervals of time is in:",
+                      options: ["Non-uniform motion", "Uniform linear motion", "Rest", "Circular motion"],
+                      answer: 1,
+                      explanation: "Its speed stays constant throughout."
+                    },
+                    {
+                      question: "Train X covers 20 km in every 10-minute interval, while Train Y covers different distances. This means:",
+                      options: ["Both are uniform", "X is uniform and Y is non-uniform", "Both are non-uniform", "Y is faster"],
+                      answer: 1,
+                      explanation: "Equal distances in equal times is the test for uniform motion."
                     }
                   ]
                 }
