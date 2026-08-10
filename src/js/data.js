@@ -20579,6 +20579,30 @@ export const curriculumData = {
                       options: ["Permanent tissue", "Meristematic tissue, made of actively dividing cells", "Epidermal tissue", "Conducting tissue"],
                       answer: 1,
                       explanation: "Growth requires actively dividing cells, and these together form a tissue called meristematic tissue."
+                    },
+                    {
+                      question: "Why do plant cells need a rigid cell wall?",
+                      options: ["To help them move", "To provide support so the plant stays firm and upright", "To absorb sunlight", "To digest food"],
+                      answer: 1,
+                      explanation: "Most plants are fixed in one place, so they need structural support rather than the flexibility that movement requires."
+                    },
+                    {
+                      question: "Which statement about animal cells is correct?",
+                      options: ["They all have cell walls", "They lack a rigid cell wall, which allows movement", "They cannot grow", "They photosynthesise"],
+                      answer: 1,
+                      explanation: "Without a rigid wall, animal cells can change shape, which is essential for movement."
+                    },
+                    {
+                      question: "Plants are described as autotrophic. What does that mean?",
+                      options: ["They eat other organisms", "They synthesise their own food using solar energy", "They absorb food from soil directly", "They do not need food"],
+                      answer: 1,
+                      explanation: "Plants have tissues that let them use solar energy to synthesise food through photosynthesis, unlike animals which must obtain food from other sources."
+                    },
+                    {
+                      question: "In how many distinct ways do plants grow?",
+                      options: ["One", "Two", "Three — in length, in girth, and by regrowth", "Four"],
+                      answer: 2,
+                      explanation: "Different meristematic tissues are responsible for each kind of growth."
                     }
                   ]
                 },
@@ -20648,6 +20672,30 @@ export const curriculumData = {
                       options: ["Photosynthesis", "Differentiation", "Transpiration", "Respiration"],
                       answer: 1,
                       explanation: "Meristematic cells undergo changes in structure and function to become permanent tissues, and this process is called differentiation."
+                    },
+                    {
+                      question: "Which meristem is responsible for a seedling becoming a tall tree?",
+                      options: ["Lateral meristem", "Apical meristem at the root and shoot tips", "Intercalary meristem", "Permanent tissue"],
+                      answer: 1,
+                      explanation: "The apical meristem increases the plant's length, pushing shoots up and roots down."
+                    },
+                    {
+                      question: "Which meristem increases the thickness of a stem?",
+                      options: ["Apical", "Lateral, located along the circumference of the stem", "Intercalary", "Epidermal"],
+                      answer: 1,
+                      explanation: "Actively dividing cells around the circumference add to the plant's girth."
+                    },
+                    {
+                      question: "Why does grass grow back after being grazed or mown?",
+                      options: ["Because of the apical meristem", "Because of the intercalary meristem at the base of leaves and at the nodes", "Because of the lateral meristem", "Because of the epidermis"],
+                      answer: 1,
+                      explanation: "The growing region is low down, so removing the tips does not stop further growth."
+                    },
+                    {
+                      question: "What happens to meristematic cells over time?",
+                      options: ["They stay unchanged forever", "They change in structure and function to become permanent tissues", "They die immediately", "They become animal cells"],
+                      answer: 1,
+                      explanation: "This process of specialisation is how the plant's permanent tissues are formed."
                     }
                   ]
                 },
@@ -20717,6 +20765,42 @@ export const curriculumData = {
                       options: ["To store lignin", "To monitor the loading and unloading of sugars in sieve tubes", "To absorb water from soil", "To carry out photosynthesis"],
                       answer: 1,
                       explanation: "Companion cells are specialised parenchyma cells whose main function is to monitor loading and unloading of sugars in the sieve tubes, regulating their cellular functions."
+                    },
+                    {
+                      question: "Which simple permanent tissue acts as the general packing tissue of a plant?",
+                      options: ["Collenchyma", "Parenchyma", "Sclerenchyma", "Epidermis"],
+                      answer: 1,
+                      explanation: "Parenchyma consists of living cells with thin walls and fills much of the plant body."
+                    },
+                    {
+                      question: "Which tissue lets a stem or leaf stalk bend without breaking?",
+                      options: ["Parenchyma", "Collenchyma, with its thickened corners", "Sclerenchyma", "Xylem"],
+                      answer: 1,
+                      explanation: "The thickening at the corners of collenchyma cells provides flexibility rather than rigidity."
+                    },
+                    {
+                      question: "What makes sclerenchyma cells hard and stiff?",
+                      options: ["Thin walls", "Deposition of lignin in their thick walls", "Their fluid contents", "Their large vacuoles"],
+                      answer: 1,
+                      explanation: "Lignin makes these cells hard, which is why sclerenchyma provides strength."
+                    },
+                    {
+                      question: "What are the projections of epidermal cells in roots called, and what do they do?",
+                      options: ["Stomata, for gas exchange", "Root hair, which absorb water from the soil", "Tracheids, for transport", "Fibres, for support"],
+                      answer: 1,
+                      explanation: "Root hairs greatly increase the surface area available for absorbing water."
+                    },
+                    {
+                      question: "Why are xylem and phloem called complex permanent tissues?",
+                      options: ["They are found only in complex plants", "They are made up of different types of cells working together", "They are difficult to see", "They change constantly"],
+                      answer: 1,
+                      explanation: "Xylem includes tracheids, vessels, xylem parenchyma and xylem fibres, all cooperating in one tissue."
+                    },
+                    {
+                      question: "What creates the transpiration pull that helps move water up the xylem?",
+                      options: ["Root pressure alone", "Evaporation of water through the stomata of leaves", "The lateral meristem", "Gravity"],
+                      answer: 1,
+                      explanation: "Water lost through the leaf pores draws the column of water upwards behind it."
                     }
                   ]
                 },
@@ -20786,6 +20870,30 @@ export const curriculumData = {
                       options: ["Yes, they act entirely on their own", "No — both voluntary and involuntary muscles receive instructions from nervous tissue", "Only involuntary muscles can", "Only during exercise"],
                       answer: 1,
                       explanation: "Muscles, both voluntary and involuntary, cannot function independently — they receive their instructions from the nervous tissue."
+                    },
+                    {
+                      question: "Blood and bone are both connective tissues but feel completely different. Why?",
+                      options: ["They contain different cells only", "Their matrix differs — fluid in blood, hard and rigid in bone", "Bone is not really a tissue", "Blood has no matrix"],
+                      answer: 1,
+                      explanation: "The nature of the matrix between the cells determines the consistency of a connective tissue."
+                    },
+                    {
+                      question: "What is the main role of epithelial tissue?",
+                      options: ["Producing movement", "Forming coverings and linings in different parts of the body", "Carrying instructions", "Storing fat"],
+                      answer: 1,
+                      explanation: "Epithelium lines surfaces and cavities throughout the body."
+                    },
+                    {
+                      question: "During exercise, which tissue sends instructions to the muscles?",
+                      options: ["Connective tissue", "Nervous tissue, with the brain as the control centre", "Epithelial tissue", "Bone"],
+                      answer: 1,
+                      explanation: "Muscles cannot act on their own — the brain coordinates activity, memory and responses through the nervous tissue."
+                    },
+                    {
+                      question: "Which tissue type connects and supports other tissues?",
+                      options: ["Epithelial", "Connective", "Muscular", "Nervous"],
+                      answer: 1,
+                      explanation: "Blood and bone are both examples, despite being so different in consistency."
                     }
                   ]
                 }
@@ -20861,6 +20969,30 @@ export const curriculumData = {
                       options: ["The metre", "The second", "The metre per second", "The kilogram"],
                       answer: 0,
                       explanation: "Both quantities are measured in metres — they differ in whether direction must be specified, not in their unit."
+                    },
+                    {
+                      question: "What is the total distance travelled by the athlete between t = 0 s and t = 16 s?",
+                      options: ["40 m", "160 m", "100 m", "60 m"],
+                      answer: 1,
+                      explanation: "OA + AB = 100 m + 60 m = 160 m, counting every metre actually covered."
+                    },
+                    {
+                      question: "What is the athlete's displacement over the same interval?",
+                      options: ["160 m", "40 m in the positive direction", "100 m", "Zero"],
+                      answer: 1,
+                      explanation: "Displacement is the net change in position between the start and the end, regardless of the path taken."
+                    },
+                    {
+                      question: "Which of these is a vector quantity?",
+                      options: ["Distance", "Displacement", "Speed", "Mass"],
+                      answer: 1,
+                      explanation: "Vectors need both a magnitude and a direction; scalars are fully described by a number alone."
+                    },
+                    {
+                      question: "The magnitude of displacement is:",
+                      options: ["Always equal to the distance travelled", "The straight-line distance between the initial and final positions", "Always greater than the distance", "Always zero"],
+                      answer: 1,
+                      explanation: "It equals the distance travelled only when the motion is in a straight line without reversing."
                     }
                   ]
                 },
@@ -20930,6 +21062,30 @@ export const curriculumData = {
                       options: ["When the magnitude of velocity is increasing", "When the magnitude of velocity is decreasing", "Always", "Never"],
                       answer: 1,
                       explanation: "For straight-line motion, acceleration points along the velocity when speed is increasing, and opposite to the velocity when speed is decreasing."
+                    },
+                    {
+                      question: "Why does average speed have no direction?",
+                      options: ["Because it is always positive", "Because it is based on distance travelled, which has magnitude only", "Because it is measured in m/s", "Because speed is a vector"],
+                      answer: 1,
+                      explanation: "Distance travelled is a scalar, so dividing it by time gives another scalar quantity."
+                    },
+                    {
+                      question: "Why can average velocity be zero while average speed is not?",
+                      options: ["They are always equal", "Because displacement can be zero over a round trip even though distance travelled is not", "Because velocity is always smaller", "Because time differs"],
+                      answer: 1,
+                      explanation: "Returning to the starting point gives zero displacement, so the average velocity is zero although the athlete has certainly covered ground."
+                    },
+                    {
+                      question: "What is average acceleration?",
+                      options: ["Velocity ÷ time", "(Final velocity − initial velocity) ÷ time interval", "Distance ÷ time squared", "Speed × time"],
+                      answer: 1,
+                      explanation: "It measures how quickly the velocity is changing, which is why a sudden start or stop is felt as a jolt."
+                    },
+                    {
+                      question: "A car travels 100 m in 10 s along a straight road. What is its average speed?",
+                      options: ["1 m/s", "10 m/s", "100 m/s", "1000 m/s"],
+                      answer: 1,
+                      explanation: "Average speed = 100 ÷ 10 = 10 m s⁻¹."
                     }
                   ]
                 },
@@ -20999,6 +21155,30 @@ export const curriculumData = {
                       options: ["At the origin always", "At height u on the velocity axis", "At height v on the velocity axis", "Below the time axis"],
                       answer: 1,
                       explanation: "The line starts at the initial velocity u on the velocity axis and rises steadily to v at time t, its straightness indicating constant acceleration."
+                    },
+                    {
+                      question: "On a position-time graph, what does the slope represent?",
+                      options: ["Acceleration", "Velocity", "Distance", "Time"],
+                      answer: 1,
+                      explanation: "A steeper line means the position is changing faster, so the speed is greater."
+                    },
+                    {
+                      question: "Two objects move uniformly. On a position-time graph, the steeper line belongs to the object that is:",
+                      options: ["Slower", "Faster, since the slope gives the velocity", "At rest", "Accelerating"],
+                      answer: 1,
+                      explanation: "The slope of a position-time graph is the velocity, so a steeper line means a greater speed."
+                    },
+                    {
+                      question: "On a velocity-time graph, what does the slope give?",
+                      options: ["Displacement", "Acceleration", "Speed", "Distance"],
+                      answer: 1,
+                      explanation: "A straight sloping line indicates constant acceleration."
+                    },
+                    {
+                      question: "A horizontal line on a velocity-time graph indicates:",
+                      options: ["The object is at rest", "Uniform motion with zero acceleration", "Constant acceleration", "The object is speeding up"],
+                      answer: 1,
+                      explanation: "Unchanging velocity means the acceleration is zero."
                     }
                   ]
                 },
@@ -21068,6 +21248,30 @@ export const curriculumData = {
                       options: ["Motion in a circle where the speed keeps changing", "Motion in a circular path with constant speed", "Motion in a straight line", "Motion with zero acceleration"],
                       answer: 1,
                       explanation: "When an object moves along a circular path at constant speed, its motion is called uniform circular motion — the speed stays constant even though the direction keeps changing."
+                    },
+                    {
+                      question: "Which kinematic equation gives velocity directly from acceleration and time?",
+                      options: ["s = ut + ½at²", "v = u + at", "v² = u² + 2as", "s = vt"],
+                      answer: 1,
+                      explanation: "Rearranging a = (v − u) ÷ t gives at = v − u, so v = u + at."
+                    },
+                    {
+                      question: "For an object moving once around a circular path of radius R, the distance travelled is:",
+                      options: ["Zero", "2πR", "πR²", "R"],
+                      answer: 1,
+                      explanation: "The circumference is the distance covered in one complete revolution."
+                    },
+                    {
+                      question: "What is the displacement after one complete revolution of a circular path?",
+                      options: ["2πR", "Zero, since the object returns to its starting position", "πR", "R"],
+                      answer: 1,
+                      explanation: "Displacement depends only on the start and end positions, which coincide after a full circle."
+                    },
+                    {
+                      question: "Motion that is not confined to a straight line, such as a kicked ball, is called:",
+                      options: ["One-dimensional motion", "Motion in a plane, or two-dimensional motion", "Circular motion only", "Uniform motion"],
+                      answer: 1,
+                      explanation: "A satellite moving in a circular path is another example of motion in a plane."
                     }
                   ]
                 }
@@ -21143,6 +21347,30 @@ export const curriculumData = {
                       options: ["Because sugar settles at the bottom", "Because it has a uniform composition throughout", "Because sugar floats on top", "Because the tongue adapts"],
                       answer: 1,
                       explanation: "A homogeneous mixture has uniform composition throughout, so every part of the solution contains the same proportion of dissolved sugar."
+                    },
+                    {
+                      question: "Which of these is a heterogeneous mixture?",
+                      options: ["Sugar dissolved in water", "Vinegar", "Sand in water", "Soda water"],
+                      answer: 2,
+                      explanation: "The sand particles stay visible and settle out, so the mixture is not uniform."
+                    },
+                    {
+                      question: "Why do oil and water form two distinct layers?",
+                      options: ["Oil dissolves slowly", "They are immiscible and do not mix at all", "Water is heavier than everything", "Oil evaporates"],
+                      answer: 1,
+                      explanation: "Immiscible liquids separate into layers instead of forming a uniform mixture."
+                    },
+                    {
+                      question: "How do the particles of a suspension compare in size with those of a solution?",
+                      options: ["Much smaller", "Larger, and visible to the naked eye", "Exactly the same", "Suspensions have no particles"],
+                      answer: 1,
+                      explanation: "Sawdust in water and tea leaves in water are everyday examples."
+                    },
+                    {
+                      question: "Which of these is a solution?",
+                      options: ["Chalk powder in water", "Aerated soda, which is carbon dioxide in water", "Sand in water", "Oil in water"],
+                      answer: 1,
+                      explanation: "A solution is a homogeneous mixture with uniform composition throughout."
                     }
                   ]
                 },
@@ -21212,6 +21440,30 @@ export const curriculumData = {
                       options: ["It generally increases", "It generally decreases", "It stays constant", "It becomes zero"],
                       answer: 1,
                       explanation: "Unlike solids, gases dissolved in liquids generally become less soluble as the temperature increases."
+                    },
+                    {
+                      question: "What is the mass by mass percentage of a solution made from 20 g of solute and 80 g of solvent?",
+                      options: ["25 % m/m", "20 % m/m", "80 % m/m", "16 % m/m"],
+                      answer: 1,
+                      explanation: "The solution's mass is 20 + 80 = 100 g, so (20 ÷ 100) × 100 = 20 % m/m."
+                    },
+                    {
+                      question: "Why is mass by volume percentage preferred in medicines and laboratories?",
+                      options: ["It gives bigger numbers", "Because measuring a liquid's volume is easier than weighing it", "Because mass cannot be measured", "It is more accurate always"],
+                      answer: 1,
+                      explanation: "A 5 % glucose solution means 5 g of glucose made up to 100 mL of solution."
+                    },
+                    {
+                      question: "What is a saturated solution?",
+                      options: ["One with very little solute", "One that cannot dissolve any more solute at that temperature", "One that has been heated", "One containing a gas"],
+                      answer: 1,
+                      explanation: "Solubility is the maximum amount of solute that will dissolve in a fixed quantity of solvent at a given temperature."
+                    },
+                    {
+                      question: "Why must temperature always be stated along with a solubility value?",
+                      options: ["It has no real effect", "Because the solubility of a solid in a liquid generally increases with temperature", "Because thermometers are cheap", "Only for gases"],
+                      answer: 1,
+                      explanation: "Without the temperature the figure is meaningless, since solubility changes as the temperature changes."
                     }
                   ]
                 },
@@ -21281,6 +21533,30 @@ export const curriculumData = {
                       options: ["Because the components are uniformly mixed at the particle level", "Because homogeneous mixtures are too heavy", "Because they always contain gases", "They actually can be separated mechanically"],
                       answer: 0,
                       explanation: "In a homogeneous mixture the components are uniformly distributed at the particle level, so separation relies on differences in physical properties such as solubility rather than mechanical means."
+                    },
+                    {
+                      question: "What happens to the solubility of a solid as a saturated solution cools?",
+                      options: ["It increases", "It falls, so the surplus solute crystallises out", "It stays constant", "The solute evaporates"],
+                      answer: 1,
+                      explanation: "The solvent can no longer hold all the dissolved solute, so pure crystals separate out."
+                    },
+                    {
+                      question: "On a solubility curve, what is plotted on the x-axis?",
+                      options: ["Solubility", "Temperature", "Mass of solvent", "Time"],
+                      answer: 1,
+                      explanation: "Solubility in grams per 100 g of water is plotted against temperature on the y-axis."
+                    },
+                    {
+                      question: "How much of compound B dissolves in 100 g of water at 60 °C in the chapter's example?",
+                      options: ["100 g", "287 g", "400 g", "50 g"],
+                      answer: 1,
+                      explanation: "Cooling that saturated solution makes the excess crystallise out."
+                    },
+                    {
+                      question: "Crystallization separates a dissolved solid by exploiting a difference in:",
+                      options: ["Colour", "How solubility changes with temperature", "Density", "Magnetic property"],
+                      answer: 1,
+                      explanation: "Since the components of a homogeneous mixture are mixed at the particle level, a physical property must be used rather than a mechanical method."
                     }
                   ]
                 },
@@ -21350,6 +21626,30 @@ export const curriculumData = {
                       options: ["Separating gases from air", "Separating components of blood such as red blood cells and plasma", "Melting metals", "Growing crystals"],
                       answer: 1,
                       explanation: "Centrifugation is widely used in laboratories to separate the components of blood, such as red blood cells and plasma, as well as in many chemical industries."
+                    },
+                    {
+                      question: "In a separating funnel holding mustard oil and water, which layer is collected first?",
+                      options: ["The oil, from the top", "The water, drained from the bottom through the stopcock", "Both together", "Neither"],
+                      answer: 1,
+                      explanation: "The denser water forms the lower layer and is run off first, leaving the oil behind."
+                    },
+                    {
+                      question: "Which everyday substance is commonly used to demonstrate sublimation?",
+                      options: ["Common salt", "Camphor", "Sugar", "Sand"],
+                      answer: 1,
+                      explanation: "Camphor changes straight from solid to vapour on heating, so it can be separated from a non-sublimable solid such as salt."
+                    },
+                    {
+                      question: "What settles at the bottom when muddy water is left undisturbed?",
+                      options: ["The clear water", "The heavier mud", "The dissolved salts", "Nothing"],
+                      answer: 1,
+                      explanation: "This process is called sedimentation, and the clear liquid above can then be poured off."
+                    },
+                    {
+                      question: "Which force drives the heavier particles outward during centrifugation?",
+                      options: ["Gravitational force", "Centrifugal force, the outward force on a body in circular motion", "Magnetic force", "Buoyant force"],
+                      answer: 1,
+                      explanation: "Spinning the tubes at high speed makes them swing horizontal and pushes the denser material to the outer end."
                     }
                   ]
                 }
