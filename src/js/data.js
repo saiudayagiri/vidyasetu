@@ -19631,6 +19631,66 @@ export const curriculumData = {
                       options: ["It becomes less accurate", "Extra details are added for greater accuracy", "It stops being a model", "It must ignore even more details"],
                       answer: 1,
                       explanation: "Simple models deliberately omit smaller effects; as we build more complex models we add those extra details back in to gain greater accuracy."
+                    },
+                    {
+                      question: "Which of these is the best description of a scientific model?",
+                      options: ["An exact copy of the real system", "A simplified representation that focuses only on what matters for a given question", "A guess about what might happen", "A drawing made for a textbook"],
+                      answer: 1,
+                      explanation: "Models leave out detail on purpose so that the important features of a system can be understood clearly."
+                    },
+                    {
+                      question: "In physics, how might a moving car be represented in a simple model?",
+                      options: ["As a full engineering drawing", "As a single point", "As a collection of atoms", "As a photograph"],
+                      answer: 1,
+                      explanation: "Treating the car as a point ignores its shape and internal parts, which do not matter for describing where it goes."
+                    },
+                    {
+                      question: "Why are the assumptions made in a model not considered mistakes?",
+                      options: ["Because nobody checks them", "Because they are deliberate choices that keep the important features in focus", "Because they are always true", "Because models need not be accurate"],
+                      answer: 1,
+                      explanation: "Neglecting air resistance to study gravity, or ignoring individual cells to study the heart as an organ, are conscious simplifications."
+                    },
+                    {
+                      question: "In modelling a cricket ball hit for six, which factor can safely be ignored?",
+                      options: ["The mass of the ball", "The speed it was hit", "The colour of the ball", "The direction it was hit"],
+                      answer: 2,
+                      explanation: "The brand of bat, the colour of the ball and the grass on the field make no difference to whether the ball clears the boundary."
+                    },
+                    {
+                      question: "Which effects on the cricket ball are small enough to leave out of a simple model?",
+                      options: ["Mass and speed", "Air resistance, spin and the seam stitching", "Direction and mass", "The height of the boundary"],
+                      answer: 1,
+                      explanation: "These have real but smaller effects, so a first model can ignore them and still give a useful answer."
+                    },
+                    {
+                      question: "How are atoms and molecules usually represented in chemistry models?",
+                      options: ["As tiny cubes", "As spheres joined by bonds", "As waves only", "As points with no structure"],
+                      answer: 1,
+                      explanation: "Drawing atoms as spheres with bonds between them makes molecular shapes and reactions easier to picture."
+                    },
+                    {
+                      question: "A biologist studying how the heart pumps blood ignores individual cells. Why?",
+                      options: ["Cells are unimportant in biology", "To understand the heart as a working organ, individual cells are unnecessary detail", "Cells cannot be seen", "There are no cells in the heart"],
+                      answer: 1,
+                      explanation: "The right level of detail always depends on the question being asked."
+                    },
+                    {
+                      question: "Why can the natural world rarely be studied in full detail?",
+                      options: ["Scientists are not interested", "It is far too complex, so simplification is necessary", "Instruments are banned", "It is against the rules of science"],
+                      answer: 1,
+                      explanation: "Models exist precisely because complete descriptions of real systems are usually impossible."
+                    },
+                    {
+                      question: "A good model is one that:",
+                      options: ["Includes every possible detail", "Keeps what matters for the question and leaves out what does not", "Always gives exact answers", "Never needs changing"],
+                      answer: 1,
+                      explanation: "Usefulness for a particular purpose, not completeness, is what makes a model good."
+                    },
+                    {
+                      question: "What is the trade-off when a model is made more detailed?",
+                      options: ["It becomes less accurate", "It becomes more accurate but harder to work with", "It stops being a model", "Nothing changes at all"],
+                      answer: 1,
+                      explanation: "Adding the smaller effects back in improves accuracy but makes the model more complicated to use."
                     }
                   ]
                 },
@@ -19700,6 +19760,66 @@ export const curriculumData = {
                       options: ["Only a tool for calculating numbers", "A compact statement about how certain things are related", "A guess about nature", "A list of measurements"],
                       answer: 1,
                       explanation: "An equation is not merely a calculation tool — it is a compact statement expressing how quantities are related, which is why mathematics serves as a language for thinking in science."
+                    },
+                    {
+                      question: "Why must scientific terms be used precisely?",
+                      options: ["To make science sound difficult", "So scientists worldwide can compare observations and build on each other's work unambiguously", "To keep the public out", "Because dictionaries require it"],
+                      answer: 1,
+                      explanation: "Words such as force, work, cell and reaction carry exact meanings that everyday speech does not."
+                    },
+                    {
+                      question: "Why do we rely on agreed international standards for units?",
+                      options: ["So each country can choose its own", "So a kilogram means the same amount everywhere, allowing fair trade and comparable results", "To make measurement harder", "Because old objects are unreliable"],
+                      answer: 1,
+                      explanation: "Standard units are what let a measurement made in one place mean the same thing in another."
+                    },
+                    {
+                      question: "What does the Latin word celeritas, the origin of the symbol c, mean?",
+                      options: ["Light", "Speed", "Constant", "Clear"],
+                      answer: 1,
+                      explanation: "The symbol for the speed of light comes from history and international agreement, not from a convenient abbreviation."
+                    },
+                    {
+                      question: "The speed of light is defined as exactly 299792458 m/s. What does 'defined' mean here?",
+                      options: ["It is only an estimate", "The value is fixed by agreement rather than measured afresh each time", "It changes with the medium", "It is a rounded figure"],
+                      answer: 1,
+                      explanation: "It is one of the physical constants whose value is set by definition."
+                    },
+                    {
+                      question: "Why does science make heavy use of mathematics?",
+                      options: ["To make textbooks longer", "So relationships between quantities can be expressed clearly and tested carefully", "Because scientists like numbers", "To hide the meaning"],
+                      answer: 1,
+                      explanation: "An equation is a compact statement of how quantities are related, not just a way of computing an answer."
+                    },
+                    {
+                      question: "A quantity such as mass or velocity in science must be:",
+                      options: ["Described in everyday words", "Clearly defined and measurable", "Left to opinion", "Estimated only"],
+                      answer: 1,
+                      explanation: "Precise definition is what allows different observers to obtain comparable values."
+                    },
+                    {
+                      question: "Why is the everyday meaning of 'work' different from its scientific meaning?",
+                      options: ["They mean the same thing", "In science, work has an exact definition tied to force and displacement", "Scientists never use the word", "Everyday use is more precise"],
+                      answer: 1,
+                      explanation: "Pushing hard against a wall is work in everyday speech but zero work scientifically."
+                    },
+                    {
+                      question: "What is the benefit of scientists everywhere using the same symbols?",
+                      options: ["It looks neater", "Results and ideas can be shared and understood across languages", "It saves paper", "It is required by law"],
+                      answer: 1,
+                      explanation: "Shared symbols and units make science a genuinely international activity."
+                    },
+                    {
+                      question: "Scientific measurements should be based on:",
+                      options: ["The nearest available object", "Agreed international standards", "Local custom", "Personal judgement"],
+                      answer: 1,
+                      explanation: "Basing measurement on standards rather than local objects is what makes results comparable and fair."
+                    },
+                    {
+                      question: "The aircraft fuel incident described in the chapter is a warning about:",
+                      options: ["Flying at night", "Using the wrong units in a calculation", "Carrying too much fuel", "Using the metric system"],
+                      answer: 1,
+                      explanation: "The crew calculated with the wrong density figure, so the aircraft was loaded with far less fuel than it needed."
                     }
                   ]
                 },
@@ -19769,6 +19889,66 @@ export const curriculumData = {
                       options: ["Science is shown to be unreliable", "Scientists reject the idea based on opinion", "It is treated as a strength — ideas are revised based on evidence, since no theory is final", "The new evidence is ignored"],
                       answer: 2,
                       explanation: "Such failures are described as science's greatest strength: ideas are rejected only on evidence, never on opinion or belief, and this openness to correction is what makes science reliable."
+                    },
+                    {
+                      question: "Which best describes a scientific law?",
+                      options: ["An explanation of why something happens", "A description of a regular pattern observed in nature", "An untested guess", "A government rule"],
+                      answer: 1,
+                      explanation: "Laws describe patterns, often in words or mathematical form; theories explain why those patterns occur."
+                    },
+                    {
+                      question: "Newton's laws of motion are used in the chapter to explain:",
+                      options: ["Why the sky is blue", "The jerk felt when a bus stops suddenly", "How plants grow", "Why metals conduct"],
+                      answer: 1,
+                      explanation: "The laws describe how motion changes, which accounts for the jerk that passengers feel."
+                    },
+                    {
+                      question: "Atomic theory is given as an example of a theory because it:",
+                      options: ["Describes a pattern only", "Explains how molecules are formed, based on evidence gathered over time", "Has never been tested", "Is only a guess"],
+                      answer: 1,
+                      explanation: "A theory provides the explanation lying behind the observed patterns."
+                    },
+                    {
+                      question: "In everyday speech 'theory' often means a guess. In science it means:",
+                      options: ["Exactly the same thing", "An explanation based on careful testing and critical examination", "A law that failed", "A personal opinion"],
+                      answer: 1,
+                      explanation: "This difference in meaning is a common source of confusion about science."
+                    },
+                    {
+                      question: "Applying the conservation of energy when climbing stairs is an example of a:",
+                      options: ["Law", "Principle", "Hypothesis", "Model"],
+                      answer: 1,
+                      explanation: "Principles are broad ideas that help us make sense of a given situation."
+                    },
+                    {
+                      question: "Why are scientific ideas always open to revision?",
+                      options: ["Scientists are unsure of everything", "Because new evidence may show that an idea needs improving", "So textbooks can be reprinted", "Because laws expire"],
+                      answer: 1,
+                      explanation: "Openness to revision in the light of evidence is a key feature of what makes science reliable."
+                    },
+                    {
+                      question: "Which of these describes a pattern rather than explaining it?",
+                      options: ["Atomic theory", "A law", "A principle of conservation", "A hypothesis"],
+                      answer: 1,
+                      explanation: "Laws state what regularly happens; theories say why it happens."
+                    },
+                    {
+                      question: "What kind of evidence is a scientific theory built on?",
+                      options: ["A single experiment", "Evidence gathered over time and available at that time", "Popular opinion", "Mathematical proof alone"],
+                      answer: 1,
+                      explanation: "A theory is constructed and tested against accumulated evidence."
+                    },
+                    {
+                      question: "Which statement about laws and theories is correct?",
+                      options: ["A theory becomes a law once it is proved", "They answer different questions — laws describe patterns, theories explain them", "Laws are guesses", "Theories are less reliable than guesses"],
+                      answer: 1,
+                      explanation: "One does not turn into the other; they play different roles in science."
+                    },
+                    {
+                      question: "Even the most successful theories:",
+                      options: ["Are never questioned", "Have limits and may fail when new conditions are explored", "Are proved beyond doubt", "Apply everywhere without exception"],
+                      answer: 1,
+                      explanation: "Finding those limits is exactly how scientific understanding advances."
                     }
                   ]
                 },
@@ -19838,6 +20018,66 @@ export const curriculumData = {
                       options: ["Because exact answers are never possible", "Because it builds intuition, helps detect errors and shows whether a result is reasonable", "Because estimation replaces measurement", "Because estimates are more accurate than calculations"],
                       answer: 1,
                       explanation: "A rough estimate is often enough to tell whether a result is reasonable or impossible, building intuition and confidence — science values careful reasoning perhaps even more than precise calculation."
+                    },
+                    {
+                      question: "What makes prediction one of science's great strengths?",
+                      options: ["It avoids the need for experiments", "Well-established laws, theories and models let us anticipate what will happen under new conditions", "It always gives exact answers", "It replaces observation"],
+                      answer: 1,
+                      explanation: "Prediction can work even where no experiment is possible."
+                    },
+                    {
+                      question: "Which is a scientifically testable question about rain?",
+                      options: ["Will it rain? Yes or no", "What is the humidity today, and was it above 80 per cent last time it rained?", "Do the clouds look scary?", "Is rain good or bad?"],
+                      answer: 1,
+                      explanation: "Useful scientific questions look for measurable evidence and past patterns rather than a simple yes or no."
+                    },
+                    {
+                      question: "Why are simple yes/no questions often less useful in science?",
+                      options: ["They are too long", "They do not point to measurable evidence that could settle the matter", "They are always wrong", "Scientists dislike them"],
+                      answer: 1,
+                      explanation: "A good question suggests what to measure and how to compare it with earlier observations."
+                    },
+                    {
+                      question: "What is the first step in the estimation strategy described in the chapter?",
+                      options: ["Do a precise calculation", "Understand the situation", "Look up the answer", "Guess at random"],
+                      answer: 1,
+                      explanation: "Understand the situation, then identify the quantities that matter, then make a rough estimate."
+                    },
+                    {
+                      question: "Why is an approximate estimate often enough early in reasoning?",
+                      options: ["Exactness never matters", "It can already show whether an answer is reasonable or impossible", "It is quicker to write down", "It avoids using mathematics"],
+                      answer: 1,
+                      explanation: "Estimation builds intuition and helps catch errors before effort is spent on precise work."
+                    },
+                    {
+                      question: "Using ideas about motion, science can predict:",
+                      options: ["The colour of a football", "How far a kicked football will travel", "Who will win the match", "The price of the ball"],
+                      answer: 1,
+                      explanation: "Established laws of motion allow the path and range to be worked out in advance."
+                    },
+                    {
+                      question: "If a prediction does not match what is observed, a scientist should:",
+                      options: ["Ignore the observation", "Re-examine the model and the assumptions behind the prediction", "Change the observation to fit", "Abandon science"],
+                      answer: 1,
+                      explanation: "Mismatches are informative — they show where current understanding is incomplete."
+                    },
+                    {
+                      question: "Weather forecasts become less certain further ahead because:",
+                      options: ["Instruments stop working", "Small uncertainties grow as the prediction is extended in time", "Nobody checks them", "The atmosphere is simple"],
+                      answer: 1,
+                      explanation: "Even a good model accumulates uncertainty the further into the future it is pushed."
+                    },
+                    {
+                      question: "Chemical knowledge allows scientists to estimate:",
+                      options: ["The taste of a compound", "How much product a reaction will give", "The cost of glassware", "The colour of the laboratory"],
+                      answer: 1,
+                      explanation: "Quantitative chemical reasoning lets amounts be anticipated before the reaction is carried out."
+                    },
+                    {
+                      question: "Learning to estimate is valuable mainly because it:",
+                      options: ["Replaces measurement entirely", "Builds intuition and helps detect errors", "Always gives exact answers", "Removes the need for models"],
+                      answer: 1,
+                      explanation: "A quick estimate acts as a sanity check on any detailed result."
                     }
                   ]
                 }
@@ -19913,6 +20153,42 @@ export const curriculumData = {
                       options: ["Ultraviolet rays", "A beam of electrons", "X-rays", "Sound waves"],
                       answer: 1,
                       explanation: "Electron microscopes use a beam of electrons rather than light, revealing cell structure with great clarity at the nanometre scale."
+                    },
+                    {
+                      question: "Why is a single cell usually invisible to the unaided eye?",
+                      options: ["It is transparent", "It is far smaller than the eye's 0.1 mm limit of resolution", "It moves too fast", "It is hidden inside tissue"],
+                      answer: 1,
+                      explanation: "Two points closer than about 0.1 mm appear as one to the human eye, and most cells are much smaller than that."
+                    },
+                    {
+                      question: "What is the near point of the human eye?",
+                      options: ["10 cm", "25 cm", "1 metre", "0.1 mm"],
+                      answer: 1,
+                      explanation: "The limit of resolution of 0.1 mm applies when an object is viewed from about 25 cm."
+                    },
+                    {
+                      question: "What did Robert Hooke actually see when he examined a thin slice of cork?",
+                      options: ["Living moving cells", "Small box-like compartments, which he named cells", "A single large cell", "Bacteria"],
+                      answer: 1,
+                      explanation: "The empty box-like compartments in dead cork reminded him of small rooms, so he called them cells."
+                    },
+                    {
+                      question: "A microscope's field of view is 4 mm across and 20 cells lie along it. How big is one cell?",
+                      options: ["80 µm", "200 µm", "400 µm", "20 µm"],
+                      answer: 1,
+                      explanation: "4 mm = 4000 µm, and 4000 ÷ 20 = 200 µm per cell."
+                    },
+                    {
+                      question: "Which two lenses combine to give a compound microscope its magnification?",
+                      options: ["Two eyepieces", "The objective lens and the eyepiece", "Two objective lenses", "A mirror and a lens"],
+                      answer: 1,
+                      explanation: "Total magnification is the magnifying power of the objective multiplied by that of the eyepiece."
+                    },
+                    {
+                      question: "Roughly what magnification could Hooke's own microscope reach?",
+                      options: ["10-20X", "200-300X", "2000X", "100000X"],
+                      answer: 1,
+                      explanation: "That was enough to reveal the box-like compartments of cork in 1665."
                     }
                   ]
                 },
@@ -19982,6 +20258,42 @@ export const curriculumData = {
                       options: ["Its membrane becomes rigid", "Its rigid cell wall maintains the shape while the inner contents shrink", "Plant cells never lose water", "It absorbs salt to stay firm"],
                       answer: 1,
                       explanation: "The cell wall is rigid, so the overall shape is preserved even as the inner contents shrink and the cell membrane pulls away from the wall."
+                    },
+                    {
+                      question: "What is another name for the cell membrane?",
+                      options: ["Cell wall", "Plasma membrane", "Nuclear membrane", "Cytoplasm"],
+                      answer: 1,
+                      explanation: "It defines the individuality of the cell and protects its contents."
+                    },
+                    {
+                      question: "Which substance moves freely through the cell membrane in the potato experiment?",
+                      options: ["Salt", "Water", "Sugar", "Starch"],
+                      answer: 1,
+                      explanation: "The membrane lets water in and out but blocks the sugar and salt molecules, which is why the potato pieces change weight."
+                    },
+                    {
+                      question: "Why does the potato piece in plain water gain weight?",
+                      options: ["It absorbs salt", "Water moves into the cells from the surrounding plain water", "It absorbs air", "The starch swells"],
+                      answer: 1,
+                      explanation: "Water moves from where it is more concentrated to where it is less concentrated, so it enters the potato cells."
+                    },
+                    {
+                      question: "How does the cell wall differ from the cell membrane in what it lets through?",
+                      options: ["Both are selectively permeable", "The wall is permeable while the membrane is selectively permeable", "The wall blocks everything", "The membrane is fully permeable"],
+                      answer: 1,
+                      explanation: "Water and some dissolved minerals pass freely through the cellulose wall, which helps roots absorb water."
+                    },
+                    {
+                      question: "Which type of cell has a cell wall?",
+                      options: ["Animal cells only", "Plant cells", "Neither", "Both equally"],
+                      answer: 1,
+                      explanation: "The rigid cellulose wall is an additional outer covering found in plant cells but not animal cells."
+                    },
+                    {
+                      question: "What is osmosis, as shown by the potato experiment?",
+                      options: ["Movement of salt through a membrane", "Movement of water across a selectively permeable membrane", "Breaking down of starch", "Growth of new cells"],
+                      answer: 1,
+                      explanation: "Water crosses the membrane while the dissolved solute cannot, so the potato piece swells or shrinks."
                     }
                   ]
                 },
@@ -20051,6 +20363,42 @@ export const curriculumData = {
                       options: ["Prokaryotic cells", "Eukaryotic cells", "Acellular infectious agents with no cells at all", "Membrane-bound organelles"],
                       answer: 2,
                       explanation: "They are acellular — having no cells — infectious agents, and are too small to be seen under a light microscope."
+                    },
+                    {
+                      question: "What is the cytoplasm?",
+                      options: ["The outer boundary of the cell", "A semi-fluid jelly-like substance filling the cell", "The control centre", "A rigid wall"],
+                      answer: 1,
+                      explanation: "The cytoplasm holds the organelles and is where many cellular activities take place."
+                    },
+                    {
+                      question: "Which word parts make up 'prokaryotic'?",
+                      options: ["true + nucleus", "primitive + nucleus", "first + cell", "small + body"],
+                      answer: 1,
+                      explanation: "Pro means primitive and karyon means nucleus, describing a cell with no well-defined nucleus."
+                    },
+                    {
+                      question: "Where do most cellular activities occur in a bacterial cell?",
+                      options: ["In the nucleus", "Directly in the cytoplasm", "In the mitochondria", "In the chloroplast"],
+                      answer: 1,
+                      explanation: "Prokaryotic cells lack membrane-bound organelles, so their reactions take place in the cytoplasm itself."
+                    },
+                    {
+                      question: "Which three features do plant cells have that animal cells lack?",
+                      options: ["Nucleus, ribosomes and cytoplasm", "Cell wall, chloroplasts and a large vacuole", "Mitochondria, ER and ribosomes", "Membrane, DNA and nucleolus"],
+                      answer: 1,
+                      explanation: "Both are eukaryotic, but only the plant cell carries these three extra structures."
+                    },
+                    {
+                      question: "What does 'membrane-bound organelle' mean?",
+                      options: ["An organelle attached to the cell wall", "An organelle surrounded by its own membrane", "An organelle made of membrane only", "An organelle outside the cell"],
+                      answer: 1,
+                      explanation: "Their absence is what distinguishes a prokaryotic cell from a eukaryotic one."
+                    },
+                    {
+                      question: "Why can viruses not be classified as prokaryotic or eukaryotic?",
+                      options: ["They are too large", "They have no cells at all", "They have two nuclei", "They are plants"],
+                      answer: 1,
+                      explanation: "Viruses, viroids and prions are acellular infectious agents, so the cell-based categories do not apply to them."
                     }
                   ]
                 },
@@ -20120,6 +20468,42 @@ export const curriculumData = {
                       options: ["Cellulose and starch", "DNA and specific proteins", "Lipids only", "Ribosomes"],
                       answer: 1,
                       explanation: "Chromosomes, visible as rod-shaped structures within the nucleus, are composed of DNA together with specific proteins."
+                    },
+                    {
+                      question: "What allows material to be exchanged between the nucleus and the cytoplasm?",
+                      options: ["Chromosomes", "Nuclear pores in the double-layered nuclear membrane", "The nucleolus", "Ribosomes"],
+                      answer: 1,
+                      explanation: "The pores in the nuclear envelope let ribosomal subunits and other materials pass out to the cytoplasm."
+                    },
+                    {
+                      question: "Where are ribosomal subunits made?",
+                      options: ["In the cytoplasm", "In the nucleolus", "On the rough ER", "In the mitochondria"],
+                      answer: 1,
+                      explanation: "They are synthesised in the nucleolus and then move to the cytoplasm, where the subunits join to form a ribosome."
+                    },
+                    {
+                      question: "Which organelle is described as the cell's protein factory?",
+                      options: ["Mitochondrion", "Ribosome", "Golgi body", "Vacuole"],
+                      answer: 1,
+                      explanation: "Ribosomes are the sites of protein synthesis."
+                    },
+                    {
+                      question: "Smooth Endoplasmic Reticulum differs from Rough ER because it:",
+                      options: ["Has more ribosomes", "Lacks attached ribosomes and handles fats and some hormones", "Is found only in bacteria", "Contains DNA"],
+                      answer: 1,
+                      explanation: "RER carries ribosomes on its surface for protein synthesis and transport, while SER has none."
+                    },
+                    {
+                      question: "How many membranes surround a mitochondrion?",
+                      options: ["One", "Two", "Three", "None"],
+                      answer: 1,
+                      explanation: "The double membrane is a characteristic feature of mitochondria."
+                    },
+                    {
+                      question: "Why is having membrane-bound organelles an advantage for a eukaryotic cell?",
+                      options: ["It makes the cell larger", "Different chemical processes can be kept in separate compartments and run at the same time", "It removes the need for a nucleus", "It speeds up cell division"],
+                      answer: 1,
+                      explanation: "Compartmentalisation lets many activities proceed at once without interfering with one another."
                     }
                   ]
                 }
