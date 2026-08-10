@@ -12320,6 +12320,66 @@ export const curriculumData = {
                       options: ["Cell wall — animal cells only", "Chloroplast — plant cells only", "Cell membrane — plant cells only", "Nucleus — animal cells only"],
                       answer: 1,
                       explanation: "The cell membrane and nucleus are common to both; the wall and chloroplasts are exclusive to plant cells."
+                    },
+                    {
+                      question: "Which structure controls the activities of a cell?",
+                      options: ["The cell wall", "The nucleus", "The chloroplast", "The cytoplasm"],
+                      answer: 1,
+                      explanation: "The nucleus is present in both plant and animal cells and directs the cell's activities."
+                    },
+                    {
+                      question: "The jelly-like substance filling a cell is called the:",
+                      options: ["Cell wall", "Cytoplasm", "Nucleus", "Plastid"],
+                      answer: 1,
+                      explanation: "Organelles are suspended within the cytoplasm, where many cell activities take place."
+                    },
+                    {
+                      question: "A cell wall differs from a cell membrane because it is:",
+                      options: ["Thinner and flexible", "Rigid and made of cellulose", "Made of fat", "Found only in animals"],
+                      answer: 1,
+                      explanation: "The membrane beneath it is thin and flexible in both plant and animal cells."
+                    },
+                    {
+                      question: "Why can a plant make its own food while an animal cannot?",
+                      options: ["Plants have a nucleus", "Plants have chloroplasts containing chlorophyll", "Plants have cytoplasm", "Plants are larger"],
+                      answer: 1,
+                      explanation: "Chlorophyll traps light energy so that photosynthesis can take place."
+                    },
+                    {
+                      question: "Which pair of structures would you find ONLY in a plant cell?",
+                      options: ["Nucleus and cytoplasm", "Cell wall and chloroplasts", "Cell membrane and nucleus", "Cytoplasm and cell membrane"],
+                      answer: 1,
+                      explanation: "Animal cells lack both a cell wall and plastids of any kind."
+                    },
+                    {
+                      question: "Cellulose gives the plant cell wall its:",
+                      options: ["Green colour", "Rigidity and strength", "Ability to divide", "Flexibility"],
+                      answer: 1,
+                      explanation: "That rigidity keeps plant cells firm and compactly arranged."
+                    },
+                    {
+                      question: "Which of these best describes chloroplasts?",
+                      options: ["Colourless plastids", "Green plastids containing chlorophyll", "Part of the cell wall", "The control centre"],
+                      answer: 1,
+                      explanation: "They are the site where the plant manufactures its own food."
+                    },
+                    {
+                      question: "A drawing shows a cell with an irregular, flexible outline and no green bodies. It is most likely:",
+                      options: ["A plant cell", "An animal cell", "A leaf cell", "An onion peel cell"],
+                      answer: 1,
+                      explanation: "Without a rigid cell wall, animal cells can take irregular shapes."
+                    },
+                    {
+                      question: "Onion peel cells appear firm and box-like under a microscope because:",
+                      options: ["They contain chlorophyll", "They have rigid cell walls", "They have no nucleus", "They are dead"],
+                      answer: 1,
+                      explanation: "The cell wall gives shape and lets the cells sit compactly against one another."
+                    },
+                    {
+                      question: "What would happen to a plant with no cell walls?",
+                      options: ["It would grow faster", "It would lose its rigidity and could not stand upright", "It would photosynthesise more", "Nothing would change"],
+                      answer: 1,
+                      explanation: "The wall provides the support that lets plants stay firm against wind and weather."
                     }
                   ]
                 }
@@ -20199,6 +20259,24 @@ export const curriculumData = {
                       options: ["2", "3", "4", "6"],
                       answer: 2,
                       explanation: "Joining the midpoints of an equilateral triangle's three sides divides it into 4 identical smaller equilateral triangles — 3 corner triangles plus 1 central triangle (which gets removed in the Gasket construction)."
+                    },
+                    {
+                      question: "What is a fractal?",
+                      options: ["Any curved shape", "A self-similar shape repeating the same pattern at smaller and smaller scales", "A shape with equal sides", "A three-dimensional solid"],
+                      answer: 1,
+                      explanation: "This self-similarity appears throughout nature as well as in mathematics."
+                    },
+                    {
+                      question: "After one step of the Sierpinski Carpet, how many of the nine small squares remain?",
+                      options: ["9", "8", "6", "4"],
+                      answer: 1,
+                      explanation: "The central square is removed from the nine, leaving 8 — and the process then repeats on each of those."
+                    },
+                    {
+                      question: "In the Sierpinski Gasket, an equilateral triangle is divided into how many smaller triangles?",
+                      options: ["3", "4", "6", "9"],
+                      answer: 1,
+                      explanation: "Joining the midpoints creates 4 identical triangles, and the central one is removed."
                     }
                   ]
                 },
@@ -20268,6 +20346,24 @@ export const curriculumData = {
                       options: ["3", "4", "12", "1/3"],
                       answer: 1,
                       explanation: "At Step 1, there are 3×4=12 sides, each of length 1/3, giving a perimeter of 12×(1/3)=4 — matching the formula 3×(4/3)¹=4."
+                    },
+                    {
+                      question: "In the Koch Snowflake, each side is divided into how many equal parts?",
+                      options: ["2", "3", "4", "6"],
+                      answer: 1,
+                      explanation: "An equilateral triangle is raised over the middle part, and that middle part is then removed."
+                    },
+                    {
+                      question: "How many sides does the Koch Snowflake have after n steps?",
+                      options: ["3n", "3 × 4ⁿ", "4n", "3ⁿ"],
+                      answer: 1,
+                      explanation: "Each side becomes 4 new sides at every step, starting from the triangle's 3 sides."
+                    },
+                    {
+                      question: "Which Indian monument is cited as showing fractal structure?",
+                      options: ["The Taj Mahal", "The Kandariya Mahadev Temple at Khajuraho", "The Red Fort", "Sanchi Stupa"],
+                      answer: 1,
+                      explanation: "Built around 1025 CE, its tall structure is made of smaller copies of itself."
                     }
                   ]
                 },
@@ -20337,6 +20433,24 @@ export const curriculumData = {
                       options: ["A 3D model made of wire", "A flat shape obtained by unfolding a solid onto a plane, which can be folded back to form the solid", "The shadow cast by a solid", "A type of prism"],
                       answer: 1,
                       explanation: "A net is the flat pattern created by unfolding a solid's surface onto a plane — folding it back along its edges recreates the original 3D solid."
+                    },
+                    {
+                      question: "How many edges does a cube have?",
+                      options: ["6", "12", "8", "24"],
+                      answer: 1,
+                      explanation: "Counting them up, a cube has 6 faces, 12 edges and 8 vertices."
+                    },
+                    {
+                      question: "What defines a prism?",
+                      options: ["It has a single apex", "Two congruent polygons as opposite faces joined by parallelogram faces", "All faces triangular", "It has a curved surface"],
+                      answer: 1,
+                      explanation: "Prisms are named after the shape of those polygon faces — triangular, pentagonal and so on."
+                    },
+                    {
+                      question: "What is a net?",
+                      options: ["The outline of a shadow", "A flat shape that folds up to form a solid", "A grid of squares", "The surface area formula"],
+                      answer: 1,
+                      explanation: "It is obtained by unfolding a solid onto a plane, and folding it along its edges recreates the solid."
                     }
                   ]
                 },
@@ -20406,6 +20520,24 @@ export const curriculumData = {
                       options: ["No, all information is always fully preserved", "Yes, generally information is lost — though for special orientations like the isometric view, much of it can be recovered", "Only spheres lose information when projected", "Projections always create more information than the original solid had"],
                       answer: 1,
                       explanation: "Projecting a 3D solid onto a 2D plane generally loses information (since a 2D outline can't fully capture a 3D shape) — but special orientations, like the isometric projection, allow much of that information (such as equal edge lengths) to be recovered."
+                    },
+                    {
+                      question: "What is a profile of a solid?",
+                      options: ["Its volume", "Its outline as seen from a particular viewpoint", "Its net", "Its surface area"],
+                      answer: 1,
+                      explanation: "The same solid can look dramatically different depending on the viewing direction."
+                    },
+                    {
+                      question: "Why is the isometric projection special?",
+                      options: ["It shows only one face", "It recovers much of the information normally lost when projecting onto a plane", "It makes solids look flat", "It requires no grid"],
+                      answer: 1,
+                      explanation: "Balancing a cube on a vertex gives the characteristic isometric view."
+                    },
+                    {
+                      question: "Which shape is used to tile an isometric grid?",
+                      options: ["Squares", "Hexagons", "Circles", "Pentagons"],
+                      answer: 1,
+                      explanation: "The hexagonal tiling matches the isometric cube shape and is widely used in engineering drawing."
                     }
                   ]
                 }
@@ -20481,6 +20613,24 @@ export const curriculumData = {
                       options: ["There can actually be many such values", "Any value other than the true mean would create an imbalance — either more total distance on one side or the other", "This property doesn't actually determine a unique value", "The centre depends on how the data is sorted"],
                       answer: 1,
                       explanation: "Moving away from the true mean in either direction breaks the balance (increasing distances on one side while decreasing them on the other), which is why the balancing centre is always unique."
+                    },
+                    {
+                      question: "Where does the mean of two numbers lie?",
+                      options: ["At the smaller number", "Exactly halfway between them", "At the larger number", "It varies"],
+                      answer: 1,
+                      explanation: "For larger collections the mean acts as a balance point in the same spirit."
+                    },
+                    {
+                      question: "Adding a value greater than the current mean will:",
+                      options: ["Lower the mean", "Raise the mean", "Leave it unchanged", "Make it zero"],
+                      answer: 1,
+                      explanation: "The balance must shift to accommodate the extra amount above the centre."
+                    },
+                    {
+                      question: "Can values be added without changing the mean?",
+                      options: ["Never", "Yes, if the amounts above the mean exactly cancel the shortfalls below it", "Only if they equal zero", "Only for two values"],
+                      answer: 1,
+                      explanation: "The mean stays put whenever the surpluses and deficits balance out."
                     }
                   ]
                 },
@@ -20550,6 +20700,24 @@ export const curriculumData = {
                       options: ["This is simply an approximation, not an exact result", "Because [(x₁+k)+(x₂+k)+...+(xₙ+k)]/n = (x₁+x₂+...+xₙ)/n + kn/n = (original mean) + k", "Because k always equals the mean itself", "This relationship only holds for datasets with exactly 2 values"],
                       answer: 1,
                       explanation: "Expanding the sum of the shifted values shows the k's contribute exactly kn total, which divided by n gives exactly k added to the original mean — an exact algebraic result for any dataset size."
+                    },
+                    {
+                      question: "If every value in a dataset increases by 7, the mean:",
+                      options: ["Stays the same", "Increases by 7", "Increases by 7n", "Doubles"],
+                      answer: 1,
+                      explanation: "A uniform shift moves the balance point by exactly that amount."
+                    },
+                    {
+                      question: "If every value is multiplied by 5, the mean is:",
+                      options: ["Increased by 5", "Multiplied by 5", "Unchanged", "Divided by 5"],
+                      answer: 1,
+                      explanation: "Scaling every value scales their average by the same factor."
+                    },
+                    {
+                      question: "Why are these shortcuts useful?",
+                      options: ["They give approximate answers", "They avoid recomputing the whole dataset's mean after a uniform shift or scale", "They only work for small datasets", "They replace the mean"],
+                      answer: 1,
+                      explanation: "The same operation can simply be applied to the old mean directly."
                     }
                   ]
                 },
@@ -20619,6 +20787,24 @@ export const curriculumData = {
                       options: ["Median = middle value when sorted", "Mean = total sum ÷ number of values, which can be rearranged to find the total sum from the mean and count", "Mode = most frequently occurring value", "Range = maximum value minus minimum value"],
                       answer: 1,
                       explanation: "Both problems rely on rearranging the mean formula (mean = total sum ÷ count) to first recover the total sum, from which an unknown or incorrect value can be isolated."
+                    },
+                    {
+                      question: "If 10 values have a mean of 39.2, what is their total?",
+                      options: ["3.92", "392", "39.2", "3920"],
+                      answer: 1,
+                      explanation: "The total is the mean multiplied by the count: 39.2 × 10 = 392."
+                    },
+                    {
+                      question: "Knowing the average and the count lets you recover:",
+                      options: ["Each individual value", "The total sum", "The largest value", "The range"],
+                      answer: 1,
+                      explanation: "From that total, a single unknown or incorrect value can then be isolated."
+                    },
+                    {
+                      question: "An average of 25.6 was found from 15 trees. What was the recorded total?",
+                      options: ["256", "384", "400", "41"],
+                      answer: 1,
+                      explanation: "Multiplying mean by count: 25.6 × 15 = 384, and any correction is then applied to this total."
                     }
                   ]
                 },
@@ -20688,6 +20874,24 @@ export const curriculumData = {
                       options: ["This is entirely random with no geographic explanation", "Different coastal regions of India are affected by different monsoon systems (south-west vs. north-east monsoon) at different times of year", "All Indian cities actually have identical rainfall patterns", "Rainfall timing has no connection to a region's geography"],
                       answer: 1,
                       explanation: "India's west coast (like Mangaluru) is primarily affected by the south-west monsoon (roughly June–September), while parts of the east coast (like Rameswaram) receive more rainfall from the north-east monsoon (roughly October–December) — explaining the differing peak rainfall months."
+                    },
+                    {
+                      question: "What is a line graph best used for?",
+                      options: ["Comparing parts of a whole", "Showing how a value changes over time", "Displaying exact totals", "Showing ratios"],
+                      answer: 1,
+                      explanation: "Connecting data points with line segments makes trends across many time periods visible."
+                    },
+                    {
+                      question: "What is the first step in reading a graph carefully?",
+                      options: ["Draw a conclusion", "Identify what is given — the organisation, the scale and the axis labels", "Compare with another graph", "Calculate the mean"],
+                      answer: 1,
+                      explanation: "Only after understanding what is shown can the patterns be interpreted reliably."
+                    },
+                    {
+                      question: "Why do coastal Indian cities peak in different rainfall months?",
+                      options: ["Their instruments differ", "They are affected by different monsoon patterns across India", "They measure differently", "Rainfall is random"],
+                      answer: 1,
+                      explanation: "The seasonal patterns reflect India's varied monsoon behaviour."
                     }
                   ]
                 }
@@ -20764,6 +20968,24 @@ export const curriculumData = {
                       options: ["Random chance ensures the same answer every time", "Representing the unknown as a letter-number and simplifying the expression shows the unknown term cancels out, leaving a fixed result", "The tricks only work for numbers less than 10", "Calculators always round to the same final digit"],
                       answer: 1,
                       explanation: "Algebra lets us represent the unknown starting value symbolically and track it through each operation — showing precisely when and why it cancels out to leave a value that doesn't depend on the starting number."
+                    },
+                    {
+                      question: "Think of x, double it, add four, divide by two, subtract the original number. What is left?",
+                      options: ["x", "2", "4", "0"],
+                      answer: 1,
+                      explanation: "2x + 4 halved is x + 2, and subtracting x leaves 2 — independent of the starting number."
+                    },
+                    {
+                      question: "Why do such number tricks always work?",
+                      options: ["The numbers are chosen carefully", "Using a letter-number shows the starting value cancels out", "They only work for small numbers", "They rely on luck"],
+                      answer: 1,
+                      explanation: "Algebra reveals that the result does not depend on x at all."
+                    },
+                    {
+                      question: "In the date trick, what must be subtracted from the final answer?",
+                      options: ["100", "165", "5", "9"],
+                      answer: 1,
+                      explanation: "Subtracting 165 leaves 100M + D, whose last two digits give the day and the rest the month."
                     }
                   ]
                 },
@@ -20833,6 +21055,24 @@ export const curriculumData = {
                       options: ["Top = 6, unrelated to the Fibonacci sequence", "Top = 8, which is itself the next Virahāṅka-Fibonacci number after 1, 2, 3, 5", "Top = 5, matching the previous Fibonacci number", "Top = 10, twice the largest bottom value"],
                       answer: 1,
                       explanation: "Using top = a+2b+c with a=1, b=2, c=3: top = 1+4+3 = 8 — which is exactly the next number in the Virahāṅka-Fibonacci sequence 1, 2, 3, 5, 8, ..."
+                    },
+                    {
+                      question: "In a number pyramid, how is each number obtained?",
+                      options: ["By multiplying the two below it", "By adding the two numbers directly below it", "By subtracting them", "By halving the one below"],
+                      answer: 1,
+                      explanation: "With a bottom row of 1, 9, 4 the middle row is 10 and 13, and the top is 23."
+                    },
+                    {
+                      question: "For a 3-row pyramid with bottom row a, b, c, the top value is:",
+                      options: ["a + b + c", "a + 2b + c", "2a + b + 2c", "abc"],
+                      answer: 1,
+                      explanation: "The middle row is a+b and b+c, and adding these gives a + 2b + c."
+                    },
+                    {
+                      question: "Why does the middle term count twice in the top value?",
+                      options: ["It is larger", "Because b contributes to both middle-row entries", "It is added last", "It is doubled by the rule"],
+                      answer: 1,
+                      explanation: "b appears in a+b and in b+c, so it enters the total twice."
                     }
                   ]
                 },
@@ -20902,6 +21142,24 @@ export const curriculumData = {
                       options: ["5", "10", "14", "19"],
                       answer: 0,
                       explanation: "2×shape + 9 = 19, so 2×shape=10, giving shape=5."
+                    },
+                    {
+                      question: "In a calendar, how much do dates increase going down one row?",
+                      options: ["By 1", "By 7", "By 30", "By 5"],
+                      answer: 1,
+                      explanation: "Across a week they increase by 1, and down a row by 7."
+                    },
+                    {
+                      question: "A 2×2 calendar grid has top-left value a. What is its total?",
+                      options: ["4a", "4a + 16", "4a + 8", "2a + 16"],
+                      answer: 1,
+                      explanation: "The four entries are a, a+1, a+7 and a+8, which sum to 4a + 16."
+                    },
+                    {
+                      question: "If a 2×2 calendar grid sums to 40, what is its top-left date?",
+                      options: ["4", "6", "8", "10"],
+                      answer: 1,
+                      explanation: "Solving 4a + 16 = 40 gives 4a = 24, so the top-left date is 6."
                     }
                   ]
                 },
@@ -20971,6 +21229,24 @@ export const curriculumData = {
                       options: ["This is only true for specific numbers, not in general", "The sum always simplifies to 111(a+b+c), and since 111=3×37, the result is always divisible by both 3 and 37", "The digits must always be in increasing order for this to work", "This relationship has no algebraic explanation"],
                       answer: 1,
                       explanation: "Adding abc+bca+cab gives each digit a total coefficient of 100+10+1=111, so the sum is 111(a+b+c). Since 111 factors as 3×37, the sum is always divisible by both 3 and 37, regardless of the digits chosen."
+                    },
+                    {
+                      question: "Using digits 2, 3 and 5 in [ ][ ] × [ ], what is the largest product?",
+                      options: ["150", "160", "235", "325"],
+                      answer: 1,
+                      explanation: "Comparing all six arrangements shows 32 × 5 = 160 is the largest."
+                    },
+                    {
+                      question: "Reverse a two-digit number and subtract. The result is always a multiple of:",
+                      options: ["3", "9", "11", "7"],
+                      answer: 1,
+                      explanation: "(10b + a) − (10a + b) = 9(b − a), which is always a multiple of 9."
+                    },
+                    {
+                      question: "Cycling the digits of a 3-digit number and adding all three results gives a multiple of:",
+                      options: ["9 only", "Both 3 and 37", "11", "7"],
+                      answer: 1,
+                      explanation: "Each digit ends up multiplied by 111, and 111 = 3 × 37."
                     }
                   ]
                 }
@@ -21046,6 +21322,24 @@ export const curriculumData = {
                       options: ["7 cm²", "14 cm²", "28 cm²", "56 cm²"],
                       answer: 1,
                       explanation: "The full rectangle has area 7×4=28 cm²; the diagonal triangle is exactly half of this, giving ½×28=14 cm²."
+                    },
+                    {
+                      question: "How is the area of a region measured?",
+                      options: ["By its perimeter", "By counting the unit squares whose combined area equals it", "By its longest side", "By its diagonal"],
+                      answer: 1,
+                      explanation: "A unit square has a side of 1 cm, so its area is 1 cm²."
+                    },
+                    {
+                      question: "What is the area of a rectangle 9 cm by 6 cm?",
+                      options: ["15 cm²", "54 cm²", "30 cm²", "45 cm²"],
+                      answer: 1,
+                      explanation: "Multiplying the sides: area = length × width = 9 × 6 = 54 cm²."
+                    },
+                    {
+                      question: "Why does a diagonal split a rectangle into two triangles of equal area?",
+                      options: ["They look similar", "The two triangles are congruent, so each has half the rectangle's area", "The diagonal bisects the angles", "It does not"],
+                      answer: 1,
+                      explanation: "For a 7 cm × 4 cm rectangle, each triangle has area ½ × 28 = 14 cm²."
                     }
                   ]
                 },
@@ -21115,6 +21409,24 @@ export const curriculumData = {
                       options: ["Because the midpoint always creates two congruent triangles", "Because the two resulting triangles share the same height (the perpendicular from the vertex) and have equal-length bases (since it's a midpoint)", "This is only true for isosceles triangles", "The two triangles do not actually have equal areas"],
                       answer: 1,
                       explanation: "Both smaller triangles share the same altitude (from the vertex to the line containing the base) and have equal base lengths (since the point is the midpoint) — so by the area formula, their areas must be equal."
+                    },
+                    {
+                      question: "What is the area of a triangle with base 8 cm and height 5 cm?",
+                      options: ["40 cm²", "20 cm²", "13 cm²", "26 cm²"],
+                      answer: 1,
+                      explanation: "Applying the formula: ½ × base × height = ½ × 8 × 5 = 20 cm²."
+                    },
+                    {
+                      question: "A triangle has area 7.5 sq units with base 5 units. What is the corresponding height?",
+                      options: ["1.5 units", "3 units", "7.5 units", "15 units"],
+                      answer: 1,
+                      explanation: "Rearranging 7.5 = ½ × 5 × h gives h = 3 units."
+                    },
+                    {
+                      question: "Two triangles share the same height and have equal bases. Their areas are:",
+                      options: ["Different", "Equal", "In the ratio 2:1", "Impossible to compare"],
+                      answer: 1,
+                      explanation: "This is why a median drawn from a vertex divides a triangle into two equal areas."
                     }
                   ]
                 },
@@ -21184,6 +21496,24 @@ export const curriculumData = {
                       options: ["No, only the longer side can be used", "Yes, as long as the corresponding perpendicular height to that side is used", "No, only the shorter side can be used", "Only if the parallelogram is a rectangle"],
                       answer: 1,
                       explanation: "Any side can serve as the base, provided its own corresponding perpendicular height (not a height to a different side) is used — the resulting area is always the same."
+                    },
+                    {
+                      question: "What is the area of a parallelogram?",
+                      options: ["base × height", "½ × base × height", "base × slant side", "base + height"],
+                      answer: 1,
+                      explanation: "Dissecting the parallelogram and rearranging it produces a rectangle of the same base and height."
+                    },
+                    {
+                      question: "A parallelogram has base 12 cm and height 7 cm. What is its area?",
+                      options: ["19 cm²", "84 cm²", "42 cm²", "38 cm²"],
+                      answer: 1,
+                      explanation: "Applying the formula: area = base × height = 12 × 7 = 84 cm²."
+                    },
+                    {
+                      question: "Can any side of a parallelogram be used as the base?",
+                      options: ["No, only the longest", "Yes, provided the corresponding perpendicular height is used", "Only the horizontal one", "Only two of them"],
+                      answer: 1,
+                      explanation: "Each choice gives its own height, but the resulting area is always the same."
                     }
                   ]
                 },
@@ -21253,6 +21583,24 @@ export const curriculumData = {
                       options: ["It has no connection to the area formula", "The two copies form a parallelogram with base (a+b) and the same height, so the trapezium's area is exactly half the parallelogram's area", "The two copies always form a rectangle instead", "This method only works for isosceles trapeziums"],
                       answer: 1,
                       explanation: "The two rotated copies join to form a parallelogram whose base equals the sum of the trapezium's two parallel sides — since this parallelogram is made of exactly two trapeziums, each trapezium's area is half of base×height = ½×(a+b)×h."
+                    },
+                    {
+                      question: "What is the area of a rhombus in terms of its diagonals?",
+                      options: ["d₁ × d₂", "½ × d₁ × d₂", "d₁ + d₂", "2 × d₁ × d₂"],
+                      answer: 1,
+                      explanation: "The diagonals are perpendicular bisectors of each other, which is what makes this formula work."
+                    },
+                    {
+                      question: "A rhombus has diagonals of 10 cm and 8 cm. What is its area?",
+                      options: ["80 cm²", "40 cm²", "18 cm²", "20 cm²"],
+                      answer: 1,
+                      explanation: "Using half the product of the diagonals: ½ × 10 × 8 = 40 cm²."
+                    },
+                    {
+                      question: "What is the area of a trapezium with parallel sides a and b and height h?",
+                      options: ["(a + b) × h", "½ × (a + b) × h", "a × b × h", "½ × a × b"],
+                      answer: 1,
+                      explanation: "Two copies of the trapezium form a parallelogram of base (a + b), so one copy has half that area."
                     }
                   ]
                 }
