@@ -2739,22 +2739,20 @@ function getInlineLabHtml(type) {
     const earthRotationDayNightLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="earth-rotation-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a time of day and see where the observer is on the rotating Earth.</span></div>
+          <canvas id="earth-rotation-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Spin the Earth and follow one town through sunrise, noon, sunset and midnight.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
             <h3>Time of Day</h3>
-            <select id="sel-earth-rotation-time" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="morning" selected>Morning (Sunrise)</option>
-              <option value="noon">Noon</option>
-              <option value="evening">Evening (Sunset)</option>
-              <option value="midnight">Midnight</option>
-            </select>
+            ${simSlider('dn-hour', 'Local time at the marked town', 0, 23, 1, 6, ':00', '#facc15')}
+          </div>
+          <div class="settings-group-card">
+            <button id="dn-play" class="sim-toggle-btn" style="width:100%;">▶ Spin the Earth</button>
           </div>
           <div class="sim-calculator">
-            <h3>What the Observer Sees</h3>
-            <div id="earth-rotation-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a time of day above.</div>
+            <h3>Where the Sunlight Falls</h3>
+            <div id="earth-rotation-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -2783,20 +2781,21 @@ function getInlineLabHtml(type) {
     const eclipseTypeLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="eclipse-type-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick an eclipse type and see the Sun-Earth-Moon alignment.</span></div>
+          <canvas id="eclipse-type-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Move the Moon round its orbit and tilt the orbit — an eclipse needs the shadow to actually land on something.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose an Eclipse Type</h3>
-            <select id="sel-eclipse-type" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="solar" selected>Solar eclipse (Moon between Sun and Earth)</option>
-              <option value="lunar">Lunar eclipse (Earth between Sun and Moon)</option>
-            </select>
+            <h3>The Moon's Position</h3>
+            ${simSlider('ec-day', 'Day of the month', 0, 29, 1, 0, '', '#e2e8f0')}
+            ${simSlider('ec-tilt', 'Orbit tilt', 0, 5, 0.5, 5, '°', '#f472b6')}
+          </div>
+          <div class="settings-group-card">
+            <button id="ec-play" class="sim-toggle-btn" style="width:100%;">▶ Run the month</button>
           </div>
           <div class="sim-calculator">
             <h3>What Happens</h3>
-            <div id="eclipse-type-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an eclipse type above.</div>
+            <div id="eclipse-type-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -4958,22 +4957,21 @@ function getInlineLabHtml(type) {
     const eclipseConditionLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="eclipse-condition-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see whether an eclipse can occur.</span></div>
+          <canvas id="eclipse-condition-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 An eclipse needs a straight line AND a shadow that actually lands on something.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose a Scenario</h3>
-            <select id="sel-eclipse-condition" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="full-aligned" selected>Full Moon, orbits aligned</option>
-              <option value="full-tilted">Full Moon, orbit tilted</option>
-              <option value="new-aligned">New Moon, orbits aligned</option>
-              <option value="new-tilted">New Moon, orbit tilted</option>
-            </select>
+            <h3>The Moon's Position</h3>
+            ${simSlider('ecc-day', 'Day of the month', 0, 29, 1, 0, '', '#e2e8f0')}
+            ${simSlider('ecc-tilt', 'Orbit tilt', 0, 5, 0.5, 5, '°', '#f472b6')}
+          </div>
+          <div class="settings-group-card">
+            <button id="ecc-play" class="sim-toggle-btn" style="width:100%;">▶ Run the month</button>
           </div>
           <div class="sim-calculator">
-            <h3>Eclipse Outcome</h3>
-            <div id="eclipse-condition-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+            <h3>What Happens</h3>
+            <div id="eclipse-condition-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -23661,60 +23659,110 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('earth-rotation-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-earth-rotation-time');
+      const hourIn = document.getElementById('dn-hour');
+      const playBtn = document.getElementById('dn-play');
       const obs = document.getElementById('earth-rotation-obs');
-      const POSITIONS = {
-        morning: { dx: 0, dy: 1, label: 'Morning (Sunrise)', desc: 'Entering daylight — the Sun appears to rise in the East, to the observer’s right.' },
-        noon: { dx: 1, dy: 0, label: 'Noon', desc: 'The observer directly faces the Sun — it appears overhead in the sky.' },
-        evening: { dx: 0, dy: -1, label: 'Evening (Sunset)', desc: 'Entering darkness — the Sun appears to set in the West, to the observer’s left.' },
-        midnight: { dx: -1, dy: 0, label: 'Midnight', desc: 'Deep in the night side, facing away from the Sun — stars are visible overhead.' }
-      };
 
-      function draw() {
+      const CX = 250, CY = 186, R = 92;
+      let auto = false, hourF = 6;
+      playBtn.addEventListener('click', () => {
+        auto = !auto;
+        playBtn.textContent = auto ? '⏸ Pause' : '▶ Spin the Earth';
+      });
+      hourIn.addEventListener('input', () => { hourF = +hourIn.value; });
+
+      simLoop(canvas, (t, dt) => {
+        if (auto) {
+          hourF = (hourF + dt * 3) % 24;
+          hourIn.value = Math.floor(hourF);
+          const out = document.getElementById('dn-hour-out');
+          if (out) out.textContent = Math.floor(hourF) + ':00';
+        }
+        const hour = hourF;
+        // noon puts the town facing the Sun, which is on the left of the picture
+        const ang = ((hour - 12) / 24) * Math.PI * 2 + Math.PI;
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const pos = POSITIONS[sel.value];
-        const cx = W / 2 - 30, cy = 145, r = 75;
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Looking down on the North Pole — the Earth turns west to east', 16, 22);
 
-        const sunX = cx + r + 90, sunY = cy;
-        ctx.beginPath(); ctx.arc(sunX, sunY, 22, 0, Math.PI * 2);
-        ctx.fillStyle = '#fde047'; ctx.fill();
-        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
-        ctx.fillText('Sun', sunX, sunY + 40);
-        for (let i = -1; i <= 1; i++) {
-          ctx.strokeStyle = 'rgba(253,224,71,0.5)'; ctx.lineWidth = 1.5;
-          ctx.beginPath(); ctx.moveTo(sunX - 24, sunY + i * 18); ctx.lineTo(cx + r + 4, sunY + i * 22); ctx.stroke();
-        }
+        // sunlight from the left
+        for (let y = 66; y <= 306; y += 24) simArrow(ctx, 8, y, 62, y, 'rgba(250,204,21,0.42)', 1.5);
+        ctx.fillStyle = '#facc15'; ctx.font = 'bold 12px system-ui'; ctx.fillText('sunlight', 10, 54);
 
+        // the globe: lit half towards the Sun, dark half away
+        ctx.beginPath(); ctx.arc(CX, CY, R, 0, Math.PI * 2);
+        ctx.fillStyle = '#1d4ed8'; ctx.fill();
         ctx.save();
-        ctx.beginPath(); ctx.arc(cx, cy, r, -Math.PI / 2, Math.PI / 2); ctx.closePath();
-        ctx.fillStyle = '#fbbf24'; ctx.fill();
-        ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI / 2, -Math.PI / 2); ctx.closePath();
-        ctx.fillStyle = '#1e293b'; ctx.fill();
-        ctx.restore();
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.arc(CX, CY, R, -Math.PI / 2, Math.PI / 2); ctx.closePath();
+        ctx.fillStyle = 'rgba(2,6,23,0.72)'; ctx.fill(); ctx.restore();
+        ctx.strokeStyle = 'rgba(226,232,240,0.55)'; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(CX, CY, R, 0, Math.PI * 2); ctx.stroke();
 
-        const obsX = cx + pos.dx * r, obsY = cy + pos.dy * r;
-        ctx.beginPath(); ctx.arc(obsX, obsY, 7, 0, Math.PI * 2);
-        ctx.fillStyle = cssVar('--accent-color'); ctx.fill();
-        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 1.5; ctx.stroke();
+        // the day/night boundary
+        ctx.strokeStyle = 'rgba(226,232,240,0.75)'; ctx.setLineDash([5, 5]); ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(CX, CY - R); ctx.lineTo(CX, CY + R); ctx.stroke(); ctx.setLineDash([]);
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('day', CX - R / 2, CY - R - 10);
+        ctx.fillText('night', CX + R / 2, CY - R - 10);
 
-        const labelX = cx + pos.dx * (r + 30), labelY = cy + pos.dy * (r + 22);
-        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(pos.label, labelX, labelY);
+        // rotation arrow: west to east, anticlockwise seen from above the North Pole
+        ctx.strokeStyle = 'rgba(56,189,248,0.85)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(CX, CY, R + 20, -2.3, -0.9); ctx.stroke();
+        simArrow(ctx, CX + (R + 20) * Math.cos(-0.95), CY + (R + 20) * Math.sin(-0.95),
+                      CX + (R + 20) * Math.cos(-0.86), CY + (R + 20) * Math.sin(-0.86), '#38bdf8', 2);
 
-        ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted');
-        ctx.fillText('← rotation (West to East)', cx, cy + r + 35);
+        // the marked town, carried round by the rotation
+        const tx = CX + R * Math.cos(ang), ty = CY + R * Math.sin(ang);
+        ctx.beginPath(); ctx.arc(tx, ty, 6, 0, Math.PI * 2);
+        ctx.fillStyle = '#f97316'; ctx.fill();
+        ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
+        ctx.fillStyle = '#f97316'; ctx.font = 'bold 11px system-ui';
+        ctx.textAlign = tx > CX ? 'left' : 'right';
+        ctx.fillText('your town', tx + (tx > CX ? 12 : -12), ty + 4);
 
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText('Observer on the rotating Earth', W / 2, 20);
+        // the observer's own sky, on the right
+        const skyX = 470, skyY = 150, skyR = 74;
+        // 06:00 sits exactly on the terminator, so decide from the clock
+        // rather than from a cosine that is zero there
+        const lit = hour >= 6 && hour < 18;
+        ctx.beginPath(); ctx.arc(skyX, skyY, skyR, Math.PI, 0);
+        ctx.fillStyle = lit ? 'rgba(56,189,248,0.35)' : 'rgba(15,23,42,0.9)'; ctx.fill();
+        ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.lineWidth = 1.5; ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(skyX - skyR, skyY); ctx.lineTo(skyX + skyR, skyY); ctx.stroke();
+        // where the Sun appears in that sky: up at noon, on the horizon at 6 and 18
+        const solarAlt = -Math.cos(ang);
+        if (solarAlt > -0.05) {
+          const sunAng = Math.PI - ((hour - 6) / 12) * Math.PI;
+          const sx = skyX + skyR * 0.78 * Math.cos(sunAng), sy = skyY - skyR * 0.78 * Math.abs(Math.sin(sunAng));
+          ctx.beginPath(); ctx.arc(sx, Math.min(sy, skyY - 2), 11, 0, Math.PI * 2);
+          ctx.fillStyle = '#facc15'; ctx.fill();
+        } else {
+          for (let i = 0; i < 12; i++) {
+            const a2 = Math.PI + (i / 11) * Math.PI;
+            ctx.beginPath();
+            ctx.arc(skyX + skyR * 0.7 * Math.cos(a2), skyY - skyR * 0.62 * Math.abs(Math.sin(a2)) - (i % 3) * 6, 1.4, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(226,232,240,0.85)'; ctx.fill();
+          }
+        }
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('the sky above your town', skyX, skyY + 22);
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText(String(Math.floor(hour)).padStart(2, '0') + ':00', skyX, skyY + 44);
 
-        obs.innerHTML = `<strong>${pos.label}.</strong> ${pos.desc}`;
-      }
+        let phase;
+        const h = Math.floor(hour);
+        if (h === 6) phase = 'Sunrise — your town is just crossing onto the lit side, and the Sun appears in the east.';
+        else if (h === 18) phase = 'Sunset — the town is crossing onto the dark side, and the Sun drops below the western horizon.';
+        else if (h > 6 && h < 18) phase = 'Daytime — the town is on the half of the Earth facing the Sun. At 12:00 the Sun is highest.';
+        else phase = 'Night — the town has turned away from the Sun. The Sun has not moved; the Earth has.';
 
-      sel.addEventListener('change', draw);
-      draw();
+        obs.innerHTML =
+          '<strong>' + String(h).padStart(2, '0') + ':00 — ' + (lit ? 'daylight' : 'darkness') + '.</strong> ' + phase +
+          '<br><span style="color:var(--text-muted);">One full turn takes about 24 hours. Half the Earth is always lit and half always dark; day and night happen because your town is carried between the two.</span>';
+      });
     }
 
     function initEarthTiltSeasonsLab() {
@@ -23787,52 +23835,99 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('eclipse-type-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-eclipse-type');
+      const dayIn = document.getElementById('ec-day');
+      const tiltIn = document.getElementById('ec-tilt');
+      const playBtn = document.getElementById('ec-play');
       const obs = document.getElementById('eclipse-type-obs');
 
-      function draw() {
+      const EX = 330, EY = 190, ORBIT = 116, ER = 26, MR = 10;
+      let auto = false;
+      if (playBtn) playBtn.addEventListener('click', () => {
+        auto = !auto;
+        playBtn.textContent = auto ? '⏸ Pause' : '▶ Run the month';
+      });
+
+      simLoop(canvas, (t, dt) => {
+        if (auto) {
+          const d = (+dayIn.value + dt * 4) % 30;
+          dayIn.value = d.toFixed(0);
+          const out = document.getElementById('ec-day-out');
+          if (out) out.textContent = dayIn.value;
+        }
+        const day = +dayIn.value, tilt = +tiltIn.value;
+        const ang = (day / 29.5) * Math.PI * 2;
+        // Edge-on view with the Sun off to the left, so day 0 (new Moon) puts
+        // the Moon between Sun and Earth and day ~15 (full) puts it behind
+        // Earth. The tilt lifts the whole orbit off the Sun-Earth line.
+        const mx = EX - ORBIT * Math.cos(ang);
+        const my = EY + ORBIT * 0.32 * Math.sin(ang) - tilt * 7;
+
+        const nearNew = Math.min(day, 29.5 - day) < 1.2;
+        const nearFull = Math.abs(day - 14.75) < 1.2;
+        const aligned = tilt <= 1.0;
+        const solar = nearNew && aligned;
+        const lunar = nearFull && aligned;
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const solar = sel.value === 'solar';
-        const cy = 140;
-        const sunX = 80, midX = 300, farX = 500;
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Sunlight comes from the left — watch where each shadow falls', 16, 22);
 
-        ctx.beginPath(); ctx.arc(sunX, cy, 45, 0, Math.PI * 2);
-        ctx.fillStyle = '#fde047'; ctx.fill();
-        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText('Sun', sunX, cy + 65);
+        // sunlight
+        for (let y = 74; y <= 300; y += 26) simArrow(ctx, 8, y, 62, y, 'rgba(250,204,21,0.42)', 1.5);
+        ctx.fillStyle = '#facc15'; ctx.font = 'bold 12px system-ui';
+        ctx.fillText('sunlight', 10, 62);
 
-        const midR = solar ? 16 : 55;
-        const farR = solar ? 55 : 16;
-        ctx.beginPath(); ctx.arc(midX, cy, midR, 0, Math.PI * 2);
-        ctx.fillStyle = solar ? '#94a3b8' : '#3b82f6'; ctx.fill();
-        ctx.fillText(solar ? 'Moon' : 'Earth', midX, cy + midR + 20);
+        // orbit
+        ctx.strokeStyle = 'rgba(148,163,184,0.28)'; ctx.setLineDash([4, 5]); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.ellipse(EX, EY, ORBIT, ORBIT * 0.32, 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.setLineDash([]);
 
-        ctx.beginPath(); ctx.arc(farX, cy, farR, 0, Math.PI * 2);
-        ctx.fillStyle = solar ? '#3b82f6' : '#94a3b8'; ctx.fill();
-        ctx.fillText(solar ? 'Earth' : 'Moon', farX, cy + farR + 20);
-
-        ctx.fillStyle = 'rgba(15,23,42,0.7)';
+        // Earth's shadow cone, stretching away from the Sun
+        ctx.fillStyle = 'rgba(2,6,23,0.65)';
         ctx.beginPath();
-        ctx.moveTo(midX, cy - midR * 0.5);
-        ctx.lineTo(farX - farR * 0.4, cy - farR * 0.5);
-        ctx.lineTo(farX - farR * 0.4, cy + farR * 0.5);
-        ctx.lineTo(midX, cy + midR * 0.5);
-        ctx.closePath();
-        ctx.fill();
+        ctx.moveTo(EX, EY - ER); ctx.lineTo(EX + 230, EY - ER * 0.35);
+        ctx.lineTo(EX + 230, EY + ER * 0.35); ctx.lineTo(EX, EY + ER); ctx.closePath(); ctx.fill();
 
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(solar ? 'Solar Eclipse' : 'Lunar Eclipse', W / 2, 20);
-        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
-        ctx.fillText(solar ? 'Moon’s shadow blocks sunlight from reaching part of the Earth' : 'Earth’s shadow blocks sunlight from reaching the Moon', W / 2, 240);
+        // Earth
+        ctx.beginPath(); ctx.arc(EX, EY, ER, 0, Math.PI * 2);
+        ctx.fillStyle = '#2563eb'; ctx.fill();
+        ctx.save(); ctx.beginPath(); ctx.arc(EX, EY, ER, -Math.PI / 2, Math.PI / 2); ctx.closePath();
+        ctx.fillStyle = 'rgba(2,6,23,0.55)'; ctx.fill(); ctx.restore();
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Earth', EX, EY + ER + 16);
 
-        obs.innerHTML = solar
-          ? '<strong>Solar eclipse.</strong> The Moon passes between the Sun and the Earth, casting its shadow on part of the Earth’s surface — observers there see the Sun blocked, partially or totally.'
-          : '<strong>Lunar eclipse.</strong> The Earth passes between the Sun and the Moon, casting its shadow onto the Moon — observers on the night side of Earth see the Moon darkened, partially or totally.';
-      }
+        // the Moon and its own shadow cone
+        if (mx < EX) {
+          // stop the cone where it strikes the Earth, rather than drawing it
+          // straight through the planet
+          const reach = Math.max(60, Math.min(210, EX - ER - mx + 6));
+          ctx.fillStyle = 'rgba(2,6,23,0.62)';
+          ctx.beginPath();
+          ctx.moveTo(mx, my - MR); ctx.lineTo(mx + reach, my - MR * 0.15);
+          ctx.lineTo(mx + reach, my + MR * 0.15); ctx.lineTo(mx, my + MR); ctx.closePath(); ctx.fill();
+        }
+        ctx.beginPath(); ctx.arc(mx, my, MR, 0, Math.PI * 2);
+        ctx.fillStyle = lunar ? '#7f1d1d' : '#e2e8f0'; ctx.fill();
+        ctx.strokeStyle = 'rgba(226,232,240,0.8)'; ctx.lineWidth = 1; ctx.stroke();
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '10px system-ui';
+        ctx.fillText('Moon', mx, my - MR - 6);
 
-      sel.addEventListener('change', draw);
-      draw();
+        let verdict, colour;
+        if (solar) { verdict = 'Solar eclipse — the Moon is between the Sun and Earth, and its shadow lands on the Earth.'; colour = '#facc15'; }
+        else if (lunar) { verdict = 'Lunar eclipse — the Earth is between the Sun and the Moon, so the Moon passes into Earth\'s shadow and turns dark red.'; colour = '#f87171'; }
+        else if (nearNew) { verdict = 'New Moon, but the orbit is tilted, so the shadow passes above or below the Earth and misses completely.'; colour = '#94a3b8'; }
+        else if (nearFull) { verdict = 'Full Moon, but the tilt carries the Moon clear of Earth\'s shadow, so there is no eclipse.'; colour = '#94a3b8'; }
+        else { verdict = 'The three bodies are nowhere near a straight line, so no shadow reaches anything.'; colour = '#94a3b8'; }
+
+        ctx.textAlign = 'center'; ctx.font = 'bold 13px system-ui'; ctx.fillStyle = colour;
+        ctx.fillText(solar ? 'SOLAR ECLIPSE' : (lunar ? 'LUNAR ECLIPSE' : 'no eclipse'), W / 2, H - 16);
+
+        obs.innerHTML =
+          '<strong>Day ' + Math.round(day) + ', orbit tilt ' + tilt + '°.</strong> ' + verdict +
+          '<br><span style="color:var(--text-muted);">The Moon\'s orbit is really tilted about 5° to Earth\'s, which is exactly why we do not get an eclipse every fortnight. Drag the tilt to 0° and they line up every month.</span>';
+      });
     }
 
     function initSquarePatternBuilderLab() {
@@ -28636,47 +28731,99 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('eclipse-condition-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-eclipse-condition');
+      const dayIn = document.getElementById('ecc-day');
+      const tiltIn = document.getElementById('ecc-tilt');
+      const playBtn = document.getElementById('ecc-play');
       const obs = document.getElementById('eclipse-condition-obs');
-      const DATA = {
-        'full-aligned': { eclipse: true, type: 'Lunar eclipse', desc: 'Full Moon + aligned orbits: Earth\'s shadow falls on the Moon.' },
-        'full-tilted': { eclipse: false, type: 'No eclipse', desc: 'Full Moon but tilted orbit: the Moon passes above/below Earth\'s shadow.' },
-        'new-aligned': { eclipse: true, type: 'Solar eclipse', desc: 'New Moon + aligned orbits: the Moon blocks sunlight from reaching Earth.' },
-        'new-tilted': { eclipse: false, type: 'No eclipse', desc: 'New Moon but tilted orbit: the Moon\'s shadow misses Earth entirely.' }
-      };
 
-      function draw() {
+      const EX = 330, EY = 190, ORBIT = 116, ER = 26, MR = 10;
+      let auto = false;
+      if (playBtn) playBtn.addEventListener('click', () => {
+        auto = !auto;
+        playBtn.textContent = auto ? '⏸ Pause' : '▶ Run the month';
+      });
+
+      simLoop(canvas, (t, dt) => {
+        if (auto) {
+          const d = (+dayIn.value + dt * 4) % 30;
+          dayIn.value = d.toFixed(0);
+          const out = document.getElementById('ecc-day-out');
+          if (out) out.textContent = dayIn.value;
+        }
+        const day = +dayIn.value, tilt = +tiltIn.value;
+        const ang = (day / 29.5) * Math.PI * 2;
+        // Edge-on view with the Sun off to the left, so day 0 (new Moon) puts
+        // the Moon between Sun and Earth and day ~15 (full) puts it behind
+        // Earth. The tilt lifts the whole orbit off the Sun-Earth line.
+        const mx = EX - ORBIT * Math.cos(ang);
+        const my = EY + ORBIT * 0.32 * Math.sin(ang) - tilt * 7;
+
+        const nearNew = Math.min(day, 29.5 - day) < 1.2;
+        const nearFull = Math.abs(day - 14.75) < 1.2;
+        const aligned = tilt <= 1.0;
+        const solar = nearNew && aligned;
+        const lunar = nearFull && aligned;
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const d = DATA[sel.value];
-        const isFull = sel.value.startsWith('full');
-        const tilted = sel.value.endsWith('tilted');
-        const cy = 140;
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Sunlight comes from the left — watch where each shadow falls', 16, 22);
 
-        ctx.fillStyle = '#facc15';
-        ctx.beginPath(); ctx.arc(80, cy, 30, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#3b82f6';
-        ctx.beginPath(); ctx.arc(W / 2, cy, 22, 0, Math.PI * 2); ctx.fill();
+        // sunlight
+        for (let y = 74; y <= 300; y += 26) simArrow(ctx, 8, y, 62, y, 'rgba(250,204,21,0.42)', 1.5);
+        ctx.fillStyle = '#facc15'; ctx.font = 'bold 12px system-ui';
+        ctx.fillText('sunlight', 10, 62);
 
-        const moonX = isFull ? W - 100 : W / 2 + 100;
-        const moonY = tilted ? cy - 35 : cy;
-        ctx.fillStyle = '#94a3b8';
-        ctx.beginPath(); ctx.arc(moonX, moonY, 12, 0, Math.PI * 2); ctx.fill();
-
-        ctx.strokeStyle = d.eclipse ? '#ef4444' : cssVar('--border-color'); ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
-        ctx.beginPath(); ctx.moveTo(80, cy); ctx.lineTo(W - 60, cy); ctx.stroke();
+        // orbit
+        ctx.strokeStyle = 'rgba(148,163,184,0.28)'; ctx.setLineDash([4, 5]); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.ellipse(EX, EY, ORBIT, ORBIT * 0.32, 0, 0, Math.PI * 2); ctx.stroke();
         ctx.setLineDash([]);
 
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
-        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = d.eclipse ? '#ef4444' : '#22c55e';
-        ctx.fillText(d.type, W / 2, 230);
+        // Earth's shadow cone, stretching away from the Sun
+        ctx.fillStyle = 'rgba(2,6,23,0.65)';
+        ctx.beginPath();
+        ctx.moveTo(EX, EY - ER); ctx.lineTo(EX + 230, EY - ER * 0.35);
+        ctx.lineTo(EX + 230, EY + ER * 0.35); ctx.lineTo(EX, EY + ER); ctx.closePath(); ctx.fill();
 
-        obs.innerHTML = `<strong>${d.type}:</strong> ${d.desc}`;
-      }
+        // Earth
+        ctx.beginPath(); ctx.arc(EX, EY, ER, 0, Math.PI * 2);
+        ctx.fillStyle = '#2563eb'; ctx.fill();
+        ctx.save(); ctx.beginPath(); ctx.arc(EX, EY, ER, -Math.PI / 2, Math.PI / 2); ctx.closePath();
+        ctx.fillStyle = 'rgba(2,6,23,0.55)'; ctx.fill(); ctx.restore();
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Earth', EX, EY + ER + 16);
 
-      sel.addEventListener('change', draw);
-      draw();
+        // the Moon and its own shadow cone
+        if (mx < EX) {
+          // stop the cone where it strikes the Earth, rather than drawing it
+          // straight through the planet
+          const reach = Math.max(60, Math.min(210, EX - ER - mx + 6));
+          ctx.fillStyle = 'rgba(2,6,23,0.62)';
+          ctx.beginPath();
+          ctx.moveTo(mx, my - MR); ctx.lineTo(mx + reach, my - MR * 0.15);
+          ctx.lineTo(mx + reach, my + MR * 0.15); ctx.lineTo(mx, my + MR); ctx.closePath(); ctx.fill();
+        }
+        ctx.beginPath(); ctx.arc(mx, my, MR, 0, Math.PI * 2);
+        ctx.fillStyle = lunar ? '#7f1d1d' : '#e2e8f0'; ctx.fill();
+        ctx.strokeStyle = 'rgba(226,232,240,0.8)'; ctx.lineWidth = 1; ctx.stroke();
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '10px system-ui';
+        ctx.fillText('Moon', mx, my - MR - 6);
+
+        let verdict, colour;
+        if (solar) { verdict = 'Solar eclipse — the Moon is between the Sun and Earth, and its shadow lands on the Earth.'; colour = '#facc15'; }
+        else if (lunar) { verdict = 'Lunar eclipse — the Earth is between the Sun and the Moon, so the Moon passes into Earth\'s shadow and turns dark red.'; colour = '#f87171'; }
+        else if (nearNew) { verdict = 'New Moon, but the orbit is tilted, so the shadow passes above or below the Earth and misses completely.'; colour = '#94a3b8'; }
+        else if (nearFull) { verdict = 'Full Moon, but the tilt carries the Moon clear of Earth\'s shadow, so there is no eclipse.'; colour = '#94a3b8'; }
+        else { verdict = 'The three bodies are nowhere near a straight line, so no shadow reaches anything.'; colour = '#94a3b8'; }
+
+        ctx.textAlign = 'center'; ctx.font = 'bold 13px system-ui'; ctx.fillStyle = colour;
+        ctx.fillText(solar ? 'SOLAR ECLIPSE' : (lunar ? 'LUNAR ECLIPSE' : 'no eclipse'), W / 2, H - 16);
+
+        obs.innerHTML =
+          '<strong>Day ' + Math.round(day) + ', orbit tilt ' + tilt + '°.</strong> ' + verdict +
+          '<br><span style="color:var(--text-muted);">The Moon\'s orbit is really tilted about 5° to Earth\'s, which is exactly why we do not get an eclipse every fortnight. Drag the tilt to 0° and they line up every month.</span>';
+      });
     }
 
     function initShadowStickLab() {
