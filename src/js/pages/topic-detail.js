@@ -4597,21 +4597,20 @@ function getInlineLabHtml(type) {
     const diffusionTemperatureLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="diffusion-temp-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a water temperature and see how fast the colour spreads.</span></div>
+          <canvas id="diffusion-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Drop the ink in and watch the particles spread. Warmer particles move faster, so they mix sooner.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Water Temperature</h3>
-            <select id="sel-diffusion-temp" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="hot" selected>Hot water</option>
-              <option value="room">Room temperature water</option>
-              <option value="cold">Ice-cold water</option>
-            </select>
+            <h3>The Water</h3>
+            ${simSlider('df-temp', 'Temperature', 5, 95, 5, 25, ' °C', '#ef4444')}
+          </div>
+          <div class="settings-group-card">
+            <button id="df-restart" class="sim-toggle-btn" style="width:100%;">↻ Add the ink again</button>
           </div>
           <div class="sim-calculator">
-            <h3>Diffusion Speed</h3>
-            <div id="diffusion-temp-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a temperature above.</div>
+            <h3>How Far It Has Spread</h3>
+            <div id="diffusion-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -4775,22 +4774,28 @@ function getInlineLabHtml(type) {
     const floatSinkLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="float-sink-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a scenario and see whether the object floats or sinks.</span></div>
+          <canvas id="float-sink-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Drop the block in and watch it settle. Whether it floats is a race between two forces.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose a Scenario</h3>
-            <select id="sel-float-sink" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="ice-water" selected>Ice in liquid water</option>
-              <option value="egg-plain">Egg in plain water</option>
-              <option value="egg-salt">Egg in salty water</option>
-              <option value="hot-air">Hot air balloon in cool air</option>
+            <h3>The Block</h3>
+            ${simSlider('fs-density', 'Density of the block', 200, 2000, 50, 700, ' kg/m³', '#f59e0b')}
+            ${simSlider('fs-size', 'Size of the block', 30, 70, 5, 50, ' cm', '#a78bfa')}
+          </div>
+          <div class="settings-group-card">
+            <label style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:0.25rem;">Liquid</label>
+            <select id="fs-liquid" class="sim-toggle-btn" style="text-align:left;padding:0.4rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="1000" selected>Water (1000 kg/m³)</option>
+              <option value="800">Cooking oil (800 kg/m³)</option>
+              <option value="1200">Salty water (1200 kg/m³)</option>
+              <option value="13600">Mercury (13600 kg/m³)</option>
             </select>
+            <button id="fs-drop" class="sim-toggle-btn" style="width:100%;margin-top:0.5rem;">↻ Drop it again</button>
           </div>
           <div class="sim-calculator">
-            <h3>Result</h3>
-            <div id="float-sink-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a scenario above.</div>
+            <h3>Forces on the Block</h3>
+            <div id="float-sink-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -27554,40 +27559,87 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     }
 
     function initDiffusionTemperatureLab() {
-      const canvas = document.getElementById('diffusion-temp-canvas');
+      const canvas = document.getElementById('diffusion-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-diffusion-temp');
-      const obs = document.getElementById('diffusion-temp-obs');
-      const SPREAD = { hot: 90, room: 50, cold: 20 };
-      const SPEED = { hot: 'fastest', room: 'moderate', cold: 'slowest' };
+      const tempIn = document.getElementById('df-temp');
+      const restartBtn = document.getElementById('df-restart');
+      const obs = document.getElementById('diffusion-obs');
 
-      function draw() {
+      const L = 90, R = 510, TOP = 66, BOT = 286;
+      const N = 260;
+      let parts = [], elapsed = 0;
+
+      function reset() {
+        parts = [];
+        for (let i = 0; i < N; i++) {
+          parts.push({ x: (L + R) / 2 + (Math.random() - 0.5) * 26, y: TOP + 24 + (Math.random() - 0.5) * 20 });
+        }
+        elapsed = 0;
+      }
+      reset();
+      restartBtn.addEventListener('click', reset);
+      tempIn.addEventListener('input', reset);
+
+      simLoop(canvas, (t, dt, api) => {
+        const T = +tempIn.value;
+        // average particle speed rises with temperature
+        const speed = 14 + T * 0.85;
+        if (api.running) {
+          elapsed += dt;
+          parts.forEach(pt => {
+            pt.x += (Math.random() - 0.5) * speed * dt * 6;
+            pt.y += (Math.random() - 0.5) * speed * dt * 6 + speed * dt * 0.25;
+            pt.x = Math.max(L + 3, Math.min(R - 3, pt.x));
+            pt.y = Math.max(TOP + 3, Math.min(BOT - 3, pt.y));
+          });
+        }
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const spread = SPREAD[sel.value];
-        const cx = W / 2, cy = 150;
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Diffusion — particles spread out on their own', 16, 22);
 
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.moveTo(cx - 70, cy - 80); ctx.lineTo(cx - 70, cy + 80); ctx.lineTo(cx + 70, cy + 80); ctx.lineTo(cx + 70, cy - 80); ctx.stroke();
+        // beaker
+        ctx.fillStyle = 'rgba(56,189,248,0.13)'; ctx.fillRect(L, TOP, R - L, BOT - TOP);
+        ctx.strokeStyle = 'rgba(148,163,184,0.9)'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(L, TOP - 16); ctx.lineTo(L, BOT); ctx.lineTo(R, BOT); ctx.lineTo(R, TOP - 16); ctx.stroke();
 
-        const grad = ctx.createRadialGradient(cx, cy, 2, cx, cy, spread);
-        grad.addColorStop(0, 'rgba(236,72,153,0.9)');
-        grad.addColorStop(1, 'rgba(236,72,153,0.05)');
-        ctx.fillStyle = grad;
-        ctx.beginPath(); ctx.arc(cx, cy, spread, 0, Math.PI * 2); ctx.fill();
+        // ink particles
+        parts.forEach(pt => {
+          ctx.beginPath(); ctx.arc(pt.x, pt.y, 2.6, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(139,92,246,0.85)'; ctx.fill();
+        });
 
-        ctx.fillStyle = '#831843';
-        ctx.beginPath(); ctx.arc(cx, cy, 5, 0, Math.PI * 2); ctx.fill();
+        // how evenly they are spread: count occupancy across a 6x4 grid
+        const cols = 6, rows = 4, counts = new Array(cols * rows).fill(0);
+        parts.forEach(pt => {
+          const cxi = Math.min(cols - 1, Math.floor(((pt.x - L) / (R - L)) * cols));
+          const cyi = Math.min(rows - 1, Math.floor(((pt.y - TOP) / (BOT - TOP)) * rows));
+          counts[cyi * cols + cxi]++;
+        });
+        const occupied = counts.filter(c => c > 0).length;
+        const evenness = Math.round((occupied / counts.length) * 100);
 
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.textAlign = 'left';
+        ctx.fillText('t = ' + elapsed.toFixed(1) + ' s', L, BOT + 20);
+        ctx.textAlign = 'right';
+        ctx.fillText(T + ' °C', R, BOT + 20);
 
-        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> Diffusion is ${SPEED[sel.value]} here — higher temperature means faster-moving particles, spreading the pink colour more quickly.`;
-      }
+        // a thermometer beside the beaker
+        ctx.strokeStyle = 'rgba(148,163,184,0.8)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.rect(542, TOP, 14, BOT - TOP - 20); ctx.stroke();
+        const fill = ((T - 5) / 90) * (BOT - TOP - 20);
+        ctx.fillStyle = '#ef4444';
+        ctx.fillRect(544, BOT - 20 - fill, 10, fill);
+        ctx.beginPath(); ctx.arc(549, BOT - 10, 11, 0, Math.PI * 2); ctx.fill();
 
-      sel.addEventListener('change', draw);
-      draw();
+        obs.innerHTML =
+          '<strong>' + T + ' °C — the ink has reached ' + evenness + '% of the beaker after ' + elapsed.toFixed(1) + ' s.</strong>' +
+          '<br><span style="color:var(--text-muted);">Nobody stirred it. The particles are in constant random motion, and raising the temperature makes them move faster, so the colour spreads sooner. Set it to 5 °C, add the ink again, and time how much slower it is.</span>';
+      });
     }
 
     function initMixtureClassifierLab() {
@@ -27892,40 +27944,86 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('float-sink-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-float-sink');
+      const dIn = document.getElementById('fs-density');
+      const sizeIn = document.getElementById('fs-size');
+      const liqSel = document.getElementById('fs-liquid');
+      const dropBtn = document.getElementById('fs-drop');
       const obs = document.getElementById('float-sink-obs');
-      const DATA = {
-        'ice-water': { floats: true, desc: 'Ice is less dense than liquid water (water expands on freezing), so it floats.' },
-        'egg-plain': { floats: false, desc: 'A raw egg is denser than plain water, so it sinks.' },
-        'egg-salt': { floats: true, desc: 'Dissolved salt increases the water’s density above the egg’s density, so the egg floats.' },
-        'hot-air': { floats: true, desc: 'Hot air is less dense than the surrounding cool air, so the balloon rises.' }
-      };
 
-      function draw() {
+      const SURF = 120, FLOOR = 292, TANK_L = 130, TANK_R = 470, G = 9.8;
+      let y = 40, vy = 0;
+      function drop() { y = 40; vy = 0; }
+      dropBtn.addEventListener('click', drop);
+      [dIn, sizeIn, liqSel].forEach(el => el.addEventListener('input', drop));
+      liqSel.addEventListener('change', drop);
+
+      simLoop(canvas, (t, dt, api) => {
+        const rhoB = +dIn.value, rhoL = +liqSel.value;
+        const side = +sizeIn.value * 1.6;                 // px
+        const ratio = Math.min(rhoB / rhoL, 1);           // fraction submerged when floating
+
+        // settle towards the equilibrium depth
+        const restTop = rhoB >= rhoL ? FLOOR - side : SURF - side * (1 - ratio);
+        if (api.running) {
+          const target = restTop;
+          vy += (target - y) * 6 * dt;
+          vy *= 0.86;
+          y += vy;
+          if (Math.abs(target - y) < 0.4 && Math.abs(vy) < 0.4) { y = target; vy = 0; }
+        }
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const d = DATA[sel.value];
-        const cx = W / 2, containerTop = 50, containerBottom = 220, containerW = 140;
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Float or sink? Compare the two densities', 16, 22);
 
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.moveTo(cx - containerW / 2, containerTop); ctx.lineTo(cx - containerW / 2, containerBottom); ctx.lineTo(cx + containerW / 2, containerBottom); ctx.lineTo(cx + containerW / 2, containerTop); ctx.stroke();
-        ctx.fillStyle = 'rgba(59,130,246,0.15)';
-        ctx.fillRect(cx - containerW / 2, containerTop, containerW, containerBottom - containerTop);
+        // tank
+        ctx.fillStyle = 'rgba(56,189,248,0.20)';
+        ctx.fillRect(TANK_L, SURF, TANK_R - TANK_L, FLOOR - SURF);
+        ctx.strokeStyle = 'rgba(148,163,184,0.9)'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(TANK_L, SURF - 40); ctx.lineTo(TANK_L, FLOOR);
+        ctx.lineTo(TANK_R, FLOOR); ctx.lineTo(TANK_R, SURF - 40); ctx.stroke();
+        ctx.strokeStyle = 'rgba(125,211,252,0.9)';
+        ctx.beginPath(); ctx.moveTo(TANK_L, SURF); ctx.lineTo(TANK_R, SURF); ctx.stroke();
 
-        const objY = d.floats ? containerTop + 30 : containerBottom - 30;
-        ctx.fillStyle = '#f59e0b';
-        ctx.beginPath(); ctx.arc(cx, objY, 20, 0, Math.PI * 2); ctx.fill();
+        // block
+        const bx = (TANK_L + TANK_R) / 2 - side / 2;
+        ctx.fillStyle = 'rgba(245,158,11,0.55)'; ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(bx, y, side, side, 4); else ctx.rect(bx, y, side, side);
+        ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#fff'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(rhoB + ' kg/m³', bx + side / 2, y + side / 2 + 4);
 
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
-        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = d.floats ? '#22c55e' : '#ef4444';
-        ctx.fillText(d.floats ? 'FLOATS' : 'SINKS', W / 2, 250);
+        // the two forces
+        const submerged = Math.max(0, Math.min(side, (y + side) - SURF));
+        const weight = rhoB * side * side;
+        const upthrust = rhoL * side * submerged;
+        const scale = 46 / Math.max(weight, upthrust, 1);   // keeps arrows clear of the title
+        simArrow(ctx, bx + side / 2, y + side, bx + side / 2, y + side + weight * scale, '#ef4444', 3);
+        ctx.fillStyle = '#ef4444'; ctx.font = '11px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText('weight', bx + side / 2 + 8, y + side + weight * scale);
+        if (upthrust > 0) {
+          simArrow(ctx, bx + side / 2, y, bx + side / 2, y - upthrust * scale, '#22c55e', 3);
+          ctx.fillStyle = '#22c55e'; ctx.textAlign = 'right';
+          ctx.fillText('upthrust', bx + side / 2 - 8, y - upthrust * scale / 2);
+        }
 
-        obs.innerHTML = `<strong>${d.floats ? 'Floats' : 'Sinks'}:</strong> ${d.desc}`;
-      }
+        const floats = rhoB < rhoL;
+        simReadout(ctx, 20, 250, [
+          'block  ' + rhoB + ' kg/m³',
+          'liquid ' + rhoL + ' kg/m³',
+          floats ? (Math.round(ratio * 100) + '% of it sits under the surface') : 'denser than the liquid — it sinks'
+        ], floats ? 'rgba(34,197,94,0.6)' : 'rgba(239,68,68,0.6)');
 
-      sel.addEventListener('change', draw);
-      draw();
+        obs.innerHTML = floats
+          ? '<strong>It floats.</strong> The block is less dense than the liquid, so it only has to sink until the water it pushes aside weighs as much as the block does — that happens with <strong>' + Math.round(ratio * 100) + '%</strong> of it submerged.' +
+            '<br><span style="color:var(--text-muted);">Upthrust and weight are then equal and opposite, so it stays put. Try the same block in oil and in salty water.</span>'
+          : '<strong>It sinks.</strong> Even fully submerged, the liquid it displaces weighs less than the block, so the upthrust can never match the weight.' +
+            '<br><span style="color:var(--text-muted);">It is the comparison of densities that decides this, not how heavy or how big the block is on its own.</span>';
+      });
     }
 
     function initMirrorImageLab() {
