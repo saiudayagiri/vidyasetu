@@ -4406,23 +4406,26 @@ function getInlineLabHtml(type) {
     const frictionSurfaceLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="friction-surface-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a surface and see how far the object slides before stopping.</span></div>
+          <canvas id="friction-surface-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Give the block the same push every time and see how far each surface lets it travel.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose a Surface</h3>
+            <h3>The Surface</h3>
             <select id="sel-friction-surface" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="glass" selected>Glass (very smooth)</option>
-              <option value="tile">Ceramic Tile (smooth)</option>
-              <option value="wood">Wood (medium)</option>
-              <option value="cloth">Cloth (rough)</option>
-              <option value="sand">Sand (very rough)</option>
+              <option value="glass">Polished glass (smoothest)</option>
+              <option value="wood" selected>Wooden table</option>
+              <option value="carpet">Carpet</option>
+              <option value="gravel">Gravel (roughest)</option>
             </select>
+            ${simSlider('fr-push', 'Starting speed', 3, 12, 1, 8, ' m/s', '#22c55e')}
+          </div>
+          <div class="settings-group-card">
+            <button id="fr-go" class="sim-toggle-btn" style="width:100%;">↻ Push it again</button>
           </div>
           <div class="sim-calculator">
-            <h3>Sliding Distance</h3>
-            <div id="friction-surface-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a surface above.</div>
+            <h3>How Far It Slid</h3>
+            <div id="friction-surface-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Push the block.</div>
           </div>
         </div>
       </div>`;
@@ -4904,21 +4907,19 @@ function getInlineLabHtml(type) {
     const lensImageLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="lens-image-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a lens type and see how it bends parallel light.</span></div>
+          <canvas id="lens-image-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Slide the object along the axis. The two construction rays always cross where the image forms.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose a Lens</h3>
-            <select id="sel-lens-image" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="flat" selected>Thin flat glass plate</option>
-              <option value="convex">Convex lens</option>
-              <option value="concave">Concave lens</option>
-            </select>
+            <h3>Set Up the Bench</h3>
+            ${simSlider('lens-u', 'Object distance u', 12, 120, 1, 60, ' cm', '#22c55e')}
+            ${simSlider('lens-f', 'Focal length f', 10, 40, 1, 20, ' cm', '#38bdf8')}
+            ${simSlider('lens-h', 'Object height', 8, 26, 1, 18, ' cm', '#f59e0b')}
           </div>
           <div class="sim-calculator">
-            <h3>Light Behaviour</h3>
-            <div id="lens-image-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a lens above.</div>
+            <h3>Lens Formula</h3>
+            <div id="lens-image-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -27136,40 +27137,104 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-friction-surface');
+      const pushIn = document.getElementById('fr-push');
+      const goBtn = document.getElementById('fr-go');
       const obs = document.getElementById('friction-surface-obs');
-      const SURFACES = {
-        glass: { dist: 0.95, desc: 'Very smooth — minimal irregularities mean very low friction, so the object slides far before stopping.' },
-        tile: { dist: 0.8, desc: 'Smooth — low friction lets the object slide a good distance.' },
-        wood: { dist: 0.55, desc: 'Medium roughness — moderate friction brings the object to a stop sooner.' },
-        cloth: { dist: 0.3, desc: 'Rough — high friction from fabric fibers stops the object quickly.' },
-        sand: { dist: 0.12, desc: 'Very rough — loose grains create very high friction, stopping the object almost immediately.' }
-      };
 
-      function draw() {
+      const SURFACES = {
+        glass:  { name: 'Polished glass', mu: 0.10, colour: '#7dd3fc', tex: 'smooth' },
+        wood:   { name: 'Wooden table',   mu: 0.30, colour: '#d6a76a', tex: 'grain' },
+        carpet: { name: 'Carpet',         mu: 0.55, colour: '#a78bfa', tex: 'fuzz' },
+        gravel: { name: 'Gravel',         mu: 0.85, colour: '#94a3b8', tex: 'stones' }
+      };
+      const GROUND = 236, X_START = 70, PIX_PER_M = 26, G = 9.8;
+
+      let x = X_START, v = 0, travelled = 0, ghosts = {};
+
+      function launch() {
+        x = X_START; v = +pushIn.value; travelled = 0;
+      }
+      goBtn.addEventListener('click', launch);
+      sel.addEventListener('change', launch);
+      pushIn.addEventListener('input', launch);
+      launch();
+
+      simLoop(canvas, (t, dt, api) => {
+        const S = SURFACES[sel.value];
+        const a = S.mu * G;                       // deceleration from friction
+        if (api.running && v > 0) {
+          v = Math.max(v - a * dt, 0);
+          const step = v * dt;
+          x += step * PIX_PER_M; travelled += step;
+          if (v === 0) ghosts[sel.value] = travelled;
+        }
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const s = SURFACES[sel.value];
-        const trackY = 180, trackX = 60, trackW = 480;
 
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.moveTo(trackX, trackY); ctx.lineTo(trackX + trackW, trackY); ctx.stroke();
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Same push, four surfaces — friction decides where it stops', 16, 22);
 
-        const stopX = trackX + trackW * s.dist;
-        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 6;
-        ctx.beginPath(); ctx.moveTo(trackX, trackY); ctx.lineTo(stopX, trackY); ctx.stroke();
+        // the surface, textured to match its roughness
+        ctx.fillStyle = S.colour + '33';
+        ctx.fillRect(30, GROUND, W - 60, 16);
+        ctx.strokeStyle = S.colour; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(30, GROUND); ctx.lineTo(W - 30, GROUND); ctx.stroke();
+        ctx.strokeStyle = S.colour + 'aa'; ctx.lineWidth = 1;
+        for (let gx = 34; gx < W - 32; gx += 7) {
+          ctx.beginPath();
+          if (S.tex === 'smooth') { ctx.moveTo(gx, GROUND + 8); ctx.lineTo(gx + 4, GROUND + 8); }
+          else if (S.tex === 'grain') { ctx.moveTo(gx, GROUND + 5); ctx.lineTo(gx + 5, GROUND + 10); }
+          else if (S.tex === 'fuzz') { ctx.moveTo(gx, GROUND + 12); ctx.lineTo(gx + 2, GROUND + 3); }
+          else { ctx.arc(gx, GROUND + 8, 2.4, 0, Math.PI * 2); }
+          ctx.stroke();
+        }
 
-        ctx.fillStyle = '#f59e0b'; ctx.beginPath(); ctx.arc(stopX, trackY - 12, 10, 0, Math.PI * 2); ctx.fill();
+        // block
+        const bw = 34, bh = 24;
+        ctx.fillStyle = 'rgba(34,197,94,0.28)'; ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(x - bw / 2, GROUND - bh, bw, bh, 4); else ctx.rect(x - bw / 2, GROUND - bh, bw, bh);
+        ctx.fill(); ctx.stroke();
 
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 35);
-        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
-        ctx.fillText('Object slides here → stops due to friction', W / 2, 220);
+        // friction arrow opposing the motion
+        if (v > 0.05) {
+          simArrow(ctx, x - bw / 2 - 4, GROUND - bh / 2, x - bw / 2 - 4 - S.mu * 46, GROUND - bh / 2, '#ef4444', 2.5);
+          ctx.fillStyle = '#ef4444'; ctx.font = '11px system-ui'; ctx.textAlign = 'right';
+          ctx.fillText('friction', x - bw / 2 - 8 - S.mu * 46, GROUND - bh / 2 - 8);
+          simArrow(ctx, x + bw / 2 + 4, GROUND - bh - 12, x + bw / 2 + 4 + v * 5, GROUND - bh - 12, '#22c55e', 2);
+          ctx.fillStyle = '#22c55e'; ctx.textAlign = 'left';
+          ctx.fillText(v.toFixed(1) + ' m/s', x + bw / 2 + 8 + v * 5, GROUND - bh - 16);
+        } else {
+          ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('stopped', x, GROUND - bh - 10);
+        }
 
-        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${s.desc}`;
-      }
+        // start line and the distance ruler
+        ctx.strokeStyle = 'rgba(148,163,184,0.5)'; ctx.setLineDash([4, 4]); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(X_START, GROUND - 60); ctx.lineTo(X_START, GROUND); ctx.stroke(); ctx.setLineDash([]);
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '10px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('start', X_START, GROUND - 66);
 
-      sel.addEventListener('change', draw);
-      draw();
+        // every surface already tried, drawn as a faint record
+        let row = 0;
+        Object.keys(SURFACES).forEach(key => {
+          if (ghosts[key] === undefined) return;
+          const gy = 272 + row * 17; row++;
+          const gx = X_START + ghosts[key] * PIX_PER_M;
+          ctx.strokeStyle = SURFACES[key].colour + '88'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(X_START, gy); ctx.lineTo(Math.min(gx, W - 120), gy); ctx.stroke();
+          ctx.fillStyle = SURFACES[key].colour; ctx.font = '10px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText(SURFACES[key].name + ': ' + ghosts[key].toFixed(1) + ' m', Math.min(gx, W - 118) + 6, gy + 3);
+        });
+
+        obs.innerHTML =
+          '<strong>' + S.name + '</strong> — friction coefficient about ' + S.mu.toFixed(2) +
+          '<br>Deceleration = μg = <strong>' + (S.mu * G).toFixed(1) + ' m/s²</strong>' +
+          '<br>Distance so far: <strong>' + travelled.toFixed(1) + ' m</strong>' + (v > 0.05 ? ' (still sliding)' : ' (stopped)') +
+          '<br><span style="color:var(--text-muted);">Try all four with the same starting speed — the rougher the surface, the bigger the friction and the shorter the slide.</span>';
+      });
     }
 
     function initNoncontactForceLab() {
@@ -28120,56 +28185,118 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('lens-image-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-lens-image');
+      const uIn = document.getElementById('lens-u');
+      const fIn = document.getElementById('lens-f');
+      const hIn = document.getElementById('lens-h');
       const obs = document.getElementById('lens-image-obs');
-      const INFO = {
-        flat: 'Light passes straight through unchanged — no converging or diverging.',
-        convex: 'A convex (converging) lens bends parallel rays inward to meet at a focal point.',
-        concave: 'A concave (diverging) lens bends parallel rays outward, spreading them apart.'
-      };
 
-      function draw() {
+      const AXIS_Y = 190, LX = 300, SCALE = 2.0;   // 1 cm = 2 px along the bench
+
+      simLoop(canvas, () => {
+        const u = +uIn.value, f = +fIn.value, ho = +hIn.value;
+        // real-is-positive convention, as Grade 8 uses: 1/v = 1/f - 1/u
+        const atFocus = Math.abs(u - f) < 0.5;
+        const v = atFocus ? Infinity : 1 / (1 / f - 1 / u);
+        const m = atFocus ? Infinity : -v / u;
+        const hi = ho * Math.abs(m);
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const type = sel.value;
-        const lensX = W / 2, cy = 140;
 
-        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3;
-        if (type === 'flat') {
-          ctx.beginPath(); ctx.moveTo(lensX, cy - 80); ctx.lineTo(lensX, cy + 80); ctx.stroke();
-        } else if (type === 'convex') {
-          ctx.beginPath(); ctx.moveTo(lensX, cy - 80);
-          ctx.quadraticCurveTo(lensX + 25, cy, lensX, cy + 80);
-          ctx.quadraticCurveTo(lensX - 25, cy, lensX, cy - 80);
-          ctx.stroke();
-        } else {
-          ctx.beginPath(); ctx.moveTo(lensX - 15, cy - 80);
-          ctx.quadraticCurveTo(lensX + 8, cy, lensX - 15, cy + 80);
-          ctx.moveTo(lensX + 15, cy - 80);
-          ctx.quadraticCurveTo(lensX - 8, cy, lensX + 15, cy + 80);
-          ctx.stroke();
-        }
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Convex lens — where does the image land?', 16, 22);
 
-        const focalX = lensX + 110;
-        [-60, -30, 0, 30, 60].forEach(off => {
-          const y = cy + off;
-          ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5;
-          ctx.beginPath(); ctx.moveTo(lensX - 150, y); ctx.lineTo(lensX, y); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(lensX, y);
-          if (type === 'flat') ctx.lineTo(lensX + 150, y);
-          else if (type === 'convex') ctx.lineTo(focalX, cy);
-          else { const dy = y - cy; ctx.lineTo(lensX + 150, cy + dy * 2.2); }
-          ctx.stroke();
+        // principal axis
+        ctx.strokeStyle = 'rgba(148,163,184,0.5)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(20, AXIS_Y); ctx.lineTo(W - 20, AXIS_Y); ctx.stroke();
+
+        // the lens itself
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5;
+        ctx.fillStyle = 'rgba(56,189,248,0.15)';
+        ctx.beginPath();
+        ctx.moveTo(LX, AXIS_Y - 78);
+        ctx.quadraticCurveTo(LX + 22, AXIS_Y, LX, AXIS_Y + 78);
+        ctx.quadraticCurveTo(LX - 22, AXIS_Y, LX, AXIS_Y - 78);
+        ctx.fill(); ctx.stroke();
+
+        // focal points, both sides
+        [-1, 1].forEach(sgn => {
+          const fx = LX + sgn * f * SCALE;
+          ctx.beginPath(); ctx.arc(fx, AXIS_Y, 3, 0, Math.PI * 2);
+          ctx.fillStyle = '#38bdf8'; ctx.fill();
+          ctx.font = '10px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('F', fx, AXIS_Y + 16);
+          const tx = LX + sgn * 2 * f * SCALE;
+          ctx.beginPath(); ctx.arc(tx, AXIS_Y, 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(56,189,248,0.6)'; ctx.fill();
+          ctx.fillText('2F', tx, AXIS_Y + 16);
         });
 
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        // object, standing on the axis to the left
+        const ox = LX - u * SCALE, oTop = AXIS_Y - ho * SCALE;
+        simArrow(ctx, ox, AXIS_Y, ox, oTop, '#22c55e', 2.5);
+        ctx.fillStyle = '#22c55e'; ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('object', ox, oTop - 8);
 
-        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${INFO[type]}`;
-      }
+        // ray 1: parallel to the axis, then through F on the far side
+        ctx.strokeStyle = 'rgba(245,158,11,0.95)'; ctx.lineWidth = 1.6;
+        ctx.beginPath(); ctx.moveTo(ox, oTop); ctx.lineTo(LX, oTop); ctx.stroke();
+        // ray 2: straight through the optical centre
+        ctx.strokeStyle = 'rgba(244,114,182,0.95)';
+        ctx.beginPath(); ctx.moveTo(ox, oTop); ctx.lineTo(LX, AXIS_Y); ctx.stroke();
 
-      sel.addEventListener('change', draw);
-      draw();
+        if (!isFinite(v)) {
+          // object at F: refracted rays leave parallel, no image forms
+          ctx.strokeStyle = 'rgba(245,158,11,0.95)';
+          ctx.beginPath(); ctx.moveTo(LX, oTop); ctx.lineTo(W - 24, oTop); ctx.stroke();
+          ctx.strokeStyle = 'rgba(244,114,182,0.95)';
+          const slope = (AXIS_Y - oTop) / (LX - ox);
+          ctx.beginPath(); ctx.moveTo(LX, AXIS_Y); ctx.lineTo(W - 24, AXIS_Y + slope * (W - 24 - LX)); ctx.stroke();
+          ctx.fillStyle = '#f59e0b'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'right';
+          ctx.fillText('rays leave parallel — image at infinity', W - 26, oTop - 8);
+        } else {
+          const ix = LX + v * SCALE;
+          const iBottom = AXIS_Y + hi * SCALE * (m < 0 ? 1 : -1);
+          const far = Math.max(ix, W - 24);
+          ctx.strokeStyle = 'rgba(245,158,11,0.95)';
+          ctx.beginPath(); ctx.moveTo(LX, oTop); ctx.lineTo(far, oTop + ((iBottom - oTop) * (far - LX)) / (ix - LX)); ctx.stroke();
+          ctx.strokeStyle = 'rgba(244,114,182,0.95)';
+          ctx.beginPath(); ctx.moveTo(LX, AXIS_Y); ctx.lineTo(far, AXIS_Y + ((iBottom - AXIS_Y) * (far - LX)) / (ix - LX)); ctx.stroke();
+          if (ix > 20 && ix < W - 20) {
+            // a virtual image is where the outgoing rays only APPEAR to come
+            // from, so show the backward extensions that locate it
+            if (v < 0) {
+              ctx.setLineDash([5, 5]); ctx.lineWidth = 1.2;
+              ctx.strokeStyle = 'rgba(245,158,11,0.8)';
+              ctx.beginPath(); ctx.moveTo(LX, oTop); ctx.lineTo(ix, iBottom); ctx.stroke();
+              ctx.strokeStyle = 'rgba(244,114,182,0.8)';
+              ctx.beginPath(); ctx.moveTo(LX, AXIS_Y); ctx.lineTo(ix, iBottom); ctx.stroke();
+              ctx.setLineDash([]);
+            }
+            simArrow(ctx, ix, AXIS_Y, ix, iBottom, '#ef4444', 2.5);
+            ctx.fillStyle = '#ef4444'; ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+            ctx.fillText(v < 0 ? 'virtual image' : 'image', ix, iBottom + (iBottom < AXIS_Y ? -8 : 14));
+          }
+        }
+
+        let nature;
+        if (atFocus) nature = 'At F itself the rays emerge parallel, so no image forms — this is how a torch makes a beam.';
+        else if (u > 2 * f) nature = 'Beyond 2F: the image is real, inverted and smaller than the object.';
+        else if (Math.abs(u - 2 * f) < 0.5) nature = 'Exactly at 2F: the image is real, inverted and the same size.';
+        else if (u > f) nature = 'Between F and 2F: the image is real, inverted and larger than the object.';
+        else nature = 'Inside F: the rays diverge, so the image is virtual, erect and magnified — the lens is working as a magnifying glass.';
+
+        simReadout(ctx, 16, 250, [
+          'u = ' + u + ' cm,  f = ' + f + ' cm',
+          isFinite(v) ? ('v = ' + v.toFixed(1) + ' cm,  m = ' + m.toFixed(2)) : 'v = infinity'
+        ], 'rgba(56,189,248,0.6)');
+
+        obs.innerHTML =
+          '<strong>1/v = 1/f − 1/u</strong> → ' + (isFinite(v) ? 'v = <strong>' + v.toFixed(1) + ' cm</strong>' : 'v is infinite') +
+          (isFinite(v) ? '<br>magnification m = −v/u = <strong>' + m.toFixed(2) + '</strong> (height ' + hi.toFixed(1) + ' cm)' : '') +
+          '<br>' + nature;
+      });
     }
 
     function initMoonPhaseLab() {
