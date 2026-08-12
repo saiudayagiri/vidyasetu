@@ -28,6 +28,102 @@ function cssVar(name, fallback) {
 // coordinate system the drawing code expects, but give the backing store two
 // to three times the pixels and scale the context to match, so lines and text
 // stay sharp on classroom projectors and high-density laptop screens alike.
+// --- Simulation kit -------------------------------------------------------
+// Shared pieces for the labs that need to move. simLoop stops itself the
+// moment its canvas leaves the page, so navigating between topics never
+// leaves a stray animation burning CPU on a low-powered classroom machine.
+function simLoop(canvas, drawFn) {
+  let last = performance.now(), t = 0, running = true;
+  const api = {
+    get t() { return t; },
+    get running() { return running; },
+    toggle() { running = !running; last = performance.now(); return running; },
+    reset() { t = 0; last = performance.now(); }
+  };
+  function frame(now) {
+    if (!document.body.contains(canvas)) return;
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    if (running) t += dt;
+    try { drawFn(t, dt, api); } catch (err) { console.error('sim draw failed', err); return; }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  return api;
+}
+
+function simSlider(id, label, min, max, step, value, unit, colour) {
+  return '<label style="display:block;font-size:0.85rem;color:var(--text-muted);margin:0.45rem 0 0.2rem;">' + label +
+    ': <strong id="' + id + '-out" style="color:var(--text-normal);">' + value + (unit || '') + '</strong></label>' +
+    '<input id="' + id + '" type="range" min="' + min + '" max="' + max + '" step="' + step + '" value="' + value +
+    '" style="width:100%;accent-color:' + (colour || '#22c55e') + ';">';
+}
+
+function simArrow(ctx, x1, y1, x2, y2, colour, width) {
+  const a = Math.atan2(y2 - y1, x2 - x1), head = Math.min(11, Math.hypot(x2 - x1, y2 - y1) * 0.4);
+  ctx.strokeStyle = colour; ctx.fillStyle = colour; ctx.lineWidth = width || 3;
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - head * Math.cos(a - 0.4), y2 - head * Math.sin(a - 0.4));
+  ctx.lineTo(x2 - head * Math.cos(a + 0.4), y2 - head * Math.sin(a + 0.4));
+  ctx.closePath(); ctx.fill();
+}
+
+// Draws a labelled pair of axes and returns functions mapping data to pixels.
+function simAxes(ctx, x, y, w, h, xMax, yMax, xLabel, yLabel, opts) {
+  const o = opts || {};
+  ctx.strokeStyle = 'rgba(148,163,184,0.55)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + h); ctx.lineTo(x + w, y + h); ctx.stroke();
+  ctx.strokeStyle = 'rgba(148,163,184,0.13)'; ctx.lineWidth = 1;
+  for (let i = 1; i <= 4; i++) {
+    const gy = y + h - (h * i / 4);
+    ctx.beginPath(); ctx.moveTo(x, gy); ctx.lineTo(x + w, gy); ctx.stroke();
+  }
+  ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '10px system-ui';
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 4; i++) {
+    const v = (yMax * i / 4), gy = y + h - (h * i / 4);
+    ctx.fillText(o.yFmt ? o.yFmt(v) : String(Math.round(v)), x - 5, gy + 3);
+  }
+  ctx.textAlign = 'center';
+  for (let i = 0; i <= 4; i++) {
+    const v = (xMax * i / 4), gx = x + (w * i / 4);
+    ctx.fillText(o.xFmt ? o.xFmt(v) : String(Math.round(v)), gx, y + h + 14);
+  }
+  ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#94a3b8');
+  ctx.fillText(xLabel, x + w / 2, y + h + 28);
+  ctx.save(); ctx.translate(x - 32, y + h / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText(yLabel, 0, 0); ctx.restore();
+  return {
+    px: v => x + (v / xMax) * w,
+    py: v => y + h - (Math.max(0, Math.min(v, yMax)) / yMax) * h
+  };
+}
+
+function simWireSliders(root) {
+  (root || document).querySelectorAll('.sim-settings-pane input[type="range"]').forEach(sl => {
+    const out = document.getElementById(sl.id + '-out');
+    if (!out || sl.dataset.wired) return;
+    sl.dataset.wired = '1';
+    const unit = out.textContent.replace(/^[-\d.]+/, '');
+    sl.addEventListener('input', () => { out.textContent = sl.value + unit; });
+  });
+}
+
+function simReadout(ctx, x, y, lines, accent) {
+  ctx.font = '12px system-ui';
+  const wide = Math.max.apply(null, lines.map(l => ctx.measureText(l).width)) + 18;
+  const tall = lines.length * 17 + 12;
+  ctx.fillStyle = 'rgba(2,6,23,0.82)';
+  ctx.strokeStyle = accent || 'rgba(148,163,184,0.45)'; ctx.lineWidth = 1;
+  if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(x, y, wide, tall, 6); ctx.fill(); ctx.stroke(); }
+  else { ctx.fillRect(x, y, wide, tall); ctx.strokeRect(x, y, wide, tall); }
+  ctx.textAlign = 'left'; ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+  lines.forEach((l, i) => ctx.fillText(l, x + 9, y + 20 + i * 17));
+  return tall;
+}
+
 function logW(c) { return +(c.dataset.logicalW || c.getAttribute('width') || c.width); }
 function logH(c) { return +(c.dataset.logicalH || c.getAttribute('height') || c.height); }
 
@@ -6179,22 +6275,29 @@ function getInlineLabHtml(type) {
     const motionGraphLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="motion-graph-canvas" width="600" height="330"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a motion and read its position-time or velocity-time graph.</span></div>
+          <canvas id="motion-graph-canvas" width="600" height="360"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 The car drives while both graphs draw themselves underneath it, point by point.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose a Graph</h3>
-            <select id="sel-motion-graph" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="pt-uniform" selected>Position-time: uniform motion</option>
-              <option value="pt-rest">Position-time: object at rest</option>
-              <option value="vt-constant">Velocity-time: constant velocity</option>
-              <option value="vt-accel">Velocity-time: constant acceleration</option>
+            <h3>How the Car Moves</h3>
+            <select id="sel-motion-kind" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="uniform" selected>Steady speed</option>
+              <option value="accel">Speeding up steadily</option>
+              <option value="decel">Slowing to a stop</option>
+              <option value="rest">Parked</option>
+              <option value="stopstart">Stop, then go</option>
             </select>
           </div>
+          <div class="settings-group-card">
+            <div style="display:flex;gap:0.5rem;">
+              <button id="mg-play" class="sim-toggle-btn" style="flex:1;">⏸ Pause</button>
+              <button id="mg-reset" class="sim-toggle-btn" style="flex:1;">↺ Replay</button>
+            </div>
+          </div>
           <div class="sim-calculator">
-            <h3>What the Slope Tells Us</h3>
-            <div id="motion-graph-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a graph above.</div>
+            <h3>Reading the Graphs</h3>
+            <div id="motion-graph-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -6523,22 +6626,26 @@ function getInlineLabHtml(type) {
     const soundWaveLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="sound-wave-canvas" width="600" height="330"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Match the compressions and rarefactions to the crests and troughs.</span></div>
+          <canvas id="sound-wave-canvas" width="600" height="360"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Watch the compressions travel to the right while every single particle just shuffles back and forth.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose a Wave</h3>
-            <select id="sel-sound-wave" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="long" selected>Long wavelength</option>
-              <option value="short">Short wavelength</option>
-              <option value="loud">Large amplitude (louder)</option>
-              <option value="soft">Small amplitude (softer)</option>
-            </select>
+            <h3>The Source</h3>
+            ${simSlider('snd-freq', 'Frequency', 100, 800, 20, 340, ' Hz', '#22c55e')}
+            ${simSlider('snd-amp', 'Amplitude', 2, 14, 1, 8, ' units', '#f59e0b')}
+          </div>
+          <div class="settings-group-card">
+            <div style="display:flex;gap:0.5rem;">
+              <button id="snd-play" class="sim-toggle-btn" style="flex:1;">⏸ Pause</button>
+            </div>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-normal);cursor:pointer;margin-top:0.5rem;">
+              <input id="snd-track" type="checkbox" checked style="accent-color:#f472b6;"> Track one particle
+            </label>
           </div>
           <div class="sim-calculator">
-            <h3>Reading the Graph</h3>
-            <div id="sound-wave-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a wave above.</div>
+            <h3>Wave Numbers</h3>
+            <div id="sound-wave-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -6546,22 +6653,21 @@ function getInlineLabHtml(type) {
     const wavePropertyLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="wave-property-canvas" width="600" height="330"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Apply v = λν and see how wavelength changes with frequency.</span></div>
+          <canvas id="wave-property-canvas" width="600" height="360"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Change one property at a time and compare your wave against the fixed reference wave.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose a Sound</h3>
-            <select id="sel-wave-property" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="low" selected>20 Hz — the lowest we can hear</option>
-              <option value="mid">344 Hz — a musical note</option>
-              <option value="high">20 kHz — the highest we can hear</option>
-              <option value="water">A 1000 Hz note travelling in water</option>
-            </select>
+            <h3>Your Wave</h3>
+            ${simSlider('wp-amp', 'Amplitude (loudness)', 4, 30, 1, 14, ' units', '#f59e0b')}
+            ${simSlider('wp-freq', 'Frequency (pitch)', 1, 6, 0.5, 2, ' Hz', '#38bdf8')}
+          </div>
+          <div class="settings-group-card">
+            <button id="wp-play" class="sim-toggle-btn" style="width:100%;">⏸ Pause</button>
           </div>
           <div class="sim-calculator">
-            <h3>Wavelength</h3>
-            <div id="wave-property-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a sound above.</div>
+            <h3>What Changed</h3>
+            <div id="wave-property-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -6886,22 +6992,25 @@ function getInlineLabHtml(type) {
     const netForceLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="net-force-canvas" width="600" height="330"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Combine two forces on a block and read the net force.</span></div>
+          <canvas id="net-force-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Pull the box from both sides. The box only responds to what is left over.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose an Arrangement</h3>
-            <select id="sel-net-force" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="a" selected>(a) 10 N right and 6 N right</option>
-              <option value="b">(b) 10 N right and 6 N left</option>
-              <option value="c">(c) 6 N right and 10 N left</option>
-              <option value="d">Tug of war: 10 N right and 10 N left</option>
-            </select>
+            <h3>Forces on the Box</h3>
+            ${simSlider('nf-left', 'Push from the left', 0, 20, 1, 10, ' N', '#38bdf8')}
+            ${simSlider('nf-right', 'Push from the right', 0, 20, 1, 4, ' N', '#f87171')}
+            ${simSlider('nf-mass', 'Mass of the box', 1, 10, 1, 2, ' kg', '#a78bfa')}
+          </div>
+          <div class="settings-group-card">
+            <div style="display:flex;gap:0.5rem;">
+              <button id="nf-play" class="sim-toggle-btn" style="flex:1;">⏸ Pause</button>
+              <button id="nf-reset" class="sim-toggle-btn" style="flex:1;">↺ Reset</button>
+            </div>
           </div>
           <div class="sim-calculator">
-            <h3>Net Force</h3>
-            <div id="net-force-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an arrangement above.</div>
+            <h3>Net Force and Motion</h3>
+            <div id="net-force-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -9695,6 +9804,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       // Initialize the simulation canvas
       if (topicObj.lab) {
+        simWireSliders(document);
         if (topicObj.lab.type === 'plane-mirror') {
           initPlaneMirrorLab();
         } else if (topicObj.lab.type === 'refraction') {
@@ -31253,63 +31363,83 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('motion-graph-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-motion-graph');
+      const sel = document.getElementById('sel-motion-kind');
+      const playBtn = document.getElementById('mg-play');
+      const resetBtn = document.getElementById('mg-reset');
       const obs = document.getElementById('motion-graph-obs');
-      const G = {
-        'pt-uniform': { yLab: 'position (m)', slope: 'velocity', val: '10 m/s', pts: [[0, 0], [4, 40]], note: 'A straight sloping line means uniform motion; its slope gives the constant velocity.' },
-        'pt-rest': { yLab: 'position (m)', slope: 'velocity', val: '0 m/s', pts: [[0, 40], [4, 40]], note: 'A horizontal line means position is not changing, so the object is at rest.' },
-        'vt-constant': { yLab: 'velocity (m/s)', slope: 'acceleration', val: '0 m/s²', pts: [[0, 20], [4, 20]], note: 'A horizontal velocity-time line means velocity is unchanging, so acceleration is zero.' },
-        'vt-accel': { yLab: 'velocity (m/s)', slope: 'acceleration', val: '5 m/s²', pts: [[0, 5], [4, 25]], note: 'A straight sloping velocity-time line means constant acceleration; its slope gives that acceleration.' }
+
+      const T_MAX = 10, S_MAX = 100, V_MAX = 20;
+
+      // velocity in m/s at time t, and the distance travelled by then
+      const MODELS = {
+        uniform:   { v: () => 10,                         s: t => 10 * t,                       note: 'Distance climbs by the same amount every second, so the distance–time graph is a straight slope and the velocity–time graph is flat.' },
+        accel:     { v: t => 2 * t,                       s: t => t * t,                        note: 'Velocity rises steadily, so the distance–time graph curves upward — each second covers more ground than the one before.' },
+        decel:     { v: t => Math.max(20 - 2.5 * t, 0),   s: t => (t < 8 ? 20 * t - 1.25 * t * t : 80), note: 'Velocity falls to zero at 8 s. The distance–time graph flattens out because the car has stopped moving.' },
+        rest:      { v: () => 0,                          s: () => 0,                            note: 'Nothing changes. A horizontal distance–time line means the object is at rest.' },
+        stopstart: { v: t => (t < 3 ? 12 : (t < 6 ? 0 : 12)), s: t => (t < 3 ? 12 * t : (t < 6 ? 36 : 36 + 12 * (t - 6))), note: 'The flat section in the middle of the distance–time graph is the pause — distance stays the same while time keeps running.' }
       };
 
-      function draw() {
+      let elapsed = 0;
+      function reset() { elapsed = 0; }
+      resetBtn.addEventListener('click', reset);
+      sel.addEventListener('change', reset);
+
+      const loop = simLoop(canvas, (t, dt, api) => {
+        const m = MODELS[sel.value];
+        if (api.running) { elapsed += dt; if (elapsed > T_MAX) elapsed = 0; }
+        const now = Math.min(elapsed, T_MAX);
+        const s_now = m.s(now), v_now = (typeof m.v === 'function' ? m.v(now) : m.v);
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const g = G[sel.value];
-        const ox = 90, oy = H - 68, gw = W - 190, gh = 190;
-        const maxY = 45, maxX = 4;
-        const toX = t => ox + (t / maxX) * gw;
-        const toY = v => oy - (v / maxY) * gh;
 
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
-        for (let v = 0; v <= 40; v += 10) {
-          const y = toY(v);
-          ctx.beginPath(); ctx.moveTo(ox, y); ctx.lineTo(ox + gw, y); ctx.stroke();
-          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'right';
-          ctx.fillText(`${v}`, ox - 8, y + 3);
-        }
-        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.moveTo(ox, toY(0)); ctx.lineTo(ox + gw, toY(0)); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(ox, toY(0)); ctx.lineTo(ox, toY(maxY)); ctx.stroke();
-        for (let t = 0; t <= 4; t++) {
-          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
-          ctx.fillText(`${t}`, toX(t), toY(0) + 18);
-        }
-        ctx.fillText('time (s)', ox + gw / 2, toY(0) + 40);
-        ctx.save(); ctx.translate(26, toY(maxY / 2)); ctx.rotate(-Math.PI / 2);
-        ctx.fillText(g.yLab, 0, 0); ctx.restore();
+        // the road, with the car on it
+        const roadY = 54;
+        ctx.strokeStyle = 'rgba(148,163,184,0.5)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(40, roadY + 20); ctx.lineTo(W - 30, roadY + 20); ctx.stroke();
+        ctx.setLineDash([8, 8]); ctx.strokeStyle = 'rgba(148,163,184,0.25)';
+        ctx.beginPath(); ctx.moveTo(40, roadY + 10); ctx.lineTo(W - 30, roadY + 10); ctx.stroke(); ctx.setLineDash([]);
 
-        const col = sel.value.startsWith('pt') ? '#22c55e' : '#3b82f6';
-        ctx.strokeStyle = col; ctx.lineWidth = 3.5;
-        ctx.beginPath();
-        g.pts.forEach(([t, v], i) => { const x = toX(t), y = toY(v); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
+        const carX = 46 + (s_now / S_MAX) * (W - 100);
+        ctx.fillStyle = '#22c55e';
+        if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(carX - 16, roadY - 2, 32, 16, 4); ctx.fill(); }
+        else ctx.fillRect(carX - 16, roadY - 2, 32, 16);
+        ctx.fillStyle = '#0f172a';
+        ctx.beginPath(); ctx.arc(carX - 8, roadY + 15, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(carX + 8, roadY + 15, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.textAlign = 'left';
+        ctx.fillText('t = ' + now.toFixed(1) + ' s   ·   s = ' + s_now.toFixed(0) + ' m   ·   v = ' + v_now.toFixed(1) + ' m/s', 40, 26);
+
+        // the two graphs, drawn only as far as the car has actually got
+        const gTop = 118, gH = 150, gW = 200;
+        const A = simAxes(ctx, 62, gTop, gW, gH, T_MAX, S_MAX, 'time (s)', 'distance (m)');
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2.5; ctx.beginPath();
+        for (let tt = 0; tt <= now; tt += 0.05) {
+          const px = A.px(tt), py = A.py(m.s(tt));
+          if (tt === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
         ctx.stroke();
-        g.pts.forEach(([t, v]) => {
-          ctx.fillStyle = col;
-          ctx.beginPath(); ctx.arc(toX(t), toY(v), 5, 0, Math.PI * 2); ctx.fill();
-        });
+        ctx.beginPath(); ctx.arc(A.px(now), A.py(s_now), 4, 0, Math.PI * 2);
+        ctx.fillStyle = '#22c55e'; ctx.fill();
 
-        ctx.textAlign = 'center';
-        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal');
-        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = col;
-        ctx.fillText(`slope = ${g.slope} = ${g.val}`, W / 2, 54);
+        const B = simAxes(ctx, 350, gTop, gW, gH, T_MAX, V_MAX, 'time (s)', 'velocity (m/s)');
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5; ctx.beginPath();
+        let started = false;
+        for (let tt = 0; tt <= now; tt += 0.05) {
+          const px = B.px(tt), py = B.py(typeof m.v === 'function' ? m.v(tt) : m.v);
+          if (!started) { ctx.moveTo(px, py); started = true; } else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+        ctx.beginPath(); ctx.arc(B.px(now), B.py(v_now), 4, 0, Math.PI * 2);
+        ctx.fillStyle = '#38bdf8'; ctx.fill();
 
-        obs.innerHTML = `<strong>Slope = ${g.slope} = ${g.val}.</strong> ${g.note}`;
-      }
+        obs.innerHTML =
+          '<strong>t = ' + now.toFixed(1) + ' s · distance ' + s_now.toFixed(0) + ' m · velocity ' + v_now.toFixed(1) + ' m/s</strong>' +
+          '<br>' + m.note +
+          '<br><span style="color:var(--text-muted);">The slope of the distance–time graph at any instant IS the velocity plotted on the right.</span>';
+      });
 
-      sel.addEventListener('change', draw);
-      draw();
+      playBtn.addEventListener('click', () => { playBtn.textContent = loop.toggle() ? '⏸ Pause' : '▶ Play'; });
     }
 
     function initKinematicEquationLab() {
@@ -33274,214 +33404,200 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('sound-wave-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-sound-wave');
+      const fIn = document.getElementById('snd-freq');
+      const aIn = document.getElementById('snd-amp');
+      const playBtn = document.getElementById('snd-play');
+      const trackChk = document.getElementById('snd-track');
       const obs = document.getElementById('sound-wave-obs');
-      const W = logW(canvas), H = logH(canvas);
-      const text = cssVar('--text-normal', '#e6e6e6');
-      const muted = cssVar('--text-muted', '#9aa0a6');
-      const accent = cssVar('--accent-primary', '#6c8cff');
 
-      const CASES = {
-        long: { cycles: 2.5, amp: 1, title: 'A long wavelength' },
-        short: { cycles: 5, amp: 1, title: 'A short wavelength' },
-        loud: { cycles: 3, amp: 1.45, title: 'A large amplitude — a louder sound' },
-        soft: { cycles: 3, amp: 0.5, title: 'A small amplitude — a softer sound' }
-      };
+      const V = 340;                 // speed of sound in air, m/s
+      const N = 150;                 // particles drawn
+      const BAND_Y = 118, BAND_H = 86;
+      const X0 = 30, X1 = 570;
 
-      function update() {
-        const c = CASES[sel.value];
+      const loop = simLoop(canvas, (t) => {
+        const f = +fIn.value, amp = +aIn.value;
+        const lambdaM = V / f;                       // metres
+        // Keep between two and six whole wavelengths on screen across the
+        // whole frequency range, so raising the pitch visibly crowds the
+        // compressions without collapsing them into an unreadable smear.
+        const nWaves = 2 + ((f - 100) / 700) * 4;
+        const pxPerWave = (X1 - X0) / nWaves;
+        const k = 2 * Math.PI / pxPerWave;
+        const omega = 2 * Math.PI * (f / 170);       // slowed so the eye can follow
+
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
-        ctx.fillRect(0, 0, W, H);
-        ctx.fillStyle = accent;
-        ctx.font = 'bold 15px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(c.title, W / 2, 24);
 
-        const x0 = 60, x1 = W - 40, span = x1 - x0;
-        const period = span / c.cycles;
-
-        // Particle picture: dots bunched at compressions, spread at rarefactions.
-        const bandY = 46, bandH = 62;
-        for (let i = 0; i < 900; i++) {
-          const base = x0 + (i / 900) * span;
-          const phase = (2 * Math.PI * (base - x0)) / period;
-          // Displace each particle towards the nearest compression.
-          const px = base + Math.sin(phase) * (period / 10) * c.amp;
-          const py = bandY + 6 + ((i * 37) % 100) / 100 * (bandH - 12);
-          ctx.fillStyle = '#6d86b8';
-          ctx.beginPath(); ctx.arc(px, py, 1.6, 0, Math.PI * 2); ctx.fill();
-        }
-        ctx.strokeStyle = muted;
-        ctx.lineWidth = 1.5;
-        ctx.strokeRect(x0, bandY, span, bandH);
-
-        // C and R markers above the band. Particles bunch half a period along
-        // from the start, so compressions sit at period/2 + n·period.
-        for (let k = 0; k < Math.ceil(c.cycles * 2) + 1; k++) {
-          const xc = x0 + (k / 2) * period;
-          if (xc > x1 - 6) break;
-          const isC = k % 2 === 1;
-          ctx.fillStyle = isC ? '#4caf82' : '#e08a5a';
-          ctx.font = 'bold 12px sans-serif';
-          ctx.textAlign = 'center';
-          ctx.fillText(isC ? 'C' : 'R', xc, bandY - 6);
-        }
-
-        // Density-distance graph beneath.
-        const axisY = 220, amp = 52 * c.amp;
-        ctx.strokeStyle = muted;
-        ctx.setLineDash([5, 4]);
-        ctx.lineWidth = 1.5;
-        ctx.beginPath(); ctx.moveTo(x0, axisY); ctx.lineTo(x1, axisY); ctx.stroke();
-        ctx.setLineDash([]);
-        ctx.fillStyle = muted;
-        ctx.font = '11px sans-serif';
         ctx.textAlign = 'left';
-        ctx.fillText('average density', x0 + 2, axisY - 6);
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('A sound wave in air — particles shuffle, the wave travels', 16, 22);
 
-        // Density peaks where the particles bunch, so the curve is +cos.
-        ctx.strokeStyle = '#5aa9e6';
-        ctx.lineWidth = 3;
+        // tuning fork prong at the left, driving the wave
+        const drive = amp * Math.sin(-omega * t);
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 5; ctx.lineCap = 'round';
         ctx.beginPath();
-        for (let x = x0; x <= x1; x += 2) {
-          const y = axisY + amp * Math.cos((2 * Math.PI * (x - x0)) / period);
-          if (x === x0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        ctx.moveTo(X0 - 14 + drive, BAND_Y - 18);
+        ctx.lineTo(X0 - 14 + drive, BAND_Y + BAND_H + 18);
+        ctx.stroke(); ctx.lineCap = 'butt';
+
+        // particles
+        let trackedX = null, trackedHome = null;
+        for (let i = 0; i < N; i++) {
+          const home = X0 + (i / (N - 1)) * (X1 - X0);
+          const disp = amp * Math.sin(k * (home - X0) - omega * t);
+          const x = home + disp;
+          for (let row = 0; row < 3; row++) {
+            const y = BAND_Y + 16 + row * 28 + ((i % 3) * 5);
+            const isTracked = trackChk.checked && i === Math.round(N * 0.45);
+            ctx.beginPath();
+            ctx.arc(x, y, isTracked ? 4.2 : 2.4, 0, Math.PI * 2);
+            ctx.fillStyle = isTracked ? '#f472b6' : 'rgba(226,232,240,0.85)';
+            ctx.fill();
+            if (isTracked && row === 1) { trackedX = x; trackedHome = home; }
+          }
+        }
+
+        // mark the tracked particle's mean position so its to-and-fro is obvious
+        if (trackedX !== null) {
+          ctx.strokeStyle = 'rgba(244,114,182,0.55)'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+          ctx.beginPath(); ctx.moveTo(trackedHome, BAND_Y + 6); ctx.lineTo(trackedHome, BAND_Y + BAND_H + 6); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.font = '10px system-ui'; ctx.fillStyle = '#f472b6'; ctx.textAlign = 'center';
+          ctx.fillText('mean position', trackedHome, BAND_Y + BAND_H + 20);
+        }
+
+        // compressions sit where the displacement gradient is most negative:
+        // phase (kx - wt) = -pi/2 + 2*pi*n
+        // Wrap the phase, otherwise the markers march off the canvas and never
+        // come back once the animation has been running for a while.
+        // Displacement is s = A sin(k x - w t), so the particles are packed
+        // tightest where ds/dx is most negative, i.e. where the phase is pi.
+        // (Marking the zero of ds/dx instead would put the label half a
+        // wavelength away from the actual compression.)
+        const phase = (omega * t) % (2 * Math.PI);
+        const firstC = X0 + ((Math.PI + phase) % (2 * Math.PI)) / k;
+        ctx.font = '10px system-ui'; ctx.textAlign = 'center';
+        for (let n = 0; n < 9; n++) {
+          const cxp = firstC + n * pxPerWave;
+          if (cxp < X0 + 6 || cxp > X1 - 6) continue;
+          ctx.strokeStyle = 'rgba(34,197,94,0.65)'; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(cxp, BAND_Y - 6); ctx.lineTo(cxp, BAND_Y + BAND_H + 2); ctx.stroke();
+          ctx.fillStyle = '#22c55e'; ctx.fillText('C', cxp, BAND_Y - 10);
+          const rxp = cxp + pxPerWave / 2;
+          if (rxp < X1 - 6) {
+            ctx.strokeStyle = 'rgba(148,163,184,0.4)'; ctx.setLineDash([4, 4]);
+            ctx.beginPath(); ctx.moveTo(rxp, BAND_Y - 6); ctx.lineTo(rxp, BAND_Y + BAND_H + 2); ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.fillText('R', rxp, BAND_Y - 10);
+          }
+        }
+
+        // wavelength measured between two compressions
+        const c0 = firstC;
+        if (c0 > X0 && c0 + pxPerWave < X1) {
+          const wy = BAND_Y + BAND_H + 34;
+          simArrow(ctx, c0, wy, c0 + pxPerWave, wy, '#38bdf8', 2);
+          simArrow(ctx, c0 + pxPerWave, wy, c0, wy, '#38bdf8', 2);
+          ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('λ = ' + (lambdaM * 100).toFixed(0) + ' cm', c0 + pxPerWave / 2, wy - 7);
+        }
+
+        // matching displacement graph, aligned under the particles
+        const gy = 268, gh = 44;
+        ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(X0, gy); ctx.lineTo(X1, gy); ctx.stroke();
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2; ctx.beginPath();
+        for (let x = X0; x <= X1; x += 2) {
+          const d = amp * Math.sin(k * (x - X0) - omega * t);
+          const y = gy - d * (gh / 18);
+          if (x === X0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
         ctx.stroke();
+        ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.textAlign = 'left';
+        ctx.fillText('displacement of each particle from its mean position', X0, gy + 34);
 
-        // Wavelength marker between two consecutive crests.
-        const cx1 = x0 + period / 2, cx2 = x0 + period * 1.5;
-        if (cx2 < x1) {
-          ctx.strokeStyle = '#4caf82';
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.moveTo(cx1, axisY - amp - 14); ctx.lineTo(cx2, axisY - amp - 14);
-          ctx.moveTo(cx1, axisY - amp - 20); ctx.lineTo(cx1, axisY - amp - 8);
-          ctx.moveTo(cx2, axisY - amp - 20); ctx.lineTo(cx2, axisY - amp - 8);
-          ctx.stroke();
-          ctx.fillStyle = '#4caf82';
-          ctx.font = 'bold 13px sans-serif';
-          ctx.textAlign = 'center';
-          ctx.fillText('λ', (cx1 + cx2) / 2, axisY - amp - 20);
-        }
-        // Amplitude marker, drawn at the nearest crest to the right edge.
-        const ax = x0 + period * (Math.floor((x1 - 30 - x0 - period / 2) / period) + 0.5);
-        ctx.strokeStyle = '#e08a5a';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(ax, axisY); ctx.lineTo(ax, axisY - amp);
-        ctx.stroke();
-        ctx.fillStyle = '#e08a5a';
-        ctx.font = 'bold 12px sans-serif';
-        ctx.textAlign = 'left';
-        ctx.fillText('amplitude', ax + 6, axisY - amp / 2);
+        obs.innerHTML =
+          '<strong>f = ' + f + ' Hz</strong> · v = 340 m/s in air' +
+          '<br>λ = v / f = 340 / ' + f + ' = <strong>' + lambdaM.toFixed(2) + ' m</strong>' +
+          '<br>T = 1 / f = <strong>' + (1000 / f).toFixed(1) + ' ms</strong>' +
+          '<br><span style="color:var(--text-muted);">Raise the frequency and the compressions crowd together — the wave still travels at 340 m/s, so λ must shrink. The pink particle never moves along with the wave; it only shuffles about its mean position.</span>';
+      });
 
-        ctx.fillStyle = text;
-        ctx.font = '12px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('Crest = maximum density (a compression)   •   Trough = minimum density (a rarefaction)', W / 2, 300);
-        ctx.fillStyle = muted;
-        ctx.fillText('Distance →', W / 2, 320);
-
-        obs.innerHTML = '<strong>' + c.title + '</strong><br><br>' +
-          (sel.value === 'long' || sel.value === 'short'
-            ? 'The wavelength λ is the distance between two consecutive crests, or two consecutive troughs. A shorter wavelength packs more compressions and rarefactions into the same distance, which at a fixed speed means a higher frequency.'
-            : 'The amplitude is the maximum change in the density of air in a compression, or a rarefaction, compared with the average density. A larger change in density means a larger amplitude, and a wave with a larger amplitude carries more energy — which we perceive as a louder sound.');
-      }
-
-      sel.addEventListener('change', update);
-      update();
+      playBtn.addEventListener('click', () => { playBtn.textContent = loop.toggle() ? '⏸ Pause' : '▶ Play'; });
     }
 
     function initWavePropertyLab() {
       const canvas = document.getElementById('wave-property-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-wave-property');
+      const ampIn = document.getElementById('wp-amp');
+      const freqIn = document.getElementById('wp-freq');
+      const playBtn = document.getElementById('wp-play');
       const obs = document.getElementById('wave-property-obs');
-      const W = logW(canvas), H = logH(canvas);
-      const text = cssVar('--text-normal', '#e6e6e6');
-      const muted = cssVar('--text-muted', '#9aa0a6');
-      const accent = cssVar('--accent-primary', '#6c8cff');
 
-      const CASES = {
-        low: { f: 20, v: 344, medium: 'air at 22 °C', note: 'The lowest frequency most people can hear.' },
-        mid: { f: 344, v: 344, medium: 'air at 22 °C', note: 'At this frequency the wavelength works out to exactly 1 m in air.' },
-        high: { f: 20000, v: 344, medium: 'air at 22 °C', note: 'The highest frequency most people can hear — its wavelength is shorter than a matchstick.' },
-        water: { f: 1000, v: 1500, medium: 'water', note: 'Sound travels about 4–5 times faster in water than in air, so the same note has a much longer wavelength there.' }
-      };
+      const X0 = 46, X1 = 566, SPEED = 90;   // px per second along the string
 
-      function fmt(x) {
-        if (x >= 1) return (Math.round(x * 1000) / 1000) + ' m';
-        return (Math.round(x * 100000) / 1000) + ' cm';
-      }
+      function drawWave(midY, amp, freq, colour, t, label) {
+        const lambda = SPEED / freq;
+        ctx.strokeStyle = 'rgba(148,163,184,0.30)'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+        ctx.beginPath(); ctx.moveTo(X0, midY); ctx.lineTo(X1, midY); ctx.stroke(); ctx.setLineDash([]);
 
-      function update() {
-        const c = CASES[sel.value];
-        const lam = c.v / c.f;
-
-        ctx.clearRect(0, 0, W, H);
-        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
-        ctx.fillRect(0, 0, W, H);
-        ctx.fillStyle = accent;
-        ctx.font = 'bold 15px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(c.f + ' Hz in ' + c.medium, W / 2, 26);
-
-        // A wave drawn with a length proportional to log wavelength, so all four fit.
-        const x0 = 50, x1 = W - 50, span = x1 - x0;
-        const cycles = Math.min(24, Math.max(1.2, 3 * Math.pow(lam, -0.45)));
-        const period = span / cycles;
-        const axisY = 130, amp = 42;
-        ctx.strokeStyle = muted;
-        ctx.setLineDash([5, 4]);
-        ctx.lineWidth = 1.2;
-        ctx.beginPath(); ctx.moveTo(x0, axisY); ctx.lineTo(x1, axisY); ctx.stroke();
-        ctx.setLineDash([]);
-        ctx.strokeStyle = '#5aa9e6';
-        ctx.lineWidth = 2.5;
-        ctx.beginPath();
-        for (let x = x0; x <= x1; x += 1.5) {
-          const y = axisY - amp * Math.cos((2 * Math.PI * (x - x0)) / period);
-          if (x === x0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        ctx.strokeStyle = colour; ctx.lineWidth = 2.5; ctx.beginPath();
+        for (let x = X0; x <= X1; x += 2) {
+          const y = midY - amp * Math.sin(2 * Math.PI * ((x - X0) / lambda - freq * t));
+          if (x === X0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
         ctx.stroke();
-        if (period < span) {
-          ctx.strokeStyle = '#4caf82';
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.moveTo(x0, axisY - amp - 16); ctx.lineTo(x0 + period, axisY - amp - 16);
-          ctx.moveTo(x0, axisY - amp - 22); ctx.lineTo(x0, axisY - amp - 10);
-          ctx.moveTo(x0 + period, axisY - amp - 22); ctx.lineTo(x0 + period, axisY - amp - 10);
-          ctx.stroke();
-          ctx.fillStyle = '#4caf82';
-          ctx.font = 'bold 13px sans-serif';
-          ctx.textAlign = 'center';
-          ctx.fillText('λ = ' + fmt(lam), x0 + period / 2 + 40, axisY - amp - 24);
+
+        ctx.font = 'bold 12px system-ui'; ctx.fillStyle = colour; ctx.textAlign = 'left';
+        ctx.fillText(label, 8, midY - 4);
+
+        // amplitude measured from the rest line to the first crest
+        const crestX = X0 + lambda * (freq * t % 1) + lambda * 0.25;
+        if (crestX < X1 - 10) {
+          simArrow(ctx, crestX, midY, crestX, midY - amp, colour, 1.5);
+          ctx.font = '10px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText('A', crestX + 5, midY - amp / 2 + 3);
         }
-
-        ctx.fillStyle = text;
-        ctx.font = '14px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('speed = wavelength × frequency,  so  λ = v ÷ ν', W / 2, 216);
-        ctx.fillStyle = accent;
-        ctx.fillText('λ = ' + c.v + ' m s⁻¹ ÷ ' + c.f + ' Hz', W / 2, 244);
-        ctx.fillStyle = '#4caf82';
-        ctx.font = 'bold 22px sans-serif';
-        ctx.fillText('λ = ' + fmt(lam), W / 2, 278);
-        ctx.fillStyle = muted;
-        ctx.font = '12px sans-serif';
-        ctx.fillText('Time period T = 1 ÷ ν = ' + (Math.round((1 / c.f) * 1e6) / 1e6) + ' s', W / 2, 306);
-
-        obs.innerHTML = '<strong>' + c.f + ' Hz in ' + c.medium + '</strong><br>' +
-          'v = ' + c.v + ' m s⁻¹, ν = ' + c.f + ' Hz<br>' +
-          'λ = v ÷ ν = ' + c.v + ' ÷ ' + c.f + ' = <strong>' + fmt(lam) + '</strong><br>' +
-          'T = 1 ÷ ν = ' + (Math.round((1 / c.f) * 1e6) / 1e6) + ' s<br><br>' + c.note;
+        // one wavelength marked crest to crest
+        const wx = crestX + 4;
+        if (wx + lambda < X1) {
+          const wy = midY + amp + 16;
+          simArrow(ctx, wx, wy, wx + lambda, wy, 'rgba(148,163,184,0.9)', 1.5);
+          simArrow(ctx, wx + lambda, wy, wx, wy, 'rgba(148,163,184,0.9)', 1.5);
+          ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '10px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('λ', wx + lambda / 2, wy - 4);
+        }
+        return lambda;
       }
 
-      sel.addEventListener('change', update);
-      update();
+      const loop = simLoop(canvas, (t) => {
+        const amp = +ampIn.value, freq = +freqIn.value;
+        const W = logW(canvas), H = logH(canvas);
+        ctx.clearRect(0, 0, W, H);
+
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Amplitude sets loudness, frequency sets pitch', 16, 22);
+
+        const refLambda = drawWave(112, 14, 2, 'rgba(148,163,184,0.85)', t, 'reference: A 14, f 2 Hz');
+        const myLambda = drawWave(248, amp, freq, '#22c55e', t, 'your wave');
+
+        const louder = amp > 14 ? 'louder' : (amp < 14 ? 'softer' : 'equally loud');
+        const pitch = freq > 2 ? 'higher pitched' : (freq < 2 ? 'lower pitched' : 'the same pitch');
+        simReadout(ctx, 400, 300, [
+          'λ reference = ' + refLambda.toFixed(0) + ' px',
+          'λ yours     = ' + myLambda.toFixed(0) + ' px'
+        ], 'rgba(34,197,94,0.6)');
+
+        obs.innerHTML =
+          '<strong>Amplitude ' + amp + '</strong> → the sound is <strong>' + louder + '</strong> than the reference.' +
+          '<br><strong>Frequency ' + freq + ' Hz</strong> → it is <strong>' + pitch + '</strong>.' +
+          '<br><span style="color:var(--text-muted);">Both waves travel at the same speed, so raising the frequency squeezes the wavelength: v = f λ. Amplitude changes the height of the wave but never its spacing.</span>';
+      });
+
+      playBtn.addEventListener('click', () => { playBtn.textContent = loop.toggle() ? '⏸ Pause' : '▶ Play'; });
     }
 
     function initEchoSonarLab() {
@@ -35185,103 +35301,105 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('net-force-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-net-force');
+      const lIn = document.getElementById('nf-left');
+      const rIn = document.getElementById('nf-right');
+      const mIn = document.getElementById('nf-mass');
+      const playBtn = document.getElementById('nf-play');
+      const resetBtn = document.getElementById('nf-reset');
       const obs = document.getElementById('net-force-obs');
-      const W = logW(canvas), H = logH(canvas);
-      const text = cssVar('--text-normal', '#e6e6e6');
-      const muted = cssVar('--text-muted', '#9aa0a6');
-      const accent = cssVar('--accent-primary', '#6c8cff');
 
-      // Each case gives the two forces as signed values: positive is to the right.
-      const CASES = {
-        a: { f1: 10, f2: 6, label: '(a) Both forces act towards the right' },
-        b: { f1: 10, f2: -6, label: '(b) 10 N right, 6 N left' },
-        c: { f1: -10, f2: 6, label: '(c) 6 N right, 10 N left' },
-        d: { f1: 10, f2: -10, label: 'Tug of war: equal and opposite forces' }
-      };
+      const GROUND = 214, X_MIN = 90, X_MAX = 470, PIX_PER_M = 12;
+      let x = 240, v = 0, elapsed = 0;
 
-      function arrow(x, y, len, color, label) {
-        const dir = len < 0 ? -1 : 1;
-        const L = Math.abs(len);
-        ctx.strokeStyle = color;
-        ctx.fillStyle = color;
-        ctx.lineWidth = 4;
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.lineTo(x + dir * L, y);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(x + dir * L, y);
-        ctx.lineTo(x + dir * (L - 12), y - 7);
-        ctx.lineTo(x + dir * (L - 12), y + 7);
-        ctx.closePath();
-        ctx.fill();
-        ctx.font = 'bold 13px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(label, x + dir * (L / 2), y - 14);
-      }
+      function reset() { x = 240; v = 0; elapsed = 0; }
+      resetBtn.addEventListener('click', reset);
 
-      function update() {
-        const c = CASES[sel.value];
-        const net = c.f1 + c.f2;
-        const scale = 9;
+      const loop = simLoop(canvas, (t, dt, api) => {
+        const FL = +lIn.value, FR = +rIn.value, m = +mIn.value;
+        const net = FL - FR;                 // positive means pushed to the right
+        const a = net / m;
 
-        ctx.clearRect(0, 0, W, H);
-        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
-        ctx.fillRect(0, 0, W, H);
-        ctx.fillStyle = accent;
-        ctx.font = 'bold 15px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(c.label, W / 2, 26);
-
-        // The block, with the table it rests on.
-        const bx = W / 2, by = 120;
-        ctx.fillStyle = '#4a5468';
-        ctx.fillRect(bx - 40, by - 30, 80, 60);
-        ctx.strokeStyle = muted;
-        ctx.lineWidth = 2;
-        ctx.strokeRect(bx - 40, by - 30, 80, 60);
-        ctx.beginPath();
-        ctx.moveTo(60, by + 30); ctx.lineTo(W - 60, by + 30);
-        ctx.stroke();
-
-        // Each force starts at the edge of the block and points outwards.
-        const start = f => (f > 0 ? bx + 40 : bx - 40);
-        arrow(start(c.f1), by - 12, c.f1 * scale, '#5aa9e6', Math.abs(c.f1) + ' N');
-        arrow(start(c.f2), by + 14, c.f2 * scale, '#e0b64a', Math.abs(c.f2) + ' N');
-
-        // Net force shown separately below.
-        ctx.fillStyle = text;
-        ctx.font = '13px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('Net force', W / 2, 214);
-        if (net === 0) {
-          ctx.fillStyle = '#4caf82';
-          ctx.font = 'bold 17px sans-serif';
-          ctx.fillText('Zero — the forces are balanced', W / 2, 248);
-          ctx.fillStyle = muted;
-          ctx.font = '13px sans-serif';
-          ctx.fillText('The block does not move.', W / 2, 276);
-        } else {
-          arrow(W / 2 - (net * scale) / 2, 240, net * scale, '#4caf82', Math.abs(net) + ' N');
-          ctx.fillStyle = '#4caf82';
-          ctx.font = 'bold 16px sans-serif';
-          ctx.textAlign = 'center';
-          ctx.fillText(Math.abs(net) + ' N towards the ' + (net > 0 ? 'right' : 'left'), W / 2, 282);
+        if (api.running) {
+          // v is kept in real m/s; only the drawing is scaled to pixels
+          v += a * dt;
+          x += v * dt * PIX_PER_M;
+          elapsed += dt;
+          if (x < X_MIN) { x = X_MIN; v = 0; }
+          if (x > X_MAX) { x = X_MAX; v = 0; }
         }
 
-        const sameDir = (c.f1 > 0) === (c.f2 > 0);
-        const m1 = Math.abs(c.f1), m2 = Math.abs(c.f2);
-        obs.innerHTML = '<strong>' + c.label + '</strong><br><br>' +
-          (sameDir
-            ? 'Forces in the same direction add up:<br>Net force = ' + m1 + ' N + ' + m2 + ' N = <strong>' + Math.abs(net) + ' N</strong> towards the ' + (net > 0 ? 'right' : 'left') + '.'
-            : net === 0
-              ? 'The forces are equal in magnitude and opposite in direction, so they are <strong>balanced</strong>. The net force is zero and the block does not move.'
-              : 'Opposite forces subtract:<br>Net force = ' + Math.max(m1, m2) + ' N − ' + Math.min(m1, m2) + ' N = <strong>' + Math.abs(net) + ' N</strong>, acting along the larger force, that is towards the ' + (net > 0 ? 'right' : 'left') + '.');
-      }
+        const W = logW(canvas), H = logH(canvas);
+        ctx.clearRect(0, 0, W, H);
 
-      sel.addEventListener('change', update);
-      update();
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Two pushes, one box — only the difference does anything', 16, 22);
+
+        // floor
+        ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(30, GROUND); ctx.lineTo(W - 30, GROUND); ctx.stroke();
+        ctx.strokeStyle = 'rgba(148,163,184,0.22)'; ctx.lineWidth = 1;
+        for (let gx = 30; gx < W - 30; gx += 20) {
+          ctx.beginPath(); ctx.moveTo(gx, GROUND); ctx.lineTo(gx - 8, GROUND + 9); ctx.stroke();
+        }
+
+        // box, its size hinting at its mass
+        const half = 22 + m * 2.2;
+        ctx.fillStyle = 'rgba(167,139,250,0.30)';
+        ctx.strokeStyle = '#a78bfa'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(x - half, GROUND - half * 1.15, half * 2, half * 1.15, 5);
+        else ctx.rect(x - half, GROUND - half * 1.15, half * 2, half * 1.15);
+        ctx.fill(); ctx.stroke();
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(m + ' kg', x, GROUND - half * 0.5);
+
+        // applied forces, drawn to scale
+        const ay = GROUND - half * 1.15 - 26;
+        if (FL > 0) {
+          simArrow(ctx, x - half - 12 - FL * 6, ay, x - half - 12, ay, '#38bdf8', 3);
+          ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'right';
+          ctx.fillText(FL + ' N', x - half - 16 - FL * 6, ay - 6);
+        }
+        if (FR > 0) {
+          simArrow(ctx, x + half + 12 + FR * 6, ay, x + half + 12, ay, '#f87171', 3);
+          ctx.fillStyle = '#f87171'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText(FR + ' N', x + half + 16 + FR * 6, ay - 6);
+        }
+
+        // the leftover force, drawn separately underneath
+        const ny = GROUND + 34;
+        ctx.textAlign = 'center'; ctx.font = '11px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8');
+        ctx.fillText('net force', x, ny - 14);
+        if (net !== 0) {
+          simArrow(ctx, x, ny, x + Math.sign(net) * Math.abs(net) * 6, ny, net > 0 ? '#22c55e' : '#f59e0b', 3);
+          ctx.fillStyle = net > 0 ? '#22c55e' : '#f59e0b'; ctx.font = 'bold 12px system-ui';
+          ctx.fillText(Math.abs(net) + ' N', x + Math.sign(net) * (Math.abs(net) * 6 + 26), ny + 4);
+        } else {
+          ctx.fillStyle = '#22c55e'; ctx.font = 'bold 12px system-ui';
+          ctx.fillText('0 N — balanced', x, ny + 4);
+        }
+
+        simReadout(ctx, W - 214, 40, [
+          'net F = ' + FL + ' − ' + FR + ' = ' + net + ' N',
+          'a = F/m = ' + a.toFixed(2) + ' m/s²',
+          'speed now = ' + Math.abs(v).toFixed(2) + ' m/s'
+        ], net === 0 ? 'rgba(148,163,184,0.6)' : 'rgba(34,197,94,0.6)');
+
+        const state = net === 0
+          ? (Math.abs(v) < 0.01
+              ? 'The forces cancel, so the box stays exactly where it is.'
+              : 'The forces cancel, so the box keeps gliding at a steady speed — no net force means no change in motion.')
+          : 'A leftover force of ' + Math.abs(net) + ' N acts to the ' + (net > 0 ? 'right' : 'left') + ', so the box speeds up in that direction.';
+        obs.innerHTML =
+          '<strong>Net force = ' + FL + ' N − ' + FR + ' N = ' + net + ' N</strong>' +
+          '<br>a = F / m = ' + net + ' / ' + m + ' = <strong>' + a.toFixed(2) + ' m/s²</strong>' +
+          '<br>' + state +
+          '<br><span style="color:var(--text-muted);">Make both sliders equal and watch what happens to the acceleration — then raise the mass and see the same force produce less of it.</span>';
+      });
+
+      playBtn.addEventListener('click', () => { playBtn.textContent = loop.toggle() ? '⏸ Pause' : '▶ Play'; });
     }
 
     function initFrictionNatureLab() {
