@@ -2235,22 +2235,29 @@ function getInlineLabHtml(type) {
     const circuitBuilderLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="circuit-builder-canvas" width="600" height="300"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a connection arrangement and see whether the lamp or LED glows.</span></div>
+          <canvas id="circuit-builder-canvas" width="600" height="330"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Close the switch and watch the charge actually go round. Break the loop anywhere and everything stops.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose an Arrangement</h3>
-            <select id="sel-circuit-scenario" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="0" selected>Lamp: both terminals connected</option>
-              <option value="1">Lamp: only one wire connected</option>
-              <option value="2">LED: correctly oriented (+ to +)</option>
-              <option value="3">LED: reversed (+ to −)</option>
+            <h3>Build the Circuit</h3>
+            ${simSlider('cb-cells', 'Cells in the battery', 1, 3, 1, 1, '', '#facc15')}
+            <label style="display:block;font-size:0.85rem;color:var(--text-muted);margin:0.5rem 0 0.25rem;">Component</label>
+            <select id="cb-part" class="sim-toggle-btn" style="text-align:left;padding:0.4rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="lamp" selected>Filament lamp</option>
+              <option value="led">LED (long wire to +)</option>
+              <option value="led-rev">LED (connected the wrong way)</option>
             </select>
           </div>
+          <div class="settings-group-card">
+            <button id="cb-switch" class="sim-toggle-btn" style="width:100%;">Switch: OFF — tap to close</button>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-normal);cursor:pointer;margin-top:0.5rem;">
+              <input id="cb-break" type="checkbox" style="accent-color:#ef4444;"> Cut the wire on the return side
+            </label>
+          </div>
           <div class="sim-calculator">
-            <h3>Does It Glow?</h3>
-            <div id="circuit-builder-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an arrangement above.</div>
+            <h3>What the Circuit Does</h3>
+            <div id="circuit-builder-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Close the switch.</div>
           </div>
         </div>
       </div>`;
@@ -2449,20 +2456,20 @@ function getInlineLabHtml(type) {
     const landSeaBreezeLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="land-sea-breeze-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Switch between day and night and see the breeze direction reverse.</span></div>
+          <canvas id="land-sea-breeze-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Follow one parcel of air round the loop and see which way the breeze blows at the coast.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
             <h3>Time of Day</h3>
             <select id="sel-breeze-time" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="day" selected>Day</option>
+              <option value="day" selected>Daytime</option>
               <option value="night">Night</option>
             </select>
           </div>
           <div class="sim-calculator">
-            <h3>Breeze Direction</h3>
-            <div id="land-sea-breeze-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a time of day above.</div>
+            <h3>Why the Air Moves</h3>
+            <div id="land-sea-breeze-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -2641,20 +2648,24 @@ function getInlineLabHtml(type) {
     const xylemTransportLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="xylem-transport-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a tumbler and see how far the colour travels up the plant.</span></div>
+          <canvas id="xylem-transport-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Watch the red dye climb the stem, then cut across it to see which tubes carried the water.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose a Tumbler</h3>
-            <select id="sel-xylem-tumbler" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="A" selected>Tumbler A: plain water</option>
-              <option value="B">Tumbler B: red-inked water</option>
+            <h3>Conditions</h3>
+            <select id="sel-xylem-cond" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="warm" selected>Warm, breezy day</option>
+              <option value="humid">Cool, humid day</option>
+              <option value="sealed">Leaves sealed with jelly</option>
             </select>
           </div>
+          <div class="settings-group-card">
+            <button id="xy-restart" class="sim-toggle-btn" style="width:100%;">↻ Start again</button>
+          </div>
           <div class="sim-calculator">
-            <h3>After One Day</h3>
-            <div id="xylem-transport-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a tumbler above.</div>
+            <h3>What Is Happening</h3>
+            <div id="xylem-transport-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -4316,22 +4327,21 @@ function getInlineLabHtml(type) {
     const electromagnetStrengthLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="electromagnet-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a setup and see the electromagnet's relative strength.</span></div>
+          <canvas id="electromagnet-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Wind on more turns or push more current through, and count the pins it can pick up.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose a Setup</h3>
-            <select id="sel-electromagnet" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="1cell-nonail" selected>1 cell, coil only (no nail)</option>
-              <option value="1cell-nail">1 cell, coil + iron nail</option>
-              <option value="2cell-nail">2 cells, coil + iron nail</option>
-              <option value="2cell-moreturns">2 cells, more coil turns + nail</option>
-            </select>
+            <h3>Build the Electromagnet</h3>
+            ${simSlider('em-turns', 'Turns of wire', 5, 60, 5, 20, '', '#f59e0b')}
+            ${simSlider('em-current', 'Current', 0, 3, 0.5, 1.5, ' A', '#38bdf8')}
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-normal);cursor:pointer;margin-top:0.5rem;">
+              <input id="em-core" type="checkbox" checked style="accent-color:#94a3b8;"> Iron nail inside the coil
+            </label>
           </div>
           <div class="sim-calculator">
-            <h3>Magnetic Strength</h3>
-            <div id="electromagnet-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a setup above.</div>
+            <h3>Strength</h3>
+            <div id="electromagnet-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -22174,78 +22184,143 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('circuit-builder-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-circuit-scenario');
+      const cellsIn = document.getElementById('cb-cells');
+      const partSel = document.getElementById('cb-part');
+      const swBtn = document.getElementById('cb-switch');
+      const breakChk = document.getElementById('cb-break');
       const obs = document.getElementById('circuit-builder-obs');
-      const SCENARIOS = [
-        { label: 'Lamp: both terminals connected', complete: true, deviceType: 'lamp', reversed: false },
-        { label: 'Lamp: only one wire connected', complete: false, deviceType: 'lamp', reversed: false },
-        { label: 'LED: correctly oriented (+ to +)', complete: true, deviceType: 'led', reversed: false },
-        { label: 'LED: reversed (+ to −)', complete: true, deviceType: 'led', reversed: true }
-      ];
 
-      function draw() {
-        const W = logW(canvas), H = logH(canvas);
-        ctx.clearRect(0, 0, W, H);
-        const sc = SCENARIOS[parseInt(sel.value)];
-        const glows = sc.complete && (sc.deviceType === 'lamp' || (sc.deviceType === 'led' && !sc.reversed));
+      const L = 70, R = 530, TOP = 86, BOT = 260;   // the loop
+      let closed = false;
+      swBtn.addEventListener('click', () => {
+        closed = !closed;
+        swBtn.textContent = closed ? 'Switch: ON — tap to open' : 'Switch: OFF — tap to close';
+      });
 
-        const cellX = 130, cellY = 150, deviceX = 470, deviceY = 150;
-
-        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.moveTo(cellX - 4, cellY - 25); ctx.lineTo(cellX - 4, cellY + 25); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(cellX + 8, cellY - 12); ctx.lineTo(cellX + 8, cellY + 12); ctx.stroke();
-        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
-        ctx.fillText('+', cellX - 4, cellY - 35);
-        ctx.fillText('−', cellX + 8, cellY - 35);
-
-        ctx.strokeStyle = glows ? cssVar('--accent-color') : cssVar('--text-muted'); ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.moveTo(cellX - 4, cellY - 25); ctx.lineTo(cellX - 4, 60); ctx.lineTo(deviceX, 60); ctx.lineTo(deviceX, deviceY - 25); ctx.stroke();
-
-        if (sc.complete) {
-          ctx.beginPath(); ctx.moveTo(cellX + 8, cellY + 25); ctx.lineTo(cellX + 8, 240); ctx.lineTo(deviceX, 240); ctx.lineTo(deviceX, deviceY + 25); ctx.stroke();
-        } else {
-          ctx.beginPath(); ctx.moveTo(cellX + 8, cellY + 25); ctx.lineTo(cellX + 8, 240); ctx.lineTo(340, 240); ctx.stroke();
-          ctx.setLineDash([3, 3]);
-          ctx.beginPath(); ctx.moveTo(360, 240); ctx.lineTo(deviceX, 240); ctx.lineTo(deviceX, deviceY + 25); ctx.stroke();
-          ctx.setLineDash([]);
-          ctx.fillStyle = '#ef4444'; ctx.font = 'bold 14px system-ui';
-          ctx.fillText('✕ gap', 350, 260);
-        }
-
-        if (sc.deviceType === 'lamp') {
-          ctx.strokeStyle = glows ? cssVar('--accent-color') : cssVar('--text-normal'); ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.arc(deviceX, deviceY, 25, 0, Math.PI * 2); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(deviceX - 18, deviceY - 18); ctx.lineTo(deviceX + 18, deviceY + 18); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(deviceX + 18, deviceY - 18); ctx.lineTo(deviceX - 18, deviceY + 18); ctx.stroke();
-          if (glows) {
-            ctx.fillStyle = 'rgba(16,185,129,0.3)';
-            ctx.beginPath(); ctx.arc(deviceX, deviceY, 35, 0, Math.PI * 2); ctx.fill();
-          }
-        } else {
-          const dir = sc.reversed ? -1 : 1;
-          ctx.strokeStyle = glows ? cssVar('--accent-color') : cssVar('--text-normal'); ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.moveTo(deviceX - 15 * dir, deviceY - 20);
-          ctx.lineTo(deviceX - 15 * dir, deviceY + 20);
-          ctx.lineTo(deviceX + 15 * dir, deviceY);
-          ctx.closePath();
-          ctx.stroke();
-          if (glows) { ctx.fillStyle = 'rgba(16,185,129,0.3)'; ctx.fill(); }
-          ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
-          ctx.fillText(sc.reversed ? '(reversed)' : '(+ to +)', deviceX, deviceY + 45);
-        }
-
-        ctx.fillStyle = cssVar('--text-normal'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
-        ctx.fillText(sc.label, W / 2, 25);
-
-        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = glows ? cssVar('--accent-color') : '#ef4444';
-        ctx.fillText(glows ? '✓ Glows!' : '✗ Does NOT glow', W / 2, 285);
-
-        obs.innerHTML = `<strong>${sc.label}: ${glows ? 'Glows!' : 'Does not glow'}</strong><br>${!sc.complete ? 'The circuit has a gap — current cannot flow without a complete path.' : (sc.deviceType === 'led' && sc.reversed) ? 'The LED is connected backwards — current can only flow through an LED in one direction.' : 'The circuit is complete and correctly connected, so current flows and the device lights up.'}`;
+      // distance round the loop, used to march the charge markers
+      const perim = 2 * (R - L) + 2 * (BOT - TOP);
+      function pointAt(d) {
+        d = ((d % perim) + perim) % perim;
+        const w = R - L, h = BOT - TOP;
+        if (d < w) return [L + d, TOP];
+        if (d < w + h) return [R, TOP + (d - w)];
+        if (d < 2 * w + h) return [R - (d - w - h), BOT];
+        return [L, BOT - (d - 2 * w - h)];
       }
 
-      sel.addEventListener('change', draw);
-      draw();
+      simLoop(canvas, (t) => {
+        const cells = +cellsIn.value;
+        const part = partSel.value;
+        const cut = breakChk.checked;
+        const ledOk = part !== 'led-rev';
+        const flowing = closed && !cut && ledOk;
+        const brightness = flowing ? Math.min(1, cells / 3 + 0.25) : 0;
+
+        const W = logW(canvas), H = logH(canvas);
+        ctx.clearRect(0, 0, W, H);
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('A circuit only works when the loop is complete', 16, 24);
+
+        // wires
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(L, TOP); ctx.lineTo(R, TOP);
+        ctx.moveTo(R, TOP); ctx.lineTo(R, BOT);
+        ctx.moveTo(L, BOT); ctx.lineTo(L, TOP);
+        ctx.stroke();
+        // bottom wire, with a gap if it has been cut
+        ctx.beginPath();
+        if (cut) { ctx.moveTo(L, BOT); ctx.lineTo(280, BOT); ctx.moveTo(330, BOT); ctx.lineTo(R, BOT); }
+        else { ctx.moveTo(L, BOT); ctx.lineTo(R, BOT); }
+        ctx.stroke();
+        if (cut) {
+          ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(288, BOT - 10); ctx.lineTo(322, BOT + 10);
+          ctx.moveTo(322, BOT - 10); ctx.lineTo(288, BOT + 10); ctx.stroke();
+          ctx.fillStyle = '#ef4444'; ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('break', 305, BOT + 26);
+        }
+
+        // battery on the left rail: one symbol per cell
+        const bx = L, by0 = (TOP + BOT) / 2 - (cells - 1) * 13;
+        for (let i = 0; i < cells; i++) {
+          const y = by0 + i * 26;
+          ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(bx - 15, y - 5); ctx.lineTo(bx + 15, y - 5); ctx.stroke();
+          ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(bx - 8, y + 4); ctx.lineTo(bx + 8, y + 4); ctx.stroke();
+        }
+        ctx.fillStyle = '#facc15'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'right';
+        ctx.fillText(cells + (cells > 1 ? ' cells' : ' cell'), bx - 20, (TOP + BOT) / 2 + 4);
+        ctx.fillText((cells * 1.5).toFixed(1) + ' V', bx - 20, (TOP + BOT) / 2 + 20);
+
+        // switch on the top wire
+        const sx = 300, sy = TOP;
+        ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(sx - 26, sy, 4, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.arc(sx + 26, sy, 4, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(sx - 26, sy);
+        if (closed) ctx.lineTo(sx + 26, sy); else ctx.lineTo(sx + 18, sy - 22);
+        ctx.stroke();
+        // hide the wire under an open switch
+        if (!closed) {
+          ctx.strokeStyle = cssVar('--bg-primary', '#0b0f19'); ctx.lineWidth = 5;
+          ctx.beginPath(); ctx.moveTo(sx - 22, sy); ctx.lineTo(sx + 22, sy); ctx.stroke();
+          ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3;
+          ctx.beginPath(); ctx.moveTo(sx - 26, sy); ctx.lineTo(sx + 18, sy - 22); ctx.stroke();
+        }
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(closed ? 'switch closed' : 'switch open', sx, sy - 32);
+
+        // the component on the right rail
+        const cxp = R, cyp = (TOP + BOT) / 2;
+        if (part === 'lamp') {
+          ctx.beginPath(); ctx.arc(cxp, cyp, 22, 0, Math.PI * 2);
+          ctx.fillStyle = flowing ? 'rgba(250,204,21,' + (0.25 + brightness * 0.6) + ')' : 'rgba(148,163,184,0.18)';
+          if (flowing) { ctx.shadowColor = '#facc15'; ctx.shadowBlur = 18 + brightness * 26; }
+          ctx.fill(); ctx.shadowBlur = 0;
+          ctx.strokeStyle = flowing ? '#facc15' : '#94a3b8'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cxp - 12, cyp - 12); ctx.lineTo(cxp + 12, cyp + 12);
+          ctx.moveTo(cxp + 12, cyp - 12); ctx.lineTo(cxp - 12, cyp + 12); ctx.stroke();
+        } else {
+          ctx.beginPath();
+          ctx.moveTo(cxp - 14, cyp - 14); ctx.lineTo(cxp - 14, cyp + 14); ctx.lineTo(cxp + 12, cyp); ctx.closePath();
+          ctx.fillStyle = flowing ? 'rgba(34,197,94,0.75)' : 'rgba(148,163,184,0.25)';
+          if (flowing) { ctx.shadowColor = '#22c55e'; ctx.shadowBlur = 24; }
+          ctx.fill(); ctx.shadowBlur = 0;
+          ctx.strokeStyle = flowing ? '#22c55e' : '#94a3b8'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cxp + 12, cyp - 16); ctx.lineTo(cxp + 12, cyp + 16); ctx.stroke();
+        }
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = '11px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText(part === 'lamp' ? 'lamp' : 'LED', cxp + 30, cyp + 4);
+
+        // conventional current: from + terminal, round the loop
+        if (flowing) {
+          const speed = 46 * (0.6 + cells * 0.2);
+          for (let i = 0; i < 16; i++) {
+            const d = (t * speed + (i * perim) / 16) % perim;
+            const [px, py] = pointAt(d);
+            // keep the switch symbol readable rather than drawing charge over it
+            if (Math.abs(py - TOP) < 2 && Math.abs(px - 300) < 34) continue;
+            ctx.beginPath(); ctx.arc(px, py, 4, 0, Math.PI * 2);
+            ctx.fillStyle = '#38bdf8'; ctx.fill();
+          }
+          ctx.fillStyle = '#38bdf8'; ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('current', L + 110, TOP - 12);
+        }
+
+        let msg;
+        if (!closed) msg = 'The switch is open, so there is a gap in the loop. No current can flow and the component stays dark.';
+        else if (cut) msg = 'The loop is broken at the cut. It does not matter that the switch is closed — a circuit has to be complete all the way round.';
+        else if (!ledOk) msg = 'An LED only lets current through one way round. Connected backwards it stays dark, even though the loop is complete.';
+        else msg = 'The loop is complete, so charge flows all the way round and the ' + (part === 'lamp' ? 'lamp lights up' : 'LED glows') + '.';
+
+        obs.innerHTML =
+          '<strong>' + (flowing ? 'Current flowing' : 'No current') + '</strong> · battery ' + (cells * 1.5).toFixed(1) + ' V' +
+          '<br>' + msg +
+          (flowing && part === 'lamp' ? '<br><span style="color:var(--text-muted);">Add more cells and the lamp burns brighter — more cells push more current round the same loop.</span>' : '');
+      });
     }
 
     function initCircuitDiagramLab() {
@@ -22783,63 +22858,81 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const sel = document.getElementById('sel-breeze-time');
       const obs = document.getElementById('land-sea-breeze-obs');
 
-      function drawArrow(x1, y1, x2, y2, color) {
-        ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
-        const ang = Math.atan2(y2 - y1, x2 - x1);
-        ctx.beginPath();
-        ctx.moveTo(x2, y2);
-        ctx.lineTo(x2 - 10 * Math.cos(ang - 0.4), y2 - 10 * Math.sin(ang - 0.4));
-        ctx.lineTo(x2 - 10 * Math.cos(ang + 0.4), y2 - 10 * Math.sin(ang + 0.4));
-        ctx.closePath(); ctx.fill();
-      }
+      const SEA_X0 = 40, COAST = 300, LAND_X1 = 560, GROUND = 250;
 
-      function draw() {
+      simLoop(canvas, (t) => {
+        const day = sel.value === 'day';
+        // land heats and cools faster than water, so it is the land temperature that swings
+        const landT = day ? 38 : 18, seaT = day ? 27 : 25;
+        const risingOverLand = landT > seaT;
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const isDay = sel.value === 'day';
-        const groundY = 190;
 
-        ctx.fillStyle = '#92400e'; ctx.fillRect(0, groundY, W / 2, H - groundY);
-        ctx.fillStyle = '#1d4ed8'; ctx.fillRect(W / 2, groundY, W / 2, H - groundY);
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(0, groundY); ctx.lineTo(W, groundY); ctx.stroke();
+        // sky
+        const sky = ctx.createLinearGradient(0, 30, 0, GROUND);
+        sky.addColorStop(0, day ? 'rgba(56,189,248,0.20)' : 'rgba(30,41,59,0.55)');
+        sky.addColorStop(1, 'rgba(2,6,23,0)');
+        ctx.fillStyle = sky; ctx.fillRect(20, 30, W - 40, GROUND - 30);
 
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = '#f8fafc'; ctx.textAlign = 'center';
-        ctx.fillText('LAND', W / 4, groundY + 40);
-        ctx.fillText('SEA', 3 * W / 4, groundY + 40);
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText(day ? 'Daytime: the land is hotter than the sea' : 'Night: the land has cooled below the sea', 16, 22);
 
-        const landWarmer = isDay;
-        ctx.font = 'bold 12px system-ui';
-        ctx.fillStyle = landWarmer ? '#fdba74' : '#93c5fd';
-        ctx.fillText(landWarmer ? 'Warmer' : 'Cooler', W / 4, groundY - 12);
-        ctx.fillStyle = landWarmer ? '#93c5fd' : '#fdba74';
-        ctx.fillText(landWarmer ? 'Cooler' : 'Warmer', 3 * W / 4, groundY - 12);
+        // sun or moon
+        ctx.beginPath(); ctx.arc(day ? 500 : 90, 62, day ? 17 : 13, 0, Math.PI * 2);
+        ctx.fillStyle = day ? '#facc15' : '#e2e8f0'; ctx.fill();
+        if (!day) { ctx.beginPath(); ctx.arc(84, 58, 12, 0, Math.PI * 2); ctx.fillStyle = cssVar('--bg-primary', '#0b0f19'); ctx.fill(); }
 
-        const risingX = landWarmer ? W / 4 : 3 * W / 4;
-        const sinkingX = landWarmer ? 3 * W / 4 : W / 4;
-        drawArrow(risingX, groundY - 20, risingX, 40, '#f97316');
-        drawArrow(sinkingX, 40, sinkingX, groundY - 20, '#60a5fa');
+        // sea and land
+        ctx.fillStyle = 'rgba(37,99,235,0.45)';
+        ctx.fillRect(SEA_X0, GROUND, COAST - SEA_X0, 54);
+        ctx.fillStyle = 'rgba(180,120,60,0.55)';
+        ctx.beginPath();
+        ctx.moveTo(COAST, GROUND + 6); ctx.lineTo(LAND_X1, GROUND - 6);
+        ctx.lineTo(LAND_X1, GROUND + 54); ctx.lineTo(COAST, GROUND + 54); ctx.closePath(); ctx.fill();
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('sea  ' + seaT + '°C', (SEA_X0 + COAST) / 2, GROUND + 32);
+        ctx.fillText('land  ' + landT + '°C', (COAST + LAND_X1) / 2, GROUND + 32);
 
-        const breezeY = groundY - 55;
-        if (landWarmer) {
-          drawArrow(W - 70, breezeY, 70, breezeY, cssVar('--accent-color'));
-        } else {
-          drawArrow(70, breezeY, W - 70, breezeY, cssVar('--accent-color'));
+        // convection loop: up over the warm side, across, down over the cool side
+        const warmX = risingOverLand ? (COAST + LAND_X1) / 2 : (SEA_X0 + COAST) / 2;
+        const coolX = risingOverLand ? (SEA_X0 + COAST) / 2 : (COAST + LAND_X1) / 2;
+        const topY = 96;
+
+        // moving parcels of air
+        const legUp = GROUND - topY, legAcross = Math.abs(warmX - coolX);
+        const total = 2 * legUp + 2 * legAcross;
+        for (let i = 0; i < 12; i++) {
+          let d = (t * 66 + (i * total) / 12) % total;
+          let px, py, warm;
+          if (d < legUp) { px = warmX; py = GROUND - d; warm = true; }
+          else if (d < legUp + legAcross) { const k = d - legUp; px = warmX + (coolX - warmX) * (k / legAcross); py = topY; warm = false; }
+          else if (d < 2 * legUp + legAcross) { const k = d - legUp - legAcross; px = coolX; py = topY + k; warm = false; }
+          else { const k = d - 2 * legUp - legAcross; px = coolX + (warmX - coolX) * (k / legAcross); py = GROUND - 14; warm = false; }
+          ctx.beginPath(); ctx.arc(px, py, 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = warm ? 'rgba(248,113,113,0.9)' : 'rgba(96,165,250,0.9)';
+          ctx.fill();
         }
-        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--accent-color'); ctx.textAlign = 'center';
-        ctx.fillText(landWarmer ? 'Sea Breeze (sea → land)' : 'Land Breeze (land → sea)', W / 2, breezeY - 12);
 
-        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(isDay ? 'DAY' : 'NIGHT', W / 2, 24);
+        // the arrows that name each leg
+        simArrow(ctx, warmX, GROUND - 20, warmX, topY + 10, '#f87171', 2.5);
+        simArrow(ctx, coolX, topY + 10, coolX, GROUND - 24, '#60a5fa', 2.5);
+        simArrow(ctx, warmX, topY, coolX, topY, '#94a3b8', 2);
+        simArrow(ctx, coolX, GROUND - 14, warmX, GROUND - 14, '#22c55e', 3);
 
-        obs.innerHTML = isDay
-          ? '<strong>Sea breeze.</strong> During the day, land heats up faster than the sea, so warm air rises over the land, and cooler air flows in from the sea to take its place — this is the sea breeze.'
-          : '<strong>Land breeze.</strong> At night, land cools down faster than the sea, so the sea (now relatively warmer) has rising air, and cooler air flows from the land out towards the sea — this is the land breeze.';
-      }
+        ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillStyle = '#f87171'; ctx.fillText('warm air rises', warmX, topY - 8);
+        ctx.fillStyle = '#60a5fa'; ctx.fillText('cool air sinks', coolX, topY - 8);
+        ctx.fillStyle = '#22c55e';
+        ctx.fillText(day ? 'sea breeze' : 'land breeze', (warmX + coolX) / 2, GROUND - 22);
 
-      sel.addEventListener('change', draw);
-      draw();
+        obs.innerHTML = day
+          ? '<strong>Daytime — sea breeze.</strong> Land heats up faster than water, so the air above the land warms, expands, becomes lighter and rises. Cooler air moves in from the sea to take its place, and that movement from sea to land is the sea breeze.' +
+            '<br><span style="color:var(--text-muted);">Switch to night and watch every arrow reverse.</span>'
+          : '<strong>Night — land breeze.</strong> Land also cools faster than water, so now the sea is the warmer surface. The rising air is over the sea, and the breeze blows from land to sea instead.' +
+            '<br><span style="color:var(--text-muted);">Same convection loop, turned round, because which surface is warmer has swapped.</span>';
+      });
     }
 
     function initPendulumTimePeriodLab() {
@@ -23316,51 +23409,96 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('xylem-transport-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-xylem-tumbler');
+      const sel = document.getElementById('sel-xylem-cond');
+      const restart = document.getElementById('xy-restart');
       const obs = document.getElementById('xylem-transport-obs');
 
-      function draw() {
+      const COND = {
+        warm:   { rate: 0.14, name: 'Warm, breezy day',      note: 'Transpiration from the leaves is fast, so water is pulled up the xylem quickly.' },
+        humid:  { rate: 0.06, name: 'Cool, humid day',       note: 'The air already holds a lot of moisture, so less water evaporates from the leaves and the pull is weaker.' },
+        sealed: { rate: 0.015, name: 'Leaves sealed',        note: 'With the stomata blocked almost nothing evaporates, so there is hardly any pull and the dye barely moves.' }
+      };
+      const STEM_X = 210, BASE_Y = 286, TOP_Y = 92;
+
+      let level = 0;
+      restart.addEventListener('click', () => { level = 0; });
+      sel.addEventListener('change', () => { level = 0; });
+
+      simLoop(canvas, (t, dt) => {
+        const C = COND[sel.value];
+        level = Math.min(1, level + C.rate * dt);
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const isRed = sel.value === 'B';
-        const cx = W / 2;
-        const waterColor = isRed ? '#dc2626' : '#93c5fd';
-        const tintColor = isRed ? '#ef4444' : cssVar('--accent-color');
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Water rises through the xylem, pulled by the leaves', 16, 22);
 
-        const tumblerY1 = 190, tumblerY2 = 250, tumblerHalfW = 45;
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.moveTo(cx - tumblerHalfW, tumblerY1); ctx.lineTo(cx - tumblerHalfW, tumblerY2); ctx.lineTo(cx + tumblerHalfW, tumblerY2); ctx.lineTo(cx + tumblerHalfW, tumblerY1); ctx.stroke();
-        ctx.fillStyle = waterColor;
-        ctx.fillRect(cx - tumblerHalfW + 2, tumblerY1 + 15, tumblerHalfW * 2 - 4, tumblerY2 - tumblerY1 - 17);
+        // beaker of dyed water
+        ctx.fillStyle = 'rgba(239,68,68,0.30)';
+        ctx.fillRect(STEM_X - 62, BASE_Y - 26, 124, 46);
+        ctx.strokeStyle = 'rgba(148,163,184,0.8)'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(STEM_X - 62, BASE_Y - 44); ctx.lineTo(STEM_X - 62, BASE_Y + 20);
+        ctx.lineTo(STEM_X + 62, BASE_Y + 20); ctx.lineTo(STEM_X + 62, BASE_Y - 44); ctx.stroke();
+        ctx.fillStyle = '#ef4444'; ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('water + red dye', STEM_X, BASE_Y + 36);
 
-        ctx.strokeStyle = tintColor; ctx.lineWidth = 5;
-        ctx.beginPath(); ctx.moveTo(cx, tumblerY1); ctx.lineTo(cx, 60); ctx.stroke();
+        // stem
+        ctx.fillStyle = 'rgba(74,124,60,0.75)';
+        ctx.fillRect(STEM_X - 11, TOP_Y, 22, BASE_Y - TOP_Y);
+        // the dye front climbing inside it
+        const frontY = BASE_Y - level * (BASE_Y - TOP_Y);
+        ctx.fillStyle = 'rgba(239,68,68,0.85)';
+        ctx.fillRect(STEM_X - 5, frontY, 10, BASE_Y - frontY);
+        ctx.strokeStyle = 'rgba(248,113,113,0.9)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(STEM_X - 12, frontY); ctx.lineTo(STEM_X + 12, frontY); ctx.stroke();
+        ctx.fillStyle = '#f87171'; ctx.font = '11px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText('dye front', STEM_X + 18, frontY + 4);
 
-        [[cx - 22, 110, -1], [cx + 22, 90, 1], [cx - 18, 70, -1]].forEach(([lx, ly, dir]) => {
+        // leaves, with water vapour leaving them at a rate that matches the condition
+        [[-1, 130], [1, 158], [-1, 186]].forEach(([side, ly], idx) => {
+          ctx.fillStyle = level > (BASE_Y - ly) / (BASE_Y - TOP_Y) ? 'rgba(190,60,60,0.75)' : 'rgba(74,124,60,0.85)';
           ctx.beginPath();
-          ctx.ellipse(lx, ly, 22, 11, dir * 0.5, 0, Math.PI * 2);
-          ctx.fillStyle = isRed ? '#f87171' : '#4ade80';
+          ctx.ellipse(STEM_X + side * 40, ly, 34, 13, side * 0.3, 0, Math.PI * 2);
           ctx.fill();
-          ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1; ctx.stroke();
+          ctx.strokeStyle = 'rgba(20,60,20,0.6)'; ctx.lineWidth = 1; ctx.stroke();
+          if (C.rate > 0.02) {
+            for (let k = 0; k < 3; k++) {
+              const ph = (t * C.rate * 8 + k / 3 + idx * 0.3) % 1;
+              ctx.beginPath();
+              ctx.arc(STEM_X + side * 58, ly - 14 - ph * 34, 2.5 * (1 - ph) + 1, 0, Math.PI * 2);
+              ctx.fillStyle = 'rgba(148,197,255,' + (0.7 * (1 - ph)) + ')';
+              ctx.fill();
+            }
+          }
         });
+        ctx.fillStyle = '#93c5fd'; ctx.font = '11px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText(C.rate > 0.02 ? 'water vapour leaving (transpiration)' : 'almost no transpiration', STEM_X + 76, 112);
 
-        ctx.beginPath(); ctx.arc(cx, 50, 16, 0, Math.PI * 2);
-        ctx.fillStyle = isRed ? '#fca5a5' : '#f8fafc';
-        ctx.fill();
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5; ctx.stroke();
+        // cross-section of the stem, showing which tubes stained
+        const cx = 470, cy = 210, r = 58;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(74,124,60,0.25)'; ctx.fill();
+        ctx.strokeStyle = 'rgba(74,124,60,0.9)'; ctx.lineWidth = 2; ctx.stroke();
+        for (let i = 0; i < 10; i++) {
+          const a = (i / 10) * Math.PI * 2;
+          const bx = cx + Math.cos(a) * r * 0.62, by = cy + Math.sin(a) * r * 0.62;
+          ctx.beginPath(); ctx.arc(bx, by, 7, 0, Math.PI * 2);
+          ctx.fillStyle = level > 0.35 ? 'rgba(239,68,68,0.85)' : 'rgba(148,163,184,0.35)';
+          ctx.fill();
+          ctx.strokeStyle = 'rgba(226,232,240,0.5)'; ctx.lineWidth = 1; ctx.stroke();
+        }
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('cut across the stem', cx, cy + r + 22);
+        ctx.font = '11px system-ui'; ctx.fillStyle = level > 0.35 ? '#f87171' : cssVar('--text-muted', '#94a3b8');
+        ctx.fillText(level > 0.35 ? 'only the xylem tubes are stained red' : 'no dye has reached this height yet', cx, cy + r + 40);
 
-        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(isRed ? 'Tumbler B: red-inked water' : 'Tumbler A: plain water', W / 2, 24);
-        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted');
-        ctx.fillText('Xylem carries water upward', cx + 55, 130);
-
-        obs.innerHTML = isRed
-          ? '<strong>Red colouring appears in the stem, leaves, and flower.</strong> The xylem — a tube-like structure in the stem — carries the red-inked water all the way up from the tumbler to the leaves and flower.'
-          : '<strong>No colour change appears.</strong> The plain water is still transported upward through the xylem, but since it has no dye, the stem, leaves, and flower show no visible colour change.';
-      }
-
-      sel.addEventListener('change', draw);
-      draw();
+        obs.innerHTML =
+          '<strong>' + C.name + '</strong> — dye has risen <strong>' + Math.round(level * 100) + '%</strong> of the stem.' +
+          '<br>' + C.note +
+          '<br><span style="color:var(--text-muted);">Cutting the stem shows the red confined to a ring of tubes: the xylem. Water and minerals travel up through those, while food made in the leaves travels separately through the phloem.</span>';
+      });
     }
 
     function initMaterialLightTransmissionLab() {
@@ -26953,42 +27091,113 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('electromagnet-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-electromagnet');
+      const turnsIn = document.getElementById('em-turns');
+      const curIn = document.getElementById('em-current');
+      const coreChk = document.getElementById('em-core');
       const obs = document.getElementById('electromagnet-obs');
-      const SETUPS = {
-        '1cell-nonail': { strength: 1, clips: 0, desc: 'A coil alone (no iron core) with 1 cell produces only a weak magnetic field — too weak to attract clips.' },
-        '1cell-nail': { strength: 2, clips: 2, desc: 'Adding an iron nail as a core makes the coil a much stronger magnet, now able to attract a few clips.' },
-        '2cell-nail': { strength: 3, clips: 4, desc: 'Using 2 cells increases the current, creating an even stronger magnetic field and attracting more clips.' },
-        '2cell-moreturns': { strength: 4, clips: 6, desc: 'Combining 2 cells with more coil turns gives the strongest magnetic field, attracting the most clips.' }
-      };
 
-      function draw() {
-        const W = logW(canvas), H = logH(canvas);
-        ctx.clearRect(0, 0, W, H);
-        const s = SETUPS[sel.value];
-        const cx = W / 2;
-
-        const barMaxW = 400, barH = 30, barX = cx - barMaxW / 2, barY = 80;
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1.5;
-        ctx.strokeRect(barX, barY, barMaxW, barH);
-        ctx.fillStyle = cssVar('--accent-color');
-        ctx.fillRect(barX, barY, (s.strength / 4) * barMaxW, barH);
-        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(`Relative Magnetic Strength: ${s.strength}/4`, cx, barY - 12);
-
-        for (let i = 0; i < s.clips; i++) {
-          const x = cx - (s.clips - 1) * 15 + i * 30;
-          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
-          ctx.beginPath(); ctx.arc(x, 170, 10, 0.3, Math.PI * 1.7); ctx.stroke();
-        }
-        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
-        ctx.fillText(s.clips === 0 ? 'No clips attracted' : `${s.clips} clips attracted`, cx, 210);
-
-        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${s.desc}`;
+      const NAIL_X0 = 150, NAIL_X1 = 420, NAIL_Y = 150;
+      const PINS = [];
+      for (let i = 0; i < 14; i++) {
+        PINS.push({ hx: 300 + (i - 6.5) * 30, hy: 292, x: 300 + (i - 6.5) * 30, y: 292, held: false });
       }
 
-      sel.addEventListener('change', draw);
-      draw();
+      simLoop(canvas, (t, dt) => {
+        const turns = +turnsIn.value, cur = +curIn.value, core = coreChk.checked;
+        // strength rises with turns and current, and the iron core multiplies it
+        const strength = (turns / 60) * (cur / 3) * (core ? 1 : 0.25);
+        const lifted = Math.round(strength * 13);
+
+        const W = logW(canvas), H = logH(canvas);
+        ctx.clearRect(0, 0, W, H);
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('An electromagnet is only magnetic while the current flows', 16, 22);
+
+        // the nail
+        if (core) {
+          ctx.fillStyle = 'rgba(148,163,184,0.85)';
+          ctx.fillRect(NAIL_X0, NAIL_Y - 9, NAIL_X1 - NAIL_X0, 18);
+          ctx.beginPath();
+          ctx.moveTo(NAIL_X1, NAIL_Y - 9); ctx.lineTo(NAIL_X1 + 26, NAIL_Y); ctx.lineTo(NAIL_X1, NAIL_Y + 9); ctx.closePath();
+          ctx.fill();
+          ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '11px system-ui'; ctx.textAlign = 'right';
+          ctx.fillText('iron nail', NAIL_X0 - 8, NAIL_Y + 4);
+        } else {
+          ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.setLineDash([5, 5]); ctx.lineWidth = 1;
+          ctx.strokeRect(NAIL_X0, NAIL_Y - 9, NAIL_X1 - NAIL_X0, 18); ctx.setLineDash([]);
+          ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '11px system-ui'; ctx.textAlign = 'right';
+          ctx.fillText('air core', NAIL_X0 - 8, NAIL_Y + 4);
+        }
+
+        // the coil, one loop drawn per turn (capped so it stays legible)
+        const shown = Math.min(turns, 30);
+        const step = (NAIL_X1 - NAIL_X0 - 20) / shown;
+        ctx.strokeStyle = cur > 0 ? '#f59e0b' : '#94a3b8'; ctx.lineWidth = 2.5;
+        for (let i = 0; i < shown; i++) {
+          const x = NAIL_X0 + 10 + i * step;
+          ctx.beginPath();
+          ctx.ellipse(x, NAIL_Y, 5, 21, 0, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        ctx.fillStyle = '#f59e0b'; ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(turns + ' turns', (NAIL_X0 + NAIL_X1) / 2, NAIL_Y - 34);
+
+        // leads and cell, with current markers when it is switched on
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(NAIL_X0 + 10, NAIL_Y - 21); ctx.lineTo(NAIL_X0 - 60, NAIL_Y - 21); ctx.lineTo(NAIL_X0 - 60, 62);
+        ctx.lineTo(NAIL_X1 - 10, 62); ctx.lineTo(NAIL_X1 - 10, NAIL_Y - 21); ctx.stroke();
+        ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(292, 54); ctx.lineTo(292, 70); ctx.stroke();
+        ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(302, 58); ctx.lineTo(302, 66); ctx.stroke();
+        if (cur > 0) {
+          for (let i = 0; i < 6; i++) {
+            const frac = ((t * 0.35 * cur) + i / 6) % 1;
+            const px = NAIL_X0 - 60 + frac * (NAIL_X1 - 10 - (NAIL_X0 - 60));
+            ctx.beginPath(); ctx.arc(px, 62, 3.5, 0, Math.PI * 2);
+            ctx.fillStyle = '#38bdf8'; ctx.fill();
+          }
+        }
+        ctx.fillStyle = '#38bdf8'; ctx.font = '11px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText(cur.toFixed(1) + ' A', NAIL_X1 + 6, 66);
+
+        // field loops, more of them as the magnet gets stronger
+        const loops = Math.round(strength * 5);
+        ctx.strokeStyle = 'rgba(34,197,94,0.5)'; ctx.lineWidth = 1.2;
+        for (let i = 1; i <= loops; i++) {
+          ctx.beginPath();
+          ctx.ellipse((NAIL_X0 + NAIL_X1) / 2, NAIL_Y, (NAIL_X1 - NAIL_X0) / 2 + i * 16, 26 + i * 17, 0, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        // pins jump up to the nail as the strength grows
+        PINS.forEach((pin, i) => {
+          const wanted = i < lifted;
+          const targetX = wanted ? NAIL_X0 + 30 + (i % 7) * 52 : pin.hx;
+          const targetY = wanted ? NAIL_Y + 26 + Math.floor(i / 7) * 14 : pin.hy;
+          pin.x += (targetX - pin.x) * Math.min(dt * 6, 1);
+          pin.y += (targetY - pin.y) * Math.min(dt * 6, 1);
+          ctx.strokeStyle = wanted ? '#e2e8f0' : 'rgba(148,163,184,0.6)';
+          ctx.lineWidth = 3; ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(pin.x - 7, pin.y); ctx.lineTo(pin.x + 7, pin.y); ctx.stroke();
+          ctx.lineCap = 'butt';
+        });
+
+        ctx.strokeStyle = 'rgba(148,163,184,0.45)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(40, 302); ctx.lineTo(W - 40, 302); ctx.stroke();
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '11px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText('iron pins on the table', 44, 318);
+
+        obs.innerHTML =
+          '<strong>' + turns + ' turns · ' + cur.toFixed(1) + ' A · ' + (core ? 'iron core' : 'no core') + '</strong>' +
+          '<br>Pins picked up: <strong>' + lifted + ' of 14</strong>' +
+          '<br>' + (cur === 0
+            ? 'With no current there is no magnetism at all — that is the whole point of an electromagnet.'
+            : (core
+                ? 'More turns and more current both make it stronger, and the iron nail concentrates the field enormously.'
+                : 'Take the iron nail out and the same coil becomes far weaker — the core is doing most of the work.'));
+      });
     }
 
     function initHeatingEffectLab() {
