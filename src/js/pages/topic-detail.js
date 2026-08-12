@@ -2500,20 +2500,17 @@ function getInlineLabHtml(type) {
     const uniformMotionLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="uniform-motion-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a train and see whether it moves with uniform or non-uniform motion.</span></div>
+          <canvas id="uniform-motion-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Two trains leave together. A dot is dropped every 10 minutes — even spacing means uniform motion.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose a Train</h3>
-            <select id="sel-uniform-train" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="X" selected>Train X</option>
-              <option value="Y">Train Y</option>
-            </select>
+            <button id="um-play" class="sim-toggle-btn" style="width:100%;">⏸ Pause</button>
+            <button id="um-reset" class="sim-toggle-btn" style="width:100%;margin-top:0.5rem;">↺ Start again</button>
           </div>
           <div class="sim-calculator">
-            <h3>Motion Type</h3>
-            <div id="uniform-motion-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a train above.</div>
+            <h3>Distance Covered</h3>
+            <div id="uniform-motion-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -6567,22 +6564,22 @@ function getInlineLabHtml(type) {
     const soundMediumLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="sound-medium-canvas" width="600" height="330"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pump the air out of the bell jar and listen to what happens.</span></div>
+          <canvas id="sound-medium-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Ring the bell in each material, then pump the air out of the jar and ring it again.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Air Left in the Jar</h3>
+            <h3>What Surrounds the Bell</h3>
             <select id="sel-sound-medium" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="100" selected>Full of air</option>
-              <option value="50">Half pumped out</option>
-              <option value="10">Almost all pumped out</option>
-              <option value="0">A near vacuum</option>
+              <option value="air" selected>Air</option>
+              <option value="water">Water</option>
+              <option value="steel">Steel</option>
+              <option value="vacuum">Vacuum (air pumped out)</option>
             </select>
           </div>
           <div class="sim-calculator">
-            <h3>What You Hear</h3>
-            <div id="sound-medium-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a setting above.</div>
+            <h3>Does the Sound Get Out?</h3>
+            <div id="sound-medium-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -22720,62 +22717,81 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('uniform-motion-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-uniform-train');
+      const playBtn = document.getElementById('um-play');
+      const resetBtn = document.getElementById('um-reset');
       const obs = document.getElementById('uniform-motion-obs');
-      const TRAINS = {
-        X: { times: [0, 10, 20, 30, 40, 50, 60], positions: [0, 20, 40, 60, 80, 100, 120] },
-        Y: { times: [0, 10, 20, 30, 40, 50, 60], positions: [0, 20, 35, 50, 75, 95, 120] }
-      };
 
-      function draw() {
-        const W = logW(canvas), H = logH(canvas);
-        ctx.clearRect(0, 0, W, H);
-        const train = TRAINS[sel.value];
-        const marginL = 55, marginR = 25, marginT = 40, marginB = 45;
-        const plotW = W - marginL - marginR, plotH = H - marginT - marginB;
-        const maxT = 60, maxD = 120;
-        const px = t => marginL + (t / maxT) * plotW;
-        const py = d => marginT + plotH - (d / maxD) * plotH;
+      // Train X covers 20 km in every 10-minute interval. Train Y covers
+      // different distances in the same intervals.
+      const Y_STEPS = [8, 14, 22, 28, 18, 30];
+      const TOTAL_MIN = 60, X0 = 60, X1 = 556;
+      let mins = 0;
+      function reset() { mins = 0; }
+      resetBtn.addEventListener('click', reset);
 
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(marginL, marginT); ctx.lineTo(marginL, marginT + plotH); ctx.lineTo(marginL + plotW, marginT + plotH); ctx.stroke();
-        ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
-        ctx.fillText('Time (min)', marginL + plotW / 2, H - 8);
-        ctx.save(); ctx.translate(14, marginT + plotH / 2); ctx.rotate(-Math.PI / 2); ctx.fillText('Distance (km)', 0, 0); ctx.restore();
-
-        ctx.beginPath();
-        train.times.forEach((t, i) => {
-          const x = px(t), y = py(train.positions[i]);
-          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-        });
-        ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 3; ctx.stroke();
-
-        const diffs = [];
-        for (let i = 1; i < train.positions.length; i++) diffs.push(train.positions[i] - train.positions[i - 1]);
-        const uniform = diffs.every(d => d === diffs[0]);
-
-        train.times.forEach((t, i) => {
-          const x = px(t), y = py(train.positions[i]);
-          ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2);
-          ctx.fillStyle = cssVar('--text-normal'); ctx.fill();
-          if (i > 0) {
-            const midX = px((train.times[i - 1] + t) / 2);
-            const midY = py((train.positions[i - 1] + train.positions[i]) / 2) - 10;
-            ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted'); ctx.textAlign = 'center';
-            ctx.fillText(`${diffs[i - 1]}`, midX, midY);
-          }
-        });
-
-        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(`Train ${sel.value}`, W / 2, 20);
-
-        obs.innerHTML = uniform
-          ? `<strong>Train ${sel.value} covers equal distances (${diffs[0]} km) in every 10-minute interval.</strong> This is uniform linear motion — a constant speed throughout.`
-          : `<strong>Train ${sel.value} covers unequal distances (${diffs.join(', ')} km) across equal 10-minute intervals.</strong> This is non-uniform linear motion — its speed keeps changing.`;
+      function distY(m) {
+        let d = 0, left = m;
+        for (let i = 0; i < Y_STEPS.length && left > 0; i++) {
+          const take = Math.min(left, 10);
+          d += Y_STEPS[i] * (take / 10);
+          left -= take;
+        }
+        return d;
       }
 
-      sel.addEventListener('change', draw);
-      draw();
+      const loop = simLoop(canvas, (t, dt, api) => {
+        if (api.running) { mins += dt * 6; if (mins > TOTAL_MIN) mins = 0; }
+        const dX = 2 * mins, dY = distY(mins);      // km
+        const maxKm = 130;
+
+        const W = logW(canvas), H = logH(canvas);
+        ctx.clearRect(0, 0, W, H);
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Uniform motion covers equal distances in equal times', 16, 22);
+
+        const track = (y, label, dist, colour, marks) => {
+          ctx.strokeStyle = 'rgba(148,163,184,0.45)'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.moveTo(X0, y); ctx.lineTo(X1, y); ctx.stroke();
+          // a dot dropped at every completed 10-minute mark
+          marks.forEach(km => {
+            const mx = X0 + (km / maxKm) * (X1 - X0);
+            ctx.beginPath(); ctx.arc(mx, y, 3.5, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(226,232,240,0.75)'; ctx.fill();
+          });
+          const px = X0 + (dist / maxKm) * (X1 - X0);
+          ctx.fillStyle = colour;
+          if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(px - 18, y - 13, 36, 18, 4); ctx.fill(); }
+          else ctx.fillRect(px - 18, y - 13, 36, 18);
+          ctx.fillStyle = '#0f172a'; ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(label, px, y - 1);
+          ctx.fillStyle = colour; ctx.font = '11px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText(dist.toFixed(0) + ' km', X1 + 6 - 46, y + 22);
+          return px;
+        };
+
+        const done = Math.floor(mins / 10);
+        const marksX = [], marksY = [];
+        for (let i = 1; i <= done; i++) { marksX.push(2 * i * 10); marksY.push(distY(i * 10)); }
+        track(120, 'X', dX, '#22c55e', marksX);
+        track(210, 'Y', dY, '#38bdf8', marksY);
+
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '11px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText('Train X — steady speed', X0, 92);
+        ctx.fillText('Train Y — speed keeps changing', X0, 182);
+        ctx.textAlign = 'center';
+        ctx.fillText('elapsed ' + Math.floor(mins) + ' min   ·   a dot is dropped every 10 minutes', W / 2, 268);
+
+        const gapsX = marksX.map((v, i) => v - (marksX[i - 1] || 0));
+        const gapsY = marksY.map((v, i) => (v - (marksY[i - 1] || 0)));
+        obs.innerHTML =
+          '<strong>After ' + Math.floor(mins) + ' minutes: X has gone ' + dX.toFixed(0) + ' km, Y has gone ' + dY.toFixed(0) + ' km.</strong>' +
+          (gapsX.length ? '<br>X per interval: ' + gapsX.map(g => g.toFixed(0)).join(', ') + ' km — always the same.' : '') +
+          (gapsY.length ? '<br>Y per interval: ' + gapsY.map(g => g.toFixed(0)).join(', ') + ' km — never the same.' : '') +
+          '<br><span style="color:var(--text-muted);">Evenly spaced dots mean uniform motion. Y\'s dots bunch up and spread out, so its motion is non-uniform even though both trains travel along a straight track.</span>';
+      });
+
+      playBtn.addEventListener('click', () => { playBtn.textContent = loop.toggle() ? '⏸ Pause' : '▶ Play'; });
     }
 
     function initStarchIodineTestLab() {
@@ -33631,108 +33647,86 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-sound-medium');
       const obs = document.getElementById('sound-medium-obs');
-      const W = logW(canvas), H = logH(canvas);
-      const text = cssVar('--text-normal', '#e6e6e6');
-      const muted = cssVar('--text-muted', '#9aa0a6');
-      const accent = cssVar('--accent-primary', '#6c8cff');
 
-      function rand(seed) {
-        let s = seed;
-        return function () { s = (s * 1103515245 + 12345) % 2147483648; return s / 2147483648; };
-      }
+      const MEDIA = {
+        air:    { name: 'Air',    v: 344,  particles: 90,  colour: 'rgba(148,163,184,0.55)', note: 'Air particles are far apart, so sound travels but relatively slowly.' },
+        water:  { name: 'Water',  v: 1500, particles: 210, colour: 'rgba(56,189,248,0.75)',  note: 'Water particles are much closer together, so a vibration is passed on far faster than in air.' },
+        steel:  { name: 'Steel',  v: 5100, particles: 340, colour: 'rgba(203,213,225,0.85)', note: 'Particles in a solid are packed tight and strongly linked, so sound races through steel.' },
+        vacuum: { name: 'Vacuum', v: 0,    particles: 0,   colour: 'rgba(2,6,23,0)',         note: 'With no particles at all there is nothing to pass the vibration on. Sound cannot travel through a vacuum.' }
+      };
+      const CX = 210, CY = 176;
 
-      function update() {
-        const pct = parseInt(sel.value, 10);
+      simLoop(canvas, (t) => {
+        const M = MEDIA[sel.value];
+        const travels = M.v > 0;
+
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
-        ctx.fillRect(0, 0, W, H);
-        ctx.fillStyle = accent;
-        ctx.font = 'bold 15px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('The vacuum bell jar experiment', W / 2, 26);
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Sound needs particles to travel through', 16, 22);
 
-        const jx = 210, jTop = 60, jBot = 250, jw = 180;
-        // Air particles inside the jar, thinning out as air is pumped away.
-        const r = rand(11);
-        const n = Math.round((pct / 100) * 120);
-        ctx.fillStyle = '#6d86b8';
-        for (let i = 0; i < n; i++) {
-          const px = jx + 8 + r() * (jw - 16);
-          const py = jTop + 14 + r() * (jBot - jTop - 22);
-          ctx.beginPath(); ctx.arc(px, py, 2.2, 0, Math.PI * 2); ctx.fill();
+        // the jar
+        ctx.strokeStyle = 'rgba(148,163,184,0.9)'; ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(CX - 96, 74); ctx.lineTo(CX - 96, 276); ctx.lineTo(CX + 96, 276); ctx.lineTo(CX + 96, 74); ctx.stroke();
+        ctx.fillStyle = M.colour === 'rgba(2,6,23,0)' ? 'rgba(2,6,23,0.4)' : M.colour.replace(/[\d.]+\)$/, '0.10)');
+        ctx.fillRect(CX - 96, 74, 192, 202);
+
+        // particles of the medium, jiggling
+        for (let i = 0; i < M.particles; i++) {
+          const bx = CX - 92 + ((i * 37) % 184);
+          const by = 80 + ((i * 53) % 190);
+          const j = Math.sin(t * 5 + i) * (travels ? 1.6 : 0);
+          ctx.beginPath(); ctx.arc(bx + j, by + Math.cos(t * 4 + i) * 1.4, 2, 0, Math.PI * 2);
+          ctx.fillStyle = M.colour; ctx.fill();
         }
 
-        // The bell jar itself.
-        ctx.strokeStyle = muted;
-        ctx.lineWidth = 2.5;
+        // the bell
+        ctx.fillStyle = '#facc15';
         ctx.beginPath();
-        ctx.moveTo(jx, jBot);
-        ctx.lineTo(jx, jTop + 26);
-        ctx.quadraticCurveTo(jx, jTop, jx + jw / 2, jTop);
-        ctx.quadraticCurveTo(jx + jw, jTop, jx + jw, jTop + 26);
-        ctx.lineTo(jx + jw, jBot);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(jx - 24, jBot); ctx.lineTo(jx + jw + 24, jBot);
-        ctx.stroke();
+        ctx.moveTo(CX - 20, CY + 18); ctx.quadraticCurveTo(CX, CY - 30, CX + 20, CY + 18); ctx.closePath(); ctx.fill();
+        ctx.beginPath(); ctx.arc(CX, CY + 22, 5, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('electric bell (still ringing)', CX, 300);
 
-        // Electric bell, always visibly ringing.
-        const bx = jx + jw / 2, by = 175;
-        ctx.fillStyle = '#8f9bb3';
-        ctx.beginPath();
-        ctx.arc(bx, by, 26, Math.PI, 2 * Math.PI);
-        ctx.fill();
-        ctx.fillRect(bx - 26, by, 52, 6);
-        ctx.strokeStyle = muted;
-        ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.moveTo(bx, by - 26); ctx.lineTo(bx, by - 50); ctx.stroke();
-        ctx.fillStyle = text;
-        ctx.font = '11px sans-serif';
-        ctx.fillText('electric bell (still ringing)', bx, by + 30);
-
-        // Sound waves radiating out, fainter as the air thins.
-        ctx.strokeStyle = '#4caf82';
-        const arcs = Math.round((pct / 100) * 4);
-        for (let i = 1; i <= arcs; i++) {
-          ctx.globalAlpha = 0.25 + 0.6 * (pct / 100) * (1 - (i - 1) / 4);
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.arc(bx, by - 10, 40 + i * 18, -Math.PI * 0.85, -Math.PI * 0.15);
-          ctx.stroke();
+        // outgoing wavefronts, only if there is something to carry them
+        if (travels) {
+          const spread = Math.min(1, M.v / 5100);
+          for (let i = 0; i < 4; i++) {
+            const r = ((t * (40 + spread * 150) + i * 34) % 136);
+            ctx.strokeStyle = 'rgba(250,204,21,' + (0.75 * (1 - r / 136)) + ')';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(CX, CY, 22 + r, 0, Math.PI * 2); ctx.stroke();
+          }
+        } else {
+          ctx.strokeStyle = 'rgba(239,68,68,0.9)'; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(CX, CY, 40, 0, Math.PI * 2); ctx.setLineDash([5, 5]); ctx.stroke(); ctx.setLineDash([]);
+          ctx.fillStyle = '#ef4444'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('no particles — no sound', CX, CY - 54);
         }
-        ctx.globalAlpha = 1;
 
-        // Vacuum pump connection.
-        ctx.strokeStyle = muted;
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.moveTo(jx + jw / 2, jBot); ctx.lineTo(jx + jw / 2, jBot + 34);
-        ctx.lineTo(jx + jw + 60, jBot + 34);
-        ctx.stroke();
-        ctx.fillStyle = muted;
-        ctx.font = '12px sans-serif';
-        ctx.textAlign = 'left';
-        ctx.fillText('to vacuum pump', jx + jw + 66, jBot + 38);
+        // the listener
+        ctx.beginPath(); ctx.arc(470, CY, 18, 0, Math.PI * 2);
+        ctx.fillStyle = travels ? 'rgba(34,197,94,0.85)' : 'rgba(148,163,184,0.5)'; ctx.fill();
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(travels ? 'hears it' : 'hears nothing', 470, CY + 40);
 
-        const labels = { 100: 'loud', 50: 'quieter', 10: 'very faint', 0: 'almost silent' };
-        ctx.fillStyle = pct === 0 ? '#e0743a' : '#4caf82';
-        ctx.font = 'bold 17px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('Sound heard: ' + labels[pct], W / 2, 314);
-        ctx.fillStyle = text;
-        ctx.font = '13px sans-serif';
-        ctx.textAlign = 'left';
-        ctx.fillText('Air left: ' + pct + '%', 30, 90);
+        // speed comparison bars
+        const bars = ['air', 'water', 'steel'];
+        bars.forEach((k, i) => {
+          const by = 76 + i * 24, w = (MEDIA[k].v / 5100) * 130;
+          ctx.fillStyle = k === sel.value ? '#22c55e' : 'rgba(148,163,184,0.45)';
+          ctx.fillRect(400, by, w, 12);
+          ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '10px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText(MEDIA[k].name + '  ' + MEDIA[k].v + ' m/s', 400, by - 3);
+        });
 
-        obs.innerHTML = '<strong>Air left in the jar: ' + pct + '%</strong><br>' +
-          'Sound heard: <strong>' + labels[pct] + '</strong><br><br>' +
-          (pct === 0
-            ? 'Once a near vacuum is reached, almost no sound can be heard even though the bell can be seen ringing. Sound cannot propagate in a vacuum — it needs a medium, which can be a solid, a liquid or a gas. This is why astronauts on spacewalks cannot hear each other directly.'
-            : 'As air is sucked out of the jar the sound becomes fainter, because fewer air particles remain to pass the compressions and rarefactions along. Letting the air back in makes the sound as loud as before.');
-      }
-
-      sel.addEventListener('change', update);
-      update();
+        obs.innerHTML =
+          '<strong>' + M.name + (travels ? ' — sound travels at ' + M.v + ' m/s.' : ' — nothing is heard.') + '</strong>' +
+          '<br>' + M.note +
+          '<br><span style="color:var(--text-muted);">The bell is vibrating in every case. What changes is whether there are particles to pass the vibration along to your ear.</span>';
+      });
     }
 
     function initSoundWaveLab() {
