@@ -20,6 +20,32 @@ function cssVar(name, fallback) {
   return CANVAS_COLORS[name] || fallback || '#e2e8f0';
 }
 
+// --- Canvas quality layer -------------------------------------------------
+// Every lab canvas declares a logical drawing size via its width/height
+// attributes and draws in those coordinates. Rendering at exactly that size
+// leaves the picture soft, because the canvas is laid out at whatever width
+// the panel happens to be and then scaled by the display. We keep the logical
+// coordinate system the drawing code expects, but give the backing store two
+// to three times the pixels and scale the context to match, so lines and text
+// stay sharp on classroom projectors and high-density laptop screens alike.
+function logW(c) { return +(c.dataset.logicalW || c.getAttribute('width') || c.width); }
+function logH(c) { return +(c.dataset.logicalH || c.getAttribute('height') || c.height); }
+
+function hidpiCtx(c) {
+  if (!c) return null;
+  if (!c.dataset.logicalW) {
+    c.dataset.logicalW = c.getAttribute('width') || c.width;
+    c.dataset.logicalH = c.getAttribute('height') || c.height;
+  }
+  const lw = +c.dataset.logicalW, lh = +c.dataset.logicalH;
+  const scale = Math.min(3, Math.max(2, (window.devicePixelRatio || 1) * 1.5));
+  const bw = Math.round(lw * scale), bh = Math.round(lh * scale);
+  if (c.width !== bw || c.height !== bh) { c.width = bw; c.height = bh; }
+  const ctx = c.getContext('2d');
+  ctx.setTransform(scale, 0, 0, scale, 0, 0);
+  return ctx;
+}
+
 function parseMarkdown(text) {
   if (!text) return '';
 
@@ -906,20 +932,26 @@ function getInlineLabHtml(type) {
     const compassCircleLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="compass-circle-canvas" width="600" height="320"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Choose a radius and draw a circle around the fixed centre point P.</span></div>
+          <canvas id="compass-circle-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Set the compass opening, then watch it sweep the circle around the fixed centre P.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose Radius</h3>
-            <select id="sel-circle-radius" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              ${[2,3,4,5,6,7,8].map(n => `<option value="${n}">${n} cm</option>`).join('')}
-            </select>
-            <button id="btn-circle-draw" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--accent-color);color:white;border:none;padding:0.65rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Draw Circle ⭕</button>
+            <h3>Compass Opening</h3>
+            <label style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:0.25rem;">Radius: <strong id="circle-r-out" style="color:var(--text-normal);">4 cm</strong></label>
+            <input id="circle-r" type="range" min="1" max="7" step="0.5" value="4" style="width:100%;accent-color:#22c55e;">
+          </div>
+          <div class="settings-group-card">
+            <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem;">
+              <button id="btn-circle-draw" class="sim-toggle-btn" style="flex:1;">↻ Sweep again</button>
+            </div>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-normal);cursor:pointer;">
+              <input id="chk-circle-radii" type="checkbox" style="accent-color:#38bdf8;"> Show radii to eight points
+            </label>
           </div>
           <div class="sim-calculator">
-            <h3>Result</h3>
-            <div id="circle-radius-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a radius and click Draw Circle.</div>
+            <h3>What the Compass Guarantees</h3>
+            <div id="circle-radius-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Sweeping…</div>
           </div>
         </div>
       </div>`;
@@ -2342,22 +2374,41 @@ function getInlineLabHtml(type) {
     const pendulumTimePeriodLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="pendulum-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a pendulum length and see how the time period changes.</span></div>
+          <canvas id="pendulum-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Run two pendulums side by side. Change a length, or change only the mass, and watch which one actually matters.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose a Pendulum Length</h3>
-            <select id="sel-pendulum-length" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="25">25 cm</option>
-              <option value="100" selected>100 cm</option>
-              <option value="225">225 cm</option>
-              <option value="400">400 cm</option>
+            <h3>Pendulum A</h3>
+            <label style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:0.25rem;">Length: <strong id="pend-a-len-out" style="color:var(--text-normal);">100 cm</strong></label>
+            <input id="pend-a-len" type="range" min="20" max="200" step="5" value="100" style="width:100%;accent-color:#22c55e;">
+            <label style="display:block;font-size:0.85rem;color:var(--text-muted);margin:0.5rem 0 0.25rem;">Bob mass</label>
+            <select id="pend-a-mass" class="sim-toggle-btn" style="text-align:left;padding:0.4rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="20">Light (20 g)</option>
+              <option value="50" selected>Medium (50 g)</option>
+              <option value="100">Heavy (100 g)</option>
             </select>
           </div>
+          <div class="settings-group-card">
+            <h3>Pendulum B</h3>
+            <label style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:0.25rem;">Length: <strong id="pend-b-len-out" style="color:var(--text-normal);">100 cm</strong></label>
+            <input id="pend-b-len" type="range" min="20" max="200" step="5" value="100" style="width:100%;accent-color:#38bdf8;">
+            <label style="display:block;font-size:0.85rem;color:var(--text-muted);margin:0.5rem 0 0.25rem;">Bob mass</label>
+            <select id="pend-b-mass" class="sim-toggle-btn" style="text-align:left;padding:0.4rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="20">Light (20 g)</option>
+              <option value="50">Medium (50 g)</option>
+              <option value="100" selected>Heavy (100 g)</option>
+            </select>
+          </div>
+          <div class="settings-group-card">
+            <div style="display:flex;gap:0.5rem;">
+              <button id="pend-play" class="sim-toggle-btn" style="flex:1;">⏸ Pause</button>
+              <button id="pend-reset" class="sim-toggle-btn" style="flex:1;">↺ Reset</button>
+            </div>
+          </div>
           <div class="sim-calculator">
-            <h3>Time Period</h3>
-            <div id="pendulum-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a length above.</div>
+            <h3>Measured on Screen</h3>
+            <div id="pendulum-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Starting…</div>
           </div>
         </div>
       </div>`;
@@ -11089,7 +11140,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initBalancingLab() {
       const canvas = document.getElementById('balancer-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const selEq = document.getElementById('sel-balancer-eq');
       const ctrlContainer = document.getElementById('balancer-controls-container');
       const tblContainer = document.getElementById('balancer-table');
@@ -11212,7 +11263,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const colors = ['#f43f5e', '#3b82f6', '#10b981', '#fbbf24', '#a855f7', '#6366f1'];
         for (let i = 0; i < 70; i++) {
           confettiParticles.push({
-            x: canvas.width / 2,
+            x: logW(canvas) / 2,
             y: 80,
             vx: (Math.random() - 0.5) * 8,
             vy: (Math.random() - 1) * 6 - 2,
@@ -11231,8 +11282,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       function animateConfetti() {
         let active = false;
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         
         // Re-draw base
         const metrics = getSimulationMetrics();
@@ -11299,8 +11350,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawSimulationBase(metrics) {
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
 
         ctx.strokeStyle = cssVar('--border-color', '#000000');
@@ -11551,7 +11602,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initReactionsLab() {
       const canvas = document.getElementById('reactions-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const selReaction = document.getElementById('sel-reaction-type');
       const btnRun = document.getElementById('btn-run-reaction');
       const obsPanel = document.getElementById('reaction-obs-panel');
@@ -11576,8 +11627,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let currentReaction = selReaction.value;
 
       function drawDefault() {
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         
         if (currentReaction !== 'copper-oxidation' && currentReaction !== 'lead-nitrate') {
@@ -11940,8 +11991,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
         timerId = setInterval(() => {
           frame++;
-          const W = canvas.width;
-          const H = canvas.height;
+          const W = logW(canvas);
+          const H = logH(canvas);
           ctx.clearRect(0, 0, W, H);
           drawDefault();
 
@@ -12543,7 +12594,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initNeutralizationTitrationLab() {
       const canvas = document.getElementById('neutralization-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const btnAcid = document.getElementById('btn-add-acid');
       const btnWater = document.getElementById('btn-add-water');
       const btnReset = document.getElementById('btn-reset-neutralization');
@@ -12567,8 +12618,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let neutralizeDrops = 0;
 
       function drawBase(baseLiquid, addedLiquid) {
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
 
         ctx.strokeStyle = '#cbd5e1';
@@ -12718,7 +12769,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function drawConductivity() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const sol = conductivitySolutions[conductivitySolSel.value];
         const glow = circuitOn && sol.conducts;
@@ -12761,7 +12812,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawNeutralize() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const bx = W/2;
         const pH = Math.max(1, 13 - neutralizeDrops * 0.5);
@@ -12845,7 +12896,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSaltChemicalsLab() {
       const canvas = document.getElementById('saltchem-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const modeSel = document.getElementById('sel-saltchem-mode');
       const hint = document.getElementById('saltchem-hint');
       const obsTitle = document.getElementById('saltchem-obs-title');
@@ -12864,7 +12915,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       function clearTimerIfAny() { if (timerId) { clearInterval(timerId); timerId = null; } }
 
       function drawChlorAlkali() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const cellX = 100, cellY = 60, cellW = 400, cellH = 200;
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
@@ -12912,7 +12963,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawBakingSoda() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const tubeX = W/2;
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
@@ -12948,7 +12999,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawWashingSoda() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const hydrated = frame > 0;
         const cx = W/2, cy = 190;
@@ -12983,7 +13034,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawPop() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mixed = frame > 0;
         const cx = W/2, cy = 170;
@@ -13047,7 +13098,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initConductivityCircuitLab() {
       const canvas = document.getElementById('conductivity-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const selMaterial = document.getElementById('sel-circuit-material');
       const btnTest = document.getElementById('btn-test-conductivity');
       const logPanel = document.getElementById('conductivity-log-panel');
@@ -13058,8 +13109,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let isTesting = false;
 
       function drawCircuit(material, testing) {
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
 
         // Battery (Top center)
@@ -13242,7 +13293,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPhScaleLab() {
       const canvas = document.getElementById('ph-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const selSubstance = document.getElementById('sel-ph-substance');
       const logPanel = document.getElementById('ph-log-panel');
       const logTitle = document.getElementById('ph-log-title');
@@ -13273,8 +13324,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let reactionFrame = 0, reactionRunning = false, reactionTimerId = null;
 
       function drawIndicator() {
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
 
         const sub = substances[currentSubstanceKey];
@@ -13384,7 +13435,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawMetalAcid() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const tubeX = 150, topY = 60, botY = 220;
         drawTube(tubeX, topY, botY);
@@ -13435,7 +13486,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawCarbonateAcid() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const tubeAX = 150, tubeBX = 420, topY = 60, botY = 220;
         drawTube(tubeAX, topY, botY);
@@ -13484,11 +13535,11 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       canvas.addEventListener('mousedown', (e) => {
         if (modeSel.value !== 'indicator') return;
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
+        const scaleX = logW(canvas) / rect.width;
+        const scaleY = logH(canvas) / rect.height;
         const mouseX = (e.clientX - rect.left) * scaleX;
         const mouseY = (e.clientY - rect.top) * scaleY;
-        if (mouseX >= canvas.width/2 - 25 && mouseX <= canvas.width/2 + 25 && mouseY >= paperY && mouseY <= paperY + 80) {
+        if (mouseX >= logW(canvas)/2 - 25 && mouseX <= logW(canvas)/2 + 25 && mouseY >= paperY && mouseY <= paperY + 80) {
           isDraggingPaper = true;
         }
       });
@@ -13496,7 +13547,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       canvas.addEventListener('mousemove', (e) => {
         if (isDraggingPaper) {
           const rect = canvas.getBoundingClientRect();
-          const scaleY = canvas.height / rect.height;
+          const scaleY = logH(canvas) / rect.height;
           const mouseY = (e.clientY - rect.top) * scaleY;
           paperY = Math.max(30, Math.min(180, mouseY - 40));
           drawIndicator();
@@ -13512,11 +13563,11 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         if (e.touches.length === 0) return;
         const t = e.touches[0];
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
+        const scaleX = logW(canvas) / rect.width;
+        const scaleY = logH(canvas) / rect.height;
         const mouseX = (t.clientX - rect.left) * scaleX;
         const mouseY = (t.clientY - rect.top) * scaleY;
-        if (mouseX >= canvas.width/2 - 25 && mouseX <= canvas.width/2 + 25 && mouseY >= paperY && mouseY <= paperY + 80) {
+        if (mouseX >= logW(canvas)/2 - 25 && mouseX <= logW(canvas)/2 + 25 && mouseY >= paperY && mouseY <= paperY + 80) {
           isDraggingPaper = true;
           e.preventDefault();
         }
@@ -13525,7 +13576,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       canvas.addEventListener('touchmove', (e) => {
         if (isDraggingPaper && e.touches.length > 0) {
           const rect = canvas.getBoundingClientRect();
-          const scaleY = canvas.height / rect.height;
+          const scaleY = logH(canvas) / rect.height;
           const mouseY = (e.touches[0].clientY - rect.top) * scaleY;
           paperY = Math.max(30, Math.min(180, mouseY - 40));
           drawIndicator();
@@ -13601,7 +13652,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMetalElementalReactionsLab() {
       const canvas = document.getElementById('metalox-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const modeSel = document.getElementById('sel-metalox-mode');
       const metalSel = document.getElementById('sel-metalox-metal');
       const btnRun = document.getElementById('btn-run-metalox');
@@ -13627,7 +13678,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawOxygen() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const metal = metalSel.value;
         const cx = W/2, cy = 200;
@@ -13681,7 +13732,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawWater() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const metal = metalSel.value;
         const cx = W/2;
@@ -13714,7 +13765,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawAcid() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const metal = metalSel.value;
         const cx = W/2;
@@ -13786,7 +13837,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMetallurgyCorrosionLab() {
       const canvas = document.getElementById('metallurgy-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const modeSel = document.getElementById('sel-metallurgy-mode');
       const hint = document.getElementById('metallurgy-hint');
       const obsTitle = document.getElementById('metallurgy-obs-title');
@@ -13806,7 +13857,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       function clearTimer() { if (timerId) { clearInterval(timerId); timerId = null; } }
 
       function drawExtraction() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const metal = extractionMetalSel.value;
 
@@ -13867,7 +13918,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawThermit() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const cx = W/2, cy = 180;
 
@@ -13906,7 +13957,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawRefining() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const cx = W/2, cy = 170;
         const anodeX = cx - 60, cathodeX = cx + 60;
@@ -13951,7 +14002,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawCorrosion() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const metal = corrosionMetalSel.value;
         const prevention = metal === 'iron' ? corrosionPreventionSel.value : 'none';
@@ -14053,7 +14104,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMetalReactivityLab() {
       const canvas = document.getElementById('metal-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const selMetal = document.getElementById('sel-metal-strip');
       const selSalt = document.getElementById('sel-salt-sol');
       const btnDrop = document.getElementById('btn-drop-metal');
@@ -14079,8 +14130,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         requestAnimationFrame(animate);
         timeTick += 0.05;
 
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
 
         // Draw Wooden Rack base
@@ -14276,7 +14327,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
     function initRefractionLab() {
       const canvas = document.getElementById('refraction-canvas');
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const rngTheta1 = document.getElementById('rng-theta1');
       const selN1 = document.getElementById('sel-n1');
       const selN2 = document.getElementById('sel-n2');
@@ -14306,8 +14357,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         document.getElementById('lbl-n2').textContent = `n₂ = ${n2.toFixed(2)}`;
         document.getElementById('lbl-theta1').textContent = `${theta1}°`;
 
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         const cx = W / 2;
         const cy = H / 2;
 
@@ -14486,7 +14537,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         document.getElementById('lbl-reflens-f').textContent = `${fVal} cm (${isConvexLens ? 'Convex' : 'Concave'})`;
         document.getElementById('lbl-reflens-ho').textContent = `${ho} cm`;
 
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const cx = W / 2, cy = H / 2;
         ctx.clearRect(0, 0, W, H);
 
@@ -14625,14 +14676,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       function handleCanvasDrag(e) {
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
+        const scaleX = logW(canvas) / rect.width;
+        const scaleY = logH(canvas) / rect.height;
         const mouseX = (e.clientX - rect.left) * scaleX;
         const mouseY = (e.clientY - rect.top) * scaleY;
 
-        const W = canvas.width;
+        const W = logW(canvas);
         const cx = W / 2;
-        const cy = canvas.height / 2;
+        const cy = logH(canvas) / 2;
 
         const dx = cx - mouseX;
         const dy = cy - mouseY;
@@ -14680,7 +14731,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
     function initPlaneMirrorLab() {
       const canvas = document.getElementById('plane-mirror-canvas');
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const rngTheta = document.getElementById('rng-plane-theta1');
       const btnSmooth = document.getElementById('btn-plane-smooth');
       const btnRough = document.getElementById('btn-plane-rough');
@@ -14707,8 +14758,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         theta = parseInt(rngTheta.value);
         document.getElementById('lbl-plane-theta1').textContent = `${theta}°`;
 
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         const cx = W / 2;
         const cy = H / 2;
 
@@ -14953,13 +15004,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       function handleCanvasDrag(e) {
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
+        const scaleX = logW(canvas) / rect.width;
+        const scaleY = logH(canvas) / rect.height;
         const mouseX = (e.clientX - rect.left) * scaleX;
         const mouseY = (e.clientY - rect.top) * scaleY;
 
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
+        const cx = logW(canvas) / 2;
+        const cy = logH(canvas) / 2;
 
         const dx = cx - mouseX;
         const dy = cy - mouseY;
@@ -15003,7 +15054,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
     function initMirrorLab() {
       const canvas = document.getElementById('mirror-canvas');
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const rngU = document.getElementById('rng-mirror-u');
       const rngF = document.getElementById('rng-mirror-f');
       const rngHo = document.getElementById('rng-mirror-ho');
@@ -15040,8 +15091,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         document.getElementById('lbl-mirror-f').textContent = `${fVal} cm (${isConcave ? 'Concave' : 'Convex'})`;
         document.getElementById('lbl-mirror-ho').textContent = `${ho} cm`;
 
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         const cx = 450;
         const cy = H / 2;
 
@@ -15283,13 +15334,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       function handleCanvasDrag(e) {
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
+        const scaleX = logW(canvas) / rect.width;
+        const scaleY = logH(canvas) / rect.height;
         const mouseX = (e.clientX - rect.left) * scaleX;
         const mouseY = (e.clientY - rect.top) * scaleY;
 
         const cx = 450;
-        const cy = canvas.height / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = Math.round(mouseX - cx);
         const hoVal = Math.round(cy - mouseY);
@@ -15310,7 +15361,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const mouseY = e.clientY - rect.top;
 
         const cx = 450;
-        const cy = canvas.height / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = parseInt(rngU.value);
         const hoVal = parseInt(rngHo.value);
@@ -15333,7 +15384,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const mouseY = e.clientY - rect.top;
 
         const cx = 450;
-        const cy = canvas.height / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = parseInt(rngU.value);
         const hoVal = parseInt(rngHo.value);
@@ -15367,7 +15418,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const mouseY = t.clientY - rect.top;
 
         const cx = 450;
-        const cy = canvas.height / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = parseInt(rngU.value);
         const hoVal = parseInt(rngHo.value);
@@ -15401,7 +15452,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
     function initLensLab() {
       const canvas = document.getElementById('lens-canvas');
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const rngU = document.getElementById('rng-lens-u');
       const rngF = document.getElementById('rng-lens-f');
       const rngHo = document.getElementById('rng-lens-ho');
@@ -15427,7 +15478,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawEyeMode() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const cy = H / 2;
         const eyeCenterX = 420, eyeRadius = 95;
         const lensX = eyeCenterX - eyeRadius + 22;
@@ -15578,8 +15629,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         document.getElementById('lbl-lens-f').textContent = `${fVal} cm (${isConvex ? 'Convex' : 'Concave'})`;
         document.getElementById('lbl-lens-ho').textContent = `${ho} cm`;
 
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         const cx = W / 2;
         const cy = H / 2;
 
@@ -15832,13 +15883,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       function handleCanvasDrag(e) {
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
+        const scaleX = logW(canvas) / rect.width;
+        const scaleY = logH(canvas) / rect.height;
         const mouseX = (e.clientX - rect.left) * scaleX;
         const mouseY = (e.clientY - rect.top) * scaleY;
 
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
+        const cx = logW(canvas) / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = Math.round(mouseX - cx);
         const hoVal = Math.round(cy - mouseY);
@@ -15859,8 +15910,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
 
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
+        const cx = logW(canvas) / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = parseInt(rngU.value);
         const hoVal = parseInt(rngHo.value);
@@ -15883,8 +15934,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
 
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
+        const cx = logW(canvas) / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = parseInt(rngU.value);
         const hoVal = parseInt(rngHo.value);
@@ -15918,8 +15969,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const mouseX = t.clientX - rect.left;
         const mouseY = t.clientY - rect.top;
 
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
+        const cx = logW(canvas) / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = parseInt(rngU.value);
         const hoVal = parseInt(rngHo.value);
@@ -16027,7 +16078,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCorrosionLab() {
       const canvas = document.getElementById('corrosion-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-corrosion-env');
       const btn = document.getElementById('btn-run-corrosion');
       const obs = document.getElementById('corrosion-obs');
@@ -16042,7 +16093,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let rancidTimerId = null, rancidFrame = 0;
 
       function drawCorrosion() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const tubes = [{x: 80, label: 'Air+Water'}, {x: 210, label: 'Oil Coated'}, {x: 340, label: 'Galvanized'}, {x: 470, label: 'Painted'}];
         tubes.forEach((t, idx) => {
           ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
@@ -16089,7 +16140,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       });
 
       function drawRancidity() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const envRates = {open: 1, airtight: 0.4, antioxidant: 0.15, nitrogen: 0.08};
         const rate = envRates[rancidityEnvSel.value];
@@ -16170,7 +16221,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPhotosynthesisLab() {
       const canvas = document.getElementById('photosynthesis-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const lightSlider = document.getElementById('light-intensity');
       const co2Btn = document.getElementById('btn-toggle-co2');
       const obs = document.getElementById('photo-obs');
@@ -16194,7 +16245,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       });
 
       function drawPhotosynthesis() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const light = parseInt(lightSlider.value);
         ctx.clearRect(0, 0, W, H);
         const skyBright = Math.floor(30 + light * 2);
@@ -16297,7 +16348,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawDigestion() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         ctx.fillStyle = 'rgba(147,197,253,0.06)'; ctx.fillRect(0, 0, W, H);
 
@@ -16337,7 +16388,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawMicrobe() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         ctx.fillStyle = 'rgba(59,130,246,0.06)'; ctx.fillRect(0, 0, W, H);
         const organism = microbeSel.value;
@@ -16441,7 +16492,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initHeartLab() {
       const canvas = document.getElementById('heart-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const rateSlider = document.getElementById('heart-rate');
       const bpmLabel = document.getElementById('heart-bpm');
       const obs = document.getElementById('heart-obs');
@@ -16468,7 +16519,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let limewaterFrame = 0, limewaterRunning = false, limewaterTimerId = null;
 
       function drawHeart() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const bpm = parseInt(rateSlider.value);
         bpmLabel.textContent = bpm + ' BPM';
         const t = Date.now() / (60000 / bpm);
@@ -16512,7 +16563,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawBreathing() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const bpm = parseInt(breathingRateSlider.value);
         breathingRateVal.textContent = bpm + ' breaths/min';
         const anaerobic = anaerobicChk.checked;
@@ -16591,7 +16642,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawPlantTransport() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const transpRate = parseInt(transpirationSlider.value) / 100;
         transpirationVal.textContent = Math.round(transpRate*100) + '%';
 
@@ -16655,7 +16706,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function drawExcretion() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const waterLevel = parseInt(waterLevelSlider.value);
         waterLevelVal.textContent = waterLevel < 30 ? 'Dehydrated' : waterLevel > 70 ? 'Overhydrated' : 'Normal hydration';
 
@@ -16711,7 +16762,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawVessels() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const focus = vesselFocusSel.value;
         const y = 170;
         if (focus === 'vessels') {
@@ -16784,7 +16835,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawLimewater() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const test = limewaterTestSel.value;
 
         if (test === 'breath') {
@@ -16840,7 +16891,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawFishGill() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.fillStyle = 'rgba(59,130,246,0.08)'; ctx.fillRect(0, 0, W, H);
 
         const fishBpm = 70;
@@ -16868,7 +16919,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mode = modeSel.value;
         if (mode === 'heart') drawHeart();
@@ -16929,7 +16980,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initScientificMethodLab() {
       const canvas = document.getElementById('scimethod-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-scimethod-mystery');
       const btn = document.getElementById('btn-scimethod-investigate');
       const back = document.getElementById('btn-scimethod-back');
@@ -16979,7 +17030,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
         for (let i = 0; i < nodes.length - 1; i++) {
@@ -17041,7 +17092,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPlantGroupingLab() {
       const canvas = document.getElementById('plantgroup-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-plantgroup-type');
       const obs = document.getElementById('plantgroup-obs');
 
@@ -17232,7 +17283,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mode = sel.value;
         const LX = 200, RX = 442;
@@ -17291,7 +17342,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCamelAdaptationLab() {
       const canvas = document.getElementById('camel-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-camel-type');
       const obs = document.getElementById('camel-obs');
 
@@ -17448,7 +17499,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const isHot = sel.value === 'hot';
 
@@ -17533,7 +17584,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFoodTestLab() {
       const canvas = document.getElementById('foodtest-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const selItem = document.getElementById('sel-foodtest-item');
       const selTest = document.getElementById('sel-foodtest-type');
       const btn = document.getElementById('btn-foodtest-run');
@@ -17552,7 +17603,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let tested = false;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const food = foods[selItem.value];
         const test = selTest.value;
@@ -17632,7 +17683,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMagnetExplorerLab() {
       const canvas = document.getElementById('magnet-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const modeSel = document.getElementById('sel-magnet-mode');
       const hint = document.getElementById('magnet-hint').querySelector('span');
       const materialsControls = document.getElementById('magnet-materials-controls');
@@ -17668,7 +17719,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawMaterialsMode() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         drawBarMagnet(magnetX, 150, true);
         const obj = objects[objSel.value];
@@ -17682,7 +17733,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawPolesMode() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         drawBarMagnet(150, 150, false); // Magnet A: left=S, right=N (N faces right, toward B)
         const bLeftIsNorth = poleSel.value === 'N';
@@ -17755,7 +17806,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initRulerMeasureLab() {
       const canvas = document.getElementById('ruler-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const slider = document.getElementById('rng-ruler-length');
       const chkBroken = document.getElementById('chk-ruler-broken');
       const obs = document.getElementById('ruler-obs');
@@ -17764,7 +17815,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const pxPerCm = 34, rulerLeftPx = 30, rulerTopPx = 150;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const lengthCm = parseInt(slider.value) / 10;
         const broken = chkBroken.checked;
@@ -17832,13 +17883,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMotionTypeLab() {
       const canvas = document.getElementById('motiontype-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-motiontype');
       const obs = document.getElementById('motiontype-obs');
       let animId = null, t = 0;
 
       function drawLinear() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(300, 30); ctx.lineTo(300, 270); ctx.stroke();
@@ -17850,7 +17901,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.textAlign = 'left';
       }
       function drawCircular() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const cx = 300, cy = 160, r = 90;
         ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
@@ -17866,7 +17917,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         ctx.textAlign = 'left';
       }
       function drawOscillatory() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const pivotX = 300, pivotY = 40, len = 160;
         const ang = Math.sin(t / 25) * 0.6;
@@ -17908,7 +17959,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMaterialExplorerLab() {
       const canvas = document.getElementById('matexp-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const modeSel = document.getElementById('sel-matexp-mode');
       const hint = document.getElementById('matexp-hint').querySelector('span');
       const transparencyControls = document.getElementById('matexp-transparency-controls');
@@ -17949,7 +18000,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawTransparency() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mat = materials[matSel.value];
         drawStar(130, 150, 1);
@@ -17985,7 +18036,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawSolubility() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const sub = substances[subSel.value];
         // Glass/beaker
@@ -18058,7 +18109,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initThermometerReaderLab() {
       const canvas = document.getElementById('thermo-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const modeSel = document.getElementById('sel-thermo-mode');
       const hint = document.getElementById('thermo-hint').querySelector('span');
       const convertControls = document.getElementById('thermo-convert-controls');
@@ -18069,7 +18120,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const obs = document.getElementById('thermo-obs');
 
       function drawConvert() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const c = parseInt(celsiusSlider.value);
         const f = (c * 9 / 5) + 32;
@@ -18109,7 +18160,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawLeastCount() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const divisions = parseInt(divisionsSel.value);
         const leastCount = (10 / divisions);
@@ -18161,7 +18212,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initWaterStateChangeLab() {
       const canvas = document.getElementById('waterstate-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const slider = document.getElementById('rng-waterstate-temp');
       const tempValLabel = document.getElementById('waterstate-temp-val');
       const obs = document.getElementById('waterstate-obs');
@@ -18169,7 +18220,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       function draw() {
         animT++;
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const temp = parseInt(slider.value);
         tempValLabel.textContent = temp + ' °C';
@@ -18239,7 +18290,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSeparationMethodLab() {
       const canvas = document.getElementById('separation-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const methodSel = document.getElementById('sel-separation-method');
       const runBtn = document.getElementById('btn-separation-run');
       const obs = document.getElementById('separation-obs');
@@ -18255,7 +18306,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function drawWinnowing(p) {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         // Wind arrow
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(480, 60); ctx.lineTo(540, 60); ctx.stroke();
@@ -18298,7 +18349,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawFiltration(p) {
-        const W = canvas.width;
+        const W = logW(canvas);
         // Funnel
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(250, 100); ctx.lineTo(350, 100); ctx.lineTo(300, 170); ctx.closePath(); ctx.stroke();
@@ -18384,7 +18435,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const method = methodSel.value;
         ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 13px system-ui';
@@ -18420,7 +18471,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initGerminationLab() {
       const canvas = document.getElementById('germination-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const potSel = document.getElementById('sel-germination-pot');
       const btn = document.getElementById('btn-germination-run');
       const obs = document.getElementById('germination-obs');
@@ -18434,7 +18485,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let grown = false;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const pot = pots[potSel.value];
 
@@ -18500,7 +18551,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAnimalLifeCycleLab() {
       const canvas = document.getElementById('lifecycle-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const animalSel = document.getElementById('sel-lifecycle-animal');
       const btn = document.getElementById('btn-lifecycle-next');
       const obs = document.getElementById('lifecycle-obs');
@@ -18571,7 +18622,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const animal = animalSel.value;
         const cycle = cycles[animal];
@@ -18595,7 +18646,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initResourceSorterLab() {
       const canvas = document.getElementById('resource-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const itemSel = document.getElementById('sel-resource-item');
       const btnRenewable = document.getElementById('btn-resource-renewable');
       const btnNonRenewable = document.getElementById('btn-resource-nonrenewable');
@@ -18616,7 +18667,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let itemX = 300, itemTargetX = 300, animId = null;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         // Bins
         ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2;
@@ -18668,7 +18719,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initConstellationViewerLab() {
       const canvas = document.getElementById('constellation-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-constellation');
       const obs = document.getElementById('constellation-obs');
 
@@ -18753,7 +18804,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         ctx.fillStyle = 'rgba(255,255,255,0.5)';
         bgStars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill(); });
@@ -18798,7 +18849,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSolarSystemExplorerLab() {
       const canvas = document.getElementById('solarsystem-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-planet');
       const btn = document.getElementById('btn-planet-show');
       const obs = document.getElementById('planet-obs');
@@ -18821,7 +18872,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let highlighted = null;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         ctx.fillStyle = 'rgba(255,255,255,0.4)';
         for (let i = 0; i < 40; i++) { const x = (i * 53 + 7) % 600, y = (i * 31 + 11) % 100; ctx.beginPath(); ctx.arc(x, y, 1, 0, Math.PI * 2); ctx.fill(); }
@@ -18871,12 +18922,16 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       });
 
       draw();
+      // Changing a dropdown applies immediately — a teacher should never have to
+      // pick an option and then hunt for a second button to make it take effect.
+      sel.addEventListener('change', () => btn.click());
+
     }
 
     function initRectAreaPerimeterLab() {
       const canvas = document.getElementById('rect-area-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const shapeSel = document.getElementById('sel-rect-shape');
       const lengthSel = document.getElementById('sel-rect-length');
       const breadthRow = document.getElementById('rect-breadth-row');
@@ -18885,7 +18940,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const obs = document.getElementById('rect-area-obs');
 
       function draw(l, b) {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const scale = 18;
         const rw = l * scale, rh = b * scale;
@@ -18928,7 +18983,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTriangleHalfRectangleLab() {
       const canvas = document.getElementById('triangle-half-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const baseSel = document.getElementById('sel-tri-base');
       const heightSel = document.getElementById('sel-tri-height');
       const btn = document.getElementById('btn-tri-split');
@@ -18936,7 +18991,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let split = false;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const base = parseInt(baseSel.value), height = parseInt(heightSel.value);
         const scale = 28;
@@ -18982,7 +19037,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFractionStripLab() {
       const canvas = document.getElementById('fraction-strip-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const denomSel = document.getElementById('sel-frac-denom');
       const numSel = document.getElementById('sel-frac-num');
       const btn = document.getElementById('btn-frac-show');
@@ -19001,7 +19056,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const denom = parseInt(denomSel.value), num = parseInt(numSel.value);
         const stripX = 40, stripY = 80, stripW = 520, stripH = 60;
@@ -19034,7 +19089,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFractionAdditionLab() {
       const canvas = document.getElementById('fraction-add-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const aSel = document.getElementById('sel-fracA');
       const bSel = document.getElementById('sel-fracB');
       const opSel = document.getElementById('sel-frac-op');
@@ -19060,7 +19115,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw(commonDenom, numA, numB, a, b) {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         drawBar(50, commonDenom, numA, 'rgba(99,102,241,0.6)', `${a.n}/${a.d} = ${numA}/${commonDenom}`);
         drawBar(140, commonDenom, numB, 'rgba(250,204,21,0.6)', `${b.n}/${b.d} = ${numB}/${commonDenom}`);
@@ -19097,52 +19152,121 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       });
 
       initialDraw();
+      // Changing a dropdown applies immediately — a teacher should never have to
+      // pick an option and then hunt for a second button to make it take effect.
+      aSel.addEventListener('change', () => btn.click());
+      bSel.addEventListener('change', () => btn.click());
+      opSel.addEventListener('change', () => btn.click());
+
     }
 
     function initCompassCircleLab() {
       const canvas = document.getElementById('compass-circle-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      const radSel = document.getElementById('sel-circle-radius');
+      const ctx = hidpiCtx(canvas);
+      const rIn = document.getElementById('circle-r');
+      const rOut = document.getElementById('circle-r-out');
       const btn = document.getElementById('btn-circle-draw');
+      const chk = document.getElementById('chk-circle-radii');
       const obs = document.getElementById('circle-radius-obs');
-      const cx = 300, cy = 170, scale = 24;
 
-      function draw(showCircle) {
-        const W = canvas.width, H = canvas.height;
-        ctx.clearRect(0, 0, W, H);
-        const radius = parseInt(radSel.value) * scale;
+      const CX = 300, CY = 196, SCALE = 20;   // 1 cm on screen = 20 px
+      const LEG = 165;                        // fixed compass leg length in px
+      let sweep = 0, sweeping = true, last = performance.now();
 
-        if (showCircle) {
-          ctx.strokeStyle = cssVar('--accent-color', '#000000'); ctx.lineWidth = 3;
-          ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.stroke();
-          ctx.strokeStyle = 'rgba(99,102,241,0.6)'; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + radius, cy); ctx.stroke();
-          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
-          ctx.fillText(`${radSel.value} cm`, cx + radius / 2, cy - 10);
-        }
+      function restart() { sweep = 0; sweeping = true; last = performance.now(); }
 
-        ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2);
-        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.fill();
-        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
-        ctx.fillText('P (centre)', cx, cy - 14);
-        ctx.textAlign = 'left';
+      function drawCompass(r, theta) {
+        // needle at the centre, pencil on the circle, hinge above the midpoint
+        const px = CX + r * Math.cos(theta), py = CY + r * Math.sin(theta);
+        const mx = (CX + px) / 2, my = (CY + py) / 2;
+        const half = r / 2;
+        const h = Math.sqrt(Math.max(LEG * LEG - half * half, 1));
+        // perpendicular to the needle-pencil line, chosen to point upwards
+        let ux = -(py - CY), uy = (px - CX);
+        const ul = Math.hypot(ux, uy) || 1; ux /= ul; uy /= ul;
+        if (uy > 0) { ux = -ux; uy = -uy; }
+        const hx = mx + ux * h, hy = my + uy * h;
+
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(hx, hy); ctx.lineTo(CX, CY); ctx.stroke();   // needle leg
+        ctx.strokeStyle = '#facc15'; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(hx, hy); ctx.lineTo(px, py); ctx.stroke();   // pencil leg
+        ctx.beginPath(); ctx.arc(hx, hy, 6, 0, Math.PI * 2);
+        ctx.fillStyle = '#64748b'; ctx.fill();
+        ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.5; ctx.stroke();
+        ctx.lineCap = 'butt';
+        return { px, py };
       }
 
-      btn.addEventListener('click', () => {
-        draw(true);
-        const r = radSel.value;
-        obs.innerHTML = `<strong>Radius = ${r} cm.</strong> Every single point on this circle is exactly ${r} cm away from the centre, P — that is the defining property of a circle.`;
-      });
-      radSel.addEventListener('change', () => { draw(false); obs.innerHTML = 'Choose a radius and click Draw Circle.'; });
+      function frame(now) {
+        if (!document.body.contains(canvas)) return;
+        const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        const rCm = +rIn.value, r = rCm * SCALE;
+        if (sweeping) {
+          sweep += dt * 2.6;
+          if (sweep >= Math.PI * 2) { sweep = Math.PI * 2; sweeping = false; }
+        }
 
-      draw(false);
+        const W = logW(canvas), H = logH(canvas);
+        ctx.clearRect(0, 0, W, H);
+
+        // 1 cm grid, so the radius is readable as a length
+        ctx.strokeStyle = 'rgba(148,163,184,0.10)'; ctx.lineWidth = 1;
+        for (let x = CX % SCALE; x < W; x += SCALE) { ctx.beginPath(); ctx.moveTo(x, 24); ctx.lineTo(x, H - 40); ctx.stroke(); }
+        for (let y = 24 + (CY - 24) % SCALE; y < H - 40; y += SCALE) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+        // the arc drawn so far
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(CX, CY, r, 0, Math.max(sweep, 0.001)); ctx.stroke();
+
+        if (chk.checked) {
+          ctx.strokeStyle = 'rgba(56,189,248,0.75)'; ctx.lineWidth = 1.5;
+          ctx.font = '11px system-ui'; ctx.fillStyle = '#38bdf8'; ctx.textAlign = 'center';
+          for (let i = 0; i < 8; i++) {
+            const a = i * Math.PI / 4;
+            if (a > sweep) continue;
+            const ex = CX + r * Math.cos(a), ey = CY + r * Math.sin(a);
+            ctx.beginPath(); ctx.moveTo(CX, CY); ctx.lineTo(ex, ey); ctx.stroke();
+            ctx.beginPath(); ctx.arc(ex, ey, 3, 0, Math.PI * 2); ctx.fillStyle = '#38bdf8'; ctx.fill();
+          }
+          ctx.fillStyle = '#38bdf8'; ctx.textAlign = 'left';
+          ctx.fillText('every spoke = ' + rCm + ' cm', 12, H - 14);
+          ctx.textAlign = 'center';
+        }
+
+        drawCompass(r, sweep);
+
+        // centre point
+        ctx.beginPath(); ctx.arc(CX, CY, 4, 0, Math.PI * 2);
+        ctx.fillStyle = '#f8fafc'; ctx.fill();
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal', '#fff'); ctx.textAlign = 'center';
+        ctx.fillText('P', CX - 14, CY - 10);
+
+        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal', '#fff');
+        ctx.textAlign = 'left';
+        ctx.fillText('Compass opening = radius = ' + rCm + ' cm', 12, 20);
+        ctx.textAlign = 'center';
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#94a3b8');
+        ctx.fillText(sweeping ? 'sweeping… ' + Math.round(sweep / (Math.PI * 2) * 100) + '%' : 'circle complete', W / 2, H - 14);
+
+        obs.innerHTML = 'The needle stays pinned at <strong>P</strong> and the opening never changes, so the pencil is forced to stay exactly <strong>' + rCm + ' cm</strong> from P the whole way round.' +
+          '<br><span style="color:var(--text-muted);">That is the definition of a circle — the set of all points a fixed distance from the centre. Tick the box to check eight of them.</span>';
+
+        requestAnimationFrame(frame);
+      }
+
+      rIn.addEventListener('input', () => { rOut.textContent = (+rIn.value) + ' cm'; restart(); });
+      btn.addEventListener('click', restart);
+      chk.addEventListener('change', () => {});
+      requestAnimationFrame(frame);
     }
 
     function initEquidistantArcsLab() {
       const canvas = document.getElementById('equidistant-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const bcSel = document.getElementById('sel-arc-distance');
       const radSel = document.getElementById('sel-arc-radius');
       const btn = document.getElementById('btn-arc-find');
@@ -19150,7 +19274,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const scale = 30, By = 230;
 
       function draw(showResult) {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const bc = parseInt(bcSel.value), radius = parseInt(radSel.value);
         const Bx = (W - bc * scale) / 2, Cx = Bx + bc * scale;
@@ -19209,7 +19333,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPunchHoleSymmetryLab() {
       const canvas = document.getElementById('punch-hole-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const foldSel = document.getElementById('sel-fold-type');
       const posSel = document.getElementById('sel-hole-pos');
       const btn = document.getElementById('btn-punch-unfold');
@@ -19225,7 +19349,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawSquareAndFold() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 2;
         ctx.strokeRect(x0, y0, side, side);
@@ -19271,7 +19395,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initRotationalSymmetryLab() {
       const canvas = document.getElementById('rotational-symmetry-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const armsSel = document.getElementById('sel-rot-arms');
       const btn = document.getElementById('btn-rot-step');
       const obs = document.getElementById('rotational-symmetry-obs');
@@ -19280,7 +19404,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let step = 0;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = parseInt(armsSel.value);
         const baseAngle = (360 / n) * step;
@@ -19322,7 +19446,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initIntegerLiftLab() {
       const canvas = document.getElementById('integer-lift-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const moveSel = document.getElementById('sel-lift-move');
       const pressBtn = document.getElementById('btn-lift-press');
       const resetBtn = document.getElementById('btn-lift-reset');
@@ -19336,14 +19460,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       function formatSigned(n) { return n === 0 ? '0' : (n > 0 ? `+${n}` : `${n}`); }
 
       function floorToY(floor) {
-        const H = canvas.height;
+        const H = logH(canvas);
         const floorH = (H - 20) / totalFloors;
         const index = maxFloor - floor;
         return 10 + index * floorH + floorH / 2;
       }
 
       function draw(carY) {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const floorH = (H - 20) / totalFloors;
         for (let floor = maxFloor; floor >= minFloor; floor--) {
@@ -19411,7 +19535,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTokenZeroPairLab() {
       const canvas = document.getElementById('token-zero-pair-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const aSel = document.getElementById('sel-token-a');
       const bSel = document.getElementById('sel-token-b');
       const btn = document.getElementById('btn-token-cancel');
@@ -19432,7 +19556,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw(cancelled) {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const a = parseInt(aSel.value), b = parseInt(bSel.value);
         const pairs = Math.min(a, b);
@@ -19459,13 +19583,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMatchstickPatternLab() {
       const canvas = document.getElementById('matchstick-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const typeSel = document.getElementById('sel-matchstick-type');
       const nSel = document.getElementById('sel-matchstick-n');
       const obs = document.getElementById('matchstick-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const type = typeSel.value;
         const n = parseInt(nSel.value);
@@ -19509,7 +19633,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFormulaMachineLab() {
       const canvas = document.getElementById('formula-machine-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const aSel = document.getElementById('sel-machine-a');
       const bSel = document.getElementById('sel-machine-b');
       const formulaSel = document.getElementById('sel-machine-formula');
@@ -19533,7 +19657,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw(result) {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const a = parseInt(aSel.value), b = parseInt(bSel.value);
         const cx = W / 2, topY = 40, machineY = 140, outY = 230;
@@ -19577,7 +19701,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initIntersectingLinesAngleLab() {
       const canvas = document.getElementById('intersecting-lines-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const aSel = document.getElementById('sel-angle-a');
       const obs = document.getElementById('intersecting-lines-obs');
       const cx = 300, cy = 150, r = 130;
@@ -19588,7 +19712,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const a = parseInt(aSel.value);
         const b = 180 - a, c = a, d = 180 - a;
@@ -19627,7 +19751,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTransversalAngleLab() {
       const canvas = document.getElementById('transversal-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const parallelSel = document.getElementById('sel-trans-parallel');
       const angleSel = document.getElementById('sel-trans-angle');
       const obs = document.getElementById('transversal-obs');
@@ -19640,7 +19764,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const cx = 300, y1 = 90, y2 = 230;
         const thetaDeg = parseInt(angleSel.value);
@@ -19696,7 +19820,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initParitySumLab() {
       const canvas = document.getElementById('parity-sum-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const evensSel = document.getElementById('sel-parity-evens');
       const oddsSel = document.getElementById('sel-parity-odds');
       const obs = document.getElementById('parity-sum-obs');
@@ -19712,7 +19836,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const nEvens = parseInt(evensSel.value), nOdds = parseInt(oddsSel.value);
 
@@ -19751,12 +19875,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMagicSquareBuilderLab() {
       const canvas = document.getElementById('magic-square-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const centreSel = document.getElementById('sel-magic-centre');
       const obs = document.getElementById('magic-square-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const m = parseInt(centreSel.value);
         const grid = [
@@ -19805,14 +19929,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTriangleInequalityLab() {
       const canvas = document.getElementById('triangle-inequality-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const selA = document.getElementById('sel-tri-a');
       const selB = document.getElementById('sel-tri-b');
       const selC = document.getElementById('sel-tri-c');
       const obs = document.getElementById('tri-inequality-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const a = parseInt(selA.value), b = parseInt(selB.value), c = parseInt(selC.value);
         const scale = 22;
@@ -19868,13 +19992,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAngleSumPropertyLab() {
       const canvas = document.getElementById('angle-sum-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const selB = document.getElementById('sel-angsum-b');
       const selC = document.getElementById('sel-angsum-c');
       const obs = document.getElementById('angsum-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const angB = parseInt(selB.value), angC = parseInt(selC.value);
         const baseY = 250, cx = W / 2;
@@ -19952,7 +20076,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFractionAreaModelLab() {
       const canvas = document.getElementById('fraction-area-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel1 = document.getElementById('sel-frac-area-1');
       const sel2 = document.getElementById('sel-frac-area-2');
       const obs = document.getElementById('frac-area-obs');
@@ -19960,7 +20084,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       function gcd(x, y) { return y === 0 ? x : gcd(y, x % y); }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [n1, d1] = sel1.value.split(',').map(Number);
         const [n2, d2] = sel2.value.split(',').map(Number);
@@ -20008,7 +20132,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFractionDivisionLab() {
       const canvas = document.getElementById('fraction-division-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel1 = document.getElementById('sel-frac-div-1');
       const sel2 = document.getElementById('sel-frac-div-2');
       const obs = document.getElementById('frac-div-obs');
@@ -20025,7 +20149,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [n1, d1] = sel1.value.split(',').map(Number);
         const [n2, d2] = sel2.value.split(',').map(Number);
@@ -20073,7 +20197,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initNumberSequenceVisualizerLab() {
       const canvas = document.getElementById('number-sequence-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const typeSel = document.getElementById('sel-seq-type');
       const stepSel = document.getElementById('sel-seq-step');
       const obs = document.getElementById('seq-obs');
@@ -20083,7 +20207,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const type = typeSel.value;
         const step = parseInt(stepSel.value);
@@ -20149,13 +20273,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initOddSumSquareLab() {
       const canvas = document.getElementById('odd-sum-square-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const stepSel = document.getElementById('sel-oddsum-n');
       const obs = document.getElementById('oddsum-obs');
       const palette = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#a855f7', '#ec4899'];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = parseInt(stepSel.value);
         const size = 220, startX = 40, startY = 30;
@@ -20204,12 +20328,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initProtractorAngleLab() {
       const canvas = document.getElementById('protractor-angle-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-protractor-angle');
       const obs = document.getElementById('protractor-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const angle = parseInt(sel.value);
         const cx = W / 2, cy = 230, R = 170;
@@ -20273,7 +20397,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAngleClassifierLab() {
       const canvas = document.getElementById('angle-classifier-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-angletype');
       const obs = document.getElementById('angletype-obs');
 
@@ -20286,7 +20410,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const angle = parseInt(sel.value);
         const cx = W / 2, cy = H / 2, R = 110;
@@ -20330,7 +20454,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initKaprekarRoutineLab() {
       const canvas = document.getElementById('kaprekar-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-kaprekar-n');
       const obs = document.getElementById('kaprekar-obs');
 
@@ -20343,7 +20467,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const start = parseInt(sel.value);
         const rounds = [];
@@ -20377,7 +20501,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCollatzSequenceLab() {
       const canvas = document.getElementById('collatz-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-collatz-n');
       const obs = document.getElementById('collatz-obs');
 
@@ -20392,7 +20516,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = parseInt(sel.value);
         const seq = collatzSequence(n);
@@ -20433,13 +20557,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPictographBuilderLab() {
       const canvas = document.getElementById('pictograph-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const dataSel = document.getElementById('sel-picto-dataset');
       const scaleSel = document.getElementById('sel-picto-scale');
       const obs = document.getElementById('picto-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const ds = PICTO_DATASETS[dataSel.value];
         const scale = parseInt(scaleSel.value);
@@ -20494,12 +20618,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initBarGraphBuilderLab() {
       const canvas = document.getElementById('bar-graph-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-bargraph-dataset');
       const obs = document.getElementById('bargraph-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const ds = BAR_DATASETS[sel.value];
         const n = ds.categories.length;
@@ -20543,7 +20667,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSieveOfEratosthenesLab() {
       const canvas = document.getElementById('sieve-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-sieve-stage');
       const obs = document.getElementById('sieve-obs');
 
@@ -20563,7 +20687,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const stageIdx = parseInt(sel.value);
         const { isComposite, circled } = computeState(stageIdx);
@@ -20616,12 +20740,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDivisibilityTesterLab() {
       const canvas = document.getElementById('divisibility-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-divisibility-n');
       const obs = document.getElementById('divisibility-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = parseInt(sel.value);
         const last1 = n % 10, last2 = n % 100, last3 = n % 1000;
@@ -20658,7 +20782,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPlaceValueCommaLab() {
       const canvas = document.getElementById('place-value-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-placevalue-n');
       const obs = document.getElementById('placevalue-obs');
       const palette = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444'];
@@ -20709,7 +20833,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const numStr = sel.value;
 
@@ -20732,7 +20856,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initRoundingNearestNeighbourLab() {
       const canvas = document.getElementById('rounding-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-rounding-n');
       const obs = document.getElementById('rounding-obs');
 
@@ -20755,7 +20879,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = parseInt(sel.value);
 
@@ -20790,7 +20914,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initExpressionTermSplitterLab() {
       const canvas = document.getElementById('term-splitter-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-term-expr');
       const obs = document.getElementById('term-splitter-obs');
 
@@ -20804,7 +20928,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const palette = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444'];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const idx = parseInt(sel.value);
         const expr = EXPRESSIONS[idx];
@@ -20843,7 +20967,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSwapGroupTermsLab() {
       const canvas = document.getElementById('swap-group-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const setSel = document.getElementById('sel-swapgroup-set');
       const ordSel = document.getElementById('sel-swapgroup-order');
       const obs = document.getElementById('swap-group-obs');
@@ -20854,7 +20978,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       function fmt(n) { return n >= 0 ? `${n}` : `(${n})`; }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const terms = TERM_SETS[parseInt(setSel.value)];
         const perm = PERMS[parseInt(ordSel.value)];
@@ -20889,7 +21013,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDecimalPlaceValueLab() {
       const canvas = document.getElementById('decimal-place-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-decimal-place-n');
       const obs = document.getElementById('decimal-place-obs');
       const NUMBERS = ['4.5', '4.05', '0.405', '4.050', '4.005', '4.50'];
@@ -20907,7 +21031,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const numStr = sel.value;
         const digits = getPlaceDigits(numStr);
@@ -20949,7 +21073,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDecimalNumberLineLab() {
       const canvas = document.getElementById('decimal-numberline-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-decimal-pair');
       const obs = document.getElementById('decimal-numberline-obs');
       const PAIRS = [[6.456, 6.465], [1.009, 1.090], [3.81, 13.800], [1.23, 1.32]];
@@ -20971,7 +21095,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [a, b] = PAIRS[parseInt(sel.value)];
         const lo = Math.min(a, b), hi = Math.max(a, b);
@@ -21014,7 +21138,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTriangleCongruenceSSSLab() {
       const canvas = document.getElementById('triangle-congruence-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-congruence-pair');
       const obs = document.getElementById('congruence-obs');
       const PAIRS = [
@@ -21042,7 +21166,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const pair = PAIRS[parseInt(sel.value)];
         const scale = 20;
@@ -21073,12 +21197,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initIsoscelesAngleLab() {
       const canvas = document.getElementById('isosceles-angle-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-isosceles-apex');
       const obs = document.getElementById('isosceles-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const apex = parseInt(sel.value);
         const base = (180 - apex) / 2;
@@ -21131,12 +21255,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initIntegerMultiplicationPatternLab() {
       const canvas = document.getElementById('int-mult-pattern-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-int-mult-multiplicand');
       const obs = document.getElementById('int-mult-pattern-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const multiplicand = parseInt(sel.value);
 
@@ -21174,7 +21298,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initIntegerDivisionLab() {
       const canvas = document.getElementById('integer-division-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-int-division');
       const obs = document.getElementById('integer-division-obs');
       const PROBLEMS = [
@@ -21185,7 +21309,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const { dividend, divisor } = PROBLEMS[parseInt(sel.value)];
         const quotient = dividend / divisor;
@@ -21216,7 +21340,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initHcfPrimeFactorLab() {
       const canvas = document.getElementById('hcf-prime-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-hcf-pair');
       const obs = document.getElementById('hcf-prime-obs');
       const PAIRS = [[12, 16], [84, 108], [84, 180], [270, 50]];
@@ -21256,7 +21380,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [a, b] = PAIRS[parseInt(sel.value)];
         const fa = primeFactorize(a), fb = primeFactorize(b);
@@ -21281,7 +21405,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initLcmPrimeFactorLab() {
       const canvas = document.getElementById('lcm-prime-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-lcm-pair');
       const obs = document.getElementById('lcm-prime-obs');
       const PAIRS = [[6, 8], [14, 35], [96, 360], [30, 72]];
@@ -21297,7 +21421,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [a, b] = PAIRS[parseInt(sel.value)];
         const ca = primeFactorCounts(a), cb = primeFactorCounts(b);
@@ -21331,7 +21455,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDecimalMultiplicationLab() {
       const canvas = document.getElementById('decimal-mult-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-decimal-mult-pair');
       const obs = document.getElementById('decimal-mult-obs');
       const PAIRS = [[5.96, 24.8], [5.8, 1.24], [9.5, 5], [12.5, 7.5], [5.7, 13.3]];
@@ -21343,7 +21467,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [a, b] = PAIRS[parseInt(sel.value)];
         const dpA = decimalPlaces(a), dpB = decimalPlaces(b);
@@ -21373,7 +21497,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDecimalDivisionLab() {
       const canvas = document.getElementById('decimal-div-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-decimal-div-problem');
       const obs = document.getElementById('decimal-div-obs');
       const PROBLEMS = [
@@ -21389,7 +21513,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const { dividend, divisor } = PROBLEMS[parseInt(sel.value)];
         const dp = decimalPlaces(divisor);
@@ -21420,7 +21544,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMeanFairShareLab() {
       const canvas = document.getElementById('mean-fairshare-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-mean-dataset');
       const obs = document.getElementById('mean-fairshare-obs');
       const DATASETS = [
@@ -21431,7 +21555,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const ds = DATASETS[parseInt(sel.value)];
         const values = ds.values;
@@ -21474,7 +21598,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMeanMedianOutlierLab() {
       const canvas = document.getElementById('mean-median-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-outlier-dataset');
       const obs = document.getElementById('mean-median-obs');
       const DATASETS = [
@@ -21490,7 +21614,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const ds = DATASETS[parseInt(sel.value)];
         const values = ds.values;
@@ -21538,12 +21662,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPerpendicularBisectorLab() {
       const canvas = document.getElementById('perp-bisector-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-perp-length');
       const obs = document.getElementById('perp-bisector-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const lengthCm = parseInt(sel.value);
         const scale = 30;
@@ -21592,12 +21716,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAngleBisectorLab() {
       const canvas = document.getElementById('angle-bisector-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-angle-bisect');
       const obs = document.getElementById('angle-bisector-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const angle = parseInt(sel.value);
         const half = angle / 2;
@@ -21649,7 +21773,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDominoTilingLab() {
       const canvas = document.getElementById('domino-tiling-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-domino-grid');
       const obs = document.getElementById('domino-tiling-obs');
       const GRIDS = [
@@ -21661,7 +21785,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const { rows, cols } = GRIDS[parseInt(sel.value)];
         const total = rows * cols;
@@ -21721,7 +21845,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initWeighingScaleEquationLab() {
       const canvas = document.getElementById('weighing-scale-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-scale-scenario');
       const obs = document.getElementById('weighing-scale-obs');
       const SCENARIOS = [
@@ -21732,7 +21856,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const sc = SCENARIOS[parseInt(sel.value)];
         const unknown = (sc.total - sc.constant) / sc.coeff;
@@ -21774,7 +21898,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initEquationSolverLab() {
       const canvas = document.getElementById('equation-solver-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-equation-solve');
       const obs = document.getElementById('equation-solver-obs');
       const EQUATIONS = [
@@ -21787,7 +21911,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       function fmtSigned(n) { return n >= 0 ? `+ ${n}` : `− ${Math.abs(n)}`; }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const { a, b, c, label } = EQUATIONS[parseInt(sel.value)];
         const afterStep1 = c - b;
@@ -21821,7 +21945,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAcidBaseIndicatorLab() {
       const canvas = document.getElementById('acid-base-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-acid-base-substance');
       const obs = document.getElementById('acid-base-obs');
       const SUBSTANCES = [
@@ -21839,7 +21963,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const sub = SUBSTANCES[parseInt(sel.value)];
 
@@ -21881,12 +22005,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initNeutralisationLab() {
       const canvas = document.getElementById('neutralisation-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-neutralisation-drops');
       const obs = document.getElementById('neutralisation-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const drops = parseInt(sel.value);
         const level = -3 + drops;
@@ -21931,7 +22055,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCircuitBuilderLab() {
       const canvas = document.getElementById('circuit-builder-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-circuit-scenario');
       const obs = document.getElementById('circuit-builder-obs');
       const SCENARIOS = [
@@ -21942,7 +22066,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const sc = SCENARIOS[parseInt(sel.value)];
         const glows = sc.complete && (sc.deviceType === 'lamp' || (sc.deviceType === 'led' && !sc.reversed));
@@ -22009,12 +22133,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCircuitDiagramLab() {
       const canvas = document.getElementById('circuit-diagram-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-switch-state');
       const obs = document.getElementById('circuit-diagram-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const isOn = sel.value === 'on';
 
@@ -22066,7 +22190,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMetalPropertyTesterLab() {
       const canvas = document.getElementById('metal-property-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-metal-property-material');
       const obs = document.getElementById('metal-property-obs');
       const MATERIALS = [
@@ -22079,7 +22203,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mat = MATERIALS[parseInt(sel.value)];
 
@@ -22129,7 +22253,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initConductionComparisonLab() {
       const canvas = document.getElementById('conduction-comparison-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-conduction-material');
       const obs = document.getElementById('conduction-comparison-obs');
       const MATERIALS = [
@@ -22141,7 +22265,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mat = MATERIALS[parseInt(sel.value)];
 
@@ -22180,7 +22304,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPhysicalChemicalChangeClassifierLab() {
       const canvas = document.getElementById('pcc-classifier-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-pcc-change');
       const obs = document.getElementById('pcc-classifier-obs');
       const CHANGES = [
@@ -22195,7 +22319,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const item = CHANGES[parseInt(sel.value)];
         const beforeX = 160, afterX = 440, cy = 130, r = 45;
@@ -22249,14 +22373,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFireTriangleLab() {
       const canvas = document.getElementById('fire-triangle-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const chkFuel = document.getElementById('chk-fire-fuel');
       const chkOxygen = document.getElementById('chk-fire-oxygen');
       const chkHeat = document.getElementById('chk-fire-heat');
       const obs = document.getElementById('fire-triangle-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const fuel = chkFuel.checked, oxygen = chkOxygen.checked, heat = chkHeat.checked;
         const allThree = fuel && oxygen && heat;
@@ -22321,7 +22445,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSecondarySexualCharacteristicsClassifierLab() {
       const canvas = document.getElementById('ssc-classifier-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-ssc-characteristic');
       const obs = document.getElementById('ssc-classifier-obs');
       const CHARACTERISTICS = [
@@ -22353,7 +22477,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const item = CHARACTERISTICS[parseInt(sel.value)];
 
@@ -22389,7 +22513,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAdolescentNutritionMatcherLab() {
       const canvas = document.getElementById('nutrition-matcher-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-nutrition-food');
       const obs = document.getElementById('nutrition-matcher-obs');
       const FOODS = [
@@ -22419,7 +22543,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const item = FOODS[parseInt(sel.value)];
 
@@ -22446,7 +22570,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initConductionPinsLab() {
       const canvas = document.getElementById('conduction-pins-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-conduction-pins-material');
       const obs = document.getElementById('conduction-pins-obs');
       const MATERIALS = [
@@ -22494,7 +22618,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mat = MATERIALS[parseInt(sel.value)];
         const stripY = 100, stripX1 = 90, stripX2 = 470;
@@ -22537,7 +22661,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initLandSeaBreezeLab() {
       const canvas = document.getElementById('land-sea-breeze-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-breeze-time');
       const obs = document.getElementById('land-sea-breeze-obs');
 
@@ -22553,7 +22677,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const isDay = sel.value === 'day';
         const groundY = 190;
@@ -22603,52 +22727,139 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPendulumTimePeriodLab() {
       const canvas = document.getElementById('pendulum-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      const sel = document.getElementById('sel-pendulum-length');
+      const ctx = hidpiCtx(canvas);
       const obs = document.getElementById('pendulum-obs');
-      const PIXEL_LEN = { 25: 60, 100: 110, 225: 150, 400: 180 };
+      const aLen = document.getElementById('pend-a-len');
+      const bLen = document.getElementById('pend-b-len');
+      const aLenOut = document.getElementById('pend-a-len-out');
+      const bLenOut = document.getElementById('pend-b-len-out');
+      const aMass = document.getElementById('pend-a-mass');
+      const bMass = document.getElementById('pend-b-mass');
+      const playBtn = document.getElementById('pend-play');
+      const resetBtn = document.getElementById('pend-reset');
 
-      function draw() {
-        const W = canvas.width, H = canvas.height;
-        ctx.clearRect(0, 0, W, H);
-        const Lcm = parseInt(sel.value);
-        const pixLen = PIXEL_LEN[Lcm];
-        const T = 2 * Math.sqrt(Lcm / 100);
-        const cx = W / 2, py = 42;
+      const G = 9.8;                 // m/s^2
+      const THETA0 = 18 * Math.PI / 180;  // small release angle, as the chapter assumes
+      let running = true, t = 0, last = performance.now();
+      let swings = { a: 0, b: 0 };   // completed oscillations, counted at the mean position
+      let prevSign = { a: 1, b: 1 };
 
-        ctx.fillStyle = cssVar('--border-color');
-        ctx.fillRect(cx - 40, py - 10, 80, 10);
+      const period = L => 2 * Math.PI * Math.sqrt((L / 100) / G);   // L in cm
 
-        const angle = 25 * Math.PI / 180;
-        ctx.strokeStyle = cssVar('--text-muted'); ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
-        ctx.beginPath(); ctx.moveTo(cx, py); ctx.lineTo(cx, py + pixLen); ctx.stroke();
-        ctx.beginPath(); ctx.arc(cx, py, pixLen, Math.PI / 2 - angle, Math.PI / 2 + angle); ctx.stroke();
-        ctx.setLineDash([]);
-
-        const bobX = cx - pixLen * Math.sin(angle), bobY = py + pixLen * Math.cos(angle);
-        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.moveTo(cx, py); ctx.lineTo(bobX, bobY); ctx.stroke();
-        ctx.beginPath(); ctx.arc(bobX, bobY, 12, 0, Math.PI * 2);
-        ctx.fillStyle = cssVar('--accent-color'); ctx.fill();
-        ctx.strokeStyle = cssVar('--text-normal'); ctx.lineWidth = 1.5; ctx.stroke();
-
-        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(`Pendulum length: ${Lcm} cm`, W / 2, 24);
-        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--accent-color');
-        ctx.fillText(`Time period ≈ ${T.toFixed(1)} s`, W / 2, 258);
-
-        const compare = Lcm < 100 ? 'shorter, so it swings faster' : (Lcm === 100 ? 'the reference length' : 'longer, so it swings more slowly');
-        obs.innerHTML = `<strong>Length = ${Lcm} cm → Time period ≈ ${T.toFixed(1)} s per oscillation.</strong> Compared to a 100 cm pendulum, this one is ${compare}. Note the time period depends only on the length — changing the bob's mass would not change it.`;
+      function reset() {
+        t = 0; swings = { a: 0, b: 0 }; prevSign = { a: 1, b: 1 }; last = performance.now();
       }
 
-      sel.addEventListener('change', draw);
-      draw();
+      function drawPendulum(cx, pivotY, Lcm, massG, theta, colour, label) {
+        const pixLen = Lcm * 1.05;                    // 200 cm -> 210 px
+        const r = 8 + Math.cbrt(massG) * 1.5;         // radius grows with the cube root of mass
+        const bx = cx + pixLen * Math.sin(theta);
+        const by = pivotY + pixLen * Math.cos(theta);
+
+        // swing arc
+        ctx.strokeStyle = 'rgba(148,163,184,0.28)'; ctx.lineWidth = 1; ctx.setLineDash([3, 4]);
+        ctx.beginPath();
+        ctx.arc(cx, pivotY, pixLen, Math.PI / 2 - THETA0, Math.PI / 2 + THETA0);
+        ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx, pivotY); ctx.lineTo(cx, pivotY + pixLen); ctx.stroke();
+        ctx.setLineDash([]);
+
+        // string and bob
+        ctx.strokeStyle = colour; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx, pivotY); ctx.lineTo(bx, by); ctx.stroke();
+        ctx.beginPath(); ctx.arc(bx, by, r, 0, Math.PI * 2);
+        ctx.fillStyle = colour; ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.75)'; ctx.lineWidth = 1.5; ctx.stroke();
+
+        // pivot
+        ctx.beginPath(); ctx.arc(cx, pivotY, 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = cssVar('--text-normal', '#fff'); ctx.fill();
+
+        ctx.textAlign = 'center'; ctx.font = 'bold 12px system-ui'; ctx.fillStyle = colour;
+        ctx.fillText(label, cx, pivotY - 16);
+        return { bx, by };
+      }
+
+      function frame(now) {
+        if (!document.body.contains(canvas)) return;   // lab was navigated away from
+        const dt = Math.min((now - last) / 1000, 0.05);
+        last = now;
+        if (running) t += dt;
+
+        const La = +aLen.value, Lb = +bLen.value;
+        const Ta = period(La), Tb = period(Lb);
+        const thA = THETA0 * Math.cos(2 * Math.PI * t / Ta);
+        const thB = THETA0 * Math.cos(2 * Math.PI * t / Tb);
+
+        // count a full oscillation each time the bob passes the mean position going the same way
+        [['a', thA, Ta], ['b', thB, Tb]].forEach(([key, th]) => {
+          const sign = Math.sign(th) || 1;
+          if (running && sign !== prevSign[key]) {
+            prevSign[key] = sign;
+            if (sign === 1) swings[key] += 1;
+          }
+        });
+
+        const W = logW(canvas), H = logH(canvas);
+        ctx.clearRect(0, 0, W, H);
+
+        // support beam
+        const pivotY = 56;
+        ctx.fillStyle = 'rgba(148,163,184,0.55)';
+        ctx.fillRect(70, pivotY - 12, W - 140, 12);
+
+        drawPendulum(W * 0.33, pivotY, La, +aMass.value, thA, '#22c55e', 'A');
+        drawPendulum(W * 0.67, pivotY, Lb, +bMass.value, thB, '#38bdf8', 'B');
+
+        // readouts
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText('A: ' + La + ' cm, ' + aMass.options[aMass.selectedIndex].text.replace(/.*\((.*)\)/, '$1') + '  ·  T = ' + Ta.toFixed(2) + ' s', W * 0.33, H - 34);
+        ctx.fillStyle = '#38bdf8';
+        ctx.fillText('B: ' + Lb + ' cm, ' + bMass.options[bMass.selectedIndex].text.replace(/.*\((.*)\)/, '$1') + '  ·  T = ' + Tb.toFixed(2) + ' s', W * 0.67, H - 34);
+
+        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#94a3b8');
+        ctx.fillText('elapsed ' + t.toFixed(1) + ' s   ·   oscillations  A ' + swings.a + '   B ' + swings.b, W / 2, H - 12);
+
+        const sameL = La === Lb;
+        const sameM = aMass.value === bMass.value;
+        let verdict;
+        if (sameL && !sameM) {
+          verdict = 'Same length, different mass — they stay locked in step for ever. <strong>Mass does not affect the time period.</strong>';
+        } else if (!sameL && sameM) {
+          verdict = 'Same mass, different length — they drift apart. <strong>Length is what changes the time period.</strong>';
+        } else if (!sameL && !sameM) {
+          verdict = 'Both differ. They drift apart, but that is entirely due to the lengths — the masses are doing nothing.';
+        } else {
+          verdict = 'Identical pendulums swing identically. Change one length, or just one mass, to see which one matters.';
+        }
+        obs.innerHTML =
+          '<strong>A:</strong> ' + La + ' cm → T = ' + Ta.toFixed(2) + ' s' +
+          '<br><strong>B:</strong> ' + Lb + ' cm → T = ' + Tb.toFixed(2) + ' s' +
+          '<br><span style="color:var(--text-muted);">T = 2&pi;&radic;(L/g). Quadrupling the length only doubles the period.</span>' +
+          '<br>' + verdict;
+
+        requestAnimationFrame(frame);
+      }
+
+      aLen.addEventListener('input', () => { aLenOut.textContent = aLen.value + ' cm'; reset(); });
+      bLen.addEventListener('input', () => { bLenOut.textContent = bLen.value + ' cm'; reset(); });
+      aMass.addEventListener('change', reset);
+      bMass.addEventListener('change', reset);
+      resetBtn.addEventListener('click', reset);
+      playBtn.addEventListener('click', () => {
+        running = !running;
+        playBtn.textContent = running ? '⏸ Pause' : '▶ Play';
+        last = performance.now();
+      });
+
+      requestAnimationFrame(frame);
     }
 
     function initSpeedDistanceTimeCalculatorLab() {
       const canvas = document.getElementById('speed-calc-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-speed-scenario');
       const obs = document.getElementById('speed-calc-obs');
       const SCENARIOS = [
@@ -22665,7 +22876,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const s = SCENARIOS[parseInt(sel.value)];
         const speedMps = s.distanceM / s.timeS;
@@ -22699,7 +22910,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initUniformMotionLab() {
       const canvas = document.getElementById('uniform-motion-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-uniform-train');
       const obs = document.getElementById('uniform-motion-obs');
       const TRAINS = {
@@ -22708,7 +22919,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const train = TRAINS[sel.value];
         const marginL = 55, marginR = 25, marginT = 40, marginB = 45;
@@ -22761,7 +22972,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initStarchIodineTestLab() {
       const canvas = document.getElementById('starch-iodine-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-starch-tube');
       const obs = document.getElementById('starch-iodine-obs');
       const INFO = {
@@ -22770,7 +22981,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const info = INFO[sel.value];
         const beforeX = 160, afterX = 440, cy = 130, r = 45;
@@ -22813,12 +23024,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initBreathingModelLab() {
       const canvas = document.getElementById('breathing-model-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-breathing-action');
       const obs = document.getElementById('breathing-model-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const inhale = sel.value === 'inhale';
         const bx1 = 180, bx2 = 420, bTop = 55, bBottom = 220;
@@ -22868,7 +23079,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initLeafStarchSunlightLab() {
       const canvas = document.getElementById('leaf-starch-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-leaf-starch');
       const obs = document.getElementById('leaf-starch-obs');
       const INFO = {
@@ -22878,7 +23089,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const info = INFO[sel.value];
         const beforeX = 160, afterX = 440, cy = 130, r = 45;
@@ -22921,13 +23132,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPhotosynthesisRequirementsLab() {
       const canvas = document.getElementById('photosynthesis-req-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const chkSunlight = document.getElementById('chk-photo-sunlight');
       const chkCo2 = document.getElementById('chk-photo-co2');
       const obs = document.getElementById('photosynthesis-req-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const sunlight = chkSunlight.checked, co2 = chkCo2.checked;
         const occurs = sunlight && co2;
@@ -22986,12 +23197,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initXylemTransportLab() {
       const canvas = document.getElementById('xylem-transport-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-xylem-tumbler');
       const obs = document.getElementById('xylem-transport-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const isRed = sel.value === 'B';
         const cx = W / 2;
@@ -23037,7 +23248,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMaterialLightTransmissionLab() {
       const canvas = document.getElementById('material-light-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-material-light');
       const obs = document.getElementById('material-light-obs');
       const MATERIALS = {
@@ -23048,7 +23259,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mat = MATERIALS[sel.value];
         const cy = 140;
@@ -23090,12 +23301,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPlaneMirrorImageLab() {
       const canvas = document.getElementById('mirror-image-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-mirror-distance');
       const obs = document.getElementById('mirror-image-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = parseInt(sel.value);
         const mirrorX = W / 2, cy = 150;
@@ -23142,12 +23353,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPinholeCameraLab() {
       const canvas = document.getElementById('pinhole-camera-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-pinhole-position');
       const obs = document.getElementById('pinhole-camera-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const near = sel.value === 'near';
         const pinholeX = W / 2, cy = 140;
@@ -23193,7 +23404,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initEarthRotationDayNightLab() {
       const canvas = document.getElementById('earth-rotation-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-earth-rotation-time');
       const obs = document.getElementById('earth-rotation-obs');
       const POSITIONS = {
@@ -23204,7 +23415,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const pos = POSITIONS[sel.value];
         const cx = W / 2 - 30, cy = 145, r = 75;
@@ -23253,12 +23464,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initEarthTiltSeasonsLab() {
       const canvas = document.getElementById('earth-tilt-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-earth-tilt-month');
       const obs = document.getElementById('earth-tilt-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const isJune = sel.value === 'june';
         const cx = W / 2 - 20, cy = 150, r = 70;
@@ -23319,12 +23530,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initEclipseTypeLab() {
       const canvas = document.getElementById('eclipse-type-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-eclipse-type');
       const obs = document.getElementById('eclipse-type-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const solar = sel.value === 'solar';
         const cy = 140;
@@ -23371,13 +23582,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSquarePatternBuilderLab() {
       const canvas = document.getElementById('square-pattern-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-square-pattern-n');
       const obs = document.getElementById('square-pattern-obs');
       const PALETTE = ['#10b981', '#60a5fa', '#f97316', '#f472b6', '#a78bfa', '#fbbf24', '#34d399', '#f87171', '#38bdf8', '#facc15'];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = parseInt(sel.value);
         const cell = Math.min(18, Math.floor(150 / n));
@@ -23416,7 +23627,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPerfectSquareFactorCheckerLab() {
       const canvas = document.getElementById('square-checker-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-square-checker-num');
       const obs = document.getElementById('square-checker-obs');
       const NUMBERS = {
@@ -23428,7 +23639,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const num = sel.value;
         const info = NUMBERS[num];
@@ -23465,12 +23676,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCubeLayerVisualizerLab() {
       const canvas = document.getElementById('cube-layer-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-cube-layer-n');
       const obs = document.getElementById('cube-layer-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = parseInt(sel.value);
         const cell = Math.min(22, Math.floor(100 / n));
@@ -23505,7 +23716,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPaperFoldingGrowthLab() {
       const canvas = document.getElementById('paper-fold-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-paper-fold-n');
       const obs = document.getElementById('paper-fold-obs');
       const FOLDS = {
@@ -23524,7 +23735,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = sel.value;
         const info = FOLDS[n];
@@ -23564,7 +23775,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initExponentLawsCalculatorLab() {
       const canvas = document.getElementById('exponent-laws-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-exponent-law');
       const obs = document.getElementById('exponent-laws-obs');
       const LAWS = {
@@ -23575,7 +23786,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const info = LAWS[sel.value];
 
@@ -23604,7 +23815,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initNegativeExponentVisualizerLab() {
       const canvas = document.getElementById('negative-exponent-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-negative-exponent');
       const obs = document.getElementById('negative-exponent-obs');
       const EXPONENTS = [3, 2, 1, 0, -1, -2, -3];
@@ -23616,7 +23827,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const chosen = parseInt(sel.value);
 
@@ -23655,7 +23866,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initScientificNotationConverterLab() {
       const canvas = document.getElementById('sci-notation-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-sci-notation-num');
       const obs = document.getElementById('sci-notation-obs');
 
@@ -23677,7 +23888,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const numStr = sel.value;
         const { coeff, exp } = toScientific(numStr);
@@ -23705,7 +23916,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initRomanNumeralConverterLab() {
       const canvas = document.getElementById('roman-numeral-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-roman-number');
       const obs = document.getElementById('roman-numeral-obs');
       const VALUES = [
@@ -23727,7 +23938,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const num = parseInt(sel.value);
         const parts = toRoman(num);
@@ -23758,7 +23969,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initBaseNLandmarkLab() {
       const canvas = document.getElementById('base-n-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-base-n-choice');
       const obs = document.getElementById('base-n-obs');
 
@@ -23779,7 +23990,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [numStr, baseStr] = sel.value.split('-');
         const num = parseInt(numStr), base = parseInt(baseStr);
@@ -23822,7 +24033,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initHinduPlaceValueLab() {
       const canvas = document.getElementById('hindu-place-value-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-hindu-place-num');
       const obs = document.getElementById('hindu-place-value-obs');
       const PLACE_NAMES = ['ones', 'tens', 'hundreds', 'thousands', 'ten-thousands'];
@@ -23833,7 +24044,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const numStr = sel.value;
         const digits = numStr.split('').map(Number);
@@ -23874,7 +24085,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initQuadrilateralAngleSumLab() {
       const canvas = document.getElementById('quad-angle-sum-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-quad-angle-set');
       const obs = document.getElementById('quad-angle-sum-obs');
       const SETS = {
@@ -23882,7 +24093,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const angles = SETS[sel.value];
         const fourth = 360 - angles.reduce((a, b) => a + b, 0);
@@ -23920,12 +24131,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initParallelogramPropertiesLab() {
       const canvas = document.getElementById('parallelogram-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-parallelogram-angle');
       const obs = document.getElementById('parallelogram-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const a = parseInt(sel.value);
         const b = 180 - a;
@@ -23964,12 +24175,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initRhombusDiagonalAngleLab() {
       const canvas = document.getElementById('rhombus-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-rhombus-angle');
       const obs = document.getElementById('rhombus-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const a = parseInt(sel.value);
         const b = 180 - a;
@@ -24015,7 +24226,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initQuadrilateralClassifierLab() {
       const canvas = document.getElementById('quad-classifier-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-quad-classifier-shape');
       const obs = document.getElementById('quad-classifier-obs');
       const PROPS = ['Opposite sides parallel', 'All sides equal', 'All angles 90°', 'Diagonals equal', 'Diagonals bisect each other', 'Diagonals perpendicular'];
@@ -24029,7 +24240,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const shape = sel.value;
         const flags = DATA[shape];
@@ -24058,12 +24269,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initParityExpressionLab() {
       const canvas = document.getElementById('parity-expr-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-parity-start');
       const obs = document.getElementById('parity-expr-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = parseInt(sel.value);
         const nums = [n, n + 1, n + 2, n + 3];
@@ -24101,7 +24312,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDigitSumDivisibilityLab() {
       const canvas = document.getElementById('digit-sum-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-digit-sum-num');
       const obs = document.getElementById('digit-sum-obs');
 
@@ -24120,7 +24331,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const numStr = sel.value;
         const num = parseInt(numStr);
@@ -24159,12 +24370,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDivisibilityBy11Lab() {
       const canvas = document.getElementById('div-11-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-div-11-num');
       const obs = document.getElementById('div-11-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const numStr = sel.value;
         const digits = numStr.split('').map(Number).reverse();
@@ -24213,12 +24424,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCryptarithmSolverLab() {
       const canvas = document.getElementById('cryptarithm-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-cryptarithm-pq');
       const obs = document.getElementById('cryptarithm-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const pq = parseInt(sel.value);
         const product = pq * 8;
@@ -24260,13 +24471,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initProductIncrementLab() {
       const canvas = document.getElementById('product-increment-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-product-increment');
       const obs = document.getElementById('product-increment-obs');
       const a = 23, b = 27, ab = a * b;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mode = sel.value;
         let newA, newB, formula, increaseLabel;
@@ -24300,7 +24511,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSquareIdentityLab() {
       const canvas = document.getElementById('square-identity-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-square-identity-num');
       const obs = document.getElementById('square-identity-obs');
       const DATA = {
@@ -24309,7 +24520,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const num = sel.value;
         const { a, b, sign } = DATA[num];
@@ -24340,12 +24551,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDifferenceOfSquaresLab() {
       const canvas = document.getElementById('diff-squares-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-diff-squares-num');
       const obs = document.getElementById('diff-squares-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [aStr, bStr] = sel.value.split('-');
         const a = parseInt(aStr), b = parseInt(bStr);
@@ -24374,12 +24585,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initEquivalentExpressionsLab() {
       const canvas = document.getElementById('equiv-expr-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-equiv-expr-k');
       const obs = document.getElementById('equiv-expr-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const k = parseInt(sel.value);
         const methods = [
@@ -24414,7 +24625,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initRatioSimplifierLab() {
       const canvas = document.getElementById('ratio-simplifier-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-ratio-simplifier-img');
       const obs = document.getElementById('ratio-simplifier-obs');
       const DATA = { A: [60, 40], B: [40, 20], C: [30, 20], D: [90, 60], E: [60, 60] };
@@ -24422,7 +24633,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       function gcd(x, y) { return y === 0 ? x : gcd(y, x % y); }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const img = sel.value;
         const [w, h] = DATA[img];
@@ -24456,7 +24667,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initProportionSolverLab() {
       const canvas = document.getElementById('proportion-solver-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-proportion-solver');
       const obs = document.getElementById('proportion-solver-obs');
       const SCENARIOS = {
@@ -24467,7 +24678,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const s = SCENARIOS[sel.value];
         const [k1, k2] = s.known;
@@ -24502,7 +24713,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initRatioSharingLab() {
       const canvas = document.getElementById('ratio-sharing-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-ratio-sharing');
       const obs = document.getElementById('ratio-sharing-obs');
       const LABELS = {
@@ -24510,7 +24721,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [total, m, n] = sel.value.split('-').map(Number);
         const groupSize = total / (m + n);
@@ -24545,12 +24756,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initUnitConversionLab() {
       const canvas = document.getElementById('unit-conversion-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-unit-conversion');
       const obs = document.getElementById('unit-conversion-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const type = sel.value;
         let title, steps, result;
@@ -24596,14 +24807,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFractionToPercentageLab() {
       const canvas = document.getElementById('fdp-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-fdp-percent');
       const obs = document.getElementById('fdp-obs');
 
       function gcd(x, y) { return y === 0 ? x : gcd(y, x % y); }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const pct = parseInt(sel.value);
         const g = gcd(pct, 100);
@@ -24633,7 +24844,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPercentageOfQuantityLab() {
       const canvas = document.getElementById('percent-of-qty-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-percent-of-qty');
       const obs = document.getElementById('percent-of-qty-obs');
       const DATA = {
@@ -24643,7 +24854,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const result = (d.pct / 100) * d.qty;
@@ -24671,7 +24882,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPercentageChangeLab() {
       const canvas = document.getElementById('percent-change-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-percent-change');
       const obs = document.getElementById('percent-change-obs');
       const DATA = {
@@ -24681,7 +24892,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const change = d.to - d.from;
@@ -24711,12 +24922,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initProfitLossDiscountLab() {
       const canvas = document.getElementById('profit-loss-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-profit-loss');
       const obs = document.getElementById('profit-loss-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const type = sel.value;
         let title, steps, result, resultColor;
@@ -24766,12 +24977,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSquareDiagonalLab() {
       const canvas = document.getElementById('square-diagonal-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-square-diagonal-side');
       const obs = document.getElementById('square-diagonal-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const side = parseInt(sel.value);
         const diagonal = side * Math.sqrt(2);
@@ -24812,12 +25023,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPythagoreanTheoremLab() {
       const canvas = document.getElementById('pythagorean-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-pythagorean-sides');
       const obs = document.getElementById('pythagorean-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [a, b] = sel.value.split('-').map(Number);
         const c = Math.sqrt(a * a + b * b);
@@ -24858,14 +25069,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPythagoreanTripleCheckerLab() {
       const canvas = document.getElementById('triple-checker-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-triple-checker');
       const obs = document.getElementById('triple-checker-obs');
 
       function gcd(x, y) { return y === 0 ? x : gcd(y, x % y); }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [a, b, c] = sel.value.split('-').map(Number);
         const isValid = a * a + b * b === c * c;
@@ -24899,12 +25110,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initOddSquareTripleGeneratorLab() {
       const canvas = document.getElementById('odd-triple-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-odd-triple');
       const obs = document.getElementById('odd-triple-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const oddSq = parseInt(sel.value);
         const root = Math.sqrt(oddSq);
@@ -24937,7 +25148,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMapScaleLab() {
       const canvas = document.getElementById('map-scale-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-map-scale');
       const obs = document.getElementById('map-scale-obs');
       const DATA = {
@@ -24953,7 +25164,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const actualCm = d.dist * d.scale;
@@ -24981,7 +25192,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMultiTermRatioLab() {
       const canvas = document.getElementById('multi-ratio-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-multi-ratio');
       const obs = document.getElementById('multi-ratio-obs');
       const DATA = {
@@ -24992,7 +25203,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       function fmt(n) { return Number.isInteger(n) ? String(n) : n.toFixed(1); }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const factor = d.knownVal / d.orig[d.knownIdx];
@@ -25027,7 +25238,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMultiTermSharingLab() {
       const canvas = document.getElementById('multi-sharing-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-multi-sharing');
       const obs = document.getElementById('multi-sharing-obs');
       const DATA = {
@@ -25040,7 +25251,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       function fmt(n) { return Number.isInteger(n) ? String(n) : n.toFixed(1); }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const sum = d.ratio.reduce((a, b) => a + b, 0);
@@ -25077,7 +25288,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPieChartAngleLab() {
       const canvas = document.getElementById('pie-chart-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-pie-chart-grade');
       const obs = document.getElementById('pie-chart-obs');
       const GRADES = [
@@ -25089,7 +25300,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const total = GRADES.reduce((a, g) => a + g.count, 0);
         const cx = 160, cy = 145, r = 90;
@@ -25134,7 +25345,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSierpinskiGrowthLab() {
       const canvas = document.getElementById('sierpinski-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const selShape = document.getElementById('sel-sierpinski-shape');
       const selStep = document.getElementById('sel-sierpinski-step');
       const obs = document.getElementById('sierpinski-obs');
@@ -25172,7 +25383,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const shape = selShape.value;
         const n = parseInt(selStep.value);
@@ -25212,7 +25423,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initKochSnowflakeLab() {
       const canvas = document.getElementById('koch-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-koch-step');
       const obs = document.getElementById('koch-obs');
 
@@ -25233,7 +25444,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = parseInt(sel.value);
         const size = 160;
@@ -25268,7 +25479,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPolyhedronPropertiesLab() {
       const canvas = document.getElementById('polyhedron-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-polyhedron-solid');
       const obs = document.getElementById('polyhedron-obs');
       const NAMES = {
@@ -25277,7 +25488,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [type, nStr] = sel.value.split('-');
         const n = parseInt(nStr);
@@ -25314,12 +25525,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCubeProjectionLab() {
       const canvas = document.getElementById('cube-projection-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-cube-projection');
       const obs = document.getElementById('cube-projection-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mode = sel.value;
         const cx = W / 2, cy = 140;
@@ -25364,13 +25575,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMeanBalanceLab() {
       const canvas = document.getElementById('mean-balance-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-mean-balance-add');
       const obs = document.getElementById('mean-balance-obs');
       const BASE = [10, 10, 11, 17];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const addVal = sel.value === 'none' ? null : parseFloat(sel.value);
         const data = addVal === null ? BASE.slice() : BASE.concat([addVal]);
@@ -25429,7 +25640,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMeanShiftScaleLab() {
       const canvas = document.getElementById('mean-shift-scale-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-mean-shift-scale');
       const obs = document.getElementById('mean-shift-scale-obs');
       const BASE = [8, 3, 10, 13, 4, 6, 7, 7, 8, 8, 5];
@@ -25443,7 +25654,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const op = sel.value;
         const data = transform(op);
@@ -25482,7 +25693,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMissingValueMeanLab() {
       const canvas = document.getElementById('missing-value-mean-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-missing-value-mean');
       const obs = document.getElementById('missing-value-mean-obs');
 
@@ -25498,7 +25709,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const s = SCENARIOS[sel.value];
 
@@ -25527,7 +25738,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initLineGraphReadingLab() {
       const canvas = document.getElementById('line-graph-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-line-graph-city');
       const obs = document.getElementById('line-graph-obs');
       const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -25539,7 +25750,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const NAMES = { mangaluru: 'Mangaluru', portblair: 'Port Blair', rameswaram: 'Rameswaram' };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const key = sel.value;
         const data = DATA[key];
@@ -25587,12 +25798,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initThinkOfANumberLab() {
       const canvas = document.getElementById('think-number-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-think-number');
       const obs = document.getElementById('think-number-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const x = parseFloat(sel.value);
         const step2 = x * 2;
@@ -25630,7 +25841,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initNumberPyramidLab() {
       const canvas = document.getElementById('number-pyramid-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-number-pyramid');
       const obs = document.getElementById('number-pyramid-obs');
 
@@ -25643,7 +25854,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [a, b, c] = sel.value.split(',').map(Number);
         const mid1 = a + b, mid2 = b + c;
@@ -25667,12 +25878,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCalendarGridLab() {
       const canvas = document.getElementById('calendar-grid-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-calendar-grid');
       const obs = document.getElementById('calendar-grid-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const sum = parseInt(sel.value);
         const a = (sum - 16) / 4;
@@ -25705,12 +25916,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initLargestProductLab() {
       const canvas = document.getElementById('largest-product-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-largest-product');
       const obs = document.getElementById('largest-product-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const digits = sel.value.split(',').map(Number).sort((a, b) => a - b);
         const [p, q, r] = digits;
@@ -25751,12 +25962,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initRectTriAreaLab() {
       const canvas = document.getElementById('rect-tri-area-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-rect-tri-area');
       const obs = document.getElementById('rect-tri-area-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [len, wid] = sel.value.split(',').map(Number);
         const area = len * wid;
@@ -25796,13 +26007,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTriangleAltitudeLab() {
       const canvas = document.getElementById('triangle-altitude-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-triangle-altitude');
       const obs = document.getElementById('triangle-altitude-obs');
       const AREA = 7.5;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const AC = parseFloat(sel.value);
         const BY = (2 * AREA) / AC;
@@ -25842,12 +26053,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initParallelogramAreaLab() {
       const canvas = document.getElementById('parallelogram-area-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-parallelogram-area');
       const obs = document.getElementById('parallelogram-area-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [base, height] = sel.value.split(',').map(Number);
         const area = base * height;
@@ -25884,12 +26095,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initRhombusTrapeziumAreaLab() {
       const canvas = document.getElementById('rhombus-trapezium-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-rhombus-trapezium');
       const obs = document.getElementById('rhombus-trapezium-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const val = sel.value;
         const cx = W / 2, cy = 150;
@@ -25942,12 +26153,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPlantVsAnimalCellLab() {
       const canvas = document.getElementById('plant-animal-cell-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-plant-animal-cell');
       const obs = document.getElementById('plant-animal-cell-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const isPlant = sel.value === 'plant';
         const cx = W / 2, cy = H / 2 + 10;
@@ -26009,7 +26220,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMicroorganismClassifierLab() {
       const canvas = document.getElementById('microorganism-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-microorganism');
       const obs = document.getElementById('microorganism-obs');
       const INFO = {
@@ -26021,7 +26232,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const type = sel.value;
         const cx = W / 2, cy = 140;
@@ -26077,7 +26288,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFermentationLab() {
       const canvas = document.getElementById('fermentation-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-fermentation');
       const obs = document.getElementById('fermentation-obs');
       const SCENARIOS = {
@@ -26088,7 +26299,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const s = SCENARIOS[sel.value];
         const cx = W / 2, cy = 160;
@@ -26125,14 +26336,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMicroscopeMagnificationLab() {
       const canvas = document.getElementById('microscope-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-microscope');
       const obs = document.getElementById('microscope-obs');
       const MAG = { naked: 1, hooke: 250, light: 400, electron: 1000000 };
       const NAMES = { naked: 'Naked Eye', hooke: "Hooke's Microscope", light: 'Light Microscope', electron: 'Electron Microscope' };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const tool = sel.value;
         const mag = MAG[tool];
@@ -26164,7 +26375,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initScienceJourneyStageLab() {
       const canvas = document.getElementById('journey-stage-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-journey-stage');
       const obs = document.getElementById('journey-stage-obs');
       const STAGES = [
@@ -26174,7 +26385,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const activeIdx = STAGES.findIndex(st => st.key === sel.value);
         const xs = [120, 300, 480], cy = 150;
@@ -26235,7 +26446,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initScienceJourneyMapLab() {
       const canvas = document.getElementById('journey-map-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-journey-map');
       const obs = document.getElementById('journey-map-obs');
       const STOPS = [
@@ -26254,7 +26465,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const idx = parseInt(sel.value, 10);
 
@@ -26305,7 +26516,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPuriInvestigationLab() {
       const canvas = document.getElementById('puri-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const selVar = document.getElementById('sel-puri-var');
       const selLevel = document.getElementById('sel-puri-level');
       const obs = document.getElementById('puri-obs');
@@ -26349,7 +26560,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const cfg = SETTINGS[selVar.value];
         const lv = cfg.levels[parseInt(selLevel.value, 10) || 0];
@@ -26418,7 +26629,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initHealthDimensionsLab() {
       const canvas = document.getElementById('health-dimensions-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-health-dimensions');
       const obs = document.getElementById('health-dimensions-obs');
       const HABITS = {
@@ -26430,7 +26641,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const h = HABITS[sel.value];
         const positions = { physical: [W / 2 - 90, 150], mental: [W / 2 + 90, 150], social: [W / 2, 90] };
@@ -26461,7 +26672,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDiseaseTransmissionLab() {
       const canvas = document.getElementById('disease-transmission-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-disease-transmission');
       const obs = document.getElementById('disease-transmission-obs');
       const DISEASES = {
@@ -26474,7 +26685,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const key = sel.value;
         const d = DISEASES[key];
@@ -26501,12 +26712,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initVaccineImmunityLab() {
       const canvas = document.getElementById('vaccine-immunity-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-vaccine-immunity');
       const obs = document.getElementById('vaccine-immunity-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const isImmune = sel.value === 'cowpox-exposed';
         const cx = W / 2, cy = 140;
@@ -26542,12 +26753,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAntibioticResistanceLab() {
       const canvas = document.getElementById('antibiotic-resistance-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-antibiotic-resistance');
       const obs = document.getElementById('antibiotic-resistance-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const isFull = sel.value === 'full-course';
         const cols = 8, rows = 3;
@@ -26581,12 +26792,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCompassDeflectionLab() {
       const canvas = document.getElementById('compass-deflection-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-compass-deflection');
       const obs = document.getElementById('compass-deflection-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const state = sel.value;
         const cx = W / 2, cy = 150;
@@ -26623,7 +26834,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initElectromagnetStrengthLab() {
       const canvas = document.getElementById('electromagnet-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-electromagnet');
       const obs = document.getElementById('electromagnet-obs');
       const SETUPS = {
@@ -26634,7 +26845,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const s = SETUPS[sel.value];
         const cx = W / 2;
@@ -26665,7 +26876,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initHeatingEffectLab() {
       const canvas = document.getElementById('heating-effect-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-heating-effect');
       const obs = document.getElementById('heating-effect-obs');
       const SETUPS = {
@@ -26675,7 +26886,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const s = SETUPS[sel.value];
         const cx = W / 2, cy = 140;
@@ -26707,7 +26918,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initBatteryTypesLab() {
       const canvas = document.getElementById('battery-types-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-battery-types');
       const obs = document.getElementById('battery-types-obs');
       const INFO = {
@@ -26717,7 +26928,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const type = sel.value;
         const cx = W / 2, cy = 140;
@@ -26765,7 +26976,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initForceEffectLab() {
       const canvas = document.getElementById('force-effect-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-force-effect');
       const obs = document.getElementById('force-effect-obs');
       const EFFECTS = {
@@ -26777,7 +26988,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const ALL = [['start', 'Starts Motion'], ['speed', 'Changes Speed'], ['direction', 'Changes Direction'], ['shape', 'Changes Shape']];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const e = EFFECTS[sel.value];
 
@@ -26806,7 +27017,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFrictionSurfaceLab() {
       const canvas = document.getElementById('friction-surface-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-friction-surface');
       const obs = document.getElementById('friction-surface-obs');
       const SURFACES = {
@@ -26818,7 +27029,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const s = SURFACES[sel.value];
         const trackY = 180, trackX = 60, trackW = 480;
@@ -26847,7 +27058,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initNoncontactForceLab() {
       const canvas = document.getElementById('noncontact-force-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-noncontact-force');
       const obs = document.getElementById('noncontact-force-obs');
       const SCENARIOS = {
@@ -26858,7 +27069,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const s = SCENARIOS[sel.value];
         const cy = 140;
@@ -26898,7 +27109,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initWeightOnPlanetsLab() {
       const canvas = document.getElementById('weight-planets-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-weight-planets');
       const obs = document.getElementById('weight-planets-obs');
       const WEIGHTS = { earth: 10, moon: 1.6, mars: 3.8, venus: 9, jupiter: 25.4 };
@@ -26906,7 +27117,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const MAXW = 26;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const key = sel.value;
         const w = WEIGHTS[key];
@@ -26933,13 +27144,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPressureCalcLab() {
       const canvas = document.getElementById('pressure-calc-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-pressure-calc');
       const obs = document.getElementById('pressure-calc-obs');
       const FORCE = 100;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const area = parseFloat(sel.value);
         const pressure = FORCE / area;
@@ -26971,13 +27182,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initLiquidPressureLab() {
       const canvas = document.getElementById('liquid-pressure-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-liquid-pressure');
       const obs = document.getElementById('liquid-pressure-obs');
       const LEVELS = { low: 0.35, medium: 0.6, high: 0.9 };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const frac = LEVELS[sel.value];
         const pipeX = W / 2, pipeTop = 40, pipeBottom = 200, pipeW = 50;
@@ -27005,12 +27216,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initWindFormationLab() {
       const canvas = document.getElementById('wind-formation-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-wind-formation');
       const obs = document.getElementById('wind-formation-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const isDay = sel.value === 'day';
         const landX = 0, landW = W * 0.4, seaX = W * 0.4, seaW = W * 0.6;
@@ -27047,7 +27258,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCyclonePressureLab() {
       const canvas = document.getElementById('cyclone-pressure-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-cyclone-pressure');
       const obs = document.getElementById('cyclone-pressure-obs');
       const RINGS = [
@@ -27058,7 +27269,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const cx = W / 2, cy = 150;
         const selected = sel.value;
@@ -27088,7 +27299,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initParticleBreakdownLab() {
       const canvas = document.getElementById('particle-breakdown-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-particle-breakdown');
       const obs = document.getElementById('particle-breakdown-obs');
       const STAGES = {
@@ -27099,7 +27310,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const stage = sel.value;
         const cx = W / 2, cy = 150;
@@ -27134,7 +27345,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMeltingPointLab() {
       const canvas = document.getElementById('melting-point-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-melting-point');
       const obs = document.getElementById('melting-point-obs');
       const DATA = {
@@ -27145,7 +27356,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const MAXMP = 1538;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
 
@@ -27171,7 +27382,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initStatePropertiesLab() {
       const canvas = document.getElementById('state-properties-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-state-properties');
       const obs = document.getElementById('state-properties-obs');
       const INFO = {
@@ -27181,7 +27392,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const state = sel.value;
         const cx = W / 2, cy = 150;
@@ -27217,14 +27428,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDiffusionTemperatureLab() {
       const canvas = document.getElementById('diffusion-temp-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-diffusion-temp');
       const obs = document.getElementById('diffusion-temp-obs');
       const SPREAD = { hot: 90, room: 50, cold: 20 };
       const SPEED = { hot: 'fastest', room: 'moderate', cold: 'slowest' };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const spread = SPREAD[sel.value];
         const cx = W / 2, cy = 150;
@@ -27254,7 +27465,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMixtureClassifierLab() {
       const canvas = document.getElementById('mixture-classifier-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-mixture-classifier');
       const obs = document.getElementById('mixture-classifier-obs');
       const DATA = {
@@ -27265,7 +27476,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const cx = W / 2, cy = 150;
@@ -27301,7 +27512,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initElectrolysisLab() {
       const canvas = document.getElementById('electrolysis-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-electrolysis');
       const obs = document.getElementById('electrolysis-obs');
       const DATA = {
@@ -27310,7 +27521,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const cx = W / 2, tubeTop = 40, tubeBottom = 220, tubeW = 60;
@@ -27339,7 +27550,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCompoundRatioLab() {
       const canvas = document.getElementById('compound-ratio-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-compound-ratio');
       const obs = document.getElementById('compound-ratio-obs');
       const DATA = {
@@ -27348,7 +27559,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const cx = W / 2, cy = 140;
@@ -27381,7 +27592,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initIronSulfurTestLab() {
       const canvas = document.getElementById('iron-sulfur-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-iron-sulfur');
       const obs = document.getElementById('iron-sulfur-obs');
       const RESULTS = {
@@ -27392,7 +27603,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const key = sel.value;
         const isCompound = key.startsWith('B');
@@ -27426,13 +27637,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSolubilitySaturationLab() {
       const canvas = document.getElementById('solubility-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-solubility');
       const obs = document.getElementById('solubility-obs');
       const SAT_POINT = 6;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const spoons = parseInt(sel.value);
         const dissolved = Math.min(spoons, SAT_POINT);
@@ -27477,7 +27688,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTemperatureSolubilityLab() {
       const canvas = document.getElementById('temp-solubility-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-temp-solubility');
       const obs = document.getElementById('temp-solubility-obs');
       const DATA = {
@@ -27489,7 +27700,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const barX = 220, barY = 50, barMaxH = 170, barW = 90;
@@ -27515,7 +27726,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDensityCalcLab() {
       const canvas = document.getElementById('density-calc-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-density-calc');
       const obs = document.getElementById('density-calc-obs');
       const DATA = {
@@ -27524,7 +27735,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const density = (d.mass / d.vol).toFixed(2);
@@ -27552,7 +27763,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFloatSinkLab() {
       const canvas = document.getElementById('float-sink-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-float-sink');
       const obs = document.getElementById('float-sink-obs');
       const DATA = {
@@ -27563,7 +27774,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const cx = W / 2, containerTop = 50, containerBottom = 220, containerW = 140;
@@ -27592,7 +27803,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMirrorImageLab() {
       const canvas = document.getElementById('mirror-image-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-mirror-image');
       const obs = document.getElementById('mirror-image-obs');
       const DATA = {
@@ -27603,7 +27814,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const cx = W / 2, groundY = 220;
@@ -27637,12 +27848,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initReflectionAngleLab() {
       const canvas = document.getElementById('reflection-angle-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-reflection-angle');
       const obs = document.getElementById('reflection-angle-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const angle = parseFloat(sel.value);
         const cx = W / 2, cy = 180;
@@ -27682,7 +27893,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initParallelBeamMirrorLab() {
       const canvas = document.getElementById('parallel-beam-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-parallel-beam');
       const obs = document.getElementById('parallel-beam-obs');
       const INFO = {
@@ -27692,7 +27903,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const type = sel.value;
         const mirrorX = W / 2 + 40, cy = 140;
@@ -27736,7 +27947,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initLensImageLab() {
       const canvas = document.getElementById('lens-image-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-lens-image');
       const obs = document.getElementById('lens-image-obs');
       const INFO = {
@@ -27746,7 +27957,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const type = sel.value;
         const lensX = W / 2, cy = 140;
@@ -27792,7 +28003,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMoonPhaseLab() {
       const canvas = document.getElementById('moon-phase-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-moon-phase');
       const obs = document.getElementById('moon-phase-obs');
       const PHASES = {
@@ -27803,7 +28014,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const key = sel.value;
         const p = PHASES[key];
@@ -27856,7 +28067,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initEclipseConditionLab() {
       const canvas = document.getElementById('eclipse-condition-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-eclipse-condition');
       const obs = document.getElementById('eclipse-condition-obs');
       const DATA = {
@@ -27867,7 +28078,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const isFull = sel.value.startsWith('full');
@@ -27903,12 +28114,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initShadowStickLab() {
       const canvas = document.getElementById('shadow-stick-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-shadow-stick');
       const obs = document.getElementById('shadow-stick-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const t = parseFloat(sel.value);
         const distFromNoon = Math.abs(t - 12.33);
@@ -27941,7 +28152,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCalendarComparisonLab() {
       const canvas = document.getElementById('calendar-comparison-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-calendar-comparison');
       const obs = document.getElementById('calendar-comparison-obs');
       const DATA = {
@@ -27952,7 +28163,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const barX = 200, barY = 60, barMaxH = 160, barW = 100;
@@ -27986,7 +28197,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initHabitatClassifierLab() {
       const canvas = document.getElementById('habitat-classifier-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-habitat-classifier');
       const obs = document.getElementById('habitat-classifier-obs');
       const DATA = {
@@ -27997,7 +28208,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const cx = W / 2, cy = 130;
@@ -28020,7 +28231,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initEcosystemInteractionLab() {
       const canvas = document.getElementById('ecosystem-interaction-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-ecosystem-interaction');
       const obs = document.getElementById('ecosystem-interaction-obs');
       const DATA = {
@@ -28030,7 +28241,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const cx = W / 2, cy = 130;
@@ -28057,7 +28268,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFoodChainTrophicLab() {
       const canvas = document.getElementById('food-chain-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-food-chain');
       const obs = document.getElementById('food-chain-obs');
       const CHAIN = ['grass', 'grasshopper', 'frog', 'snake', 'eagle'];
@@ -28065,7 +28276,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const LEVELS = { grass: '1st — Producer', grasshopper: '2nd — Herbivore', frog: '3rd — Small carnivore', snake: '4th — Carnivore', eagle: '5th — Top carnivore' };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const selected = sel.value;
         const gap = 100, startX = W / 2 - (CHAIN.length - 1) * gap / 2, cy = 140;
@@ -28101,7 +28312,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCascadeEffectLab() {
       const canvas = document.getElementById('cascade-effect-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-cascade-effect');
       const obs = document.getElementById('cascade-effect-obs');
       const STAGES = {
@@ -28113,7 +28324,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const stage = sel.value;
 
@@ -28145,7 +28356,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initHabitableZoneLab() {
       const canvas = document.getElementById('habitable-zone-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-habitable-zone');
       const obs = document.getElementById('habitable-zone-obs');
       const DATA = {
@@ -28155,7 +28366,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const barX = 80, barW = 440, cy = 140;
@@ -28195,7 +28406,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAtmosphereRetentionLab() {
       const canvas = document.getElementById('atmosphere-retention-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-atmosphere-retention');
       const obs = document.getElementById('atmosphere-retention-obs');
       const DATA = {
@@ -28205,7 +28416,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const cx = W / 2, cy = 135;
@@ -28241,7 +28452,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initEarthSpheresLab() {
       const canvas = document.getElementById('earth-spheres-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-earth-spheres');
       const obs = document.getElementById('earth-spheres-obs');
       const DATA = {
@@ -28252,7 +28463,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const keys = Object.keys(DATA);
         const selected = sel.value;
@@ -28284,7 +28495,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initReproductionTypeLab() {
       const canvas = document.getElementById('reproduction-type-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-reproduction-type');
       const obs = document.getElementById('reproduction-type-obs');
       const DATA = {
@@ -28295,7 +28506,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DATA[sel.value];
         const cy = 130;
@@ -28356,7 +28567,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCartesianPlaneLab() {
       const canvas = document.getElementById('cartesian-plane-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-cartesian-plane');
       const obs = document.getElementById('cartesian-plane-obs');
       const PTS = {
@@ -28368,7 +28579,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const unit = 28, ox = W / 2, oy = H / 2;
         drawCoordAxes(ctx, W, H, unit, ox, oy, 10);
@@ -28390,7 +28601,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initQuadrantIdentifierLab() {
       const canvas = document.getElementById('quadrant-identifier-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-quadrant-identifier');
       const obs = document.getElementById('quadrant-identifier-obs');
 
@@ -28402,7 +28613,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const unit = 28, ox = W / 2, oy = H / 2;
         const [x, y] = sel.value.split(',').map(Number);
@@ -28437,14 +28648,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDistanceFormulaLab() {
       const canvas = document.getElementById('distance-formula-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-distance-formula');
       const obs = document.getElementById('distance-formula-obs');
       const A = { x: 3, y: 4, n: 'A' }, D = { x: 7, y: 1, n: 'D' }, M = { x: 9, y: 6, n: 'M' };
       const SIDES = { AD: [A, D], DM: [D, M], MA: [M, A] };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const unit = 26, ox = 45, oy = H - 40;
         drawCoordAxes(ctx, W, H, unit, ox, oy, 11);
@@ -28494,7 +28705,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMidpointLab() {
       const canvas = document.getElementById('midpoint-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-midpoint');
       const obs = document.getElementById('midpoint-obs');
       const CASES = {
@@ -28504,7 +28715,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const unit = 20, ox = W / 2, oy = H / 2;
         drawCoordAxes(ctx, W, H, unit, ox, oy, 15);
@@ -28554,7 +28765,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPolynomialDegreeLab() {
       const canvas = document.getElementById('polynomial-degree-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-polynomial-degree');
       const obs = document.getElementById('polynomial-degree-obs');
       const POLYS = {
@@ -28565,7 +28776,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const p = POLYS[sel.value];
 
@@ -28596,12 +28807,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initLinearPatternLab() {
       const canvas = document.getElementById('linear-pattern-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-linear-pattern');
       const obs = document.getElementById('linear-pattern-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = parseInt(sel.value);
         const tiles = 2 * n - 1;
@@ -28643,7 +28854,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initGrowthDecayLab() {
       const canvas = document.getElementById('growth-decay-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-growth-decay');
       const obs = document.getElementById('growth-decay-obs');
       const FUNCS = {
@@ -28653,7 +28864,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const fn = FUNCS[sel.value];
         const vals = fn.xs.map(fn.f);
@@ -28702,7 +28913,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initLineGraphSlopeLab() {
       const canvas = document.getElementById('line-graph-slope-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-line-graph-slope');
       const obs = document.getElementById('line-graph-slope-obs');
       const SETS = {
@@ -28712,7 +28923,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const unit = 26, ox = W / 2, oy = H / 2;
         drawCoordAxes(ctx, W, H, unit, ox, oy, 12);
@@ -28745,7 +28956,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initIntegerRulesLab() {
       const canvas = document.getElementById('integer-rules-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-integer-rules');
       const obs = document.getElementById('integer-rules-obs');
       const CASES = {
@@ -28757,7 +28968,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const c = CASES[sel.value];
         const color = c.result > 0 ? '#22c55e' : c.result < 0 ? '#ef4444' : cssVar('--text-muted');
@@ -28800,13 +29011,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initRationalDensityLab() {
       const canvas = document.getElementById('rational-density-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-rational-density');
       const obs = document.getElementById('rational-density-obs');
       const LABELS = ['3/2', '5/4', '9/8', '17/16'];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const steps = parseInt(sel.value);
         const nlY = 150, nlX = 70, nlW = W - 140;
@@ -28857,7 +29068,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSqrt2ConstructionLab() {
       const canvas = document.getElementById('sqrt2-construction-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-sqrt2-construction');
       const obs = document.getElementById('sqrt2-construction-obs');
       const NOTES = {
@@ -28867,7 +29078,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const step = parseInt(sel.value);
         const unit = 70, oy = 220, ox = 120;
@@ -28929,7 +29140,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDecimalExpansionLab() {
       const canvas = document.getElementById('decimal-expansion-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-decimal-expansion');
       const obs = document.getElementById('decimal-expansion-obs');
       const FRACS = {
@@ -28941,7 +29152,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const key = sel.value;
         const f = FRACS[key];
@@ -28982,12 +29193,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSquareAreaModelLab() {
       const canvas = document.getElementById('square-area-model-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-square-area-model');
       const obs = document.getElementById('square-area-model-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [a, b] = sel.value.split(',').map(Number);
         const scale = 200 / (a + b);
@@ -29036,7 +29247,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFactorisationIdentityLab() {
       const canvas = document.getElementById('factorisation-identity-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-factorisation-identity');
       const obs = document.getElementById('factorisation-identity-obs');
       const CASES = {
@@ -29046,7 +29257,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const c = CASES[sel.value];
 
@@ -29085,7 +29296,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCubeIdentityLab() {
       const canvas = document.getElementById('cube-identity-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-cube-identity');
       const obs = document.getElementById('cube-identity-obs');
       const NOTES = {
@@ -29097,7 +29308,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mode = sel.value;
         const a = 90, b = 50, dx = 0.5, dy = -0.35;
@@ -29149,7 +29360,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initRationalSimplifyLab() {
       const canvas = document.getElementById('rational-simplify-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-rational-simplify');
       const obs = document.getElementById('rational-simplify-obs');
       const STEPS = {
@@ -29160,7 +29371,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const step = sel.value;
         const s = STEPS[step];
@@ -29199,12 +29410,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCirclesThroughPointsLab() {
       const canvas = document.getElementById('circles-through-points-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-circles-through-points');
       const obs = document.getElementById('circles-through-points-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const cx = W / 2, cy = H / 2 + 20;
         const ax = cx - 90, bx = cx + 90;
@@ -29252,12 +29463,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initChordAngleLab() {
       const canvas = document.getElementById('chord-angle-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-chord-angle');
       const obs = document.getElementById('chord-angle-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const cx = W / 2, cy = H / 2 + 10, r = 110;
         const spanDeg = 70;
@@ -29307,13 +29518,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initChordDistanceLab() {
       const canvas = document.getElementById('chord-distance-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-chord-distance');
       const obs = document.getElementById('chord-distance-obs');
       const R = 5, scale = 26;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const cx = W / 2, cy = H / 2 + 10, r = R * scale;
 
@@ -29362,13 +29573,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initInscribedAngleLab() {
       const canvas = document.getElementById('inscribed-angle-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-inscribed-angle');
       const obs = document.getElementById('inscribed-angle-obs');
       const AT = 200, BT = 340;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const cx = W / 2, cy = H / 2 + 14, r = 108;
         const pt = deg => [cx + r * Math.cos(deg * Math.PI / 180), cy + r * Math.sin(deg * Math.PI / 180)];
@@ -29424,12 +29635,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCdRatioLab() {
       const canvas = document.getElementById('cd-ratio-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-cd-ratio');
       const obs = document.getElementById('cd-ratio-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const cx = W / 2, cy = H / 2 + 12;
         const hex = sel.value === 'hexagon';
@@ -29477,12 +29688,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initArcLengthLab() {
       const canvas = document.getElementById('arc-length-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-arc-length');
       const obs = document.getElementById('arc-length-obs');
 
       function drawTrack(lane2) {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const cy = H / 2 + 10, straightPx = 150, rPx = 78;
         const ax = W / 2 - straightPx / 2, bx = W / 2 + straightPx / 2;
         const off = lane2 ? 14 : 0;
@@ -29508,7 +29719,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mode = sel.value;
 
@@ -29555,12 +29766,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initHeronFormulaLab() {
       const canvas = document.getElementById('heron-formula-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-heron-formula');
       const obs = document.getElementById('heron-formula-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [a, b, c] = sel.value.split(',').map(Number);
         const s = (a + b + c) / 2;
@@ -29603,13 +29814,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCircleAreaLab() {
       const canvas = document.getElementById('circle-area-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-circle-area');
       const obs = document.getElementById('circle-area-obs');
       const R = 5;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mode = sel.value;
         const cx = W / 2, cy = H / 2 + 26, r = 92;
@@ -29669,12 +29880,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initProbabilityScaleLab() {
       const canvas = document.getElementById('probability-scale-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-probability-scale');
       const obs = document.getElementById('probability-scale-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const purple = parseInt(sel.value);
         const p = purple / 6;
@@ -29724,12 +29935,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initExperimentalProbabilityLab() {
       const canvas = document.getElementById('experimental-probability-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-experimental-probability');
       const obs = document.getElementById('experimental-probability-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const [hits, trials] = sel.value.split(',').map(Number);
         const exp = hits / trials;
@@ -29775,13 +29986,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTheoreticalProbabilityLab() {
       const canvas = document.getElementById('theoretical-probability-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-theoretical-probability');
       const obs = document.getElementById('theoretical-probability-obs');
       const WORD = 'PROBABILITY';
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const letter = sel.value;
         const count = WORD.split('').filter(ch => ch === letter).length;
@@ -29824,7 +30035,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTreeDiagramLab() {
       const canvas = document.getElementById('tree-diagram-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-tree-diagram');
       const obs = document.getElementById('tree-diagram-obs');
       const OUTCOMES = ['HH', 'HT', 'TH', 'TT'];
@@ -29836,7 +30047,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const active = EVENTS[sel.value];
         const highlighting = sel.value !== 'none';
@@ -29906,7 +30117,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSequenceRuleLab() {
       const canvas = document.getElementById('sequence-rule-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-sequence-rule');
       const obs = document.getElementById('sequence-rule-obs');
       const RULES = {
@@ -29917,7 +30128,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const r = RULES[sel.value];
         const terms = [];
@@ -29970,12 +30181,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initApPatternLab() {
       const canvas = document.getElementById('ap-pattern-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-ap-pattern');
       const obs = document.getElementById('ap-pattern-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const stage = parseInt(sel.value);
         const count = 4 * stage - 3;
@@ -30018,12 +30229,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initNaturalSumLab() {
       const canvas = document.getElementById('natural-sum-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-natural-sum');
       const obs = document.getElementById('natural-sum-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = parseInt(sel.value);
         const sum = n * (n + 1) / 2;
@@ -30075,7 +30286,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initGpPatternLab() {
       const canvas = document.getElementById('gp-pattern-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-gp-pattern');
       const obs = document.getElementById('gp-pattern-obs');
       const SEQS = {
@@ -30097,7 +30308,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         ctx.textAlign = 'center';
 
@@ -30148,7 +30359,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initScienceModelLab() {
       const canvas = document.getElementById('science-model-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-science-model');
       const obs = document.getElementById('science-model-obs');
       const DETAILS = {
@@ -30161,7 +30372,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const d = DETAILS[sel.value];
         const label = sel.options[sel.selectedIndex].text;
@@ -30210,7 +30421,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initUnitsSymbolsLab() {
       const canvas = document.getElementById('units-symbols-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-units-symbols');
       const obs = document.getElementById('units-symbols-obs');
       const DATA = {
@@ -30222,7 +30433,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         ctx.textAlign = 'center';
 
@@ -30279,7 +30490,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initLawTheoryLab() {
       const canvas = document.getElementById('law-theory-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-law-theory');
       const obs = document.getElementById('law-theory-obs');
       const CASES = {
@@ -30289,7 +30500,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const c = CASES[sel.value];
         const label = sel.options[sel.selectedIndex].text;
@@ -30333,7 +30544,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPredictionTestLab() {
       const canvas = document.getElementById('prediction-test-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-prediction-test');
       const obs = document.getElementById('prediction-test-obs');
       const Q = {
@@ -30345,7 +30556,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const q = Q[sel.value];
         const label = sel.options[sel.selectedIndex].text;
@@ -30382,7 +30593,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMicroscopeScaleLab() {
       const canvas = document.getElementById('microscope-scale-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-microscope-scale');
       const obs = document.getElementById('microscope-scale-obs');
       const OBJ = {
@@ -30396,7 +30607,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const EYE_LOG = -1;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const o = OBJ[sel.value];
         const top = 70, bot = H - 60;
@@ -30443,12 +30654,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initOsmosisPotatoLab() {
       const canvas = document.getElementById('osmosis-potato-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-osmosis-potato');
       const obs = document.getElementById('osmosis-potato-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const isFinal = sel.value === 'final';
         ctx.textAlign = 'center';
@@ -30511,7 +30722,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCellTypeCompareLab() {
       const canvas = document.getElementById('cell-type-compare-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-cell-type-compare');
       const obs = document.getElementById('cell-type-compare-obs');
       const S = {
@@ -30524,7 +30735,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const s = S[sel.value];
         ctx.textAlign = 'center';
@@ -30567,7 +30778,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initOrganelleFunctionLab() {
       const canvas = document.getElementById('organelle-function-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-organelle-function');
       const obs = document.getElementById('organelle-function-obs');
       const ORG = {
@@ -30580,7 +30791,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const o = ORG[sel.value];
         const key = sel.value;
@@ -30653,7 +30864,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPlantAnimalTissueLab() {
       const canvas = document.getElementById('plant-animal-tissue-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-plant-animal-tissue');
       const obs = document.getElementById('plant-animal-tissue-obs');
       const F = {
@@ -30664,7 +30875,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const f = F[sel.value];
         ctx.textAlign = 'center';
@@ -30694,7 +30905,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMeristemTypeLab() {
       const canvas = document.getElementById('meristem-type-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-meristem-type');
       const obs = document.getElementById('meristem-type-obs');
       const M = {
@@ -30704,7 +30915,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const key = sel.value;
         const m = M[key];
@@ -30755,7 +30966,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPermanentTissueLab() {
       const canvas = document.getElementById('permanent-tissue-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-permanent-tissue');
       const obs = document.getElementById('permanent-tissue-obs');
       const T = {
@@ -30767,7 +30978,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const key = sel.value;
         const t = T[key];
@@ -30828,7 +31039,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAnimalTissueLab() {
       const canvas = document.getElementById('animal-tissue-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-animal-tissue');
       const obs = document.getElementById('animal-tissue-obs');
       const A = {
@@ -30841,7 +31052,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const a = A[sel.value];
         const key = sel.value;
@@ -30928,12 +31139,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initDistanceDisplacementLab() {
       const canvas = document.getElementById('distance-displacement-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-distance-displacement');
       const obs = document.getElementById('distance-displacement-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const t = parseInt(sel.value);
         const pos = t === 4 ? 40 : t === 10 ? 100 : 40;
@@ -30988,7 +31199,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSpeedVelocityLab() {
       const canvas = document.getElementById('speed-velocity-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-speed-velocity');
       const obs = document.getElementById('speed-velocity-obs');
       const Q = {
@@ -30998,7 +31209,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const q = Q[sel.value];
         ctx.textAlign = 'center';
@@ -31031,7 +31242,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMotionGraphLab() {
       const canvas = document.getElementById('motion-graph-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-motion-graph');
       const obs = document.getElementById('motion-graph-obs');
       const G = {
@@ -31042,7 +31253,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       };
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const g = G[sel.value];
         const ox = 90, oy = H - 68, gw = W - 190, gh = 190;
@@ -31094,12 +31305,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initKinematicEquationLab() {
       const canvas = document.getElementById('kinematic-equation-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-kinematic-equation');
       const obs = document.getElementById('kinematic-equation-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const key = sel.value;
         ctx.textAlign = 'center';
@@ -31166,10 +31377,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSolarHeatingLab() {
       const canvas = document.getElementById('solar-heating-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-solar-heating');
       const obs = document.getElementById('solar-heating-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -31332,10 +31543,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAtmosphereLayerLab() {
       const canvas = document.getElementById('atmosphere-layer-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-atmosphere-layer');
       const obs = document.getElementById('atmosphere-layer-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -31469,10 +31680,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initWindCurrentLab() {
       const canvas = document.getElementById('wind-current-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-wind-current');
       const obs = document.getElementById('wind-current-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -31609,10 +31820,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initBiogeochemicalLab() {
       const canvas = document.getElementById('biogeochemical-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-biogeochemical');
       const obs = document.getElementById('biogeochemical-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -31727,10 +31938,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initBiodiversityLab() {
       const canvas = document.getElementById('biodiversity-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-biodiversity');
       const obs = document.getElementById('biodiversity-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -31878,10 +32089,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initClassificationTimelineLab() {
       const canvas = document.getElementById('classification-timeline-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-classification-timeline');
       const obs = document.getElementById('classification-timeline-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -31978,10 +32189,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFiveKingdomLab() {
       const canvas = document.getElementById('five-kingdom-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-five-kingdom');
       const obs = document.getElementById('five-kingdom-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -32082,10 +32293,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTaxonomyLab() {
       const canvas = document.getElementById('taxonomy-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-taxonomy');
       const obs = document.getElementById('taxonomy-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -32205,10 +32416,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAsexualModeLab() {
       const canvas = document.getElementById('asexual-mode-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-asexual-mode');
       const obs = document.getElementById('asexual-mode-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -32388,10 +32599,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMeiosisLab() {
       const canvas = document.getElementById('meiosis-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-meiosis');
       const obs = document.getElementById('meiosis-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -32544,10 +32755,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFlowerReproLab() {
       const canvas = document.getElementById('flower-repro-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-flower-repro');
       const obs = document.getElementById('flower-repro-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -32723,10 +32934,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initHumanReproLab() {
       const canvas = document.getElementById('human-repro-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-human-repro');
       const obs = document.getElementById('human-repro-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -32942,10 +33153,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSoundMediumLab() {
       const canvas = document.getElementById('sound-medium-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-sound-medium');
       const obs = document.getElementById('sound-medium-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -33052,10 +33263,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSoundWaveLab() {
       const canvas = document.getElementById('sound-wave-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-sound-wave');
       const obs = document.getElementById('sound-wave-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -33176,10 +33387,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initWavePropertyLab() {
       const canvas = document.getElementById('wave-property-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-wave-property');
       const obs = document.getElementById('wave-property-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -33266,10 +33477,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initEchoSonarLab() {
       const canvas = document.getElementById('echo-sonar-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-echo-sonar');
       const obs = document.getElementById('echo-sonar-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -33440,10 +33651,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initChemicalLawLab() {
       const canvas = document.getElementById('chemical-law-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-chemical-law');
       const obs = document.getElementById('chemical-law-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -33615,10 +33826,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCovalentBondLab() {
       const canvas = document.getElementById('covalent-bond-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-covalent-bond');
       const obs = document.getElementById('covalent-bond-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -33700,10 +33911,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initIonicBondLab() {
       const canvas = document.getElementById('ionic-bond-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-ionic-bond');
       const obs = document.getElementById('ionic-bond-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -33877,10 +34088,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFormulaMassLab() {
       const canvas = document.getElementById('formula-mass-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-formula-mass');
       const obs = document.getElementById('formula-mass-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -33988,10 +34199,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAtomicModelLab() {
       const canvas = document.getElementById('atomic-model-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-atomic-model');
       const obs = document.getElementById('atomic-model-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -34110,10 +34321,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initGoldFoilLab() {
       const canvas = document.getElementById('gold-foil-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-gold-foil');
       const obs = document.getElementById('gold-foil-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -34229,10 +34440,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAtomCounterLab() {
       const canvas = document.getElementById('atom-counter-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-atom-counter');
       const obs = document.getElementById('atom-counter-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -34336,10 +34547,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initElectronShellLab() {
       const canvas = document.getElementById('electron-shell-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-electron-shell');
       const obs = document.getElementById('electron-shell-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -34446,10 +34657,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initWorkDoneLab() {
       const canvas = document.getElementById('work-done-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-work-done');
       const obs = document.getElementById('work-done-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -34562,10 +34773,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initKineticEnergyLab() {
       const canvas = document.getElementById('kinetic-energy-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-kinetic-energy');
       const obs = document.getElementById('kinetic-energy-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -34657,10 +34868,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMechanicalEnergyLab() {
       const canvas = document.getElementById('mechanical-energy-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-mechanical-energy');
       const obs = document.getElementById('mechanical-energy-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -34745,10 +34956,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSimpleMachineLab() {
       const canvas = document.getElementById('simple-machine-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-simple-machine');
       const obs = document.getElementById('simple-machine-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -34922,10 +35133,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initNetForceLab() {
       const canvas = document.getElementById('net-force-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-net-force');
       const obs = document.getElementById('net-force-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -35025,10 +35236,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFrictionNatureLab() {
       const canvas = document.getElementById('friction-nature-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-friction-nature');
       const obs = document.getElementById('friction-nature-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -35125,10 +35336,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initNewtonSecondLawLab() {
       const canvas = document.getElementById('newton-second-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-newton-second');
       const obs = document.getElementById('newton-second-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -35301,10 +35512,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initActionReactionLab() {
       const canvas = document.getElementById('action-reaction-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-action-reaction');
       const obs = document.getElementById('action-reaction-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -35485,10 +35696,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMixtureClassifyLab() {
       const canvas = document.getElementById('mixture-classify-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-mixture-classify');
       const obs = document.getElementById('mixture-classify-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -35619,10 +35830,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initConcentrationLab() {
       const canvas = document.getElementById('concentration-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-concentration');
       const obs = document.getElementById('concentration-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -35720,10 +35931,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCrystallizationLab() {
       const canvas = document.getElementById('crystallization-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-crystallization');
       const obs = document.getElementById('crystallization-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -35888,10 +36099,10 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMixtureSeparationLab() {
       const canvas = document.getElementById('mixture-separation-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-mixture-separation');
       const obs = document.getElementById('mixture-separation-obs');
-      const W = canvas.width, H = canvas.height;
+      const W = logW(canvas), H = logH(canvas);
       const text = cssVar('--text-normal', '#e6e6e6');
       const muted = cssVar('--text-muted', '#9aa0a6');
       const accent = cssVar('--accent-primary', '#6c8cff');
@@ -36153,7 +36364,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initReflexArcLab() {
       const canvas = document.getElementById('reflex-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const btn = document.getElementById('btn-reflex-trigger');
       const obs = document.getElementById('reflex-obs');
       let signal = -1; // -1 = not started
@@ -36168,7 +36379,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       ];
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         // Draw connections
         ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
@@ -36220,7 +36431,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initHormoneLab() {
       const canvas = document.getElementById('hormone-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const slider = document.getElementById('blood-sugar');
       const valLabel = document.getElementById('sugar-val');
       const obs = document.getElementById('hormone-obs');
@@ -36235,7 +36446,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const potSel = document.getElementById('sel-pot-orientation');
 
       function drawAnimal() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const sugar = parseInt(slider.value);
         ctx.clearRect(0, 0, W, H);
         const status = sugar > 140 ? 'HIGH' : sugar < 70 ? 'LOW' : 'NORMAL';
@@ -36284,7 +36495,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawPhototropism() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const pos = parseInt(lightSlider.value); // 0 = light from left, 100 = light from right, 50 = overhead
         ctx.clearRect(0, 0, W, H);
         const tilt = (pos - 50) / 50; // -1 (left) .. 0 (overhead) .. +1 (right)
@@ -36334,7 +36545,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawGeotropism() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const orient = potSel.value;
         ctx.clearRect(0, 0, W, H);
         const cx = W/2, cy = H/2;
@@ -36434,7 +36645,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPunnettLab() {
       const canvas = document.getElementById('punnett-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel1 = document.getElementById('sel-parent1');
       const sel2 = document.getElementById('sel-parent2');
       const btn = document.getElementById('btn-cross');
@@ -36444,7 +36655,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         const p1 = sel1.value, p2 = sel2.value;
         const a1 = p1[0], a2 = p1[1], b1 = p2[0], b2 = p2[1];
         const offspring = [a1+b1, a1+b2, a2+b1, a2+b2];
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const sx = 180, sy = 60, cellW = 90, cellH = 60;
         // Header
@@ -36485,12 +36696,17 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
       btn.addEventListener('click', doCross);
       doCross();
+      // Changing a dropdown applies immediately — a teacher should never have to
+      // pick an option and then hunt for a second button to make it take effect.
+      sel1.addEventListener('change', () => btn.click());
+      sel2.addEventListener('change', () => btn.click());
+
     }
 
     function initPrismLab() {
       const canvas = document.getElementById('prism-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const slider = document.getElementById('prism-angle');
       const angleLabel = document.getElementById('prism-angle-val');
       const obs = document.getElementById('prism-obs');
@@ -36518,7 +36734,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       function toRad(d) { return d * Math.PI / 180; }
 
       function drawDispersion() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const iAngle = parseInt(slider.value);
         angleLabel.textContent = iAngle + '°';
         ctx.clearRect(0, 0, W, H);
@@ -36616,7 +36832,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawSky() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const t = parseInt(sunSlider.value) / 100;
         sunPositionVal.textContent = t < 0.15 ? 'Noon (overhead)' : t > 0.85 ? 'Sunset (at the horizon)' : 'Afternoon';
         ctx.clearRect(0, 0, W, H);
@@ -36657,7 +36873,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const starDots = Array.from({length: 25}, () => ({ x: Math.random()*600, y: Math.random()*180, r: Math.random()*1.2 + 0.4 }));
 
       function drawTwinkle(time) {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
         ctx.fillStyle = 'rgba(255,255,255,0.5)';
@@ -36693,7 +36909,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawRainbow() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const grad = ctx.createLinearGradient(0, 0, 0, H*0.8);
         grad.addColorStop(0, '#38bdf8'); grad.addColorStop(1, '#e0f2fe');
@@ -36743,7 +36959,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawSunrise() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const horizonY = H*0.72;
         ctx.fillStyle = '#1e3a5f'; ctx.fillRect(0, 0, W, horizonY);
@@ -36781,7 +36997,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawTyndall() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
         const hasParticles = tyndallChk.checked;
@@ -36861,7 +37077,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initOhmsLawLab() {
       const canvas = document.getElementById('ohms-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const modeSel = document.getElementById('ohms-mode');
       const basicControls = document.getElementById('ohms-basic-controls');
       const resistivityControls = document.getElementById('ohms-resistivity-controls');
@@ -36905,7 +37121,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawResistivity() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const mat = resistivities[materialSel.value];
         const l = parseFloat(lengthSlider.value);
         const areaMM2 = parseFloat(areaSlider.value);
@@ -36946,7 +37162,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const mode = modeSel.value;
         basicControls.style.display = mode === 'resistivity' ? 'none' : 'block';
         resistivityControls.style.display = mode === 'resistivity' ? 'block' : 'none';
@@ -37086,7 +37302,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initElectricPowerLab() {
       const canvas = document.getElementById('epower-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const vSlider = document.getElementById('epower-voltage');
       const iSlider = document.getElementById('epower-current');
       const vLabel = document.getElementById('epower-v-val');
@@ -37094,7 +37310,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const obs = document.getElementById('epower-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const V = parseFloat(vSlider.value), I = parseFloat(iSlider.value);
         const P = V * I, R = V / I;
         vLabel.textContent = V + ' V'; iLabel.textContent = I.toFixed(1) + ' A';
@@ -37134,7 +37350,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMagneticFieldLab() {
       const canvas = document.getElementById('magnetic-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const obs = document.getElementById('magnetic-obs');
       const modeSel = document.getElementById('sel-magnet-type');
       const hint = document.getElementById('magnetic-hint');
@@ -37175,7 +37391,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawBarMagnet() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const mx = W/2, my = H/2;
         ctx.fillStyle = '#ef4444'; ctx.fillRect(mx - 60, my - 15, 60, 30);
         ctx.fillStyle = '#3b82f6'; ctx.fillRect(mx, my - 15, 60, 30);
@@ -37209,7 +37425,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawWireMode() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const cx = W/2, cy = H/2;
         const outward = wireCurrentSel.value === 'out';
         [40, 80, 120].forEach(r => {
@@ -37244,7 +37460,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawLoopMode() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const cx = W/2, cy = H/2;
         const turns = parseInt(loopTurnsSlider.value);
         loopTurnsVal.textContent = turns === 1 ? '1 turn (single loop)' : turns + ' turns (solenoid)';
@@ -37287,7 +37503,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawForceMode() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const cx = W/2, cy = H/2;
         const currentDir = forceCurrentSel.value;
         const fieldUp = forceFieldSel.value === 'up';
@@ -37327,7 +37543,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let motorAngle = 0;
 
       function drawMotor() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const cx = W/2, cy = H/2 - 10;
         ctx.clearRect(0, 0, W, H);
 
@@ -37386,7 +37602,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const mode = modeSel.value;
         if (motorRafId) { cancelAnimationFrame(motorRafId); motorRafId = null; }
         wireControls.style.display = mode === 'wire' ? 'block' : 'none';
@@ -37409,15 +37625,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       canvas.addEventListener('mousedown', (e) => {
         if (modeSel.value !== 'bar' && modeSel.value !== 'wire') return;
         const rect = canvas.getBoundingClientRect();
-        const x = (e.clientX - rect.left) * (canvas.width / rect.width);
-        const y = (e.clientY - rect.top) * (canvas.height / rect.height);
+        const x = (e.clientX - rect.left) * (logW(canvas) / rect.width);
+        const y = (e.clientY - rect.top) * (logH(canvas) / rect.height);
         if (Math.hypot(x - compassX, y - compassY) < 25) isDragging = true;
       });
       canvas.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         const rect = canvas.getBoundingClientRect();
-        compassX = (e.clientX - rect.left) * (canvas.width / rect.width);
-        compassY = (e.clientY - rect.top) * (canvas.height / rect.height);
+        compassX = (e.clientX - rect.left) * (logW(canvas) / rect.width);
+        compassY = (e.clientY - rect.top) * (logH(canvas) / rect.height);
         draw();
       });
       canvas.addEventListener('mouseup', () => isDragging = false);
@@ -37434,7 +37650,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFaradayLab() {
       const canvas = document.getElementById('faraday-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const obs = document.getElementById('faraday-obs');
       const obsTitle = document.getElementById('faraday-obs-title');
       const hint = document.getElementById('faraday-hint');
@@ -37452,7 +37668,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const emfHistory = [];
 
       function drawInduction() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const speed = magnetX - lastX;
         emf = speed * 0.5;
         lastX = magnetX;
@@ -37488,7 +37704,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawGenerator() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const speed = parseInt(generatorSpeedSlider.value);
         generatorSpeedVal.textContent = 'Speed ' + speed;
         generatorAngle += 0.02 * speed;
@@ -37547,7 +37763,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function drawDomestic() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const liveY = 60, neutralY = 110, earthY = 155;
         const fuseX1 = 130, fuseX2 = 170;
         const bulbX = 420;
@@ -37622,7 +37838,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         if (modeSel.value === 'induction') drawInduction();
         else if (modeSel.value === 'generator') drawGenerator();
@@ -37633,14 +37849,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       canvas.addEventListener('mousedown', (e) => {
         if (modeSel.value !== 'induction') return;
         const rect = canvas.getBoundingClientRect();
-        const x = (e.clientX - rect.left) * (canvas.width / rect.width);
-        const y = (e.clientY - rect.top) * (canvas.height / rect.height);
-        if (Math.abs(x - magnetX) < 40 && Math.abs(y - canvas.height/2) < 30) isDragging = true;
+        const x = (e.clientX - rect.left) * (logW(canvas) / rect.width);
+        const y = (e.clientY - rect.top) * (logH(canvas) / rect.height);
+        if (Math.abs(x - magnetX) < 40 && Math.abs(y - logH(canvas)/2) < 30) isDragging = true;
       });
       canvas.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         const rect = canvas.getBoundingClientRect();
-        magnetX = (e.clientX - rect.left) * (canvas.width / rect.width);
+        magnetX = (e.clientX - rect.left) * (logW(canvas) / rect.width);
       });
       canvas.addEventListener('mouseup', () => isDragging = false);
 
@@ -37673,7 +37889,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initFoodWebLab() {
       const canvas = document.getElementById('foodweb-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const obs = document.getElementById('foodweb-obs');
       const obsTitle = document.getElementById('foodweb-obs-title');
       const hint = document.getElementById('foodweb-hint');
@@ -37699,7 +37915,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let selected = -1;
 
       function drawFoodWeb() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const levels = ['Producers', 'Primary Consumers', 'Secondary Consumers', 'Tertiary Consumers'];
         const barWidths = [500, 350, 200, 80];
         levels.forEach((l, i) => {
@@ -37735,7 +37951,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       function lerp(a, b, t) { return a + (b - a) * t; }
 
       function drawOzone() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const cfc = parseInt(cfcSlider.value) / 100;
         cfcLevelVal.textContent = cfc === 0 ? '0% (Ozone layer intact)' : Math.round(cfc*100) + '% CFCs — ' + (cfc < 0.3 ? 'minor damage' : cfc < 0.7 ? 'significant depletion' : 'severe ozone hole');
         const skyGrad = ctx.createLinearGradient(0, 0, 0, H);
@@ -37795,7 +38011,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let wasteFeedback = null;
 
       function drawWaste() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const item = wasteShuffled[wasteIdx % wasteShuffled.length];
         const binY = H/2 + 20, binR = 70;
 
@@ -37827,7 +38043,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const mode = modeSel.value;
         if (mode === 'foodweb') drawFoodWeb();
@@ -37837,8 +38053,8 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       canvas.addEventListener('click', (e) => {
         const rect = canvas.getBoundingClientRect();
-        const x = (e.clientX - rect.left) * (canvas.width / rect.width);
-        const y = (e.clientY - rect.top) * (canvas.height / rect.height);
+        const x = (e.clientX - rect.left) * (logW(canvas) / rect.width);
+        const y = (e.clientY - rect.top) * (logH(canvas) / rect.height);
         const mode = modeSel.value;
         if (mode === 'foodweb') {
           selected = organisms.findIndex(o => Math.hypot(x - o.x, y - o.y) < 25);
@@ -37852,7 +38068,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           }
         } else if (mode === 'waste') {
           if (wasteFeedback) return;
-          const H = canvas.height;
+          const H = logH(canvas);
           const binY = H/2 + 20;
           const distLeft = Math.hypot(x - 120, y - binY);
           const distRight = Math.hypot(x - 480, y - binY);
@@ -37887,7 +38103,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMoleculeBuilderLab() {
       const canvas = document.getElementById('molecule-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-molecule');
       const btn = document.getElementById('btn-build-molecule');
       const obs = document.getElementById('molecule-obs');
@@ -37902,7 +38118,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       function draw() {
         const mol = molecules[sel.value];
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 14px system-ui';
         ctx.fillText(mol.name, 20, 30);
@@ -37938,13 +38154,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initMicelleLab() {
       const canvas = document.getElementById('micelle-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const btn = document.getElementById('btn-add-soap');
       const obs = document.getElementById('micelle-obs');
       let soapCount = 0;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         // Water background
         ctx.fillStyle = 'rgba(59, 130, 246, 0.1)'; ctx.fillRect(0, 0, W, H);
@@ -37991,14 +38207,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCellDivisionLab() {
       const canvas = document.getElementById('celldiv-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-organism');
       const btn = document.getElementById('btn-reproduce');
       const obs = document.getElementById('celldiv-obs');
       let timerId = null, frame = 0;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const type = sel.value;
         ctx.clearRect(0, 0, W, H);
         const progress = Math.min(1, frame / 80);
@@ -38160,18 +38376,22 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         timerId = setInterval(() => { frame++; draw(); if (frame > 80) { clearInterval(timerId); timerId = null; } }, 40);
       });
       draw();
+      // Changing a dropdown applies immediately — a teacher should never have to
+      // pick an option and then hunt for a second button to make it take effect.
+      sel.addEventListener('change', () => btn.click());
+
     }
 
     function initMenstrualCycleLab() {
       const canvas = document.getElementById('menstrual-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const slider = document.getElementById('cycle-day');
       const dayLabel = document.getElementById('cycle-day-val');
       const obs = document.getElementById('menstrual-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const day = parseInt(slider.value);
         dayLabel.textContent = 'Day ' + day;
         ctx.clearRect(0, 0, W, H);
@@ -38231,7 +38451,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPrimeFactorLab() {
       const canvas = document.getElementById('prime-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const input = document.getElementById('prime-input');
       const btn = document.getElementById('btn-factorize');
       const obs = document.getElementById('prime-obs');
@@ -38246,7 +38466,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       function draw() {
         const num = parseInt(input.value) || 12;
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const factors = factorize(num);
         // Draw tree
@@ -38284,7 +38504,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initPolynomialLab() {
       const canvas = document.getElementById('polynomial-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const aSlider = document.getElementById('poly-a');
       const bSlider = document.getElementById('poly-b');
       const cSlider = document.getElementById('poly-c');
@@ -38294,7 +38514,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const obs = document.getElementById('poly-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const a = parseFloat(aSlider.value), b = parseFloat(bSlider.value), c = parseFloat(cSlider.value);
         aVal.textContent = 'a = ' + a; bVal.textContent = 'b = ' + b; cVal.textContent = 'c = ' + c;
         ctx.clearRect(0, 0, W, H);
@@ -38352,12 +38572,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initLinearEqLab() {
       const canvas = document.getElementById('lineq-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const btn = document.getElementById('btn-plot-lines');
       const obs = document.getElementById('lineq-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const a1 = parseFloat(document.getElementById('eq1-a').value)||1;
         const b1 = parseFloat(document.getElementById('eq1-b').value)||1;
         const c1 = parseFloat(document.getElementById('eq1-c').value)||0;
@@ -38424,13 +38644,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTrigLab() {
       const canvas = document.getElementById('trig-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const slider = document.getElementById('trig-angle');
       const angleLabel = document.getElementById('trig-angle-val');
       const obs = document.getElementById('trig-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const deg = parseInt(slider.value);
         const rad = deg * Math.PI / 180;
         angleLabel.textContent = '\u03B8 = ' + deg + '°';
@@ -38484,7 +38704,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initProbabilityLab() {
       const canvas = document.getElementById('probability-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-prob-type');
       const btn1 = document.getElementById('btn-roll');
       const btn100 = document.getElementById('btn-roll-100');
@@ -38492,7 +38712,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let results = {coin: {heads:0, tails:0}, dice: {1:0,2:0,3:0,4:0,5:0,6:0}, card: {ace:0, other:0}};
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const type = sel.value;
         ctx.clearRect(0, 0, W, H);
         if (type === 'coin') {
@@ -38592,7 +38812,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initCoordinateLab() {
       const canvas = document.getElementById('coord-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const ratioSlider = document.getElementById('section-ratio');
       const ratioLabel = document.getElementById('section-val');
       const pointsLabel = document.getElementById('coord-points');
@@ -38601,7 +38821,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let dragging = null;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const m = parseInt(ratioSlider.value);
         ratioLabel.textContent = m + ' : 1' + (m === 1 ? ' (Midpoint)' : '');
         pointsLabel.textContent = `A(${ax}, ${ay}) and B(${bx}, ${by})`;
@@ -38637,18 +38857,18 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
       canvas.addEventListener('mousedown', (e) => {
         const rect = canvas.getBoundingClientRect();
-        const x = (e.clientX - rect.left) * (canvas.width / rect.width);
-        const y = (e.clientY - rect.top) * (canvas.height / rect.height);
-        const ox = 40, oy = canvas.height - 40, scale = 30;
+        const x = (e.clientX - rect.left) * (logW(canvas) / rect.width);
+        const y = (e.clientY - rect.top) * (logH(canvas) / rect.height);
+        const ox = 40, oy = logH(canvas) - 40, scale = 30;
         if (Math.hypot(x - (ox+ax*scale), y - (oy-ay*scale)) < 15) dragging = 'a';
         else if (Math.hypot(x - (ox+bx*scale), y - (oy-by*scale)) < 15) dragging = 'b';
       });
       canvas.addEventListener('mousemove', (e) => {
         if (!dragging) return;
         const rect = canvas.getBoundingClientRect();
-        const x = (e.clientX - rect.left) * (canvas.width / rect.width);
-        const y = (e.clientY - rect.top) * (canvas.height / rect.height);
-        const ox = 40, oy = canvas.height - 40, scale = 30;
+        const x = (e.clientX - rect.left) * (logW(canvas) / rect.width);
+        const y = (e.clientY - rect.top) * (logH(canvas) / rect.height);
+        const ox = 40, oy = logH(canvas) - 40, scale = 30;
         const nx = Math.round((x - ox) / scale), ny = Math.round((oy - y) / scale);
         if (dragging === 'a') { ax = Math.max(0, Math.min(15, nx)); ay = Math.max(0, Math.min(9, ny)); }
         else { bx = Math.max(0, Math.min(15, nx)); by = Math.max(0, Math.min(9, ny)); }
@@ -38662,7 +38882,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initAPLab() {
       const canvas = document.getElementById('ap-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const aSlider = document.getElementById('ap-a');
       const dSlider = document.getElementById('ap-d');
       const nSlider = document.getElementById('ap-n');
@@ -38672,7 +38892,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const obs = document.getElementById('ap-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const a = parseInt(aSlider.value), d = parseInt(dSlider.value), n = parseInt(nSlider.value);
         aVal.textContent = 'a = ' + a; dVal.textContent = 'd = ' + d; nVal.textContent = 'n = ' + n;
         ctx.clearRect(0, 0, W, H);
@@ -38710,7 +38930,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTangentLab() {
       const canvas = document.getElementById('tangent-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const rSlider = document.getElementById('tangent-radius');
       const rLabel = document.getElementById('tangent-r-val');
       const obs = document.getElementById('tangent-obs');
@@ -38718,7 +38938,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       let dragging = false;
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const r = parseInt(rSlider.value);
         rLabel.textContent = 'r = ' + r;
         ctx.clearRect(0, 0, W, H);
@@ -38761,15 +38981,15 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
       canvas.addEventListener('mousedown', (e) => {
         const rect = canvas.getBoundingClientRect();
-        const x = (e.clientX - rect.left) * (canvas.width / rect.width);
-        const y = (e.clientY - rect.top) * (canvas.height / rect.height);
+        const x = (e.clientX - rect.left) * (logW(canvas) / rect.width);
+        const y = (e.clientY - rect.top) * (logH(canvas) / rect.height);
         if (Math.hypot(x - px, y - py) < 15) dragging = true;
       });
       canvas.addEventListener('mousemove', (e) => {
         if (!dragging) return;
         const rect = canvas.getBoundingClientRect();
-        px = (e.clientX - rect.left) * (canvas.width / rect.width);
-        py = (e.clientY - rect.top) * (canvas.height / rect.height);
+        px = (e.clientX - rect.left) * (logW(canvas) / rect.width);
+        py = (e.clientY - rect.top) * (logH(canvas) / rect.height);
         draw();
       });
       canvas.addEventListener('mouseup', () => dragging = false);
@@ -38780,7 +39000,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSectorLab() {
       const canvas = document.getElementById('sector-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const angleSlider = document.getElementById('sector-angle');
       const rSlider = document.getElementById('sector-radius');
       const angleLabel = document.getElementById('sector-angle-val');
@@ -38788,7 +39008,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const obs = document.getElementById('sector-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const theta = parseInt(angleSlider.value);
         const r = parseInt(rSlider.value);
         angleLabel.textContent = '\u03B8 = ' + theta + '°';
@@ -38832,7 +39052,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initStatsLab() {
       const canvas = document.getElementById('stats-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-stats-data');
       const btn = document.getElementById('btn-plot-stats');
       const ogiveBtn = document.getElementById('btn-toggle-ogive');
@@ -38847,7 +39067,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       function drawHistogram() {
         const data = datasets[sel.value];
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = data.classes.length;
         const barW = (W - 120) / n;
@@ -38886,7 +39106,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       function drawOgive() {
         const data = datasets[sel.value];
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         const n = data.classes.length;
         const bounds = data.classes.map(c => c.split('-').map(Number));
@@ -38954,7 +39174,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initHeightsDistancesLab() {
       const canvas = document.getElementById('heightdist-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const modeSel = document.getElementById('hd-mode');
       const distSlider = document.getElementById('hd-dist');
       const angleSlider = document.getElementById('hd-angle');
@@ -38965,7 +39185,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const obs = document.getElementById('hd-obs');
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const mode = modeSel.value;
         const d = parseInt(distSlider.value);
         const theta = parseInt(angleSlider.value);
@@ -39050,7 +39270,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initSolidsLab() {
       const canvas = document.getElementById('solids-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const shapeSel = document.getElementById('sel-solid-shape');
       const rSlider = document.getElementById('solid-r');
       const h1Slider = document.getElementById('solid-h1');
@@ -39085,7 +39305,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
 
       function draw() {
         updateLabels();
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const shape = shapeSel.value;
         const r = parseFloat(rSlider.value);
         const h1 = parseFloat(h1Slider.value);
@@ -39206,7 +39426,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     function initTriangleLab() {
       const canvas = document.getElementById('triangle-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const tSlider = document.getElementById('tri-t');
       const tLabel = document.getElementById('tri-t-val');
       const obs = document.getElementById('tri-obs');
@@ -39226,7 +39446,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       }
 
       function draw() {
-        const W = canvas.width, H = canvas.height;
+        const W = logW(canvas), H = logH(canvas);
         const t = parseInt(tSlider.value) / 100;
         tLabel.textContent = `AD : DB = ${t.toFixed(2)} : ${(1 - t).toFixed(2)}`;
         ctx.clearRect(0, 0, W, H);
@@ -39273,13 +39493,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       // 1. Slaking
       const slakingCanvas = document.getElementById('canvas-reaction-slaking');
       if (slakingCanvas) {
-        const ctx = slakingCanvas.getContext('2d');
+        const ctx = hidpiCtx(slakingCanvas);
         const btn = document.getElementById('btn-run-reaction-slaking');
         const obs = document.getElementById('obs-reaction-slaking');
         let timerId = null; let frame = 0;
         
         function drawSetup() {
-          const W = slakingCanvas.width; const H = slakingCanvas.height;
+          const W = logW(slakingCanvas); const H = logH(slakingCanvas);
           ctx.clearRect(0,0,W,H);
           ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 3;
           ctx.beginPath(); ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240);
@@ -39311,7 +39531,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
           if (timerId) clearInterval(timerId); frame = 0;
           obs.innerHTML = '<strong>Running Reaction...</strong>';
           timerId = setInterval(() => {
-            frame++; const W = slakingCanvas.width; const H = slakingCanvas.height;
+            frame++; const W = logW(slakingCanvas); const H = logH(slakingCanvas);
             ctx.clearRect(0,0,W,H); drawSetup();
             const milkyAlpha = Math.min(0.8, frame * 0.015);
             ctx.fillStyle = `rgba(59, 130, 246, ${0.25 - milkyAlpha/4})`; ctx.fillRect(W/2 - 58, 150, 116, 88);
@@ -39350,13 +39570,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       // 2. Electrolysis
       const elecCanvas = document.getElementById('canvas-reaction-electrolysis');
       if (elecCanvas) {
-        const ctx = elecCanvas.getContext('2d');
+        const ctx = hidpiCtx(elecCanvas);
         const btn = document.getElementById('btn-run-reaction-electrolysis');
         const obs = document.getElementById('obs-reaction-electrolysis');
         let timerId = null; let frame = 0;
         
         function drawSetup(currentFrame = 0) {
-          const W = elecCanvas.width; const H = elecCanvas.height; ctx.clearRect(0,0,W,H);
+          const W = logW(elecCanvas); const H = logH(elecCanvas); ctx.clearRect(0,0,W,H);
           
           // Circuit diagram (Battery and Wires)
           ctx.fillStyle = '#1e293b'; ctx.fillRect(W/2 - 25, 20, 50, 25);
@@ -39417,7 +39637,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
             btn.style.background = 'var(--danger-color, #ef4444)';
             obs.innerHTML = '<strong>Power ON.</strong><br>Running Electrolysis...';
             timerId = setInterval(() => {
-              frame++; const W = elecCanvas.width; const H = elecCanvas.height; ctx.clearRect(0,0,W,H); drawSetup(frame);
+              frame++; const W = logW(elecCanvas); const H = logH(elecCanvas); ctx.clearRect(0,0,W,H); drawSetup(frame);
               
               const maxGasH = 134; // Fill up the entire test tube
               const hGasHeight = Math.min(maxGasH, frame * 0.8); 
@@ -39476,12 +39696,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       // 3. Lead Nitrate
       const leadCanvas = document.getElementById('canvas-reaction-lead-nitrate');
       if (leadCanvas) {
-        const ctx = leadCanvas.getContext('2d');
+        const ctx = hidpiCtx(leadCanvas);
         const btn = document.getElementById('btn-run-reaction-lead-nitrate');
         const obs = document.getElementById('obs-reaction-lead-nitrate');
         let timerId = null; let frame = 0;
         function drawSetup() {
-          const W = leadCanvas.width; const H = leadCanvas.height; ctx.clearRect(0,0,W,H);
+          const W = logW(leadCanvas); const H = logH(leadCanvas); ctx.clearRect(0,0,W,H);
           ctx.fillStyle = '#475569'; ctx.fillRect(W/2 + 15, H/2 + 75, 40, 15); ctx.fillRect(W/2 + 30, H/2 + 50, 10, 25);
           ctx.save(); ctx.translate(W/2, H/2); ctx.rotate((-30 * Math.PI) / 180);
           ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.beginPath(); ctx.moveTo(-15, -60); ctx.lineTo(-15, 60); ctx.arc(0, 60, 15, Math.PI, 0, true); ctx.lineTo(15, -60); ctx.stroke();
@@ -39490,7 +39710,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         btn.addEventListener('click', () => {
           if(timerId) clearInterval(timerId); frame = 0;
           timerId = setInterval(() => {
-            frame++; const W = leadCanvas.width; const H = leadCanvas.height; ctx.clearRect(0,0,W,H); drawSetup();
+            frame++; const W = logW(leadCanvas); const H = logH(leadCanvas); ctx.clearRect(0,0,W,H); drawSetup();
             ctx.fillStyle = '#f97316'; ctx.beginPath(); ctx.moveTo(W/2 + 22, H/2 + 50); ctx.quadraticCurveTo(W/2 + 35, H/2 + 10, W/2 + 48, H/2 + 50); ctx.fill();
             ctx.fillStyle = '#eab308'; ctx.beginPath(); ctx.moveTo(W/2 + 27, H/2 + 50); ctx.quadraticCurveTo(W/2 + 35, H/2 + 22, W/2 + 43, H/2 + 50); ctx.fill();
             ctx.save(); ctx.translate(W/2, H/2); ctx.rotate((-30 * Math.PI) / 180);
@@ -39518,12 +39738,12 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       // 4. Iron Copper
       const feCanvas = document.getElementById('canvas-reaction-iron-copper');
       if (feCanvas) {
-        const ctx = feCanvas.getContext('2d');
+        const ctx = hidpiCtx(feCanvas);
         const btn = document.getElementById('btn-run-reaction-iron-copper');
         const obs = document.getElementById('obs-reaction-iron-copper');
         let timerId = null; let frame = 0;
         function drawSetup() {
-          const W = feCanvas.width; const H = feCanvas.height; ctx.clearRect(0,0,W,H);
+          const W = logW(feCanvas); const H = logH(feCanvas); ctx.clearRect(0,0,W,H);
           ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 3; ctx.beginPath();
           ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240); ctx.lineTo(W/2 + 60, 240); ctx.lineTo(W/2 + 60, 100); ctx.stroke();
           ctx.fillStyle = 'rgba(59, 130, 246, 0.4)'; ctx.fillRect(W/2 - 58, 150, 116, 88);
@@ -39533,7 +39753,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         btn.addEventListener('click', () => {
           if(timerId) clearInterval(timerId); frame = 0;
           timerId = setInterval(() => {
-            frame++; const W = feCanvas.width; const H = feCanvas.height; ctx.clearRect(0,0,W,H);
+            frame++; const W = logW(feCanvas); const H = logH(feCanvas); ctx.clearRect(0,0,W,H);
             ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 3; ctx.beginPath();
             ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240); ctx.lineTo(W/2 + 60, 240); ctx.lineTo(W/2 + 60, 100); ctx.stroke();
             const blueAlpha = Math.max(0.05, 0.4 - frame * 0.005); const greenAlpha = Math.min(0.35, frame * 0.005);
@@ -39556,13 +39776,13 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       // 5. Barium Sodium
       const baso4Canvas = document.getElementById('canvas-reaction-barium-sodium');
       if (baso4Canvas) {
-        const ctx = baso4Canvas.getContext('2d');
+        const ctx = hidpiCtx(baso4Canvas);
         const btn = document.getElementById('btn-run-reaction-barium-sodium');
         const obs = document.getElementById('obs-reaction-barium-sodium');
         let timerId = null; let frame = 0;
         
         function drawSetup() {
-          const W = baso4Canvas.width; const H = baso4Canvas.height; ctx.clearRect(0,0,W,H);
+          const W = logW(baso4Canvas); const H = logH(baso4Canvas); ctx.clearRect(0,0,W,H);
           ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 3; ctx.beginPath();
           ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240); ctx.lineTo(W/2 + 60, 240); ctx.lineTo(W/2 + 60, 100); ctx.stroke();
           
@@ -39582,7 +39802,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
         btn.addEventListener('click', () => {
           if(timerId) clearInterval(timerId); frame = 0;
           timerId = setInterval(() => {
-            frame++; const W = baso4Canvas.width; const H = baso4Canvas.height; ctx.clearRect(0,0,W,H);
+            frame++; const W = logW(baso4Canvas); const H = logH(baso4Canvas); ctx.clearRect(0,0,W,H);
             
             // Draw beaker
             ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 3; ctx.beginPath();
@@ -39641,14 +39861,14 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       // 6. Copper Oxidation
       const redoxCanvas = document.getElementById('canvas-reaction-copper-oxidation');
       if (redoxCanvas) {
-        const ctx = redoxCanvas.getContext('2d');
+        const ctx = hidpiCtx(redoxCanvas);
         const btn = document.getElementById('btn-run-reaction-copper-oxidation');
         const obs = document.getElementById('obs-reaction-copper-oxidation');
         let timerId = null; let frame = 0;
         let isRunning = false;
 
         function drawSetup(currentFrame = 0, isHeating = false) {
-          const W = redoxCanvas.width; const H = redoxCanvas.height; ctx.clearRect(0,0,W,H);
+          const W = logW(redoxCanvas); const H = logH(redoxCanvas); ctx.clearRect(0,0,W,H);
           
           // Tripod stand
           ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3; ctx.beginPath();

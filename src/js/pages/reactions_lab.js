@@ -1,7 +1,33 @@
+
+// --- Canvas quality layer -------------------------------------------------
+// Every lab canvas declares a logical drawing size via its width/height
+// attributes and draws in those coordinates. Rendering at exactly that size
+// leaves the picture soft, because the canvas is laid out at whatever width
+// the panel happens to be and then scaled by the display. We keep the logical
+// coordinate system the drawing code expects, but give the backing store two
+// to three times the pixels and scale the context to match, so lines and text
+// stay sharp on classroom projectors and high-density laptop screens alike.
+function logW(c) { return +(c.dataset.logicalW || c.getAttribute('width') || c.width); }
+function logH(c) { return +(c.dataset.logicalH || c.getAttribute('height') || c.height); }
+
+function hidpiCtx(c) {
+  if (!c) return null;
+  if (!c.dataset.logicalW) {
+    c.dataset.logicalW = c.getAttribute('width') || c.width;
+    c.dataset.logicalH = c.getAttribute('height') || c.height;
+  }
+  const lw = +c.dataset.logicalW, lh = +c.dataset.logicalH;
+  const scale = Math.min(3, Math.max(2, (window.devicePixelRatio || 1) * 1.5));
+  const bw = Math.round(lw * scale), bh = Math.round(lh * scale);
+  if (c.width !== bw || c.height !== bh) { c.width = bw; c.height = bh; }
+  const ctx = c.getContext('2d');
+  ctx.setTransform(scale, 0, 0, scale, 0, 0);
+  return ctx;
+}
     function initReactionsLab() {
       const canvas = document.getElementById('reactions-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const selReaction = document.getElementById('sel-reaction-type');
       const btnRun = document.getElementById('btn-run-reaction');
       const obsPanel = document.getElementById('reaction-obs-panel');
@@ -26,8 +52,8 @@
       let currentReaction = selReaction.value;
 
       function drawDefault() {
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
         
         if (currentReaction !== 'copper-oxidation' && currentReaction !== 'lead-nitrate') {
@@ -271,8 +297,8 @@
 
         timerId = setInterval(() => {
           frame++;
-          const W = canvas.width;
-          const H = canvas.height;
+          const W = logW(canvas);
+          const H = logH(canvas);
           ctx.clearRect(0, 0, W, H);
           drawDefault();
 

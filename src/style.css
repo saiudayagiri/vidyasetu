@@ -1714,7 +1714,10 @@ footer {
   background-color: #0b0f19;
   border-radius: var(--radius-sm);
   width: 100%;
-  aspect-ratio: 16 / 9;
+  /* Height follows each canvas's own width/height attributes, so a lab drawn
+     at 600x280 is never squeezed into some other shape. A forced aspect ratio
+     here stretched every circle into an ellipse. */
+  height: auto;
   cursor: crosshair;
   touch-action: none;
   box-shadow: var(--inset-shadow);

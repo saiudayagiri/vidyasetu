@@ -1,7 +1,33 @@
+
+// --- Canvas quality layer -------------------------------------------------
+// Every lab canvas declares a logical drawing size via its width/height
+// attributes and draws in those coordinates. Rendering at exactly that size
+// leaves the picture soft, because the canvas is laid out at whatever width
+// the panel happens to be and then scaled by the display. We keep the logical
+// coordinate system the drawing code expects, but give the backing store two
+// to three times the pixels and scale the context to match, so lines and text
+// stay sharp on classroom projectors and high-density laptop screens alike.
+function logW(c) { return +(c.dataset.logicalW || c.getAttribute('width') || c.width); }
+function logH(c) { return +(c.dataset.logicalH || c.getAttribute('height') || c.height); }
+
+function hidpiCtx(c) {
+  if (!c) return null;
+  if (!c.dataset.logicalW) {
+    c.dataset.logicalW = c.getAttribute('width') || c.width;
+    c.dataset.logicalH = c.getAttribute('height') || c.height;
+  }
+  const lw = +c.dataset.logicalW, lh = +c.dataset.logicalH;
+  const scale = Math.min(3, Math.max(2, (window.devicePixelRatio || 1) * 1.5));
+  const bw = Math.round(lw * scale), bh = Math.round(lh * scale);
+  if (c.width !== bw || c.height !== bh) { c.width = bw; c.height = bh; }
+  const ctx = c.getContext('2d');
+  ctx.setTransform(scale, 0, 0, scale, 0, 0);
+  return ctx;
+}
     function initMetalReactivityLab() {
       const canvas = document.getElementById('metal-canvas');
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const selMetal = document.getElementById('sel-metal-strip');
       const selSalt = document.getElementById('sel-salt-sol');
       const btnDrop = document.getElementById('btn-drop-metal');
@@ -27,8 +53,8 @@
         requestAnimationFrame(animate);
         timeTick += 0.05;
 
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
 
         // Draw Wooden Rack base
@@ -289,7 +315,7 @@
 
     function initRefractionLab() {
       const canvas = document.getElementById('refraction-canvas');
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const rngTheta1 = document.getElementById('rng-theta1');
       const selN1 = document.getElementById('sel-n1');
       const selN2 = document.getElementById('sel-n2');
@@ -308,8 +334,8 @@
         document.getElementById('lbl-n2').textContent = `n₂ = ${n2.toFixed(2)}`;
         document.getElementById('lbl-theta1').textContent = `${theta1}°`;
 
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         const cx = W / 2;
         const cy = H / 2;
 
@@ -484,14 +510,14 @@
 
       function handleCanvasDrag(e) {
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
+        const scaleX = logW(canvas) / rect.width;
+        const scaleY = logH(canvas) / rect.height;
         const mouseX = (e.clientX - rect.left) * scaleX;
         const mouseY = (e.clientY - rect.top) * scaleY;
 
-        const W = canvas.width;
+        const W = logW(canvas);
         const cx = W / 2;
-        const cy = canvas.height / 2;
+        const cy = logH(canvas) / 2;
 
         const dx = cx - mouseX;
         const dy = cy - mouseY;
@@ -535,7 +561,7 @@
 
     function initPlaneMirrorLab() {
       const canvas = document.getElementById('plane-mirror-canvas');
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const rngTheta = document.getElementById('rng-plane-theta1');
       const btnSmooth = document.getElementById('btn-plane-smooth');
       const btnRough = document.getElementById('btn-plane-rough');
@@ -562,8 +588,8 @@
         theta = parseInt(rngTheta.value);
         document.getElementById('lbl-plane-theta1').textContent = `${theta}°`;
 
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         const cx = W / 2;
         const cy = H / 2;
 
@@ -808,13 +834,13 @@
 
       function handleCanvasDrag(e) {
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
+        const scaleX = logW(canvas) / rect.width;
+        const scaleY = logH(canvas) / rect.height;
         const mouseX = (e.clientX - rect.left) * scaleX;
         const mouseY = (e.clientY - rect.top) * scaleY;
 
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
+        const cx = logW(canvas) / 2;
+        const cy = logH(canvas) / 2;
 
         const dx = cx - mouseX;
         const dy = cy - mouseY;
@@ -858,7 +884,7 @@
 
     function initMirrorLab() {
       const canvas = document.getElementById('mirror-canvas');
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const rngU = document.getElementById('rng-mirror-u');
       const rngF = document.getElementById('rng-mirror-f');
       const rngHo = document.getElementById('rng-mirror-ho');
@@ -895,8 +921,8 @@
         document.getElementById('lbl-mirror-f').textContent = `${fVal} cm (${isConcave ? 'Concave' : 'Convex'})`;
         document.getElementById('lbl-mirror-ho').textContent = `${ho} cm`;
 
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         const cx = 450;
         const cy = H / 2;
 
@@ -1138,13 +1164,13 @@
 
       function handleCanvasDrag(e) {
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
+        const scaleX = logW(canvas) / rect.width;
+        const scaleY = logH(canvas) / rect.height;
         const mouseX = (e.clientX - rect.left) * scaleX;
         const mouseY = (e.clientY - rect.top) * scaleY;
 
         const cx = 450;
-        const cy = canvas.height / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = Math.round(mouseX - cx);
         const hoVal = Math.round(cy - mouseY);
@@ -1165,7 +1191,7 @@
         const mouseY = e.clientY - rect.top;
 
         const cx = 450;
-        const cy = canvas.height / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = parseInt(rngU.value);
         const hoVal = parseInt(rngHo.value);
@@ -1188,7 +1214,7 @@
         const mouseY = e.clientY - rect.top;
 
         const cx = 450;
-        const cy = canvas.height / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = parseInt(rngU.value);
         const hoVal = parseInt(rngHo.value);
@@ -1222,7 +1248,7 @@
         const mouseY = t.clientY - rect.top;
 
         const cx = 450;
-        const cy = canvas.height / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = parseInt(rngU.value);
         const hoVal = parseInt(rngHo.value);
@@ -1256,7 +1282,7 @@
 
     function initLensLab() {
       const canvas = document.getElementById('lens-canvas');
-      const ctx = canvas.getContext('2d');
+      const ctx = hidpiCtx(canvas);
       const rngU = document.getElementById('rng-lens-u');
       const rngF = document.getElementById('rng-lens-f');
       const rngHo = document.getElementById('rng-lens-ho');
@@ -1293,8 +1319,8 @@
         document.getElementById('lbl-lens-f').textContent = `${fVal} cm (${isConvex ? 'Convex' : 'Concave'})`;
         document.getElementById('lbl-lens-ho').textContent = `${ho} cm`;
 
-        const W = canvas.width;
-        const H = canvas.height;
+        const W = logW(canvas);
+        const H = logH(canvas);
         const cx = W / 2;
         const cy = H / 2;
 
@@ -1547,13 +1573,13 @@
 
       function handleCanvasDrag(e) {
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
+        const scaleX = logW(canvas) / rect.width;
+        const scaleY = logH(canvas) / rect.height;
         const mouseX = (e.clientX - rect.left) * scaleX;
         const mouseY = (e.clientY - rect.top) * scaleY;
 
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
+        const cx = logW(canvas) / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = Math.round(mouseX - cx);
         const hoVal = Math.round(cy - mouseY);
@@ -1573,8 +1599,8 @@
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
 
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
+        const cx = logW(canvas) / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = parseInt(rngU.value);
         const hoVal = parseInt(rngHo.value);
@@ -1596,8 +1622,8 @@
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
 
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
+        const cx = logW(canvas) / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = parseInt(rngU.value);
         const hoVal = parseInt(rngHo.value);
@@ -1630,8 +1656,8 @@
         const mouseX = t.clientX - rect.left;
         const mouseY = t.clientY - rect.top;
 
-        const cx = canvas.width / 2;
-        const cy = canvas.height / 2;
+        const cx = logW(canvas) / 2;
+        const cy = logH(canvas) / 2;
 
         const uVal = parseInt(rngU.value);
         const hoVal = parseInt(rngHo.value);
@@ -1737,13 +1763,13 @@
       // 1. Slaking
       const slakingCanvas = document.getElementById('canvas-reaction-slaking');
       if (slakingCanvas) {
-        const ctx = slakingCanvas.getContext('2d');
+        const ctx = hidpiCtx(slakingCanvas);
         const btn = document.getElementById('btn-run-reaction-slaking');
         const obs = document.getElementById('obs-reaction-slaking');
         let timerId = null; let frame = 0;
         
         function drawSetup() {
-          const W = slakingCanvas.width; const H = slakingCanvas.height;
+          const W = logW(slakingCanvas); const H = logH(slakingCanvas);
           ctx.clearRect(0,0,W,H);
           ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 3;
           ctx.beginPath(); ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240);
@@ -1775,7 +1801,7 @@
           if (timerId) clearInterval(timerId); frame = 0;
           obs.innerHTML = '<strong>Running Reaction...</strong>';
           timerId = setInterval(() => {
-            frame++; const W = slakingCanvas.width; const H = slakingCanvas.height;
+            frame++; const W = logW(slakingCanvas); const H = logH(slakingCanvas);
             ctx.clearRect(0,0,W,H); drawSetup();
             const milkyAlpha = Math.min(0.8, frame * 0.015);
             ctx.fillStyle = `rgba(59, 130, 246, ${0.25 - milkyAlpha/4})`; ctx.fillRect(W/2 - 58, 150, 116, 88);
@@ -1814,13 +1840,13 @@
       // 2. Electrolysis
       const elecCanvas = document.getElementById('canvas-reaction-electrolysis');
       if (elecCanvas) {
-        const ctx = elecCanvas.getContext('2d');
+        const ctx = hidpiCtx(elecCanvas);
         const btn = document.getElementById('btn-run-reaction-electrolysis');
         const obs = document.getElementById('obs-reaction-electrolysis');
         let timerId = null; let frame = 0;
         
         function drawSetup(currentFrame = 0) {
-          const W = elecCanvas.width; const H = elecCanvas.height; ctx.clearRect(0,0,W,H);
+          const W = logW(elecCanvas); const H = logH(elecCanvas); ctx.clearRect(0,0,W,H);
           
           // Circuit diagram (Battery and Wires)
           ctx.fillStyle = '#1e293b'; ctx.fillRect(W/2 - 25, 20, 50, 25);
@@ -1881,7 +1907,7 @@
             btn.style.background = 'var(--danger-color, #ef4444)';
             obs.innerHTML = '<strong>Power ON.</strong><br>Running Electrolysis...';
             timerId = setInterval(() => {
-              frame++; const W = elecCanvas.width; const H = elecCanvas.height; ctx.clearRect(0,0,W,H); drawSetup(frame);
+              frame++; const W = logW(elecCanvas); const H = logH(elecCanvas); ctx.clearRect(0,0,W,H); drawSetup(frame);
               
               const maxGasH = 134; // Fill up the entire test tube
               const hGasHeight = Math.min(maxGasH, frame * 0.8); 
@@ -1940,12 +1966,12 @@
       // 3. Lead Nitrate
       const leadCanvas = document.getElementById('canvas-reaction-lead-nitrate');
       if (leadCanvas) {
-        const ctx = leadCanvas.getContext('2d');
+        const ctx = hidpiCtx(leadCanvas);
         const btn = document.getElementById('btn-run-reaction-lead-nitrate');
         const obs = document.getElementById('obs-reaction-lead-nitrate');
         let timerId = null; let frame = 0;
         function drawSetup() {
-          const W = leadCanvas.width; const H = leadCanvas.height; ctx.clearRect(0,0,W,H);
+          const W = logW(leadCanvas); const H = logH(leadCanvas); ctx.clearRect(0,0,W,H);
           ctx.fillStyle = '#475569'; ctx.fillRect(W/2 + 15, H/2 + 75, 40, 15); ctx.fillRect(W/2 + 30, H/2 + 50, 10, 25);
           ctx.save(); ctx.translate(W/2, H/2); ctx.rotate((-30 * Math.PI) / 180);
           ctx.strokeStyle = 'var(--border-color)'; ctx.beginPath(); ctx.moveTo(-15, -60); ctx.lineTo(-15, 60); ctx.arc(0, 60, 15, Math.PI, 0, true); ctx.lineTo(15, -60); ctx.stroke();
@@ -1954,7 +1980,7 @@
         btn.addEventListener('click', () => {
           if(timerId) clearInterval(timerId); frame = 0;
           timerId = setInterval(() => {
-            frame++; const W = leadCanvas.width; const H = leadCanvas.height; ctx.clearRect(0,0,W,H); drawSetup();
+            frame++; const W = logW(leadCanvas); const H = logH(leadCanvas); ctx.clearRect(0,0,W,H); drawSetup();
             ctx.fillStyle = '#f97316'; ctx.beginPath(); ctx.moveTo(W/2 + 22, H/2 + 50); ctx.quadraticCurveTo(W/2 + 35, H/2 + 10, W/2 + 48, H/2 + 50); ctx.fill();
             ctx.fillStyle = '#eab308'; ctx.beginPath(); ctx.moveTo(W/2 + 27, H/2 + 50); ctx.quadraticCurveTo(W/2 + 35, H/2 + 22, W/2 + 43, H/2 + 50); ctx.fill();
             ctx.save(); ctx.translate(W/2, H/2); ctx.rotate((-30 * Math.PI) / 180);
@@ -1982,12 +2008,12 @@
       // 4. Iron Copper
       const feCanvas = document.getElementById('canvas-reaction-iron-copper');
       if (feCanvas) {
-        const ctx = feCanvas.getContext('2d');
+        const ctx = hidpiCtx(feCanvas);
         const btn = document.getElementById('btn-run-reaction-iron-copper');
         const obs = document.getElementById('obs-reaction-iron-copper');
         let timerId = null; let frame = 0;
         function drawSetup() {
-          const W = feCanvas.width; const H = feCanvas.height; ctx.clearRect(0,0,W,H);
+          const W = logW(feCanvas); const H = logH(feCanvas); ctx.clearRect(0,0,W,H);
           ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 3; ctx.beginPath();
           ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240); ctx.lineTo(W/2 + 60, 240); ctx.lineTo(W/2 + 60, 100); ctx.stroke();
           ctx.fillStyle = 'rgba(59, 130, 246, 0.4)'; ctx.fillRect(W/2 - 58, 150, 116, 88);
@@ -1997,7 +2023,7 @@
         btn.addEventListener('click', () => {
           if(timerId) clearInterval(timerId); frame = 0;
           timerId = setInterval(() => {
-            frame++; const W = feCanvas.width; const H = feCanvas.height; ctx.clearRect(0,0,W,H);
+            frame++; const W = logW(feCanvas); const H = logH(feCanvas); ctx.clearRect(0,0,W,H);
             ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 3; ctx.beginPath();
             ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240); ctx.lineTo(W/2 + 60, 240); ctx.lineTo(W/2 + 60, 100); ctx.stroke();
             const blueAlpha = Math.max(0.05, 0.4 - frame * 0.005); const greenAlpha = Math.min(0.35, frame * 0.005);
@@ -2020,13 +2046,13 @@
       // 5. Barium Sodium
       const baso4Canvas = document.getElementById('canvas-reaction-barium-sodium');
       if (baso4Canvas) {
-        const ctx = baso4Canvas.getContext('2d');
+        const ctx = hidpiCtx(baso4Canvas);
         const btn = document.getElementById('btn-run-reaction-barium-sodium');
         const obs = document.getElementById('obs-reaction-barium-sodium');
         let timerId = null; let frame = 0;
         
         function drawSetup() {
-          const W = baso4Canvas.width; const H = baso4Canvas.height; ctx.clearRect(0,0,W,H);
+          const W = logW(baso4Canvas); const H = logH(baso4Canvas); ctx.clearRect(0,0,W,H);
           ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 3; ctx.beginPath();
           ctx.moveTo(W/2 - 60, 100); ctx.lineTo(W/2 - 60, 240); ctx.lineTo(W/2 + 60, 240); ctx.lineTo(W/2 + 60, 100); ctx.stroke();
           
@@ -2046,7 +2072,7 @@
         btn.addEventListener('click', () => {
           if(timerId) clearInterval(timerId); frame = 0;
           timerId = setInterval(() => {
-            frame++; const W = baso4Canvas.width; const H = baso4Canvas.height; ctx.clearRect(0,0,W,H);
+            frame++; const W = logW(baso4Canvas); const H = logH(baso4Canvas); ctx.clearRect(0,0,W,H);
             
             // Draw beaker
             ctx.strokeStyle = 'var(--border-color)'; ctx.lineWidth = 3; ctx.beginPath();
@@ -2105,14 +2131,14 @@
       // 6. Copper Oxidation
       const redoxCanvas = document.getElementById('canvas-reaction-copper-oxidation');
       if (redoxCanvas) {
-        const ctx = redoxCanvas.getContext('2d');
+        const ctx = hidpiCtx(redoxCanvas);
         const btn = document.getElementById('btn-run-reaction-copper-oxidation');
         const obs = document.getElementById('obs-reaction-copper-oxidation');
         let timerId = null; let frame = 0;
         let isRunning = false;
 
         function drawSetup(currentFrame = 0, isHeating = false) {
-          const W = redoxCanvas.width; const H = redoxCanvas.height; ctx.clearRect(0,0,W,H);
+          const W = logW(redoxCanvas); const H = logH(redoxCanvas); ctx.clearRect(0,0,W,H);
           
           // Tripod stand
           ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3; ctx.beginPath();
