@@ -4856,22 +4856,25 @@ function getInlineLabHtml(type) {
     const reflectionAngleLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="reflection-angle-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick an angle of incidence and see the matching angle of reflection.</span></div>
+          <canvas id="reflection-angle-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Swing the incoming ray and watch the reflected ray copy its angle exactly, every time.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Angle of Incidence</h3>
-            <select id="sel-reflection-angle" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="0" selected>0° (along the normal)</option>
-              <option value="30">30°</option>
-              <option value="45">45°</option>
-              <option value="60">60°</option>
-            </select>
+            <h3>The Incoming Ray</h3>
+            ${simSlider('rf-angle', 'Angle of incidence', 0, 85, 1, 40, '°', '#f59e0b')}
+          </div>
+          <div class="settings-group-card">
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-normal);cursor:pointer;margin-bottom:0.4rem;">
+              <input id="rf-rough" type="checkbox" style="accent-color:#f472b6;"> Rough surface instead of a mirror
+            </label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-normal);cursor:pointer;">
+              <input id="rf-sweep" type="checkbox" style="accent-color:#38bdf8;"> Sweep the angle automatically
+            </label>
           </div>
           <div class="sim-calculator">
-            <h3>Angle of Reflection</h3>
-            <div id="reflection-angle-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an angle above.</div>
+            <h3>Angles Measured</h3>
+            <div id="reflection-angle-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -4923,26 +4926,20 @@ function getInlineLabHtml(type) {
     const moonPhaseLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="moon-phase-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a position in the Moon's orbit and see the resulting phase.</span></div>
+          <canvas id="moon-phase-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Walk the Moon round its orbit and see why we get phases — half of it is always lit.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Moon's Position (A-H)</h3>
-            <select id="sel-moon-phase" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="A" selected>A — Day 1</option>
-              <option value="B">B — Day 4 (Gibbous)</option>
-              <option value="C">C — Day 8</option>
-              <option value="D">D — Day 12 (Crescent)</option>
-              <option value="E">E — Day 15</option>
-              <option value="F">F — Day 18 (Crescent)</option>
-              <option value="G">G — Day 22</option>
-              <option value="H">H — Day 26 (Gibbous)</option>
-            </select>
+            <h3>Position in the Orbit</h3>
+            ${simSlider('mp-day', 'Day of the lunar month', 0, 29, 1, 7, '', '#e2e8f0')}
+          </div>
+          <div class="settings-group-card">
+            <button id="mp-play" class="sim-toggle-btn" style="width:100%;">▶ Run the month</button>
           </div>
           <div class="sim-calculator">
-            <h3>Phase Seen from Earth</h3>
-            <div id="moon-phase-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a position above.</div>
+            <h3>What You See Tonight</h3>
+            <div id="moon-phase-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Pick a day.</div>
           </div>
         </div>
       </div>`;
@@ -27969,45 +27966,100 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('reflection-angle-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-reflection-angle');
+      const angIn = document.getElementById('rf-angle');
+      const roughChk = document.getElementById('rf-rough');
+      const sweepChk = document.getElementById('rf-sweep');
       const obs = document.getElementById('reflection-angle-obs');
 
-      function draw() {
+      const PX = 300, PY = 232, RAY = 168;   // point of incidence
+
+      simLoop(canvas, (t) => {
+        if (sweepChk.checked) {
+          const a = 42 + 42 * Math.sin(t * 0.6);
+          angIn.value = Math.round(a);
+          const out = document.getElementById('rf-angle-out');
+          if (out) out.textContent = angIn.value + '°';
+        }
+        const i = +angIn.value, rad = i * Math.PI / 180;
+        const rough = roughChk.checked;
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const angle = parseFloat(sel.value);
-        const cx = W / 2, cy = 180;
-        const rad = angle * Math.PI / 180;
-        const len = 130;
 
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.moveTo(cx - 150, cy); ctx.lineTo(cx + 150, cy); ctx.stroke();
-        ctx.setLineDash([4, 3]);
-        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx, cy - 150); ctx.stroke();
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText(rough ? 'A rough surface: still reflection, but scattered' : 'A plane mirror: angle i always equals angle r', 16, 22);
+
+        // the mirror
+        ctx.fillStyle = rough ? 'rgba(244,114,182,0.20)' : 'rgba(56,189,248,0.18)';
+        ctx.fillRect(70, PY, W - 140, 14);
+        ctx.strokeStyle = rough ? '#f472b6' : '#38bdf8'; ctx.lineWidth = 2;
+        if (rough) {
+          ctx.beginPath();
+          for (let x = 70; x < W - 70; x += 8) {
+            ctx.moveTo(x, PY); ctx.lineTo(x + 4, PY - 5); ctx.lineTo(x + 8, PY);
+          }
+          ctx.stroke();
+        } else {
+          ctx.beginPath(); ctx.moveTo(70, PY); ctx.lineTo(W - 70, PY); ctx.stroke();
+        }
+        ctx.strokeStyle = 'rgba(148,163,184,0.5)'; ctx.lineWidth = 1;
+        for (let x = 74; x < W - 70; x += 12) {
+          ctx.beginPath(); ctx.moveTo(x, PY + 14); ctx.lineTo(x - 6, PY + 22); ctx.stroke();
+        }
+
+        // the normal
+        ctx.strokeStyle = 'rgba(148,163,184,0.85)'; ctx.lineWidth = 1.5; ctx.setLineDash([6, 5]);
+        ctx.beginPath(); ctx.moveTo(PX, PY - RAY - 14); ctx.lineTo(PX, PY + 22); ctx.stroke();
         ctx.setLineDash([]);
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.textAlign = 'center';
+        ctx.fillText('normal', PX, PY - RAY - 20);
 
-        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2.5;
-        const ix = cx - len * Math.sin(rad), iy = cy - len * Math.cos(rad);
-        ctx.beginPath(); ctx.moveTo(ix, iy); ctx.lineTo(cx, cy); ctx.stroke();
-        ctx.strokeStyle = '#22c55e';
-        const rx = cx + len * Math.sin(rad), ry = cy - len * Math.cos(rad);
-        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(rx, ry); ctx.stroke();
+        // incident ray, arriving from the upper left
+        const ix = PX - RAY * Math.sin(rad), iy = PY - RAY * Math.cos(rad);
+        simArrow(ctx, ix, iy, PX - 6 * Math.sin(rad), PY - 6 * Math.cos(rad), '#f59e0b', 2.5);
+        ctx.fillStyle = '#f59e0b'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'right';
+        ctx.fillText('incident ray', ix - 6, iy - 4);
 
-        ctx.font = '12px system-ui'; ctx.fillStyle = '#ef4444'; ctx.textAlign = 'center';
-        ctx.fillText('Incident ray', ix - 10, iy - 10);
-        ctx.fillStyle = '#22c55e';
-        ctx.fillText('Reflected ray', rx + 15, ry - 10);
-        ctx.fillStyle = cssVar('--text-muted');
-        ctx.fillText('Normal', cx + 25, cy - 130);
+        if (!rough) {
+          const rx = PX + RAY * Math.sin(rad), ry = PY - RAY * Math.cos(rad);
+          simArrow(ctx, PX + 6 * Math.sin(rad), PY - 6 * Math.cos(rad), rx, ry, '#22c55e', 2.5);
+          ctx.fillStyle = '#22c55e'; ctx.textAlign = 'left';
+          ctx.fillText('reflected ray', rx + 6, ry - 4);
+        } else {
+          // every facet has its own normal, so parallel light leaves in all directions
+          for (let n = -3; n <= 3; n++) {
+            const jitter = rad + n * 0.22;
+            const rx = PX + RAY * 0.8 * Math.sin(jitter), ry = PY - RAY * 0.8 * Math.cos(jitter);
+            simArrow(ctx, PX, PY - 2, rx, ry, n === 0 ? '#22c55e' : 'rgba(34,197,94,0.35)', n === 0 ? 2.5 : 1.5);
+          }
+          ctx.fillStyle = '#22c55e'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText('scattered in all directions', PX + 30, PY - RAY * 0.8 - 10);
+        }
 
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(`i = ${angle}°, r = ${angle}°`, W / 2, 30);
+        // angle arcs, drawn between each ray and the normal
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = '#f59e0b';
+        ctx.beginPath(); ctx.arc(PX, PY, 46, -Math.PI / 2 - rad, -Math.PI / 2); ctx.stroke();
+        ctx.fillStyle = '#f59e0b'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('i = ' + i + '°', PX - 30 * Math.sin(rad / 2) - 16, PY - 56 * Math.cos(rad / 2));
+        if (!rough) {
+          ctx.strokeStyle = '#22c55e';
+          ctx.beginPath(); ctx.arc(PX, PY, 46, -Math.PI / 2, -Math.PI / 2 + rad); ctx.stroke();
+          ctx.fillStyle = '#22c55e';
+          ctx.fillText('r = ' + i + '°', PX + 30 * Math.sin(rad / 2) + 16, PY - 56 * Math.cos(rad / 2));
+        }
 
-        obs.innerHTML = `<strong>Angle of incidence = ${angle}°:</strong> The angle of reflection is also exactly ${angle}°, confirming i = r.`;
-      }
+        // point of incidence
+        ctx.beginPath(); ctx.arc(PX, PY, 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#f8fafc'; ctx.fill();
 
-      sel.addEventListener('change', draw);
-      draw();
+        obs.innerHTML = rough
+          ? '<strong>Angle of incidence = ' + i + '°.</strong> Each tiny facet of a rough surface has its own normal, so parallel rays leave in many directions — that is why you cannot see your face in a wall.' +
+            '<br><span style="color:var(--text-muted);">The law still holds at every single facet; it is the surface that is uneven, not the law.</span>'
+          : '<strong>i = ' + i + '° and r = ' + i + '°.</strong> They match at every angle you can set — that is the first law of reflection.' +
+            '<br><span style="color:var(--text-muted);">The incident ray, the reflected ray and the normal all lie in the same plane. Set i = 0° and the ray comes straight back along the normal.</span>';
+      });
     }
 
     function initParallelBeamMirrorLab() {
@@ -28124,64 +28176,124 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('moon-phase-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-moon-phase');
+      const dayIn = document.getElementById('mp-day');
+      const playBtn = document.getElementById('mp-play');
       const obs = document.getElementById('moon-phase-obs');
-      const PHASES = {
-        A: { name: 'Full Moon', litFrac: 1.0 }, B: { name: 'Gibbous (waning)', litFrac: 0.75 },
-        C: { name: 'Half Moon', litFrac: 0.5 }, D: { name: 'Crescent (waning)', litFrac: 0.25 },
-        E: { name: 'New Moon', litFrac: 0.0 }, F: { name: 'Crescent (waxing)', litFrac: 0.25 },
-        G: { name: 'Half Moon', litFrac: 0.5 }, H: { name: 'Gibbous (waxing)', litFrac: 0.75 }
-      };
 
-      function draw() {
-        const W = logW(canvas), H = logH(canvas);
-        ctx.clearRect(0, 0, W, H);
-        const key = sel.value;
-        const p = PHASES[key];
-        const cx = W / 2, cy = 140, r = 70;
-
-        ctx.fillStyle = '#1e293b';
-        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
-
-        ctx.save();
-        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.clip();
-        ctx.fillStyle = '#facc15';
-        if (p.litFrac === 1) {
-          ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
-        } else if (p.litFrac === 0) {
-          // nothing lit
-        } else if (p.litFrac === 0.5) {
-          const leftSide = 'BCD'.includes(key) === false && key === 'C';
-          const isRightLit = key === 'C';
-          ctx.beginPath();
-          if (key === 'C') ctx.rect(cx, cy - r, r, r * 2);
-          else ctx.rect(cx - r, cy - r, r, r * 2);
-          ctx.fill();
-        } else {
-          const isWaning = 'BCD'.includes(key);
-          ctx.beginPath();
-          if (isWaning) ctx.rect(cx - r, cy - r, r, r * 2);
-          else ctx.rect(cx, cy - r, r, r * 2);
-          ctx.fill();
-          ctx.beginPath();
-          ctx.ellipse(cx, cy, r * (p.litFrac === 0.75 ? 0.5 : 0.5), r, 0, 0, Math.PI * 2);
-          ctx.fillStyle = p.litFrac === 0.75 ? '#facc15' : '#1e293b';
-          ctx.fill();
+      const PHASES = [
+        [0,  'New Moon',        'The lit half faces away from us, so the Moon is invisible.'],
+        [4,  'Waxing Crescent', 'A thin sliver appears in the west after sunset.'],
+        [7,  'First Quarter',   'Exactly half the disc is lit — a quarter of the way round the orbit.'],
+        [11, 'Waxing Gibbous',  'More than half lit, and growing night by night.'],
+        [15, 'Full Moon',       'Earth sits between Sun and Moon, so we see the whole lit face.'],
+        [19, 'Waning Gibbous',  'Past full, the lit part begins to shrink.'],
+        [22, 'Last Quarter',    'Half lit again, but the other half from first quarter.'],
+        [26, 'Waning Crescent', 'A thin sliver before dawn, then back to new Moon.']
+      ];
+      function phaseName(day) {
+        let best = PHASES[0];
+        for (const ph of PHASES) {
+          const d = Math.min(Math.abs(day - ph[0]), 29 - Math.abs(day - ph[0]));
+          const bd = Math.min(Math.abs(day - best[0]), 29 - Math.abs(day - best[0]));
+          if (d < bd) best = ph;
         }
-        ctx.restore();
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
-
-        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(`Position ${key}: ${p.name}`, W / 2, 30);
-        ctx.font = '12px system-ui'; ctx.fillStyle = cssVar('--text-muted');
-        ctx.fillText(`${(p.litFrac * 100).toFixed(0)}% illuminated portion visible`, W / 2, 240);
-
-        obs.innerHTML = `<strong>Position ${key} — ${p.name}:</strong> ${(p.litFrac * 100).toFixed(0)}% of the Moon's illuminated half is visible from Earth at this point in its orbit.`;
+        return best;
       }
 
-      sel.addEventListener('change', draw);
-      draw();
+      let auto = false;
+      playBtn.addEventListener('click', () => {
+        auto = !auto;
+        playBtn.textContent = auto ? '⏸ Pause the month' : '▶ Run the month';
+      });
+
+      simLoop(canvas, (t, dt) => {
+        if (auto) {
+          let d = (+dayIn.value + dt * 3) % 30;
+          dayIn.value = d.toFixed(0);
+          const out = document.getElementById('mp-day-out');
+          if (out) out.textContent = dayIn.value;
+        }
+        const day = +dayIn.value;
+        const ang = (day / 29.5) * Math.PI * 2;      // 0 = new moon, between Sun and Earth
+
+        const W = logW(canvas), H = logH(canvas);
+        ctx.clearRect(0, 0, W, H);
+
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Looking down on the orbit — sunlight comes from the left', 16, 22);
+
+        const ex = 250, ey = 190, orbit = 104;
+
+        // sunlight streaming in from the left
+        ctx.strokeStyle = 'rgba(250,204,21,0.5)'; ctx.lineWidth = 1.5;
+        for (let y = 70; y <= 310; y += 24) {
+          simArrow(ctx, 8, y, 74, y, 'rgba(250,204,21,0.45)', 1.5);
+        }
+        ctx.fillStyle = '#facc15'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText('sunlight', 10, 60);
+
+        // orbit and Earth
+        ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.lineWidth = 1; ctx.setLineDash([4, 5]);
+        ctx.beginPath(); ctx.arc(ex, ey, orbit, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
+        ctx.beginPath(); ctx.arc(ex, ey, 20, 0, Math.PI * 2);
+        ctx.fillStyle = '#2563eb'; ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.5)'; ctx.lineWidth = 1; ctx.stroke();
+        // night side of Earth
+        ctx.save(); ctx.beginPath(); ctx.arc(ex, ey, 20, -Math.PI / 2, Math.PI / 2); ctx.closePath();
+        ctx.fillStyle = 'rgba(2,6,23,0.55)'; ctx.fill(); ctx.restore();
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('Earth', ex, ey + 34);
+
+        // the Moon, always half lit on the side facing the Sun
+        const mx = ex + orbit * Math.sin(ang), my = ey - orbit * Math.cos(ang);
+        ctx.beginPath(); ctx.arc(mx, my, 13, 0, Math.PI * 2);
+        ctx.fillStyle = '#e2e8f0'; ctx.fill();
+        ctx.save(); ctx.beginPath(); ctx.arc(mx, my, 13, -Math.PI / 2, Math.PI / 2); ctx.closePath();
+        ctx.fillStyle = 'rgba(15,23,42,0.88)'; ctx.fill(); ctx.restore();
+        ctx.strokeStyle = 'rgba(226,232,240,0.7)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(mx, my, 13, 0, Math.PI * 2); ctx.stroke();
+
+        // sight line from Earth to Moon
+        ctx.strokeStyle = 'rgba(56,189,248,0.5)'; ctx.setLineDash([3, 4]); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(ex, ey); ctx.lineTo(mx, my); ctx.stroke(); ctx.setLineDash([]);
+
+        // the view from Earth, drawn as a proper terminator ellipse
+        const vx = 486, vy = 150, vr = 46;
+        ctx.beginPath(); ctx.arc(vx, vy, vr + 12, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(2,6,23,0.9)'; ctx.fill();
+        ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.lineWidth = 1; ctx.stroke();
+
+        const frac = (1 - Math.cos(ang)) / 2;        // 0 at new moon, 1 at full
+        ctx.save();
+        ctx.beginPath(); ctx.arc(vx, vy, vr, 0, Math.PI * 2); ctx.clip();
+        ctx.fillStyle = '#111827'; ctx.fillRect(vx - vr, vy - vr, vr * 2, vr * 2);
+        // lit region: half disc plus an ellipse whose width follows the phase
+        const waxing = Math.sin(ang) > 0;
+        ctx.fillStyle = '#f1f5f9';
+        ctx.beginPath();
+        ctx.arc(vx, vy, vr, waxing ? -Math.PI / 2 : Math.PI / 2, waxing ? Math.PI / 2 : (3 * Math.PI) / 2);
+        ctx.ellipse(vx, vy, Math.abs(vr * Math.cos(ang)), vr, 0,
+                    waxing ? Math.PI / 2 : (3 * Math.PI) / 2, waxing ? -Math.PI / 2 : Math.PI / 2,
+                    Math.cos(ang) > 0 ? waxing : !waxing);
+        ctx.fill();
+        ctx.restore();
+        ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(vx, vy, vr, 0, Math.PI * 2); ctx.stroke();
+
+        const ph = phaseName(Math.round(day));
+        ctx.textAlign = 'center'; ctx.font = 'bold 13px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText(ph[1], vx, vy + vr + 34);
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#94a3b8');
+        ctx.fillText('what you see from Earth', vx, vy + vr + 52);
+        ctx.fillText('day ' + Math.round(day) + ' of about 29.5', vx, vy - vr - 22);
+
+        obs.innerHTML =
+          '<strong>Day ' + Math.round(day) + ' — ' + ph[1] + '.</strong> ' + ph[2] +
+          '<br>Lit fraction facing us: <strong>' + Math.round(frac * 100) + '%</strong>' +
+          '<br><span style="color:var(--text-muted);">The Sun always lights exactly half the Moon. What changes is how much of that lit half we can see from where Earth happens to be.</span>';
+      });
     }
 
     function initEclipseConditionLab() {
