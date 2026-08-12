@@ -4345,22 +4345,24 @@ function getInlineLabHtml(type) {
     const forceEffectLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="force-effect-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick an action and see which effect(s) the force produces.</span></div>
+          <canvas id="force-effect-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Apply the force and watch which of the five things it does to the ball.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose an Action</h3>
+            <h3>What Do You Do?</h3>
             <select id="sel-force-effect" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="push-rest" selected>Pushing a stationary box</option>
-              <option value="hit-ball">Hitting a moving ball with a bat</option>
-              <option value="press-balloon">Pressing an inflated balloon</option>
-              <option value="brake-bicycle">Applying brakes on a moving bicycle</option>
+              <option value="start" selected>Push a resting ball</option>
+              <option value="stop">Stop a moving ball</option>
+              <option value="faster">Push it along while it moves</option>
+              <option value="turn">Push it sideways</option>
+              <option value="squash">Press it against a wall</option>
             </select>
+            <button id="fe-go" class="sim-toggle-btn" style="width:100%;margin-top:0.5rem;">↻ Do it again</button>
           </div>
           <div class="sim-calculator">
-            <h3>Effect(s) Produced</h3>
-            <div id="force-effect-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an action above.</div>
+            <h3>The Effect</h3>
+            <div id="force-effect-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -4506,22 +4508,17 @@ function getInlineLabHtml(type) {
     const cyclonePressureLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="cyclone-pressure-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a distance from the eye and see the pressure and wind conditions.</span></div>
+          <canvas id="cyclone-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Deepen the low at the centre and watch the wind rush in harder.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Distance from Cyclone Center</h3>
-            <select id="sel-cyclone-pressure" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="eye" selected>The Eye (center)</option>
-              <option value="near">Near the eye</option>
-              <option value="mid">Mid-distance</option>
-              <option value="far">Far (outer edge)</option>
-            </select>
+            <h3>The Weather System</h3>
+            ${simSlider('cy-drop', 'Pressure at the centre', 920, 1010, 5, 1000, ' hPa', '#38bdf8')}
           </div>
           <div class="sim-calculator">
-            <h3>Pressure &amp; Wind Conditions</h3>
-            <div id="cyclone-pressure-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a distance above.</div>
+            <h3>Wind and Pressure</h3>
+            <div id="cyclone-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -27016,40 +27013,75 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-force-effect');
+      const goBtn = document.getElementById('fe-go');
       const obs = document.getElementById('force-effect-obs');
-      const EFFECTS = {
-        'push-rest': { flags: ['start'], desc: 'The box was at rest and starts moving — the force makes it move from rest.' },
-        'hit-ball': { flags: ['direction'], desc: 'The ball was already moving; hitting it with a bat changes its direction of motion.' },
-        'press-balloon': { flags: ['shape'], desc: 'The balloon’s shape changes as it is pressed inward — a change in shape.' },
-        'brake-bicycle': { flags: ['speed'], desc: 'The moving bicycle slows down — the brake force changes (decreases) its speed.' }
-      };
-      const ALL = [['start', 'Starts Motion'], ['speed', 'Changes Speed'], ['direction', 'Changes Direction'], ['shape', 'Changes Shape']];
 
-      function draw() {
+      const GROUND = 250;
+      const CASES = {
+        start:  { title: 'sets a resting object moving',  detail: 'The ball was at rest. The push gives it speed it did not have before.' },
+        stop:   { title: 'brings a moving object to rest', detail: 'The ball was already rolling. The force acts against the motion and takes the speed away.' },
+        faster: { title: 'changes the speed',              detail: 'The ball was already moving and the force is along the motion, so it speeds up further.' },
+        turn:   { title: 'changes the direction',          detail: 'The push comes in from the side, so the ball keeps moving but along a new path.' },
+        squash: { title: 'changes the shape',              detail: 'The ball cannot move away, so the force flattens it against the wall instead.' }
+      };
+      let phase = 0;
+      function restart() { phase = 0; }
+      goBtn.addEventListener('click', restart);
+      sel.addEventListener('change', restart);
+
+      simLoop(canvas, (t, dt, api) => {
+        const mode = sel.value;
+        if (api.running) { phase += dt * 0.55; if (phase > 1.6) phase = 0; }
+        const k = Math.min(phase, 1);
+
+        let x = 150, y = GROUND - 22, squashX = 1, pushing = false, dirArrow = 0;
+        if (mode === 'start')  { pushing = k < 0.35; x = 150 + Math.max(0, k - 0.25) * 420; }
+        else if (mode === 'stop')   { pushing = k > 0.4 && k < 0.75; x = 150 + Math.min(k, 0.55) * 420; }
+        else if (mode === 'faster') { pushing = k > 0.3 && k < 0.6; x = 150 + (k < 0.3 ? k * 180 : 54 + (k - 0.3) * 520); }
+        else if (mode === 'turn')   { pushing = k > 0.35 && k < 0.6; x = 150 + k * 300; y = GROUND - 22 - Math.max(0, k - 0.45) * 210; dirArrow = 1; }
+        else                        { pushing = k > 0.3; x = 430; squashX = 1 + Math.min(Math.max(k - 0.3, 0) * 1.6, 0.55); }
+        x = Math.min(x, 500);
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const e = EFFECTS[sel.value];
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('A force can do five different things', 16, 22);
 
-        let y = 70;
-        ALL.forEach(([key, label]) => {
-          const active = e.flags.includes(key);
-          ctx.fillStyle = active ? 'rgba(34,197,94,0.2)' : 'rgba(148,163,184,0.08)';
-          ctx.fillRect(120, y - 22, 360, 36);
-          ctx.strokeStyle = active ? '#22c55e' : cssVar('--border-color'); ctx.lineWidth = active ? 2.5 : 1;
-          ctx.strokeRect(120, y - 22, 360, 36);
-          ctx.font = active ? 'bold 14px system-ui' : '13px system-ui'; ctx.fillStyle = active ? '#22c55e' : cssVar('--text-muted'); ctx.textAlign = 'left';
-          ctx.fillText((active ? '✓ ' : '') + label, 135, y + 3);
-          y += 50;
-        });
+        ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(40, GROUND); ctx.lineTo(W - 40, GROUND); ctx.stroke();
+        if (mode === 'squash') {
+          ctx.fillStyle = 'rgba(148,163,184,0.45)';
+          ctx.fillRect(486, GROUND - 120, 16, 120);
+        }
 
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 35);
+        // the ball, squashed only in the last case
+        const r = 22;
+        ctx.beginPath();
+        ctx.ellipse(x, y, r * squashX * (mode === 'squash' ? 1 / squashX : 1), r / (mode === 'squash' ? squashX : 1) * (mode === 'squash' ? 1 : 1), 0, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(34,197,94,0.5)'; ctx.fill();
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2.5; ctx.stroke();
 
-        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> ${e.desc}`;
-      }
+        if (pushing) {
+          if (mode === 'stop') simArrow(ctx, x + 70, y, x + r + 8, y, '#ef4444', 3);
+          else if (mode === 'turn') simArrow(ctx, x, y + 66, x, y + r + 8, '#ef4444', 3);
+          else simArrow(ctx, x - 70, y, x - r - 8, y, '#ef4444', 3);
+          ctx.fillStyle = '#ef4444'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText('force', mode === 'turn' ? x : (mode === 'stop' ? x + 78 : x - 78), mode === 'turn' ? y + 82 : y - 14);
+        }
+        if (dirArrow && k > 0.5) {
+          simArrow(ctx, x + 8, y - 8, x + 52, y - 40, 'rgba(56,189,248,0.9)', 2);
+          ctx.fillStyle = '#38bdf8'; ctx.font = '11px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText('new direction', x + 56, y - 44);
+        }
 
-      sel.addEventListener('change', draw);
-      draw();
+        const C = CASES[mode];
+        ctx.textAlign = 'center'; ctx.font = 'bold 14px system-ui'; ctx.fillStyle = '#22c55e';
+        ctx.fillText('a force ' + C.title, W / 2, H - 22);
+
+        obs.innerHTML = '<strong>A force ' + C.title + '.</strong> ' + C.detail +
+          '<br><span style="color:var(--text-muted);">Work through all five options — every one of them is a force doing its job, even the one where nothing moves at all.</span>';
+      });
     }
 
     function initFrictionSurfaceLab() {
@@ -27441,44 +27473,76 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
     }
 
     function initCyclonePressureLab() {
-      const canvas = document.getElementById('cyclone-pressure-canvas');
+      const canvas = document.getElementById('cyclone-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-cyclone-pressure');
-      const obs = document.getElementById('cyclone-pressure-obs');
-      const RINGS = [
-        { key: 'eye', r: 20, mb: 994, wind: 'Calm' },
-        { key: 'near', r: 55, mb: 996, wind: 'Very strong winds' },
-        { key: 'mid', r: 90, mb: 998, wind: 'Strong winds' },
-        { key: 'far', r: 125, mb: 1008, wind: 'Light winds' }
-      ];
+      const dropIn = document.getElementById('cy-drop');
+      const obs = document.getElementById('cyclone-obs');
 
-      function draw() {
+      const CX = 250, CY = 178, OUTER = 1012;
+
+      simLoop(canvas, (t) => {
+        const centre = +dropIn.value;
+        const diff = OUTER - centre;                    // hPa across the system
+        const wind = Math.round(diff * 2.6);            // rough km/h
+        const spin = 0.25 + diff / 90;
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const cx = W / 2, cy = 150;
-        const selected = sel.value;
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Air rushes from high pressure towards low pressure', 16, 22);
 
-        [...RINGS].reverse().forEach(ring => {
-          ctx.beginPath(); ctx.arc(cx, cy, ring.r, 0, Math.PI * 2);
-          ctx.fillStyle = ring.key === selected ? 'rgba(239,68,68,0.35)' : 'rgba(148,163,184,0.12)';
-          ctx.fill();
-          ctx.strokeStyle = ring.key === selected ? '#ef4444' : cssVar('--border-color'); ctx.lineWidth = ring.key === selected ? 2.5 : 1;
+        // isobars
+        for (let i = 1; i <= 5; i++) {
+          const r = i * 26;
+          ctx.strokeStyle = 'rgba(148,163,184,' + (0.5 - i * 0.05) + ')';
+          ctx.lineWidth = 1.2;
+          ctx.beginPath(); ctx.arc(CX, CY, r, 0, Math.PI * 2); ctx.stroke();
+          ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '9px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(Math.round(centre + (diff * i) / 5) + '', CX, CY - r + 10);
+        }
+
+        // spiralling air, faster and tighter as the low deepens
+        const arms = 7;
+        for (let a = 0; a < arms; a++) {
+          ctx.strokeStyle = 'rgba(56,189,248,' + (0.35 + diff / 240) + ')';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          for (let k = 0; k <= 40; k++) {
+            const frac = k / 40;
+            const rr = 150 * (1 - frac) + 12;
+            const th = (a / arms) * Math.PI * 2 + frac * (1.4 + diff / 90) + t * spin;
+            const px = CX + rr * Math.cos(th), py = CY + rr * Math.sin(th) * 0.72;
+            if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+          }
           ctx.stroke();
-        });
+        }
 
-        const sr = RINGS.find(r => r.key === selected);
-        ctx.font = 'bold 13px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(`${sr.mb} mb`, cx, cy + 4);
+        // the eye
+        ctx.beginPath(); ctx.arc(CX, CY, 12, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(2,6,23,0.85)'; ctx.fill();
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.5; ctx.stroke();
+        ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('eye', CX, CY + 4);
 
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal');
-        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 30);
+        // wind speed gauge
+        const gx = 470, gy = 120, gw = 90;
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '11px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText('wind speed', gx, gy - 8);
+        ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.lineWidth = 1;
+        ctx.strokeRect(gx, gy, gw, 14);
+        ctx.fillStyle = wind > 150 ? '#ef4444' : (wind > 88 ? '#f59e0b' : '#22c55e');
+        ctx.fillRect(gx, gy, Math.min(gw, (wind / 260) * gw), 14);
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = 'bold 12px system-ui';
+        ctx.fillText(wind + ' km/h', gx, gy + 32);
 
-        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}: ${sr.mb} mb.</strong> Wind conditions: ${sr.wind}. Pressure rises steadily from 994 mb at the eye to 1008 mb at the outer edge — this pressure difference drives the cyclone's winds.`;
-      }
-
-      sel.addEventListener('change', draw);
-      draw();
+        const band = wind > 150 ? 'a severe cyclone' : (wind > 88 ? 'a cyclone' : (wind > 40 ? 'a strong depression' : 'a mild low'));
+        obs.innerHTML =
+          '<strong>Centre ' + centre + ' hPa against ' + OUTER + ' hPa outside — a difference of ' + diff + ' hPa.</strong>' +
+          '<br>Winds of roughly <strong>' + wind + ' km/h</strong>, which counts as <strong>' + band + '</strong>.' +
+          '<br><span style="color:var(--text-muted);">The bigger the pressure difference, the harder the air is pushed inwards and the faster it spirals. That is why weather forecasters watch the central pressure so closely.</span>';
+      });
     }
 
     function initParticleBreakdownLab() {
