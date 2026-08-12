@@ -312,8 +312,8 @@ function getInlineLabHtml(type) {
     const corrosionLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="corrosion-canvas" width="600" height="300"></canvas>
-          <div class="canvas-instruction-bar" id="oxidation-hint"><span>💡 Watch iron nails corrode over time in different environments.</span></div>
+          <canvas id="corrosion-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar" id="oxidation-hint"><span>💡 Your chosen protection is tested side by side against an unprotected control.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
@@ -323,29 +323,29 @@ function getInlineLabHtml(type) {
               <option value="rancidity">Rancidity (Fats &amp; Oils)</option>
             </select>
             <div id="corrosion-controls">
-              <h3>Environment Conditions</h3>
-              <select id="sel-corrosion-env" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:1rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-                <option value="air-water">Air + Water (Rusting)</option>
-                <option value="oil-coated">Oil-Coated Nail (Prevention)</option>
-                <option value="galvanized">Galvanized Nail (Zinc Coating)</option>
-                <option value="painted">Painted Nail (Prevention)</option>
+              <h3>Protect the Nail With</h3>
+              <select id="sel-corrosion-env" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="none" selected>Nothing at all</option>
+                <option value="oil">A film of oil or grease</option>
+                <option value="paint">A coat of paint</option>
+                <option value="zinc">Galvanising (zinc coating)</option>
               </select>
-              <button id="btn-run-corrosion" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Start Time-Lapse ⏩</button>
+              <button id="btn-run-corrosion" class="sim-toggle-btn" style="width:100%;">⏸ Pause the time-lapse</button>
             </div>
             <div id="rancidity-controls" style="display:none;">
-              <h3>Storage Condition</h3>
-              <select id="sel-rancidity-env" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:1rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-                <option value="open">Open Air (No Protection)</option>
-                <option value="airtight">Airtight Container</option>
-                <option value="antioxidant">Antioxidant Added</option>
-                <option value="nitrogen">Nitrogen-Flushed Packaging</option>
+              <h3>How the Oil Is Stored</h3>
+              <select id="sel-rancidity-env" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+                <option value="open" selected>Open bowl on the shelf</option>
+                <option value="airtight">Sealed airtight jar</option>
+                <option value="antioxidant">Antioxidant added</option>
+                <option value="nitrogen">Nitrogen-flushed packet</option>
               </select>
-              <button id="btn-run-rancidity" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Start Time-Lapse ⏩</button>
+              <button id="btn-run-rancidity" class="sim-toggle-btn" style="width:100%;">⏸ Pause the time-lapse</button>
             </div>
           </div>
           <div class="sim-calculator">
             <h3 id="oxidation-obs-title">Observations</h3>
-            <div id="corrosion-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Select an environment and start the time-lapse.</div>
+            <div id="corrosion-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -16157,7 +16157,7 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('corrosion-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-corrosion-env');
+      const envSel = document.getElementById('sel-corrosion-env');
       const btn = document.getElementById('btn-run-corrosion');
       const obs = document.getElementById('corrosion-obs');
       const obsTitle = document.getElementById('oxidation-obs-title');
@@ -16165,135 +16165,246 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const modeSel = document.getElementById('sel-oxidation-mode');
       const corrosionControls = document.getElementById('corrosion-controls');
       const rancidityControls = document.getElementById('rancidity-controls');
-      const rancidityEnvSel = document.getElementById('sel-rancidity-env');
-      const btnRancidity = document.getElementById('btn-run-rancidity');
-      let timerId = null, frame = 0;
-      let rancidTimerId = null, rancidFrame = 0;
+      const rancidSel = document.getElementById('sel-rancidity-env');
+      const btnRancid = document.getElementById('btn-run-rancidity');
 
-      function drawCorrosion() {
-        const W = logW(canvas), H = logH(canvas);
-        const tubes = [{x: 80, label: 'Air+Water'}, {x: 210, label: 'Oil Coated'}, {x: 340, label: 'Galvanized'}, {x: 470, label: 'Painted'}];
-        tubes.forEach((t, idx) => {
-          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.moveTo(t.x - 15, 60); ctx.lineTo(t.x - 15, 220);
-          ctx.arc(t.x, 220, 15, Math.PI, 0, true); ctx.lineTo(t.x + 15, 60); ctx.stroke();
-          if (idx === 0) { ctx.fillStyle = 'rgba(59, 130, 246, 0.2)'; ctx.fillRect(t.x - 13, 120, 26, 102); }
-          const rustProgress = (idx === 0) ? Math.min(1, frame * 0.015) : 0;
-          const nailColor = idx === 1 ? '#fbbf24' : idx === 2 ? '#94a3b8' : idx === 3 ? '#3b82f6' : `rgb(${100 + rustProgress*80}, ${116 - rustProgress*80}, ${139 - rustProgress*100})`;
-          ctx.fillStyle = nailColor;
-          ctx.fillRect(t.x - 3, 100, 6, 80);
-          ctx.fillRect(t.x - 8, 100, 16, 4);
-          if (idx === 0 && frame > 20) {
-            ctx.fillStyle = `rgba(180, 83, 9, ${rustProgress})`;
-            for (let j = 0; j < Math.min(10, frame/5); j++) {
-              ctx.beginPath();
-              ctx.arc(t.x - 2 + (j*3%8), 110 + j*6, 2, 0, 2*Math.PI);
-              ctx.fill();
-            }
-          }
-          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
-          ctx.fillText(t.label, t.x - 20, 250);
-        });
-        const day = Math.min(30, Math.floor(frame / 4));
-        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 14px system-ui';
-        ctx.fillText('Day ' + day, 270, 30);
-        obsTitle.textContent = 'Corrosion';
+      const PROTECT = {
+        none:  { name: 'no protection',   rate: 1,    coat: null,      note: 'Water and oxygen reach the bare iron, so it rusts.' },
+        oil:   { name: 'oil film',        rate: 0,    coat: '#f59e0b', note: 'The oil film keeps air and moisture off the iron surface, so no rust forms.' },
+        paint: { name: 'paint',           rate: 0,    coat: '#3b82f6', note: 'Paint is a physical barrier — no contact with air or water means no rusting.' },
+        zinc:  { name: 'zinc (galvanised)', rate: 0,  coat: '#cbd5e1', note: 'Zinc is more reactive than iron, so it corrodes first and protects the iron underneath. This is sacrificial protection.' }
+      };
+      const RANCID = {
+        open:        { name: 'open bowl',            rate: 1.0,  note: 'Air reaches the surface freely, so oxygen attacks the fat quickly.' },
+        airtight:    { name: 'airtight jar',         rate: 0.35, note: 'Only the oxygen sealed inside can react. Once that is used up the reaction slows right down.' },
+        antioxidant: { name: 'antioxidant added',    rate: 0.14, note: 'Antioxidant molecules are oxidised in place of the fat, mopping up oxygen before it reaches the oil.' },
+        nitrogen:    { name: 'nitrogen-flushed bag', rate: 0.06, note: 'The oxygen has been replaced by unreactive nitrogen, so there is almost nothing left to oxidise the fat.' }
+      };
+
+      let mode = 'corrosion', day = 0, running = true;
+      let bits = [];                    // drifting O2 / H2O / N2 markers
+      function seed(n) {
+        bits = [];
+        for (let i = 0; i < n; i++) bits.push({ x: Math.random(), y: Math.random(), s: 0.2 + Math.random() * 0.8 });
+      }
+      seed(26);
+      function restart() { day = 0; seed(26); }
+
+      function molecule(x, y, label, colour) {
+        ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI * 2);
+        ctx.fillStyle = colour; ctx.fill();
+        ctx.fillStyle = '#0b1220'; ctx.font = 'bold 8px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(label, x, y + 3);
       }
 
-      btn.addEventListener('click', () => {
-        if (timerId) { clearInterval(timerId); timerId = null; btn.textContent = 'Start Time-Lapse ⏩'; return; }
-        frame = 0; btn.textContent = 'Stop ⏹';
-        timerId = setInterval(() => {
-          frame++;
-          drawCorrosion();
-          const day = Math.min(30, Math.floor(frame / 4));
-          obs.innerHTML = `<strong>Day ${day}:</strong><br>
-            • <strong>Air+Water tube:</strong> Iron nail shows ${day > 5 ? 'visible rust (Fe₂O₃·xH₂O)' : 'no change yet'}.<br>
-            • <strong>Oil-coated:</strong> No rust — oil prevents contact with air/moisture.<br>
-            • <strong>Galvanized:</strong> No rust — zinc coating sacrificially protects iron.<br>
-            • <strong>Painted:</strong> No rust — paint acts as barrier.<br>
-            <code>4Fe + 3O₂ + xH₂O → 2Fe₂O₃·xH₂O (Rust)</code>`;
-          if (frame > 120) { clearInterval(timerId); timerId = null; btn.textContent = 'Restart ⏩'; }
-        }, 50);
-      });
-
-      function drawRancidity() {
-        const W = logW(canvas), H = logH(canvas);
-        ctx.clearRect(0, 0, W, H);
-        const envRates = {open: 1, airtight: 0.4, antioxidant: 0.15, nitrogen: 0.08};
-        const rate = envRates[rancidityEnvSel.value];
-        const rancidLevel = Math.min(1, rancidFrame * 0.01 * rate);
-
-        const bowlX = 300, bowlY = 190;
-        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.ellipse(bowlX, bowlY, 100, 40, 0, 0, Math.PI); ctx.stroke();
-
-        const fresh = [250, 204, 21], rancid = [92, 64, 20];
-        const rC = Math.round(fresh[0] + (rancid[0]-fresh[0])*rancidLevel);
-        const gC = Math.round(fresh[1] + (rancid[1]-fresh[1])*rancidLevel);
-        const bC = Math.round(fresh[2] + (rancid[2]-fresh[2])*rancidLevel);
-        ctx.fillStyle = `rgb(${rC},${gC},${bC})`;
-        ctx.beginPath(); ctx.ellipse(bowlX, bowlY - 15, 95, 30, 0, 0, 2*Math.PI); ctx.fill();
-        ctx.strokeStyle = '#78350f'; ctx.lineWidth = 2; ctx.stroke();
-        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
-        ctx.fillText('Oil / fatty food', bowlX - 35, bowlY + 60);
-
-        if (rancidLevel > 0.5) {
-          ctx.strokeStyle = 'rgba(101,163,13,0.6)'; ctx.lineWidth = 1.5;
-          for (let i = 0; i < 3; i++) {
-            const x = bowlX - 40 + i*40;
+      function drawNail(x, topY, rust, coat, zincLeft) {
+        // shaft and head
+        ctx.fillStyle = '#8d99ae';
+        ctx.fillRect(x - 4, topY, 8, 92);
+        ctx.fillRect(x - 11, topY, 22, 5);
+        if (coat) {
+          ctx.strokeStyle = coat; ctx.lineWidth = 3;
+          ctx.globalAlpha = coat === '#cbd5e1' ? Math.max(0.25, zincLeft) : 1;
+          ctx.beginPath();
+          ctx.moveTo(x - 6, topY); ctx.lineTo(x - 6, topY + 92);
+          ctx.moveTo(x + 6, topY); ctx.lineTo(x + 6, topY + 92);
+          ctx.stroke(); ctx.globalAlpha = 1;
+        }
+        if (rust > 0.02) {
+          ctx.fillStyle = 'rgba(180,83,9,' + Math.min(1, rust) + ')';
+          ctx.fillRect(x - 5, topY, 10, 92);
+          for (let j = 0; j < Math.floor(rust * 16); j++) {
             ctx.beginPath();
-            for (let yy = 0; yy < 60; yy += 5) {
-              const px = x + Math.sin(yy/8 + Date.now()/300 + i) * 8;
-              const py = bowlY - 60 - yy;
+            ctx.arc(x - 7 + ((j * 5) % 14), topY + 6 + ((j * 11) % 84), 2.2, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(146,64,14,0.9)'; ctx.fill();
+          }
+        }
+      }
+
+      function tube(x, label, rust, coat, zincLeft, W) {
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(x - 34, 78); ctx.lineTo(x - 34, 214);
+        ctx.arc(x, 214, 34, Math.PI, 0, true); ctx.lineTo(x + 34, 78); ctx.stroke();
+        ctx.fillStyle = 'rgba(59,130,246,0.20)';
+        ctx.fillRect(x - 32, 150, 64, 64);
+        ctx.strokeStyle = 'rgba(59,130,246,0.7)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(x - 32, 150); ctx.lineTo(x + 32, 150); ctx.stroke();
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '10px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('water', x, 205);
+        ctx.textAlign = 'left';
+        ctx.fillText('air', x - 32, 92);
+        ctx.textAlign = 'center';
+        drawNail(x, 118, rust, coat, zincLeft);
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = 'bold 11px system-ui';
+        ctx.fillText(label, x, 254);
+      }
+
+      function drawCorrosion(t, W, H) {
+        const P = PROTECT[envSel.value];
+        const controlRust = Math.min(1, day / 18);
+        const testRust = Math.min(1, (day / 18) * P.rate);
+        const zincLeft = envSel.value === 'zinc' ? Math.max(0, 1 - day / 40) : 1;
+
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Rusting needs BOTH air and water — block either one and it stops', 16, 24);
+
+        tube(160, 'control: bare nail', controlRust, null, 1, W);
+        tube(360, 'protected: ' + P.name, testRust, P.coat, zincLeft, W);
+
+        // oxygen and water molecules drifting down onto each nail
+        // fixed lanes and a small count, so the molecules read as individual
+        // particles instead of piling into an unreadable clump
+        bits.slice(0, 12).forEach((b, i) => {
+          const lane = i < 6 ? 160 : 360;
+          const slot = i % 6;
+          const bx = lane - 24 + slot * 10;
+          const by = 88 + (((b.y + t * 0.05 * b.s) % 1) * 54);
+          molecule(bx, by, slot % 3 === 0 ? 'H₂O' : 'O₂', slot % 3 === 0 ? '#7dd3fc' : '#fca5a5');
+          // a coating stops them at the surface of the right-hand nail
+          if (lane === 360 && P.coat && by > 116) {
+            ctx.strokeStyle = P.coat; ctx.lineWidth = 1.5;
+            ctx.beginPath(); ctx.moveTo(bx - 6, by + 8); ctx.lineTo(bx + 6, by + 8); ctx.stroke();
+          }
+        });
+
+        ctx.textAlign = 'center'; ctx.font = 'bold 13px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#22c55e');
+        ctx.fillText('Day ' + Math.floor(day), W / 2, 46);
+        ctx.font = '11px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#94a3b8');
+        ctx.fillText('4Fe + 3O₂ + xH₂O → 2Fe₂O₃·xH₂O  (rust)', W / 2, 288);
+
+        obsTitle.textContent = 'Corrosion';
+        obs.innerHTML =
+          '<strong>Day ' + Math.floor(day) + '</strong><br>' +
+          '• <strong>Control (bare):</strong> ' + (controlRust > 0.25 ? 'clearly rusted — ' + Math.round(controlRust * 100) + '% of the surface' : 'just starting to darken') + '.<br>' +
+          '• <strong>Protected (' + P.name + '):</strong> ' + (testRust > 0.05 ? Math.round(testRust * 100) + '% rusted' : 'no rust at all') + '.<br>' +
+          P.note +
+          (envSel.value === 'zinc' ? '<br><span style="color:var(--text-muted);">Watch the zinc layer fade — it is being used up on purpose so the iron is not.</span>' : '');
+      }
+
+      function drawRancidity(t, W, H) {
+        const R = RANCID[rancidSel.value];
+        const level = Math.min(1, (day / 30) * R.rate);
+        const sealed = rancidSel.value !== 'open';
+        const bx = 250, by = 200;
+
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Rancidity is fat being oxidised by the air', 16, 24);
+
+        // container drawn to match the storage condition
+        if (sealed) {
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          ctx.moveTo(bx - 92, 108); ctx.lineTo(bx - 92, by + 26);
+          ctx.lineTo(bx + 92, by + 26); ctx.lineTo(bx + 92, 108); ctx.closePath(); ctx.stroke();
+          ctx.fillStyle = 'rgba(148,163,184,0.55)';
+          ctx.fillRect(bx - 100, 96, 200, 14);
+          ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(rancidSel.value === 'nitrogen' ? 'SEALED — FLUSHED WITH N₂' : 'AIRTIGHT LID', bx, 106);
+        } else {
+          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.moveTo(bx - 92, 150); ctx.lineTo(bx - 78, by + 26);
+          ctx.lineTo(bx + 78, by + 26); ctx.lineTo(bx + 92, 150); ctx.stroke();
+        }
+
+        // the oil, darkening as it goes rancid
+        const fresh = [250, 204, 21], bad = [92, 64, 20];
+        const col = fresh.map((c, i) => Math.round(c + (bad[i] - c) * level));
+        ctx.fillStyle = 'rgb(' + col.join(',') + ')';
+        ctx.beginPath(); ctx.ellipse(bx, by, 76, 22, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = '#78350f'; ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '10px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('oil / fatty food', bx, by + 42);
+
+        // what is in the air above the oil, drawn per condition
+        bits.forEach((b, i) => {
+          const mx = bx - 80 + b.x * 160;
+          const my = 118 + (((b.y + t * 0.05 * b.s) % 1) * (sealed ? 60 : 74));
+          if (rancidSel.value === 'nitrogen') { if (i % 5 === 0) molecule(mx, my, 'O₂', '#fca5a5'); else molecule(mx, my, 'N₂', '#a5b4fc'); }
+          else if (rancidSel.value === 'airtight') { if (i % 3 === 0) molecule(mx, my, 'O₂', '#fca5a5'); }
+          else molecule(mx, my, 'O₂', '#fca5a5');
+        });
+        if (rancidSel.value === 'antioxidant') {
+          for (let i = 0; i < 7; i++) {
+            const ax = bx - 60 + i * 20, ay = by - 6 + Math.sin(t * 2 + i) * 3;
+            ctx.beginPath(); ctx.arc(ax, ay, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#34d399'; ctx.fill();
+          }
+          ctx.fillStyle = '#34d399'; ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText('antioxidant particles soak up the oxygen first', bx + 96, by - 6);
+        }
+        if (sealed) {
+          ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2;
+          for (let i = 0; i < 3; i++) {
+            const ax = bx - 60 + i * 60;
+            simArrow(ctx, ax, 62, ax, 90, 'rgba(252,165,165,0.9)', 2);
+            ctx.beginPath(); ctx.moveTo(ax - 8, 94); ctx.lineTo(ax + 8, 94); ctx.stroke();
+          }
+          ctx.fillStyle = '#fca5a5'; ctx.font = '10px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText('outside air cannot get in', bx + 96, 76);
+        }
+
+        // smell waves once it has actually gone off
+        if (level > 0.55) {
+          ctx.strokeStyle = 'rgba(132,204,22,0.7)'; ctx.lineWidth = 1.5;
+          for (let i = 0; i < 3; i++) {
+            ctx.beginPath();
+            for (let yy = 0; yy < 46; yy += 4) {
+              const px = bx - 40 + i * 40 + Math.sin(yy / 8 + t * 3 + i) * 7;
+              const py = by - 34 - yy;
               yy === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
             }
             ctx.stroke();
           }
-          ctx.font = '22px system-ui'; ctx.fillText('🤢', bowlX + 95, bowlY - 60);
         }
 
-        ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 1; ctx.strokeRect(150, 250, 300, 20);
-        ctx.fillStyle = rancidLevel < 0.3 ? '#22c55e' : rancidLevel < 0.7 ? '#f59e0b' : '#ef4444';
-        ctx.fillRect(150, 250, 300 * (1 - rancidLevel), 20);
-        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '10px system-ui'; ctx.fillText('Freshness', 150, 245);
-
-        const day = Math.min(60, Math.floor(rancidFrame/2));
-        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 14px system-ui'; ctx.fillText('Day ' + day, 270, 30);
+        // freshness bar
+        ctx.strokeStyle = cssVar('--border-color', '#334155'); ctx.lineWidth = 1;
+        ctx.strokeRect(150, 296, 300, 18);
+        ctx.fillStyle = level < 0.3 ? '#22c55e' : level < 0.7 ? '#f59e0b' : '#ef4444';
+        ctx.fillRect(150, 296, 300 * (1 - level), 18);
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0'); ctx.font = '10px system-ui'; ctx.textAlign = 'left';
+        ctx.fillText('freshness ' + Math.round((1 - level) * 100) + '%', 150, 292);
+        ctx.textAlign = 'center'; ctx.font = 'bold 13px system-ui';
+        ctx.fillStyle = cssVar('--accent-color', '#22c55e');
+        ctx.fillText('Day ' + Math.floor(day), 520, 46);
 
         obsTitle.textContent = 'Rancidity';
-        const envLabel = rancidityEnvSel.options[rancidityEnvSel.selectedIndex].text;
-        obs.innerHTML = `<strong>Day ${day} — ${envLabel}:</strong><br>
-          • Freshness: <strong>${Math.round((1 - rancidLevel)*100)}%</strong><br>
-          • ${rancidLevel > 0.6 ? 'The fat/oil has become <strong>rancid</strong> — oxidation has changed its smell and taste.' : 'Still fresh — oxidation hasn’t significantly changed the food yet.'}<br>
-          • <strong>Rancidity</strong> happens when fats and oils are oxidised by atmospheric O₂, producing bad-smelling, bad-tasting compounds.<br>
-          • Antioxidants, airtight containers, and nitrogen flushing all slow oxidation down by keeping oxygen away from the food.`;
+        obs.innerHTML =
+          '<strong>Day ' + Math.floor(day) + ' — ' + R.name + '</strong><br>' +
+          '• Freshness: <strong>' + Math.round((1 - level) * 100) + '%</strong><br>' +
+          '• ' + (level > 0.6 ? 'The oil has turned <strong>rancid</strong> — oxidation has spoiled its smell and taste.' : 'Still edible.') + '<br>' +
+          R.note;
       }
 
-      btnRancidity.addEventListener('click', () => {
-        if (rancidTimerId) { clearInterval(rancidTimerId); rancidTimerId = null; btnRancidity.textContent = 'Start Time-Lapse ⏩'; return; }
-        rancidFrame = 0; btnRancidity.textContent = 'Stop ⏹';
-        rancidTimerId = setInterval(() => {
-          rancidFrame++;
-          drawRancidity();
-          if (rancidFrame > 120) { clearInterval(rancidTimerId); rancidTimerId = null; btnRancidity.textContent = 'Restart ⏩'; }
-        }, 50);
+      const loop = simLoop(canvas, (t, dt) => {
+        if (running) day += dt * 2.2;
+        const W = logW(canvas), H = logH(canvas);
+        ctx.clearRect(0, 0, W, H);          // one clear per frame, whichever mode is showing
+        if (mode === 'rancidity') drawRancidity(t, W, H); else drawCorrosion(t, W, H);
       });
+
+      function setBtnText() {
+        const label = running ? '⏸ Pause the time-lapse' : '▶ Run the time-lapse';
+        btn.textContent = label; btnRancid.textContent = label;
+      }
+      [btn, btnRancid].forEach(b => b.addEventListener('click', () => { running = !running; setBtnText(); }));
+      envSel.addEventListener('change', restart);
+      rancidSel.addEventListener('change', restart);
 
       modeSel.addEventListener('change', () => {
-        const isRancidity = modeSel.value === 'rancidity';
-        corrosionControls.style.display = isRancidity ? 'none' : 'block';
-        rancidityControls.style.display = isRancidity ? 'block' : 'none';
-        hint.querySelector('span').textContent = isRancidity
-          ? '💡 Watch fats and oils turn rancid over time under different storage conditions.'
-          : '💡 Watch iron nails corrode over time in different environments.';
-        obsTitle.textContent = isRancidity ? 'Rancidity' : 'Corrosion';
-        if (isRancidity) { rancidFrame = 0; drawRancidity(); }
-        else { drawCorrosion(); }
+        mode = modeSel.value;
+        const isR = mode === 'rancidity';
+        corrosionControls.style.display = isR ? 'none' : 'block';
+        rancidityControls.style.display = isR ? 'block' : 'none';
+        hint.querySelector('span').textContent = isR
+          ? '💡 The storage condition is drawn as it really is — watch which oxygen actually reaches the oil.'
+          : '💡 Your chosen protection is tested side by side against an unprotected control.';
+        restart();
       });
-      rancidityEnvSel.addEventListener('change', () => { if (!rancidTimerId) { rancidFrame = 0; drawRancidity(); } });
-
-      drawCorrosion();
     }
 
     function initPhotosynthesisLab() {
