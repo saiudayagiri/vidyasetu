@@ -4442,21 +4442,23 @@ function getInlineLabHtml(type) {
     const pressureCalcLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="pressure-calc-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick an area and see how pressure changes for the same 100 N force.</span></div>
+          <canvas id="pressure-calc-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Same weight, different contact area — watch how far it sinks into the sand.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Area the Force Acts On</h3>
-            <select id="sel-pressure-calc" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="2" selected>2 m² (broad area)</option>
-              <option value="0.5">0.5 m² (medium area)</option>
-              <option value="0.1">0.1 m² (small area)</option>
+            <h3>The Load</h3>
+            ${simSlider('pc-force', 'Weight pressing down', 100, 900, 50, 400, ' N', '#ef4444')}
+            <label style="display:block;font-size:0.85rem;color:var(--text-muted);margin:0.5rem 0 0.25rem;">Resting on</label>
+            <select id="pc-shape" class="sim-toggle-btn" style="text-align:left;padding:0.4rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
+              <option value="flat" selected>Its broad face (0.20 m²)</option>
+              <option value="edge">Its narrow edge (0.04 m²)</option>
+              <option value="nail">A single nail tip (0.000 05 m²)</option>
             </select>
           </div>
           <div class="sim-calculator">
-            <h3>Pressure = Force / Area</h3>
-            <div id="pressure-calc-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose an area above.</div>
+            <h3>Pressure</h3>
+            <div id="pressure-calc-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -6214,21 +6216,19 @@ function getInlineLabHtml(type) {
     const speedVelocityLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="speed-velocity-canvas" width="600" height="330"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a quantity and see how it is calculated for the same journey.</span></div>
+          <canvas id="speed-velocity-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 One lap of the track. Distance keeps growing; displacement comes back to zero.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Choose a Quantity</h3>
-            <select id="sel-speed-velocity" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="speed" selected>Average speed</option>
-              <option value="velocity">Average velocity</option>
-              <option value="accel">Average acceleration</option>
-            </select>
+            <h3>The Runner</h3>
+            ${simSlider('sv-speed', 'Speed', 2, 10, 1, 5, ' m/s', '#22c55e')}
+            <button id="sv-play" class="sim-toggle-btn" style="width:100%;margin-top:0.5rem;">⏸ Pause</button>
+            <button id="sv-reset" class="sim-toggle-btn" style="width:100%;margin-top:0.5rem;">↺ Back to the start</button>
           </div>
           <div class="sim-calculator">
-            <h3>Calculation</h3>
-            <div id="speed-velocity-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a quantity above.</div>
+            <h3>Distance vs Displacement</h3>
+            <div id="speed-velocity-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -27247,38 +27247,74 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('pressure-calc-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-pressure-calc');
+      const fIn = document.getElementById('pc-force');
+      const shapeSel = document.getElementById('pc-shape');
       const obs = document.getElementById('pressure-calc-obs');
-      const FORCE = 100;
 
-      function draw() {
+      const SHAPES = {
+        flat: { area: 0.20,    w: 150, h: 46, label: 'broad face' },
+        edge: { area: 0.04,    w: 34,  h: 150, label: 'narrow edge' },
+        nail: { area: 0.00005, w: 5,   h: 130, label: 'nail tip' }
+      };
+      const SAND_Y = 236;
+      let sink = 0;
+
+      simLoop(canvas, (t, dt) => {
+        const F = +fIn.value, S = SHAPES[shapeSel.value];
+        const P = F / S.area;
+        const target = Math.min(60, Math.log10(P / 500 + 1) * 26);
+        sink += (target - sink) * Math.min(dt * 4, 1);
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const area = parseFloat(sel.value);
-        const pressure = FORCE / area;
-        const sqSize = 30 + Math.sqrt(area) * 60;
-        const cx = W / 2, cy = 150;
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Pressure = force ÷ area', 16, 22);
 
-        ctx.fillStyle = 'rgba(16,185,129,0.2)'; ctx.strokeStyle = cssVar('--accent-color'); ctx.lineWidth = 2.5;
-        ctx.fillRect(cx - sqSize / 2, cy - sqSize / 2, sqSize, sqSize);
-        ctx.strokeRect(cx - sqSize / 2, cy - sqSize / 2, sqSize, sqSize);
+        // sand
+        ctx.fillStyle = 'rgba(214,167,106,0.30)';
+        ctx.fillRect(60, SAND_Y, W - 120, 74);
+        ctx.strokeStyle = 'rgba(214,167,106,0.9)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(60, SAND_Y); ctx.lineTo(W - 60, SAND_Y); ctx.stroke();
 
-        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.moveTo(cx, cy - sqSize / 2 - 40); ctx.lineTo(cx, cy - sqSize / 2 - 5); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(cx, cy - sqSize / 2 - 5); ctx.lineTo(cx - 7, cy - sqSize / 2 - 18); ctx.lineTo(cx + 7, cy - sqSize / 2 - 18); ctx.closePath(); ctx.fill();
-        ctx.font = '12px system-ui'; ctx.fillStyle = '#ef4444'; ctx.textAlign = 'center';
-        ctx.fillText('100 N', cx, cy - sqSize / 2 - 48);
+        // the block, sunk by an amount that follows the pressure
+        const cx = 250;
+        ctx.fillStyle = 'rgba(148,163,184,0.55)'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(cx - S.w / 2, SAND_Y + sink - S.h, S.w, S.h, 3);
+        else ctx.rect(cx - S.w / 2, SAND_Y + sink - S.h, S.w, S.h);
+        ctx.fill(); ctx.stroke();
 
-        ctx.font = 'bold 15px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(`Area = ${area} m²`, W / 2, 250);
-        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = '#22c55e';
-        ctx.fillText(`Pressure = ${pressure} N/m²`, W / 2, 30);
+        // the dent it leaves
+        ctx.fillStyle = 'rgba(2,6,23,0.55)';
+        ctx.fillRect(cx - S.w / 2 - 2, SAND_Y, S.w + 4, Math.max(sink, 0));
 
-        obs.innerHTML = `<strong>Force = 100 N, Area = ${area} m²:</strong> Pressure = 100 / ${area} = <strong style="color:#22c55e;">${pressure} N/m²</strong>. Smaller area with the same force always produces higher pressure.`;
-      }
+        // weight arrow
+        simArrow(ctx, cx, SAND_Y + sink - S.h - 46, cx, SAND_Y + sink - S.h - 6, '#ef4444', 3);
+        ctx.fillStyle = '#ef4444'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(F + ' N', cx, SAND_Y + sink - S.h - 52);
 
-      sel.addEventListener('change', draw);
-      draw();
+        // contact area marked
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(cx - S.w / 2, SAND_Y + sink + 6); ctx.lineTo(cx + S.w / 2, SAND_Y + sink + 6); ctx.stroke();
+        ctx.fillStyle = '#22c55e'; ctx.font = '11px system-ui';
+        ctx.fillText('contact area ' + S.area + ' m²', cx, SAND_Y + sink + 22);
+
+        simReadout(ctx, 400, 70, [
+          'force  ' + F + ' N',
+          'area   ' + S.area + ' m²',
+          'P = F/A = ' + Math.round(P).toLocaleString() + ' Pa'
+        ], 'rgba(239,68,68,0.6)');
+
+        obs.innerHTML =
+          '<strong>' + F + ' N on ' + S.area + ' m² gives ' + Math.round(P).toLocaleString() + ' Pa.</strong>' +
+          '<br>' + (shapeSel.value === 'nail'
+            ? 'The weight has not changed at all, but squeezing it onto a nail tip multiplies the pressure thousands of times — which is exactly why a nail goes in and a plank does not.'
+            : (shapeSel.value === 'edge'
+              ? 'Standing the same block on its edge shrinks the contact area to a fifth, so the pressure is five times higher and it sinks further.'
+              : 'Spread over a broad face the same weight produces the least pressure, so it barely sinks.')) +
+          '<br><span style="color:var(--text-muted);">Change only the shape and watch the force stay the same while the pressure — and the dent — change completely.</span>';
+      });
     }
 
     function initLiquidPressureLab() {
@@ -31671,43 +31707,74 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('speed-velocity-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-speed-velocity');
+      const spIn = document.getElementById('sv-speed');
+      const playBtn = document.getElementById('sv-play');
+      const resetBtn = document.getElementById('sv-reset');
       const obs = document.getElementById('speed-velocity-obs');
-      const Q = {
-        speed: { name: 'Average speed', formula: 'total distance travelled ÷ time interval', sub: '160 m ÷ 16 s', res: '10 m/s', dir: 'no direction — a scalar', col: '#f59e0b' },
-        velocity: { name: 'Average velocity', formula: 'displacement ÷ time interval', sub: '40 m ÷ 16 s', res: '2.5 m/s', dir: 'in the positive direction — a vector', col: '#22c55e' },
-        accel: { name: 'Average acceleration', formula: '(final velocity − initial velocity) ÷ time interval', sub: '(25 − 5) m/s ÷ 4 s', res: '5 m/s²', dir: 'along the velocity, since speed is increasing', col: '#8b5cf6' }
-      };
 
-      function draw() {
+      const CX = 230, CY = 180, RX = 132, RY = 84;       // oval track
+      const LAP = Math.PI * (3 * (RX + RY) / 2 - Math.sqrt(RX * RY)) / 4;  // rough perimeter, px
+      let travelled = 0, elapsed = 0;
+      function reset() { travelled = 0; elapsed = 0; }
+      resetBtn.addEventListener('click', reset);
+
+      const loop = simLoop(canvas, (t, dt, api) => {
+        const sp = +spIn.value;
+        if (api.running) { travelled += sp * dt * 9; elapsed += dt; }
+        const perim = 2 * Math.PI * Math.sqrt((RX * RX + RY * RY) / 2);
+        const frac = (travelled % perim) / perim;
+        const ang = frac * Math.PI * 2 - Math.PI / 2;
+        const px = CX + RX * Math.cos(ang), py = CY + RY * Math.sin(ang);
+        const sx = CX, sy = CY - RY;                       // start line
+
+        const distM = travelled / 9;
+        const dispPx = Math.hypot(px - sx, py - sy);
+        const dispM = dispPx / 9;
+        const laps = Math.floor(travelled / perim);
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const q = Q[sel.value];
-        ctx.textAlign = 'center';
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Distance is the path; displacement is the shortcut', 16, 22);
 
-        ctx.font = 'bold 19px system-ui'; ctx.fillStyle = q.col;
-        ctx.fillText(q.name, W / 2, 50);
+        // track
+        ctx.strokeStyle = 'rgba(148,163,184,0.5)'; ctx.lineWidth = 14;
+        ctx.beginPath(); ctx.ellipse(CX, CY, RX, RY, 0, 0, Math.PI * 2); ctx.stroke();
+        ctx.strokeStyle = 'rgba(148,163,184,0.25)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.ellipse(CX, CY, RX, RY, 0, 0, Math.PI * 2); ctx.stroke();
 
-        ctx.font = '14px system-ui'; ctx.fillStyle = cssVar('--text-muted');
-        wrapText(ctx, q.formula, W / 2, 88, 46, 22);
+        // the path already run, drawn over the track
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 5;
+        ctx.beginPath(); ctx.ellipse(CX, CY, RX, RY, 0, -Math.PI / 2, ang); ctx.stroke();
 
-        ctx.fillStyle = 'rgba(148,163,184,0.10)';
-        ctx.strokeStyle = q.col; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.roundRect(W / 2 - 170, 128, 340, 62, 10); ctx.fill(); ctx.stroke();
-        ctx.font = 'bold 18px system-ui'; ctx.fillStyle = cssVar('--text-normal');
-        ctx.textBaseline = 'middle'; ctx.fillText(q.sub, W / 2, 159); ctx.textBaseline = 'alphabetic';
+        // start marker and runner
+        ctx.beginPath(); ctx.arc(sx, sy, 5, 0, Math.PI * 2); ctx.fillStyle = '#facc15'; ctx.fill();
+        ctx.fillStyle = '#facc15'; ctx.font = '11px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('start', sx, sy - 12);
+        ctx.beginPath(); ctx.arc(px, py, 8, 0, Math.PI * 2); ctx.fillStyle = '#f97316'; ctx.fill();
+        ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
 
-        ctx.font = 'bold 28px system-ui'; ctx.fillStyle = q.col;
-        ctx.fillText('= ' + q.res, W / 2, 236);
+        // displacement arrow, straight from start to now
+        if (dispPx > 6) simArrow(ctx, sx, sy, px, py, '#38bdf8', 2.5);
+        ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+        if (dispPx > 40) ctx.fillText('displacement', (sx + px) / 2, (sy + py) / 2 - 8);
 
-        ctx.font = '13px system-ui'; ctx.fillStyle = cssVar('--text-muted');
-        wrapText(ctx, q.dir, W / 2, 272, 48, 20);
+        simReadout(ctx, 400, 92, [
+          'time         ' + elapsed.toFixed(1) + ' s',
+          'distance     ' + distM.toFixed(1) + ' m',
+          'displacement ' + dispM.toFixed(1) + ' m',
+          'speed        ' + sp.toFixed(1) + ' m/s',
+          'velocity     ' + (elapsed > 0 ? (dispM / elapsed).toFixed(2) : '0.00') + ' m/s'
+        ], 'rgba(56,189,248,0.6)');
 
-        obs.innerHTML = `<strong>${q.name} = ${q.formula} = ${q.sub} = ${q.res}.</strong> It has ${q.dir}.`;
-      }
+        obs.innerHTML =
+          '<strong>Distance ' + distM.toFixed(1) + ' m · displacement ' + dispM.toFixed(1) + ' m</strong> after ' + laps + ' complete lap' + (laps === 1 ? '' : 's') + '.' +
+          '<br>Speed = distance / time = <strong>' + sp.toFixed(1) + ' m/s</strong>, but average velocity = displacement / time = <strong>' + (elapsed > 0 ? (dispM / elapsed).toFixed(2) : '0.00') + ' m/s</strong>.' +
+          '<br><span style="color:var(--text-muted);">Wait for a full lap: the runner has covered plenty of distance but is back where they started, so the displacement — and the average velocity — drop to zero.</span>';
+      });
 
-      sel.addEventListener('change', draw);
-      draw();
+      playBtn.addEventListener('click', () => { playBtn.textContent = loop.toggle() ? '⏸ Pause' : '▶ Play'; });
     }
 
     function initMotionGraphLab() {
