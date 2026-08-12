@@ -6734,20 +6734,30 @@ function getInlineLabHtml(type) {
     const atomCounterLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="atom-counter-canvas" width="600" height="330"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Read off protons, neutrons and electrons from Z and A.</span></div>
+          <canvas id="atom-counter-canvas" width="600" height="360"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Build the atom shell by shell, and watch protons, neutrons and electrons come straight out of Z and A.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
             <h3>Choose an Atom</h3>
             <select id="sel-atom-counter" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="H" selected>Hydrogen</option>
-              <option value="He">Helium</option>
-              <option value="Li">Lithium</option>
-              <option value="C">Carbon</option>
-              <option value="Fe">Iron</option>
-              <option value="U">Uranium</option>
+              <option value="H" selected>Hydrogen (Z = 1)</option>
+              <option value="He">Helium (Z = 2)</option>
+              <option value="Li">Lithium (Z = 3)</option>
+              <option value="C">Carbon (Z = 6)</option>
+              <option value="O">Oxygen (Z = 8)</option>
+              <option value="Na">Sodium (Z = 11)</option>
+              <option value="Cl">Chlorine (Z = 17)</option>
+              <option value="Ca">Calcium (Z = 20)</option>
             </select>
+          </div>
+          <div class="settings-group-card">
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-normal);cursor:pointer;margin-bottom:0.5rem;">
+              <input id="chk-atom-spin" type="checkbox" checked style="accent-color:#38bdf8;"> Electrons in motion
+            </label>
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-normal);cursor:pointer;">
+              <input id="chk-atom-nucleus" type="checkbox" style="accent-color:#f87171;"> Zoom into the nucleus
+            </label>
           </div>
           <div class="sim-calculator">
             <h3>Inside the Atom</h3>
@@ -34442,106 +34452,147 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
       const sel = document.getElementById('sel-atom-counter');
+      const spinChk = document.getElementById('chk-atom-spin');
+      const nucChk = document.getElementById('chk-atom-nucleus');
       const obs = document.getElementById('atom-counter-obs');
-      const W = logW(canvas), H = logH(canvas);
-      const text = cssVar('--text-normal', '#e6e6e6');
-      const muted = cssVar('--text-muted', '#9aa0a6');
-      const accent = cssVar('--accent-primary', '#6c8cff');
 
+      // Mass numbers are the common isotope rounded to the nearest whole number,
+      // which is how the chapter presents them.
       const ATOMS = {
-        H: { name: 'Hydrogen', sym: 'H', Z: 1, A: 1 },
-        He: { name: 'Helium', sym: 'He', Z: 2, A: 4 },
-        Li: { name: 'Lithium', sym: 'Li', Z: 3, A: 7 },
-        C: { name: 'Carbon', sym: 'C', Z: 6, A: 12 },
-        Fe: { name: 'Iron', sym: 'Fe', Z: 26, A: 56 },
-        U: { name: 'Uranium', sym: 'U', Z: 92, A: 238 }
+        H:  { name: 'Hydrogen',  sym: 'H',  Z: 1,  A: 1  },
+        He: { name: 'Helium',    sym: 'He', Z: 2,  A: 4  },
+        Li: { name: 'Lithium',   sym: 'Li', Z: 3,  A: 7  },
+        C:  { name: 'Carbon',    sym: 'C',  Z: 6,  A: 12 },
+        O:  { name: 'Oxygen',    sym: 'O',  Z: 8,  A: 16 },
+        Na: { name: 'Sodium',    sym: 'Na', Z: 11, A: 23 },
+        Cl: { name: 'Chlorine',  sym: 'Cl', Z: 17, A: 35 },
+        Ca: { name: 'Calcium',   sym: 'Ca', Z: 20, A: 40 }
       };
+      const SHELL_NAMES = ['K', 'L', 'M', 'N'];
 
-      function update() {
-        const a = ATOMS[sel.value];
-        const n = a.A - a.Z;
-
-        ctx.clearRect(0, 0, W, H);
-        ctx.fillStyle = cssVar('--bg-secondary', '#1b1b1f');
-        ctx.fillRect(0, 0, W, H);
-        ctx.fillStyle = accent;
-        ctx.font = 'bold 15px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(a.name, W / 2, 26);
-
-        // Standard notation, mass number above the atomic number.
-        ctx.fillStyle = text;
-        ctx.font = 'bold 15px sans-serif';
-        ctx.textAlign = 'right';
-        ctx.fillText(String(a.A), 152, 78);
-        ctx.fillText(String(a.Z), 152, 100);
-        ctx.font = 'bold 34px sans-serif';
-        ctx.textAlign = 'left';
-        ctx.fillText(a.sym, 158, 96);
-        ctx.fillStyle = muted;
-        ctx.font = '11px sans-serif';
-        ctx.textAlign = 'right';
-        ctx.fillText('mass number A', 148, 62);
-        ctx.fillText('atomic number Z', 148, 116);
-
-        // Nucleus: protons and neutrons packed together, drawn up to a readable cap.
-        const ncx = 400, ncy = 110, shown = Math.min(a.A, 24);
-        for (let i = 0; i < shown; i++) {
-          const ring = i < 6 ? 0 : i < 16 ? 1 : 2;
-          const inRing = ring === 0 ? 6 : ring === 1 ? 10 : 8;
-          const idx = ring === 0 ? i : ring === 1 ? i - 6 : i - 16;
-          const r = ring === 0 ? 12 : ring === 1 ? 26 : 40;
-          const ang = (2 * Math.PI * idx) / inRing;
-          const isProton = i < Math.round((a.Z / a.A) * shown);
-          ctx.fillStyle = isProton ? '#d0433a' : '#8f9bb3';
-          ctx.beginPath();
-          ctx.arc(ncx + r * Math.cos(ang), ncy + r * Math.sin(ang), 7, 0, Math.PI * 2);
-          ctx.fill();
+      // Bohr-Bury filling, capped at 8 in the outermost shell as Grade 9 does.
+      function shells(Z) {
+        const caps = [2, 8, 8, 18];
+        const out = [];
+        let left = Z;
+        for (let i = 0; i < caps.length && left > 0; i++) {
+          const n = Math.min(left, caps[i]);
+          out.push(n); left -= n;
         }
-        ctx.fillStyle = muted;
-        ctx.font = '11px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(a.A > 24 ? 'nucleus (shown in proportion)' : 'nucleus', ncx, ncy + 68);
-
-        // Counts as three labelled rows.
-        const rows = [
-          ['Protons (p⁺)', a.Z, '#d0433a'],
-          ['Neutrons (n⁰)', n, '#8f9bb3'],
-          ['Electrons (e⁻)', a.Z, '#5aa9e6']
-        ];
-        rows.forEach((r, i) => {
-          const y = 200 + i * 34;
-          ctx.fillStyle = r[2];
-          ctx.beginPath(); ctx.arc(150, y - 5, 8, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = text;
-          ctx.font = '14px sans-serif';
-          ctx.textAlign = 'left';
-          ctx.fillText(r[0], 168, y);
-          ctx.font = 'bold 15px sans-serif';
-          ctx.fillText(String(r[1]), 330, y);
-        });
-        ctx.fillStyle = muted;
-        ctx.font = '12px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('Neutrons = A − Z = ' + a.A + ' − ' + a.Z + ' = ' + n, W / 2, 312);
-
-        const plural = k => k === 1 ? '' : 's';
-        obs.innerHTML = '<strong>' + a.name + ' (' + a.sym + ')</strong><br>' +
-          'Atomic number Z = <strong>' + a.Z + '</strong> → ' + a.Z + ' proton' + plural(a.Z) + '<br>' +
-          'Mass number A = <strong>' + a.A + '</strong> → ' + a.A + ' nucleon' + plural(a.A) + '<br>' +
-          'Neutrons = A − Z = ' + a.A + ' − ' + a.Z + ' = <strong>' + n + '</strong><br>' +
-          'Electrons = ' + a.Z + ', since the atom is neutral<br><br>' +
-          (n === 0
-            ? 'Hydrogen is the one atom with no neutron in its nucleus.'
-            : n === a.Z
-              ? 'Lighter atoms often have equal numbers of protons and neutrons.'
-              : n > a.Z * 1.5
-                ? 'By the time we reach heavy elements, the nucleus needs many more neutrons than protons to stay bound together.'
-                : 'As atoms get heavier, their nuclei carry more neutrons than protons.');
+        return out;
       }
 
-      sel.addEventListener('change', update);
-      update();
+      let t = 0, last = performance.now();
+
+      function frame(now) {
+        if (!document.body.contains(canvas)) return;
+        const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        if (spinChk.checked) t += dt;
+
+        const W = logW(canvas), H = logH(canvas);
+        const a = ATOMS[sel.value];
+        const n = a.A - a.Z;
+        const sh = shells(a.Z);
+        const cx = W * 0.36, cy = H * 0.52;
+
+        ctx.clearRect(0, 0, W, H);
+
+        // heading and A/Z notation
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 16px system-ui'; ctx.fillStyle = cssVar('--text-normal', '#e6e6e6');
+        ctx.fillText(a.name, W / 2, 24);
+
+        // nucleus: protons and neutrons packed in a small cluster
+        const zoom = nucChk.checked;
+        const nucR = zoom ? 62 : 22;
+        const total = a.Z + n;
+        ctx.save();
+        ctx.beginPath(); ctx.arc(cx, cy, nucR + 4, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(248,113,113,0.10)'; ctx.fill();
+        if (zoom) {
+          // spread the nucleons out so they can be counted
+          const per = Math.ceil(Math.sqrt(total));
+          let idx = 0;
+          for (let i = 0; i < total; i++) {
+            const ang = i * 2.399963;                     // golden-angle packing
+            const rad = nucR * Math.sqrt(i / Math.max(total - 1, 1)) * 0.92;
+            const px = cx + rad * Math.cos(ang), py = cy + rad * Math.sin(ang);
+            ctx.beginPath(); ctx.arc(px, py, 6.5, 0, Math.PI * 2);
+            ctx.fillStyle = i < a.Z ? '#ef4444' : '#94a3b8'; ctx.fill();
+            idx++;
+          }
+        } else {
+          ctx.beginPath(); ctx.arc(cx, cy, nucR, 0, Math.PI * 2);
+          ctx.fillStyle = '#ef4444'; ctx.fill();
+          ctx.font = 'bold 12px system-ui'; ctx.fillStyle = '#fff';
+          ctx.fillText(a.Z + 'p  ' + n + 'n', cx, cy + 4);
+        }
+        ctx.restore();
+
+        // shells and electrons
+        sh.forEach((count, si) => {
+          const r = nucR + 30 + si * 34;
+          ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+          ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#94a3b8');
+          ctx.textAlign = 'center';
+          ctx.fillText(SHELL_NAMES[si], cx, cy - r - 5);
+          const speed = 0.7 / (si + 1);
+          for (let i = 0; i < count; i++) {
+            const ang = t * speed + (i * 2 * Math.PI) / count;
+            const ex = cx + r * Math.cos(ang), ey = cy + r * Math.sin(ang);
+            ctx.beginPath(); ctx.arc(ex, ey, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#38bdf8'; ctx.fill();
+            ctx.strokeStyle = 'rgba(255,255,255,0.6)'; ctx.lineWidth = 1; ctx.stroke();
+          }
+        });
+
+        // right-hand panel: A/Z notation and the counts it produces
+        const px = W * 0.76;
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 46px system-ui'; ctx.fillStyle = cssVar('--text-normal', '#e6e6e6');
+        ctx.fillText(a.sym, px + 12, cy - 44);
+        ctx.font = 'bold 15px system-ui';
+        ctx.textAlign = 'right';
+        ctx.fillText(String(a.A), px - 16, cy - 60);
+        ctx.fillText(String(a.Z), px - 16, cy - 36);
+        ctx.font = '10px system-ui'; ctx.fillStyle = cssVar('--text-muted', '#94a3b8');
+        ctx.textAlign = 'left';
+        ctx.fillText('mass number A', px + 44, cy - 60);
+        ctx.fillText('atomic number Z', px + 44, cy - 36);
+
+        const rows = [
+          ['#ef4444', 'Protons', a.Z],
+          ['#94a3b8', 'Neutrons', n],
+          ['#38bdf8', 'Electrons', a.Z]
+        ];
+        rows.forEach(([col, label, val], i) => {
+          const ry = cy - 8 + i * 26;
+          ctx.beginPath(); ctx.arc(px - 58, ry - 4, 6, 0, Math.PI * 2);
+          ctx.fillStyle = col; ctx.fill();
+          ctx.textAlign = 'left'; ctx.font = '13px system-ui';
+          ctx.fillStyle = cssVar('--text-normal', '#e6e6e6');
+          ctx.fillText(label, px - 44, ry);
+          ctx.textAlign = 'right'; ctx.font = 'bold 13px system-ui';
+          ctx.fillText(String(val), px + 76, ry);
+        });
+
+        ctx.textAlign = 'center'; ctx.font = '12px system-ui';
+        ctx.fillStyle = cssVar('--text-muted', '#94a3b8');
+        ctx.fillText('Neutrons = A − Z = ' + a.A + ' − ' + a.Z + ' = ' + n, px + 8, cy + 82);
+        ctx.fillText('Electron arrangement: ' + sh.join(', '), W * 0.36, H - 12);
+
+        obs.innerHTML =
+          '<strong>' + a.name + ' (' + a.sym + '):</strong> Z = ' + a.Z + ', A = ' + a.A +
+          '<br>Protons ' + a.Z + ' · Neutrons ' + n + ' · Electrons ' + a.Z +
+          '<br>Shells (' + sh.map((c, i) => SHELL_NAMES[i] + '=' + c).join(', ') + ')' +
+          '<br><span style="color:var(--text-muted);">A neutral atom has as many electrons as protons, so the charges cancel exactly. The nucleus is drawn far larger than scale — a real nucleus is about a hundred thousand times smaller than the atom.</span>';
+
+        requestAnimationFrame(frame);
+      }
+
+      sel.addEventListener('change', () => {});
+      requestAnimationFrame(frame);
     }
 
     function initElectronShellLab() {
