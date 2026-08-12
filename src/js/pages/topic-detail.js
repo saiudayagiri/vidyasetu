@@ -398,67 +398,23 @@ function getInlineLabHtml(type) {
     const heartLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="heart-canvas" width="600" height="340"></canvas>
-          <div class="canvas-instruction-bar" id="heart-hint"><span>💡 Watch blood flow through the four chambers of the heart.</span></div>
+          <canvas id="heart-canvas" width="600" height="360"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Follow one drop of blood all the way round. It passes through the heart twice on every lap.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Explore</h3>
-            <select id="sel-lifeprocess-mode" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
-              <option value="heart">Blood Circulation (Heart)</option>
-              <option value="vessels">Blood Vessels, Platelets &amp; Lymph</option>
-              <option value="breathing">Breathing &amp; Respiration</option>
-              <option value="limewater">Lime Water CO₂ Test</option>
-              <option value="fishgill">Fish Gill Breathing</option>
-              <option value="planttransport">Plant Transport (Xylem &amp; Phloem)</option>
-              <option value="excretion">Excretion (Nephron)</option>
-            </select>
-            <div id="heart-controls">
-              <h3>Heart Rate</h3>
-              <input type="range" id="heart-rate" min="40" max="120" value="72" style="width:100%;margin-bottom:0.5rem;">
-              <div id="heart-bpm" style="text-align:center;font-weight:700;color:var(--accent-color);">72 BPM</div>
-            </div>
-            <div id="vessels-controls" style="display:none;">
-              <label style="font-size:0.85rem;color:var(--text-muted);">Focus</label>
-              <select id="sel-vessel-focus" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
-                <option value="vessels">Artery vs Vein vs Capillary</option>
-                <option value="platelets">Platelets Sealing a Cut</option>
-                <option value="lymph">Lymph Drainage</option>
-              </select>
-            </div>
-            <div id="breathing-controls" style="display:none;">
-              <label style="font-size:0.85rem;color:var(--text-muted);">Breathing Rate</label>
-              <input type="range" id="rng-breathing-rate" min="8" max="40" value="15" style="width:100%;margin-bottom:0.5rem;">
-              <div id="breathing-rate-val" style="text-align:center;font-weight:700;color:var(--accent-color);margin-bottom:0.5rem;">15 breaths/min</div>
-              <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.85rem;color:var(--text-muted);">
-                <input type="checkbox" id="chk-anaerobic"> No oxygen available (anaerobic — muscle cramp)
-              </label>
-            </div>
-            <div id="limewater-controls" style="display:none;">
-              <label style="font-size:0.85rem;color:var(--text-muted);">Test</label>
-              <select id="sel-limewater-test" style="width:100%;padding:0.4rem;margin-bottom:0.75rem;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);border-radius:var(--radius-xs);">
-                <option value="breath">Exhaled Breath vs Atmospheric Air</option>
-                <option value="yeast">Yeast Fermentation</option>
-              </select>
-              <button id="btn-run-limewater" class="nav-topic-btn next" style="width:100%;justify-content:center;background:var(--primary-color);color:white;border:none;padding:0.75rem;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;">Start Test ⏱️</button>
-            </div>
-            <div id="fishgill-controls" style="display:none;">
-              <p style="font-size:0.9rem;color:var(--text-muted);">Watch the fish's mouth and gill covers open and close, and compare the rate to human breathing.</p>
-            </div>
-            <div id="planttransport-controls" style="display:none;">
-              <label style="font-size:0.85rem;color:var(--text-muted);">Transpiration Rate (stomata opening)</label>
-              <input type="range" id="rng-transpiration" min="0" max="100" value="60" style="width:100%;margin-bottom:0.5rem;">
-              <div id="transpiration-val" style="text-align:center;font-weight:700;color:var(--accent-color);">60%</div>
-            </div>
-            <div id="excretion-controls" style="display:none;">
-              <label style="font-size:0.85rem;color:var(--text-muted);">Body Water Level</label>
-              <input type="range" id="rng-water-level" min="0" max="100" value="50" style="width:100%;margin-bottom:0.5rem;">
-              <div id="water-level-val" style="text-align:center;font-weight:700;color:var(--accent-color);">Normal hydration</div>
-            </div>
+            <h3>Heart Rate</h3>
+            ${simSlider('hc-rate', 'Beats per minute', 50, 160, 5, 72, ' bpm', '#ef4444')}
+            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-normal);cursor:pointer;margin-top:0.5rem;">
+              <input id="hc-trace" type="checkbox" checked style="accent-color:#facc15;"> Follow one drop of blood
+            </label>
+          </div>
+          <div class="settings-group-card">
+            <button id="hc-play" class="sim-toggle-btn" style="width:100%;">⏸ Pause</button>
           </div>
           <div class="sim-calculator">
-            <h3 id="heart-obs-title">Chamber Activity</h3>
-            <div id="heart-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Watch the cardiac cycle animation.</div>
+            <h3>Double Circulation</h3>
+            <div id="heart-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -4511,21 +4467,18 @@ function getInlineLabHtml(type) {
     const liquidPressureLabHtml = `
       <div class="visual-lab-container">
         <div class="sim-canvas-wrapper">
-          <canvas id="liquid-pressure-canvas" width="600" height="280"></canvas>
-          <div class="canvas-instruction-bar"><span>💡 Pick a water column height and see how much the balloon bulges.</span></div>
+          <canvas id="liquid-pressure-canvas" width="600" height="340"></canvas>
+          <div class="canvas-instruction-bar"><span>💡 Three holes at three depths — watch which jet squirts furthest.</span></div>
         </div>
         <div class="sim-settings-pane">
           <div class="settings-group-card">
-            <h3>Water Column Height</h3>
-            <select id="sel-liquid-pressure" class="sim-toggle-btn" style="text-align:left;padding:0.5rem;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-normal);">
-              <option value="low" selected>Low (half-filled pipe)</option>
-              <option value="medium">Medium</option>
-              <option value="high">High (nearly full pipe)</option>
-            </select>
+            <h3>The Can of Water</h3>
+            ${simSlider('lp-level', 'Water level', 30, 100, 5, 100, ' %', '#38bdf8')}
+            ${simSlider('lp-density', 'Liquid density', 800, 1400, 50, 1000, ' kg/m³', '#a78bfa')}
           </div>
           <div class="sim-calculator">
-            <h3>Balloon Bulge</h3>
-            <div id="liquid-pressure-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Choose a height above.</div>
+            <h3>Pressure at Each Hole</h3>
+            <div id="liquid-pressure-obs" style="font-size:0.95rem;line-height:1.6;color:var(--text-normal);background:var(--bg-primary);padding:0.75rem;border-radius:var(--radius-sm);border:1px solid var(--border-color);">Running…</div>
           </div>
         </div>
       </div>`;
@@ -16619,488 +16572,130 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('heart-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const rateSlider = document.getElementById('heart-rate');
-      const bpmLabel = document.getElementById('heart-bpm');
+      const rateIn = document.getElementById('hc-rate');
+      const traceChk = document.getElementById('hc-trace');
+      const playBtn = document.getElementById('hc-play');
       const obs = document.getElementById('heart-obs');
-      const obsTitle = document.getElementById('heart-obs-title');
-      const hint = document.getElementById('heart-hint');
-      const modeSel = document.getElementById('sel-lifeprocess-mode');
-      const heartControls = document.getElementById('heart-controls');
-      const vesselsControls = document.getElementById('vessels-controls');
-      const vesselFocusSel = document.getElementById('sel-vessel-focus');
-      const breathingControls = document.getElementById('breathing-controls');
-      const limewaterControls = document.getElementById('limewater-controls');
-      const limewaterTestSel = document.getElementById('sel-limewater-test');
-      const btnRunLimewater = document.getElementById('btn-run-limewater');
-      const fishgillControls = document.getElementById('fishgill-controls');
-      const plantControls = document.getElementById('planttransport-controls');
-      const excretionControls = document.getElementById('excretion-controls');
-      const breathingRateSlider = document.getElementById('rng-breathing-rate');
-      const breathingRateVal = document.getElementById('breathing-rate-val');
-      const anaerobicChk = document.getElementById('chk-anaerobic');
-      const transpirationSlider = document.getElementById('rng-transpiration');
-      const transpirationVal = document.getElementById('transpiration-val');
-      const waterLevelSlider = document.getElementById('rng-water-level');
-      const waterLevelVal = document.getElementById('water-level-val');
-      let limewaterFrame = 0, limewaterRunning = false, limewaterTimerId = null;
 
-      function drawHeart() {
-        const W = logW(canvas), H = logH(canvas);
-        const bpm = parseInt(rateSlider.value);
-        bpmLabel.textContent = bpm + ' BPM';
-        const t = Date.now() / (60000 / bpm);
-        const phase = t % 1;
-        const cx = W/2, cy = H/2;
-        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.moveTo(cx, cy + 60);
-        ctx.bezierCurveTo(cx - 80, cy - 20, cx - 80, cy - 60, cx, cy - 30);
-        ctx.bezierCurveTo(cx + 80, cy - 60, cx + 80, cy - 20, cx, cy + 60);
-        ctx.stroke();
-        const expand = phase < 0.3 ? phase/0.3 : phase < 0.5 ? 1 : 1 - (phase-0.5)/0.5;
-        ctx.fillStyle = `rgba(59, 130, 246, ${0.3 + expand * 0.4})`;
-        ctx.fillRect(cx + 5, cy - 25, 30 + expand*5, 25);
-        ctx.fillStyle = `rgba(239, 68, 68, ${0.3 + expand * 0.4})`;
-        ctx.fillRect(cx - 35 - expand*5, cy - 25, 30 + expand*5, 25);
-        ctx.fillStyle = `rgba(59, 130, 246, ${0.3 + (1-expand) * 0.4})`;
-        ctx.fillRect(cx + 5, cy + 5, 30 + (1-expand)*5, 35);
-        ctx.fillStyle = `rgba(239, 68, 68, ${0.3 + (1-expand) * 0.4})`;
-        ctx.fillRect(cx - 35 - (1-expand)*5, cy + 5, 30 + (1-expand)*5, 35);
-        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 9px system-ui';
-        ctx.fillText('RA', cx + 12, cy - 8);
-        ctx.fillText('LA', cx - 28, cy - 8);
-        ctx.fillText('RV', cx + 12, cy + 28);
-        ctx.fillText('LV', cx - 28, cy + 28);
-        ctx.fillStyle = '#3b82f6'; ctx.font = '8px system-ui';
-        ctx.fillText('Pulmonary Artery →', cx + 45, cy - 15);
-        ctx.fillText('← Vena Cava', cx + 45, cy + 20);
-        ctx.fillStyle = '#ef4444';
-        ctx.fillText('← Pulmonary Vein', cx - 120, cy - 15);
-        ctx.fillText('Aorta →', cx - 80, cy + 20);
-        const phaseName = phase < 0.3 ? 'Atrial Systole (Atria contract)' : phase < 0.5 ? 'Ventricular Systole (Ventricles contract)' : 'Diastole (All relax)';
-        ctx.fillStyle = cssVar('--accent-color', '#000000'); ctx.font = 'bold 12px system-ui';
-        ctx.fillText(phaseName, cx - 80, cy + 80);
-        obsTitle.textContent = 'Chamber Activity';
-        obs.innerHTML = `<strong>Cardiac Cycle:</strong><br>
-          • Heart Rate: <strong>${bpm} BPM</strong><br>
-          • Phase: <strong>${phaseName}</strong><br>
-          • Right side pumps <span style="color:#3b82f6">deoxygenated blood</span> to lungs.<br>
-          • Left side pumps <span style="color:#ef4444">oxygenated blood</span> to body.`;
-      }
-
-      function drawBreathing() {
-        const W = logW(canvas), H = logH(canvas);
-        const bpm = parseInt(breathingRateSlider.value);
-        breathingRateVal.textContent = bpm + ' breaths/min';
-        const anaerobic = anaerobicChk.checked;
-        const t = Date.now() / (60000 / bpm);
-        const phase = t % 1;
-        const inhale = Math.sin(phase * 2 * Math.PI) * 0.5 + 0.5;
-
-        const cx = 150;
-        const diaphragmY = 260 - inhale * 20;
-
-        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
-        for (let i = 0; i < 5; i++) {
-          const ribY = 80 + i*30;
-          const ribW = 90 + inhale*10;
-          ctx.beginPath(); ctx.ellipse(cx, ribY, ribW, 12, 0, 0, Math.PI); ctx.stroke();
-        }
-
-        const lungScale = 0.8 + inhale*0.3;
-        ctx.fillStyle = `rgba(236,72,153,${0.25 + inhale*0.2})`;
-        ctx.beginPath(); ctx.ellipse(cx - 40, 170, 35*lungScale, 70*lungScale, 0, 0, 2*Math.PI); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(cx + 40, 170, 35*lungScale, 70*lungScale, 0, 0, 2*Math.PI); ctx.fill();
-        ctx.strokeStyle = '#ec4899'; ctx.lineWidth = 2; ctx.stroke();
-
-        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 8;
-        ctx.beginPath(); ctx.moveTo(cx, 40); ctx.lineTo(cx, 110); ctx.stroke();
-
-        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 4;
-        ctx.beginPath();
-        ctx.moveTo(cx - 100, diaphragmY);
-        ctx.quadraticCurveTo(cx, diaphragmY + (inhale > 0.5 ? 10 : -10), cx + 100, diaphragmY);
-        ctx.stroke();
-        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Diaphragm', cx - 30, diaphragmY + 20);
-
-        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui';
-        ctx.fillText(inhale > 0.5 ? 'INHALING (ribs up, diaphragm flat)' : 'EXHALING (ribs down, diaphragm domes up)', cx - 100, 300);
-
-        const insetX = 400, insetY = 90;
-        ctx.strokeStyle = cssVar('--border-color', '#000000'); ctx.lineWidth = 1;
-        ctx.strokeRect(insetX - 20, insetY - 20, 190, 190);
-        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Alveolus (gas exchange)', insetX - 15, insetY - 26);
-
-        ctx.strokeStyle = '#f87171'; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.ellipse(insetX + 75, insetY + 75, 60, 50, 0, 0, 2*Math.PI); ctx.stroke();
-        ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.arc(insetX + 75, insetY + 75, 70, 0.3, Math.PI*1.7); ctx.stroke();
-
-        const tick = Date.now()/400;
-        ctx.fillStyle = '#60a5fa'; ctx.font = 'bold 9px system-ui';
-        for (let i = 0; i < 3; i++) {
-          const prog = (tick + i*0.33) % 1;
-          const x = insetX + 145 - prog*70;
-          ctx.beginPath(); ctx.arc(x, insetY + 55 + i*20, 3, 0, 2*Math.PI); ctx.fill();
-        }
-        ctx.fillText('O₂ → blood', insetX + 90, insetY + 145);
-        ctx.fillStyle = '#94a3b8';
-        for (let i = 0; i < 3; i++) {
-          const prog = (tick + i*0.33) % 1;
-          const x = insetX + 5 + prog*70;
-          ctx.beginPath(); ctx.arc(x, insetY + 90 - i*15, 3, 0, 2*Math.PI); ctx.fill();
-        }
-        ctx.fillText('CO₂ → alveolus', insetX - 10, insetY - 5);
-
-        obsTitle.textContent = 'Breathing & Respiration';
-        if (anaerobic) {
-          obs.innerHTML = `<strong>⚠️ Anaerobic Respiration (no oxygen):</strong><br>
-            • Glucose → Pyruvate (glycolysis, in cytoplasm) → <strong>Lactic acid</strong> + only 2 ATP.<br>
-            • Lactic acid build-up in muscles causes <strong>cramps</strong> during intense exercise.<br>
-            • Compare: yeast under anaerobic conditions instead produces Ethanol + CO₂ (fermentation).<br>
-            • Untick the box to restore normal aerobic breathing.`;
-        } else {
-          obs.innerHTML = `<strong>Breathing Cycle (${bpm} breaths/min):</strong><br>
-            • ${inhale > 0.5 ? 'Inhaling' : 'Exhaling'}: ribs and diaphragm ${inhale > 0.5 ? 'expand the chest cavity, sucking air in' : 'relax, pushing air out'}.<br>
-            • In the alveoli, <strong>O₂ diffuses into the blood</strong> (binds haemoglobin) and <strong>CO₂ diffuses out</strong> to be exhaled.<br>
-            • <strong>Aerobic respiration:</strong> Glucose + O₂ → CO₂ + H₂O + ~38 ATP (in mitochondria) — far more energy than the anaerobic pathway.`;
-        }
-      }
-
-      function drawPlantTransport() {
-        const W = logW(canvas), H = logH(canvas);
-        const transpRate = parseInt(transpirationSlider.value) / 100;
-        transpirationVal.textContent = Math.round(transpRate*100) + '%';
-
-        ctx.fillStyle = '#78350f'; ctx.fillRect(0, 280, W, 60);
-        ctx.strokeStyle = '#92400e'; ctx.lineWidth = 2;
-        for (let i = -2; i <= 2; i++) {
-          ctx.beginPath(); ctx.moveTo(300, 280); ctx.lineTo(300 + i*30, 330 + Math.abs(i)*10); ctx.stroke();
-        }
-        ctx.strokeStyle = '#a3703a'; ctx.lineWidth = 16;
-        ctx.beginPath(); ctx.moveTo(300, 280); ctx.lineTo(300, 80); ctx.stroke();
-        ctx.fillStyle = 'white'; ctx.font = '8px system-ui';
-        ctx.save(); ctx.translate(292, 190); ctx.rotate(-Math.PI/2); ctx.fillText('XYLEM', -18, 0); ctx.restore();
-        ctx.save(); ctx.translate(308, 190); ctx.rotate(-Math.PI/2); ctx.fillText('PHLOEM', -20, 0); ctx.restore();
-
-        ctx.fillStyle = '#22c55e';
-        ctx.beginPath(); ctx.ellipse(240, 70, 70, 40, 0.3, 0, 2*Math.PI); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(360, 70, 70, 40, -0.3, 0, 2*Math.PI); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(300, 50, 60, 35, 0, 0, 2*Math.PI); ctx.fill();
-
-        const tick = Date.now()/300;
-        const speed = 0.3 + transpRate*2;
-        ctx.fillStyle = '#3b82f6';
-        for (let i = 0; i < 8; i++) {
-          const y = 280 - ((tick*speed*20 + i*30) % 210);
-          ctx.beginPath(); ctx.arc(294, y, 3, 0, 2*Math.PI); ctx.fill();
-        }
-        ctx.fillStyle = '#22c55e';
-        for (let i = 0; i < 5; i++) {
-          const y = 80 + ((tick*10 + i*40) % 200);
-          ctx.beginPath(); ctx.arc(308, y, 3, 0, 2*Math.PI); ctx.fill();
-        }
-
-        if (transpRate > 0.05) {
-          ctx.fillStyle = 'rgba(148,163,184,0.7)'; ctx.font = '10px system-ui';
-          const numArrows = Math.round(transpRate*6);
-          for (let i = 0; i < numArrows; i++) {
-            const x = 200 + i*35;
-            const y = 50 - ((tick*speed*15 + i*15) % 40);
-            ctx.fillText('↑', x, y);
-          }
-          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui';
-          ctx.fillText('Water vapour (transpiration)', 175, 20);
-        }
-        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '9px system-ui';
-        ctx.fillText('Roots absorb water & minerals', 150, 320);
-
-        obsTitle.textContent = 'Plant Transport';
-        obs.innerHTML = `<strong>Xylem (water, upward):</strong><br>
-          • Transpiration rate: <strong>${Math.round(transpRate*100)}%</strong> (stomata opening)<br>
-          • Water evaporating from leaf stomata creates a <strong>transpiration pull</strong> that draws water up through the xylem, all the way from the roots.<br>
-          • Root pressure also pushes water up, but is much weaker — it matters more at night when stomata are closed.<br><br>
-          <strong>Phloem (food, bidirectional):</strong><br>
-          • Sugars made in the leaves (source) are actively loaded into phloem using ATP, and flow to roots, fruits and growing buds (sink) — this is <strong>translocation</strong>.<br>
-          • Unlike xylem's one-way flow, phloem transport direction depends on where the plant needs the sugar.`;
-      }
-
-      const tubulePath = [
-        {x: 130, y: 120}, {x: 180, y: 130}, {x: 220, y: 200},
-        {x: 220, y: 260}, {x: 180, y: 290}, {x: 220, y: 260},
-        {x: 280, y: 200}, {x: 320, y: 130}, {x: 380, y: 110}, {x: 420, y: 200}, {x: 420, y: 280}
+      // One lap: body -> right atrium -> right ventricle -> lungs -> left
+      // atrium -> left ventricle -> body. Each leg is a straight run between
+      // two points, and blood is deoxygenated until it has been to the lungs.
+      const HX = 300, HY = 196;
+      const RA = [HX - 42, HY - 34], RV = [HX - 46, HY + 40];
+      const LA = [HX + 42, HY - 34], LV = [HX + 46, HY + 40];
+      const LUNG = [HX, HY - 128], BODY = [HX, HY + 132];
+      // bulge pushes each vessel out to one side so they curve round the heart
+      // instead of cutting straight across it
+      const LEGS = [
+        { from: BODY, to: RA,   label: 'vena cava',        oxy: false, bulge: -78 },
+        { from: RA,   to: RV,   label: 'right atrium',     oxy: false, bulge: -14 },
+        { from: RV,   to: LUNG, label: 'pulmonary artery', oxy: false, bulge: -92 },
+        { from: LUNG, to: LA,   label: 'pulmonary vein',   oxy: true,  bulge: -92 },
+        { from: LA,   to: LV,   label: 'left atrium',      oxy: true,  bulge: -14 },
+        { from: LV,   to: BODY, label: 'aorta',            oxy: true,  bulge: -78 }
       ];
-
-      function drawExcretion() {
-        const W = logW(canvas), H = logH(canvas);
-        const waterLevel = parseInt(waterLevelSlider.value);
-        waterLevelVal.textContent = waterLevel < 30 ? 'Dehydrated' : waterLevel > 70 ? 'Overhydrated' : 'Normal hydration';
-
-        const capX = 100, capY = 100;
-        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.arc(capX, capY, 40, Math.PI*0.2, Math.PI*1.8); ctx.stroke();
-        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2;
-        ctx.beginPath();
-        for (let i = 0; i < 20; i++) {
-          const a = i*0.9;
-          ctx.lineTo(capX + Math.sin(a)*20, capY + Math.cos(a*1.3)*20);
-        }
-        ctx.stroke();
-        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui';
-        ctx.fillText('Glomerulus', capX - 25, capY - 50);
-        ctx.fillText('Bowman’s capsule', capX - 40, capY + 55);
-
-        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 6;
-        ctx.beginPath();
-        tubulePath.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
-        ctx.stroke();
-
-        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = '8px system-ui';
-        ctx.fillText('PCT', 160, 120);
-        ctx.fillText('Loop of Henle', 190, 250);
-        ctx.fillText('DCT', 330, 120);
-        ctx.fillText('Collecting Duct', 400, 240);
-
-        const reabsorptionRate = 1 - waterLevel/100;
-        ctx.fillStyle = 'rgba(59,130,246,0.7)';
-        const tick = Date.now()/300;
-        const numDrops = Math.round(2 + reabsorptionRate*6);
-        for (let i = 0; i < numDrops; i++) {
-          const idx = Math.floor((tick*0.3 + i) % tubulePath.length);
-          const p = tubulePath[idx];
-          if (p) { ctx.beginPath(); ctx.arc(p.x, p.y - 15, 2, 0, 2*Math.PI); ctx.fill(); }
-        }
-
-        const urineConc = reabsorptionRate;
-        ctx.fillStyle = `rgba(234,179,8,${0.3 + urineConc*0.5})`;
-        ctx.beginPath(); ctx.ellipse(420, 300, 20, 15, 0, 0, 2*Math.PI); ctx.fill();
-        ctx.strokeStyle = '#eab308'; ctx.stroke();
-        ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui';
-        ctx.fillText('Urine', 405, 320);
-
-        obsTitle.textContent = 'Excretion (Nephron)';
-        obs.innerHTML = `<strong>Nephron Filtration:</strong><br>
-          • Blood enters the <strong>glomerulus</strong> under high pressure; water, glucose, salts and urea are filtered into the <strong>Bowman's capsule</strong>. Proteins and blood cells are too big to pass through.<br>
-          • Body water level: <strong>${waterLevel < 30 ? 'Low (dehydrated)' : waterLevel > 70 ? 'High (overhydrated)' : 'Normal'}</strong><br>
-          • Along the tubule (PCT → Loop of Henle → DCT), useful substances and <strong>${(reabsorptionRate*100).toFixed(0)}%</strong> of the filtered water are reabsorbed back into the blood.<br>
-          • Result: urine is <strong>${urineConc > 0.6 ? 'concentrated (the body is conserving water)' : urineConc < 0.4 ? 'dilute (excess water is being excreted)' : 'moderately concentrated'}</strong>.<br>
-          • Roughly 180 L of fluid is filtered daily, but only 1–2 L actually leaves the body as urine — the rest is reabsorbed.`;
+      function ctrl(L) {
+        const mx = (L.from[0] + L.to[0]) / 2, my = (L.from[1] + L.to[1]) / 2;
+        const dx = L.to[0] - L.from[0], dy = L.to[1] - L.from[1];
+        const len = Math.hypot(dx, dy) || 1;
+        return [mx + (-dy / len) * L.bulge, my + (dx / len) * L.bulge];
+      }
+      function bez(L, k) {
+        const c = ctrl(L), m = 1 - k;
+        return [m * m * L.from[0] + 2 * m * k * c[0] + k * k * L.to[0],
+                m * m * L.from[1] + 2 * m * k * c[1] + k * k * L.to[1]];
       }
 
-      function drawVessels() {
-        const W = logW(canvas), H = logH(canvas);
-        const focus = vesselFocusSel.value;
-        const y = 170;
-        if (focus === 'vessels') {
-          ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 14;
-          ctx.beginPath(); ctx.arc(130, y, 30, 0, 2*Math.PI); ctx.stroke();
-          ctx.fillStyle = 'rgba(239,68,68,0.3)'; ctx.beginPath(); ctx.arc(130, y, 23, 0, 2*Math.PI); ctx.fill();
-          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.fillText('Artery', 105, y + 60);
-          ctx.font = '9px system-ui'; ctx.fillText('Thick, elastic wall', 75, y + 75); ctx.fillText('High pressure', 82, y + 88);
+      const loop = simLoop(canvas, (t) => {
+        const bpm = +rateIn.value;
+        const cycle = 60 / bpm;                 // seconds per beat
+        const beat = (t % cycle) / cycle;       // 0..1 within one beat
+        const squeeze = Math.max(0, Math.sin(beat * Math.PI * 2)) * 0.14;
 
-          ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 6;
-          ctx.beginPath(); ctx.arc(310, y, 30, 0, 2*Math.PI); ctx.stroke();
-          ctx.fillStyle = 'rgba(59,130,246,0.3)'; ctx.beginPath(); ctx.arc(310, y, 27, 0, 2*Math.PI); ctx.fill();
-          ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.moveTo(295, y - 10); ctx.lineTo(310, y); ctx.lineTo(295, y + 10); ctx.stroke();
-          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.fillText('Vein', 297, y + 60);
-          ctx.font = '9px system-ui'; ctx.fillText('Thin wall + valves', 265, y + 75); ctx.fillText('Low pressure', 278, y + 88);
-
-          ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 1.5;
-          ctx.beginPath(); ctx.arc(470, y, 10, 0, 2*Math.PI); ctx.stroke();
-          ctx.fillStyle = 'rgba(34,197,94,0.3)'; ctx.beginPath(); ctx.arc(470, y, 9, 0, 2*Math.PI); ctx.fill();
-          ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 11px system-ui'; ctx.fillText('Capillary', 435, y + 60);
-          ctx.font = '9px system-ui'; ctx.fillText('One-cell-thick wall', 410, y + 75); ctx.fillText('Exchange site', 425, y + 88);
-
-          obsTitle.textContent = 'Blood Vessels';
-          obs.innerHTML = `<strong>Three vessel types:</strong><br>
-            • <span style="color:#ef4444">Arteries</span> carry blood away from the heart under high pressure — thick, elastic walls withstand this.<br>
-            • <span style="color:#3b82f6">Veins</span> carry blood back to the heart at low pressure — thinner walls, with <strong>valves</strong> to stop backflow.<br>
-            • <span style="color:#22c55e">Capillaries</span> are just one cell thick, letting materials diffuse directly between blood and surrounding cells.`;
-        } else if (focus === 'platelets') {
-          ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 8;
-          ctx.beginPath(); ctx.moveTo(120, y); ctx.lineTo(480, y); ctx.stroke();
-          const clot = Math.min(1, (Date.now() % 4000) / 3000);
-          if (clot < 1) {
-            ctx.strokeStyle = '#fca5a5'; ctx.lineWidth = 3;
-            ctx.beginPath(); ctx.moveTo(300, y - 12*(1-clot)); ctx.lineTo(300, y + 12*(1-clot)); ctx.stroke();
-          }
-          ctx.fillStyle = '#fbbf24';
-          const numPlatelets = Math.floor(clot * 12);
-          for (let i = 0; i < numPlatelets; i++) {
-            const a = (i / 12) * Math.PI * 2;
-            ctx.beginPath(); ctx.arc(300 + Math.cos(a)*10, y + Math.sin(a)*10, 2.5, 0, 2*Math.PI); ctx.fill();
-          }
-          obsTitle.textContent = 'Platelets';
-          obs.innerHTML = `<strong>Platelets clot the blood:</strong><br>
-            • Platelet cells circulate around the body and rush to plug leaks caused by injury.<br>
-            • This clotting minimises blood loss and prevents a drop in blood pressure that would otherwise reduce the efficiency of the whole circulatory system.`;
-        } else {
-          ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.arc(220, y, 10, 0, 2*Math.PI); ctx.stroke();
-          ctx.fillStyle = 'rgba(34,197,94,0.2)'; ctx.beginPath(); ctx.arc(220, y, 9, 0, 2*Math.PI); ctx.fill();
-          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Capillary', 195, y - 20);
-
-          const tick = Date.now()/500;
-          ctx.fillStyle = 'rgba(250,204,21,0.7)';
-          for (let i = 0; i < 4; i++) {
-            const prog = (tick + i*0.25) % 1;
-            const x = 226 + prog*140, yy = y + Math.sin(prog*Math.PI)*20;
-            ctx.beginPath(); ctx.arc(x, yy, 2.5, 0, 2*Math.PI); ctx.fill();
-          }
-          ctx.strokeStyle = '#eab308'; ctx.lineWidth = 3;
-          ctx.beginPath(); ctx.moveTo(380, y); ctx.lineTo(460, y); ctx.stroke();
-          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText('Lymph vessel → large vein', 355, y + 25);
-
-          obsTitle.textContent = 'Lymph';
-          obs.innerHTML = `<strong>Lymph (tissue fluid):</strong><br>
-            • Plasma, proteins and some cells leak through pores in capillary walls into the spaces between cells, forming lymph.<br>
-            • Lymph drains into lymphatic capillaries, which join into larger lymph vessels that finally empty into large veins.<br>
-            • Lymph carries digested and absorbed fat from the intestine, and drains excess fluid from tissue spaces back into the blood.`;
-        }
-      }
-
-      function drawLimewater() {
-        const W = logW(canvas), H = logH(canvas);
-        const test = limewaterTestSel.value;
-
-        if (test === 'breath') {
-          const tubes = [{x: 180, label: 'Exhaled Breath'}, {x: 420, label: 'Atmospheric Air (pichkari)'}];
-          tubes.forEach((t, idx) => {
-            ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
-            ctx.beginPath(); ctx.moveTo(t.x - 25, 60); ctx.lineTo(t.x - 25, 220); ctx.arc(t.x, 220, 25, Math.PI, 0, true); ctx.lineTo(t.x + 25, 60); ctx.stroke();
-            const milkiness = limewaterRunning ? Math.min(1, limewaterFrame * (idx === 0 ? 0.02 : 0.006)) : 0;
-            ctx.fillStyle = `rgba(255,255,255,${0.2 + milkiness*0.7})`;
-            ctx.fillRect(t.x - 23, 140, 46, 78);
-            ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '9px system-ui'; ctx.fillText(t.label, t.x - 45, 240);
-          });
-
-          obsTitle.textContent = 'Lime Water CO₂ Test';
-          obs.innerHTML = !limewaterRunning
-            ? `Click "Start Test" to blow exhaled breath through one lime-water tube, and push atmospheric air (with a syringe/pichkari) through the other.`
-            : `<strong>Ca(OH)₂ + CO₂ → CaCO₃↓ + H₂O</strong><br>
-              • The <strong>exhaled breath</strong> tube turns milky much faster.<br>
-              • This shows that the air we breathe <strong>out</strong> contains far more CO₂ than the atmospheric air we breathe <strong>in</strong> — confirming that respiration produces CO₂.`;
-        } else {
-          const tubeAX = 180, tubeBX = 420, topY = 60, botY = 220;
-          drawTube2(tubeAX, topY, botY); drawTube2(tubeBX, topY, botY);
-          ctx.fillStyle = 'rgba(250,204,21,0.3)'; ctx.fillRect(tubeAX - 18, 150, 36, 68);
-          ctx.fillStyle = cssVar('--text-muted', '#000000'); ctx.font = '8px system-ui'; ctx.fillText('Yeast + Sugar', tubeAX - 25, 240);
-
-          const milky = limewaterRunning && limewaterFrame > 20;
-          ctx.fillStyle = milky ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.25)';
-          ctx.fillRect(tubeBX - 18, 150, 36, 68);
-          ctx.fillText('Lime water', tubeBX - 25, 240);
-
-          ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
-          ctx.beginPath(); ctx.moveTo(tubeAX, topY); ctx.lineTo(tubeAX, topY - 20); ctx.lineTo(tubeBX, topY - 20); ctx.lineTo(tubeBX, 140); ctx.stroke();
-
-          if (limewaterRunning) {
-            ctx.fillStyle = 'rgba(226,232,240,0.85)';
-            for (let i = 0; i < 4; i++) {
-              const y2 = 200 - ((limewaterFrame*3 + i*15) % 110);
-              if (y2 > 100) { ctx.beginPath(); ctx.arc(tubeAX - 5 + i*3, y2, 2, 0, 2*Math.PI); ctx.fill(); }
-            }
-          }
-
-          obsTitle.textContent = 'Yeast Fermentation';
-          obs.innerHTML = !limewaterRunning
-            ? `Click "Start Test" to let yeast ferment sugar and pass the gas produced through lime water.`
-            : `<strong>Fermentation (anaerobic respiration in yeast):</strong><br>
-              • Glucose → Ethanol + CO₂ + Energy<br>
-              • ${milky ? 'The lime water has turned <strong>milky</strong>, confirming CO₂ is a product of fermentation.' : 'Watch the lime water for the classic milky precipitate...'}`;
-        }
-      }
-      function drawTube2(x, topY, botY) {
-        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.moveTo(x - 20, topY); ctx.lineTo(x - 20, botY); ctx.arc(x, botY, 20, Math.PI, 0, true); ctx.lineTo(x + 20, topY); ctx.stroke();
-      }
-
-      function drawFishGill() {
-        const W = logW(canvas), H = logH(canvas);
-        ctx.fillStyle = 'rgba(59,130,246,0.08)'; ctx.fillRect(0, 0, W, H);
-
-        const fishBpm = 70;
-        const t = Date.now() / (60000 / fishBpm);
-        const phase = t % 1;
-        const mouthOpen = Math.sin(phase*2*Math.PI)*0.5 + 0.5;
-
-        const cx = 220, cy = 170;
-        ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.ellipse(cx, cy, 70, 35, 0, 0, 2*Math.PI); ctx.fill();
-        ctx.beginPath(); ctx.moveTo(cx + 70, cy); ctx.lineTo(cx + 110, cy - 25); ctx.lineTo(cx + 110, cy + 25); ctx.closePath(); ctx.fill();
-        ctx.fillStyle = '#1e293b';
-        ctx.beginPath(); ctx.ellipse(cx - 68, cy, 6 + mouthOpen*6, 4 + mouthOpen*4, 0, 0, 2*Math.PI); ctx.fill();
-        const gillOpen = 1 - mouthOpen;
-        ctx.strokeStyle = '#1e40af'; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.arc(cx - 30, cy, 15 + gillOpen*8, -0.4, 0.4); ctx.stroke();
-
-        ctx.fillStyle = cssVar('--text-normal', '#000000'); ctx.font = 'bold 12px system-ui';
-        ctx.fillText('Fish: ~' + fishBpm + ' mouth/gill cycles per minute', 60, 260);
-        ctx.fillText('Human: ~15–18 breaths per minute', 60, 280);
-
-        obsTitle.textContent = 'Fish Gill Breathing';
-        obs.innerHTML = `<strong>Aquatic vs Terrestrial Breathing:</strong><br>
-          • A fish's mouth and gill covers (operculum) open and close in a coordinated rhythm — water is taken in through the mouth and forced out past the gills, where dissolved O₂ is absorbed into the blood.<br>
-          • Since the amount of oxygen <strong>dissolved</strong> in water is much lower than in air, fish must breathe much faster (~${fishBpm}/min) than terrestrial animals (~15–18/min) to get enough oxygen.`;
-      }
-
-      function draw() {
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const mode = modeSel.value;
-        if (mode === 'heart') drawHeart();
-        else if (mode === 'vessels') drawVessels();
-        else if (mode === 'breathing') drawBreathing();
-        else if (mode === 'limewater') drawLimewater();
-        else if (mode === 'fishgill') drawFishGill();
-        else if (mode === 'planttransport') drawPlantTransport();
-        else drawExcretion();
-        requestAnimationFrame(draw);
-      }
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Double circulation — blood passes through the heart twice per lap', 16, 22);
 
-      modeSel.addEventListener('change', () => {
-        const mode = modeSel.value;
-        heartControls.style.display = mode === 'heart' ? 'block' : 'none';
-        vesselsControls.style.display = mode === 'vessels' ? 'block' : 'none';
-        breathingControls.style.display = mode === 'breathing' ? 'block' : 'none';
-        limewaterControls.style.display = mode === 'limewater' ? 'block' : 'none';
-        fishgillControls.style.display = mode === 'fishgill' ? 'block' : 'none';
-        plantControls.style.display = mode === 'planttransport' ? 'block' : 'none';
-        excretionControls.style.display = mode === 'excretion' ? 'block' : 'none';
-        const titles = { heart: 'Chamber Activity', vessels: 'Blood Vessels', breathing: 'Breathing & Respiration', limewater: 'Lime Water CO₂ Test', fishgill: 'Fish Gill Breathing', planttransport: 'Plant Transport', excretion: 'Excretion (Nephron)' };
-        obsTitle.textContent = titles[mode];
-        const hints = {
-          heart: '💡 Watch blood flow through the four chambers of the heart.',
-          vessels: '💡 Compare artery, vein and capillary structure, or explore platelets and lymph.',
-          breathing: '💡 Adjust breathing rate and try the anaerobic toggle to see what causes cramps.',
-          limewater: '💡 Compare how fast exhaled breath vs atmospheric air (or yeast fermentation) turns lime water milky.',
-          fishgill: '💡 Compare a fish\'s breathing rate to a human\'s.',
-          planttransport: '💡 Adjust transpiration rate and watch water rise through the xylem.',
-          excretion: '💡 Adjust body water level and see how the nephron changes urine concentration.'
+        // lungs and body
+        ctx.fillStyle = 'rgba(56,189,248,0.18)'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.ellipse(LUNG[0], LUNG[1], 96, 30, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('LUNGS  (picks up O₂)', LUNG[0], LUNG[1] + 4);
+        ctx.fillStyle = 'rgba(148,163,184,0.16)'; ctx.strokeStyle = '#94a3b8';
+        ctx.beginPath(); ctx.ellipse(BODY[0], BODY[1], 108, 26, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#cbd5e1';
+        ctx.fillText('BODY  (gives up O₂)', BODY[0], BODY[1] + 4);
+
+        // vessels
+        LEGS.forEach(L => {
+          const c = ctrl(L);
+          ctx.strokeStyle = L.oxy ? 'rgba(239,68,68,0.5)' : 'rgba(59,130,246,0.5)';
+          ctx.lineWidth = 8; ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(L.from[0], L.from[1]);
+          ctx.quadraticCurveTo(c[0], c[1], L.to[0], L.to[1]); ctx.stroke();
+          ctx.lineCap = 'butt';
+        });
+
+        // the four chambers, squeezing on the beat
+        const chamber = (c, w, h, colour, name, contract) => {
+          const k = 1 - (contract ? squeeze : 0);
+          ctx.beginPath();
+          ctx.ellipse(c[0], c[1], w * k, h * k, 0, 0, Math.PI * 2);
+          ctx.fillStyle = colour; ctx.fill();
+          ctx.strokeStyle = 'rgba(255,255,255,0.55)'; ctx.lineWidth = 1.5; ctx.stroke();
+          ctx.fillStyle = '#fff'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+          ctx.fillText(name, c[0], c[1] + 4);
         };
-        hint.querySelector('span').textContent = hints[mode];
-        limewaterFrame = 0; limewaterRunning = false;
-        if (limewaterTimerId) { clearInterval(limewaterTimerId); limewaterTimerId = null; }
+        const ventriclePhase = beat > 0.3;
+        chamber(RA, 30, 24, 'rgba(59,130,246,0.85)', 'RA', !ventriclePhase);
+        chamber(LA, 30, 24, 'rgba(239,68,68,0.85)', 'LA', !ventriclePhase);
+        chamber(RV, 34, 30, 'rgba(59,130,246,0.95)', 'RV', ventriclePhase);
+        chamber(LV, 38, 34, 'rgba(239,68,68,0.95)', 'LV', ventriclePhase);
+
+        // the wall between the two sides: oxygenated and deoxygenated never mix
+        ctx.strokeStyle = 'rgba(226,232,240,0.75)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(HX, HY - 64); ctx.lineTo(HX, HY + 76); ctx.stroke();
+
+        // blood cells marching round the whole circuit
+        const speed = bpm / 72;
+        const nCells = 24;
+        for (let i = 0; i < nCells; i++) {
+          const u = ((t * 0.09 * speed) + i / nCells) % 1;
+          const legIdx = Math.floor(u * LEGS.length);
+          const L = LEGS[legIdx];
+          const k = (u * LEGS.length) - legIdx;
+          const [px, py] = bez(L, k);
+          ctx.beginPath(); ctx.arc(px, py, 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = L.oxy ? '#fca5a5' : '#93c5fd'; ctx.fill();
+          ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 1; ctx.stroke();
+        }
+
+        // one highlighted drop, with a caption naming where it is
+        if (traceChk.checked) {
+          const u = (t * 0.09 * speed) % 1;
+          const legIdx = Math.floor(u * LEGS.length);
+          const L = LEGS[legIdx];
+          const k = (u * LEGS.length) - legIdx;
+          const [px, py] = bez(L, k);
+          ctx.beginPath(); ctx.arc(px, py, 8, 0, Math.PI * 2);
+          ctx.fillStyle = '#facc15'; ctx.fill();
+          ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.fillStyle = '#facc15'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'left';
+          ctx.fillText(L.label, px + 12, py - 8);
+          obs.innerHTML =
+            '<strong>' + bpm + ' beats per minute</strong> — one beat every ' + cycle.toFixed(2) + ' s.' +
+            '<br>The tracked drop is in the <strong>' + L.label + '</strong>, carrying ' + (L.oxy ? 'oxygen-rich' : 'oxygen-poor') + ' blood.' +
+            '<br><span style="color:var(--text-muted);">Blue is oxygen-poor, red is oxygen-rich. The wall down the middle keeps them completely separate — that is what makes it a double circulation.</span>';
+        } else {
+          obs.innerHTML =
+            '<strong>' + bpm + ' beats per minute</strong> — one beat every ' + cycle.toFixed(2) + ' s.' +
+            '<br><span style="color:var(--text-muted);">Right side pumps to the lungs, left side pumps to the body. The left ventricle is drawn thickest because it has to push blood the whole way round the body.</span>';
+        }
       });
-      rateSlider.addEventListener('input', () => {});
-      vesselFocusSel.addEventListener('change', () => {});
-      breathingRateSlider.addEventListener('input', () => {});
-      anaerobicChk.addEventListener('change', () => {});
-      limewaterTestSel.addEventListener('change', () => {
-        limewaterFrame = 0; limewaterRunning = false;
-        if (limewaterTimerId) { clearInterval(limewaterTimerId); limewaterTimerId = null; }
-      });
-      btnRunLimewater.addEventListener('click', () => {
-        if (limewaterTimerId) clearInterval(limewaterTimerId);
-        limewaterFrame = 1; limewaterRunning = true;
-        limewaterTimerId = setInterval(() => {
-          limewaterFrame++;
-          if (limewaterFrame > 150) { clearInterval(limewaterTimerId); limewaterTimerId = null; }
-        }, 40);
-      });
-      transpirationSlider.addEventListener('input', () => {});
-      waterLevelSlider.addEventListener('input', () => {});
-      draw();
+
+      playBtn.addEventListener('click', () => { playBtn.textContent = loop.toggle() ? '⏸ Pause' : '▶ Play'; });
     }
 
     function initScientificMethodLab() {
@@ -27669,34 +27264,81 @@ export function renderTopicDetail(classId, subjectId, topicId) {  const classObj
       const canvas = document.getElementById('liquid-pressure-canvas');
       if (!canvas) return;
       const ctx = hidpiCtx(canvas);
-      const sel = document.getElementById('sel-liquid-pressure');
+      const levelIn = document.getElementById('lp-level');
+      const densIn = document.getElementById('lp-density');
       const obs = document.getElementById('liquid-pressure-obs');
-      const LEVELS = { low: 0.35, medium: 0.6, high: 0.9 };
 
-      function draw() {
+      const CAN_X = 150, CAN_TOP = 60, CAN_BOT = 262, CAN_W = 96, G = 9.8;
+      const HOLES = [0.25, 0.55, 0.85];        // fraction of the can height
+
+      simLoop(canvas, (t) => {
+        const levelPct = +levelIn.value / 100, rho = +densIn.value;
+        const surfaceY = CAN_BOT - (CAN_BOT - CAN_TOP) * levelPct;
+
         const W = logW(canvas), H = logH(canvas);
         ctx.clearRect(0, 0, W, H);
-        const frac = LEVELS[sel.value];
-        const pipeX = W / 2, pipeTop = 40, pipeBottom = 200, pipeW = 50;
+        ctx.textAlign = 'left'; ctx.font = 'bold 14px system-ui';
+        ctx.fillStyle = cssVar('--text-normal', '#e2e8f0');
+        ctx.fillText('Pressure in a liquid grows with depth', 16, 22);
 
-        ctx.strokeStyle = cssVar('--border-color'); ctx.lineWidth = 2;
-        ctx.strokeRect(pipeX - pipeW / 2, pipeTop, pipeW, pipeBottom - pipeTop);
-        const waterH = (pipeBottom - pipeTop) * frac;
-        ctx.fillStyle = 'rgba(59,130,246,0.4)';
-        ctx.fillRect(pipeX - pipeW / 2, pipeBottom - waterH, pipeW, waterH);
+        // the can
+        ctx.fillStyle = 'rgba(56,189,248,0.28)';
+        ctx.fillRect(CAN_X, surfaceY, CAN_W, CAN_BOT - surfaceY);
+        ctx.strokeStyle = 'rgba(148,163,184,0.9)'; ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(CAN_X, CAN_TOP); ctx.lineTo(CAN_X, CAN_BOT);
+        ctx.lineTo(CAN_X + CAN_W, CAN_BOT); ctx.lineTo(CAN_X + CAN_W, CAN_TOP); ctx.stroke();
+        ctx.strokeStyle = 'rgba(56,189,248,0.8)';
+        ctx.beginPath(); ctx.moveTo(CAN_X, surfaceY); ctx.lineTo(CAN_X + CAN_W, surfaceY); ctx.stroke();
 
-        const bulgeR = 15 + frac * 35;
-        ctx.fillStyle = '#ef4444';
-        ctx.beginPath(); ctx.arc(pipeX, pipeBottom + bulgeR * 0.6, bulgeR, 0, Math.PI * 2); ctx.fill();
+        // ground
+        ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(60, CAN_BOT); ctx.lineTo(W - 30, CAN_BOT); ctx.stroke();
 
-        ctx.font = 'bold 14px system-ui'; ctx.fillStyle = cssVar('--text-normal'); ctx.textAlign = 'center';
-        ctx.fillText(sel.options[sel.selectedIndex].text, W / 2, 25);
+        const rows = [];
+        HOLES.forEach((f, i) => {
+          const hy = CAN_TOP + (CAN_BOT - CAN_TOP) * f;
+          const depthPx = hy - surfaceY;
+          const depthM = Math.max(depthPx, 0) / 100;              // 100 px = 1 m
+          const P = rho * G * depthM;
+          rows.push([i + 1, depthM, P]);
 
-        obs.innerHTML = `<strong>${sel.options[sel.selectedIndex].text}:</strong> A ${sel.value === 'low' ? 'small' : sel.value === 'medium' ? 'moderate' : 'large'} water column height produces a ${sel.value === 'low' ? 'small' : sel.value === 'medium' ? 'moderate' : 'large'} bulge — confirming pressure increases with column height, not pipe width.`;
-      }
+          ctx.fillStyle = depthPx > 0 ? '#0b0f19' : 'rgba(148,163,184,0.4)';
+          ctx.fillRect(CAN_X + CAN_W - 2, hy - 3, 6, 6);
 
-      sel.addEventListener('change', draw);
-      draw();
+          if (depthPx > 2) {
+            // a jet leaving with speed sqrt(2 g h), drawn as a projectile arc
+            const v = Math.sqrt(2 * G * depthM) * 26;
+            ctx.strokeStyle = 'rgba(56,189,248,0.9)'; ctx.lineWidth = 2.5;
+            ctx.beginPath(); ctx.moveTo(CAN_X + CAN_W + 4, hy);
+            let landed = CAN_X + CAN_W;
+            for (let k = 0; k < 200; k++) {
+              const tt = k / 60;
+              const px = CAN_X + CAN_W + 4 + v * tt;
+              const py = hy + 0.5 * 320 * tt * tt;
+              if (py > CAN_BOT) { landed = px; break; }
+              ctx.lineTo(px, py);
+            }
+            ctx.stroke();
+            // label the jet at the hole rather than where it lands, so three
+            // labels can never pile up on the same patch of ground
+            ctx.fillStyle = '#7dd3fc'; ctx.font = '10px system-ui'; ctx.textAlign = 'left';
+            ctx.fillText(Math.sqrt(2 * G * depthM).toFixed(1) + ' m/s', CAN_X + CAN_W + 10, hy - 6);
+          }
+          ctx.fillStyle = cssVar('--text-muted', '#94a3b8'); ctx.font = '10px system-ui'; ctx.textAlign = 'right';
+          ctx.fillText('hole ' + (i + 1) + '  ' + Math.round(P / 1000) + ' kPa', CAN_X - 6, hy + 4);
+        });
+
+        simReadout(ctx, 400, 60, rows.map(r =>
+          'hole ' + r[0] + ':  h = ' + r[1].toFixed(2) + ' m,  P = ' + Math.round(r[2] / 1000) + ' kPa'
+        ).concat(['P = ρgh,  ρ = ' + rho + ' kg/m³']), 'rgba(56,189,248,0.6)');
+
+        obs.innerHTML =
+          '<strong>P = ρgh.</strong> The deeper the hole, the more liquid presses down on it, so the harder the water is pushed out.' +
+          '<br>Deepest hole: <strong>' + Math.round(rows[2][2] / 1000) + ' kPa</strong>, leaving at <strong>' + Math.sqrt(2 * G * rows[2][1]).toFixed(1) + ' m/s</strong>.' +
+          '<br>Top hole: <strong>' + Math.round(rows[0][2] / 1000) + ' kPa</strong>, leaving at <strong>' + Math.sqrt(2 * G * rows[0][1]).toFixed(1) + ' m/s</strong>.' +
+          '<br><span style="color:var(--text-muted);">Watch where the jets land, though: the lowest one leaves fastest but has the least height to fall, so it is a middle hole that reaches furthest. Speed and range are not the same thing. Lower the water level and every jet weakens together, because pressure depends on depth below the surface, not on how wide the can is.</span>';
+      });
     }
 
     function initWindFormationLab() {
